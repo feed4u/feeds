@@ -1,0 +1,50 @@
+{
+  "generated_at": "2026-07-19T20:18:09.763449+00:00",
+  "date": "2026-07-03",
+  "total_items": 3,
+  "next_chunk": "archive/blog/daily/2026-07-02.json",
+  "items": [
+    {
+      "title": "Vercel Sandbox now supports FUSE-based filesystems",
+      "summary": "Vercel Sandbox now supports FUSE, letting you mount remote storage and custom filesystems inside a running Sandbox. Use it to attach S3 buckets, network filesystems, or any other FUSE-compatible driver as a regular path. This makes it possible to stream large datasets directly from object storage, share state across Sandboxes through a common filesystem, or run tools that expect POSIX paths against remote sources without copying data into the Sandbox first. Learn more about remote storage mounts in the documentation. Read more",
+      "summary_html": "<p><a href=\"https://vercel.com/sandbox\">Vercel Sandbox</a> now supports FUSE, letting you mount remote storage and custom filesystems inside a running Sandbox. Use it to attach S3 buckets, network filesystems, or any other FUSE-compatible driver as a regular path.</p><div></div><p>This makes it possible to stream large datasets directly from object storage, share state across Sandboxes through a common filesystem, or run tools that expect POSIX paths against remote sources without copying data into the Sandbox first.</p><p>Learn more about <a href=\"https://vercel.com/docs/sandbox/mount-remote-storage\">remote storage mounts</a> in the documentation.</p>\n<p>\n<a href=\"https://vercel.com/changelog/vercel-sandbox-now-supports-fuse-based-filesystems\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/vercel-sandbox-now-supports-fuse-based-filesystems",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-03T01:00:00+00:00",
+      "published_ts": 1783040400,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Manage Vercel Flags segments with Vercel CLI",
+      "summary": "Vercel Flags segments can now be managed from the Vercel CLI with the new vercel flags segments command. A segment is the targeting primitive a flag uses to decide who sees what. Membership composes from three repeatable tokens: include: , exclude: , and rule: . Pass them to --add or --remove for incremental edits. For full replacement, --data takes the entire segment definition as raw JSON. All segment commands support --json output, making them scriptable from CI, local workflows, and agent-driven pipelines that need to inspect or update flag targeting from the terminal. Update to the latest version of the Vercel CLI and learn more in the Vercel Flags CLI documentation to get started. Read more",
+      "summary_html": "<p><a href=\"https://vercel.com/docs/flags\">Vercel Flags</a> segments can now be managed from the <a href=\"https://vercel.com/docs/cli/flags\">Vercel CLI</a> with the new <code>vercel flags segments</code> command.</p><p>A segment is the targeting primitive a flag uses to decide who sees what. Membership composes from three repeatable tokens: <code>include:</code>, <code>exclude:</code>, and <code>rule:</code>. Pass them to <code>--add</code> or <code>--remove</code> for incremental edits. For full replacement, <code>--data</code> takes the entire segment definition as raw JSON.</p><div></div><p>All segment commands support <code>--json</code> output, making them scriptable from CI, local workflows, and agent-driven pipelines that need to inspect or update flag targeting from the terminal.</p><p>Update to the latest version of the Vercel CLI and learn more in the <a href=\"https://vercel.com/docs/cli/flags\">Vercel Flags CLI documentation</a> to get started.</p>\n<p>\n<a href=\"https://vercel.com/changelog/manage-vercel-flags-segments-with-vercel-cli\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/manage-vercel-flags-segments-with-vercel-cli",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-03T00:00:00+00:00",
+      "published_ts": 1783036800,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Agent Runs now available in the Vercel MCP and CLI",
+      "summary": "Your agent can now inspect Agent Runs via the Vercel MCP and CLI for eve , the open-source agent framework. eve traces are automatically ingested when deployed to Vercel and available as Agent Runs. The new Vercel MCP tools and Vercel CLI commands let you find projects with runs, list recent runs, and retrieve full traces, including reasoning, tool calls, and token usage. Vercel MCP tools: list_agent_run_projects : Find projects in a team with Agent Runs activity. list_agent_runs : List recent runs for a project. get_agent_run : Inspect metadata, lifecycle events, usage, and subagent data. get_agent_run_trace : Retrieve trace data for a run, including turns, messages, reasoning, tool calls, token usage, and tool input/output. Vercel CLI commands: vercel agent-runs projects vercel agent-runs list vercel agent-runs inspect vercel agent-runs trace Every CLI subcommand supports --json for machine-readable output, and traces render as markdown when piped, so coding agents without MCP access can call the CLI directly to debug their own runs. Ask your coding agent questions like \"Show me the latest production Agent Runs for my project\" or \"Update skills based on recent runs\". Get started by installing the Vercel MCP: Or upgrade to the latest version of the Vercel CLI: Read more",
+      "summary_html": "<p>Your agent can now inspect <a href=\"https://vercel.com/docs/eve/observability#agent-runs\">Agent Runs</a> via the Vercel MCP and CLI for <a href=\"https://eve.dev/\">eve</a>, the open-source agent framework.</p><p>eve traces are automatically ingested when deployed to Vercel and available as Agent Runs. The new <a href=\"https://vercel.com/docs/agent-resources/vercel-mcp/tools#agent-runs-observability-tools\">Vercel MCP tools</a> and <a href=\"https://vercel.com/docs/cli\">Vercel CLI commands</a> let you find projects with runs, list recent runs, and retrieve full traces, including reasoning, tool calls, and token usage.</p><p><b>Vercel MCP tools:</b></p><ul><li><p><code>list_agent_run_projects</code>: Find projects in a team with Agent Runs activity.</p></li><li><p><code>list_agent_runs</code>: List recent runs for a project.</p></li><li><p><code>get_agent_run</code>: Inspect metadata, lifecycle events, usage, and subagent data.</p></li><li><p><code>get_agent_run_trace</code>: Retrieve trace data for a run, including turns, messages, reasoning, tool calls, token usage, and tool input/output.</p></li></ul><p><b>Vercel CLI commands:</b></p><ul><li><p><code>vercel agent-runs projects</code></p></li><li><p><code>vercel agent-runs list</code></p></li><li><p><code>vercel agent-runs inspect </code></p></li><li><p><code>vercel agent-runs trace </code></p></li></ul><p>Every CLI subcommand supports <code>--json</code> for machine-readable output, and traces render as markdown when piped, so coding agents without MCP access can call the CLI directly to debug their own runs.</p><p>Ask your coding agent questions like \"Show me the latest production Agent Runs for my project\" or \"Update skills based on recent runs\".</p><p><b>Get started by installing the Vercel MCP:</b></p><div></div><p><b>Or upgrade to the latest version of the Vercel CLI:</b></p><div></div><p></p>\n<p>\n<a href=\"https://vercel.com/changelog/agent-runs-vercel-mcp-cli\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/agent-runs-vercel-mcp-cli",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-03T00:00:00+00:00",
+      "published_ts": 1783036800,
+      "smart_groups": [],
+      "curated": true
+    }
+  ]
+}

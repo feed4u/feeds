@@ -1,0 +1,41 @@
+{
+  "generated_at": "2026-07-19T20:17:07.336300+00:00",
+  "date": "2026-07-05",
+  "total_items": 2,
+  "next_chunk": "archive/blog/daily/2026-07-04.json",
+  "items": [
+    {
+      "title": "Cortex Security Audit",
+      "summary": "Introduction Cortex is an open-source, horizontally scalable, highly available, multi-tenant time-series data store designed for Prometheus metrics. It enables organizations to run Prometheus at scale by providing long-term storage, global querying, and high availability across multiple Prometheus instances. As part of OSTIF's continuous effort to improve the security of critical open-source infrastructure, Quarkslab performed a security assessment of Cortex. The audit focused on one of the project's core security properties: ensuring strong isolation between tenants in multi-tenant environments. Scope Given the time allocated to the engagement, the assessment focused on the components and security mechanisms responsible for tenant isolation and data segregation. The review was driven by a threat model prepared ahead of the audit, allowing Quarkslab to concentrate on the attack surfaces most relevant to multi-tenant security. The assessment covered the Cortex codebase at commit b4f5cfc37d83719040de7ca997ec125304a6b766. The complete technical report, including our findings and recommendations, is available in Quarkslab's public reports repository . Findings The table below summarizes the findings of the audit. A total of 7 vulnerabilities were identified: 6 of medium severity and 1 of low severity. ID Title Risk Impact Probability V01 Tenant impersonation via PushStream gRPC Medium High Low V02 Stored cross-site scripting - XSS Medium Marginal Moderate V03 Sensitive information leakage Medium Marginal Moderate V04 Unbound Gzip decompression Medium Marginal Moderate V05 Uncontrolled memory allocation via protobuf histogram Medium Marginal Moderate V06 Unbounded read on gossip connections Medium Marginal Moderate V07 Gossip packet integrity check not enforced Low Negligible Moderate Note: All findings have since been resolved, using either the fixes the auditors recommended or alternative mitigations with equivalent effect. Conclusion Overall, the assessment showed that Cortex benefits from a solid engineering foundation. The project shows good code quality, extensive test coverage, and strong observability features, all of which contribute to its maintainability and resilience. During the audit, we nevertheless identified several security issues, including a tenant impersonation vulnerability in the PushStream gRPC handler, a stored cross-site scripting (XSS) vulnerability, and an information disclosure issue exposing sensitive credentials through the /config endpoint. Beyond these findings, the audit also highlighted opportunities to further strengthen the project's security posture by adopting more secure default configurations, centralizing input validation, and keeping third-party dependencies up to date. Addressing these areas will help reinforce Cortex's security as it continues to evolve. We would like to thank the Cortex maintainers for their responsiveness and collaboration throughout the audit process. We also extend our gratitude to OSTIF for sponsoring and coordinating this assessment. Further reading OSTIF blog post",
+      "summary_html": "Introduction\n<p><a href=\"https://cortexmetrics.io/\">Cortex</a> is an open-source, horizontally scalable, highly available, multi-tenant time-series data store designed for Prometheus metrics. It enables organizations to run Prometheus at scale by providing long-term storage, global querying, and high availability across multiple Prometheus instances.</p>\n<p>As part of OSTIF's continuous effort to improve the security of critical open-source infrastructure, Quarkslab performed a security assessment of Cortex. The audit focused on one of the project's core security properties: ensuring strong isolation between tenants in multi-tenant environments.</p>\nScope\n<p>Given the time allocated to the engagement, the assessment focused on the components and security mechanisms responsible for tenant isolation and data segregation. The review was driven by a threat model prepared ahead of the audit, allowing Quarkslab to concentrate on the attack surfaces most relevant to multi-tenant security.</p>\n<p>The assessment covered the <a href=\"https://github.com/cortexproject/cortex\">Cortex codebase</a> at commit b4f5cfc37d83719040de7ca997ec125304a6b766.</p>\n<p>The complete technical report, including our findings and recommendations, is available in Quarkslab's <a href=\"https://github.com/quarkslab/public-reports\">public reports repository</a>.</p>\nFindings\n<p>The table below summarizes the findings of the audit. A total of 7 vulnerabilities were identified: 6 of medium severity and 1 of low severity.</p>\n\n\nID\nTitle\nRisk\nImpact\nProbability\n\n\n\nV01\nTenant impersonation via PushStream gRPC\nMedium\nHigh\nLow\n\n\nV02\nStored cross-site scripting - XSS\nMedium\nMarginal\nModerate\n\n\nV03\nSensitive information leakage\nMedium\nMarginal\nModerate\n\n\nV04\nUnbound Gzip decompression\nMedium\nMarginal\nModerate\n\n\nV05\nUncontrolled memory allocation via protobuf histogram\nMedium\nMarginal\nModerate\n\n\nV06\nUnbounded read on gossip connections\nMedium\nMarginal\nModerate\n\n\nV07\nGossip packet integrity check not enforced\nLow\nNegligible\nModerate\n\n\n\n<blockquote>\n<p><strong>Note:</strong>\nAll findings have since been resolved, using either the fixes the auditors recommended or alternative mitigations with equivalent effect.</p>\n</blockquote>\nConclusion\n<p>Overall, the assessment showed that Cortex benefits from a solid engineering foundation. The project shows good code quality, extensive test coverage, and strong observability features, all of which contribute to its maintainability and resilience. During the audit, we nevertheless identified several security issues, including a tenant impersonation vulnerability in the PushStream gRPC handler, a stored cross-site scripting (XSS) vulnerability, and an information disclosure issue exposing sensitive credentials through the /config endpoint.</p>\n<p>Beyond these findings, the audit also highlighted opportunities to further strengthen the project's security posture by adopting more secure default configurations, centralizing input validation, and keeping third-party dependencies up to date. Addressing these areas will help reinforce Cortex's security as it continues to evolve.</p>\n<p>We would like to thank the Cortex maintainers for their responsiveness and collaboration throughout the audit process. We also extend our gratitude to OSTIF for sponsoring and coordinating this assessment.</p>\nFurther reading\n<ul>\n<li><a href=\"https://ostif.org/cortex-audit-complete/\">OSTIF blog post</a></li>\n</ul>",
+      "link": "http://blog.quarkslab.com/cortex-security-audit.html",
+      "source": "Quarkslab Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-07-05T22:00:00+00:00",
+      "published_ts": 1783288800,
+      "smart_groups": [
+        "Ransomware",
+        "Vulnerabilities / CVEs",
+        "Web / API Security",
+        "Network / OT / ICS"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Week 27 \u2013 2026",
+      "summary": "If your organisation is interested in sponsoring an upcoming post then reach out via the contact form! No sponsor this week",
+      "summary_html": "If your organisation is interested in sponsoring an upcoming post then reach out via the contact form! No sponsor this week",
+      "link": "https://thisweekin4n6.com/2026/07/05/week-27-2026/",
+      "source": "This Week In 4n6",
+      "feed_type": "blog",
+      "type": "dfir-forensics",
+      "type_label": "DFIR & Forensics",
+      "published": "2026-07-05T11:30:59+00:00",
+      "published_ts": 1783251059,
+      "smart_groups": [],
+      "curated": false
+    }
+  ]
+}

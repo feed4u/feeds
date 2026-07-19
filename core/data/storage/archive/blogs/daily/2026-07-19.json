@@ -1,0 +1,173 @@
+{
+  "generated_at": "2026-07-19T20:18:28.104010+00:00",
+  "date": "2026-07-19",
+  "total_items": 11,
+  "next_chunk": "archive/blogs/daily/2026-07-18.json",
+  "items": [
+    {
+      "title": "Perfect Shortcut Focus Mode Tracking for iOS 27 and iPadOS 27",
+      "summary": "Now that the iOS 27 and iPadOS 27 betas are out, I\u2019ve been digging a bit into the Shortcuts enhancements for tracking focus mode changes. With previous versions of iOS and iPadOS it was quite difficult to track all the focus mode states and call Shortcut actions based on the focus mode state. However, with iOS 27 and iPadOS 27 it is possible to track all the focus mode states. What changed in iOS 27 and iPadOS 27 that makes it easier to track focus mode changes? A few things: Global variables are now supported via \u201c Store Content\u201d , \u201c Get Stored Content \u201d and \u201c Delete Stored Content \u201c. No third party apps are needed. Sleep focus mode is now supported as a selectable focus mode automation trigger (see bug note below) Shortcuts can have multiple automation triggers Apple added \u201c Otherwise if \u201d logic to make If logic statements easier to follow iCloud Shortcut links can now include the automation triggers Combining all of this together makes it possible to create a Shortcut to accurately track all focus mode state changes in real time. You can call Shortcut actions based on turn on, turn off of any focus mode. In this example I just use a place holder action (Show alert) to show you the state changes of the focus mode as they happen. Replace the Show alert action with whatever actions you want to trigger. Beta Bug Note: As of iOS 27 developer beta 3 (public beta 1) you are not able to select the Sleep focus mode in the Shortcuts app as an automation trigger. However you can on iPadOS 27. Surprisingly, the Sleep focus trigger works on iOS 27. So I just disable all of the Shortcut automation triggers on my iPad and enable them on my iPhone. I\u2019ve filed a bug with Apple (FB23691328). If you import this Shortcut from iCloud (link below), it should preserve the Sleep focus mode on iOS 27. You just can\u2019t create a new Shortcut trigger that uses the Sleep focus mode. Why Track Focus Mode Changes? Tracking which focus mode your iPhone is in can be very useful. For example, if you have a Home Assistant setup you can use the Shortcut to always keep Home Assistant up to date with the current focus mode of your iPhone. You can then trigger automations or do almost anything you want in Home Assistant. I\u2019ll have a separate post on this. Shortcut Architecture This shortcut monitors five iOS focus modes: Personal, Driving, Sleep, Work, and Do Not Disturb. It fires a distinct action when each is turned on or off. It uses the iOS 27 global stored content actions to persist state across automation runs, allowing it to compare the current focus mode against the previously active one and correctly detect both what just turned on and what just turned off, including during direct switches between focus modes. Key behaviors: A direct switch from one focus to another (e.g. Work \u2192 Personal) fires both an ON action for the new focus and an OFF action for the old one in the same run Redundant re-triggers of the same focus state produce no output Back-to-back toggles of the same focus mode (on/off/on) fire correctly every time Cold starts and stale re-triggers are handled safely with no false alerts \u2500\u2500 TRIGGERS \u2500\u2500\nWhen Sleep           Is Turned On or Off\nWhen Personal        Is Turned On or Off\nWhen Work            Is Turned On or Off\nWhen Driving         Is Turned On or Off\nWhen Do Not Disturb  Is Turned On or Off\n\n\u2500\u2500 READ CURRENT STATE \u2500\u2500\n1. Get Current Focus\n2. Set Variable  CurrentFocus = Name (of Current Focus)\n   (empty when no focus active)\n\n\u2500\u2500 READ PREVIOUS STATE \u2500\u2500\n3. Get Stored Content   PreviousFocus   [Global Value: ON]\n4. Set Variable  PreviousName = PreviousFocus\n   (empty when nothing stored)\n\n\u2500\u2500 ON DETECTION \u2500\u2500 (guard once, then route by current name)\n5. If All are true:\n       CurrentFocus  has any value\n       CurrentFocus  is not  PreviousName\n6.     If  CurrentFocus is \"Personal\"\n7.         \u25b8 SLOT 1 \u2014 Show alert: \"Personal on\"\n8.     Otherwise If  CurrentFocus is \"Driving\"\n9.         \u25b8 SLOT 2 \u2014 Show alert: \"Driving on\"\n10.    Otherwise If  CurrentFocus is \"Sleep\"\n11.        \u25b8 SLOT 3 \u2014 Show alert: \"Sleep on\"\n12.    Otherwise If  CurrentFocus is \"Work\"\n13.        \u25b8 SLOT 4 \u2014 Show alert: \"Work on\"\n14.    Otherwise If  CurrentFocus is \"Do Not Disturb\"\n15.        \u25b8 SLOT 5 \u2014 Show alert: \"DND on\"\n16.    End If\n17. End If\n\n\u2500\u2500 OFF DETECTION \u2500\u2500 (guard once, then route by previous name)\n18. If All are true:\n        PreviousName  has any value\n        PreviousName  is not  CurrentFocus\n19.    If  PreviousName is \"Personal\"\n20.        \u25b8 SLOT 1 \u2014 Show alert: \"Personal off\"\n21.    Otherwise If  PreviousName is \"Driving\"\n22.        \u25b8 SLOT 2 \u2014 Show alert: \"Driving off\"\n23.    Otherwise If  PreviousName is \"Sleep\"\n24.        \u25b8 SLOT 3 \u2014 Show alert: \"Sleep off\"\n25.    Otherwise If  PreviousName is \"Work\"\n26.        \u25b8 SLOT 4 \u2014 Show alert: \"Work off\"\n27.    Otherwise If  PreviousName is \"Do Not Disturb\"\n28.        \u25b8 SLOT 5 \u2014 Show alert: \"DND off\"\n29.    End If\n30. End If\n\n\u2500\u2500 PERSIST FOR NEXT RUN \u2500\u2500\n31. If  CurrentFocus has any value\n32.     Store Content  CurrentFocus  as  PreviousFocus   [Global Value: ON]\n33. Otherwise\n34.     Delete Stored Content  PreviousFocus             [Global Value: ON]\n35. End If The screenshots below show the full Shortcuts automation. If you want to download the shortcut from iCloud, click here . Please note that you will need iOS 27 or iPadOS 27 to use this shortcut. Personal Automations When you import this Shortcut from iCloud it will create five new personal automation triggers, one for each focus mode. If you want you can disable the focus mode automation triggers that you don\u2019t want to use. To avoid confusion, make sure the automations are only enabled on one device. Summary Apple has made significant improvements to Shortcuts in iOS 27 and iPadOS 27. Combing several of the new features you can now have perfect focus mode tracking. This can be used for a number of things, but one popular use case is to trigger Home Assistant automations based on focus mode changes.",
+      "summary_html": "<div>\n\n<div>\n<div>\n<div>\n<div>\n<div>\n<p>Now that the iOS 27 and iPadOS 27 betas are out, I\u2019ve been digging a bit into the Shortcuts enhancements for tracking focus mode changes. With previous versions of iOS and iPadOS it was quite difficult to track all the focus mode states and call Shortcut actions based on the focus mode state. However, with iOS 27 and iPadOS 27 it is possible to track all the focus mode states.</p>\n<p>What changed in iOS 27 and iPadOS 27 that makes it easier to track focus mode changes? A few things:</p>\n<ul>\n<li>Global variables are now supported via \u201c<strong>Store Content\u201d</strong>, \u201c<strong>Get Stored Content</strong>\u201d and \u201c<strong>Delete Stored Content</strong>\u201c. No third party apps are needed.</li>\n<li>Sleep focus mode is now supported as a selectable focus mode automation trigger (see bug note below)</li>\n<li>Shortcuts can have multiple automation triggers</li>\n<li>Apple added \u201c<strong>Otherwise if</strong>\u201d logic to make If logic statements easier to follow</li>\n<li>iCloud Shortcut links can now include the automation triggers</li>\n</ul>\n<p>Combining all of this together makes it possible to create a Shortcut to accurately track all focus mode state changes in real time. You can call Shortcut actions based on turn on, turn off of any focus mode. In this example I just use a place holder action (Show alert) to show you the state changes of the focus mode as they happen. Replace the Show alert action with whatever actions you want to trigger.</p>\n<p><strong>Beta Bug Note:</strong> As of iOS 27 developer beta 3 (public beta 1) you are not able to select the Sleep focus mode in the Shortcuts app as an automation trigger. However you <em>can</em> on iPadOS 27. Surprisingly, the Sleep focus trigger works on iOS 27. So I just disable all of the Shortcut automation triggers on my iPad and enable them on my iPhone. I\u2019ve filed a bug with Apple (FB23691328).\u00a0</p>\n<p>If you import this Shortcut from iCloud (link below), it should preserve the Sleep focus mode on iOS 27. You just can\u2019t create a new Shortcut trigger that uses the Sleep focus mode.</p> </div>\n</div>\n<div>\n<div>\nWhy Track Focus Mode Changes? </div>\n</div>\n<div>\n<div>\n<p>Tracking which focus mode your iPhone is in can be very useful. For example, if you have a Home Assistant setup you can use the Shortcut to always keep Home Assistant up to date with the current focus mode of your iPhone. You can then trigger automations or do almost anything you want in Home Assistant. I\u2019ll have a separate post on this.\u00a0</p> </div>\n</div>\n</div>\n</div>\n</div>\n\n\n<div>\n<div>\n<div>\n<div>\n<div>\nShortcut Architecture </div>\n</div>\n<div>\n<div>\n<p>This shortcut monitors five iOS focus modes: Personal, Driving, Sleep, Work, and Do Not Disturb. It fires a distinct action when each is turned on or off. It uses the iOS 27 global stored content actions to persist state across automation runs, allowing it to compare the current focus mode against the previously active one and correctly detect both what just turned on and what just turned off, including during direct switches between focus modes.</p><p>Key behaviors:</p><ul><li>A direct switch from one focus to another (e.g. Work \u2192 Personal) fires both an ON action for the new focus and an OFF action for the old one in the same run</li><li>Redundant re-triggers of the same focus state produce no output</li><li>Back-to-back toggles of the same focus mode (on/off/on) fire correctly every time</li><li>Cold starts and stale re-triggers are handled safely with no false alerts</li></ul> </div>\n</div>\n<div>\n<div>\n<div>\n<pre>\n\t\t\t\t<code>\n\t\t\t\t\t\u2500\u2500 TRIGGERS \u2500\u2500\nWhen Sleep           Is Turned On or Off\nWhen Personal        Is Turned On or Off\nWhen Work            Is Turned On or Off\nWhen Driving         Is Turned On or Off\nWhen Do Not Disturb  Is Turned On or Off\n\n\u2500\u2500 READ CURRENT STATE \u2500\u2500\n1. Get Current Focus\n2. Set Variable  CurrentFocus = Name (of Current Focus)\n   (empty when no focus active)\n\n\u2500\u2500 READ PREVIOUS STATE \u2500\u2500\n3. Get Stored Content   PreviousFocus   [Global Value: ON]\n4. Set Variable  PreviousName = PreviousFocus\n   (empty when nothing stored)\n\n\u2500\u2500 ON DETECTION \u2500\u2500 (guard once, then route by current name)\n5. If All are true:\n       CurrentFocus  has any value\n       CurrentFocus  is not  PreviousName\n6.     If  CurrentFocus is \"Personal\"\n7.         \u25b8 SLOT 1 \u2014 Show alert: \"Personal on\"\n8.     Otherwise If  CurrentFocus is \"Driving\"\n9.         \u25b8 SLOT 2 \u2014 Show alert: \"Driving on\"\n10.    Otherwise If  CurrentFocus is \"Sleep\"\n11.        \u25b8 SLOT 3 \u2014 Show alert: \"Sleep on\"\n12.    Otherwise If  CurrentFocus is \"Work\"\n13.        \u25b8 SLOT 4 \u2014 Show alert: \"Work on\"\n14.    Otherwise If  CurrentFocus is \"Do Not Disturb\"\n15.        \u25b8 SLOT 5 \u2014 Show alert: \"DND on\"\n16.    End If\n17. End If\n\n\u2500\u2500 OFF DETECTION \u2500\u2500 (guard once, then route by previous name)\n18. If All are true:\n        PreviousName  has any value\n        PreviousName  is not  CurrentFocus\n19.    If  PreviousName is \"Personal\"\n20.        \u25b8 SLOT 1 \u2014 Show alert: \"Personal off\"\n21.    Otherwise If  PreviousName is \"Driving\"\n22.        \u25b8 SLOT 2 \u2014 Show alert: \"Driving off\"\n23.    Otherwise If  PreviousName is \"Sleep\"\n24.        \u25b8 SLOT 3 \u2014 Show alert: \"Sleep off\"\n25.    Otherwise If  PreviousName is \"Work\"\n26.        \u25b8 SLOT 4 \u2014 Show alert: \"Work off\"\n27.    Otherwise If  PreviousName is \"Do Not Disturb\"\n28.        \u25b8 SLOT 5 \u2014 Show alert: \"DND off\"\n29.    End If\n30. End If\n\n\u2500\u2500 PERSIST FOR NEXT RUN \u2500\u2500\n31. If  CurrentFocus has any value\n32.     Store Content  CurrentFocus  as  PreviousFocus   [Global Value: ON]\n33. Otherwise\n34.     Delete Stored Content  PreviousFocus             [Global Value: ON]\n35. End If\n\t\t\t\t</code>\n\t\t\t</pre>\n</div>\n</div>\n</div>\n<div>\n<div>\n<p>The screenshots below show the full Shortcuts automation. If you want to download the shortcut from iCloud, click <a href=\"https://www.icloud.com/shortcuts/06e5564c99924a66a065709d306fcdad\">here</a>. Please note that you will need iOS 27 or iPadOS 27 to use this shortcut.</p> </div>\n</div>\n</div>\n</div>\n</div>\n\n\n<div>\n<div>\n<div>\n<div>\n<div>\n<a href=\"https://www.derekseaman.com/wp-content/uploads/screenshot-2026-07-19-at-10.06.56-am.jpg\">\n </a>\n</div>\n</div>\n<div>\n<div>\n </div>\n</div>\n</div>\n</div>\n</div>\n\n\n<div>\n<div>\n<div>\n<div>\n<div>\nPersonal Automations </div>\n</div>\n<div>\n<div>\n<p>When you import this Shortcut from iCloud it will create five new personal automation triggers, one for each focus mode. If you want you can disable the focus mode automation triggers that you don\u2019t want to use. To avoid confusion, make sure the automations are only enabled on one device.</p> </div>\n</div>\n<div>\n<div>\n<a href=\"https://www.derekseaman.com/wp-content/uploads/screenshot-2026-07-19-at-11.00.54-am.jpg\">\n </a>\n</div>\n</div>\n</div>\n</div>\n</div>\n\n\n<div>\n<div>\n<div>\n<div>\n<div>\nSummary </div>\n</div>\n<div>\n<div>\n<p>Apple has made significant improvements to Shortcuts in iOS 27 and iPadOS 27. Combing several of the new features you can now have perfect focus mode tracking. This can be used for a number of things, but one popular use case is to trigger Home Assistant automations based on focus mode changes.</p> </div>\n</div>\n</div>\n</div>\n</div>\n\n</div>",
+      "link": "https://www.derekseaman.com/2026/07/perfect-shortcut-focus-mode-tracking-for-ios-27-and-ipados-27.html",
+      "source": "Derek Seaman",
+      "feed_type": "blogs",
+      "type": "storage-and-virtualization",
+      "type_label": "Storage and Virtualization",
+      "published": "2026-07-19T18:32:08+00:00",
+      "published_ts": 1784485928,
+      "smart_groups": [
+        "S3 / Object Storage",
+        "Ceph / RADOS",
+        "Privacy & Compliance"
+      ],
+      "curated": false
+    },
+    {
+      "title": "MSI Slyly Shows off an Upcoming DLC AMD EPYC Venice Platform With CD182-S6091-X2 Servers and Racks",
+      "summary": "AMD's EPYC Venice is coming, and OEMs are eager to show off their upcoming wares. At Computex we caught MSI's CD182-S6091-X2 (DLC), a liquid cooled dual socket 1OU2N server node The post MSI Slyly Shows off an Upcoming DLC AMD EPYC Venice Platform With CD182-S6091-X2 Servers and Racks appeared first on ServeTheHome .",
+      "summary_html": "<p>AMD's EPYC Venice is coming, and OEMs are eager to show off their upcoming wares. At Computex we caught MSI's CD182-S6091-X2 (DLC), a liquid cooled dual socket 1OU2N server node</p>\n<p>The post <a href=\"https://www.servethehome.com/msi-slyly-shows-off-an-upcoming-dlc-amd-epyc-venice-platform-with-cd182-s6091-x2-servers-and-racks/\">MSI Slyly Shows off an Upcoming DLC AMD EPYC Venice Platform With CD182-S6091-X2 Servers and Racks</a> appeared first on <a href=\"https://www.servethehome.com\">ServeTheHome</a>.</p>",
+      "link": "https://www.servethehome.com/msi-slyly-shows-off-an-upcoming-dlc-amd-epyc-venice-platform-with-cd182-s6091-x2-servers-and-racks/",
+      "source": "ServeTheHome",
+      "feed_type": "blogs",
+      "type": "analysis-opinions",
+      "type_label": "Analysis & Opinions",
+      "published": "2026-07-19T18:00:07+00:00",
+      "published_ts": 1784484007,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "The Paramount-WBD Case Is Fighting Over The Wrong Market",
+      "summary": "This past Friday, I tuned in as the Paramount-Warner Bros. Discovery (WBD) merger moved from boardroom to courtroom. A coalition of 12 state attorneys general asked a federal judge to temporarily block the $110 billion transaction while their antitrust lawsuit proceeds, arguing that the merger should not be allowed to close before courts fully evaluate [\u2026]",
+      "summary_html": "This past Friday, I tuned in as the Paramount-Warner Bros. Discovery (WBD) merger moved from boardroom to courtroom. A coalition of 12 state attorneys general asked a federal judge to temporarily block the $110 billion transaction while their antitrust lawsuit proceeds, arguing that the merger should not be allowed to close before courts fully evaluate [\u2026]",
+      "link": "https://www.forrester.com/blogs/the-paramount-wbd-case-is-fighting-over-the-wrong-market/",
+      "source": "Forrester Blogs",
+      "feed_type": "blogs",
+      "type": "storage-strategy-enterprise-it",
+      "type_label": "Storage Strategy / Enterprise IT",
+      "published": "2026-07-19T12:25:41+00:00",
+      "published_ts": 1784463941,
+      "smart_groups": [
+        "Cloud / SaaS"
+      ],
+      "curated": false
+    },
+    {
+      "title": "The AI Agent Identity Problem: Treat Agents Like Service Principals, Not Chatbots",
+      "summary": "Most AI agent conversations start in the wrong place. The first question is usually, \u201cWhat can the agent do?\u201d Can",
+      "summary_html": "<p>Most AI agent conversations start in the wrong place.</p> <p>The first question is usually, \u201cWhat can the agent do?\u201d</p> <p>Can</p>",
+      "link": "https://digitalthoughtdisruption.com/2026/07/19/ai-agent-identity-service-principals-not-chatbots/?utm_source=rss&utm_medium=rss&utm_campaign=ai-agent-identity-service-principals-not-chatbots",
+      "source": "VMware Blogs",
+      "feed_type": "blogs",
+      "type": "storage-and-virtualization",
+      "type_label": "Storage and Virtualization",
+      "published": "2026-07-19T12:05:00+00:00",
+      "published_ts": 1784462700,
+      "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Her GitHub Y\u00f6neticisinin A\u00e7mas\u0131 Gereken 6 G\u00fcvenlik Ayar\u0131",
+      "summary": "GitHub Security ekibinden Joseph Katsioloudes, GitHub y\u00f6neticilerin bu hafta i\u00e7inde kesinlikle etkinle\u015ftirmesi gereken 6 \u00fccretsiz g\u00fcvenlik ayar\u0131n\u0131 payla\u015ft\u0131. Hepsi birlikte",
+      "summary_html": "<p>GitHub Security ekibinden Joseph Katsioloudes, GitHub y\u00f6neticilerin bu hafta i\u00e7inde kesinlikle etkinle\u015ftirmesi gereken 6 \u00fccretsiz g\u00fcvenlik ayar\u0131n\u0131 payla\u015ft\u0131. Hepsi birlikte</p>",
+      "link": "https://www.ksugle.com/her-github-yoneticisinin-acmasi-gereken-6-guvenlik-ayari/?utm_source=rss&utm_medium=rss&utm_campaign=her-github-yoneticisinin-acmasi-gereken-6-guvenlik-ayari",
+      "source": "VMware Blogs",
+      "feed_type": "blogs",
+      "type": "storage-and-virtualization",
+      "type_label": "Storage and Virtualization",
+      "published": "2026-07-19T11:54:52+00:00",
+      "published_ts": 1784462092,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Her GitHub Maintainer\u2019\u0131n\u0131n Bu Hafta \u0130\u00e7inde A\u00e7mas\u0131 Gereken 6 G\u00fcvenlik Ayar\u0131",
+      "summary": "GitHub Security ekibinden Joseph Katsioloudes, GitHub maintainer\u2019lar\u0131n\u0131n bu hafta i\u00e7inde kesinlikle etkinle\u015ftirmesi gereken 6 \u00fccretsiz g\u00fcvenlik ayar\u0131n\u0131 payla\u015ft\u0131. Hepsi birlikte",
+      "summary_html": "<p>GitHub Security ekibinden Joseph Katsioloudes, GitHub maintainer\u2019lar\u0131n\u0131n bu hafta i\u00e7inde kesinlikle etkinle\u015ftirmesi gereken 6 \u00fccretsiz g\u00fcvenlik ayar\u0131n\u0131 payla\u015ft\u0131. Hepsi birlikte</p>",
+      "link": "https://www.ksugle.com/her-github-maintainerinin-bu-hafta-icinde-acmasi-gereken-6-guvenlik-ayari/?utm_source=rss&utm_medium=rss&utm_campaign=her-github-maintainerinin-bu-hafta-icinde-acmasi-gereken-6-guvenlik-ayari",
+      "source": "VMware Blogs",
+      "feed_type": "blogs",
+      "type": "storage-and-virtualization",
+      "type_label": "Storage and Virtualization",
+      "published": "2026-07-19T11:54:52+00:00",
+      "published_ts": 1784462092,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Coming soon: Mastering Microsoft Intune 3rd edition",
+      "summary": "Deploy and secure Windows 365 and Windows 11 with Microsoft Intune, Security Copilot, and modern Zero Trust practices Learn",
+      "summary_html": "<p>Deploy and secure Windows 365 and Windows 11 with Microsoft Intune, Security Copilot, and modern Zero Trust practices</p>  Learn",
+      "link": "https://www.amazon.com/Mastering-Microsoft-Intune-complete-management-ebook/dp/B0GX2S4V4Y/ref=sr_1_5?crid=29NTAUZE5ZICH&dib=eyJ2IjoiMSJ9.hufRrf68-pPPcu-Od1iAVwfAho9iOHaJfoLJZNIS3RYf3K-Ijm2yt2ynq2VDcOuAxK3-mGGlo5WF5OF60LgJs_PuJVFRLa_D9_aUJ031pS23b29T6Zmnv5W5AKpACSc2ArzipNj9KhT1vvuVdWtUYP4zUIrMMPDN2Ax_1-HMX7nF4tg5TIz3FTp-YeSTGRoA6wEH-b4mMVVEk14_lnaQ_dnlSyNFcq2wlgz-Ngna_5M.QzcGAcM_LeFsFwiA5Y6a-maG_3xIJEtnAgaljGvyjyU&dib_tag=se&keywords=mastering+intune&qid=1784274141&sprefix=mastering+intune+%2Caps%2C208&sr=8-5&dplnkId=3ebdcaea-f011-48c2-9a47-6a663d56dc27&nodl=1#immersive-view_1784448229654",
+      "source": "VMware Blogs",
+      "feed_type": "blogs",
+      "type": "storage-and-virtualization",
+      "type_label": "Storage and Virtualization",
+      "published": "2026-07-19T08:03:50+00:00",
+      "published_ts": 1784448230,
+      "smart_groups": [
+        "Windows / Microsoft",
+        "Product News"
+      ],
+      "curated": false
+    },
+    {
+      "title": "\u30af\u30e9\u30a6\u30c9\u3092\u8d85\u3048\u3066\uff1a\u4e2d\u5c0f\u4f01\u696d\uff08SMB)\u304c\u771f\u306e\u30ec\u30b8\u30ea\u30a8\u30f3\u30b9\u3092\u5b9f\u73fe\u3059\u308b\u305f\u3081\u306b\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\u30d0\u30c3\u30af\u30a2\u30c3\u30d7\u3092\u8003\u616e\u3059\u308b\u7406\u7531",
+      "summary": "\u30af\u30e9\u30a6\u30c9\u30d0\u30c3\u30af\u30a2\u30c3\u30d7\u306f\u3001\u4e2d\u5c0f\u4f01\u696d\uff08SMB\uff09\u306b\u3068\u3063\u3066\u3001\u9577\u5e74\u306b\u308f\u305f\u308a\u30d0\u30c3\u30af\u30a2\u30c3\u30d7\u6226\u7565 \u2026 \u7d9a\u304d\u3092\u8aad\u3080 \u2192",
+      "summary_html": "\u30af\u30e9\u30a6\u30c9\u30d0\u30c3\u30af\u30a2\u30c3\u30d7\u306f\u3001\u4e2d\u5c0f\u4f01\u696d\uff08SMB\uff09\u306b\u3068\u3063\u3066\u3001\u9577\u5e74\u306b\u308f\u305f\u308a\u30d0\u30c3\u30af\u30a2\u30c3\u30d7\u6226\u7565 \u2026 <a href=\"https://www.climb.co.jp/blog_vmware/dc-9421\">\u7d9a\u304d\u3092\u8aad\u3080 <span>\u2192</span></a>",
+      "link": "https://www.climb.co.jp/blog_vmware/dc-9421",
+      "source": "VMware Blogs",
+      "feed_type": "blogs",
+      "type": "storage-and-virtualization",
+      "type_label": "Storage and Virtualization",
+      "published": "2026-07-19T07:44:19+00:00",
+      "published_ts": 1784447059,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "VCF 9.1 \u306e VCF Automation \u3067\u4eee\u60f3\u30de\u30b7\u30f3 \u30d6\u30eb\u30fc\u30d7\u30ea\u30f3\u30c8\u3092\u5c55\u958b\u3057\u3066\u307f\u308b\u3002",
+      "summary": "VMware Cloud Foundation\uff08VCF\uff099.1 \u306e VCF Automation\uff08VCFA\uff09\u3067\u3001\u4eee\u60f3\u30de\u30b7\u30f3\u306e\u30d6\u30eb\u30fc\u30d7\u30ea\u30f3\u30c8\u3092\u5c55\u958b\u3057\u3066\u307f\u307e\u3059\u3002 \u524d\u56de\u306f\u3053\u3061\u3089\u3002 VCF 9.1 \u306e VCF Automation \u3067\u540d\u524d\u7a7a\u9593\u3092\u4f5c\u6210\u3057\u3066\u307f\u308b\u3002 \u4eca\u56de\u306e\u5185\u5bb9\u3067\u3059\u3002 1. \u30e9\u30a4\u30d6\u30e9\u30ea\u306e\u4f5c\u6210 2. \u4eee\u60f3\u30de\u30b7\u30f3 \u30a4\u30e1\u30fc\u30b8\u306e\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9 3. YAML \u30d5\u30a1\u30a4\u30eb\u306e\u7528\u610f 4. \u30d6\u30eb\u30fc\u30d7\u30ea\u30f3\u30c8\u306e\u30a4\u30f3\u30dd\u30fc\u30c8 5. \u30d6\u30eb\u30fc\u30d7\u30ea\u30f3\u30c8\u306e\u5c55\u958b 6. \u5c55\u958b\u3055\u308c\u305f\u4eee\u60f3\u30de\u30b7\u30f3\u306e\u69d8\u5b50 6-1. VCF Automation \u7d44\u7e54\u30dd\u30fc\u30bf\u30eb 6-2. SSH \u63a5\u7d9a 6-3. vSphere Client\uff08vCenter\uff09 \u2026",
+      "summary_html": "VMware Cloud Foundation\uff08VCF\uff099.1 \u306e VCF Automation\uff08VCFA\uff09\u3067\u3001\u4eee\u60f3\u30de\u30b7\u30f3\u306e\u30d6\u30eb\u30fc\u30d7\u30ea\u30f3\u30c8\u3092\u5c55\u958b\u3057\u3066\u307f\u307e\u3059\u3002 \u524d\u56de\u306f\u3053\u3061\u3089\u3002 VCF 9.1 \u306e VCF Automation \u3067\u540d\u524d\u7a7a\u9593\u3092\u4f5c\u6210\u3057\u3066\u307f\u308b\u3002 \u4eca\u56de\u306e\u5185\u5bb9\u3067\u3059\u3002 1. \u30e9\u30a4\u30d6\u30e9\u30ea\u306e\u4f5c\u6210 2. \u4eee\u60f3\u30de\u30b7\u30f3 \u30a4\u30e1\u30fc\u30b8\u306e\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9 3. YAML \u30d5\u30a1\u30a4\u30eb\u306e\u7528\u610f 4. \u30d6\u30eb\u30fc\u30d7\u30ea\u30f3\u30c8\u306e\u30a4\u30f3\u30dd\u30fc\u30c8 5. \u30d6\u30eb\u30fc\u30d7\u30ea\u30f3\u30c8\u306e\u5c55\u958b 6. \u5c55\u958b\u3055\u308c\u305f\u4eee\u60f3\u30de\u30b7\u30f3\u306e\u69d8\u5b50 6-1. VCF Automation \u7d44\u7e54\u30dd\u30fc\u30bf\u30eb 6-2. SSH \u63a5\u7d9a 6-3. vSphere Client\uff08vCenter\uff09 \u2026",
+      "link": "https://vm.gowatana.jp/entry/2026/07/19/153054",
+      "source": "VMware Blogs",
+      "feed_type": "blogs",
+      "type": "storage-and-virtualization",
+      "type_label": "Storage and Virtualization",
+      "published": "2026-07-19T06:30:54+00:00",
+      "published_ts": 1784442654,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "What is a Behavioral Agent Automation Platform?",
+      "summary": "",
+      "summary_html": "",
+      "link": "https://www.thecloudcast.net/2026/07/what-is-behavioral-agent-automation.html",
+      "source": "VMware Blogs",
+      "feed_type": "blogs",
+      "type": "storage-and-virtualization",
+      "type_label": "Storage and Virtualization",
+      "published": "2026-07-19T05:00:00+00:00",
+      "published_ts": 1784437200,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Ghostty xterm-ghostty Over SSH: What's Actually Fixed (and What Isn't)",
+      "summary": "Ghostty shipped a partial fix for its SSH terminfo problem back in version 1.2.0, and a proper one is coming",
+      "summary_html": "Ghostty shipped a partial fix for its SSH terminfo problem back in version 1.2.0, and a proper one is coming",
+      "link": "https://vninja.net/2026/07/19/ghostty-ssh-terminfo-whats-actually-fixed/",
+      "source": "VMware Blogs",
+      "feed_type": "blogs",
+      "type": "storage-and-virtualization",
+      "type_label": "Storage and Virtualization",
+      "published": "2026-07-19T00:00:00+00:00",
+      "published_ts": 1784419200,
+      "smart_groups": [],
+      "curated": false
+    }
+  ]
+}

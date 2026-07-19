@@ -1,0 +1,110 @@
+{
+  "generated_at": "2026-07-19T20:18:09.763864+00:00",
+  "date": "2026-07-01",
+  "total_items": 7,
+  "next_chunk": "archive/blog/daily/2026-06-30.json",
+  "items": [
+    {
+      "title": "1.15.2a2",
+      "summary": "What's Changed Features Add aiobotocore to the bedrock extra Document flow agent options Add text helper to flow skill example Add text helper for flow CEL prompts Add streaming docs to the navigation Bug Fixes Reject self-listening flow methods Documentation Update snapshot and changelog for v1.15.2a1 Squeeze AGENTS.md file Contributors @akaKuruma , @github-code-quality[bot], @lorenzejay , @vinibrsl",
+      "summary_html": "What's Changed\nFeatures\n<ul>\n<li>Add aiobotocore to the bedrock extra</li>\n<li>Document flow agent options</li>\n<li>Add text helper to flow skill example</li>\n<li>Add text helper for flow CEL prompts</li>\n<li>Add streaming docs to the navigation</li>\n</ul>\nBug Fixes\n<ul>\n<li>Reject self-listening flow methods</li>\n</ul>\nDocumentation\n<ul>\n<li>Update snapshot and changelog for v1.15.2a1</li>\n<li>Squeeze AGENTS.md file</li>\n</ul>\nContributors\n<p><a href=\"https://github.com/akaKuruma\">@akaKuruma</a>, @github-code-quality[bot], <a href=\"https://github.com/lorenzejay\">@lorenzejay</a>, <a href=\"https://github.com/vinibrsl\">@vinibrsl</a></p>",
+      "link": "https://github.com/crewAIInc/crewAI/releases/tag/1.15.2a2",
+      "source": "crewAI Releases - GitHub releases for the crewAI agentic framework",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-07-01T22:15:05+00:00",
+      "published_ts": 1782944105,
+      "smart_groups": [
+        "Agentic AI & Automations"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Secure internal communication between services (beta)",
+      "summary": "Service Bindings make it easy for one Vercel service to securely call another within the same deployment. When a service declares a binding for another service, Vercel automatically injects the configured environment variable. That means user code can fetch that URL normally, while Vercel handles the internal rewrite, routing, authentication, and TLS behind the scenes. This enables multi-service applications on Vercel, like a Next.js frontend calling a FastAPI backend, while preserving service isolation and keeping routing configuration simple: In the example above, my_frontend will be able to reach the my_backend service by making a fetch() request to BACKEND_INTERNAL_URL. On the FastAPI side, my_backend exposes a normal route: Under the hood That URL points inside Vercel, not at a public address. When your code fetches it, the request travels over Vercel's internal network to the same routing layer that handles every other request to your deployment, which sends it to the target service. It never hits the public route table, and Vercel sets up the TLS trust for you, so a plain HTTPS fetch works with no certificate config. A service is only reachable if you expose it, either publicly with a rewrite route or privately with a binding. Observability Service-to-service calls also appear in observability, so you can see which bound service was called and how long the request took: Pricing Service-to-service calls are billed as Service Requests and Fast Origin Transfer . They are not billed as CDN Requests or Fast Data Transfer. See services pricing and limits for current rates. Learn more Read the bindings documentation to declare bindings and see the full reference. Read more",
+      "summary_html": "<p>Service Bindings make it easy for one Vercel service to securely call another within the same deployment.</p><p>When a service declares a binding for another service, Vercel automatically injects the configured environment variable. That means user code can fetch that URL normally, while Vercel handles the internal rewrite, routing, authentication, and TLS behind the scenes.</p><p>This enables multi-service applications on Vercel, like a Next.js frontend calling a FastAPI backend, while preserving service isolation and keeping routing configuration simple:</p><div></div><p>In the example above, <code>my_frontend</code> will be able to reach the <code>my_backend</code> service by making a <code>fetch()</code> request to  <code>BACKEND_INTERNAL_URL.</code></p><div></div><p>On the FastAPI side, <code>my_backend</code> exposes a normal route:</p><div></div>Under the hood<p>That URL points inside Vercel, not at a public address. When your code fetches it, the request travels over Vercel's internal network to the same routing layer that handles every other request to your deployment, which sends it to the target service. It never hits the public route table, and Vercel sets up the TLS trust for you, so a plain HTTPS <code>fetch</code> works with no certificate config.</p><p>A service is only reachable if you expose it, either publicly with a rewrite route or privately with a binding.</p>Observability<p>Service-to-service calls also appear in observability, so you can see which bound service was called and how long the request took:</p><div></div>Pricing<p>Service-to-service calls are billed as <b>Service Requests</b> and <b>Fast Origin Transfer</b>. They are not billed as CDN Requests or Fast Data Transfer. See <a href=\"https://vercel.com/docs/services/pricing\">services pricing and limits</a> for current rates.</p>Learn more<p>Read the <a href=\"https://vercel.com/docs/services/bindings\">bindings documentation</a> to declare bindings and see the full reference.</p>\n<p>\n<a href=\"https://vercel.com/changelog/secure-internal-communication-between-services\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/secure-internal-communication-between-services",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-01T19:00:00+00:00",
+      "published_ts": 1782932400,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Claude Fable 5 access restored on AI Gateway",
+      "summary": "Access to Claude Fable 5, the Mythos-class model, has now been restored on AI Gateway following the US Government's decision to lift the export controls. Fable 5 is the same model that was available between June 9 and June 12. What has changed is the safety classifiers, which are now updated and more robust. In the near term, some routine tasks such as coding and debugging may trigger safety classifiers. To ensure requests are still serviced when the safety classifiers are triggered, use model fallbacks . AI Gateway will try each model in models in the stated order if Anthropic refuses the request to Fable 5. To call Fable 5, use model name anthropic/claude-fable-5 : Model fallbacks work on every API format: for more information on how to configure these, see the docs . Anthropic does not support Zero Data Retention for the model, because some misuse patterns are only visible across cumulative requests, which real-time filters cannot catch on their own. Prompts and completions are retained for 30 days and are not used to train Claude. Read more in the data retention whitepaper . Read more",
+      "summary_html": "<p>Access to Claude Fable 5, the Mythos-class model, has now been <a href=\"https://www.anthropic.com/news/redeploying-fable-5\">restored</a> on AI Gateway following the <a href=\"https://www.anthropic.com/news/redeploying-fable-5\">US Government's decision</a> to lift the export controls.</p><p><a href=\"https://vercel.com/ai-gateway/models/claude-fable-5\">Fable 5</a> is the same model that was available between June 9 and June 12. What has changed is the safety classifiers, which are now updated and more robust.</p><p>In the near term, some routine tasks such as coding and debugging may trigger safety classifiers. To ensure requests are still serviced when the safety classifiers are triggered, use <a href=\"https://vercel.com/docs/ai-gateway/models-and-providers/model-fallbacks\">model fallbacks</a>. AI Gateway will try each model in <code>models</code> in the stated order if Anthropic refuses the request to Fable 5. </p><p>To call Fable 5, use model name <code>anthropic/claude-fable-5</code>:</p><div></div><p>Model fallbacks work on every API format: for more information on how to configure these, see the <a href=\"https://vercel.com/docs/ai-gateway/models-and-providers/model-fallbacks\">docs</a>.</p><p>Anthropic does not support Zero Data Retention for the model, because some misuse patterns are only visible across cumulative requests, which real-time filters cannot catch on their own. Prompts and completions are retained for 30 days and are not used to train Claude. Read more in the <a href=\"https://trust.anthropic.com/resources?s=7ksqkied5hn0pocsj206m&amp;name=%5Banthropic%5D-security-and-privacy-design-of-anthropic-data-retention-and-review\">data retention whitepaper</a>.</p><p></p>\n<p>\n<a href=\"https://vercel.com/changelog/claude-fable-5-access-restored-on-ai-gateway\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/claude-fable-5-access-restored-on-ai-gateway",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-01T07:01:00+00:00",
+      "published_ts": 1782889260,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Enforce consistent code for agents and humans with konsistent",
+      "summary": "konsistent is now open source. konsistent is a CLI linter for TypeScript codebases that enforces structural conventions, giving agents and humans the consistent context they need to implement features correctly. Deterministic, fast, and covers structural patterns that TypeScript and ESLint don't model. Configure conventions in a project-level konsistent.json file for concerns like: Do all files matching pattern X export functions Y and Z? Does every folder that has file X also have file Y? Does every class exported from files matching pattern X implement type Y? konsistent is used in AI SDK and Chat SDK to enforce structural code conventions. Use the konsistent skill to help your agent create a konsistent.json : Read more",
+      "summary_html": "<p><a href=\"https://www.npmjs.com/package/konsistent\">konsistent</a> is now open source.</p><p><code>konsistent</code> is a CLI linter for TypeScript codebases that enforces structural conventions, giving agents and humans the consistent context they need to implement features correctly. Deterministic, fast, and covers structural patterns that TypeScript and ESLint don't model.</p><p>Configure conventions in a project-level <code>konsistent.json</code> file for concerns like:</p><ul><li><p>Do all files matching pattern X export functions Y and Z?</p></li><li><p>Does every folder that has file X also have file Y?</p></li><li><p>Does every class exported from files matching pattern X implement type Y?</p></li></ul><p><code>konsistent</code> is used in <a href=\"https://ai-sdk.dev/\">AI SDK</a> and <a href=\"https://chat-sdk.dev/\">Chat SDK</a> to enforce structural code conventions.</p><div></div><p>Use the konsistent skill to help your agent create a <code>konsistent.json</code>:</p><div></div><div></div><p></p>\n<p>\n<a href=\"https://vercel.com/changelog/enforce-consistent-code-for-agents-and-humans-with-konsistent\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/enforce-consistent-code-for-agents-and-humans-with-konsistent",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-01T00:00:00+00:00",
+      "published_ts": 1782864000,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Dry-run deployments with Vercel CLI",
+      "summary": "You can now preview the framework preset and files that Vercel CLI includes in a deployment before creating one. Run vercel deploy --dry from a linked project: For automation or further inspection, return the complete file manifest as JSON: JSON output includes the detected framework, included and ignored paths, directory size distribution, largest files, file modes, and content hashes. Piped and other non-TTY output automatically uses JSON. Agents can use this manifest as a pre-deployment check, verifying framework detection, identifying unexpected or missing files, flagging oversized assets or unusual file modes, and updating .vercelignore or project configuration. Agents can rerun the check until the manifest matches the intended deployment, without uploading code or creating a deployment. Update the Vercel CLI to v54.17.2 or later to get started. Learn more in the vercel deploy documentation . Read more",
+      "summary_html": "<p>You can now preview the framework preset and files that Vercel CLI includes in a deployment before creating one.</p><p>Run <code>vercel deploy --dry</code> from a linked project:</p><div></div><p>For automation or further inspection, return the complete file manifest as JSON:</p><div></div><p>JSON output includes the detected framework, included and ignored paths, directory size distribution, largest files, file modes, and content hashes. Piped and other non-TTY output automatically uses JSON.</p><p>Agents can use this manifest as a pre-deployment check, verifying framework detection, identifying unexpected or missing files, flagging oversized assets or unusual file modes, and updating <code>.vercelignore</code> or project configuration. Agents can rerun the check until the manifest matches the intended deployment, without uploading code or creating a deployment.</p><p>Update the Vercel CLI to <code>v54.17.2</code> or later to get started. Learn more in the <a href=\"https://vercel.com/docs/cli/deploy\">vercel deploy documentation</a>.</p>\n<p>\n<a href=\"https://vercel.com/changelog/dry-run-deployments-with-vercel-cli\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/dry-run-deployments-with-vercel-cli",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-01T00:00:00+00:00",
+      "published_ts": 1782864000,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Vercel Security Dashboard is in private beta",
+      "summary": "The Vercel Security Dashboard is now in private beta. It aggregates the security posture of every account and project on Vercel. As teams grow and coding agents make it easy to spin up new projects, small misconfigurations can add up quietly and quickly. Team members without 2FA, publicly accessible preview environments, or long-lived credentials where short-lived ones would do. Each of these can lead to a security incident or breach. The security dashboard flags these findings across Vercel environments, explains what they are, and guides you towards fixing them. Sign up here to join the waitlist. Read more",
+      "summary_html": "<p>The Vercel Security Dashboard is now in private beta. It aggregates the security posture of every account and project on Vercel. </p><p>As teams grow and coding agents make it easy to spin up new projects, small misconfigurations can add up quietly and quickly. Team members without 2FA, publicly accessible preview environments, or long-lived credentials where short-lived ones would do. Each of these can lead to a security incident or breach. </p><p>The security dashboard flags these findings across Vercel environments, explains what they are, and guides you towards fixing them.</p><p>Sign up <a href=\"https://vercel.typeform.com/to/H9X54vSe\">here</a> to join the waitlist.</p>\n<p>\n<a href=\"https://vercel.com/changelog/vercel-security-dashboard-is-in-private-beta\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/vercel-security-dashboard-is-in-private-beta",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-01T00:00:00+00:00",
+      "published_ts": 1782864000,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Resend joins the Vercel Marketplace",
+      "summary": "You can now provision and manage Resend directly from the Vercel Marketplace. This integration helps developers start sending messages within minutes, build emails as React components, and track delivery events in real time. Key capabilities include: Send transactional and marketing emails through an API or SMTP relay Build email templates as React components with React Email Track opens, clicks, bounces, and deliveries with real-time webhooks Use the Chat SDK adapter or eve channel to send emails with your agent Install Resend on the Vercel Marketplace or with the Vercel CLI: Read more",
+      "summary_html": "<p>You can now provision and manage <a href=\"https://resend.com/\">Resend</a> directly from the Vercel Marketplace.</p><p>This integration helps developers start sending messages within minutes, build emails as React components, and track delivery events in real time.</p><p>Key capabilities include:</p><ul><li><p>Send transactional and marketing emails through an API or SMTP relay</p></li><li><p>Build email templates as React components with <a href=\"https://react.email/docs/integrations/resend\">React Email</a></p></li><li><p>Track opens, clicks, bounces, and deliveries with real-time webhooks</p></li><li><p>Use the <a href=\"https://chat-sdk.dev/adapters/vendor-official/resend\">Chat SDK adapter</a> or <a href=\"https://vercel.com/kb/guide/eve-agent-with-resend\">eve channel</a> to send emails with your agent</p></li></ul><p>Install Resend on the <a href=\"https://vercel.com/marketplace/resend\">Vercel Marketplace</a> or with the Vercel CLI:</p><div></div><p></p>\n<p>\n<a href=\"https://vercel.com/changelog/resend-vercel-marketplace\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/resend-vercel-marketplace",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-01T00:00:00+00:00",
+      "published_ts": 1782864000,
+      "smart_groups": [],
+      "curated": true
+    }
+  ]
+}

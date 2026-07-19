@@ -1,0 +1,478 @@
+{
+  "generated_at": "2026-07-19T20:17:07.295047+00:00",
+  "date": "2026-07-18",
+  "total_items": 29,
+  "next_chunk": "archive/news/daily/2026-07-17.json",
+  "items": [
+    {
+      "title": "TCM - PSAA Certificate Exam, what to expect in exam day?",
+      "summary": "I am preparing for PSAA cert and have completed the module provided, however, this is my first time taking the exam that runs for 4 days (2 days practical , 2 days report). I am anxious over how the exam scenario going to be. What to expected on exam day? Would I be sharing my screen with any proctor or I am on my own with my VM setup? Are they going to evaluate me based on only my reports? Is it okay to make a cheatsheet and use over exam or am I not allowed to do that? Any todos and not would be greatly appreciated. Anyone there who have taken the exam before, I just need a basic insight of it. Thank you!! submitted by /u/No_Possibility_247 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I am preparing for PSAA cert and have completed the module provided, however, this is my first time taking the exam that runs for 4 days (2 days practical , 2 days report). I am anxious over how the exam scenario going to be. What to expected on exam day? Would I be sharing my screen with any proctor or I am on my own with my VM setup? Are they going to evaluate me based on only my reports? Is it okay to make a cheatsheet and use over exam or am I not allowed to do that?</p> <p>Any todos and not would be greatly appreciated. </p> <p>Anyone there who have taken the exam before, I just need a basic insight of it. Thank you!!</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/No_Possibility_247\"> /u/No_Possibility_247 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v09yuk/tcm_psaa_certificate_exam_what_to_expect_in_exam/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v09yuk/tcm_psaa_certificate_exam_what_to_expect_in_exam/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1v09yuk/tcm_psaa_certificate_exam_what_to_expect_in_exam/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-07-18T22:57:44+00:00",
+      "published_ts": 1784415464,
+      "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "How do i check data dumps?",
+      "summary": "I used haveIbeenpwned and found that my email had 4 data breaches, 2 of which exposed my password. I don't know what passwords I used on those 2 websites as I use some common passwords in rotation. How can i check the exact password that was leaked? submitted by /u/Sufficient_Fee_6975 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I used haveIbeenpwned and found that my email had 4 data breaches, 2 of which exposed my password. I don't know what passwords I used on those 2 websites as I use some common passwords in rotation. How can i check the exact password that was leaked?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Sufficient_Fee_6975\"> /u/Sufficient_Fee_6975 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v074q9/how_do_i_check_data_dumps/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v074q9/how_do_i_check_data_dumps/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1v074q9/how_do_i_check_data_dumps/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-07-18T20:55:18+00:00",
+      "published_ts": 1784408118,
+      "smart_groups": [
+        "Data Breaches / Leaks",
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Update now: 7-Zip fixes RCE flaw exploitable with malicious archives",
+      "summary": "7-Zip version 26.02 was released on June 25 to fix a remote code execution vulnerability that could allow attackers to execute malicious code by convincing users to open specially crafted compressed files. [...]",
+      "summary_html": "7-Zip version 26.02 was released on June 25 to fix a remote code execution vulnerability that could allow attackers to execute malicious code by convincing users to open specially crafted compressed files. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/update-now-7-zip-fixes-rce-flaw-exploitable-with-malicious-archives/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-07-18T19:32:02+00:00",
+      "published_ts": 1784403122,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "OpenSSL Fixes HollowByte Memory Exhaustion Bug",
+      "summary": "Okta disclosed HollowByte, an 11-byte OpenSSL flaw that lets remote attackers exhaust server memory and trigger denial-of-service attacks. Okta\u2019s Red Team disclosed a denial-of-service vulnerability in OpenSSL they named HollowByte, and the attack payload is exactly 11 bytes. A remote, unauthenticated attacker sends that payload and the server allocates up to 131 KB of memory before the TLS handshake even begins, then blocks a worker thread waiting for data that never arrives. No credentials required, no prior access, no exploit chain. \u201cWhen a rogue header lands, the state machine triggers an unvalidated allocation.\u201d reads the advisory . \u201cWhen the malicious 11-byte payload arrives, the TLS state machine reads the 4-byte handshake header and triggers an unvalidated pre-allocation based on the header\u2019s 3-byte length declaration: Read Header\u27f6grow_init_buf()\u27f6OPENSSL_clear_realloc()\u27f6malloc(attacker_size) Because there is no payload validation at this early stage, malloc() allocates up to 131 KB based solely on the untrusted packet\u2019s claims. The worker thread then blocks, waiting indefinitely for data that will never arrive.\u201d Older versions of OpenSSL trust the attacker\u2019s declared message size and allocate memory for it before any data has actually arrived. The fix is conceptually simple, grow the buffer only as bytes actually land on the wire, but the vulnerable design has been in place long enough to affect a wide range of software. The memory problem doesn\u2019t end when the connection drops. \u201cWhen an attacking connection drops, OpenSSL frees the buffer. However, glibc does not immediately return small-to-medium allocations to the operating system; it keeps them for potential reuse.\u201d continues the advisory. \u201cBy launching waves of connections with randomized claimed sizes, an attacker prevents the allocator from reusing those freed chunks.\u00a0\u201c The heap fragments progressively, the server\u2019s resident memory footprint climbs continuously, and the only way to reclaim it is to restart the process. The attacker can disconnect and the damage stays. Okta tested the attack against unpatched and patched NGINX instances under realistic conditions. \u201cIn a standard 1 GB RAM environment, the unpatched server was OOM-killed at 547 MB of frozen, fragmented memory.\u201d states Okta. \u201cIn higher-spec testing (16 GB RAM), the attack successfully locked up 25% of the system\u2019s total memory while staying safely\u00a0under\u00a0the connection ceiling, meaning standard connection-limiting defenses won\u2019t stop it.\u201d Rate limiting and connection caps, the standard first-line defenses against this type of attack, don\u2019t help here because the attacker doesn\u2019t need many connections to cause meaningful damage. The scope is broad. \u201cBecause OpenSSL is widely used and embedded, this vulnerability affects a variety of software, including web servers (Apache, NGINX), language runtimes (Node.js, Python, Ruby, PHP), and databases (MySQL, PostgreSQL).\u201d concludes the report. The OpenSSL team fixed it through incremental buffer growth, the server now only allocates memory as data actually arrives, so an empty claim costs nothing, merged in PRs 30792, 30793, and 30794. The fix was included in OpenSSL v4.0.1 and silently backported to versions 3.6.3, 3.5.7, 3.4.6, and 3.0.21. No CVE was assigned; OpenSSL treated it as a hardening fix rather than a security advisory. Update your OpenSSL packages regardless. Follow me on Twitter: @securityaffairs and Facebook and Mastodon Pierluigi\u00a0Paganini ( SecurityAffairs \u2013\u00a0hacking,\u00a0HollowByte)",
+      "summary_html": "<div></div>\nOkta disclosed HollowByte, an 11-byte OpenSSL flaw that lets remote attackers exhaust server memory and trigger denial-of-service attacks.\n<p>Okta\u2019s Red Team disclosed a denial-of-service vulnerability in OpenSSL they named HollowByte, and the attack payload is exactly 11 bytes. A remote, unauthenticated attacker sends that payload and the server allocates up to 131 KB of memory before the TLS handshake even begins, then blocks a worker thread waiting for data that never arrives. No credentials required, no prior access, no exploit chain.</p>\n<p><em>\u201cWhen a rogue header lands, the state machine triggers an unvalidated allocation.\u201d <a href=\"https://sec.okta.com/articles/2026/06/openssl-hollowbtye-a-dos-hiding-in-11-bytes/\">reads the advisory</a>. \u201cWhen the malicious 11-byte payload arrives, the TLS state machine reads the 4-byte handshake header and triggers an unvalidated pre-allocation based on the header\u2019s 3-byte length declaration: </em></p>\n<pre>Read Header\u27f6grow_init_buf()\u27f6OPENSSL_clear_realloc()\u27f6malloc(attacker_size)</pre>\n<p><em>Because there is no payload validation at this early stage, malloc() allocates up to 131 KB based solely on the untrusted packet\u2019s claims. The worker thread then blocks, waiting indefinitely for data that will never arrive.\u201d</em></p>\n<p>Older versions of OpenSSL trust the attacker\u2019s declared message size and allocate memory for it before any data has actually arrived. The fix is conceptually simple, grow the buffer only as bytes actually land on the wire, but the vulnerable design has been in place long enough to affect a wide range of software.</p>\n<p>The memory problem doesn\u2019t end when the connection drops. </p>\n<p><em>\u201cWhen an attacking connection drops, OpenSSL frees the buffer. However, glibc does not immediately return small-to-medium allocations to the operating system; it keeps them for potential reuse.\u201d continues the advisory. \u201cBy launching waves of connections with randomized claimed sizes, an attacker prevents the allocator from reusing those freed chunks.\u00a0\u201c</em></p>\n<p>The heap fragments progressively, the server\u2019s resident memory footprint climbs continuously, and the only way to reclaim it is to restart the process. The attacker can disconnect and the damage stays.</p>\n<p>Okta tested the attack against unpatched and patched NGINX instances under realistic conditions. </p>\n<p><em>\u201cIn a standard 1 GB RAM environment, the unpatched server was OOM-killed at 547 MB of frozen, fragmented memory.\u201d states Okta. \u201cIn higher-spec testing (16 GB RAM), the attack successfully locked up 25% of the system\u2019s total memory while staying safely\u00a0under\u00a0the connection ceiling, meaning standard connection-limiting defenses won\u2019t stop it.\u201d</em></p>\n<p>Rate limiting and connection caps, the standard first-line defenses against this type of attack, don\u2019t help here because the attacker doesn\u2019t need many connections to cause meaningful damage.</p>\n<p>The scope is broad. </p>\n<p><em>\u201cBecause OpenSSL is widely used and embedded, this vulnerability affects a variety of software, including web servers (Apache, NGINX), language runtimes (Node.js, Python, Ruby, PHP), and databases (MySQL, PostgreSQL).\u201d concludes the report.</em></p>\n<p>The OpenSSL team fixed it through incremental buffer growth, the server now only allocates memory as data actually arrives, so an empty claim costs nothing, merged in PRs 30792, 30793, and 30794. The fix was included in OpenSSL v4.0.1 and silently backported to versions 3.6.3, 3.5.7, 3.4.6, and 3.0.21. No CVE was assigned; OpenSSL treated it as a hardening fix rather than a security advisory. Update your OpenSSL packages regardless.</p>\n<p><strong>Follow me on Twitter:\u00a0</strong><a href=\"https://twitter.com/securityaffairs\"><strong>@securityaffairs</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://www.facebook.com/sec.affairs\"><strong>Facebook</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://infosec.exchange/@securityaffairs\"><strong>Mastodon</strong></a><strong></strong></p>\n<p><a href=\"http://www.linkedin.com/pub/pierluigi-paganini/b/742/559\"><strong>Pierluigi\u00a0Paganini</strong></a><strong></strong></p>\n<p><strong>(</strong><a href=\"http://securityaffairs.co/wordpress/\"><strong>SecurityAffairs</strong></a><strong>\u00a0\u2013\u00a0hacking,\u00a0HollowByte)</strong></p>",
+      "link": "https://securityaffairs.com/195588/hacking/openssl-fixes-hollowbyte-memory-exhaustion-bug.html",
+      "source": "Security Affairs",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-07-18T18:24:32+00:00",
+      "published_ts": 1784399072,
+      "smart_groups": [
+        "Ransomware",
+        "Vulnerabilities / CVEs",
+        "Cloud / SaaS",
+        "Crypto / Web3",
+        "Red Team / Offensive"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Trump Has Systematically Dismantled Election Security Efforts. Here\u2019s How.",
+      "summary": "I feel as though this news fits this sub, due to a massive amount of election security being cybersecurity. submitted by /u/CutSenior4977 [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/cybersecurity/comments/1v03ao4/trump_has_systematically_dismantled_election/\">  </a>  <!-- SC_OFF --><div><p>I feel as though this news fits this sub, due to a massive amount of election security being cybersecurity.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/CutSenior4977\"> /u/CutSenior4977 </a> <br/> <span><a href=\"https://www.nytimes.com/2026/07/16/us/politics/trump-election-security-cisa.html\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v03ao4/trump_has_systematically_dismantled_election/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1v03ao4/trump_has_systematically_dismantled_election/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-07-18T18:22:21+00:00",
+      "published_ts": 1784398941,
+      "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "WordPress Core \"wp2shell\" RCE flaws get public exploits, patch now",
+      "summary": "submitted by /u/rkhunter_ [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/cybersecurity/comments/1v035ig/wordpress_core_wp2shell_rce_flaws_get_public/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/rkhunter_\"> /u/rkhunter_ </a> <br/> <span><a href=\"https://www.bleepingcomputer.com/news/security/wordpress-core-wp2shell-rce-flaws-get-public-exploits-patch-now/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v035ig/wordpress_core_wp2shell_rce_flaws_get_public/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1v035ig/wordpress_core_wp2shell_rce_flaws_get_public/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-07-18T18:16:50+00:00",
+      "published_ts": 1784398610,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Exploit / PoC",
+        "Cloud / SaaS",
+        "Community Discussion"
+      ],
+      "curated": true
+    },
+    {
+      "title": "DoD plans CMMC listening sessions as questions swirl around review",
+      "summary": "submitted by /u/Dash-Courageous [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/cybersecurity/comments/1v02cbr/dod_plans_cmmc_listening_sessions_as_questions/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/Dash-Courageous\"> /u/Dash-Courageous </a> <br/> <span><a href=\"https://federalnewsnetwork.com/defense-news/2026/07/dod-plans-cmmc-listening-sessions-as-questions-swirl-around-review/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v02cbr/dod_plans_cmmc_listening_sessions_as_questions/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1v02cbr/dod_plans_cmmc_listening_sessions_as_questions/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-07-18T17:45:33+00:00",
+      "published_ts": 1784396733,
+      "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "WordPress Core \"wp2shell\" RCE flaws get public exploits, patch now",
+      "summary": "Public exploits have been released for the critical \"wp2shell\" remote code execution vulnerabilities affecting WordPress Core, making it imperative that administrators patch their sites immediately. [...]",
+      "summary_html": "Public exploits have been released for the critical \"wp2shell\" remote code execution vulnerabilities affecting WordPress Core, making it imperative that administrators patch their sites immediately. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/wordpress-core-wp2shell-rce-flaws-get-public-exploits-patch-now/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-07-18T17:22:47+00:00",
+      "published_ts": 1784395367,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Exploit / PoC",
+        "Cloud / SaaS"
+      ],
+      "curated": true
+    },
+    {
+      "title": "CocaCola halts U.S. Fairlife milk production after cyberattack hits systems, company says",
+      "summary": "A cybersecurity incident has forced Coca-Cola to suspend Fairlife milk production in the U.S. An investigation is underway.",
+      "summary_html": "<p><a href=\"https://lifeboat.com/blog.images/cocacola-halts-u-s-fairlife-milk-production-after-cyberattack-hits-systems-company-says.jpg\"></a></p>\n<p>A cybersecurity incident has forced Coca-Cola to suspend Fairlife milk production in the U.S. An investigation is underway.</p>",
+      "link": "https://lifeboat.com/blog/2026/07/cocacola-halts-u-s-fairlife-milk-production-after-cyberattack-hits-systems-company-says",
+      "source": "Lifeboat \u2013 Cybercrime & Malcode",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-07-18T17:09:37+00:00",
+      "published_ts": 1784394577,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "GPT-5.6 vs Fable 5 Review: Which One You Pick Depends on These Factors",
+      "summary": "OpenAI's GPT-5.6 Sol or Anthropic's Claude Fable 5: Which one is right for you? The answer depends on your needs. Here's our review.",
+      "summary_html": "OpenAI's GPT-5.6 Sol or Anthropic's Claude Fable 5: Which one is right for you? The answer depends on your needs. Here's our review.",
+      "link": "https://decrypt.co/373770/openai-gpt-5-6-vs-anthropic-fable-5-review",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-07-18T15:21:03+00:00",
+      "published_ts": 1784388063,
+      "smart_groups": [
+        "AI/ML Security"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Two new high severity WordPress vulnerabilities, patch immediately!",
+      "summary": "The 7.0.2 WordPress security release addresses one critical and one high severity security issue. The vulnerabilities reported to the WordPress security team include: CVE-2026-60137 \u2013 A facilitated SQL injection issue reported as a team by TF1T, dtro, and haongo CVE-2026-63030 \u2013 A REST API batch-route confusion and SQL injection issue leading to Remote Code Execution reported by Adam Kues at Assetnote / Searchlight Cyber Which versions of WordPress are vulnerable? WordPress 6.9 is affected by \u2026 More \u2192 The post Two new high severity WordPress vulnerabilities, patch immediately! appeared first on Help Net Security .",
+      "summary_html": "<p>The 7.0.2 WordPress security release addresses one critical and one high severity security issue. The vulnerabilities reported to the WordPress security team include: CVE-2026-60137 \u2013 A facilitated SQL injection issue reported as a team by TF1T, dtro, and haongo CVE-2026-63030 \u2013 A REST API batch-route confusion and SQL injection issue leading to Remote Code Execution reported by Adam Kues at Assetnote / Searchlight Cyber Which versions of WordPress are vulnerable? WordPress 6.9 is affected by \u2026 <a href=\"https://www.helpnetsecurity.com/2026/07/18/wordpress-vulnerabilities-wp2shell-cve-2026-60137-cve-2026-60137/\">More <span>\u2192</span></a></p>\n<p>The post <a href=\"https://www.helpnetsecurity.com/2026/07/18/wordpress-vulnerabilities-wp2shell-cve-2026-60137-cve-2026-60137/\">Two new high severity WordPress vulnerabilities, patch immediately!</a> appeared first on <a href=\"https://www.helpnetsecurity.com\">Help Net Security</a>.</p>",
+      "link": "https://www.helpnetsecurity.com/2026/07/18/wordpress-vulnerabilities-wp2shell-cve-2026-60137-cve-2026-60137/",
+      "source": "Help Net Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-07-18T14:57:20+00:00",
+      "published_ts": 1784386640,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Web / API Security"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Microsoft warns of surge in ACR Stealer attacks on customers",
+      "summary": "Microsoft has observed a surge in attacks using the ACR Stealer malware to steal browser-stored passwords, authentication tokens, and sensitive documents from its enterprise customers. [...]",
+      "summary_html": "Microsoft has observed a surge in attacks using the ACR Stealer malware to steal browser-stored passwords, authentication tokens, and sensitive documents from its enterprise customers. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/microsoft-warns-of-surge-in-acr-stealer-attacks-on-customers/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-07-18T14:17:19+00:00",
+      "published_ts": 1784384239,
+      "smart_groups": [
+        "Malware / Payloads"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Daxin: 13-Year-Old China-Linked Malware Found Still Active on Manufacturer\u2019s Network",
+      "summary": "Researchers found China\u2019s Daxin rootkit and a new Stupig backdoor on a Taiwan firm\u2019s network, suggesting a stealthy intrusion dating back to 2013. Symantec\u2019s Threat Hunter Team found Daxin running on a compromised host at a Taiwan-based subsidiary of a multinational high-tech manufacturer in 2026. Daxin is a Windows kernel-mode rootkit that Symantec first documented in March 2022, with evidence of use in targeted attacks against governments and critical infrastructure dating back to 2013. \u201cBackdoor.Daxin, the China-linked kernel-mode rootkit that Symantec first uncovered and exposed in 2022, is still operational.\u201d reads the report published by Symantec. \u201cIt was found running on a compromised host in Taiwan in 2026, more than four years after it was first uncovered.\u201d The same machine also carried a previously unreported backdoor, which the researchers are tracking as Stupig. Both artifacts carry compilation timestamps from early 2013. Telemetry from the machine only started appearing on May 12, 2026. The implication is that this intrusion may have gone undetected for thirteen years. Neither of these is a new tool in the sense that they were recently written. What\u2019s new is that they\u2019re still in use, still operational, and apparently were never removed from at least this one network. Thirteen years is a long time to be inside someone\u2019s infrastructure without anyone noticing. Daxin is implemented as a Windows kernel driver, a rare choice for malware authors. The malware implements advanced communication capabilities that allow the attackers to communicate with infected computers on highly secured networks, where direct internet connectivity is not available. The malware can hide its traffic in normal network traffic on the target\u2019s network and abuse legitimate services already running on the infected computers. Daxin doesn\u2019t reach out to attacker-controlled servers the way most malware does. Instead, it monitors incoming TCP traffic on the host for specific patterns and hijacks existing legitimate connections to run its encrypted communications, blending in with traffic that\u2019s already there. \u201cRather than establishing its own outbound connections, the driver monitors incoming TCP traffic for specific patterns and hijacks existing legitimate connections to carry encrypted command-and-control (C&C) traffic.\u201d states Symantec. \u201cThis made Daxin exceptionally difficult to identify with conventional network monitoring.\u00a0\u201c That multi-hop capability is significant: it means the operator can reach machines that have no direct internet connection by routing commands through a chain of compromised machines that do. Standard network monitoring looking for outbound connections to suspicious destinations would find nothing. Stupig disguises itself as kbdus1.dll, mimicking the legitimate kbdus.dll file that Windows uses for the U.S. English keyboard layout. It registers itself as a keyboard-layout provider, which causes win32k.sys to load it into winlogon.exe at system startup. \u201cBackdoor.Stupig is a DLL backdoor that achieves persistence by registering as a keyboard-layout provider, causing win32k.sys to load it into winlogon.exe at system startup.\u201d the Symantec team explains. \u201cThe DLL returns a valid KBDTABLES pointer so the keyboard layout functions normally, giving nothing away to any process or administrator inspecting the loaded module.\u201d The keyboard works perfectly. Nothing looks wrong. The backdoor is just sitting there, loaded into the Windows login process. Once it\u2019s running inside winlogon.exe, Stupig watches the Windows login screen for usernames that begin with the string \u201cstupig.\u201d Whatever follows that prefix is treated as a command and executed with SYSTEM privileges, which is the highest level of access on a Windows machine. If someone types the prefix with nothing after it, the backdoor opens a command prompt with SYSTEM privileges directly on the login screen, before any user has authenticated. \u201cStupig uses a technique not documented in any known malware family. A Trojanized keyboard-layout DLL loaded by winlogon.exe lets an attacker run commands as System directly from the Windows logon screen, before anyone signs in and without raising a logon audit event.\u201d continues the report. No login event is logged. No audit trail. A defender monitoring authentication logs would see nothing. The experts still have to discover how the host was originally compromised. The most likely entry point, based on what was found, is an outdated version of the Digiwin single sign-on portal that was running end-of-life Java Development Kit versions 1.5 and 1.6, software from 2009 to 2011. That\u2019s a significant attack surface left exposed on a network belonging to a subsidiary of a multinational manufacturer. Symantec hasn\u2019t found code-level overlap between Daxin and Stupig, so there\u2019s no technical proof they came from the same development team. What connects them is deployment on the same host, complementary functions, similar development practices, and identical 2013 compile timestamps. One tool handles deep network persistence and covert communications. The other provides pre-authentication SYSTEM access through a mechanism most security teams aren\u2019t monitoring. \u201cIf linked to the same actor, the Stupig backdoor adds a further capability.\u201d concludes the report. \u201cBy hiding inside the Windows logon process and registering as a keyboard-layout provider, Stupig gives operators SYSTEM-level command execution and credential theft before a user signs in, an access method most defenders are not aware of nor watching for. Whether the same operators deployed both tools cannot be confirmed, but their functions are complementary.\u201d The practical upshot for defenders is to add keyboard-layout DLL loading to the list of things worth monitoring, particularly anything being loaded into winlogon.exe at startup that wasn\u2019t there before. The Windows login process is not a place most security teams look for malicious activity, which is precisely why this works. Follow me on Twitter: @securityaffairs and Facebook and Mastodon Pierluigi\u00a0Paganini ( SecurityAffairs \u2013\u00a0hacking,\u00a0Daxin rootkit)",
+      "summary_html": "<div></div>\nResearchers found China\u2019s Daxin rootkit and a new Stupig backdoor on a Taiwan firm\u2019s network, suggesting a stealthy intrusion dating back to 2013.\n<p>Symantec\u2019s Threat Hunter Team found <a href=\"https://securityaffairs.com/128545/uncategorized/daxin-backdoor.html\">Daxin</a> running on a compromised host at a Taiwan-based subsidiary of a multinational high-tech manufacturer in 2026. Daxin is a Windows kernel-mode rootkit that Symantec first documented in March 2022, with evidence of use in targeted attacks against governments and critical infrastructure dating back to 2013. </p>\n<p><em>\u201cBackdoor.Daxin, the China-linked kernel-mode rootkit that Symantec first uncovered and exposed in 2022, is still operational.\u201d reads the <a href=\"https://www.security.com/threat-intelligence/daxin-returns-stupig\"><strong>report</strong></a> published by Symantec. \u201cIt was found running on a compromised host in Taiwan in 2026, more than four years after it was first uncovered.\u201d</em></p>\n<p>The same machine also carried a previously unreported backdoor, which the researchers are tracking as Stupig. Both artifacts carry compilation timestamps from early 2013. Telemetry from the machine only started appearing on May 12, 2026. The implication is that this intrusion may have gone undetected for thirteen years.</p>\n<p>Neither of these is a new tool in the sense that they were recently written. What\u2019s new is that they\u2019re still in use, still operational, and apparently were never removed from at least this one network. Thirteen years is a long time to be inside someone\u2019s infrastructure without anyone noticing. </p>\n<p>Daxin is implemented as a Windows kernel driver, a rare choice for malware authors. The malware implements advanced communication capabilities that allow the attackers to communicate with infected computers on highly secured networks, where direct internet connectivity is not available.</p>\n<p>The malware can hide its traffic in normal network traffic on the target\u2019s network and abuse legitimate services already running on the infected computers.</p>\n<p>Daxin doesn\u2019t reach out to attacker-controlled servers the way most malware does. Instead, it monitors incoming TCP traffic on the host for specific patterns and hijacks existing legitimate connections to run its encrypted communications, blending in with traffic that\u2019s already there. </p>\n<p><em>\u201cRather than establishing its own outbound connections, the driver monitors incoming TCP traffic for specific patterns and hijacks existing legitimate connections to carry encrypted command-and-control (C&amp;C) traffic.\u201d states Symantec. \u201cThis made Daxin exceptionally difficult to identify with conventional network monitoring.\u00a0\u201c</em></p>\n<p>That multi-hop capability is significant: it means the operator can reach machines that have no direct internet connection by routing commands through a chain of compromised machines that do. Standard network monitoring looking for outbound connections to suspicious destinations would find nothing.</p>\n<p>Stupig disguises itself as kbdus1.dll, mimicking the legitimate kbdus.dll file that Windows uses for the U.S. English keyboard layout. It registers itself as a keyboard-layout provider, which causes win32k.sys to load it into winlogon.exe at system startup.  </p>\n<p><em>\u201cBackdoor.Stupig is a DLL backdoor that achieves persistence by registering as a keyboard-layout provider, causing win32k.sys to load it into winlogon.exe at system startup.\u201d the Symantec team explains. \u201cThe DLL returns a valid KBDTABLES pointer so the keyboard layout functions normally, giving nothing away to any process or administrator inspecting the loaded module.\u201d </em></p>\n<p>The keyboard works perfectly. Nothing looks wrong. The backdoor is just sitting there, loaded into the Windows login process.</p>\n<p>Once it\u2019s running inside winlogon.exe, Stupig watches the Windows login screen for usernames that begin with the string \u201cstupig.\u201d Whatever follows that prefix is treated as a command and executed with SYSTEM privileges, which is the highest level of access on a Windows machine. If someone types the prefix with nothing after it, the backdoor opens a command prompt with SYSTEM privileges directly on the login screen, before any user has authenticated. </p>\n<p><em>\u201cStupig uses a technique not documented in any known malware family. A Trojanized keyboard-layout DLL loaded by winlogon.exe lets an attacker run commands as System directly from the Windows logon screen, before anyone signs in and without raising a logon audit event.\u201d continues the report.</em></p>\n<p>No login event is logged. No audit trail. A defender monitoring authentication logs would see nothing.</p>\n<p>The experts still have to discover how the host was originally compromised. The most likely entry point, based on what was found, is an outdated version of the Digiwin single sign-on portal that was running end-of-life Java Development Kit versions 1.5 and 1.6, software from 2009 to 2011. That\u2019s a significant attack surface left exposed on a network belonging to a subsidiary of a multinational manufacturer.</p>\n<p>Symantec hasn\u2019t found code-level overlap between Daxin and Stupig, so there\u2019s no technical proof they came from the same development team. What connects them is deployment on the same host, complementary functions, similar development practices, and identical 2013 compile timestamps. One tool handles deep network persistence and covert communications. The other provides pre-authentication SYSTEM access through a mechanism most security teams aren\u2019t monitoring. </p>\n<p><em>\u201cIf linked to the same actor, the Stupig backdoor adds a further capability.\u201d concludes the report. \u201cBy hiding inside the Windows logon process and registering as a keyboard-layout provider, Stupig gives operators SYSTEM-level command execution and credential theft before a user signs in, an access method most defenders are not aware of nor watching for. Whether the same operators deployed both tools cannot be confirmed, but their functions are complementary.\u201d</em></p>\n<p>The practical upshot for defenders is to add keyboard-layout DLL loading to the list of things worth monitoring, particularly anything being loaded into winlogon.exe at startup that wasn\u2019t there before. The Windows login process is not a place most security teams look for malicious activity, which is precisely why this works.</p>\n<p><strong>Follow me on Twitter:\u00a0</strong><a href=\"https://twitter.com/securityaffairs\"><strong>@securityaffairs</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://www.facebook.com/sec.affairs\"><strong>Facebook</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://infosec.exchange/@securityaffairs\"><strong>Mastodon</strong></a><strong></strong></p>\n<p><a href=\"http://www.linkedin.com/pub/pierluigi-paganini/b/742/559\"><strong>Pierluigi\u00a0Paganini</strong></a><strong></strong></p>\n<p><strong>(</strong><a href=\"http://securityaffairs.co/wordpress/\"><strong>SecurityAffairs</strong></a><strong>\u00a0\u2013\u00a0hacking,\u00a0Daxin rootkit)</strong></p>",
+      "link": "https://securityaffairs.com/195577/malware/daxin-13-year-old-china-linked-malware-found-still-active-on-manufacturers-network.html",
+      "source": "Security Affairs",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-07-18T14:01:03+00:00",
+      "published_ts": 1784383263,
+      "smart_groups": [
+        "Ransomware",
+        "Malware / Payloads",
+        "Identity / Access",
+        "Network / OT / ICS",
+        "Privacy & Compliance"
+      ],
+      "curated": true
+    },
+    {
+      "title": "The Future of Age Verification: Your Face Never Leaves Your Device",
+      "summary": "As age verification laws expand worldwide, organizations face growing pressure to protect users' privacy while meeting regulatory requirements. Incode explains how on-device age estimation verifies age without transmitting or storing facial images, reducing biometric privacy risks while supporting compliance. [...]",
+      "summary_html": "As age verification laws expand worldwide, organizations face growing pressure to protect users' privacy while meeting regulatory requirements. Incode explains how on-device age estimation verifies age without transmitting or storing facial images, reducing biometric privacy risks while supporting compliance. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/the-future-of-age-verification-your-face-never-leaves-your-device/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-07-18T13:15:24+00:00",
+      "published_ts": 1784380524,
+      "smart_groups": [
+        "Cloud / SaaS"
+      ],
+      "curated": false
+    },
+    {
+      "title": "U.S. CISA adds Fortinet FortiSandbox and Microsoft SharePoint flaws to its Known Exploited Vulnerabilities catalog",
+      "summary": "U.S. Cybersecurity and Infrastructure Security Agency (CISA) adds Fortinet FortiSandbox and Microsoft SharePoint flaws to its Known Exploited Vulnerabilities catalog. The U.S. Cybersecurity and Infrastructure Security Agency (CISA) added Fortinet FortiSandbox and Microsoft SharePoint flaws to its Known Exploited Vulnerabilities (KEV) catalog . CVE-2026-25089 (CVSS score of 9.8) Fortinet FortiSandbox OS Command Injection Vulnerability CVE-2026-39808 (CVSS score of 9.8) Fortinet FortiSandbox OS Command Injection Vulnerability CVE-2026-58644 (CVSS score of 9.8) Microsoft SharePoint Deserialization of Untrusted Data Vulnerability This week, Microsoft\u2019s July 2026 Patch Tuesday addressed the SharePoint remote code execution bug CVE-2026-58644, which can be triggered without authentication or user interaction. The flaw stems from the deserialization of untrusted data. \u201cDeserialization of untrusted data in Microsoft Office SharePoint allows an unauthorized attacker to execute code over a network.\u201d reads the advisory . \u201cIn a network-based attack, an attacker authenticated as at least a Site Owner, could write arbitrary code to inject and execute code remotely on the SharePoint Server.\u201d Microsoft confirmed it is aware of active exploitation of this vulnerability. The second issue added to the KeV catalog is an OS command injection flaw, tracked as CVE-2026-25089 , in FortiSandbox products. The vulnerability could allow remote, unauthenticated attackers to send specially crafted HTTP requests and execute arbitrary commands on affected devices. Adham El Karn of Fortinet Product Security team discovered the vulnerability. The last issue added to the catalog, tracked as CVE-2026-39808 , is an OS command injection flaw. \u201cAn Improper Neutralization of Special Elements used in an OS Command (\u2018OS command injection\u2019) vulnerability [CWE-78] in FortiSandbox may allow an unauthenticated attacker to execute unauthorized code or commands via crafted HTTP requests.\u201d reads  the advisory . Cybersecurity firm Defused Cyber confirmed it\u2019s seen active exploitation of this vulnerability within a 24-hour window. According to Binding Operational Directive (BOD) 22-01: Reducing the Significant Risk of Known Exploited Vulnerabilities , FCEB agencies have to address the identified vulnerabilities by the due date to protect their networks against attacks exploiting the flaws in the catalog. Experts also recommend that private organizations review the Catalog and address the vulnerabilities in their infrastructure. CISA orders federal agencies to urgently fix these flaws by\u00a0July 19, 2026. Follow me on Twitter: @securityaffairs and Facebook and Mastodon Pierluigi\u00a0Paganini ( SecurityAffairs \u2013\u00a0hacking, CISA )",
+      "summary_html": "<div></div>\nU.S. Cybersecurity and Infrastructure Security Agency (CISA) adds Fortinet FortiSandbox and Microsoft SharePoint flaws to its Known Exploited Vulnerabilities catalog.\n<p>The U.S. Cybersecurity and Infrastructure Security Agency (CISA)\u00a0<a href=\"https://www.cisa.gov/news-events/alerts/2026/07/16/cisa-adds-three-known-exploited-vulnerabilities-catalog\">added</a> Fortinet FortiSandbox and Microsoft SharePoint flaws to its <a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) catalog</a>.</p>\n<ul>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-25089\">CVE-2026-25089</a>\u00a0(CVSS score of 9.8) Fortinet FortiSandbox OS Command Injection Vulnerability \u00a0</li>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-39808\">CVE-2026-39808</a>\u00a0(CVSS score of 9.8) Fortinet FortiSandbox OS Command Injection Vulnerability \u00a0</li>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-58644\">CVE-2026-58644</a>\u00a0(CVSS score of 9.8) Microsoft SharePoint Deserialization of Untrusted Data Vulnerability</li>\n</ul>\n<p>This week, <a href=\"https://securityaffairs.com/195347/security/patch-tuesday-security-updates-for-july-2026-the-largest-update-ever-621-cves-in-one-month.html\">Microsoft\u2019s July 2026 Patch Tuesday</a> addressed the SharePoint remote code execution bug CVE-2026-58644, which can be triggered without authentication or user interaction. The flaw stems from the deserialization of untrusted data. </p>\n<p><em>\u201cDeserialization of untrusted data in Microsoft Office SharePoint allows an unauthorized attacker to execute code over a network.\u201d <a href=\"https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-58644\">reads the advisory</a>. \u201cIn a network-based attack, an attacker authenticated as at least a Site Owner, could write arbitrary code to inject and execute code remotely on the SharePoint Server.\u201d</em></p>\n<p>Microsoft confirmed it is aware of active exploitation of this vulnerability.</p>\n<p>The second issue added to the KeV catalog is an OS command injection flaw, tracked as <a href=\"https://securityaffairs.com/193509/security/fortinet-patched-a-new-critical-fortisandbox-flaw.html\"><strong>CVE-2026-25089</strong></a>, in FortiSandbox products. The vulnerability could allow remote, unauthenticated attackers to send specially crafted HTTP requests and execute arbitrary commands on affected devices. Adham El Karn of Fortinet Product Security team discovered the vulnerability.</p>\n<p>The last issue added to the catalog, tracked as <a href=\"https://securityaffairs.com/193709/ai/fortinet-warned-as-three-critical-fortisandbox-bugs-come-under-attack.html\">CVE-2026-39808</a>, is an OS command injection flaw. </p>\n<p><em>\u201cAn Improper Neutralization of Special Elements used in an OS Command (\u2018OS command injection\u2019) vulnerability [CWE-78] in FortiSandbox may allow an unauthenticated attacker to execute unauthorized code or commands via crafted HTTP requests.\u201d <a href=\"https://fortiguard.fortinet.com/psirt/FG-IR-26-100\">reads  the advisory</a>.</em></p>\n<p>Cybersecurity firm Defused Cyber confirmed it\u2019s seen active exploitation of this vulnerability within a 24-hour window. </p>\n<p>According to\u00a0<a href=\"https://cyber.dhs.gov/bod/22-01/\">Binding Operational Directive (BOD) 22-01: Reducing the Significant Risk of Known Exploited Vulnerabilities</a>, FCEB agencies have to address the identified vulnerabilities by the due date to protect their networks against attacks exploiting the flaws in the catalog.</p>\n<p>Experts also recommend that private organizations review the\u00a0<a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Catalog</a>\u00a0and address the vulnerabilities in their infrastructure.</p>\n<p>CISA orders federal agencies to urgently fix these flaws by\u00a0July 19, 2026.</p>\n<p><strong>Follow me on Twitter:\u00a0</strong><a href=\"https://twitter.com/securityaffairs\"><strong>@securityaffairs</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://www.facebook.com/sec.affairs\"><strong>Facebook</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://infosec.exchange/@securityaffairs\"><strong>Mastodon</strong></a><strong></strong></p>\n<p><a href=\"http://www.linkedin.com/pub/pierluigi-paganini/b/742/559\"><strong>Pierluigi\u00a0Paganini</strong></a><strong></strong></p>\n<p><strong>(</strong><a href=\"http://securityaffairs.co/wordpress/\"><strong>SecurityAffairs</strong></a><strong>\u00a0\u2013\u00a0hacking,\u00a0<a href=\"https://securityaffairs.com/tag/cisa\">CISA</a>)</strong></p>\n<p></p>\n<p></p>\n<p></p>",
+      "link": "https://securityaffairs.com/195569/security/u-s-cisa-adds-fortinet-fortisandbox-and-microsoft-sharepoint-flaws-to-its-known-exploited-vulnerabilities-catalog.html",
+      "source": "Security Affairs",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-07-18T11:49:16+00:00",
+      "published_ts": 1784375356,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Cloud / SaaS"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Kaspersky identifies malware framework targeting crypto investors",
+      "summary": "Cybersecurity company Kaspersky said a newly identified malware framework is targeting cryptocurrency investors through social engineering tactics and trojanized GitHub apps.",
+      "summary_html": "<p></p><p>Cybersecurity company Kaspersky said a newly identified malware framework is targeting cryptocurrency investors through social engineering tactics and trojanized GitHub apps.</p>",
+      "link": "https://cointelegraph.com/news/kaspersky-malware-framework-crypto-investors?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-07-18T11:45:00+00:00",
+      "published_ts": 1784375100,
+      "smart_groups": [
+        "Malware / Payloads",
+        "Network / OT / ICS",
+        "Phishing / Social Engineering",
+        "Crypto / Web3"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Canicule : les serveurs fran\u00e7ais sous pression pirate",
+      "summary": "Seize organisations fran\u00e7aises cit\u00e9es par six groupes pirates entre le 1er et le 16 juillet 2026.",
+      "summary_html": "Seize organisations fran\u00e7aises cit\u00e9es par six groupes pirates entre le 1er et le 16 juillet 2026.",
+      "link": "https://www.zataz.com/canicule-les-serveurs-francais-sous-pression-pirate/",
+      "source": "ZATAZ \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "leaks-breaches",
+      "type_label": "Leaks & Breaches",
+      "published": "2026-07-18T11:38:31+00:00",
+      "published_ts": 1784374711,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Cyber actualit\u00e9s de la semaine du 19 juillet 2026",
+      "summary": "Bonjour \u00e0 toutes et tous Cette semaine, les fuites de donn\u00e9es dominent l\u2019actualit\u00e9 avec NEBBIA, Croqvacances, seize millions de CV expos\u00e9s et le piratage de l\u2019op\u00e9rateur Odido. LeakBase voit aussi r\u00e9appara\u00eetre dix t\u00e9raoctets de donn\u00e9es vol\u00e9es.La menace prorusse reste active : NoName057(16) revendique une op\u00e9ration contre une journaliste, tandis que des cam\u00e9ras, des services fran\u00e7ais [\u2026]",
+      "summary_html": "Bonjour \u00e0 toutes et tous Cette semaine, les fuites de donn\u00e9es dominent l\u2019actualit\u00e9 avec NEBBIA, Croqvacances, seize millions de CV expos\u00e9s et le piratage de l\u2019op\u00e9rateur Odido. LeakBase voit aussi r\u00e9appara\u00eetre dix t\u00e9raoctets de donn\u00e9es vol\u00e9es.La menace prorusse reste active : NoName057(16) revendique une op\u00e9ration contre une journaliste, tandis que des cam\u00e9ras, des services fran\u00e7ais [\u2026]",
+      "link": "https://www.zataz.com/cyber-actualites-de-la-semaine-du-19-juillet-2026/",
+      "source": "ZATAZ \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "leaks-breaches",
+      "type_label": "Leaks & Breaches",
+      "published": "2026-07-18T11:20:25+00:00",
+      "published_ts": 1784373625,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "La base pirat\u00e9e de LFI ressurgit sur un forum pirate",
+      "summary": "La base vol\u00e9e d\u2019Action populaire ressurgit, exposant militants et organisation aux risques cyber et politiques.",
+      "summary_html": "La base vol\u00e9e d\u2019Action populaire ressurgit, exposant militants et organisation aux risques cyber et politiques.",
+      "link": "https://www.zataz.com/la-base-piratee-de-lfi-ressurgit-sur-un-forum-pirate/",
+      "source": "ZATAZ \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "leaks-breaches",
+      "type_label": "Leaks & Breaches",
+      "published": "2026-07-18T11:08:26+00:00",
+      "published_ts": 1784372906,
+      "smart_groups": [
+        "Web / API Security"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Your Period Tracker Is (Probably) Spying on You",
+      "summary": "Plus: Russian cyberspies turn to infrastructure hacking, DHS repeatedly fails to realize it\u2019d been hacked, a breach exposes an AI music generator\u2019s scraping ways, and more.",
+      "summary_html": "Plus: Russian cyberspies turn to infrastructure hacking, DHS repeatedly fails to realize it\u2019d been hacked, a breach exposes an AI music generator\u2019s scraping ways, and more.",
+      "link": "https://www.wired.com/story/security-news-this-week-your-period-tracker-is-probably-spying-on-you/",
+      "source": "WIRED \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-07-18T10:30:00+00:00",
+      "published_ts": 1784370600,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "LeakBase : dix t\u00e9raoctets pirat\u00e9s r\u00e9apparaissent",
+      "summary": "LeakBase ferm\u00e9, une archive de 10 To de donn\u00e9es vol\u00e9es r\u00e9appara\u00eet via des stockages publics russes.",
+      "summary_html": "LeakBase ferm\u00e9, une archive de 10 To de donn\u00e9es vol\u00e9es r\u00e9appara\u00eet via des stockages publics russes.",
+      "link": "https://www.zataz.com/leakbase-dix-teraoctets-pirates-reapparaissent/",
+      "source": "ZATAZ \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "leaks-breaches",
+      "type_label": "Leaks & Breaches",
+      "published": "2026-07-18T10:13:29+00:00",
+      "published_ts": 1784369609,
+      "smart_groups": [
+        "Network / OT / ICS"
+      ],
+      "curated": false
+    },
+    {
+      "title": "French gambling regulator orders ISPs to block Polymarket",
+      "summary": "Autorit\u00e9 nationale des jeux has ordered France\u2019s internet service providers to geoblock Polymarket, citing illegal gambling and market manipulation concerns.",
+      "summary_html": "<p></p><p>Autorit\u00e9 nationale des jeux has ordered France\u2019s internet service providers to geoblock Polymarket, citing illegal gambling and market manipulation concerns.</p>",
+      "link": "https://cointelegraph.com/news/french-gambling-authority-blocks-polymarket?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-07-18T10:03:00+00:00",
+      "published_ts": 1784368980,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "The iPad mini's biggest update in 5 years is expected this fall - here's what we know",
+      "summary": "The next iPad mini is rumored to feature an OLED panel and a more powerful processor. A new base iPad is also in the works.",
+      "summary_html": "The next iPad mini is rumored to feature an OLED panel and a more powerful processor. A new base iPad is also in the works.",
+      "link": "https://www.zdnet.com/article/apple-ipad-mini-2026-redesign-oled-rumors/",
+      "source": "ZDNet \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-07-18T10:00:39+00:00",
+      "published_ts": 1784368839,
+      "smart_groups": [
+        "Identity / Access"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Un n\u00e9gociateur de ran\u00e7ongiciel condamn\u00e9 \u00e0 70 mois",
+      "summary": "Un n\u00e9gociateur de ran\u00e7ongiciel condamn\u00e9 pour avoir aid\u00e9 BlackCat \u00e0 extorquer ses propres clients.",
+      "summary_html": "Un n\u00e9gociateur de ran\u00e7ongiciel condamn\u00e9 pour avoir aid\u00e9 BlackCat \u00e0 extorquer ses propres clients.",
+      "link": "https://www.zataz.com/un-negociateur-de-rancongiciel-condamne-a-70-mois/",
+      "source": "ZATAZ \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "leaks-breaches",
+      "type_label": "Leaks & Breaches",
+      "published": "2026-07-18T09:49:13+00:00",
+      "published_ts": 1784368153,
+      "smart_groups": [
+        "Ransomware"
+      ],
+      "curated": false
+    },
+    {
+      "title": "La piste n\u00e9erlandaise se pr\u00e9cise apr\u00e8s le piratage d\u2019Odido",
+      "summary": "La police explore une piste et une voix apr\u00e8s le vol des donn\u00e9es de six millions de clients d\u2019un important op\u00e9rateur t\u00e9l\u00e9phonique.",
+      "summary_html": "La police explore une piste et une voix apr\u00e8s le vol des donn\u00e9es de six millions de clients d\u2019un important op\u00e9rateur t\u00e9l\u00e9phonique.",
+      "link": "https://www.zataz.com/la-piste-neerlandaise-se-precise-apres-le-piratage-dodido/",
+      "source": "ZATAZ \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "leaks-breaches",
+      "type_label": "Leaks & Breaches",
+      "published": "2026-07-18T09:41:38+00:00",
+      "published_ts": 1784367698,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "I tested Nothing's new pink earbuds, and they look as good as they sound",
+      "summary": "The Nothing Ear (3a) have surprised me for several reasons - the price is one of them.",
+      "summary_html": "The Nothing Ear (3a) have surprised me for several reasons - the price is one of them.",
+      "link": "https://www.zdnet.com/article/nothing-ear-3a-review/",
+      "source": "ZDNet \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-07-18T09:30:41+00:00",
+      "published_ts": 1784367041,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Prompt Injection Attacks Are Thwarting AI Hacking Agents",
+      "summary": "\u201cContext bombing\u201d tricks malicious AI agents into shutting down before they can do harm.",
+      "summary_html": "\u201cContext bombing\u201d tricks malicious AI agents into shutting down before they can do harm.",
+      "link": "https://www.wired.com/story/prompt-injection-attacks-are-thwarting-ai-hacking-agents/",
+      "source": "WIRED \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-07-18T09:00:00+00:00",
+      "published_ts": 1784365200,
+      "smart_groups": [
+        "AI/ML Security"
+      ],
+      "curated": false
+    },
+    {
+      "title": "What Open Source Cyber Security Apps are Your Team Self-Hosting?",
+      "summary": "Hello, Our team are exploring some interesting open source cybersecurity tools and apps that can be self-hosted to help and enhance our cyber defense operations on daily basis. So if your team and org are doing self-hosting, would you mind sharing the names of the tools/apps? Any answers are greatly appreciated. Thanks submitted by /u/dpzhntr [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Hello,</p> <p>Our team are exploring some interesting open source cybersecurity tools and apps that can be self-hosted to help and enhance our cyber defense operations on daily basis.</p> <p>So if your team and org are doing self-hosting, would you mind sharing the names of the tools/apps?</p> <p>Any answers are greatly appreciated.</p> <p>Thanks</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/dpzhntr\"> /u/dpzhntr </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1uzmrnl/what_open_source_cyber_security_apps_are_your/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1uzmrnl/what_open_source_cyber_security_apps_are_your/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1uzmrnl/what_open_source_cyber_security_apps_are_your/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-07-18T05:10:54+00:00",
+      "published_ts": 1784351454,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Community Discussion"
+      ],
+      "curated": true
+    },
+    {
+      "title": "#Security #Tech #AI #Cybersecurity #Quantum #Innovation #Govcon #Newsletter",
+      "summary": "Please check out and subscribe to my LinkedIn newsletter Security & Tech Insights. Nearing 75,000 (free)  subscribers. Thanks and have a great weekend! Chuck Brooks. Link: https://lnkd.in/dA4RbBJZ",
+      "summary_html": "<p><a href=\"https://lifeboat.com/blog.images/security-tech-ai-cybersecurity-quantum-innovation-govcon-newsletter2.jpg\"></a></p>\n<p>Please check out and subscribe to my LinkedIn newsletter Security &amp; Tech Insights. Nearing 75,000 (free)  subscribers. Thanks and have a great weekend! Chuck Brooks.</p>\n<p>Link: <a href=\"https://lnkd.in/dA4RbBJZ\">https://lnkd.in/dA4RbBJZ</a></p>",
+      "link": "https://lifeboat.com/blog/2026/07/security-tech-ai-cybersecurity-quantum-innovation-govcon-newsletter",
+      "source": "Lifeboat \u2013 Cybercrime & Malcode",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-07-18T01:03:44+00:00",
+      "published_ts": 1784336624,
+      "smart_groups": [],
+      "curated": false
+    }
+  ]
+}

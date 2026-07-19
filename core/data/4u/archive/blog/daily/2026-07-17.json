@@ -1,0 +1,94 @@
+{
+  "generated_at": "2026-07-19T20:18:09.761013+00:00",
+  "date": "2026-07-17",
+  "total_items": 6,
+  "next_chunk": "archive/blog/daily/2026-07-16.json",
+  "items": [
+    {
+      "title": "1.15.4",
+      "summary": "What's Changed Features Promote Skills Repository out of experimental status Documentation Add Flows in Studio documentation Contributors @jessemiller , @joaomdmoura , @vinibrsl",
+      "summary_html": "What's Changed\nFeatures\n<ul>\n<li>Promote Skills Repository out of experimental status</li>\n</ul>\nDocumentation\n<ul>\n<li>Add Flows in Studio documentation</li>\n</ul>\nContributors\n<p><a href=\"https://github.com/jessemiller\">@jessemiller</a>, <a href=\"https://github.com/joaomdmoura\">@joaomdmoura</a>, <a href=\"https://github.com/vinibrsl\">@vinibrsl</a></p>",
+      "link": "https://github.com/crewAIInc/crewAI/releases/tag/1.15.4",
+      "source": "crewAI Releases - GitHub releases for the crewAI agentic framework",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-07-17T14:33:30+00:00",
+      "published_ts": 1784298810,
+      "smart_groups": [
+        "Agentic AI & Automations"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Data downloaded by Vercel Sandbox is now free",
+      "summary": "Vercel Sandbox no longer bills for data it downloads from the internet. Installing packages, cloning a Git repository, or pulling artifacts and datasets from an external source does not count toward Sandbox Data Transfer usage. Traffic received on a Sandbox's exposed ports is still billable, as is outbound traffic the Sandbox sends to the internet. Pricing for Active CPU, Provisioned Memory, Snapshot Storage, and Sandbox Creations is unchanged. See the pricing documentation for the full breakdown. Read more",
+      "summary_html": "<p><a href=\"https://vercel.com/docs/sandbox\">Vercel Sandbox</a> no longer bills for data it downloads from the internet. Installing packages, cloning a Git repository, or pulling artifacts and datasets from an external source does not count toward Sandbox Data Transfer usage.</p><p>Traffic received on a Sandbox's exposed ports is still billable, as is outbound traffic the Sandbox sends to the internet. Pricing for Active CPU, Provisioned Memory, Snapshot Storage, and Sandbox Creations is unchanged.</p><p>See the <a href=\"https://vercel.com/docs/sandbox/pricing\">pricing documentation</a> for the full breakdown.</p>\n<p>\n<a href=\"https://vercel.com/changelog/data-downloaded-by-vercel-sandbox-is-now-free\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/data-downloaded-by-vercel-sandbox-is-now-free",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-17T07:01:00+00:00",
+      "published_ts": 1784271660,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Runtime logs now show cache reasons",
+      "summary": "Runtime logs now show a Cache Reason explaining why a request wasn't a fresh cache hit, for example a time-based or tag-based revalidation. Use cache reasons to debug misses and improve your hit rate. Cache reasons appear for any response the CDN can cache, including ISR, Partial Prerendering, and functions that set a Cache-Control header with directives like stale-while-revalidate . Responses rendered dynamically on every request don't have a cache reason. Cache status Possible reasons MISS Cold, Request collapsed, Error BYPASS Draft Mode, Prerender Bypass, Crawler STALE Time-based revalidation, Tag-based invalidation, Revalidation error REVALIDATED Tag-based deletion Open the Logs tab and select a request to see the reason alongside its cache status. Each status and reason links to its entry in the Cache Status and Reasons reference. From the CLI Cache reason is available in vercel logs , vercel metrics , and Vercel plugin's cdn-caching skill : Learn more about cache statuses and reasons . Read more",
+      "summary_html": "<p>Runtime logs now show a Cache Reason explaining why a request wasn't a fresh cache hit, for example a time-based or tag-based revalidation. Use cache reasons to debug misses and improve your hit rate.</p><p>Cache reasons appear for any response the CDN can cache, including ISR, Partial Prerendering, and functions that set a <code>Cache-Control</code> header with directives like <code>stale-while-revalidate</code>. Responses rendered dynamically on every request don't have a cache reason.</p><p>Cache status</p><p>Possible reasons</p><p>MISS</p><p>Cold, Request collapsed, Error</p><p>BYPASS</p><p>Draft Mode, Prerender Bypass, Crawler</p><p>STALE</p><p>Time-based revalidation, Tag-based invalidation, Revalidation error</p><p>REVALIDATED</p><p>Tag-based deletion</p><p>Open the Logs tab and select a request to see the reason alongside its cache status. Each status and reason links to its entry in the <a href=\"https://vercel.com/docs/caching/cache-status\">Cache Status and Reasons</a> reference.</p><div></div>From the CLI<p>Cache reason is available in <code>vercel logs</code>, <code>vercel metrics</code>, and Vercel plugin's <a href=\"https://www.skills.sh/vercel/vercel-plugin/cdn-caching\">cdn-caching skill</a>:</p><div></div><p>Learn more about <a href=\"https://vercel.com/docs/caching/cache-status\">cache statuses and reasons</a>.</p>\n<p>\n<a href=\"https://vercel.com/changelog/runtime-logs-now-show-cache-reasons\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/runtime-logs-now-show-cache-reasons",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-17T01:00:00+00:00",
+      "published_ts": 1784250000,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Optimized CDN caching and deploying of immutable static assets",
+      "summary": "Vercel now reuses static files across deployments for frameworks that output content-addressed assets. It's zero-config: Vercel uses Framework-defined infrastructure to manage these immutable files alongside your code changes, handling the hard parts like hash collisions, file lifecycles, and efficient routing. This brings several benefits: Lower costs and improved cache hit rates \u2014 For frameworks using query-parameter-based Skew Protection (such as Next.js), we saw 17% fewer CDN requests and 24% fewer bytes transferred for static content. Faster Deployments \u2014 Deployments complete up to 30% faster on average. Faster Time to First Byte \u2014 Immutable assets can remain cached across deployments, giving frequently deployed projects a 60%+ global TTFB reduction. Vercel's supported frameworks will automatically take advantage of this optimization, even for projects without Skew Protection enabled. Next.js 16.3 preview and later already have it enabled out of the box, and support for additional frameworks (including Nitro) is coming soon. No configuration is required: upgrading to a supported framework version is all you need to do. If you're a framework author and want to implement this in your own toolchain, see the immutable static files section of the Build Output API docs . Read more",
+      "summary_html": "<p>Vercel now reuses static files across deployments for frameworks that output content-addressed assets. It's zero-config: Vercel uses <a href=\"https://vercel.com/blog/framework-defined-infrastructure\">Framework-defined infrastructure</a> to manage these immutable files alongside your code changes, handling the hard parts like hash collisions, file lifecycles, and efficient routing.</p><p>This brings several benefits:</p><ul><li><p><b>Lower costs and improved cache hit rates</b> \u2014 For frameworks using query-parameter-based <a href=\"https://vercel.com/docs/skew-protection\">Skew Protection</a> (such as Next.js), we saw 17% fewer CDN requests and 24% fewer bytes transferred for static content.</p></li><li><p><b>Faster Deployments</b> \u2014 Deployments complete up to 30% faster on average.</p></li><li><p><b>Faster Time to First Byte</b> \u2014 Immutable assets can remain cached across deployments, giving frequently deployed projects a 60%+ global TTFB reduction.</p></li></ul><p>Vercel's supported frameworks will automatically take advantage of this optimization, even for projects without <a href=\"https://vercel.com/docs/skew-protection\">Skew Protection</a> enabled. Next.js 16.3 preview and later already have it enabled out of the box, and support for additional frameworks (including Nitro) is coming soon. No configuration is required: upgrading to a supported framework version is all you need to do.</p><p>If you're a framework author and want to implement this in your own toolchain, see the immutable static files section of the <a href=\"https://vercel.com/docs/build-output-api/primitives#immutable-static-files\">Build Output API docs</a>.</p>\n<p>\n<a href=\"https://vercel.com/changelog/optimized-cdn-caching-and-deploying-of-immutable-static-assets\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/optimized-cdn-caching-and-deploying-of-immutable-static-assets",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-17T00:00:00+00:00",
+      "published_ts": 1784246400,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Vercel Plugin now available in Kimi Code CLI",
+      "summary": "The Vercel Plugin is now available in the Kimi Code CLI . Kimi Code can now draw on Vercel platform knowledge on demand, with skills for Next.js, AI SDK, Vercel Functions, and more. The Vercel Plugin also helps Kimi Code stay up to date with the latest Vercel APIs and recommended patterns. To install it, upgrade to the latest Kimi Code CLI and select the Vercel Plugin from the Third-party section of the /plugin menu. Learn more in the Vercel Plugin documentation . Read more",
+      "summary_html": "<p>The <a href=\"https://vercel.com/plugin\">Vercel Plugin</a> is now available in the <a href=\"https://www.kimi.com/code\">Kimi Code CLI</a>.</p><p>Kimi Code can now draw on Vercel platform knowledge on demand, with skills for Next.js, AI SDK, Vercel Functions, and more. The Vercel Plugin also helps Kimi Code stay up to date with the latest Vercel APIs and recommended patterns.</p><p>To install it, upgrade to the latest Kimi Code CLI and select the Vercel Plugin from the Third-party section of the <code>/plugin</code> menu.</p><div></div><p>Learn more in the <a href=\"https://vercel.com/docs/agent-resources/vercel-plugin\">Vercel Plugin documentation</a>.</p>\n<p>\n<a href=\"https://vercel.com/changelog/vercel-plugin-now-available-in-kimi-code-cli\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/vercel-plugin-now-available-in-kimi-code-cli",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-17T00:00:00+00:00",
+      "published_ts": 1784246400,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Chat SDK adds native Slack agent support",
+      "summary": "You can now build native Slack agents with Chat SDK's Slack adapter . The adapter supports the full Slack agent messaging experience , from agent conversations in the Messages tab to suggested prompts, rotating status messages, token-by-token streamed replies, and native feedback buttons. Here's what the adapter gives you: Suggested prompts, per thread: Pass a static payload or an async resolver that receives the thread context, including what the user is currently viewing under agent_view . Prompts are pinned automatically whenever an agent thread opens. Native streaming with a fallback: Streamed replies render token-by-token via Slack's streaming API, including task and plan cards. If a workspace doesn't support streaming (e.g., GovSlack), the adapter switches to Post+Edit. Built-in feedback: Set feedbackButtons: true to append thumbs-up/down buttons to every streamed reply, and clicks dispatch via the bot.onAction flow. One thing to know: under agent_view , Slack threads each user message individually, so channel history only returns the user's side of a DM. Use Chat SDK transcripts to build AI conversation history instead. Read the documentation to get started, or begin with one of our templates . Read more",
+      "summary_html": "<p>You can now build native Slack agents with Chat SDK's <a href=\"https://chat-sdk.dev/adapters/official/slack\">Slack adapter</a>.</p><p>The adapter supports the full <a href=\"https://docs.slack.dev/changelog/2026/06/30/agent-messages-tab/\">Slack agent messaging experience</a>, from agent conversations in the Messages tab to suggested prompts, rotating status messages, token-by-token streamed replies, and native feedback buttons.</p><div></div><p>Here's what the adapter gives you:</p><ul><li><p><b>Suggested prompts, per thread: </b>Pass a static payload or an async resolver that receives the thread context, including what the user is currently viewing under <code>agent_view</code>. Prompts are pinned automatically whenever an agent thread opens.</p></li><li><p><b>Native streaming with a fallback: </b>Streamed replies render token-by-token via Slack's streaming API, including task and plan cards. If a workspace doesn't support streaming (e.g., GovSlack), the adapter switches to Post+Edit.</p></li><li><p><b>Built-in feedback: </b>Set <code>feedbackButtons: true</code> to append thumbs-up/down buttons to every streamed reply, and clicks dispatch via the <code>bot.onAction</code> flow.</p></li></ul><p>One thing to know: under <code>agent_view</code>, Slack threads each user message individually, so channel history only returns the user's side of a DM. Use <a href=\"https://chat-sdk.dev/docs/conversation-history\">Chat SDK transcripts</a> to build AI conversation history instead.</p><p>Read the <a href=\"https://chat-sdk.dev/adapters/official/slack\">documentation</a> to get started, or begin with one of our <a href=\"https://chat-sdk.dev/resources\">templates</a>.</p><p></p>\n<p>\n<a href=\"https://vercel.com/changelog/chat-sdk-adds-native-slack-agent-support\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/chat-sdk-adds-native-slack-agent-support",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-17T00:00:00+00:00",
+      "published_ts": 1784246400,
+      "smart_groups": [],
+      "curated": true
+    }
+  ]
+}

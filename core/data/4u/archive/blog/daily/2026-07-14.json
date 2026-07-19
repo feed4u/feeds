@@ -1,0 +1,110 @@
+{
+  "generated_at": "2026-07-19T20:18:09.761705+00:00",
+  "date": "2026-07-14",
+  "total_items": 7,
+  "next_chunk": "archive/blog/daily/2026-07-13.json",
+  "items": [
+    {
+      "title": "Vercel Blob now supports consistent reads on private storage",
+      "summary": "Vercel Blob now supports consistent reads on private storage. Pass useCache: false to get() or presignUrl() for a read that reflects the latest write. A blob written to a fresh pathname has no existing cached entry, so reads reflect the latest write immediately. When you overwrite a blob at an existing pathname, readers might see the cached version for up to 60 seconds. When a read must reflect the latest write, like an agent's memory file, a session transcript, or a scheduled JSON report, pass useCache: false . These reads bypass the CDN, take longer than cached reads, and incur Fast Origin Transfer . You can also bypass the cache without the SDK. Under the hood, useCache: false adds a cache=0 query parameter to the request. You can set it yourself on a private blob URL: Install the latest @vercel/blob SDK for consistent reads: Learn more in the consistent reads documentation . Read more",
+      "summary_html": "<p><a href=\"https://vercel.com/docs/vercel-blob\">Vercel Blob</a> now supports consistent reads on private storage. Pass <code>useCache: false</code> to <code>get()</code> or <code>presignUrl()</code> for a read that reflects the latest write.</p><p>A blob written to a fresh pathname has no existing cached entry, so reads reflect the latest write immediately. When you overwrite a blob at an existing pathname, readers might see the cached version for up to 60 seconds. </p><p>When a read must reflect the latest write, like an agent's memory file, a session transcript, or a scheduled JSON report, pass <code>useCache: false</code>. These reads bypass the CDN, take longer than cached reads, and incur <a href=\"https://vercel.com/docs/manage-cdn-usage#fast-origin-transfer\">Fast Origin Transfer</a>.</p><div></div><p>You can also bypass the cache without the SDK. Under the hood, <code>useCache: false</code> adds a <code>cache=0</code> query parameter to the request. You can set it yourself on a private blob URL:</p><div></div><p>Install the latest <code>@vercel/blob</code> SDK for consistent reads:</p><div></div><p>Learn more in the <a href=\"https://vercel.com/docs/vercel-blob/private-storage#consistent-reads\">consistent reads documentation</a>.</p>\n<p>\n<a href=\"https://vercel.com/changelog/vercel-blob-now-supports-consistent-reads-on-private-storage\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/vercel-blob-now-supports-consistent-reads-on-private-storage",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-14T00:00:00+00:00",
+      "published_ts": 1783987200,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Vercel Plugin now available in VS Code and GitHub Copilot CLI",
+      "summary": "The Vercel Plugin is now available in VS Code and the GitHub Copilot CLI. GitHub Copilot now has Vercel platform knowledge on demand, with skills for Next.js, AI SDK, Vercel Functions, and more. The Vercel plugin also helps Copilot stay up to date with the latest Vercel APIs and recommended patterns. To install it for Copilot Chat, search for @agentPlugins vercel in the Extensions panel in VS Code. To install it for the GitHub Copilot CLI, run npx plugins add vercel/vercel-plugin . Learn more in the Vercel Plugin documentation . Read more",
+      "summary_html": "<p>The <a href=\"https://vercel.com/plugin\">Vercel Plugin</a> is now available in VS Code and the GitHub Copilot CLI.</p><p>GitHub Copilot now has Vercel platform knowledge on demand, with skills for Next.js, AI SDK, Vercel Functions, and more. The Vercel plugin also helps Copilot stay up to date with the latest Vercel APIs and recommended patterns.</p><p>To install it for Copilot Chat, search for <code>@agentPlugins vercel</code> in the Extensions panel in VS Code.</p><div></div><p>To install it for the GitHub Copilot CLI, run <code>npx plugins add vercel/vercel-plugin</code>.</p><p>Learn more in the <a href=\"https://vercel.com/docs/agent-resources/vercel-plugin\">Vercel Plugin documentation</a>.</p>\n<p>\n<a href=\"https://vercel.com/changelog/vercel-plugin-now-available-in-vs-code-and-github-copilot-cli\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/vercel-plugin-now-available-in-vs-code-and-github-copilot-cli",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-14T00:00:00+00:00",
+      "published_ts": 1783987200,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Node.js 20 is being deprecated on October 1, 2026",
+      "summary": "Following the Node.js 20 end of life on April 30, 2026, we are deprecating Node.js 20 for Builds and Functions on October 1, 2026. How can I see which of my projects are affected? You can see which of your projects are affected by this deprecation with: Will my existing deployments be affected? No, existing deployments with Serverless Functions will not be affected. Invocations to already-deployed functions will continue to work normally. Only new deployments will be affected. When will I no longer be able to use Node.js 20? On October 1, 2026, Node.js 20 will be disabled in Project Settings . Existing projects using 20 as the version for Functions will display an error when a new deployment is created. How can I upgrade my Node.js version? You can configure your Node.js version in Project Settings or through the engines field in package.json . You can also hand the upgrade to your coding agent: What if I can't upgrade before October 1? If you can't complete the upgrade in time without disrupting your app, deploy it as a container image instead. Add a Dockerfile.vercel at your project root and the image is built and deployed on every commit: We still recommend upgrading when you can. With a container, you manage the Node.js version and its security updates yourself. Upgrade before October 1, 2026. Learn more about supported Node.js versions . Read more",
+      "summary_html": "<p>Following the Node.js 20 end of life on April 30, 2026, we are deprecating Node.js 20 for Builds and Functions on October 1, 2026.</p><p><b>How can I see which of my projects are affected?</b></p><p>You can see which of your projects are affected by this deprecation with:</p><div></div><p><b>Will my existing deployments be affected?</b></p><p>No, existing deployments with Serverless Functions <b>will not be affected.</b> Invocations to already-deployed functions will continue to work normally. Only new deployments will be affected.</p><p><b>When will I no longer be able to use Node.js 20?</b></p><p>On October 1, 2026, Node.js 20 will be disabled in <a href=\"https://vercel.com/d?to=%2F%5Bteam%5D%2F%5Bproject%5D%2Fsettings%2Fbuild-and-deployment&amp;title=Go+to+Build+Settings\">Project Settings</a>. Existing projects using 20 as the version for Functions will display an error when a new deployment is created.</p><p><b>How can I upgrade my Node.js version?</b></p><p>You can configure your Node.js version in <a href=\"https://vercel.com/d?to=%2F%5Bteam%5D%2F%5Bproject%5D%2Fsettings%2Fbuild-and-deployment&amp;title=Go+to+Build+Settings\">Project Settings</a> or through the <code>engines</code> field in <code>package.json</code>.</p><p>You can also hand the upgrade to your coding agent:</p><div></div><p><b>What if I can't upgrade before October 1?</b></p><p>If you can't complete the upgrade in time without disrupting your app, deploy it as a <a href=\"https://vercel.com/docs/functions/container-images\">container image</a> instead. Add a <code>Dockerfile.vercel</code> at your project root and the image is built and deployed on every commit:</p><div></div><p>We still recommend upgrading when you can. With a container, you manage the Node.js version and its security updates yourself.</p><p>Upgrade before October 1, 2026. Learn more about <a href=\"https://vercel.com/docs/functions/runtimes/node-js/node-js-versions\">supported Node.js versions</a>.</p>\n<p>\n<a href=\"https://vercel.com/changelog/node-js-20-is-being-deprecated\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/node-js-20-is-being-deprecated",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-14T00:00:00+00:00",
+      "published_ts": 1783987200,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Endform joins the Vercel Marketplace",
+      "summary": "Endform is now available on the Vercel Marketplace . It runs your Playwright tests in parallel, so your suite finishes in the time of your slowest test. Key capabilities: Run every test on its own isolated machine Bring your existing Playwright tests with no config changes Get a pass/fail check on every production and preview deployment, linked to full traces in the Endform dashboard Spot flaky tests by tracking results across historical runs Pay only for the test runtime you use Install Endform on the Vercel Marketplace or with the Vercel CLI: vc i endform . Read more",
+      "summary_html": "<p><a href=\"https://vercel.com/marketplace/endform\">Endform</a> is now available on the <a href=\"https://vercel.com/marketplace\">Vercel Marketplace</a>. It runs your Playwright tests in parallel, so your suite finishes in the time of your slowest test.</p><p>Key capabilities:</p><ul><li><p>Run every test on its own isolated machine</p></li><li><p>Bring your existing Playwright tests with no config changes</p></li><li><p>Get a pass/fail <a href=\"https://vercel.com/changelog/checks-api-support-added-for-marketplace-integration-providers\">check</a> on every production and preview deployment, linked to full traces in the Endform dashboard</p></li><li><p>Spot flaky tests by tracking results across historical runs</p></li><li><p>Pay only for the test runtime you use</p></li></ul><p>Install Endform on the <a href=\"https://vercel.com/marketplace/endform\">Vercel Marketplace</a> or with the Vercel CLI: <code>vc i endform</code>.</p>\n<p>\n<a href=\"https://vercel.com/changelog/endform-joins-the-vercel-marketplace\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/endform-joins-the-vercel-marketplace",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-14T00:00:00+00:00",
+      "published_ts": 1783987200,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "AgentMail joins the Vercel Marketplace",
+      "summary": "You can now provision and manage AgentMail directly from the Vercel Marketplace. Your AI agents can send, receive, and respond to email from a real inbox. AgentMail handles the mail servers and deliverability. Key capabilities: Provision inboxes and custom domains through the API Handle threads, attachments, and deliverability out of the box Trigger agentic workflows using webhooks and WebSockets Install AgentMail on the Vercel Marketplace or with the Vercel CLI: vc i agentmail . Read more",
+      "summary_html": "<p>You can now provision and manage <a href=\"https://vercel.com/marketplace/agentmail\">AgentMail</a> directly from the Vercel Marketplace. </p><p>Your AI agents can send, receive, and respond to email from a real inbox. AgentMail handles the mail servers and deliverability.</p><p>Key capabilities:</p><ul><li><p>Provision inboxes and custom domains through the API</p></li><li><p>Handle threads, attachments, and deliverability out of the box</p></li><li><p>Trigger agentic workflows using webhooks and WebSockets</p></li></ul><p>Install AgentMail on the <a href=\"https://vercel.com/marketplace/agentmail\">Vercel Marketplace</a> or with the Vercel CLI: <code>vc i agentmail</code>.</p>\n<p>\n<a href=\"https://vercel.com/changelog/agentmail-vercel-marketplace\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/agentmail-vercel-marketplace",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-14T00:00:00+00:00",
+      "published_ts": 1783987200,
+      "smart_groups": [
+        "Agentic AI & Automations"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Chat SDK adds X adapter support",
+      "summary": "Chat SDK now supports X, extending its single-codebase approach to Slack, Discord, GitHub, Teams, Telegram, and WhatsApp with the new X adapter . Teams can build bots that reply to public mentions and hold direct message conversations through the X API v2 and the X Activity API . The adapter handles CRC verification and webhook signature checks automatically and can manage OAuth token refresh for long-running bots. Likes are the only supported reaction, and responses post once on completion since X has no native streaming. X's automation rules apply to automated messages. Read the documentation to get started or browse the adapter directory . Read more",
+      "summary_html": "<p>Chat SDK now supports X, extending its single-codebase approach to Slack, Discord, GitHub, Teams, Telegram, and WhatsApp with the new <a href=\"https://chat-sdk.dev/adapters/official/x\">X adapter</a>.</p><p>Teams can build bots that reply to public mentions and hold direct message conversations through the X API v2 and the <a href=\"https://docs.x.com/x-api/activity/introduction\">X Activity API</a>. The adapter handles CRC verification and webhook signature checks automatically and can manage OAuth token refresh for long-running bots.</p><div></div><p>Likes are the only supported reaction, and responses post once on completion since X has no native streaming. X's <a href=\"https://docs.x.com/developer-terms/policy\">automation rules</a> apply to automated messages.</p><p>Read the <a href=\"https://chat-sdk.dev/adapters/official/x\">documentation</a> to get started or browse the <a href=\"https://chat-sdk.dev/adapters\">adapter directory</a>.</p><div></div><p></p>\n<p>\n<a href=\"https://vercel.com/changelog/chat-sdk-adds-x-adapter-support\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/chat-sdk-adds-x-adapter-support",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-14T00:00:00+00:00",
+      "published_ts": 1783987200,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Access and share AI Gateway leaderboard data",
+      "summary": "We are making the data behind the AI Gateway leaderboards open under the CC BY 4.0 license . You can now download or query the data through the leaderboard-export API endpoint and render any chart as a shareable image. The AI Gateway leaderboards show how AI is used in production, ranking traffic for models, labs, apps, and providers. Data is aggregated daily across trillions of tokens, so you can see what gets adopted and how that changes over time. For deeper analysis, see the July AI Gateway Production Index . What's ranked There are four leaderboards, each with its own metrics: Leaderboard Ranks Metrics Models Individual models Requests, token volume, spend, images or videos generated Labs Model labs Requests, token volume, spend, images or videos generated Apps Opted-in apps built on the AI Gateway Token volume, spend Providers Inference providers Token volume, spend Models and labs can be filtered by modality (text, image, video) and show a daily percentage share over time; apps and providers are aggregated across all modalities and show a ranked top list. Open data The data behind the leaderboards is open, published under Creative Commons Attribution 4.0 (CC BY 4.0) . You are free to use, share, and adapt it, including commercially, as long as you give credit, link to the license, and indicate if changes were made. Every chart and ranked list has a download button that exports the current view as a CSV. For programmatic access, use the export endpoint, which returns the same data and is cached for 24 hours: For models and labs, each row is one entity's daily share of a single metric. One response includes rows for requests , tokens , spend , imageCount , and videoCount , so filter on the metric field to pull out the series you want. Share a chart Every chart has a share button that turns the current view into an image. Pick an aspect ratio (landscape, square, or portrait), then download it as a PNG or copy it to your clipboard. The image includes the legend, title, and AI Gateway branding. View the leaderboards or read the AI Production Index . Read more",
+      "summary_html": "<p>We are making the data behind the <a href=\"https://vercel.com/ai-gateway/leaderboards\">AI Gateway leaderboards</a> open under the <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0 license</a>. You can now download or query the data through the <code>leaderboard-export</code> API endpoint and render any chart as a shareable image.</p><p>The AI Gateway leaderboards show how AI is used in production, ranking traffic for models, labs, apps, and providers. Data is aggregated daily across trillions of tokens, so you can see what gets adopted and how that changes over time. For deeper analysis, see the <a href=\"https://vercel.com/blog/ai-gateway-production-index-july-2026\">July AI Gateway Production Index</a>.</p>What's ranked<p>There are four leaderboards, each with its own metrics:</p><p>Leaderboard</p><p>Ranks</p><p>Metrics</p><p><a href=\"https://vercel.com/ai-gateway/leaderboards/models\">Models</a></p><p>Individual models</p><p>Requests, token volume, spend, images or videos generated</p><p><a href=\"https://vercel.com/ai-gateway/leaderboards/labs\">Labs</a></p><p>Model labs</p><p>Requests, token volume, spend, images or videos generated</p><p><a href=\"https://vercel.com/ai-gateway/leaderboards/apps\">Apps</a></p><p>Opted-in apps built on the AI Gateway</p><p>Token volume, spend</p><p><a href=\"https://vercel.com/ai-gateway/leaderboards/providers\">Providers</a></p><p>Inference providers</p><p>Token volume, spend</p><div></div><p>Models and labs can be filtered by modality (text, image, video) and show a daily percentage share over time; apps and providers are aggregated across all modalities and show a ranked top list.</p>Open data<p>The data behind the leaderboards is open, published under <a href=\"https://creativecommons.org/licenses/by/4.0/\">Creative Commons Attribution 4.0 (CC BY 4.0)</a>. You are free to use, share, and adapt it, including commercially, as long as you give credit, link to the license, and indicate if changes were made.</p><p>Every chart and ranked list has a download button that exports the current view as a CSV.</p><div></div><p>For programmatic access, use the export endpoint, which returns the same data and is cached for 24 hours:</p><div></div><p>For models and labs, each row is one entity's daily share of a single metric. One response includes rows for <code>requests</code>, <code>tokens</code>, <code>spend</code>, <code>imageCount</code>, and <code>videoCount</code>, so filter on the <code>metric</code> field to pull out the series you want.</p><div></div>Share a chart<p>Every chart has a share button that turns the current view into an image. Pick an aspect ratio (landscape, square, or portrait), then download it as a PNG or copy it to your clipboard. The image includes the legend, title, and AI Gateway branding.</p><div></div><p><a href=\"https://vercel.com/ai-gateway/leaderboards\">View the leaderboards</a> or read the <a href=\"https://vercel.com/blog/ai-gateway-production-index-july-2026\">AI Production Index</a>.</p>\n<p>\n<a href=\"https://vercel.com/changelog/open-data-and-shareable-charts-for-ai-gateway-leaderboards\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/open-data-and-shareable-charts-for-ai-gateway-leaderboards",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-14T00:00:00+00:00",
+      "published_ts": 1783987200,
+      "smart_groups": [
+        "AI Research & Papers"
+      ],
+      "curated": true
+    }
+  ]
+}
