@@ -1,0 +1,14 @@
+:8080 {
+    root * /srv
+    encode gzip zstd
+
+    handle_path /data/* {
+        file_server
+        header Access-Control-Allow-Origin "*"
+    }
+
+    handle {
+        try_files {path} /index.html
+        file_server
+    }
+}

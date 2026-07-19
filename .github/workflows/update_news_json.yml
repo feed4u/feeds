@@ -1,0 +1,104 @@
+name: Update News Feed
+
+permissions:
+  contents: write
+
+on:
+  schedule:
+    - cron: "0 * * * *"  # Every hour
+  workflow_dispatch:
+    inputs:
+      vertical:
+        description: 'Vertical to update and deploy'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - k5
+          - 4u
+          - economics
+          - storage
+          - finnish
+
+concurrency:
+  group: news-data
+  cancel-in-progress: false
+
+jobs:
+  update-news:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Resolve vertical list
+        id: verticals
+        run: |
+          CHOICE="${{ github.event.inputs.vertical || 'all' }}"
+          if [ "$CHOICE" = "all" ]; then
+            echo "list=k5 4u economics storage finnish" >> "$GITHUB_OUTPUT"
+          else
+            echo "list=$CHOICE" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r core/code/base/requirements.txt
+
+      - name: Run pipeline
+        run: |
+          chmod +x core/code/run_pipeline.sh core/code/sync_web_data.sh
+          for V in ${{ steps.verticals.outputs.list }}; do
+            echo "::group::Pipeline for $V"
+            VERTICAL=$V ./core/code/run_pipeline.sh
+            echo "::endgroup::"
+          done
+
+      - name: Commit and push data
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add core/data/
+
+          if git diff --staged --quiet; then
+            echo "No data changes to commit"
+          else
+            git commit -m "Update news data (${{ steps.verticals.outputs.list }})"
+            git pull --rebase origin ${{ github.ref_name }}
+            git push
+          fi
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: core/web/package-lock.json
+
+      - name: Install web dependencies
+        working-directory: core/web
+        run: npm ci
+
+      - name: Build and deploy to Cloudflare Pages
+        working-directory: core/web
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          for V in ${{ steps.verticals.outputs.list }}; do
+            echo "::group::Build and deploy $V"
+            VITE_VERTICAL=$V npm run build
+            npx wrangler@4 pages deploy dist --project-name="news-$V" --branch=main
+            echo "::endgroup::"
+          done

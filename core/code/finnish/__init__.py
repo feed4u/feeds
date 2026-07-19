@@ -1,0 +1,2 @@
+"""Finnish vertical configuration package."""
+

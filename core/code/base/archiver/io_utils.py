@@ -1,0 +1,96 @@
+"""I/O utilities for loading and saving JSON files."""
+
+import json
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+
+def load_json_any(path: Path) -> Any:
+    """
+    Load JSON from file with error handling for empty/corrupted files.
+
+    Args:
+        path: Path to JSON file
+
+    Returns:
+        Parsed JSON data or empty list on error
+    """
+    if not path.exists():
+        return None
+
+    # Check if file is empty
+    if path.stat().st_size == 0:
+        print(f"[WARN] Empty file found: {path}, treating as empty list")
+        return []
+
+    try:
+        with path.open("r", encoding="utf-8") as f:
+            return json.load(f)
+    except json.JSONDecodeError as e:
+        print(f"[WARN] Corrupted JSON file {path}: {e}, treating as empty list")
+        return []
+    except Exception as e:
+        print(f"[ERROR] Failed to read {path}: {e}")
+        return None
+
+
+def load_json_list(
+    path: Path, root_key: Optional[str] = None
+) -> List[Dict[str, Any]]:
+    """
+    Load a JSON file and return a list of items.
+
+    Handles both:
+    - List at root: [item1, item2, ...]
+    - Dict with key: {"items": [item1, item2, ...]}
+
+    Args:
+        path: Path to JSON file
+        root_key: Key to extract from dict (defaults to "items")
+
+    Returns:
+        List of items (empty list if file not found or invalid)
+    """
+    if not path.exists():
+        return []
+
+    data = load_json_any(path)
+
+    if data is None:
+        return []
+
+    # List at root
+    if isinstance(data, list):
+        return data
+
+    # Dict case
+    if isinstance(data, dict):
+        # Try specified root_key first
+        if root_key and isinstance(data.get(root_key), list):
+            return data[root_key]
+
+        # Default to "items"
+        if isinstance(data.get("items"), list):
+            return data["items"]
+
+        raise ValueError(
+            f"Expected list or dict with 'items' key in {path}, "
+            f"but found dict with keys: {list(data.keys())}"
+        )
+
+    raise ValueError(f"Expected list or dict in {path}, but found {type(data)}")
+
+
+def save_json_list(path: Path, items: List[Dict[str, Any]]) -> None:
+    """
+    Save list of items to JSON file.
+
+    Creates parent directories if needed.
+
+    Args:
+        path: Path to output JSON file
+        items: List of items to save
+    """
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as f:
+        json.dump(items, f, ensure_ascii=False, indent=2)

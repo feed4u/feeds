@@ -1,0 +1,95 @@
+{
+  "generated_at": "2025-12-19T05:54:13.020525+00:00",
+  "date": "2025-11-27",
+  "total_items": 5,
+  "next_chunk": "archive/news/daily/2025-11-26.json",
+  "items": [
+    {
+      "title": "One Identity Safeguard Named a Visionary in the 2025 Gartner Magic Quadrant for PAM",
+      "summary": "Alisa Viejo, CA, USA, 27th November 2025, CyberNewsWire One Identity Safeguard Named a Visionary in the 2025 Gartner Magic Quadrant for PAM on Latest Hacking News | Cyber Security News, Hacking Tools and Penetration Testing Courses .",
+      "summary_html": "<p>Alisa Viejo, CA, USA, 27th November 2025, CyberNewsWire</p>\n<p><a href=\"https://latesthackingnews.com/2025/11/27/one-identity-safeguard-named-a-visionary-in-the-2025-gartner-magic-quadrant-for-pam/\">One Identity Safeguard Named a Visionary in the 2025 Gartner Magic Quadrant for PAM</a> on <a href=\"https://latesthackingnews.com\">Latest Hacking News | Cyber Security News, Hacking Tools and Penetration Testing Courses</a>.</p>",
+      "link": "https://latesthackingnews.com/2025/11/27/one-identity-safeguard-named-a-visionary-in-the-2025-gartner-magic-quadrant-for-pam/",
+      "source": "Latest Hacking News",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2025-11-27T15:28:06+00:00",
+      "published_ts": 1764257286,
+      "smart_groups": [
+        "Red Team / Offensive"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Announcing the ability to Bring Your Own Dedicated IP (BYOIP) on the Zscaler Zero Trust Exchange",
+      "summary": "As organizations accelerate Zero Trust adoption, one consistent request from network architects, CISOs, and compliance teams is the ability to egress the internet using deterministic, dedicated IP addresses tied specifically to their organization. While Zscaler has been providing\u00a0dedicated IPs to organizations for a very long time, our customers have expressed interest to bring their own IPs to support certain legacy workflows, regulatory environments, and partner systems that still require static, predictable and customer-owned egress IPs.Zscaler supports both Zscaler-assigned Dedicated IPs and customer-owned Dedicated IPs (Bring Your Own IP aka BYOIP) giving enterprises maximum flexibility while preserving the benefits of a modern Zero Trust architecture.What is a Dedicated IP address?A dedicated IP address is a unique IP (Internet Protocol) address that is permanently allocated to a single organization ensuring it is exclusively available for their use. Although not a Zero Trust method due to poor authentication, complexity and vulnerability to compromise, allowlisting access to resources based on source IP address remains a tool in use by legacy SaaS platforms or partner networks. Zscaler offers multiple solutions to address this problem that are covered in this\u00a0White Paper.\u00a0Why Dedicated IPs Still Matter, Even in a Zero Trust WorldMany customers continue to operate systems that rely on fixed public IP identity. Dedicated IPs help address:1. Deterministic Identity for Downstream ControlsSome SaaS platforms, partner networks, or regulatory gates still depend on allowlisting IP addresses for access control. Dedicated IPs ensure predictable egress identity without impacting Zero Trust posture.2. Clear Lines of Ownership, Logging, and AuditabilityCustomer-owned IP ranges create clean attribution boundaries for compliance, logging, and forensics.3. Operational Stability Across MigrationsDedicated IPs maintain consistent external identity even as internal architectures modernize or move away from on-prem or hyperscaler environments.4. Regulatory and Sovereignty RequirementsBYOIP enables organizations to keep ownership of their IP ranges while leveraging Zscaler\u2019s global cloud footprint.What BYOIP on Zscaler looks likeYou bring an IPv4 prefix you own, Zscaler securely validates your authorization to use our ASN to originate it, then Zscaler advertises the route from the designated region and makes the IPs available as Zscaler Managed Dedicated IPs for policy and egress. You can be assigned as many Dedicated IPs as you are entitled to. The validation hinges on two pillars:ROA: A cryptographically signed object in your Regional Internet Registry (RIR) that authorizes a specific Autonomous System Number (ASN) to originate your route.A customer-signed BYOIP message: A short, signed statement tying your prefix to your organization that Zscaler verifies against public materials you publish in your RIR records.Supported regions and ASNsAPAC: AS53813Americas: AS22616EMEA: AS62044PrerequisitesYour prefix is registered with your RIR (ARIN, APNIC, RIPE).IPv4 is supported today (minimum size /24 from a single Zscaler DC). IPv6 minimum is /48 for future support planning; check with your Zscaler representative for timelines.Create a ROA in your RIR that includes your prefix and the appropriate Zscaler ASN for the region where you want the BYOIP deployed.Prepare an x.509 self-signed certificate pair (public and private) to sign your BYOIP validation message.Security and assurance under the hoodROA and RPKI validation: The industry-standard framework ensures route origination integrity. Zscaler\u2019s routing system checks your ROA status before advertisement.Cryptographic attestation: Your x.509-backed signed message lets us confirm the request aligns with your RIR-published materials, thwarting spoofing or misrepresentation.Regional scoping: By tying ROA to a specific Zscaler ASN per region, you control where your prefixes are surfaced, aligning with data residency or performance requirements.Operational safeguards: Zscaler enforces change controls and automated checks before announcements, and monitors propagation and reachability once live.Technical FAQsWhat happens if the ROA expires? Zscaler monitors ROA validity. If the ROA lapses, announcements may be withdrawn to maintain routing hygiene; plan renewals ahead of time.\u00a0 It is critical to ensure timely renewal to avoid service disruptionx.Can I move a prefix between regions? Yes, but you must update the ROA to authorize the new regional ASN and coordinate via support to ensure seamless transitions.IPv6 support? Minimum /48 applies. Check with your Zscaler team for current availability timelines.How is logging handled? Traffic egressing via Dedicated IP is visible in Zscaler logs and analytics as usual, with your owned ranges aiding correlation and downstream controls.Key definitionsROA: A cryptographically signed object that specifies which ASN is authorized to originate a given route.RIR: Regional Internet Registry (ARIN, RIPE, APNIC) governing allocations of IP addresses and ASNs.X.509: A standard for digital certificates used to verify entities in online communications.Getting startedIf you already own eligible prefixes and have RIR access, you can begin today by creating your ROA, publishing your public certificate in your netblock remarks, preparing and signing the BYOIP message, and opening a support ticket. If you prefer white-glove onboarding, contact your Zscaler representative to coordinate the process and timelines.With customer-owned Dedicated IPs, the Zero Trust Exchange becomes not only the fastest path to secure access, but also the most predictable and compliant way to represent your organization on the internet.",
+      "summary_html": "As organizations accelerate Zero Trust adoption, one consistent request from network architects, CISOs, and compliance teams is the ability to egress the internet using deterministic, dedicated IP addresses tied specifically to their organization. While Zscaler has been providing\u00a0dedicated IPs to organizations for a very long time, our customers have expressed interest to bring their own IPs to support certain legacy workflows, regulatory environments, and partner systems that still require static, predictable and customer-owned egress IPs.Zscaler supports both Zscaler-assigned Dedicated IPs and customer-owned Dedicated IPs (Bring Your Own IP aka BYOIP) giving enterprises maximum flexibility while preserving the benefits of a modern Zero Trust architecture.What is a Dedicated IP address?A dedicated IP address is a unique IP (Internet Protocol) address that is permanently allocated to a single organization ensuring it is exclusively available for their use. Although not a Zero Trust method due to poor authentication, complexity and vulnerability to compromise, allowlisting access to resources based on source IP address remains a tool in use by legacy SaaS platforms or partner networks. Zscaler offers multiple solutions to address this problem that are covered in this\u00a0White Paper.\u00a0Why Dedicated IPs Still Matter, Even in a Zero Trust WorldMany customers continue to operate systems that rely on fixed public IP identity. Dedicated IPs help address:1. Deterministic Identity for Downstream ControlsSome SaaS platforms, partner networks, or regulatory gates still depend on allowlisting IP addresses for access control. Dedicated IPs ensure predictable egress identity without impacting Zero Trust posture.2. Clear Lines of Ownership, Logging, and AuditabilityCustomer-owned IP ranges create clean attribution boundaries for compliance, logging, and forensics.3. Operational Stability Across MigrationsDedicated IPs maintain consistent external identity even as internal architectures modernize or move away from on-prem or hyperscaler environments.4. Regulatory and Sovereignty RequirementsBYOIP enables organizations to keep ownership of their IP ranges while leveraging Zscaler\u2019s global cloud footprint.What BYOIP on Zscaler looks likeYou bring an IPv4 prefix you own, Zscaler securely validates your authorization to use our ASN to originate it, then Zscaler advertises the route from the designated region and makes the IPs available as Zscaler Managed Dedicated IPs for policy and egress. You can be assigned as many Dedicated IPs as you are entitled to. The validation hinges on two pillars:ROA: A cryptographically signed object in your Regional Internet Registry (RIR) that authorizes a specific Autonomous System Number (ASN) to originate your route.A customer-signed BYOIP message: A short, signed statement tying your prefix to your organization that Zscaler verifies against public materials you publish in your RIR records.Supported regions and ASNsAPAC: AS53813Americas: AS22616EMEA: AS62044PrerequisitesYour prefix is registered with your RIR (ARIN, APNIC, RIPE).IPv4 is supported today (minimum size /24 from a single Zscaler DC). IPv6 minimum is /48 for future support planning; check with your Zscaler representative for timelines.Create a ROA in your RIR that includes your prefix and the appropriate Zscaler ASN for the region where you want the BYOIP deployed.Prepare an x.509 self-signed certificate pair (public and private) to sign your BYOIP validation message.Security and assurance under the hoodROA and RPKI validation: The industry-standard framework ensures route origination integrity. Zscaler\u2019s routing system checks your ROA status before advertisement.Cryptographic attestation: Your x.509-backed signed message lets us confirm the request aligns with your RIR-published materials, thwarting spoofing or misrepresentation.Regional scoping: By tying ROA to a specific Zscaler ASN per region, you control where your prefixes are surfaced, aligning with data residency or performance requirements.Operational safeguards: Zscaler enforces change controls and automated checks before announcements, and monitors propagation and reachability once live.Technical FAQsWhat happens if the ROA expires? Zscaler monitors ROA validity. If the ROA lapses, announcements may be withdrawn to maintain routing hygiene; plan renewals ahead of time.\u00a0 It is critical to ensure timely renewal to avoid service disruptionx.Can I move a prefix between regions? Yes, but you must update the ROA to authorize the new regional ASN and coordinate via support to ensure seamless transitions.IPv6 support? Minimum /48 applies. Check with your Zscaler team for current availability timelines.How is logging handled? Traffic egressing via Dedicated IP is visible in Zscaler logs and analytics as usual, with your owned ranges aiding correlation and downstream controls.Key definitionsROA: A cryptographically signed object that specifies which ASN is authorized to originate a given route.RIR: Regional Internet Registry (ARIN, RIPE, APNIC) governing allocations of IP addresses and ASNs.X.509: A standard for digital certificates used to verify entities in online communications.Getting startedIf you already own eligible prefixes and have RIR access, you can begin today by creating your ROA, publishing your public certificate in your netblock remarks, preparing and signing the BYOIP message, and opening a support ticket. If you prefer white-glove onboarding, contact your Zscaler representative to coordinate the process and timelines.With customer-owned Dedicated IPs, the Zero Trust Exchange becomes not only the fastest path to secure access, but also the most predictable and compliant way to represent your organization on the internet.",
+      "link": "https://www.zscaler.com/blogs/product-insights/announcing-ability-bring-your-own-dedicated-ip-byoip-zscaler-zero-trust",
+      "source": "Zscaler Research Blogs",
+      "feed_type": "news",
+      "type": "threat-intel-apt-campaigns",
+      "type_label": "Threat Intel & APT Campaigns",
+      "published": "2025-11-27T14:27:18+00:00",
+      "published_ts": 1764253638,
+      "smart_groups": [
+        "Ransomware",
+        "Vulnerabilities / CVEs",
+        "Cloud / SaaS",
+        "Identity / Access",
+        "Network / OT / ICS",
+        "Crypto / Web3",
+        "Community Discussion",
+        "Product News"
+      ],
+      "curated": true
+    },
+    {
+      "title": "3 Best VPN for iPhone (2025), Tested and Reviewed",
+      "summary": "There are dozens of iPhone VPNs at your disposal, but these are the services that will actually keep your browsing safe.",
+      "summary_html": "There are dozens of iPhone VPNs at your disposal, but these are the services that will actually keep your browsing safe.",
+      "link": "https://www.wired.com/gallery/best-vpn-for-iphone/",
+      "source": "WIRED \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2025-11-27T11:30:00+00:00",
+      "published_ts": 1764243000,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "China Software Developer Network - 6,414,990 breached accounts",
+      "summary": "In 2011, the China Software Developer Network (CSDN) suffered a data breach that exposed over 6M user records . The data included email addresses alongside usernames and plain text passwords.",
+      "summary_html": "In 2011, <a href=\"https://infowatch.com/analytical-research/csdn-data-breach-exposes-6m-accounts-says-infowatch\">the China Software Developer Network (CSDN) suffered a data breach that exposed over 6M user records</a>. The data included email addresses alongside usernames and plain text passwords.",
+      "link": "https://haveibeenpwned.com/Breach/CSDN",
+      "source": "Have I Been Pwned \u2013 Latest Breaches",
+      "feed_type": "news",
+      "type": "leaks-breaches",
+      "type_label": "Leaks & Breaches",
+      "published": "2025-11-27T05:49:56+00:00",
+      "published_ts": 1764222596,
+      "smart_groups": [
+        "Data Breaches / Leaks"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Shai-hulud 2.0 Campaign Targets Cloud and Developer Ecosystems",
+      "summary": "Shai-hulud 2.0 campaign features a sophisticated variant capable of stealing credentials and secrets from major cloud platforms and developer services, while automating the backdooring of NPM packages maintained by victims. Its advanced tactics enable rapid, stealthy propagation across the software supply chain, putting countless downstream users at risk.",
+      "summary_html": "Shai-hulud 2.0 campaign features a sophisticated variant capable of stealing credentials and secrets from major cloud platforms and developer services, while automating the backdooring of NPM packages maintained by victims. Its advanced tactics enable rapid, stealthy propagation across the software supply chain, putting countless downstream users at risk.",
+      "link": "https://www.trendmicro.com/en_us/research/25/k/shai-hulud-2-0-targets-cloud-and-developer-systems.html",
+      "source": "Trend Micro Research",
+      "feed_type": "news",
+      "type": "threat-intel-apt-campaigns",
+      "type_label": "Threat Intel & APT Campaigns",
+      "published": "2025-11-27T00:00:00+00:00",
+      "published_ts": 1764201600,
+      "smart_groups": [
+        "Malware / Payloads",
+        "Network / OT / ICS",
+        "Supply Chain / Software"
+      ],
+      "curated": true
+    }
+  ]
+}

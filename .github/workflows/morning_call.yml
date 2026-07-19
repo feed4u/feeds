@@ -1,0 +1,63 @@
+name: Build SOC Morning Call
+
+on:
+  schedule:
+    - cron: "15 6 * * *"  # Daily at 06:15 UTC
+  workflow_dispatch:
+
+# Serialize with the hourly news update to avoid push races.
+concurrency:
+  group: news-data
+  cancel-in-progress: false
+
+jobs:
+  morning-call:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r core/code/base/requirements.txt
+
+      - name: Build SOC morning call for k5
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          MORNING_CALL_WINDOW_HOURS: "24"
+          MORNING_CALL_MAX_ITEMS: "100"
+          MORNING_CALL_MAX_OUTPUT_TOKENS: "3000"
+          MORNING_CALL_MODEL: "gpt-4o"
+          NEWS_JSON_PATH: "core/data/k5/news_recent.json"
+          MORNING_CALL_OUTPUT_DIR: "core/data/k5/archive"
+          VERTICAL: k5
+        run: |
+          python core/code/k5/build_daily_report.py --vertical k5
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add core/data/k5/archive/
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          git commit -m "Update SOC morning call report (k5)"
+          git pull --rebase origin ${{ github.ref_name }}
+          git push

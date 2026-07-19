@@ -1,0 +1,2 @@
+"""Storage vertical configuration package."""
+

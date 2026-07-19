@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  data:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.data
+    container_name: k5-data
+    volumes:
+      - ../data:/app/data
+      - ../source:/app/source:ro
+    environment:
+      DAYS_BACK: "${DAYS_BACK:-30}"
+      MAX_WORKERS: "${MAX_WORKERS:-10}"
+      REQUEST_TIMEOUT: "${REQUEST_TIMEOUT:-25}"
+    command: >
+      /bin/sh -c "
+        python /app/scripts/build_category_metadata.py &&
+        python /app/scripts/fetch_news.py &&
+        python /app/scripts/build_news_archive.py &&
+        python /app/scripts/create_trends.py
+      "
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      NODE_ENV: production
+    volumes:
+      - ../data:/usr/share/nginx/html/data:ro
+    depends_on:
+      - data
