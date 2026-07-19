@@ -40,10 +40,10 @@ jobs:
       - name: Resolve vertical list
         id: verticals
         run: |
-          # economics is disabled from the schedule; run it via workflow_dispatch
+          # economics and storage are disabled from the schedule; run them via workflow_dispatch
           CHOICE="${{ github.event.inputs.vertical || 'all' }}"
           if [ "$CHOICE" = "all" ]; then
-            echo "list=k5 4u storage finnish" >> "$GITHUB_OUTPUT"
+            echo "list=k5 4u finnish" >> "$GITHUB_OUTPUT"
           else
             echo "list=$CHOICE" >> "$GITHUB_OUTPUT"
           fi

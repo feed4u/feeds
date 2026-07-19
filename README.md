@@ -7,7 +7,7 @@ One codebase, one data pipeline, one React frontend — deployed as multiple ind
 | `k5` | Security / threat intelligence | Trends dashboard, threat actors, daily SOC briefing |
 | `4u` | AI / ML | — |
 | `economics` | Economy (disabled from schedule) | — |
-| `storage` | Storage tech | — |
+| `storage` | Storage tech (disabled from schedule) | — |
 | `finnish` | Finnish news | Duplicates (media-consortium clustering) |
 
 ## Layout

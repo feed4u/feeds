@@ -27,7 +27,7 @@ Current project mapping:
 | k5 | `5k-security-news` |
 | 4u | `4u-ml` |
 | economics | `economic-4u` (vertical disabled from the schedule) |
-| storage | *(create when needed)* |
+| storage | *(vertical disabled from the schedule)* |
 | finnish | *(create when needed)* |
 
 `VITE_VERTICAL` selects branding, meta tags, nav/feature flags, and the data path
@@ -41,8 +41,8 @@ Cloudflare flags the classic `/* /index.html 200` rule as an infinite loop).
 ## Build quota
 
 Free plan = 500 Cloudflare builds/month per account, and every push builds every
-git-integrated project. The 8-hour cron (~90 pushes/month) × 4 active projects
-≈ 360 builds + ~30 from the daily k5 morning-call commit — inside quota. **Set
+git-integrated project. The 8-hour cron (~90 pushes/month) × 3 active projects
+≈ 270 builds + ~30 from the daily k5 morning-call commit — inside quota. **Set
 the build watch paths above** so unrelated commits (docs, other verticals) skip
 builds. If you add projects or shorten the cron, redo this math — or switch a
 project back to direct upload (`wrangler pages deploy`), which bypasses the
