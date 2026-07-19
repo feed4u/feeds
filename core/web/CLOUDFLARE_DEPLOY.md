@@ -35,7 +35,8 @@ Current project mapping:
 script wipes `public/data/` and copies only that vertical's data from
 `core/data/<vertical>`, excluding `news_recent.json` and error reports (the web
 app never reads them, and `news_recent.json` can exceed Cloudflare's 25 MiB
-per-file limit). `public/_redirects` handles SPA deep links.
+per-file limit). Pages serves SPA fallback natively (no `_redirects` needed;
+Cloudflare flags the classic `/* /index.html 200` rule as an infinite loop).
 
 ## Build quota
 
@@ -75,6 +76,7 @@ VITE_VERTICAL=k5 npm run build && npm run preview
   `sync_web_data.sh` falls back to tar on the Pages build image.
 - **Site loads but no items**: check the deployed build contains
   `data/<vertical>/latest.json`; re-run the pipeline workflow for that vertical.
-- **Deep links 404**: ensure `public/_redirects` is present in `dist/`.
+- **Deep links 404**: Pages' automatic SPA fallback requires that `dist/` has no
+  `404.html`; don't add one.
 - **Builds skipped unexpectedly**: check the project's build watch paths include
   `core/data/<vertical>/*`.
