@@ -5,11 +5,13 @@ permissions:
 
 on:
   schedule:
-    - cron: "0 * * * *"  # Every hour
+    - cron: "23 */8 * * *"  # Every 8 hours — each data push triggers a build on
+                            # every git-integrated Pages project; this cadence
+                            # keeps 5 projects under the 500 builds/month quota.
   workflow_dispatch:
     inputs:
       vertical:
-        description: 'Vertical to update and deploy'
+        description: 'Vertical to update'
         required: false
         default: 'all'
         type: choice
@@ -38,9 +40,10 @@ jobs:
       - name: Resolve vertical list
         id: verticals
         run: |
+          # economics is disabled from the schedule; run it via workflow_dispatch
           CHOICE="${{ github.event.inputs.vertical || 'all' }}"
           if [ "$CHOICE" = "all" ]; then
-            echo "list=k5 4u economics storage finnish" >> "$GITHUB_OUTPUT"
+            echo "list=k5 4u storage finnish" >> "$GITHUB_OUTPUT"
           else
             echo "list=$CHOICE" >> "$GITHUB_OUTPUT"
           fi
@@ -64,6 +67,8 @@ jobs:
             echo "::endgroup::"
           done
 
+      # Pushing the data commit is what deploys: each Cloudflare Pages project
+      # is git-integrated and rebuilds its vertical from this repo on push.
       - name: Commit and push data
         run: |
           git config --global user.name "github-actions[bot]"
@@ -78,27 +83,3 @@ jobs:
             git pull --rebase origin ${{ github.ref_name }}
             git push
           fi
-
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-          cache-dependency-path: core/web/package-lock.json
-
-      - name: Install web dependencies
-        working-directory: core/web
-        run: npm ci
-
-      - name: Build and deploy to Cloudflare Pages
-        working-directory: core/web
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: |
-          for V in ${{ steps.verticals.outputs.list }}; do
-            echo "::group::Build and deploy $V"
-            VITE_VERTICAL=$V npm run build
-            npx wrangler@4 pages deploy dist --project-name="news-$V" --branch=main
-            echo "::endgroup::"
-          done

@@ -6,7 +6,7 @@ One codebase, one data pipeline, one React frontend — deployed as multiple ind
 |---|---|---|
 | `k5` | Security / threat intelligence | Trends dashboard, threat actors, daily SOC briefing |
 | `4u` | AI / ML | — |
-| `economics` | Economy | — |
+| `economics` | Economy (disabled from schedule) | — |
 | `storage` | Storage tech | — |
 | `finnish` | Finnish news | Duplicates (media-consortium clustering) |
 
@@ -48,14 +48,15 @@ npm run preview
 2. `core/code/<name>/smart_groups.py` — classification rules (optional; base defaults used otherwise).
 3. Add an entry to `core/web/src/config/verticals.ts`.
 4. Add the name to the vertical list in `.github/workflows/update_news_json.yml`.
-5. `wrangler pages project create news-<name> --production-branch=main`.
+5. Create a git-integrated Cloudflare Pages project for it (settings in
+   `core/web/CLOUDFLARE_DEPLOY.md`).
 
 ## Deployment
 
-GitHub Actions (`.github/workflows/update_news_json.yml`) runs the pipeline hourly for every
-vertical, commits `core/data/`, builds each variant, and deploys via
-`wrangler pages deploy` to its own Cloudflare Pages project (`news-<vertical>`).
-See `core/web/CLOUDFLARE_DEPLOY.md` for one-time Cloudflare setup.
+GitHub Actions (`.github/workflows/update_news_json.yml`) runs the pipeline every
+8 hours for the active verticals and commits `core/data/`; each vertical's
+git-integrated Cloudflare Pages project rebuilds from that push.
+See `core/web/CLOUDFLARE_DEPLOY.md` for per-project build settings.
 
 ## License
 
