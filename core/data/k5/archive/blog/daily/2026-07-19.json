@@ -1,9 +1,26 @@
 {
-  "generated_at": "2026-07-20T18:28:47.875873+00:00",
+  "generated_at": "2026-07-21T03:56:10.462688+00:00",
   "date": "2026-07-19",
-  "total_items": 6,
+  "total_items": 7,
   "next_chunk": "archive/blog/daily/2026-07-18.json",
   "items": [
+    {
+      "title": "Free micropatches available for \"LegacyHive\" 0day",
+      "summary": "Six days ago, security researcher Nightmare-Eclipse published a proof-of-concept for local privilege escalation vulnerability in Windows. This vulnerability has no official patch from Microsoft yet; meaning that even fully-patched Windows computers are vulnerable. \nThe vulnerability allows a regular non-admin user to mount any other user's registry hive in full access mode, and then either extract that user's stored secrets or modify any values in their registry to affect what gets executed the next time they log in.\nWe analyzed the vulnerability and created a free micropatch for it, which we have issued today for anyone to use.\n\nThe Vulnerability\u00a0\nThe vulnerability lies in Windows User Profile Service. When a logged-in user runs a new process as another user, User Profile Service loads said user's registry hive  (comprising said user's HKEY_LOCAL_USER and HKEY_CLASSES_ROOT) and makes them available to the original user.\nIn this process, there is a time-of-check-to-time-of-use (TOCTOU) vulnerability that allows the local attacker to use a symbolic link  to confuse User Profile Service into loading any user's registry hive file instead of the requesting user's file.",
+      "summary_html": "Six days ago, security researcher Nightmare-Eclipse published a proof-of-concept for local privilege escalation vulnerability in Windows. This vulnerability has no official patch from Microsoft yet; meaning that even fully-patched Windows computers are vulnerable. \nThe vulnerability allows a regular non-admin user to mount any other user's registry hive in full access mode, and then either extract that user's stored secrets or modify any values in their registry to affect what gets executed the next time they log in.\nWe analyzed the vulnerability and created a free micropatch for it, which we have issued today for anyone to use.\n\nThe Vulnerability\u00a0\nThe vulnerability lies in Windows User Profile Service. When a logged-in user runs a new process as another user, User Profile Service loads said user's registry hive  (comprising said user's HKEY_LOCAL_USER and HKEY_CLASSES_ROOT) and makes them available to the original user.\nIn this process, there is a time-of-check-to-time-of-use (TOCTOU) vulnerability that allows the local attacker to use a symbolic link  to confuse User Profile Service into loading any user's registry hive file instead of the requesting user's file.",
+      "link": "https://0patch.com/blog/micropatches-available-for-legacyhive-windows-user-profile-service-elevation-of-p",
+      "source": "0patch Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-07-19T22:00:00+00:00",
+      "published_ts": 1784498400,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Exploit / PoC"
+      ],
+      "curated": true
+    },
     {
       "title": "Frida 17.16.2 Released",
       "summary": "Another quick bug-fix release, fixing an issue where frida-helper on Darwin\nand Linux kept the embedder\u2019s stdio pipes open. The helper previously inherited these streams at launch so they could later be\nused by Device#spawn() with stdio='inherit' . The streams are now passed to\nthe helper with each such request instead. darwin: Redirect the helper\u2019s own stdin, stdout, and stderr to /dev/null . linux: Apply the same fix as on Darwin.",
