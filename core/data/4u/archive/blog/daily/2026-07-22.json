@@ -1,9 +1,40 @@
 {
-  "generated_at": "2026-07-22T17:50:31.951745+00:00",
+  "generated_at": "2026-07-23T03:56:03.343905+00:00",
   "date": "2026-07-22",
-  "total_items": 65,
+  "total_items": 69,
   "next_chunk": "archive/blog/daily/2026-07-21.json",
   "items": [
+    {
+      "title": "One encoder, seven heads: what we learned training a unified security classifier with masked losses [P]",
+      "summary": "We spent the last months consolidating seven separate sequence classifiers into one multi-head model, our apex model, so to speak, and since the weights are now public, I wanted to share what worked and what surprised us. Setup: a shared mmBERT-small encoder with seven task heads, binary injection (BCE), document class (7-way), tool type (14-way), tool operation (6-way), tool data-flow tags (3\u00d7 BCE, multi-label), intent routing (5-way), and threat type (7-way). The part that needed care: our training rows only carry labels for a subset of tasks, so absent tasks are masked out of the loss entirely. We ended up writing a self-test that asserts absent-task gradients are exactly zero, which caught two subtle bugs, and I'd recommend it to anyone doing similar masking. About 5k synthetic/real multi-task rows help the heads co-train; the test sets stay 100 % real data. Held-out results per head: injection F1 0.962, documents 0.980, tool type 0.957, tool operation 0.945, tool tags 0.958, routing 0.916, threat 0.952. Quantization: both the unified model and the dedicated single-task variants ship quantized -edge builds (ONNX INT8 + INT4 embeddings, from 96 MB) with measured parity benchmarks in the repos, the worst head loses 0.012 against FP32. Was it worth it vs. seven dedicated models? We released both variants, so you can judge for yourself, the dedicated models score marginally higher on most tasks, but the unified one does one encoder pass instead of up to seven. Our weak spot: routing, at 0.916. The intent classes overlap semantically (\"write code that analyzes my data\" is that code or analytics?), and I suspect the ambiguity is genuinely in the data. If you have ideas beyond relabeling, let me know :) Weights and per-head metrics: https://huggingface.co/patronus-studio submitted by /u/PatronusProtect [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>We spent the last months consolidating seven separate sequence classifiers into one multi-head model, our apex model, so to speak, and since the weights are now public, I wanted to share what worked and what surprised us.</p> <p><strong>Setup:</strong> a shared mmBERT-small encoder with seven task heads, binary injection (BCE), document class (7-way), tool type (14-way), tool operation (6-way), tool data-flow tags (3\u00d7 BCE, multi-label), intent routing (5-way), and threat type (7-way).</p> <p><strong>The part that needed care:</strong> our training rows only carry labels for a subset of tasks, so absent tasks are masked out of the loss entirely. We ended up writing a self-test that asserts absent-task gradients are exactly zero, which caught two subtle bugs, and I'd recommend it to anyone doing similar masking. About 5k synthetic/real multi-task rows help the heads co-train; the test sets stay 100 % real data.</p> <p><strong>Held-out results per head:</strong> injection F1 0.962, documents 0.980, tool type 0.957, tool operation 0.945, tool tags 0.958, routing 0.916, threat 0.952.</p> <p><strong>Quantization:</strong> both the unified model and the dedicated single-task variants ship quantized <code>-edge</code> builds (ONNX INT8 + INT4 embeddings, from 96 MB) with measured parity benchmarks in the repos, the worst head loses 0.012 against FP32.</p> <p><strong>Was it worth it vs. seven dedicated models?</strong> We released both variants, so you can judge for yourself, the dedicated models score marginally higher on most tasks, but the unified one does one encoder pass instead of up to seven.</p> <p><strong>Our weak spot:</strong> routing, at 0.916. The intent classes overlap semantically (\"write code that analyzes my data\" is that code or analytics?), and I suspect the ambiguity is genuinely in the data. If you have ideas beyond relabeling, let me know :)</p> <p>Weights and per-head metrics: <a href=\"https://huggingface.co/patronus-studio\">https://huggingface.co/patronus-studio</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/PatronusProtect\"> /u/PatronusProtect </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1v3vuj9/one_encoder_seven_heads_what_we_learned_training/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1v3vuj9/one_encoder_seven_heads_what_we_learned_training/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/MachineLearning/comments/1v3vuj9/one_encoder_seven_heads_what_we_learned_training/",
+      "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-07-22T22:48:22+00:00",
+      "published_ts": 1784760502,
+      "smart_groups": [
+        "AI Research & Papers",
+        "NLP & Language Understanding"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Asking about how to collaborate with professors or research labs [D]",
+      "summary": "Hey everyone, I'm not in college anymore. Is it possible to do research with a professor or any research lab while working a full time job? If yes, what's the best way to reach out and get involved? Also if anyone looking for someone to work with on a research project or something similar, can dm me. submitted by /u/VastThen1742 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Hey everyone, I'm not in college anymore. Is it possible to do research with a professor or any research lab while working a full time job? If yes, what's the best way to reach out and get involved? Also if anyone looking for someone to work with on a research project or something similar, can dm me.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/VastThen1742\"> /u/VastThen1742 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1v3t8s0/asking_about_how_to_collaborate_with_professors/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1v3t8s0/asking_about_how_to_collaborate_with_professors/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/MachineLearning/comments/1v3t8s0/asking_about_how_to_collaborate_with_professors/",
+      "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-07-22T21:09:10+00:00",
+      "published_ts": 1784754550,
+      "smart_groups": [],
+      "curated": false
+    },
     {
       "title": "Show HN: We added x402 so AI agents can pay to use our cloud simulation API",
       "summary": "Article URL: https://www.cloudworldmodel.ai/blog/x402-cloud-simulation-api Comments URL: https://news.ycombinator.com/item?id=49010610 Points: 1 # Comments: 0",
@@ -957,6 +988,37 @@
       "published_ts": 1784678750,
       "smart_groups": [],
       "curated": false
+    },
+    {
+      "title": "AI Gateway now supports streaming transcription",
+      "summary": "AI Gateway now supports streaming transcription . Previously, transcription required a complete audio file and returned the full transcript in a single response. Now you can stream audio in as it's captured and get transcript updates back as the model produces them, keeping latency low for uses like live captioning and voice input. Streaming transcription is in beta and available through the AI SDK 's streamTranscribe function with any streaming-capable transcription model. The example below streams raw PCM audio to openai/gpt-realtime-whisper and prints each transcript delta as it arrives. The result stream also carries partial and final transcripts: The same code works across providers: swap the model string to use xai/grok-stt or any other streaming-capable transcription model . Streaming transcription also makes it easy to add a voice mode to an agent. Stream the user's speech to a transcription model and pass the live text to your agent. The agent itself does not change: it still receives text, so this works with any text-based agent. For agents that speak back, pair it with speech generation, or use realtime voice for full two-way conversation. For more information on streaming transcription on AI Gateway, see the documentation . Read more",
+      "summary_html": "<p>AI Gateway now supports <a href=\"https://vercel.com/ai-gateway/models?modality=audio:transcription&amp;features=websockets\">streaming transcription</a>. Previously, transcription required a complete audio file and returned the full transcript in a single response. Now you can stream audio in as it's captured and get transcript updates back as the model produces them, keeping latency low for uses like live captioning and voice input.</p><p>Streaming transcription is in beta and available through the <a href=\"https://ai-sdk.dev/docs/ai-sdk-core/transcription#streaming-transcription\">AI SDK</a>'s <code>streamTranscribe</code> function with any streaming-capable transcription model.</p><p>The example below streams raw PCM audio to <code>openai/gpt-realtime-whisper</code> and prints each transcript delta as it arrives. The result stream also carries partial and final transcripts:</p><div></div><p>The same code works across providers: swap the model string to use <code>xai/grok-stt</code> or any other <a href=\"https://vercel.com/ai-gateway/models?modality=audio:transcription&amp;features=websockets\">streaming-capable transcription model</a>. </p><p>Streaming transcription also makes it easy to add a voice mode to an agent. Stream the user's speech to a transcription model and pass the live text to your agent. The agent itself does not change: it still receives text, so this works with any text-based agent. For agents that speak back, pair it with speech generation, or use realtime voice for full two-way conversation.</p><p>For more information on streaming transcription on AI Gateway, see the <a href=\"https://vercel.com/docs/ai-gateway/modalities/speech-to-text#streaming-transcription\">documentation</a>.</p>\n<p>\n<a href=\"https://vercel.com/changelog/ai-gateway-now-supports-streaming-transcription\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/ai-gateway-now-supports-streaming-transcription",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-22T00:00:00+00:00",
+      "published_ts": 1784678400,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "Data Engineering & Pipelines"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Extend eve agents with installable extensions",
+      "summary": "You can now package tools, connections, skills, instructions, and hooks into extensions that any eve agent can import. Extensions can be published to package registries, then installed, versioned, and upgraded like any other project dependency. A browser-use extension might ship tools for navigating a site, a memory extension can capture context with hooks and recall it with tools, and a self-improvement extension pairs hooks with dynamic instructions. Scaffold a new extension with a single command: This creates the package, installs dependencies, and initializes Git. The generated package is shaped like an agent, with tools, connections, skills, and hooks following the same file conventions. When the extension is ready, running eve extension build generates the publishable package. To use an extension, install the package and import it from a file in agent/extensions/ : The filename sets the namespace, so the extension's search tool runs in the agent as crm__search . Extensions allow you to: Declare a config schema using a standard schema library, such as Zod. Consumer settings are validated on import and typed everywhere the extension reads them. Require approval before an extension's tool runs, replace it with your own, or remove it with disableTool() . Narrow an extension tool's result type in hooks with toolResultFrom . Read the documentation to get started. Read more",
+      "summary_html": "<p>You can now package tools, connections, skills, instructions, and hooks into extensions that any <a href=\"https://eve.dev/\">eve</a> agent can import. Extensions can be published to package registries, then installed, versioned, and upgraded like any other project dependency.</p><p>A browser-use extension might ship tools for navigating a site, a memory extension can capture context with hooks and recall it with tools, and a self-improvement extension pairs hooks with dynamic instructions.</p><p>Scaffold a new extension with a single command:</p><div></div><p>This creates the package, installs dependencies, and initializes Git. The generated package is shaped like an agent, with tools, connections, skills, and hooks following the same file conventions.</p><div></div><p>When the extension is ready, running <code>eve extension build</code> generates the publishable package.</p><p>To use an extension, install the package and import it from a file in <code>agent/extensions/</code>:</p><div></div><p>The filename sets the namespace, so the extension's search tool runs in the agent as <code>crm__search</code>.</p><p>Extensions allow you to:</p><ul><li><p>Declare a config schema using a standard schema library, such as Zod. Consumer settings are validated on import and typed everywhere the extension reads them.</p></li><li><p>Require approval before an extension's tool runs, replace it with your own, or remove it with <code>disableTool()</code>.</p></li><li><p>Narrow an extension tool's result type in hooks with <code>toolResultFrom</code>.</p></li></ul><p>Read the <a href=\"https://eve.dev/docs/extensions\">documentation</a> to get started.</p><p></p>\n<p>\n<a href=\"https://vercel.com/changelog/eve-extensions\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/eve-extensions",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-07-22T00:00:00+00:00",
+      "published_ts": 1784678400,
+      "smart_groups": [],
+      "curated": true
     }
   ]
 }
