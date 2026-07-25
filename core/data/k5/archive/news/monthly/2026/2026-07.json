@@ -9,7 +9,7 @@
     "type": "vulnerability-advisories-research",
     "type_label": "Vulnerability Advisories & Research",
     "published": null,
-    "published_ts": 1784916002.214301,
+    "published_ts": 1784951281.718634,
     "smart_groups": [
       "Vulnerabilities / CVEs"
     ],
@@ -25,7 +25,7 @@
     "type": "vulnerability-advisories-research",
     "type_label": "Vulnerability Advisories & Research",
     "published": null,
-    "published_ts": 1784916002.214298,
+    "published_ts": 1784951281.718631,
     "smart_groups": [
       "Vulnerabilities / CVEs"
     ],
@@ -41,7 +41,7 @@
     "type": "vulnerability-advisories-research",
     "type_label": "Vulnerability Advisories & Research",
     "published": null,
-    "published_ts": 1784916002.214296,
+    "published_ts": 1784951281.718628,
     "smart_groups": [
       "Vulnerabilities / CVEs"
     ],
@@ -57,7 +57,7 @@
     "type": "vulnerability-advisories-research",
     "type_label": "Vulnerability Advisories & Research",
     "published": null,
-    "published_ts": 1784916002.214292,
+    "published_ts": 1784951281.718624,
     "smart_groups": [
       "Vulnerabilities / CVEs"
     ],
@@ -73,9 +73,393 @@
     "type": "vulnerability-advisories-research",
     "type_label": "Vulnerability Advisories & Research",
     "published": null,
-    "published_ts": 1784916002.214284,
+    "published_ts": 1784951281.718615,
     "smart_groups": [
       "Vulnerabilities / CVEs"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Reverse Engineering Windows Data Deduplication: From Research to an Open-Source Recovery Tool",
+    "summary": "Hi everyone, I've been researching Windows Data Deduplication and built DedupInspector, an open-source tool for offline reconstruction of deduplicated files from the Chunk Store. I'd love to hear your feedback, suggestions, or testing results. Research: https://7h3kn0w3r.github.io/blog/windows-data-deduplication/ GitHub: https://github.com/7h3kn0w3r/DedupInspector submitted by /u/mostafa___mahmoud [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Hi everyone,</p> <p>I've been researching Windows Data Deduplication and built DedupInspector, an open-source tool for offline reconstruction of deduplicated files from the Chunk Store.</p> <p>I'd love to hear your feedback, suggestions, or testing results.</p> <p>Research: <a href=\"https://7h3kn0w3r.github.io/blog/windows-data-deduplication/\">https://7h3kn0w3r.github.io/blog/windows-data-deduplication/</a></p> <p>GitHub: <a href=\"https://github.com/7h3kn0w3r/DedupInspector\">https://github.com/7h3kn0w3r/DedupInspector</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/mostafa___mahmoud\"> /u/mostafa___mahmoud </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v5vgex/reverse_engineering_windows_data_deduplication/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v5vgex/reverse_engineering_windows_data_deduplication/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1v5vgex/reverse_engineering_windows_data_deduplication/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-07-25T02:20:19+00:00",
+    "published_ts": 1784946019,
+    "smart_groups": [
+      "Vulnerabilities / CVEs",
+      "Community Discussion"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Engineering a zero-copy SQLite carver for NIST's 425GB NSRL database on free-tier CI — and the two production surprises that broke our first design",
+    "summary": "Hey r/cybersecurity , I've been building a zero-disk-footprint pipeline ( nist-live-cvt1-feed , open source) that carves MD5/SHA-1/SHA-256 hashes out of the NIST NSRL (National Software Reference Library) RDSv3 \"modern\" dataset — the reference set used for known-good file whitelisting in DFIR/malware triage workflows — entirely on GitHub Actions free-tier runners (6h job limit, 14GB disk). I want to focus less on \"here's my project\" and more on the constraint-driven engineering decisions, including two things that broke in production and forced a redesign. The actual constraint The published archive ( RDS_*_modern.zip ) is ~124GB compressed . Once inflated, the real SQLite database is ~425GB — I verified this directly two ways that had to agree: the ZIP64 extra field's declared uncompressed size, and independently, page_size (4096) × page_count (111,560,036) read straight from the SQLite file header. Both gave the identical 456,949,907,456 bytes . Extracting that to disk is impossible under a 14GB limit. Loading it into RAM is impossible under a 7GB limit. So this meant dropping the sqlite3 engine entirely and parsing the raw B-tree binary format ourselves, streamed, never touching disk. Two things that broke in production (the actually interesting part) 1. Compression doesn't work on hash output, and we proved it before shipping the fix. Our SHA-256 output cleared GitHub's 2GB single-asset limit (~72M unique digests). Instinct says \"just gzip it.\" We measured first, on 3,000,000 real digests: gzip -9 and zip -9 both landed at 100.0% of the original size — literally zero benefit. Cryptographic hashes are uniformly-distributed bytes by construction, so there's no redundancy for DEFLATE to exploit. The real fix was splitting into numbered parts with a header-preserving format, so cat clean_sha256_part*.bin > clean_sha256_full.bin reconstructs a byte-exact original — not compression at all. 2. Unconditional 3-way parallelism hurt small runners. Our checkpoint-compaction step (sort + dedup, one thread per hash algorithm) originally spawned exactly 3 threads, always. Standard GitHub-hosted runners often only expose 2-4 vCPUs and constrained disk I/O — always launching 3 concurrent read/write streams can cause CPU/IO contention instead of a speedup on a small runner. Fixed with a bounded semaphore sized to min(3, detected_core_count) . Verified empirically: with 4 detected cores the checkpoint takes identical time to 3 cores (confirming no wasted 4th thread for only 3 fixed tasks), while 1-2 cores correctly fall back toward sequential execution instead of thrashing. Architecture Parsing - SQLite B-tree page carving — never starts the SQLite engine; parses table leaf pages ( 0x0D ) and cell pointer arrays directly, plus custom SQLite varint decoding. - Schema-positional matching — instead of scanning for \"anything hex-shaped,\" a record only counts if its trailing column signature exactly matches text(8)/text(32)/text(40)/text(64) (crc32/md5/sha1/sha256). This structurally rejects unrelated hash-shaped columns and cache-style filenames elsewhere in the row, by construction rather than by heuristic. - Zero-copy streaming — HTTP → zlib inflate → parse, continuously, with the full file never written to disk. Concurrency - Ping-pong double buffering to overlap network fill with CPU-bound parsing. - Thread-local sharding — each worker thread owns its own 256 buckets (partitioned by first hash byte), eliminating lock contention during the hot path. - Bounded semaphore concurrency for checkpoint compaction, as above — dynamically sized to the runner's actual detected core count, not a hardcoded constant. Memory/disk bounding - Scatter-gather : carve (map) and merge (reduce) are fully separate phases/jobs. - External sort-merge + k-way merge for the final cross-checkpoint deduplication — deliberately not an in-memory hash set, since total unique count can run into the tens of millions and RAM is capped at 7GB. - Periodic checkpoint compaction ( std::sort + std::unique , then flush) bounds local disk usage regardless of total database size — closer to LSM-tree compaction than a naive single final merge. Output format - A compact custom binary format (magic/version/algo/timestamp/count header + sorted, fixed-width digest array) designed for mmap() + binary search lookups from consuming tools, with no parsing overhead. Networking - HTTP Range-based reconnect : if the TCP connection drops mid-download, the pipeline reopens with a byte-exact Range header and keeps feeding the same in-memory zlib decompressor — this works because the process itself never dies, only the socket does. Worth noting: I checked whether this specific file's deflate stream has any Z_SYNC_FLUSH restart points (which would allow resuming decompression after a full process restart, not just a dropped connection) — scanned 30+MB of real compressed data and found zero. So this trick is strictly a same-process connection-drop mitigation, not a general resumable-download mechanism; a killed process genuinely has to restart the decompression from byte zero. - Pre-flight throughput probe : before committing to a multi-hour carve, a dedicated job measures this runner's actual sustained throughput to the host and skips the expensive job entirely if the measured speed projects it won't finish in time — cheap failure over expensive failure. Repo's linked in my profile if anyone wants to dig into the actual carving/varint code or the schema-positional matching logic specifically — genuinely curious if anyone here has hit similar constraints processing large reference datasets (NSRL, VirusTotal exports, etc.) in constrained CI environments, and how you approached it. submitted by /u/shroudy-bit32 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Hey <a href=\"https://www.reddit.com/r/cybersecurity\">r/cybersecurity</a>,</p> <p>I've been building a zero-disk-footprint pipeline (<code>nist-live-cvt1-feed</code>, open source) that carves MD5/SHA-1/SHA-256 hashes out of the NIST NSRL (National Software Reference Library) RDSv3 \"modern\" dataset — the reference set used for known-good file whitelisting in DFIR/malware triage workflows — entirely on GitHub Actions free-tier runners (6h job limit, 14GB disk).</p> <p>I want to focus less on \"here's my project\" and more on the constraint-driven engineering decisions, including two things that broke in production and forced a redesign.</p> The actual constraint <p>The published archive (<code>RDS_*_modern.zip</code>) is <strong>~124GB compressed</strong>. Once inflated, the real SQLite database is <strong>~425GB</strong> — I verified this directly two ways that had to agree: the ZIP64 extra field's declared uncompressed size, and independently, <code>page_size (4096) × page_count (111,560,036)</code> read straight from the SQLite file header. Both gave the identical <strong>456,949,907,456 bytes</strong>.</p> <p>Extracting that to disk is impossible under a 14GB limit. Loading it into RAM is impossible under a 7GB limit. So this meant dropping the <code>sqlite3</code> engine entirely and parsing the raw B-tree binary format ourselves, streamed, never touching disk.</p> Two things that broke in production (the actually interesting part) <p><strong>1. Compression doesn't work on hash output, and we proved it before shipping the fix.</strong> Our SHA-256 output cleared GitHub's 2GB single-asset limit (~72M unique digests). Instinct says \"just gzip it.\" We measured first, on 3,000,000 real digests: <code>gzip -9</code> and <code>zip -9</code> both landed at <strong>100.0% of the original size</strong> — literally zero benefit. Cryptographic hashes are uniformly-distributed bytes by construction, so there's no redundancy for DEFLATE to exploit. The real fix was splitting into numbered parts with a header-preserving format, so <code>cat clean_sha256_part*.bin &gt; clean_sha256_full.bin</code> reconstructs a byte-exact original — not compression at all.</p> <p><strong>2. Unconditional 3-way parallelism hurt small runners.</strong> Our checkpoint-compaction step (sort + dedup, one thread per hash algorithm) originally spawned exactly 3 threads, always. Standard GitHub-hosted runners often only expose 2-4 vCPUs and constrained disk I/O — always launching 3 concurrent read/write streams can cause CPU/IO contention instead of a speedup on a small runner. Fixed with a bounded semaphore sized to <code>min(3, detected_core_count)</code>. Verified empirically: with 4 detected cores the checkpoint takes identical time to 3 cores (confirming no wasted 4th thread for only 3 fixed tasks), while 1-2 cores correctly fall back toward sequential execution instead of thrashing.</p> Architecture <p><strong>Parsing</strong> - <strong>SQLite B-tree page carving</strong> — never starts the SQLite engine; parses table leaf pages (<code>0x0D</code>) and cell pointer arrays directly, plus custom SQLite varint decoding. - <strong>Schema-positional matching</strong> — instead of scanning for \"anything hex-shaped,\" a record only counts if its <em>trailing</em> column signature exactly matches <code>text(8)/text(32)/text(40)/text(64)</code> (crc32/md5/sha1/sha256). This structurally rejects unrelated hash-shaped columns and cache-style filenames elsewhere in the row, by construction rather than by heuristic. - <strong>Zero-copy streaming</strong> — HTTP → <code>zlib</code> inflate → parse, continuously, with the full file never written to disk.</p> <p><strong>Concurrency</strong> - <strong>Ping-pong double buffering</strong> to overlap network fill with CPU-bound parsing. - <strong>Thread-local sharding</strong> — each worker thread owns its own 256 buckets (partitioned by first hash byte), eliminating lock contention during the hot path. - <strong>Bounded semaphore concurrency</strong> for checkpoint compaction, as above — dynamically sized to the runner's actual detected core count, not a hardcoded constant.</p> <p><strong>Memory/disk bounding</strong> - <strong>Scatter-gather</strong>: carve (map) and merge (reduce) are fully separate phases/jobs. - <strong>External sort-merge + k-way merge</strong> for the final cross-checkpoint deduplication — deliberately <em>not</em> an in-memory hash set, since total unique count can run into the tens of millions and RAM is capped at 7GB. - <strong>Periodic checkpoint compaction</strong> (<code>std::sort</code> + <code>std::unique</code>, then flush) bounds local disk usage regardless of total database size — closer to LSM-tree compaction than a naive single final merge.</p> <p><strong>Output format</strong> - A compact custom binary format (magic/version/algo/timestamp/count header + sorted, fixed-width digest array) designed for <code>mmap()</code> + binary search lookups from consuming tools, with no parsing overhead.</p> <p><strong>Networking</strong> - <strong>HTTP Range-based reconnect</strong>: if the TCP connection drops mid-download, the pipeline reopens with a byte-exact <code>Range</code> header and keeps feeding the <em>same in-memory</em> zlib decompressor — this works because the process itself never dies, only the socket does. Worth noting: I checked whether this specific file's deflate stream has any <code>Z_SYNC_FLUSH</code> restart points (which would allow resuming decompression after a full <em>process</em> restart, not just a dropped connection) — scanned 30+MB of real compressed data and found zero. So this trick is strictly a same-process connection-drop mitigation, not a general resumable-download mechanism; a killed process genuinely has to restart the decompression from byte zero. - <strong>Pre-flight throughput probe</strong>: before committing to a multi-hour carve, a dedicated job measures this runner's actual sustained throughput to the host and skips the expensive job entirely if the measured speed projects it won't finish in time — cheap failure over expensive failure.</p> <p>Repo's linked in my profile if anyone wants to dig into the actual carving/varint code or the schema-positional matching logic specifically — genuinely curious if anyone here has hit similar constraints processing large reference datasets (NSRL, VirusTotal exports, etc.) in constrained CI environments, and how you approached it.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/shroudy-bit32\"> /u/shroudy-bit32 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v5rczs/engineering_a_zerocopy_sqlite_carver_for_nists/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v5rczs/engineering_a_zerocopy_sqlite_carver_for_nists/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1v5rczs/engineering_a_zerocopy_sqlite_carver_for_nists/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-07-24T23:17:01+00:00",
+    "published_ts": 1784935021,
+    "smart_groups": [
+      "Ransomware",
+      "Vulnerabilities / CVEs",
+      "Malware / Payloads",
+      "Web / API Security",
+      "Identity / Access",
+      "Community Discussion"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Click to Pray, Click to Leak: The Pope's Official App Exposes 700,000+ User Emails",
+    "summary": "submitted by /u/HumbleRestaurant790 [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/cybersecurity/comments/1v5r8j1/click_to_pray_click_to_leak_the_popes_official/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/HumbleRestaurant790\"> /u/HumbleRestaurant790 </a> <br/> <span><a href=\"https://bobdahacker.com/blog/click-to-pray\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v5r8j1/click_to_pray_click_to_leak_the_popes_official/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1v5r8j1/click_to_pray_click_to_leak_the_popes_official/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-07-24T23:11:43+00:00",
+    "published_ts": 1784934703,
+    "smart_groups": [
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "The FCC wants to ban burner phones. CNET Senior Writer Joe Supan is covering this story, and he's answering your questions…",
+    "summary": "submitted by /u/_clickfix_ [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/cybersecurity/comments/1v5qssh/the_fcc_wants_to_ban_burner_phones_cnet_senior/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/_clickfix_\"> /u/_clickfix_ </a> <br/> <span><a href=\"https://www.tiktok.com/t/ZP8tuLa67/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v5qssh/the_fcc_wants_to_ban_burner_phones_cnet_senior/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1v5qssh/the_fcc_wants_to_ban_burner_phones_cnet_senior/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-07-24T22:53:49+00:00",
+    "published_ts": 1784933629,
+    "smart_groups": [
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Stocks Just Topped Crypto on Hyperliquid. ARK Says That Changes Everything",
+    "summary": "For the first time, real-world assets—stocks, commodities, and market indices—outpaced crypto on the world's biggest decentralized derivatives exchange.",
+    "summary_html": "For the first time, real-world assets—stocks, commodities, and market indices—outpaced crypto on the world's biggest decentralized derivatives exchange.",
+    "link": "https://decrypt.co/374334/stocks-crypto-hyperliquid-ark-invest",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-07-24T22:03:16+00:00",
+    "published_ts": 1784930596,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Feed it your LinPEAS output and it draws every path from a low-priv user to root",
+    "summary": "quick demo of Roothound my first tool, maps your path to root on a linux box as a graph (like BloodHound for local privesc). check it out, would love your thoughts X : https://x.com/N0ur2dd1n2/status/2080720705184825372?s=20 GitHub: https://github.com/Noz2/RootHound would love your honest feedback 🙏 submitted by /u/Pleasant_Barnacle628 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>quick demo of <em>Roothound</em> my first tool, maps your path to root on a linux box as a graph (like BloodHound for local privesc). check it out, would love your thoughts</p> <p><strong>X :</strong> <a href=\"https://x.com/N0ur2dd1n2/status/2080720705184825372?s=20\">https://x.com/N0ur2dd1n2/status/2080720705184825372?s=20</a></p> <p><strong>GitHub:</strong> <a href=\"https://github.com/Noz2/RootHound\">https://github.com/Noz2/RootHound</a></p> <p>would love your honest feedback 🙏</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Pleasant_Barnacle628\"> /u/Pleasant_Barnacle628 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v5pcqy/feed_it_your_linpeas_output_and_it_draws_every/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v5pcqy/feed_it_your_linpeas_output_and_it_draws_every/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1v5pcqy/feed_it_your_linpeas_output_and_it_draws_every/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-07-24T21:55:25+00:00",
+    "published_ts": 1784930125,
+    "smart_groups": [
+      "Linux / Unix",
+      "Cloud / SaaS",
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "EU authorities include HTX exchange in Russian sanctions",
+    "summary": "The exchange, already sanctioned by the UK, is now on a list of 18 entities “providing crypto-assets services or payment services“ in defiance of the EU’s measures against Russia.",
+    "summary_html": "<p></p><p>The exchange, already sanctioned by the UK, is now on a list of 18 entities “providing crypto-assets services or payment services“ in defiance of the EU’s measures against Russia.</p>",
+    "link": "https://cointelegraph.com/news/htx-exchange-european-union-russia-sanctions?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-07-24T21:53:05+00:00",
+    "published_ts": 1784929985,
+    "smart_groups": [
+      "Crypto / Web3"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Hackers use DNS poisoning on hotel Wi‑Fi to steal Microsoft 365 accounts",
+    "summary": "submitted by /u/HumbleRestaurant790 [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/cybersecurity/comments/1v5pa8w/hackers_use_dns_poisoning_on_hotel_wifi_to_steal/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/HumbleRestaurant790\"> /u/HumbleRestaurant790 </a> <br/> <span><a href=\"https://reliaquest.com/blog/threat-spotlight-dns-poisoning-tactics-expand-to-hospitality/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v5pa8w/hackers_use_dns_poisoning_on_hotel_wifi_to_steal/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1v5pa8w/hackers_use_dns_poisoning_on_hotel_wifi_to_steal/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-07-24T21:52:29+00:00",
+    "published_ts": 1784929949,
+    "smart_groups": [
+      "Windows / Microsoft",
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "2 Million Cars with Anti-Theft Systems Installed by Dealers are at Higher Risk of Theft due to Bluetooth Flaw Which Expose Them to Unlocking Attacks",
+    "summary": "submitted by /u/HumbleRestaurant790 [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/cybersecurity/comments/1v5p20p/2_million_cars_with_antitheft_systems_installed/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/HumbleRestaurant790\"> /u/HumbleRestaurant790 </a> <br/> <span><a href=\"https://today.ucsd.edu/story/2-million-cars-with-anti-theft-systems-installed-by-dealers-are-at-higher-risk-of-theft\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v5p20p/2_million_cars_with_antitheft_systems_installed/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1v5p20p/2_million_cars_with_antitheft_systems_installed/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-07-24T21:43:35+00:00",
+    "published_ts": 1784929415,
+    "smart_groups": [
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "CISOs vs. Boards: Myth or Misunderstanding?",
+    "summary": "Escalating threats are forcing boards to prioritize security, but communication gaps persist. Boards and security teams each say they need more support to bridge the divide.",
+    "summary_html": "Escalating threats are forcing boards to prioritize security, but communication gaps persist. Boards and security teams each say they need more support to bridge the divide.",
+    "link": "https://www.darkreading.com/cybersecurity-operations/cisos-vs-boards-myth-or-misunderstanding-",
+    "source": "Dark Reading",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-07-24T21:31:53+00:00",
+    "published_ts": 1784928713,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Strive’s SATA recovers most of June decline, trades within 3% of par",
+    "summary": "Jan3 CEO Samson Mow says the recovery could signal renewed confidence in preferred-share products used by Bitcoin treasury companies.",
+    "summary_html": "<p></p><p>Jan3 CEO Samson Mow says the recovery could signal renewed confidence in preferred-share products used by Bitcoin treasury companies.</p>",
+    "link": "https://cointelegraph.com/news/strives-sata-recovers-most-of-june-decline-trades-within-3-of-par?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-07-24T21:02:22+00:00",
+    "published_ts": 1784926942,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "DFIR AI Pipeline",
+    "summary": "Looking for input in terms of what the industry is using in terms of collection and analysis pipelines utilizing AI. I keep seeing non-stop slop posts on social media and forums about how DFIR careers are going out the window because these agents and automation are sooooo good. What exactly is capable of doing this kind of work? Can anyone put a name to it? Public GitHub? Ideally like some FOSS platform I could host for my own testing. I have this fun project idea that involves seeing how easy it is to poison the reporting from these AI driven analysis platforms using a bunch of bogus IOCs, hashes, etc I can plant on the endpoint before collection/analysis. submitted by /u/Beginning-Try3454 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Looking for input in terms of what the industry is using in terms of collection and analysis pipelines utilizing AI.</p> <p>I keep seeing non-stop slop posts on social media and forums about how DFIR careers are going out the window because these agents and automation are sooooo good.</p> <p>What exactly is capable of doing this kind of work? Can anyone put a name to it? Public GitHub? </p> <p>Ideally like some FOSS platform I could host for my own testing. </p> <p>I have this fun project idea that involves seeing how easy it is to poison the reporting from these AI driven analysis platforms using a bunch of bogus IOCs, hashes, etc I can plant on the endpoint before collection/analysis.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Beginning-Try3454\"> /u/Beginning-Try3454 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v5nx8p/dfir_ai_pipeline/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v5nx8p/dfir_ai_pipeline/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1v5nx8p/dfir_ai_pipeline/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-07-24T21:01:02+00:00",
+    "published_ts": 1784926862,
+    "smart_groups": [
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Google Fined €890M Under EU Digital Markets Act Over Search and Play Store Practices",
+    "summary": "EU fined Google €890M under the DMA for favoring its own services and restricting Play Store competition, with AI search features also under scrutiny. The European Commission hit Google with two fines totalling €890 million on Thursday for violating the Digital Markets Act , one for giving its own services preferential placement in Google Search and one for blocking app developers from directing users to cheaper alternatives outside the Play Store. These are Google’s first DMA fines, but the fifth and sixth competition penalties against the company overall, bringing the cumulative total to €10.38 billion over nearly two decades. At this pace, Google is basically funding a small member state. “Today, the European Commission took two decisions finding non-compliance by Google with the Digital Markets Act (DMA) for self-preferencing its own services on Google Search, and for putting in place restrictions on businesses to direct consumers to alternative, often cheaper, purchase channels on Google Play (steering).” reads the press release published by the European Commission. “In this regard, the Commission issued Google a fine of €460 million and a fine of €430 million respectively.” The search fine covers Google’s handling of shopping, hotels, transport, and sports results, where the Commission found the company systematically promoted its own products over rivals. The Play Store fine targets steering restrictions that prevented developers from telling users they could buy the same app or subscription elsewhere for less. Despite the scale of the penalties, the Commission signaled that ongoing daily fines for non-compliance are unlikely. “The Commission notes that, after a constructive dialogue, Google has proposed and started testing changes to how it presents its own services on Google Search for free services such as shopping, hotels and flights.” EU continues. “The Commission will monitor the implementation of these solutions which constitute substantial progress towards compliance.” The Commission described this as substantial progress and flagged a “constructive dialogue” with Google, which is regulatory language for “we’re not done but we’re not going to war either.” Google has 60 days to comply with orders to treat rivals fairly and allow developers to redirect users away from the Play Store. The company rejected the findings and didn’t rule out taking the Commission to court. President of Global Affairs Kent Walker argued that complying would force Google to strip out real-time search features like hotel pricing and flight availability, and remove safety protections from the Play Store, framing the decisions as harmful to European users rather than protective of them. “The Commission also notes that Google has proposed and started testing changes to how it presents shopping ads and content related services, such as sports.” states the press release. “The Commission is currently assessing these changes and will continue its dialogue with Google in light of today’s decision.” That extension to AI features is the part of this decision that will matter most in the long run, as AI-generated summaries are increasingly becoming the first layer of search results that users interact with. The fines are the third under the DMA after Apple and Meta were penalized in April last year, and the U.S. government’s response was predictable. Reuters reported that trade Representative Jamieson Greer said the actions are “driving massive uncertainty for U.S. exports.” though no specific retaliatory measures were announced. “The two non-compliance decisions were adopted after a thorough investigation, including feedback from market participants, and extensive dialogue with Google.” concludes the press release. “When calculating the fines, the Commission has assessed the gravity, duration and recurrence of the breaches and concluded that the level of fines imposed are proportionate and appropriate. Google may challenge today’s decisions in court. Follow me on Twitter: @securityaffairs and Facebook and Mastodon Pierluigi Paganini ( SecurityAffairs – hacking, EU)",
+    "summary_html": "<div></div>\nEU fined Google €890M under the DMA for favoring its own services and restricting Play Store competition, with AI search features also under scrutiny.\n<p>The European Commission hit Google with two fines totalling €890 million on Thursday for violating the <a href=\"https://securityaffairs.com/tag/digital-markets-act\">Digital Markets Act</a>, one for giving its own services preferential placement in Google Search and one for blocking app developers from directing users to cheaper alternatives outside the Play Store. These are Google’s first DMA fines, but the fifth and sixth competition penalties against the company overall, bringing the cumulative total to €10.38 billion over nearly two decades. At this pace, Google is basically funding a small member state.</p>\n<p><em>“Today, the European Commission took two decisions finding non-compliance by Google with the <a href=\"https://digital-markets-act.ec.europa.eu/about-dma_en\">Digital Markets Act (DMA)</a> for self-preferencing its own services on Google Search, and for putting in place restrictions on businesses to direct consumers to alternative, often cheaper, purchase channels on Google Play (steering).” reads the <a href=\"https://ec.europa.eu/commission/presscorner/detail/en/ip_26_1670\">press release</a> published by the European Commission. “In this regard, the Commission issued Google a fine of €460 million and a fine of €430 million respectively.”</em></p>\n<p>The search fine covers Google’s handling of shopping, hotels, transport, and sports results, where the Commission found the company systematically promoted its own products over rivals. The Play Store fine targets steering restrictions that prevented developers from telling users they could buy the same app or subscription elsewhere for less.</p>\n<p>Despite the scale of the penalties, the Commission signaled that ongoing daily fines for non-compliance are unlikely. </p>\n<p><em>“The Commission notes that, after a constructive dialogue, Google has proposed and started testing changes to how it presents its own services on Google Search for free services such as shopping, hotels and flights.” EU continues. “The Commission will monitor the implementation of these solutions which constitute substantial progress towards compliance.”</em></p>\n<p>The Commission described this as substantial progress and flagged a “constructive dialogue” with Google, which is regulatory language for “we’re not done but we’re not going to war either.”</p>\n<p>Google has 60 days to comply with orders to treat rivals fairly and allow developers to redirect users away from the Play Store. The company rejected the findings and didn’t rule out taking the Commission to court. President of Global Affairs Kent Walker argued that complying would force Google to strip out real-time search features like hotel pricing and flight availability, and remove safety protections from the Play Store, framing the decisions as harmful to European users rather than protective of them.</p>\n<p><em>“The Commission also notes that Google has proposed and started testing changes to how it presents shopping ads and content related services, such as sports.” states the press release. “The Commission is currently assessing these changes and will continue its dialogue with Google in light of today’s decision.”</em></p>\n<p>That extension to AI features is the part of this decision that will matter most in the long run, as AI-generated summaries are increasingly becoming the first layer of search results that users interact with. The fines are the third under the DMA after Apple and Meta were penalized in April last year, and the U.S. government’s response was predictable.</p>\n<p>Reuters <a href=\"https://www.reuters.com/world/google-hit-with-1-billion-eu-fine-first-under-landmark-rules-2026-07-23/\">reported</a> that trade Representative Jamieson Greer said the actions are “driving massive uncertainty for U.S. exports.” though no specific retaliatory measures were announced.</p>\n<p>“The two non-compliance decisions were adopted after a thorough investigation, including feedback from market participants, and extensive dialogue with Google.” concludes the press release. “When calculating the fines, the Commission has assessed the gravity, duration and recurrence of the breaches and concluded that the level of fines imposed are proportionate and appropriate.</p>\n<p>Google may challenge today’s decisions in court.</p>\n<p><strong>Follow me on Twitter: </strong><a href=\"https://twitter.com/securityaffairs\"><strong>@securityaffairs</strong></a><strong> and </strong><a href=\"https://www.facebook.com/sec.affairs\"><strong>Facebook</strong></a><strong> and </strong><a href=\"https://infosec.exchange/@securityaffairs\"><strong>Mastodon</strong></a><strong></strong></p>\n<p><a href=\"http://www.linkedin.com/pub/pierluigi-paganini/b/742/559\"><strong>Pierluigi Paganini</strong></a><strong></strong></p>\n<p><strong>(</strong><a href=\"http://securityaffairs.co/wordpress/\"><strong>SecurityAffairs</strong></a><strong> – hacking, EU)</strong></p>",
+    "link": "https://securityaffairs.com/195963/laws-and-regulations/google-fined-e890m-under-eu-digital-markets-act-over-search-and-play-store-practices.html",
+    "source": "Security Affairs",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-07-24T20:47:13+00:00",
+    "published_ts": 1784926033,
+    "smart_groups": [
+      "Ransomware",
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": true
+  },
+  {
+    "title": "House passes bill on lawmakers using insider information for stock trading",
+    "summary": "According to Senator Elizabeth Warren, the House bill “won’t solve the problem“ of insider trading in Congress as lawmakers will still be allowed to own and sell stocks.",
+    "summary_html": "<p></p><p>According to Senator Elizabeth Warren, the House bill “won’t solve the problem“ of insider trading in Congress as lawmakers will still be allowed to own and sell stocks.</p>",
+    "link": "https://cointelegraph.com/news/house-bill-lawmakers-insider-information-stock-trading?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-07-24T20:05:50+00:00",
+    "published_ts": 1784923550,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "OnTrac notifies customers of data breach after network hack",
+    "summary": "OnTrac parcel delivery company is informing that hackers breached its corporate network and may have accessed personal details belonging to its customers. [...]",
+    "summary_html": "OnTrac parcel delivery company is informing that hackers breached its corporate network and may have accessed personal details belonging to its customers. [...]",
+    "link": "https://www.bleepingcomputer.com/news/security/ontrac-notifies-customers-of-data-breach-after-network-hack/",
+    "source": "BleepingComputer – Cybercrime",
+    "feed_type": "news",
+    "type": "cybercrime-underground",
+    "type_label": "Cybercrime & Underground",
+    "published": "2026-07-24T19:55:01+00:00",
+    "published_ts": 1784922901,
+    "smart_groups": [
+      "Vulnerabilities / CVEs",
+      "Data Breaches / Leaks"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Escape Artists: 'Incorrigible' AI Models Resist Rehabilitation",
+    "summary": "The hacking of Hugging Face by a rogue OpenAI agent is significant, but unsurprising — and preventing the next AI model escape will be difficult, at best.",
+    "summary_html": "The hacking of Hugging Face by a rogue OpenAI agent is significant, but unsurprising — and preventing the next AI model escape will be difficult, at best.",
+    "link": "https://www.darkreading.com/cybersecurity-operations/incorrigible-ai-models-resist-rehabilitation",
+    "source": "Dark Reading",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-07-24T19:45:02+00:00",
+    "published_ts": 1784922302,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Samsung Wallet Will Add Stablecoin Support, Including USDC",
+    "summary": "Samsung showed a wallet mockup holding Circle's USDC at Galaxy Unpacked. But details are scarce.",
+    "summary_html": "Samsung showed a wallet mockup holding Circle's USDC at Galaxy Unpacked. But details are scarce.",
+    "link": "https://decrypt.co/374324/samsung-wallet-stablecoin-support-usdc",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-07-24T19:30:01+00:00",
+    "published_ts": 1784921401,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Hermes AI agent used to automate attack on Thai Finance Ministry",
+    "summary": "A threat actor used the open-source Hermes AI agent in unattended \"YOLO\" mode to automate post-exploitation activity during an alleged breach of Thailand's Ministry of Finance. [...]",
+    "summary_html": "A threat actor used the open-source Hermes AI agent in unattended \"YOLO\" mode to automate post-exploitation activity during an alleged breach of Thailand's Ministry of Finance. [...]",
+    "link": "https://www.bleepingcomputer.com/news/security/hermes-ai-agent-used-to-automate-attack-on-thai-finance-ministry/",
+    "source": "BleepingComputer – Cybercrime",
+    "feed_type": "news",
+    "type": "cybercrime-underground",
+    "type_label": "Cybercrime & Underground",
+    "published": "2026-07-24T19:09:09+00:00",
+    "published_ts": 1784920149,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Here’s what happened in crypto today",
+    "summary": "Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.",
+    "summary_html": "<p></p><p>Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.</p>",
+    "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-07-24T19:03:45+00:00",
+    "published_ts": 1784919825,
+    "smart_groups": [
+      "Crypto / Web3"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Amazon will give you a $350 gift card when you buy a new Samsung phone - here's what to know",
+    "summary": "Samsung just launched its latest lineup of phones, and Amazon has free gift card offers on every single one.",
+    "summary_html": "Samsung just launched its latest lineup of phones, and Amazon has free gift card offers on every single one.",
+    "link": "https://www.zdnet.com/article/samsung-galaxy-z-fold-flip-8-amazon-deals-2026/",
+    "source": "ZDNet – Security",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-07-24T18:56:08+00:00",
+    "published_ts": 1784919368,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Is IAM work too elementary or entry level for someone who's been in security engineering for 5+ years?",
+    "summary": "I work with IAM-related stuff at work (account lockout issues and building custom Splunk queries for any user account related issues) but not sure if this is too entry-level to mention to positions I'm applying to, since I've been in the security engineering field for over 5 years now. If it doesn't help me, I'd rather not mention it. Thoughts? submitted by /u/mysecret52 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>I work with IAM-related stuff at work (account lockout issues and building custom Splunk queries for any user account related issues) but not sure if this is too entry-level to mention to positions I'm applying to, since I've been in the security engineering field for over 5 years now. If it doesn't help me, I'd rather not mention it. Thoughts?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/mysecret52\"> /u/mysecret52 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v5jxr4/is_iam_work_too_elementary_or_entry_level_for/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v5jxr4/is_iam_work_too_elementary_or_entry_level_for/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1v5jxr4/is_iam_work_too_elementary_or_entry_level_for/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-07-24T18:36:46+00:00",
+    "published_ts": 1784918206,
+    "smart_groups": [
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Wisconsin - Info Sec Meetup?",
+    "summary": "Hello internet! I am looking at starting an info sec meetup in the Manitowoc County area. Is anyone in the area interested or am I alone here? submitted by /u/Shiz879 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Hello internet! I am looking at starting an info sec meetup in the Manitowoc County area. Is anyone in the area interested or am I alone here?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Shiz879\"> /u/Shiz879 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v5ju9v/wisconsin_info_sec_meetup/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v5ju9v/wisconsin_info_sec_meetup/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1v5ju9v/wisconsin_info_sec_meetup/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-07-24T18:33:09+00:00",
+    "published_ts": 1784917989,
+    "smart_groups": [
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Claude Opus 5 Outscores Fable 5 on Most Benchmarks—At Half the Price",
+    "summary": "Anthropic's new everyday model undercuts its own frontier product on cost and beats it almost everywhere that counts.",
+    "summary_html": "Anthropic's new everyday model undercuts its own frontier product on cost and beats it almost everywhere that counts.",
+    "link": "https://decrypt.co/374305/claude-opus-5-outscores-fable-5-most-benchmarks-half-price",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-07-24T18:28:43+00:00",
+    "published_ts": 1784917723,
+    "smart_groups": [
+      "AI/ML Security"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Hackers hijack hotel Wi-Fi DNS to steal Microsoft 365 accounts",
+    "summary": "submitted by /u/kazu-qt [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/cybersecurity/comments/1v5j72h/hackers_hijack_hotel_wifi_dns_to_steal_microsoft/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/kazu-qt\"> /u/kazu-qt </a> <br/> <span><a href=\"https://www.bleepingcomputer.com/news/security/hackers-hijack-hotel-wi-fi-dns-to-steal-microsoft-365-accounts/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1v5j72h/hackers_hijack_hotel_wifi_dns_to_steal_microsoft/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1v5j72h/hackers_hijack_hotel_wifi_dns_to_steal_microsoft/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-07-24T18:10:24+00:00",
+    "published_ts": 1784916624,
+    "smart_groups": [
+      "Windows / Microsoft",
+      "Community Discussion"
     ],
     "curated": false
   },
@@ -2024,22 +2408,6 @@
     "published_ts": 1784874423,
     "smart_groups": [
       "Community Discussion"
-    ],
-    "curated": false
-  },
-  {
-    "title": "Here’s what happened in crypto today",
-    "summary": "Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.",
-    "summary_html": "<p></p><p>Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.</p>",
-    "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-    "source": "Cointelegraph.com News",
-    "feed_type": "news",
-    "type": "crypto-blockchain-security",
-    "type_label": "Crypto & Blockchain Security",
-    "published": "2026-07-24T06:24:36+00:00",
-    "published_ts": 1784874276,
-    "smart_groups": [
-      "Crypto / Web3"
     ],
     "curated": false
   },
