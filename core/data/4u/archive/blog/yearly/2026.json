@@ -1,5 +1,376 @@
 [
   {
+    "title": "Show HN: Boffin – Staff-engineer layer for AI coding agents",
+    "summary": "Staff-engineer layer for AI coding agents: routes per-edit architectural constraints for AI coding agents Comments URL: https://news.ycombinator.com/item?id=49060279 Points: 1 # Comments: 0",
+    "summary_html": "<p>Staff-engineer layer for AI coding agents: routes per-edit architectural constraints for AI coding agents</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49060279\">https://news.ycombinator.com/item?id=49060279</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://github.com/MicSm/boffin",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T17:28:03+00:00",
+    "published_ts": 1785086883,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "1.15.7a1",
+    "summary": "What's Changed Bug Fixes Fix registry skills resolution through the runtime's CrewAI+ client. Recover from the GPT-5.6 tools and reasoning_effort 400 errors. Make tool calling work on the Responses API path. Route responses-only models to prevent 404 errors. Bump bedrock-agentcore dependency to patch CVE-2026-16796 . Observability Emit skill usage events at runtime for improved observability. Documentation Snapshot and changelog updates for version 1.15.6. Contributors @alex-clawd , @joaomdmoura , @lorenzejay",
+    "summary_html": "What's Changed\nBug Fixes\n<ul>\n<li>Fix registry skills resolution through the runtime's CrewAI+ client.</li>\n<li>Recover from the GPT-5.6 tools and reasoning_effort 400 errors.</li>\n<li>Make tool calling work on the Responses API path.</li>\n<li>Route responses-only models to prevent 404 errors.</li>\n<li>Bump bedrock-agentcore dependency to patch <a href=\"https://github.com/advisories/GHSA-j6g5-3hh3-pgw8\">CVE-2026-16796</a>.</li>\n</ul>\nObservability\n<ul>\n<li>Emit skill usage events at runtime for improved observability.</li>\n</ul>\nDocumentation\n<ul>\n<li>Snapshot and changelog updates for version 1.15.6.</li>\n</ul>\nContributors\n<p><a href=\"https://github.com/alex-clawd\">@alex-clawd</a>, <a href=\"https://github.com/joaomdmoura\">@joaomdmoura</a>, <a href=\"https://github.com/lorenzejay\">@lorenzejay</a></p>",
+    "link": "https://github.com/crewAIInc/crewAI/releases/tag/1.15.7a1",
+    "source": "crewAI Releases - GitHub releases for the crewAI agentic framework",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T17:04:25+00:00",
+    "published_ts": 1785085465,
+    "smart_groups": [
+      "Agentic AI & Automations",
+      "LLM & Foundation Model Releases"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Karen Hao: AI Doesn't Have to Be Built This Way",
+    "summary": "Article URL: https://www.bloomberg.com/features/2026-karen-hao-weekend-interview/ Comments URL: https://news.ycombinator.com/item?id=49059995 Points: 3 # Comments: 1",
+    "summary_html": "<p>Article URL: <a href=\"https://www.bloomberg.com/features/2026-karen-hao-weekend-interview/\">https://www.bloomberg.com/features/2026-karen-hao-weekend-interview/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49059995\">https://news.ycombinator.com/item?id=49059995</a></p>\n<p>Points: 3</p>\n<p># Comments: 1</p>",
+    "link": "https://www.bloomberg.com/features/2026-karen-hao-weekend-interview/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T16:57:49+00:00",
+    "published_ts": 1785085069,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Prompt: The Next AI Challenge Isn't the Model. It's the Organization",
+    "summary": "Article URL: https://aibusiness.com/agentic-ai/next-challenge-scaling-ai Comments URL: https://news.ycombinator.com/item?id=49059970 Points: 2 # Comments: 0",
+    "summary_html": "<p>Article URL: <a href=\"https://aibusiness.com/agentic-ai/next-challenge-scaling-ai\">https://aibusiness.com/agentic-ai/next-challenge-scaling-ai</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49059970\">https://news.ycombinator.com/item?id=49059970</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://aibusiness.com/agentic-ai/next-challenge-scaling-ai",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T16:55:13+00:00",
+    "published_ts": 1785084913,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Multi-Tenant SaaS: Which Architecture Would You Choose? [D]",
+    "summary": "NOTE -> I expect answer from people who actually have experience and strong understanding of these. please give something beneficial. I'm building a SaaS platform in Sri Lanka that handles documents and other sensitive data. Each user can upload their own documents and information, and the platform uses RAG to answer questions based on that user's data. That part makes sense to me. My main concern is what happens when the user hasn't uploaded enough information. I still want the LLM to provide accurate answers using reliable information from the internet (or from a curated knowledge base), with proper citations. These are the two architectures I'm considering: Option 1: Base LLM (OpenAI/Anthropic via Azure AI Foundry or Amazon Bedrock) ↓ Platform RAG (global knowledge base managed by us) ↓ User-specific RAG In this approach, we maintain a global knowledge base that we (the platform admins) curate and update. Every user can access this shared knowledge, while their own uploaded documents are searched through their personal RAG. Option 2: Open-source LLM ↓ Fine-tuned on Sri Lankan/domain-specific data ↓ User-specific RAG Here, we fine-tune an open-source model using Sri Lankan or domain-specific data, and each user still has their own RAG for their private documents. My concerns are: Is fine-tuning actually the right solution here, or is it unnecessary? Is a global/shared RAG a better approach than fine-tuning? How would you design this architecture if you wanted: Accurate answers from domain knowledge User-private document search Citations/sources Good scalability for thousands of users I'm leaning toward Option 1 because fine-tuning seems expensive, time-consuming, and I have no experience with it yet. However, I'm not sure if I'm thinking about this correctly. I'd really appreciate hearing how others would approach this problem. submitted by /u/Fickle_Degree_2728 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>NOTE -&gt; I expect answer from people who actually have experience and strong understanding of these. please give something beneficial.</p> <p>I'm building a SaaS platform in Sri Lanka that handles documents and other sensitive data.</p> <p>Each user can upload their own documents and information, and the platform uses RAG to answer questions based on that user's data. That part makes sense to me.</p> <p>My main concern is what happens when the user <strong>hasn't</strong> uploaded enough information. I still want the LLM to provide accurate answers using reliable information from the internet (or from a curated knowledge base), with proper citations.</p> <p>These are the two architectures I'm considering:</p> <p><strong>Option 1:</strong></p> <pre><code>Base LLM (OpenAI/Anthropic via Azure AI Foundry or Amazon Bedrock) ↓ Platform RAG (global knowledge base managed by us) ↓ User-specific RAG </code></pre> <p>In this approach, we maintain a global knowledge base that we (the platform admins) curate and update. Every user can access this shared knowledge, while their own uploaded documents are searched through their personal RAG.</p> <p><strong>Option 2:</strong></p> <pre><code>Open-source LLM ↓ Fine-tuned on Sri Lankan/domain-specific data ↓ User-specific RAG </code></pre> <p>Here, we fine-tune an open-source model using Sri Lankan or domain-specific data, and each user still has their own RAG for their private documents.</p> <p>My concerns are:</p> <ul> <li>Is fine-tuning actually the right solution here, or is it unnecessary?</li> <li>Is a global/shared RAG a better approach than fine-tuning?</li> <li>How would you design this architecture if you wanted: <ul> <li>Accurate answers from domain knowledge</li> <li>User-private document search</li> <li>Citations/sources</li> <li>Good scalability for thousands of users</li> </ul></li> </ul> <p>I'm leaning toward Option 1 because fine-tuning seems expensive, time-consuming, and I have no experience with it yet. However, I'm not sure if I'm thinking about this correctly.</p> <p>I'd really appreciate hearing how others would approach this problem.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Fickle_Degree_2728\"> /u/Fickle_Degree_2728 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1v794kw/multitenant_saas_which_architecture_would_you/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1v794kw/multitenant_saas_which_architecture_would_you/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1v794kw/multitenant_saas_which_architecture_would_you/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T16:47:11+00:00",
+    "published_ts": 1785084431,
+    "smart_groups": [
+      "LLM & Foundation Model Releases"
+    ],
+    "curated": true
+  },
+  {
+    "title": "AI use policy for my essay writing",
+    "summary": "Article URL: https://www.lesswrong.com/posts/tgigHkZoYrJEGe4tP/ai-use-policy-for-my-essay-writing Comments URL: https://news.ycombinator.com/item?id=49059689 Points: 1 # Comments: 0",
+    "summary_html": "<p>Article URL: <a href=\"https://www.lesswrong.com/posts/tgigHkZoYrJEGe4tP/ai-use-policy-for-my-essay-writing\">https://www.lesswrong.com/posts/tgigHkZoYrJEGe4tP/ai-use-policy-for-my-essay-writing</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49059689\">https://news.ycombinator.com/item?id=49059689</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://www.lesswrong.com/posts/tgigHkZoYrJEGe4tP/ai-use-policy-for-my-essay-writing",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T16:26:43+00:00",
+    "published_ts": 1785083203,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "This July I Was Fired from Simple AI (A Deeply YC Company)",
+    "summary": "Article URL: https://andys.blog/this-july-i-was-fired-from-simple-ai/ Comments URL: https://news.ycombinator.com/item?id=49059587 Points: 43 # Comments: 19",
+    "summary_html": "<p>Article URL: <a href=\"https://andys.blog/this-july-i-was-fired-from-simple-ai/\">https://andys.blog/this-july-i-was-fired-from-simple-ai/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49059587\">https://news.ycombinator.com/item?id=49059587</a></p>\n<p>Points: 43</p>\n<p># Comments: 19</p>",
+    "link": "https://andys.blog/this-july-i-was-fired-from-simple-ai/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T16:14:46+00:00",
+    "published_ts": 1785082486,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Ask HN:Anyone know a good AI slop detection service.",
+    "summary": "I tried a couple of those services, not impressed at all. Comments URL: https://news.ycombinator.com/item?id=49059537 Points: 2 # Comments: 0",
+    "summary_html": "<p>I tried a couple of those services, not impressed at all.</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49059537\">https://news.ycombinator.com/item?id=49059537</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://news.ycombinator.com/item?id=49059537",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T16:09:10+00:00",
+    "published_ts": 1785082150,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Show HN: Cookbook AI – turn scattered recipe files into a print-ready cookbook",
+    "summary": "Article URL: https://cookbookai.io/index.html Comments URL: https://news.ycombinator.com/item?id=49059433 Points: 2 # Comments: 1",
+    "summary_html": "<p>Article URL: <a href=\"https://cookbookai.io/index.html\">https://cookbookai.io/index.html</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49059433\">https://news.ycombinator.com/item?id=49059433</a></p>\n<p>Points: 2</p>\n<p># Comments: 1</p>",
+    "link": "https://cookbookai.io/index.html",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T15:58:02+00:00",
+    "published_ts": 1785081482,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Neurips 2026 Main Track Theory Paper Tracker- Discussion Thread [D]",
+    "summary": "Curious about the initial review distribution for Main Track theory papers this year. Our paper received 4/3/3 with confidence 3/3/3. From previous years, I've had the impression that theory papers often receive more conservative initial scores than some other areas, and I've also heard people saying that initial scores seem generally lower across many disciplines this cycle. If you have a theory submission, would you mind sharing your initial scores (and confidence, if you're comfortable)? It would be interesting to see whether there is any noticeable pattern or whether this is just anecdotal. Please only share if you're comfortable, and it'd be helpful to mention that it's a theory paper so we're comparing like with like. submitted by /u/Mammoth-Leg-3844 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Curious about the initial review distribution for Main Track theory papers this year.</p> <p>Our paper received 4/3/3 with confidence 3/3/3. From previous years, I've had the impression that theory papers often receive more conservative initial scores than some other areas, and I've also heard people saying that initial scores seem generally lower across many disciplines this cycle.</p> <p>If you have a theory submission, would you mind sharing your initial scores (and confidence, if you're comfortable)? It would be interesting to see whether there is any noticeable pattern or whether this is just anecdotal.</p> <p>Please only share if you're comfortable, and it'd be helpful to mention that it's a theory paper so we're comparing like with like.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Mammoth-Leg-3844\"> /u/Mammoth-Leg-3844 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1v77r9s/neurips_2026_main_track_theory_paper_tracker/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1v77r9s/neurips_2026_main_track_theory_paper_tracker/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1v77r9s/neurips_2026_main_track_theory_paper_tracker/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T15:57:02+00:00",
+    "published_ts": 1785081422,
+    "smart_groups": [
+      "AI Research & Papers"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Who's afraid of open source AI?",
+    "summary": "Article URL: https://www.youtube.com/watch?v=siy0744Ykys Comments URL: https://news.ycombinator.com/item?id=49059359 Points: 2 # Comments: 0",
+    "summary_html": "<p>Article URL: <a href=\"https://www.youtube.com/watch?v=siy0744Ykys\">https://www.youtube.com/watch?v=siy0744Ykys</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49059359\">https://news.ycombinator.com/item?id=49059359</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://www.youtube.com/watch?v=siy0744Ykys",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T15:49:59+00:00",
+    "published_ts": 1785080999,
+    "smart_groups": [],
+    "curated": true
+  },
+  {
+    "title": "DROS-VEP – A <1μs C-ABI binary circuit breaker for AI agents",
+    "summary": "Article URL: https://github.com/Top-Celestial-Company-Ltd/DROS-VEP-lite Comments URL: https://news.ycombinator.com/item?id=49059322 Points: 3 # Comments: 0",
+    "summary_html": "<p>Article URL: <a href=\"https://github.com/Top-Celestial-Company-Ltd/DROS-VEP-lite\">https://github.com/Top-Celestial-Company-Ltd/DROS-VEP-lite</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49059322\">https://news.ycombinator.com/item?id=49059322</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+    "link": "https://github.com/Top-Celestial-Company-Ltd/DROS-VEP-lite",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T15:46:11+00:00",
+    "published_ts": 1785080771,
+    "smart_groups": [
+      "Agentic AI & Automations"
+    ],
+    "curated": false
+  },
+  {
+    "title": "AI agents are eating the Web, growing by 8,000% and rewiring business models",
+    "summary": "Article URL: https://fortune.com/2026/07/23/dead-internet-theory-bots-agents-majority-web-traffic/ Comments URL: https://news.ycombinator.com/item?id=49059143 Points: 3 # Comments: 0",
+    "summary_html": "<p>Article URL: <a href=\"https://fortune.com/2026/07/23/dead-internet-theory-bots-agents-majority-web-traffic/\">https://fortune.com/2026/07/23/dead-internet-theory-bots-agents-majority-web-traffic/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49059143\">https://news.ycombinator.com/item?id=49059143</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+    "link": "https://fortune.com/2026/07/23/dead-internet-theory-bots-agents-majority-web-traffic/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T15:30:44+00:00",
+    "published_ts": 1785079844,
+    "smart_groups": [
+      "Agentic AI & Automations"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Reviewing AI Code Is Not a Viable Argument",
+    "summary": "Article URL: https://www.softwaremaxims.com/blog/reviewing-ai-code Comments URL: https://news.ycombinator.com/item?id=49059064 Points: 4 # Comments: 0",
+    "summary_html": "<p>Article URL: <a href=\"https://www.softwaremaxims.com/blog/reviewing-ai-code\">https://www.softwaremaxims.com/blog/reviewing-ai-code</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49059064\">https://news.ycombinator.com/item?id=49059064</a></p>\n<p>Points: 4</p>\n<p># Comments: 0</p>",
+    "link": "https://www.softwaremaxims.com/blog/reviewing-ai-code",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T15:24:27+00:00",
+    "published_ts": 1785079467,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "China considers tighter export controls on AI models and chips",
+    "summary": "Article URL: https://www.reuters.com/world/asia-pacific/china-considers-tighter-export-controls-ai-models-chips-ft-reports-2026-07-21/ Comments URL: https://news.ycombinator.com/item?id=49059043 Points: 1 # Comments: 1",
+    "summary_html": "<p>Article URL: <a href=\"https://www.reuters.com/world/asia-pacific/china-considers-tighter-export-controls-ai-models-chips-ft-reports-2026-07-21/\">https://www.reuters.com/world/asia-pacific/china-considers-tighter-export-controls-ai-models-chips-ft-reports-2026-07-21/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49059043\">https://news.ycombinator.com/item?id=49059043</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
+    "link": "https://www.reuters.com/world/asia-pacific/china-considers-tighter-export-controls-ai-models-chips-ft-reports-2026-07-21/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T15:22:40+00:00",
+    "published_ts": 1785079360,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "AI Scientists will win official olympiad medals at IOAI 2026",
+    "summary": "Article URL: https://ioai-official.org/ai-model-track/ Comments URL: https://news.ycombinator.com/item?id=49058900 Points: 2 # Comments: 1",
+    "summary_html": "<p>Article URL: <a href=\"https://ioai-official.org/ai-model-track/\">https://ioai-official.org/ai-model-track/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49058900\">https://news.ycombinator.com/item?id=49058900</a></p>\n<p>Points: 2</p>\n<p># Comments: 1</p>",
+    "link": "https://ioai-official.org/ai-model-track/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T15:07:26+00:00",
+    "published_ts": 1785078446,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Show HN: I built a transparent terminal wrapper for unobtrusive AI",
+    "summary": "I wanted a way to use my existing AI subscriptions as a terminal assistant to analyze shell output or help me with a complicated awk incantation from time to time without getting in my way the rest of the time. I couldn't find anything existing that does this do I built it! I used pvolok's excellent mprocs as a starting point and leaned heavily on Claude and Codex for coding all but the gnarliest parts while providing extensive guidance on how it should be implemented. I know that coding agents can run shell commands already but that puts the AI in the driver's seat. Terminai let's me be the driver, with codex or claude (or any other agent) sitting quietly in the backseat until I want its help. The hardest part was making it truly transparent. Most TUIs that embed a terminal break the terminal emulator's native scrollback and frequently also break copying to the clipboard. I worked hard to make sure that that both of these work exactly as they would without terminai. Along the way I had to fork ratatui to change the way it renders in order to get both of these behaviors working. Tested on Mac and Linux as my daily driver and on Windows enough to see that it works. Quick install:\nbrew install emosenkis/tap/terminai Comments URL: https://news.ycombinator.com/item?id=49058883 Points: 1 # Comments: 0",
+    "summary_html": "<p>I wanted a way to use my existing AI subscriptions as a terminal assistant to analyze shell output or help me with a complicated awk incantation from time to time without getting in my way the rest of the time. I couldn't find anything existing that does this do I built it! I used pvolok's excellent mprocs as a starting point and leaned heavily on Claude and Codex for coding all but the gnarliest parts while providing extensive guidance on how it should be implemented.<p>I know that coding agents can run shell commands already but that puts the AI in the driver's seat. Terminai let's me be the driver, with codex or claude (or any other agent) sitting quietly in the backseat until I want its help.<p>The hardest part was making it truly transparent. Most TUIs that embed a terminal break the terminal emulator's native scrollback and frequently also break copying to the clipboard. I worked hard to make sure that that both of these work exactly as they would without terminai. Along the way I had to fork ratatui to change the way it renders in order to get both of these behaviors working.<p>Tested on Mac and Linux as my daily driver and on Windows enough to see that it works.<p>Quick install:\nbrew install emosenkis/tap/terminai</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49058883\">https://news.ycombinator.com/item?id=49058883</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p></p></p></p></p>",
+    "link": "https://github.com/emosenkis/terminai",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T15:05:31+00:00",
+    "published_ts": 1785078331,
+    "smart_groups": [
+      "LLM & Foundation Model Releases"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: CMEM – Persistent Memory for AI Coding Agents",
+    "summary": "Article URL: https://cmem.ai Comments URL: https://news.ycombinator.com/item?id=49058789 Points: 1 # Comments: 0",
+    "summary_html": "<p>Article URL: <a href=\"https://cmem.ai\">https://cmem.ai</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49058789\">https://news.ycombinator.com/item?id=49058789</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://cmem.ai",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T14:54:58+00:00",
+    "published_ts": 1785077698,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Hallmark – Anti-AI-Slop Design Skill for Claude Code, Cursor, and Codex",
+    "summary": "Article URL: https://github.com/Nutlope/hallmark Comments URL: https://news.ycombinator.com/item?id=49058547 Points: 4 # Comments: 7",
+    "summary_html": "<p>Article URL: <a href=\"https://github.com/Nutlope/hallmark\">https://github.com/Nutlope/hallmark</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49058547\">https://news.ycombinator.com/item?id=49058547</a></p>\n<p>Points: 4</p>\n<p># Comments: 7</p>",
+    "link": "https://github.com/Nutlope/hallmark",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T14:25:17+00:00",
+    "published_ts": 1785075917,
+    "smart_groups": [
+      "LLM & Foundation Model Releases"
+    ],
+    "curated": false
+  },
+  {
+    "title": "I want to use AI coding agents for machine learning projects [D]",
+    "summary": "I'm a software engineer who mainly builds softwaes/applications, and I'm starting to work on machine learning projects. Since ML workloads often require GPUs, I know services like Google Colab and Kaggle exist. but, I'm looking for something a bit different. Is there a platform where I can use AI coding agents (such as Codex, Claude Code, or OpenCode) while running the actual ML code on a cloud GPU? Ideally, I'd like to: Work locally with my preferred editor and AI coding agent. Have the code execute on a remote GPU machine. Be able to build, debug, and iterate on ML projects as if the GPU were attached to my local development environment. Does a setup like this exist? If so, what tools or platforms do you recommend? submitted by /u/Fickle_Degree_2728 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>I'm a software engineer who mainly builds softwaes/applications, and I'm starting to work on machine learning projects.</p> <p>Since ML workloads often require GPUs, I know services like Google Colab and Kaggle exist. but, I'm looking for something a bit different.</p> <p>Is there a platform where I can use AI coding agents (such as Codex, Claude Code, or OpenCode) while running the actual ML code on a cloud GPU?</p> <p>Ideally, I'd like to:</p> <ul> <li>Work locally with my preferred editor and AI coding agent.</li> <li>Have the code execute on a remote GPU machine.</li> <li>Be able to build, debug, and iterate on ML projects as if the GPU were attached to my local development environment.</li> </ul> <p>Does a setup like this exist? If so, what tools or platforms do you recommend?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Fickle_Degree_2728\"> /u/Fickle_Degree_2728 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1v758ek/i_want_to_use_ai_coding_agents_for_machine/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1v758ek/i_want_to_use_ai_coding_agents_for_machine/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1v758ek/i_want_to_use_ai_coding_agents_for_machine/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T14:21:15+00:00",
+    "published_ts": 1785075675,
+    "smart_groups": [
+      "LLM & Foundation Model Releases"
+    ],
+    "curated": false
+  },
+  {
+    "title": "MCP Code Review Server – AI code review in your editor",
+    "summary": "Article URL: https://github.com/GoodJobwilliam/aicraft/tree/main/products/mcp-code-review Comments URL: https://news.ycombinator.com/item?id=49058442 Points: 1 # Comments: 0",
+    "summary_html": "<p>Article URL: <a href=\"https://github.com/GoodJobwilliam/aicraft/tree/main/products/mcp-code-review\">https://github.com/GoodJobwilliam/aicraft/tree/main/products/mcp-code-review</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49058442\">https://news.ycombinator.com/item?id=49058442</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://github.com/GoodJobwilliam/aicraft/tree/main/products/mcp-code-review",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T14:13:19+00:00",
+    "published_ts": 1785075199,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Data loss in Claude Code and OpenAI Codex: when AI deletes user files",
+    "summary": "Article URL: https://firasd.substack.com/p/accidental-data-loss-in-claude-code-openai-codex-ai-agent-harness-file-deletion Comments URL: https://news.ycombinator.com/item?id=49058441 Points: 2 # Comments: 0",
+    "summary_html": "<p>Article URL: <a href=\"https://firasd.substack.com/p/accidental-data-loss-in-claude-code-openai-codex-ai-agent-harness-file-deletion\">https://firasd.substack.com/p/accidental-data-loss-in-claude-code-openai-codex-ai-agent-harness-file-deletion</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49058441\">https://news.ycombinator.com/item?id=49058441</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://firasd.substack.com/p/accidental-data-loss-in-claude-code-openai-codex-ai-agent-harness-file-deletion",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T14:13:03+00:00",
+    "published_ts": 1785075183,
+    "smart_groups": [
+      "LLM & Foundation Model Releases"
+    ],
+    "curated": false
+  },
+  {
+    "title": "How to Give Away Your AI Money",
+    "summary": "Article URL: https://also.roybahat.com/how-to-actually-give-away-your-ai-money-01f2c411abde Comments URL: https://news.ycombinator.com/item?id=49058298 Points: 1 # Comments: 0",
+    "summary_html": "<p>Article URL: <a href=\"https://also.roybahat.com/how-to-actually-give-away-your-ai-money-01f2c411abde\">https://also.roybahat.com/how-to-actually-give-away-your-ai-money-01f2c411abde</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49058298\">https://news.ycombinator.com/item?id=49058298</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://also.roybahat.com/how-to-actually-give-away-your-ai-money-01f2c411abde",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T13:56:12+00:00",
+    "published_ts": 1785074172,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Show HN: I built Gnoseed – free flahscards to learn K8s, DevOps, AI and more",
+    "summary": "Hi everybody, I created my personal weekend project Gnoseed to learn more about Kubernetes with spaced repetition. Very soon it evolved into a small library of various topics about modern tech stack - AI/LLMs, DevOps, Security, and anything I found interesting. Currently it has 47 decks and ~4000 questions. A bit more about the process: \nI create decks from the open documentations or free papers I found here or there. The decks are built with a custom made pipeline of skills to extract the data, select questions, creating distractors and verification. I'm curating the entire process. To keep cards up-to-date I have a weekly automated routine to check release notes of selected topics and curating new cards. From the beginning I also realized just the random algorithm to show cards is not very efficient, so I implemented two spaced-repetition algorithms SM-2 and FSRS. Would you like to check it and give me some feedback? It's free, no sign-up needed Comments URL: https://news.ycombinator.com/item?id=49058280 Points: 1 # Comments: 0",
+    "summary_html": "<p>Hi everybody,<p>I created my personal weekend project Gnoseed to learn more about Kubernetes with spaced repetition. Very soon it evolved into a small library of various topics about modern tech stack - AI/LLMs, DevOps, Security, and anything I found interesting. Currently it has 47 decks and ~4000 questions.<p>A bit more about the process: \nI create decks from the open documentations or free papers I found here or there. The decks are built with a custom made pipeline of skills to extract the data, select questions, creating distractors and verification. I'm curating the entire process.<p>To keep cards up-to-date I have a weekly automated routine to check release notes of selected topics and curating new cards.<p>From the beginning I also realized just the random algorithm to show cards is not very efficient, so I implemented two spaced-repetition algorithms SM-2 and FSRS.<p>Would you like to check it and give me some feedback? It's free, no sign-up needed</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49058280\">https://news.ycombinator.com/item?id=49058280</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p></p></p></p></p></p>",
+    "link": "https://gnoseed.com",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T13:54:57+00:00",
+    "published_ts": 1785074097,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Open-weight 4B models approach o3-level medical question answering in Swedish [P]",
+    "summary": "I have been running some experiments with smaller open-weight LLMs on multiple-choice questions of Swedish medical licensing exams. On a dataset called MedQA-SWE, GPT-4 scored 84% accuracy in 2024 and o3 scored 88% in 2025 on a smaller, overlapping dataset. With post-training (SFT) on data from earlier years, I got MedGemma-1.5-4B to a passing score of 60% on the final year’s exam. Find the implementation here: https://github.com/tarolangner/medqaswe_medgemma_sft But even though they were released just three months later, Gemma4-E4B and Qwen3.5-4B are flat out superior already, at 77% with no post-training at all. With reasoning enabled, the latter can get to 87% accuracy. It can even push a bit further if no length cap is put on the reasoning traces, but some of them spiral into repetitive loops about formatting that fill the entire context length without giving any answer. Here, I found it helpful to use an ‘early exit’ thinking intervention proposed in the S-GRPO paper that simply injects a phrase and closes the thinking trace at a predetermined sequence length. I also tried their proposed reinforcement learning method to get shorter reasoning traces, but with only minor gains (probably somewhat underdimensioned training setup). Curiously, Qwen3.5-4B does all reasoning in English despite the Swedish prompt, questions and answer options. But it really seems like the language is no obstacle, even though it’s often estimated to be just 1% of LLM training data. I also have a more detailed write-up on the details and experiments here for anyone interested: https://tensorlabbet.com/2026/07/19/medqaswe_post_training/ submitted by /u/AccomplishedCat4770 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>I have been running some experiments with smaller open-weight LLMs on multiple-choice questions of Swedish medical licensing exams. On a dataset called MedQA-SWE, GPT-4 scored 84% accuracy in 2024 and o3 scored 88% in 2025 on a smaller, overlapping dataset.</p> <p>With post-training (SFT) on data from earlier years, I got MedGemma-1.5-4B to a passing score of 60% on the final year’s exam. Find the implementation here: <a href=\"https://github.com/tarolangner/medqaswe_medgemma_sft\">https://github.com/tarolangner/medqaswe_medgemma_sft</a></p> <p>But even though they were released just three months later, Gemma4-E4B and Qwen3.5-4B are flat out superior already, at 77% with no post-training at all. With reasoning enabled, the latter can get to 87% accuracy.</p> <p>It can even push a bit further if no length cap is put on the reasoning traces, but some of them spiral into repetitive loops about formatting that fill the entire context length without giving any answer. Here, I found it helpful to use an ‘early exit’ thinking intervention proposed in the S-GRPO paper that simply injects a phrase and closes the thinking trace at a predetermined sequence length. I also tried their proposed reinforcement learning method to get shorter reasoning traces, but with only minor gains (probably somewhat underdimensioned training setup).</p> <p>Curiously, Qwen3.5-4B does all reasoning in English despite the Swedish prompt, questions and answer options. But it really seems like the language is no obstacle, even though it’s often estimated to be just 1% of LLM training data.</p> <p>I also have a more detailed write-up on the details and experiments here for anyone interested: <a href=\"https://tensorlabbet.com/2026/07/19/medqaswe_post_training/\">https://tensorlabbet.com/2026/07/19/medqaswe_post_training/</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/AccomplishedCat4770\"> /u/AccomplishedCat4770 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1v71wds/openweight_4b_models_approach_o3level_medical/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1v71wds/openweight_4b_models_approach_o3level_medical/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1v71wds/openweight_4b_models_approach_o3level_medical/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-07-26T11:58:39+00:00",
+    "published_ts": 1785067119,
+    "smart_groups": [
+      "LLM & Foundation Model Releases"
+    ],
+    "curated": true
+  },
+  {
     "title": "AI drove Shopify back to clean code",
     "summary": "Article URL: https://www.theregister.com/devops/2026/07/25/how-ai-drove-shopify-back-to-clean-code/5277901 Comments URL: https://news.ycombinator.com/item?id=49056472 Points: 1 # Comments: 0",
     "summary_html": "<p>Article URL: <a href=\"https://www.theregister.com/devops/2026/07/25/how-ai-drove-shopify-back-to-clean-code/5277901\">https://www.theregister.com/devops/2026/07/25/how-ai-drove-shopify-back-to-clean-code/5277901</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49056472\">https://news.ycombinator.com/item?id=49056472</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
@@ -2465,22 +2836,6 @@
       "AI Research & Papers"
     ],
     "curated": true
-  },
-  {
-    "title": "Accidental data loss in Claude Code and OpenAI Codex: when AI deletes user files",
-    "summary": "Article URL: https://firasd.substack.com/p/accidental-data-loss-in-claude-code-openai-codex-ai-agent-harness-file-deletion Comments URL: https://news.ycombinator.com/item?id=49025471 Points: 2 # Comments: 1",
-    "summary_html": "<p>Article URL: <a href=\"https://firasd.substack.com/p/accidental-data-loss-in-claude-code-openai-codex-ai-agent-harness-file-deletion\">https://firasd.substack.com/p/accidental-data-loss-in-claude-code-openai-codex-ai-agent-harness-file-deletion</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49025471\">https://news.ycombinator.com/item?id=49025471</a></p>\n<p>Points: 2</p>\n<p># Comments: 1</p>",
-    "link": "https://firasd.substack.com/p/accidental-data-loss-in-claude-code-openai-codex-ai-agent-harness-file-deletion",
-    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-    "feed_type": "blog",
-    "type": "media-tech-analysis",
-    "type_label": "Media & Tech Analysis",
-    "published": "2026-07-23T17:48:20+00:00",
-    "published_ts": 1784828900,
-    "smart_groups": [
-      "LLM & Foundation Model Releases"
-    ],
-    "curated": false
   },
   {
     "title": "Fail-closed enforcement for AI agents: deny what you cannot verify",
