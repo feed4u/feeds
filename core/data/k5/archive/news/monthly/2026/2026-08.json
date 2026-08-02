@@ -9,7 +9,7 @@
     "type": "vulnerability-advisories-research",
     "type_label": "Vulnerability Advisories & Research",
     "published": null,
-    "published_ts": 1785605500.882132,
+    "published_ts": 1785643555.546831,
     "smart_groups": [
       "Vulnerabilities / CVEs"
     ],
@@ -25,7 +25,7 @@
     "type": "vulnerability-advisories-research",
     "type_label": "Vulnerability Advisories & Research",
     "published": null,
-    "published_ts": 1785605500.882129,
+    "published_ts": 1785643555.546829,
     "smart_groups": [
       "Vulnerabilities / CVEs"
     ],
@@ -41,7 +41,7 @@
     "type": "vulnerability-advisories-research",
     "type_label": "Vulnerability Advisories & Research",
     "published": null,
-    "published_ts": 1785605500.882127,
+    "published_ts": 1785643555.546826,
     "smart_groups": [
       "Vulnerabilities / CVEs"
     ],
@@ -57,7 +57,7 @@
     "type": "vulnerability-advisories-research",
     "type_label": "Vulnerability Advisories & Research",
     "published": null,
-    "published_ts": 1785605500.882123,
+    "published_ts": 1785643555.546822,
     "smart_groups": [
       "Vulnerabilities / CVEs"
     ],
@@ -73,10 +73,172 @@
     "type": "vulnerability-advisories-research",
     "type_label": "Vulnerability Advisories & Research",
     "published": null,
-    "published_ts": 1785605500.882114,
+    "published_ts": 1785643555.546815,
     "smart_groups": [
       "Vulnerabilities / CVEs"
     ],
+    "curated": false
+  },
+  {
+    "title": "Atomic MacOS (AMOS) stealer infection, (Sun, Aug 2nd)",
+    "summary": "Introduction This diary provides indicators from an Atomic MacOS (AMOS) stealer infection that I generated in my lab on July 31st, 2026.  This was distributed through a web page from getmacouscloud[.]com with instructions to paste text into a macOS Terminal window, supposedly for \"macOS toolkit,\" but instead the text is a command to retrieve and install AMOS stealer malware. Of note, I ran the text in the Terminal window twice, because I wanted to make sure I retrieved copies of files in the host's /tmp directory before entering the user account password.  This is why the initial infection traffic is repeated, and also likely why there are two different directories with the AMOS stealer malware persistent on my infected lab host. Images from the Infection Shown above: Website with instructions to copy and paste text into a Terminal window, supposedly for a \"macOS toolkit\" but actually for malware. Shown above: The malicious text pasted into a Terminal Window on a macOS host. Shown above: Files from my infected host's /tmp directory, showing data stolen and other info for AMOS stealer. Shown above: Examples of AMOS stealer persistent on my infected macOS host. Shown above: Traffic from the AMOS stealer infection filtered in Wireshark. Indicators of Compromise Traffic leading to the getmacouscloud[.]com page on Friday 2026-07-31: hxxps[:]//macostruecloud[.]xyz/?h=2f9548d041648a8030c040ae0e1e530b&z=304 macspheres[.]com - HTTPS traffic hxxps[:]//getmacouscloud[.]com/?FSSbmnNdviEDE5S?io=16vwsb0rgIiPNIgM URL from the base64 text provided by getmacouscloud[.]com for the initial download: hxxps[:]//render65[.]com/curl/f5509695dd98a9732378e5256d6235415d64d92194459bb08525c7ce5991a0c9 URLs from extracted from the payload returned from the initial download: hxxps[:]//grove-89[.]com/api/metrics/run?event=pasted hxxps[:]//render65[.]com/2kqYRM0DCrnyJgoS4gVLl_FHJRRdTUhGCbjyuYwpZ6c/m1/update AMOS stealer C2 traffic - HTTP POST requests over TCP port 80: hxxp[:]/188.166.78[.]138/api/metrics/run?event=started&stage=boot hxxp[:]/188.166.78[.]138/api/metrics/run?event=stage&stage=init_session hxxp[:]/188.166.78[.]138/api/metrics/run?event=stage&stage=messengers hxxp[:]/188.166.78[.]138/api/metrics/run?event=stage&stage=credentials hxxp[:]/188.166.78[.]138/api/metrics/run?event=stage&stage=browsers hxxp[:]/188.166.78[.]138/api/metrics/run?event=stage&stage=wallets hxxp[:]/188.166.78[.]138/contact hxxp[:]/188.166.78[.]138/api/metrics/run?event=stage&stage=resolve_auth hxxp[:]/188.166.78[.]138/api/metrics/run?event=stage&stage=local_data hxxp[:]/188.166.78[.]138/api/join/ hxxp[:]/188.166.78[.]138/api/bots/device-info hxxp[:]/188.166.78[.]138/api/tasks/ack hxxp[:]/188.166.78[.]138/api/feed/register AMOS stealer C2 traffic - examples of HTTP GET requests over TCP port 80: hxxp[:]/188.166.78[.]138/api/tasks/r3dqbX7fptIT-gXz--D_nw?v=2.1 hxxp[:]/188.166.78[.]138/api/feed/items/49359f77ebb4ffd9a95568d27a8ff3e7 SHA-256 hash: b9ec3261d633c289e51c5fa8842af4350efe68446df39cb995de82e0941d0f3c File size: 1,973 bytes File type: Paul Falstad's zsh script text executable, ASCII text File description: Initial file retrieved by malicious text in Terminal window SHA-256 hash: 13b868b3ea8b492e7fbab1ca04535c53d0930650185b5a082cd59c1974689cd5 File size: 1,227 bytes File type: Paul Falstad's zsh script text executable, ASCII text, with very long lines (315) File description: Script extracted from a gzip-compressed file from base64 text in the above file SHA-256 hash: 9f25ec533cb23d020e568fb771500d7776b1300f07119ad9d0876f4329ce22ab File size: 297,952 bytes File location: /tmp/helper File type: Mach-O universal binary with 2 architectures: x86_64 & arm64 SHA-256 hash: 0a03cf18de28017c0ea591dffc380a6b41fedd2acc3a39e901e58d9188c01836 File size: 438,656 bytes File location: /Users/ [username] /Library/Application Support/.com.apple.accountsd/AccountsHelper File type: Mach-O universal binary with 2 architectures: x86_64 & arm64 SHA-256 hash: 01a0d5332b09bb299f7784bf0d0c43c4199269ed6a0712377279eeb999847d20 File size: 503,152 bytes File location: /Users/ [username] /Library/Application Support/.com.apple.metadata.mds/mdworker_shared File type: Mach-O universal binary with 2 architectures: x86_64 & arm64 --- Bradley Duncan brad [at] malware-traffic-analysis.net (c) SANS Internet Storm Center. https://isc.sans.edu Creative Commons Attribution-Noncommercial 3.0 United States License.",
+    "summary_html": "<p><em><strong>Introduction</strong></em></p>\n<p>This diary provides indicators from an Atomic MacOS (AMOS) stealer infection that I generated in my lab on July 31st, 2026.  This was distributed through a web page from <span>getmacouscloud[.]com</span> with instructions to paste text into a macOS Terminal window, supposedly for \"macOS toolkit,\" but instead the text is a command to retrieve and install AMOS stealer malware.</p>\n<p>Of note, I ran the text in the Terminal window twice, because I wanted to make sure I retrieved copies of files in the host's <span>/tmp</span> directory before entering the user account password.  This is why the initial infection traffic is repeated, and also likely why there are two different directories with the AMOS stealer malware persistent on my infected lab host.</p>\n<p><em><strong>Images from the Infection</strong></em></p>\n<p><a href=\"https://isc.sans.edu/diaryimages/images/2026-08-02-ISC-diary-image-01c.jpg\"></a><br/>\n<em>Shown above: Website with instructions to copy and paste text into a Terminal window, supposedly for a \"macOS toolkit\" but actually for malware.</em></p>\n<p><em><a href=\"https://isc.sans.edu/diaryimages/images/2026-08-02-ISC-diary-image-02.jpg\"></a></em><br/>\n<em>Shown above: The malicious text pasted into a Terminal Window on a macOS host.</em></p>\n<p><a href=\"https://isc.sans.edu/diaryimages/images/2026-08-02-ISC-diary-image-03.jpg\"></a><br/>\n<em>Shown above: Files from my infected host's <span>/tmp</span> directory, showing data stolen and other info for AMOS stealer.</em></p>\n<p><a href=\"https://isc.sans.edu/diaryimages/images/2026-08-02-ISC-diary-image-04.jpg\"></a><br/>\n<em>Shown above: Examples of AMOS stealer persistent on my infected macOS host.</em></p>\n<p><a href=\"https://isc.sans.edu/diaryimages/images/2026-08-02-ISC-diary-image-05.jpg\"></a><br/>\n<em>Shown above: Traffic from the AMOS stealer infection filtered in Wireshark.</em></p>\n<p><em><strong>Indicators of Compromise</strong></em></p>\n<p>Traffic leading to the <span>getmacouscloud[.]com</span> page on Friday 2026-07-31:</p>\n<ul>\n<li><span>hxxps[:]//macostruecloud[.]xyz/?h=2f9548d041648a8030c040ae0e1e530b&amp;z=304</span></li>\n<li><span>macspheres[.]com</span> - HTTPS traffic</li>\n<li><span>hxxps[:]//getmacouscloud[.]com/?FSSbmnNdviEDE5S?io=16vwsb0rgIiPNIgM</span></li>\n</ul>\n<p>URL from the base64 text provided by <span>getmacouscloud[.]com</span> for the initial download:</p>\n<ul>\n<li><span>hxxps[:]//render65[.]com/curl/f5509695dd98a9732378e5256d6235415d64d92194459bb08525c7ce5991a0c9</span></li>\n</ul>\n<p>URLs from extracted from the payload returned from the initial download:</p>\n<ul>\n<li><span>hxxps[:]//grove-89[.]com/api/metrics/run?event=pasted</span></li>\n<li><span>hxxps[:]//render65[.]com/2kqYRM0DCrnyJgoS4gVLl_FHJRRdTUhGCbjyuYwpZ6c/m1/update</span></li>\n</ul>\n<p>AMOS stealer C2 traffic - HTTP POST requests over TCP port 80:</p>\n<ul>\n<li><span>hxxp[:]/188.166.78[.]138/api/metrics/run?event=started&amp;stage=boot</span></li>\n<li><span>hxxp[:]/188.166.78[.]138/api/metrics/run?event=stage&amp;stage=init_session</span></li>\n<li><span>hxxp[:]/188.166.78[.]138/api/metrics/run?event=stage&amp;stage=messengers</span></li>\n<li><span>hxxp[:]/188.166.78[.]138/api/metrics/run?event=stage&amp;stage=credentials</span></li>\n<li><span>hxxp[:]/188.166.78[.]138/api/metrics/run?event=stage&amp;stage=browsers</span></li>\n<li><span>hxxp[:]/188.166.78[.]138/api/metrics/run?event=stage&amp;stage=wallets</span></li>\n<li><span>hxxp[:]/188.166.78[.]138/contact</span></li>\n<li><span>hxxp[:]/188.166.78[.]138/api/metrics/run?event=stage&amp;stage=resolve_auth</span></li>\n<li><span>hxxp[:]/188.166.78[.]138/api/metrics/run?event=stage&amp;stage=local_data</span></li>\n<li><span>hxxp[:]/188.166.78[.]138/api/join/</span></li>\n<li><span>hxxp[:]/188.166.78[.]138/api/bots/device-info</span></li>\n<li><span>hxxp[:]/188.166.78[.]138/api/tasks/ack</span></li>\n<li><span>hxxp[:]/188.166.78[.]138/api/feed/register</span></li>\n</ul>\n<p>AMOS stealer C2 traffic - examples of HTTP GET requests over TCP port 80:</p>\n<ul>\n<li><span>hxxp[:]/188.166.78[.]138/api/tasks/r3dqbX7fptIT-gXz--D_nw?v=2.1</span></li>\n<li><span>hxxp[:]/188.166.78[.]138/api/feed/items/49359f77ebb4ffd9a95568d27a8ff3e7</span></li>\n</ul>\n<p>SHA-256 hash: <a href=\"https://www.virustotal.com/gui/file/b9ec3261d633c289e51c5fa8842af4350efe68446df39cb995de82e0941d0f3c\"><span>b9ec3261d633c289e51c5fa8842af4350efe68446df39cb995de82e0941d0f3c</span></a></p>\n<ul>\n<li>File size: 1,973 bytes</li>\n<li>File type: Paul Falstad's zsh script text executable, ASCII text</li>\n<li>File description: Initial file retrieved by malicious text in Terminal window</li>\n</ul>\n<p>SHA-256 hash: <a href=\"https://www.virustotal.com/gui/file/13b868b3ea8b492e7fbab1ca04535c53d0930650185b5a082cd59c1974689cd5\"><span>13b868b3ea8b492e7fbab1ca04535c53d0930650185b5a082cd59c1974689cd5</span></a></p>\n<ul>\n<li>File size: 1,227 bytes</li>\n<li>File type: Paul Falstad's zsh script text executable, ASCII text, with very long lines (315)</li>\n<li>File description: Script extracted from a gzip-compressed file from base64 text in the above file</li>\n</ul>\n<p>SHA-256 hash: <span><a href=\"https://www.virustotal.com/gui/file/9f25ec533cb23d020e568fb771500d7776b1300f07119ad9d0876f4329ce22ab\">9f25ec533cb23d020e568fb771500d7776b1300f07119ad9d0876f4329ce22ab</a></span></p>\n<ul>\n<li>File size: 297,952 bytes</li>\n<li>File location: <span>/tmp/helper</span></li>\n<li>File type: Mach-O universal binary with 2 architectures: x86_64 &amp; arm64</li>\n</ul>\n<p>SHA-256 hash: <span><a href=\"https://www.virustotal.com/gui/file/0a03cf18de28017c0ea591dffc380a6b41fedd2acc3a39e901e58d9188c01836\">0a03cf18de28017c0ea591dffc380a6b41fedd2acc3a39e901e58d9188c01836</a></span></p>\n<ul>\n<li>File size: 438,656 bytes</li>\n<li>File location: <span>/Users/</span><em><span>[username]</span></em><span>/Library/Application Support/.com.apple.accountsd/AccountsHelper</span></li>\n<li>File type: Mach-O universal binary with 2 architectures: x86_64 &amp; arm64</li>\n</ul>\n<p>SHA-256 hash: <span><a href=\"https://www.virustotal.com/gui/file/01a0d5332b09bb299f7784bf0d0c43c4199269ed6a0712377279eeb999847d20\">01a0d5332b09bb299f7784bf0d0c43c4199269ed6a0712377279eeb999847d20</a></span></p>\n<ul>\n<li>File size: 503,152 bytes</li>\n<li>File location: <span>/Users/</span><em><span>[username]</span></em><span>/Library/Application Support/.com.apple.metadata.mds/mdworker_shared</span></li>\n<li>File type: Mach-O universal binary with 2 architectures: x86_64 &amp; arm64</li>\n</ul>\n<p>---<br/>\nBradley Duncan<br/>\nbrad [at] malware-traffic-analysis.net</p>\n\n \n (c) SANS Internet Storm Center. https://isc.sans.edu Creative Commons Attribution-Noncommercial 3.0 United States License.",
+    "link": "https://isc.sans.edu/diary/rss/33208",
+    "source": "SANS Internet Storm Center",
+    "feed_type": "news",
+    "type": "government-cert-advisories",
+    "type_label": "Government, CERT & Advisories",
+    "published": "2026-08-02T03:21:28+00:00",
+    "published_ts": 1785640888,
+    "smart_groups": [
+      "Malware / Payloads",
+      "Network / OT / ICS",
+      "Mobile & App Security"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Census 2027 Self-Report Launches with Cyber Scam Alerts: Stay Safe Online",
+    "summary": "India launched the 2027 Digital Census with warnings against cyber fraud schemes. Self-Enumeration Phase India initiated the self-enumeration phase of the 2027 Digital Census, accompanied by a nationwide alert targeting cyber fraud schemes exploiting the initiative. Government agencies have cautioned citizens against individuals impersonating census personnel to extract sensitive data. Residents are explicitly instructed not to disclose Aadhaar numbers, banking details, property records, passwords, or one-time passwords under any circumstances. Officials confirmed that such demands are unequivocally unauthorized and unrelated to the official census procedure. The self-enumeration process, launched on August 1, represents the first fully digital census in the country. Authorities clarified that participants are not required to submit supporting documents during data entry. All responses will be accepted through self-declaration, eliminating the necessity for document verification during data collection. Cyber Fraud Warnings Enumerators are strictly prohibited from requesting Aadhaar cards, property documents, banking information, or OTPs, or directing individuals to interact with suspicious links. Citizens are urged to reject such requests and report incidents to law enforcement. The door-to-door enumeration phase is scheduled to commence on August 16, with government-appointed enumerators visiting residences, businesses, and other structures for household listing and verification. Officials emphasized that enumerators will present official identification, advising residents to verify credentials before granting access or initiating surveys. Enumeration Process The census questionnaire comprises 34 questions focused on demographic and household data. No documentary proof is required during the process, ensuring streamlined participation while safeguarding personal information. The West Bengal government, during the digital self-enumeration launch in Bidhannagar, reiterated that all collected data will be strictly confidential and legally protected. Authorities stated the information will be utilized solely for statistical analysis, policy development, and public planning, with no mechanisms for public disclosure or misuse. Awareness Campaigns Kolkata and Bidhannagar police have launched separate awareness campaigns to educate the public on identifying census-related cyber threats. Police officials noted that cybercriminals are likely to exploit the census by impersonating officials through phone calls, text messages, fake websites, and phishing links to harvest personal or financial data. Expert Advice Cybercrime expert and former IPS officer Prof. Triveni Singh highlighted that large-scale government projects often attract fraudsters by leveraging public trust and creating urgency. He advised citizens to recognize that official representatives never request banking credentials, OTPs, or sensitive financial information during verification. Reporting Procedures Authorities have urged the public to maintain vigilance throughout the census process, emphasizing immediate reporting of suspicious activities. Individuals encountering fraudulent communications related to the census are directed to contact local police, utilize the National Cyber Crime Helpline (1930), and submit reports via the National Cyber Crime Reporting Portal. Officials stressed that public awareness, timely reporting, and rigorous verification of enumerator identities are essential to mitigating risks during the initiative. The post Census 2027 Self-Report Launches with Cyber Scam Alerts: Stay Safe Online appeared first on .",
+    "summary_html": "<p>India launched the 2027 Digital Census with warnings against cyber fraud schemes.</p>\nSelf-Enumeration Phase\n<p>India initiated the self-enumeration phase of the 2027 Digital Census, accompanied by a nationwide alert targeting cyber fraud schemes exploiting the initiative. Government agencies have cautioned citizens against individuals impersonating census personnel to extract sensitive data. Residents are explicitly instructed not to disclose Aadhaar numbers, banking details, property records, passwords, or one-time passwords under any circumstances. Officials confirmed that such demands are unequivocally unauthorized and unrelated to the official census procedure. The self-enumeration process, launched on August 1, represents the first fully digital census in the country. Authorities clarified that participants are not required to submit supporting documents during data entry. All responses will be accepted through self-declaration, eliminating the necessity for document verification during data collection.</p>\nCyber Fraud Warnings\n<p>Enumerators are strictly prohibited from requesting Aadhaar cards, property documents, banking information, or OTPs, or directing individuals to interact with suspicious links. Citizens are urged to reject such requests and report incidents to law enforcement. The door-to-door enumeration phase is scheduled to commence on August 16, with government-appointed enumerators visiting residences, businesses, and other structures for household listing and verification. Officials emphasized that enumerators will present official identification, advising residents to verify credentials before granting access or initiating surveys.</p>\nEnumeration Process\n<p>The census questionnaire comprises 34 questions focused on demographic and household data. No documentary proof is required during the process, ensuring streamlined participation while safeguarding personal information. The West Bengal government, during the digital self-enumeration launch in Bidhannagar, reiterated that all collected data will be strictly confidential and legally protected. Authorities stated the information will be utilized solely for statistical analysis, policy development, and public planning, with no mechanisms for public disclosure or misuse.</p>\nAwareness Campaigns\n<p>Kolkata and Bidhannagar police have launched separate awareness campaigns to educate the public on identifying census-related cyber threats. Police officials noted that cybercriminals are likely to exploit the census by impersonating officials through phone calls, text messages, fake websites, and phishing links to harvest personal or financial data.</p>\nExpert Advice\n<div>\n<p>Cybercrime expert and former IPS officer Prof. Triveni Singh highlighted that large-scale government projects often attract fraudsters by leveraging public trust and creating urgency. He advised citizens to recognize that official representatives never request banking credentials, OTPs, or sensitive financial information during verification.</p>\n</div>\nReporting Procedures\n<p>Authorities have urged the public to maintain vigilance throughout the census process, emphasizing immediate reporting of suspicious activities. Individuals encountering fraudulent communications related to the census are directed to contact local police, utilize the National Cyber Crime Helpline (1930), and submit reports via the National Cyber Crime Reporting Portal. Officials stressed that public awareness, timely reporting, and rigorous verification of enumerator identities are essential to mitigating risks during the initiative.</p>\n<p><a href=\"https://craw.in/learn-python-training-in-delhi-python-course\"><br/>\n<br/>\n</a></p>\n<p>The post <a href=\"https://www.news4hackers.com/census-2027-self-report-launches-with-cyber-scam-alerts-stay-safe-online/\">Census 2027 Self-Report Launches with Cyber Scam Alerts: Stay Safe Online</a> appeared first on <a href=\"https://www.news4hackers.com\"></a>.</p>",
+    "link": "https://www.news4hackers.com/census-2027-self-report-launches-with-cyber-scam-alerts-stay-safe-online/",
+    "source": "News4Hackers",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-08-02T03:02:02+00:00",
+    "published_ts": 1785639722,
+    "smart_groups": [
+      "Vulnerabilities / CVEs",
+      "Linux / Unix",
+      "Phishing / Social Engineering",
+      "Community Discussion",
+      "Product News"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Axonius?",
+    "summary": "Looking at doing a pov with Axonius, has anyone used them before or done testing in the past and can share their experiences? submitted by /u/Wide-Cup-5084 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Looking at doing a pov with Axonius, has anyone used them before or done testing in the past and can share their experiences? </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Wide-Cup-5084\"> /u/Wide-Cup-5084 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vd2zca/axonius/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vd2zca/axonius/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1vd2zca/axonius/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-08-02T00:09:44+00:00",
+    "published_ts": 1785629384,
+    "smart_groups": [
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Microsoft Windows Cloud Files Mini Filter Driver CldiStreamCompleteRequest use-after-free vulnerability",
+    "summary": "",
+    "summary_html": "",
+    "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2426",
+    "source": "Talos - Vulnerability Reports",
+    "feed_type": "news",
+    "type": "vulnerabilities-cves-exploits",
+    "type_label": "Vulnerabilities, CVEs & Exploits",
+    "published": "2026-08-02T00:00:00+00:00",
+    "published_ts": 1785628800,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Onchain, in court: What happened in crypto legal news this week",
+    "summary": "A case tied to defunct crypto exchange FTX moves forward, a soldier seeks to dismiss over a Polymarket bet and a former congressman was ordered to pay $35,000 for manipulative trading.",
+    "summary_html": "<p></p><p>A case tied to defunct crypto exchange FTX moves forward, a soldier seeks to dismiss over a Polymarket bet and a former congressman was ordered to pay $35,000 for manipulative trading.</p>",
+    "link": "https://cointelegraph.com/news/on-chain-in-court-crypto-legal-news4?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-08-01T21:14:39+00:00",
+    "published_ts": 1785618879,
+    "smart_groups": [
+      "Crypto / Web3"
+    ],
+    "curated": false
+  },
+  {
+    "title": "would getting a half sleeve tat affect me getting a job in the cyber field? or nah for professionalism i mean it is 2026..",
+    "summary": "submitted by /u/thatflaat [link] [comments]",
+    "summary_html": "submitted by   <a href=\"https://www.reddit.com/user/thatflaat\"> /u/thatflaat </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vcxr82/would_getting_a_half_sleeve_tat_affect_me_getting/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vcxr82/would_getting_a_half_sleeve_tat_affect_me_getting/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1vcxr82/would_getting_a_half_sleeve_tat_affect_me_getting/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-08-01T20:25:18+00:00",
+    "published_ts": 1785615918,
+    "smart_groups": [
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Minnesota crypto ATM ban goes into effect after reported $1M losses",
+    "summary": "State officials reported that Minnesota residents, and largely senior citizens, had lost about $1 million from scams tied to crypto kiosks from 2023 to 2025.",
+    "summary_html": "<p></p><p>State officials reported that Minnesota residents, and largely senior citizens, had lost about $1 million from scams tied to crypto kiosks from 2023 to 2025.</p>",
+    "link": "https://cointelegraph.com/news/minnesota-crypto-atm-ban-losses-scams?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-08-01T18:07:17+00:00",
+    "published_ts": 1785607637,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Is this normal, or is my cybersecurity team just badly run?",
+    "summary": "​ I work at the cybersecurity arm of a multinational firm. They launched it about a year ago and have been struggling ever since with paperwork and regulatory approvals just to deliver services. **How the team has shrunk in one year:** - Started with: 2 L2 assistant managers, 1 L1 assistant manager, 1 team lead, 4 seniors, 1 mid-level, 1 junior - Since then: 2 seniors left, 1 assistant manager left, and the team lead left - Now: 2 assistant managers (1 L2, 1 L1), 2 seniors, 1 mid-level, 1 junior **But the attrition isn't what bothers me. It's this:** - I earned my OSCP this year. It was supposed to come with a raise. It didn't. A full year with zero increase — the justification being that I \"started on a good salary\" and there isn't enough billable work to fund one. - The two seniors who left weren't technically strong at all. They struggled with basic tasks. Meanwhile the pressure lands on the rest of us. - There's barely any client work, so management tells us to self-study (CPTS path, research tasks, etc.). Then a random week or two later they ambush you with \"so what have you been up to?\" - I tell them I've gone through the material multiple times and researched what they asked for, and that I learn by doing rather than reading. I list what I actually learned — X, Y, Z — and they immediately switch to attack mode: *\"Is that it?\" \"How many hours did you spend on this?\"* - We have no real work. Why is the reaction to that anger at me? Track my hours when there's actual work to track. **Micromanagement during engagements:** - Daily end-of-day calls: \"Tell me the test cases you completed today.\" I list them. Same response: *\"Is that it?\" \"How many hours?\"* - If they have specific test cases in mind, just tell me. Skip the smirking. - They also check in every few hours to ask what you're working on. - The seniority culture feels military. Everything must be \"aligned\" with your senior, and they make you feel like a junior regardless of your level. **Scoping and delivery:** - Because they're a multinational, they sell man-days at a premium — but with few clients and low billing, engagements get compressed. A 7-day engagement gets crammed into 5. - The report is always due in one day, no matter what we found. - I'll own this part: my reports suffer because I'm rushed and anxious. (I've taken the advice from this sub to start writing the report as I work — doing that next time.) **Management behavior:** - In live meetings, mistakes get met with *\"Is this your first time working?\"* or *\"Do you want me to come do your work for you?\"* - They never actually explain what's wrong. It's always a sarcastic *\"why did you do it that way?\"* — and sometimes they laugh when I ask questions. - One time my teammates and I submitted a weak report. As punishment, the team lead made us come write it on-site — office is downtown in a packed area — then told us he'd meet with us, disappeared all day, and left us sitting there with nothing to do. - Bad report = mandatory commute downtown. That's apparently the policy. **The only upside** is that the work is hybrid, and honestly I'm no longer sure that's worth it. The real problem: I keep interviewing and every offer I get is worse than what I have. Is this normal for the industry, or should I be taking a pay cut to get out? submitted by /u/ProcedureFar4995 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>​</p> <p>I work at the cybersecurity arm of a multinational firm. They launched it about a year ago and have been struggling ever since with paperwork and regulatory approvals just to deliver services.</p> <p>**How the team has shrunk in one year:**</p> <p>- Started with: 2 L2 assistant managers, 1 L1 assistant manager, 1 team lead, 4 seniors, 1 mid-level, 1 junior</p> <p>- Since then: 2 seniors left, 1 assistant manager left, and the team lead left</p> <p>- Now: 2 assistant managers (1 L2, 1 L1), 2 seniors, 1 mid-level, 1 junior</p> <p>**But the attrition isn't what bothers me. It's this:**</p> <p>- I earned my OSCP this year. It was supposed to come with a raise. It didn't. A full year with zero increase — the justification being that I \"started on a good salary\" and there isn't enough billable work to fund one.</p> <p>- The two seniors who left weren't technically strong at all. They struggled with basic tasks. Meanwhile the pressure lands on the rest of us.</p> <p>- There's barely any client work, so management tells us to self-study (CPTS path, research tasks, etc.). Then a random week or two later they ambush you with \"so what have you been up to?\"</p> <p>- I tell them I've gone through the material multiple times and researched what they asked for, and that I learn by doing rather than reading. I list what I actually learned — X, Y, Z — and they immediately switch to attack mode: *\"Is that it?\" \"How many hours did you spend on this?\"*</p> <p>- We have no real work. Why is the reaction to that anger at me? Track my hours when there's actual work to track.</p> <p>**Micromanagement during engagements:**</p> <p>- Daily end-of-day calls: \"Tell me the test cases you completed today.\" I list them. Same response: *\"Is that it?\" \"How many hours?\"*</p> <p>- If they have specific test cases in mind, just tell me. Skip the smirking.</p> <p>- They also check in every few hours to ask what you're working on.</p> <p>- The seniority culture feels military. Everything must be \"aligned\" with your senior, and they make you feel like a junior regardless of your level.</p> <p>**Scoping and delivery:**</p> <p>- Because they're a multinational, they sell man-days at a premium — but with few clients and low billing, engagements get compressed. A 7-day engagement gets crammed into 5.</p> <p>- The report is always due in one day, no matter what we found.</p> <p>- I'll own this part: my reports suffer because I'm rushed and anxious. (I've taken the advice from this sub to start writing the report as I work — doing that next time.)</p> <p>**Management behavior:**</p> <p>- In live meetings, mistakes get met with *\"Is this your first time working?\"* or *\"Do you want me to come do your work for you?\"*</p> <p>- They never actually explain what's wrong. It's always a sarcastic *\"why did you do it that way?\"* — and sometimes they laugh when I ask questions.</p> <p>- One time my teammates and I submitted a weak report. As punishment, the team lead made us come write it on-site — office is downtown in a packed area — then told us he'd meet with us, disappeared all day, and left us sitting there with nothing to do.</p> <p>- Bad report = mandatory commute downtown. That's apparently the policy.</p> <p>**The only upside** is that the work is hybrid, and honestly I'm no longer sure that's worth it.</p> <p>The real problem: I keep interviewing and every offer I get is worse than what I have.</p> <p>Is this normal for the industry, or should I be taking a pay cut to get out?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/ProcedureFar4995\"> /u/ProcedureFar4995 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vcu10j/is_this_normal_or_is_my_cybersecurity_team_just/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vcu10j/is_this_normal_or_is_my_cybersecurity_team_just/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1vcu10j/is_this_normal_or_is_my_cybersecurity_team_just/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-08-01T17:58:18+00:00",
+    "published_ts": 1785607098,
+    "smart_groups": [
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Quantum Computers May Put Internet Traffic at Risk. NIST Is Safeguarding Computers With New Standards.",
+    "summary": "submitted by /u/donutloop [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/cybersecurity/comments/1vctnyz/quantum_computers_may_put_internet_traffic_at/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/donutloop\"> /u/donutloop </a> <br/> <span><a href=\"https://www.nist.gov/blogs/taking-measure/quantum-computers-may-put-internet-traffic-risk-nist-safeguarding-computers-new\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vctnyz/quantum_computers_may_put_internet_traffic_at/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1vctnyz/quantum_computers_may_put_internet_traffic_at/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-08-01T17:43:31+00:00",
+    "published_ts": 1785606211,
+    "smart_groups": [
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Coldcard Hardware Wallet Flaw Linked to $70 Million Bitcoin Theft in 41 Minutes",
+    "summary": "An attacker drained 1,196 Bitcoin addresses in 41 minutes on July 30, taking 1,082.65 BTC worth about $70.2 million at the time. Galaxy Research mapped the sweep and tied it to a firmware flaw in Coldcard, the Bitcoin-only hardware wallet made by Canadian firm Coinkite.\n\nA March 2021 firmware integration error routed seed generation to a deterministic software pseudorandom number generator (PRNG",
+    "summary_html": "An attacker drained 1,196 Bitcoin addresses in 41 minutes on July 30, taking 1,082.65 BTC worth about $70.2 million at the time. Galaxy Research mapped the sweep and tied it to a firmware flaw in Coldcard, the Bitcoin-only hardware wallet made by Canadian firm Coinkite.\n\nA March 2021 firmware integration error routed seed generation to a deterministic software pseudorandom number generator (PRNG",
+    "link": "https://thehackernews.com/2026/08/coldcard-hardware-wallet-flaw-linked-to.html",
+    "source": "The Hacker News",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-08-01T17:17:22+00:00",
+    "published_ts": 1785604642,
+    "smart_groups": [],
     "curated": false
   },
   {
@@ -1022,22 +1184,6 @@
     "published_ts": 1785545150,
     "smart_groups": [
       "Community Discussion"
-    ],
-    "curated": false
-  },
-  {
-    "title": "Microsoft Windows Cloud Files Mini Filter Driver CldiStreamCompleteRequest use-after-free vulnerability",
-    "summary": "",
-    "summary_html": "",
-    "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2426",
-    "source": "Talos - Vulnerability Reports",
-    "feed_type": "news",
-    "type": "vulnerabilities-cves-exploits",
-    "type_label": "Vulnerabilities, CVEs & Exploits",
-    "published": "2026-08-01T00:00:00+00:00",
-    "published_ts": 1785542400,
-    "smart_groups": [
-      "Vulnerabilities / CVEs"
     ],
     "curated": false
   }
