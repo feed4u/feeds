@@ -1,5 +1,83 @@
 [
   {
+    "title": "No rebuttals from neurips authors [D]",
+    "summary": "I know there’s a lot of frustration around no response from reviewers, which I also got only one so yeah what a bummer, but I was wondering if no rebuttal from the authors was just as common or not. I got no rebuttal so far, so I’m here scratching my head what might have happened to the authors lol especially when at least one paper was pretty much on the borderline with somewhat of a positive AC comment submitted by /u/floor_souji [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>I know there’s a lot of frustration around no response from reviewers, which I also got only one so yeah what a bummer, but I was wondering if no rebuttal from the authors was just as common or not. I got no rebuttal so far, so I’m here scratching my head what might have happened to the authors lol especially when at least one paper was pretty much on the borderline with somewhat of a positive AC comment</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/floor_souji\"> /u/floor_souji </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1vdz19e/no_rebuttals_from_neurips_authors_d/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1vdz19e/no_rebuttals_from_neurips_authors_d/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1vdz19e/no_rebuttals_from_neurips_authors_d/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-08-03T01:02:07+00:00",
+    "published_ts": 1785718927,
+    "smart_groups": [
+      "AI Research & Papers"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Twin: A Possible Solution to AI Context Rebuilding [P]",
+    "summary": "Over the last few months I've realized that I spend an absurd amount of time (and money) teaching the same things to AI over and over again. Information about my projects is already there. Slack contains discussions and decisions. GitHub contains commits and pull requests. Meetings, emails and documents all capture different pieces of the same story. Yet every time I start a new conversation with an LLM, I gather those pieces again and inject them into the prompt so the model can reconstruct an understanding that already existed yesterday. At some point I stopped asking how to retrieve multiple pieces of context and started asking a different question: how can software form, revise and reuse understanding over time? That question led me to start building Twin , an open source engineering research project exploring what happens if AI systems continuously build understanding instead of reconstructing it from scratch every conversation. Most existing projects seems to optimize retrieval, memory or context construction. Twin explores a different layer of the pipeline. It continuously observes distributed events, correlates them, reflects on them and forms situation models that become reusable computational understanding. Instead of giving downstream language models a collection of Slack messages, pull requests or documents and expecting them to connect the dots, Twin tries to do that work beforehand. I recently reached the first milestone that genuinely convinced me this direction might be viable. Using Claude Sonnet 4.6, Twin continuously processed GitHub activity and Slack conversations from a public software project, correlating events and building understanding through reflection over time. After that, I opened a completely fresh Claude conversation. Claude had no custom memory, no project-specific rules, no prompt describing the repository and no access to local project files. The only integration available was Twin's MCP server and automatic context injection. When I asked about the project, Claude didn't receive the Slack messages or the pull requests and infer the situation itself. Twin had already synthesized that understanding. Claude explained why a feature had become a launch blocker, how it had been implemented, which pull request resolved it and how that changed the project's state, even though none of those relationships were explicitly written anywhere. Watching that work for the first time completely changed how I think about AI memory. I don't think the real problem is remembering more anymore. I think it's carrying understanding forward (a.k.a. cognitive continuity). If this idea resonates with you, everything is open source at https://github.com/caribeedu/twin . I've been thinking about almost nothing else for the past three weeks because I genuinely believe this direction has the potential to change how we build AI systems. The README explains the motivation and research hypotheses in much greater depth, and the repository also includes the complete demonstration shown here, along with additional details and technical context. I'd genuinely appreciate your thoughts, especially if you think I'm wrong. See the demo here: https://www.youtube.com/watch?v=A8KyGtWYdNI submitted by /u/VicentVanCock [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/MachineLearning/comments/1vdz02j/twin_a_possible_solution_to_ai_context_rebuilding/\">  </a>  <!-- SC_OFF --><div><p>Over the last few months I've realized that I spend an absurd amount of time (and money) teaching the same things to AI over and over again.</p> <p>Information about my projects is already there. Slack contains discussions and decisions. GitHub contains commits and pull requests. Meetings, emails and documents all capture different pieces of the same story. Yet every time I start a new conversation with an LLM, I gather those pieces again and inject them into the prompt so the model can reconstruct an understanding that already existed yesterday.</p> <p>At some point I stopped asking how to retrieve multiple pieces of context and started asking a different question: <strong>how can software form, revise and reuse understanding over time?</strong></p> <p>That question led me to start building <strong>Twin</strong>, an open source engineering research project exploring what happens if AI systems continuously build understanding instead of reconstructing it from scratch every conversation.</p> <p>Most existing projects seems to optimize retrieval, memory or context construction. Twin explores a different layer of the pipeline. It continuously observes distributed events, correlates them, reflects on them and forms situation models that become reusable computational understanding. Instead of giving downstream language models a collection of Slack messages, pull requests or documents and expecting them to connect the dots, Twin tries to do that work beforehand.</p> <p>I recently reached the first milestone that genuinely convinced me this direction might be viable. Using Claude Sonnet 4.6, Twin continuously processed GitHub activity and Slack conversations from a public software project, correlating events and building understanding through reflection over time.</p> <p>After that, I opened a completely fresh Claude conversation. Claude had no custom memory, no project-specific rules, no prompt describing the repository and no access to local project files. The only integration available was Twin's MCP server and automatic context injection.</p> <p>When I asked about the project, Claude didn't receive the Slack messages or the pull requests and infer the situation itself. Twin had already synthesized that understanding. Claude explained why a feature had become a launch blocker, how it had been implemented, which pull request resolved it and how that changed the project's state, even though none of those relationships were explicitly written anywhere.</p> <p>Watching that work for the first time completely changed how I think about AI memory. I don't think the real problem is remembering more anymore. I think it's carrying understanding forward (a.k.a. cognitive continuity).</p> <p>If this idea resonates with you, everything is open source at <a href=\"https://github.com/caribeedu/twin\">https://github.com/caribeedu/twin</a>. I've been thinking about almost nothing else for the past three weeks because I genuinely believe this direction has the potential to change how we build AI systems. The README explains the motivation and research hypotheses in much greater depth, and the repository also includes the complete demonstration shown here, along with additional details and technical context. I'd genuinely appreciate your thoughts, especially if you think I'm wrong. </p> <p><strong>See the demo here:</strong> <a href=\"https://www.youtube.com/watch?v=A8KyGtWYdNI\">https://www.youtube.com/watch?v=A8KyGtWYdNI</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/VicentVanCock\"> /u/VicentVanCock </a> <br/> <span><a href=\"https://i.redd.it/3d8ywukp62hh1.png\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1vdz02j/twin_a_possible_solution_to_ai_context_rebuilding/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1vdz02j/twin_a_possible_solution_to_ai_context_rebuilding/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-08-03T01:00:41+00:00",
+    "published_ts": 1785718841,
+    "smart_groups": [
+      "LLM & Foundation Model Releases"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Neurips 2026: does every metareview recommend accept/reject? [D]",
+    "summary": "I see some people say their metareview already contains a decision/recommendation (all of them were rejections). Ours doesn’t. Even though our avg score is 3, the metareview seems optimistic and finishes with “a convincing response would be an important consideration while discussing the paper.” I wonder how to interpret that. We did a strong rebuttal, but none of the reviewers engaged. So I wonder whether there’s any point to keep hope due to the AC review or just give up. submitted by /u/CantKillTheLifeless [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>I see some people say their metareview already contains a decision/recommendation (all of them were rejections). Ours doesn’t. Even though our avg score is 3, the metareview seems optimistic and finishes with “a convincing response would be an important consideration while discussing the paper.” I wonder how to interpret that. We did a strong rebuttal, but none of the reviewers engaged. So I wonder whether there’s any point to keep hope due to the AC review or just give up.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/CantKillTheLifeless\"> /u/CantKillTheLifeless </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1vdvkp5/neurips_2026_does_every_metareview_recommend/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1vdvkp5/neurips_2026_does_every_metareview_recommend/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1vdvkp5/neurips_2026_does_every_metareview_recommend/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-08-02T22:28:25+00:00",
+    "published_ts": 1785709705,
+    "smart_groups": [
+      "AI Research & Papers"
+    ],
+    "curated": false
+  },
+  {
+    "title": "neurips 2026: ACs and reviewers have disappeared [D]",
+    "summary": "we submitted our rebuttal via the \"Rebuttal\" button before the author/reviewer/AC discussion period officially opened (Jul 27 AoE). since then, we've gotten complete silence from all four reviewers and the AC several of us are also reviewing this cycle. when the discussion period opened on Jul 27 AoE, we got no email notification for rebuttals on papers we're reviewing, specifically for the papers whose authors had also posted early via the \"Rebuttal\" button. so it feels like anything submitted before the window opened may simply have never triggered any notification we also tried: (1) meta-comments visible to everyone, (2) reviewer reminders, and (3) sending an email to the PCs given there's about 1 day left in the discussion period, what do we do? we honestly thought we had a shot at an oral or spotlight given our initial scores. this is completely messed up. submitted by /u/extricableforsythia [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>we submitted our rebuttal via the \"Rebuttal\" button before the author/reviewer/AC discussion period officially opened (Jul 27 AoE). since then, we've gotten complete silence from all four reviewers and the AC</p> <p>several of us are also reviewing this cycle. when the discussion period opened on Jul 27 AoE, we got <strong>no email notification</strong> for rebuttals on papers we're reviewing, specifically for the papers whose authors had also posted early via the \"Rebuttal\" button. so it feels like anything submitted before the window opened may simply have never triggered any notification</p> <p>we also tried: (1) meta-comments visible to everyone, (2) reviewer reminders, and (3) sending an email to the PCs</p> <p>given there's about 1 day left in the discussion period, what do we do? we honestly thought we had a shot at an oral or spotlight given our initial scores. this is completely messed up.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/extricableforsythia\"> /u/extricableforsythia </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1vdu92a/neurips_2026_acs_and_reviewers_have_disappeared_d/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1vdu92a/neurips_2026_acs_and_reviewers_have_disappeared_d/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1vdu92a/neurips_2026_acs_and_reviewers_have_disappeared_d/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-08-02T21:33:05+00:00",
+    "published_ts": 1785706385,
+    "smart_groups": [
+      "AI Research & Papers"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Context degradation in LLMs: what the papers actually show, and the habits I built for long analysis sessions [R]",
+    "summary": "submitted by /u/usernamehere93 [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/MachineLearning/comments/1vdsgcj/context_degradation_in_llms_what_the_papers/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/usernamehere93\"> /u/usernamehere93 </a> <br/> <span><a href=\"https://towardsdatascience.com/governed-context-managing-context-rot-in-claude-code/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1vdsgcj/context_degradation_in_llms_what_the_papers/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1vdsgcj/context_degradation_in_llms_what_the_papers/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-08-02T20:20:45+00:00",
+    "published_ts": 1785702045,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
     "title": "A stricter TypeScript for a world where AI writes most of the code",
     "summary": "Article URL: https://github.com/chitalian/Typescript-Ultra-Strict Comments URL: https://news.ycombinator.com/item?id=49146450 Points: 1 # Comments: 0",
     "summary_html": "<p>Article URL: <a href=\"https://github.com/chitalian/Typescript-Ultra-Strict\">https://github.com/chitalian/Typescript-Ultra-Strict</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49146450\">https://news.ycombinator.com/item?id=49146450</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
@@ -839,6 +917,22 @@
       "Agentic AI & Automations"
     ],
     "curated": false
+  },
+  {
+    "title": "Qwen 3.8 Max now available on Vercel AI Gateway",
+    "summary": "Qwen 3.8 Max is now available on AI Gateway. Qwen 3.8 Max handles text-only and vision-language work in one model, with 2.4 trillion parameters and a context window of up to 1 million tokens. The model is suited for software engineering and office productivity, along with visual work like turning screenshots or design files into working pages, captioning video, and answering questions grounded in an image. To use Qwen 3.8 Max, set model to alibaba/qwen3.8-max . Try Qwen 3.8 Max in the model playground . To use it in a coding agent , run vercel ai-gateway coding-agents setup to connect Claude Code, Codex, OpenCode, or Pi, then select alibaba/qwen3.8-max inside the agent. AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. Read more",
+    "summary_html": "<p><a href=\"https://vercel.com/ai-gateway/models/qwen3.8-max\">Qwen 3.8 Max</a> is now available on AI Gateway.</p><p>Qwen 3.8 Max handles text-only and vision-language work in one model, with 2.4 trillion parameters and a context window of up to 1 million tokens. The model is suited for software engineering and office productivity, along with visual work like turning screenshots or design files into working pages, captioning video, and answering questions grounded in an image.</p><p>To use Qwen 3.8 Max, set <code>model</code> to <code>alibaba/qwen3.8-max</code>.</p><div></div><p>Try Qwen 3.8 Max in the <a href=\"https://vercel.com/ai-gateway/models/qwen3.8-max\">model playground</a>.</p><p>To use it in a <a href=\"https://vercel.com/docs/ai-gateway/coding-agents\">coding agent</a>, run <code>vercel ai-gateway coding-agents setup</code> to connect Claude Code, Codex, OpenCode, or Pi, then select <code>alibaba/qwen3.8-max</code> inside the agent.</p><p>AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in <a href=\"https://vercel.com/changelog/custom-reporting-ai-gateway\">custom reporting</a>, <a href=\"https://vercel.com/blog/zdr-on-ai-gateway\">Zero Data Retention support</a>, <a href=\"https://vercel.com/docs/ai-gateway/authentication-and-byok/api-keys\">budgets for API keys</a>, <a href=\"https://vercel.com/docs/ai-gateway/models-and-providers/routing-rules\">routing rules</a>, and more.</p><p>AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on <a href=\"https://vercel.com/docs/ai-gateway/authentication-and-byok/byok\">Bring Your Own Key</a> (BYOK) requests.</p><div></div><p></p>\n<p>\n<a href=\"https://vercel.com/changelog/qwen-3-8-max-now-available-on-vercel-ai-gateway\">Read more</a>\n</p>",
+    "link": "https://vercel.com/changelog/qwen-3-8-max-now-available-on-vercel-ai-gateway",
+    "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+    "feed_type": "blog",
+    "type": "company-engineering",
+    "type_label": "Company Engineering",
+    "published": "2026-08-02T00:00:00+00:00",
+    "published_ts": 1785628800,
+    "smart_groups": [
+      "LLM & Foundation Model Releases"
+    ],
+    "curated": true
   },
   {
     "title": "Show HN: I made 70K+ hand-drawn icons using AI",

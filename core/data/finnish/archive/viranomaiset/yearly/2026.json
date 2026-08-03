@@ -6185,6 +6185,125 @@
     "curated": false
   },
   {
+    "title": "Google Chrome may soon block New Tab hijacker extensions by default",
+    "summary": "Google is preparing a new Chrome security feature that would block policy-installed extensions from hijacking the New Tab page or changing the default search engine.\n\nBleepingComputer spotted the protection in a chain of work-in-progress Chromium Gerrit changes. It has not shipped yet, but Google plans to enable it by default once the changes are approved.\n\n\"In low-trust environments (unmanaged consumer devices), enterprise policy force-installs and recommendations are abused to lock in search engine or new tab page hijackers,\" Anunoy Ghosh, who works at Google, wrote in a post.\n\n\"This CL enables the kBlockDseNtpOverrideExtensionsOnUnmanagedDevices feature flag by default, activating the end-to-end blocking defense on unmanaged Windows and macOS devices.\"\n\nAn extension that you installed manually would no longer be converted into a locked, policy-controlled extension. It would remain under your control, so you could still disable or remove it.\n\nIf a previously managed device loses its trusted management status but still has local policy keys, Chrome would automatically uninstall affected New Tab and search-engine override extensions.\nThe Gerrit changes are still under review, so the feature is not available in stable Chrome yet.",
+    "summary_html": "Google is preparing a new Chrome security feature that would block policy-installed extensions from hijacking the New Tab page or changing the default search engine.\n\nBleepingComputer spotted the protection in a chain of work-in-progress Chromium Gerrit changes. It has not shipped yet, but Google plans to enable it by default once the changes are approved.\n\n\"In low-trust environments (unmanaged consumer devices), enterprise policy force-installs and recommendations are abused to lock in search engine or new tab page hijackers,\" Anunoy Ghosh, who works at Google, wrote in a post.\n\n\"This CL enables the kBlockDseNtpOverrideExtensionsOnUnmanagedDevices feature flag by default, activating the end-to-end blocking defense on unmanaged Windows and macOS devices.\"\n\nAn extension that you installed manually would no longer be converted into a locked, policy-controlled extension. It would remain under your control, so you could still disable or remove it.\n\nIf a previously managed device loses its trusted management status but still has local policy keys, Chrome would automatically uninstall affected New Tab and search-engine override extensions.\nThe Gerrit changes are still under review, so the feature is not available in stable Chrome yet.",
+    "link": "https://www.bleepingcomputer.com/news/google/google-chrome-may-soon-block-new-tab-hijacker-extensions-by-default/",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-08-03T02:00:11+00:00",
+    "published_ts": 1785722411,
+    "smart_groups": [
+      "Autot & Mobiliteetti",
+      "Teknologia & Tiede",
+      "EU & Ulkomaat"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Adobe Campaign Classic CVSS 10.0 Flaw Could Run Code Without User Interaction",
+    "summary": "Adobe has released security updates to address a maximum-severity security flaw in Campaign Classic (ACC), its enterprise-focused marketing automation platform, that could result in arbitrary code execution.\n\nThe vulnerability, tracked as CVE-2026-48449, carries a severity score of 10.0 on the CVSS scoring system.\n\nIt has been described as a case of incorrect authorization that could result in arbitrary code execution in the context of the current user without requiring any user interaction.\n\nThe update also resolves another high-severity flaw (CVE-2026-48448, CVSS score: 8.6) stemming from SQL injection that could pave the way for arbitrary file reads.\n\n\"This update addresses critical vulnerabilities that could result in arbitrary code execution and arbitrary file system read,\" Adobe said in an advisory. The company noted that it's not aware of any of the flaws being exploited in the wild.",
+    "summary_html": "Adobe has released security updates to address a maximum-severity security flaw in Campaign Classic (ACC), its enterprise-focused marketing automation platform, that could result in arbitrary code execution.\n\nThe vulnerability, tracked as CVE-2026-48449, carries a severity score of 10.0 on the CVSS scoring system.\n\nIt has been described as a case of incorrect authorization that could result in arbitrary code execution in the context of the current user without requiring any user interaction.\n\nThe update also resolves another high-severity flaw (CVE-2026-48448, CVSS score: 8.6) stemming from SQL injection that could pave the way for arbitrary file reads.\n\n\"This update addresses critical vulnerabilities that could result in arbitrary code execution and arbitrary file system read,\" Adobe said in an advisory. The company noted that it's not aware of any of the flaws being exploited in the wild.",
+    "link": "https://thehackernews.com/2026/08/adobe-campaign-classic-cvss-100-flaw.html",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-08-03T02:00:10+00:00",
+    "published_ts": 1785722410,
+    "smart_groups": [
+      "Liikenne & Liikkuminen",
+      "Autot & Mobiliteetti",
+      "Teknologia & Tiede"
+    ],
+    "curated": true
+  },
+  {
+    "title": "FreeRDP before 3.30.0 Heap Overflow via CliprdrStream_Read",
+    "summary": "Classification: Critical, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 9.6, CVEs: CVE-2025-71399, Summary: FreeRDP before 3.30.0 (<= 3.29.0) contains a heap-based buffer overflow in the Windows clipboard client's CliprdrStream_Read function (client/Windows/wf_cliprdr.c). When an OLE paste consumer (e.g. explorer.exe) calls IStream::Read with a fixed-size buffer of cb bytes, CliprdrStream_Read requests file contents from the RDP server and then copies the response into the caller's buffer using the server-supplied length (req_fsize) instead of cb. A malicious or compromised RDP server can return an oversized CB_FILECONTENTS_RESPONSE, causing an out-of-bounds write of attacker-controlled data into the paste consumer's heap buffer when a user pastes server-offered clipboard file contents. See also: https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-m37j-jcr2-8gcc",
+    "summary_html": "Classification: Critical, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 9.6, CVEs: CVE-2025-71399, Summary: FreeRDP before 3.30.0 (&lt;= 3.29.0) contains a heap-based buffer overflow in the Windows clipboard client's CliprdrStream_Read function (client/Windows/wf_cliprdr.c). When an OLE paste consumer (e.g. explorer.exe) calls IStream::Read with a fixed-size buffer of cb bytes, CliprdrStream_Read requests file contents from the RDP server and then copies the response into the caller's buffer using the server-supplied length (req_fsize) instead of cb. A malicious or compromised RDP server can return an oversized CB_FILECONTENTS_RESPONSE, causing an out-of-bounds write of attacker-controlled data into the paste consumer's heap buffer when a user pastes server-offered clipboard file contents. See also: https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-m37j-jcr2-8gcc",
+    "link": "https://nvd.nist.gov/vuln/detail/CVE-2025-71399",
+    "source": "Päivittäinen haavoittuvuuskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-08-03T02:00:09+00:00",
+    "published_ts": 1785722409,
+    "smart_groups": [
+      "Teknologia & Tiede"
+    ],
+    "curated": true
+  },
+  {
+    "title": "AI-powered Phishing-as-a-Service: Inside Two BEC Kits",
+    "summary": "Business email compromise (BEC) remains one of the most damaging threats we respond to, and the tooling behind it is getting more complex by the day. On a recent investigation, we came across multiple suspicious domains that piqued our interest. These led us to two phishing kits we had not encountered before.\n\nBoth look, at a glance, like legitimate SaaS products. Both were clearly built with AI, down to the comments and code structure. And both automate the full path from a stolen login to a forged invoice.\n\nNeither kit relies on a new technique. Device code abuse, token theft, Windows Hello persistence: all of it is documented, some of it by Microsoft’s own threat intelligence team. What has changed is who can run it and how many victims one operator can run it against at once. A single dashboard now does the work that used to require a skilled attacker’s full attention, all with the help of AI.",
+    "summary_html": "Business email compromise (BEC) remains one of the most damaging threats we respond to, and the tooling behind it is getting more complex by the day. On a recent investigation, we came across multiple suspicious domains that piqued our interest. These led us to two phishing kits we had not encountered before.\n\nBoth look, at a glance, like legitimate SaaS products. Both were clearly built with AI, down to the comments and code structure. And both automate the full path from a stolen login to a forged invoice.\n\nNeither kit relies on a new technique. Device code abuse, token theft, Windows Hello persistence: all of it is documented, some of it by Microsoft’s own threat intelligence team. What has changed is who can run it and how many victims one operator can run it against at once. A single dashboard now does the work that used to require a skilled attacker’s full attention, all with the help of AI.",
+    "link": "https://research.eye.security/phishing-as-a-service-inside-two-ai-powered-phishing-kits-that-automate-bec/",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-08-03T02:00:09+00:00",
+    "published_ts": 1785722409,
+    "smart_groups": [
+      "Autot & Mobiliteetti",
+      "Teknologia & Tiede"
+    ],
+    "curated": false
+  },
+  {
+    "title": "N‑central critical vulnerability Unauthenticated administrative account takeover",
+    "summary": "Classification: Critical, Solution: Official Fix, Exploit Maturity: Functional, CVSSv3.1: 8.2, CVEs: CVE-2026-18556, Summary: Authentication bypass using an alternate path or channel vulnerability in N-able N-central allows Authentication Bypass. \n\nN-able investigation continues, they have identified additional security concerns that affect all versions of N-central. N-able is releasing a 2026.3 hotfix today (02.08.2026).\n\nAn attacker had identified a vulnerability on N-Central servers running v2026.1 and below which allowed them to obtain administrative access remotely. Following exploitation, the attacker leveraged the Take Control feature and connected to systems within the N‑central managed environment. Once on those devices, the attackers registered a new service for a CloudFlare tunnel, enabling persistence into an environment after access to the N‑central server was revoked. See also: https://kyberturvallisuuskeskus.fi/fi/haavoittuvuudet/haavoittuvuus-2026-21, See also: https://uptime.n-able.com/, See also: https://www.n-able.com/blog/n-central-security-update-august-1-2026",
+    "summary_html": "Classification: Critical, Solution: Official Fix, Exploit Maturity: Functional, CVSSv3.1: 8.2, CVEs: CVE-2026-18556, Summary: Authentication bypass using an alternate path or channel vulnerability in N-able N-central allows Authentication Bypass. \n\nN-able investigation continues, they have identified additional security concerns that affect all versions of N-central. N-able is releasing a 2026.3 hotfix today (02.08.2026).\n\nAn attacker had identified a vulnerability on N-Central servers running v2026.1 and below which allowed them to obtain administrative access remotely. Following exploitation, the attacker leveraged the Take Control feature and connected to systems within the N‑central managed environment. Once on those devices, the attackers registered a new service for a CloudFlare tunnel, enabling persistence into an environment after access to the N‑central server was revoked. See also: https://kyberturvallisuuskeskus.fi/fi/haavoittuvuudet/haavoittuvuus-2026-21, See also: https://uptime.n-able.com/, See also: https://www.n-able.com/blog/n-central-security-update-august-1-2026",
+    "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-18556",
+    "source": "Päivittäinen haavoittuvuuskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-08-03T02:00:08+00:00",
+    "published_ts": 1785722408,
+    "smart_groups": [
+      "Teknologia & Tiede",
+      "EU & Ulkomaat"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Arch Linux disables AUR package adoption to stop malware flood",
+    "summary": "The Arch Linux project has temporarily disabled adoption of Arch User Repository (AUR) packages after a surge in malicious takeovers of existing packages.\n\nThe decision was announced on the distribution's mailing list by contributor Robin Candau, who said that the situation is temporary until a solution is found.\n\n“Due to the current influx of malicious package adoptions and follow-up commits made via the AUR, package adoption is currently disabled while we are handling the situation,” announced Candau.\n\n“We will send a follow-up once we're able to. In the meantime, feel free to report suspicious adoption events or commits that haven't been dealt with yet, and stay vigilant!”\n\nIndependent Federated Intelligence Network (IFIN) conducted a technical analysis of the malware and reported that the campaign began on July 29 with the package ‘openconnect-sso.’",
+    "summary_html": "The Arch Linux project has temporarily disabled adoption of Arch User Repository (AUR) packages after a surge in malicious takeovers of existing packages.\n\nThe decision was announced on the distribution's mailing list by contributor Robin Candau, who said that the situation is temporary until a solution is found.\n\n“Due to the current influx of malicious package adoptions and follow-up commits made via the AUR, package adoption is currently disabled while we are handling the situation,” announced Candau.\n\n“We will send a follow-up once we're able to. In the meantime, feel free to report suspicious adoption events or commits that haven't been dealt with yet, and stay vigilant!”\n\nIndependent Federated Intelligence Network (IFIN) conducted a technical analysis of the malware and reported that the campaign began on July 29 with the package ‘openconnect-sso.’",
+    "link": "https://www.bleepingcomputer.com/news/security/arch-linux-disables-aur-package-adoption-to-stop-malware-flood/",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-08-03T02:00:08+00:00",
+    "published_ts": 1785722408,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Omistatko tällaisen laitteen? Viranomaiselta varoitus",
+    "summary": "Alankomaiden tiedustelupalvelut kertoivat Venäjän hakkeroineen siviilikäytössä olleita nettiohjattuja turvakameroita vakoillakseen Naton sotilasliikennettä.\n\nIS kysyi Suomen tietoturvaviranomaiselta, Liikenne- ja viestintävirasto Traficomin Kyberturvallisuuskeskukselta, onko riistakameroiden riski joutua vakoiluvälineiksi tiedostettu.\n\n– Avoimiin verkkoon näkyviin palveluihin, olivat ne kameroita tai muita datavälineitä, on kyllä kiinnitetty huomiota. Nimenomaan riistakamerat ovat niistä vähäisemmällä huomiolla, mutta enemmän mahdollista vakoilijaa voi kiinnostaa keskeisillä paikoilla olevat valvonta- ja liikennekamerat, keskuksen erityisasiantuntija Juha Tretjakov sanoo.\n\nValvonta- ja liikennekameroiden näkyvyys on Tretjakovin mukaan tiedostettu, kun hyökkääjien mahdollisia reittejä on kartoitettu.\n\nTretjakov korostaa, että suojaamaton verkkoon avoin laite on aina riski.\n– Niin laitteet kuin niiden varusohjelmistotkin (firmware) on syytä pitää päivitettyinä ja ajan tasalla, jotta niiden haavoittuvuuksia ei voi käyttää hyväksi.",
+    "summary_html": "Alankomaiden tiedustelupalvelut kertoivat Venäjän hakkeroineen siviilikäytössä olleita nettiohjattuja turvakameroita vakoillakseen Naton sotilasliikennettä.\n\nIS kysyi Suomen tietoturvaviranomaiselta, Liikenne- ja viestintävirasto Traficomin Kyberturvallisuuskeskukselta, onko riistakameroiden riski joutua vakoiluvälineiksi tiedostettu.\n\n– Avoimiin verkkoon näkyviin palveluihin, olivat ne kameroita tai muita datavälineitä, on kyllä kiinnitetty huomiota. Nimenomaan riistakamerat ovat niistä vähäisemmällä huomiolla, mutta enemmän mahdollista vakoilijaa voi kiinnostaa keskeisillä paikoilla olevat valvonta- ja liikennekamerat, keskuksen erityisasiantuntija Juha Tretjakov sanoo.\n\nValvonta- ja liikennekameroiden näkyvyys on Tretjakovin mukaan tiedostettu, kun hyökkääjien mahdollisia reittejä on kartoitettu.\n\nTretjakov korostaa, että suojaamaton verkkoon avoin laite on aina riski.\n– Niin laitteet kuin niiden varusohjelmistotkin (firmware) on syytä pitää päivitettyinä ja ajan tasalla, jotta niiden haavoittuvuuksia ei voi käyttää hyväksi.",
+    "link": "https://www.is.fi/digitoday/tietoturva/art-2000012157657.html",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-08-03T02:00:07+00:00",
+    "published_ts": 1785722407,
+    "smart_groups": [
+      "Liikenne & Liikkuminen",
+      "Teknologia & Tiede",
+      "Rikokset & Oikeus",
+      "EU & Ulkomaat"
+    ],
+    "curated": false
+  },
+  {
     "title": "Informal Coreper 2 - Permanent Representatives Committee",
     "summary": "",
     "summary_html": "",
@@ -6210,6 +6329,38 @@
     "published": "2026-08-03T00:00:00+00:00",
     "published_ts": 1785715200,
     "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Päihtynyt veneilijä jäi kiinni Oulun Hartaanselällä",
+    "summary": "Päihtynyt veneilijä jäi kiinni Oulun Hartaanselällä",
+    "summary_html": "Päihtynyt veneilijä jäi kiinni Oulun Hartaanselällä",
+    "link": "https://poliisi.fi/-/paihtynyt-veneilija-jai-kiinni-oulun-hartaanselalla",
+    "source": "Oulun poliisilaitos",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-08-02T21:04:00+00:00",
+    "published_ts": 1785704640,
+    "smart_groups": [
+      "Rikokset & Oikeus"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Mies kateissa Jyväskylässä",
+    "summary": "Mies kateissa Jyväskylässä",
+    "summary_html": "<p>Mies kateissa Jyväskylässä</p>",
+    "link": "https://poliisi.fi/-/mies-kateissa-jyvaskylassa",
+    "source": "Sisä-Suomen poliisilaitos",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-08-02T20:09:00+00:00",
+    "published_ts": 1785701340,
+    "smart_groups": [
+      "Rikokset & Oikeus"
+    ],
     "curated": false
   },
   {
