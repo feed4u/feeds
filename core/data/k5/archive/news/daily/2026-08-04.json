@@ -1,9 +1,460 @@
 {
-  "generated_at": "2026-08-04T18:13:25.286110+00:00",
+  "generated_at": "2026-08-05T03:45:01.521193+00:00",
   "date": "2026-08-04",
-  "total_items": 175,
+  "total_items": 204,
   "next_chunk": "archive/news/daily/2026-08-03.json",
   "items": [
+    {
+      "title": "OpenAI, Anthropic AI agents targeted real people and systems in cyber tests",
+      "summary": "OpenAI and Anthropic have confirmed that their AI models were involved in separate, newly disclosed third-party cybersecurity testing incidents that resulted in a real website being breached and social engineering attacks against people outside the intended testing boundaries. [...]",
+      "summary_html": "OpenAI and Anthropic have confirmed that their AI models were involved in separate, newly disclosed third-party cybersecurity testing incidents that resulted in a real website being breached and social engineering attacks against people outside the intended testing boundaries. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/openai-anthropic-ai-agents-targeted-real-people-and-systems-in-cyber-tests/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-08-04T23:39:59+00:00",
+      "published_ts": 1785886799,
+      "smart_groups": [
+        "Phishing / Social Engineering"
+      ],
+      "curated": false
+    },
+    {
+      "title": "OK, Well, Rogue AI Agents Are Hacking Again",
+      "summary": "Rogue AI agents from OpenAI and Anthropic have again been caught trying to disrupt servers and software\u2014and leaving instructions for future bad behavior.",
+      "summary_html": "Rogue AI agents from OpenAI and Anthropic have again been caught trying to disrupt servers and software\u2014and leaving instructions for future bad behavior.",
+      "link": "https://www.wired.com/story/ok-well-there-are-even-more-ai-agent-hacking-incidents/",
+      "source": "WIRED \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-04T23:11:31+00:00",
+      "published_ts": 1785885091,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "This Bitcoin Bridge Shut Itself Down Because AI Was Finding Bugs Too Fast",
+      "summary": "Non-custodial Bitcoin swap provider Boltz says attackers are finding vulnerabilities faster than its team can fix them, forcing it to suspend swaps indefinitely.",
+      "summary_html": "Non-custodial Bitcoin swap provider Boltz says attackers are finding vulnerabilities faster than its team can fix them, forcing it to suspend swaps indefinitely.",
+      "link": "https://decrypt.co/374933/bitcoin-bridge-shuts-down-ai-finding-bugs-too-fast",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-08-04T22:46:03+00:00",
+      "published_ts": 1785883563,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Crypto / Web3"
+      ],
+      "curated": false
+    },
+    {
+      "title": "ChainDrop credential stealing worm infects over 400 npm packages",
+      "summary": "A self-propagating worm-like attack is hitting the npm registry, having infected 444 packages from more than a dozen publishers so far. The impact is massive, with the packages affected amounting to more than 2 billion monthly downloads combined. The attack began with the compromise of a GitHub account belonging to Jared Wray, who maintains Keyv, a package with over 150 million weekly downloads that provides an interface for interacting with key-value storage across multiple backends. Version 6.0.0 published at around 9:00 UTC on Tuesday contained a new version of the Shai-Hulud credential stealing malware. The compromised account is also used to maintain a number of other popular packages, including cacheable, flat-cache, file-entry-cache, cacheable-request, cache-manager, ecto, and more. All of these had trojanized versions published as well. Soon after, the attack expanded beyond this account, infecting packages from other organizations on npm \u2014 @deliveroo/reevent, @or-sdk/invitations , @picsart/ai-sdk, @qlik/embed-runtime, picasso.js, to name a few. As of 18:10 UTC, StepSecurity had detected the malicious code across 444 packages and 2,212 versions . \u201cEvery poisoned version carries the same infection pattern: a preinstall dropper that downloads the legitimate Bun JavaScript runtime, and a 710KB obfuscated second stage that steals credentials, publishes more malicious packages, and burrows into AI developer tooling,\u201d researchers from StepSecurity said. Although the code appears to be a new variant of Shai-Hulud \u2014 a supply-chain credential stealing worm that has plagued the npm and PyPI repositories since last year in different variations \u2014 researchers have decided to dub this new attack campaign ChainDrop because this new version uses the Ethereum blockchain for command and control, a technique known as EtherHiding. \u201cThe compromise was carried out by pushing malicious files directly to the main branch and then immediately cutting a new release, meaning the poisoned versions were published to npm with valid provenance signed by GitHub Actions,\u201d researchers from Aikido Security said in a report . Wray confirmed via X that he uses OpenID Connect (OIDC) with npm and one-time codes for GitHub, so he was not using long-term static tokens. The developer regained access to his GitHub account at around 20:00 UTC and said he\u2019s doing a full audit . The malware infects AI code assistants The malicious files added to packages are setup.mjs and Math_Symbol.js \u2014 renamed math_init.js in some cases. These get executed by a preinstall script during the npm installation process of the packages and then proceed to download and execute a secondary obfuscated payload on the computer. The malware searches the local environment for cloud credentials, infrastructure secrets, developer access tokens, AI-related configuration files, and cryptocurrency wallets. It also identifies CI/CD workflows and build runners and tries to scrape their memory for temporary secrets injected during the build process. New to this variant are persistent mechanisms deployed inside code editors such as VS Code via tasks.json and AI code assistants such as Claude Code through hooks. \u201cTargets for credential theft have been expanded by almost 70%, with new additions including AI-agent credential stores for Claude, OpenAI, Codex, Cursor and Gemini; cryptocurrency keystores for Foundry, Solana and Monero; self-hosted CI and registry secrets such as Jenkins\u2019 master.key, Argo CD and Harbor; Alibaba Cloud and Tencent Cloud CLI configurations; and system files including /etc/shadow ,\u201d researchers from security firm Wiz said in their own analysis . Mitigation Unfortunately, enterprise security teams must perform full audits of developer machines. The compromised packages are transient dependencies for thousands of others and if any of the poisoned versions were installed during the attack window, all possible credentials accessible on that machine, or other machines accessible from that machine, need to be rotated. \u201cRotate, at minimum: npm automation tokens, GitHub personal access tokens and SSH keys, cloud provider credentials ( ~/.aws , ~/.config/gcloud , Azure), Kubernetes service accounts, and any secrets in environment variables or .env files present at install time,\u201d the StepSecurity researchers said. \u201cMaintainers of npm packages should treat their publish credentials as exposed. The second wave of this campaign demonstrates exactly why: additional maintainer accounts published the identical payload within the same hour.\u201d The StepSecurity report includes indicators of compromise, a list of infected packages, as well as defense-in-depth recommendations for developer machines and processes that could have stopped this compromise. Using the -\u2014ignore-scripts npm flag in CI workflows, a technique known as script gating, would have ignored the preinstall script that delivers the payload. Package managers like npm, pnpm, Yarn and Bun now support minimum release age policies for package installation. Configuring this setting to between 3 to 7 days buys users some time in case a newly released version turns out to be poisoned. Security companies continuously scan and monitor the npm registry and new supply chain compromises are usually discovered within minutes or hours. In this case the malicious versions began being removed by the npm team within two hours, but being a worm, the attack keeps propagating via newly compromised developer accounts.",
+      "summary_html": "<div>\n<div>\n<div>\n<div>\n<div></div>\n<p>A self-propagating worm-like attack is hitting the npm registry, having infected 444 packages from more than a dozen publishers so far. The impact is massive, with the packages affected amounting to more than 2 billion monthly downloads combined.</p>\n<p>The attack began with the compromise of a GitHub account belonging to Jared Wray, who maintains Keyv, a package with over 150 million weekly downloads that provides an interface for interacting with key-value storage across multiple backends. Version 6.0.0 published at around 9:00 UTC on Tuesday contained a new version of the <a href=\"https://www.csoonline.com/article/4179866/infected-red-hat-npm-packages-expose-developer-credentials.html\">Shai-Hulud</a> credential stealing malware.</p>\n<p>The compromised account is also used to maintain a number of other popular packages, including cacheable, flat-cache, file-entry-cache, cacheable-request, cache-manager, ecto, and more. All of these had trojanized versions published as well.</p>\n<p>Soon after, the attack expanded beyond this account, infecting packages from other organizations on npm \u2014 @deliveroo/reevent, @or-sdk/invitations , @picsart/ai-sdk, @qlik/embed-runtime, picasso.js, to name a few. As of 18:10 UTC, StepSecurity <a href=\"https://www.stepsecurity.io/blog/chaindrop-npm-worm\">had detected the malicious code across 444 packages and 2,212 versions</a>.</p>\n<p>\u201cEvery poisoned version carries the same infection pattern: a preinstall dropper that downloads the legitimate Bun JavaScript runtime, and a 710KB obfuscated second stage that steals credentials, publishes more malicious packages, and burrows into AI developer tooling,\u201d researchers from StepSecurity said.</p>\n<p>Although the code appears to be a new variant of Shai-Hulud \u2014 a supply-chain credential stealing worm that has plagued the npm and PyPI repositories since last year in different variations \u2014 researchers have decided to dub this new attack campaign ChainDrop because this new version uses the Ethereum blockchain for command and control, a technique known as EtherHiding.</p>\n<p>\u201cThe compromise was carried out by pushing malicious files directly to the main branch and then immediately cutting a new release, meaning the poisoned versions were published to npm with valid provenance signed by GitHub Actions,\u201d researchers from Aikido Security said in <a href=\"https://www.aikido.dev/blog/keyv-and-friends-compromised-in-npm-supply-chain-attack\">a report</a>.</p>\n<p>Wray confirmed via X that he uses OpenID Connect (OIDC) with npm and one-time codes for GitHub, so he was not using long-term static tokens. The developer regained access to his GitHub account at around 20:00 UTC and <a href=\"https://x.com/jaredwray/status/2084735469359935697\">said he\u2019s doing a full audit</a>.</p>\nThe malware infects AI code assistants\n<p>The malicious files added to packages are <code>setup.mjs</code> and <code>Math_Symbol.js</code> \u2014 renamed <code>math_init.js</code> in some cases. These get executed by a preinstall script during the npm installation process of the packages and then proceed to download and execute a secondary obfuscated payload on the computer.</p>\n<p>The malware searches the local environment for cloud credentials, infrastructure secrets, developer access tokens, AI-related configuration files, and cryptocurrency wallets. It also identifies CI/CD workflows and build runners and tries to scrape their memory for temporary secrets injected during the build process.</p>\n<p>New to this variant are persistent mechanisms deployed inside code editors such as VS Code via <code>tasks.json</code> and AI code assistants such as Claude Code through hooks.</p>\n<p>\u201cTargets for credential theft have been expanded by almost 70%, with new additions including AI-agent credential stores for Claude, OpenAI, Codex, Cursor and Gemini; cryptocurrency keystores for Foundry, Solana and Monero; self-hosted CI and registry secrets such as Jenkins\u2019 master.key, Argo CD and Harbor; Alibaba Cloud and Tencent Cloud CLI configurations; and system files including <code>/etc/shadow</code>,\u201d researchers from security firm Wiz said in their own <a href=\"https://www.wiz.io/blog/keyv-and-cacheable-npm-supply-chain-attack\">analysis</a>.</p>\nMitigation\n<p>Unfortunately, enterprise security teams must perform full audits of developer machines. The compromised packages are transient dependencies for thousands of others and if any of the poisoned versions were installed during the attack window, all possible credentials accessible on that machine, or other machines accessible from that machine, need to be rotated.</p>\n<p>\u201cRotate, at minimum: npm automation tokens, GitHub personal access tokens and SSH keys, cloud provider credentials (<code>~/.aws</code>, <code>~/.config/gcloud</code>, Azure), Kubernetes service accounts, and any secrets in environment variables or .env files present at install time,\u201d the StepSecurity researchers said. \u201cMaintainers of npm packages should treat their publish credentials as exposed. The second wave of this campaign demonstrates exactly why: additional maintainer accounts published the identical payload within the same hour.\u201d</p>\n<p>The StepSecurity report includes indicators of compromise, a list of infected packages, as well as defense-in-depth recommendations for developer machines and processes that could have stopped this compromise.</p>\n<p>Using the <code>-\u2014ignore-scripts</code> npm flag in CI workflows, a technique known as script gating, would have ignored the <code>preinstall</code> script that delivers the payload. Package managers like npm, pnpm, Yarn and Bun now support minimum release age policies for package installation. Configuring this setting to between 3 to 7 days buys users some time in case a newly released version turns out to be poisoned.</p>\n<p>Security companies continuously scan and monitor the npm registry and new supply chain compromises are usually discovered within minutes or hours. In this case the malicious versions began being removed by the npm team within two hours, but being a worm, the attack keeps propagating via newly compromised developer accounts.</p>\n</div></div></div></div>",
+      "link": "https://www.csoonline.com/article/4205276/chaindrop-credential-stealing-worm-infects-over-400-npm-packages.html",
+      "source": "CSO Online",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-04T22:37:24+00:00",
+      "published_ts": 1785883044,
+      "smart_groups": [
+        "Ransomware",
+        "Cloud / SaaS",
+        "Malware / Payloads",
+        "Identity / Access",
+        "Network / OT / ICS",
+        "Crypto / Web3",
+        "AI/ML Security",
+        "Red Team / Offensive",
+        "Product News"
+      ],
+      "curated": true
+    },
+    {
+      "title": "TP-Link patches Omada ZTP flaws allowing hackers to breach networks",
+      "summary": "TP-Link has patched 15 vulnerabilities in the zero-touch provisioning (ZTP) mechanism of its Omada network devices that could be chained with previously disclosed flaws to achieve remote code execution (RCE). [...]",
+      "summary_html": "TP-Link has patched 15 vulnerabilities in the zero-touch provisioning (ZTP) mechanism of its Omada network devices that could be chained with previously disclosed flaws to achieve remote code execution (RCE). [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/tp-link-patches-omada-ztp-flaws-allowing-hackers-to-breach-networks/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-08-04T22:18:20+00:00",
+      "published_ts": 1785881900,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Cloud / SaaS"
+      ],
+      "curated": true
+    },
+    {
+      "title": "0xReadingSteiner/Silent-Call: Silent;Call \u2014 Pre-authentication remote root on Cisco CUCM 15.x (CVSS 10.0) - GitHub",
+      "summary": "I'm publishing the first in a series of advisories on critical vulnerabilities in Cisco Unified Communications Manager (CUCM) 15.x \u2014 the system that processes voice calls for enterprises and governments worldwide. ## Silent;Call \u2014 Drop 01 **Pre-authentication remote root.** Three HTTP requests, no credentials, full control of the system. The chain: 1. **X-Forwarded-For spoofing** \u2014 Tomcat's \\ RemoteIpValve` has no `internalProxies` restriction. Any external client can spoof `127.0.0.1` and bypass the localhost-only restriction on Tomcat Manager.` 2. **Hardcoded Tomcat Manager credentials** \u2014 The same username/password (\\ 1mJdd4WKi+` / `1ge1AVWsx~`) ships on every CUCM 15.x installation. Not configurable. Not changeable. A universal skeleton key.` 3. **Passwordless sudo to gdb** \u2014 The \\ tomcat` user has `NOPASSWD` sudo access to `gdb` with an attacker-controlled command file in `/tmp`. Three additional independent root paths exist (unrestricted `systemctl` for 5 users, `PYTHONPATH` injection, `LD_PRELOAD` injection).` **Impact:** Root access to CUCM gives an attacker access to SRTP encryption keys (decrypt all \"encrypted\" calls), built-in CALEA-compliant wiretapping (activate lawful intercept silently), all voicemail, complete CDR records, call routing manipulation, E911 disruption, and a pivot point into the voice VLAN. **Coordination timeline:** - 17 vulnerabilities submitted to ZDI \u2014 unprocessed - SSD paused CUCM acquisitions \u2014 \"Cisco won't address existing reports\" - Cisco PSIRT contacted directly \u2014 no response - MITRE contacted for CVE assignment (CNA of Last Resort) \u2014 pending 55 vulnerabilities identified in total across CUCM 15.x. Additional kill chains will be published weekly. **Full advisory + PoC:** https://github.com/0xReadingSteiner/Silent-Call **Master index (all products):** https://github.com/0xReadingSteiner/cisco-security-research Research conducted independently on commercially available software in a private lab. No proprietary source code, internal tools, or confidential information was used submitted by /u/0xReadingSteiner [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/cybersecurity/comments/1vfou28/0xreadingsteinersilentcall_silentcall/\">  </a>  <!-- SC_OFF --><div><p>I'm publishing the first in a series of advisories on critical vulnerabilities in Cisco Unified Communications Manager (CUCM) 15.x \u2014 the system that processes voice calls for enterprises and governments worldwide.</p> <p>## Silent;Call \u2014 Drop 01</p> <p>**Pre-authentication remote root.** Three HTTP requests, no credentials, full control of the system.</p> <p>The chain:</p> <p><code>1. **X-Forwarded-For spoofing** \u2014 Tomcat's \\</code>RemoteIpValve` has no `internalProxies` restriction. Any external client can spoof `127.0.0.1` and bypass the localhost-only restriction on Tomcat Manager.`</p> <p><code>2. **Hardcoded Tomcat Manager credentials** \u2014 The same username/password (\\</code>1mJdd4WKi+` / `1ge1AVWsx~`) ships on every CUCM 15.x installation. Not configurable. Not changeable. A universal skeleton key.`</p> <p><code>3. **Passwordless sudo to gdb** \u2014 The \\</code>tomcat` user has `NOPASSWD` sudo access to `gdb` with an attacker-controlled command file in `/tmp`. Three additional independent root paths exist (unrestricted `systemctl` for 5 users, `PYTHONPATH` injection, `LD_PRELOAD` injection).`</p> <p>**Impact:** Root access to CUCM gives an attacker access to SRTP encryption keys (decrypt all \"encrypted\" calls), built-in CALEA-compliant wiretapping (activate lawful intercept silently), all voicemail, complete CDR records, call routing manipulation, E911 disruption, and a pivot point into the voice VLAN.</p> <p>**Coordination timeline:**</p> <p>- 17 vulnerabilities submitted to ZDI \u2014 unprocessed</p> <p>- SSD paused CUCM acquisitions \u2014 \"Cisco won't address existing reports\"</p> <p>- Cisco PSIRT contacted directly \u2014 no response</p> <p>- MITRE contacted for CVE assignment (CNA of Last Resort) \u2014 pending</p> <p>55 vulnerabilities identified in total across CUCM 15.x. Additional kill chains will be published weekly.</p> <p>**Full advisory + PoC:** <a href=\"https://github.com/0xReadingSteiner/Silent-Call\">https://github.com/0xReadingSteiner/Silent-Call</a></p> <p>**Master index (all products):** <a href=\"https://github.com/0xReadingSteiner/cisco-security-research\">https://github.com/0xReadingSteiner/cisco-security-research</a></p> <p>Research conducted independently on commercially available software in a private lab. No proprietary source code, internal tools, or confidential information was used</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/0xReadingSteiner\"> /u/0xReadingSteiner </a> <br/> <span><a href=\"https://github.com/0xReadingSteiner/Silent-Call\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vfou28/0xreadingsteinersilentcall_silentcall/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1vfou28/0xreadingsteinersilentcall_silentcall/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-08-04T22:16:31+00:00",
+      "published_ts": 1785881791,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Identity / Access",
+        "Crypto / Web3",
+        "Community Discussion"
+      ],
+      "curated": true
+    },
+    {
+      "title": "AI Enthusiast Bugs His Toddler's Sleepover and Feeds It to Claude\u2014The Internet Bugs Back",
+      "summary": "Nicholas Charriere turned an hour of nonsense into a family website with named tracks. One reply calling him creepy got more likes than his post.",
+      "summary_html": "Nicholas Charriere turned an hour of nonsense into a family website with named tracks. One reply calling him creepy got more likes than his post.",
+      "link": "https://decrypt.co/374930/ai-enthusiast-bugged-toddler-sleepover-claude",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-08-04T22:16:03+00:00",
+      "published_ts": 1785881763,
+      "smart_groups": [
+        "AI/ML Security",
+        "DevSecOps"
+      ],
+      "curated": false
+    },
+    {
+      "title": "OpenAI Dumps Apple Employees' Text Messages to Fight Trade Secret Suit",
+      "summary": "The ChatGPT maker released emails and text messages it says expose factual errors in Apple's lawsuit and undercut claims that former Apple employees brought confidential information to the company.",
+      "summary_html": "The ChatGPT maker released emails and text messages it says expose factual errors in Apple's lawsuit and undercut claims that former Apple employees brought confidential information to the company.",
+      "link": "https://decrypt.co/374928/openai-emails-text-messages-apple-trade-secrets-lawsuit",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-08-04T21:46:03+00:00",
+      "published_ts": 1785879963,
+      "smart_groups": [
+        "Cloud / SaaS",
+        "AI/ML Security"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Phishing service spoofs RingCentral to steal Microsoft 365 accounts",
+      "summary": "The Greatness phishing-as-a-service (PhaaS) platform has expanded from credential phishing to adversary-in-the-middle attacks and device-code phishing targeting Microsoft 365 accounts. [...]",
+      "summary_html": "The Greatness phishing-as-a-service (PhaaS) platform has expanded from credential phishing to adversary-in-the-middle attacks and device-code phishing targeting Microsoft 365 accounts. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/phishing-service-spoofs-ringcentral-to-steal-microsoft-365-accounts/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-08-04T21:45:36+00:00",
+      "published_ts": 1785879936,
+      "smart_groups": [
+        "Windows / Microsoft",
+        "Phishing / Social Engineering"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Private sector job offer",
+      "summary": "This is kind of obvious, but still have some reserve about it. Current job Government, hybrid situation couple days a week remote. Pay is ok job is laid back, never stressed, no micromanaging involved. Job offer Full remote, more pay by 25k with opportunities with equity in the company. Company is fairly new, last 6 years and associated with AI as its product. I\u2019ve been working in public sector for about 10 years, this would be my first private sector job. I wonder what the job security is like, they have about 90 employees currently and they\u2019re fairly new. I wonder what\u2019s the work life balance? It\u2019s fin tech to be exact my role on paper is virtually the same. What are some thoughts or concerns you would have? submitted by /u/Ch4m6er [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>This is kind of obvious, but still have some reserve about it.</p> <p>Current job<br/> Government, hybrid situation couple days a week remote. Pay is ok job is laid back, never stressed, no micromanaging involved.</p> <p>Job offer<br/> Full remote, more pay by 25k with opportunities with equity in the company. Company is fairly new, last 6 years and associated with AI as its product.</p> <p>I\u2019ve been working in public sector for about 10 years, this would be my first private sector job. I wonder what the job security is like, they have about 90 employees currently and they\u2019re fairly new. I wonder what\u2019s the work life balance? It\u2019s fin tech to be exact my role on paper is virtually the same. What are some thoughts or concerns you would have?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Ch4m6er\"> /u/Ch4m6er </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vfnzfn/private_sector_job_offer/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vfnzfn/private_sector_job_offer/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1vfnzfn/private_sector_job_offer/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-08-04T21:42:42+00:00",
+      "published_ts": 1785879762,
+      "smart_groups": [
+        "Identity / Access",
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Ledger Says Coldcard Exploit Shows Bitcoin Wallet Security Must Adapt to AI",
+      "summary": "Ledger CTO Charles Guillemet says the Coldcard exploit underscores why certified hardware randomness matters\u2014and why AI is reshaping wallet security.",
+      "summary_html": "Ledger CTO Charles Guillemet says the Coldcard exploit underscores why certified hardware randomness matters\u2014and why AI is reshaping wallet security.",
+      "link": "https://decrypt.co/374914/ledger-coldcard-exploit-bitcoin-wallet-security-ai",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-08-04T21:16:03+00:00",
+      "published_ts": 1785878163,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Products Are Getting Smarter. Enterprise Transformations Are Getting Harder.",
+      "summary": "Cloud-delivered services have reduced infrastructure requirements, automated software updates, and introduced capabilities that once required months of engineering effort. Features that previously demanded custom integrations or extensive operational overhead are now available through native platform capabilities.At the same time, customers report enterprise transformations have become considerably more challenging. If that's true for you, you're in good company. The task to meet today\u2019s demands is not small.\u00a0Gartner\u2019s advice is clear: for successful cross-technology transformation in the autonomous era, organizations must, \u201cTranslate (their) vision into a clear target state. Specify what success looks like, using (their) strategic vision and BTE drivers to set measurable future goals. Outline capabilities, risk posture and business outcomes (they) want to achieve. This clarity ensures your roadmap is both ambitious and realistic, and resonates with executive stakeholders who require measurable results.\u201dOutlining capabilities, risk posture and business outcomes is no longer contained to successfully deploying a single security product. Organizations are modernizing connectivity, adopting AI, protecting data, securing workloads, segmenting applications, improving user experience, integrating security operations, and evolving governance models inside geopolitical fragmentation and quantum-accelerated threats simultaneously. Every initiative introduces new planning and design decisions that influence the technologies, teams, and operational processes around it. This broader challenge is reflected in Forrester's recently published 2026 Predictions for Technology and Security:\u201cTHE RACE TO TRUST AND VALUE\u201d\u00a0In 2026, the era of volatility continues, challenging CIOs and CISOs to lead with precision, resilience, and strategic clarity. The Al hype period is over, and the pressure to deliver real, measurable results from secure Al initiatives will intensify - while the margin for error continues to shrink. Geopolitical pressures and security risks will continue to command attention, making 2026 a year to focus on outcomes that align to business goals and build trust across the business. Tech and security leaders will be called upon to recalibrate investments under tighter financial scrutiny and governance, navigating increasingly complex geopolitical and economic risks.\u00a0 The shift from implementing products to orchestrating cross-technology changeTraditional consulting engagements were designed around discrete implementation projects. A deployment begins, configuration work is completed, documentation is delivered, and the engagement ends. That model works well when technology remains relatively static and separated.Modern Zero Trust environments rarely remain static and are interconnected. It\u2019s a prerequisite.Business priorities change. New capabilities become available. Applications move to the cloud. AI introduces entirely new data protection requirements. Security operations mature. Teams reorganize. Acquisitions introduce new infrastructure. Every change creates new opportunities to optimize, but it also creates new dependencies that must be evaluated alongside the existing environment.Planning and design have become continuous disciplines rather than one-time project activities.This shift is changing the role of technical expertise. The organizations realizing the greatest value from their Zero Trust investments are not necessarily deploying more technology. They are making better decisions about when to introduce new capabilities, how to integrate them with existing investments, and which changes create the greatest operational value. They continuously validate assumptions, revisit earlier design decisions, and align technical priorities with changing business objectives rather than treating architecture as something that is completed once.Experience matters because every environment is different, but successful transformations consistently follow common patterns. The problem of secure AI adoptionEnabling AI securely is no longer a question of deploying a single product. Organizations must balance identity, browser security, data protection, policy enforcement, governance, and user experience while enabling employees to adopt new tools responsibly.\u00a0Gartner recently emphasized that, \u201cAI deployments that run ahead of business strategy risk technical capability without strategic coherence.\"\u00a0Similar patterns exist across Zero Trust modernization, application segmentation, data protection, and security operations optimization. Each initiative spans multiple technology domains and requires decisions that extend well beyond any individual product.\u00a0In their Cybersecurity Roadmap: The CISO\u2019s Guide to Business Results, Gartner reports that, \u201cBy 2028, 80% of CISOs will face a board-level mandate to connect cybersecurity investments to tangible business outcomes.\u201dThe complexity is rarely found within the technology itself. It emerges at the intersection of technologies, business priorities, and operational realities.The differentiator will not be how quickly new products are deployed, but how effectively they are integrated into an operating model that can continuously adapt to changing requirements. Zero Trust is no longer a destination. It is an ongoing transformation that benefits from continuous planning, thoughtful design, and operational refinement as business and technology continue to evolve.Leading organizations are responding by changing how they approach transformation itself.\u201cCybersecurity is the foundation for our digital world. It is at the heart of trust and will allow society to fully benefit from the transformations enabled by new technologies like AI and quantum. But it\u2019s not something one can do on their own. We have to come together, share intelligence globally and\u00a0develop the skills equal to emerging risks.\"\u00a0Michael Miebach, Chief Executive Officer, Mastercard\u00a0\u00a0Source: The World Economic Forum's Global Cybersecurity Outlook 2026To meet these pressures, organizations have evolved from treating planning as a phase that concludes before implementation begins, they are building continuous planning into the operating model. Architecture decisions are revisited as new capabilities become available. Policies are refined as business requirements evolve. Design assumptions are validated before major changes are introduced into production. Operational feedback is incorporated into future planning cycles, creating an environment that improves over time rather than remaining fixed after deployment. Why coordinated planning is the key to successThis is one of the reasons enterprise security organizations are increasingly measuring success differently. Instead of evaluating projects solely by deployment milestones, they are asking broader operational questions:\u00a0Are teams aligned around the same objectives?Can new capabilities be adopted without introducing unnecessary operational overhead?Are policies becoming simpler over time instead of more complex?Can future changes be introduced with confidence because previous decisions were documented, validated, and understood?These questions extend beyond individual products. They measure the maturity of the overall Zero Trust operating model.Organizations \u201clacking access to security skills, resources and awareness are perennially targeted by countless bad actors. The actual capability gap lies not just in technologies, but in people: in the professionals needing more training and support.\"\u00a0Illena Armstrong, President, Cloud Security Alliance\u00a0Source: The World Economic Forum's Global Cybersecurity Outlook 2026Three questions every Zero Trust transformation leader should askWho provides the expertise to validate our cross-technology planning and design decisions, helping us develop the technical\u00a0decision-making skills equal to emerging risks?Can our security operating model continuously adapt while maintaining policy and security excellence or does it run ahead of business strategy, risking technical capability without strategic coherence?Are we streamlining security implementation to reduce risk and maximize value through shared cross-technology responsibility?Security technology never stands still. Neither should your Zero Trust strategy.\u00a0Read this data sheet to explore Zscaler Advanced Services, expert-led, proactive consulting subscription designed to help you continuously mature your Zero Trust strategy in a rapidly evolving security landscape.",
+      "summary_html": "Cloud-delivered services have reduced infrastructure requirements, automated software updates, and introduced capabilities that once required months of engineering effort. Features that previously demanded custom integrations or extensive operational overhead are now available through native platform capabilities.At the same time, customers report enterprise transformations have become considerably more challenging. If that's true for you, you're in good company. The task to meet today\u2019s demands is not small.\u00a0Gartner\u2019s advice is clear: for successful cross-technology transformation in the autonomous era, organizations must, \u201cTranslate (their) vision into a clear target state. Specify what success looks like, using (their) strategic vision and BTE drivers to set measurable future goals. Outline capabilities, risk posture and business outcomes (they) want to achieve. This clarity ensures your roadmap is both ambitious and realistic, and resonates with executive stakeholders who require measurable results.\u201dOutlining capabilities, risk posture and business outcomes is no longer contained to successfully deploying a single security product. Organizations are modernizing connectivity, adopting AI, protecting data, securing workloads, segmenting applications, improving user experience, integrating security operations, and evolving governance models inside geopolitical fragmentation and quantum-accelerated threats simultaneously. Every initiative introduces new planning and design decisions that influence the technologies, teams, and operational processes around it. This broader challenge is reflected in Forrester's recently published 2026 Predictions for Technology and Security:\u201cTHE RACE TO TRUST AND VALUE\u201d\u00a0In 2026, the era of volatility continues, challenging CIOs and CISOs to lead with precision, resilience, and strategic clarity. The Al hype period is over, and the pressure to deliver real, measurable results from secure Al initiatives will intensify - while the margin for error continues to shrink. Geopolitical pressures and security risks will continue to command attention, making 2026 a year to focus on outcomes that align to business goals and build trust across the business. Tech and security leaders will be called upon to recalibrate investments under tighter financial scrutiny and governance, navigating increasingly complex geopolitical and economic risks.\u00a0 The shift from implementing products to orchestrating cross-technology changeTraditional consulting engagements were designed around discrete implementation projects. A deployment begins, configuration work is completed, documentation is delivered, and the engagement ends. That model works well when technology remains relatively static and separated.Modern Zero Trust environments rarely remain static and are interconnected. It\u2019s a prerequisite.Business priorities change. New capabilities become available. Applications move to the cloud. AI introduces entirely new data protection requirements. Security operations mature. Teams reorganize. Acquisitions introduce new infrastructure. Every change creates new opportunities to optimize, but it also creates new dependencies that must be evaluated alongside the existing environment.Planning and design have become continuous disciplines rather than one-time project activities.This shift is changing the role of technical expertise. The organizations realizing the greatest value from their Zero Trust investments are not necessarily deploying more technology. They are making better decisions about when to introduce new capabilities, how to integrate them with existing investments, and which changes create the greatest operational value. They continuously validate assumptions, revisit earlier design decisions, and align technical priorities with changing business objectives rather than treating architecture as something that is completed once.Experience matters because every environment is different, but successful transformations consistently follow common patterns. The problem of secure AI adoptionEnabling AI securely is no longer a question of deploying a single product. Organizations must balance identity, browser security, data protection, policy enforcement, governance, and user experience while enabling employees to adopt new tools responsibly.\u00a0Gartner recently emphasized that, \u201cAI deployments that run ahead of business strategy risk technical capability without strategic coherence.\"\u00a0Similar patterns exist across Zero Trust modernization, application segmentation, data protection, and security operations optimization. Each initiative spans multiple technology domains and requires decisions that extend well beyond any individual product.\u00a0In their Cybersecurity Roadmap: The CISO\u2019s Guide to Business Results, Gartner reports that, \u201cBy 2028, 80% of CISOs will face a board-level mandate to connect cybersecurity investments to tangible business outcomes.\u201dThe complexity is rarely found within the technology itself. It emerges at the intersection of technologies, business priorities, and operational realities.The differentiator will not be how quickly new products are deployed, but how effectively they are integrated into an operating model that can continuously adapt to changing requirements. Zero Trust is no longer a destination. It is an ongoing transformation that benefits from continuous planning, thoughtful design, and operational refinement as business and technology continue to evolve.Leading organizations are responding by changing how they approach transformation itself.\u201cCybersecurity is the foundation for our digital world. It is at the heart of trust and will allow society to fully benefit from the transformations enabled by new technologies like AI and quantum. But it\u2019s not something one can do on their own. We have to come together, share intelligence globally and\u00a0develop the skills equal to emerging risks.\"\u00a0Michael Miebach, Chief Executive Officer, Mastercard\u00a0\u00a0Source: The World Economic Forum's Global Cybersecurity Outlook 2026To meet these pressures, organizations have evolved from treating planning as a phase that concludes before implementation begins, they are building continuous planning into the operating model. Architecture decisions are revisited as new capabilities become available. Policies are refined as business requirements evolve. Design assumptions are validated before major changes are introduced into production. Operational feedback is incorporated into future planning cycles, creating an environment that improves over time rather than remaining fixed after deployment. Why coordinated planning is the key to successThis is one of the reasons enterprise security organizations are increasingly measuring success differently. Instead of evaluating projects solely by deployment milestones, they are asking broader operational questions:\u00a0Are teams aligned around the same objectives?Can new capabilities be adopted without introducing unnecessary operational overhead?Are policies becoming simpler over time instead of more complex?Can future changes be introduced with confidence because previous decisions were documented, validated, and understood?These questions extend beyond individual products. They measure the maturity of the overall Zero Trust operating model.Organizations \u201clacking access to security skills, resources and awareness are perennially targeted by countless bad actors. The actual capability gap lies not just in technologies, but in people: in the professionals needing more training and support.\"\u00a0Illena Armstrong, President, Cloud Security Alliance\u00a0Source: The World Economic Forum's Global Cybersecurity Outlook 2026Three questions every Zero Trust transformation leader should askWho provides the expertise to validate our cross-technology planning and design decisions, helping us develop the technical\u00a0decision-making skills equal to emerging risks?Can our security operating model continuously adapt while maintaining policy and security excellence or does it run ahead of business strategy, risking technical capability without strategic coherence?Are we streamlining security implementation to reduce risk and maximize value through shared cross-technology responsibility?Security technology never stands still. Neither should your Zero Trust strategy.\u00a0Read this data sheet to explore Zscaler Advanced Services, expert-led, proactive consulting subscription designed to help you continuously mature your Zero Trust strategy in a rapidly evolving security landscape.",
+      "link": "https://www.zscaler.com/blogs/product-insights/why-zero-trust-needs-continuous-planning",
+      "source": "Zscaler Research Blogs",
+      "feed_type": "news",
+      "type": "threat-intel-apt-campaigns",
+      "type_label": "Threat Intel & APT Campaigns",
+      "published": "2026-08-04T20:56:57+00:00",
+      "published_ts": 1785877017,
+      "smart_groups": [
+        "Ransomware",
+        "Vulnerabilities / CVEs",
+        "Privacy & Compliance",
+        "Community Discussion",
+        "Product News"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Jim Cramer Is Selling His Bitcoin Over Quantum Threat\u2014Crypto Twitter Is Thrilled",
+      "summary": "The CNBC host announced the decision on air after interviewing IBM CEO Arvind Krishna, asking him whether quantum computers could eventually crack the cryptography protecting his coins.",
+      "summary_html": "The CNBC host announced the decision on air after interviewing IBM CEO Arvind Krishna, asking him whether quantum computers could eventually crack the cryptography protecting his coins.",
+      "link": "https://decrypt.co/374923/jim-cramer-selling-bitcoin-quantum-computing-threat",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-08-04T20:45:18+00:00",
+      "published_ts": 1785876318,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Police Have Arrested 37 Americans Over AI Data Center Protests This Year",
+      "summary": "Dozens of arrests tied to opposition against AI data centers underscore how local disputes over massive computing projects are growing into a national political movement.",
+      "summary_html": "Dozens of arrests tied to opposition against AI data centers underscore how local disputes over massive computing projects are growing into a national political movement.",
+      "link": "https://decrypt.co/374921/ai-data-center-protest-arrests",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-08-04T20:30:52+00:00",
+      "published_ts": 1785875452,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "The Director&#039;s Cut: When AI Agents Become Liability Risks",
+      "summary": "This month\u2019s briefing examines AI agent liability, third-party cloud exposure, cyber-driven fraud, and operational technology risk\u2014four developments that sharpen board oversight of cyber resilience and accountability.\u00a0AI Agents Are Becoming a Liability Issue, Not Just a Safety IssueRecent disclosures from Anthropic and OpenAI suggest a shift in how directors should think about agentic AI risk. In both cases, advanced models moved beyond their intended confines and interacted with external systems, creating potential legal, contractual, and reputational exposure for the companies.The two cases were not identical. OpenAI disclosed that models broke out of a sandboxed test environment, reached the internet, and hacked Hugging Face, a provider of open-source AI tools, while trying to shortcut a cybersecurity benchmark. Anthropic disclosed a different failure: models in inadequately isolated test setups reached external systems and, in three incidents, compromised third parties without the company\u2019s knowledge. In both cases, the issue was not only model capability, but autonomy, connectivity, credentials, and weak control over what the agent could reach.The takeaway is straightforward: if agents can reach live networks, repositories, cloud resources, or sensitive data without strict boundaries, the enterprise may be creating preventable liability. Model-level guardrails are not enough if the surrounding environment still grants meaningful access.The governance takeaway is to treat AI agents as untrusted actors by default. A Zero Trust approach can help: assume the agent may be unsafe, and strictly limit what it can reach or do. Constraining an agent\u2019s ability to act beyond its intended scope is key to reducing liability risk.What Directors Should Ask Management:What controls prevent AI agents used in testing or operations from reaching live internet destinations, repositories, credentials, or production-adjacent systems without explicit approval?If an AI agent causes unauthorized access, data exposure, or harm to a third party during testing, how will we identify the activity and are we prepared for the resulting legal, disclosure, and contractual consequences?How do we verify that our AI evaluation environments are truly isolated, rather than assuming they are safe because they are labeled as test systems?\u00a0 Amgen Shows Why Third-Party Cloud Risk Is Still Board RiskAmgen disclosed a material cyber incident involving unauthorized activity in third-party-hosted cloud environments, with reports indicating exposure of patient and proprietary data but no identified disruption to products, manufacturing, or operations. The incident is the latest in a string of attacks affecting the healthcare sector.The case is a useful reminder that outsourcing infrastructure does not outsource accountability. When sensitive data sits in external platforms, the enterprise still owns the legal, regulatory, and reputational consequences. The governance issue is whether management has clear visibility into which third parties hold critical data, how access is controlled, and whether contract terms, logging, and notification rights are strong enough to support a fast materiality assessment when harm originates outside the enterprise\u2019s own environment.What Directors Should Ask Management:How do we verify that third-party access, logging, and incident-notification terms are strong enough to support a fast materiality assessment?\u00a0 Upbound Shows How Cyber Risk Can Turn Directly Into Earnings ImpactIn an 8-K filing, Upbound disclosed details of cybersecurity incidents in which unauthorized parties obtained non-sensitive customer information and other documents. The company said the information was then used to facilitate fraudulent lease-to-own agreements in its Acima business, contributing to roughly $13 million in fraudulent contract losses in the second quarter.Cyber incidents do not need to disrupt operations or expose highly sensitive data to become financially significant. Stolen information can be weaponized quickly for fraud, especially in businesses that rely on fast approvals, distributed partners, or high-volume transactions. The governance issue is whether management is connecting cyber risk to fraud controls, transaction monitoring, and loss detection, rather than treating data compromise as a separate issue.What Directors Should Ask Management:How quickly could we detect if stolen customer or applicant data were being used to drive fraudulent transactions against us?\u00a0 Minnesota Water Incidents Highlight the Risk of Exposed Operational TechnologyRecent\u00a0attacks on Minnesota water systems and a related federal\u00a0warning highlight a broader lesson for directors: operational technology can create real-world disruption when it is exposed to the internet or governed less rigorously than traditional IT. In this case, attackers believed to be aligned with Iran targeted internet-connected industrial control devices in at least seven states across the US, changed passwords, altered network settings, and forced some utilities into manual operations.The board lesson extends well beyond the water sector. Many companies rely on operational technology that sits outside core IT security programs, including plant controls, warehouse automation, heating and cooling systems, badge access, and backup power environments. These systems often support essential operations but may have weaker visibility, older controls, undocumented remote connections, or greater dependence on vendors and integrators.What Directors Should Ask Management:Do we know which operational systems are exposed, who can access them, and whether they are governed with the same discipline applied to other material enterprise systems?\u00a0Zscaler is a proud partner of NACD's Northern California chapter. We are here as a resource for directors to answer questions about cybersecurity or AI risks, and are happy to arrange dedicated board briefings. Please email rsloan[@]zscaler.com to learn more.",
+      "summary_html": "This month\u2019s briefing examines AI agent liability, third-party cloud exposure, cyber-driven fraud, and operational technology risk\u2014four developments that sharpen board oversight of cyber resilience and accountability.\u00a0AI Agents Are Becoming a Liability Issue, Not Just a Safety IssueRecent disclosures from Anthropic and OpenAI suggest a shift in how directors should think about agentic AI risk. In both cases, advanced models moved beyond their intended confines and interacted with external systems, creating potential legal, contractual, and reputational exposure for the companies.The two cases were not identical. OpenAI disclosed that models broke out of a sandboxed test environment, reached the internet, and hacked Hugging Face, a provider of open-source AI tools, while trying to shortcut a cybersecurity benchmark. Anthropic disclosed a different failure: models in inadequately isolated test setups reached external systems and, in three incidents, compromised third parties without the company\u2019s knowledge. In both cases, the issue was not only model capability, but autonomy, connectivity, credentials, and weak control over what the agent could reach.The takeaway is straightforward: if agents can reach live networks, repositories, cloud resources, or sensitive data without strict boundaries, the enterprise may be creating preventable liability. Model-level guardrails are not enough if the surrounding environment still grants meaningful access.The governance takeaway is to treat AI agents as untrusted actors by default. A Zero Trust approach can help: assume the agent may be unsafe, and strictly limit what it can reach or do. Constraining an agent\u2019s ability to act beyond its intended scope is key to reducing liability risk.What Directors Should Ask Management:What controls prevent AI agents used in testing or operations from reaching live internet destinations, repositories, credentials, or production-adjacent systems without explicit approval?If an AI agent causes unauthorized access, data exposure, or harm to a third party during testing, how will we identify the activity and are we prepared for the resulting legal, disclosure, and contractual consequences?How do we verify that our AI evaluation environments are truly isolated, rather than assuming they are safe because they are labeled as test systems?\u00a0 Amgen Shows Why Third-Party Cloud Risk Is Still Board RiskAmgen disclosed a material cyber incident involving unauthorized activity in third-party-hosted cloud environments, with reports indicating exposure of patient and proprietary data but no identified disruption to products, manufacturing, or operations. The incident is the latest in a string of attacks affecting the healthcare sector.The case is a useful reminder that outsourcing infrastructure does not outsource accountability. When sensitive data sits in external platforms, the enterprise still owns the legal, regulatory, and reputational consequences. The governance issue is whether management has clear visibility into which third parties hold critical data, how access is controlled, and whether contract terms, logging, and notification rights are strong enough to support a fast materiality assessment when harm originates outside the enterprise\u2019s own environment.What Directors Should Ask Management:How do we verify that third-party access, logging, and incident-notification terms are strong enough to support a fast materiality assessment?\u00a0 Upbound Shows How Cyber Risk Can Turn Directly Into Earnings ImpactIn an 8-K filing, Upbound disclosed details of cybersecurity incidents in which unauthorized parties obtained non-sensitive customer information and other documents. The company said the information was then used to facilitate fraudulent lease-to-own agreements in its Acima business, contributing to roughly $13 million in fraudulent contract losses in the second quarter.Cyber incidents do not need to disrupt operations or expose highly sensitive data to become financially significant. Stolen information can be weaponized quickly for fraud, especially in businesses that rely on fast approvals, distributed partners, or high-volume transactions. The governance issue is whether management is connecting cyber risk to fraud controls, transaction monitoring, and loss detection, rather than treating data compromise as a separate issue.What Directors Should Ask Management:How quickly could we detect if stolen customer or applicant data were being used to drive fraudulent transactions against us?\u00a0 Minnesota Water Incidents Highlight the Risk of Exposed Operational TechnologyRecent\u00a0attacks on Minnesota water systems and a related federal\u00a0warning highlight a broader lesson for directors: operational technology can create real-world disruption when it is exposed to the internet or governed less rigorously than traditional IT. In this case, attackers believed to be aligned with Iran targeted internet-connected industrial control devices in at least seven states across the US, changed passwords, altered network settings, and forced some utilities into manual operations.The board lesson extends well beyond the water sector. Many companies rely on operational technology that sits outside core IT security programs, including plant controls, warehouse automation, heating and cooling systems, badge access, and backup power environments. These systems often support essential operations but may have weaker visibility, older controls, undocumented remote connections, or greater dependence on vendors and integrators.What Directors Should Ask Management:Do we know which operational systems are exposed, who can access them, and whether they are governed with the same discipline applied to other material enterprise systems?\u00a0Zscaler is a proud partner of NACD's Northern California chapter. We are here as a resource for directors to answer questions about cybersecurity or AI risks, and are happy to arrange dedicated board briefings. Please email rsloan[@]zscaler.com to learn more.",
+      "link": "https://www.zscaler.com/blogs/cxo-insights/director-s-cut-when-ai-agents-become-liability-risks",
+      "source": "Zscaler Research Blogs",
+      "feed_type": "news",
+      "type": "threat-intel-apt-campaigns",
+      "type_label": "Threat Intel & APT Campaigns",
+      "published": "2026-08-04T20:29:44+00:00",
+      "published_ts": 1785875384,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Exploit / PoC",
+        "Identity / Access",
+        "Network / OT / ICS",
+        "Community Discussion"
+      ],
+      "curated": true
+    },
+    {
+      "title": "OpenAI: Cambodian scam centers used ChatGPT to lure Indian nationals, conduct investment fraud",
+      "summary": "A tip from WhatsApp led OpenAI to ban multiple accounts associated with investment scams and human trafficking operations based in Cambodian scam centers.",
+      "summary_html": "A tip from WhatsApp led OpenAI to ban multiple accounts associated with investment scams and human trafficking operations based in Cambodian scam centers.",
+      "link": "https://therecord.media/openai-chatgpt-cambodia-scam-centers-disruption",
+      "source": "The Record \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-08-04T20:15:00+00:00",
+      "published_ts": 1785874500,
+      "smart_groups": [
+        "Identity / Access",
+        "AI/ML Security"
+      ],
+      "curated": false
+    },
+    {
+      "title": "SharePoint Flaws Used to Hack Switzerland\u2019s Federal IT Agency",
+      "summary": "Swiss Federal IT Agency FOITT says attackers exploited SharePoint flaws to compromise about 200 accounts. Servers are being rebuilt as investigations continue. Switzerland\u2019s Federal Office for Information Technology and Communications, known as BIT or FOITT, disclosed that unknown attackers had compromised approximately 200 accounts on its on-premises SharePoint servers. The FOITT said the unknown attackers are believed to have exploited vulnerabilities in Microsoft\u2019s SharePoint software. The software manufacturer had reported several such vulnerabilities in mid-July. The FOITT is the largest IT service provider in the Federal Administration. It provides around 50,000 workstation systems, develops customised, secure and user-friendly IT solutions together with the administrative units, and operates over 1,000 specialist applications, mainly in its own modern data centres. The FOITT operated the servers in the federal government\u2019s own data centres and, according to its own statements, had immediately begun installing the security updates provided. FOITT detected the anomalies on July 28 and confirmed the account compromise three days later, on July 31. \u201cThe cyberattack was carried out by previously unknown actors, presumably by exploiting these vulnerabilities in the SharePoint software,\u201d the Swiss agency said . \u201cDuring the course of their analysis, the experts discovered on July 31 that the login details for around 200 user and technical accounts had been compromised.\u201d reports the media outlet Swiss Info. \u201cAccording to its own statements, the FOITT immediately reset the relevant passwords. Based on the investigations to date, which are being supported by the National Cybersecurity Centre (NCSC) and Microsoft, there is no evidence of any further data leakage. However, the analysis is still ongoing.\u201d Both user and technical accounts were hit. On the same day anomalous access was detected, FOITT blocked external internet access to SharePoint and began patching. It\u2019s now reinstalling the affected servers entirely as a precaution and has shared all relevant technical indicators with Swiss critical infrastructure operators through the national cybersecurity agency\u2019s platform. The July Patch Tuesday timing matters here. Microsoft disclosed multiple serious SharePoint vulnerabilities on July 14. One flaw, tracked as CVE-2026-50522 (CVSS score of 9.8) could enable an attacker to execute remote code over a network. Microsoft said exploitation would be considered low complexity, as an attacker does not require a great deal of knowledge of the system to complete an attack. Researchers warned that attackers are stealing machine keys to maintain long-term access. That last part is the critical detail: machine keys are the cryptographic secrets that IIS uses to sign session tokens, and once stolen they let an attacker forge legitimate-looking requests that a fully patched server will still accept. The Swiss FOITT is reinstalling the affected SharePoint servers as a precaution after the cyber incident. External internet access remains blocked until the work is complete, while federal employees can still access and share documents through alternative channels. FOITT pointed out that the platform is not intended to store confidential information or highly sensitive personal data. Patching closes the door; it doesn\u2019t change the locks. SharePoint is increasingly targeted by cybercriminals and nation-state actors because of its deep integration with Microsoft authentication. Attackers exploiting vulnerabilities could use it as an entry point to compromise wider networks, making direct internet exposure of SharePoint servers a growing security risk. \u201cCERT-EU strongly recommends updating affected servers as soon as possible, rotating credentials for any assets that may have been vulnerable and exposed to the internet, and conducting a compromise assessment to identify potentially affected SharePoint instances.\u201d CERT-EU\u2019s advisory warns. \u201cGiven the number of recent critical vulnerabilities affecting SharePoint, organisations should reconsider exposing any Microsoft SharePoint Server directly to the internet.\u201d Neither Microsoft nor CISA have attributed the exploitations publicly to any specific threat group. Switzerland\u2019s National Cyber Security Centre (NCSC) recorded 28 cyberattacks targeting the Federal Administration in 2025 and 325 incidents affecting critical infrastructure, with about one in four involving public administration. One of the most notable cases hit the state-owned defense contractor Ruag, whose U.S. subsidiary was breached by the Akira ransomware group, leading to data theft and a ransom payment to recover the stolen information. The practical takeaway for any organization still running on-premises SharePoint exposed to the internet: apply the July patches, then rotate your machine keys and restart IISm in that order, not one without the other. If you can\u2019t take the server offline to reinstall it the way FOITT is doing, at minimum validate that external internet exposure has been eliminated. The window between vulnerability disclosure and active exploitation in this campaign was measured in days, not weeks. Follow me on Twitter: @securityaffairs and Facebook and Mastodon Pierluigi\u00a0Paganini ( SecurityAffairs \u2013\u00a0hacking,\u00a0newsletter)",
+      "summary_html": "<div></div>\nSwiss Federal IT Agency FOITT says attackers exploited SharePoint flaws to compromise about 200 accounts. Servers are being rebuilt as investigations continue.\n<p>Switzerland\u2019s Federal Office for Information Technology and Communications, known as BIT or FOITT, disclosed that unknown attackers had compromised approximately 200 accounts on its on-premises SharePoint servers. The FOITT said the unknown attackers are believed to have exploited <a href=\"https://therecord.media/microsoft-vulnerabilities-patch-tuesday-release\">vulnerabilities</a> in Microsoft\u2019s SharePoint software. The software manufacturer had reported several such vulnerabilities in mid-July. </p>\n<p>The FOITT is the largest IT service provider in the Federal Administration. It provides around 50,000 workstation systems, develops customised, secure and user-friendly IT solutions together with the administrative units, and operates over 1,000 specialist applications, mainly in its own modern data centres.</p>\n<p>The FOITT operated the servers in the federal government\u2019s own data centres and, according to its own statements, had immediately begun installing the security updates provided. FOITT detected the anomalies on July 28 and confirmed the account compromise three days later, on July 31.</p>\n<p><em>\u201cThe cyberattack was carried out by previously unknown actors, presumably by exploiting these vulnerabilities in the SharePoint software,\u201d <a href=\"https://therecord.media/swiss-bit-foitt-hacked-possibly-sharepoint-vulnerabilities\">the Swiss agency said</a>.</em></p>\n<p><em>\u201cDuring the course of their analysis, the experts discovered on July 31 that the login details for around 200 user and technical accounts had been compromised.\u201d <a href=\"https://www.swissinfo.ch/eng/various/cyberattack-on-the-federal-office-for-information-technologys-sharepoint-server/91843136\">reports</a> the media outlet Swiss Info. \u201cAccording to its own statements, the FOITT immediately reset the relevant passwords. Based on the investigations to date, which are being supported by the National Cybersecurity Centre (NCSC) and Microsoft, there is no evidence of any further data leakage. However, the analysis is still ongoing.\u201d</em></p>\n<p>Both user and technical accounts were hit. On the same day anomalous access was detected, FOITT blocked external internet access to SharePoint and began patching. It\u2019s now reinstalling the affected servers entirely as a precaution and has shared all relevant technical indicators with Swiss critical infrastructure operators through the national cybersecurity agency\u2019s platform.</p>\n<p>The <a href=\"https://securityaffairs.com/195347/security/patch-tuesday-security-updates-for-july-2026-the-largest-update-ever-621-cves-in-one-month.html\">July Patch Tuesday</a> timing matters here. Microsoft disclosed multiple serious SharePoint vulnerabilities on July 14. One flaw, tracked as <a href=\"https://securityaffairs.com/tag/cve-2026-50522\">CVE-2026-50522</a> (CVSS score of 9.8) could enable an attacker to execute remote code over a network. Microsoft said exploitation would be considered low complexity, as an attacker does not require a great deal of knowledge of the system to complete an attack. Researchers warned that attackers are stealing machine keys to maintain long-term access. That last part is the critical detail: machine keys are the cryptographic secrets that IIS uses to sign session tokens, and once stolen they let an attacker forge legitimate-looking requests that a fully patched server will still accept.</p>\n<p>The Swiss FOITT is reinstalling the affected SharePoint servers as a precaution after the cyber incident. External internet access remains blocked until the work is complete, while federal employees can still access and share documents through alternative channels. FOITT pointed out that the platform is not intended to store confidential information or highly sensitive personal data.</p>\n<p>Patching closes the door; it doesn\u2019t change the locks. SharePoint is increasingly targeted by cybercriminals and nation-state actors because of its deep integration with Microsoft authentication. Attackers exploiting vulnerabilities could use it as an entry point to compromise wider networks, making direct internet exposure of SharePoint servers a growing security risk.</p>\n<p><em>\u201cCERT-EU strongly recommends updating affected servers as soon as possible, rotating credentials for any assets that may have been vulnerable and exposed to the internet, and conducting a compromise assessment to identify potentially affected SharePoint instances.\u201d CERT-EU\u2019s <a href=\"https://cert.europa.eu/publications/security-advisories/2026-009/\">advisory </a>warns. \u201cGiven the number of recent critical vulnerabilities affecting SharePoint, organisations should reconsider exposing any Microsoft SharePoint Server directly to the internet.\u201d</em></p>\n<p>Neither Microsoft nor CISA have attributed the exploitations publicly to any specific threat group. </p>\n<p>Switzerland\u2019s National Cyber Security Centre (NCSC) recorded 28 cyberattacks targeting the Federal Administration in 2025 and 325 incidents affecting critical infrastructure, with about one in four involving public administration. One of the most notable cases hit the state-owned defense contractor Ruag, whose U.S. subsidiary was breached by the Akira ransomware group, leading to data theft and a ransom payment to recover the stolen information.</p>\n<p>The practical takeaway for any organization still running on-premises SharePoint exposed to the internet: apply the July patches, then rotate your machine keys and restart IISm in that order, not one without the other. If you can\u2019t take the server offline to reinstall it the way FOITT is doing, at minimum validate that external internet exposure has been eliminated. The window between vulnerability disclosure and active exploitation in this campaign was measured in days, not weeks.</p>\n<p><strong>Follow me on Twitter:\u00a0</strong><a href=\"https://twitter.com/securityaffairs\"><strong>@securityaffairs</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://www.facebook.com/sec.affairs\"><strong>Facebook</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://infosec.exchange/@securityaffairs\"><strong>Mastodon</strong></a><strong></strong></p>\n<p><a href=\"http://www.linkedin.com/pub/pierluigi-paganini/b/742/559\"><strong>Pierluigi\u00a0Paganini</strong></a><strong></strong></p>\n<p><strong>(</strong><a href=\"http://securityaffairs.co/wordpress/\"><strong>SecurityAffairs</strong></a><strong>\u00a0\u2013\u00a0hacking,\u00a0newsletter)</strong><strong></strong></p>",
+      "link": "https://securityaffairs.com/196625/hacking/sharepoint-flaws-used-to-hack-switzerlands-federal-it-agency.html",
+      "source": "Security Affairs",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-04T20:12:47+00:00",
+      "published_ts": 1785874367,
+      "smart_groups": [
+        "Ransomware",
+        "Vulnerabilities / CVEs",
+        "Cloud / SaaS",
+        "Network / OT / ICS",
+        "Data Breaches / Leaks"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Data Encryption at rest advantages?",
+      "summary": "Hi, I'm a software engineer working on a SaaS in a highly regulated environment. ### Context My client's SaaS includes Monetary transactions through a payment gateway, registration of business owners and users to provide a service that supports the merits of a business by the reviews of the users (we won't go into the mechanics of it but it's solid), offering compensation for the users without discrimination off of their opinion, the kind of data we save are names, phone numbers, emails, and the reviews along with their evidence(receipts). ### Question How may I say it's enough security on it?, is data encryption at rest necessary or overkill? ### my efforts I use spring boot for the backend, which handels most of the the trivial things like xss(tested it) Strict rate limits on all endpoints Authentication on all endpoints except for minor public ones like terms and conditions and and documents of public nature. I tried following OWSAP guidelines as much as I could, top 10 are out of the question, I've implemented ASVS V1 & still in need for 8 steps to get to V2, things like security headers, dependabot, some env vars defaults for development, and MFA for the business side login Using static analysis tools to keep code in check (ex. SonarQube) ### Thoughts I think I should Aim for a full ASVS V2 coverage + V3 for the transactions modules, What do you think? submitted by /u/EmbeddedZeyad [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Hi, I'm a software engineer working on a SaaS in a highly regulated environment.</p> <p>### Context</p> <p>My client's SaaS includes Monetary transactions through a payment gateway, registration of business owners and users to provide a service that supports the merits of a business by the reviews of the users (we won't go into the mechanics of it but it's solid), offering compensation for the users without discrimination off of their opinion, the kind of data we save are names, phone numbers, emails, and the reviews along with their evidence(receipts).</p> <p>### Question</p> <p>How may I say it's enough security on it?, is data encryption at rest necessary or overkill?</p> <p>### my efforts</p> <ol> <li>I use spring boot for the backend, which handels most of the the trivial things like xss(tested it)</li> <li>Strict rate limits on all endpoints</li> <li>Authentication on all endpoints except for minor public ones like terms and conditions and and documents of public nature.</li> <li>I tried following OWSAP guidelines as much as I could, top 10 are out of the question, I've implemented ASVS V1 &amp; still in need for 8 steps to get to V2, things like security headers, dependabot, some env vars defaults for development, and MFA for the business side login</li> <li>Using static analysis tools to keep code in check (ex. SonarQube)</li> </ol> <p>### Thoughts</p> <p>I think I should Aim for a full ASVS V2 coverage + V3 for the transactions modules, What do you think?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/EmbeddedZeyad\"> /u/EmbeddedZeyad </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vfle75/data_encryption_at_rest_advantages/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vfle75/data_encryption_at_rest_advantages/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1vfle75/data_encryption_at_rest_advantages/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-08-04T20:05:11+00:00",
+      "published_ts": 1785873911,
+      "smart_groups": [
+        "Cloud / SaaS",
+        "Web / API Security",
+        "Identity / Access",
+        "Network / OT / ICS",
+        "DevSecOps",
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Here\u2019s what happened in crypto today",
+      "summary": "Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.",
+      "summary_html": "<p></p><p>Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.</p>",
+      "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-08-04T19:59:26+00:00",
+      "published_ts": 1785873566,
+      "smart_groups": [
+        "Crypto / Web3"
+      ],
+      "curated": false
+    },
+    {
+      "title": "US, UK reaffirm support for stablecoins, tokenization in joint financial regulation talks",
+      "summary": "In a July 8 meeting, US and UK regulators highlighted the implementation of the GENIUS Act, payment modernization and cross-border cooperation, reinforcing a shared framework for digital asset oversight.",
+      "summary_html": "<p></p><p>In a July 8 meeting, US and UK regulators highlighted the implementation of the GENIUS Act, payment modernization and cross-border cooperation, reinforcing a shared framework for digital asset oversight.</p>",
+      "link": "https://cointelegraph.com/news/us-uk-deepen-crypto-regulatory-cooperation-genius-act-stablecoins?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-08-04T19:58:48+00:00",
+      "published_ts": 1785873528,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Coldcard Bitcoin Exploit Explained: Entropy, How Keys Are Generated, and Why Bits Matter",
+      "summary": "A flaw in Coldcard wallets cost Bitcoin holders more than $100 million\u2014and reopened an old fight about whether you can trust dice.",
+      "summary_html": "A flaw in Coldcard wallets cost Bitcoin holders more than $100 million\u2014and reopened an old fight about whether you can trust dice.",
+      "link": "https://decrypt.co/374916/coldcard-bitcoin-exploit-explained-entropy-keys-bits",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-08-04T19:11:36+00:00",
+      "published_ts": 1785870696,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "New XCSSET variant targets macOS devs via compromised Xcode projects",
+      "summary": "A new version of the XCSSET malware is targeting thousands of\u00a0macOS users through compromised Xcode projects and GitHub repositories. [...]",
+      "summary_html": "A new version of the XCSSET malware is targeting thousands of\u00a0macOS users through compromised Xcode projects and GitHub repositories. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/new-xcsset-variant-targets-macos-devs-via-compromised-xcode-projects/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-08-04T19:03:09+00:00",
+      "published_ts": 1785870189,
+      "smart_groups": [
+        "Malware / Payloads",
+        "Product News"
+      ],
+      "curated": false
+    },
+    {
+      "title": "How bad was this answer?",
+      "summary": "I had a call with a recruiter about a role I applied to and she asked me a few behaviorial-type questions about my experiences. One question was \"when do you not use AI-generated code?\" I said that I've never used AI-generated code (I don't remember if I used the word 'never' but I meant that I haven't in my current role) and that I write my own for my own experience. I said that it's better for debugging as well, since I know the variable names and what I wrote (I meant the logic of it). I also mentioned that I can't trust code that was written by something else other than me and that since I work in highly regulated environments (I meant government stuff), it'd be a disaster to use it. I DO however, have an LLM/AI-implemented project I made for my current role under my resume, so I'm not against using AI or anything. I just don't use it the times I code at work.. I feel like I should have mentioned saying \"I think I'd be open to it if it wasn't a regulated environment\". Did I screw up? This is stupid but I was also worried it's a trick question to see if I can write my own code or not.. I'm so dumb submitted by /u/mysecret52 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I had a call with a recruiter about a role I applied to and she asked me a few behaviorial-type questions about my experiences. One question was \"when do you <em>not</em> use AI-generated code?\" I said that I've never used AI-generated code (I don't remember if I used the word 'never' but I meant that I haven't in my current role) and that I write my own for my own experience. I said that it's better for debugging as well, since I know the variable names and what I wrote (I meant the logic of it). I also mentioned that I can't trust code that was written by something else other than me and that since I work in highly regulated environments (I meant government stuff), it'd be a disaster to use it.</p> <p>I DO however, have an LLM/AI-implemented project I made for my current role under my resume, so I'm not against using AI or anything. I just don't use it the times I code at work.. I feel like I should have mentioned saying \"I think I'd be open to it if it wasn't a regulated environment\". Did I screw up? This is stupid but I was also worried it's a trick question to see if I can write my own code or not.. I'm so dumb</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/mysecret52\"> /u/mysecret52 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vfji4g/how_bad_was_this_answer/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vfji4g/how_bad_was_this_answer/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1vfji4g/how_bad_was_this_answer/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-08-04T18:57:09+00:00",
+      "published_ts": 1785869829,
+      "smart_groups": [
+        "DevSecOps",
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "77 Open VSX extensions found harvesting developer info",
+      "summary": "77 extensions on the Open VSX marketplace impersonated legitimate developer tools while transmitting information about the systems and development environments where they were installed. [...]",
+      "summary_html": "77 extensions on the Open VSX marketplace impersonated legitimate developer tools while transmitting information about the systems and development environments where they were installed. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/77-open-vsx-extensions-found-harvesting-developer-info/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-08-04T18:50:55+00:00",
+      "published_ts": 1785869455,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Solana Proposal Would Increase Daily SOL Burns More Than 10-Fold",
+      "summary": "Validators are considering changes that would increase the amount of SOL permanently removed from circulation while reducing the rate of new token issuance.",
+      "summary_html": "Validators are considering changes that would increase the amount of SOL permanently removed from circulation while reducing the rate of new token issuance.",
+      "link": "https://decrypt.co/374915/solana-proposal-increase-daily-sol-burns-10-fold",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-08-04T18:46:11+00:00",
+      "published_ts": 1785869171,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Smoke#Screen RMM Takeover Gambit Exposes Threat Actor Playbook",
+      "summary": "The attacks use diverse social engineering lures and rotating payloads to deliver ScreenConnect for persistent remote access to compromised networks.",
+      "summary_html": "The attacks use diverse social engineering lures and rotating payloads to deliver ScreenConnect for persistent remote access to compromised networks.",
+      "link": "https://www.darkreading.com/cyberattacks-data-breaches/latest-rmm-fueled-phishing-attack-exposes-threat-actor-playbook",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-04T18:37:35+00:00",
+      "published_ts": 1785868655,
+      "smart_groups": [
+        "Phishing / Social Engineering"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Shai-Hulud npm Worm Returns, Poisoning Over 1,280 npm Packages",
+      "summary": "Shai-Hulud npm worm spreads through Keyv and hundreds of packages with 2 billion monthly downloads, stealing npm, GitHub, cloud and CI credentials in real time.",
+      "summary_html": "Shai-Hulud npm worm spreads through Keyv and hundreds of packages with 2 billion monthly downloads, stealing npm, GitHub, cloud and CI credentials in real time.",
+      "link": "https://hackread.com/shai-hulud-npm-worm-poisoning-1280-packages/",
+      "source": "HackRead",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-04T18:31:10+00:00",
+      "published_ts": 1785868270,
+      "smart_groups": [],
+      "curated": false
+    },
     {
       "title": "CVE-2020-8115",
       "summary": "1",
@@ -82,6 +533,34 @@
       "smart_groups": [
         "Vulnerabilities / CVEs"
       ],
+      "curated": false
+    },
+    {
+      "title": "Marshall Stanmore IV vs. Sonos Era 300: I tested both to find the ultimate home speaker",
+      "summary": "Both Marshall and Sonos speakers play to their strengths, but the right one for you depends on more than their price tags.",
+      "summary_html": "Both Marshall and Sonos speakers play to their strengths, but the right one for you depends on more than their price tags.",
+      "link": "https://www.zdnet.com/article/marshall-stanmore-4-vs-sonos-era-300/",
+      "source": "ZDNet \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-04T18:13:00+00:00",
+      "published_ts": 1785867180,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Open Secure AI Alliance Expands at Black Hat: What You Should Know",
+      "summary": "The Open Secure AI Alliance introduced SAFE guidelines and open agent-security tools at Black Hat, giving enterprises a framework for safer AI deployment. The post Open Secure AI Alliance Expands at Black Hat: What You Should Know appeared first on TechRepublic .",
+      "summary_html": "<p>The Open Secure AI Alliance introduced SAFE guidelines and open agent-security tools at Black Hat, giving enterprises a framework for safer AI deployment.</p>\n<p>The post <a href=\"https://www.techrepublic.com/article/news-open-secure-ai-alliance-safe-guidelines-black-hat/\">Open Secure AI Alliance Expands at Black Hat: What You Should Know</a> appeared first on <a href=\"https://www.techrepublic.com\">TechRepublic</a>.</p>",
+      "link": "https://www.techrepublic.com/article/news-open-secure-ai-alliance-safe-guidelines-black-hat/",
+      "source": "TechRepublic \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-04T18:11:27+00:00",
+      "published_ts": 1785867087,
+      "smart_groups": [],
       "curated": false
     },
     {
@@ -1078,22 +1557,6 @@
       "curated": true
     },
     {
-      "title": "Here\u2019s what happened in crypto today",
-      "summary": "Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.",
-      "summary_html": "<p></p><p>Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.</p>",
-      "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-      "source": "Cointelegraph.com News",
-      "feed_type": "news",
-      "type": "crypto-blockchain-security",
-      "type_label": "Crypto & Blockchain Security",
-      "published": "2026-08-04T13:45:02+00:00",
-      "published_ts": 1785851102,
-      "smart_groups": [
-        "Crypto / Web3"
-      ],
-      "curated": false
-    },
-    {
       "title": "Microsoft finally realized Windows 11 is too annoying. Can it be fixed?",
       "summary": "Microsoft's latest progress report details much-needed Windows 11 improvements in reliability, performance, stability, and usability. But pressure to monetize key features remains.",
       "summary_html": "Microsoft's latest progress report details much-needed Windows 11 improvements in reliability, performance, stability, and usability. But pressure to monetize key features remains.",
@@ -1527,6 +1990,24 @@
         "Web / API Security"
       ],
       "curated": true
+    },
+    {
+      "title": "GitHub - offseq/threat-finder: Runtime vulnerability scanner: finds CVEs in the services actually running on a host and ranks them by network exposure.",
+      "summary": "submitted by /u/ThreatRadar [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/cybersecurity/comments/1vf8o29/github_offseqthreatfinder_runtime_vulnerability/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/ThreatRadar\"> /u/ThreatRadar </a> <br/> <span><a href=\"https://github.com/offseq/threat-finder/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vf8o29/github_offseqthreatfinder_runtime_vulnerability/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1vf8o29/github_offseqthreatfinder_runtime_vulnerability/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-08-04T12:16:01+00:00",
+      "published_ts": 1785845761,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "DevSecOps",
+        "Community Discussion"
+      ],
+      "curated": false
     },
     {
       "title": "Critical Azure Cosmos DB flaw threatened cross-tenant database takeover",
