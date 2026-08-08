@@ -1,0 +1,117 @@
+{
+  "generated_at": "2026-08-08T02:30:37.539289+00:00",
+  "date": "2026-08-08",
+  "total_items": 7,
+  "next_chunk": "archive/blog/daily/2026-08-07.json",
+  "items": [
+    {
+      "title": "Preview seed fixture (rolling)",
+      "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@6ba844eb94f4 (migration head: 20260805120000_onboarding_step_to_string). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database \u2014 it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
+      "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@6ba844eb94f4 (migration head: 20260805120000_onboarding_step_to_string). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database \u2014 it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
+      "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/preview-seed-fixture",
+      "source": "AutoGPT Releases - GitHub releases for AutoGPT",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-08T02:11:13+00:00",
+      "published_ts": 1786155073,
+      "smart_groups": [
+        "Agentic AI & Automations"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI struggles to patch vulns without adult supervision",
+      "summary": "Article URL: https://www.theregister.com/ai-and-ml/2026/08/06/ai-struggles-to-patch-vulns-without-adult-supervision/5284319 Comments URL: https://news.ycombinator.com/item?id=49218204 Points: 3 # Comments: 0",
+      "summary_html": "<p>Article URL: <a href=\"https://www.theregister.com/ai-and-ml/2026/08/06/ai-struggles-to-patch-vulns-without-adult-supervision/5284319\">https://www.theregister.com/ai-and-ml/2026/08/06/ai-struggles-to-patch-vulns-without-adult-supervision/5284319</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49218204\">https://news.ycombinator.com/item?id=49218204</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+      "link": "https://www.theregister.com/ai-and-ml/2026/08/06/ai-struggles-to-patch-vulns-without-adult-supervision/5284319",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-08T01:53:44+00:00",
+      "published_ts": 1786154024,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Show HN: Salestrics \u2013 An open MCP server and CRM for AI-native revenue teams",
+      "summary": "Hey HN, I\u2019m Austin, founder of Salestrics (salestrics.com). The Problem: > Most AI agents today are trapped in chat windows. While models are smart enough to run complex multi-step workflows, giving them production access to business context (CRM, support, billing) usually means managing unsafe local API keys or hacking together fragile point-solution scripts. What We Built:\nWe built Salestrics to serve as both an all-in-one revenue workspace (CRM, service desk, billing, docs, email) and a production-grade Model Context Protocol (MCP) execution proxy. How It Works: Unified Context: Instead of fragmenting data across five SaaS tools, customer records, tickets, and invoices live in a single data layer. 165-Tool MCP Server: You connect your local AI environment (Cursor, Claude Desktop, local LLMs) once via our MCP proxy. Full-CRUD Execution: Your agent gets zero-config execution access across native apps and third-party tools (Stripe, PostHog, Sentry)\u2014allowing it to do things like resolve support tickets, issue refunds, or update pipeline stages directly from your IDE or chat client. Human-in-the-Loop Governance: High-impact agent actions (deleting records, mass messaging, issuing payouts) trigger explicit approval gates and immutable audit logs before execution. Traction & Tech Stack:\nWe launched two months ago and currently power 320+ active organizations. The backend is built with high-throughput node/TypeScript orchestration, connected to a dual-model AI routing engine (Salestrics-AI-v1/v2). Try It Out:\nWe have a Free Forever tier for solo builders. You can grab your MCP keys and test the proxy immediately without putting down a credit card. I\u2019d love to hear your thoughts on our MCP architecture, human-in-the-loop security patterns, or what tools/actions you'd want added to the MCP server next! Comments URL: https://news.ycombinator.com/item?id=49218097 Points: 1 # Comments: 0",
+      "summary_html": "<p>Hey HN, I\u2019m Austin, founder of Salestrics (salestrics.com).<p>The Problem: &gt; Most AI agents today are trapped in chat windows. While models are smart enough to run complex multi-step workflows, giving them production access to business context (CRM, support, billing) usually means managing unsafe local API keys or hacking together fragile point-solution scripts.<p>What We Built:\nWe built Salestrics to serve as both an all-in-one revenue workspace (CRM, service desk, billing, docs, email) and a production-grade Model Context Protocol (MCP) execution proxy.<p>How It Works:<p>Unified Context: Instead of fragmenting data across five SaaS tools, customer records, tickets, and invoices live in a single data layer.<p>165-Tool MCP Server: You connect your local AI environment (Cursor, Claude Desktop, local LLMs) once via our MCP proxy.<p>Full-CRUD Execution: Your agent gets zero-config execution access across native apps and third-party tools (Stripe, PostHog, Sentry)\u2014allowing it to do things like resolve support tickets, issue refunds, or update pipeline stages directly from your IDE or chat client.<p>Human-in-the-Loop Governance: High-impact agent actions (deleting records, mass messaging, issuing payouts) trigger explicit approval gates and immutable audit logs before execution.<p>Traction &amp; Tech Stack:\nWe launched two months ago and currently power 320+ active organizations. The backend is built with high-throughput node/TypeScript orchestration, connected to a dual-model AI routing engine (Salestrics-AI-v1/v2).<p>Try It Out:\nWe have a Free Forever tier for solo builders. You can grab your MCP keys and test the proxy immediately without putting down a credit card.<p>I\u2019d love to hear your thoughts on our MCP architecture, human-in-the-loop security patterns, or what tools/actions you'd want added to the MCP server next!</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49218097\">https://news.ycombinator.com/item?id=49218097</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p></p></p></p></p></p></p></p></p></p></p>",
+      "link": "https://www.salestrics.com/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-08T01:32:41+00:00",
+      "published_ts": 1786152761,
+      "smart_groups": [
+        "Agentic AI & Automations",
+        "LLM & Foundation Model Releases",
+        "AI Regulation & Policy"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Robust AI Security and Alignment: A Sisyphean Endeavor?",
+      "summary": "Article URL: https://arxiv.org/abs/2512.10100 Comments URL: https://news.ycombinator.com/item?id=49217892 Points: 2 # Comments: 0",
+      "summary_html": "<p>Article URL: <a href=\"https://arxiv.org/abs/2512.10100\">https://arxiv.org/abs/2512.10100</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49217892\">https://news.ycombinator.com/item?id=49217892</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://arxiv.org/abs/2512.10100",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-08T00:55:36+00:00",
+      "published_ts": 1786150536,
+      "smart_groups": [
+        "AI Research & Papers",
+        "AI Safety & Ethics"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Cloudflare launches Kitesurf, a browser built for AI agents",
+      "summary": "Article URL: https://techcrunch.com/2026/08/07/cloudflare-launches-kitesurf-a-browser-built-for-ai-agents/ Comments URL: https://news.ycombinator.com/item?id=49217687 Points: 3 # Comments: 0",
+      "summary_html": "<p>Article URL: <a href=\"https://techcrunch.com/2026/08/07/cloudflare-launches-kitesurf-a-browser-built-for-ai-agents/\">https://techcrunch.com/2026/08/07/cloudflare-launches-kitesurf-a-browser-built-for-ai-agents/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49217687\">https://news.ycombinator.com/item?id=49217687</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+      "link": "https://techcrunch.com/2026/08/07/cloudflare-launches-kitesurf-a-browser-built-for-ai-agents/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-08T00:16:18+00:00",
+      "published_ts": 1786148178,
+      "smart_groups": [
+        "Agentic AI & Automations"
+      ],
+      "curated": false
+    },
+    {
+      "title": "MegaDev AI Workshop",
+      "summary": "Article URL: https://mega.dev Comments URL: https://news.ycombinator.com/item?id=49217649 Points: 1 # Comments: 1",
+      "summary_html": "<p>Article URL: <a href=\"https://mega.dev\">https://mega.dev</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49217649\">https://news.ycombinator.com/item?id=49217649</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
+      "link": "https://mega.dev",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-08T00:07:01+00:00",
+      "published_ts": 1786147621,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Should AI labs be treated like the owners of dangerous animals?",
+      "summary": "Article URL: https://www.economist.com/science-and-technology/2026/08/06/should-ai-labs-be-treated-like-the-owners-of-dangerous-animals Comments URL: https://news.ycombinator.com/item?id=49217629 Points: 36 # Comments: 48",
+      "summary_html": "<p>Article URL: <a href=\"https://www.economist.com/science-and-technology/2026/08/06/should-ai-labs-be-treated-like-the-owners-of-dangerous-animals\">https://www.economist.com/science-and-technology/2026/08/06/should-ai-labs-be-treated-like-the-owners-of-dangerous-animals</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49217629\">https://news.ycombinator.com/item?id=49217629</a></p>\n<p>Points: 36</p>\n<p># Comments: 48</p>",
+      "link": "https://www.economist.com/science-and-technology/2026/08/06/should-ai-labs-be-treated-like-the-owners-of-dangerous-animals",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-08T00:03:31+00:00",
+      "published_ts": 1786147411,
+      "smart_groups": [],
+      "curated": false
+    }
+  ]
+}
