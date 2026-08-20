@@ -144,12 +144,27 @@ class FeedProcessor:
             "feed_types": list(self.config.feed_types),
         }
 
+    # Cloudflare Pages refuses to deploy any asset over 25 MiB and GitHub
+    # rejects blobs over 100 MB, so news_recent.json must stay under both.
+    MAX_OUTPUT_BYTES = 22 * 1024 * 1024
+
     def save_results(self, results: Dict[str, Any]) -> None:
         """Save results to JSON file and write reports."""
         self.config.output_path.parent.mkdir(parents=True, exist_ok=True)
-        self.config.output_path.write_text(
-            json.dumps(results, indent=2), encoding="utf-8"
-        )
+        payload = json.dumps(results, indent=2)
+        while len(payload) > self.MAX_OUTPUT_BYTES and results["items"]:
+            # Items are newest-first: drop the oldest tail proportionally.
+            keep = max(1, int(len(results["items"]) * self.MAX_OUTPUT_BYTES / len(payload)) - 50)
+            if keep >= len(results["items"]):
+                keep = len(results["items"]) - 1
+            print(
+                f"[WARN] {self.config.output_path}: over size cap, "
+                f"trimming {len(results['items'])} -> {keep} newest items"
+            )
+            results["items"] = results["items"][:keep]
+            results["total_items"] = len(results["items"])
+            payload = json.dumps(results, indent=2)
+        self.config.output_path.write_text(payload, encoding="utf-8")
         print(f"[INFO] Wrote {results['total_items']} items to {self.config.output_path}")
 
         self._write_promo_report()

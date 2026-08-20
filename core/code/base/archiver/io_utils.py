@@ -1,8 +1,34 @@
 """I/O utilities for loading and saving JSON files."""
 
 import json
+import os
 from pathlib import Path
 from typing import Any, Dict, List, Optional
+
+# Cloudflare Pages refuses to deploy any asset over 25 MiB and GitHub rejects
+# pushes with blobs over 100 MB, so archive files must stay under both limits.
+MAX_JSON_BYTES = int(os.environ.get("ARCHIVE_MAX_JSON_BYTES", 22 * 1024 * 1024))
+
+
+def cap_items_to_bytes(
+    items: List[Dict[str, Any]], max_bytes: int = MAX_JSON_BYTES
+) -> List[Dict[str, Any]]:
+    """
+    Trim a newest-first item list so its JSON serialization fits max_bytes.
+
+    Items are expected sorted newest-first (merge_and_dedup guarantees this),
+    so the oldest items are the ones dropped.
+    """
+    total = 2  # surrounding brackets
+    kept: List[Dict[str, Any]] = []
+    for item in items:
+        piece = json.dumps(item, ensure_ascii=False, indent=2)
+        # nesting inside the array adds 2 spaces of indentation per line
+        total += len(piece.encode("utf-8")) + 2 * (piece.count("\n") + 1) + 4
+        if total > max_bytes:
+            break
+        kept.append(item)
+    return kept
 
 
 def load_json_any(path: Path) -> Any:
@@ -92,5 +118,12 @@ def save_json_list(path: Path, items: List[Dict[str, Any]]) -> None:
         items: List of items to save
     """
     path.parent.mkdir(parents=True, exist_ok=True)
+    capped = cap_items_to_bytes(items)
+    if len(capped) < len(items):
+        print(
+            f"[WARN] {path}: size cap {MAX_JSON_BYTES} bytes reached, "
+            f"kept {len(capped)}/{len(items)} newest items"
+        )
+        items = capped
     with path.open("w", encoding="utf-8") as f:
         json.dump(items, f, ensure_ascii=False, indent=2)
