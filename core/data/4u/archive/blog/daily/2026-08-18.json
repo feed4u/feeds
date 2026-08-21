@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-21T09:07:22.696681+00:00",
+  "generated_at": "2026-08-21T17:01:44.633667+00:00",
   "date": "2026-08-18",
-  "total_items": 8,
+  "total_items": 9,
   "next_chunk": "archive/blog/daily/2026-08-17.json",
   "items": [
     {
@@ -125,6 +125,22 @@
       "published": "2026-08-18T00:00:00+00:00",
       "published_ts": 1787011200,
       "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "The Vercel Sandbox CLI is now more agent-friendly",
+      "summary": "The Sandbox CLI version 4.0.1 ships four output and error improvements: New sandboxes point users towards how to connect into them. A sandbox not found error shows where to look for existing sandboxes. Common mistakes, like typing a command after sh , redirect to the command that was intended. Outdated installs show an update notice when they create a new sandbox. Each of these messages now carries the action to take next instead of leaving you to work it out. New sandboxes tell you how to connect create and fork output now ends with a connect hint, so a fresh sandbox never leaves you wondering what to type next. Not found errors point you to your sandboxes When a command references a sandbox that does not exist, the error is quiet and actionable instead of a raw API dump. Setting DEBUG=sandbox:errors restores the request detail for debugging. A misused command explains the right one sh opens a plain interactive shell, so it takes no command of its own. The CLI can now return precise answers that rewrite the attempt into the command that does what you meant, whatever the command is. Outdated installs warn you at creation time create , sh , and run check for a newer published CLI and print an update notice when the install is behind. The check is cached to a file and refreshed at most once per hour; when a lookup does run it happens concurrently with the creation request, so it adds no latency. Creation defaults, such as the base image, are chosen client side, so an outdated global install silently keeps old defaults. Prerelease versions skip the check, and SANDBOX_SKIP_VERSION_CHECK=1 disables it. Learn more in the Sandbox CLI documentation . Read more",
+      "summary_html": "<p>The Sandbox CLI version <code>4.0.1</code> ships four output and error improvements:</p><ul><li><p>New sandboxes point users towards how to connect into them.</p></li><li><p>A sandbox not found error shows where to look for existing sandboxes.</p></li><li><p>Common mistakes, like typing a command after <code>sh</code>, redirect to the command that was intended.</p></li><li><p>Outdated installs show an update notice when they create a new sandbox.</p></li></ul><p>Each of these messages now carries the action to take next instead of leaving you to work it out.</p>New sandboxes tell you how to connect<p><code>create</code> and <code>fork</code> output now ends with a connect hint, so a fresh sandbox never leaves you wondering what to type next.</p><div></div>Not found errors point you to your sandboxes<p>When a command references a sandbox that does not exist, the error is quiet and actionable instead of a raw API dump. Setting <code>DEBUG=sandbox:errors</code> restores the request detail for debugging.</p><div></div>A misused command explains the right one<p><code>sh</code> opens a plain interactive shell, so it takes no command of its own. The CLI can now return precise answers that rewrite the attempt into the command that does what you meant, whatever the command is.</p><div></div>Outdated installs warn you at creation time<p><code>create</code>, <code>sh</code>, and <code>run</code> check for a newer published CLI and print an update notice when the install is behind. The check is cached to a file and refreshed at most once per hour; when a lookup does run it happens concurrently with the creation request, so it adds no latency. Creation defaults, such as the base image, are chosen client side, so an outdated global install silently keeps old defaults. Prerelease versions skip the check, and <code>SANDBOX_SKIP_VERSION_CHECK=1</code> disables it.</p><div></div><p>Learn more in the <a href=\"https://vercel.com/docs/sandbox/cli-reference\">Sandbox CLI documentation</a>.</p>\n<p>\n<a href=\"https://vercel.com/changelog/the-vercel-sandbox-cli-is-now-more-agent-friendly\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/the-vercel-sandbox-cli-is-now-more-agent-friendly",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-08-18T00:00:00+00:00",
+      "published_ts": 1787011200,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
       "curated": true
     }
   ]
