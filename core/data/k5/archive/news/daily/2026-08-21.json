@@ -1,0 +1,71 @@
+{
+  "generated_at": "2026-08-21T02:06:09.231504+00:00",
+  "date": "2026-08-21",
+  "total_items": 4,
+  "next_chunk": "archive/news/daily/2026-08-20.json",
+  "items": [
+    {
+      "title": "Calling on Cyber Pros to Help Defend City Hall",
+      "summary": "Government agencies with smaller budgets need support \u2014 and here's how you can help.",
+      "summary_html": "Government agencies with smaller budgets need support \u2014 and here's how you can help.",
+      "link": "https://www.darkreading.com/cyber-risk/calling-on-cyber-pros-to-help-city-hall",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-21T14:00:00+00:00",
+      "published_ts": 1787320800,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "ISC Stormcast For Friday, August 21st, 2026 https://isc.sans.edu/podcastdetail/10062, (Fri, Aug 21st)",
+      "summary": "(c) SANS Internet Storm Center. https://isc.sans.edu Creative Commons Attribution-Noncommercial 3.0 United States License.",
+      "summary_html": "(c) SANS Internet Storm Center. https://isc.sans.edu Creative Commons Attribution-Noncommercial 3.0 United States License.",
+      "link": "https://isc.sans.edu/diary/rss/33270",
+      "source": "SANS Internet Storm Center",
+      "feed_type": "news",
+      "type": "government-cert-advisories",
+      "type_label": "Government, CERT & Advisories",
+      "published": "2026-08-21T02:00:03+00:00",
+      "published_ts": 1787277603,
+      "smart_groups": [
+        "Mobile & App Security"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Even MOAR Powershell, looking at Entra logins - the good, the bad and the password sprays, (Fri, Aug 21st)",
+      "summary": "One thing that folks never seem to do after \"going to the CLOOOOUUUUD\" is to look at their logs, logs that they would have checked daily when things were on premise. One log that really bears looking at is the log of successful and failed logins.\u00a0 the call for that is: # import needed, if they're not already in place Import-Module Microsoft.Graph.Reports # connect with the correct scope Connect-MgGraph -Scopes \"AuditLog.Read.All\", \"Directory.Read.All\" $f = Get-MgAuditLogSignIn Let's look at one object in the log: This is an interactive login to OWA, which failed on a conditional access check What is that under location though - that's likely why this failed.\u00a0 How do we get the \"where\" from that?\u00a0 And why does the status got a similar string in it instead of an actual status? The command below shows us pulling only failed logins (\"status/errorCode ne 0\"), extracting the geo location info, and also the failure reason Get-MgAuditLogSignIn -Filter \"status/errorCode ne 0\" -All | Select-Object ` CreatedDateTime, UserPrincipalName, IPAddress, @{Name=\"City\"; Expression={$_.Location.City}}, @{Name=\"State\"; Expression={$_.Location.State}}, @{Name=\"Country\"; Expression={$_.Location.CountryOrRegion}}, @{Name=\"FailureReason\"; Expression={$_.Status.FailureReason}} Aha!\u00a0 Now we have that otherwise hidden information!\u00a0 It's this sort of list where you'll see password sprays show up.\u00a0 The list below shows part of such an attack, note that the last two lines show the account is locked.\u00a0 The \"IP address with malicious activity\" alert generally means that this is a rotating proxy service, and the IP's in it have been fully or partially enumerated as \"bad\". Or, looking for successful logins from unexpected countries, the command below.\u00a0 Let's also remove the State / City info, normally it's just the country that matters, at least on the first pass through the data. # set the array of \"expected\" Countries $ExpectedCountries = @(\"CA\", \"US\" ) #Get all successful logins $f = Get-MgAuditLogSignIn -Filter \"status/errorCode eq 0\" -All | Select-Object ` CreatedDateTime, UserPrincipalName, UserDisplayName, AppDisplayName, ResourceDisplayName, IsInteractive, IPAddress, @{Name=\"Country\"; Expression={$_.Location.CountryOrRegion}}, @{Name=\"FailureReason\"; Expression={$_.Status.FailureReason}} # remove expected countries, and what is left is unexpected # Just as Sherlock Holmes (or Occam) would say $f | Where { $_.Country -notin $ExpectedCountries } | out-gridview It's interesting to see a few IPv6 addresses in the list. In writing this diary, I found multiple password spray attacks.\u00a0 This helped the client tighten up their conditional access policies, which was one of our goals going in. Take a run at your Entra logs using the methods above.\u00a0 Let us know in the comments if you found any unexpected (or expected) events or attacks, or if you were able to use your logs to effect a change in your configuration (in conditional access polices for instance) =============== Rob VandenBrink rob@coherentsecurity.com (c) SANS Internet Storm Center. https://isc.sans.edu Creative Commons Attribution-Noncommercial 3.0 United States License.",
+      "summary_html": "<p>One thing that folks never seem to do after \"going to the CLOOOOUUUUD\" is to look at their logs, logs that they would have checked daily when things were on premise.<br/>\nOne log that really bears looking at is the log of successful and failed logins.\u00a0 the call for that is:</p>\n<p><br/>\n<span><span># import needed, if they're not already in place<br/>\nImport-Module Microsoft.Graph.Reports</span></span></p>\n<p><span><span># connect with the correct scope<br/>\nConnect-MgGraph -Scopes \"AuditLog.Read.All\", \"Directory.Read.All\"</span></span></p>\n<p><span><span>$f = Get-MgAuditLogSignIn</span></span></p>\n<p>Let's look at one object in the log:</p>\n<p></p>\n<p><br/>\nThis is an interactive login to OWA, which failed on a conditional access check<br/>\nWhat is that under location though - that's likely why this failed.\u00a0 How do we get the \"where\" from that?\u00a0 And why does the status got a similar string in it instead of an actual status?<br/>\nThe command below shows us pulling only failed logins (\"status/errorCode ne 0\"), extracting the geo location info, and also the failure reason</p>\n<p><span><span>Get-MgAuditLogSignIn -Filter \"status/errorCode ne 0\" -All | Select-Object `<br/>\n\u00a0 \u00a0 CreatedDateTime,\u00a0<br/>\n\u00a0 \u00a0 UserPrincipalName,\u00a0<br/>\n\u00a0 \u00a0 IPAddress,\u00a0<br/>\n\u00a0 \u00a0 @{Name=\"City\"; Expression={$_.Location.City}},\u00a0<br/>\n\u00a0 \u00a0 @{Name=\"State\"; Expression={$_.Location.State}},\u00a0<br/>\n\u00a0 \u00a0 @{Name=\"Country\"; Expression={$_.Location.CountryOrRegion}},<br/>\n\u00a0 \u00a0 @{Name=\"FailureReason\"; Expression={$_.Status.FailureReason}}</span></span></p>\n<p><br/>\nAha!\u00a0 Now we have that otherwise hidden information!\u00a0 It's this sort of list where you'll see password sprays show up.\u00a0 The list below shows part of such an attack, note that the last two lines show the account is locked.\u00a0 The \"IP address with malicious activity\" alert generally means that this is a rotating proxy service, and the IP's in it have been fully or partially enumerated as \"bad\".</p>\n<p></p>\n<p><br/>\nOr, looking for successful logins from unexpected countries, the command below.\u00a0 Let's also remove the State / City info, normally it's just the country that matters, at least on the first pass through the data.</p>\n<p><span><span># set the array of \"expected\" Countries<br/>\n$ExpectedCountries = @(\"CA\", \"US\" )</span></span></p>\n<p><span><span>#Get all successful logins<br/>\n$f = Get-MgAuditLogSignIn -Filter \"status/errorCode eq 0\" -All | Select-Object `<br/>\n\u00a0 \u00a0 CreatedDateTime,\u00a0<br/>\n\u00a0 \u00a0 UserPrincipalName,\u00a0<br/>\n\u00a0 \u00a0 UserDisplayName,<br/>\n\u00a0 \u00a0 AppDisplayName,<br/>\n\u00a0 \u00a0 ResourceDisplayName,<br/>\n\u00a0 \u00a0 IsInteractive,<br/>\n\u00a0 \u00a0 IPAddress,\u00a0<br/>\n\u00a0 \u00a0 @{Name=\"Country\"; Expression={$_.Location.CountryOrRegion}},<br/>\n\u00a0 \u00a0 @{Name=\"FailureReason\"; Expression={$_.Status.FailureReason}}\u00a0\u00a0</span></span></p>\n<p><span><span># remove expected countries, and what is left is unexpected\u00a0<br/>\n# Just as Sherlock Holmes (or Occam) would say<br/>\n\u00a0$f | Where { $_.Country -notin $ExpectedCountries } | out-gridview</span></span></p>\n<p></p>\n<p>It's interesting to see a few IPv6 addresses in the list.</p>\n<p>In writing this diary, I found multiple password spray attacks.\u00a0 This helped the client tighten up their conditional access policies, which was one of our goals going in.</p>\n<p>Take a run at your Entra logs using the methods above.\u00a0 Let us know in the comments if you found any unexpected (or expected) events or attacks, or if you were able to use your logs to effect a change in your configuration (in conditional access polices for instance)</p>\n<p>===============<br/>\nRob VandenBrink<br/>\nrob@coherentsecurity.com</p>\n\n \n (c) SANS Internet Storm Center. https://isc.sans.edu Creative Commons Attribution-Noncommercial 3.0 United States License.",
+      "link": "https://isc.sans.edu/diary/rss/33268",
+      "source": "SANS Internet Storm Center",
+      "feed_type": "news",
+      "type": "government-cert-advisories",
+      "type_label": "Government, CERT & Advisories",
+      "published": "2026-08-21T01:49:18+00:00",
+      "published_ts": 1787276958,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Windows / Microsoft"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Microsoft Windows Cloud Files Mini Filter Driver CldiStreamCompleteRequest use-after-free vulnerability",
+      "summary": "",
+      "summary_html": "",
+      "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2426",
+      "source": "Talos - Vulnerability Reports",
+      "feed_type": "news",
+      "type": "vulnerabilities-cves-exploits",
+      "type_label": "Vulnerabilities, CVEs & Exploits",
+      "published": "2026-08-21T00:00:00+00:00",
+      "published_ts": 1787270400,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": false
+    }
+  ]
+}
