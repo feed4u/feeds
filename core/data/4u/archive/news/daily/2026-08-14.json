@@ -1,9 +1,23 @@
 {
-  "generated_at": "2026-08-21T02:07:38.343396+00:00",
+  "generated_at": "2026-08-21T09:07:22.639131+00:00",
   "date": "2026-08-14",
-  "total_items": 80,
+  "total_items": 81,
   "next_chunk": "archive/news/daily/2026-08-13.json",
   "items": [
+    {
+      "title": "Mindcase",
+      "summary": "Extract data from anywhere on the web within minutes Discussion | Link",
+      "summary_html": "<p>\n            Extract data from anywhere on the web within minutes\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/mindcase?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1223186?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/mindcase",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-14T23:56:00+00:00",
+      "published_ts": 1786751760,
+      "smart_groups": [],
+      "curated": false
+    },
     {
       "title": "Round-robin (with Claude)",
       "summary": "[This article was first published on R \u2013 Xi'an's Og , and kindly contributed to R-bloggers ].  (You can report issue about the content on this page here ) Want to share your content on R-bloggers? click here if you have a blog, or here if you don't. A few days ago I had a coffee in Paris with my long-time friend (and former Statistics & Computing editor) Gilles Celeux, and he mentioned me stopping solving and posting maths puzzles like those weekly published by Le Monde . They have indeed vanished with the retirement of the authors, but Gilles added that the arrival of LLMs would have made the exercise moot. I disagreed as (i) the fun of solving the puzzle on my own\u00a0 has not gone away and (ii) the pedagogical appeal of the puzzle and its resolution remains. As the next Fiddler puzzle arrived in my mailbox, my resolution was put to the test (contrariwise to the previous entry , which did not require massive computations): The Fiddler League consists of two teams. Over a season, they play each other 162 times. Each team has an equal chance of winning each game, and the results of games are independent. Over the season, on average, how many games would you expect the team with the better record to have won? I started on the wrong foot with E [X|X\u226581] when X is Bin(162,\u00bd), equal to 85.77 (either directly or with a Normal approximation), which differs from my second thought, E [max(X,162-X)]=86.07 (either directly or with a Normal approximation), which is larger because of the reflection produced by max. While the first computation was manageable, the second one seemed to involve simulation and I caved in prompting Claude, which provided the answer along with the connection E [max(X,162\u2212X)]= E [X\u2223X\u226581](1+p 81 \u200b)\u221281p 81 \u200b After some expansion, the League boasts 30 teams. Over a season, each team plays each other team five times. (Each team plays a total of 145 games.) Again, each team has an equal chance of winning each game, and the results of games are independent. Over the season, on average, how many games would you expect the team with the best record to have won? The best record is max(X i ) with each of the 30 X i \u2018s a sum of 29 Y ij and the Y ij =5-Y ji distributed as Bin(5,\u00bd). The X i \u2018s are thus Bin (145,\u00bd) but dependent. While I could not figure out a closed form answer for the expectation, a direct Monte Carlo resolution is obviously feasible, with Claude (rather than me) running it over 400 million repetitions, but a 30 dimensional Normal approximation exploiting the correlation of 1/29 between the components leads to roughly 85 as the expected value. (Again computed by a Claudicant simulation.) While the conclusion that the Normal approximation is pretty accurate with so many terms in the Binomial variates is quite unsurprising, Claude saves me coding time without ruining the puzzle altogether. (And Gemini made me aware that the name of the caf\u00e9 where Gilles and I regularly meet, L\u2019\u00c9cir , is an Auvergne noun for a local, dangerous, mountain blizzard! Thus linking the place to the foundation of the caf\u00e9 by Auvergne expatriates\u2026) To leave a comment for the author, please follow the link and comment on their blog: R \u2013 Xi'an's Og . R-bloggers.com offers daily e-mail updates about R news and tutorials about learning R and many other topics. Click here if you're looking to post or find an R/data-science job . Want to share your content on R-bloggers? click here if you have a blog, or here if you don't. Continue reading : Round-robin (with Claude)",
