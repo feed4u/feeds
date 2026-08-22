@@ -1,9 +1,191 @@
 {
-  "generated_at": "2026-08-22T01:58:44.537621+00:00",
+  "generated_at": "2026-08-22T08:56:49.935907+00:00",
   "date": "2026-08-22",
-  "total_items": 6,
+  "total_items": 17,
   "next_chunk": "archive/news/daily/2026-08-21.json",
   "items": [
+    {
+      "title": "Cor\u00e9e du Sud : des responsables politiques vis\u00e9s par une fuite",
+      "summary": "Cor\u00e9e du Sud : une agence de certification pirat\u00e9e aurait expos\u00e9 les coordonn\u00e9es de responsables pr\u00e9sidentiels.",
+      "summary_html": "Cor\u00e9e du Sud : une agence de certification pirat\u00e9e aurait expos\u00e9 les coordonn\u00e9es de responsables pr\u00e9sidentiels.",
+      "link": "https://www.zataz.com/coree-du-sud-des-responsables-politiques-vises-par-une-fuite/",
+      "source": "ZATAZ \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "leaks-breaches",
+      "type_label": "Leaks & Breaches",
+      "published": "2026-08-22T08:50:01+00:00",
+      "published_ts": 1787388601,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Banking Trojans Manic, Grandoreiro, ToxicPanda 2.0 in the Spotlight",
+      "summary": "The spyware-equipped Manic, a persistent Grandoreiro campaign in Latin America and Europe, and an expanded ToxicPanda 2.0 malware. The post Banking Trojans Manic, Grandoreiro, ToxicPanda 2.0 in the Spotlight appeared first on SecurityWeek .",
+      "summary_html": "<p>The spyware-equipped Manic, a persistent Grandoreiro campaign in Latin America and Europe, and an expanded ToxicPanda 2.0 malware.</p>\n<p>The post <a href=\"https://www.securityweek.com/banking-trojans-manic-grandoreiro-toxicpanda-2-0-in-the-spotlight/\">Banking Trojans Manic, Grandoreiro, ToxicPanda 2.0 in the Spotlight</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "link": "https://www.securityweek.com/banking-trojans-manic-grandoreiro-toxicpanda-2-0-in-the-spotlight/",
+      "source": "SecurityWeek",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-22T08:30:00+00:00",
+      "published_ts": 1787387400,
+      "smart_groups": [
+        "Malware / Payloads"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Ransomware : avec 181 victimes, 2026 d\u00e9passe d\u00e9j\u00e0 toute l\u2019ann\u00e9e 2025",
+      "summary": "Ransomware en France : le nombre de cyberattaques de 2025 d\u00e9j\u00e0 d\u00e9pass\u00e9 en ao\u00fbt 2026.",
+      "summary_html": "Ransomware en France : le nombre de cyberattaques de 2025 d\u00e9j\u00e0 d\u00e9pass\u00e9 en ao\u00fbt 2026.",
+      "link": "https://www.zataz.com/ransomware-avec-181-victimes-2026-depasse-deja-toute-lannee-2025/",
+      "source": "ZATAZ \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "leaks-breaches",
+      "type_label": "Leaks & Breaches",
+      "published": "2026-08-22T08:23:54+00:00",
+      "published_ts": 1787387034,
+      "smart_groups": [
+        "Ransomware"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Critical Flaw in NASA/JPL Open-Source Spacecraft Command Software Allowed Unauthenticated Command Execution",
+      "summary": "A critical flaw (CVSS 9.4) in NASA/JPL\u2019s AIT-GUI let anyone send unauthenticated commands to spacecraft instruments. Cycode researchers found that AIT-GUI, the browser-based operator console in NASA/JPL open-source AMMOS Instrument Toolkit, shipped with no authentication, no session checks, and no CSRF protection on any of its state-changing endpoints. \u201cAIT-GUI, the web front end of NASA/JPL\u2019s open-source AMMOS Instrument Toolkit, starts an HTTP server with no authentication, no authorization, and no CSRF protection on any of its state-changing endpoints.\u201d reads the report published by Cycode. \u201cAnyone who can reach the port, or any website an operator merely visits in a browser, can: Issue arbitrary commands via POST /cmd Run server-side scripts via POST /script/run Execute command sequences via POST /seq \u201c The vulnerability is tracked as GHSA-p9r8-2q67-fp86, rated Critical (CVSS score of 9.4), and fixed in AIT-GUI 2.5.2. AMMOS (Advanced Multi-Mission Operations System) is an open-source framework used by NASA/JPL and other missions to control spacecraft and instruments, send commands, and process the data they send back. AIT-GUI is the web interface operators use to do this in real time. Sending a command through this software is not like filling out a simple online form. The vulnerability isn\u2019t one thing. It\u2019s four ordinary web weaknesses that compose into something with unusual consequences. The first is that the server reads its configured host setting into a variable and then ignores it, binding instead to 0.0.0.0, which means all network interfaces. An operator who sets host: localhost to keep the console on the loopback gets a server exposed to the entire reachable network anyway. The second and third weaknesses follow from the first. There\u2019s no login requirement, no session gate, no CSRF token, and no cross-origin restriction on any route. POST /cmd takes whatever arrives in the command field, parses it, and hands it directly to the command bus: no check, no validation, nothing between the network and the hardware. The fourth weakness lives on POST /seq and POST /script/run, which build filesystem paths by joining raw user input onto a root directory with no confinement. A seqfile value of ../../../../something resolves outside the intended sequence directory. The researchers note that the correct confinement check already exists in the same codebase, on a sibling route called /scripts/load; the safe pattern was already written, just not applied consistently. The CSRF risk is especially serious because a firewall does not stop it. Browsers can send certain form requests from another website without first checking with the target site. So, if an operator opens a malicious page in the same browser they use for the console, it could send commands such as POST /cmd, POST /seq, or POST /script/run. The attacker does not need direct access to the system or its network port\u2014they only need the operator to open a malicious link. Cycode\u2019s research team used a combination of AI-assisted code analysis and human validation to find and confirm the issues. The AI handled the initial codebase review, flagging recognizable patterns: state-changing routes with no auth anywhere in their call path, user input flowing from a request parameter into a subprocess call without sanitization, and a configuration value that was read and then silently discarded. The human researcher then confirmed each pattern was exploitable and reduced each to a working proof-of-concept, including a self-contained CSRF demonstration that drove a real headless browser and recorded zero network preflights. That second step matters. A pattern match points to a candidate; a reproduced exploit confirms the finding is real. Cycode says explicitly it only reports the second kind. \u201cMore broadly: operational and ground-system software inherits the same web weaknesses as everything else, but with a far higher cost of failure. Auth, CSRF defense, and input confinement are not optional extras on a panel that commands hardware.\u201d concludes the report. The fix is in AIT-GUI 2.5.2. Operators should upgrade immediately and verify the console port is not reachable from untrusted networks. Anyone who ran an exposed instance before the patch should treat it as a reason to audit command and sequence history, since an unauthenticated POST leaves no user-level trace by design. Maintainers hardening deployments should add authentication and CSRF protection to the command, script, and sequence routes; bind the server to the configured host instead of 0.0.0.0; and apply the existing path-confinement logic from /scripts/load to /seq and /script/run. Follow me on Twitter: @securityaffairs and Facebook and Mastodon Pierluigi\u00a0Paganini ( SecurityAffairs \u2013\u00a0hacking,\u00a0NASA/JPL)",
+      "summary_html": "<div></div>\nA critical flaw (CVSS 9.4) in NASA/JPL\u2019s AIT-GUI let anyone send unauthenticated commands to spacecraft instruments.\n<p>Cycode researchers found that AIT-GUI, the browser-based operator console in NASA/JPL open-source AMMOS Instrument Toolkit, shipped with no authentication, no session checks, and no CSRF protection on any of its state-changing endpoints. </p>\n<p><em>\u201cAIT-GUI, the web front end of NASA/JPL\u2019s open-source AMMOS Instrument Toolkit, starts an HTTP server with no authentication, no authorization, and no CSRF protection on any of its state-changing endpoints.\u201d reads the <a href=\"https://cycode.com/blog/ait-gui-unauthenticated-command-execution/\">report</a> published by Cycode. \u201cAnyone who can reach the port, or any website an operator merely visits in a browser, can:</em></p>\n<ul>\n<li>Issue arbitrary commands via\u00a0<code>POST /cmd</code></li>\n<li>Run server-side scripts via\u00a0<code>POST /script/run</code></li>\n<li>Execute command sequences via\u00a0<code>POST /seq</code>\u201c</li>\n</ul>\n<p>The vulnerability is tracked as GHSA-p9r8-2q67-fp86, rated Critical (CVSS score of 9.4), and fixed in AIT-GUI 2.5.2.</p>\n<p>AMMOS (Advanced Multi-Mission Operations System) is an open-source framework used by NASA/JPL and other missions to control spacecraft and instruments, send commands, and process the data they send back. AIT-GUI is the web interface operators use to do this in real time. Sending a command through this software is not like filling out a simple online form.</p>\n<p>The vulnerability isn\u2019t one thing. It\u2019s four ordinary web weaknesses that compose into something with unusual consequences. The first is that the server reads its configured host setting into a variable and then ignores it, binding instead to 0.0.0.0, which means all network interfaces. An operator who sets host: localhost to keep the console on the loopback gets a server exposed to the entire reachable network anyway.</p>\n<p>The second and third weaknesses follow from the first. There\u2019s no login requirement, no session gate, no CSRF token, and no cross-origin restriction on any route. POST /cmd takes whatever arrives in the command field, parses it, and hands it directly to the command bus: no check, no validation, nothing between the network and the hardware.</p>\n<p>The fourth weakness lives on POST /seq and POST /script/run, which build filesystem paths by joining raw user input onto a root directory with no confinement. A seqfile value of ../../../../something resolves outside the intended sequence directory. The researchers note that the correct confinement check already exists in the same codebase, on a sibling route called /scripts/load; the safe pattern was already written, just not applied consistently.</p>\n<p>The CSRF risk is especially serious because a firewall does not stop it. Browsers can send certain form requests from another website without first checking with the target site. So, if an operator opens a malicious page in the same browser they use for the console, it could send commands such as POST /cmd, POST /seq, or POST /script/run. The attacker does not need direct access to the system or its network port\u2014they only need the operator to open a malicious link.</p>\n<p>Cycode\u2019s research team used a combination of AI-assisted code analysis and human validation to find and confirm the issues. The AI handled the initial codebase review, flagging recognizable patterns: state-changing routes with no auth anywhere in their call path, user input flowing from a request parameter into a subprocess call without sanitization, and a configuration value that was read and then silently discarded. The human researcher then confirmed each pattern was exploitable and reduced each to a working proof-of-concept, including a self-contained CSRF demonstration that drove a real headless browser and recorded zero network preflights.</p>\n<p>That second step matters. A pattern match points to a candidate; a reproduced exploit confirms the finding is real. Cycode says explicitly it only reports the second kind.</p>\n<p><em>\u201cMore broadly: operational and ground-system software inherits the same web weaknesses as everything else, but with a far higher cost of failure. Auth, CSRF defense, and input confinement are not optional extras on a panel that commands hardware.\u201d concludes the report.</em></p>\n<p>The fix is in AIT-GUI 2.5.2. Operators should upgrade immediately and verify the console port is not reachable from untrusted networks. Anyone who ran an exposed instance before the patch should treat it as a reason to audit command and sequence history, since an unauthenticated POST leaves no user-level trace by design. Maintainers hardening deployments should add authentication and CSRF protection to the command, script, and sequence routes; bind the server to the configured host instead of 0.0.0.0; and apply the existing path-confinement logic from /scripts/load to /seq and /script/run.</p>\n<p><strong>Follow me on Twitter:\u00a0</strong><a href=\"https://twitter.com/securityaffairs\"><strong>@securityaffairs</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://www.facebook.com/sec.affairs\"><strong>Facebook</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://infosec.exchange/@securityaffairs\"><strong>Mastodon</strong></a><strong></strong></p>\n<p><a href=\"http://www.linkedin.com/pub/pierluigi-paganini/b/742/559\"><strong>Pierluigi\u00a0Paganini</strong></a><strong></strong></p>\n<p><strong>(</strong><a href=\"http://securityaffairs.co/wordpress/\"><strong>SecurityAffairs</strong></a><strong>\u00a0\u2013\u00a0hacking,\u00a0NASA/JPL)</strong></p>\n<p></p>",
+      "link": "https://securityaffairs.com/197689/hacking/critical-flaw-in-nasa-jpl-open-source-spacecraft-command-software.html",
+      "source": "Security Affairs",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-22T08:04:09+00:00",
+      "published_ts": 1787385849,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Exploit / PoC",
+        "Web / API Security"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Difference between CAE-CO and CAE-CD",
+      "summary": "I understand the CD is a broader umbrella and the CO is more technical, but do these accreditations matter in reality in the cyber community? submitted by /u/SaddieBaddieDaddie [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I understand the CD is a broader umbrella and the CO is more technical, but do these accreditations matter in reality in the cyber community?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/SaddieBaddieDaddie\"> /u/SaddieBaddieDaddie </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vv5zku/difference_between_caeco_and_caecd/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vv5zku/difference_between_caeco_and_caecd/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1vv5zku/difference_between_caeco_and_caecd/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-08-22T07:42:08+00:00",
+      "published_ts": 1787384528,
+      "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "U.S. CISA adds Zimbra Collaboration Suite (ZCS) flaw to its Known Exploited Vulnerabilities catalog",
+      "summary": "U.S. Cybersecurity and Infrastructure Security Agency (CISA) adds Zimbra Collaboration Suite (ZCS) flaw to its Known Exploited Vulnerabilities catalog. The U.S. Cybersecurity and Infrastructure Security Agency (CISA) added the Zimbra Collaboration Suite (ZCS) flaw CVE-2026-73570 to its Known Exploited Vulnerabilities (KEV) catalog . CERT Polska, Poland\u2019s national computer emergency response team, confirmed this week that threat actors are actively exploiting the critical vulnerability in Zimbra Collaboration Suite. The flaw allows unauthenticated remote code execution and was patched less than a month ago. \u201cThe CERT Polska team informs about an actively exploited OS Command Injection vulnerability in Zimbra Collaboration Suite.\u201d reads the advisory published by CERT Polska. \u201cThe vulnerability, identified as CVE-2026-73570 , allows an unauthenticated attacker to execute arbitrary shell commands with the privileges of\u00a0the zimbra\u00a0user . The vulnerability affects instances that have the SNMP trap service enabled via the\u00a0\u00a0snmp_notify\u00a0parameter \u00a0and the swatchdog service running (enabled by default).\u201d The vulnerability affects systems with SNMP trap notifications enabled and the swatchdog service running, which is enabled by default. The technical root cause is a sanitization failure in the SNMP monitoring component. Zimbra released version 10.1.20 on 20 July 2026 to address the issue. The fix came 28 days before active exploitation was confirmed, which is not a wide window, but apparently wide enough. The attack surface only exists when the optional zimbra-snmp package is installed and SNMP notifications are active, but swatchdog, the service that processes those notifications, is running by default on most installations. Below are recommendations by CERT Polska: \u201c Due to the ongoing campaign exploiting this vulnerability, we recommend: verifying Zimbra logs /var/log/zimbra.log for the following entries: Service status change: changed from stopped to running\nService status change: changed from running to stopped verification of files created by user zimbra in the last 30 days\u00a0in the following directories: /opt/zimbra/jetty/webapps/\n/opt/zimbra/jetty_base/webapps/\n/tmp/ If you discover any signs of potential exploitation of this vulnerability, please contact our team immediately.\u201d According to Binding Operational Directive (BOD) 22-01: Reducing the Significant Risk of Known Exploited Vulnerabilities , FCEB agencies have to address the identified vulnerabilities by the due date to protect their networks against attacks exploiting the flaws in the catalog. Experts also recommend that private organizations review the Catalog and address the vulnerabilities in their infrastructure. CISA orders federal agencies to fix the flaw by\u00a0August 24, 2026. Follow me on Twitter: @securityaffairs and Facebook and Mastodon Pierluigi\u00a0Paganini ( SecurityAffairs \u2013\u00a0hacking, CISA )",
+      "summary_html": "<div></div>\nU.S. Cybersecurity and Infrastructure Security Agency (CISA) adds Zimbra Collaboration Suite (ZCS) flaw to its Known Exploited Vulnerabilities catalog.\n<p>The U.S. Cybersecurity and Infrastructure Security Agency (CISA)\u00a0<a href=\"https://www.cisa.gov/news-events/alerts/2026/08/21/cisa-adds-one-known-exploited-vulnerability-catalog\">added</a> the Zimbra Collaboration Suite (ZCS) flaw <a href=\"https://www.cve.org/CVERecord?id=CVE-2026-73570\">CVE-2026-73570</a> to its <a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) catalog</a>.</p>\n<p>CERT Polska, Poland\u2019s national computer emergency response team, <a href=\"https://securityaffairs.com/197610/security/polands-cert-warns-of-active-exploitation-of-critical-zimbra-collaboration-suite-flaw.html\">confirmed</a> this week that threat actors are actively exploiting the critical vulnerability in Zimbra Collaboration Suite. The flaw allows unauthenticated remote code execution and was patched less than a month ago.</p>\n<p><em>\u201cThe CERT Polska team informs about an actively exploited OS Command Injection vulnerability in Zimbra Collaboration Suite.\u201d reads the\u00a0<a href=\"https://moje.cert.pl/komunikaty/2026/145/aktywnie-wykorzystywana-podatnosc-w-zimbra-collaboration-suite/\">advisory</a>\u00a0published by CERT Polska. \u201cThe vulnerability, identified as\u00a0<a href=\"https://www.cve.org/CVERecord?id=CVE-2026-73570\">CVE-2026-73570</a>\u00a0, allows an unauthenticated attacker to execute arbitrary shell commands with the privileges of\u00a0the zimbra\u00a0user . The vulnerability affects instances that have the SNMP trap service enabled via the\u00a0\u00a0snmp_notify\u00a0parameter \u00a0and the swatchdog service running (enabled by default).\u201d</em></p>\n<p>The vulnerability affects systems with SNMP trap notifications enabled and the swatchdog service running, which is enabled by default. The technical root cause is a sanitization failure in the SNMP monitoring component.</p>\n<p>Zimbra released version 10.1.20 on 20 July 2026 to address the issue. The fix came 28 days before active exploitation was confirmed, which is not a wide window, but apparently wide enough.</p>\n<p>The attack surface only exists when the optional zimbra-snmp package is installed and SNMP notifications are active, but swatchdog, the service that processes those notifications, is running by default on most installations.</p>\n<p>Below are recommendations by CERT Polska:</p>\n<p><em>\u201c<strong>Due to the ongoing campaign exploiting this vulnerability, we recommend:</strong></em></p>\n<ul>\n<li>verifying Zimbra logs\u00a0<em>/var/log/zimbra.log</em>\u00a0for the following entries:</li>\n</ul>\n<pre><code>Service status change:  changed from stopped to running\nService status change:  changed from running to stopped</code></pre>\n<ul>\n<li><em>verification of files created by user zimbra</em>\u00a0in the last 30 days\u00a0in the following directories:</li>\n</ul>\n<pre><code>/opt/zimbra/jetty/webapps/\n/opt/zimbra/jetty_base/webapps/\n/tmp/</code></pre>\n<p><em>If you discover any signs of potential exploitation of this vulnerability, please contact our team immediately.\u201d</em></p>\n<p>According to\u00a0<a href=\"https://cyber.dhs.gov/bod/22-01/\">Binding Operational Directive (BOD) 22-01: Reducing the Significant Risk of Known Exploited Vulnerabilities</a>, FCEB agencies have to address the identified vulnerabilities by the due date to protect their networks against attacks exploiting the flaws in the catalog.</p>\n<p>Experts also recommend that private organizations review the\u00a0<a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Catalog</a>\u00a0and address the vulnerabilities in their infrastructure.</p>\n<p>CISA orders federal agencies to fix the flaw by\u00a0August 24, 2026.</p>\n<p><strong>Follow me on Twitter:\u00a0</strong><a href=\"https://twitter.com/securityaffairs\"><strong>@securityaffairs</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://www.facebook.com/sec.affairs\"><strong>Facebook</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://infosec.exchange/@securityaffairs\"><strong>Mastodon</strong></a></p>\n<p><a href=\"http://www.linkedin.com/pub/pierluigi-paganini/b/742/559\"><strong>Pierluigi\u00a0Paganini</strong></a></p>\n<p><strong>(</strong><a href=\"http://securityaffairs.co/wordpress/\"><strong>SecurityAffairs</strong></a><strong>\u00a0\u2013\u00a0hacking,\u00a0<a href=\"https://securityaffairs.com/tag/cisa\">CISA</a>)</strong></p>",
+      "link": "https://securityaffairs.com/197693/security/u-s-cisa-adds-zimbra-collaboration-suite-zcs-flaw-to-its-known-exploited-vulnerabilities-catalog.html",
+      "source": "Security Affairs",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-22T07:17:49+00:00",
+      "published_ts": 1787383069,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Exploit / PoC",
+        "Cloud / SaaS"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Golf Canada - 568,972 breached accounts",
+      "summary": "In mid-2026, hundreds of thousands of user records allegedly sourced from Golf Canada began circulating via Telegram. The data included 569k unique email addresses along with names, usernames, dates of birth, genders and approximate geographic locations (city, province and postcode). Golf Canada didn't respond to multiple attempts to make contact, and it remains unclear whether the data was obtained via unintentionally exposed website features or a security vulnerability.",
+      "summary_html": "In mid-2026, hundreds of thousands of user records allegedly sourced from Golf Canada began circulating via Telegram. The data included 569k unique email addresses along with names, usernames, dates of birth, genders and approximate geographic locations (city, province and postcode). Golf Canada didn't respond to multiple attempts to make contact, and it remains unclear whether the data was obtained via unintentionally exposed website features or a security vulnerability.",
+      "link": "https://haveibeenpwned.com/Breach/GolfCanada",
+      "source": "Have I Been Pwned \u2013 Latest Breaches",
+      "feed_type": "news",
+      "type": "leaks-breaches",
+      "type_label": "Leaks & Breaches",
+      "published": "2026-08-22T07:17:23+00:00",
+      "published_ts": 1787383043,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "How often are you seeing domain spoofing attempts?",
+      "summary": "I\u2019m curious how common this is for other companies. We tend to think of phishing as someone sending a suspicious message from some random domain, but spoofed or lookalike domains seem much harder to explain to non-technical users. Have you had to deal with customers or employees receiving emails that look like they came directly from your company? submitted by /u/LastBrainnCell [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I\u2019m curious how common this is for other companies.</p> <p>We tend to think of phishing as someone sending a suspicious message from some random domain, but spoofed or lookalike domains seem much harder to explain to non-technical users.</p> <p>Have you had to deal with customers or employees receiving emails that look like they came directly from your company?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/LastBrainnCell\"> /u/LastBrainnCell </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vv4jdv/how_often_are_you_seeing_domain_spoofing_attempts/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vv4jdv/how_often_are_you_seeing_domain_spoofing_attempts/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1vv4jdv/how_often_are_you_seeing_domain_spoofing_attempts/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-08-22T06:19:14+00:00",
+      "published_ts": 1787379554,
+      "smart_groups": [
+        "Phishing / Social Engineering",
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Do phishing simulations actually change employee behavior?",
+      "summary": "For companies that run phishing simulations, have you actually seen people become better at spotting suspicious emails? I can see the value in training, but I\u2019m curious whether repeated simulations actually reduce incidents or if employees just learn to recognize the specific test format. What has worked for your organization? submitted by /u/Sharp-Daikon7631 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>For companies that run phishing simulations, have you actually seen people become better at spotting suspicious emails?</p> <p>I can see the value in training, but I\u2019m curious whether repeated simulations actually reduce incidents or if employees just learn to recognize the specific test format.</p> <p>What has worked for your organization?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Sharp-Daikon7631\"> /u/Sharp-Daikon7631 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vv4ck2/do_phishing_simulations_actually_change_employee/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vv4ck2/do_phishing_simulations_actually_change_employee/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1vv4ck2/do_phishing_simulations_actually_change_employee/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-08-22T06:08:45+00:00",
+      "published_ts": 1787378925,
+      "smart_groups": [
+        "Phishing / Social Engineering",
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "CPENT Exam Tips",
+      "summary": "Any Last minutes tips for CPENT exam? What to focus what to use, how to do it, tool suggestions submitted by /u/Soggy-Ad-1095 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Any Last minutes tips for CPENT exam? What to focus what to use, how to do it, tool suggestions</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Soggy-Ad-1095\"> /u/Soggy-Ad-1095 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vv1ezu/cpent_exam_tips/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vv1ezu/cpent_exam_tips/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1vv1ezu/cpent_exam_tips/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-08-22T03:35:37+00:00",
+      "published_ts": 1787369737,
+      "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Red Teaming Projects",
+      "summary": "Hi I'm a Cyber Security Engineer at a company and usually I do Penetration Testing of Applications at work. But my CISO told me to do some RED TEAM OPERATIONS for the company. So I kept a phishing simulation campaign and that was a very successful. I need you guys to give some ideas what kind of things that I can do more to test the security in the company? Thank you! submitted by /u/Warm-Tadpole-8134 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Hi I'm a Cyber Security Engineer at a company and usually I do Penetration Testing of Applications at work. But my CISO told me to do some RED TEAM OPERATIONS for the company. So I kept a phishing simulation campaign and that was a very successful. I need you guys to give some ideas what kind of things that I can do more to test the security in the company? </p> <p>Thank you!</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Warm-Tadpole-8134\"> /u/Warm-Tadpole-8134 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vv0w7j/red_teaming_projects/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vv0w7j/red_teaming_projects/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1vv0w7j/red_teaming_projects/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-08-22T03:09:35+00:00",
+      "published_ts": 1787368175,
+      "smart_groups": [
+        "Phishing / Social Engineering",
+        "Red Team / Offensive",
+        "Community Discussion"
+      ],
+      "curated": false
+    },
     {
       "title": "Interview \u2014 what to expect next?",
       "summary": "I just had a 1.5-hour interview covering technical, deep technical, and behavioral questions with multiple interviewers. About 10 minutes later , I was scheduled for another 1-hour interview . What do you think the next round will focus on? Hiring manager/final round, behavioral/team fit, or more technical questions? Has anyone experienced a similar interview process? submitted by /u/TranslatorLonely6964 [link] [comments]",
