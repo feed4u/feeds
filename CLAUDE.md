@@ -156,7 +156,11 @@ npm run lint         # ESLint
 
 See `k5-security-news/CLAUDE.md` for complete architecture documentation.
 
-## 4U AI News Aggregator
+## 4U AI News Aggregator (deprecated — GDELT retired)
+
+> **Decision 2026-08-23** (see `DECISIONS.md`): the GDELT-based pipelines are not
+> used. The product is the core-vertical platform behind **4u.ai** and variants
+> like **k5.ai**. This section is kept for reference only.
 
 Standalone AI/ML news aggregator using GDELT API with semantic clustering.
 
