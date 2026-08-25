@@ -1,9 +1,218 @@
 {
-  "generated_at": "2026-08-24T17:06:09.025548+00:00",
+  "generated_at": "2026-08-25T02:01:36.976673+00:00",
   "date": "2026-08-25",
-  "total_items": 2,
+  "total_items": 15,
   "next_chunk": "archive/viranomaiset/daily/2026-08-24.json",
   "items": [
+    {
+      "title": "Instance template path traversal allows arbitrary host file write as root",
+      "summary": "Classification: Critical, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 9.9, CVEs: CVE-2026-66897, Summary: A path traversal vulnerability in LXD's instance template processing allows an attacker with container edit permissions, or any user launching a crafted image, to overwrite arbitrary files on the host system as root. When processing target template paths specified in metadata.yaml, LXD validates the path against a confined os.Root directory handle but subsequently opens and creates the file using os.Create with an unconfined string path. This discrepancy between path resolution checks and file creation allows an attacker to escape directory confinement, overwrite root-owned host files, and achieve host root code execution. See also: https://github.com/canonical/lxd/security/advisories/GHSA-q39m-8fx9-42fv",
+      "summary_html": "Classification: Critical, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 9.9, CVEs: CVE-2026-66897, Summary: A path traversal vulnerability in LXD's instance template processing allows an attacker with container edit permissions, or any user launching a crafted image, to overwrite arbitrary files on the host system as root. When processing target template paths specified in metadata.yaml, LXD validates the path against a confined os.Root directory handle but subsequently opens and creates the file using os.Create with an unconfined string path. This discrepancy between path resolution checks and file creation allows an attacker to escape directory confinement, overwrite root-owned host files, and achieve host root code execution. See also: https://github.com/canonical/lxd/security/advisories/GHSA-q39m-8fx9-42fv",
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-66897",
+      "source": "P\u00e4ivitt\u00e4inen haavoittuvuuskooste",
+      "feed_type": "viranomaiset",
+      "type": "officials-authorities",
+      "type_label": "Officials & Authorities",
+      "published": "2026-08-25T02:00:10+00:00",
+      "published_ts": 1787623210,
+      "smart_groups": [
+        "Teknologia & Tiede"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Multible critical vulnerabilities in Zscaler Client Connector app",
+      "summary": "Classification: Severe, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 0.91, CVEs: CVE-2026-59564, CVE-2026-59568, CVE-2026-59567, CVE-2026-59566, CVE-2026-59565, Summary: CVE-2026-59564: Authentication bypass between ZCC and client connector portal\nCVE-2026-59568: Remote Code Execution\nCVE-2026-59567: Local privilege escalation\nCVE-2026-59566: Local denial-of-service\nCVE-2026-59565: Local and kernel denial-of-service",
+      "summary_html": "Classification: Severe, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 0.91, CVEs: CVE-2026-59564, CVE-2026-59568, CVE-2026-59567, CVE-2026-59566, CVE-2026-59565, Summary: CVE-2026-59564: Authentication bypass between ZCC and client connector portal\nCVE-2026-59568: Remote Code Execution\nCVE-2026-59567: Local privilege escalation\nCVE-2026-59566: Local denial-of-service\nCVE-2026-59565: Local and kernel denial-of-service",
+      "link": "https://help.zscaler.com/zscaler-client-connector/client-connector-app-release-summary-2026",
+      "source": "P\u00e4ivitt\u00e4inen haavoittuvuuskooste",
+      "feed_type": "viranomaiset",
+      "type": "officials-authorities",
+      "type_label": "Officials & Authorities",
+      "published": "2026-08-25T02:00:09+00:00",
+      "published_ts": 1787623209,
+      "smart_groups": [
+        "Liikenne & Liikkuminen",
+        "Teknologia & Tiede"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Hackers target WordPress sites in miniOrange auth bypass attacks",
+      "summary": "Classification: Severe, Solution: Official Fix, Exploit Maturity: Proof-of-Concept, CVSSv3.1: 9.8, CVEs: CVE-2026-61979, CVE-2026-15981, Summary: The two vulnerabilities observed in exploitation attempts are tracked as CVE-2026-61979 and CVE-2026-15981 and can be chained together to bypass authentication.\n\nBecause the miniOrange SAML SSO plugin accepts the signature algorithm from incoming SAML responses instead of enforcing the configured one, an attacker can leverage CVE-2026-61979 to select HMAC-SHA1. This causes the plugin to treat the RSA public key from the identity provider (IdP) as the shared secret.\n\nThe second security issue, CVE-2026-15981, causes the plugin to treat an OpenSSL verification error (-1) as a successful result, allowing malformed signatures to pass validation. See also: https://nvd.nist.gov/vuln/detail/CVE-2026-15981, See also: https://nvd.nist.gov/vuln/detail/CVE-2026-61979",
+      "summary_html": "Classification: Severe, Solution: Official Fix, Exploit Maturity: Proof-of-Concept, CVSSv3.1: 9.8, CVEs: CVE-2026-61979, CVE-2026-15981, Summary: The two vulnerabilities observed in exploitation attempts are tracked as CVE-2026-61979 and CVE-2026-15981 and can be chained together to bypass authentication.\n\nBecause the miniOrange SAML SSO plugin accepts the signature algorithm from incoming SAML responses instead of enforcing the configured one, an attacker can leverage CVE-2026-61979 to select HMAC-SHA1. This causes the plugin to treat the RSA public key from the identity provider (IdP) as the shared secret.\n\nThe second security issue, CVE-2026-15981, causes the plugin to treat an OpenSSL verification error (-1) as a successful result, allowing malformed signatures to pass validation. See also: https://nvd.nist.gov/vuln/detail/CVE-2026-15981, See also: https://nvd.nist.gov/vuln/detail/CVE-2026-61979",
+      "link": "https://www.bleepingcomputer.com/news/security/hackers-target-wordpress-sites-in-miniorange-auth-bypass-attacks/",
+      "source": "P\u00e4ivitt\u00e4inen haavoittuvuuskooste",
+      "feed_type": "viranomaiset",
+      "type": "officials-authorities",
+      "type_label": "Officials & Authorities",
+      "published": "2026-08-25T02:00:08+00:00",
+      "published_ts": 1787623208,
+      "smart_groups": [
+        "Liikenne & Liikkuminen",
+        "Teknologia & Tiede"
+      ],
+      "curated": true
+    },
+    {
+      "title": "miniorange.com - Arbitrary account takeover in miniOrange OAuth Client < 3.2.0",
+      "summary": "Classification: Severe, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 10.0, CVEs: CVE-2026-77995, Summary: Joomla Extension - miniorange.com - Arbitrary account takeover in miniOrange OAuth Client < 3.2.0 - The manipulation of a cookie value allows actors to login as arbitrary accounts, including admins.",
+      "summary_html": "Classification: Severe, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 10.0, CVEs: CVE-2026-77995, Summary: Joomla Extension - miniorange.com - Arbitrary account takeover in miniOrange OAuth Client &lt; 3.2.0 - The manipulation of a cookie value allows actors to login as arbitrary accounts, including admins.",
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-77995",
+      "source": "P\u00e4ivitt\u00e4inen haavoittuvuuskooste",
+      "feed_type": "viranomaiset",
+      "type": "officials-authorities",
+      "type_label": "Officials & Authorities",
+      "published": "2026-08-25T02:00:07+00:00",
+      "published_ts": 1787623207,
+      "smart_groups": [
+        "Teknologia & Tiede"
+      ],
+      "curated": true
+    },
+    {
+      "title": "OAuth2 Proxy - Authentication Bypass via X-Forwarded-Uri Header Spoofing",
+      "summary": "Classification: Severe, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 9.3, CVEs: CVE-2026-76835, Summary: OAuth2 Proxy honours a client-supplied X-Forwarded-Uri header when deciding whether a request may skip authentication, because the guard added for CVE-2026-40575 is inert in the default reverse-proxy configuration. GetRequestURI in pkg/requests/util/util.go prefers that header over the real request URI whenever CanTrustForwardedHeaders returns true, and isAllowedPath in oauthproxy.go matches the skip_auth_routes and skip_auth_regex allow list against the resulting path. CanTrustForwardedHeaders in pkg/apis/middleware/scope.go grants that trust when the caller's address is in the trusted proxy set, and buildTrustedProxyNetSet falls back to defaultTrustedProxyIPs, which is 0.0.0.0/0 and ::/0, whenever reverse proxy mode is enabled without trusted_proxy_ip configured. Every client is therefore treated as a trusted proxy. An unauthenticated attacker can request a protected upstream path while setting X-Forwarded-Uri to a value matching an allow-listed route, so the skip-auth decision is made against the spoofed value while the upstream receives the protected path unchanged.",
+      "summary_html": "Classification: Severe, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 9.3, CVEs: CVE-2026-76835, Summary: OAuth2 Proxy honours a client-supplied X-Forwarded-Uri header when deciding whether a request may skip authentication, because the guard added for CVE-2026-40575 is inert in the default reverse-proxy configuration. GetRequestURI in pkg/requests/util/util.go prefers that header over the real request URI whenever CanTrustForwardedHeaders returns true, and isAllowedPath in oauthproxy.go matches the skip_auth_routes and skip_auth_regex allow list against the resulting path. CanTrustForwardedHeaders in pkg/apis/middleware/scope.go grants that trust when the caller's address is in the trusted proxy set, and buildTrustedProxyNetSet falls back to defaultTrustedProxyIPs, which is 0.0.0.0/0 and ::/0, whenever reverse proxy mode is enabled without trusted_proxy_ip configured. Every client is therefore treated as a trusted proxy. An unauthenticated attacker can request a protected upstream path while setting X-Forwarded-Uri to a value matching an allow-listed route, so the skip-auth decision is made against the spoofed value while the upstream receives the protected path unchanged.",
+      "link": "https://github.com/oauth2-proxy/oauth2-proxy/security/advisories/GHSA-7x63-xv5r-3p2x",
+      "source": "P\u00e4ivitt\u00e4inen haavoittuvuuskooste",
+      "feed_type": "viranomaiset",
+      "type": "officials-authorities",
+      "type_label": "Officials & Authorities",
+      "published": "2026-08-25T02:00:06+00:00",
+      "published_ts": 1787623206,
+      "smart_groups": [
+        "Teknologia & Tiede"
+      ],
+      "curated": true
+    },
+    {
+      "title": "ReliaQuest confirms failed data-theft attack after ShinyHunters breach",
+      "summary": "Cybersecurity company ReliaQuest has confirmed that one of its employees was targeted in a social engineering attack after hackers impersonated a member of the security team.\n\nIn a statement over the weekend, ReliaQuest said that an attacker called multiple employees and tried to trick them into accessing \"a fake ReliaQuest single sign-on (SSO) page behind a content delivery network.\"\n\nLast week, ReliaQuest's Threat Research team shared in a now-deleted post, that the ShinyHunters extortion gang was registering .claims domains to impersonate company's help desks and IT teams.\n\nAccording to the company, the threat actor hosted the phishing page on a \"lookalike domain,\" which BleepingComputer learned from sources was reliaquest.claims, and used the name of a real security employee during the vishing attempts.\n\nOne of the targeted employees fell for the attacker's ruse, entered their credentials on the fake SSO page, and approved an MFA push notification, giving the attacker temporary, view-only access to ReliaQuest's identity dashboard.\n\nHowever, device-trust controls successfully blocked subsequent attempts to access applications through the dashboard, according to the company.\n\nReliaQuest\u2019s statement comes shortly after the infamous data extortion group \u2018ShinyHunters\u2019 claimed an attack on the company.\n\nIn a new post on its extortion portal, ShinyHunters references ReliaQuest\u2019s previous reporting on the threat group, saying \"this time the post is about you, not us.\"",
+      "summary_html": "Cybersecurity company ReliaQuest has confirmed that one of its employees was targeted in a social engineering attack after hackers impersonated a member of the security team.\n\nIn a statement over the weekend, ReliaQuest said that an attacker called multiple employees and tried to trick them into accessing \"a fake ReliaQuest single sign-on (SSO) page behind a content delivery network.\"\n\nLast week, ReliaQuest's Threat Research team shared in a now-deleted post, that the ShinyHunters extortion gang was registering .claims domains to impersonate company's help desks and IT teams.\n\nAccording to the company, the threat actor hosted the phishing page on a \"lookalike domain,\" which BleepingComputer learned from sources was reliaquest.claims, and used the name of a real security employee during the vishing attempts.\n\nOne of the targeted employees fell for the attacker's ruse, entered their credentials on the fake SSO page, and approved an MFA push notification, giving the attacker temporary, view-only access to ReliaQuest's identity dashboard.\n\nHowever, device-trust controls successfully blocked subsequent attempts to access applications through the dashboard, according to the company.\n\nReliaQuest\u2019s statement comes shortly after the infamous data extortion group \u2018ShinyHunters\u2019 claimed an attack on the company.\n\nIn a new post on its extortion portal, ShinyHunters references ReliaQuest\u2019s previous reporting on the threat group, saying \"this time the post is about you, not us.\"",
+      "link": "https://www.bleepingcomputer.com/news/security/reliaquest-confirms-failed-data-theft-attack-after-shinyhunters-breach/",
+      "source": "P\u00e4ivitt\u00e4inen uutiskooste",
+      "feed_type": "viranomaiset",
+      "type": "officials-authorities",
+      "type_label": "Officials & Authorities",
+      "published": "2026-08-25T02:00:06+00:00",
+      "published_ts": 1787623206,
+      "smart_groups": [
+        "Teknologia & Tiede"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Multiple Critical vulnerabilities in DrayTek Vigor products",
+      "summary": "Classification: Severe, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 9.8, CVEs: CVE-2026-71921, CVE-2026-71933, CVE-2026-71914, Summary: CVE-2026-71921 9.8 DrayTek VigorSwitch Multiple Models Pre-Authentication OS Command Injection via setget.cgi\nCVE-2026-71933 9.1 DrayTek VigorSwitch Multiple Models Missing Authorization in Syslog Functions\nCVE-2026-71914 9.8 DrayTek VigorAP Multiple Models Pre-Authentication OS Command Injection via dray_apm See also: https://www.draytek.com/about/security-advisory/multiple-remote-code-execution-and-buffer-overflow-vulnerabilities-in-vigorap-series-august-2026/",
+      "summary_html": "Classification: Severe, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 9.8, CVEs: CVE-2026-71921, CVE-2026-71933, CVE-2026-71914, Summary: CVE-2026-71921 9.8 DrayTek VigorSwitch Multiple Models Pre-Authentication OS Command Injection via setget.cgi\nCVE-2026-71933 9.1 DrayTek VigorSwitch Multiple Models Missing Authorization in Syslog Functions\nCVE-2026-71914 9.8 DrayTek VigorAP Multiple Models Pre-Authentication OS Command Injection via dray_apm See also: https://www.draytek.com/about/security-advisory/multiple-remote-code-execution-and-buffer-overflow-vulnerabilities-in-vigorap-series-august-2026/",
+      "link": "https://www.draytek.com/about/security-advisory/multiple-vulnerabilities-in-vigorswitch-series-august-2026/",
+      "source": "P\u00e4ivitt\u00e4inen haavoittuvuuskooste",
+      "feed_type": "viranomaiset",
+      "type": "officials-authorities",
+      "type_label": "Officials & Authorities",
+      "published": "2026-08-25T02:00:05+00:00",
+      "published_ts": 1787623205,
+      "smart_groups": [
+        "Liikenne & Liikkuminen",
+        "Teknologia & Tiede"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Microsoft Teams now lets admins block external bots from meetings",
+      "summary": "Microsoft is rolling out a new Teams meeting protection policy that allows administrators to automatically block all identified external bots from joining Teams meetings.\n\nThis new feature builds on another Teams policy introduced in June that added smarter bot protection, ensuring all detected bots are tagged in the lobby and require organizer approval before joining.\n\nThe new policy goes one step further and will automatically prevent external bots from joining Teams meetings, without requiring explicit organizer confirmation before they're admitted. \n\n\"With this update, organizations can strengthen meeting security by configuring Teams policies to automatically block detected external meeting bots from joining meetings,\" the company said in a Microsoft 365 Message Center update on Friday. \"This gives administrators additional control over how identified bots are handled and can help reduce organizational risk.\"\n\nThis new admin policy is rolling out as part of a targeted release until the end of August and should reach general availability worldwide by late September.\n\nAs Microsoft warned in April, attacks abusing Teams for access and lateral movement on enterprise networks are surging, with threat actors impersonating IT or helpdesk staff to contact employees via cross-tenant chats and trick them into granting remote access to steal data.",
+      "summary_html": "Microsoft is rolling out a new Teams meeting protection policy that allows administrators to automatically block all identified external bots from joining Teams meetings.\n\nThis new feature builds on another Teams policy introduced in June that added smarter bot protection, ensuring all detected bots are tagged in the lobby and require organizer approval before joining.\n\nThe new policy goes one step further and will automatically prevent external bots from joining Teams meetings, without requiring explicit organizer confirmation before they're admitted. \n\n\"With this update, organizations can strengthen meeting security by configuring Teams policies to automatically block detected external meeting bots from joining meetings,\" the company said in a Microsoft 365 Message Center update on Friday. \"This gives administrators additional control over how identified bots are handled and can help reduce organizational risk.\"\n\nThis new admin policy is rolling out as part of a targeted release until the end of August and should reach general availability worldwide by late September.\n\nAs Microsoft warned in April, attacks abusing Teams for access and lateral movement on enterprise networks are surging, with threat actors impersonating IT or helpdesk staff to contact employees via cross-tenant chats and trick them into granting remote access to steal data.",
+      "link": "https://www.bleepingcomputer.com/news/security/microsoft-teams-now-lets-admins-block-external-bots-from-meetings/",
+      "source": "P\u00e4ivitt\u00e4inen uutiskooste",
+      "feed_type": "viranomaiset",
+      "type": "officials-authorities",
+      "type_label": "Officials & Authorities",
+      "published": "2026-08-25T02:00:05+00:00",
+      "published_ts": 1787623205,
+      "smart_groups": [
+        "Autot & Mobiliteetti",
+        "Teknologia & Tiede"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Security Bulletin: Multiple security vulnerabilities affect HCL Hive",
+      "summary": "Classification: Important, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 7.5, CVEs: CVE-2025-68825, CVE-2026-21752, CVE-2026-21755, CVE-2025-68833, CVE-2026-21751, CVE-2026-21756, CVE-2026-21759, Summary: HCL Hive is affected by multiple security vulnerabilities.\nCVE-2025-68825:  HCL Hive is affected by incorrect default permissions\nCVE-2026-21752:  HCL Hive is affected by a use of vulnerable third-party components\nCVE-2026-21755:  HCL Hive is affected by a missing rate limit\nCVE-2025-68833:  HCL Hive is affected by use of a cryptographic primitive with a risky implementation\nCVE-2026-21751:  HCL Hive is affected by use of a cryptographic primitive with a risky implementation\nCVE-2026-21756: HCL Hive is affected by a broken access control vulnerability\nCVE-2026-21759: HCL Hive is affected by an information exposure vulnerability",
+      "summary_html": "Classification: Important, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 7.5, CVEs: CVE-2025-68825, CVE-2026-21752, CVE-2026-21755, CVE-2025-68833, CVE-2026-21751, CVE-2026-21756, CVE-2026-21759, Summary: HCL Hive is affected by multiple security vulnerabilities.\nCVE-2025-68825:  HCL Hive is affected by incorrect default permissions\nCVE-2026-21752:  HCL Hive is affected by a use of vulnerable third-party components\nCVE-2026-21755:  HCL Hive is affected by a missing rate limit\nCVE-2025-68833:  HCL Hive is affected by use of a cryptographic primitive with a risky implementation\nCVE-2026-21751:  HCL Hive is affected by use of a cryptographic primitive with a risky implementation\nCVE-2026-21756: HCL Hive is affected by a broken access control vulnerability\nCVE-2026-21759: HCL Hive is affected by an information exposure vulnerability",
+      "link": "https://support.hcl-software.com/csm?id=kb_article&sysparm_article=KB0131731",
+      "source": "P\u00e4ivitt\u00e4inen haavoittuvuuskooste",
+      "feed_type": "viranomaiset",
+      "type": "officials-authorities",
+      "type_label": "Officials & Authorities",
+      "published": "2026-08-25T02:00:04+00:00",
+      "published_ts": 1787623204,
+      "smart_groups": [
+        "Liikenne & Liikkuminen",
+        "Teknologia & Tiede"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Tracking PavinLoader across ClickFix and fake download campaigns",
+      "summary": "In our previous analysis of the malicious RenPy campaigns, we identified a multi-stage loader deployed as part of the infection chain.\n\nFurther threat hunting has since shown that the same loader, which we track as PavinLoader, is being used across several different campaigns, including ClickFix attacks and fake software downloads. \n\nDespite differences in how these campaigns reach victims, we found several common elements. These include multi-stage infection chains involving heavily obfuscated and trojanized .NET DLLs; abuse of MSBuild, .csproj, and .bat files to execute them; and EtherHiding to retrieve the command-and-control (C2) domain.",
+      "summary_html": "In our previous analysis of the malicious RenPy campaigns, we identified a multi-stage loader deployed as part of the infection chain.\n\nFurther threat hunting has since shown that the same loader, which we track as PavinLoader, is being used across several different campaigns, including ClickFix attacks and fake software downloads. \n\nDespite differences in how these campaigns reach victims, we found several common elements. These include multi-stage infection chains involving heavily obfuscated and trojanized .NET DLLs; abuse of MSBuild, .csproj, and .bat files to execute them; and EtherHiding to retrieve the command-and-control (C2) domain.",
+      "link": "https://www.malwarebytes.com/blog/threat-intel/2026/08/tracking-pavinloader-across-clickfix-and-fake-download-campaigns",
+      "source": "P\u00e4ivitt\u00e4inen uutiskooste",
+      "feed_type": "viranomaiset",
+      "type": "officials-authorities",
+      "type_label": "Officials & Authorities",
+      "published": "2026-08-25T02:00:04+00:00",
+      "published_ts": 1787623204,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "RustDesk through 1.4.9 Heap Buffer Overflow via Unvalidated CLIPRDR FileContentsResponse Length",
+      "summary": "Classification: Severe, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 9.6, CVEs: CVE-2026-76840, Summary: RustDesk's Windows clipboard redirection copies a peer-supplied length into a fixed-size caller buffer without an upper bound check. When an OLE paste consumer such as explorer.exe calls IStream::Read with a buffer of cb bytes, CliprdrStream_Read in libs/clipboard/src/windows/wf_cliprdr.c requests that many bytes of a remote file through cliprdr_send_request_filecontents and then executes CopyMemory(pv, clipboard->req_fdata, clipboard->req_fsize), where req_fsize is taken verbatim from the peer's CLIPRDR FileContentsResponse by wf_cliprdr_server_file_contents_response (req_fsize = fileContentsResponse->cbRequested) and is never clamped to cb anywhere in the chain. The function's only length comparison, req_fsize < cb, handles the short-read case and is evaluated after the copy has already occurred. A malicious or compromised peer that answers a small file-contents read with an oversized response therefore writes attacker-chosen data past the end of the paste consumer's heap buffer when the local user pastes clipboard file contents offered by the remote side. The file is a fork of FreeRDP's client/Windows/wf_cliprdr.c, where the same defect is CVE-2026-68579, fixed in FreeRDP 3.30.0.",
+      "summary_html": "Classification: Severe, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 9.6, CVEs: CVE-2026-76840, Summary: RustDesk's Windows clipboard redirection copies a peer-supplied length into a fixed-size caller buffer without an upper bound check. When an OLE paste consumer such as explorer.exe calls IStream::Read with a buffer of cb bytes, CliprdrStream_Read in libs/clipboard/src/windows/wf_cliprdr.c requests that many bytes of a remote file through cliprdr_send_request_filecontents and then executes CopyMemory(pv, clipboard-&gt;req_fdata, clipboard-&gt;req_fsize), where req_fsize is taken verbatim from the peer's CLIPRDR FileContentsResponse by wf_cliprdr_server_file_contents_response (req_fsize = fileContentsResponse-&gt;cbRequested) and is never clamped to cb anywhere in the chain. The function's only length comparison, req_fsize &lt; cb, handles the short-read case and is evaluated after the copy has already occurred. A malicious or compromised peer that answers a small file-contents read with an oversized response therefore writes attacker-chosen data past the end of the paste consumer's heap buffer when the local user pastes clipboard file contents offered by the remote side. The file is a fork of FreeRDP's client/Windows/wf_cliprdr.c, where the same defect is CVE-2026-68579, fixed in FreeRDP 3.30.0.",
+      "link": "https://nvd.nist.gov/vuln/detail/CVE-2026-76840",
+      "source": "P\u00e4ivitt\u00e4inen haavoittuvuuskooste",
+      "feed_type": "viranomaiset",
+      "type": "officials-authorities",
+      "type_label": "Officials & Authorities",
+      "published": "2026-08-25T02:00:03+00:00",
+      "published_ts": 1787623203,
+      "smart_groups": [
+        "Teknologia & Tiede"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Critical Keycloak Password Reset Flaw Could Let Unauthenticated Attackers Take Over Any Account",
+      "summary": "Red Hat and the Keycloak project have released patches to address a critical security flaw in the open-source identity and access management server that could allow an unauthenticated remote attacker to take over any user account by forcing a password reset.\n\nThe vulnerability, assigned the CVE identifier CVE-2026-18963, is rated 9.1 on the CVSS scoring system by Red Hat, which acts as the CVE Numbering Authority (CNA) for the flaw. It has been classified as a weak password recovery mechanism for a forgotten password (CWE-640).\n\nUsers of upstream Keycloak are advised to update to version 26.7.2, released August 19, 2026, while customers running Red Hat build of Keycloak (RHBK) should apply the updates shipped for 26.4.15 and 26.6.6.\n\nThere is no evidence that the flaw has been exploited, and no verified public exploit has been located as of August 24, 2026.",
+      "summary_html": "Red Hat and the Keycloak project have released patches to address a critical security flaw in the open-source identity and access management server that could allow an unauthenticated remote attacker to take over any user account by forcing a password reset.\n\nThe vulnerability, assigned the CVE identifier CVE-2026-18963, is rated 9.1 on the CVSS scoring system by Red Hat, which acts as the CVE Numbering Authority (CNA) for the flaw. It has been classified as a weak password recovery mechanism for a forgotten password (CWE-640).\n\nUsers of upstream Keycloak are advised to update to version 26.7.2, released August 19, 2026, while customers running Red Hat build of Keycloak (RHBK) should apply the updates shipped for 26.4.15 and 26.6.6.\n\nThere is no evidence that the flaw has been exploited, and no verified public exploit has been located as of August 24, 2026.",
+      "link": "https://thehackernews.com/2026/08/critical-keycloak-password-reset-flaw.html",
+      "source": "P\u00e4ivitt\u00e4inen uutiskooste",
+      "feed_type": "viranomaiset",
+      "type": "officials-authorities",
+      "type_label": "Officials & Authorities",
+      "published": "2026-08-25T02:00:02+00:00",
+      "published_ts": 1787623202,
+      "smart_groups": [
+        "Teknologia & Tiede"
+      ],
+      "curated": true
+    },
+    {
+      "title": "CISA orders urgent patching of actively exploited Zimbra flaw",
+      "summary": "The Cybersecurity and Infrastructure Security Agency (CISA) has ordered U.S. government agencies to patch an actively exploited vulnerability in Zimbra Collaboration Suite (ZCS) within three days.\n\nThe Zimbra security team patched the security flaw (tracked as CVE-2026-73570) in version 10.1.20, released on July 20.\n\nSuccessful exploitation allows unauthenticated attackers to gain remote code execution by exploiting a command injection weakness in the SNMP monitoring component when SNMP notifications are enabled on the targeted system.\n\nCISA's warning comes after CERT Polska, the Polish Computer Emergency Response Team (CERT), first flagged the vulnerability as targeted in the wild last Monday.\n\nWhile threat security watchdog Shadowserver tracks more than 12,000 Zimbra servers exposed on the Internet, there is no information on how many are honeypots or have already been secured against attacks exploiting the CVE-2026-73570 flaw.\n\nMost recently, Seqrite Labs researchers revealed in March that APT28 (a state-sponsored threat group linked to Russia's military intelligence service) was exploiting a stored cross-site scripting (XSS) vulnerability in attacks targeting Ukrainian government ZCS servers.\n\nIn October 2024, U.S. and UK cyber agencies warned that APT29 hackers (tracked as Midnight Blizzard and Cozy Bear) linked to Russia's Foreign Intelligence Service were targeting Zimbra servers using a flaw previously exploited to steal email account credentials.",
+      "summary_html": "The Cybersecurity and Infrastructure Security Agency (CISA) has ordered U.S. government agencies to patch an actively exploited vulnerability in Zimbra Collaboration Suite (ZCS) within three days.\n\nThe Zimbra security team patched the security flaw (tracked as CVE-2026-73570) in version 10.1.20, released on July 20.\n\nSuccessful exploitation allows unauthenticated attackers to gain remote code execution by exploiting a command injection weakness in the SNMP monitoring component when SNMP notifications are enabled on the targeted system.\n\nCISA's warning comes after CERT Polska, the Polish Computer Emergency Response Team (CERT), first flagged the vulnerability as targeted in the wild last Monday.\n\nWhile threat security watchdog Shadowserver tracks more than 12,000 Zimbra servers exposed on the Internet, there is no information on how many are honeypots or have already been secured against attacks exploiting the CVE-2026-73570 flaw.\n\nMost recently, Seqrite Labs researchers revealed in March that APT28 (a state-sponsored threat group linked to Russia's military intelligence service) was exploiting a stored cross-site scripting (XSS) vulnerability in attacks targeting Ukrainian government ZCS servers.\n\nIn October 2024, U.S. and UK cyber agencies warned that APT29 hackers (tracked as Midnight Blizzard and Cozy Bear) linked to Russia's Foreign Intelligence Service were targeting Zimbra servers using a flaw previously exploited to steal email account credentials.",
+      "link": "https://www.bleepingcomputer.com/news/security/cisa-orders-urgent-patching-of-actively-exploited-zimbra-flaw/",
+      "source": "P\u00e4ivitt\u00e4inen uutiskooste",
+      "feed_type": "viranomaiset",
+      "type": "officials-authorities",
+      "type_label": "Officials & Authorities",
+      "published": "2026-08-25T02:00:01+00:00",
+      "published_ts": 1787623201,
+      "smart_groups": [],
+      "curated": true
+    },
     {
       "title": "Informal Vtc Wp Of Financial Counsellors (Fico)",
       "summary": "",
