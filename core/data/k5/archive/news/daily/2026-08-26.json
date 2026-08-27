@@ -1,9 +1,400 @@
 {
-  "generated_at": "2026-08-26T18:12:39.465563+00:00",
+  "generated_at": "2026-08-27T10:05:13.752272+00:00",
   "date": "2026-08-26",
-  "total_items": 146,
+  "total_items": 174,
   "next_chunk": "archive/news/daily/2026-08-25.json",
   "items": [
+    {
+      "title": "CISA Red Team Fully Compromised Two Critical Infrastructure Orgs",
+      "summary": "CISA red teams fully compromised two critical infrastructure orgs. One SOC isolated hosts in minutes; the other never detected the breach. CISA published an advisory ( AA26-237A ) documenting two simultaneous red team assessments at critical infrastructure organizations. Both organizations lost full domain control and had their cloud environments compromised. One of them didn\u2019t know until CISA told them afterward. \u201cThe Cybersecurity and Infrastructure Security Agency (CISA) conducted simultaneous red team assessments at two organizations and observed different defensive outcomes. In both environments, the red team achieved full domain compromise and accessed sensitive business systems (SBSs) and cloud resources.\u201d states CISA . \u201cOrganization A failed to detect or contain the activity, but Organization B rapidly identified initial compromise attempts, isolated affected systems, and forced the red team into an assume breach model.\u201d Organization A is a Government Services and Facilities Sector entity. Organization B operates in the Water and Wastewater Systems Sector. The red team used comparable techniques against both. The difference in outcome was entirely about detection and response, not the sophistication of the attack. At Organization A, the red team found a web application that still used default credentials. They used it to send phishing emails from a trusted internal address and gained access to four workstations. From there, they exploited a misconfigured Active Directory Certificate Services template with the ESC1 flaw. This allowed a low-privileged user to request certificates for other users, including administrators. They then reached all the targeted sensitive business systems without anyone noticing. After moving into the cloud, they even read SOC staff emails to see if the attack had been detected. It hadn\u2019t. \u201cWithout well-defined baselines and alert filtering, false positives and routine alerts overwhelm defenders, obscuring real threats.\u201d CISA continues. \u201cOrganizations that tune alerts to highlight anomalies and filter out normal business activity enable defenders to focus on genuine incidents and respond rapidly.\u201d Organization A\u2019s SOC was receiving thousands of false positive alerts, many at higher severity than the actual intrusion alerts the red team was generating. Staff eventually reviewed SCCM-related alerts from real red team activity, couldn\u2019t identify the system\u2019s owner or function, and marked it a false positive. The red team confirmed the miss by reading SOC email. Then they used keyloggers and screenshot capture on SOC workstations to make sure nothing was coming. Nothing was. The organization had multiple separate SOCs with different EDR solutions and no cross-team visibility, which meant that even if one team noticed something, there was no mechanism to act on it across the relevant systems. \u201cDetection tools are only as effective as the people, processes, and procedures supporting them. SOC staff should not operate in silos and should have clear authority unhindered by bureaucracy to effectively contain and resolve incidents.\u201d add CISA. At Organization A, SOC analysts were managing systems they didn\u2019t fully understand and had no written escalation procedures, so their default response to ambiguity was to wait. At Organization B, staff triaged, investigated, coordinated with engineering, and reimaged machines before handing them back to users. At Organization B, the red team still found important security gaps. They discovered a password stored in plain text inside an XML file on an SCCM distribution point. They used the related service account to gain powerful rights over a domain controller and then performed a DCSync attack, obtaining the krbtgt hash. This allowed them to create Golden Tickets and impersonate users across the domain. They also found a path into the OT network through RDP files pointing to a bastion host. Using FTP credentials found on a jump server, they connected to the bastion through SSH. The bastion had no outbound internet access, so their payload could not run, and the SOC quarantined the host. Still, the access path was there. Both organizations also had the same cloud security problem: neither had enabled Conditional Access for workload identities. This Microsoft feature applies access controls to applications and service accounts, not just human users. Without it, applications with broad Microsoft Graph permissions can bypass normal Conditional Access rules. CISA\u2019s red team used this gap in both organizations to access emails across the companies. In Organization A, the team also found AWS IAM credentials stored in users\u2019 home directories with no expiration date. Those credentials could remain valid indefinitely, creating another long-term risk. In Organization B\u2019s cloud environment, the red team abused Seamless SSO by using Kerberos tickets obtained via DCSync to authenticate to Azure without needing any user\u2019s cleartext password. They found a disabled AD-synced account that owned an application with permission to read, write, and send emails for every user in the tenant. They re-enabled the account, DCSynced its credentials, added a client secret to the application, and could then access the full mailbox of every employee from the public internet. Organization B\u2019s detections flagged the AzureHound tool by user agent and caught anomalous Microsoft Graph API request volumes, but those controls arrived after the initial cloud access was already established. CISA recommends several practical steps to improve security. These include hardening ADCS by disabling CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT on templates and limiting who can enroll, setting the Machine Account Quota to zero when there is no operational need, and removing cleartext credentials from workstations and network shares. Organizations should also enable Conditional Access for workload identities, create procedures to revoke tokens, and treat SCCM and similar endpoint management platforms as Tier 0 assets, giving them the same level of protection as domain controllers. The full advisory also maps each red team technique to its MITRE ATT&CK identifier and compares how well the two organizations detected the different stages of the attacks. Follow me on Twitter: @securityaffairs and Facebook and Mastodon Pierluigi\u00a0Paganini ( SecurityAffairs \u2013\u00a0hacking,\u00a0CISA)",
+      "summary_html": "<div></div>\nCISA red teams fully compromised two critical infrastructure orgs. One SOC isolated hosts in minutes; the other never detected the breach.\n<p>CISA published an advisory (<a href=\"https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-237a\">AA26-237A</a>) documenting two simultaneous red team assessments at critical infrastructure organizations. Both organizations lost full domain control and had their cloud environments compromised. One of them didn\u2019t know until CISA told them afterward. </p>\n<p><em>\u201cThe Cybersecurity and Infrastructure Security Agency (CISA) conducted simultaneous red team assessments at two organizations and observed different defensive outcomes. In both environments, the red team achieved full domain compromise and accessed sensitive business systems (SBSs) and cloud resources.\u201d <a href=\"https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-237a\">states CISA</a>. \u201cOrganization A failed to detect or contain the activity, but Organization B rapidly identified initial compromise attempts, isolated affected systems, and forced the red team into an assume breach model.\u201d</em></p>\n<p>Organization A is a Government Services and Facilities Sector entity. Organization B operates in the Water and Wastewater Systems Sector. The red team used comparable techniques against both. The difference in outcome was entirely about detection and response, not the sophistication of the attack.</p>\n<p>At Organization A, the red team found a web application that still used default credentials. They used it to send phishing emails from a trusted internal address and gained access to four workstations. From there, they exploited a misconfigured Active Directory Certificate Services template with the ESC1 flaw. This allowed a low-privileged user to request certificates for other users, including administrators. They then reached all the targeted sensitive business systems without anyone noticing. After moving into the cloud, they even read SOC staff emails to see if the attack had been detected. It hadn\u2019t.</p>\n<p><em>\u201cWithout well-defined baselines and alert filtering, false positives and routine alerts overwhelm defenders, obscuring real threats.\u201d CISA continues. \u201cOrganizations that tune alerts to highlight anomalies and filter out normal business activity enable defenders to focus on genuine incidents and respond rapidly.\u201d</em></p>\n<p>Organization A\u2019s SOC was receiving thousands of false positive alerts, many at higher severity than the actual intrusion alerts the red team was generating. Staff eventually reviewed SCCM-related alerts from real red team activity, couldn\u2019t identify the system\u2019s owner or function, and marked it a false positive.</p>\n<p>The red team confirmed the miss by reading SOC email. Then they used keyloggers and screenshot capture on SOC workstations to make sure nothing was coming. Nothing was. The organization had multiple separate SOCs with different EDR solutions and no cross-team visibility, which meant that even if one team noticed something, there was no mechanism to act on it across the relevant systems.</p>\n<p><em>\u201cDetection tools are only as effective as the people, processes, and procedures supporting them. SOC staff should not operate in silos and should have clear authority unhindered by bureaucracy to effectively contain and resolve incidents.\u201d add CISA.</em></p>\n<p>At Organization A, SOC analysts were managing systems they didn\u2019t fully understand and had no written escalation procedures, so their default response to ambiguity was to wait. At Organization B, staff triaged, investigated, coordinated with engineering, and reimaged machines before handing them back to users.</p>\n<p>At Organization B, the red team still found important security gaps. They discovered a password stored in plain text inside an XML file on an SCCM distribution point. They used the related service account to gain powerful rights over a domain controller and then performed a DCSync attack, obtaining the <code>krbtgt</code> hash. This allowed them to create Golden Tickets and impersonate users across the domain.</p>\n<p>They also found a path into the OT network through RDP files pointing to a bastion host. Using FTP credentials found on a jump server, they connected to the bastion through SSH. The bastion had no outbound internet access, so their payload could not run, and the SOC quarantined the host. Still, the access path was there.</p>\n<p>Both organizations also had the same cloud security problem: neither had enabled Conditional Access for workload identities. This Microsoft feature applies access controls to applications and service accounts, not just human users. Without it, applications with broad Microsoft Graph permissions can bypass normal Conditional Access rules. CISA\u2019s red team used this gap in both organizations to access emails across the companies.</p>\n<p>In Organization A, the team also found AWS IAM credentials stored in users\u2019 home directories with no expiration date. Those credentials could remain valid indefinitely, creating another long-term risk.</p>\n<p>In Organization B\u2019s cloud environment, the red team abused Seamless SSO by using Kerberos tickets obtained via DCSync to authenticate to Azure without needing any user\u2019s cleartext password. They found a disabled AD-synced account that owned an application with permission to read, write, and send emails for every user in the tenant. They re-enabled the account, DCSynced its credentials, added a client secret to the application, and could then access the full mailbox of every employee from the public internet. Organization B\u2019s detections flagged the AzureHound tool by user agent and caught anomalous Microsoft Graph API request volumes, but those controls arrived after the initial cloud access was already established.</p>\n<p>CISA recommends several practical steps to improve security. These include hardening ADCS by disabling <code>CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT</code> on templates and limiting who can enroll, setting the Machine Account Quota to zero when there is no operational need, and removing cleartext credentials from workstations and network shares.</p>\n<p>Organizations should also enable Conditional Access for workload identities, create procedures to revoke tokens, and treat SCCM and similar endpoint management platforms as Tier 0 assets, giving them the same level of protection as domain controllers.</p>\n<p>The full advisory also maps each red team technique to its MITRE ATT&amp;CK identifier and compares how well the two organizations detected the different stages of the attacks.</p>\n<p><strong>Follow me on Twitter:\u00a0</strong><a href=\"https://twitter.com/securityaffairs\"><strong>@securityaffairs</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://www.facebook.com/sec.affairs\"><strong>Facebook</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://infosec.exchange/@securityaffairs\"><strong>Mastodon</strong></a><strong></strong></p>\n<p><a href=\"http://www.linkedin.com/pub/pierluigi-paganini/b/742/559\"><strong>Pierluigi\u00a0Paganini</strong></a><strong></strong></p>\n<p><strong>(</strong><a href=\"http://securityaffairs.co/wordpress/\"><strong>SecurityAffairs</strong></a><strong>\u00a0\u2013\u00a0hacking,\u00a0CISA)</strong></p>",
+      "link": "https://securityaffairs.com/197901/hacking/cisa-red-team-fully-compromised-two-critical-infrastructure-orgs.html",
+      "source": "Security Affairs",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-26T23:20:53+00:00",
+      "published_ts": 1787786453,
+      "smart_groups": [
+        "Ransomware",
+        "Vulnerabilities / CVEs",
+        "Windows / Microsoft",
+        "Cloud / SaaS",
+        "Malware / Payloads",
+        "Identity / Access",
+        "Network / OT / ICS",
+        "Phishing / Social Engineering",
+        "Crypto / Web3",
+        "Red Team / Offensive"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Russian Influence Network Used ChatGPT to Masquerade as Academic Experts",
+      "summary": "The operation promoted a purported Israeli think tank that published copied scholarship under academics\u2019 names and circulated pro-Russian analysis across social media.",
+      "summary_html": "The operation promoted a purported Israeli think tank that published copied scholarship under academics\u2019 names and circulated pro-Russian analysis across social media.",
+      "link": "https://decrypt.co/376662/russia-chatgpt-influence-campaign",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-08-26T22:46:03+00:00",
+      "published_ts": 1787784363,
+      "smart_groups": [
+        "Network / OT / ICS",
+        "AI/ML Security"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Human + AI: How Our Product Managers Innovate with AI",
+      "summary": "The future of work is Human + AI. By treating AI as a core teammate, we empower our teams to eliminate routine friction and accelerate execution. Recently, we sat down with Caleb Harris, a Product Manager, to discuss how they use AI as a daily co-pilot. From custom-built agents that accelerate product roadmaps to safe experimentation in specialized domains, here is an inside look at our AI-native ways of working.Q: Can you share an example of how you're using AI in your day-to-day work, and what problem it helps you solve?A: In Global Business Systems Support, delivering enterprise-grade solutions hinges on cohesively sequenced, complex product roadmaps and the prescriptive Product Requirement Documents (PRDs) behind them. To accelerate this PRD cycle, I built an agent called the 'PRD Professor.' The AI agent serves as a co-pilot for co-creation. It handles the heavy lifting of data synthesis and rapid scenario simulation, while I provide the uniquely human elements: strategic intuition, stakeholder empathy, and contextual judgment. By compressing the friction between design and execution, I can bring multiple iterated solutions to the table in a fraction of the time. This directly reduces business costs while driving much faster value delivery for my customers.Q: How has Zscaler supported you in experimenting with AI or building new AI-powered solutions?A: Zscaler actively fosters an environment of co-elevation by providing business users like me with top-tier models and tools. This allows us to not only experiment with AI but to deploy safe, secure solutions that drive initiatives tied to real-time business objectives.The learning opportunities here are ever-present. Zscaler's support ecosystem includes:Vibrant Internal Communities: We have active groups across Slack and other platforms to connect with builders from all domains, cultivating a diverse and collaborative ecosystem.Company-Wide Workshops: There have been several opportunities to participate in large-scale, broadcasted workshops.A Culture of Commitment: We actively build strong, collaborative relationships that ensure everyone is supported and empowered to succeed. It's a true reflection of being committed to each other.\u00a0Ready to shape the agentic future of cybersecurity with speed and intentionality? Explore open opportunities: zscaler.com/careers",
+      "summary_html": "The future of work is Human + AI. By treating AI as a core teammate, we empower our teams to eliminate routine friction and accelerate execution. Recently, we sat down with Caleb Harris, a Product Manager, to discuss how they use AI as a daily co-pilot. From custom-built agents that accelerate product roadmaps to safe experimentation in specialized domains, here is an inside look at our AI-native ways of working.Q: Can you share an example of how you're using AI in your day-to-day work, and what problem it helps you solve?A: In Global Business Systems Support, delivering enterprise-grade solutions hinges on cohesively sequenced, complex product roadmaps and the prescriptive Product Requirement Documents (PRDs) behind them. To accelerate this PRD cycle, I built an agent called the 'PRD Professor.' The AI agent serves as a co-pilot for co-creation. It handles the heavy lifting of data synthesis and rapid scenario simulation, while I provide the uniquely human elements: strategic intuition, stakeholder empathy, and contextual judgment. By compressing the friction between design and execution, I can bring multiple iterated solutions to the table in a fraction of the time. This directly reduces business costs while driving much faster value delivery for my customers.Q: How has Zscaler supported you in experimenting with AI or building new AI-powered solutions?A: Zscaler actively fosters an environment of co-elevation by providing business users like me with top-tier models and tools. This allows us to not only experiment with AI but to deploy safe, secure solutions that drive initiatives tied to real-time business objectives.The learning opportunities here are ever-present. Zscaler's support ecosystem includes:Vibrant Internal Communities: We have active groups across Slack and other platforms to connect with builders from all domains, cultivating a diverse and collaborative ecosystem.Company-Wide Workshops: There have been several opportunities to participate in large-scale, broadcasted workshops.A Culture of Commitment: We actively build strong, collaborative relationships that ensure everyone is supported and empowered to succeed. It's a true reflection of being committed to each other.\u00a0Ready to shape the agentic future of cybersecurity with speed and intentionality? Explore open opportunities: zscaler.com/careers",
+      "link": "https://www.zscaler.com/blogs/zscaler-life/human-ai-how-our-product-managers-innovate-ai",
+      "source": "Zscaler Research Blogs",
+      "feed_type": "news",
+      "type": "threat-intel-apt-campaigns",
+      "type_label": "Threat Intel & APT Campaigns",
+      "published": "2026-08-26T22:29:05+00:00",
+      "published_ts": 1787783345,
+      "smart_groups": [
+        "Identity / Access"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Bill Gates Wants a Robot Tax and Jobs Humans Can't Be Fired From",
+      "summary": "Gates is calling for AI tokens and robots to be taxed so firms think twice before swapping out workers, plus a bracket of \"human reserved\" roles that stay off-limits to automation.",
+      "summary_html": "Gates is calling for AI tokens and robots to be taxed so firms think twice before swapping out workers, plus a bracket of \"human reserved\" roles that stay off-limits to automation.",
+      "link": "https://decrypt.co/376663/bill-gates-robot-tax-jobs-humans-cant-be-fired",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-08-26T22:16:03+00:00",
+      "published_ts": 1787782563,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Nvidia Shares Surge in After-Hours Trading After Record $96.2 Billion Revenue",
+      "summary": "The chipmaker doubled quarterly revenue while disclosing $366 billion in future commitments and up to $108.5 billion in guarantee exposure.",
+      "summary_html": "The chipmaker doubled quarterly revenue while disclosing $366 billion in future commitments and up to $108.5 billion in guarantee exposure.",
+      "link": "https://decrypt.co/376664/nvidia-shares-surge-record-q2-revenue",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-08-26T21:42:42+00:00",
+      "published_ts": 1787780562,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Critical Avada WordPress theme flaw enables zero-click RCE",
+      "summary": "A critical vulnerability chain in the popular Avada theme for WordPress can be exploited by an unauthenticated attacker to execute arbitrary PHP code on the server. [...]",
+      "summary_html": "A critical vulnerability chain in the popular Avada theme for WordPress can be exploited by an unauthenticated attacker to execute arbitrary PHP code on the server. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/critical-avada-wordpress-theme-flaw-enables-zero-click-rce/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-08-26T21:33:20+00:00",
+      "published_ts": 1787780000,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Dark Caracal Adds New Malware to Cyber Espionage Arsenal",
+      "summary": "GoCaracal is a new modular malware framework that broadens Dark Caracal's capabilities to steal data and maintain access to victims.",
+      "summary_html": "GoCaracal is a new modular malware framework that broadens Dark Caracal's capabilities to steal data and maintain access to victims.",
+      "link": "https://www.darkreading.com/cyberattacks-data-breaches/dark-caracal-adds-new-malware-cyber-espionage-arsenal",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-26T21:33:06+00:00",
+      "published_ts": 1787779986,
+      "smart_groups": [
+        "Malware / Payloads"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Cybersecurity statistics of the week (August 17th - August 23rd)",
+      "summary": "Hi guys, I send out a weekly newsletter with the latest cybersecurity vendor reports and research, and thought you might find it useful, so sharing it here. All the reports and research below were published between August 17th - August 23rd. You can get the below into your inbox every week if you want: https://www.cybersecstats.com/cybersecstatsnewsletter/ Big Picture Reports Quarterly Threat Report: Second Quarter, 2026 (Beazley Security) Q2 2026 vulnerability and threat landscape, with a focus on which vulnerabilities and attack methods actually led to real-world compromises. Key stats: Newly disclosed software vulnerabilities increased 36% in Q2 2026 compared to the previous quarter, after an 18.5% rise in Q1, against a historical norm of a 10% band. Compromised credentials accounted for 67% of ransomware intrusions investigated, down from 74% in Q1. Public ransomware leak-site postings totaled 2,268, still nearly 60% above Q2 2025. Read the full report here . Ransomware Mid-Market Is the Routine Target: Ransomware, Third-Party Risk, and the Widening AI Gap (Black Kite) If you ever wanted to know why mid-market companies are such frequent ransomware targets, this report answers that. Key stats: 73% of ransomware attacks in North America and Europe between 2023 and mid-2026 hit companies with $10M to $1B in annual revenue. More than half of mid-market ransomware victims generate less than $50M in annual revenue. 54.7% of mid-market organizations have at least one significant patch management finding on public-facing software. Read the full report here . Post-Quantum The PQC Confidence Gap (Axiad) Senior people say the post-quantum work is done, but the engineers don\u2019t agree. Key stats: 90% of CISOs and CIOs report a continuously updated cryptographic inventory, compared with 33% of security architects and PKI engineers. 46% cannot name a single individual responsible for leading their PQC migration. 51% have never formally assessed whether their public-facing infrastructure supports post-quantum key exchange. Read the full report here . Workforce AI Agents and the Impact on Cybersecurity (Cisco) A look at how AI is changing cybersecurity work. Key stats: Cybersecurity job demand across G7 economies grew 9.5% from October 2025 to March 2026, compared with the same six months a year earlier, up from 6.8% growth in the previous period. The share of G7 cybersecurity postings requiring AI skills averaged 28.5% in October 2025 to March 2026, doubling from 14.2% a year earlier. Security Engineer led all roles at 18% of postings, followed by Cybersecurity Engineer / Analyst at 16% and SOC Analyst at 12%. Read the full report here . Enterprise Perspective The AI-Era Software Assembly Line (Sonatype) Four years of data on how software composition and risk have changed in the AI era. Key stats: Critical and High-severity vulnerabilities per enterprise application increased by 4.31x and 3.91x, even after excluding newly managed legacy applications. The median age of unresolved Critical and High vulnerabilities dropped from 228 days to 126 days, falling to 103 days by May 2026. For vulnerable dependencies pulled into AI-era applications, a materially lower-risk npm version was already available 46.9% of the time it was selected. Read the full report here . Industry-Specific The State of Networking, Security & AI in Healthcare (Nile) A survey of 300+ healthcare IT leaders on network disruption, cybersecurity pressures, staffing challenges, and AI-powered automation. Key stats: Nearly 85% of healthcare organizations experience periodic network or security disruptions that affect patient care and patient privacy, with 38% seeing them at least weekly. 66% of healthcare IT teams are strained or firefighting, and only 18% are comfortably managing network operations. Only 38% report partial or full Zero Trust implementation, and 26% are aware of Zero Trust with no concrete plans. Read the full report here . submitted by /u/Narcisians [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Hi guys, I send out a weekly newsletter with the latest cybersecurity vendor reports and research, and thought you might find it useful, so sharing it here.</p> <p>All the reports and research below were published between August 17th - August 23rd.</p> <p>You can get the below into your inbox every week if you want: <a href=\"https://www.cybersecstats.com/cybersecstatsnewsletter/\">https://www.cybersecstats.com/cybersecstatsnewsletter/</a> </p> Big Picture Reports <p><strong>Quarterly Threat Report: Second Quarter, 2026 (Beazley Security)</strong></p> <p>Q2 2026 vulnerability and threat landscape, with a focus on which vulnerabilities and attack methods actually led to real-world compromises. </p> <p><strong>Key stats:</strong></p> <ul> <li>Newly disclosed software vulnerabilities increased 36% in Q2 2026 compared to the previous quarter, after an 18.5% rise in Q1, against a historical norm of a 10% band.</li> <li>Compromised credentials accounted for 67% of ransomware intrusions investigated, down from 74% in Q1.</li> <li>Public ransomware leak-site postings totaled 2,268, still nearly 60% above Q2 2025.</li> </ul> <p><em>Read the full report</em> <a href=\"https://www.cybersecstats.com/r/97f0d844?m=50f43416-1146-4a3d-a1e1-5afc95e09a39\"><em>here</em></a><em>.</em></p> Ransomware <p><strong>Mid-Market Is the Routine Target: Ransomware, Third-Party Risk, and the Widening AI Gap (Black Kite)</strong></p> <p>If you ever wanted to know why mid-market companies are such frequent ransomware targets, this report answers that. </p> <p><strong>Key stats:</strong></p> <ul> <li>73% of ransomware attacks in North America and Europe between 2023 and mid-2026 hit companies with $10M to $1B in annual revenue.</li> <li>More than half of mid-market ransomware victims generate less than $50M in annual revenue.</li> <li>54.7% of mid-market organizations have at least one significant patch management finding on public-facing software.</li> </ul> <p><em>Read the full report</em> <a href=\"https://www.cybersecstats.com/r/a1ff52db?m=50f43416-1146-4a3d-a1e1-5afc95e09a39\"><em>here</em></a><em>.</em> </p> Post-Quantum <p><strong>The PQC Confidence Gap (Axiad)</strong></p> <p>Senior people say the post-quantum work is done, but the engineers don\u2019t agree. </p> <p><strong>Key stats:</strong></p> <ul> <li>90% of CISOs and CIOs report a continuously updated cryptographic inventory, compared with 33% of security architects and PKI engineers.</li> <li>46% cannot name a single individual responsible for leading their PQC migration.</li> <li>51% have never formally assessed whether their public-facing infrastructure supports post-quantum key exchange.</li> </ul> <p><em>Read the full report</em> <a href=\"https://www.cybersecstats.com/r/b1dc50a0?m=50f43416-1146-4a3d-a1e1-5afc95e09a39\"><em>here</em></a><em>.</em></p> Workforce <p><strong>AI Agents and the Impact on Cybersecurity (Cisco)</strong></p> <p>A look at how AI is changing cybersecurity work. </p> <p><strong>Key stats:</strong></p> <ul> <li>Cybersecurity job demand across G7 economies grew 9.5% from October 2025 to March 2026, compared with the same six months a year earlier, up from 6.8% growth in the previous period.</li> <li>The share of G7 cybersecurity postings requiring AI skills averaged 28.5% in October 2025 to March 2026, doubling from 14.2% a year earlier.</li> <li>Security Engineer led all roles at 18% of postings, followed by Cybersecurity Engineer / Analyst at 16% and SOC Analyst at 12%.</li> </ul> <p><em>Read the full report</em> <a href=\"https://www.cybersecstats.com/r/628dab8a?m=50f43416-1146-4a3d-a1e1-5afc95e09a39\"><em>here</em></a><em>.</em></p> Enterprise Perspective  <p><strong>The AI-Era Software Assembly Line (Sonatype)</strong></p> <p>Four years of data on how software composition and risk have changed in the AI era.</p> <p><strong>Key stats:</strong></p> <ul> <li>Critical and High-severity vulnerabilities per enterprise application increased by 4.31x and 3.91x, even after excluding newly managed legacy applications.</li> <li>The median age of unresolved Critical and High vulnerabilities dropped from 228 days to 126 days, falling to 103 days by May 2026.</li> <li>For vulnerable dependencies pulled into AI-era applications, a materially lower-risk npm version was already available 46.9% of the time it was selected.</li> </ul> <p><em>Read the full report</em> <a href=\"https://www.cybersecstats.com/r/61d19b4d?m=50f43416-1146-4a3d-a1e1-5afc95e09a39\"><em>here</em></a><em>.</em></p> Industry-Specific <p><strong>The State of Networking, Security &amp; AI in Healthcare (Nile)</strong></p> <p>A survey of 300+ healthcare IT leaders on network disruption, cybersecurity pressures, staffing challenges, and AI-powered automation.</p> <p><strong>Key stats:</strong></p> <ul> <li>Nearly 85% of healthcare organizations experience periodic network or security disruptions that affect patient care and patient privacy, with 38% seeing them at least weekly.</li> <li>66% of healthcare IT teams are strained or firefighting, and only 18% are comfortably managing network operations.</li> <li>Only 38% report partial or full Zero Trust implementation, and 26% are aware of Zero Trust with no concrete plans.</li> </ul> <p><em>Read the full report</em> <a href=\"https://www.cybersecstats.com/r/cec1dd97?m=50f43416-1146-4a3d-a1e1-5afc95e09a39\"><em>here</em></a><em>.</em></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Narcisians\"> /u/Narcisians </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vza2nw/cybersecurity_statistics_of_the_week_august_17th/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vza2nw/cybersecurity_statistics_of_the_week_august_17th/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1vza2nw/cybersecurity_statistics_of_the_week_august_17th/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-08-26T21:16:18+00:00",
+      "published_ts": 1787778978,
+      "smart_groups": [
+        "Ransomware",
+        "Vulnerabilities / CVEs",
+        "Network / OT / ICS",
+        "Community Discussion"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Exclusive: NSA to host a hacker reunion in bid to rebuild secretive unit",
+      "summary": "The National Security Agency will welcome back to campus potentially hundreds of former members of the elite group known as Tailored Access Operations (TAO) to celebrate the division\u2019s recent rebranding.",
+      "summary_html": "The National Security Agency will welcome back to campus potentially hundreds of former members of the elite group known as Tailored Access Operations (TAO) to celebrate the division\u2019s recent rebranding.",
+      "link": "https://therecord.media/nsa-to-host-hacker-reunion-in-bid-to-rebuild-secretive-unit",
+      "source": "The Record",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-26T20:53:00+00:00",
+      "published_ts": 1787777580,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "What Traders Are Watching for Bitcoin's Next Move",
+      "summary": "Bitcoin's monster rally just hit its first real test. Here's why each catalyst matters and how they could move the price from here.",
+      "summary_html": "Bitcoin's monster rally just hit its first real test. Here's why each catalyst matters and how they could move the price from here.",
+      "link": "https://decrypt.co/376649/what-traders-watching-bitcoin-next-move",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-08-26T20:22:17+00:00",
+      "published_ts": 1787775737,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Better launches Bitcoin-backed mortgages powered by Coinbase",
+      "summary": "Better and Coinbase have launched a crypto-backed mortgage product that lets US homebuyers pledge Bitcoin as collateral for a down payment without having to sell it.",
+      "summary_html": "<p></p><p>Better and Coinbase have launched a crypto-backed mortgage product that lets US homebuyers pledge Bitcoin as collateral for a down payment without having to sell it.</p>",
+      "link": "https://cointelegraph.com/news/better-launches-bitcoin-backed-mortgages-powered-by-coinbase?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-08-26T20:09:23+00:00",
+      "published_ts": 1787774963,
+      "smart_groups": [
+        "Product News"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Galaxy Opens Retail Crypto-Backed Credit Lines on Bitcoin, Ethereum and Solana",
+      "summary": "GalaxyOne clients can borrow cash against Bitcoin, Ethereum, and staked Solana at 8.99% APR without selling a coin.",
+      "summary_html": "GalaxyOne clients can borrow cash against Bitcoin, Ethereum, and staked Solana at 8.99% APR without selling a coin.",
+      "link": "https://decrypt.co/376646/galaxy-crypto-credit-lines-bitcoin-ethereum-solana",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-08-26T19:56:03+00:00",
+      "published_ts": 1787774163,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "US Banks Join Forces to Build a Blockchain of Their Own",
+      "summary": "The BankChain Alliance aims to give smaller financial institutions access to tokenized deposits and blockchain payments through a shared network targeted for 2027.",
+      "summary_html": "The BankChain Alliance aims to give smaller financial institutions access to tokenized deposits and blockchain payments through a shared network targeted for 2027.",
+      "link": "https://decrypt.co/376644/banks-build-blockchain-bankchain-alliance",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-08-26T19:21:25+00:00",
+      "published_ts": 1787772085,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Red Flags That Expose Fake North Korean IT Workers",
+      "summary": "North Korean operatives posing as IT workers are improving their tactics, but researchers say there are still ways to spot them before they do damage.",
+      "summary_html": "North Korean operatives posing as IT workers are improving their tactics, but researchers say there are still ways to spot them before they do damage.",
+      "link": "https://www.darkreading.com/insider-threats/red-flags-expose-fake-north-korean-it-workers",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-26T19:21:24+00:00",
+      "published_ts": 1787772084,
+      "smart_groups": [
+        "Network / OT / ICS"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Apple sets its iPhone 18 event for September: A new foldable and CEO could steal the show",
+      "summary": "Is a foldable iPhone finally in our future? We'll be on the ground on Sept. 9 to find out.",
+      "summary_html": "Is a foldable iPhone finally in our future? We'll be on the ground on Sept. 9 to find out.",
+      "link": "https://www.zdnet.com/article/what-to-expect-from-apples-confirmed-sept-9-launch-event/",
+      "source": "ZDNet \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-26T19:18:00+00:00",
+      "published_ts": 1787771880,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "What We Still Don\u2019t Know About OpenAI\u2019s Hugging Face Hack",
+      "summary": "The AI giant acknowledges that it could have done far more to prevent its AI agents from going rogue. But it still fails to explain why it didn't see this fiasco coming.",
+      "summary_html": "The AI giant acknowledges that it could have done far more to prevent its AI agents from going rogue. But it still fails to explain why it didn't see this fiasco coming.",
+      "link": "https://www.wired.com/story/openais-hugging-face-hack-debrief-raises-more-questions-than-it-answers/",
+      "source": "WIRED \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-26T19:16:42+00:00",
+      "published_ts": 1787771802,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Medical device firm Boston Scientific says cyberattack has disrupted shipment processes",
+      "summary": "The company released a statement and filed documents with the Securities and Exchange Commission (SEC) saying a cybersecurity incident was discovered on Tuesday.",
+      "summary_html": "The company released a statement and filed documents with the Securities and Exchange Commission (SEC) saying a cybersecurity incident was discovered on Tuesday.",
+      "link": "https://therecord.media/boston-scientific-cyberattack-disrupts-shipment-processes",
+      "source": "The Record \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-08-26T19:10:00+00:00",
+      "published_ts": 1787771400,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Fake GTA 6 Demo Spreads Malware: How to Spot the Scam",
+      "summary": "There is no legitimate GTA 6 demo. Fake Rockstar sites are distributing Vidar malware that targets passwords, cookies, and logged-in browser sessions. The post Fake GTA 6 Demo Spreads Malware: How to Spot the Scam appeared first on TechRepublic .",
+      "summary_html": "<p>There is no legitimate GTA 6 demo. Fake Rockstar sites are distributing Vidar malware that targets passwords, cookies, and logged-in browser sessions.</p>\n<p>The post <a href=\"https://www.techrepublic.com/article/news-fake-gta-6-demo-malware-scam/\">Fake GTA 6 Demo Spreads Malware: How to Spot the Scam</a> appeared first on <a href=\"https://www.techrepublic.com\">TechRepublic</a>.</p>",
+      "link": "https://www.techrepublic.com/article/news-fake-gta-6-demo-malware-scam/",
+      "source": "TechRepublic \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-26T19:01:03+00:00",
+      "published_ts": 1787770863,
+      "smart_groups": [
+        "Malware / Payloads"
+      ],
+      "curated": false
+    },
+    {
+      "title": "New GPUThor attack defeats NVIDIA ECC protection for root access",
+      "summary": "A newly disclosed Rowhammer attack called GPUThor can bypass error-correcting code (ECC) protections on NVIDIA GPUs, enabling denial-of-service (DoS) and root-level privilege escalation. [...]",
+      "summary_html": "A newly disclosed Rowhammer attack called GPUThor can bypass error-correcting code (ECC) protections on NVIDIA GPUs, enabling denial-of-service (DoS) and root-level privilege escalation. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/new-gputhor-attack-defeats-nvidia-ecc-protection-for-root-access/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-08-26T18:48:24+00:00",
+      "published_ts": 1787770104,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Bitcoin Wallets Dormant for Over a Decade Move $40M in One Week",
+      "summary": "Six wallets that slept through Bitcoin's entire boom woke up between Aug. 16 and Aug. 26, moving tens of millions in BTC.",
+      "summary_html": "Six wallets that slept through Bitcoin's entire boom woke up between Aug. 16 and Aug. 26, moving tens of millions in BTC.",
+      "link": "https://decrypt.co/376641/bitcoin-wallets-dormant-decade-move-40m",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-08-26T18:44:17+00:00",
+      "published_ts": 1787769857,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "PATCHCORD: New malware cluster targets Afghan telecom and South Asian critical infrastructure",
+      "summary": "Acronis Threat Research Unit (TRU) has identified an ongoing campaign delivering a previously undocumented custom backdoor against Afghan telecom providers and South Asian critical infrastructure organizations. The backdoor, tracked as PATCHCORD, is a compiled C/C++ implant delivered through sector-specific lures, including fake VPN installers impersonating Afghan Telecom (AFTEL) and telecom management tools. The research is published here - https://www.acronis.com/en/tru/posts/patchcord-new-malware-cluster-targets-afghan-telecom-and-south-asian-critical-infrastructure/ submitted by /u/acronis [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Acronis Threat Research Unit (TRU) has identified an ongoing campaign delivering a previously undocumented custom backdoor against Afghan telecom providers and South Asian critical infrastructure organizations. The backdoor, tracked as PATCHCORD, is a compiled C/C++ implant delivered through sector-specific lures, including fake VPN installers impersonating Afghan Telecom (AFTEL) and telecom management tools.</p> <p>The research is published here - <a href=\"https://www.acronis.com/en/tru/posts/patchcord-new-malware-cluster-targets-afghan-telecom-and-south-asian-critical-infrastructure/\">https://www.acronis.com/en/tru/posts/patchcord-new-malware-cluster-targets-afghan-telecom-and-south-asian-critical-infrastructure/</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/acronis\"> /u/acronis </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vz5u3t/patchcord_new_malware_cluster_targets_afghan/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vz5u3t/patchcord_new_malware_cluster_targets_afghan/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1vz5u3t/patchcord_new_malware_cluster_targets_afghan/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-08-26T18:43:58+00:00",
+      "published_ts": 1787769838,
+      "smart_groups": [
+        "Malware / Payloads",
+        "Network / OT / ICS",
+        "Community Discussion"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Meta pledges to overhaul kids\u2019 safety protections, pay $17 billion to settle social media case",
+      "summary": "A multibillion-dollar settlement with attorneys general from nearly every U.S. state and territory will mean new privacy and safety protections in Meta products.",
+      "summary_html": "A multibillion-dollar settlement with attorneys general from nearly every U.S. state and territory will mean new privacy and safety protections in Meta products.",
+      "link": "https://therecord.media/meta-settlement-children-online-safety-social-media",
+      "source": "The Record",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-26T18:35:00+00:00",
+      "published_ts": 1787769300,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Do Smart Monitors Track You? What Buyers Should Know",
+      "summary": "A smart monitor can do far more than display a PC. Built-in apps, ACR, and advertising systems can introduce additional privacy considerations. The post Do Smart Monitors Track You? What Buyers Should Know appeared first on TechRepublic .",
+      "summary_html": "<p>A smart monitor can do far more than display a PC. Built-in apps, ACR, and advertising systems can introduce additional privacy considerations.</p>\n<p>The post <a href=\"https://www.techrepublic.com/article/news-smart-monitor-privacy-tracking/\">Do Smart Monitors Track You? What Buyers Should Know</a> appeared first on <a href=\"https://www.techrepublic.com\">TechRepublic</a>.</p>",
+      "link": "https://www.techrepublic.com/article/news-smart-monitor-privacy-tracking/",
+      "source": "TechRepublic \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-26T18:28:01+00:00",
+      "published_ts": 1787768881,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "This 120Hz tablet replaced my Kindle and iPad for $220 - here's why I recommend it",
+      "summary": "The TCL Nxtpaper 11 Plus is an 11.5-inch Android tablet that can be all you need, especially with this early Labor Day deal.",
+      "summary_html": "The TCL Nxtpaper 11 Plus is an 11.5-inch Android tablet that can be all you need, especially with this early Labor Day deal.",
+      "link": "https://www.zdnet.com/article/tcl-nxtpaper-11-plus-tablet-deal-labor-day-2026/",
+      "source": "ZDNet \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-26T18:16:11+00:00",
+      "published_ts": 1787768171,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "OpenAI Bans Russian ChatGPT Accounts Used in Covert Influence Campaign",
+      "summary": "OpenAI banned Russian ChatGPT accounts tied to a covert influence campaign involving copied research, fake attribution and coordinated social posts. The post OpenAI Bans Russian ChatGPT Accounts Used in Covert Influence Campaign appeared first on TechRepublic .",
+      "summary_html": "<p>OpenAI banned Russian ChatGPT accounts tied to a covert influence campaign involving copied research, fake attribution and coordinated social posts.</p>\n<p>The post <a href=\"https://www.techrepublic.com/article/news-openai-russian-chatgpt-influence-campaign-emea/\">OpenAI Bans Russian ChatGPT Accounts Used in Covert Influence Campaign</a> appeared first on <a href=\"https://www.techrepublic.com\">TechRepublic</a>.</p>",
+      "link": "https://www.techrepublic.com/article/news-openai-russian-chatgpt-influence-campaign-emea/",
+      "source": "TechRepublic \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-26T18:02:33+00:00",
+      "published_ts": 1787767353,
+      "smart_groups": [
+        "AI/ML Security"
+      ],
+      "curated": false
+    },
     {
       "title": "FBI Disrupts Chinese Proxy Tools Used in Mass Hacking of US Agencies and Infrastructure",
       "summary": "China\u2019s hacking campaign targeted NASA, the Federal Reserve, the US Senate, the Justice Department, and more, according to the DOJ.",
@@ -62,6 +453,22 @@
       "published": "2026-08-26T17:34:00+00:00",
       "published_ts": 1787765640,
       "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Android Malware Hijacks Update System for Car Head Units",
+      "summary": "Threat actors behind a notorious click-fraud botnet have set their sights on vehicle infotainment modules and are abusing legitimate functionality to spread infections.",
+      "summary_html": "Threat actors behind a notorious click-fraud botnet have set their sights on vehicle infotainment modules and are abusing legitimate functionality to spread infections.",
+      "link": "https://www.darkreading.com/cyberattacks-data-breaches/android-malware-hijacks-update-system-car-head-units",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-08-26T17:33:45+00:00",
+      "published_ts": 1787765625,
+      "smart_groups": [
+        "Malware / Payloads"
+      ],
       "curated": false
     },
     {
@@ -170,6 +577,29 @@
         "Network / OT / ICS",
         "Crypto / Web3",
         "Community Discussion"
+      ],
+      "curated": true
+    },
+    {
+      "title": "What to Look for in a Deception Technology Solution",
+      "summary": "Modern security teams face an uncomfortable reality: perimeter defenses are no longer sufficient. According to the 2026 Verizon Data Breach Investigations Report (DBIR), stolen credentials remain a primary breach vector, and modern attackers move laterally with extreme speed once inside. Compounding this, traditional security tools generate noisy alerts, resulting in severe alert fatigue.To detect threats early, organizations are adopting deception technology. A deception technology solution is a proactive approach that places decoys, lures, and traps across the environment to detect malicious activity early. Rather than replacing EDR, NDR, or Zero Trust controls, deception acts as a critical complementary layer. This guide outlines the key features and evaluation criteria to help you select the right solution. What Is a Deception Technology Solution?Cyber deception is a defensive strategy that deploys realistic, non-production assets, such as fake credentials, servers, files, shares, and applications, to mislead attackers. Legitimate users should never touch these assets. If they do, it signals credential compromise or malicious insider activity, both of which merit investigation.This proactive defense is supported by frameworks like and NIST guidelines, which advocate for adversary engagement to build enterprise resilience. MITRE Engage Framework recommends deploying decoys on trusted systems; NIST SP 800-61 calls for detection techniques beyond signatures.Deception AssetDescriptionExampleDecoysSimulated systemsFake database serverLuresBaits placed on endpointsFake credentialsAD TrapsDirectory objectsDecoy administrator accounts\u00a0 How Deception Technology WorksDeception platforms automatically distribute lures across endpoints using policy-based rules; no manual deployment per device.\"When an attacker compromises a device and searches for lateral paths, they discover these lures (e.g., deceptive mapped drives or SSH keys). Engaging with a lure directs them to a decoy system. Probing the decoy triggers a high-fidelity, context-rich alert, minimizing dwell time and stopping lateral movement before production assets are impacted.Further emphasizing the need for deceptive traps, the Zscaler ThreatLabz 2026 Phishing and Initial Access Report found that 95.2% of phishing and initial access attempts now hide inside encrypted (TLS/SSL) traffic. Because legacy security tools often lack visibility into encrypted channels, placing high-fidelity decoys and lures across endpoints and cloud assets creates an unmissable alarm system when adversaries attempt to leverage compromised access.\u00a0Deception Technology vs. Traditional HoneypotsModern deception evolved from honeypots, but they are fundamentally different:FeatureHoneypotsModern DeceptionScaleStatic, manualDistributed, automatedScopeNetwork segmentsEndpoints, cloud, identityManagementHigh maintenanceCentralized, policy-drivenIntegrationSiloedIntegrated with SIEM, SOAR, EDR\u00a0 Why Organizations Use Deception TechnologyDetect Attackers EarlyDeception catches attackers during reconnaissance, privilege escalation, and lateral movement. It is uniquely suited to detect \"living off the land\" techniques where attackers use built-in administrative tools that bypass traditional signature-based EDR, dramatically improving containment times.Reduce Alert FatigueDeception alerts are high-fidelity when decoys are placed in zones where legitimate traffic never flows. A decoy SMB share in a vaulted segment has zero false positives; one on a general subnet may not.Improve Visibility Into Lateral Movement and RansomwareDeception detects file share scanning (a precursor to encryption) by triggering alerts when attacker-controlled processes probe decoy shares, alerting security teams within minutes of reconnaissance.This early-stage visibility is critical given the sheer volume of adversary probing. According to the Zscaler ThreatLabz 2026 Phishing and Initial Access Report, deception telemetry recorded 89.9 million hostile interactions from 1.37 million unique attacker IPs in a six-month span alone. This highlights that attackers are actively scanning identity and collaboration platforms to map potential paths long before launching a targeted intrusion. Core Features to Look for in a Deception Technology SolutionWhen evaluating deception technology, prioritize the following foundational capabilities:Key FeatureDescriptionEvaluation CheckBelievable DecoysMust run realistic services to deceive advanced attackersDo decoys respond dynamically?Broad CoverageMust protect hybrid endpoints, cloud, and Active DirectoryDoes it support SaaS decoys?AutomationAutomated deployment, updates, and low overhead are essentialCan it deploy endpoint lures automatically?Rich ContextAlerts must provide deep telemetry (user, process, and timeline)Does it map to MITRE ATT&CK?IntegrationsMust connect natively to SIEM, SOAR, and EDR platformsCan it trigger an automated response?Low OverheadMust not degrade endpoint performance or cause noiseIs it agentless?\u00a0 Evaluation Criteria: Comparing SolutionsTo select a platform that scales, use these five key criteria:Evaluation CriterionDescriptionKey FocusEase of DeploymentSoftware-defined or agentless deliveryDeploys globally in minutes without complex hardwareCoverage DepthProtects hybrid endpoints, AD, and cloudAddresses surfaces where credential abuse is prevalentDetection QualityEnriches alerts with rich telemetryDistinguishes automated scanning from targeted movementEnterprise ScalabilityCentralized policy administrationSeamlessly supports remote workforces and cloud growthExecutive VisibilityMeasures risk reduction and metricsShows how deception shortens MTTD and MTTR\u00a0 Common Use Cases & What to AvoidModern enterprises leverage deception to solve critical security challenges while avoiding costly operational pitfalls:Common Use CasesCritical Pitfalls to AvoidCredential Protection: Surfacing stolen admin credentials used to access fake directory servicesStatic Decoys: Easily fingerprintable decoys are quickly bypassed by sophisticated actorsLateral Detection: Catching attackers as they probe decoy file shares or scan network segmentsNetwork-Only Focus: Solutions lacking cloud and remote endpoint coverage leave massive blind spotsRansomware Defense: Tripping decoy shares to flag encryption behaviors before damage occursSiloed Alerting: Solutions without native SOAR/SIEM integrations slow down responseThreat Hunting:\u00a0Providing high-fidelity leads that analysts can pivot from to uncover threatsHigh Maintenance: Platforms requiring constant manual updates drain valuable resources\u00a0 How Deception Fits Into a Zero Trust StrategyZero trust restricts access; deception detects when that access is abused. A compromised admin account passes zero trust's authentication check, but fails the moment it tries to access a decoy admin share.This is where Zscaler Deception excels. Integrated directly into the Zscaler Zero Trust Exchange\u2122, it allows organizations to deploy high-fidelity decoys and lures effortlessly without adding operational complexity. Combining Zero Trust access controls with active deception enables enterprises to achieve a powerful defense-in-depth posture that proactively stops lateral movement.\u00a0 ConclusionThe ideal deception technology solution must be highly realistic, automated, and deeply integrated into your existing security stack. Rather than introducing noise, it provides the high-fidelity signals needed to neutralize advanced threats. By aligning deception with a Zero Trust framework, you can minimize attacker dwell time and protect your most critical assets.",
+      "summary_html": "Modern security teams face an uncomfortable reality: perimeter defenses are no longer sufficient. According to the 2026 Verizon Data Breach Investigations Report (DBIR), stolen credentials remain a primary breach vector, and modern attackers move laterally with extreme speed once inside. Compounding this, traditional security tools generate noisy alerts, resulting in severe alert fatigue.To detect threats early, organizations are adopting deception technology. A deception technology solution is a proactive approach that places decoys, lures, and traps across the environment to detect malicious activity early. Rather than replacing EDR, NDR, or Zero Trust controls, deception acts as a critical complementary layer. This guide outlines the key features and evaluation criteria to help you select the right solution. What Is a Deception Technology Solution?Cyber deception is a defensive strategy that deploys realistic, non-production assets, such as fake credentials, servers, files, shares, and applications, to mislead attackers. Legitimate users should never touch these assets. If they do, it signals credential compromise or malicious insider activity, both of which merit investigation.This proactive defense is supported by frameworks like and NIST guidelines, which advocate for adversary engagement to build enterprise resilience. MITRE Engage Framework recommends deploying decoys on trusted systems; NIST SP 800-61 calls for detection techniques beyond signatures.Deception AssetDescriptionExampleDecoysSimulated systemsFake database serverLuresBaits placed on endpointsFake credentialsAD TrapsDirectory objectsDecoy administrator accounts\u00a0 How Deception Technology WorksDeception platforms automatically distribute lures across endpoints using policy-based rules; no manual deployment per device.\"When an attacker compromises a device and searches for lateral paths, they discover these lures (e.g., deceptive mapped drives or SSH keys). Engaging with a lure directs them to a decoy system. Probing the decoy triggers a high-fidelity, context-rich alert, minimizing dwell time and stopping lateral movement before production assets are impacted.Further emphasizing the need for deceptive traps, the Zscaler ThreatLabz 2026 Phishing and Initial Access Report found that 95.2% of phishing and initial access attempts now hide inside encrypted (TLS/SSL) traffic. Because legacy security tools often lack visibility into encrypted channels, placing high-fidelity decoys and lures across endpoints and cloud assets creates an unmissable alarm system when adversaries attempt to leverage compromised access.\u00a0Deception Technology vs. Traditional HoneypotsModern deception evolved from honeypots, but they are fundamentally different:FeatureHoneypotsModern DeceptionScaleStatic, manualDistributed, automatedScopeNetwork segmentsEndpoints, cloud, identityManagementHigh maintenanceCentralized, policy-drivenIntegrationSiloedIntegrated with SIEM, SOAR, EDR\u00a0 Why Organizations Use Deception TechnologyDetect Attackers EarlyDeception catches attackers during reconnaissance, privilege escalation, and lateral movement. It is uniquely suited to detect \"living off the land\" techniques where attackers use built-in administrative tools that bypass traditional signature-based EDR, dramatically improving containment times.Reduce Alert FatigueDeception alerts are high-fidelity when decoys are placed in zones where legitimate traffic never flows. A decoy SMB share in a vaulted segment has zero false positives; one on a general subnet may not.Improve Visibility Into Lateral Movement and RansomwareDeception detects file share scanning (a precursor to encryption) by triggering alerts when attacker-controlled processes probe decoy shares, alerting security teams within minutes of reconnaissance.This early-stage visibility is critical given the sheer volume of adversary probing. According to the Zscaler ThreatLabz 2026 Phishing and Initial Access Report, deception telemetry recorded 89.9 million hostile interactions from 1.37 million unique attacker IPs in a six-month span alone. This highlights that attackers are actively scanning identity and collaboration platforms to map potential paths long before launching a targeted intrusion. Core Features to Look for in a Deception Technology SolutionWhen evaluating deception technology, prioritize the following foundational capabilities:Key FeatureDescriptionEvaluation CheckBelievable DecoysMust run realistic services to deceive advanced attackersDo decoys respond dynamically?Broad CoverageMust protect hybrid endpoints, cloud, and Active DirectoryDoes it support SaaS decoys?AutomationAutomated deployment, updates, and low overhead are essentialCan it deploy endpoint lures automatically?Rich ContextAlerts must provide deep telemetry (user, process, and timeline)Does it map to MITRE ATT&amp;CK?IntegrationsMust connect natively to SIEM, SOAR, and EDR platformsCan it trigger an automated response?Low OverheadMust not degrade endpoint performance or cause noiseIs it agentless?\u00a0 Evaluation Criteria: Comparing SolutionsTo select a platform that scales, use these five key criteria:Evaluation CriterionDescriptionKey FocusEase of DeploymentSoftware-defined or agentless deliveryDeploys globally in minutes without complex hardwareCoverage DepthProtects hybrid endpoints, AD, and cloudAddresses surfaces where credential abuse is prevalentDetection QualityEnriches alerts with rich telemetryDistinguishes automated scanning from targeted movementEnterprise ScalabilityCentralized policy administrationSeamlessly supports remote workforces and cloud growthExecutive VisibilityMeasures risk reduction and metricsShows how deception shortens MTTD and MTTR\u00a0 Common Use Cases &amp; What to AvoidModern enterprises leverage deception to solve critical security challenges while avoiding costly operational pitfalls:Common Use CasesCritical Pitfalls to AvoidCredential Protection: Surfacing stolen admin credentials used to access fake directory servicesStatic Decoys: Easily fingerprintable decoys are quickly bypassed by sophisticated actorsLateral Detection: Catching attackers as they probe decoy file shares or scan network segmentsNetwork-Only Focus: Solutions lacking cloud and remote endpoint coverage leave massive blind spotsRansomware Defense: Tripping decoy shares to flag encryption behaviors before damage occursSiloed Alerting: Solutions without native SOAR/SIEM integrations slow down responseThreat Hunting:\u00a0Providing high-fidelity leads that analysts can pivot from to uncover threatsHigh Maintenance: Platforms requiring constant manual updates drain valuable resources\u00a0 How Deception Fits Into a Zero Trust StrategyZero trust restricts access; deception detects when that access is abused. A compromised admin account passes zero trust's authentication check, but fails the moment it tries to access a decoy admin share.This is where Zscaler Deception excels. Integrated directly into the Zscaler Zero Trust Exchange\u2122, it allows organizations to deploy high-fidelity decoys and lures effortlessly without adding operational complexity. Combining Zero Trust access controls with active deception enables enterprises to achieve a powerful defense-in-depth posture that proactively stops lateral movement.\u00a0 ConclusionThe ideal deception technology solution must be highly realistic, automated, and deeply integrated into your existing security stack. Rather than introducing noise, it provides the high-fidelity signals needed to neutralize advanced threats. By aligning deception with a Zero Trust framework, you can minimize attacker dwell time and protect your most critical assets.",
+      "link": "https://www.zscaler.com/blogs/product-insights/what-to-look-for-deception-technology",
+      "source": "Zscaler Research Blogs",
+      "feed_type": "news",
+      "type": "threat-intel-apt-campaigns",
+      "type_label": "Threat Intel & APT Campaigns",
+      "published": "2026-08-26T17:06:19+00:00",
+      "published_ts": 1787763979,
+      "smart_groups": [
+        "Ransomware",
+        "Vulnerabilities / CVEs",
+        "Windows / Microsoft",
+        "Cloud / SaaS",
+        "Network / OT / ICS",
+        "Data Breaches / Leaks",
+        "Phishing / Social Engineering",
+        "Crypto / Web3"
       ],
       "curated": true
     },
@@ -571,6 +1001,26 @@
       "smart_groups": [
         "Vulnerabilities / CVEs",
         "Windows / Microsoft"
+      ],
+      "curated": true
+    },
+    {
+      "title": "IronLantern remediation tool for Yogi malware",
+      "summary": "I\u2019ve been reverse engineering a Windows malware sample I\u2019m calling \u201cYogi\u201d and built IronLantern a defensive remediation/recovery tool from the findings. You can find the malware sample on https://bazaar.abuse.ch/browse/ by copy pasting the malware's sha256 hash in the search bar : sha256:ecc42df31157857f6bb17e6fd458b8bf10047a80edff10f76a3ad7126fdc6926 What I found (using DIE, pycdc, pycdas, regshot, procmon and procexp), : - Python 3.9 / PyInstaller implant - HKCU Run persistence via WindowsSecurity - randomized copies under %APPDATA%\\Microsoft\\Crypto - additional Startup-folder persistence - hidden/system attributes on the Crypto copy - JSON-based HTTP(S) command/reporting logic - repeating-XOR ransomware - deterministic SHA-256-derived XOR keys - .enc file extension - separate Telegram/TikTok/Facebook/web hashtag-trigger logic Dynamic analysis confirmed the persistence behavior, multiple leftover copies after repeated executions, and live-process remediation. I turned the RE into IronLantern, which handles exact-sample detection, persistence cleanup, live-process termination, quarantine/deletion , and recovery of files encrypted with the reconstructed XOR scheme. I haven\u2019t completed the online dynamic-analysis phase yet. Static analysis points to https://go-ns.org.ua/ as the primary C2 endpoint for JSON command/status traffic, with a fallback reporting endpoint at: https://go-ns.org.ua/wp-content/themes/go-ns/send-message-to-telegram.php The full RE report, source, and IronLantern are here: https://github.com/bitGnome7/IronLantern Feedback on the analysis, especially the communication/C2 side, is welcome. I'm hoping this can help anyone who got infected... submitted by /u/bitGnome_7 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I\u2019ve been reverse engineering a Windows malware sample I\u2019m calling \u201cYogi\u201d and built IronLantern a defensive remediation/recovery tool from the findings.</p> <p>You can find the malware sample on <a href=\"https://bazaar.abuse.ch/browse/\">https://bazaar.abuse.ch/browse/</a> by copy pasting the malware's sha256 hash in the search bar :<br/> sha256:ecc42df31157857f6bb17e6fd458b8bf10047a80edff10f76a3ad7126fdc6926</p> <p>What I found (using DIE, pycdc, pycdas, regshot, procmon and procexp), :</p> <p>- Python 3.9 / PyInstaller implant</p> <p>- HKCU Run persistence via WindowsSecurity</p> <p>- randomized copies under %APPDATA%\\Microsoft\\Crypto</p> <p>- additional Startup-folder persistence</p> <p>- hidden/system attributes on the Crypto copy</p> <p>- JSON-based HTTP(S) command/reporting logic</p> <p>- repeating-XOR ransomware</p> <p>- deterministic SHA-256-derived XOR keys</p> <p>- .enc file extension</p> <p>- separate Telegram/TikTok/Facebook/web hashtag-trigger logic</p> <p>Dynamic analysis confirmed the persistence behavior, multiple leftover copies after repeated executions, and live-process remediation.</p> <p>I turned the RE into IronLantern, which handles exact-sample detection, persistence cleanup, live-process termination, <strong>quarantine/deletion</strong>, and <strong>recovery of files encrypted</strong> with the reconstructed XOR scheme.</p> <p>I haven\u2019t completed the online dynamic-analysis phase yet. Static analysis points to<br/> <a href=\"https://go-ns.org.ua/\">https://go-ns.org.ua/</a> as the primary C2 endpoint</p> <p>for JSON command/status traffic, with a fallback reporting endpoint at:<br/> <a href=\"https://go-ns.org.ua/wp-content/themes/go-ns/send-message-to-telegram.php\">https://go-ns.org.ua/wp-content/themes/go-ns/send-message-to-telegram.php</a></p> <p>The full RE report, source, and IronLantern are here:<br/> <a href=\"https://github.com/bitGnome7/IronLantern\">https://github.com/bitGnome7/IronLantern</a></p> <p>Feedback on the analysis, especially the communication/C2 side, is welcome.</p> <p>I'm hoping this can help anyone who got infected...</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/bitGnome_7\"> /u/bitGnome_7 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vyzle3/ironlantern_remediation_tool_for_yogi_malware/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1vyzle3/ironlantern_remediation_tool_for_yogi_malware/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1vyzle3/ironlantern_remediation_tool_for_yogi_malware/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-08-26T15:02:45+00:00",
+      "published_ts": 1787756565,
+      "smart_groups": [
+        "Ransomware",
+        "Vulnerabilities / CVEs",
+        "Malware / Payloads",
+        "DevSecOps",
+        "Community Discussion"
       ],
       "curated": true
     },
@@ -2386,6 +2836,22 @@
       "curated": true
     },
     {
+      "title": "Adobe Photoshop Installation privilege escalation vulnerability",
+      "summary": "TALOS-2026-2360\n\nCVE-2026-48388\n\nA privilege escalation vulnerability exists in the Installation functionality of Photoshop (version(s): Photoshop\\_Set-Up.exe version 2.11.0.30). A specially crafted malformed file can lead to privilege escalation. An attacker can replace with a malicious file to trigger this vulnerability.\n\nThe versions below were either tested or verified to be vulnerable by Talos or confirmed to be vulnerable by the vendor.\n\nPhotoshop (version(s): Photoshop\\_Set-Up.exe version 2.11.0.30)\n\nPhotoshop - https://www.adobe.com/products/photoshop.html\n\n8.2 - CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H\n\nCWE-427 - Uncontrolled Search Path Element\n\nAdobe Photoshop is a powerful software for image creation, photo editing, and graphic design. It provides advanced tools for photo retouching, compositing, digital painting, and creating stunning visual effects. It is one of the most widely used tools for professional digital art.\n\nAdobe Photoshop is vulnerable to a privilege escalation issue when installed via the Microsoft Store application. When a user attempts to install Adobe Photoshop, the following events occur in the background:\n\n`WindowsPackageManagerServer.exe` downloads and runs `Photoshop_Set-Up.exe`.\n\n```\n11:48:33.7206943 AM WindowsPackageManagerServer.exe 5144 CreateFile C:\\Users\\dev\\AppData\\Local\\Temp\\WinGet\\XPFD4T9N395QN6.6.0.0.571\\Photoshop_Set-Up.exe NAME NOT FOUND Desired Access: Read Attributes, Disposition: Open, Options: Open Reparse Point, Attributes: n/a, ShareMode: Read, Write, Delete, AllocationSize: n/a DESKTOP-JNJPO4R\\dev Medium [...] 11:49:43.2552424 AM WindowsPackageManagerServer.exe 5144 SetRenameInformationFile C:\\Users\\dev\\AppData\\Local\\Temp\\WinGet\\XPFD4T9N395QN6.6.0.0.571\\cebaae87bd3f085db4216cca6d0397a927ad71788f24314150d7a185dc21018b SUCCESS ReplaceIfExists: True, FileName: C:\\Users\\dev\\AppData\\Local\\Temp\\WinGet\\XPFD4T9N395QN6.6.0.0.571\\Photoshop_Set-Up.exe DESKTOP-JNJPO4R\\dev Medium\n```\n\n `Photoshop_Set-Up.execalls` `ShellExecutewith the` `runasverb to launch a second instance of` `Photoshop_Set-Up.exewith elevated privileges.`\n\nOnce permission is granted, the new `Photoshop_Set-Up.exe` process runs with `High Integrity` privileges.\n\n```\n11:49:52.1230695 AM Photoshop_Set-Up.exe 8724 Process Create C:\\Users\\dev\\AppData\\Local\\Temp\\WinGet\\XPFD4T9N395QN6.6.0.0.571\\Photoshop_Set-Up.exe SUCCESS PID: 9536, Command line: \"C:\\Users\\dev\\AppData\\ Local\\Temp\\WinGet\\XPFD4T9N395QN6.6.0.0.571\\Photoshop_Set-Up.exe\" --pipename={1AEFEEE0-1E3B-4B53-9E4C-30A9823A79B1} --pid=8724 --locale=en_US --mode=stub DESKTOP-JNJPO4R\\dev Medium 11:49:52.1230816 AM Photoshop_Set-Up.exe 9536 Process Start SUCCESS Parent PID: 8724, Command line: \"C:\\Users\\dev\\AppData\\Local\\Temp\\WinGet\\XPFD4T9N395QN6.6.0.0.571\\Photoshop_Set-Up.exe\" --pipename={1AEFEEE0-1E3B-4B53-9E4C-30A9823A79B1} --pid=8724 --locale=en_US --mode=stub, Current directory: C:\\Users\\dev\\AppData\\Local\\Temp\\WinGet\\XPFD4T9N395QN6.6.0.0.571\\, Environment: [...] High\n```\n\n `TALOS-2025-2274fixes the permissions of the temporary folder so that only high-privilege users can write to it.` `Adobe installer.exeand` `AdobeServiceInstaller.exewith` `High Integrityprivileges to configure the application.`\n\nThe vulnerability exists because `Photoshop_Set-Up.exe`, after copying `Adobe Installer.exe`, searches for it first in the `%TEMP%\\winget` folder, as shown in the following `Process Monitor` logs:\n\n```\n11:51:30.7114936 AM Photoshop_Set-Up.exe 9536 CreateFile C:\\Users\\dev\\AppData\\Local\\Temp\\WinGet\\ElevationManager\\Adobe Installer.exe PATH NOT FOUND Desired Access: Read Attributes, Disposition: Open, Options: Open Reparse Point, Attributes: n/a, ShareMode: Read, Write, Delete, AllocationSize: n/a DESKTOP-JNJPO4R\\dev High\n```\n\nWhen it is not found there, it searches in the `Program Files (x86)\\Common Files` folder:\n\n```\n11:51:30.7120268 AM Photoshop_Set-Up.exe 9536 CreateFile C:\\Program Files (x86)\\Common Files\\Adobe\\Adobe Desktop Common\\ElevationManager\\Adobe Installer.exe SUCCESS Desired Access: Read Attributes, Disposition: Open, Options: Open Reparse Point, Attributes: n/a, ShareMode: Read, Write, Delete, AllocationSize: n/a, OpenResult: Opened DESKTOP-JNJPO4R\\dev High\n```\n\nIn this case, `%TEMP%\\winget\\` is writable by a standard user. An attacker with user-level privileges can exploit this by placing a malicious file named `Adobe Installer.exe` in that directory. When the installer attempts to run `Adobe Installer.exe`, it will instead execute the attacker-controlled file with `HIGH integrity` privileges.\n\nThe `Process Monitor` log below shows the creation of `C:\\pwned.txt` when the attacker-controlled `Adobe Installer.exe` is executed. Note that only a high-privilege user can create a file in the root directory.\n\n```\n11:19:04.6701753 AM Adobe Installer.exe 10676 CreateFile C:\\pwned.txt SUCCESS Desired Access: Generic Write, Read Attributes, Disposition: OverwriteIf, Options: Synchronous IO Non-Alert, Non-Directory File, Attributes: N, ShareMode: Read, Write, AllocationSize: 0, OpenResult: Overwritten DESKTOP-JNJPO4R\\dev High 11:19:04.6861686 AM Adobe Installer.exe 10676 WriteFile C:\\pwned.txt SUCCESS Offset: 0, Length: 23, Priority: Normal DESKTOP-JNJPO4R\\dev High 11:19:04.6862690 AM Adobe Installer.exe 10676 CloseFile C:\\pwned.txt SUCCESS DESKTOP-JNJPO4R\\dev High\n```\n\nBy exploiting this vulnerability, a user can gain SYSTEM privileges.\n\nThis vulnerability is a patch bypass of `TALOS-2025-2274`. Adobe does not maintain versioning for the Photoshop installer, so the installer version was not updated even after the `TALOS-2025-2274` patch was applied.\n\nVendor Link: https://www.cve.org/CVERecord?id=CVE-2026-48388\n\n2026-04-22 - Initial Vendor Contact\n\n2026-04-22 - Vendor Disclosure\n\n2026-07-28 - Vendor Patch Release\n\n2026-07-28 - Public Release\n\nKPC of Cisco Talos",
+      "summary_html": "TALOS-2026-2360\n\nCVE-2026-48388\n\nA privilege escalation vulnerability exists in the Installation functionality of Photoshop (version(s): Photoshop\\_Set-Up.exe version 2.11.0.30). A specially crafted malformed file can lead to privilege escalation. An attacker can replace with a malicious file to trigger this vulnerability.\n\nThe versions below were either tested or verified to be vulnerable by Talos or confirmed to be vulnerable by the vendor.\n\nPhotoshop (version(s): Photoshop\\_Set-Up.exe version 2.11.0.30)\n\nPhotoshop - https://www.adobe.com/products/photoshop.html\n\n8.2 - CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:H\n\nCWE-427 - Uncontrolled Search Path Element\n\nAdobe Photoshop is a powerful software for image creation, photo editing, and graphic design. It provides advanced tools for photo retouching, compositing, digital painting, and creating stunning visual effects. It is one of the most widely used tools for professional digital art.\n\nAdobe Photoshop is vulnerable to a privilege escalation issue when installed via the Microsoft Store application. When a user attempts to install Adobe Photoshop, the following events occur in the background:\n\n`WindowsPackageManagerServer.exe` downloads and runs `Photoshop_Set-Up.exe`.\n\n```\n11:48:33.7206943 AM WindowsPackageManagerServer.exe 5144 CreateFile C:\\Users\\dev\\AppData\\Local\\Temp\\WinGet\\XPFD4T9N395QN6.6.0.0.571\\Photoshop_Set-Up.exe NAME NOT FOUND Desired Access: Read Attributes, Disposition: Open, Options: Open Reparse Point, Attributes: n/a, ShareMode: Read, Write, Delete, AllocationSize: n/a DESKTOP-JNJPO4R\\dev Medium [...] 11:49:43.2552424 AM WindowsPackageManagerServer.exe 5144 SetRenameInformationFile C:\\Users\\dev\\AppData\\Local\\Temp\\WinGet\\XPFD4T9N395QN6.6.0.0.571\\cebaae87bd3f085db4216cca6d0397a927ad71788f24314150d7a185dc21018b SUCCESS ReplaceIfExists: True, FileName: C:\\Users\\dev\\AppData\\Local\\Temp\\WinGet\\XPFD4T9N395QN6.6.0.0.571\\Photoshop_Set-Up.exe DESKTOP-JNJPO4R\\dev Medium\n```\n\n `Photoshop_Set-Up.execalls` `ShellExecutewith the` `runasverb to launch a second instance of` `Photoshop_Set-Up.exewith elevated privileges.`\n\nOnce permission is granted, the new `Photoshop_Set-Up.exe` process runs with `High Integrity` privileges.\n\n```\n11:49:52.1230695 AM Photoshop_Set-Up.exe 8724 Process Create C:\\Users\\dev\\AppData\\Local\\Temp\\WinGet\\XPFD4T9N395QN6.6.0.0.571\\Photoshop_Set-Up.exe SUCCESS PID: 9536, Command line: \"C:\\Users\\dev\\AppData\\ Local\\Temp\\WinGet\\XPFD4T9N395QN6.6.0.0.571\\Photoshop_Set-Up.exe\" --pipename={1AEFEEE0-1E3B-4B53-9E4C-30A9823A79B1} --pid=8724 --locale=en_US --mode=stub DESKTOP-JNJPO4R\\dev Medium 11:49:52.1230816 AM Photoshop_Set-Up.exe 9536 Process Start SUCCESS Parent PID: 8724, Command line: \"C:\\Users\\dev\\AppData\\Local\\Temp\\WinGet\\XPFD4T9N395QN6.6.0.0.571\\Photoshop_Set-Up.exe\" --pipename={1AEFEEE0-1E3B-4B53-9E4C-30A9823A79B1} --pid=8724 --locale=en_US --mode=stub, Current directory: C:\\Users\\dev\\AppData\\Local\\Temp\\WinGet\\XPFD4T9N395QN6.6.0.0.571\\, Environment: [...] High\n```\n\n `TALOS-2025-2274fixes the permissions of the temporary folder so that only high-privilege users can write to it.` `Adobe installer.exeand` `AdobeServiceInstaller.exewith` `High Integrityprivileges to configure the application.`\n\nThe vulnerability exists because `Photoshop_Set-Up.exe`, after copying `Adobe Installer.exe`, searches for it first in the `%TEMP%\\winget` folder, as shown in the following `Process Monitor` logs:\n\n```\n11:51:30.7114936 AM Photoshop_Set-Up.exe 9536 CreateFile C:\\Users\\dev\\AppData\\Local\\Temp\\WinGet\\ElevationManager\\Adobe Installer.exe PATH NOT FOUND Desired Access: Read Attributes, Disposition: Open, Options: Open Reparse Point, Attributes: n/a, ShareMode: Read, Write, Delete, AllocationSize: n/a DESKTOP-JNJPO4R\\dev High\n```\n\nWhen it is not found there, it searches in the `Program Files (x86)\\Common Files` folder:\n\n```\n11:51:30.7120268 AM Photoshop_Set-Up.exe 9536 CreateFile C:\\Program Files (x86)\\Common Files\\Adobe\\Adobe Desktop Common\\ElevationManager\\Adobe Installer.exe SUCCESS Desired Access: Read Attributes, Disposition: Open, Options: Open Reparse Point, Attributes: n/a, ShareMode: Read, Write, Delete, AllocationSize: n/a, OpenResult: Opened DESKTOP-JNJPO4R\\dev High\n```\n\nIn this case, `%TEMP%\\winget\\` is writable by a standard user. An attacker with user-level privileges can exploit this by placing a malicious file named `Adobe Installer.exe` in that directory. When the installer attempts to run `Adobe Installer.exe`, it will instead execute the attacker-controlled file with `HIGH integrity` privileges.\n\nThe `Process Monitor` log below shows the creation of `C:\\pwned.txt` when the attacker-controlled `Adobe Installer.exe` is executed. Note that only a high-privilege user can create a file in the root directory.\n\n```\n11:19:04.6701753 AM Adobe Installer.exe 10676 CreateFile C:\\pwned.txt SUCCESS Desired Access: Generic Write, Read Attributes, Disposition: OverwriteIf, Options: Synchronous IO Non-Alert, Non-Directory File, Attributes: N, ShareMode: Read, Write, AllocationSize: 0, OpenResult: Overwritten DESKTOP-JNJPO4R\\dev High 11:19:04.6861686 AM Adobe Installer.exe 10676 WriteFile C:\\pwned.txt SUCCESS Offset: 0, Length: 23, Priority: Normal DESKTOP-JNJPO4R\\dev High 11:19:04.6862690 AM Adobe Installer.exe 10676 CloseFile C:\\pwned.txt SUCCESS DESKTOP-JNJPO4R\\dev High\n```\n\nBy exploiting this vulnerability, a user can gain SYSTEM privileges.\n\nThis vulnerability is a patch bypass of `TALOS-2025-2274`. Adobe does not maintain versioning for the Photoshop installer, so the installer version was not updated even after the `TALOS-2025-2274` patch was applied.\n\nVendor Link: https://www.cve.org/CVERecord?id=CVE-2026-48388\n\n2026-04-22 - Initial Vendor Contact\n\n2026-04-22 - Vendor Disclosure\n\n2026-07-28 - Vendor Patch Release\n\n2026-07-28 - Public Release\n\nKPC of Cisco Talos",
+      "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2360",
+      "source": "0dayfans",
+      "feed_type": "news",
+      "type": "exploits-pocs",
+      "type_label": "Exploits & PoCs",
+      "published": "2026-08-26T00:00:11+00:00",
+      "published_ts": 1787702411,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
       "title": "Microsoft Windows Cloud Files Mini Filter Driver CldiStreamCompleteRequest use-after-free vulnerability",
       "summary": "",
       "summary_html": "",
@@ -2419,22 +2885,6 @@
         "Product News"
       ],
       "curated": false
-    },
-    {
-      "title": "Adobe Photoshop Installation privilege escalation vulnerability",
-      "summary": "",
-      "summary_html": "",
-      "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2360",
-      "source": "Talos - Vulnerability Reports",
-      "feed_type": "news",
-      "type": "vulnerabilities-cves-exploits",
-      "type_label": "Vulnerabilities, CVEs & Exploits",
-      "published": "2026-08-26T00:00:00+00:00",
-      "published_ts": 1787702400,
-      "smart_groups": [
-        "Vulnerabilities / CVEs"
-      ],
-      "curated": true
     }
   ]
 }
