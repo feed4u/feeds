@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-28T01:05:44.790471+00:00",
+  "generated_at": "2026-08-28T20:18:19.969161+00:00",
   "date": "2026-08-27",
-  "total_items": 1029,
+  "total_items": 1041,
   "next_chunk": "archive/news/daily/2026-08-26.json",
   "items": [
     {
@@ -139,6 +139,20 @@
         "NLP & Language Understanding"
       ],
       "curated": false
+    },
+    {
+      "title": "wbstats 1.2.0 is now on CRAN",
+      "summary": "[This article was first published on https://pacha.dev/blog , and kindly contributed to R-bloggers ].  (You can report issue about the content on this page here ) Want to share your content on R-bloggers? click here if you have a blog, or here if you don't. Before the main content: I am creating an R Community on Google Groups. You can join the group using this form . Changes Removed the dplyr , tidyr , readr , tidyselect , tibble , rlang , and magrittr dependencies in favor of data.table (for row-binding and reshaping data) and base R. Removed the stringr and lubridate dependencies in favor of base R string and date handling. Functions now return data.table objects instead of tibble s. I added wb_country_coverage() to summarize the available data before downloading the series. I removed all the retired indicators and those that return empty tables from wb_cachelist . Installation You can install the latest release version from CRAN with install.packages(\"wbstats\") which is the same as the latest development version from GitHub this as of 2026-08-28 remotes::install_github(\"pachadotdev/wbstats\") Downloading data from the World Bank library(wbstats)\n\n# Population for every country from 1960 until present\nd <- wb_data(\"SP.POP.TOTL\")\n    \nhead(d)\n\n#> # A tibble: 6 \u00d7 9\n#>   iso2c iso3c country    date SP.POP.TOTL unit  obs_status footnote last_updated\n#> #> 1 AF    AFG   Afghanis\u2026  2024    42647492 2025-07-01  \n#> 2 AF    AFG   Afghanis\u2026  2023    41454761 2025-07-01  \n#> 3 AF    AFG   Afghanis\u2026  2022    40578842 2025-07-01  \n#> 4 AF    AFG   Afghanis\u2026  2021    40000412 2025-07-01  \n#> 5 AF    AFG   Afghanis\u2026  2020    39068979 2025-07-01  \n#> 6 AF    AFG   Afghanis\u2026  2019    37856121 2025-07-01 The current World Bank API does not provide summaries of data availability. I added the wb_country_coverage() function to supply that, which reads pre-computed summaries from GitHub. d <- wb_country_coverage(\"gross domestic product\", c(\"Mexico\", \"Chile\"), 2010, 2020)\nd\n\n#      iso2c  iso3c country pct_complete  from    to  nobs         indicator\n# #  1:     CL    CHL   Chile         56.5  1960  2100    52     CC.EG.INTS.KW\n#  2:     MX    MEX  Mexico         56.5  1960  2100    52     CC.EG.INTS.KW\n#  3:     CL    CHL   Chile         34.8  1960  2025    23 EG.EGY.PRIM.PP.KD\n#  4:     MX    MEX  Mexico         34.8  1960  2025    23 EG.EGY.PRIM.PP.KD\n#  5:     CL    CHL   Chile         53.0  1960  2025    35 EG.GDP.PUSE.KO.PP\n# ---                                                                       \n# 82:     MX    MEX  Mexico         54.5  1960  2025    36    PA.NUS.PRVT.PP\n# 83:     CL    CHL   Chile         53.0  1960  2025    35 SL.GDP.PCAP.EM.KD\n# 84:     MX    MEX  Mexico         53.0  1960  2025    35 SL.GDP.PCAP.EM.KD\n# 85:     CL    CHL   Chile        100.0  2004  2023    20   SPI.D5.2.5.HOUS\n# 86:     MX    MEX  Mexico         40.0  2004  2023     8   SPI.D5.2.5.HOUS\n\n# countries with less than 15% coverage for any variable\nd[pct_complete < 15, ]\n\n#     iso2c  iso3c country pct_complete  from    to  nobs                 indicator\n# # 1:     MX    MEX  Mexico         12.9  1960  2100    13 UIS.XUNIT.GDPCAP.02.FSGOV Hans Rosling\u2019s Gapminder using wbstats library(wbstats)\nlibrary(data.table)\nlibrary(tinyplot)\n\nmy_indicators <- c(\n  life_exp = \"SP.DYN.LE00.IN\",\n  gdp_capita =\"NY.GDP.PCAP.CD\",\n  pop = \"SP.POP.TOTL\"\n)\n\nd <- wb_data(my_indicators, start_date = 2016)\n\nd <- merge(d, wb_countries(), \"iso3c\")\nd <- na.omit(d)\n\npng(file=\"man/figures/readme-gdppc-vs-lifexp.png\", width = 900, height = 600)\ntinyplot(\n  life_exp ~ gdp_capita | region,\n  data = d,\n  cex = d$pop,\n  pch = 19,\n  alpha = 0.7,\n  palette = \"tableau\",\n  log = \"x\",\n  xaxl = \"$\",\n  main = \"An Example of Hans Rosling's Gapminder using wbstats\",\n  xlab = \"GDP per Capita (log scale)\",\n  ylab = \"Life Expectancy at Birth\",\n  cap = \"Source: World Bank\"\n)\ndev.off() How I create the package data Just in case this is useful. What worked for me to query the data was to use the format and per_page arguments. You do not need this to work with the package. Endpoints used for the package data: https://api.worldbank.org/v2/indicators?format=json&per_page=30000 https://api.worldbank.org/v2/source?format=json&per_page=100 https://api.worldbank.org/v2/topics?format=json&per_page=100 https://api.worldbank.org/v2/regions?format=json&per_page=100 https://api.worldbank.org/v2/incomelevel?format=json&per_page=10 https://api.worldbank.org/v2/lendingtypes?format=json&per_page=10 https://api.worldbank.org/v2/languages?format=json&per_page=100 Parts of this API endpoints description comes from https://dlthub.com/context/source/world-bank-indicators-api and other were just testing things like \u201clanguage\u201d and \u201clanguages\u201d tp update wbstats . I did not create this package, I just assumed its maintenance as it is a very valuable resoure. Resource Endpoint Method Description indicators /v2/indicator GET Access to nearly 28,000 series indicators countries /v2/country/all GET All countries country_indicator /v2/country/{country_id}/indicator/{indicator_id} GET Specific indicator for a country sources /v2/source GET All data sources source_indicators /v2/source/{source_id}/indicators GET Indicators for a specific source topics /v2/topics GET Metadata about indicator topics regions /v2/country/all GET All regions income_levels /v2/country/income_levels GET All income levels lending_types /v2/country/lending_types GET All lending types languages /v2/country/languages GET All languages I added this because I did not find much information in the official documentation. To leave a comment for the author, please follow the link and comment on their blog: https://pacha.dev/blog . R-bloggers.com offers daily e-mail updates about R news and tutorials about learning R and many other topics. Click here if you're looking to post or find an R/data-science job . Want to share your content on R-bloggers? click here if you have a blog, or here if you don't. Continue reading : wbstats 1.2.0 is now on CRAN",
+      "summary_html": "<!-- \n<div style=\"min-height: 30px;\">\n[social4i size=\"small\" align=\"align-left\"]\n</div>\n-->\n<div>\n[This article was first published on  <strong><a href=\"https://pacha.dev/blog/2026/08/28/wbstats/index.html\"> https://pacha.dev/blog</a></strong>, and kindly contributed to <a href=\"https://www.r-bloggers.com/\">R-bloggers</a>].  (You can report issue about the content on this page <a href=\"https://www.r-bloggers.com/contact-us/\">here</a>)\nWant to share your content on R-bloggers?<a href=\"https://www.r-bloggers.com/add-your-blog/\"> click here</a> if you have a blog, or <a href=\"http://r-posts.com/\"> here</a> if you don't.\n</div>\n<p><em>Before the main content: I am creating an R Community on Google Groups. You can join the group using this <a href=\"https://docs.google.com/forms/d/e/1FAIpQLSdMAj4adRAT4Gyuwt_9dPvxRvOUPml9AD59vuI7qS7XDlp48g/viewform?usp=dialog\">form</a>.</em></p>\nChanges\n<ul>\n<li>Removed the <code>dplyr</code>, <code>tidyr</code>, <code>readr</code>, <code>tidyselect</code>, <code>tibble</code>, <code>rlang</code>, and <code>magrittr</code> dependencies in favor of <code>data.table</code> (for row-binding and reshaping data) and base R.</li>\n<li>Removed the <code>stringr</code> and <code>lubridate</code> dependencies in favor of base R string and date handling.</li>\n<li>Functions now return <code>data.table</code> objects instead of <code>tibble</code>s.</li>\n<li>I added <code>wb_country_coverage()</code> to summarize the available data before downloading the series.</li>\n<li>I removed all the retired indicators and those that return empty tables from <code>wb_cachelist</code>.</li>\n</ul>\nInstallation\n<p>You can install the latest release version from CRAN with</p>\n<pre>install.packages(\"wbstats\")</pre>\n<p>which is the same as the latest development version from GitHub this as of 2026-08-28</p>\n<pre>remotes::install_github(\"pachadotdev/wbstats\")</pre>\nDownloading data from the World Bank\n<pre>library(wbstats)\n\n# Population for every country from 1960 until present\nd &lt;- wb_data(\"SP.POP.TOTL\")\n    \nhead(d)\n\n#&gt; # A tibble: 6 \u00d7 9\n#&gt;   iso2c iso3c country    date SP.POP.TOTL unit  obs_status footnote last_updated\n#&gt;                                   \n#&gt; 1 AF    AFG   Afghanis\u2026  2024    42647492               2025-07-01  \n#&gt; 2 AF    AFG   Afghanis\u2026  2023    41454761               2025-07-01  \n#&gt; 3 AF    AFG   Afghanis\u2026  2022    40578842               2025-07-01  \n#&gt; 4 AF    AFG   Afghanis\u2026  2021    40000412               2025-07-01  \n#&gt; 5 AF    AFG   Afghanis\u2026  2020    39068979               2025-07-01  \n#&gt; 6 AF    AFG   Afghanis\u2026  2019    37856121               2025-07-01</pre>\n<p>The current World Bank API does not provide summaries of data availability. I added the <code>wb_country_coverage()</code> function to supply that, which reads pre-computed summaries from GitHub.</p>\n<pre>d &lt;- wb_country_coverage(\"gross domestic product\", c(\"Mexico\", \"Chile\"), 2010, 2020)\nd\n\n#      iso2c  iso3c country pct_complete  from    to  nobs         indicator\n#                               \n#  1:     CL    CHL   Chile         56.5  1960  2100    52     CC.EG.INTS.KW\n#  2:     MX    MEX  Mexico         56.5  1960  2100    52     CC.EG.INTS.KW\n#  3:     CL    CHL   Chile         34.8  1960  2025    23 EG.EGY.PRIM.PP.KD\n#  4:     MX    MEX  Mexico         34.8  1960  2025    23 EG.EGY.PRIM.PP.KD\n#  5:     CL    CHL   Chile         53.0  1960  2025    35 EG.GDP.PUSE.KO.PP\n# ---                                                                       \n# 82:     MX    MEX  Mexico         54.5  1960  2025    36    PA.NUS.PRVT.PP\n# 83:     CL    CHL   Chile         53.0  1960  2025    35 SL.GDP.PCAP.EM.KD\n# 84:     MX    MEX  Mexico         53.0  1960  2025    35 SL.GDP.PCAP.EM.KD\n# 85:     CL    CHL   Chile        100.0  2004  2023    20   SPI.D5.2.5.HOUS\n# 86:     MX    MEX  Mexico         40.0  2004  2023     8   SPI.D5.2.5.HOUS\n\n# countries with less than 15% coverage for any variable\nd[pct_complete &lt; 15, ]\n\n#     iso2c  iso3c country pct_complete  from    to  nobs                 indicator\n#                                      \n# 1:     MX    MEX  Mexico         12.9  1960  2100    13 UIS.XUNIT.GDPCAP.02.FSGOV</pre>\nHans Rosling\u2019s Gapminder using <code>wbstats</code>\n<pre>library(wbstats)\nlibrary(data.table)\nlibrary(tinyplot)\n\nmy_indicators &lt;- c(\n  life_exp = \"SP.DYN.LE00.IN\",\n  gdp_capita =\"NY.GDP.PCAP.CD\",\n  pop = \"SP.POP.TOTL\"\n)\n\nd &lt;- wb_data(my_indicators, start_date = 2016)\n\nd &lt;- merge(d, wb_countries(), \"iso3c\")\nd &lt;- na.omit(d)\n\npng(file=\"man/figures/readme-gdppc-vs-lifexp.png\", width = 900, height = 600)\ntinyplot(\n  life_exp ~ gdp_capita | region,\n  data = d,\n  cex = d$pop,\n  pch = 19,\n  alpha = 0.7,\n  palette = \"tableau\",\n  log = \"x\",\n  xaxl = \"$\",\n  main = \"An Example of Hans Rosling's Gapminder using wbstats\",\n  xlab = \"GDP per Capita (log scale)\",\n  ylab = \"Life Expectancy at Birth\",\n  cap = \"Source: World Bank\"\n)\ndev.off()</pre>\n<p></p>\nHow I create the package data\n<p><em>Just in case this is useful.</em></p>\n<p>What worked for me to query the data was to use the <code>format</code> and <code>per_page</code> arguments. You <em>do not</em> need this to work with the package.</p>\n<p>Endpoints used for the package data:</p>\n<ul>\n<li>https://api.worldbank.org/v2/indicators?format=json&amp;per_page=30000</li>\n<li>https://api.worldbank.org/v2/source?format=json&amp;per_page=100</li>\n<li>https://api.worldbank.org/v2/topics?format=json&amp;per_page=100</li>\n<li>https://api.worldbank.org/v2/regions?format=json&amp;per_page=100</li>\n<li>https://api.worldbank.org/v2/incomelevel?format=json&amp;per_page=10</li>\n<li>https://api.worldbank.org/v2/lendingtypes?format=json&amp;per_page=10</li>\n<li>https://api.worldbank.org/v2/languages?format=json&amp;per_page=100</li>\n</ul>\n<p>Parts of this API endpoints description comes from https://dlthub.com/context/source/world-bank-indicators-api and other were just testing things like \u201clanguage\u201d and \u201clanguages\u201d tp update <code>wbstats</code>. I did not create this package, I just assumed its maintenance as it is a very valuable resoure.</p>\n\n\n\n\n\n\n\n\n\nResource\nEndpoint\nMethod\nDescription\n\n\n\n\nindicators\n/v2/indicator\nGET\nAccess to nearly 28,000 series indicators\n\n\ncountries\n/v2/country/all\nGET\nAll countries\n\n\ncountry_indicator\n/v2/country/{country_id}/indicator/{indicator_id}\nGET\nSpecific indicator for a country\n\n\nsources\n/v2/source\nGET\nAll data sources\n\n\nsource_indicators\n/v2/source/{source_id}/indicators\nGET\nIndicators for a specific source\n\n\ntopics\n/v2/topics\nGET\nMetadata about indicator topics\n\n\nregions\n/v2/country/all\nGET\nAll regions\n\n\nincome_levels\n/v2/country/income_levels\nGET\nAll income levels\n\n\nlending_types\n/v2/country/lending_types\nGET\nAll lending types\n\n\nlanguages\n/v2/country/languages\nGET\nAll languages\n\n\n\n<p>I added this because I did not find much information in the official documentation.</p>\n<div>\n<div>To <strong>leave a comment</strong> for the author, please follow the link and comment on their blog: <strong><a href=\"https://pacha.dev/blog/2026/08/28/wbstats/index.html\"> https://pacha.dev/blog</a></strong>.</div>\n\n<a href=\"https://www.r-bloggers.com/\">R-bloggers.com</a> offers <strong><a href=\"https://feedburner.google.com/fb/a/mailverify?uri=RBloggers\">daily e-mail updates</a></strong> about <a href=\"https://www.r-project.org/\">R</a> news and tutorials about <a href=\"https://www.r-bloggers.com/how-to-learn-r-2/\">learning R</a> and many other topics. <a href=\"https://www.r-users.com/\">Click here if you're looking to post or find an R/data-science job</a>.\n\nWant to share your content on R-bloggers?<a href=\"https://www.r-bloggers.com/add-your-blog/\"> click here</a> if you have a blog, or <a href=\"http://r-posts.com/\"> here</a> if you don't.\n</div><strong>Continue reading</strong>: <a href=\"https://www.r-bloggers.com/2026/08/wbstats-1-2-0-is-now-on-cran/\">wbstats 1.2.0 is now on CRAN</a>",
+      "link": "https://www.r-bloggers.com/2026/08/wbstats-1-2-0-is-now-on-cran/",
+      "source": "R-bloggers - R news and tutorials contributed by hundreds of R bloggers",
+      "feed_type": "news",
+      "type": "data-science-mlops",
+      "type_label": "Data Science & MLOps",
+      "published": "2026-08-27T23:00:00+00:00",
+      "published_ts": 1787871600,
+      "smart_groups": [],
+      "curated": true
     },
     {
       "title": "Breaking Claude Code Opus 5 Auto Mode",
@@ -457,6 +471,20 @@
       "curated": false
     },
     {
+      "title": "OpenTag",
+      "summary": "AI coworker lives on Slack and Teams Discussion | Link",
+      "summary_html": "<p>\n            AI coworker lives on Slack and Teams\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/opentag?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1234433?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/opentag",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-27T21:52:16+00:00",
+      "published_ts": 1787867536,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
       "title": "Alex Cooper, Ashley Flowers Struggle to Create Legacy Business",
       "summary": "The same qualities that make podcasters successful also make it hard for them to step away.",
       "summary_html": "The same qualities that make podcasters successful also make it hard for them to step away.",
@@ -710,6 +738,23 @@
       "curated": true
     },
     {
+      "title": "Gemini Omni 1.1 Flash",
+      "summary": "Our newest multimodal model for video generation and editing Discussion | Link",
+      "summary_html": "<p>\n            Our newest multimodal model for video generation and editing\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/gemini-omni-1-1-flash?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1234397?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/gemini-omni-1-1-flash",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-27T20:52:18+00:00",
+      "published_ts": 1787863938,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "Computer Vision & Multimodal"
+      ],
+      "curated": false
+    },
+    {
       "title": "Google found a way to test Gemini without seeing the questions",
       "summary": "Growing datasets and public benchmarks are making it harder to tell whether a model is being tested on something it hasn\u2019t seen before. On Thursday, Google DeepMind showed off what the company calls the first double-blind evaluation of a proprietary frontier-class AI model. The setup keeps Gemini\u2019s model weights hidden from the evaluators while the test questions are hidden from Google. The pilot tested Gemini 2.5 Flash Lite against private benchmarks from MLCommons and the Singapore AI Safety Institute, but rather than using the results to tout a new Gemini score, Google is focusing on how the tests were run, with neither side having access to the other\u2019s data. Benchmark leakage inflates scores Google\u2019s technical report cites earlier research that found signs of benchmark leakage in about half of the 31 models tested, and another study published this year that found contamination can inflate scores, particularly for larger models. This dynamic has already raised questions about where certain post-training coding gains actually come from . Keeping benchmarks private would seem like the obvious answer, except closed models make that difficult. With a closed model, evaluators usually have to run their questions through the provider\u2019s API, which means the company can see a test that was supposed to stay private, whereas running it independently would require the provider to hand over its model weights. Google\u2019s setup is meant to give both sides another option. Keeping benchmarks private would seem like the obvious answer, except closed models make that difficult. How the enclave works The pilot is using Google Cloud Confidential Space together with an NVIDIA H100 Confidential GPU and Intel TDX host memory encryption. Google DeepMind provides Gemini with its weights and inference code, while the evaluator offers its benchmark prompts and evaluation code; these are then transmitted over encrypted connections into the enclave, where the evaluation takes place without either party gaining access to the other\u2019s protected assets. The model weights are stored in hardware-encrypted GPU memory, and the evaluation prompts are kept in encrypted host memory as well. After the test is complete, the evaluator is given the permitted results, and the temporary environment can then be destroyed. Before either side sends over its private data, remote attestation verifies that the enclave is running the software they agreed on. Code controls beyond encryption The enclave protects what\u2019s stored in memory, but the code running inside it can still create problems. If an application has unrestricted network access, for example, it could send sensitive information somewhere else. OpenMined\u2019s PySyft handles that part of the process by allowing Google and the evaluator to approve the code in advance and to block sensitive parts of the evaluation from making external connections. That process takes some work, although compute doesn\u2019t appear to be the problem. The paper puts the overhead at less than 5% and instead points to legal agreements and code reviews between organizations as some of the bigger hurdles to running these evaluations. The researchers eventually want to make attestation much less hands-on, comparing the goal to the HTTPS lock icon in a browser, where the security checks happen without the user having to deal with the underlying hashes and keys. Google still has a hand in verification because, although the Confidential Space guest OS is open source and its build process has been externally validated, individual builds rely on private signing keys and can\u2019t be independently reproduced. At the same time, Google\u2019s own services are used to sign and verify the attestation report. The paper puts the overhead at less than 5% and points instead to the legal agreements and code reviews between organizations as some of the bigger hurdles to running these evaluations. Scaling past one GPU So while the system reduces how much the two sides need to trust each other, it doesn\u2019t remove trust entirely from the equation. Some of it simply moves elsewhere, including to the hardware itself. There is still some trust involved in the hardware itself, including the assumption that the cloud provider and the hardware maker aren\u2019t working together to circumvent the protections. Then there\u2019s the benchmark itself. MLCommons points out that it still needs to be carefully managed, no matter how well the questions are protected. The pilot ran Gemini 2.5 Flash Lite on a single H100 80GB Confidential GPU. Still, the researchers are already looking at clusters of H100 and B200 GPUs connected via encrypted links to eventually evaluate models that are too large to fit on a single GPU. If this approach catches on, developers could have another way to look beyond the benchmark score , with some proof that the company behind the model didn\u2019t see the test before the results came out. If this approach catches on, a benchmark score could offer some proof that the company behind the model didn\u2019t get to see the test first. The post Google found a way to test Gemini without seeing the questions appeared first on The New Stack .",
       "summary_html": "<p><strong>Growing datasets and public benchmarks</strong> are making it harder to tell whether a model is being tested on something it hasn\u2019t seen before.</p>\n<p>On Thursday, Google DeepMind showed off what the company calls the first <a href=\"https://deepmind.google/blog/piloting-the-worlds-first-double-blind-ai-evaluations/\">double-blind evaluation </a>of a proprietary frontier-class AI model. The setup keeps Gemini\u2019s model weights hidden from the evaluators while the test questions are hidden from Google.</p>\n<p>The pilot tested Gemini 2.5 Flash Lite against private benchmarks from MLCommons and the Singapore AI Safety Institute, but rather than using the results to tout a new Gemini score, Google is focusing on how the tests were run, with neither side having access to the other\u2019s data.</p>\nBenchmark leakage inflates scores\n<p>Google\u2019s technical report cites earlier research that found signs of benchmark leakage in about half of the 31 models tested, and another study published this year that found contamination can inflate scores, particularly for larger models. This dynamic has already <a href=\"https://thenewstack.io/glm-5-3-post-training-coding/\">raised questions about where certain post-training coding gains actually come from</a>.</p>\n<p>Keeping benchmarks private would seem like the obvious answer, except closed models make that difficult. With a closed model, evaluators usually have to run their questions through the provider\u2019s API, which means the company can see a test that was supposed to stay private, whereas running it independently would require the provider to hand over its model weights. Google\u2019s setup is meant to give both sides another option.</p>\n<blockquote>\n<p>Keeping benchmarks private would seem like the obvious answer, except closed models make that difficult.</p>\n</blockquote>\nHow the enclave works\n<p>The pilot is using Google Cloud Confidential Space together with an NVIDIA H100 Confidential GPU and Intel TDX host memory encryption.</p>\n<p>Google DeepMind provides Gemini with its weights and inference code, while the evaluator offers its benchmark prompts and evaluation code; these are then transmitted over encrypted connections into the enclave, where the evaluation takes place without either party gaining access to the other\u2019s protected assets.</p>\n<p>The model weights are stored in hardware-encrypted GPU memory, and the evaluation prompts are kept in encrypted host memory as well. After the test is complete, the evaluator is given the permitted results, and the temporary environment can then be destroyed.</p>\n<p>Before either side sends over its private data, remote attestation verifies that the enclave is running the software they agreed on.</p>\nCode controls beyond encryption\n<p>The enclave protects what\u2019s stored in memory, but the code running inside it can still create problems. If an application has unrestricted network access, for example, it could send sensitive information somewhere else.</p>\n<p>OpenMined\u2019s PySyft handles that part of the process by allowing Google and the evaluator to approve the code in advance and to block sensitive parts of the evaluation from making external connections.</p>\n<p>That process takes some work, although compute doesn\u2019t appear to be the problem. The paper puts the overhead at less than 5% and instead points to legal agreements and code reviews between organizations as some of the bigger hurdles to running these evaluations.</p>\n<p>The researchers eventually want to make attestation much less hands-on, comparing the goal to the HTTPS lock icon in a browser, where the security checks happen without the user having to deal with the underlying hashes and keys.</p>\n<p>Google still has a hand in verification because, although the Confidential Space guest OS is open source and its build process has been externally validated, individual builds rely on private signing keys and can\u2019t be independently reproduced. At the same time, Google\u2019s own services are used to sign and verify the attestation report.</p>\n<blockquote>\n<p>The paper puts the overhead at less than 5% and points instead to the legal agreements and code reviews between organizations as some of the bigger hurdles to running these evaluations.</p>\n</blockquote>\nScaling past one GPU\n<p>So while the system reduces how much the two sides need to trust each other, it doesn\u2019t remove trust entirely from the equation. Some of it simply moves elsewhere, including to the hardware itself. There is still some trust involved in the hardware itself, including the assumption that the cloud provider and the hardware maker aren\u2019t working together to circumvent the protections.</p>\n<p>Then there\u2019s the benchmark itself. MLCommons points out that it still needs to be carefully managed, no matter how well the questions are protected. </p>\n<p>The pilot ran Gemini 2.5 Flash Lite on a single H100 80GB Confidential GPU. Still, the researchers are already looking at clusters of H100 and B200 GPUs connected via encrypted links to eventually evaluate models that are too large to fit on a single GPU.</p>\n<p>If this approach catches on, developers could have another way to <a href=\"https://thenewstack.io/gemini-3-7-flash-agents/\">look beyond the benchmark score</a>, with some proof that the company behind the model didn\u2019t see the test before the results came out.</p>\n<blockquote>\n<p>If this approach catches on, a benchmark score could offer some proof that the company behind the model didn\u2019t get to see the test first.</p>\n</blockquote>\n<p>The post <a href=\"https://thenewstack.io/google-double-blind-evaluation/\">Google found a way to test Gemini without seeing the questions</a> appeared first on <a href=\"https://thenewstack.io\">The New Stack</a>.</p>",
@@ -786,6 +831,20 @@
       "published_ts": 1787863585,
       "smart_groups": [],
       "curated": true
+    },
+    {
+      "title": "Almanac",
+      "summary": "The agent with a second brain Discussion | Link",
+      "summary_html": "<p>\n            The agent with a second brain\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/almanac-5?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1234391?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/almanac-5",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-27T20:43:25+00:00",
+      "published_ts": 1787863405,
+      "smart_groups": [],
+      "curated": false
     },
     {
       "title": "Workday Posts Lukewarm Results, Blunting Recent Software Gains",
@@ -2937,25 +2996,25 @@
       "curated": false
     },
     {
-      "title": "Photoshop\u2019s new AI Assisted Editor offers a prompt-based editing option",
-      "summary": "Adobe has added a simplified editing mode to Photoshop designed to help new users get acquainted with the popular image editing app. AI Assisted Editor, now available in beta, is an optional alternative to the standard view \u2014 now called Pro Editor mode \u2014 that provides a prompt-based interface similar to the Firefly editor rather than the full range of Photoshop tools. It includes a side panel that contains generative AI (genAI) features such as Generative Fill, Remove Background, and AI Markup, as well as a text prompt box. The more streamlined editor view could also prove useful for existing users that don\u2019t need the full workspace for every edit, Adobe said. More seasoned professionals might switch to the AI Assisted Editor for concepts or mock ups, or for quick editing that doesn\u2019t require the full set of Photoshop functions. For those who don\u2019t need it, however, the new mode can be hidden from view. Among the other Photoshop features unveiled Thursday is Prompt to Edit, which lets users apply changes to an entire image with a simple prompt \u2014 for example, adding stormy clouds and rain. That creates an output layer that can then be modified, such as masking out image elements or changing the opacity. Prompt to Edit is available in both AI Assisted and Pro Editor views. A new \u201cmarkup\u201d feature lets users \u201cvisually communicate\u201d edits to Firefly by drawing onto an image, indicating areas to recolor, for instance. This makes it easier to direct the AI model compared to text prompts. The Instruct Edit with Masks, which relies on Firefly Image 5, lets users specify what elements of an image to change with text prompts, with unmasked areas left untouched. Other updates include Light Adjustment Layer, which provides \u201cprofessional-grade\u201d lighting controls, such as exposure, contrast and shadows, in a non-destructive adjustment layer, Adobe said. A Stock Panel integration provides access to more than 900 million Adobe Stock assets in Photoshop via a dockable panel, while another addition, Dynamic Text, Shapes and Paths, automatically adapts text along curves as freeform layouts.",
-      "summary_html": "<div>\n<div>\n<div>\n<div>\n<div></div>\n<p>Adobe has <a href=\"https://blog.adobe.com/en/publish/2026/08/27/new-photoshop-innovations-bring-you-more-choice-control-at-every-stage-of-your-creative-process\">added a simplified editing mode to Photoshop</a> designed to help new users get acquainted with the popular image editing app.\u00a0</p>\n<p>AI Assisted Editor, now available in beta, is an optional alternative to the standard view \u2014 now called Pro Editor mode \u2014 that provides a prompt-based interface similar to the Firefly editor rather than the full range of Photoshop tools. It includes a side panel that contains generative AI (genAI) features such as Generative Fill, Remove Background, and AI Markup, as well as a text prompt box.\u00a0</p>\n<p>The more streamlined editor view could also prove useful for existing users that don\u2019t need the full workspace for every edit, Adobe said. More seasoned professionals might switch to the AI Assisted Editor for concepts or mock ups, or for quick editing that doesn\u2019t require the full set of Photoshop functions.\u00a0</p>\n<p>For those who don\u2019t need it, however, the new mode can be hidden from view.\u00a0</p>\n<p>Among the other Photoshop features unveiled Thursday is Prompt to Edit, which lets users apply changes to an entire image with a simple prompt \u2014 for example, adding stormy clouds and rain. That creates an output layer that can then be modified, such as masking out image elements or changing the opacity.\u00a0</p>\n<p>Prompt to Edit is available in both AI Assisted and Pro Editor views.</p>\n<p>A new \u201cmarkup\u201d feature lets users \u201cvisually communicate\u201d edits to Firefly by drawing onto an image, indicating areas to recolor, for instance. This makes it easier to direct the AI model compared to text prompts. The Instruct Edit with Masks, which relies on Firefly Image 5, lets users specify what elements of an image to change with text prompts, with unmasked areas left untouched.</p>\n<p>Other updates include Light Adjustment Layer, which provides \u201cprofessional-grade\u201d lighting controls, such as exposure, contrast and shadows, in a non-destructive adjustment layer, Adobe said. A Stock Panel integration provides access to more than 900 million Adobe Stock assets in Photoshop via a dockable panel, while another addition, Dynamic Text, Shapes and Paths, automatically adapts text along curves as freeform layouts.</p>\n</div></div></div></div>",
-      "link": "https://www.computerworld.com/article/4214985/photoshops-new-ai-assisted-editor-offers-a-prompt-based-editing-option.html",
-      "source": "Computerworld - The Voice of Business Technology.",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-08-27T15:49:42+00:00",
-      "published_ts": 1787845782,
-      "smart_groups": [],
-      "curated": false
-    },
-    {
       "title": "\u201cAnxious Generation\u201d Author Jonathan Haidt on the Meta Settlement",
       "summary": "Jonathan Haidt\u2019s 2024 book on the harms to children from social media was a best seller.",
       "summary_html": "Jonathan Haidt\u2019s 2024 book on the harms to children from social media was a best seller.",
       "link": "https://www.nytimes.com/2026/08/27/style/meta-jonathan-haidt-anxious-generation.html",
       "source": "NYT > Technology - Technology industry news, commentary and analysis, with reporting on big tech, startups, and internet culture.",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-27T15:49:43+00:00",
+      "published_ts": 1787845783,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Photoshop\u2019s new AI Assisted Editor offers a prompt-based editing option",
+      "summary": "Adobe has added a simplified editing mode to Photoshop designed to help new users get acquainted with the popular image editing app. AI Assisted Editor, now available in beta, is an optional alternative to the standard view \u2014 now called Pro Editor mode \u2014 that provides a prompt-based interface similar to the Firefly editor rather than the full range of Photoshop tools. It includes a side panel that contains generative AI (genAI) features such as Generative Fill, Remove Background, and AI Markup, as well as a text prompt box. The more streamlined editor view could also prove useful for existing users that don\u2019t need the full workspace for every edit, Adobe said. More seasoned professionals might switch to the AI Assisted Editor for concepts or mock ups, or for quick editing that doesn\u2019t require the full set of Photoshop functions. For those who don\u2019t need it, however, the new mode can be hidden from view. Among the other Photoshop features unveiled Thursday is Prompt to Edit, which lets users apply changes to an entire image with a simple prompt \u2014 for example, adding stormy clouds and rain. That creates an output layer that can then be modified, such as masking out image elements or changing the opacity. Prompt to Edit is available in both AI Assisted and Pro Editor views. A new \u201cmarkup\u201d feature lets users \u201cvisually communicate\u201d edits to Firefly by drawing onto an image, indicating areas to recolor, for instance. This makes it easier to direct the AI model compared to text prompts. The Instruct Edit with Masks, which relies on Firefly Image 5, lets users specify what elements of an image to change with text prompts, with unmasked areas left untouched. Other updates include Light Adjustment Layer, which provides \u201cprofessional-grade\u201d lighting controls, such as exposure, contrast and shadows, in a non-destructive adjustment layer, Adobe said. A Stock Panel integration provides access to more than 900 million Adobe Stock assets in Photoshop via a dockable panel, while another addition, Dynamic Text, Shapes and Paths, automatically adapts text along curves as freeform layouts.",
+      "summary_html": "<div>\n<div>\n<div>\n<div>\n<div></div>\n<p>Adobe has <a href=\"https://blog.adobe.com/en/publish/2026/08/27/new-photoshop-innovations-bring-you-more-choice-control-at-every-stage-of-your-creative-process\">added a simplified editing mode to Photoshop</a> designed to help new users get acquainted with the popular image editing app.\u00a0</p>\n<p>AI Assisted Editor, now available in beta, is an optional alternative to the standard view \u2014 now called Pro Editor mode \u2014 that provides a prompt-based interface similar to the Firefly editor rather than the full range of Photoshop tools. It includes a side panel that contains generative AI (genAI) features such as Generative Fill, Remove Background, and AI Markup, as well as a text prompt box.\u00a0</p>\n<p>The more streamlined editor view could also prove useful for existing users that don\u2019t need the full workspace for every edit, Adobe said. More seasoned professionals might switch to the AI Assisted Editor for concepts or mock ups, or for quick editing that doesn\u2019t require the full set of Photoshop functions.\u00a0</p>\n<p>For those who don\u2019t need it, however, the new mode can be hidden from view.\u00a0</p>\n<p>Among the other Photoshop features unveiled Thursday is Prompt to Edit, which lets users apply changes to an entire image with a simple prompt \u2014 for example, adding stormy clouds and rain. That creates an output layer that can then be modified, such as masking out image elements or changing the opacity.\u00a0</p>\n<p>Prompt to Edit is available in both AI Assisted and Pro Editor views.</p>\n<p>A new \u201cmarkup\u201d feature lets users \u201cvisually communicate\u201d edits to Firefly by drawing onto an image, indicating areas to recolor, for instance. This makes it easier to direct the AI model compared to text prompts. The Instruct Edit with Masks, which relies on Firefly Image 5, lets users specify what elements of an image to change with text prompts, with unmasked areas left untouched.</p>\n<p>Other updates include Light Adjustment Layer, which provides \u201cprofessional-grade\u201d lighting controls, such as exposure, contrast and shadows, in a non-destructive adjustment layer, Adobe said. A Stock Panel integration provides access to more than 900 million Adobe Stock assets in Photoshop via a dockable panel, while another addition, Dynamic Text, Shapes and Paths, automatically adapts text along curves as freeform layouts.</p>\n</div></div></div></div>",
+      "link": "https://www.computerworld.com/article/4214985/photoshops-new-ai-assisted-editor-offers-a-prompt-based-editing-option.html",
+      "source": "Computerworld - The Voice of Business Technology.",
       "feed_type": "news",
       "type": "media-tech-analysis",
       "type_label": "Media & Tech Analysis",
@@ -3966,6 +4025,20 @@
       "curated": true
     },
     {
+      "title": "Fide Island",
+      "summary": "Make your MacBook notch actually useful Discussion | Link",
+      "summary_html": "<p>\n            Make your MacBook notch actually useful\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/fide-island?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1234101?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/fide-island",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-27T13:53:00+00:00",
+      "published_ts": 1787838780,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
       "title": "Nvidia Targets Physical AI With New Jetson Edge Platform",
       "summary": "The Jetson Orin Nano 2 comes as the AI chip giant targets physical AI expansion.",
       "summary_html": "The Jetson Orin Nano 2 comes as the AI chip giant targets physical AI expansion.",
@@ -3994,6 +4067,20 @@
       "published_ts": 1787838060,
       "smart_groups": [],
       "curated": false
+    },
+    {
+      "title": "Microduck",
+      "summary": "A tiny open-source biped you can train yourself Discussion | Link",
+      "summary_html": "<p>\n            A tiny open-source biped you can train yourself\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/hugging-face?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1234088?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/hugging-face",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-27T13:40:20+00:00",
+      "published_ts": 1787838020,
+      "smart_groups": [],
+      "curated": true
     },
     {
       "title": "Trump Claimed All Mines Were Removed From The Hormuz Strait. Allies Are Reportedly Not So Sure.",
@@ -4233,6 +4320,20 @@
         "AI Regulation & Policy",
         "AI Business & Funding"
       ],
+      "curated": false
+    },
+    {
+      "title": "Plaud Unveils\u00a0Earbuds With 4G Connectivity\u00a0in AI\u00a0Gadgets Push",
+      "summary": "Plaud Inc., a startup that makes\u00a0note-taking devices, announced a pair of wireless, 4G-connected earbuds that lets users record conversations and complete tasks with\u00a0artificial-intelligence assistants on the go, adding to a nascent category of gadgets built for the AI era.",
+      "summary_html": "Plaud Inc., a startup that makes\u00a0note-taking devices, announced a pair of wireless, 4G-connected earbuds that lets users record conversations and complete tasks with\u00a0artificial-intelligence assistants on the go, adding to a nascent category of gadgets built for the AI era.",
+      "link": "https://www.bloomberg.com/news/articles/2026-08-27/plaud-unveils-earbuds-with-4g-connectivity-in-ai-gadgets-push",
+      "source": "Bloomberg Technology - Bloomberg Technology",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-27T13:00:04+00:00",
+      "published_ts": 1787835604,
+      "smart_groups": [],
       "curated": false
     },
     {
@@ -4585,6 +4686,20 @@
         "AI Regulation & Policy"
       ],
       "curated": true
+    },
+    {
+      "title": "Samsung\u2019s $700 Galaxy 26 FE Gets a Price Hike Even With Many Tradeoffs",
+      "summary": "Samsung Electronics Co. introduced the Galaxy S26 FE, its latest smartphone aimed at consumers who want a device that\u2019s priced\u00a0well below high-end models but still offers\u00a0at least a few premium features.",
+      "summary_html": "Samsung Electronics Co. introduced the Galaxy S26 FE, its latest smartphone aimed at consumers who want a device that\u2019s priced\u00a0well below high-end models but still offers\u00a0at least a few premium features.",
+      "link": "https://www.bloomberg.com/news/articles/2026-08-27/samsung-s-700-galaxy-26-fe-gets-a-price-hike-even-with-many-tradeoffs",
+      "source": "Bloomberg Technology - Bloomberg Technology",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-27T12:00:04+00:00",
+      "published_ts": 1787832004,
+      "smart_groups": [],
+      "curated": false
     },
     {
       "title": "How Facebook and Instagram will change after Meta's $18B settlement - and where the money is going",
@@ -5523,6 +5638,20 @@
       "curated": true
     },
     {
+      "title": "Spline V2",
+      "summary": "Best 3D platform for the agentic era Discussion | Link",
+      "summary_html": "<p>\n            Best 3D platform for the agentic era\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/spline?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1233803?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/spline",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-27T08:06:07+00:00",
+      "published_ts": 1787817967,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
       "title": "Germany Running Short of AI Compute Capacity, Minister Says",
       "summary": "Germany\u2019s top digital policy official said surging demand for artificial intelligence is putting a squeeze on data centers in Europe\u2019s largest economy.",
       "summary_html": "Germany\u2019s top digital policy official said surging demand for artificial intelligence is putting a squeeze on data centers in Europe\u2019s largest economy.",
@@ -5930,6 +6059,22 @@
       "published": "2026-08-27T06:20:05+00:00",
       "published_ts": 1787811605,
       "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "SnakeRank",
+      "summary": "The leaderboard is a snake. Bid your way to the head. Discussion | Link",
+      "summary_html": "<p>\n            The leaderboard is a snake. Bid your way to the head.\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/snakerank?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1233727?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/snakerank",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-27T06:19:41+00:00",
+      "published_ts": 1787811581,
+      "smart_groups": [
+        "AI Research & Papers"
+      ],
       "curated": false
     },
     {
@@ -16608,6 +16753,34 @@
       "type_label": "Media & Tech Analysis",
       "published": "2026-08-27T03:51:34+00:00",
       "published_ts": 1787802694,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "AureaCam",
+      "summary": "Real-time scoring to master the rule of thirds Discussion | Link",
+      "summary_html": "<p>\n            Real-time scoring to master the rule of thirds\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/aureacam-learn-photo-composition?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1233618?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/aureacam-learn-photo-composition",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-27T03:21:05+00:00",
+      "published_ts": 1787800865,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "screenpipe",
+      "summary": "AI that records your computer work to power agents. Discussion | Link",
+      "summary_html": "<p>\n            AI that records your computer work to power agents.\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/screenpipe?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1233614?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/screenpipe",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-27T03:15:53+00:00",
+      "published_ts": 1787800553,
       "smart_groups": [],
       "curated": false
     },
