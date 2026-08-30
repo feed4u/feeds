@@ -1,9 +1,214 @@
 {
-  "generated_at": "2026-08-29T19:31:46.132456+00:00",
+  "generated_at": "2026-08-30T05:38:29.088727+00:00",
   "date": "2026-08-29",
-  "total_items": 64,
+  "total_items": 90,
   "next_chunk": "archive/blog/daily/2026-08-28.json",
   "items": [
+    {
+      "title": "Nemotron-3.5-Lightning at 11.77 GiB, a 16 GB option for a model that didn't have one",
+      "summary": "TL;DR: Every public low-bit GGUF of this model is secretly ~4.70 bpw. Shim the rows to 256 and it becomes a real 3.07 bpw / 11.77 GiB file that runs 262K context on 16GB. Needs patched llama.cpp \u2014 not LM Studio or Ollama. In the AtomicChat HuggingFace repo it says \"There is currently no good 16 GB option for this model, from anyone.\" That was true, I wanted to figure out why, and it's a quantizer problem, not a model problem. k-quants and i-quants need the row width to divide by 256. Nemotron's don't, so about 99% of its parameters can't legally take one. llama-quantize swaps in a 32 block type instead and keeps the filename you asked for, which is why every low bit quant of this model comes out around 4.70 bpw regardless of its label. If you saw my census post yesterday, same bug, Nemotron is just the worst case I found. Smallest usable build anyone shipped was ~18 GiB. ShimQuant shims each affected row out to the next multiple of 256 so the low bit types actually apply, then slices the activations back at inference. That gets it to 3.07 bpw, 11.77 GiB, 262,144 context on a 16 GB card. So far I've measured it two ways, KL divergence against a Q8_0 reference and HumanEval. Against stock IQ2_M it's 6.2 GiB smaller and less divergent. On HumanEval it ties AtomicChat's 19.65 GB build at 91.5% while being 7 GB smaller. More benchmarks are running, I'll update the card as they land. It does not beat stock IQ3_XXS on divergence. That one is 6.2 GiB bigger and three times closer to Q8. So the claim isn't that this is the best file, it's that below ~18 GiB the stock quantizer gives you nothing usable for this model and this is usable in that gap. The catch This will not load in stock llama.cpp, LM Studio, Ollama, or anything unpatched. It needs the ShimQuant patch. It fails right away instead of corrupting quietly: check_tensor_dims: tensor 'blk.0.ssm_in.weight' has wrong shape; expected 2688, 10304, got 2816, 10304 If you don't want to build a patched llama.cpp then this file isn't for you. But it's the only usable option under 18 GiB, so if you're on a 16 GB card and want to run Nemotron it's this or nothing. Model: https://huggingface.co/BoldingBuilds/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-ShimQuant-GGUF Patch: https://github.com/JoshBolding/shimquant Census across 25 repos and 443 quants: https://github.com/JoshBolding/ggufaudit submitted by /u/Daxfortuna [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p><strong>TL;DR:</strong> <br/> Every public low-bit GGUF of this model is secretly ~4.70 bpw. Shim the rows to 256 and it becomes a real 3.07 bpw / 11.77 GiB file that runs 262K context on 16GB.<br/> Needs patched llama.cpp \u2014 not LM Studio or Ollama.</p> <p>In the AtomicChat HuggingFace repo it says <em>\"There is currently no good 16 GB option for this model, from anyone.\"</em> That was true, I wanted to figure out why, and it's a quantizer problem, not a model problem.</p> <p>k-quants and i-quants need the row width to divide by 256. Nemotron's don't, so about 99% of its parameters can't legally take one. llama-quantize swaps in a 32 block type instead and keeps the filename you asked for, which is why every low bit quant of this model comes out around 4.70 bpw regardless of its label.</p> <p>If you saw <a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w11ob5/i_audited_443_gguf_quants_across_25_repos_64_of/\">my census post</a> yesterday, same bug, Nemotron is just the worst case I found. Smallest usable build anyone shipped was ~18 GiB.</p> <p>ShimQuant shims each affected row out to the next multiple of 256 so the low bit types actually apply, then slices the activations back at inference. That gets it to 3.07 bpw, 11.77 GiB, 262,144 context on a 16 GB card.</p> <p>So far I've measured it two ways, KL divergence against a Q8_0 reference and HumanEval. Against stock IQ2_M it's 6.2 GiB smaller and less divergent. On HumanEval it ties AtomicChat's 19.65 GB build at 91.5% while being 7 GB smaller. More benchmarks are running, I'll update the card as they land.</p> <p>It does not beat stock IQ3_XXS on divergence. That one is 6.2 GiB bigger and three times closer to Q8. So the claim isn't that this is the best file, it's that below ~18 GiB the stock quantizer gives you nothing usable for this model and this is usable in that gap.</p> The catch <p><strong>This will not load in stock llama.cpp, LM Studio, Ollama, or anything unpatched.</strong> It needs the ShimQuant patch. It fails right away instead of corrupting quietly:</p> <p>check_tensor_dims: tensor 'blk.0.ssm_in.weight' has wrong shape;<br/> expected 2688, 10304, got 2816, 10304</p> <p>If you don't want to build a patched llama.cpp then this file isn't for you. But it's the only usable option under 18 GiB, so if you're on a 16 GB card and want to run Nemotron it's this or nothing.</p> <p>Model: <a href=\"https://huggingface.co/BoldingBuilds/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-ShimQuant-GGUF\">https://huggingface.co/BoldingBuilds/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-ShimQuant-GGUF</a></p> <p>Patch: <a href=\"https://github.com/JoshBolding/shimquant\">https://github.com/JoshBolding/shimquant</a></p> <p>Census across 25 repos and 443 quants: <a href=\"https://github.com/JoshBolding/ggufaudit\">https://github.com/JoshBolding/ggufaudit</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Daxfortuna\"> /u/Daxfortuna </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w21d86/nemotron35lightning_at_1177_gib_a_16_gb_option/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w21d86/nemotron35lightning_at_1177_gib_a_16_gb_option/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1w21d86/nemotron35lightning_at_1177_gib_a_16_gb_option/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T23:27:11+00:00",
+      "published_ts": 1788046031,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "AI Research & Papers",
+        "AI Hardware & Chips"
+      ],
+      "curated": false
+    },
+    {
+      "title": "OpenContext \u2013 Persistent, project-local memory for AI coding agents via MCP",
+      "summary": "Article URL: https://www.opencntx.dev/ Comments URL: https://news.ycombinator.com/item?id=49494219 Points: 4 # Comments: 0",
+      "summary_html": "<p>Article URL: <a href=\"https://www.opencntx.dev/\">https://www.opencntx.dev/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49494219\">https://news.ycombinator.com/item?id=49494219</a></p>\n<p>Points: 4</p>\n<p># Comments: 0</p>",
+      "link": "https://www.opencntx.dev/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T23:24:44+00:00",
+      "published_ts": 1788045884,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "When AI Writes the Code Verification Is the New Implementation",
+      "summary": "Article URL: https://sarpex.com/2026/08-verification-is-the-new-implementation Comments URL: https://news.ycombinator.com/item?id=49494200 Points: 2 # Comments: 0",
+      "summary_html": "<p>Article URL: <a href=\"https://sarpex.com/2026/08-verification-is-the-new-implementation\">https://sarpex.com/2026/08-verification-is-the-new-implementation</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49494200\">https://news.ycombinator.com/item?id=49494200</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://sarpex.com/2026/08-verification-is-the-new-implementation",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T23:20:55+00:00",
+      "published_ts": 1788045655,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Humaneval benchmark for Deepseek V4 Flash 0731 vs GLM5.3 Flash on 2x DGX Spark setup",
+      "summary": "I have a 2 DGX Spark setup recently and I have been happily running Deepseek V4 Flash 0731. Since the release of GLM5.3 Flash and Qwen 3.8 Flash Next this week, a lot of folks are still waiting to see what model to run given their own hardware situations. I am very interested in running a GLM model locally and looks like nvfp4 would be a good option for my setup, but I have been hearing a lot of conflicting opinions (mostly negative) about GLM5.3 Flash on nvfp4 quant which gave me pause. So I decided to do a simple benchmark myself and hopefully this is useful for folks with the same setup: Deepseek V4 Flash 0731 recipe : official checkpoint , fp8 kv, 1M context, 4 concurrent streams GLM 5.3 Flash recipe : NVFP4 quant & Dflash2 drafter , fp8_e4m3 kv, 256k context, 6C Model Thinking Mode HumanEval Pass@1 (Base) HumanEval+ (Adversarial Edge Cases) Total Benchmark Run Time Local Stream Speed GLM-5.3-Flash NVFP4 Thinking Enabled ( high ) 97.0% (159 / 164) 92.1% (151 / 164) 20m 52s ~50 tok/s (DFlash2) DeepSeek-V4-Flash-0731 Thinking Enabled ( high ) 94.5% (155 / 164) 88.4% (145 / 164) 38m 16s ~70 tok/s (MTP-5) GLM-5.3-Flash NVFP4 Direct Zero-Shot ( off ) 93.3% (153 / 164) 89.6% (147 / 164) 23m 32s ~50 tok/s (DFlash2) DeepSeek-V4-Flash-0731 Direct Zero-Shot ( off ) 92.7% (152 / 164) 87.8% (144 / 164) 14m 52s ~70 tok/s (MTP-5) So raw numbers tell you GLM 5.3f is a decent upgrade over DSv4f 0731 especially with thinking enabled. Unsloth saying their Q4 quant has around 92% accuracy but looks like nvfp4 still holds up pretty well (97% would have been a SOTA score not that long ago and this is not even max thinking). The major trade off is the 256 context. I am pretty sure 512GB+ VRAM (or 4x sparks) people will be able to run the fp8 model + 1M context without issues and I am jealous \ud83e\udd79 Regardless, your own experience matters more than any benchmark out there. submitted by /u/serige [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I have a 2 DGX Spark setup recently and I have been happily running Deepseek V4 Flash 0731. Since the release of GLM5.3 Flash and Qwen 3.8 Flash Next this week, a lot of folks are still waiting to see what model to run given their own hardware situations. I am very interested in running a GLM model locally and looks like nvfp4 would be a good option for my setup, but I have been hearing a lot of conflicting opinions (mostly negative) about GLM5.3 Flash on nvfp4 quant which gave me pause. So I decided to do a simple benchmark myself and hopefully this is useful for folks with the same setup:</p> <p><a href=\"https://github.com/eugr/spark-vllm-docker/blob/main/recipes/deepseek-v4-flash.yaml\">Deepseek V4 Flash 0731 recipe </a>: <a href=\"https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731\">official checkpoint</a>, fp8 kv, 1M context, 4 concurrent streams</p> <p><a href=\"https://github.com/tonyd2wild/GLM-5.3-Flash-NVFP4-DFlash2-2x-DGX-Spark\">GLM 5.3 Flash recipe</a> : <a href=\"https://huggingface.co/LibertAIDAI/GLM-5.3-Flash-NVFP4\">NVFP4 quant</a> &amp; <a href=\"https://huggingface.co/incoai/GLM-5.3-Flash-DFlash2\">Dflash2 drafter</a>, fp8_e4m3 kv, 256k context, 6C</p>   Model Thinking Mode HumanEval Pass@1 (Base) HumanEval+ (Adversarial Edge Cases) Total Benchmark Run Time Local Stream Speed    <strong>GLM-5.3-Flash NVFP4</strong> <strong>Thinking Enabled (</strong><code>high</code><strong>)</strong> <strong>97.0%</strong> <em>(159 / 164)</em> <strong>92.1%</strong> <em>(151 / 164)</em> <strong>20m 52s</strong> ~50 tok/s (DFlash2)   <strong>DeepSeek-V4-Flash-0731</strong> <strong>Thinking Enabled (</strong><code>high</code><strong>)</strong> <strong>94.5%</strong> <em>(155 / 164)</em> <strong>88.4%</strong> <em>(145 / 164)</em> <strong>38m 16s</strong> <strong>~70 tok/s</strong> (MTP-5)   <strong>GLM-5.3-Flash NVFP4</strong> <strong>Direct Zero-Shot (</strong><code>off</code><strong>)</strong> <strong>93.3%</strong> <em>(153 / 164)</em> <strong>89.6%</strong> <em>(147 / 164)</em> <strong>23m 32s</strong> ~50 tok/s (DFlash2)   <strong>DeepSeek-V4-Flash-0731</strong> <strong>Direct Zero-Shot (</strong><code>off</code><strong>)</strong> <strong>92.7%</strong> <em>(152 / 164)</em> <strong>87.8%</strong> <em>(144 / 164)</em> <strong>14m 52s</strong> <strong>~70 tok/s</strong> (MTP-5)   <p>So raw numbers tell you GLM 5.3f is a decent upgrade over DSv4f 0731 especially with thinking enabled. Unsloth saying their Q4 quant has around 92% accuracy but looks like nvfp4 still holds up pretty well (97% would have been a SOTA score not that long ago and this is not even max thinking). The major trade off is the 256 context. I am pretty sure 512GB+ VRAM (or 4x sparks) people will be able to run the fp8 model + 1M context without issues and I am jealous \ud83e\udd79 Regardless, your own experience matters more than any benchmark out there.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/serige\"> /u/serige </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w215qm/humaneval_benchmark_for_deepseek_v4_flash_0731_vs/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w215qm/humaneval_benchmark_for_deepseek_v4_flash_0731_vs/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1w215qm/humaneval_benchmark_for_deepseek_v4_flash_0731_vs/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T23:18:13+00:00",
+      "published_ts": 1788045493,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "AI Research & Papers",
+        "Data Engineering & Pipelines"
+      ],
+      "curated": false
+    },
+    {
+      "title": "How Big Tech Blinded Itself to the Grassroots AI Revolt",
+      "summary": "Article URL: https://www.wsj.com/tech/ai/how-big-tech-blinded-itself-to-the-grassroots-ai-revolt-cb6f5715 Comments URL: https://news.ycombinator.com/item?id=49494143 Points: 3 # Comments: 0",
+      "summary_html": "<p>Article URL: <a href=\"https://www.wsj.com/tech/ai/how-big-tech-blinded-itself-to-the-grassroots-ai-revolt-cb6f5715\">https://www.wsj.com/tech/ai/how-big-tech-blinded-itself-to-the-grassroots-ai-revolt-cb6f5715</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49494143\">https://news.ycombinator.com/item?id=49494143</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+      "link": "https://www.wsj.com/tech/ai/how-big-tech-blinded-itself-to-the-grassroots-ai-revolt-cb6f5715",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T23:11:48+00:00",
+      "published_ts": 1788045108,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Show HN: VibeGuard \u2013 security linter for AI-generated code",
+      "summary": "Security linter for AI-generated code \u2014 catches what Copilot, Cursor and ChatGPT get wrong. SQL injection, hardcoded secrets, JWT bypass and 15+ more rules. Grade A\u2013F. Zero config. Comments URL: https://news.ycombinator.com/item?id=49494097 Points: 1 # Comments: 1",
+      "summary_html": "<p>Security linter for AI-generated code \u2014 catches what Copilot, Cursor and ChatGPT get wrong. SQL injection, hardcoded secrets, JWT bypass and 15+ more rules. Grade A\u2013F. Zero config.</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49494097\">https://news.ycombinator.com/item?id=49494097</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
+      "link": "https://github.com/zeroFhacker/vibeguard",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T23:04:03+00:00",
+      "published_ts": 1788044643,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "The issue with AI video generation",
+      "summary": "Article URL: https://dimension.so/ Comments URL: https://news.ycombinator.com/item?id=49494014 Points: 1 # Comments: 0",
+      "summary_html": "<p>Article URL: <a href=\"https://dimension.so/\">https://dimension.so/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49494014\">https://news.ycombinator.com/item?id=49494014</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://dimension.so/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T22:48:38+00:00",
+      "published_ts": 1788043718,
+      "smart_groups": [
+        "Computer Vision & Multimodal"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: Live AI video streams that write themselves one shot at a time",
+      "summary": "Article URL: https://tv.mormon.garden Comments URL: https://news.ycombinator.com/item?id=49493966 Points: 1 # Comments: 0",
+      "summary_html": "<p>Article URL: <a href=\"https://tv.mormon.garden\">https://tv.mormon.garden</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49493966\">https://news.ycombinator.com/item?id=49493966</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://tv.mormon.garden",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T22:43:33+00:00",
+      "published_ts": 1788043413,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "AI should be illegal until we figure out how to deal with its consequences",
+      "summary": "Article URL: https://ivanca.github.io/ai/2026/08/29/ai-should-be-illegal-until-we-figure-out-how-to-deal-with-its-consequences/ Comments URL: https://news.ycombinator.com/item?id=49493940 Points: 3 # Comments: 2",
+      "summary_html": "<p>Article URL: <a href=\"https://ivanca.github.io/ai/2026/08/29/ai-should-be-illegal-until-we-figure-out-how-to-deal-with-its-consequences/\">https://ivanca.github.io/ai/2026/08/29/ai-should-be-illegal-until-we-figure-out-how-to-deal-with-its-consequences/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49493940\">https://news.ycombinator.com/item?id=49493940</a></p>\n<p>Points: 3</p>\n<p># Comments: 2</p>",
+      "link": "https://ivanca.github.io/ai/2026/08/29/ai-should-be-illegal-until-we-figure-out-how-to-deal-with-its-consequences/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T22:40:14+00:00",
+      "published_ts": 1788043214,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Any current Voice2Voice AI model that runs locally that\u2019s good?",
+      "summary": "You guys remember sesame AI? With their really good AI voice model? Obviously ChatGPT has their voice model that\u2019s also really good. Is there any smaller local variant that runs on like consumer grade gpu\u2018s (12,16 24gb?) I think NVidia released something but I didn\u2019t really remember much or look for it I think? Also something new, not something from like 2 years ago, thanks submitted by /u/Adventurous-Gold6413 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>You guys remember sesame AI? With their really good AI voice model? Obviously ChatGPT has their voice model that\u2019s also really good.</p> <p>Is there any smaller local variant that runs on like consumer grade gpu\u2018s (12,16 24gb?)</p> <p>I think NVidia released something but I didn\u2019t really remember much or look for it I think?</p> <p>Also something new, not something from like 2 years ago, thanks </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Adventurous-Gold6413\"> /u/Adventurous-Gold6413 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1vw3c/any_current_voice2voice_ai_model_that_runs/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1vw3c/any_current_voice2voice_ai_model_that_runs/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1w1vw3c/any_current_voice2voice_ai_model_that_runs/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T19:39:50+00:00",
+      "published_ts": 1788032390,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "AI Hardware & Chips"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Tenstorrent Qwen3.7-27b Benchmarks",
+      "summary": "I saw someone here posted about getting a Tenstorrent QuietBox 2, and I wanted to look into it the hardware. It's very difficult to find any benchmarks, but I managed to find some from an employee. The machine it was benchmarked on has 2 p300c's, their top of the line card, that's not sold individually. It seems to be a p150 with 64 GB of GDDR6, instead of 32. The employee said the 2 cards in the machine are the same as 4 p150's. Anyway, here are the benchmarks (they do not have MTP support). submitted by /u/DustNearby2848 [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1vtfo/tenstorrent_qwen3727b_benchmarks/\">  </a>  <!-- SC_OFF --><div><p>I saw someone here posted about getting a Tenstorrent QuietBox 2, and I wanted to look into it the hardware. It's very difficult to find any benchmarks, but I managed to find some from an employee. The machine it was benchmarked on has 2 p300c's, their top of the line card, that's not sold individually. It seems to be a p150 with 64 GB of GDDR6, instead of 32. The employee said the 2 cards in the machine are the same as 4 p150's. </p> <p>Anyway, here are the benchmarks (they do not have MTP support). </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/DustNearby2848\"> /u/DustNearby2848 </a> <br/> <span><a href=\"https://i.redd.it/rtyxdlti9dmh1.png\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1vtfo/tenstorrent_qwen3727b_benchmarks/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1w1vtfo/tenstorrent_qwen3727b_benchmarks/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T19:36:48+00:00",
+      "published_ts": 1788032208,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "AI Research & Papers"
+      ],
+      "curated": false
+    },
+    {
+      "title": "67-84 t/s DeepSeek flash v4 off 2x GX10s",
+      "summary": "Finally achieved usable results with 2 gx10 at over 65 tokens a second sustained. The 2570 prompt eval is really crucial for me as well. Overall stoked 10/10 edit: I followed this setup with 2 ASUS GX10 DGX computers :) https://github.com/tonyd2wild/DeepSeek-v4-Flash-0731-DSpark-1M-NVFP4-KV-2x-DGX-Spark submitted by /u/koalfied-coder [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1uug2/6784_ts_deepseek_flash_v4_off_2x_gx10s/\">  </a>  <!-- SC_OFF --><div><p>Finally achieved usable results with 2 gx10 at over 65 tokens a second sustained. The 2570 prompt eval is really crucial for me as well. Overall stoked 10/10</p> <p>edit: I followed this setup with 2 ASUS GX10 DGX computers :) <a href=\"https://github.com/tonyd2wild/DeepSeek-v4-Flash-0731-DSpark-1M-NVFP4-KV-2x-DGX-Spark\">https://github.com/tonyd2wild/DeepSeek-v4-Flash-0731-DSpark-1M-NVFP4-KV-2x-DGX-Spark</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/koalfied-coder\"> /u/koalfied-coder </a> <br/> <span><a href=\"https://www.reddit.com/gallery/1w1uug2\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1uug2/6784_ts_deepseek_flash_v4_off_2x_gx10s/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1w1uug2/6784_ts_deepseek_flash_v4_off_2x_gx10s/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T18:59:15+00:00",
+      "published_ts": 1788029955,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "Data Engineering & Pipelines"
+      ],
+      "curated": false
+    },
+    {
+      "title": "llama.cpp Open PRs list - CPU/RAM/Disk/Hybrid Related - Better for CPU-only & Hybrid inference",
+      "summary": "Folks! We're just 50 PRs away from more faster inference . Hopefully by end of year. Experts!, please chip in there. List of Open/Ongoing PRs(and also Discussions) related to CPU/RAM/Disk/Hybrid: [Discussion] RFC: MoE expert cache, VRAM caching of hot CPU-resident experts with hybrid hit/miss execution #24528 AVX2: Speed up large batch size prompt processing of IQ models #27402 llama: add Maple 20B-A1B ternary MoE architecture (CPU)- #27000 ggml-cpu: tiled mul_mat for k-quants- #27851 ggml-cpu: add AVX-512 and VNNI paths for Q5_K/Q6_K dot products- #27590 ggml-cpu: add x86 VNNI Q2_0 dot product -- 3x speed improvement for VNNI-compatible CPUs- #26348 llama: add pshard runtime for plan switching and streamed weights- #22692 CPU Optimizations - Prefill, Tokenization, and Token Generation- #27032 llama : stream MoE routed experts from disk - #25294 ggml : speed up batch-1 CPU decode, align large allocations- #27478 misc : prevent RAM peaking at model loading stage- #27483 recurrent : support equal splits for recurrent-state rollback- #25004 ggml-cpu : add AVX2 vec_dot kernel for STQ1_0- #27377 --numa mirror: mirror model weights to every Numa node in the system- #16000 CPU flash-attn: support quantized K/V in the tiled prefill kernel- #26948 ggml-cpu/amx: fix block_q8_K VNNI quantization and enable VNNI path- #27024 server : add /slots endpoint action=clone_to (KV clone between slots)- #26204 ggml : fuse soft_max sweeps into fewer passes- #26468 ggml-cpu : add STQ1_0 ternary quantization with ARM NEON vec_dot kernel- #22836 llama-hot-experts: pin hottest MoE experts in RAM via --pin-hot-experts- #26414 llama : add --lazy-experts for MoE models larger than RAM- #26003 ggml : vectorize rms_norm reduce and fuse the scale write- #26486 MoE disk offloading for Metal- #23440 ggml-cpu: Added RVV VLEN=1024 vector dot product (vec_dot) kernels for quantized types.- #25397 ggml-cpu: detect AVX-VNNI in MSVC native builds- #25346 ggml-cpu: replace cyclic chunk distribution with atomic work-stealing- #25048 Improve performance of ggml_gemv_q4_K_8x8_q8_K for +12-23% tok/s on AVX-VNNI systems- #23309 ggml-cpu: Optimized Arm NEON cpu q1_0 dot (with plain/DP/I8MM)- #23358 ggml-cpu: ARM Repack kernels for Q1_0- #23492 ggml-cpu: add wasm simd path for iq4_nl_q8_0- #24058 ggml-cpu: optimize ggml_gemm_q4_K_8x8_q8_K interleaving/staging for AVX-512 (and AVX2)- #22525 ggml/cpu: skip zero-scale blocks in TQ1_0 and TQ2_0 vec_dot kernels- #23439 ggml-cpu:Optimized risc-v cpu nvfp4- #23402 ggml-cpu : fix riscv xtheadvector builds and add a q1_0 vec dot kernel- #23009 Q5_0 - Block Interleaving Implementation for x86 SIMD (AVX512/AVX2)- #22250 ggml-cpu: optimize q8 quantization on x86 SIMD- #22331 Optimize reduction stage of dot product of q4_L/q5_K to q8_K on AVX2- #22181 ggml: introduce GGML_NUMA_MIGRATE to optimize cross NUMA op computation - #14232 ggml-cpu: improve --n-cpu-moe TG performance- #20596 ggml : add CPU backend reference implementation (wip)- #16004 ggml: optimize ggml_vec_dot_mxfp4_q8_0 dot product on ARM SVE- #19171 Q6_K - Block Interleaving Implementation for x86 SIMD (AVX512/AVX2)- #19706 ggml-cpu: optimize q4_0_q8_0 scales using Zvfhmin- #19196 ggml-cpu: add q4_0 repack support for wasm- #18858 Improving inference speed for the repack buffer type on NUMA architectures- #18698 ggml: optimized runtime for x86 cpu backend and Q4_K quantized weights paired with Q8_K activations - #18495 CPU SIMD and pipeline optimizations across vec/mmq/ops/kv-cache/repack - #17113 ggml-cpu: optimise rms_norm op- #16650 PRs related to New Quant types: Add ROCmFP4 CPU quantization support- #24185 ggml: add support for MXFP8 CPU- #26157 ggml: Add initial MXFP6 CPU implementation- #22671 ggml : add E4M3 (fp8) CPU quantization type- #25336 (Just had some extra time, so went through almost entire Open PRs of llama.cpp. For Poor GPU Club mainly) EDIT : My guesstimation : After merge of these these PRs, 2 Channel DDR5 RAM could give ~8GB VRAM's performance possibly. I'll be updating this thread with adding similar type PRs & also updating status of each PRs time to time. submitted by /u/pmttyji [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1uu6d/llamacpp_open_prs_list_cpuramdiskhybrid_related/\">  </a>  <!-- SC_OFF --><div><p>Folks! We're <strong>just 50 PRs away from more faster inference</strong>. Hopefully by end of year.</p> <p>Experts!, please chip in there.</p> <p>List of Open/Ongoing PRs(and also Discussions) related to CPU/RAM/Disk/Hybrid:</p> <ol> <li><a href=\"https://github.com/ggml-org/llama.cpp/discussions/24528\">[Discussion] RFC: MoE expert cache, VRAM caching of hot CPU-resident experts with hybrid hit/miss execution #24528</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/27402\">AVX2: Speed up large batch size prompt processing of IQ models #27402</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/27000\">llama: add Maple 20B-A1B ternary MoE architecture (CPU)- #27000</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/27851\">ggml-cpu: tiled mul_mat for k-quants- #27851</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/27590\">ggml-cpu: add AVX-512 and VNNI paths for Q5_K/Q6_K dot products- #27590</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/26348\">ggml-cpu: add x86 VNNI Q2_0 dot product -- 3x speed improvement for VNNI-compatible CPUs- #26348</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/22692\">llama: add pshard runtime for plan switching and streamed weights- #22692</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/27032\">CPU Optimizations - Prefill, Tokenization, and Token Generation- #27032</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/25294\">llama : stream MoE routed experts from disk - #25294</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/27478\">ggml : speed up batch-1 CPU decode, align large allocations- #27478</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/27483\">misc : prevent RAM peaking at model loading stage- #27483</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/25004\">recurrent : support equal splits for recurrent-state rollback- #25004</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/27377\">ggml-cpu : add AVX2 vec_dot kernel for STQ1_0- #27377</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/16000\">--numa mirror: mirror model weights to every Numa node in the system- #16000</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/26948\">CPU flash-attn: support quantized K/V in the tiled prefill kernel- #26948</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/27024\">ggml-cpu/amx: fix block_q8_K VNNI quantization and enable VNNI path- #27024</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/26204\">server : add /slots endpoint action=clone_to (KV clone between slots)- #26204</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/26468\">ggml : fuse soft_max sweeps into fewer passes- #26468</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/22836\">ggml-cpu : add STQ1_0 ternary quantization with ARM NEON vec_dot kernel- #22836</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/26414\">llama-hot-experts: pin hottest MoE experts in RAM via --pin-hot-experts- #26414</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/26003\">llama : add --lazy-experts for MoE models larger than RAM- #26003</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/26486\">ggml : vectorize rms_norm reduce and fuse the scale write- #26486</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/23440\">MoE disk offloading for Metal- #23440</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/25397\">ggml-cpu: Added RVV VLEN=1024 vector dot product (vec_dot) kernels for quantized types.- #25397</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/25346\">ggml-cpu: detect AVX-VNNI in MSVC native builds- #25346</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/25048\">ggml-cpu: replace cyclic chunk distribution with atomic work-stealing- #25048</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/23309\">Improve performance of ggml_gemv_q4_K_8x8_q8_K for +12-23% tok/s on AVX-VNNI systems- #23309</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/23358\">ggml-cpu: Optimized Arm NEON cpu q1_0 dot (with plain/DP/I8MM)- #23358</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/23492\">ggml-cpu: ARM Repack kernels for Q1_0- #23492</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/24058\">ggml-cpu: add wasm simd path for iq4_nl_q8_0- #24058</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/22525\">ggml-cpu: optimize ggml_gemm_q4_K_8x8_q8_K interleaving/staging for AVX-512 (and AVX2)- #22525</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/23439\">ggml/cpu: skip zero-scale blocks in TQ1_0 and TQ2_0 vec_dot kernels- #23439</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/23402\">ggml-cpu:Optimized risc-v cpu nvfp4- #23402</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/23009\">ggml-cpu : fix riscv xtheadvector builds and add a q1_0 vec dot kernel- #23009</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/22250\">Q5_0 - Block Interleaving Implementation for x86 SIMD (AVX512/AVX2)- #22250</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/22331\">ggml-cpu: optimize q8 quantization on x86 SIMD- #22331</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/22181\">Optimize reduction stage of dot product of q4_L/q5_K to q8_K on AVX2- #22181</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/14232\">ggml: introduce GGML_NUMA_MIGRATE to optimize cross NUMA op computation - #14232</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/20596\">ggml-cpu: improve --n-cpu-moe TG performance- #20596</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/16004\">ggml : add CPU backend reference implementation (wip)- #16004</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/19171\">ggml: optimize ggml_vec_dot_mxfp4_q8_0 dot product on ARM SVE- #19171</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/19706\">Q6_K - Block Interleaving Implementation for x86 SIMD (AVX512/AVX2)- #19706</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/19196\">ggml-cpu: optimize q4_0_q8_0 scales using Zvfhmin- #19196</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/18858\">ggml-cpu: add q4_0 repack support for wasm- #18858</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/18698\">Improving inference speed for the repack buffer type on NUMA architectures- #18698</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/18495\">ggml: optimized runtime for x86 cpu backend and Q4_K quantized weights paired with Q8_K activations - #18495</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/17113\">CPU SIMD and pipeline optimizations across vec/mmq/ops/kv-cache/repack - #17113</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/16650\">ggml-cpu: optimise rms_norm op- #16650</a></li> </ol> <p>PRs related to New Quant types:</p> <ol> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/24185\">Add ROCmFP4 CPU quantization support- #24185</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/26157\">ggml: add support for MXFP8 CPU- #26157</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/22671\">ggml: Add initial MXFP6 CPU implementation- #22671</a></li> <li><a href=\"https://github.com/ggml-org/llama.cpp/pull/25336\">ggml : add E4M3 (fp8) CPU quantization type- #25336</a></li> </ol> <p>(Just had some extra time, so went through almost entire Open PRs of llama.cpp. For Poor GPU Club mainly)</p> <p><strong>EDIT</strong> : My guesstimation : After merge of these these PRs, 2 Channel DDR5 RAM could give ~8GB VRAM's performance possibly.</p> <p>I'll be updating this thread with adding similar type PRs &amp; also updating status of each PRs time to time.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/pmttyji\"> /u/pmttyji </a> <br/> <span><a href=\"https://i.redd.it/tjc2q7ew2dmh1.png\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1uu6d/llamacpp_open_prs_list_cpuramdiskhybrid_related/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1w1uu6d/llamacpp_open_prs_list_cpuramdiskhybrid_related/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T18:58:58+00:00",
+      "published_ts": 1788029938,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
     {
       "title": "An infinite and interactive AI generated live stream of slop",
       "summary": "Article URL: https://skunkworks.levels.io/infinite-slop/ Comments URL: https://news.ycombinator.com/item?id=49492243 Points: 2 # Comments: 0",
@@ -36,6 +241,22 @@
       "curated": false
     },
     {
+      "title": "(NInfer Fork) I wanted to have a 1M context Qwen-3.8 27B, tp2, dual 5090s",
+      "summary": "Hey! I forked NInfer (a from-scratch C++20/CUDA inference engine for Qwen models) and added two things: tensor-parallel across two GPUs, and YaRN \u00d74 rope scaling. Together they let Qwen3.8-27B NVFP4 run a 1,048,576-token context on two consumer 5090s \u2014 27.4 GB per card, no NVLink. Numbers (single stream, 500 W per GPU cap): Decode at 653k context: 119 tok/s with MTP speculative decoding, 57 without. vLLM on the same prompts: 42 tok/s. Why: past its native 262k window, vLLM's MTP acceptance drops to exactly zero (0 of 1,533 drafts accepted) \u2014 it keeps paying for the drafter. NInfer's acceptance stays ~55\u201360% out to 1M. Prefill is where vLLM wins: 1.2\u20131.3\u00d7 faster. A full 1M prompt takes ~18 minutes on NInfer. That's the untuned part. At 1M: 48 tok/s decode, ~100 with MTP. vLLM's fp8 KV cache tops out at ~759k tokens on this hardware; NInfer's INT8 KV fits 1,048,576 in less memory. Two GPUs are also just faster than one: 75 vs 54 tok/s at 250k, because weights and KV traffic halve per card and the ~128 cross-GPU reductions per token cost only ~0.2 ms under CUDA graphs. Fork Performance submitted by /u/Littlepharaoh [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1txyk/ninfer_fork_i_wanted_to_have_a_1m_context_qwen38/\">  </a>  <!-- SC_OFF --><div><p>Hey! I forked <a href=\"https://github.com/Neroued/ninfer\">NInfer</a> (a from-scratch C++20/CUDA inference engine for Qwen models) and added two things: tensor-parallel across two GPUs, and YaRN \u00d74 rope scaling. Together they let Qwen3.8-27B NVFP4 run a 1,048,576-token context on two consumer 5090s \u2014 27.4 GB per card, no NVLink.</p> <p>Numbers (single stream, 500 W per GPU cap):</p> <ul> <li>Decode at 653k context: 119 tok/s with MTP speculative decoding, 57 without. vLLM on the same prompts: 42 tok/s.</li> <li>Why: past its native 262k window, vLLM's MTP acceptance drops to exactly zero (0 of 1,533 drafts accepted) \u2014 it keeps paying for the drafter. NInfer's acceptance stays ~55\u201360% out to 1M.</li> <li>Prefill is where vLLM wins: 1.2\u20131.3\u00d7 faster. A full 1M prompt takes ~18 minutes on NInfer. That's the untuned part.</li> <li>At 1M: 48 tok/s decode, ~100 with MTP.</li> <li>vLLM's fp8 KV cache tops out at ~759k tokens on this hardware; NInfer's INT8 KV fits 1,048,576 in less memory.</li> </ul> <p>Two GPUs are also just faster than one: 75 vs 54 tok/s at 250k, because weights and KV traffic halve per card and the ~128 cross-GPU reductions per token cost only ~0.2 ms under CUDA graphs.</p> <p><a href=\"https://github.com/wamansou/ninfer-tp2-1m\">Fork</a></p> <p><a href=\"https://github.com/wamansou/ninfer-tp2-1m/blob/master/docs/performance.md\">Performance </a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Littlepharaoh\"> /u/Littlepharaoh </a> <br/> <span><a href=\"https://www.reddit.com/gallery/1w1txyk\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1txyk/ninfer_fork_i_wanted_to_have_a_1m_context_qwen38/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1w1txyk/ninfer_fork_i_wanted_to_have_a_1m_context_qwen38/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T18:24:17+00:00",
+      "published_ts": 1788027857,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
       "title": "Finished ML + DL \u2014 what should I do next? [D]",
       "summary": "I\u2019ve recently completed learning Machine Learning and Deep Learning, including the mathematics behind the major concepts and algorithms rather than just learning to use libraries. My long-term goal is to eventually become capable of doing research at the level of NeurIPS, ICML, and ICLR. I\u2019m not expecting to jump directly to those conferences, that\u2019s simply the end goal. So I\u2019d like advice on the following things: What projects should I build next? What should I learn next? How should I start doing research? What is a realistic roadmap toward publishing at top ML conferences? submitted by /u/ANUBHAW7410 [link] [comments]",
       "summary_html": "<!-- SC_OFF --><div><p>I\u2019ve recently completed learning Machine Learning and Deep Learning, including the mathematics behind the major concepts and algorithms rather than just learning to use libraries.</p> <p>My long-term goal is to eventually become capable of doing research at the level of NeurIPS, ICML, and ICLR. I\u2019m not expecting to jump directly to those conferences, that\u2019s simply the end goal.</p> <p>So I\u2019d like advice on the following things:</p> <ol> <li>What projects should I build next?</li> <li>What should I learn next?</li> <li>How should I start doing research?</li> <li>What is a realistic roadmap toward publishing at top ML conferences?</li> </ol> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/ANUBHAW7410\"> /u/ANUBHAW7410 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1w1tr86/finished_ml_dl_what_should_i_do_next_d/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1w1tr86/finished_ml_dl_what_should_i_do_next_d/\">[comments]</a></span>",
@@ -48,6 +269,24 @@
       "published_ts": 1788027427,
       "smart_groups": [
         "AI Research & Papers"
+      ],
+      "curated": false
+    },
+    {
+      "title": "This finance-model benchmark card is more useful for what it discloses than for who \"wins\"",
+      "summary": "The official benchmark card for Ling-3.0-flash-Fin is a useful reminder that the unit being tested is rarely just \u201cthe model.\u201d The release says most runs used temperature 1, top_p 0.95 and the highest available reasoning effort. FinFIRST and FinSearchComp Verified used a common ReAct scaffold with Web Search, Visit and Python. SpreadsheetBench used Claude Code 2.1.173 with LibreOffice 25.8.7, Search disabled, 120 or 300 maximum interaction turns and a three-hour task timeout; Ling used temperature 0.6 there. The chart also mixes evidence types. Some results come from official or externally published scores, while others are internal runs. FinSearchComp Verified is an internal 145-question set with expert-revised answers and a GPT-5 judge. FinCRAFT is internal. FinFIRST is announced as \u201ccoming soon,\u201d not public today. None of that makes the chart useless. It makes the claim narrower: these are reported results under several specific agent systems, tool budgets and evaluation pipelines\u2014not a clean intrinsic ranking of raw checkpoints. The finance weights are also not public yet; the team says they are due next week. Once they land, the most valuable follow-up would be the exact harnesses, prompts, tool adapters, per-run variance and failure traces. Until then, the bars are a test plan, not an independent reproduction. submitted by /u/niacolhealth [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1tfkc/this_financemodel_benchmark_card_is_more_useful/\">  </a>  <!-- SC_OFF --><div><p>The official benchmark card for Ling-3.0-flash-Fin is a useful reminder that the unit being tested is rarely just \u201cthe model.\u201d</p> <p>The release says most runs used temperature 1, top_p 0.95 and the highest available reasoning effort. FinFIRST and FinSearchComp Verified used a common ReAct scaffold with Web Search, Visit and Python. SpreadsheetBench used Claude Code 2.1.173 with LibreOffice 25.8.7, Search disabled, 120 or 300 maximum interaction turns and a three-hour task timeout; Ling used temperature 0.6 there.</p> <p>The chart also mixes evidence types. Some results come from official or externally published scores, while others are internal runs. FinSearchComp Verified is an internal 145-question set with expert-revised answers and a GPT-5 judge. FinCRAFT is internal. FinFIRST is announced as \u201ccoming soon,\u201d not public today.</p> <p>None of that makes the chart useless. It makes the claim narrower: these are reported results under several specific agent systems, tool budgets and evaluation pipelines\u2014not a clean intrinsic ranking of raw checkpoints.</p> <p>The finance weights are also not public yet; the team says they are due next week. Once they land, the most valuable follow-up would be the exact harnesses, prompts, tool adapters, per-run variance and failure traces. Until then, the bars are a test plan, not an independent reproduction.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/niacolhealth\"> /u/niacolhealth </a> <br/> <span><a href=\"https://i.redd.it/rfa7m553tcmh1.jpeg\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1tfkc/this_financemodel_benchmark_card_is_more_useful/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1w1tfkc/this_financemodel_benchmark_card_is_more_useful/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T18:04:08+00:00",
+      "published_ts": 1788026648,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "AI Research & Papers",
+        "AI Business & Funding"
       ],
       "curated": false
     },
@@ -280,6 +519,38 @@
       "curated": true
     },
     {
+      "title": "Tencent compressed Hy4-preview from 1.5TB to about 200GB GGUF and kept about 98% performance.",
+      "summary": "submitted by /u/RedditUsr2 [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1o324/tencent_compressed_hy4preview_from_15tb_to_about/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/RedditUsr2\"> /u/RedditUsr2 </a> <br/> <span><a href=\"https://i.redd.it/lpt5x1t2rbmh1.png\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1o324/tencent_compressed_hy4preview_from_15tb_to_about/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1w1o324/tencent_compressed_hy4preview_from_15tb_to_about/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T14:31:38+00:00",
+      "published_ts": 1788013898,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Someone tested various Models on the Political Compass test...",
+      "summary": "submitted by /u/Thrumpwart [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1o1ji/someone_tested_various_models_on_the_political/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/Thrumpwart\"> /u/Thrumpwart </a> <br/> <span><a href=\"https://aipolcom.net/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1o1ji/someone_tested_various_models_on_the_political/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1w1o1ji/someone_tested_various_models_on_the_political/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T14:30:05+00:00",
+      "published_ts": 1788013805,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
       "title": "Calibre eBook manager lets you generate AI book covers",
       "summary": "Article URL: https://www.omgubuntu.co.uk/2026/08/calibre-ebook-ai-covers Comments URL: https://news.ycombinator.com/item?id=49490115 Points: 5 # Comments: 0",
       "summary_html": "<p>Article URL: <a href=\"https://www.omgubuntu.co.uk/2026/08/calibre-ebook-ai-covers\">https://www.omgubuntu.co.uk/2026/08/calibre-ebook-ai-covers</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49490115\">https://news.ycombinator.com/item?id=49490115</a></p>\n<p>Points: 5</p>\n<p># Comments: 0</p>",
@@ -305,6 +576,22 @@
       "published": "2026-08-29T14:15:36+00:00",
       "published_ts": 1788012936,
       "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Exo labs claiming 4.8 tb/s memory bandwidth through m5u Mac Studio clustering",
+      "summary": "Exo labs making some very exciting and interesting claims. The headline is bandwidth scales linearly on Mac Studio clusters with their solution. There is a thread over at localllm subreddit ( https://www.reddit.com/r/LocalLLM/s/qEYLOFaYwc ) where one of their employees speaks about how its latency, not bandwidth that matters in their RDMA clustering solution. I made a post about m5u 96gb x 2 clustered vs a single m5u 256gb and most folks recommended a single 256, with bandwidth limitations over TB5 being the main reason. I feel like most individuals (myself included) weren\u2019t aware of these claims by Exo when they made those recommendations. FWIW I think I\u2019m sticking with the 256gb order but I feel like taking the risk on a cluster of 96gb studios is worth considering now given that news. Ultimately I\u2019ll stick with the 256 gb though because in the future it gives me the agility to scale processing power AND ram with a second 256 gb studio if I ever desire it, and maybe I\u2019ll get lucky and buy an off lease unit in 2 years for a lot less, reducing my overall cost per unit ;) submitted by /u/anonmt57 [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1nc1c/exo_labs_claiming_48_tbs_memory_bandwidth_through/\">  </a>  <!-- SC_OFF --><div><p>Exo labs making some very exciting and interesting claims. The headline is bandwidth scales linearly on Mac Studio clusters with their solution. There is a thread over at localllm subreddit (<a href=\"https://www.reddit.com/r/LocalLLM/s/qEYLOFaYwc\">https://www.reddit.com/r/LocalLLM/s/qEYLOFaYwc</a> ) where one of their employees speaks about how its latency, not bandwidth that matters in their RDMA clustering solution.</p> <p>I made a post about m5u 96gb x 2 clustered vs a single m5u 256gb and most folks recommended a single 256, with bandwidth limitations over TB5 being the main reason. I feel like most individuals (myself included) weren\u2019t aware of these claims by Exo when they made those recommendations.</p> <p>FWIW I think I\u2019m sticking with the 256gb order but I feel like taking the risk on a cluster of 96gb studios is worth considering now given that news. Ultimately I\u2019ll stick with the 256 gb though because in the future it gives me the agility to scale processing power AND ram with a second 256 gb studio if I ever desire it, and maybe I\u2019ll get lucky and buy an off lease unit in 2 years for a lot less, reducing my overall cost per unit ;)</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/anonmt57\"> /u/anonmt57 </a> <br/> <span><a href=\"https://i.redd.it/o39563etlbmh1.jpeg\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1nc1c/exo_labs_claiming_48_tbs_memory_bandwidth_through/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1w1nc1c/exo_labs_claiming_48_tbs_memory_bandwidth_through/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T14:00:49+00:00",
+      "published_ts": 1788012049,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
       "curated": false
     },
     {
@@ -378,6 +665,22 @@
       "curated": false
     },
     {
+      "title": "Qwen 3.8 27B at 50 tok/s with 100k Context on a 16GB GPU! (beellama.cpp)",
+      "summary": "I wanted to share my successful setup for running a Qwen 3.8 27B model with a massive context window on a consumer 16GB GPU (RTX 4070 Ti SUPER). The goal was to fit everything into VRAM without sacrificing quality or speed. \ud83e\udde0 Key Components Model: Qwen3.8-27B-i1-IQ4_XS-GGUF-Smaller from jrell on Hugging Face . It's a custom hybrid quantization specifically designed to fit Multi-Token Prediction (MTP) and long contexts into a 16GB VRAM budget. Chat Template: I used the Jinja template from peculiar-ragdoll's Qwen-Sharp-Chat-Templates . It helps use fewer thinking tokens without noticeably affecting quality, which is great for speed. Inference Engine: This is crucial. I used beellama.cpp ( GitHub link ) because it supports the kvarn KV cache types, which are key to this optimization. \ud83d\udda5\ufe0f Optimized llama-server Command (Windows) Here's the polished command I'm running. The magic is in the kvarn cache settings and the tail precision. %LLAMA_DIR%/llama-server.exe ^ -m %MODEL_PATH% ^ -a %MODEL_NAME% ^ --port 11434 ^ --temp 1.0 ^ --top-p 0.95 ^ --top-k 20 ^ --min-p 0.0 ^ --presence-penalty 0.0 ^ --repeat-penalty 1.0 ^ --parallel 1 ^ --n-gpu-layers 99 ^ --batch-size 1024 ^ --ubatch-size 256 ^ --flash-attn on ^ --spec-type draft-mtp ^ --spec-draft-n-max 2 ^ --cache-type-k kvarn5 ^ <-- Key: Higher precision for K cache --cache-type-v kvarn4 ^ <-- Key: Balanced precision for V cache --kv-tail-tokens 1024 ^ <-- Keeps recent tokens at full precision --ctx-size 100000 ^ --fit-ctx 100000 ^ --jinja ^ --chat-template-kwargs \"{\\\"preserve_thinking\\\": true, \\\"reasoning_effort\\\":\\\"medium\\\"}\" ^ --chat-template-file %MODEL_JINJA% ^ --no-mmproj-offload ^ --threads 7 ^ --threads-batch 8 ^ --metrics ^ --verbosity 3 ^ --perf \ud83d\udcca Results & Optimization Notes Metric Result Note Generation Speed 47-50 tokens/second Excellent for a 27B dense model. Context Window 100,000 tokens Successfully pushed from 88k by optimizing the cache. VRAM Usage ~15.93 GB (70 MB free) Perfectly tuned to the limit for maximum context. KV Cache Type kvarn5 (K) / kvarn4 (V) Uses the kvarn types from beellama. The asymmetric mix balances memory and quality. Precision Tail --kv-tail-tokens 1024 This is key. It keeps recent tokens at higher precision, preserving output quality. What I Optimized: KV Cache Quantization: Moving from kvarn5/kvarn5 to kvarn5/kvarn4 saved ~6% VRAM, allowing the context size to increase from 88k to 100k with minimal quality loss. Batch Sizes: Set --batch-size 1024 and --ubatch-size 256 to balance prompt processing speed and VRAM usage. Threading: Adjusted --threads 7 and --threads-batch 8 for my Ryzen 7 CPU. Speculative Decoding: Using --spec-type draft-mtp with 2 draft tokens (the model supports this) gave a huge speed boost. The near-lossless kvarn quantization for the KV cache is the real star here. It delivers q5-class fidelity at q4-class memory usage, which is incredible. Hopefully, this helps anyone trying to squeeze maximum performance out of a 16GB card! Cheers. submitted by /u/qaf23 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I wanted to share my successful setup for running a <strong>Qwen 3.8 27B</strong> model with a massive context window on a consumer 16GB GPU (RTX 4070 Ti SUPER). The goal was to fit everything into VRAM without sacrificing quality or speed.</p> \ud83e\udde0 Key Components <ul> <li><strong>Model:</strong> <code>Qwen3.8-27B-i1-IQ4_XS-GGUF-Smaller</code> from <a href=\"https://huggingface.co/jrell/Qwen3.8-27B-i1-IQ4_XS-GGUF-Smaller\">jrell on Hugging Face</a>. It's a custom hybrid quantization specifically designed to fit Multi-Token Prediction (MTP) and long contexts into a 16GB VRAM budget.</li> <li><strong>Chat Template:</strong> I used the Jinja template from <a href=\"https://huggingface.co/peculiar-ragdoll/Qwen-Sharp-Chat-Templates\">peculiar-ragdoll's Qwen-Sharp-Chat-Templates</a>. It helps use fewer thinking tokens without noticeably affecting quality, which is great for speed.</li> <li><strong>Inference Engine:</strong> This is crucial. I used <strong>beellama.cpp</strong> (<a href=\"https://github.com/Anbeeld/beellama.cpp\">GitHub link</a>) because it supports the <code>kvarn</code> KV cache types, which are key to this optimization.</li> </ul> \ud83d\udda5\ufe0f Optimized llama-server Command (Windows) <p>Here's the polished command I'm running. The magic is in the <code>kvarn</code> cache settings and the tail precision.</p> <pre><code>%LLAMA_DIR%/llama-server.exe ^ -m %MODEL_PATH% ^ -a %MODEL_NAME% ^ --port 11434 ^ --temp 1.0 ^ --top-p 0.95 ^ --top-k 20 ^ --min-p 0.0 ^ --presence-penalty 0.0 ^ --repeat-penalty 1.0 ^ --parallel 1 ^ --n-gpu-layers 99 ^ --batch-size 1024 ^ --ubatch-size 256 ^ --flash-attn on ^ --spec-type draft-mtp ^ --spec-draft-n-max 2 ^ --cache-type-k kvarn5 ^ &lt;-- Key: Higher precision for K cache --cache-type-v kvarn4 ^ &lt;-- Key: Balanced precision for V cache --kv-tail-tokens 1024 ^ &lt;-- Keeps recent tokens at full precision --ctx-size 100000 ^ --fit-ctx 100000 ^ --jinja ^ --chat-template-kwargs \"{\\\"preserve_thinking\\\": true, \\\"reasoning_effort\\\":\\\"medium\\\"}\" ^ --chat-template-file %MODEL_JINJA% ^ --no-mmproj-offload ^ --threads 7 ^ --threads-batch 8 ^ --metrics ^ --verbosity 3 ^ --perf </code></pre> \ud83d\udcca Results &amp; Optimization Notes   Metric Result Note    <strong>Generation Speed</strong> <strong>47-50 tokens/second</strong> Excellent for a 27B dense model.   <strong>Context Window</strong> <strong>100,000 tokens</strong> Successfully pushed from 88k by optimizing the cache.   <strong>VRAM Usage</strong> ~15.93 GB (70 MB free) Perfectly tuned to the limit for maximum context.   <strong>KV Cache Type</strong> <code>kvarn5</code> (K) / <code>kvarn4</code> (V) Uses the <code>kvarn</code> types from beellama. The asymmetric mix balances memory and quality.   <strong>Precision Tail</strong> <code>--kv-tail-tokens 1024</code> This is key. It keeps recent tokens at higher precision, preserving output quality.   <p><strong>What I Optimized:</strong></p> <ol> <li><strong>KV Cache Quantization:</strong> Moving from <code>kvarn5/kvarn5</code> to <code>kvarn5/kvarn4</code> saved ~6% VRAM, allowing the context size to increase from 88k to 100k with minimal quality loss.</li> <li><strong>Batch Sizes:</strong> Set <code>--batch-size 1024</code> and <code>--ubatch-size 256</code> to balance prompt processing speed and VRAM usage.</li> <li><strong>Threading:</strong> Adjusted <code>--threads 7</code> and <code>--threads-batch 8</code> for my Ryzen 7 CPU.</li> <li><strong>Speculative Decoding:</strong> Using <code>--spec-type draft-mtp</code> with 2 draft tokens (the model supports this) gave a huge speed boost.</li> </ol> <p>The near-lossless <code>kvarn</code> quantization for the KV cache is the real star here. It delivers q5-class fidelity at q4-class memory usage, which is incredible.</p> <p>Hopefully, this helps anyone trying to squeeze maximum performance out of a 16GB card! Cheers.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/qaf23\"> /u/qaf23 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1lq7u/qwen_38_27b_at_50_toks_with_100k_context_on_a/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1lq7u/qwen_38_27b_at_50_toks_with_100k_context_on_a/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1w1lq7u/qwen_38_27b_at_50_toks_with_100k_context_on_a/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T12:50:05+00:00",
+      "published_ts": 1788007805,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
       "title": "Tech backlash reaches fever pitch as AI angst collides with social media fears",
       "summary": "Article URL: https://www.cnbc.com/2026/08/29/tech-backlash-ai-data-centers-elections.html Comments URL: https://news.ycombinator.com/item?id=49489481 Points: 3 # Comments: 0",
       "summary_html": "<p>Article URL: <a href=\"https://www.cnbc.com/2026/08/29/tech-backlash-ai-data-centers-elections.html\">https://www.cnbc.com/2026/08/29/tech-backlash-ai-data-centers-elections.html</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49489481\">https://news.ycombinator.com/item?id=49489481</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
@@ -392,6 +695,23 @@
       "curated": false
     },
     {
+      "title": "How important is it for Chinese LLMs to reach the Opus 4.8 level?",
+      "summary": "In mid-August, Ramp published spending data collected from 70,000 U.S. companies: Fable 5 ,the most powerful and expensive model in Anthropic\u2019s lineup, accounts for just 11% of what those businesses spend on the company\u2019s tools. The remaining 79% is worth its weight in gold. With the new releases from Qwen and GLM, we are likely close to Opus 4.8, and certainly ahead of Sonnet and the other LLMs shown at the top of the image. The \"anti-open-source crusade\" therefore comes as no surprise: it is a genuine threat to their business, especially considering the parallel with the video game industry, where the hardware needed to run a game in Full HD became \"low-end\" within just a few years as 4K took over. We are in a frenetic phase: new models appearing daily, varying sizes, and\u2014unfortunately\u2014increasingly expensive hardware. But in the long run, I believe the winners will be those selling the silicon for computing (AMD, Nvidia, and soon other competitors) rather than those selling tokens. submitted by /u/LegacyRemaster [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1l3a2/how_important_is_it_for_chinese_llms_to_reach_the/\">  </a>  <!-- SC_OFF --><div><p>In mid-August, Ramp published spending data collected from 70,000 U.S. companies: Fable 5 ,the most powerful and expensive model in Anthropic\u2019s lineup, accounts for just 11% of what those businesses spend on the company\u2019s tools. </p> <p>The remaining 79% is worth its weight in gold. With the new releases from Qwen and GLM, we are likely close to Opus 4.8, and certainly ahead of Sonnet and the other LLMs shown at the top of the image. The \"anti-open-source crusade\" therefore comes as no surprise: it is a genuine threat to their business, especially considering the parallel with the video game industry, where the hardware needed to run a game in Full HD became \"low-end\" within just a few years as 4K took over.</p> <p>We are in a frenetic phase: new models appearing daily, varying sizes, and\u2014unfortunately\u2014increasingly expensive hardware. But in the long run, I believe the winners will be those selling the silicon for computing (AMD, Nvidia, and soon other competitors) rather than those selling tokens.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/LegacyRemaster\"> /u/LegacyRemaster </a> <br/> <span><a href=\"https://i.redd.it/6q1zwgym2bmh1.png\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1l3a2/how_important_is_it_for_chinese_llms_to_reach_the/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1w1l3a2/how_important_is_it_for_chinese_llms_to_reach_the/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T12:19:44+00:00",
+      "published_ts": 1788005984,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "AI Hardware & Chips"
+      ],
+      "curated": true
+    },
+    {
       "title": "AI Hallucination Cases Database",
       "summary": "Article URL: https://www.damiencharlotin.com/hallucinations/ Comments URL: https://news.ycombinator.com/item?id=49489219 Points: 2 # Comments: 0",
       "summary_html": "<p>Article URL: <a href=\"https://www.damiencharlotin.com/hallucinations/\">https://www.damiencharlotin.com/hallucinations/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49489219\">https://news.ycombinator.com/item?id=49489219</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
@@ -404,6 +724,22 @@
       "published_ts": 1788005264,
       "smart_groups": [
         "AI Safety & Ethics"
+      ],
+      "curated": false
+    },
+    {
+      "title": "An official 1-bit quant for Hy4??? \ud83d\udc40",
+      "summary": "Has anyone tried it? The results in their tweet look very promising! Sadly, I don\u2019t have enough RAM yet\u2026 Accuracy barely moves vs BF16 \ud83d\udcca MCP Atlas 83.7\u219283.2 \ud83d\udcca SWE-Bench multi 82.9\u219281.3 \ud83d\udcca MRCR 81.3\u219281.1 \ud83d\udcca IFBench 73.5\u219272.5 https://x.com/TencentHunyuan/status/2093572224342954019 EDIT: Alright, 2.38-bit bpw, just labeled as Q1\u2026 My bad! submitted by /u/lakySK [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1kt83/an_official_1bit_quant_for_hy4/\">  </a>  <!-- SC_OFF --><div><p>Has anyone tried it? The results in their tweet look very promising! Sadly, I don\u2019t have enough RAM yet\u2026</p> <p>Accuracy barely moves vs BF16<br/> \ud83d\udcca MCP Atlas 83.7\u219283.2<br/> \ud83d\udcca SWE-Bench multi 82.9\u219281.3<br/> \ud83d\udcca MRCR 81.3\u219281.1<br/> \ud83d\udcca IFBench 73.5\u219272.5</p> <p><a href=\"https://x.com/TencentHunyuan/status/2093572224342954019\">https://x.com/TencentHunyuan/status/2093572224342954019</a></p> <p>EDIT:</p> <p>Alright, 2.38-bit bpw, just labeled as Q1\u2026 My bad!</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/lakySK\"> /u/lakySK </a> <br/> <span><a href=\"https://huggingface.co/AngelSlim/Hy4-preview-GGUF\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1kt83/an_official_1bit_quant_for_hy4/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1w1kt83/an_official_1bit_quant_for_hy4/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T12:05:52+00:00",
+      "published_ts": 1788005152,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
       ],
       "curated": false
     },
@@ -453,6 +789,22 @@
       "published": "2026-08-29T11:02:06+00:00",
       "published_ts": 1788001326,
       "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "If your t/s is low enough, you can see speculative decoding with your own eyes",
+      "summary": "The other day I was trying out a distillation of DS4 Pro, and it came with MTP. It was slow as hell on my hardware, barely 2-3 t/s, BUT the speed got bumps every once in a while, and I noticed it was in moments like: United States of America First law of thermodynamics The enshittification of the internet Basically, every time a very predictable phrase came up, it was instantly written. A fun thing to see. But it also has me wondering - would MTP work together with n-grams? Since n-grams are Markov chains, the same engine behind autosuggest, how much sense would it make to combine them with speculative decoding? submitted by /u/zippydazoop [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>The other day I was trying out a distillation of DS4 Pro, and it came with MTP. It was slow as hell on my hardware, barely 2-3 t/s, BUT the speed got bumps every once in a while, and I noticed it was in moments like:</p> <ul> <li>United States of America</li> <li>First law of thermodynamics</li> <li>The enshittification of the internet</li> </ul> <p>Basically, every time a very predictable phrase came up, it was instantly written. A fun thing to see. </p> <p>But it also has me wondering - would MTP work together with n-grams? Since n-grams are Markov chains, the same engine behind autosuggest, how much sense would it make to combine them with speculative decoding? </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/zippydazoop\"> /u/zippydazoop </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1je5d/if_your_ts_is_low_enough_you_can_see_speculative/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1je5d/if_your_ts_is_low_enough_you_can_see_speculative/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1w1je5d/if_your_ts_is_low_enough_you_can_see_speculative/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T10:51:58+00:00",
+      "published_ts": 1788000718,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
       "curated": false
     },
     {
@@ -630,6 +982,55 @@
       "curated": false
     },
     {
+      "title": "Different Qwen thinking levels",
+      "summary": "submitted by /u/Tall_Abrocoma_3533 [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1gm8y/different_qwen_thinking_levels/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/Tall_Abrocoma_3533\"> /u/Tall_Abrocoma_3533 </a> <br/> <span><a href=\"https://i.redd.it/ygxscjf5v9mh1.png\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1gm8y/different_qwen_thinking_levels/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1w1gm8y/different_qwen_thinking_levels/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T08:09:36+00:00",
+      "published_ts": 1787990976,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "I always wonder how much more speed and/or context they'd be getting..",
+      "summary": "Nothing personal. I just have too much time on my hands. Probably because I spend none of it inspecting the code my agent writes, just the finished product. submitted by /u/_-_David [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1gec7/i_always_wonder_how_much_more_speed_andor_context/\">  </a>  <!-- SC_OFF --><div><p>Nothing personal. I just have too much time on my hands. Probably because I spend none of it inspecting the code my agent writes, just the finished product.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/_-_David\"> /u/_-_David </a> <br/> <span><a href=\"https://i.redd.it/g8o8dwags9mh1.png\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1gec7/i_always_wonder_how_much_more_speed_andor_context/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1w1gec7/i_always_wonder_how_much_more_speed_andor_context/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T07:57:13+00:00",
+      "published_ts": 1787990233,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Terminal Bench 4.0 just dropped, GLM-5.3 is at the same level as Fable 5, accounting for margin of error",
+      "summary": "Announcement: https://www.tbench.ai/news/terminal-bench-4-0 Leaderboard: https://www.tbench.ai/ Imo the best aspect in their announcement is their focus on rapidly iterating on TerminalBench to keep the pace up with new model releases to fight benchmark saturation. On a similar note, what cheaper/smaller alternatives are there to benchmarking coding agents or your own harness? Large benchmarks like this take 5-10B tokens, which is not economically/computationally feasible for the vast majority of us. I'd love to objectively measure how my skills/harness/tools/etc change token usage and success probability on general coding tasks, there has to be a way to do this to at least give an idea or general direction, without requiring billions of tokens for each run. submitted by /u/SorosAhaverom [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1fpxi/terminal_bench_40_just_dropped_glm53_is_at_the/\">  </a>  <!-- SC_OFF --><div><p>Announcement: <a href=\"https://www.tbench.ai/news/terminal-bench-4-0\">https://www.tbench.ai/news/terminal-bench-4-0</a></p> <p>Leaderboard: <a href=\"https://www.tbench.ai/\">https://www.tbench.ai/</a></p> <p>Imo the best aspect in their announcement is their focus on rapidly iterating on TerminalBench to keep the pace up with new model releases to fight benchmark saturation.</p> <p>On a similar note, what cheaper/smaller alternatives are there to benchmarking coding agents or your own harness? Large benchmarks like this take 5-10B tokens, which is not economically/computationally feasible for the vast majority of us.</p> <p>I'd love to objectively measure how my skills/harness/tools/etc change token usage and success probability on general coding tasks, there has to be a way to do this to at least give an idea or general direction, without requiring billions of tokens for each run.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/SorosAhaverom\"> /u/SorosAhaverom </a> <br/> <span><a href=\"https://i.redd.it/49j32fxfk9mh1.png\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1fpxi/terminal_bench_40_just_dropped_glm53_is_at_the/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1w1fpxi/terminal_bench_40_just_dropped_glm53_is_at_the/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T07:17:09+00:00",
+      "published_ts": 1787987829,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "AI Research & Papers"
+      ],
+      "curated": false
+    },
+    {
       "title": "I tried vibe-coding a memory tool for AI and stared into the abyss of philosophy",
       "summary": "Article URL: https://arbustoemchamas.substack.com/p/i-naively-tried-vibe-coding-a-memory Comments URL: https://news.ycombinator.com/item?id=49487351 Points: 2 # Comments: 1",
       "summary_html": "<p>Article URL: <a href=\"https://arbustoemchamas.substack.com/p/i-naively-tried-vibe-coding-a-memory\">https://arbustoemchamas.substack.com/p/i-naively-tried-vibe-coding-a-memory</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49487351\">https://news.ycombinator.com/item?id=49487351</a></p>\n<p>Points: 2</p>\n<p># Comments: 1</p>",
@@ -796,6 +1197,22 @@
       "published": "2026-08-29T04:24:17+00:00",
       "published_ts": 1787977457,
       "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Saved my fiances phone with qwen 3.8 27b",
+      "summary": "this model is really something incredible, saved us like 600 dollars. my fiance is always breaking her electronics and then getting me to fix them. The other day she brought me her phone and it was stuck in a boot loop that wouldn't post. tried normal stuff, managed to get it to fastboot but the recovery mode wouldn't load and I couldn't find any firmware online. It's a folding phone and out of warranty so its not cheap to repair and usually isn't worth it, and she had basically written it off as dead. So I said hey what the hell, I've got fastboot access to the computer, let's just let AI give it a shot, can't get much worse. So I loaded up pi and qwen, and basically just explained the situation. It took quite a while, but I checked up on it every once in a while and it successfully found the exact build that the phone had down to the same version, and then managed to save the device through fastboot. I am quite amazed. this is a situation I've never really trusted local models with, I found 3.6 to be incredible but not quite trustworthy enough to be left unattended or on more critical tasks. but 3.8 has been incredible in its reliability. this was on Q5 uncensored from orcarouter, xhigh submitted by /u/Prudent-Objective852 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>this model is really something incredible, saved us like 600 dollars. my fiance is always breaking her electronics and then getting me to fix them. The other day she brought me her phone and it was stuck in a boot loop that wouldn't post. tried normal stuff, managed to get it to fastboot but the recovery mode wouldn't load and I couldn't find any firmware online. It's a folding phone and out of warranty so its not cheap to repair and usually isn't worth it, and she had basically written it off as dead. So I said hey what the hell, I've got fastboot access to the computer, let's just let AI give it a shot, can't get much worse.</p> <p>So I loaded up pi and qwen, and basically just explained the situation. It took quite a while, but I checked up on it every once in a while and it successfully found the exact build that the phone had down to the same version, and then managed to save the device through fastboot. I am quite amazed. this is a situation I've never really trusted local models with, I found 3.6 to be incredible but not quite trustworthy enough to be left unattended or on more critical tasks. but 3.8 has been incredible in its reliability. </p> <p>this was on Q5 uncensored from orcarouter, xhigh</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Prudent-Objective852\"> /u/Prudent-Objective852 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1cbb0/saved_my_fiances_phone_with_qwen_38_27b/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1w1cbb0/saved_my_fiances_phone_with_qwen_38_27b/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1w1cbb0/saved_my_fiances_phone_with_qwen_38_27b/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-29T04:12:59+00:00",
+      "published_ts": 1787976779,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
       "curated": false
     },
     {
