@@ -1,9 +1,511 @@
 {
-  "generated_at": "2026-08-31T21:34:40.228147+00:00",
+  "generated_at": "2026-09-01T05:26:33.851591+00:00",
   "date": "2026-08-31",
-  "total_items": 906,
+  "total_items": 945,
   "next_chunk": "archive/news/daily/2026-08-30.json",
   "items": [
+    {
+      "title": "Introducing wrapture",
+      "summary": "Introducing wrapture New from Graham Dumpleton (of wrapt , mod_wsgi, and New Relic's Python agent fame), who describes Wrapture as taking the monkeypatching ideas from wrapt and extending them to apply to testing and tracing at the same time. Wrapture ( full documentation here ) makes it easy to wrap any function or method such that all access can be traced, or can be overridden to return a different value. It acts as both an alternative to unittest.mock and a way to implement tracing against an existing project: Attaching observation to code you do not control, recording what flows through it, and doing so without disturbing the program being watched, is a problem I have never really stopped thinking about. Wrapture includes OpenTelemetry support and even has an entirely configuration-based mechanism for adding tracing to an existing Python project, which looks like this: capture = \" summary \" [[ observe ]] target = \" domain:Calculator \" name = [ \" outer \" , \" inner \" ]\n\n[[ sink ]] type = \" jsonlines \" path = \" trace.jsonl \" This is still a very young project - just a few weeks old - but it's off to a very promising start. Interestingly, this is also Graham's first attempt at  large entirely agent-driven project: Every line of code and documentation in wrapture was written by an AI assistant working under my direction. I want to be upfront about that, and equally upfront about what it was not. This was not vibe coding, where a one-shot prompt produces a pile of generated code and the person driving hopes for the best because they lack the knowledge to judge what came back. Vibe coding has earned its bad reputation. I engineered wrapture carefully from the start. I have spent a long time in this particular corner of Python and knew exactly what the result needed to be, and the AI was the means of producing it rather than the source of the design. In a follow-up post, Unit testing with wrapture , Graham shows the testing patterns supported by the new library: def test_stub_with_wrapture (): with wrapture . binding ( Gateway , \"charge\" ). on_call . returns ({ \"id\" : \"stub\" , \"amount\" : 0 }\n    ): assert OrderService (). place ( 500 )[ \"id\" ] == \"stub\" And this neat example of a test that calls and then modifies the return value from the original method: def test_pinned_result_with_wrapture (): charge = wrapture . binding ( Gateway , \"charge\" ) charge . on_call . transforms_result ( lambda r : { ** r , \"id\" : \"ch_TEST\" }\n    ) with charge : assert OrderService (). place ( 500 ) == { \"id\" : \"ch_TEST\" , \"amount\" : 500 } (In both of these examples the OrderService().place(...) method calls Gateway().charge(...) .) Tags: graham-dumpleton , monkey-patching , python , testing , pytest , observability , ai-assisted-programming , agentic-engineering , opentelemetry",
+      "summary_html": "<p><strong><a href=\"https://grahamdumpleton.me/posts/2026/08/introducing-wrapture/\">Introducing wrapture</a></strong></p>\nNew from Graham Dumpleton (of <a href=\"https://pypi.org/project/wrapt/\">wrapt</a>, mod_wsgi, and New Relic's Python agent fame), who describes Wrapture as taking the monkeypatching ideas from wrapt and extending them to apply to testing and tracing at the same time.\n<p>Wrapture (<a href=\"https://wrapture.readthedocs.io/\">full documentation here</a>) makes it easy to wrap any function or method such that all access can be traced, or can be overridden to return a different value.</p>\n<p>It acts as both an alternative to <code>unittest.mock</code> and a way to implement tracing against an existing project:</p>\n<blockquote>\n<p>Attaching observation to code you do not control, recording what flows through it, and doing so without disturbing the program being watched, is a problem I have never really stopped thinking about.</p>\n</blockquote>\n<p>Wrapture includes <a href=\"https://wrapture.readthedocs.io/en/latest/otel-export.html\">OpenTelemetry support</a> and even has an entirely configuration-based mechanism for adding tracing to an existing Python project, which looks like this:</p>\n<div><pre><span>capture</span> = <span><span>\"</span>summary<span>\"</span></span>\n\n[[<span>observe</span>]]\n<span>target</span> = <span><span>\"</span>domain:Calculator<span>\"</span></span>\n<span>name</span> = [<span><span>\"</span>outer<span>\"</span></span>, <span><span>\"</span>inner<span>\"</span></span>]\n\n[[<span>sink</span>]]\n<span>type</span> = <span><span>\"</span>jsonlines<span>\"</span></span>\n<span>path</span> = <span><span>\"</span>trace.jsonl<span>\"</span></span></pre></div>\n<p>This is still a very young project - just a few weeks old - but it's off to a very promising start.</p>\n<p>Interestingly, this is also Graham's first attempt at  large entirely agent-driven project:</p>\n<blockquote>\n<p>Every line of code and documentation in wrapture was written by an AI assistant working under my direction. I want to be upfront about that, and equally upfront about what it was not. This was not vibe coding, where a one-shot prompt produces a pile of generated code and the person driving hopes for the best because they lack the knowledge to judge what came back. Vibe coding has earned its bad reputation. I engineered wrapture carefully from the start. I have spent a long time in this particular corner of Python and knew exactly what the result needed to be, and the AI was the means of producing it rather than the source of the design.</p>\n</blockquote>\n<p>In a follow-up post, <a href=\"https://grahamdumpleton.me/posts/2026/09/unit-testing-with-wrapture/\">Unit testing with wrapture</a>, Graham shows the testing patterns supported by the new library:</p>\n<pre><span>def</span> <span>test_stub_with_wrapture</span>():\n    <span>with</span> <span>wrapture</span>.<span>binding</span>(\n        <span>Gateway</span>, <span>\"charge\"</span>\n    ).<span>on_call</span>.<span>returns</span>({\n        <span>\"id\"</span>: <span>\"stub\"</span>, <span>\"amount\"</span>: <span>0</span>}\n    ):\n        <span>assert</span> <span>OrderService</span>().<span>place</span>(\n            <span>500</span>\n        )[<span>\"id\"</span>] <span>==</span> <span>\"stub\"</span></pre>\n<p>And this neat example of a test that calls and then modifies the return value from the original method:</p>\n<pre><span>def</span> <span>test_pinned_result_with_wrapture</span>():\n    <span>charge</span> <span>=</span> <span>wrapture</span>.<span>binding</span>(\n        <span>Gateway</span>, <span>\"charge\"</span>\n    )\n    <span>charge</span>.<span>on_call</span>.<span>transforms_result</span>(\n        <span>lambda</span> <span>r</span>: {<span>**</span><span>r</span>, <span>\"id\"</span>: <span>\"ch_TEST\"</span>}\n    )\n    <span>with</span> <span>charge</span>:\n        <span>assert</span> <span>OrderService</span>().<span>place</span>(\n           <span>500</span>\n        ) <span>==</span> {\n            <span>\"id\"</span>: <span>\"ch_TEST\"</span>, <span>\"amount\"</span>: <span>500</span>\n        }</pre>\n<p>(In both of these examples the <code>OrderService().place(...)</code> method calls <code>Gateway().charge(...)</code>.)\n\n\n    <p>Tags: <a href=\"https://simonwillison.net/tags/graham-dumpleton\">graham-dumpleton</a>, <a href=\"https://simonwillison.net/tags/monkey-patching\">monkey-patching</a>, <a href=\"https://simonwillison.net/tags/python\">python</a>, <a href=\"https://simonwillison.net/tags/testing\">testing</a>, <a href=\"https://simonwillison.net/tags/pytest\">pytest</a>, <a href=\"https://simonwillison.net/tags/observability\">observability</a>, <a href=\"https://simonwillison.net/tags/ai-assisted-programming\">ai-assisted-programming</a>, <a href=\"https://simonwillison.net/tags/agentic-engineering\">agentic-engineering</a>, <a href=\"https://simonwillison.net/tags/opentelemetry\">opentelemetry</a></p></p>",
+      "link": "https://simonwillison.net/2026/Aug/31/introducing-wrapture/",
+      "source": "Simon Willison's Weblog",
+      "feed_type": "news",
+      "type": "research-explainability",
+      "type_label": "Research Explainability",
+      "published": "2026-08-31T23:59:36+00:00",
+      "published_ts": 1788220776,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Anthropic Seals $35 Billion Cloud Deal With Nvidia-Backed Lambda",
+      "summary": "Anthropic PBC agreed to a $35 billion computing deal with Lambda, a cloud provider backed by Nvidia Corp., part of an effort to quickly expand its AI capacity, according to a person familiar with the matter.",
+      "summary_html": "Anthropic PBC agreed to a $35 billion computing deal with Lambda, a cloud provider backed by Nvidia Corp., part of an effort to quickly expand its AI capacity, according to a person familiar with the matter.",
+      "link": "https://www.bloomberg.com/news/articles/2026-08-31/anthropic-seals-35-billion-cloud-deal-with-nvidia-backed-lambda",
+      "source": "Bloomberg Technology - Bloomberg Technology",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T23:54:04+00:00",
+      "published_ts": 1788220444,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "AI Hardware & Chips"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Polymarket reportedly raises $300 million from Donald Trump Jr.\u2019s investment fund",
+      "summary": "The firm, 1789 Capital, led the funding round that reportedly will total around $1 billion.",
+      "summary_html": "The firm, 1789 Capital, led the funding round that reportedly will total around $1 billion.",
+      "link": "https://techcrunch.com/2026/08/31/polymarket-reportedly-raises-300-million-from-donald-trump-jr-s-investment-fund/",
+      "source": "TechCrunch - Startup and Technology News",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T23:41:10+00:00",
+      "published_ts": 1788219670,
+      "smart_groups": [
+        "AI Business & Funding"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Sources: Anthropic has signed a $35B cloud deal with Nvidia-backed Lambda; Nvidia will hold the lease on and supply chips to a Texas data center built by Hut 8 (Anissa Gardizy/Wall Street Journal)",
+      "summary": "Anissa Gardizy / Wall Street Journal : Sources: Anthropic has signed a $35B cloud deal with Nvidia-backed Lambda; Nvidia will hold the lease on and supply chips to a Texas data center built by Hut 8 \u2014\u00a0 Nvidia will supply chips to Texas data center and hold the lease, another example of the company using its financial might to boost a customer",
+      "summary_html": "<a href=\"https://www.wsj.com/tech/ai/anthropic-signs-35-billion-cloud-deal-backed-by-nvidia-f12622f1?st=Nm2zbn&amp;reflink=article_copyURL_share\"></a>\n<p><a href=\"https://www.techmeme.com/260831/p42#a260831p42\"></a> Anissa Gardizy / <a href=\"https://www.wsj.com/\">Wall Street Journal</a>:<br/>\n<span><b><a href=\"https://www.wsj.com/tech/ai/anthropic-signs-35-billion-cloud-deal-backed-by-nvidia-f12622f1?st=Nm2zbn&amp;reflink=article_copyURL_share\">Sources: Anthropic has signed a $35B cloud deal with Nvidia-backed Lambda; Nvidia will hold the lease on and supply chips to a Texas data center built by Hut 8</a></b></span>\u00a0 \u2014\u00a0 Nvidia will supply chips to Texas data center and hold the lease, another example of the company using its financial might to boost a customer</p>",
+      "link": "https://www.techmeme.com/260831/p42#a260831p42",
+      "source": "Techmeme - Tech Web, page A1",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T23:40:03+00:00",
+      "published_ts": 1788219603,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "AI Hardware & Chips"
+      ],
+      "curated": true
+    },
+    {
+      "title": "OpenAI says its ad business has already hit $1B in annualized revenue",
+      "summary": "",
+      "summary_html": "",
+      "link": "https://siliconangle.com/2026/08/31/openai-says-its-ad-business-has-already-hit-1b-in-annualized-revenue/",
+      "source": "AI \u2013 SiliconANGLE - Extracting the signal from the noise.",
+      "feed_type": "news",
+      "type": "general-news",
+      "type_label": "General News",
+      "published": "2026-08-31T23:38:10+00:00",
+      "published_ts": 1788219490,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Why AI Agent Authentication Can't Be Treated Like User Authentication",
+      "summary": "Most AI agents in production today authenticate using service accounts, static API keys, or a borrowed human login \u2014 and that quietly breaks the audit trail. This piece looks at why agent identity is structurally different from user identity, where OAuth 2.1 and PKCE fall short on their own, and what token exchange and explicit delegation chains actually fix. Read All",
+      "summary_html": "Most AI agents in production today authenticate using service accounts, static API keys, or a borrowed human login \u2014 and that quietly breaks the audit trail. This piece looks at why agent identity is structurally different from user identity, where OAuth 2.1 and PKCE fall short on their own, and what token exchange and explicit delegation chains actually fix.<p><a href=\"https://hackernoon.com/why-ai-agent-authentication-cant-be-treated-like-user-authentication?source=rss\">Read All</a></p>",
+      "link": "https://hackernoon.com/why-ai-agent-authentication-cant-be-treated-like-user-authentication?source=rss",
+      "source": "Hacker Noon - ai - Humans with irrational brains writing about machines with rational brains.",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T23:32:10+00:00",
+      "published_ts": 1788219130,
+      "smart_groups": [
+        "Agentic AI & Automations"
+      ],
+      "curated": false
+    },
+    {
+      "title": "How to make sure your Android phone is secure",
+      "summary": "Android can help you keep your phone safe from malicious apps, scam calls, invasions of privacy, and much more. You just need the right settings.",
+      "summary_html": "Android can help you keep your phone safe from malicious apps, scam calls, invasions of privacy, and much more. You just need the right settings.<p></p>",
+      "link": "https://www.engadget.com/2243954/how-to-make-sure-android-phone-secure/",
+      "source": "Engadget - Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T23:30:00+00:00",
+      "published_ts": 1788219000,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "a16z brings growth fund to $8.5B days after launching new $1.1B fund",
+      "summary": "Andreessen Horowitz held out its hand and returned with billions more in new funds to invest in startups.",
+      "summary_html": "Andreessen Horowitz held out its hand and returned with billions more in new funds to invest in startups.",
+      "link": "https://techcrunch.com/2026/08/31/a16z-brings-growth-fund-to-8-5b-days-after-launching-new-1-1b-fund/",
+      "source": "TechCrunch - Startup and Technology News",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T23:14:14+00:00",
+      "published_ts": 1788218054,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "The Bentley Supersports: A stripped-out engineer's indulgence",
+      "summary": "Bentley provided flights from Washington, DC, to Monterey, California, and accommodation so Ars could drive the Supersports, as well as ride in a preproduction Torcal EV, which we wrote about last week. Ars does not accept paid editorial content. MONTEREY, Calif.\u2014Last week, we brought news of the Bentley Torcal, a new electric vehicle that the luxury automaker has been cooking up at its HQ in Crewe, England. The company wants to attract new customers with its first battery EV, part of a plan to make sustainability as much a part of the brand's character as its high-end fit and finish. W12 engines have given way to V8 plug-in hybrid power, and the new Continental GT is all the better for it . But around the same time as Ars got its first experience of that new PHEV two-door on a rather wet Spanish racetrack, some of Bentley's boffins were wondering what might happen if you also built one without the hybrid stuff. Or all-wheel drive\u2014something that has been a characteristic of every new road-going Bentley since the turn of the century. That would certainly cut the curb weight. So, too, would leaving out the rear seats. That sort of idea leads down a well-trodden path for some OEMs, and Porsche in particular is famous for making stripped-out road cars inspired by its race cars and making money from them, too. Read full article Comments",
+      "summary_html": "Bentley provided flights from Washington, DC, to Monterey, California, and accommodation so Ars could drive the Supersports, as well as ride in a preproduction Torcal EV, <a href=\"https://arstechnica.com/cars/2026/08/an-ev-that-sounds-like-a-6-75-l-v8-a-ride-in-the-bentley-torcal/\">which we wrote about</a> last week. Ars does not accept paid editorial content.\n<p>MONTEREY, Calif.\u2014Last week, we <a href=\"https://arstechnica.com/cars/2026/08/an-ev-that-sounds-like-a-6-75-l-v8-a-ride-in-the-bentley-torcal/\">brought news</a> of the Bentley Torcal, a new electric vehicle that the luxury automaker has been cooking up at its HQ in Crewe, England. The company wants to attract new customers with its first battery EV, part of a plan to make sustainability as much a part of the brand's character as its high-end fit and finish. W12 engines have given way to V8 plug-in hybrid power, and the new Continental GT is <a href=\"https://arstechnica.com/cars/2025/05/the-2025-bentley-continental-gt-the-highs-and-lows-of-borrowed-bits/\">all the better for it</a>.</p>\n<p>But around the same time as Ars <a href=\"https://arstechnica.com/cars/2024/05/heres-what-we-learned-driving-a-prototype-of-bentleys-new-hybrid-gt/\">got its first experience</a> of that new PHEV two-door on a rather wet Spanish racetrack, some of Bentley's boffins were wondering what might happen if you also built one without the hybrid stuff.</p>\n<p>Or all-wheel drive\u2014something that has been a characteristic of every new road-going Bentley since the turn of the century. That would certainly cut the curb weight. So, too, would leaving out the rear seats. That sort of idea leads down a well-trodden path for some OEMs, and Porsche in particular is famous for making stripped-out road cars inspired by its race cars and making money from them, too.</p><p><a href=\"https://arstechnica.com/cars/2026/08/the-bentley-supersports-a-stripped-out-engineers-indulgence/\">Read full article</a></p>\n<p><a href=\"https://arstechnica.com/cars/2026/08/the-bentley-supersports-a-stripped-out-engineers-indulgence/#comments\">Comments</a></p>",
+      "link": "https://arstechnica.com/cars/2026/08/the-bentley-supersports-a-stripped-out-engineers-indulgence/",
+      "source": "Ars Technica - All content - All Ars Technica stories",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T23:01:16+00:00",
+      "published_ts": 1788217276,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "The Starlink Mini X kit comes with an extra router, but do you really need it?",
+      "summary": "Starlink's extra router can be useful, but getting your main satellite dish positioned properly is more important.",
+      "summary_html": "Starlink's extra router can be useful, but getting your main satellite dish positioned properly is more important.<p></p>",
+      "link": "https://www.engadget.com/2246412/starlink-mini-x-comes-with-extra-router-do-you-need-it/",
+      "source": "Engadget - Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T23:00:00+00:00",
+      "published_ts": 1788217200,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Airbnb Rolls Out Pilot Program in US to Lower Fees Paid by Hosts to 6% or 10%",
+      "summary": "Airbnb Inc. is testing taking a smaller cut of rental fees from hosts, seeking to fight back against a trend of customers booking directly outside of its platform.",
+      "summary_html": "Airbnb Inc. is testing taking a smaller cut of rental fees from hosts, seeking to fight back against a trend of customers booking directly outside of its platform.",
+      "link": "https://www.bloomberg.com/news/articles/2026-08-31/airbnb-rolls-out-pilot-program-in-us-to-lower-fees-paid-by-hosts-to-6-or-10",
+      "source": "Bloomberg Technology - Bloomberg Technology",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T22:57:13+00:00",
+      "published_ts": 1788217033,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Ukraine dissects Russia\u2019s Zircon missile as Moscow leans on harder-to-intercept weapons",
+      "summary": "Russia has been leaning harder on difficult-to-intercept missiles like the Zircon, pictured here during early flight testing, in its war with Ukraine. AP Ukraine's military intelligence published a detailed breakdown of Russia's Zircon missile. The assessment reveals its components, speed, manufacturers, and foreign-made parts. Russia has leaned more on hard-to-intercept missiles as Ukraine has gotten better at stopping other threats. Ukraine's main military intelligence agency published a breakdown of Russia's Zircon missile, a weapon Moscow has increasingly employed in its intensifying strikes. Russia has been investing heavily in advancing its missile arsenal, upgrading systems and making them harder for air defenses to intercept. That reaction to Ukrainian air-defense wins now represents a major challenge as interceptors run low. On Monday, Ukraine's GUR, the country's military intelligence agency, shared details on Russia's 3M22 Zircon missile , including its components and production. It also provided details on the main manufacturer NPO Mashinostroyeniya, a Russian defense company that is part of the Tactical Missiles Corporation, and foreign parts used in the weapon, which included some made by US companies. The disclosure also named more than 70 companies and dozens of people involved in its production. In its new assessment, the GUR referred to Zircon as a ballistic missile, a departure from Russia's description of it as a hypersonic cruise missile. New details published by Ukraine describe it as a two-stage ballistic missile featuring a solid-fuel booster and a solid-fuel sustainer for flight. Cruise missiles and ballistic missiles differ in how they fly and reach their targets. Ballistic missiles typically climb on a ballistic trajectory before descending at high speed toward their targets, while cruise missiles are jet-propelled and fly lower within the atmosphere. Ukraine's assessment challenges Russia's long-standing characterization of the weapon. Ukraine's assessment of the missile includes over 70 companies and key personnel involved in its production. Defense Intelligence of Ukraine The GUR also assessed that the Zircon is slower than claimed, with a maximum speed of Mach 6.8. Russia claims that the missile can reach speeds of Mach 9. Russia has previously touted the Zircon missile as one of its \"invincible\" hypersonic weapons. It first used the missile against Ukraine in February 2024. At that time, Ukraine estimated that Russia had around 40 stockpiled. The arsenal has since grown, though estimates vary, and Russia has increasingly fired these missiles in strikes on Kyiv and other Ukrainian cities, leaning harder on more advanced missiles as Ukraine has demonstrated it can intercept other Russian systems. \"Since we learned to shoot down more than 90% of cruise missiles and drones with gasoline piston engines, Russia has decided to rely on ballistics and jet drones,\" Yehor Cherniev, the deputy chairman of the Ukrainian parliament's national security, defense, and intelligence committee, told Business Insider. Russia did not immediately respond to Business Insider's request for comment on Ukrainian assessments of its weapons and motives. Cherniev said that Ukraine assesses that Russia has reduced production of Kinzhal missiles because of accuracy issues and instead focused on producing Iskander and Zircon missiles. Russian forces have ramped up ballistic missile attacks on Ukraine this year, including debuting a new upgraded variant of its Iskander series, the Iskander-1000 , earlier this summer. These ballistic missiles are more difficult for Ukraine to intercept, and Russia's growing reliance on them comes as Ukraine struggles with shortages of critical air-defense interceptors. Ukraine relies on the US-made MIM-104 Patriot surface-to-air missile system to confront Russia's more difficult missiles, but it has warned that interceptor stocks are running low. \"This is a new and extremely dangerous stage of the war, which requires us to be more effective in the fight against high-speed jet drones, as well as additional assistance from the United States in the form of PAC-3 missiles for Patriot systems,\" Cherniev said. Read the original article on Business Insider",
+      "summary_html": "Russia has been leaning harder on difficult-to-intercept missiles like the Zircon, pictured here during early flight testing, in its war with Ukraine.<p>AP</p><ul><li>Ukraine's military intelligence published a detailed breakdown of Russia's Zircon missile.</li><li>The assessment reveals its components, speed, manufacturers, and foreign-made parts.</li><li>Russia has leaned more on hard-to-intercept missiles as Ukraine has gotten better at stopping other threats.</li></ul><p>Ukraine's main military intelligence agency published a breakdown of Russia's Zircon missile, a weapon Moscow has increasingly employed in its intensifying strikes.</p><p>Russia has been investing heavily in advancing its missile arsenal,<strong> </strong>upgrading systems and <a href=\"https://www.businessinsider.com/russia-improved-missiles-now-slipping-past-ukraines-patriots-us-intel-2025-8\">making them harder</a> for air defenses to intercept. That reaction to Ukrainian air-defense wins now represents a major challenge as interceptors run low.</p><p>On Monday, Ukraine's GUR, the country's military intelligence agency, shared details on Russia's <a href=\"https://www.businessinsider.com/russia-fired-putin-hypersonic-zircon-missile-first-time-ukraine-experts-2024-2\">3M22 Zircon missile</a>, including its components and production.</p><p>It also provided details on the main manufacturer NPO Mashinostroyeniya, a Russian defense company that is part of the Tactical Missiles Corporation, and foreign parts used in the weapon, which included some made by US companies. The disclosure also named more than 70 companies and dozens of people involved in its production.</p><p>In its new assessment, the GUR referred to Zircon as a ballistic missile, a departure from Russia's description of it as a hypersonic cruise missile. New details published by Ukraine describe it<strong> </strong>as a two-stage <a href=\"https://www.businessinsider.com/russia-mass-producing-oreshnik-ballistic-missiles-putin-threat-us-europe-2025-6\">ballistic missile</a> featuring a solid-fuel booster and a solid-fuel sustainer for flight.</p><p>Cruise missiles and ballistic missiles differ in how they fly and reach their targets. <a href=\"https://www.businessinsider.com/russia-using-north-korea-iskander-like-missile-again-long-pause-2026-8\">Ballistic missiles</a> typically climb on a ballistic trajectory before descending at high speed toward their targets,<strong> </strong>while cruise missiles are jet-propelled and fly lower within the atmosphere.</p><p>Ukraine's assessment challenges Russia's long-standing characterization of the weapon.</p>Ukraine's assessment of the missile includes over 70 companies and key personnel involved in its production.<p>Defense Intelligence of Ukraine</p><p>The GUR<strong> </strong>also assessed that the Zircon is slower<strong> </strong>than claimed, with a maximum speed of Mach 6.8. Russia claims that the missile can reach speeds of Mach 9.</p><p>Russia has previously touted the Zircon missile as one of its \"invincible\" hypersonic weapons. It first used the missile against Ukraine in February 2024. At that time, Ukraine estimated that Russia had around 40 stockpiled.</p><p>The arsenal has since grown, though estimates vary, and Russia has increasingly fired these missiles in strikes on Kyiv and other Ukrainian cities, leaning harder on more advanced missiles as Ukraine has demonstrated it can intercept other Russian systems.</p><p>\"Since we learned to shoot down more than 90% of cruise missiles and drones with gasoline piston engines, Russia has decided to rely on ballistics and jet drones,\" Yehor Cherniev, the deputy chairman of the Ukrainian parliament's national security, defense, and intelligence committee, told Business Insider.</p><p>Russia did not immediately respond to Business Insider's request for comment on Ukrainian assessments of its weapons and motives.</p><p>Cherniev said that Ukraine assesses<strong> </strong>that Russia has reduced production of Kinzhal missiles because of accuracy issues and instead focused on producing Iskander and Zircon missiles. Russian forces have ramped up ballistic missile attacks on Ukraine this year, including debuting a new upgraded variant of its Iskander series, the <a href=\"https://www.businessinsider.com/ukraine-says-russia-fired-longer-range-iskander-1000-missile-2026-8\">Iskander-1000</a>, earlier this summer.</p><p>These ballistic missiles are more difficult for Ukraine to intercept, and Russia's growing reliance on them comes<strong> </strong>as Ukraine struggles with shortages of critical air-defense interceptors. Ukraine relies on the US-made <a href=\"https://www.businessinsider.com/patriot-air-defenses-have-become-top-weapons-and-top-targets-2025-7\">MIM-104 Patriot</a> surface-to-air missile system to confront Russia's more difficult missiles, but it has warned that interceptor stocks are running low.</p><p>\"This is a new and extremely dangerous stage of the war, which requires us to be more effective in the fight against high-speed jet drones, as well as additional assistance from the United States in the form of PAC-3 missiles for Patriot systems,\" Cherniev said.</p><div>Read the original article on <a href=\"https://www.businessinsider.com/ukraine-releases-intel-on-russias-harder-to-intercept-zircon-missile-2026-8\">Business Insider</a></div>",
+      "link": "https://www.businessinsider.com/ukraine-releases-intel-on-russias-harder-to-intercept-zircon-missile-2026-8",
+      "source": "Business Insider - Content from Business Insider Excluding Premium",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T22:38:01+00:00",
+      "published_ts": 1788215881,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Apple adds more allegations to its trade secrets lawsuit against OpenAI",
+      "summary": "It claims a laptop proves that a former employee accessed and used proprietary files for the AI company.",
+      "summary_html": "It claims a laptop proves that a former employee accessed and used proprietary files for the AI company.<p></p>",
+      "link": "https://www.engadget.com/2248199/apple-adds-more-allegations-to-its-trade-secrets-lawsuit-against-openai/",
+      "source": "Engadget - Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T22:34:52+00:00",
+      "published_ts": 1788215692,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Nobody Is Actually Auditing What AI Agents Do in Production - And That Scares Me",
+      "summary": "The industry deployed autonomous AI agents to production about eighteen months before it built any way to audit what they actually do. Read All",
+      "summary_html": "The industry deployed autonomous AI agents to production about eighteen months before it built any way to audit what they actually do. <p><a href=\"https://hackernoon.com/nobody-is-actually-auditing-what-ai-agents-do-in-production-and-that-scares-me?source=rss\">Read All</a></p>",
+      "link": "https://hackernoon.com/nobody-is-actually-auditing-what-ai-agents-do-in-production-and-that-scares-me?source=rss",
+      "source": "Hacker Noon - ai - Humans with irrational brains writing about machines with rational brains.",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T22:34:13+00:00",
+      "published_ts": 1788215653,
+      "smart_groups": [
+        "Agentic AI & Automations"
+      ],
+      "curated": false
+    },
+    {
+      "title": "The Google TV Streamer now costs $50 more",
+      "summary": "Google raised the price of its 4K streaming box to $149, up $50 from its original $99 price. The new price is currently live at the Google Store and Best Buy , but Amazon appears to still be offering the original price. The price hike comes just a couple of weeks after Google launched its new lineup of Pixel 11 phones with a $100 price hike over their Pixel 10 counterparts. The Google TV Streamer originally launched in 2024 and doubles as a smart home hub. It isn't the only streaming device getting more expensive - component shortages have been driving up prices on everything from laptops to game consoles. Earlier this month, Amazon incre \u2026 Read the full story at The Verge.",
+      "summary_html": "<p>Google raised the price of its 4K streaming box to $149, up $50 from its original $99 price. The new price is currently live at the <a href=\"https://store.google.com/product/google_tv_streamer?hl=en-US\">Google Store</a> and <a href=\"https://www.bestbuy.com/product/google-tv-streamer-4k-fast-streaming-device-in-4k-hdr-32-gb-of-storage-hazel/J3GT5ZSHC5\">Best Buy</a>, but <a href=\"https://www.amazon.com/dp/B0D8WJYSF9\">Amazon</a> appears to still be offering the original price. </p>\n<p>The price hike comes just a couple of weeks after Google launched its <a href=\"https://www.theverge.com/tech/978013/google-pixel-11-series-hands-on-hardware-software\">new lineup of Pixel 11 phones</a> with a $100 price hike over their Pixel 10 counterparts. </p>\n<p>The Google TV Streamer <a href=\"https://www.theverge.com/2024/9/23/24250684/google-tv-streamer-4k-review-smart-home-hub\">originally launched in 2024</a> and doubles as a smart home hub. It isn't the only streaming device getting more expensive - component shortages have been <a href=\"https://www.theverge.com/news/839353/pc-ram-shortage-pricing-spike-news\">driving up prices</a> on everything from laptops to game consoles. Earlier this month, Amazon <a href=\"https://www.theverge.com/tech/983598/amazon-price-increase-echo-kindle-fire-tv\">incre \u2026</a></p>\n<p><a href=\"https://www.theverge.com/tech/987032/google-tv-streamer-price-increase\">Read the full story at The Verge.</a></p>",
+      "link": "https://www.theverge.com/tech/987032/google-tv-streamer-price-increase",
+      "source": "The Verge - All Posts",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T22:32:51+00:00",
+      "published_ts": 1788215571,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Asia Data Center Debt Binge Hitting Banks\u2019 Limits, Barclays Says",
+      "summary": "The billions of dollars being borrowed to fund data centers in Asia are pushing banks to their limits and making them more selective about which projects to finance, according to senior bankers at Barclays Plc.",
+      "summary_html": "The billions of dollars being borrowed to fund data centers in Asia are pushing banks to their limits and making them more selective about which projects to finance, according to senior bankers at Barclays Plc.",
+      "link": "https://www.bloomberg.com/news/articles/2026-08-31/asia-data-center-debt-binge-hitting-banks-limits-barclays-says",
+      "source": "Bloomberg Technology - Bloomberg Technology",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T22:30:00+00:00",
+      "published_ts": 1788215400,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Here's how Nintendo missed the mark with the GameCube console",
+      "summary": "The GameCube had some things going for it, and it even has a cult following these days, but at its release, it was a flop.",
+      "summary_html": "The GameCube had some things going for it, and it even has a cult following these days, but at its release, it was a flop.<p></p>",
+      "link": "https://www.engadget.com/2243923/how-nintendo-missed-mark-with-gamecube-console/",
+      "source": "Engadget - Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T22:30:00+00:00",
+      "published_ts": 1788215400,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "FTC and 22 States Sue Amazon Over Advertising Practices",
+      "summary": "The Federal Trade Commission and the states said Amazon misled brands and sellers into paying more for ads; the company is denying the accusations.",
+      "summary_html": "The Federal Trade Commission and the states said Amazon misled brands and sellers into paying more for ads; the company is denying the accusations.",
+      "link": "https://www.nytimes.com/2026/08/31/technology/ftc-amazon-lawsuit-ad-prices.html",
+      "source": "NYT > Technology - Technology industry news, commentary and analysis, with reporting on big tech, startups, and internet culture.",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T22:26:37+00:00",
+      "published_ts": 1788215197,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Quoting Andrew Digby",
+      "summary": "325 #kakapo! The chicks from this year's record breeding season are now juveniles and so have been added to the population. In 1995 there were just 51 k\u0101k\u0101p\u014d left. Recovery of critically endangered species is possible with sustained effort. \u2014 Andrew Digby , providing the best news of the year Tags: kakapo",
+      "summary_html": "<blockquote><p>325 #kakapo! The chicks from this year's record breeding season are now juveniles and so have been added to the population. In 1995 there were just 51 k\u0101k\u0101p\u014d left. Recovery of critically endangered species <em>is</em> possible with sustained effort.</p></blockquote>\n<p>\u2014 <a href=\"https://bsky.app/profile/digs.bsky.social/post/3mufrrsfhq22r\">Andrew Digby</a>, providing the best news of the year</p>\n<p>Tags: <a href=\"https://simonwillison.net/tags/kakapo\">kakapo</a></p>",
+      "link": "https://simonwillison.net/2026/Aug/31/andrew-digby/",
+      "source": "Simon Willison's Weblog",
+      "feed_type": "news",
+      "type": "research-explainability",
+      "type_label": "Research Explainability",
+      "published": "2026-08-31T22:25:02+00:00",
+      "published_ts": 1788215102,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Nscale Closes $3B in Term Loans",
+      "summary": "Nscale has closed approximately $3 billion in aggregate commitments across two senior secured delayed draw term loan facilities backing a pair of U.S. AI infrastructure projects, the London-based company announced on August 31, 2026. One facility supports its Ward County, Texas campus and the other its Madison, North Carolina site, and Nscale said both facilities received investment-grade ratings with stable outlooks. The Ward County facility provides up to $1.85 billion, issued through Nscale\u2026",
+      "summary_html": "<p>Nscale has closed approximately $3 billion in aggregate commitments across two senior secured delayed draw term loan facilities backing a pair of U.S. AI infrastructure projects, the London-based company announced on August 31, 2026. One facility supports its Ward County, Texas campus and the other its Madison, North Carolina site, and Nscale said both facilities received investment-grade ratings with stable outlooks. The Ward County facility provides up to $1.85 billion, issued through Nscale\u2026</p>",
+      "link": "https://www.unite.ai/nscale-closes-3b-in-term-loans/",
+      "source": "Unite.AI - - AI News",
+      "feed_type": "news",
+      "type": "general-news",
+      "type_label": "General News",
+      "published": "2026-08-31T22:23:01+00:00",
+      "published_ts": 1788214981,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Lunar Cyber Launches Token Exposure Monitoring as Infostealers Target Developer and AI Credentials",
+      "summary": "The rapid adoption of AI development tools, cloud platforms and automated infrastructure has put a Read All",
+      "summary_html": "The rapid adoption of AI development tools, cloud platforms and automated infrastructure has put a<p><a href=\"https://hackernoon.com/lunar-cyber-launches-token-exposure-monitoring-as-infostealers-target-developer-and-ai-credentials?source=rss\">Read All</a></p>",
+      "link": "https://hackernoon.com/lunar-cyber-launches-token-exposure-monitoring-as-infostealers-target-developer-and-ai-credentials?source=rss",
+      "source": "Hacker Noon - ai - Humans with irrational brains writing about machines with rational brains.",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T22:21:45+00:00",
+      "published_ts": 1788214905,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "A group funded by Andreessen, Horowitz, and Brockman plans data center ads to sway midterms",
+      "summary": "Build American AI plans to lobby voters in select states about the virtues of data centers by spending millions of dollars on ads.",
+      "summary_html": "Build American AI plans to lobby voters in select states about the virtues of data centers by spending millions of dollars on ads.",
+      "link": "https://techcrunch.com/2026/08/31/a-group-funded-by-andreessen-horowitz-and-brockman-plan-data-center-ads-to-sway-midterms/",
+      "source": "TechCrunch - Startup and Technology News",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T22:14:05+00:00",
+      "published_ts": 1788214445,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Inside T. Rowe Price: Markets, AI & the Future of Investing | The Close 8/31/2026",
+      "summary": "Bloomberg Television brings you the latest news and analysis leading up to the final minutes and seconds before and after the closing bell on Wall Street. Today's guests are T. Rowe Price CIO, Co-Head of Global Investments Sebastien Page, T. Rowe Price Chief U.S. Economist Blerina Uru\u00e7i, T. Rowe Price. Lead Portfolio Manager, Active ETFs Jodi Love, T. Rowe Price Head of Global Distribution Dee Sawyer, & T. Rowe Price CEO Rob Sharps. (Source: Bloomberg)",
+      "summary_html": "Bloomberg Television brings you the latest news and analysis leading up to the final minutes and seconds before and after the closing bell on Wall Street. Today's guests are T. Rowe Price CIO, Co-Head of Global Investments Sebastien Page, T. Rowe Price Chief U.S. Economist Blerina Uru\u00e7i, T. Rowe Price. Lead Portfolio Manager, Active ETFs Jodi Love, T. Rowe Price Head of Global Distribution Dee Sawyer, &amp; T. Rowe Price CEO Rob Sharps. (Source: Bloomberg)",
+      "link": "https://www.bloomberg.com/news/videos/2026-08-31/the-close-8-31-2026-video",
+      "source": "Bloomberg Technology - Bloomberg Technology",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T22:03:06+00:00",
+      "published_ts": 1788213786,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Florida orders removal of Flock cameras from state highways",
+      "summary": "Florida's Department of Transportation joins the growing list of jurisdictions that are ending the use of Flock license plate readers. Paul Bersebach/MediaNews Group/Orange County Register via Getty Images The Florida Department of Transportation said it's revoking permits for license plate readers. That means Flock cameras need to be removed from state highways within 30 days. Backlash to Flock Safety is growing as more jurisdictions end their use of the cameras. The Florida Department of Transportation is revoking permits for automated license plate readers on roads in the state highway system, according to a memo issued by the department on Monday. The devices must be removed within 30 days of the memo, the agency said. The removal comes as Flock Safety faces a torrent of backlash in response to its automated license plate readers, or ALPRs, which can be found in thousands of towns across the US. The cameras are often placed along roads or at intersections to capture and store license plate data, and are used by law enforcement agencies to help in investigations. On top of data privacy and Big Brother-type concerns, Flock has also faced scrutiny for misreading plates and contributing to wrongful arrests. Across the country, residents have demanded the removal of Flock cameras while vandals have been removing them themselves or covering them with trash bags or paint. Following the Florida Department of Transportation's memo, the Jacksonville sheriff said his office would end the use of license plate readers throughout Duval County, citing the decision as well as resident concerns. \"LPR technology has proven to be an enormously valuable investigative tool, assisting our agency in solving serious crimes and locating missing and vulnerable individuals,\" Sheriff T.K. Waters said in a statement. \"However, given the decision made at the state level and the concerns expressed by members of our community, I have determined that discontinuing the use of this technology is the appropriate course of action at this time.\" Several other sheriff's offices in Florida also said they would discontinue the use of Flock cameras following the state decision, including in Franklin County, Liberty County, and Putnam County. They join a growing list of jurisdictions that have ended their relationship with Flock. Last week, Tempe, Arizona , said it would shut down its network of 33 Flock cameras, citing risk of misuse and the need to maintain community trust. The Los Angeles Police Department let its contract with Flock expire in July. Business Insider is one of several publications that have reported on Flock. An investigation published in March found a dozen cases where a Flock camera misread a license plate or officers failed to verify an alert, leading to several instances of a person who had not committed a crime being stopped or detained by law enforcement. In July, Business Insider reported the Flock cameras in the city of Roseville, California, had misread license plates in 71% of alerts sent to police in 2023 and 2024. Flock did not respond to a request for comment. Read the original article on Business Insider",
+      "summary_html": "Florida's Department of Transportation joins the growing list of jurisdictions that are ending the use of Flock license plate readers.<p>Paul Bersebach/MediaNews Group/Orange County Register via Getty Images</p><ul><li>The Florida Department of Transportation said it's revoking permits for license plate readers.</li><li>That means Flock cameras need to be removed from state highways within 30 days.</li><li>Backlash to Flock Safety is growing as more jurisdictions end their use of the cameras.</li></ul><p>The Florida Department of Transportation is revoking permits for <a href=\"https://www.businessinsider.com/flock-cameras-license-plate-readers-explained-2026-8\">automated license plate readers</a> on roads in the state highway system, according to a memo issued by the department on Monday.</p><p>The devices must be removed within 30 days of the memo, the agency said.</p><p>The removal comes as Flock Safety faces a torrent of backlash in response to its automated license plate readers, or ALPRs, which can be found in thousands of towns across the US. The cameras are often placed along roads or at intersections to capture and store license plate data, and are used by law enforcement agencies to help in investigations.</p><p>On top of data privacy and Big Brother-type concerns, Flock has also faced scrutiny for misreading plates and contributing to wrongful arrests. Across the country, residents have demanded the <a href=\"https://www.businessinsider.com/cities-putting-trash-bags-over-flock-license-plate-readers-2026-6\">removal of Flock cameras</a> while vandals have been removing them themselves or covering them with trash bags or paint.</p><p>Following the Florida Department of Transportation's memo, the Jacksonville sheriff said his office would end the use of license plate readers throughout Duval County, citing the decision as well as resident concerns.</p><p>\"LPR technology has proven to be an enormously valuable investigative tool, assisting our agency in solving serious crimes and locating missing and vulnerable individuals,\" Sheriff T.K. Waters said in a statement. \"However, given the decision made at the state level and the concerns expressed by members of our community, I have determined that discontinuing the use of this technology is the appropriate course of action at this time.\"</p><p>Several other sheriff's offices in Florida also said they would discontinue the use of Flock cameras following the state decision, including in Franklin County, Liberty County, and Putnam County.</p><p>They join a growing list of jurisdictions that have ended their relationship with Flock.</p><p>Last week, <a href=\"https://www.businessinsider.com/tempe-shuts-down-flock-license-plate-readers-over-misuse-concerns-2026-8\">Tempe, Arizona</a>, said it would shut down its network of 33 Flock cameras, citing risk of misuse and the need to maintain community trust. The Los Angeles Police Department let its contract with Flock expire in July.</p><p>Business Insider is one of several publications that have reported on Flock. An investigation published in March found a dozen cases where a Flock camera <a href=\"https://www.businessinsider.com/flock-safety-alpr-cameras-misreads-2026-3\">misread a license plate</a> or officers failed to verify an alert, leading to several instances of a person who had not committed a crime being stopped or detained by law enforcement. In July, Business Insider reported the Flock cameras in the city of Roseville, California, had <a href=\"https://www.businessinsider.com/flock-camera-misread-license-plate-reader-california-roseville-police-2026-7\">misread license plates</a> in 71% of alerts sent to police in 2023 and 2024.<br/><br/>Flock did not respond to a request for comment.</p><div>Read the original article on <a href=\"https://www.businessinsider.com/florida-orders-removal-flock-camera-state-highways-license-plate-readers-2026-8\">Business Insider</a></div>",
+      "link": "https://www.businessinsider.com/florida-orders-removal-flock-camera-state-highways-license-plate-readers-2026-8",
+      "source": "Business Insider - Content from Business Insider Excluding Premium",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T22:00:33+00:00",
+      "published_ts": 1788213633,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Shein Shares Drop 10% in Hong Kong Debut After Rocky Road to IPO",
+      "summary": "Shein Global Holdings Ltd. struggled in its Hong Kong debut after a years-long process to an initial public offering that eventually valued the company at a fraction of what it was once worth and still left investors questioning its value as consumer play.",
+      "summary_html": "Shein Global Holdings Ltd. struggled in its Hong Kong debut after a years-long process to an initial public offering that eventually valued the company at a fraction of what it was once worth and still left investors questioning its value as consumer play.",
+      "link": "https://www.bloomberg.com/news/articles/2026-08-31/shein-set-to-debut-in-test-of-investor-demand-for-consumer-plays",
+      "source": "Bloomberg Technology - Bloomberg Technology",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T22:00:00+00:00",
+      "published_ts": 1788213600,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "China Makes Cars So Quickly That Regulators Are Getting Worried",
+      "summary": "Chinese automakers\u2019 ambitions to shave even more time off their breakneck development speeds are facing a reality check as regulators ramp up scrutiny of the industry\u2019s safety and testing.",
+      "summary_html": "Chinese automakers\u2019 ambitions to shave even more time off their breakneck development speeds are facing a reality check as regulators ramp up scrutiny of the industry\u2019s safety and testing.",
+      "link": "https://www.bloomberg.com/news/articles/2026-08-31/china-makes-cars-so-fast-that-it-s-starting-to-worry-regulators",
+      "source": "Bloomberg Technology - Bloomberg Technology",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T22:00:00+00:00",
+      "published_ts": 1788213600,
+      "smart_groups": [
+        "AI Regulation & Policy"
+      ],
+      "curated": false
+    },
+    {
+      "title": "JMGO\u2019s very bright all-in-one projector looks ideal for gamers and sports",
+      "summary": "JMGO\u2019s Iris Ultra Max 4K 120Hz Google TV projector. | Image: JMGO JMGO's 4K 120Hz Iris Ultra Max all-in-one Google TV projector is now available outside China. It gets its name from a new dual-iris system that lets it produce an impressive 10,000:1 native contrast, according to JMGO. It boosts the contrast - always an issue with projectors - by placing two separate physical apertures (irises) along different points of the internal optical path to control light scatter and brightness far more aggressively than a single iris can. It also promises to produce a very bright 6,500 ISO lumen image from its triple-laser light engine. Last year at IFA, 6,000 lumens from an all-in-one projector was breaking new gro \u2026 Read the full story at The Verge.",
+      "summary_html": "JMGO\u2019s Iris Ultra Max 4K 120Hz Google TV projector. | Image: JMGO\t\n\n<p>JMGO's 4K 120Hz Iris Ultra Max all-in-one Google TV projector is now available outside China. It gets its name from a new dual-iris system that lets it produce an impressive 10,000:1 native contrast, according to JMGO. It boosts the contrast - always an issue with projectors - by placing two separate physical apertures (irises) along different points of the internal optical path to control light scatter and brightness far more aggressively than a single iris can. It also promises to produce a very bright 6,500 ISO lumen image from its triple-laser light engine.</p>\n<p>Last year at IFA, 6,000 lumens from an all-in-one projector was breaking new gro \u2026</p>\n<p><a href=\"https://www.theverge.com/tech/985986/jmgo-4k-gaming-projector-price-specs\">Read the full story at The Verge.</a></p>",
+      "link": "https://www.theverge.com/tech/985986/jmgo-4k-gaming-projector-price-specs",
+      "source": "The Verge - All Posts",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T22:00:00+00:00",
+      "published_ts": 1788213600,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "The Slate Truck is affordable because you have to 'bring your own tech'",
+      "summary": "The Slate Truck is affordable because you have to 'bring your own tech'.",
+      "summary_html": "The Slate Truck is affordable because you have to 'bring your own tech'.<p></p>",
+      "link": "https://www.engadget.com/2244162/the-slate-truck-is-affordable-because-you-have-to-bring-your-own-tech/",
+      "source": "Engadget - Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T22:00:00+00:00",
+      "published_ts": 1788213600,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Florida says it is revoking permits for Flock cameras and similar license-plate readers on state roads and no longer intends to issue such permits (Ryan Gillespie/Orlando Sentinel)",
+      "summary": "Ryan Gillespie / Orlando Sentinel : Florida says it is revoking permits for Flock cameras and similar license-plate readers on state roads and no longer intends to issue such permits \u2014\u00a0 Florida is revoking permits for Flock cameras and similar license-plate readers on state roads, dealing a blow to local law enforcement agencies \u2026",
+      "summary_html": "<a href=\"https://www.orlandosentinel.com/2026/08/31/florida-orders-flock-cameras-off-of-state-roads/\"></a>\n<p><a href=\"https://www.techmeme.com/260831/p41#a260831p41\"></a> Ryan Gillespie / <a href=\"http://www.orlandosentinel.com/\">Orlando Sentinel</a>:<br/>\n<span><b><a href=\"https://www.orlandosentinel.com/2026/08/31/florida-orders-flock-cameras-off-of-state-roads/\">Florida says it is revoking permits for Flock cameras and similar license-plate readers on state roads and no longer intends to issue such permits</a></b></span>\u00a0 \u2014\u00a0 Florida is revoking permits for Flock cameras and similar license-plate readers on state roads, dealing a blow to local law enforcement agencies \u2026 </p>",
+      "link": "https://www.techmeme.com/260831/p41#a260831p41",
+      "source": "Techmeme - Tech Web, page A1",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T21:55:01+00:00",
+      "published_ts": 1788213301,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "SpaceX is in an \u201cenviable position\u201d: why Anthropic is sticking with Cursor as OpenAI cuts access",
+      "summary": "OpenAI caused something of a stir over the weekend when it announced plans to cut Cursor\u2019s direct access to OpenAI models in November. The reason? Elon Musk. In a statement issued late on Friday , OpenAI pointed to two previous incidents involving Musk\u2019s companies: Twitter breaking the terms of a data-licensing deal after Musk\u2019s 2022 takeover of the social network, and Musk\u2019s admission under oath earlier this year that xAI had partly used OpenAI models through distillation \u2014 conduct OpenAI says violated its terms of service. And now that SpaceX\u2019s $60 billion deal to acquire Cursor has closed , OpenAI\u2019s attentions are turning to Cursor. \u201cThis decision was incredibly tough, as we care deeply about our models being broadly available for developers,\u201d the company wrote. \u201cWe are making this choice because we cannot be confident that SpaceX will use our technology within our terms of service, based on our experience with Elon Musk\u2019s companies violating contracts.\u201d While that in itself was big news for anyone following the day-to-day rough and tumble of the AI industry, what was particularly notable was the response of OpenAI\u2019s arch rival. The Anthropic factor As The New Stack noted in its coverage, Anthropic co-founder and \u201cchief compute officer\u201d Tom Brown moved fast, posting publicly within hours of OpenAI\u2019s statement to confirm that it continues to see Cursor as a \u201ctrusted partner,\u201d and will \u201ccontinue to increase compute to support Claude models in Cursor.\u201d Cursor has been a trusted partner of Anthropic since Sonnet 3.5. We\u2019ll continue to increase compute to support Claude models in Cursor and are excited for what comes next with them at SpaceX. \u2014 Tom Brown (@NotTomBrown) August 29, 2026 But anyone who has followed Anthropic\u2019s recent history could be forgiven for wondering why. Take Windsurf. In May 2025, reports emerged that OpenAI was in talks to buy the AI coding tool for $3 billion. Anthropic didn\u2019t hang around for the deal to close though, and within weeks, Windsurf said Anthropic had cut its direct access to Claude 3.5 Sonnet and Claude 3.7 Sonnet. Speaking at an event hosted by TechCrunch shortly after, Anthropic co-founder Jared Kaplan said that \u201cit would be odd\u201d for Anthropic to be selling Claude to OpenAI. As things transpired, the OpenAI deal fell through , and Google stepped in instead, paying $2.4 billion to hire Windsurf\u2019s founders and R&D staff into DeepMind. \u201cThey cut them off ruthlessly when RUMORS of OpenAI potentially buying Windsurf surfaced.\u201d In a social media post published on Sunday, Gergely Orosz , engineer and author of the Pragmatic Engineer newsletter, is quick to highlight the episode with Windsurf, which he noted had also been a \u201ctrusted partner\u201d with Anthropic for some time. \u201cThey cut them off ruthlessly when RUMORS of OpenAI potentially buying Windsurf surfaced,\u201d Orosz writes . \u201cNow, SpaceX, an Ant(hropic) competitor bought Cursor \u2014 it\u2019s still a trusted partner?\u201d Then there\u2019s xAI, the AI company Musk founded in 2023 to build Grok , which SpaceX acquired outright in a February transaction valuing xAI at $250 billion. In January this year, Kylie Robison reported that Anthropic had cut xAI staff off from Claude , which they\u2019d been accessing through Cursor \u2014 with Cursor reportedly telling xAI it was \u201ca new policy anthropic is enforcing for all its major competitors.\u201d So Anthropic has previous form for moving fast, on rumor alone in Windsurf\u2019s case, whenever a customer starts to resemble a competitor. Which makes this week\u2019s public vote of confidence for a company now wholly owned by one of Anthropic\u2019s actual rivals worth a second look. The compute dependency What makes SpaceX different from the previous Windsurf and xAI episodes is that Anthropic is also buying a huge amount of compute from it. On May 6, Anthropic announced it had secured the entire output of SpaceX\u2019s Colossus 1 data center near Memphis, Tennessee \u2014 more than 300 megawatts of compute and over 220,000 Nvidia GPUs. Anthropic had been hampered by limited compute availability, and the SpaceX deal, alongside other recent compute agreements, let it raise usage limits for Claude Pro and Max subscribers almost overnight. Two weeks later, the financial terms came out. Per SpaceX\u2019s IPO filing , Anthropic agreed to pay $1.25 billion a month for compute across Colossus and Colossus II \u2014 about 325,000 Nvidia GPUs combined \u2014 scheduled to run through May 2029, subject to termination rights. SpaceX, for its part, said the arrangement would allow it to monetize some of its compute capacity while retaining enough to meet its own AI training and inference needs. As The New Stack reported in May , the deal also underscored just how central access to compute had become to competition between the leading AI labs. And it created an unusual commercial relationship: Anthropic was now buying a huge amount of compute from a company that also owned one of its direct AI rivals in xAI. And that is what makes Anthropic\u2019s response to the Cursor acquisition so notable. In response to Tom Brown\u2019s post on X on Saturday, Replit founder and CEO Amjad Masad points to the contrast between Anthropic\u2019s support for Cursor now and its treatment of Windsurf last year, suggesting the latter had been harsher than OpenAI\u2019s decision to cut Cursor off. \u201cMore likely answer is that you can\u2019t do that here because you need the compute.\u201d \u201cMaybe you changed your ways, but we all remember what you did to Windsurf, which was infinitely nastier,\u201d Masad writes . \u201cMore likely answer is that you can\u2019t do that here because you need the compute.\u201d Orosz essentially makes the same argument. If Anthropic was prepared to cut access when Windsurf merely looked likely to end up in OpenAI\u2019s hands, why is it publicly promising MORE Claude capacity to Cursor after the company had actually been acquired by SpaceX? \u201cSpaceX basically in this enviable position where one of its biggest competitors depends on its compute infra!\u201d \u201cEither SpaceX and Grok are not competitors to Anthropic (they are!); or, more likely, SpaceX leasing its Colossus 1 data center is more important to Anthropic than to stop offering Claude to SpaceX,\u201d Orosz writes . \u201cSpaceX basically in this enviable position where one of its biggest competitors depends on its compute infra!\u201d And so this effectively highlights how strong a position SpaceX finds itself in. It now owns xAI and Cursor, putting it in direct competition with Anthropic in foundation models through Grok and in AI coding tools through Cursor, while Anthropic is simultaneously paying it billions of dollars for compute capacity supporting Claude. Whatever the stated rationale for treating Cursor as a \u201ctrusted partner,\u201d that relationship leaves SpaceX with something neither Windsurf nor xAI had at the time Anthropic moved against them: a source of leverage over any decision on whether or not to cut access to Claude. The post SpaceX is in an \u201cenviable position\u201d: why Anthropic is sticking with Cursor as OpenAI cuts access appeared first on The New Stack .",
+      "summary_html": "<p>OpenAI caused something of a stir over the weekend when it announced plans to cut Cursor\u2019s direct access to OpenAI models in November.</p>\n<p>The reason? Elon Musk.</p>\n<p>In a <a href=\"https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/\">statement issued late on Friday</a>, OpenAI pointed to two previous incidents involving Musk\u2019s companies: Twitter <a href=\"https://www.businessinsider.com/elon-musk-openai-twitter-data-pay-dispute-2023-4\">breaking the terms</a> of a data-licensing deal after Musk\u2019s <a href=\"https://edition.cnn.com/2022/10/28/tech/elon-musk-twitter-deal-close\">2022 takeover</a> of the social network, and Musk\u2019s <a href=\"https://www.forbes.com/sites/antoniopequenoiv/2026/04/30/elon-musk-admits-xai-distilled-openai-data-to-train-models-heres-what-that-means/\">admission under oath</a> earlier this year that xAI had partly used OpenAI models through distillation \u2014 conduct OpenAI says <a href=\"https://www.forbes.com/sites/antoniopequenoiv/2026/04/30/elon-musk-admits-xai-distilled-openai-data-to-train-models-heres-what-that-means/\">violated</a> its terms of service. And now that SpaceX\u2019s $60 billion deal to acquire Cursor <a href=\"https://cursor.com/blog/joining-spacex\">has closed</a>, OpenAI\u2019s attentions are turning to Cursor.</p>\n<p>\u201cThis decision was incredibly tough, as we care deeply about our models being broadly available for developers,\u201d the company wrote. \u201cWe are making this choice because we cannot be confident that SpaceX will use our technology within our terms of service, based on our experience with Elon Musk\u2019s companies violating contracts.\u201d</p>\n<p>While that in itself was big news for anyone following the day-to-day rough and tumble of the AI industry, what was particularly notable was the response of OpenAI\u2019s arch rival. </p>\nThe Anthropic factor\n<p>As <em>The New Stack</em> <a href=\"https://thenewstack.io/openai-cuts-cursor-spacex/\">noted</a> in its coverage, Anthropic co-founder and \u201cchief compute officer\u201d Tom Brown moved fast, posting publicly within hours of OpenAI\u2019s statement to confirm that it continues to see Cursor as a \u201ctrusted partner,\u201d and will \u201ccontinue to increase compute to support Claude models in Cursor.\u201d</p>\n<div>\n<blockquote><p>Cursor has been a trusted partner of Anthropic since Sonnet 3.5. We\u2019ll continue to increase compute to support Claude models in Cursor and are excited for what comes next with them at SpaceX.</p>\u2014 Tom Brown (@NotTomBrown) <a href=\"https://x.com/NotTomBrown/status/2093541294027280657?ref_src=twsrc%5Etfw\">August 29, 2026</a></blockquote>\n</div>\n<p>But anyone who has followed Anthropic\u2019s recent history could be forgiven for wondering why.</p>\n<p>Take Windsurf. In May 2025, reports <a href=\"https://www.bloomberg.com/news/articles/2025-05-06/openai-reaches-agreement-to-buy-startup-windsurf-for-3-billion\">emerged</a> that OpenAI was in talks to buy the AI coding tool for $3 billion. Anthropic didn\u2019t hang around for the deal to close though, and within weeks, <a href=\"https://x.com/_mohansolo/status/1930034960385356174\">Windsurf said Anthropic had</a> cut its direct access to Claude 3.5 Sonnet and Claude 3.7 Sonnet. </p>\n<p>Speaking at an event hosted by TechCrunch shortly after, Anthropic co-founder Jared Kaplan <a href=\"https://techcrunch.com/2025/06/05/anthropic-co-founder-on-cutting-access-to-windsurf-it-would-be-odd-for-us-to-sell-claude-to-openai/\">said that</a> \u201cit would be odd\u201d for Anthropic to be selling Claude to OpenAI. As things transpired, the OpenAI deal <a href=\"https://www.theverge.com/openai/705999/google-windsurf-ceo-openai\">fell through</a>, and Google stepped in instead, <a href=\"https://uk.finance.yahoo.com/news/google-hires-windsurf-ceo-researchers-225455205.html\">paying $2.4 billion</a> to hire Windsurf\u2019s founders and R&amp;D staff into DeepMind. </p>\n<blockquote>\n<p>\u201cThey cut them off ruthlessly when RUMORS of OpenAI potentially buying Windsurf surfaced.\u201d</p>\n</blockquote>\n<p>In a social media post published on Sunday, <a href=\"https://www.linkedin.com/in/gergelyorosz/\">Gergely Orosz</a>, engineer and author of the Pragmatic Engineer newsletter, is quick to highlight the episode with Windsurf, which he noted had also been a \u201ctrusted partner\u201d with Anthropic for some time. \u201cThey cut them off ruthlessly when RUMORS of OpenAI potentially buying Windsurf surfaced,\u201d Orosz <a href=\"https://x.com/GergelyOrosz/status/2094005394091786543\">writes</a>. \u201cNow, SpaceX, an Ant(hropic) competitor bought Cursor \u2014 it\u2019s still a trusted partner?\u201d</p>\n<p>Then there\u2019s xAI, the AI company Musk founded in 2023 to build <a href=\"https://thenewstack.io/grok-4-6-agent-training/\">Grok</a>, which <a href=\"https://www.bbc.co.uk/news/articles/cq6vnrye06po\">SpaceX acquired outright</a> in a February transaction valuing xAI at $250 billion. In January this year, <a href=\"https://x.com/kyliebytes\">Kylie Robison</a> reported that Anthropic had <a href=\"https://x.com/kyliebytes/status/2009686466746822731\">cut xAI staff off from Claude</a>, which they\u2019d been accessing through Cursor \u2014 with Cursor reportedly telling xAI it was \u201ca new policy anthropic is enforcing for all its major competitors.\u201d </p>\n<p>So Anthropic has previous form for moving fast, on rumor alone in Windsurf\u2019s case, whenever a customer starts to resemble a competitor. Which makes this week\u2019s public vote of confidence for a company now wholly owned by one of Anthropic\u2019s actual rivals worth a second look.</p>\nThe compute dependency\n<p>What makes SpaceX different from the previous Windsurf and xAI episodes is that Anthropic is also buying a huge amount of compute from it.</p>\n<p>On May 6, Anthropic <a href=\"https://www.anthropic.com/news/higher-limits-spacex\">announced</a> it had <a href=\"https://thenewstack.io/anthropic-spacex-claude-limits/\">secured the entire output</a> of SpaceX\u2019s Colossus 1 data center near Memphis, Tennessee \u2014 more than 300 megawatts of compute and over 220,000 Nvidia GPUs. Anthropic had been hampered by limited compute availability, and the SpaceX deal, alongside other recent compute agreements, let it raise usage limits for Claude Pro and Max subscribers almost overnight.</p>\n<p>Two weeks later, the financial terms came out. Per <a href=\"https://www.sec.gov/Archives/edgar/data/1181412/000162828026040364/spaceexplorationtechnologib.htm\">SpaceX\u2019s IPO filing</a>, Anthropic agreed to pay $1.25 billion a month for compute across Colossus and Colossus II \u2014 about 325,000 Nvidia GPUs combined \u2014 scheduled to run through May 2029, subject to termination rights.</p>\n<p>SpaceX, for its part, said the arrangement would allow it to monetize some of its compute capacity while retaining enough to meet its own AI training and inference needs. As <em>The New Stack </em><a href=\"https://thenewstack.io/anthropic-elon-musk-cornered-sam-altman/\">reported in May</a>, the deal also underscored just how central access to compute had become to competition between the leading AI labs. And it created an unusual commercial relationship: Anthropic was now buying a huge amount of compute from a company that also owned one of its direct AI rivals in xAI.</p>\n<p>And that is what makes Anthropic\u2019s response to the Cursor acquisition so notable. In response to Tom Brown\u2019s post on X on Saturday, Replit founder and CEO <a href=\"https://www.linkedin.com/in/amjadmasad/\">Amjad Masad</a> points to the contrast between Anthropic\u2019s support for Cursor now and its treatment of Windsurf last year, suggesting the latter had been harsher than OpenAI\u2019s decision to cut Cursor off.</p>\n<blockquote>\n<p>\u201cMore likely answer is that you can\u2019t do that here because you need the compute.\u201d</p>\n</blockquote>\n<p>\u201cMaybe you changed your ways, but we all remember what you did to Windsurf, which was infinitely nastier,\u201d Masad <a href=\"https://x.com/amasad/status/2093543108491530308?s=20\">writes</a>. \u201cMore likely answer is that you can\u2019t do that here because you need the compute.\u201d</p>\n<p>Orosz essentially makes the same argument. If Anthropic was prepared to cut access when Windsurf merely looked <em>likely </em>to end up in OpenAI\u2019s hands, why is it publicly promising MORE Claude capacity to Cursor after the company had actually been acquired by SpaceX?</p>\n<blockquote>\n<p>\u201cSpaceX basically in this enviable position where one of its biggest competitors depends on its compute infra!\u201d</p>\n</blockquote>\n<p>\u201cEither SpaceX and Grok are not competitors to Anthropic (they are!); or, more likely, SpaceX leasing its Colossus 1 data center is more important to Anthropic than to stop offering Claude to SpaceX,\u201d Orosz <a href=\"https://x.com/GergelyOrosz/status/2094006046138282122\">writes</a>. \u201cSpaceX basically in this enviable position where one of its biggest competitors depends on its compute infra!\u201d</p>\n<p>And so this effectively highlights how strong a position SpaceX finds itself in. It now owns xAI and Cursor, putting it in direct competition with Anthropic in foundation models through Grok and in AI coding tools through Cursor, while Anthropic is simultaneously paying it billions of dollars for compute capacity supporting Claude. </p>\n<p>Whatever the stated rationale for treating Cursor as a \u201ctrusted partner,\u201d that relationship leaves SpaceX with something neither Windsurf nor xAI had at the time Anthropic moved against them: a source of leverage over any decision on whether or not to cut access to Claude.</p>\n<p>The post <a href=\"https://thenewstack.io/anthropic-spacex-cursor-compute-openai/\">SpaceX is in an \u201cenviable position\u201d: why Anthropic is sticking with Cursor as OpenAI cuts access</a> appeared first on <a href=\"https://thenewstack.io\">The New Stack</a>.</p>",
+      "link": "https://thenewstack.io/anthropic-spacex-cursor-compute-openai/",
+      "source": "The New Stack - The New Stack is a media platform for the people who build and manage software the world relies on. We \u2026",
+      "feed_type": "news",
+      "type": "ai-platforms-infra",
+      "type_label": "AI Platforms & Infra",
+      "published": "2026-08-31T21:47:04+00:00",
+      "published_ts": 1788212824,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "AI Hardware & Chips",
+        "AI Business & Funding"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Filing: Apple claims a former iPhone engineer used a confidential Apple circuit schematic in his work at OpenAI, evidence is being destroyed, and more (Chance Miller/9to5Mac)",
+      "summary": "Chance Miller / 9to5Mac : Filing: Apple claims a former iPhone engineer used a confidential Apple circuit schematic in his work at OpenAI, evidence is being destroyed, and more \u2014\u00a0 Apple has filed a new document in its ongoing lawsuit against OpenAI as it continues to push for expedited discovery.",
+      "summary_html": "<a href=\"https://9to5mac.com/2026/08/31/apple-openai-forensic-macbook-evidence/\"></a>\n<p><a href=\"https://www.techmeme.com/260831/p40#a260831p40\"></a> Chance Miller / <a href=\"https://9to5mac.com/\">9to5Mac</a>:<br/>\n<span><b><a href=\"https://9to5mac.com/2026/08/31/apple-openai-forensic-macbook-evidence/\">Filing: Apple claims a former iPhone engineer used a confidential Apple circuit schematic in his work at OpenAI, evidence is being destroyed, and more</a></b></span>\u00a0 \u2014\u00a0 Apple has filed a new document in its ongoing lawsuit against OpenAI as it continues to push for expedited discovery.</p>",
+      "link": "https://www.techmeme.com/260831/p40#a260831p40",
+      "source": "Techmeme - Tech Web, page A1",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T21:45:01+00:00",
+      "published_ts": 1788212701,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Amazon is sued by the FTC and 22 states for 'secretly' overcharging advertisers since 2019",
+      "summary": "The company's \"deception continues to this day,\" the lawsuit says.",
+      "summary_html": "The company's \"deception continues to this day,\" the lawsuit says.<p></p>",
+      "link": "https://www.engadget.com/2248170/amazon-is-sued-by-the-ftc-and-22-states-for-secretly-overcharging-advertisers-since-2019/",
+      "source": "Engadget - Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T21:42:39+00:00",
+      "published_ts": 1788212559,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "FTC lawsuit alleges Amazon has been \u2018secretly and systematically\u2019 overcharging for ads",
+      "summary": "The FTC and 22 state attorneys general are suing Amazon for allegedly using a \"secret ad surcharge\" to drive up prices for ads on its website and app. FTC chairman Andrew Ferguson claims in a blog post on the lawsuit that the higher advertising prices \"were largely passed on to American consumers.\" According to the complaint , Amazon violated the FTC Act and over a dozen state laws. This lawsuit comes almost a year after Amazon agreed to pay $2.5 billion to settle an earlier FTC lawsuit over Prime subscription practices. In Amazon's \"second price\" auctions for ads on its platform, the winning bidder is supposed to only pay one cent more tha \u2026 Read the full story at The Verge.",
+      "summary_html": "<p>The FTC and 22 state attorneys general are <a href=\"https://www.ftc.gov/news-events/news/press-releases/2026/08/ftc-states-sue-amazon-over-secret-ad-surcharge-scheme\">suing Amazon</a> for allegedly using a \"secret ad surcharge\" to drive up prices for ads on its website and app. FTC chairman Andrew Ferguson claims in a blog post on the lawsuit that the higher advertising prices \"were largely passed on to American consumers.\" According to <a href=\"https://www.ftc.gov/system/files/ftc_gov/pdf/AmazonAds-Complaint.pdf\">the complaint</a>, Amazon violated the FTC Act and over a dozen state laws. This lawsuit comes almost a year after Amazon agreed to pay $2.5 billion to <a href=\"https://www.theverge.com/news/785744/amazon-ftc-prime-subscription-settlment\">settle an earlier FTC lawsuit</a> over Prime subscription practices. </p>\n<p>In Amazon's \"second price\" auctions for ads on its platform, the winning bidder is supposed to only pay one cent more tha \u2026</p>\n<p><a href=\"https://www.theverge.com/tech/986982/amazon-advertising-prices-ftc-lawsuit\">Read the full story at The Verge.</a></p>",
+      "link": "https://www.theverge.com/tech/986982/amazon-advertising-prices-ftc-lawsuit",
+      "source": "The Verge - All Posts",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T21:41:42+00:00",
+      "published_ts": 1788212502,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Rogue agents are forcing a governance reckoning as enterprises hand over the keys",
+      "summary": "",
+      "summary_html": "",
+      "link": "https://siliconangle.com/2026/08/31/ai-infrastructure-governance-shifts-rogue-agents-vmwareexplore/",
+      "source": "AI \u2013 SiliconANGLE - Extracting the signal from the noise.",
+      "feed_type": "news",
+      "type": "general-news",
+      "type_label": "General News",
+      "published": "2026-08-31T21:37:26+00:00",
+      "published_ts": 1788212246,
+      "smart_groups": [
+        "AI Regulation & Policy"
+      ],
+      "curated": false
+    },
     {
       "title": "Sources: AI sales and marketing startup Clay is raising a round led by Wellington at a $7B pre-money valuation, up from $5B via an employee tender in January (Lucinda Shen/Axios)",
       "summary": "Lucinda Shen / Axios : Sources: AI sales and marketing startup Clay is raising a round led by Wellington at a $7B pre-money valuation, up from $5B via an employee tender in January \u2014\u00a0 Clay, an AI startup for sales and marketing teams, is raising new money led by Wellington at a $7 billion pre-money valuation, Axios has learned.",
@@ -36,6 +538,22 @@
         "NLP & Language Understanding"
       ],
       "curated": true
+    },
+    {
+      "title": "Trump admin shelves Cyclospora research despite record-breaking outbreak",
+      "summary": "The Trump administration is halting vital federal research on the foodborne parasite Cyclospora, despite the record-breaking, nationwide outbreak of the diarrheal pathogen, according to Politico . Of the three research programs that represent nearly all of the Cyclospora work at the US Department of Agriculture, two have been defunded, and the third is about to lose every scientist working on it. The Trump administration is shuttering the USDA's Beltsville Agricultural Research Center near Washington, DC, and moving its work to a location in Iowa. That includes relocating the remaining Cyclospora research. Although the research is still funded, insiders told Politico that not one of the scientists working on the project plans to relocate from Maryland to Iowa. Instead, they are either retiring, being reassigned to a different project, or leaving the USDA's research services. Read full article Comments",
+      "summary_html": "<p>The Trump administration is halting vital federal research on the foodborne parasite <em>Cyclospora, </em>despite the record-breaking, nationwide outbreak of the diarrheal pathogen, <a href=\"https://www.politico.com/news/2026/08/30/usda-cyclospora-research-projects-01055989\">according to Politico</a>.</p>\n<p>Of the three research programs that represent nearly all of the <em>Cyclospora</em> work at the US Department of Agriculture, two have been defunded, and the third is about to lose every scientist working on it. The Trump administration is shuttering the USDA's Beltsville Agricultural Research Center near Washington, DC, and moving its work to a location in Iowa. That includes relocating the remaining <em>Cyclospora</em> research.</p>\n<p>Although the research is still funded, insiders told Politico that not one of the scientists working on the project plans to relocate from Maryland to Iowa. Instead, they are either retiring, being reassigned to a different project, or leaving the USDA's research services.</p><p><a href=\"https://arstechnica.com/health/2026/08/trump-admin-shelves-cyclospora-research-despite-record-breaking-outbreak/\">Read full article</a></p>\n<p><a href=\"https://arstechnica.com/health/2026/08/trump-admin-shelves-cyclospora-research-despite-record-breaking-outbreak/#comments\">Comments</a></p>",
+      "link": "https://arstechnica.com/health/2026/08/trump-admin-shelves-cyclospora-research-despite-record-breaking-outbreak/",
+      "source": "Ars Technica - All content - All Ars Technica stories",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T21:23:09+00:00",
+      "published_ts": 1788211389,
+      "smart_groups": [
+        "Data Engineering & Pipelines"
+      ],
+      "curated": false
     },
     {
       "title": "Apple Tells Court OpenAI Employee Used Confidential Circuit Schematic",
@@ -141,6 +659,20 @@
       "smart_groups": [
         "Agentic AI & Automations"
       ],
+      "curated": false
+    },
+    {
+      "title": "Get in on the Ars community that doesn\u2019t fit beneath an article",
+      "summary": "If you\u2019re like many of our readers, you\u2019ve got Ars Technica bookmarked and hit the front page a few times a day. But for others, a compelling story is what brings them here for the first time. And the discussions sometimes keep them coming back. Since its launch in 1998, Ars Technica has been known for its depth of community. If all you're doing is checking out the front page and the discussion threads that sit beneath each story, you\u2019re missing out on more than you realize. The Ars OpenForum is a place for readers to ask questions, compare notes, argue (without being jerks to each other), and go down all sorts of rabbit holes. Our Hardware and Tweaking forums cover PC builds , networking , mobile computing , CPUs and motherboards , A/V , and just about any other hardware-related topic you can think of. Stop by the Operating Systems & Software forums for in-depth discussion on Windows , macOS , or Linux or just to have a good, friendly argument over why your preferred OS rules . Read full article Comments",
+      "summary_html": "<p>If you\u2019re like many of our readers, you\u2019ve got Ars Technica bookmarked and hit the front page a few times a day. But for others, a compelling story is what brings them here for the first time. And the discussions sometimes keep them coming back.</p>\n<p>Since its launch in 1998, Ars Technica has been known for its depth of community. If all you're doing is checking out the front page and the discussion threads that sit beneath each story, you\u2019re missing out on more than you realize.</p>\n<p>The <a href=\"https://arstechnica.com/civis/\">Ars OpenForum</a> is a place for readers to ask questions, compare notes, argue (without being jerks to each other), and go down all sorts of rabbit holes. Our <a href=\"https://arstechnica.com/civis/forums/-/list#hardware-tweaking.5\">Hardware and Tweaking forums</a> cover <a href=\"https://arstechnica.com/civis/forums/case-and-cooling-fetish.7/\">PC builds</a>, <a href=\"https://arstechnica.com/civis/forums/networking-matrix.10/\">networking</a>, <a href=\"https://arstechnica.com/civis/forums/mobile-computing-outpost.9/\">mobile computing</a>, <a href=\"https://arstechnica.com/civis/forums/cpu-motherboard-technologia.8/\">CPUs and motherboards</a>, <a href=\"https://arstechnica.com/civis/forums/audio-visual-club.6/\">A/V</a>, and just about any other <a href=\"https://arstechnica.com/civis/forums/other-hardware.11/\">hardware-related topic</a> you can think of. Stop by the <a href=\"https://arstechnica.com/civis/forums/-/list#operating-systems-software.13\">Operating Systems &amp; Software</a> forums for in-depth discussion on <a href=\"https://arstechnica.com/civis/forums/windows-technical-mojo.17/\">Windows</a>, <a href=\"https://arstechnica.com/civis/forums/macintoshian-achaia.19/\">macOS</a>, or <a href=\"https://arstechnica.com/civis/forums/linux-kung-fu.16/\">Linux</a>\u00a0or just to have a good, friendly argument over <a href=\"https://arstechnica.com/civis/forums/battlefront.14/\">why your preferred OS rules</a>.</p><p><a href=\"https://arstechnica.com/staff/2026/08/get-in-on-the-ars-community-that-doesnt-fit-beneath-an-article/\">Read full article</a></p>\n<p><a href=\"https://arstechnica.com/staff/2026/08/get-in-on-the-ars-community-that-doesnt-fit-beneath-an-article/#comments\">Comments</a></p>",
+      "link": "https://arstechnica.com/staff/2026/08/get-in-on-the-ars-community-that-doesnt-fit-beneath-an-article/",
+      "source": "Ars Technica - All content - All Ars Technica stories",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T21:12:01+00:00",
+      "published_ts": 1788210721,
+      "smart_groups": [],
       "curated": false
     },
     {
@@ -457,20 +989,6 @@
       "curated": true
     },
     {
-      "title": "FTC and 22 States Sue Amazon Over Advertising Practices",
-      "summary": "The Federal Trade Commission and the states said Amazon misled brands and sellers into paying more for ads; the company is denying the accusations.",
-      "summary_html": "The Federal Trade Commission and the states said Amazon misled brands and sellers into paying more for ads; the company is denying the accusations.",
-      "link": "https://www.nytimes.com/2026/08/31/technology/ftc-amazon-lawsuit-ad-prices.html",
-      "source": "NYT > Technology - Technology industry news, commentary and analysis, with reporting on big tech, startups, and internet culture.",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-08-31T20:05:56+00:00",
-      "published_ts": 1788206756,
-      "smart_groups": [],
-      "curated": false
-    },
-    {
       "title": "Sources: Polymarket will raise $1B led by 1789 Capital at a $21B post-money valuation; Donald Trump Jr. is a partner at 1789 and adviser to Polymarket (Amanda L. Gordon/Bloomberg)",
       "summary": "Amanda L. Gordon / Bloomberg : Sources: Polymarket will raise $1B led by 1789 Capital at a $21B post-money valuation; Donald Trump Jr. is a partner at 1789 and adviser to Polymarket \u2014\u00a0 Venture capital firm 1789 Capital is leading a new funding round for Polymarket that will give the prediction-markets platform a $21 billion post-money valuation.",
       "summary_html": "<a href=\"https://www.bloomberg.com/news/articles/2026-08-31/polymarket-funding-round-led-by-1789-values-firm-at-21-billion\"></a>\n<p><a href=\"https://www.techmeme.com/260831/p36#a260831p36\"></a> Amanda L. Gordon / <a href=\"https://www.bloomberg.com/\">Bloomberg</a>:<br/>\n<span><b><a href=\"https://www.bloomberg.com/news/articles/2026-08-31/polymarket-funding-round-led-by-1789-values-firm-at-21-billion\">Sources: Polymarket will raise $1B led by 1789 Capital at a $21B post-money valuation; Donald Trump Jr. is a partner at 1789 and adviser to Polymarket</a></b></span>\u00a0 \u2014\u00a0 Venture capital firm 1789 Capital is leading a new funding round for Polymarket that will give the prediction-markets platform a $21 billion post-money valuation.</p>",
@@ -684,6 +1202,22 @@
       "published": "2026-08-31T19:32:21+00:00",
       "published_ts": 1788204741,
       "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "OpenAI Purchases Tens of Thousands of Mac minis, Mac Studios",
+      "summary": "OpenAI is reportedly buying tens of thousands of Mac mini and Mac Studio systems as AI labs find a new use for Apple hardware. The post OpenAI Purchases Tens of Thousands of Mac minis, Mac Studios appeared first on TechRepublic .",
+      "summary_html": "<p>OpenAI is reportedly buying tens of thousands of Mac mini and Mac Studio systems as AI labs find a new use for Apple hardware.</p>\n<p>The post <a href=\"https://www.techrepublic.com/article/news-openai-mac-mini-mac-studio-ai-agents/\">OpenAI Purchases Tens of Thousands of Mac minis, Mac Studios</a> appeared first on <a href=\"https://www.techrepublic.com\">TechRepublic</a>.</p>",
+      "link": "https://www.techrepublic.com/article/news-openai-mac-mini-mac-studio-ai-agents/",
+      "source": "Artificial Intelligence | TechRepublic - News, Tips, and Advice for Technology Professionals",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T19:29:52+00:00",
+      "published_ts": 1788204592,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
       "curated": false
     },
     {
@@ -2376,6 +2910,20 @@
       "published_ts": 1788192320,
       "smart_groups": [],
       "curated": true
+    },
+    {
+      "title": "The HackerNoon Newsletter: Prompt Debt: How Old Instructions Break New AI Models (8/31/2026)",
+      "summary": "8/31/2026: Top 5 stories on the HackerNoon homepage! Read All",
+      "summary_html": "8/31/2026: Top 5 stories on the HackerNoon homepage!<p><a href=\"https://hackernoon.com/8-31-2026-newsletter?source=rss\">Read All</a></p>",
+      "link": "https://hackernoon.com/8-31-2026-newsletter?source=rss",
+      "source": "Hacker Noon - ai - Humans with irrational brains writing about machines with rational brains.",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-08-31T16:05:06+00:00",
+      "published_ts": 1788192306,
+      "smart_groups": [],
+      "curated": false
     },
     {
       "title": "El Ni\u00f1o is now stronger than at any point in the last 1,000 years, study finds",
@@ -5803,6 +6351,39 @@
       "smart_groups": [
         "LLM & Foundation Model Releases",
         "AI Regulation & Policy"
+      ],
+      "curated": false
+    },
+    {
+      "title": "OpenAI supports California\u2019s bill to advance youth AI safety",
+      "summary": "OpenAI supports California SB 1119, advancing strong, age-appropriate AI safeguards for teens while preserving opportunities to learn, create, and explore.",
+      "summary_html": "OpenAI supports California SB 1119, advancing strong, age-appropriate AI safeguards for teens while preserving opportunities to learn, create, and explore.",
+      "link": "https://openai.com/index/supporting-california-bill-advance-ai-youth-safety",
+      "source": "OpenAI - The OpenAI news",
+      "feed_type": "news",
+      "type": "official-labs-research",
+      "type_label": "Official Labs & Research",
+      "published": "2026-08-31T07:00:00+00:00",
+      "published_ts": 1788159600,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "AI Safety & Ethics"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Polimill builds Japan's next-generation public AI infrastructure",
+      "summary": "Polimill uses OpenAI GPT models and Codex to help municipalities search and use administrative knowledge while accelerating development.",
+      "summary_html": "Polimill uses OpenAI GPT models and Codex to help municipalities search and use administrative knowledge while accelerating development.",
+      "link": "https://openai.com/index/polimill",
+      "source": "OpenAI - The OpenAI news",
+      "feed_type": "news",
+      "type": "official-labs-research",
+      "type_label": "Official Labs & Research",
+      "published": "2026-08-31T07:00:00+00:00",
+      "published_ts": 1788159600,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
       ],
       "curated": false
     },
