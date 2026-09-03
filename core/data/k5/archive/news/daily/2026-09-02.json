@@ -1,9 +1,332 @@
 {
-  "generated_at": "2026-09-02T19:29:52.095979+00:00",
+  "generated_at": "2026-09-03T04:48:00.978121+00:00",
   "date": "2026-09-02",
-  "total_items": 151,
+  "total_items": 171,
   "next_chunk": "archive/news/daily/2026-09-01.json",
   "items": [
+    {
+      "title": "Anthropic Admits Security Failures Behind Claude Hacking Incidents",
+      "summary": "After Claude models accessed real systems during cyber tests, Anthropic tightened its safeguards and warned that flawed training can encourage dangerous behavior.",
+      "summary_html": "After Claude models accessed real systems during cyber tests, Anthropic tightened its safeguards and warned that flawed training can encourage dangerous behavior.",
+      "link": "https://decrypt.co/377232/anthropic-security-claude-ai-hacks",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-09-02T23:46:04+00:00",
+      "published_ts": 1788392764,
+      "smart_groups": [
+        "AI/ML Security"
+      ],
+      "curated": false
+    },
+    {
+      "title": "SonicWall reports two major security holes under active exploit",
+      "summary": "SonicWall on Monday reported two major security holes in its Secure Mobile Access 1000 series appliances, both of which it said are being actively exploited, and published patches for each. Consultants called the holes, one of which permits remote attacks that bypass authentication, highly troubling. In its security alert , SonicWall described the first hole, tracked as CVE-2026-83548 and rated 10 (critical) in severity, as a \u201cPre-authentication SSRF vulnerability [that] exists in the SMA1000 Appliance Work Place interface due to an unintended alternate access path. A remote unauthenticated attacker could potentially exploit this vulnerability to gain unauthorized access to sensitive functionality and perform unauthorized operations.\u201d The alert described the second hole ( CVE-2026-83549 ), in the SMA1000 Appliance Management Console (AMC), as one allowing an attacker to impersonate an administrator and to then \u201cexecute arbitrary OS commands, resulting in remote code execution.\u201d\u00a0Its severity rating is 7.8 (High). There is no workaround for either bug, which affects versions 12.4.3-03453 and 12.5.0-02835 of the firmware. The company advised customers to contact technical support for assistance in determining whether a device has already been compromised. Swift patching recommended Cybersecurity consultants and specialists encouraged IT and cybersecurity teams to patch as quickly as possible, given the nature of these holes. Mike Wilkes , enterprise CISO at Aikido Security, said the potential for an attacker gaining full system control, not just access, is frightening. \u201cSonicWall\u2019s own recommendation to re-image compromised appliances and reset user and administrator passwords and TOTP tokens illustrates how seriously that possibility should be taken,\u201d he said, adding that SonicWall\u2019s recent past should encourage CISOs to move quickly. \u201cThese are as critical as it gets. I would classify them as red hot and require immediate attention,\u201d added Flavio Villanustre , CISO for the LexisNexis Risk Solutions Group. He said the reason he sees these holes as so severe is partly due to the nature of how the SMA1000, a secure mobile access appliance, is deployed, and how accessible it is to random Web visitors. \u201cCVE-2026-83548 allows a threat actor to perform any changes to the system without the need for any authentication. In a nutshell, an attacker could connect to the system and modify security configuration settings without needing valid credentials,\u201d Villanustre said. \u201cThis vulnerability completely subverts the controls, provides an attacker with a wide range of opportunities, and allows them to establish persistence after the vulnerability is fixed.\u201d Cybersecurity consultant Brian Levine , executive director of FormerGov, agreed. The pre-authentication SSRF \u201clets an unauthenticated attacker reach controls they should never touch, and the command injection flaw converts that reach into full code execution on the appliance,\u201d Levine said. \u201cBecause these boxes sit at the network edge and broker remote access, the worst case is an attacker owning a trusted gateway and pivoting straight into the internal network, stealing credentials and configurations, planting persistence and moving laterally.\u201d Philip Harris , an IDC research director, concurred with Levine\u2019s assessment. \u201cThese two holes are about as serious as it gets for an edge access appliance, and the fact that SonicWall is disclosing them as already under active exploitation removes any question about whether this is theoretical,\u201d he said. On its own, the pre-authentication SSRF lets an outsider reach internal functionality that the appliance was never supposed to expose, Harris noted. \u201cPaired with the OS command injection in the Appliance Management Console, the two form a chain: the unauthenticated SSRF gets an attacker into position to trigger the command injection flaw, and the end result is remote code execution, in practice as root, on a device that sits at the perimeter of the network by design.\u201d Repeats a June attack chain What makes this issue especially significant is the timing and the pattern, he pointed out. \u201cThis is essentially a rerun of what happened with the same appliance line just weeks ago,\u201d he said, citing the July disclosure of a \u201cnearly identical\u201d SSRF-plus-command-injection chain in SMA1000 that researchers at Volexity traced to exploitation starting June 22, weeks before a patch existed. \u201cThat earlier chain was picked up by a threat cluster tracked as UTA0533 and then weaponized at scale by the INC ransomware operation, which has claimed roughly 900 victims globally since,\u201d he noted. In those operations, attackers were harvesting local credentials, session databases, and TOTP MFA seeds to gain persistent, hard-to-evict access before moving laterally into victim networks. And, Wilkes pointed out, that hasn\u2019t been the only reported vulnerability; there have been 18 \u2013 22 publicly disclosed CVEs impacting SonicWall products over the past 12 months, resulting in other cybersecurity issues which have included ransomware attacks . He quipped, \u201cit\u2019s a bit tongue-in-cheek to remark that, from a product stickiness point of view, it\u2019s not a great feature that your PSIRT portal is getting more traffic than the rest of your website.\u201d This article originally appeared on Network World .",
+      "summary_html": "<div>\n<div>\n<div>\n<div>\n<div></div>\n<p>SonicWall on Monday reported two major security holes in its Secure Mobile Access 1000 series appliances, both of which it said are being actively exploited, and published patches for each. Consultants called the holes, one of which permits remote attacks that bypass authentication, highly troubling.</p>\n<p>In its <a href=\"https://www.sonicwall.com/support/notices/product-notice-sma-1000-series-affected-by-multiple-vulnerabilities-snwlid-2026-0016/kA1VN000002AXmQ0AW\">security alert</a>, SonicWall described the first hole, tracked as <a href=\"https://nvd.nist.gov/vuln/detail/cve-2026-83548\">CVE-2026-83548</a> and rated 10 (critical) in severity, as a \u201cPre-authentication SSRF vulnerability [that] exists in the SMA1000 Appliance Work Place interface due to an unintended alternate access path. A remote unauthenticated attacker could potentially exploit this vulnerability to gain unauthorized access to sensitive functionality and perform unauthorized operations.\u201d</p>\n<p>The alert described the second hole (<a href=\"https://nvd.nist.gov/vuln/detail/cve-2026-83549\">CVE-2026-83549</a>), in the SMA1000 Appliance Management Console (AMC), as one allowing an attacker to impersonate an administrator and to then \u201cexecute arbitrary OS commands, resulting in remote code execution.\u201d\u00a0Its severity rating is 7.8 (High).</p>\n<p>There is no workaround for either bug, which affects versions 12.4.3-03453 and 12.5.0-02835 of the firmware. The company advised customers to contact technical support for assistance in determining whether a device has already been compromised.</p>\nSwift patching recommended\n<p>Cybersecurity consultants and specialists encouraged IT and cybersecurity teams to patch as quickly as possible, given the nature of these holes.\u00a0</p>\n<p><a href=\"https://www.linkedin.com/in/eclectiqus/\">Mike Wilkes</a>, enterprise CISO at Aikido Security, said the potential for an attacker gaining full system control, not just access, is frightening.\u00a0</p>\n<p>\u201cSonicWall\u2019s own recommendation to re-image compromised appliances and reset user and administrator passwords and TOTP tokens illustrates how seriously that possibility should be taken,\u201d he said, adding that SonicWall\u2019s recent past should encourage CISOs to move quickly.</p>\n<p>\u201cThese are as critical as it gets. I would classify them as red hot and require immediate attention,\u201d added <a href=\"https://www.linkedin.com/in/fvillanustre/\">Flavio Villanustre</a>, CISO for the LexisNexis Risk Solutions Group.\u00a0\u00a0</p>\n<p>He said the reason he sees these holes as so severe is partly due to the nature of how the SMA1000, a secure mobile access appliance, is deployed, and how accessible it is to random Web visitors.</p>\n<p>\u201cCVE-2026-83548 allows a threat actor to perform any changes to the system without the need for any authentication. In a nutshell, an attacker could connect to the system and modify security configuration settings without needing valid credentials,\u201d Villanustre said. \u201cThis vulnerability completely subverts the controls, provides an attacker with a wide range of opportunities, and allows them to establish persistence after the vulnerability is fixed.\u201d</p>\n<p>Cybersecurity consultant <a href=\"https://formergov.com/directory/brianlevine\">Brian Levine</a>, executive director of FormerGov, agreed.</p>\n<p>The pre-authentication SSRF \u201clets an unauthenticated attacker reach controls they should never touch, and the command injection flaw converts that reach into full code execution on the appliance,\u201d Levine said. \u201cBecause these boxes sit at the network edge and broker remote access, the worst case is an attacker owning a trusted gateway and pivoting straight into the internal network, stealing credentials and configurations, planting persistence and moving laterally.\u201d</p>\n<p><a href=\"https://my.idc.com/getdoc.jsp?containerId=PRF005506\">Philip Harris</a>, an IDC research director, concurred with Levine\u2019s assessment.</p>\n<p>\u201cThese two holes are about as serious as it gets for an edge access appliance, and the fact that SonicWall is disclosing them as already under active exploitation removes any question about whether this is theoretical,\u201d he said.</p>\n<p>On its own, the pre-authentication SSRF lets an outsider reach internal functionality that the appliance was never supposed to expose, Harris noted. \u201cPaired with the OS command injection in the Appliance Management Console, the two form a chain: the unauthenticated SSRF gets an attacker into position to trigger the command injection flaw, and the end result is remote code execution, in practice as root, on a device that sits at the perimeter of the network by design.\u201d</p>\nRepeats a June attack chain\n<p>What makes this issue especially significant is the timing and the pattern, he pointed out. \u201cThis is essentially a rerun of what happened with the same appliance line just weeks ago,\u201d he said, citing the July disclosure of a \u201cnearly identical\u201d SSRF-plus-command-injection chain in SMA1000 that researchers at Volexity traced to exploitation starting June 22, weeks before a patch existed.</p>\n<p>\u201cThat earlier chain was picked up by a threat cluster tracked as UTA0533 and then weaponized at scale by the INC ransomware operation, which has claimed roughly 900 victims globally since,\u201d he noted. In those operations, attackers were harvesting local credentials, session databases, and TOTP MFA seeds to gain persistent, hard-to-evict access before moving laterally into victim networks.</p>\n<p>And, Wilkes pointed out, that hasn\u2019t been the only reported vulnerability; there have been 18 \u2013 22 publicly disclosed CVEs impacting SonicWall products over the past 12 months, resulting in other <a href=\"https://www.csoonline.com/article/4209606/akira-ransomware-reboots-into-windows-safe-mode-to-knock-edr-offline.html\">cybersecurity issues</a> which have included <a href=\"https://www.csoonline.com/article/4097078/sonicwall-ransomware-attacks-offer-an-ma-lesson-for-csos.html\">ransomware attacks</a>.</p>\n<p>He quipped, \u201cit\u2019s a bit tongue-in-cheek to remark that, from a product stickiness point of view, it\u2019s not a great feature that your PSIRT portal is getting more traffic than the rest of your website.\u201d</p>\n<p><em>This article originally appeared on <a href=\"https://www.networkworld.com/article/4217671/sonicwall-reports-two-major-security-holes-under-active-exploit.html\">Network World</a>.</em></p>\n</div></div></div></div>",
+      "link": "https://www.csoonline.com/article/4217682/sonicwall-reports-two-major-security-holes-under-active-exploit-2.html",
+      "source": "CSO Online",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-09-02T23:22:10+00:00",
+      "published_ts": 1788391330,
+      "smart_groups": [
+        "Ransomware",
+        "Vulnerabilities / CVEs",
+        "Exploit / PoC",
+        "Identity / Access",
+        "Community Discussion"
+      ],
+      "curated": true
+    },
+    {
+      "title": "An AI Training Data Startup Just Became Y Combinator's Fastest-Ever Unicorn",
+      "summary": "Afterquery's valuation jumped more than tenfold in five months, making it Y Combinator's fastest unicorn ever.",
+      "summary_html": "Afterquery's valuation jumped more than tenfold in five months, making it Y Combinator's fastest unicorn ever.",
+      "link": "https://decrypt.co/377231/afterquery-ai-tradining-data-unicorn-y-combinator",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-09-02T23:16:04+00:00",
+      "published_ts": 1788390964,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "FBI Seizes $560K in Crypto Bound for Hamas, Takes Over Fundraising Sites",
+      "summary": "Agents seized digital assets, domains, and servers allegedly used by Hamas\u2019 military wing to collect donations and recruit supporters.",
+      "summary_html": "Agents seized digital assets, domains, and servers allegedly used by Hamas\u2019 military wing to collect donations and recruit supporters.",
+      "link": "https://decrypt.co/377230/fbi-seizes-560k-crypto-hamas",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-09-02T22:47:06+00:00",
+      "published_ts": 1788389226,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "OpenAI Astra Brings Autonomous Zero-Day Exploitation to AI",
+      "summary": "OpenAI says Astra can autonomously find zero-days and build exploits, marking its first model to reach the \u201cCritical\u201d cyber risk level. Astra is now officially OpenAI\u2019s highest-risk cybersecurity model. In August, OpenAI said it \u201c couldn\u2019t rule out \u201d that its upcoming model had reached the highest cybersecurity risk level in its Preparedness Framework . In a new post, the company confirmed it: Astra meets the Critical cybersecurity capability threshold, making it the first OpenAI model ever classified at that level. \u201cWe now believe Astra meets the Critical cybersecurity capability threshold under our Preparedness Framework , meaning that with the right tools and access, it can find previously unknown security flaws and develop ways to exploit them across many well-protected systems without a person guiding each step.\u201d reads the announcement . \u201cIt is the first model we are designating at this level, and requires stronger safeguards during development and before release.\u201d The bar for that classification isn\u2019t vague marketing language, it\u2019s a specific technical threshold OpenAI wrote into its own safety framework back in 2023. A model crosses it if it can identify and develop working zero-day exploits across many well-defended real-world systems entirely without human help, or if it can plan and carry out an entire cyberattack against a hardened target starting from nothing more than a high-level goal. Either condition alone is enough, and OpenAI says Astra clears the bar comfortably. The benchmark results make the difference hard to ignore. Astra scored 100% on ExploitBench, a test that measures how well an AI can turn known vulnerabilities into working exploits. OpenAI also tested Astra against a new internal benchmark based on V8 vulnerabilities disclosed between June and August 2026. The benchmark was designed to avoid any overlap with the model\u2019s training data. Astra achieved much higher code-execution success rates than GPT-5.6 Sol while using far fewer tokens. During the same tests, Astra also found two previously unknown zero-day vulnerabilities while building an exploit chain. OpenAI says it is now working with the affected software developers to disclose both flaws. In hands-on expert testing against hardened targets, Astra didn\u2019t just find bugs; it chained them into complete attacks. The model built a full browser-compromise chain that escaped the sandbox and executed commands directly on the host machine, triggered simply by opening a malicious HTML file. Separately, it found multiple flaws in a hardened operating system and combined them into a privilege-escalation chain running all the way from an unprivileged user account to root, the kind of end-to-end attack chain that used to require a skilled human operator stitching pieces together by hand. The announcement comes just after OpenAI\u2019s recent security incident. Earlier this year, the company admitted that a separate unreleased model breached Hugging Face\u2019s systems during testing. OpenAI makes clear that Astra was not involved in that incident. \u201cBased on retrospective testing, we believe our production safeguards at the time would have prevented the Hugging Face incident.\u201d states OpenAI. \u201cWe have since implemented even stronger safeguards for Astra, including training the model to more reliably refuse harmful cyber requests and respect safety restrictions, additional protections against misuse, and monitoring that can stop potentially unauthorized activity.\u201d The company says that, based on later testing, its current security measures would have stopped the Hugging Face breach. But that also suggests those safeguards were not in place when the earlier incident happened. The response to reaching this threshold involved actually slowing down, not just adding a warning label. OpenAI paused parts of Astra\u2019s training and delayed release for several weeks specifically to harden isolation, expand monitoring, and strengthen alignment training before resuming a previously halted large-scale reinforcement learning run on August 28. That\u2019s a genuinely unusual move for a company racing competitors on release timelines, and it suggests the internal concern here wasn\u2019t purely theatrical. The refusal numbers show a clear improvement, although Astra is still not perfect. In OpenAI\u2019s cyber safety tests, Astra refused 91.5% of requests that should not receive cyber assistance, compared with 59% for GPT-5.6 Sol. OpenAI also ran a \u201choneypot\u201d test based on the Hugging Face incident. The model was given an impossible task and quietly offered the option of attacking the test environment instead. Without production safeguards, GPT-5.6 Sol took the bait 56% of the time. Astra did it zero times. OpenAI is not making Astra\u2019s most powerful capabilities publicly available. Advanced cybersecurity features will first be given to a small group of alpha testers, before being expanded through a program called Daybreak Blue, focused on defensive security work. This creates a deliberate access barrier. OpenAI also admits that its safeguards may sometimes block legitimate security research because it can look similar to malicious activity. In some cases, defensive work could therefore be paused or stopped simply because it resembles an attack. The key shift is that AI-driven exploit discovery could make traditional patching timelines obsolete. The real challenge is becoming how quickly defenders can detect and respond when an AI finds a vulnerability before attackers exploit it. Follow me on Twitter: @securityaffairs and Facebook and Mastodon Pierluigi\u00a0Paganini ( SecurityAffairs \u2013\u00a0hacking,\u00a0OpenAI)",
+      "summary_html": "<div></div>\nOpenAI says Astra can autonomously find zero-days and build exploits, marking its first model to reach the \u201cCritical\u201d cyber risk level.\n<p>Astra is now officially OpenAI\u2019s highest-risk cybersecurity model. In August, OpenAI said it \u201c<a href=\"https://securityaffairs.com/196931/ai/openai-pauses-astra-model-over-critical-cybersecurity-risk-concerns.html\">couldn\u2019t rule out</a>\u201d that its upcoming model had reached the highest cybersecurity risk level in its <a href=\"https://openai.com/index/updating-our-preparedness-framework/\">Preparedness Framework</a>. In a new post, the company confirmed it: <a href=\"https://securityaffairs.com/tag/openai-astra\">Astra</a> meets the Critical cybersecurity capability threshold, making it the first OpenAI model ever classified at that level.</p>\n<p><em>\u201cWe now believe Astra meets the Critical cybersecurity capability threshold under our\u00a0<a href=\"https://openai.com/index/updating-our-preparedness-framework/\">Preparedness Framework</a>, meaning that with the right tools and access, it can find previously unknown security flaws and develop ways to exploit them across many well-protected systems without a person guiding each step.\u201d <a href=\"https://openai.com/index/path-to-astra/\">reads the announcement</a>. \u201cIt is the first model we are designating at this level, and requires stronger safeguards during development and before release.\u201d</em></p>\n<p>The bar for that classification isn\u2019t vague marketing language, it\u2019s a specific technical threshold OpenAI wrote into its own safety framework back in 2023. A model crosses it if it can identify and develop working zero-day exploits across many well-defended real-world systems entirely without human help, or if it can plan and carry out an entire cyberattack against a hardened target starting from nothing more than a high-level goal. Either condition alone is enough, and OpenAI says Astra clears the bar comfortably.</p>\n<p>The benchmark results make the difference hard to ignore. Astra scored 100% on ExploitBench, a test that measures how well an AI can turn known vulnerabilities into working exploits.</p>\n<p>OpenAI also tested Astra against a new internal benchmark based on V8 vulnerabilities disclosed between June and August 2026. The benchmark was designed to avoid any overlap with the model\u2019s training data. Astra achieved much higher code-execution success rates than <a href=\"https://securityaffairs.com/tag/gpt-5-6-sol\">GPT-5.6 Sol</a> while using far fewer tokens.</p>\n<div>\n<a href=\"https://i0.wp.com/securityaffairs.com/wp-content/uploads/2026/09/image-6.png?ssl=1\"></a>\n</div>\n<p>During the same tests, Astra also found two previously unknown zero-day vulnerabilities while building an exploit chain. OpenAI says it is now working with the affected software developers to disclose both flaws.</p>\n<p>In hands-on expert testing against hardened targets, Astra didn\u2019t just find bugs; it chained them into complete attacks. The model built a full browser-compromise chain that escaped the sandbox and executed commands directly on the host machine, triggered simply by opening a malicious HTML file. Separately, it found multiple flaws in a hardened operating system and combined them into a privilege-escalation chain running all the way from an unprivileged user account to root, the kind of end-to-end attack chain that used to require a skilled human operator stitching pieces together by hand.</p>\n<p>The announcement comes just after OpenAI\u2019s recent security incident. Earlier this year, the company admitted that a separate unreleased model breached Hugging Face\u2019s systems during testing. OpenAI makes clear that Astra was not involved in that incident.</p>\n<p><em>\u201cBased on retrospective testing, we believe our production safeguards at the time would have prevented the <a href=\"https://securityaffairs.com/tag/hugging-face\">Hugging Face</a> incident.\u201d states OpenAI. \u201cWe have since implemented even stronger safeguards for Astra, including training the model to more reliably refuse harmful cyber requests and respect safety restrictions, additional protections against misuse, and monitoring that can stop potentially unauthorized activity.\u201d</em></p>\n<p>The company says that, based on later testing, its current security measures would have stopped the Hugging Face breach. But that also suggests those safeguards were not in place when the earlier incident happened.</p>\n<p>The response to reaching this threshold involved actually slowing down, not just adding a warning label. OpenAI paused parts of Astra\u2019s training and delayed release for several weeks specifically to harden isolation, expand monitoring, and strengthen alignment training before resuming a previously halted large-scale reinforcement learning run on August 28. That\u2019s a genuinely unusual move for a company racing competitors on release timelines, and it suggests the internal concern here wasn\u2019t purely theatrical.</p>\n<p>The refusal numbers show a clear improvement, although Astra is still not perfect. In OpenAI\u2019s cyber safety tests, Astra refused 91.5% of requests that should not receive cyber assistance, compared with 59% for GPT-5.6 Sol.</p>\n<p>OpenAI also ran a \u201choneypot\u201d test based on the <a href=\"https://securityaffairs.com/tag/hugging-face\">Hugging Face</a> incident. The model was given an impossible task and quietly offered the option of attacking the test environment instead. Without production safeguards, GPT-5.6 Sol took the bait 56% of the time. Astra did it zero times.</p>\n<p>OpenAI is not making Astra\u2019s most powerful capabilities publicly available. Advanced cybersecurity features will first be given to a small group of alpha testers, before being expanded through a program called Daybreak Blue, focused on defensive security work.</p>\n<p>This creates a deliberate access barrier. OpenAI also admits that its safeguards may sometimes block legitimate security research because it can look similar to malicious activity. In some cases, defensive work could therefore be paused or stopped simply because it resembles an attack.</p>\n<p>The key shift is that AI-driven exploit discovery could make traditional patching timelines obsolete. The real challenge is becoming how quickly defenders can detect and respond when an AI finds a vulnerability before attackers exploit it.</p>\n<p><strong>Follow me on Twitter:\u00a0</strong><a href=\"https://twitter.com/securityaffairs\"><strong>@securityaffairs</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://www.facebook.com/sec.affairs\"><strong>Facebook</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://infosec.exchange/@securityaffairs\"><strong>Mastodon</strong></a><strong></strong></p>\n<p><a href=\"http://www.linkedin.com/pub/pierluigi-paganini/b/742/559\"><strong>Pierluigi\u00a0Paganini</strong></a><strong></strong></p>\n<p><strong>(</strong><a href=\"http://securityaffairs.co/wordpress/\"><strong>SecurityAffairs</strong></a><strong>\u00a0\u2013\u00a0hacking,\u00a0OpenAI)</strong></p>",
+      "link": "https://securityaffairs.com/198317/ai/openai-astra-brings-autonomous-zero-day-exploitation-to-ai.html",
+      "source": "Security Affairs",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-09-02T21:31:29+00:00",
+      "published_ts": 1788384689,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Exploit / PoC",
+        "Linux / Unix",
+        "Cloud / SaaS"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Japan\u2019s Remixpoint Dumps Ethereum, XRP in Shift to Bitcoin-Only Treasury",
+      "summary": "The Japanese company booked a \u00a5117.8 million profit after selling its ETH, SOL, XRP and DOGE, leaving roughly 1,506 BTC as its only cryptocurrency holding.",
+      "summary_html": "The Japanese company booked a \u00a5117.8 million profit after selling its ETH, SOL, XRP and DOGE, leaving roughly 1,506 BTC as its only cryptocurrency holding.",
+      "link": "https://decrypt.co/377228/remixpoint-xrp-ethereum-bitcoin-only",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-09-02T21:31:05+00:00",
+      "published_ts": 1788384665,
+      "smart_groups": [
+        "Crypto / Web3"
+      ],
+      "curated": false
+    },
+    {
+      "title": "US officials work with CrowdStrike to fight malware behind crypto theft",
+      "summary": "Federal authorities and private-sector partners were part of an operation to disrupt malware that redirected about $150,000 in crypto over the last eight years.",
+      "summary_html": "<p></p><p>Federal authorities and private-sector partners were part of an operation to disrupt malware that redirected about $150,000 in crypto over the last eight years.</p>",
+      "link": "https://cointelegraph.com/news/us-officials-crowdstrike-malware-stealing-crypto?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-09-02T21:27:15+00:00",
+      "published_ts": 1788384435,
+      "smart_groups": [
+        "Malware / Payloads"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI\u2019s Vulnerability Surge May Be More Manageable Than First Feared",
+      "summary": "New research suggests the coming Vulnpocalypse may not be so overwhelming for enterprise security teams \u2014 if they have the right strategies.",
+      "summary_html": "New research suggests the coming Vulnpocalypse may not be so overwhelming for enterprise security teams \u2014 if they have the right strategies.",
+      "link": "https://www.darkreading.com/application-security/ai-vulnerability-surge-manageable-than-first-feared",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-09-02T21:14:06+00:00",
+      "published_ts": 1788383646,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Multiple Vulnerabilities in SonicWall SMA1000 Series Appliances Could Allow for Remote Code Execution",
+      "summary": "Multiple Vulnerabilities have been discovered in SonicWall SMA1000 Series Appliances, which when chained together could allow for remote code execution, potentially leading to full system compromise. SonicWall Secure Mobile Access (SMA) 1000 Series appliances are enterprise-grade secure access and SSL VPN gateways. Successful exploitation of the vulnerabilities could allow for remote code execution.",
+      "summary_html": "<p><span>Multiple Vulnerabilities have been discovered in SonicWall SMA1000 Series Appliances, which when chained together could allow for remote code execution, potentially leading to full system compromise. SonicWall Secure Mobile Access (SMA) 1000 Series appliances are enterprise-grade secure access and SSL VPN gateways. Successful exploitation of the vulnerabilities could allow for remote code execution.</span></p>",
+      "link": "https://www.cisecurity.org/advisory/multiple-vulnerabilities-in-sonicwall-sma1000-series-appliances-could-allow-for-remote-code-execution_2026-087",
+      "source": "CIS \u2013 Advisories",
+      "feed_type": "news",
+      "type": "government-cert-advisories",
+      "type_label": "Government, CERT & Advisories",
+      "published": "2026-09-02T21:01:10+00:00",
+      "published_ts": 1788382870,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Hackers exploit Sangoma Switchvox flaw to deploy reverse shells",
+      "summary": "Attackers are actively exploiting CVE-2026-9586, an unauthenticated SQL injection vulnerability in the Sangoma Switchvox VoIP platform that can lead to remote code execution. [...]",
+      "summary_html": "Attackers are actively exploiting CVE-2026-9586, an unauthenticated SQL injection vulnerability in the Sangoma Switchvox VoIP platform that can lead to remote code execution. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/hackers-exploit-sangoma-switchvox-flaw-to-deploy-reverse-shells/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-09-02T21:00:13+00:00",
+      "published_ts": 1788382813,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Web / API Security"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Multiple Vulnerabilities in PaperCut Products Could Allow for Remote Code Execution",
+      "summary": "Multiple vulnerabilities have been discovered in PaperCut products, the most severe of which could allow for remote code execution. PaperCut products are software tools used to track, control, secure, and manage printing, copying, and scanning across office and school printer networks. Successful exploitation of the most severe of these vulnerabilities could allow for remote code execution in the context of the affected service account. Depending on the privileges associated with the service account, an attacker could then install programs; view, change, or delete data; or create new accounts with full user rights. Services whose accounts are configured to have less rights on the system could be less impacted than those who operate with administrative user rights.",
+      "summary_html": "<p><span>Multiple vulnerabilities have been discovered in PaperCut products, the most severe of which could allow for remote code execution. PaperCut products are software tools used to track, control, secure, and manage printing, copying, and scanning across office and school printer networks. Successful exploitation of the most severe of these vulnerabilities could allow for remote code execution in the context of the affected service account. Depending on the privileges associated with the service account, an attacker could then install programs; view, change, or delete data; or create new accounts with full user rights. Services whose accounts are configured to have less rights on the system could be less impacted than those who operate with administrative user rights.</span></p>",
+      "link": "https://www.cisecurity.org/advisory/multiple-vulnerabilities-in-papercut-products-could-allow-for-remote-code-execution_2026-086",
+      "source": "CIS \u2013 Advisories",
+      "feed_type": "news",
+      "type": "government-cert-advisories",
+      "type_label": "Government, CERT & Advisories",
+      "published": "2026-09-02T20:58:36+00:00",
+      "published_ts": 1788382716,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Identity / Access"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Coinbase launches regulated crypto derivatives in Canada",
+      "summary": "Coinbase is offering eligible Canadian traders perpetual and dated futures with up to 10x leverage as major US trading platforms expand their crypto presence in Canada.",
+      "summary_html": "<p></p><p>Coinbase is offering eligible Canadian traders perpetual and dated futures with up to 10x leverage as major US trading platforms expand their crypto presence in Canada.</p>",
+      "link": "https://cointelegraph.com/news/coinbase-launches-regulated-crypto-derivatives-in-canada?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-09-02T20:55:55+00:00",
+      "published_ts": 1788382555,
+      "smart_groups": [
+        "Product News"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Top Pentagon AI Official Sold Millions in Perplexity Stock, Disclosures Show",
+      "summary": "Emil Michael's latest financial filings show a summer exit from Perplexity, months after a January sale of xAI stock that reportedly netted him up to $24 million.",
+      "summary_html": "Emil Michael's latest financial filings show a summer exit from Perplexity, months after a January sale of xAI stock that reportedly netted him up to $24 million.",
+      "link": "https://decrypt.co/377225/pentagon-ai-official-sold-millions-perplexity-stock",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-09-02T20:46:04+00:00",
+      "published_ts": 1788381964,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "SonicWall SMA 1000 Zero-Days Enable Unauthenticated RCE",
+      "summary": "The exploitation activity follows attacks earlier this summer on two other zero-day vulnerabilities in the vendor's edge devices.",
+      "summary_html": "The exploitation activity follows attacks earlier this summer on two other zero-day vulnerabilities in the vendor's edge devices.",
+      "link": "https://www.darkreading.com/vulnerabilities-threats/sonicwall-sma-1000-zero-days-unauthenticated-rce",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-09-02T20:43:59+00:00",
+      "published_ts": 1788381839,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Ransomware Operator Claims - Week 35 2026",
+      "summary": "Welcome to last week's ROC Report, an exclusive summary of Ransomware Operator's global victims that were claimed during the period between 24th August and 30th August 2026, kindly assisted by our partners. DBD discovered and researched 222 Ransomware Victims over 45 Countries and Islands claimed by 48 Data-Leaking Ransomware Operators , including 3 Newly Discovered Ransomware Operators last week. For further analysis on these (and any historic) Ransomware Operator Claims, including the Victim Names and Industry Sectors attacked, please use our PRiSM application. Download PDF Data Source: Data Breaches Digest. Flag Icons created by Freepik and provided by Flaticon .",
+      "summary_html": "<div>Welcome to last week's ROC Report, an exclusive summary of Ransomware Operator's global victims that were claimed during the period between 24th August and 30th August 2026, kindly assisted by our partners.</div>\n<div><a href=\"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1MniTyxq8tSLzrsp754gaDAuWnAagMzKqLIQ4yuNc75JCUodqOGIRJXgA4rGxBtSfhZ5OYducfDyOmjakQrBc7XmKPuwM4zTkXRKtekzSRtez9vLPIOb-cYmyWgmmj0EKTc6AwiVoC9QZEJ7i6RajsvPQq2ja8fN4vOqczpV0yOhbll2sh_lygTtaRAI/s1600/RVS_35_2026.png\"></a></div><br/><div>DBD discovered and researched <b>222 Ransomware Victims</b> over <b>45 Countries and Islands</b> claimed by <b>48 Data-Leaking Ransomware Operators</b>, including <b>3 Newly Discovered Ransomware Operators</b> last week.<br/><br/>For further analysis on these (and any historic) Ransomware Operator Claims, including the Victim Names and Industry Sectors attacked, please use our <a href=\"https://www.prismrsa.com/\">PRiSM</a> application.</div><br/>\n<a href=\"https://drive.google.com/uc?export=download&amp;id=142JFIUnQ_hG4eE3QI3I72Fn6-kiWcVUH\"><i><span><b>Download PDF</b></span></i></a><br/><br/>\n<span><i><br/><br/><span>Data Source: Data Breaches Digest. Flag Icons created by <a href=\"https://www.flaticon.com/authors/freepik\">Freepik</a> and provided by <a href=\"https://www.flaticon.com/\">Flaticon</a>.</span></i></span><br/>\n<br/>",
+      "link": "https://www.dbdigest.com/2026/09/ransomware-operator-claims-week-35-2026.html",
+      "source": "Data Breach Digest",
+      "feed_type": "news",
+      "type": "news-digests-aggregators",
+      "type_label": "News Digests & Aggregators",
+      "published": "2026-09-02T20:15:00+00:00",
+      "published_ts": 1788380100,
+      "smart_groups": [
+        "Ransomware",
+        "Vulnerabilities / CVEs",
+        "Data Breaches / Leaks"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Goldman Sachs, BofA Among 21 Banks Planning Joint Dollar Stablecoin Launch",
+      "summary": "The bank-led consortium wants a U.S. dollar token live by the first half of 2027, with a euro version queued up next.",
+      "summary_html": "The bank-led consortium wants a U.S. dollar token live by the first half of 2027, with a euro version queued up next.",
+      "link": "https://decrypt.co/377216/goldman-sachs-bofa-banks-stablecoin",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-09-02T20:01:04+00:00",
+      "published_ts": 1788379264,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Three high-severity vulnerabilities in HP Easy Start for macOS - CVE-2026-12554, CVE-2026-12555 and CVE-2026-12556",
+      "summary": "I recently completed disclosure of three vulnerabilities I found in HP Easy Start for macOS. submitted by /u/ciphersecuritylabs [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I recently completed disclosure of three vulnerabilities I found in HP Easy Start for macOS.</p> <blockquote> </blockquote> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/ciphersecuritylabs\"> /u/ciphersecuritylabs </a> <br/> <span><a href=\"https://ciphersecuritylabs.com/research/articles/rooted-in-trust-breaking-hp-easy-starts-macos-privilege-boundaries\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1w5l3sm/three_highseverity_vulnerabilities_in_hp_easy/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1w5l3sm/three_highseverity_vulnerabilities_in_hp_easy/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-09-02T19:51:51+00:00",
+      "published_ts": 1788378711,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI Gives Cybercriminals a Dangerous Time Advantage",
+      "summary": "Former cybercriminal Brett Johnson provides a look inside the mind of a threat actor and discusses where AI provides the most value for attackers.",
+      "summary_html": "Former cybercriminal Brett Johnson provides a look inside the mind of a threat actor and discusses where AI provides the most value for attackers.",
+      "link": "https://www.darkreading.com/threat-intelligence/ai-gives-cybercriminals-dangerous-time-advantage",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-09-02T19:46:31+00:00",
+      "published_ts": 1788378391,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "OpenLeash Adds a Human Check to Risky AI Agent Actions",
+      "summary": "The security tool intercepts potentially dangerous agent actions, blocking clear threats and requesting human approval when intent is uncertain. The post OpenLeash Adds a Human Check to Risky AI Agent Actions appeared first on SecurityWeek .",
+      "summary_html": "<p>The security tool intercepts potentially dangerous agent actions, blocking clear threats and requesting human approval when intent is uncertain.</p>\n<p>The post <a href=\"https://www.securityweek.com/openleash-adds-a-human-check-to-risky-ai-agent-actions/\">OpenLeash Adds a Human Check to Risky AI Agent Actions</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "link": "https://www.securityweek.com/openleash-adds-a-human-check-to-risky-ai-agent-actions/",
+      "source": "SecurityWeek",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-09-02T19:30:00+00:00",
+      "published_ts": 1788377400,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "WordPress backup plugin flaw exposes millions of sites to takeover attacks",
+      "summary": "An SQL injection vulnerability in the All-in-One WP Migration and Backup plugin for WordPress could allow unauthenticated attackers to execute remote code and take control of affected websites. [...]",
+      "summary_html": "An SQL injection vulnerability in the All-in-One WP Migration and Backup plugin for WordPress could allow unauthenticated attackers to execute remote code and take control of affected websites. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/wordpress-backup-plugin-flaw-exposes-millions-of-sites-to-takeover-attacks/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-09-02T19:28:46+00:00",
+      "published_ts": 1788377326,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Web / API Security"
+      ],
+      "curated": false
+    },
     {
       "title": "Could cybersecurity jobs be targeted by malicious actors?",
       "summary": "I'm exploring all kinds of possibilities to explain a strange phenomenon. A L1 SOC job listed yesterday with on-site demand gained 180 applicants in one day, It does not happen to any other job in any other fields. It just gained an additional 6 applicants as I'm typing this message. Do people specifically set up bots to automatically apply to cybersecurity job? I wonder how many applicants are even in the city or country, this is not a new phenomenon as it happens even last year or the year before. I wonder what's going on. Or just hoards of mindless people who are not even in the country mindlessly spamming resume on anything. please anyone enlighten me. submitted by /u/No-Individual5598 [link] [comments]",
