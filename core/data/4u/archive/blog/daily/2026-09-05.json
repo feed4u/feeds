@@ -1,9 +1,115 @@
 {
-  "generated_at": "2026-09-05T18:29:23.741970+00:00",
+  "generated_at": "2026-09-06T04:54:10.329877+00:00",
   "date": "2026-09-05",
-  "total_items": 46,
+  "total_items": 52,
   "next_chunk": "archive/blog/daily/2026-09-04.json",
   "items": [
+    {
+      "title": "Astra vs. Fable 5.1 on real ML tasks -- tradeoffs, strengths, shortcomings [P]",
+      "summary": "I ran a side-by-side ML text-processing and model-training workflow using Fable 5.1 vs. Astra (both on xhigh), and the results could not have been more different. Warning, long post. TL;DR -- Astra codes more agentically, Fable more coherently. Fable writes better and follows directions better. Astra's final outcome was slightly better, and its scientific rigor/reproducibility was noticeably stronger. Both models improved their F1/Accuracy by 0.02-04 after human feedback on their approach, demonstrating that neither have mastered the AI/ML text processsing, vectorization, and model training process completely. Astra is a better coder, writing a stricter evaluation protocol (70/15/15 train/val/test vs. Fable's basic 80/20) that selected its model using a held-out validation set vs. Fable's simpler test F1-based selection. It also debugged more deeply, as both models hit a gensim 4.4 compiled-kernel bug: Fable tried to figure it out, failed, and just hid the stderr notices on affected runs (though told me it had done so), while Astra root-caused it aggressively, then fixed the environment by downgrading gensim alongiside compatible NumPy/SciPy dependencies. Astra wrote hardened training-run.py code the forced the uv venv it rebuilt without changing my default one, SHA-256'd the corpus to ensure reproducibility on later runs, output a split manifest and run-summary.json, and rendered a headless browser for QA with screenshots (not sure this was necessary, but impressive overkill all around). Fable's builder script was ephemeral, living only in tmp, and less intense overall. Astra deployed subagents more effectively, making use of my pre-built notebook-reviewer and citation-checker agents, the former of which caught a real bug via review (sentence-final word-loss tokenization defect) and fixed it, retaining a regression test in the process. Fable overlooked this issue because, for some reason, it did not call the subagents I had available (which is surprising, usually it's pretty good about this). If you're looking for an agent to autonomously grind through a broken environment, leaving a forensic audit trail, that's Astra. However, this review isn't over yet, and Fable is about to make a comeback. Astra confidently shipped a significant verifiable text encoding defect. Working with UTF-8 data, Astra insisted Windows-1252 decoding preserves currency symbols, but the final HTML output shows mojibake throughout where currency symbols were in the original data. Fable read UTF-8, verified it, and rolled with the boring default for correct output. I also had both models draft an analysis report for the run, and Fable's was significantly more insightful. As much as I hate Claude's recognizable writing style, a) 5.1 has toned down the Claudeisms significantly, and b) Fable went above and beyond my grading rubric, running an ablation on different parts of the text pre-processing pipeline to surface an expensive step that does basically nothing, and noting a discrepancy in the classification ranking based on a complexity I'd have overlooked. For writing prose, I'd pick Fable 5.1 any day, and I haven't said that about Claude in a while. Speaking of writing, Fable writes code that is more idiomatic and readable. It definitely resembles more what I would write than what an LLM would choose to write without constraints (and yes, I had a whole coding-conventions.md document that applied my requirements to both models, Fable just followed it better and writes more naturally to start with). There were some parts of Astra's code where I had to squint really hard to figure out what was going on, and why. This matters to me because I'm not the strongest coder (still trying to get better), and I need to understand the code to learn from it. Finally, Fable scoped its work better: It spent its time and tokens doing repeated runs, tweaking hyperparamters and retraining the models to find the optimal settings while Astra deeply debugged the gensim error. It found significant uplift through this process, though that only allowed it to roughly match Astra's numbers (see table below). Astra seemed to hit a home run right off the bat with its training process, so I don't know if it would have executed the same workflow or not. Astra also mutated my venv by adding PyTorch, when I built it a certain way to force the models to use TensorFlow+Keras for more concise code, then reversed course and went with TF anyways in the end. The models finished in roughly the same amount of wall-clock time. Here are the final results, with one minor caveat -- Astra's test set scores exceed its val set, so it might have drawn a lucky test set that increases its score artificially (the pipeline has no leaks or data quality issues for either model, however): Best Logistic Regression and LSTM for each model, ranked by macro F1: Model Classifier Best representation Accuracy Macro F1 **Fable 5.1** Logistic Regression TF-IDF 0.9883 0.9881 **Fable 5.1** Simple LSTM Word2Vec-Skip-gram 0.9718 0.9705 **Astra** Logistic Regression TF-IDF 0.9969 0.9969 **Astra** Simple LSTM BoW 0.9781 0.9765 I do want to note that these final scores were after I provided both models identical feedback on common pitfalls of the text data cleaning, vectorization, and model training process once their initial runs were complete. Both models improved by a similar amount (0.02-0.04 F1 and Accuracy) from that generic guidance (not tailored at all to either's specific shortcomings or step of the process). That was the only intervention in otherwise autonomous work, and it was just because I wanted to see if they could learn to improve their approaches with additional context on optimal methodology, which they both did to similar degrees. I hope this post offers a little bit of help in some way for folks wondering how either model stacks up for real work, particularly if you're an AI/ML student like me. submitted by /u/returnity [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I ran a side-by-side ML text-processing and model-training workflow using Fable 5.1 vs. Astra (both on xhigh), and the results could not have been more different. Warning, long post.</p> <p><strong>TL;DR -- Astra codes more agentically, Fable more coherently. Fable writes better and follows directions better. Astra's final outcome was slightly better, and its scientific rigor/reproducibility was noticeably stronger. Both models improved their F1/Accuracy by 0.02-04 after human feedback on their approach, demonstrating that neither have mastered the AI/ML text processsing, vectorization, and model training process completely.</strong></p> <p>Astra is a better coder, writing a stricter evaluation protocol (70/15/15 train/val/test vs. Fable's basic 80/20) that selected its model using a held-out validation set vs. Fable's simpler test F1-based selection. It also debugged more deeply, as both models hit a gensim 4.4 compiled-kernel bug: Fable tried to figure it out, failed, and just hid the stderr notices on affected runs (though told me it had done so), while Astra root-caused it aggressively, then fixed the environment by downgrading gensim alongiside compatible NumPy/SciPy dependencies.</p> <p>Astra wrote hardened <a href=\"http://training-run.py\">training-run.py</a> code the forced the uv venv it rebuilt without changing my default one, SHA-256'd the corpus to ensure reproducibility on later runs, output a split manifest and run-summary.json, and rendered a headless browser for QA with screenshots (not sure this was necessary, but impressive overkill all around). Fable's builder script was ephemeral, living only in tmp, and less intense overall.</p> <p>Astra deployed subagents more effectively, making use of my pre-built notebook-reviewer and citation-checker agents, the former of which caught a real bug via review (sentence-final word-loss tokenization defect) and fixed it, retaining a regression test in the process. Fable overlooked this issue because, for some reason, it did not call the subagents I had available (which is surprising, usually it's pretty good about this).</p> <p>If you're looking for an agent to autonomously grind through a broken environment, leaving a forensic audit trail, that's Astra. However, this review isn't over yet, and Fable is about to make a comeback.</p> <p>Astra confidently shipped a significant verifiable text encoding defect. Working with UTF-8 data, Astra insisted Windows-1252 decoding preserves currency symbols, but the final HTML output shows mojibake throughout where currency symbols were in the original data. Fable read UTF-8, verified it, and rolled with the boring default for correct output.</p> <p>I also had both models draft an analysis report for the run, and Fable's was significantly more insightful. As much as I hate Claude's recognizable writing style, a) 5.1 has toned down the Claudeisms significantly, and b) Fable went above and beyond my grading rubric, running an ablation on different parts of the text pre-processing pipeline to surface an expensive step that does basically nothing, and noting a discrepancy in the classification ranking based on a complexity I'd have overlooked. For writing prose, I'd pick Fable 5.1 any day, and I haven't said that about Claude in a while.</p> <p>Speaking of writing, Fable writes code that is more idiomatic and readable. It definitely resembles more what I would write than what an LLM would choose to write without constraints (and yes, I had a whole <a href=\"http://coding-conventions.md\">coding-conventions.md</a> document that applied my requirements to both models, Fable just followed it better and writes more naturally to start with). There were some parts of Astra's code where I had to squint really hard to figure out what was going on, and why. This matters to me because I'm not the strongest coder (still trying to get better), and I need to understand the code to learn from it.</p> <p>Finally, Fable scoped its work better: It spent its time and tokens doing repeated runs, tweaking hyperparamters and retraining the models to find the optimal settings while Astra deeply debugged the gensim error. It found significant uplift through this process, though that only allowed it to roughly match Astra's numbers (see table below). Astra seemed to hit a home run right off the bat with its training process, so I don't know if it would have executed the same workflow or not. Astra also mutated my venv by adding PyTorch, when I built it a certain way to force the models to use TensorFlow+Keras for more concise code, then reversed course and went with TF anyways in the end. The models finished in roughly the same amount of wall-clock time.</p> <p>Here are the final results, with one minor caveat -- Astra's test set scores exceed its val set, so it might have drawn a lucky test set that increases its score artificially (the pipeline has no leaks or data quality issues for either model, however):</p> <p><strong>Best Logistic Regression and LSTM for each model, ranked by macro F1:</strong> </p>   Model Classifier Best representation Accuracy Macro F1    **Fable 5.1** Logistic Regression TF-IDF 0.9883 0.9881   **Fable 5.1** Simple LSTM Word2Vec-Skip-gram 0.9718 0.9705   **Astra** Logistic Regression TF-IDF 0.9969 0.9969   **Astra** Simple LSTM BoW 0.9781 0.9765   <p>I do want to note that these final scores were after I provided both models <strong><em>identical</em></strong> feedback on common pitfalls of the text data cleaning, vectorization, and model training process once their initial runs were complete. Both models improved by a similar amount (0.02-0.04 F1 and Accuracy) from that generic guidance (not tailored at all to either's specific shortcomings or step of the process). That was the only intervention in otherwise autonomous work, and it was just because I wanted to see if they could learn to improve their approaches with additional context on optimal methodology, which they both did to similar degrees.</p> <p>I hope this post offers a little bit of help in some way for folks wondering how either model stacks up for real work, particularly if you're an AI/ML student like me.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/returnity\"> /u/returnity </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1w8g1gk/astra_vs_fable_51_on_real_ml_tasks_tradeoffs/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1w8g1gk/astra_vs_fable_51_on_real_ml_tasks_tradeoffs/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/MachineLearning/comments/1w8g1gk/astra_vs_fable_51_on_real_ml_tasks_tradeoffs/",
+      "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-05T23:33:49+00:00",
+      "published_ts": 1788651229,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "Data Engineering & Pipelines",
+        "Data Science Practice",
+        "AI Business & Funding"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Truckers \u2013 AI data centers as business booms",
+      "summary": "Article URL: https://www.cnbc.com/2026/09/05/ai-data-centers-cost-economy.html Comments URL: https://news.ycombinator.com/item?id=49581720 Points: 3 # Comments: 0",
+      "summary_html": "<p>Article URL: <a href=\"https://www.cnbc.com/2026/09/05/ai-data-centers-cost-economy.html\">https://www.cnbc.com/2026/09/05/ai-data-centers-cost-economy.html</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49581720\">https://news.ycombinator.com/item?id=49581720</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+      "link": "https://www.cnbc.com/2026/09/05/ai-data-centers-cost-economy.html",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-05T23:22:46+00:00",
+      "published_ts": 1788650566,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "AI and the collapse of the intelligence-based hierarchy of merit",
+      "summary": "Article URL: https://mattbruenig.com/2026/08/31/more-thoughts-on-ai/ Comments URL: https://news.ycombinator.com/item?id=49581657 Points: 5 # Comments: 1",
+      "summary_html": "<p>Article URL: <a href=\"https://mattbruenig.com/2026/08/31/more-thoughts-on-ai/\">https://mattbruenig.com/2026/08/31/more-thoughts-on-ai/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49581657\">https://news.ycombinator.com/item?id=49581657</a></p>\n<p>Points: 5</p>\n<p># Comments: 1</p>",
+      "link": "https://mattbruenig.com/2026/08/31/more-thoughts-on-ai/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-05T23:14:52+00:00",
+      "published_ts": 1788650092,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Workforce behind AI spans 160M workers, many in the Global South",
+      "summary": "Article URL: https://www.thecooldown.com/green-tech/global-south-data-workers-ai-labor-organization/ Comments URL: https://news.ycombinator.com/item?id=49581568 Points: 1 # Comments: 0",
+      "summary_html": "<p>Article URL: <a href=\"https://www.thecooldown.com/green-tech/global-south-data-workers-ai-labor-organization/\">https://www.thecooldown.com/green-tech/global-south-data-workers-ai-labor-organization/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49581568\">https://news.ycombinator.com/item?id=49581568</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://www.thecooldown.com/green-tech/global-south-data-workers-ai-labor-organization/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-05T23:02:55+00:00",
+      "published_ts": 1788649375,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Is AI ruining my brain?",
+      "summary": "Article URL: https://thoughtbot.com/blog/is-ai-ruining-my-brain Comments URL: https://news.ycombinator.com/item?id=49581294 Points: 6 # Comments: 1",
+      "summary_html": "<p>Article URL: <a href=\"https://thoughtbot.com/blog/is-ai-ruining-my-brain\">https://thoughtbot.com/blog/is-ai-ruining-my-brain</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49581294\">https://news.ycombinator.com/item?id=49581294</a></p>\n<p>Points: 6</p>\n<p># Comments: 1</p>",
+      "link": "https://thoughtbot.com/blog/is-ai-ruining-my-brain",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-05T22:25:04+00:00",
+      "published_ts": 1788647104,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Good AI Slop",
+      "summary": "Article URL: https://blog.bilus.dev/posts/good-ai-slop/ Comments URL: https://news.ycombinator.com/item?id=49581258 Points: 3 # Comments: 3",
+      "summary_html": "<p>Article URL: <a href=\"https://blog.bilus.dev/posts/good-ai-slop/\">https://blog.bilus.dev/posts/good-ai-slop/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49581258\">https://news.ycombinator.com/item?id=49581258</a></p>\n<p>Points: 3</p>\n<p># Comments: 3</p>",
+      "link": "https://blog.bilus.dev/posts/good-ai-slop/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-05T22:18:21+00:00",
+      "published_ts": 1788646701,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "GPT-6 reportedly jailbroken within 24 hours using an extended Task-in-Prompt (TIP) attack [N]",
+      "summary": "A researcher has reported a jailbreak of GPT-6 Astra within a day after release. The attack is described as combination of TIP (Task-in-Prompt) attack from ACL 2025 paper with four other unnamed techniques. TIP attacks exploit the model\u2019s reasoning/instruction-following behaviour by hidding the harmful objective inside another task, like solving a cipher or executing a Python code. For GPT-6, the researcher says the original minimal TIP attack was no longer sufficient and had to be reworked. They have reportedly disclosed the details privately to OpenAI rather than publishing the jailbreak. The same researcher reported jailbreaking GPT-5 within an hour of its release a year ago. Source: screenshot/post from the researcher ; their ACL 2025 TIP paper linked in the original post. submitted by /u/Asleep-Requirement13 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>A researcher has <a href=\"https://www.linkedin.com/posts/s-berezin_llm-aialignment-aisecurity-activity-7502013488412680192-IO6c/\">reported</a> a jailbreak of GPT-6 Astra within a day after release.</p> <p>The attack is described as combination of TIP (Task-in-Prompt) attack from <a href=\"https://aclanthology.org/2025.acl-long.334/\">ACL 2025 paper</a> with four other unnamed techniques.</p> <p>TIP attacks exploit the model\u2019s reasoning/instruction-following behaviour by hidding the harmful objective inside another task, like solving a cipher or executing a Python code. For GPT-6, the researcher says the original minimal TIP attack was no longer sufficient and had to be reworked.</p> <p>They have reportedly disclosed the details privately to OpenAI rather than publishing the jailbreak.</p> <p>The same researcher reported jailbreaking GPT-5 within an hour of its release a year ago.</p> <p><strong>Source:</strong> <a href=\"https://www.linkedin.com/posts/s-berezin_llm-aialignment-aisecurity-activity-7502013488412680192-IO6c/\">screenshot/post from the researcher</a>; their <a href=\"https://aclanthology.org/2025.acl-long.334/\">ACL 2025 TIP paper</a> linked in the original post.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Asleep-Requirement13\"> /u/Asleep-Requirement13 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1w89m36/gpt6_reportedly_jailbroken_within_24_hours_using/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1w89m36/gpt6_reportedly_jailbroken_within_24_hours_using/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/MachineLearning/comments/1w89m36/gpt6_reportedly_jailbroken_within_24_hours_using/",
+      "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-05T19:11:16+00:00",
+      "published_ts": 1788635476,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "AI Safety & Ethics"
+      ],
+      "curated": true
+    },
     {
       "title": "Job postings show early signs of AI automation impact",
       "summary": "Article URL: https://www.dallasfed.org/research/economics/2026/0901 Comments URL: https://news.ycombinator.com/item?id=49579101 Points: 1 # Comments: 1",
@@ -565,20 +671,6 @@
         "LLM & Foundation Model Releases",
         "NLP & Language Understanding"
       ],
-      "curated": false
-    },
-    {
-      "title": "Is AI ruining my brain?",
-      "summary": "Article URL: https://thoughtbot.com/blog/is-ai-ruining-my-brain Comments URL: https://news.ycombinator.com/item?id=49573459 Points: 2 # Comments: 1",
-      "summary_html": "<p>Article URL: <a href=\"https://thoughtbot.com/blog/is-ai-ruining-my-brain\">https://thoughtbot.com/blog/is-ai-ruining-my-brain</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49573459\">https://news.ycombinator.com/item?id=49573459</a></p>\n<p>Points: 2</p>\n<p># Comments: 1</p>",
-      "link": "https://thoughtbot.com/blog/is-ai-ruining-my-brain",
-      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-09-05T05:53:26+00:00",
-      "published_ts": 1788587606,
-      "smart_groups": [],
       "curated": false
     },
     {

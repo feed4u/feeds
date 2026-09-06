@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-05T18:29:23.680064+00:00",
+  "generated_at": "2026-09-06T04:54:10.251434+00:00",
   "date": "2026-09-02",
-  "total_items": 1321,
+  "total_items": 1325,
   "next_chunk": "archive/news/daily/2026-09-01.json",
   "items": [
     {
@@ -1464,6 +1464,23 @@
       "published_ts": 1788375389,
       "smart_groups": [],
       "curated": false
+    },
+    {
+      "title": "(Human) JFrog Artifactory attackers are minting admin keys",
+      "summary": "JFrog Artifactory hit the technology spotlight over the past fortnight in an uncomfortable way - OpenAI agents had found a critical vulnerability ( CVE-2026-66384 ) in the software and used it to escape their sandbox. Now it\u2019s facing broader exploitation as attackers abuse another vulnerability in the software (a developer platform for storing, versioning, and distributing software artifacts) \u2013 now allocated CVE-2026-82329 .* The critical CVSS 9.8 bug, is an \u201cauthentication weakness that, under default configuration, may allow an unauthenticated attacker with network access to obtain administrative privileges,\u201d said JFrog. That\u2019s underplaying it. The bug lets any bad actor with no credentials trivially mint themselves an admin token and thereafter, run riot. (The patch diff and a public POC suggest that the exploit primitive is a forged service identity and that, as the POC author Nicolas Krassas puts it, the \u201cSERVICE-authorized surface was over-exposed\u2026\u201d) JFrog pushed a patch on August 28. SaaS versions are already fixed. Self-hosting customers will need to update urgently and now, likely, threat-hunt as well: CISA added the vulnerability to KEV on September 2. (Customers should upgrade to a fixed version applicable to their release branch: 7.111.21, 7.117.28, 7.125.20, 7.133.29, 7.146.38, 7.161.20.) Most organisations with a mature security posture should already have Artifactory off public networks but may still want to rotate the access tokens after patching. JFrog Artifactory exploitation: Keys for all! Public exploitation has been seen since September 1. That\u2019s according to attack surface management firm watchTowr, whose threat intel lead Yordan Ganchev said its honeypots showed \u201cattackers minting administrator tokens and enumerating users, groups, credential sets and federated access topologies.\u201d He added: \u201cAnyone following along knows what comes next: things will get worse. When attackers gain admin level access of a central software supply chain system, they can do what every engineering team does best - build, ship and distribute software fast. \u201cFrom there, they could tamper with build pipelines, move laterally into production systems and potentially push malicious changes downstream to customers. Organizations running affected versions of JFrog Artifactory should urgently patch internet-exposed systems\u2026 inspect audit logs, rotate exposed credentials and investigate connected systems for malicious changes or backdoor access\u201d Krassas suggested looking out for the following IOCs. Access request log : POST /access/api/v1/registry/join from non-cluster hosts, especially followed immediately by POST /access/api/v1/tokens. Access service log : the line Adding join key with kid: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 \u2026 means the blank join key is trusted (present on unpatched defaults). Access audit / token store : unexpected non-expiring tokens with scope=applied-permissions/admin, audience=*, or service-subject admin tokens (sub= , scp=admin, aud= ). Join JWTs whose kid claim equals SHA256(\"\") (e3b0c442\u2026b855). It was not immediately clear how many organisations had publicly exposed their self-hosted Artifactory instances to the internet. Even those who haven't made themselves vulnerable to opportunistic attacks starting with automated scans for exposed instances will want to mitigate the risk of exploitation from someone on another beachhead. *JFrog didn\u2019t share a credit for the latter vulnerability and OpenAI didn\u2019t cite it in its technical writeup; it is for now unclear how it was found.",
+      "summary_html": "<p>JFrog Artifactory hit the technology spotlight over the past fortnight in an uncomfortable way - OpenAI agents had <a href=\"https://cdn.openai.com/pdf/67869394-cb91-4c12-888c-5cbd85c7814c/OpenAI-Hugging-Face%20Incident-Technical-Report.pdf?ref=thestack.technology\">found</a> a critical vulnerability (<a href=\"https://www.cve.org/CVERecord?id=CVE-2026-66384&amp;ref=thestack.technology\">CVE-2026-66384</a>) in the software and used it to escape their sandbox.\u00a0</p><p>Now it\u2019s facing broader exploitation as attackers abuse another vulnerability in the software (a developer platform for storing, versioning, and distributing software artifacts) \u2013 now allocated<a href=\"https://www.cve.org/CVERecord?id=CVE-2026-82329&amp;ref=thestack.technology\"> CVE-2026-82329</a>.*</p><p>The critical CVSS 9.8 bug, is an \u201cauthentication weakness that, under default configuration, may allow an unauthenticated attacker with network access to obtain administrative privileges,\u201d <a href=\"https://docs.jfrog.com/releases/docs/jfrog-security-advisories?ref=thestack.technology#cve-2026-82329---potential-authentication-bypass-leading-to-administrative-access-in-artifactory\">said</a> JFrog.</p><p>That\u2019s underplaying it. The bug lets any bad actor with no credentials trivially mint themselves an admin token and thereafter, run riot.\u00a0</p><p>(The patch diff and a public <a href=\"https://github.com/dinosn/cve-2026-82329-jfrog-artifactory?ref=thestack.technology\">POC</a> suggest that the exploit primitive is a forged service identity and that, as the POC author Nicolas Krassas puts it, the \u201cSERVICE-authorized surface was over-exposed\u2026\u201d)</p><p>JFrog pushed a patch on August 28. SaaS versions are already fixed.\u00a0</p><p>Self-hosting customers will need to update urgently and now, likely, threat-hunt as well: CISA added the vulnerability to KEV on September 2.\u00a0</p><p>(Customers should upgrade to a fixed version applicable to their release branch: 7.111.21, 7.117.28, 7.125.20, 7.133.29, 7.146.38, 7.161.20.)</p><p>Most organisations with a mature security posture should already have Artifactory off public networks but may still want to rotate the access tokens after patching.\u00a0</p><strong>JFrog Artifactory exploitation: Keys for all!</strong><p></p><p>Public exploitation has been seen since September 1.</p><p>That\u2019s according to attack surface management firm watchTowr, whose threat intel lead Yordan Ganchev said its honeypots showed \u201cattackers minting administrator tokens and enumerating users, groups, credential sets and federated access topologies.\u201d</p><p>He added: \u201cAnyone following along knows what comes next: things will get worse. When attackers gain admin level access of a central software supply chain system, they can do what every engineering team does best - build, ship and distribute software fast.\u00a0</p><p>\u201cFrom there, they could tamper with build pipelines, move laterally into production systems and potentially push malicious changes downstream to customers. Organizations running affected versions of JFrog Artifactory should urgently patch internet-exposed systems\u2026 inspect audit logs, rotate exposed credentials and investigate connected systems for malicious changes or backdoor access\u201d\u00a0</p><p>Krassas suggested looking out for the following IOCs.</p><p><strong>Access request log</strong>: POST /access/api/v1/registry/join from non-cluster hosts, especially followed immediately by POST /access/api/v1/tokens.</p><p><strong>Access service log</strong>: the line Adding join key with kid: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 \u2026 means the blank join key is trusted (present on unpatched defaults).</p><p><strong>Access audit / token store</strong>: unexpected non-expiring tokens with scope=applied-permissions/admin, audience=*, or service-subject admin tokens (sub=, scp=admin, aud=).</p><p><strong>Join JWTs </strong>whose kid claim equals SHA256(\"\") (e3b0c442\u2026b855).</p><p>It was not immediately clear how many organisations had publicly exposed their self-hosted Artifactory instances to the internet. Even those who haven't made themselves vulnerable to opportunistic attacks starting with automated scans for exposed instances will want to mitigate the risk of exploitation from someone on another beachhead. </p><p><em>*JFrog didn\u2019t share a credit for the latter vulnerability and OpenAI didn\u2019t cite it in its technical writeup; it is for now unclear how it was found.</em></p>",
+      "link": "https://www.thestack.technology/humjfrog-artifactory-attackers-are-minting-admin-keys/",
+      "source": "The Stack - Interviews, Insight, Intelligence for Digital Leaders",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-02T18:54:46+00:00",
+      "published_ts": 1788375286,
+      "smart_groups": [
+        "Agentic AI & Automations",
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": true
     },
     {
       "title": "Bessent Blasts US Hyperscalers for Failure to Tout AI Benefits",
@@ -4487,6 +4504,23 @@
       "curated": false
     },
     {
+      "title": "UK's ARIA chair and former AI tsar joins Anthropic",
+      "summary": "The architect of the UK government\u2019s AI action plan, Matt Clifford, is joining Anthropic, but his decision to remain chair of the R&D funding agency ARIA has attracted scrutiny. Clifford, who stepped down as the PM\u2019s AI Advisor last year, said he had taken the position of MD for International Affairs at the AI developer to lead its work with governments outside North America. Posting online, he said : \u201cIt's clear that the decisions that will shape AI's impact shouldn't be made by any one actor\u2026 People everywhere want real agency over how this technology is built and used in their societies, and they should have it. Anthropic takes that seriously.\u201d Anthropic told The Stack Clifford will report to new Chief Global Affairs Officer Tino Cu\u00e9llar as part of a 70-strong policy and global affairs team, to \u201cmake sure Anthropic maintains productive relationships with governments in every region.\u201d Clifford\u2019s CV",
+      "summary_html": "<p>The architect of the UK government\u2019s AI action plan, Matt Clifford, is joining Anthropic, but his decision to remain chair of the R&amp;D funding agency ARIA has attracted scrutiny.</p><p>Clifford, who <a href=\"https://www.thestack.technology/uk-pms-ai-tsar-is-stepping-down-what-comes-next/\">stepped down</a> as the PM\u2019s AI Advisor last year, said he had taken the position of MD for International Affairs at the AI developer to lead its work with governments outside North America.</p><p>Posting <a href=\"https://www.linkedin.com/feed/update/urn:li:activity:7500786870868664320/?ref=thestack.technology\">online, he said</a>: \u201cIt's clear that the decisions that will shape AI's impact shouldn't be made by any one actor\u2026 People everywhere want real agency over how this technology is built and used in their societies, and they should have it. Anthropic takes that seriously.\u201d</p><p>Anthropic told <em>The Stack</em> Clifford will report to new Chief Global Affairs Officer Tino Cu\u00e9llar as part of a 70-strong policy and global affairs team, to \u201cmake sure Anthropic maintains productive relationships with governments in every region.\u201d</p><strong>Clifford\u2019s CV</strong>",
+      "link": "https://www.thestack.technology/uks-aria-chair-and-former-ai-tsar-joins-anthropic/",
+      "source": "The Stack - Interviews, Insight, Intelligence for Digital Leaders",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-02T13:45:33+00:00",
+      "published_ts": 1788356733,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "AI Regulation & Policy"
+      ],
+      "curated": false
+    },
+    {
       "title": "UK government does not know what datacentres are being used for, FoI request shows",
       "summary": "Lack of information raises fears over environmental impact of the AI boom The UK government does not know what the country\u2019s datacentres are being used for despite fears over the growing environmental impact of the AI boom. When asked in a freedom of information (FoI) request who was using the largest sites and what for, the Department for Science, Innovation and Technology said it did \u201cnot hold the requested information\u201d. The ministry has since been dissolved . Continue reading...",
       "summary_html": "<p>Lack of information raises fears over environmental impact of the AI boom</p><p>The UK government does not know what the country\u2019s datacentres are being used for despite fears over the growing environmental impact of the AI boom.</p><p>When asked in a freedom of information (FoI) request who was using the largest sites and what for, the Department for Science, Innovation and Technology said it did \u201cnot hold the requested information\u201d. The ministry <a href=\"https://www.theguardian.com/politics/2026/jul/18/burnham-plan-to-scrap-technology-department-triggers-backlash\">has since been dissolved</a>.</p> <a href=\"https://www.theguardian.com/uk-news/2026/sep/02/uk-datacentres-ai-boom-foi-environment\">Continue reading...</a>",
@@ -6226,6 +6260,22 @@
       "curated": false
     },
     {
+      "title": "Palo Alto marks record $11.5bn year with another AI acquisition",
+      "summary": "Palo Alto Networks is doubling down on agentic security after a record financial year and buying AI security startup Console. The cybersecurity company marked a record $11.5 billion in revenue for FY2026 , up 24% on last year, after investing in AI services and companies to make the bet that security will \u201cbecome less manual and more agentic.\u201d During an earnings call Tuesday, CEO Nikesh Arora said: \u201cWe are becoming a data-oriented, AI-first cybersecurity company. Our aspiration is to reduce the amount of human intervention in the act of detection, prevention, and remediation in the cyberspace.\u201d CFO Dipak Golechha said growth is expected to continue into the next year, projecting $3.3 to 3.31 billion in revenue for Q1 of FY2027 and between $14.1 and $14.2 billion for the year as a whole. Autonomous security",
+      "summary_html": "<p>Palo Alto Networks is doubling down on agentic security after a record financial year and buying AI security startup Console.</p><p>The cybersecurity company marked a record <a href=\"https://www.paloaltonetworks.com/company/press/2026/palo-alto-networks-reports-fiscal-fourth-quarter-and-fiscal-year-2026-financial-results?ref=thestack.technology\">$11.5 billion in revenue for FY2026</a>, up 24% on last year, after investing in AI services and companies to make the bet that security will \u201cbecome less manual and more agentic.\u201d</p><p>During an earnings call Tuesday, CEO Nikesh Arora said: \u201cWe are becoming a data-oriented, AI-first cybersecurity company. Our aspiration is to reduce the amount of human intervention in the act of detection, prevention, and remediation in the cyberspace.\u201d</p><p>CFO Dipak Golechha said growth is expected to continue into the next year, projecting $3.3 to 3.31 billion in revenue for Q1 of FY2027 and between $14.1 and $14.2 billion for the year as a whole.</p><strong>Autonomous security</strong>",
+      "link": "https://www.thestack.technology/palo-alto-marks-record-11-5bn-year-with-another-ai-acquisition/",
+      "source": "The Stack - Interviews, Insight, Intelligence for Digital Leaders",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-02T10:34:30+00:00",
+      "published_ts": 1788345270,
+      "smart_groups": [
+        "AI Business & Funding"
+      ],
+      "curated": false
+    },
+    {
       "title": "Asia's Markets Are Starting To Look A Lot Like 1997, HSBC Says. But The Biggest Risk Is Different This Time.",
       "summary": "The bank claimed that Asian economies are far less dependent on foreign capital today, reducing the risk of the funding shock that devastated the region three decades ago.",
       "summary_html": "The bank claimed that Asian economies are far less dependent on foreign capital today, reducing the risk of the funding shock that devastated the region three decades ago.",
@@ -7059,6 +7109,20 @@
       "type_label": "General News",
       "published": "2026-09-02T08:09:33+00:00",
       "published_ts": 1788336573,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Dell's bonkers earnings show AI cash spigots remain wide open",
+      "summary": "Dell has been hiking prices for its servers and networking gear amid rampant demand, blaming broader supply chain tightness. COO Jeff Clarke last quarter told analysts \u201cI'm sure our customers feel that pain.\u201d With that tailwind, and customers clamouring for AI servers, Dell wept all the way to the bank this week \u2013 raising its full-year revenue outlook by an astonishing $25 billion, with earnings per share (EPS) soaring 203% year over year. And it\u2019s done it whilst driving operational expenditure down to 8% of revenue \u2013 \u201cthe lowest in our company's 42-year history\u201d said Clarke. (Net income for the quarter was $4.6 billion; up 189%, Dell reported.) Supply remains tight, Clarke insisted: \u201cThe constraints remain the same. DRAM, DRAM, DRAM followed by NAND, NAND, NAND. We have spotty CPU shortages. There are shortages with disk drives,\u201d he said on a Q2 call.",
+      "summary_html": "<p>Dell has been hiking prices for its servers and networking gear amid rampant demand, blaming broader supply chain tightness. COO Jeff Clarke last quarter <a href=\"https://www.thestack.technology/dell-coo-says-pain-of-price-hikes-will-continue/\">told analysts</a> \u201cI'm sure our customers feel that pain.\u201d</p><p>With that tailwind, and customers clamouring for AI servers, Dell wept all the way to the bank this week \u2013 raising its full-year revenue outlook by an astonishing $25 billion, with earnings per share (EPS) soaring 203% year over year.</p><p>And it\u2019s done it whilst driving operational expenditure down to 8% of revenue \u2013 \u201cthe lowest in our company's 42-year history\u201d said Clarke. (Net income for the quarter was $4.6 billion; up 189%, Dell reported.)</p><p>Supply remains tight, Clarke insisted: \u201cThe constraints remain the same. DRAM, DRAM, DRAM followed by NAND, NAND, NAND. We have spotty CPU shortages. There are shortages with disk drives,\u201d he said on a Q2 call.</p>",
+      "link": "https://www.thestack.technology/dells-bonkers-earnings-show-ai-cash-spigots-remain-wide-open/",
+      "source": "The Stack - Interviews, Insight, Intelligence for Digital Leaders",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-02T08:03:36+00:00",
+      "published_ts": 1788336216,
       "smart_groups": [],
       "curated": false
     },
