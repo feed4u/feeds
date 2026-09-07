@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-07T05:00:47.628142+00:00",
+  "generated_at": "2026-09-07T14:23:10.563892+00:00",
   "date": "2026-09-06",
-  "total_items": 7,
+  "total_items": 9,
   "next_chunk": "archive/blog/daily/2026-09-05.json",
   "items": [
     {
@@ -16,6 +16,24 @@
       "published": "2026-09-06T23:31:36+00:00",
       "published_ts": 1788737496,
       "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Micropatches released for \"ResetNightmare\" Windows Kerberos Elevation of Privilege (CVE-2026-27912)",
+      "summary": "April 2026 Windows Updates brought a patch for CVE-2026-27912, an elevation of privilege vulnerability allowing an attacker to change any domain user's password, and thereby take over the domain.\nSecurity researcher Shai Laron with Semperis found this vulnerability and reported it to Microsoft. Shai subsequently published a detailed article and shared a proof-of-concept tool that allowed us to reproduce the issue and create patches for legacy Windows users.\n\nThe Vulnerability\u00a0\nThe vulnerability lies in the Kerberos Change Password service on aWindows domain controller. A domain user who can modify the userPrincipalName attribute  on an account they control can change the password of any other account in the domain, including domain administrator's. The root cause is in the change-password code blindly trusting the user ID (SID) to change the password for (provided by the attacker) and not validating the requestor's identity. \n\nMicrosoft's Patch\nMicrosoft fixed the issue by adding a security check to make sure the SID of the user for which the password change was requested matches the SID of the user making such request.",
+      "summary_html": "April 2026 Windows Updates brought a patch for CVE-2026-27912, an elevation of privilege vulnerability allowing an attacker to change any domain user's password, and thereby take over the domain.\nSecurity researcher Shai Laron with Semperis found this vulnerability and reported it to Microsoft. Shai subsequently published a detailed article and shared a proof-of-concept tool that allowed us to reproduce the issue and create patches for legacy Windows users.\n\nThe Vulnerability\u00a0\nThe vulnerability lies in the Kerberos Change Password service on aWindows domain controller. A domain user who can modify the userPrincipalName attribute  on an account they control can change the password of any other account in the domain, including domain administrator's. The root cause is in the change-password code blindly trusting the user ID (SID) to change the password for (provided by the attacker) and not validating the requestor's identity. \n\nMicrosoft's Patch\nMicrosoft fixed the issue by adding a security check to make sure the SID of the user for which the password change was requested matches the SID of the user making such request.",
+      "link": "https://0patch.com/blog/micropatches-released-for-resetnightmare-windows-kerberos-elevation-of-privilege",
+      "source": "0patch Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-09-06T22:00:00+00:00",
+      "published_ts": 1788732000,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Exploit / PoC",
+        "Windows / Microsoft"
+      ],
       "curated": false
     },
     {
@@ -138,6 +156,20 @@
         "Product News"
       ],
       "curated": true
+    },
+    {
+      "title": "Unsafe At Any Speed",
+      "summary": "Are LLMs saving us time? If so, time for what?",
+      "summary_html": "Are LLMs saving us time? If so, time for what?",
+      "link": "https://taggart-tech.com/speed/",
+      "source": "https://taggart-tech.com/atom.xml",
+      "feed_type": "blog",
+      "type": "security-researcher-blogs",
+      "type_label": "Security Researcher Blogs",
+      "published": "2026-09-06T00:00:00+00:00",
+      "published_ts": 1788652800,
+      "smart_groups": [],
+      "curated": false
     }
   ]
 }
