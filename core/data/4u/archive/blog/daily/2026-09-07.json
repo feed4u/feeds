@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-08T04:57:47.542825+00:00",
+  "generated_at": "2026-09-08T13:00:48.353105+00:00",
   "date": "2026-09-07",
-  "total_items": 78,
+  "total_items": 79,
   "next_chunk": "archive/blog/daily/2026-09-06.json",
   "items": [
     {
@@ -771,6 +771,22 @@
       "published_ts": 1788777512,
       "smart_groups": [],
       "curated": false
+    },
+    {
+      "title": "ParaRNN: Parallel Training for Non-Linear RNNs (sLSTM, RWKV-7, CfC, Titans) via Triton Newton Scans [P]",
+      "summary": "I've built and open-sourced ParaRNN , a PyTorch/Triton library that parallelizes the training of non-linear recurrent architectures across time using Newton-Raphson iterations mapped to associative prefix scans. While non-linear RNNs provide O(1) inference without KV-cache explosion, training them has historically been bottlenecked by slow sequential unrolls. ParaRNN solves this with custom fused Triton solvers: ~200x wall-clock speedup: Runs orders of magnitude faster than sequential BPTT on long sequences (e.g., CfC at T=2048 takes 2.79ms vs 643ms on an RTX 3060). Flat convergence up to 131k context: Empirically verified that Newton iteration budgets stay flat ($K \\ ) \\le 3$) matching sequential unroll ($\\tau \\le 10 {-4}$ ) up to 131,072 tokens. Supported cells: Fused kernels for sLSTM (4x4 block Jacobians & Beck-style head-mixing), RWKV-7 (Goose matrix state monoid), CfC (Liquid continuous-time), Titans (associative surprise GD), Modern Hopfield, and M\u00b2RNN. Production hooks: torch.compile(fullgraph=True) with 0 graph breaks, deterministic closed-form VJPs (no atomics), and an out-of-tree vLLM plugin. GitHub: https://github.com/bugkira/pararnn-torch Quick Install: pip install pararnn-torch I\u2019d love to get your feedback, bug reports on custom shapes, or benchmark numbers on different hardware! submitted by /u/bugkira [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I've built and open-sourced <strong>ParaRNN</strong>, a PyTorch/Triton library that parallelizes the training of non-linear recurrent architectures across time using Newton-Raphson iterations mapped to associative prefix scans.</p> <p>While non-linear RNNs provide O(1) inference without KV-cache explosion, training them has historically been bottlenecked by slow sequential unrolls. ParaRNN solves this with custom fused Triton solvers:</p> <ul> <li><strong>~200x wall-clock speedup:</strong> Runs orders of magnitude faster than sequential BPTT on long sequences (e.g., CfC at T=2048 takes 2.79ms vs 643ms on an RTX 3060).</li> <li><strong>Flat convergence up to 131k context:</strong> Empirically verified that Newton iteration budgets stay flat ($K\\) \\le 3$) matching sequential unroll ($\\tau \\le 10{-4}$) up to 131,072 tokens.</li> <li><strong>Supported cells:</strong> Fused kernels for sLSTM (4x4 block Jacobians &amp; Beck-style head-mixing), RWKV-7 (Goose matrix state monoid), CfC (Liquid continuous-time), Titans (associative surprise GD), Modern Hopfield, and M\u00b2RNN.</li> <li><strong>Production hooks:</strong> <code>torch.compile(fullgraph=True)</code> with 0 graph breaks, deterministic closed-form VJPs (no atomics), and an out-of-tree vLLM plugin.</li> <li><strong>GitHub:</strong> <a href=\"https://github.com/bugkira/pararnn-torch\">https://github.com/bugkira/pararnn-torch</a></li> <li><strong>Quick Install:</strong> <code>pip install pararnn-torch</code></li> </ul> <p>I\u2019d love to get your feedback, bug reports on custom shapes, or benchmark numbers on different hardware!</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/bugkira\"> /u/bugkira </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1w9oi7l/pararnn_parallel_training_for_nonlinear_rnns/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1w9oi7l/pararnn_parallel_training_for_nonlinear_rnns/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/MachineLearning/comments/1w9oi7l/pararnn_parallel_training_for_nonlinear_rnns/",
+      "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-07T10:31:44+00:00",
+      "published_ts": 1788777104,
+      "smart_groups": [
+        "AI Research & Papers"
+      ],
+      "curated": true
     },
     {
       "title": "Terrence Tao \u2013 AI math solutions hurting the field",
