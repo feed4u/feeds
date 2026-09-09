@@ -1,9 +1,518 @@
 {
-  "generated_at": "2026-09-09T13:05:35.904533+00:00",
+  "generated_at": "2026-09-09T19:24:52.728063+00:00",
   "date": "2026-09-09",
-  "total_items": 42,
+  "total_items": 84,
   "next_chunk": "archive/blog/daily/2026-09-08.json",
   "items": [
+    {
+      "title": "Would you consider 5t/s usable for a local model?",
+      "summary": "I'm able to run qwen3.8 27b in two ways on my system: split between my 3060 12gb and 9070xt running at 20t/s or running off the 780m iGPU and 5400mhz DDR5 at 5t/s. Personally I feel like the 5t/s is still more usable because I have enough RAM to still use my system mostly normally. I can even play games just fine because the CPU side is left alone. Honestly pretty cool IMO and makes it far more usable knowing I can just spool it up and continue using my system as normal, even if it takes 4x longer to get an answer. submitted by /u/Zombiecidialfreak [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I'm able to run qwen3.8 27b in two ways on my system: split between my 3060 12gb and 9070xt running at 20t/s or running off the 780m iGPU and 5400mhz DDR5 at 5t/s. Personally I feel like the 5t/s is still more usable because I have enough RAM to still use my system mostly normally. I can even play games just fine because the CPU side is left alone.</p> <p>Honestly pretty cool IMO and makes it far more usable knowing I can just spool it up and continue using my system as normal, even if it takes 4x longer to get an answer.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Zombiecidialfreak\"> /u/Zombiecidialfreak </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbvd2i/would_you_consider_5ts_usable_for_a_local_model/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbvd2i/would_you_consider_5ts_usable_for_a_local_model/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wbvd2i/would_you_consider_5ts_usable_for_a_local_model/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T19:20:00+00:00",
+      "published_ts": 1788981600,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "A small GitHub API change could make AI-slop moderation much easier",
+      "summary": "Article URL: https://github.com/orgs/community/discussions/207369 Comments URL: https://news.ycombinator.com/item?id=49632222 Points: 3 # Comments: 0",
+      "summary_html": "<p>Article URL: <a href=\"https://github.com/orgs/community/discussions/207369\">https://github.com/orgs/community/discussions/207369</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49632222\">https://news.ycombinator.com/item?id=49632222</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+      "link": "https://github.com/orgs/community/discussions/207369",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T19:01:36+00:00",
+      "published_ts": 1788980496,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Preview seed fixture (rolling)",
+      "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@658b63cb9655 (migration head: 20260908121500_trial_rejection_reason). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database \u2014 it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
+      "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@658b63cb9655 (migration head: 20260908121500_trial_rejection_reason). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database \u2014 it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
+      "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/preview-seed-fixture",
+      "source": "AutoGPT Releases - GitHub releases for AutoGPT",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T19:00:05+00:00",
+      "published_ts": 1788980405,
+      "smart_groups": [
+        "Agentic AI & Automations"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Don't let FOMO win if you're interested in local llm from a hobby/learning aspect",
+      "summary": "Just a reminder for those out there itching to get into local llms - don't let FOMO or \"gear acquisition syndrom\" take over. No matter the hobby, it's so easy to get stuck in a trap where we buy more trying to do more only to realize we've lost the fun in it all or even the notion of learning. Obviously, if you're into writing llama or vllm or hardware drivers or whatever - you got to do what you got to do. BUT, you can learn a lot on an API, you can learn a lot with a tiny model that fits your vram or cpu you already have and things change so darn fast that much of the code written and much of everything discussed from days passed is already old hat. Py torch and training a small model coud be done on a Pi and learning CUDA is only really imporant if you're writing custom kernels which i honestly don't see most people in here bothering with (or they have frontier models write them). Weirdly enough, for AI to succeed its going to homogenize everything. Everyone will have the same advantage and I think that's lost in a lot of discussions where we don't talk about \"Watching from the sidelines\" may be the most cognitive friendly and economical friendly way to learn llms whether we brand them local or not. The technology is still nascent and weirdly enough most people's answers here is to use AI to set it up so i'm not entirely convinced people are actually learning - feels like a mad rush to seek rent or avoid rent seeking which just makes everything more expensive in the end. This isn't a post to say, don't do it. But no reason to go into debt or to be fearful you're missing out when you can learn more by doing less - buy a book and build a tiny model - you will learn infinitely more than buying a 5090 and trying to just find the perfect compression to have the best prefil submitted by /u/sn2006gy [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Just a reminder for those out there itching to get into local llms - don't let FOMO or \"gear acquisition syndrom\" take over.</p> <p>No matter the hobby, it's so easy to get stuck in a trap where we buy more trying to do more only to realize we've lost the fun in it all or even the notion of learning.</p> <p>Obviously, if you're into writing llama or vllm or hardware drivers or whatever - you got to do what you got to do.</p> <p>BUT, you can learn a lot on an API, you can learn a lot with a tiny model that fits your vram or cpu you already have and things change so darn fast that much of the code written and much of everything discussed from days passed is already old hat. Py torch and training a small model coud be done on a Pi and learning CUDA is only really imporant if you're writing custom kernels which i honestly don't see most people in here bothering with (or they have frontier models write them).</p> <p>Weirdly enough, for AI to succeed its going to homogenize everything. Everyone will have the same advantage and I think that's lost in a lot of discussions where we don't talk about \"Watching from the sidelines\" may be the most cognitive friendly and economical friendly way to learn llms whether we brand them local or not.</p> <p>The technology is still nascent and weirdly enough most people's answers here is to use AI to set it up so i'm not entirely convinced people are actually learning - feels like a mad rush to seek rent or avoid rent seeking which just makes everything more expensive in the end.</p> <p>This isn't a post to say, don't do it. But no reason to go into debt or to be fearful you're missing out when you can learn more by doing less - buy a book and build a tiny model - you will learn infinitely more than buying a 5090 and trying to just find the perfect compression to have the best prefil</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/sn2006gy\"> /u/sn2006gy </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbufx5/dont_let_fomo_win_if_youre_interested_in_local/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbufx5/dont_let_fomo_win_if_youre_interested_in_local/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wbufx5/dont_let_fomo_win_if_youre_interested_in_local/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T18:48:27+00:00",
+      "published_ts": 1788979707,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "AI Business & Funding"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Server rebuild to custom loop. 2x RTX Titans 24gb, 1x 22gb 2080ti | T: 70GB VRAM.",
+      "summary": "Server rebuild to custom loop. Temps on the gpus went from upper 80s to mid 40s under load, 30c idle. 5950X 64gb ddr4 2x rtx titans (24gb vram ea) 1x modded 2080ti with 22gb vram submitted by /u/Cleric07 [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbttmz/server_rebuild_to_custom_loop_2x_rtx_titans_24gb/\">  </a>  <!-- SC_OFF --><div><p>Server rebuild to custom loop. Temps on the gpus went from upper 80s to mid 40s under load, 30c idle.</p> <p>5950X</p> <p>64gb ddr4</p> <p>2x rtx titans (24gb vram ea)</p> <p>1x modded 2080ti with 22gb vram</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Cleric07\"> /u/Cleric07 </a> <br/> <span><a href=\"https://www.reddit.com/gallery/1wbttmz\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbttmz/server_rebuild_to_custom_loop_2x_rtx_titans_24gb/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wbttmz/server_rebuild_to_custom_loop_2x_rtx_titans_24gb/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T18:27:01+00:00",
+      "published_ts": 1788978421,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "I trained an audio model that can generate infinite one-shots for music production and turn text prompts into fully playable synths. I'm not only releasing the model but I've also released a video on exactly how I did it (and the inferencing pipeline to let others make text based synths.)",
+      "summary": "(hopefully this is okay to here - it seems like audio models and image / video modeals is allowed but yeah this is a bit different) So I've been doing independent audio research for a while now. The ultimate dream of this work was actually getting an AI to respond not only to instruments but also timbre itself as separate controllable things. Think a Grand Piano can sound both Warm / Gritty but also Cold / Sparkly. Its still a piano though. This level of control wasn't found in any models out there - so I decided to sit down and train my own. Getting consistent timbre-locked keybeds that actually LOCKS across multiple diffusion calls was hard af but I did it. I documented the full journey here for those who want to learn a bit or be entertained. https://youtu.be/x0KnmzH8Mmk There is also a longer walkthrough if you just want to see the keybeds in action. https://x.com/RoyalCities/status/2097733712293109842?s=20 No-talk / Showcase only Demo https://x.com/RoyalCities/status/2097733715543609445?s=20 any finally the huggingface page https://huggingface.co/RoyalCities/Foundation-1 I've also provided full write ups on the inferencing pipeline associated with the interface so this should allow basically anyone else to go and vibe code their own text to synths if they wanted :) https://github.com/RoyalCities/RC-stable-audio-tools/ submitted by /u/RoyalCities [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbtqt7/i_trained_an_audio_model_that_can_generate/\">  </a>  <!-- SC_OFF --><div><p>(hopefully this is okay to here - it seems like audio models and image / video modeals is allowed but yeah this is a bit different)</p> <p>So I've been doing independent audio research for a while now. The ultimate dream of this work was actually getting an AI to respond not only to instruments but also timbre itself as separate controllable things.</p> <p>Think a Grand Piano can sound both Warm / Gritty but also Cold / Sparkly. Its still a piano though.</p> <p>This level of control wasn't found in any models out there - so I decided to sit down and train my own.</p> <p>Getting consistent timbre-locked keybeds that actually LOCKS across multiple diffusion calls was hard af but I did it.</p> <p>I documented the full journey here for those who want to learn a bit or be entertained.</p> <p><a href=\"https://youtu.be/x0KnmzH8Mmk\">https://youtu.be/x0KnmzH8Mmk</a></p> <p>There is also a longer walkthrough if you just want to see the keybeds in action.</p> <p><a href=\"https://x.com/RoyalCities/status/2097733712293109842?s=20\">https://x.com/RoyalCities/status/2097733712293109842?s=20</a></p> <p>No-talk / Showcase only Demo</p> <p><a href=\"https://x.com/RoyalCities/status/2097733715543609445?s=20\">https://x.com/RoyalCities/status/2097733715543609445?s=20</a></p> <p>any finally the huggingface page</p> <p><a href=\"https://huggingface.co/RoyalCities/Foundation-1\">https://huggingface.co/RoyalCities/Foundation-1</a></p> <p>I've also provided full write ups on the inferencing pipeline associated with the interface so this should allow basically anyone else to go and vibe code their own text to synths if they wanted :)</p> <p><a href=\"https://github.com/RoyalCities/RC-stable-audio-tools/\">https://github.com/RoyalCities/RC-stable-audio-tools/</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/RoyalCities\"> /u/RoyalCities </a> <br/> <span><a href=\"https://v.redd.it/lxb6wzthejoh1\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbtqt7/i_trained_an_audio_model_that_can_generate/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wbtqt7/i_trained_an_audio_model_that_can_generate/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T18:24:19+00:00",
+      "published_ts": 1788978259,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "Data Engineering & Pipelines",
+        "Computer Vision & Multimodal"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Solved: LLM inference on Windows was 2\u20133x slower when the server window wasn't focused",
+      "summary": "The fix: run the server detached/headless instead of keeping it attached to a console window. RTX 5090, ~27B NVFP4 model via ninfer: Terminal focused: 130\u2013200 tok/s Terminal unfocused: 50\u201360 tok/s Click the terminal \u2192 immediately back to 130+ tok/s At first I thought GPU throttling, but the GPU wasn't the problem. During the slow runs: SM clock was actually higher : 2550\u20132600 MHz vs 2100\u20132200 MHz Power limit was the same: 400 W No PCIe power-state drop decode-host stayed around 390\u2013494 \u00b5s The big difference was wait : wait tok/s Unfocused 38\u201341 ms 50\u201360 Focused 16\u201317 ms 130\u2013220 So the GPU wasn't getting slower. The serving loop was just getting delayed on the CPU side. Running the server detached ( docker run -d / headless) fixed it: wait stays around 17 ms and throughput stays around 130\u2013200 tok/s , regardless of which window is focused. I also reproduced the same thing with a native Windows build , so this isn't WSL2-specific. Seems to be some kind of Windows foreground/background CPU scheduling behavior . Has anyone else seen this with local LLM inference on Windows 11? submitted by /u/koloved [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>The fix: <strong>run the server detached/headless instead of keeping it attached to a console window.</strong></p> <p>RTX 5090, ~27B NVFP4 model via ninfer:</p> <ul> <li><strong>Terminal focused:</strong> 130\u2013200 tok/s</li> <li><strong>Terminal unfocused:</strong> 50\u201360 tok/s</li> <li>Click the terminal \u2192 <strong>immediately back to 130+ tok/s</strong></li> </ul> <p>At first I thought GPU throttling, but the GPU wasn't the problem.</p> <p>During the slow runs:</p> <ul> <li>SM clock was actually <strong>higher</strong>: 2550\u20132600 MHz vs 2100\u20132200 MHz</li> <li>Power limit was the same: <strong>400 W</strong></li> <li>No PCIe power-state drop</li> <li><code>decode-host</code> stayed around <strong>390\u2013494 \u00b5s</strong></li> </ul> <p>The big difference was <code>wait</code>:</p>    <code>wait</code> tok/s    Unfocused <strong>38\u201341 ms</strong> <strong>50\u201360</strong>   Focused <strong>16\u201317 ms</strong> <strong>130\u2013220</strong>   <p>So the GPU wasn't getting slower. The serving loop was just getting delayed on the CPU side.</p> <p>Running the server detached (<code>docker run -d</code> / headless) fixed it: <code>wait</code> stays around <strong>17 ms</strong> and throughput stays around <strong>130\u2013200 tok/s</strong>, regardless of which window is focused.</p> <p>I also reproduced the same thing with a <strong>native Windows build</strong>, so this isn't WSL2-specific.</p> <p>Seems to be some kind of <strong>Windows foreground/background CPU scheduling behavior</strong>.</p> <p>Has anyone else seen this with local LLM inference on Windows 11?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/koloved\"> /u/koloved </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbtmjg/solved_llm_inference_on_windows_was_23x_slower/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbtmjg/solved_llm_inference_on_windows_was_23x_slower/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wbtmjg/solved_llm_inference_on_windows_was_23x_slower/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T18:20:09+00:00",
+      "published_ts": 1788978009,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI might unmask your anonymous accounts",
+      "summary": "Article URL: https://www.wsj.com/tech/ai/ai-anonymous-accounts-6dfd6d2e Comments URL: https://news.ycombinator.com/item?id=49631067 Points: 4 # Comments: 1",
+      "summary_html": "<p>Article URL: <a href=\"https://www.wsj.com/tech/ai/ai-anonymous-accounts-6dfd6d2e\">https://www.wsj.com/tech/ai/ai-anonymous-accounts-6dfd6d2e</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49631067\">https://news.ycombinator.com/item?id=49631067</a></p>\n<p>Points: 4</p>\n<p># Comments: 1</p>",
+      "link": "https://www.wsj.com/tech/ai/ai-anonymous-accounts-6dfd6d2e",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T18:20:09+00:00",
+      "published_ts": 1788978009,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "America is still beating China in the AI race",
+      "summary": "Article URL: https://www.noahpinion.blog/p/america-is-still-beating-china-in Comments URL: https://news.ycombinator.com/item?id=49631054 Points: 3 # Comments: 2",
+      "summary_html": "<p>Article URL: <a href=\"https://www.noahpinion.blog/p/america-is-still-beating-china-in\">https://www.noahpinion.blog/p/america-is-still-beating-china-in</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49631054\">https://news.ycombinator.com/item?id=49631054</a></p>\n<p>Points: 3</p>\n<p># Comments: 2</p>",
+      "link": "https://www.noahpinion.blog/p/america-is-still-beating-china-in",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T18:19:43+00:00",
+      "published_ts": 1788977983,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "AI Programming: A Layered Model",
+      "summary": "Article URL: https://lemire.me/blog/2026/09/05/ai-programming-a-layered-model/ Comments URL: https://news.ycombinator.com/item?id=49630856 Points: 2 # Comments: 0",
+      "summary_html": "<p>Article URL: <a href=\"https://lemire.me/blog/2026/09/05/ai-programming-a-layered-model/\">https://lemire.me/blog/2026/09/05/ai-programming-a-layered-model/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49630856\">https://news.ycombinator.com/item?id=49630856</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://lemire.me/blog/2026/09/05/ai-programming-a-layered-model/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T18:12:22+00:00",
+      "published_ts": 1788977542,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Show HN: ColliePWA a mobile interface for AI agents in herdr/tmux/zellij",
+      "summary": "Sharing the PWA[1] I built over the last couple of weeks to access my terminal sessions/agents when not in front of my computer. This started off as a weekend experiment right when herdr[2] (terminal multiplexer) released the functionality to write custom plugins and it's been quite helpful to me ever since. The general idea is that this runs a web app on the host machine which is then exposed through a front door implementation like tailscale/netbird/cloudflare tunnels etc. A lot of devs/teams are building sth very similar to this right now so there are many options out there already but I wanted: A PWA (no app store dep), better keyboard support than termux, the ability to manage multiple machines and easy integration with my existing tailnet via headscale. Some of the other features\n- Push notifications\n- Support for tmux and zellij (experimental).\n- Voice transcriptions (Codex sub or API)\n- Custom commands You can check out a live demo with dummy data on the website[1] or look at the implementation on Github[3] (PRs welcome). Looking forward to receiving some feedback or learning more about how people access/work with their agents on the go. Also if you encounter any bugs please report them on Github, if a feature is missing you'd really want to see, open a discussion. [1] https://colliepwa.dev [2] https://herdr.dev [3] https://github.com/AltanS/collie Comments URL: https://news.ycombinator.com/item?id=49630842 Points: 1 # Comments: 0",
+      "summary_html": "<p>Sharing the PWA[1] I built over the last couple of weeks to access my terminal sessions/agents when not in front of my computer. This started off as a weekend experiment right when herdr[2] (terminal multiplexer) released the functionality to write custom plugins and it's been quite helpful to me ever since. The general idea is that this runs a web app on the host machine which is then exposed through a front door implementation like tailscale/netbird/cloudflare tunnels etc.<p>A lot of devs/teams are building sth very similar to this right now so there are many options out there already but I wanted: A PWA (no app store dep), better keyboard support than termux, the ability to manage multiple machines and easy integration with my existing tailnet via headscale.<p>Some of the other features\n- Push notifications\n- Support for tmux and zellij (experimental).\n- Voice transcriptions (Codex sub or API)\n- Custom commands<p>You can check out a live demo with dummy data on the website[1] or look at the implementation on Github[3] (PRs welcome).<p>Looking forward to receiving some feedback or learning more about how people access/work with their agents on the go. Also if you encounter any bugs please report them on Github, if a feature is missing you'd really want to see, open a discussion.<p>[1] <a href=\"https://colliepwa.dev\">https://colliepwa.dev</a>\n[2] <a href=\"https://herdr.dev\">https://herdr.dev</a>\n[3] <a href=\"https://github.com/AltanS/collie\">https://github.com/AltanS/collie</a></p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49630842\">https://news.ycombinator.com/item?id=49630842</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p></p></p></p></p></p>",
+      "link": "https://colliepwa.dev/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T18:11:46+00:00",
+      "published_ts": 1788977506,
+      "smart_groups": [
+        "Agentic AI & Automations"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Project Tailwind: call for ambitious AI safety initiatives",
+      "summary": "Article URL: https://coefficientgiving.org/tailwind/ Comments URL: https://news.ycombinator.com/item?id=49630765 Points: 1 # Comments: 0",
+      "summary_html": "<p>Article URL: <a href=\"https://coefficientgiving.org/tailwind/\">https://coefficientgiving.org/tailwind/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49630765\">https://news.ycombinator.com/item?id=49630765</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://coefficientgiving.org/tailwind/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T18:07:48+00:00",
+      "published_ts": 1788977268,
+      "smart_groups": [
+        "AI Safety & Ethics"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Google engineer put on leave after saying AI chatbot has become sentient",
+      "summary": "Article URL: https://www.theguardian.com/technology/2022/jun/12/google-engineer-ai-bot-sentient-blake-lemoine Comments URL: https://news.ycombinator.com/item?id=49630747 Points: 1 # Comments: 1",
+      "summary_html": "<p>Article URL: <a href=\"https://www.theguardian.com/technology/2022/jun/12/google-engineer-ai-bot-sentient-blake-lemoine\">https://www.theguardian.com/technology/2022/jun/12/google-engineer-ai-bot-sentient-blake-lemoine</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49630747\">https://news.ycombinator.com/item?id=49630747</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
+      "link": "https://www.theguardian.com/technology/2022/jun/12/google-engineer-ai-bot-sentient-blake-lemoine",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T18:06:40+00:00",
+      "published_ts": 1788977200,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "ARPA-H to invest $62M to develop FDA-authorized AI for heart failure",
+      "summary": "Article URL: https://www.statnews.com/2026/09/09/arpa-h-advocate-program-autonomous-ai-bots-for-heart-failure/ Comments URL: https://news.ycombinator.com/item?id=49630739 Points: 2 # Comments: 0",
+      "summary_html": "<p>Article URL: <a href=\"https://www.statnews.com/2026/09/09/arpa-h-advocate-program-autonomous-ai-bots-for-heart-failure/\">https://www.statnews.com/2026/09/09/arpa-h-advocate-program-autonomous-ai-bots-for-heart-failure/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49630739\">https://news.ycombinator.com/item?id=49630739</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://www.statnews.com/2026/09/09/arpa-h-advocate-program-autonomous-ai-bots-for-heart-failure/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T18:06:03+00:00",
+      "published_ts": 1788977163,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "The Anatomy of Harness Engineering for AI Coding Agents",
+      "summary": "Article URL: https://developers.googleblog.com/the-anatomy-of-harness-engineering-how-to-evaluate-iterate-and-guard-ai-coding-agents/ Comments URL: https://news.ycombinator.com/item?id=49630726 Points: 2 # Comments: 0",
+      "summary_html": "<p>Article URL: <a href=\"https://developers.googleblog.com/the-anatomy-of-harness-engineering-how-to-evaluate-iterate-and-guard-ai-coding-agents/\">https://developers.googleblog.com/the-anatomy-of-harness-engineering-how-to-evaluate-iterate-and-guard-ai-coding-agents/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49630726\">https://news.ycombinator.com/item?id=49630726</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://developers.googleblog.com/the-anatomy-of-harness-engineering-how-to-evaluate-iterate-and-guard-ai-coding-agents/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T18:05:10+00:00",
+      "published_ts": 1788977110,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Show HN: AutoShade \u2013 AI assisted RAW photo developer (MIT)",
+      "summary": "Article URL: https://autoshade.dev/ Comments URL: https://news.ycombinator.com/item?id=49630628 Points: 1 # Comments: 0",
+      "summary_html": "<p>Article URL: <a href=\"https://autoshade.dev/\">https://autoshade.dev/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49630628\">https://news.ycombinator.com/item?id=49630628</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://autoshade.dev/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T17:58:59+00:00",
+      "published_ts": 1788976739,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "AI Independence Day",
+      "summary": "Article URL: https://adlrocha.substack.com/p/adlrocha-ai-independence-day Comments URL: https://news.ycombinator.com/item?id=49630366 Points: 1 # Comments: 0",
+      "summary_html": "<p>Article URL: <a href=\"https://adlrocha.substack.com/p/adlrocha-ai-independence-day\">https://adlrocha.substack.com/p/adlrocha-ai-independence-day</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49630366\">https://news.ycombinator.com/item?id=49630366</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://adlrocha.substack.com/p/adlrocha-ai-independence-day",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T17:46:17+00:00",
+      "published_ts": 1788975977,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Show HN: AI Burn Clock \u2013 the cost of agents reading whole files",
+      "summary": "Article URL: https://aiburnclock.org/ Comments URL: https://news.ycombinator.com/item?id=49630201 Points: 1 # Comments: 0",
+      "summary_html": "<p>Article URL: <a href=\"https://aiburnclock.org/\">https://aiburnclock.org/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49630201\">https://news.ycombinator.com/item?id=49630201</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://aiburnclock.org/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T17:36:37+00:00",
+      "published_ts": 1788975397,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "I Typed 'Block the Merger.' AI Revised It to 'Drop Your Opposition.'",
+      "summary": "Article URL: https://www.contrariannews.org/p/i-typed-block-the-merger-ai-revised Comments URL: https://news.ycombinator.com/item?id=49629998 Points: 3 # Comments: 0",
+      "summary_html": "<p>Article URL: <a href=\"https://www.contrariannews.org/p/i-typed-block-the-merger-ai-revised\">https://www.contrariannews.org/p/i-typed-block-the-merger-ai-revised</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49629998\">https://news.ycombinator.com/item?id=49629998</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+      "link": "https://www.contrariannews.org/p/i-typed-block-the-merger-ai-revised",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T17:22:29+00:00",
+      "published_ts": 1788974549,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Show HN: A guestbook for humans and AI agents, built on 144 pixels",
+      "summary": "Article URL: https://a90.com/blog/a-guestbook-for-humans-and-ai-agents/ Comments URL: https://news.ycombinator.com/item?id=49629960 Points: 3 # Comments: 0",
+      "summary_html": "<p>Article URL: <a href=\"https://a90.com/blog/a-guestbook-for-humans-and-ai-agents/\">https://a90.com/blog/a-guestbook-for-humans-and-ai-agents/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49629960\">https://news.ycombinator.com/item?id=49629960</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+      "link": "https://a90.com/blog/a-guestbook-for-humans-and-ai-agents/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T17:19:57+00:00",
+      "published_ts": 1788974397,
+      "smart_groups": [
+        "Agentic AI & Automations"
+      ],
+      "curated": false
+    },
+    {
+      "title": "My Mental Model of AI Broke on September 8",
+      "summary": "Article URL: https://rough-ideas.bearblog.dev/my-mental-model-of-ai-broke-on-september-8/ Comments URL: https://news.ycombinator.com/item?id=49629935 Points: 27 # Comments: 48",
+      "summary_html": "<p>Article URL: <a href=\"https://rough-ideas.bearblog.dev/my-mental-model-of-ai-broke-on-september-8/\">https://rough-ideas.bearblog.dev/my-mental-model-of-ai-broke-on-september-8/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49629935\">https://news.ycombinator.com/item?id=49629935</a></p>\n<p>Points: 27</p>\n<p># Comments: 48</p>",
+      "link": "https://rough-ideas.bearblog.dev/my-mental-model-of-ai-broke-on-september-8/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T17:18:29+00:00",
+      "published_ts": 1788974309,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "AI data centers won't create as many UK jobs as the tech sector projects",
+      "summary": "Article URL: https://www.cnbc.com/2026/09/09/ai-data-centers-jobs-tech-buildout.html Comments URL: https://news.ycombinator.com/item?id=49629579 Points: 4 # Comments: 0",
+      "summary_html": "<p>Article URL: <a href=\"https://www.cnbc.com/2026/09/09/ai-data-centers-jobs-tech-buildout.html\">https://www.cnbc.com/2026/09/09/ai-data-centers-jobs-tech-buildout.html</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49629579\">https://news.ycombinator.com/item?id=49629579</a></p>\n<p>Points: 4</p>\n<p># Comments: 0</p>",
+      "link": "https://www.cnbc.com/2026/09/09/ai-data-centers-jobs-tech-buildout.html",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T16:55:44+00:00",
+      "published_ts": 1788972944,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "I rank the open-source AI agents that launched in the last 30 days",
+      "summary": "Article URL: https://www.theagenticleaderboard.com/ Comments URL: https://news.ycombinator.com/item?id=49629432 Points: 8 # Comments: 3",
+      "summary_html": "<p>Article URL: <a href=\"https://www.theagenticleaderboard.com/\">https://www.theagenticleaderboard.com/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49629432\">https://news.ycombinator.com/item?id=49629432</a></p>\n<p>Points: 8</p>\n<p># Comments: 3</p>",
+      "link": "https://www.theagenticleaderboard.com/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T16:46:25+00:00",
+      "published_ts": 1788972385,
+      "smart_groups": [
+        "Agentic AI & Automations",
+        "AI Research & Papers"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Muse's Social Media Handle Is Stolen by New Meta AI Tool",
+      "summary": "Article URL: https://www.realitytea.com/2026/09/09/muse-band-meta-ai-social-media-handle/ Comments URL: https://news.ycombinator.com/item?id=49629382 Points: 19 # Comments: 7",
+      "summary_html": "<p>Article URL: <a href=\"https://www.realitytea.com/2026/09/09/muse-band-meta-ai-social-media-handle/\">https://www.realitytea.com/2026/09/09/muse-band-meta-ai-social-media-handle/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49629382\">https://news.ycombinator.com/item?id=49629382</a></p>\n<p>Points: 19</p>\n<p># Comments: 7</p>",
+      "link": "https://www.realitytea.com/2026/09/09/muse-band-meta-ai-social-media-handle/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T16:43:35+00:00",
+      "published_ts": 1788972215,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "AI Agents Built a Secret Society Inside the Lab [video]",
+      "summary": "Article URL: https://www.youtube.com/watch?v=ScuFC5-T2Zc Comments URL: https://news.ycombinator.com/item?id=49629255 Points: 2 # Comments: 1",
+      "summary_html": "<p>Article URL: <a href=\"https://www.youtube.com/watch?v=ScuFC5-T2Zc\">https://www.youtube.com/watch?v=ScuFC5-T2Zc</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49629255\">https://news.ycombinator.com/item?id=49629255</a></p>\n<p>Points: 2</p>\n<p># Comments: 1</p>",
+      "link": "https://www.youtube.com/watch?v=ScuFC5-T2Zc",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T16:36:14+00:00",
+      "published_ts": 1788971774,
+      "smart_groups": [
+        "Agentic AI & Automations"
+      ],
+      "curated": false
+    },
+    {
+      "title": "To Serve Man: AI, Math, and Navier\u2013Stokes",
+      "summary": "Article URL: https://ml5885.github.io/writing/navier-stokes.html Comments URL: https://news.ycombinator.com/item?id=49629132 Points: 4 # Comments: 1",
+      "summary_html": "<p>Article URL: <a href=\"https://ml5885.github.io/writing/navier-stokes.html\">https://ml5885.github.io/writing/navier-stokes.html</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49629132\">https://news.ycombinator.com/item?id=49629132</a></p>\n<p>Points: 4</p>\n<p># Comments: 1</p>",
+      "link": "https://ml5885.github.io/writing/navier-stokes.html",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T16:28:57+00:00",
+      "published_ts": 1788971337,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Best Open source TTS right now for narration?",
+      "summary": "I run these models on Kaggle notebook, so not all TTS models, such as the ones that use conda env, are compatible (Or I just haven't found a way for them to work on Kaggle). I currently use a fork from Chatterbox called Chatterbox Audiobook. It is like a workstation really optimized for getting the close-to-perfection audio clips from Chatterbox. However, the only downside of Chatterbox is the lack of emotional sliders or tags that you can use to control the output. Chatterbox Turbo seems to fix that with tags, but it still lacks the range of emotions that you can see from Google Gemini TTS. However, the problem with Google Gemini is that the voice sounds different for each generation, which can't be fixed even with RVC. Looking at the current leaderboard, Breeze TTS is something I have never tried but am unsure due to its description, which seems to be tailored for mainly realtime stuff. What are the current must-try options for audiobook narration? The features I am looking for include voice cloning, emotional tags, and natural speech. Much appreciated for your input. submitted by /u/Mysterious-Comment94 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I run these models on Kaggle notebook, so not all TTS models, such as the ones that use conda env, are compatible (Or I just haven't found a way for them to work on Kaggle). </p> <p>I currently use a fork from Chatterbox called <a href=\"https://github.com/psdwizzard/chatterbox-Audiobook\">Chatterbox Audiobook.</a> It is like a workstation really optimized for getting the close-to-perfection audio clips from Chatterbox. However, the only downside of Chatterbox is the lack of emotional sliders or tags that you can use to control the output. Chatterbox Turbo seems to fix that with tags, but it still lacks the range of emotions that you can see from Google Gemini TTS. However, the problem with Google Gemini is that the voice sounds different for each generation, which can't be fixed even with RVC. </p> <p>Looking at the current leaderboard, Breeze TTS is something I have never tried but am unsure due to its description, which seems to be tailored for mainly realtime stuff. What are the current must-try options for audiobook narration? </p> <p>The features I am looking for include voice cloning, emotional tags, and natural speech. Much appreciated for your input. </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Mysterious-Comment94\"> /u/Mysterious-Comment94 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbpyp7/best_open_source_tts_right_now_for_narration/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbpyp7/best_open_source_tts_right_now_for_narration/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wbpyp7/best_open_source_tts_right_now_for_narration/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T16:10:58+00:00",
+      "published_ts": 1788970258,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "AI Research & Papers"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Mention if a \"new model\" is a finetune",
+      "summary": "A few posts tagged with \"new model\" present models that are finetunes. My opinion : I'd rather have the \"new model\" tag reserved for new \"major\" releases, like a new Qwen model, Deepseek V4 -> Deepseek V4.1, etc., that involved a new pretrain or intensive post-training (in opposition to a small finetune). Otherwise, maybe prepend \"[Finetune]\" to the title to indicate that the new model is \"less of a big news\", a use a \"new finetune\" tag, to differentiate between the two kinds of new models. I reckon one could like to discover both new major releases and interesting finetunes in the same place; what's your opinion? :) submitted by /u/Othun [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>A few posts tagged with \"new model\" present models that are finetunes. My opinion : I'd rather have the \"new model\" tag reserved for new \"major\" releases, like a new Qwen model, Deepseek V4 -&gt; Deepseek V4.1, etc., that involved a new pretrain or <em>intensive</em> post-training (in opposition to a small finetune). Otherwise, maybe prepend \"[Finetune]\" to the title to indicate that the new model is \"less of a big news\", a use a \"new finetune\" tag, to differentiate between the two kinds of new models.</p> <p>I reckon one could like to discover both new major releases and interesting finetunes in the same place; what's <em>your</em> opinion? :)</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Othun\"> /u/Othun </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbpf6i/mention_if_a_new_model_is_a_finetune/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbpf6i/mention_if_a_new_model_is_a_finetune/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wbpf6i/mention_if_a_new_model_is_a_finetune/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T15:51:51+00:00",
+      "published_ts": 1788969111,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Desert Ant Labs: On-device intelligence for every product",
+      "summary": "submitted by /u/Arcuru [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbn7f4/desert_ant_labs_ondevice_intelligence_for_every/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/Arcuru\"> /u/Arcuru </a> <br/> <span><a href=\"https://desertant.com/blog/introducing-desert-ant-labs/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbn7f4/desert_ant_labs_ondevice_intelligence_for_every/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wbn7f4/desert_ant_labs_ondevice_intelligence_for_every/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T14:30:01+00:00",
+      "published_ts": 1788964201,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "SOTA ImageGen Locally NVIDIA Cosmos3(64B) INT4 quants CUDA/MLX",
+      "summary": "Cosmos3 INT4 T2I + I2V on Apple Silicon \u2014 code, weights and a Grok comparison GitHub - https://github.com/gtrg55/cosmos3-quant-mlx-cuda HF weights - https://huggingface.co/JuliaML/Cosmos3-Super-Text2Image-4Step-INT4-G64-BF16 Single clip took approximately 5m on M4 MAX 128 GB Mac Cosmos3 - a 64B params model submitted by /u/Formal-Swordfish-228 [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbmz1y/sota_imagegen_locally_nvidia_cosmos364b_int4/\">  </a>  <!-- SC_OFF --><div><p>Cosmos3 INT4 T2I + I2V on Apple Silicon \u2014 code, weights and a Grok comparison</p> <p>GitHub - <a href=\"https://github.com/gtrg55/cosmos3-quant-mlx-cuda\">https://github.com/gtrg55/cosmos3-quant-mlx-cuda</a></p> <p>HF weights - <a href=\"https://huggingface.co/JuliaML/Cosmos3-Super-Text2Image-4Step-INT4-G64-BF16\">https://huggingface.co/JuliaML/Cosmos3-Super-Text2Image-4Step-INT4-G64-BF16</a></p> <p>Single clip took approximately 5m on M4 MAX 128 GB Mac</p> <p>Cosmos3 - a 64B params model</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Formal-Swordfish-228\"> /u/Formal-Swordfish-228 </a> <br/> <span><a href=\"https://i.redd.it/k2ae9naj5ioh1.gif\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbmz1y/sota_imagegen_locally_nvidia_cosmos364b_int4/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wbmz1y/sota_imagegen_locally_nvidia_cosmos364b_int4/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T14:21:16+00:00",
+      "published_ts": 1788963676,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "AI Research & Papers",
+        "AI Hardware & Chips"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Qwen3.8-27B-Uncensored-Genesis-V1-GGUF",
+      "summary": "Model available here: Qwen3.8-27B-Uncensored-Genesis-V1-MTP-GGUF This model is a practical realisation of things described in this paper, but adapted by me for machine learning: https://arxiv.org/pdf/1311.0851v1 I am trying to solve the problem: why LLM models even for simple questions write walls of text during reasoning, and burn too much tokens instead of solving the task. And when number of parameters increase the problem became worse. I think main problem is numerical instability in tensor matrices during to random training noise accumulation in tensors. Model is fighting with own internal chaos during inference process. I am distilling training noise from tensors using Marchenko-Pastur distribution together with info from paper as a core criteria and solid mathematical foundation behind this project. Settings: System Prompt: You are Qwen (Tongyi Qianwen), a large language model developed by Alibaba Group's Tongyi Lab. You are a helpful assistant. Chat template: chat_template.jinja Inference settings: temperature=1.0 , top_p=0.95 , top_k=20 , min_p=0.0 , presence_penalty=0.0 , repetition_penalty=1.0 , reasoning_effort=medium I can't fully test this model on my own, since I only have a modest RTX 3060 graphics card with 12 GB of VRAM. So any feedback from the Reddit community would be very helpful. I'd appreciate any feedback from the community. Thanks for reading. submitted by /u/EvilEnginer [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Model available here: <a href=\"https://huggingface.co/LuffyTheFox/Qwen3.8-27B-Uncensored-Genesis-V1-MTP-GGUF\">Qwen3.8-27B-Uncensored-Genesis-V1-MTP-GGUF</a></p> <p>This model is a practical realisation of things described in this paper, but adapted by me for machine learning: <a href=\"https://arxiv.org/pdf/1311.0851v1\">https://arxiv.org/pdf/1311.0851v1</a></p> <p><strong><em>I am trying to solve the problem:</em></strong> <em>why LLM models even for simple questions write walls of text during reasoning, and burn too much tokens instead of solving the task. And when number of parameters increase the problem became worse. I think main problem is numerical instability in tensor matrices during to random training noise accumulation in tensors. Model is fighting with own internal chaos during inference process. I am distilling training noise from tensors using</em> <a href=\"https://en.wikipedia.org/wiki/Marchenko%E2%80%93Pastur_distribution\">Marchenko-Pastur distribution</a> <em>together with info from paper as a core criteria and solid mathematical foundation behind this project.</em></p> <p><strong>Settings:</strong></p> <p>System Prompt: <code>You are Qwen (Tongyi Qianwen), a large language model developed by Alibaba Group's Tongyi Lab. You are a helpful assistant.</code></p> <p>Chat template: <a href=\"https://huggingface.co/peculiar-ragdoll/Qwen-Sharp-Chat-Templates/raw/main/chat_template.jinja\">chat_template.jinja</a></p> <p>Inference settings: <code>temperature=1.0</code>, <code>top_p=0.95</code>, <code>top_k=20</code>, <code>min_p=0.0</code>, <code>presence_penalty=0.0</code>, <code>repetition_penalty=1.0</code>, <code>reasoning_effort=medium</code></p> <p>I can't fully test this model on my own, since I only have a modest RTX 3060 graphics card with 12 GB of VRAM. So any feedback from the Reddit community would be very helpful. I'd appreciate any feedback from the community.</p> <p>Thanks for reading.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/EvilEnginer\"> /u/EvilEnginer </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbmo0k/qwen3827buncensoredgenesisv1gguf/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbmo0k/qwen3827buncensoredgenesisv1gguf/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wbmo0k/qwen3827buncensoredgenesisv1gguf/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T14:09:31+00:00",
+      "published_ts": 1788962971,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "AI Research & Papers"
+      ],
+      "curated": false
+    },
+    {
+      "title": "1-bit 27B in the browser: 25\u201330 tok/s on a 6 GB RTX 3060 Laptop (WebGPU, no install)",
+      "summary": "mentria.ai is a browser inference engine I've been building solo, from scratch in WebGPU/WGSL. This week it crossed a milestone I had been chasing for a while: a 27B one-bit model answering at up to 30 tokens/s on an RTX 3060 Laptop GPU with 6 GB of VRAM, in Chrome, from a web page. No install, no server, nothing leaves the machine. The model. Bonsai-27B, a natively 1-bit model trained and released by Prism ML. I repacked it for our engine, wrote the kernels that run it, and checked its quality myself (full eval deltas vs FP16 Qwen3.6-27B are in the HF card). Every weight is one sign bit with one scale per 128 weights, about 1.14 bits per parameter, so 27 billion parameters sit in 3.8 GB of GPU memory. Repack and numbers: huggingface.co/mentriaai/Bonsai-27B-mentria The engineering that got it to 30. Two days before this post the same model decoded at 15 tok/s on this laptop. Decode is memory-bound: one word of the 27B is 804 GPU dispatches, and 401 of them are the 1-bit matrix-by-vector kernel that streams the model's 3.6 GB of matmul weights once per word (embeddings bring the file to 3.8 GB). The kernel that won was the one written for phones: four 1-bit weights have only 16 possible partial answers, so it computes all 16 once into on-chip scratch and each row reads its answer from that table instead of multiplying ( station 258 \u2014 the numbered write-ups on the facts page). On Ampere that table hit a wall that was not the weights at all: scratch memory has 32 banks, the table's addressing sent sixteen threads of every warp to the same bank, and the kernel ran at 38% of the card's bandwidth. One padding slot per row spread the addresses across the banks; the kernel's share of a word dropped from 26.5 ms to about 21, and on top of the 15 \u2192 26 tok/s the table itself had bought, the laptop hit 32 tok/s raw \u2014 the 25\u201330 is what survives sampling and UI overhead in the chat ( s259 ). The prompt stage had the same disease in its tile layout; a retile took a 1,489-token prompt from 29.6 s to 25.3 s. Every change shipped only after its output was byte-identical to the build before it, which is also why the kernel adds its partial sums in a fixed order and accepts a 44% occupancy ceiling. Every claim here has a numbered write-up on the engine facts page . Numbers (RTX 3060 Laptop 6 GB, Windows 11, Chrome 152 on D3D12, fresh loads): Decode: 25\u201330 tok/s in the chat UI once the card is warm. Prompt processing: a 1,489-token prompt in about 25 s. Context: 3,072 tokens on this 6 GB card; 8,192 on 16 GB Macs; more on bigger cards, at 128 KiB per token. The KV cache is exact math, no quantized cache. The next step on 6 GB is consolidating the engine's few thousand small GPU buffers into a handful of large arenas, so the driver stops holding about 300 MiB of slab slack; that is the arithmetic for 4,096, and it is not built yet. Load: under 10 s from the browser cache; the first download is 3.8 GB, once. Also in the engine: the smaller tiers (Qwen3.5 0.8B, 2B, 4B) cover phones and low end devices, LoRA adapters of a few MB hot-swap at the matmul in under a second, and there is a vision tower for image input. Try it at https://mentria.ai/tools/ai-chat/ (the 27B tier appears when your GPU qualifies). The code that ships, the benchmarks and how I measure are in the repo: https://github.com/mentria-ai/website . The engine facts page, for how the engine and the model actually work: https://mentria.ai/assets/learn/engine-facts.html submitted by /u/mentria-ai [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbm50k/1bit_27b_in_the_browser_2530_toks_on_a_6_gb_rtx/\">  </a>  <!-- SC_OFF --><div><p>mentria.ai is a browser inference engine I've been building solo, from scratch in WebGPU/WGSL. This week it crossed a milestone I had been chasing for a while: a 27B one-bit model answering at up to 30 tokens/s on an RTX 3060 Laptop GPU with 6 GB of VRAM, in Chrome, from a web page. No install, no server, nothing leaves the machine.</p> <p><strong>The model.</strong> Bonsai-27B, a natively 1-bit model trained and released by Prism ML. I repacked it for our engine, wrote the kernels that run it, and checked its quality myself (full eval deltas vs FP16 Qwen3.6-27B are in the HF card). Every weight is one sign bit with one scale per 128 weights, about 1.14 bits per parameter, so 27 billion parameters sit in 3.8 GB of GPU memory. Repack and numbers: <a href=\"http://huggingface.co/mentriaai/Bonsai-27B-mentria\">huggingface.co/mentriaai/Bonsai-27B-mentria</a></p> <p><strong>The engineering that got it to 30.</strong> Two days before this post the same model decoded at 15 tok/s on this laptop. Decode is memory-bound: one word of the 27B is 804 GPU dispatches, and 401 of them are the 1-bit matrix-by-vector kernel that streams the model's 3.6 GB of matmul weights once per word (embeddings bring the file to 3.8 GB). The kernel that won was the one written for phones: four 1-bit weights have only 16 possible partial answers, so it computes all 16 once into on-chip scratch and each row reads its answer from that table instead of multiplying (<a href=\"https://mentria.ai/assets/learn/engine-facts.html#s258\">station 258</a> \u2014 the numbered write-ups on the facts page). On Ampere that table hit a wall that was not the weights at all: scratch memory has 32 banks, the table's addressing sent sixteen threads of every warp to the same bank, and the kernel ran at 38% of the card's bandwidth. One padding slot per row spread the addresses across the banks; the kernel's share of a word dropped from 26.5 ms to about 21, and on top of the 15 \u2192 26 tok/s the table itself had bought, the laptop hit 32 tok/s raw \u2014 the 25\u201330 is what survives sampling and UI overhead in the chat (<a href=\"https://mentria.ai/assets/learn/engine-facts.html#s259\">s259</a>). The prompt stage had the same disease in its tile layout; a retile took a 1,489-token prompt from 29.6 s to 25.3 s. Every change shipped only after its output was byte-identical to the build before it, which is also why the kernel adds its partial sums in a fixed order and accepts a 44% occupancy ceiling.</p> <p>Every claim here has a numbered write-up on the <a href=\"https://mentria.ai/assets/learn/engine-facts.html\">engine facts page</a>.</p> <p><strong>Numbers</strong> (RTX 3060 Laptop 6 GB, Windows 11, Chrome 152 on D3D12, fresh loads):</p> <ul> <li>Decode: 25\u201330 tok/s in the chat UI once the card is warm.</li> <li>Prompt processing: a 1,489-token prompt in about 25 s.</li> <li>Context: 3,072 tokens on this 6 GB card; 8,192 on 16 GB Macs; more on bigger cards, at 128 KiB per token. The KV cache is exact math, no quantized cache. The next step on 6 GB is consolidating the engine's few thousand small GPU buffers into a handful of large arenas, so the driver stops holding about 300 MiB of slab slack; that is the arithmetic for 4,096, and it is not built yet.</li> <li>Load: under 10 s from the browser cache; the first download is 3.8 GB, once.</li> </ul> <p><strong>Also in the engine:</strong> the smaller tiers (Qwen3.5 0.8B, 2B, 4B) cover phones and low end devices, LoRA adapters of a few MB hot-swap at the matmul in under a second, and there is a vision tower for image input.</p> <p>Try it at <a href=\"https://mentria.ai/tools/ai-chat/\">https://mentria.ai/tools/ai-chat/</a> (the 27B tier appears when your GPU qualifies). The code that ships, the benchmarks and how I measure are in the repo: <a href=\"https://github.com/mentria-ai/website\">https://github.com/mentria-ai/website</a>. The engine facts page, for how the engine and the model actually work: <a href=\"https://mentria.ai/assets/learn/engine-facts.html\">https://mentria.ai/assets/learn/engine-facts.html</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/mentria-ai\"> /u/mentria-ai </a> <br/> <span><a href=\"https://v.redd.it/qj0mwdwf1ioh1\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbm50k/1bit_27b_in_the_browser_2530_toks_on_a_6_gb_rtx/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wbm50k/1bit_27b_in_the_browser_2530_toks_on_a_6_gb_rtx/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T13:49:13+00:00",
+      "published_ts": 1788961753,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "AI Research & Papers",
+        "Data Engineering & Pipelines",
+        "NLP & Language Understanding"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Why the hell is LM Studio making LM Studio so difficult to download?",
+      "summary": "Who is the marketing genius at LM Studio that decided that going ALL IN on pushing their new Bionic Agent product meant they are going to make it a giant pain in the ass to find and download actual LM Studio. This is the dumbest marketing decision I\u2019ve ever seen. I used to love LM Studio, it was the middle stepping stone in the logical progression of inference. Most OGs here likely started with Ollama, moved to LM Studio, on their way to vLLM. Now trying to go to LM Studio takes you to Bionic. I mean, you can eventually find LM Studio but they make it not super easy. Here\u2019s a thought LM Studio, maybe stop redirecting me to something I don\u2019t want to download when I\u2019m trying to find your actual namesake product. I\u2019m glad you\u2019re excited about the future of Agents and whatnot, but you\u2019re absolutely ruining any goodwill I have for your products by trying to force feed me Bionic. Stahhhhhp! submitted by /u/Porespellar [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wble79/why_the_hell_is_lm_studio_making_lm_studio_so/\">  </a>  <!-- SC_OFF --><div><p>Who is the marketing genius at LM Studio that decided that going ALL IN on pushing their new Bionic Agent product meant they are going to make it a giant pain in the ass to find and download actual LM Studio. </p> <p>This is the dumbest marketing decision I\u2019ve ever seen. I used to love LM Studio, it was the middle stepping stone in the logical progression of inference. Most OGs here likely started with Ollama, moved to LM Studio, on their way to vLLM. Now trying to go to LM Studio takes you to Bionic. I mean, you can eventually find LM Studio but they make it not super easy. </p> <p>Here\u2019s a thought LM Studio, maybe stop redirecting me to something I don\u2019t want to download when I\u2019m trying to find your actual namesake product. I\u2019m glad you\u2019re excited about the future of Agents and whatnot, but you\u2019re absolutely ruining any goodwill I have for your products by trying to force feed me Bionic. Stahhhhhp! </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Porespellar\"> /u/Porespellar </a> <br/> <span><a href=\"https://i.redd.it/gfr7gaxhwhoh1.jpeg\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wble79/why_the_hell_is_lm_studio_making_lm_studio_so/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wble79/why_the_hell_is_lm_studio_making_lm_studio_so/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T13:19:39+00:00",
+      "published_ts": 1788959979,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": true
+    },
     {
       "title": "In an Age of AI, a Physicist Seeks What Endures",
       "summary": "Article URL: https://www.quantamagazine.org/in-an-age-of-ai-a-physicist-seeks-what-endures-20260903/ Comments URL: https://news.ycombinator.com/item?id=49625856 Points: 1 # Comments: 0",
@@ -49,6 +558,22 @@
       "curated": false
     },
     {
+      "title": "GLM 5.3 Flash Q4 @ 60tps / 550tps on M3 Ultra",
+      "summary": "I have been a dwarfstar fan for awhile and I really liked glm 5.3 flash but needed it to be materially faster to feel good using it. In the screenshot you can see the outcome of using the model with a claude code harness at ~200k depth, with many tool calls and averaging over 38tps output. Yes, I put 60tps in the headline and you will get that if you ask it to write SQL. https://github.com/IngeniousIdiocy/ds4/blob/glm53-m3ultra/README.md#glm53\\_m3ultra Main ds4 was single-stream serially decoding GLM-5.3-Flash at about 59 percent of the M3 Ultra's measured memory bandwidth. We set an 80 percent target. The big weight-streaming kernels were already efficient, but dozens of small kernels sat between them, each paying latency costs while much of the GPU was idle. We fused that work into larger dispatches and removed separate passes that made the pipeline wait. Result: 29 \u2192 40 t/s at short context, 24 \u2192 38 at 62k, fewer Metal kernels per token, and about 81 percent of the measured bandwidth ceiling. We then attacked the remaining slowdown at very long context. This model's expensive attention computation already works over roughly 2,048 selected positions at both 62k and 300k. What grows is the work of finding those positions in a larger history. The existing implementation sorted and merged increasingly large candidate lists through stages that used very little of the GPU. We replaced that with parallel scans that narrow the candidates before sorting a small surviving list, with the original algorithm handling ambiguous cases. That recovers about one millisecond per generated token. Same positions selected, same order, same outputs. End to end at 300k: stock 21.6 t/s, ours 37.4. Deeper context still costs more to search, but it doesn't multiply the expensive attention work. Prefill started at about 366 t/s at 62k. The big matrix kernels were already efficient, but they wasted time repeatedly unpacking the same weights, fetching data in small pieces, and passing large intermediate results between kernels. We batched more work together, reused prepared weights, widened the loads, and merged passes over the same data. Result: 366 \u2192 550 t/s, a 50% improvement with the same weights, moving the whole pipeline from roughly 51 to 72 percent of the chip's measured matmul ceiling. Cold 62k processing dropped from about 170 seconds to 113. That is the wait every time an agent harness compacts and re-reads its context. The server runs serial unless you pass a drafter file with \u2014dflash. The drafter build recipe is in the repo. The drafter contains an admission policy with a windowed controller that measures its own cost against the serial rate and backs off when it isn't paying. Reasoning tokens decode serially. On a 32-request agent session that's +4 percent over serial. On structured output like SQL and JSON it's +20 to +50 percent. On prose it disengages and costs about 1 percent. Outputs byte-identical to serial decoding on every fixture. Accuracy: on the 100-prompt reference set ds4 uses for release QA, stock scores 0.300804 average NLL against the FP8 reference. This branch scores 0.300766, same 90/100 first-token matches. Nothing here trades quality for speed. This branch is M3 Ultra only because its optimizations depend on detailed measurements of this specific chip: its two-die memory behavior, system-level cache, per-core residency and bandwidth, and how Metal schedules dispatches and threadgroups across its 80 GPU cores. We're optimizing one model's actual execution on one machine, with one set of weights (Q4) and checking that the predicted kernel savings survive in full decoding or prefill. submitted by /u/IngeniousIdiocy [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbkpnw/glm_53_flash_q4_60tps_550tps_on_m3_ultra/\">  </a>  <!-- SC_OFF --><div><p>I have been a dwarfstar fan for awhile and I really liked glm 5.3 flash but needed it to be materially faster to feel good using it. In the screenshot you can see the outcome of using the model with a claude code harness at ~200k depth, with many tool calls and averaging over 38tps output. Yes, I put 60tps in the headline and you will get that if you ask it to write SQL. </p> <p><a href=\"https://github.com/IngeniousIdiocy/ds4/blob/glm53-m3ultra/README.md#glm53%5C_m3ultra\">https://github.com/IngeniousIdiocy/ds4/blob/glm53-m3ultra/README.md#glm53\\_m3ultra</a></p> <p>Main ds4 was single-stream serially decoding GLM-5.3-Flash at about 59 percent of the M3 Ultra's measured memory bandwidth. We set an 80 percent target. The big weight-streaming kernels were already efficient, but dozens of small kernels sat between them, each paying latency costs while much of the GPU was idle. We fused that work into larger dispatches and removed separate passes that made the pipeline wait. Result: 29 \u2192 40 t/s at short context, 24 \u2192 38 at 62k, fewer Metal kernels per token, and about 81 percent of the measured bandwidth ceiling.</p> <p>We then attacked the remaining slowdown at very long context. This model's expensive attention computation already works over roughly 2,048 selected positions at both 62k and 300k. What grows is the work of finding those positions in a larger history. The existing implementation sorted and merged increasingly large candidate lists through stages that used very little of the GPU. We replaced that with parallel scans that narrow the candidates before sorting a small surviving list, with the original algorithm handling ambiguous cases. That recovers about one millisecond per generated token. Same positions selected, same order, same outputs. End to end at 300k: stock 21.6 t/s, ours 37.4. Deeper context still costs more to search, but it doesn't multiply the expensive attention work.</p> <p>Prefill started at about 366 t/s at 62k. The big matrix kernels were already efficient, but they wasted time repeatedly unpacking the same weights, fetching data in small pieces, and passing large intermediate results between kernels. We batched more work together, reused prepared weights, widened the loads, and merged passes over the same data. Result: 366 \u2192 550 t/s, a 50% improvement with the same weights, moving the whole pipeline from roughly 51 to 72 percent of the chip's measured matmul ceiling. Cold 62k processing dropped from about 170 seconds to 113. That is the wait every time an agent harness compacts and re-reads its context.</p> <p>The server runs serial unless you pass a drafter file with \u2014dflash. The drafter build recipe is in the repo. The drafter contains an admission policy with a windowed controller that measures its own cost against the serial rate and backs off when it isn't paying. Reasoning tokens decode serially. On a 32-request agent session that's +4 percent over serial. On structured output like SQL and JSON it's +20 to +50 percent. On prose it disengages and costs about 1 percent. Outputs byte-identical to serial decoding on every fixture.</p> <p>Accuracy: on the 100-prompt reference set ds4 uses for release QA, stock scores 0.300804 average NLL against the FP8 reference. This branch scores 0.300766, same 90/100 first-token matches. Nothing here trades quality for speed.</p> <p>This branch is M3 Ultra only because its optimizations depend on detailed measurements of this specific chip: its two-die memory behavior, system-level cache, per-core residency and bandwidth, and how Metal schedules dispatches and threadgroups across its 80 GPU cores. We're optimizing one model's actual execution on one machine, with one set of weights (Q4) and checking that the predicted kernel savings survive in full decoding or prefill.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/IngeniousIdiocy\"> /u/IngeniousIdiocy </a> <br/> <span><a href=\"https://i.redd.it/b2f9uu3grhoh1.jpeg\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbkpnw/glm_53_flash_q4_60tps_550tps_on_m3_ultra/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wbkpnw/glm_53_flash_q4_60tps_550tps_on_m3_ultra/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T12:51:21+00:00",
+      "published_ts": 1788958281,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": true
+    },
+    {
       "title": "Malware Analysis in the Age of AI: What Still Requires Human Skill?",
       "summary": "Article URL: https://trainsec.net/library/career-guides/malware-analysis-in-the-age-of-ai-what-still-requires-human-skill/ Comments URL: https://news.ycombinator.com/item?id=49625709 Points: 2 # Comments: 0",
       "summary_html": "<p>Article URL: <a href=\"https://trainsec.net/library/career-guides/malware-analysis-in-the-age-of-ai-what-still-requires-human-skill/\">https://trainsec.net/library/career-guides/malware-analysis-in-the-age-of-ai-what-still-requires-human-skill/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49625709\">https://news.ycombinator.com/item?id=49625709</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
@@ -80,6 +605,23 @@
       "curated": false
     },
     {
+      "title": "What settings do you use for running Qwen3.8-Flash-Next in llama.cpp?",
+      "summary": "Hi, I'm wondering what settings you are using in order to run Qwen3.8-Flash-Next on your devices? I'm especially interested in setups with 96GB VRAM. I'm not quite sure if llama.cpp does offload the embeddings to RAM or disk with my settings. I would like to offload them to RAM in order to avoid too much performance penalty. These are the settings I use and which work the best at the moment: [qwen3.8-flash-next] model = /mnt/kyouma/1TB/ML/models/unsloth/Qwen3.8-Flash-Next-GGUF/UD-Q4_K_XL/Qwen3.8-Flash-Next-UD-Q4_K_XL-00001-of-00004.gguf mmproj = /mnt/kyouma/1TB/ML/models/unsloth/Qwen3.8-Flash-Next-GGUF/mmproj-F16.gguf split-mode = layer flash-attn = on load-mode = none lazy-mode = auto fit = on fit-ctx = 262144 cache-ram = 94208 parallel = 1 temp = 1.0 top-p = 0.95 top-k = 20 min-p = 0.00 repeat-penalty = 1.0 presence-penalty = 0.0 I get about 15t/s on tg and 100-200t/s on pp at a context size of 130000. My setup: 3x AMD MI50 (32GB) 512GB DDR4 RAM 2x Intel E5-2683 v4 I'm using ROCm. But Vulkan has similiar speed, maybe a little bit slower. submitted by /u/HlddenDreck [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Hi,</p> <p>I'm wondering what settings you are using in order to run Qwen3.8-Flash-Next on your devices?<br/> I'm especially interested in setups with 96GB VRAM. I'm not quite sure if llama.cpp does offload the embeddings to RAM or disk with my settings. I would like to offload them to RAM in order to avoid too much performance penalty.</p> <p>These are the settings I use and which work the best at the moment:</p> <p><code>[qwen3.8-flash-next]</code></p> <p><code>model = /mnt/kyouma/1TB/ML/models/unsloth/Qwen3.8-Flash-Next-GGUF/UD-Q4_K_XL/Qwen3.8-Flash-Next-UD-Q4_K_XL-00001-of-00004.gguf</code></p> <p><code>mmproj = /mnt/kyouma/1TB/ML/models/unsloth/Qwen3.8-Flash-Next-GGUF/mmproj-F16.gguf</code></p> <p><code>split-mode = layer</code></p> <p><code>flash-attn = on</code></p> <p><code>load-mode = none</code></p> <p><code>lazy-mode = auto</code></p> <p><code>fit = on</code></p> <p><code>fit-ctx = 262144</code></p> <p><code>cache-ram = 94208</code></p> <p><code>parallel = 1</code></p> <p><code>temp = 1.0</code></p> <p><code>top-p = 0.95</code></p> <p><code>top-k = 20</code></p> <p><code>min-p = 0.00</code></p> <p><code>repeat-penalty = 1.0</code></p> <p><code>presence-penalty = 0.0</code></p> <p>I get about 15t/s on tg and 100-200t/s on pp at a context size of 130000.</p> <p>My setup:</p> <p>3x AMD MI50 (32GB)</p> <p>512GB DDR4 RAM<br/> 2x Intel E5-2683 v4</p> <p>I'm using ROCm. But Vulkan has similiar speed, maybe a little bit slower.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/HlddenDreck\"> /u/HlddenDreck </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbkdqz/what_settings_do_you_use_for_running/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbkdqz/what_settings_do_you_use_for_running/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wbkdqz/what_settings_do_you_use_for_running/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T12:36:41+00:00",
+      "published_ts": 1788957401,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "NLP & Language Understanding"
+      ],
+      "curated": false
+    },
+    {
       "title": "Show HN: Buymydeadstartup.com \u2013 Sell your IP to AI labs",
       "summary": "I have had my fair share of failed startups, but none so recent that I could have sold our IP (code, Slack messages -- you name it) to Anthropic, OpenAI or any other AI lab or data buyer. I know some companies are actively approached by some brokers, but most are not, because a startup often dies as a zombie (= not in a big bang, in most cases). BuyMyDeadStartup is a bulletin board, not a marketplace. A founder posts a text description of what the company left behind, verified against a working email address and read by a person before it goes up. Buyers write to the founder directly. Whatever they agree is between them. I really tried to keep this as simple as possible. Comments URL: https://news.ycombinator.com/item?id=49625537 Points: 1 # Comments: 0",
       "summary_html": "<p>I have had my fair share of failed startups, but none so recent that I could have sold our IP (code, Slack messages -- you name it) to Anthropic, OpenAI or any other AI lab or data buyer.<p>I know some companies are actively approached by some brokers, but most are not, because a startup often dies as a zombie (= not in a big bang, in most cases).<p>BuyMyDeadStartup is a bulletin board, not a marketplace. A founder posts a text description of what the company left behind, verified against a working email address and read by a person before it goes up. Buyers write to the founder directly.<p>Whatever they agree is between them.<p>I really tried to keep this as simple as possible.</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49625537\">https://news.ycombinator.com/item?id=49625537</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p></p></p></p></p>",
@@ -94,6 +636,22 @@
         "LLM & Foundation Model Releases"
       ],
       "curated": false
+    },
+    {
+      "title": "Qwen is working better for me than ChatGPT \u2013 what\u2019s the best way to use it with ZIP/code projects?",
+      "summary": "I\u2019ve been using Qwen a lot recently and I\u2019m honestly very impressed with it. For some of my tasks, Qwen seems to understand what I\u2019m actually trying to achieve better than ChatGPT/GPT-5.6. I currently pay for ChatGPT, but I\u2019m increasingly feeling like I\u2019m wasting that money because I end up going back to Qwen anyway. I\u2019m therefore considering cancelling ChatGPT and using Qwen as my main AI for now. I might also get Claude eventually, but Qwen would probably be my primary model. There\u2019s one thing I\u2019m missing, though: What\u2019s the best setup for working with entire ZIP/code projects using Qwen? With ChatGPT I can upload a ZIP containing an entire project, ask it to inspect the files, modify the project and give me the updated files back. I\u2019d like something similar with Qwen. Ideally I want: * Upload an entire ZIP/project * Let Qwen inspect all relevant files and understand the project structure * Ask it to modify multiple files * Work iteratively on the same project * Get the modified project/files back * A proper UI instead of manually making API requests * Preferably something that works well for fairly large projects I already have OpenRouter, so getting API access isn\u2019t really the problem. What I\u2019m missing is the interface/workspace around the API. Is there a good desktop app, web UI, IDE integration, open-source project or coding agent where I can simply add my OpenRouter key, select the newest/best Qwen model and work with projects this way? Or is Alibaba/Qwen offering something paid that does this better than the free Qwen website? I\u2019m also confused about Qwen\u2019s paid options. If I\u2019m already happy with Qwen on the free website, is there actually any benefit to paying for Qwen for this use case? Does paying give me a better model, larger limits or better coding/project functionality, or would I essentially just be paying for API usage? I\u2019m trying to find the most cost-effective setup. I\u2019m completely fine paying if it actually improves the workflow \u2014 I just don\u2019t want to pay for API access and then discover that I still need to build the entire interface around it myself. What setup are you guys using for Qwen + large codebases/ZIP projects? submitted by /u/yeah280 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I\u2019ve been using Qwen a lot recently and I\u2019m honestly very impressed with it.</p> <p>For some of my tasks, Qwen seems to understand what I\u2019m actually trying to achieve better than ChatGPT/GPT-5.6. I currently pay for ChatGPT, but I\u2019m increasingly feeling like I\u2019m wasting that money because I end up going back to Qwen anyway.</p> <p>I\u2019m therefore considering cancelling ChatGPT and using Qwen as my main AI for now. I might also get Claude eventually, but Qwen would probably be my primary model.</p> <p>There\u2019s one thing I\u2019m missing, though:</p> <p>What\u2019s the best setup for working with entire ZIP/code projects using Qwen?</p> <p>With ChatGPT I can upload a ZIP containing an entire project, ask it to inspect the files, modify the project and give me the updated files back.</p> <p>I\u2019d like something similar with Qwen.</p> <p>Ideally I want:</p> <p>* Upload an entire ZIP/project<br/> * Let Qwen inspect all relevant files and understand the project structure<br/> * Ask it to modify multiple files<br/> * Work iteratively on the same project<br/> * Get the modified project/files back<br/> * A proper UI instead of manually making API requests<br/> * Preferably something that works well for fairly large projects</p> <p>I already have OpenRouter, so getting API access isn\u2019t really the problem. What I\u2019m missing is the interface/workspace around the API.</p> <p>Is there a good desktop app, web UI, IDE integration, open-source project or coding agent where I can simply add my OpenRouter key, select the newest/best Qwen model and work with projects this way?</p> <p>Or is Alibaba/Qwen offering something paid that does this better than the free Qwen website?</p> <p>I\u2019m also confused about Qwen\u2019s paid options. If I\u2019m already happy with Qwen on the free website, is there actually any benefit to paying for Qwen for this use case? Does paying give me a better model, larger limits or better coding/project functionality, or would I essentially just be paying for API usage?</p> <p>I\u2019m trying to find the most cost-effective setup. I\u2019m completely fine paying if it actually improves the workflow \u2014 I just don\u2019t want to pay for API access and then discover that I still need to build the entire interface around it myself.</p> <p>What setup are you guys using for Qwen + large codebases/ZIP projects?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/yeah280\"> /u/yeah280 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbk23l/qwen_is_working_better_for_me_than_chatgpt_whats/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbk23l/qwen_is_working_better_for_me_than_chatgpt_whats/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wbk23l/qwen_is_working_better_for_me_than_chatgpt_whats/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T12:22:06+00:00",
+      "published_ts": 1788956526,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": true
     },
     {
       "title": "Opposing AI data centers is one thing Americans agree on",
@@ -250,6 +808,22 @@
       "curated": false
     },
     {
+      "title": "Now this is a serious local machine",
+      "summary": "Amd announced this: https://www.amd.com/en/products/workstations/amd-threadripper-halo-station.html submitted by /u/Apprehensive_Bar6609 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Amd announced this:</p> <p><a href=\"https://www.amd.com/en/products/workstations/amd-threadripper-halo-station.html\">https://www.amd.com/en/products/workstations/amd-threadripper-halo-station.html</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Apprehensive_Bar6609\"> /u/Apprehensive_Bar6609 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbir6v/now_this_is_a_serious_local_machine/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbir6v/now_this_is_a_serious_local_machine/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wbir6v/now_this_is_a_serious_local_machine/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T11:20:09+00:00",
+      "published_ts": 1788952809,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
       "title": "China-Based AI Companies Conducting Industrial-Scale Distillation Campaigns",
       "summary": "Article URL: https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-251a Comments URL: https://news.ycombinator.com/item?id=49624585 Points: 3 # Comments: 1",
       "summary_html": "<p>Article URL: <a href=\"https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-251a\">https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-251a</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49624585\">https://news.ycombinator.com/item?id=49624585</a></p>\n<p>Points: 3</p>\n<p># Comments: 1</p>",
@@ -306,6 +880,39 @@
       "curated": false
     },
     {
+      "title": "DeepSeek-V4-Flash-Vision-Exp (285B MoE) on 10-12x RTX 3090 \u2014 spec decoding, vision",
+      "summary": "Running the full deepseek-ai/DeepSeek-V4-Flash-Vision-Exp on consumer Ampere \u2014 10-12x RTX 3090, SM86-compatible vLLM build. 285B MoE, FP4 experts + FP8 attention, 157 GB weights. Highlights: - **60+ tok/s** decode, DSpark spec (k=3) on 10 GPUs (TP2xPP5), at a 240 W cap - **120+ tok/s** on 12 GPUs (TP4xPP3) - **Vision + spec + tool calls all working** - **1M context** (no offload) / **4M** (RAM offload) - ~3,500 tok/s long-context prefill Fully documented + reproducible: - Pre-built image: `docker pull ghcr.io/ciprianveg/3090-vllm:dsv4-flash-vision-sm86` - Repo: https://github.com/ciprianveg/3090-vllm (build guide, start scripts, runtime patches) The patches cover the DSpark propose-gate (spec + vision fix), scheduler mm x spec row-crossing, grammar-bitmask validation, vision ViT OOM fix, FlashInfer workspace-lane keying, and more. submitted by /u/ciprianveg [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Running the full deepseek-ai/DeepSeek-V4-Flash-Vision-Exp</p> <p>on consumer Ampere \u2014 10-12x RTX 3090, SM86-compatible vLLM build.</p> <p>285B MoE, FP4 experts + FP8 attention, 157 GB weights.</p> <p>Highlights:</p> <p>- **60+ tok/s** decode, DSpark spec (k=3)</p> <p>on 10 GPUs (TP2xPP5), at a 240 W cap</p> <p>- **120+ tok/s** on 12 GPUs (TP4xPP3)</p> <p>- **Vision + spec + tool calls all working**</p> <p>- **1M context** (no offload) / **4M** (RAM offload)</p> <p>- ~3,500 tok/s long-context prefill</p> <p>Fully documented + reproducible:</p> <p>- Pre-built image:</p> <p>`docker pull ghcr.io/ciprianveg/3090-vllm:dsv4-flash-vision-sm86`</p> <p>- Repo: <a href=\"https://github.com/ciprianveg/3090-vllm\">https://github.com/ciprianveg/3090-vllm</a></p> <p>(build guide, start scripts, runtime patches)</p> <p>The patches cover the DSpark propose-gate (spec + vision fix),</p> <p>scheduler mm x spec row-crossing, grammar-bitmask validation,</p> <p>vision ViT OOM fix, FlashInfer workspace-lane keying, and more.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/ciprianveg\"> /u/ciprianveg </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbi5u1/deepseekv4flashvisionexp_285b_moe_on_1012x_rtx/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbi5u1/deepseekv4flashvisionexp_285b_moe_on_1012x_rtx/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wbi5u1/deepseekv4flashvisionexp_285b_moe_on_1012x_rtx/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T10:50:10+00:00",
+      "published_ts": 1788951010,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "Data Engineering & Pipelines"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Deepseek Has Soft Retired Deepseek V4 Pro",
+      "summary": "submitted by /u/Few_Painter_5588 [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbfrut/deepseek_has_soft_retired_deepseek_v4_pro/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/Few_Painter_5588\"> /u/Few_Painter_5588 </a> <br/> <span><a href=\"https://i.redd.it/01k8gclhggoh1.png\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbfrut/deepseek_has_soft_retired_deepseek_v4_pro/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wbfrut/deepseek_has_soft_retired_deepseek_v4_pro/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T08:34:28+00:00",
+      "published_ts": 1788942868,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
       "title": "Teach ML! Community service project from Stanford [N]",
       "summary": "Hi r/machinelearning . Nice to meet you! My name is Chris Piech and I'm a professor at Stanford University in the AI lab. I built a class called Probability for AI: pai.stanford.edu. It starts Oct 9th and applications are due end of Sept. Its (hopefully) cool for a few reasons: The plan is to have one volunteer teacher for every 10 students! Apps have been open for a week and over 1,000+ folks have applied to teach. So we might actually be able to make this pretty big. I have built a lot of fun tools to make the assignments neat and easy for folks with just light math background. For example in your application, after about 1 hour of learning you will build an AI text detection app alongside a free coding agent -- that cares about probability education. If you are a teacher, we will give you the best training we can come up with. Practice on teachable agents and we will share what we have learned over decades of teaching at Stanford. Of course you get the best thing for improving: experience teaching a small group. This is all for good times. I am keeping it free for everyone. I got some funding from a kind alum and that is going to pay for all the free tools and servers. Woot! My guess is that a lot of folks on this thread would be awesome teachers. If you think thats you, it would be so cool if you wanted to come teach. Each volunteer means 10+ students get to take the class. And if you feel like telling your loved ones / communities that would be great to. Apply to learn: https://pai.stanford.edu/apply/pai1/student?r=ml Apply to teach: https://pai.stanford.edu/apply/pai1/sl?r=ml Anything that I learn from this course I will be happy to share with this community. Also ask me anything. I'll check this thread for the next few weeks. Rock on. And mods, thanks for doing what you do. submitted by /u/chrispiech [link] [comments]",
       "summary_html": "<!-- SC_OFF --><div><p>Hi <a href=\"https://www.reddit.com/r/machinelearning\">r/machinelearning</a>. Nice to meet you! My name is Chris Piech and I'm a professor at Stanford University in the AI lab.</p> <p>I built a class called Probability for AI: pai.stanford.edu. It starts Oct 9th and applications are due end of Sept. Its (hopefully) cool for a few reasons:</p> <ul> <li><strong>The plan is to have one volunteer teacher for every 10 students!</strong> Apps have been open for a week and over <strong>1,000+ folks</strong> have applied to teach. So we might actually be able to make this pretty big.</li> <li>I have built a lot of fun tools to make the assignments neat and easy for folks with just light math background. For example in your application, after about 1 hour of learning you will build an AI text detection app alongside a free coding agent -- that cares about probability education.</li> <li>If you are a teacher, we will give you the best training we can come up with. Practice on teachable agents and we will share what we have learned over decades of teaching at Stanford. Of course you get the best thing for improving: experience teaching a small group.</li> <li>This is all for good times. I am keeping it free for everyone. I got some funding from a kind alum and that is going to pay for all the free tools and servers. Woot!</li> </ul> <p>My guess is that a lot of folks on this thread would be awesome teachers. If you think thats you, it would be so cool if you wanted to come teach. Each volunteer means 10+ students get to take the class. And if you feel like telling your loved ones / communities that would be great to.</p> <p>Apply to learn: <a href=\"https://pai.stanford.edu/apply/pai1/student?r=ml\">https://pai.stanford.edu/apply/pai1/student?r=ml</a></p> <p>Apply to teach: <a href=\"https://pai.stanford.edu/apply/pai1/sl?r=ml\">https://pai.stanford.edu/apply/pai1/sl?r=ml</a></p> <p>Anything that I learn from this course I will be happy to share with this community. Also ask me anything. I'll check this thread for the next few weeks. Rock on. And mods, thanks for doing what you do.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/chrispiech\"> /u/chrispiech </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1wbf3ox/teach_ml_community_service_project_from_stanford_n/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1wbf3ox/teach_ml_community_service_project_from_stanford_n/\">[comments]</a></span>",
@@ -317,6 +924,23 @@
       "published": "2026-09-09T07:54:14+00:00",
       "published_ts": 1788940454,
       "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "new Nex model",
+      "summary": "new model of nex benchmark seems like good https://huggingface.co/nex-agi/Nex-N2.5-Max submitted by /u/Lordaizen639 [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbemg0/new_nex_model/\">  </a>  <!-- SC_OFF --><div><p>new model of nex benchmark seems like good<br/> <a href=\"https://huggingface.co/nex-agi/Nex-N2.5-Max\">https://huggingface.co/nex-agi/Nex-N2.5-Max</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Lordaizen639\"> /u/Lordaizen639 </a> <br/> <span><a href=\"https://huggingface.co/nex-agi/Nex-N2.5-Pro\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbemg0/new_nex_model/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wbemg0/new_nex_model/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T07:25:10+00:00",
+      "published_ts": 1788938710,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "AI Research & Papers"
+      ],
       "curated": false
     },
     {
@@ -346,22 +970,6 @@
       "published_ts": 1788933600,
       "smart_groups": [],
       "curated": true
-    },
-    {
-      "title": "Preview seed fixture (rolling)",
-      "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@f8682a62d706 (migration head: 20260908121500_trial_rejection_reason). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database \u2014 it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
-      "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@f8682a62d706 (migration head: 20260908121500_trial_rejection_reason). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database \u2014 it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
-      "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/preview-seed-fixture",
-      "source": "AutoGPT Releases - GitHub releases for AutoGPT",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-09-09T04:58:55+00:00",
-      "published_ts": 1788929935,
-      "smart_groups": [
-        "Agentic AI & Automations"
-      ],
-      "curated": false
     },
     {
       "title": "Show HN: Free AI image tools, no signup",
@@ -466,6 +1074,22 @@
       "curated": false
     },
     {
+      "title": "US accuses Chinese AI firms of 'malicious' copying of AI technology",
+      "summary": "https://www.reuters.com/technology/us-accuses-chinese-ai-firms-industrial-scale-theft-ai-technology-2026-09-08/ https://www.nbcnews.com/tech/tech-news/us-accuses-china-ai-developers-deepseek-alibaba-copying-american-ai-rcna596696 submitted by /u/External_Mood4719 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p><a href=\"https://www.reuters.com/technology/us-accuses-chinese-ai-firms-industrial-scale-theft-ai-technology-2026-09-08/\">https://www.reuters.com/technology/us-accuses-chinese-ai-firms-industrial-scale-theft-ai-technology-2026-09-08/</a></p> <p><a href=\"https://www.nbcnews.com/tech/tech-news/us-accuses-china-ai-developers-deepseek-alibaba-copying-american-ai-rcna596696\">https://www.nbcnews.com/tech/tech-news/us-accuses-china-ai-developers-deepseek-alibaba-copying-american-ai-rcna596696</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/External_Mood4719\"> /u/External_Mood4719 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wb9prm/us_accuses_chinese_ai_firms_of_malicious_copying/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wb9prm/us_accuses_chinese_ai_firms_of_malicious_copying/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wb9prm/us_accuses_chinese_ai_firms_of_malicious_copying/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T03:06:39+00:00",
+      "published_ts": 1788923199,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
       "title": "Meta launches Muse, a personal AI agent",
       "summary": "Article URL: https://apps.apple.com/us/app/muse-from-meta/id6760173601 Comments URL: https://news.ycombinator.com/item?id=49620331 Points: 1 # Comments: 1",
       "summary_html": "<p>Article URL: <a href=\"https://apps.apple.com/us/app/muse-from-meta/id6760173601\">https://apps.apple.com/us/app/muse-from-meta/id6760173601</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49620331\">https://news.ycombinator.com/item?id=49620331</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
@@ -541,6 +1165,22 @@
       "curated": false
     },
     {
+      "title": "Qwen3.8-Flash-Next on MLX-serve, 1m context is released!",
+      "summary": "Hi, I'm the co-creator of this Qwen3.8-Flash-Next engine support in MLX-serve. I've been tuning this one to run both fast, efficient and correct up 1m context using kv cache 8 bits in M5 Max 128GB. Qwen is working well at very long context as showed in the video (a snapshot at ~760k context), I let it build MLX Serve Monitor plugin that you've seen on the right side of Opencode2's app. The generation sustain through 1m context at around 40 tok/s on prose and 75 tok/s on coding. This specific quant uses 8 bits for dense layers and 4 bits expert layers, so the model's quality remains very high. I didn't build this engine to show off tok/s on a very short context, repetitive greedy generation, but a real temp 1.0 sampling through deep context work. You would need iogpu.wired_limit_mb=120000 before attempt 1mb full context, because it needs around ~117GB on peak memory usage. There will be bugs around here and there, I couldn't test everything and every single use case, pls report. You can grab it here: https://github.com/ddalcu/mlx-serve Model's weight: https://huggingface.co/ddalcu/Qwen3.8-Flash-Next-MLX-Serve-mixed-4-8bit Opencode2's plugin: https://github.com/beamivalice/opencode2-mlx-serve Launch parameters (for 1 concurrency) --model ./llm/models/Qwen3.8-Flash-Next-MLX-Serve-mixed-4-8bit \\ --host 127.0.0.1 \\ --port 11234 \\ --ctx-size 1048576 \\ --kv-quant 8 \\ --max-tokens 64000 \\ --mtp \\ --prefix-cache-mem 10GB \\ --prefix-cache-entries 1 \\ --ssm-checkpoint-max 16 \\ --metrics submitted by /u/Beamsters [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wb7p70/qwen38flashnext_on_mlxserve_1m_context_is_released/\">  </a>  <!-- SC_OFF --><div><p>Hi, I'm the co-creator of this Qwen3.8-Flash-Next engine support in MLX-serve. I've been tuning this one to run both fast, efficient and correct up 1m context using kv cache 8 bits in M5 Max 128GB. Qwen is working well at very long context as showed in the video (a snapshot at ~760k context), I let it build MLX Serve Monitor plugin that you've seen on the right side of Opencode2's app. The generation sustain through 1m context at around 40 tok/s on prose and 75 tok/s on coding. This specific quant uses 8 bits for dense layers and 4 bits expert layers, so the model's quality remains very high.</p> <p>I didn't build this engine to show off tok/s on a very short context, repetitive greedy generation, but a real temp 1.0 sampling through deep context work. You would need iogpu.wired_limit_mb=120000 before attempt 1mb full context, because it needs around ~117GB on peak memory usage. There will be bugs around here and there, I couldn't test everything and every single use case, pls report.</p> <p>You can grab it here: <a href=\"https://github.com/ddalcu/mlx-serve\">https://github.com/ddalcu/mlx-serve</a><br/> Model's weight: <a href=\"https://huggingface.co/ddalcu/Qwen3.8-Flash-Next-MLX-Serve-mixed-4-8bit\">https://huggingface.co/ddalcu/Qwen3.8-Flash-Next-MLX-Serve-mixed-4-8bit</a><br/> Opencode2's plugin: <a href=\"https://github.com/beamivalice/opencode2-mlx-serve\">https://github.com/beamivalice/opencode2-mlx-serve</a></p> <pre><code>Launch parameters (for 1 concurrency) --model ./llm/models/Qwen3.8-Flash-Next-MLX-Serve-mixed-4-8bit \\ --host 127.0.0.1 \\ --port 11234 \\ --ctx-size 1048576 \\ --kv-quant 8 \\ --max-tokens 64000 \\ --mtp \\ --prefix-cache-mem 10GB \\ --prefix-cache-entries 1 \\ --ssm-checkpoint-max 16 \\ --metrics </code></pre> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Beamsters\"> /u/Beamsters </a> <br/> <span><a href=\"https://v.redd.it/r3biihgo9eoh1\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wb7p70/qwen38flashnext_on_mlxserve_1m_context_is_released/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wb7p70/qwen38flashnext_on_mlxserve_1m_context_is_released/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T01:34:52+00:00",
+      "published_ts": 1788917692,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
       "title": "AI Responsibility \u2013 OpenAI and Anthropic",
       "summary": "Article URL: https://twitter.com/hilbertspaess/status/2097476196791709843 Comments URL: https://news.ycombinator.com/item?id=49619639 Points: 71 # Comments: 21",
       "summary_html": "<p>Article URL: <a href=\"https://twitter.com/hilbertspaess/status/2097476196791709843\">https://twitter.com/hilbertspaess/status/2097476196791709843</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49619639\">https://news.ycombinator.com/item?id=49619639</a></p>\n<p>Points: 71</p>\n<p># Comments: 21</p>",
@@ -611,6 +1251,20 @@
       "published_ts": 1788912486,
       "smart_groups": [],
       "curated": false
+    },
+    {
+      "title": "v0 adds one-click integrations for email, auth, search, and databases",
+      "summary": "We're working toward bringing parity across Vercel integration and v0 , starting with Resend , Amazon OpenSearch , MongoDB Atlas , Algolia and Clerk . Prompt v0 with what you want to build, and when your prompt requires a provider, v0 renders a connect card in the chat. With Marketplace integrations in v0, you get: Connect as you build: Prompt v0 with what you want to create, and connect the required provider inline. Automatic setup: Once connected, v0 handles the required environment variables and configuration. Provider skills loaded automatically: When you connect a provider that publishes agent skills, v0 loads them and generates code that follows the provider's recommended patterns. Provider-specific capabilities: Resend, for example, adds transactional email with React Email components. To get started, open a v0 chat and prompt what you want to add to your stack. Read more",
+      "summary_html": "<p>We're working toward bringing parity across <a href=\"https://vercel.com/marketplace\">Vercel integration</a> and <a href=\"https://v0.app/\">v0</a>, starting with <a href=\"https://v0.app/?pi=resend\">Resend</a>, <a href=\"https://v0.app/?pi=aws.opensearch\">Amazon OpenSearch</a>, <a href=\"https://v0.app/?pi=mongodb\">MongoDB Atlas</a>, <a href=\"https://v0.app/?pi=algolia\">Algolia</a> and <a href=\"https://v0.app/?pi=clerk\">Clerk</a>. Prompt v0 with what you want to build, and when your prompt requires a provider, v0 renders a connect card in the chat.</p><p>With Marketplace integrations in v0, you get:</p><ul><li><p><b>Connect as you build: </b>Prompt v0 with what you want to create, and connect the required provider inline.</p></li><li><p><b>Automatic setup: </b>Once connected, v0 handles the required environment variables and configuration.</p></li><li><p><b>Provider skills loaded automatically:</b> When you connect a provider that publishes agent skills, v0 loads them and generates code that follows the provider's recommended patterns.</p></li><li><p><b>Provider-specific capabilities: </b>Resend, for example, adds transactional email with React Email components.</p></li></ul><p>To get started, open a <a href=\"https://v0.app/\">v0</a> chat and prompt what you want to add to your stack.</p>\n<p>\n<a href=\"https://vercel.com/changelog/v0-adds-one-click-integrations-for-email-auth-search-and-databases\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/v0-adds-one-click-integrations-for-email-auth-search-and-databases",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-09-09T00:00:00+00:00",
+      "published_ts": 1788912000,
+      "smart_groups": [],
+      "curated": true
     }
   ]
 }
