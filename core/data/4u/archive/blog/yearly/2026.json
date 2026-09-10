@@ -1,5 +1,371 @@
 [
   {
+    "title": "The AI policy window is open. We need to act",
+    "summary": "Article URL: https://openai.com/index/ai-policy-window/ Comments URL: https://news.ycombinator.com/item?id=49638145 Points: 1 # Comments: 1",
+    "summary_html": "<p>Article URL: <a href=\"https://openai.com/index/ai-policy-window/\">https://openai.com/index/ai-policy-window/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49638145\">https://news.ycombinator.com/item?id=49638145</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
+    "link": "https://openai.com/index/ai-policy-window/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-10T03:45:14+00:00",
+    "published_ts": 1789011914,
+    "smart_groups": [
+      "LLM & Foundation Model Releases"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Rebuilding an AI-made browser game with Astra 6",
+    "summary": "Article URL: https://arcane-orb-workshop.pages.dev/ Comments URL: https://news.ycombinator.com/item?id=49638128 Points: 2 # Comments: 0",
+    "summary_html": "<p>Article URL: <a href=\"https://arcane-orb-workshop.pages.dev/\">https://arcane-orb-workshop.pages.dev/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49638128\">https://news.ycombinator.com/item?id=49638128</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://arcane-orb-workshop.pages.dev/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-10T03:42:16+00:00",
+    "published_ts": 1789011736,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Sergey Brin is cooking up Google's AI destiny",
+    "summary": "Article URL: https://www.businessinsider.com/sergey-brin-google-gemini-ai-microkitchen-2026-9 Comments URL: https://news.ycombinator.com/item?id=49638083 Points: 2 # Comments: 0",
+    "summary_html": "<p>Article URL: <a href=\"https://www.businessinsider.com/sergey-brin-google-gemini-ai-microkitchen-2026-9\">https://www.businessinsider.com/sergey-brin-google-gemini-ai-microkitchen-2026-9</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49638083\">https://news.ycombinator.com/item?id=49638083</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://www.businessinsider.com/sergey-brin-google-gemini-ai-microkitchen-2026-9",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-10T03:34:12+00:00",
+    "published_ts": 1789011252,
+    "smart_groups": [
+      "LLM & Foundation Model Releases"
+    ],
+    "curated": false
+  },
+  {
+    "title": "I trained a 348M model trained from scratch on 22.7B tokens that does 14 digit arithmetic [P]",
+    "summary": "Hello this is my fifth small language model I've made and apart of my third series and it has been a lot of work but it payed off: **348M parameters, 22.7B tokens**, then fine-tuned into a math model that solves arithmetic by *showing the work* — column addition with carries, borrow chains, partial-product multiplication — rather than guessing at an answer. Last time I posted a 326M model trained on 10B tokens. This has about 2.3× the data, and the math side is WAY better than my previous two math models. --- ## The benchmarks **99.4% average across the nine GPT-3 arithmetic sub-tasks**, which does much better past even where I trained it. | Task | GPT-3 175B *(few-shot, direct)* | **This model (348M)** | |---|:--:|:--:| | 2-digit add | ~100% | **100%** | | 3-digit add | 80.4% | **100%** | | 4-digit add | 25.5% | **100%** | | 5-digit add | 9.3% | **100%** | | 2-digit sub | ~99% | **99.3%** | | 3-digit sub | 94.2% | **98.3%** | | 4-digit sub | 26.8% | **98.3%** | | 5-digit sub | 9.9% | **99.0%** | | 2-digit mult | 29.2% | **100%** | n=300 per sub-task, greedy, exact match. GPT-3's numbers are direct-answer; mine uses trained-in worked steps. Neither uses a calculator. ## The cool part **It adds cleanly up to 14 digits, and the reason it *couldn't* before was the vocabulary, not actually arithmetic.** Training only ever named six place values (`ones` … `hundred-thousands`). The model learnt the *pattern* and invented two more on its own — `millions` and `ten-millions` appear in **zero** training examples — so it handled 7 and 8 digits fine. At 9 digits it ran out of names, and skipped the column, then returned an answer exactly one digit short: ``` 483729164 + 519248637 ... ten-millions: 8 + 1 + 1 (carry) = 10, write 0 carry 1. Final carry: write 1. The answer is 102977801 ← eight columns for a nine-digit problem ``` Every column it computed was perfect. One was never enumerated. Extending the place-name list from 6 entries to 19 moved the clean ceiling from **8 digits to 14**: | Width | 6 | 7 | 8 | 9 | 10 | 12 | 14 | 16 | 18 | |---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:| | before | 100 | 100 | 100 | **0** | **0** | **0** | **0** | 0 | 0 | | after | 100 | 100 | 100 | **100** | **95** | **100** | **90** | 65 | 25 | A six-item list became a nineteen-item list. That was the entire fix. ## Other things it does - **3×3 multiplication: 98%** — it folds partial products pairwise through the column routine instead of asserting the sum - **Negative results: 85%** (100% at 1 digit, 58% at 5 — the magnitude comparison is the weak step, not the arithmetic) - **Reasoning traces are load-bearing**: 95.3% of the time the working is valid *and* the answer is right; only 0.7% are \"valid working, wrong answer.\" If the columns look right, the answer almost certainly is. ``` There were 15000 votes and 6842 were rejected. Here's how many counted: Start with 15000. Then subtract 6842. Subtract 15000 - 6842 column by column: ones: 10 - 2 = 8, borrow 1. tens: 9 (after borrow) - 4 = 5, borrow 1. hundreds: 9 (after borrow) - 8 = 1, borrow 1. thousands: 14 (after borrow) - 6 = 8, borrow 1. ten-thousands: 0 (after borrow) - 0 = 0. So 15000 - 6842 = 8158. The answer is 8158. ``` ## What it's bad at, tbh - **Word problems: GSM8K 4%.** Best word-problem set is ASDiv at 16.5%. It converts one sentence into one operation reasonably often and basically cannot chain operations. - **The failure mode is operation *selection*, not arithmetic.** `\"drops in 836 more\"` gets read as subtraction. There's a visible tell: traces that say `\"multiply X * Y\"` and show columns are reliable; traces that open `\"First, calculate…\"` and assert a number in prose are not. - **No division at all.** 4×4 multiplication is a hard wall. - **Greedy decoding required** — sampling corrupts the column routine mid-chain. - One caveat I'll flag myself: the arithmetic harness orders subtraction operands, so no answer in that table is negative. Negatives are measured separately (the 85% above) rather than folded into the average. ## Base and instruct The math model sits on a base and instruct pair. lm-eval-harness, 0-shot, full test sets: | | ARC-E | ARC-C | HellaSwag | OpenBookQA | PIQA | WinoGrande | MMLU | Avg | |---|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:| | **350M V3 base** | 56.6 | 33.3 | 35.9 | 34.6 | 67.0 | 51.5 | 23.8 | **43.2** | | **350M V3 instruct** | 50.9 | 29.7 | 35.9 | 33.8 | 66.6 | 51.2 | 24.4 | **41.8** | Instruction tuning *lowers* MC benchmark scores for this family which is a pretty common cost of instruct tuning. ## Notes Trained on 2× Tesla V100 plus some rented time. LLaMA-architecture, so it runs anywhere — F16 GGUF and safetensors for all three. The math model took **10 full fine-tuning rounds and 3 LoRA adapters**. The LoRAs cost about 1% of the post-training tokens and did most of the useful work; the ten full rounds spent most of their budget undoing each other's regressions (round 7 gained subtraction and lost 23 points of 2-digit addition, that sort of thing). All of it is documented on the model card, failures included. Also worth saying: someone independently tested it after I published and found two of my numbers were wrong — one *understated* the model by 40 points because I'd measured it at n=24. Both are corrected on the card now. If you find something broken, I'd genuinely like to know. **Math:** https://huggingface.co/nkthebass/tinybrainbot-350mV3-math **Instruct:** https://huggingface.co/nkthebass/tinybrainbot-350mV3-instruct **Base:** https://huggingface.co/nkthebass/tinybrainbot-350mV3-base LMK what yall think. submitted by /u/nkthebass [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Hello this is my fifth small language model I've made and apart of my third series and it has been a lot of work but it payed off: **348M parameters, 22.7B tokens**, then fine-tuned into a math model that solves arithmetic by *showing the work* — column addition with carries, borrow chains, partial-product multiplication — rather than guessing at an answer.</p> <p>Last time I posted a 326M model trained on 10B tokens. This has about 2.3× the data, and the math side is WAY better than my previous two math models.</p> <p>---</p> <p>## The benchmarks</p> <p>**99.4% average across the nine GPT-3 arithmetic sub-tasks**, which does much better past even where I trained it.</p> <p>| Task | GPT-3 175B *(few-shot, direct)* | **This model (348M)** |</p> <p>|---|:--:|:--:|</p> <p>| 2-digit add | ~100% | **100%** |</p> <p>| 3-digit add | 80.4% | **100%** |</p> <p>| 4-digit add | 25.5% | **100%** |</p> <p>| 5-digit add | 9.3% | **100%** |</p> <p>| 2-digit sub | ~99% | **99.3%** |</p> <p>| 3-digit sub | 94.2% | **98.3%** |</p> <p>| 4-digit sub | 26.8% | **98.3%** |</p> <p>| 5-digit sub | 9.9% | **99.0%** |</p> <p>| 2-digit mult | 29.2% | **100%** |</p> <p>n=300 per sub-task, greedy, exact match. GPT-3's numbers are direct-answer; mine uses trained-in worked steps. Neither uses a calculator.</p> <p>## The cool part</p> <p>**It adds cleanly up to 14 digits, and the reason it *couldn't* before was the vocabulary, not actually arithmetic.**</p> <p>Training only ever named six place values (`ones` … `hundred-thousands`). The model learnt the *pattern* and invented two more on its own — `millions` and `ten-millions` appear in **zero** training examples — so it handled 7 and 8 digits fine. At 9 digits it ran out of names, and skipped the column, then returned an answer exactly one digit short:</p> <p>```</p> <p>483729164 + 519248637</p> <p>... ten-millions: 8 + 1 + 1 (carry) = 10, write 0 carry 1. Final carry: write 1.</p> <p>The answer is 102977801 ← eight columns for a nine-digit problem</p> <p>```</p> <p>Every column it computed was perfect. One was never enumerated. Extending the place-name list from 6 entries to 19 moved the clean ceiling from **8 digits to 14**:</p> <p>| Width | 6 | 7 | 8 | 9 | 10 | 12 | 14 | 16 | 18 |</p> <p>|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|</p> <p>| before | 100 | 100 | 100 | **0** | **0** | **0** | **0** | 0 | 0 |</p> <p>| after | 100 | 100 | 100 | **100** | **95** | **100** | **90** | 65 | 25 |</p> <p>A six-item list became a nineteen-item list. That was the entire fix.</p> <p>## Other things it does</p> <p>- **3×3 multiplication: 98%** — it folds partial products pairwise through the column routine instead of asserting the sum</p> <p>- **Negative results: 85%** (100% at 1 digit, 58% at 5 — the magnitude comparison is the weak step, not the arithmetic)</p> <p>- **Reasoning traces are load-bearing**: 95.3% of the time the working is valid *and* the answer is right; only 0.7% are \"valid working, wrong answer.\" If the columns look right, the answer almost certainly is.</p> <p>```</p> <p>There were 15000 votes and 6842 were rejected. Here's how many counted:</p> <p> Start with 15000. Then subtract 6842. Subtract 15000 - 6842 column by column:</p> <p>ones: 10 - 2 = 8, borrow 1. tens: 9 (after borrow) - 4 = 5, borrow 1.</p> <p>hundreds: 9 (after borrow) - 8 = 1, borrow 1. thousands: 14 (after borrow) - 6 = 8,</p> <p>borrow 1. ten-thousands: 0 (after borrow) - 0 = 0. So 15000 - 6842 = 8158.</p> <p>The answer is 8158.</p> <p>```</p> <p>## What it's bad at, tbh</p> <p>- **Word problems: GSM8K 4%.** Best word-problem set is ASDiv at 16.5%. It converts one sentence into one operation reasonably often and basically cannot chain operations.</p> <p>- **The failure mode is operation *selection*, not arithmetic.** `\"drops in 836 more\"` gets read as subtraction. There's a visible tell: traces that say `\"multiply X * Y\"` and show columns are reliable; traces that open `\"First, calculate…\"` and assert a number in prose are not.</p> <p>- **No division at all.** 4×4 multiplication is a hard wall.</p> <p>- **Greedy decoding required** — sampling corrupts the column routine mid-chain.</p> <p>- One caveat I'll flag myself: the arithmetic harness orders subtraction operands, so no answer in that table is negative. Negatives are measured separately (the 85% above) rather than folded into the average.</p> <p>## Base and instruct</p> <p>The math model sits on a base and instruct pair. lm-eval-harness, 0-shot, full test sets:</p> <p>| | ARC-E | ARC-C | HellaSwag | OpenBookQA | PIQA | WinoGrande | MMLU | Avg |</p> <p>|---|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|</p> <p>| **350M V3 base** | 56.6 | 33.3 | 35.9 | 34.6 | 67.0 | 51.5 | 23.8 | **43.2** |</p> <p>| **350M V3 instruct** | 50.9 | 29.7 | 35.9 | 33.8 | 66.6 | 51.2 | 24.4 | **41.8** |</p> <p>Instruction tuning *lowers* MC benchmark scores for this family which is a pretty common cost of instruct tuning.</p> <p>## Notes</p> <p>Trained on 2× Tesla V100 plus some rented time. LLaMA-architecture, so it runs anywhere — F16 GGUF and safetensors for all three.</p> <p>The math model took **10 full fine-tuning rounds and 3 LoRA adapters**. The LoRAs cost about 1% of the post-training tokens and did most of the useful work; the ten full rounds spent most of their budget undoing each other's regressions (round 7 gained subtraction and lost 23 points of 2-digit addition, that sort of thing). All of it is documented on the model card, failures included.</p> <p>Also worth saying: someone independently tested it after I published and found two of my numbers were wrong — one *understated* the model by 40 points because I'd measured it at n=24. Both are corrected on the card now. If you find something broken, I'd genuinely like to know.</p> <p>**Math:** <a href=\"https://huggingface.co/nkthebass/tinybrainbot-350mV3-math\">https://huggingface.co/nkthebass/tinybrainbot-350mV3-math</a></p> <p>**Instruct:** <a href=\"https://huggingface.co/nkthebass/tinybrainbot-350mV3-instruct\">https://huggingface.co/nkthebass/tinybrainbot-350mV3-instruct</a></p> <p>**Base:** <a href=\"https://huggingface.co/nkthebass/tinybrainbot-350mV3-base\">https://huggingface.co/nkthebass/tinybrainbot-350mV3-base</a></p> <p>LMK what yall think.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/nkthebass\"> /u/nkthebass </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1wc7hmu/i_trained_a_348m_model_trained_from_scratch_on/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1wc7hmu/i_trained_a_348m_model_trained_from_scratch_on/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1wc7hmu/i_trained_a_348m_model_trained_from_scratch_on/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-10T03:28:41+00:00",
+    "published_ts": 1789010921,
+    "smart_groups": [
+      "LLM & Foundation Model Releases",
+      "AI Research & Papers",
+      "AI Business & Funding"
+    ],
+    "curated": false
+  },
+  {
+    "title": "AI Made Delegation Easy: Structure Is Still the Skill",
+    "summary": "Article URL: https://syntheticauth.ai/posts/ai-made-delegation-easy-structure-is-still-the-skill Comments URL: https://news.ycombinator.com/item?id=49637658 Points: 1 # Comments: 0",
+    "summary_html": "<p>Article URL: <a href=\"https://syntheticauth.ai/posts/ai-made-delegation-easy-structure-is-still-the-skill\">https://syntheticauth.ai/posts/ai-made-delegation-easy-structure-is-still-the-skill</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49637658\">https://news.ycombinator.com/item?id=49637658</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://syntheticauth.ai/posts/ai-made-delegation-easy-structure-is-still-the-skill",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-10T02:33:16+00:00",
+    "published_ts": 1789007596,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Kepler Compute- New memory startup for AI",
+    "summary": "Article URL: https://keplercompute.com Comments URL: https://news.ycombinator.com/item?id=49637652 Points: 2 # Comments: 1",
+    "summary_html": "<p>Article URL: <a href=\"https://keplercompute.com\">https://keplercompute.com</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49637652\">https://news.ycombinator.com/item?id=49637652</a></p>\n<p>Points: 2</p>\n<p># Comments: 1</p>",
+    "link": "https://keplercompute.com",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-10T02:32:48+00:00",
+    "published_ts": 1789007568,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "I tried to make a real fly connectome learn to play Pong. It didn't — and auditing why turned out to be way more interesting than if it had worked [p]",
+    "summary": "You've probably seen the fly-brain-plays-Doom / Minecraft / Beat Saber clips going around this week, from the new MaleCNS v1.0 connectome release (166k neurons, real EM reconstruction, not a toy model). Cool clips. Nobody seemed to be checking whether any of it works though, versus just producing motion in a game engine generous enough to make anything look alive. So I picked the least forgiving test bed around: Pong, one binary hit or miss signal measured every frame, nowhere to hide a null result, and tried to get a small real subgraph of the connectome to track the ball via dopamine-style plasticity. Short version: it didn't learn. Working out why took auditing individual synapses, and it turned into a decent case study in a circuit not working being more informative than it working: Fixed a neuPrint regex bug that silently zeroed out two entire neuron populations (full-match vs substring semantics, not obvious from the docs). Found the original neuron selection had no path at all from photoreceptors to anything else. Real photoreceptors don't synapse directly onto motion detectors, there's a whole intermediate layer missing. Got a working pipeline, turned learning on vs off, and got bit-for-bit identical results in both conditions across multiple seeds, even though the weights were verifiably changing under the hood. Traced that to half of the 4 available motor neurons having zero synapses from any sensory pathway in the model. Not weak signal, zero. They'd been assigned to the \"paddle down\" group by array index, purely by coincidence, and could never have fired no matter what the learning rule did. Rebuilt the circuit around a better biological hypothesis (swapped a threat-detection pathway for one tied to visual target tracking during courtship pursuit), got that literal hypothesis refuted by the data, then followed the trail to a different descending neuron that actually connected end to end. Finally got learning-on vs learning-off to diverge for the first time, except the effect looks like the learning rule quieting the whole system down rather than anything resembling skill improvement (misses outnumber hits, so punishment dominates and shrinks the motor response). Then I checked whether the bigger, viral projects had actually solved this. They hadn't either: the Doom project's own repo says it failed its own validation gates after six iterations, the Minecraft mod's own limitations section admits the real motion-detection pathway stays silent and the escape and foraging behaviors are hand-injected or reflex-layer fallbacks rather than emergent, and the Beat Saber creator's own replies admit it's overfit to one track with replay data mixed into the input. Full writeup with the gory audit details, the connectivity numbers, and the comparison to the other projects is here: https://jonatasperaza.medium.com/i-made-a-real-fly-brain-play-pong-it-didnt-learn-and-that-s-the-interesting-part-80b8560695fe . Curious if anyone here has poked at MaleCNS v1.0 directly and hit similar walls, especially around the central complex and steering circuits. That seems like the obvious next thing to simulate properly instead of routing around it. submitted by /u/oPeraza2007 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>You've probably seen the fly-brain-plays-Doom / Minecraft / Beat Saber clips going around this week, from the new MaleCNS v1.0 connectome release (166k neurons, real EM reconstruction, not a toy model).</p> <p>Cool clips. Nobody seemed to be checking whether any of it works though, versus just producing motion in a game engine generous enough to make anything look alive. So I picked the least forgiving test bed around: Pong, one binary hit or miss signal measured every frame, nowhere to hide a null result, and tried to get a small real subgraph of the connectome to track the ball via dopamine-style plasticity.</p> <p>Short version: it didn't learn. Working out why took auditing individual synapses, and it turned into a decent case study in a circuit not working being more informative than it working:</p> <ul> <li>Fixed a neuPrint regex bug that silently zeroed out two entire neuron populations (full-match vs substring semantics, not obvious from the docs).</li> <li>Found the original neuron selection had no path at all from photoreceptors to anything else. Real photoreceptors don't synapse directly onto motion detectors, there's a whole intermediate layer missing.</li> <li>Got a working pipeline, turned learning on vs off, and got bit-for-bit identical results in both conditions across multiple seeds, even though the weights were verifiably changing under the hood.</li> <li>Traced that to half of the 4 available motor neurons having zero synapses from any sensory pathway in the model. Not weak signal, zero. They'd been assigned to the \"paddle down\" group by array index, purely by coincidence, and could never have fired no matter what the learning rule did.</li> <li>Rebuilt the circuit around a better biological hypothesis (swapped a threat-detection pathway for one tied to visual target tracking during courtship pursuit), got that literal hypothesis refuted by the data, then followed the trail to a different descending neuron that actually connected end to end.</li> <li>Finally got learning-on vs learning-off to diverge for the first time, except the effect looks like the learning rule quieting the whole system down rather than anything resembling skill improvement (misses outnumber hits, so punishment dominates and shrinks the motor response).</li> </ul> <p>Then I checked whether the bigger, viral projects had actually solved this. They hadn't either: the Doom project's own repo says it failed its own validation gates after six iterations, the Minecraft mod's own limitations section admits the real motion-detection pathway stays silent and the escape and foraging behaviors are hand-injected or reflex-layer fallbacks rather than emergent, and the Beat Saber creator's own replies admit it's overfit to one track with replay data mixed into the input.</p> <p>Full writeup with the gory audit details, the connectivity numbers, and the comparison to the other projects is here: <a href=\"https://jonatasperaza.medium.com/i-made-a-real-fly-brain-play-pong-it-didnt-learn-and-that-s-the-interesting-part-80b8560695fe\">https://jonatasperaza.medium.com/i-made-a-real-fly-brain-play-pong-it-didnt-learn-and-that-s-the-interesting-part-80b8560695fe</a>.</p> <p>Curious if anyone here has poked at MaleCNS v1.0 directly and hit similar walls, especially around the central complex and steering circuits. That seems like the obvious next thing to simulate properly instead of routing around it.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/oPeraza2007\"> /u/oPeraza2007 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1wc67ci/i_tried_to_make_a_real_fly_connectome_learn_to/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1wc67ci/i_tried_to_make_a_real_fly_connectome_learn_to/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1wc67ci/i_tried_to_make_a_real_fly_connectome_learn_to/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-10T02:28:58+00:00",
+    "published_ts": 1789007338,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Siri Recap: AI Memory with Apple Watch",
+    "summary": "Article URL: https://www.apple.com/hk/en/apple-watch-series-12/ Comments URL: https://news.ycombinator.com/item?id=49637605 Points: 1 # Comments: 0",
+    "summary_html": "<p>Article URL: <a href=\"https://www.apple.com/hk/en/apple-watch-series-12/\">https://www.apple.com/hk/en/apple-watch-series-12/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49637605\">https://news.ycombinator.com/item?id=49637605</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://www.apple.com/hk/en/apple-watch-series-12/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-10T02:27:17+00:00",
+    "published_ts": 1789007237,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "ICDE Results [D]",
+    "summary": "Who else is anticipating ICDE results tomorrow? Post your results here and let's discuss! submitted by /u/mythrowaway0852 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Who else is anticipating ICDE results tomorrow? Post your results here and let's discuss!</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/mythrowaway0852\"> /u/mythrowaway0852 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1wc5zak/icde_results_d/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1wc5zak/icde_results_d/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1wc5zak/icde_results_d/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-10T02:19:07+00:00",
+    "published_ts": 1789006747,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "A Stupid Idea for AI Alignment We Came with by Looking at Specification Gaming",
+    "summary": "Article URL: https://slimemoldtimemold.com/2026/08/05/a-stupid-idea-for-ai-alignment-we-came-up-with-by-looking-at-the-list-of-specification-gaming-behaviours/ Comments URL: https://news.ycombinator.com/item?id=49637395 Points: 20 # Comments: 13",
+    "summary_html": "<p>Article URL: <a href=\"https://slimemoldtimemold.com/2026/08/05/a-stupid-idea-for-ai-alignment-we-came-up-with-by-looking-at-the-list-of-specification-gaming-behaviours/\">https://slimemoldtimemold.com/2026/08/05/a-stupid-idea-for-ai-alignment-we-came-up-with-by-looking-at-the-list-of-specification-gaming-behaviours/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49637395\">https://news.ycombinator.com/item?id=49637395</a></p>\n<p>Points: 20</p>\n<p># Comments: 13</p>",
+    "link": "https://slimemoldtimemold.com/2026/08/05/a-stupid-idea-for-ai-alignment-we-came-up-with-by-looking-at-the-list-of-specification-gaming-behaviours/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-10T01:59:51+00:00",
+    "published_ts": 1789005591,
+    "smart_groups": [
+      "AI Safety & Ethics"
+    ],
+    "curated": false
+  },
+  {
+    "title": "RDC – Remote Desktop Control for AI Agents",
+    "summary": "Article URL: https://github.com/bscott/rdc Comments URL: https://news.ycombinator.com/item?id=49637339 Points: 3 # Comments: 0",
+    "summary_html": "<p>Article URL: <a href=\"https://github.com/bscott/rdc\">https://github.com/bscott/rdc</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49637339\">https://news.ycombinator.com/item?id=49637339</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+    "link": "https://github.com/bscott/rdc",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-10T01:50:47+00:00",
+    "published_ts": 1789005047,
+    "smart_groups": [
+      "Agentic AI & Automations"
+    ],
+    "curated": false
+  },
+  {
+    "title": "California enacts AI safety evaluation laws backed by Anthropic and OpenAI",
+    "summary": "Article URL: https://politico.com/news/2026/09/09/newsom-signs-ai-safety-bills-backed-by-anthropic-openai-01069928 Comments URL: https://news.ycombinator.com/item?id=49637268 Points: 3 # Comments: 1",
+    "summary_html": "<p>Article URL: <a href=\"https://politico.com/news/2026/09/09/newsom-signs-ai-safety-bills-backed-by-anthropic-openai-01069928\">https://politico.com/news/2026/09/09/newsom-signs-ai-safety-bills-backed-by-anthropic-openai-01069928</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49637268\">https://news.ycombinator.com/item?id=49637268</a></p>\n<p>Points: 3</p>\n<p># Comments: 1</p>",
+    "link": "https://politico.com/news/2026/09/09/newsom-signs-ai-safety-bills-backed-by-anthropic-openai-01069928",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-10T01:42:45+00:00",
+    "published_ts": 1789004565,
+    "smart_groups": [
+      "LLM & Foundation Model Releases",
+      "AI Safety & Ethics",
+      "AI Business & Funding"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Free course covering basics of AI to be available to Canadians by end of year",
+    "summary": "Article URL: https://www.cbc.ca/news/politics/ai-essentials-government-courses-solomon-9.7337417 Comments URL: https://news.ycombinator.com/item?id=49637185 Points: 1 # Comments: 0",
+    "summary_html": "<p>Article URL: <a href=\"https://www.cbc.ca/news/politics/ai-essentials-government-courses-solomon-9.7337417\">https://www.cbc.ca/news/politics/ai-essentials-government-courses-solomon-9.7337417</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49637185\">https://news.ycombinator.com/item?id=49637185</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://www.cbc.ca/news/politics/ai-essentials-government-courses-solomon-9.7337417",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-10T01:34:32+00:00",
+    "published_ts": 1789004072,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "OpenAI has solved the Navier-Stokes Millennium problem using $15M of AI effort",
+    "summary": "Article URL: https://www.newscientist.com/article/2588063-openai-has-solved-the-navier-stokes-millennium-problem-using-15m-of-ai-effort/ Comments URL: https://news.ycombinator.com/item?id=49637103 Points: 1 # Comments: 1",
+    "summary_html": "<p>Article URL: <a href=\"https://www.newscientist.com/article/2588063-openai-has-solved-the-navier-stokes-millennium-problem-using-15m-of-ai-effort/\">https://www.newscientist.com/article/2588063-openai-has-solved-the-navier-stokes-millennium-problem-using-15m-of-ai-effort/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49637103\">https://news.ycombinator.com/item?id=49637103</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
+    "link": "https://www.newscientist.com/article/2588063-openai-has-solved-the-navier-stokes-millennium-problem-using-15m-of-ai-effort/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-10T01:25:56+00:00",
+    "published_ts": 1789003556,
+    "smart_groups": [
+      "LLM & Foundation Model Releases"
+    ],
+    "curated": false
+  },
+  {
+    "title": "The Open Source AI Stack",
+    "summary": "Article URL: https://www.together.ai/blog/the-open-source-ai-stack Comments URL: https://news.ycombinator.com/item?id=49637004 Points: 1 # Comments: 0",
+    "summary_html": "<p>Article URL: <a href=\"https://www.together.ai/blog/the-open-source-ai-stack\">https://www.together.ai/blog/the-open-source-ai-stack</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49637004\">https://news.ycombinator.com/item?id=49637004</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://www.together.ai/blog/the-open-source-ai-stack",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-10T01:13:23+00:00",
+    "published_ts": 1789002803,
+    "smart_groups": [],
+    "curated": true
+  },
+  {
+    "title": "I'm sorry, you're not going to die from an AI-engineered supervirus",
+    "summary": "Article URL: https://blog.genesmindsmachines.com/p/im-sorry-youre-not-going-to-die-from Comments URL: https://news.ycombinator.com/item?id=49636906 Points: 66 # Comments: 92",
+    "summary_html": "<p>Article URL: <a href=\"https://blog.genesmindsmachines.com/p/im-sorry-youre-not-going-to-die-from\">https://blog.genesmindsmachines.com/p/im-sorry-youre-not-going-to-die-from</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49636906\">https://news.ycombinator.com/item?id=49636906</a></p>\n<p>Points: 66</p>\n<p># Comments: 92</p>",
+    "link": "https://blog.genesmindsmachines.com/p/im-sorry-youre-not-going-to-die-from",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-10T01:02:44+00:00",
+    "published_ts": 1789002164,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Navier–Stokes, AI and the future of research in mathematics [pdf]",
+    "summary": "Article URL: https://bms.ulb.ac.be/data/uploads/untitled.pdf Comments URL: https://news.ycombinator.com/item?id=49636560 Points: 5 # Comments: 2",
+    "summary_html": "<p>Article URL: <a href=\"https://bms.ulb.ac.be/data/uploads/untitled.pdf\">https://bms.ulb.ac.be/data/uploads/untitled.pdf</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49636560\">https://news.ycombinator.com/item?id=49636560</a></p>\n<p>Points: 5</p>\n<p># Comments: 2</p>",
+    "link": "https://bms.ulb.ac.be/data/uploads/untitled.pdf",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-10T00:26:41+00:00",
+    "published_ts": 1789000001,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Anthropic discloses fourth AI hacking incident missed in earlier review",
+    "summary": "Article URL: https://www.reuters.com/legal/litigation/anthropic-reports-fourth-cybersecurity-incident-with-early-version-claude-2026-09-09/ Comments URL: https://news.ycombinator.com/item?id=49636547 Points: 11 # Comments: 6",
+    "summary_html": "<p>Article URL: <a href=\"https://www.reuters.com/legal/litigation/anthropic-reports-fourth-cybersecurity-incident-with-early-version-claude-2026-09-09/\">https://www.reuters.com/legal/litigation/anthropic-reports-fourth-cybersecurity-incident-with-early-version-claude-2026-09-09/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49636547\">https://news.ycombinator.com/item?id=49636547</a></p>\n<p>Points: 11</p>\n<p># Comments: 6</p>",
+    "link": "https://www.reuters.com/legal/litigation/anthropic-reports-fourth-cybersecurity-incident-with-early-version-claude-2026-09-09/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-10T00:25:32+00:00",
+    "published_ts": 1788999932,
+    "smart_groups": [
+      "LLM & Foundation Model Releases"
+    ],
+    "curated": false
+  },
+  {
+    "title": "I made a way to migrate between embedding models without re-embedding your entire corpus [R]",
+    "summary": "So I was playingw ith embedding models I saw that when you upgrade from model A to B, you face a very big backfilling cost Ie, suppose you have a 1b vectors from model A, and then you want to use model B. This would mean you have to re-embed all of your documents with model B before you can even serve with the model, and on an H100, it would take ~108 days (qwen embed 8b, 106 docs/second). But I found an easier way to do it. The method is really simple; from the old index made with the source model, take K documents and rerank them with the new model. We see that when K is sufficient, the retrieval quality is the same as target model. (determining k is the hard part). I've tested 63 migrations on upto 1 million documents. The best result I got was upgrading qwen4b -> to 8b, and at 50 documents, it was the same as native retrieval. This method forgos the expensive upfront re-embedding cost, as you can take documents straight from the old index. embedflow works with qdrant, pgvector, faiss, and can be easily downloaded with pypi pip install embedflow the github is public: https://github.com/arnsri33/embedflow I want you guys to try it out, and see if you guys can use it in your own workflow. submitted by /u/Potential_Low_1183 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>So I was playingw ith embedding models I saw that when you upgrade from model A to B, you face a very big backfilling cost</p> <p>Ie, suppose you have a 1b vectors from model A, and then you want to use model B. This would mean you have to re-embed all of your documents with model B before you can even serve with the model, and on an H100, it would take ~108 days (qwen embed 8b, 106 docs/second). But I found an easier way to do it.</p> <p>The method is really simple; from the old index made with the source model, take K documents and rerank them with the new model. We see that when K is sufficient, the retrieval quality is the same as target model. (determining k is the hard part). I've tested 63 migrations on upto 1 million documents.</p> <p>The best result I got was upgrading qwen4b -&gt; to 8b, and at 50 documents, it was the same as native retrieval.</p> <p>This method forgos the expensive upfront re-embedding cost, as you can take documents straight from the old index.</p> <p>embedflow works with qdrant, pgvector, faiss, and can be easily downloaded with pypi</p> <p>pip install embedflow</p> <p>the github is public: <a href=\"https://github.com/arnsri33/embedflow\">https://github.com/arnsri33/embedflow</a></p> <p>I want you guys to try it out, and see if you guys can use it in your own workflow.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Potential_Low_1183\"> /u/Potential_Low_1183 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1wc34d2/i_made_a_way_to_migrate_between_embedding_models/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1wc34d2/i_made_a_way_to_migrate_between_embedding_models/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1wc34d2/i_made_a_way_to_migrate_between_embedding_models/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-10T00:14:24+00:00",
+    "published_ts": 1788999264,
+    "smart_groups": [
+      "NLP & Language Understanding",
+      "AI Hardware & Chips"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Coinbase Design Systems Are Powering the AI Prototyping Era",
+    "summary": "Article URL: https://www.coinbase.com/blog/how-coinbase-design-systems-are-powering-the-ai-prototyping-era Comments URL: https://news.ycombinator.com/item?id=49636459 Points: 2 # Comments: 0",
+    "summary_html": "<p>Article URL: <a href=\"https://www.coinbase.com/blog/how-coinbase-design-systems-are-powering-the-ai-prototyping-era\">https://www.coinbase.com/blog/how-coinbase-design-systems-are-powering-the-ai-prototyping-era</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49636459\">https://news.ycombinator.com/item?id=49636459</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://www.coinbase.com/blog/how-coinbase-design-systems-are-powering-the-ai-prototyping-era",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-10T00:13:16+00:00",
+    "published_ts": 1788999196,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Show HN: Kin – A code repository built for AI and the people working with it",
+    "summary": "Article URL: https://github.com/firelock-ai/kin Comments URL: https://news.ycombinator.com/item?id=49636442 Points: 1 # Comments: 1",
+    "summary_html": "<p>Article URL: <a href=\"https://github.com/firelock-ai/kin\">https://github.com/firelock-ai/kin</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49636442\">https://news.ycombinator.com/item?id=49636442</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
+    "link": "https://github.com/firelock-ai/kin",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-10T00:10:33+00:00",
+    "published_ts": 1788999033,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Muse, the band, lost its social media handles to Muse, Meta's new AI agent",
+    "summary": "Article URL: https://www.engadget.com/2254419/muse-the-band-lost-its-social-media-handles-to-muse-meta-s-new-ai-agent/ Comments URL: https://news.ycombinator.com/item?id=49636345 Points: 174 # Comments: 6",
+    "summary_html": "<p>Article URL: <a href=\"https://www.engadget.com/2254419/muse-the-band-lost-its-social-media-handles-to-muse-meta-s-new-ai-agent/\">https://www.engadget.com/2254419/muse-the-band-lost-its-social-media-handles-to-muse-meta-s-new-ai-agent/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49636345\">https://news.ycombinator.com/item?id=49636345</a></p>\n<p>Points: 174</p>\n<p># Comments: 6</p>",
+    "link": "https://www.engadget.com/2254419/muse-the-band-lost-its-social-media-handles-to-muse-meta-s-new-ai-agent/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-09T23:57:29+00:00",
+    "published_ts": 1788998249,
+    "smart_groups": [
+      "Agentic AI & Automations"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: Botbin – Pastebin for AI agent artifacts",
+    "summary": "Article URL: https://botbin.io/ Comments URL: https://news.ycombinator.com/item?id=49636340 Points: 2 # Comments: 0",
+    "summary_html": "<p>Article URL: <a href=\"https://botbin.io/\">https://botbin.io/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49636340\">https://news.ycombinator.com/item?id=49636340</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://botbin.io/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-09T23:56:56+00:00",
+    "published_ts": 1788998216,
+    "smart_groups": [
+      "Agentic AI & Automations"
+    ],
+    "curated": false
+  },
+  {
+    "title": "1.15.21",
+    "summary": "What's Changed Features Add telemetry to track checkpoint runtime and CLI usage. Bug Fixes Fix gateway errors reported inside an HTTP 200 response. Keep deploy push on the AMP create source. Report scrape failures instead of raising IndexError in the Oxylabs integration. Route all DashScope models through the native provider. Persist JSON checkpoints as UTF-8. Drop stray $ in f-string search URLs for BrightData. Support list-form type arrays in JSON schema conversion. Correct gpt-4o-mini context window from 200000 to 128000. Preserve streaming tool call arguments at contentBlockStop. Make pre-commit hooks portable on Windows. Documentation Clarify that tracing is managed separately from telemetry. Fix parallel search reference link. Remove stale parameters from handle_llm_stream_chunk docstring. Fix streaming output docstring examples. Use organization UUIDs in the skill install reference. Contributors @Alphaxiaoteng , @DrewWhittleNZ , @Ghraven , @Shxiao101 , @Vaishnavi220506 , @Vidit-Ostwal , @danielfsbarreto , @georgeatparallel , @github-actions[bot], @jessemiller , @joaomdmoura , @kimnamu , @kiwoongyoon , @liang0417 , @lorenzejay , @oxy-giedrius , @simpleqt , @uoparaji",
+    "summary_html": "What's Changed\nFeatures\n<ul>\n<li>Add telemetry to track checkpoint runtime and CLI usage.</li>\n</ul>\nBug Fixes\n<ul>\n<li>Fix gateway errors reported inside an HTTP 200 response.</li>\n<li>Keep deploy push on the AMP create source.</li>\n<li>Report scrape failures instead of raising IndexError in the Oxylabs integration.</li>\n<li>Route all DashScope models through the native provider.</li>\n<li>Persist JSON checkpoints as UTF-8.</li>\n<li>Drop stray $ in f-string search URLs for BrightData.</li>\n<li>Support list-form type arrays in JSON schema conversion.</li>\n<li>Correct gpt-4o-mini context window from 200000 to 128000.</li>\n<li>Preserve streaming tool call arguments at contentBlockStop.</li>\n<li>Make pre-commit hooks portable on Windows.</li>\n</ul>\nDocumentation\n<ul>\n<li>Clarify that tracing is managed separately from telemetry.</li>\n<li>Fix parallel search reference link.</li>\n<li>Remove stale parameters from handle_llm_stream_chunk docstring.</li>\n<li>Fix streaming output docstring examples.</li>\n<li>Use organization UUIDs in the skill install reference.</li>\n</ul>\nContributors\n<p><a href=\"https://github.com/Alphaxiaoteng\">@Alphaxiaoteng</a>, <a href=\"https://github.com/DrewWhittleNZ\">@DrewWhittleNZ</a>, <a href=\"https://github.com/Ghraven\">@Ghraven</a>, <a href=\"https://github.com/Shxiao101\">@Shxiao101</a>, <a href=\"https://github.com/Vaishnavi220506\">@Vaishnavi220506</a>, <a href=\"https://github.com/Vidit-Ostwal\">@Vidit-Ostwal</a>, <a href=\"https://github.com/danielfsbarreto\">@danielfsbarreto</a>, <a href=\"https://github.com/georgeatparallel\">@georgeatparallel</a>, @github-actions[bot], <a href=\"https://github.com/jessemiller\">@jessemiller</a>, <a href=\"https://github.com/joaomdmoura\">@joaomdmoura</a>, <a href=\"https://github.com/kimnamu\">@kimnamu</a>, <a href=\"https://github.com/kiwoongyoon\">@kiwoongyoon</a>, <a href=\"https://github.com/liang0417\">@liang0417</a>, <a href=\"https://github.com/lorenzejay\">@lorenzejay</a>, <a href=\"https://github.com/oxy-giedrius\">@oxy-giedrius</a>, <a href=\"https://github.com/simpleqt\">@simpleqt</a>, <a href=\"https://github.com/uoparaji\">@uoparaji</a></p>",
+    "link": "https://github.com/crewAIInc/crewAI/releases/tag/1.15.21",
+    "source": "crewAI Releases - GitHub releases for the crewAI agentic framework",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-09-09T22:54:19+00:00",
+    "published_ts": 1788994459,
+    "smart_groups": [
+      "Agentic AI & Automations",
+      "LLM & Foundation Model Releases"
+    ],
+    "curated": true
+  },
+  {
     "title": "Would you consider 5t/s usable for a local model?",
     "summary": "I'm able to run qwen3.8 27b in two ways on my system: split between my 3060 12gb and 9070xt running at 20t/s or running off the 780m iGPU and 5400mhz DDR5 at 5t/s. Personally I feel like the 5t/s is still more usable because I have enough RAM to still use my system mostly normally. I can even play games just fine because the CPU side is left alone. Honestly pretty cool IMO and makes it far more usable knowing I can just spool it up and continue using my system as normal, even if it takes 4x longer to get an answer. submitted by /u/Zombiecidialfreak [link] [comments]",
     "summary_html": "<!-- SC_OFF --><div><p>I'm able to run qwen3.8 27b in two ways on my system: split between my 3060 12gb and 9070xt running at 20t/s or running off the 780m iGPU and 5400mhz DDR5 at 5t/s. Personally I feel like the 5t/s is still more usable because I have enough RAM to still use my system mostly normally. I can even play games just fine because the CPU side is left alone.</p> <p>Honestly pretty cool IMO and makes it far more usable knowing I can just spool it up and continue using my system as normal, even if it takes 4x longer to get an answer.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Zombiecidialfreak\"> /u/Zombiecidialfreak </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbvd2i/would_you_consider_5ts_usable_for_a_local_model/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wbvd2i/would_you_consider_5ts_usable_for_a_local_model/\">[comments]</a></span>",
@@ -1252,6 +1618,34 @@
     "summary": "We're working toward bringing parity across Vercel integration and v0 , starting with Resend , Amazon OpenSearch , MongoDB Atlas , Algolia and Clerk . Prompt v0 with what you want to build, and when your prompt requires a provider, v0 renders a connect card in the chat. With Marketplace integrations in v0, you get: Connect as you build: Prompt v0 with what you want to create, and connect the required provider inline. Automatic setup: Once connected, v0 handles the required environment variables and configuration. Provider skills loaded automatically: When you connect a provider that publishes agent skills, v0 loads them and generates code that follows the provider's recommended patterns. Provider-specific capabilities: Resend, for example, adds transactional email with React Email components. To get started, open a v0 chat and prompt what you want to add to your stack. Read more",
     "summary_html": "<p>We're working toward bringing parity across <a href=\"https://vercel.com/marketplace\">Vercel integration</a> and <a href=\"https://v0.app/\">v0</a>, starting with <a href=\"https://v0.app/?pi=resend\">Resend</a>, <a href=\"https://v0.app/?pi=aws.opensearch\">Amazon OpenSearch</a>, <a href=\"https://v0.app/?pi=mongodb\">MongoDB Atlas</a>, <a href=\"https://v0.app/?pi=algolia\">Algolia</a> and <a href=\"https://v0.app/?pi=clerk\">Clerk</a>. Prompt v0 with what you want to build, and when your prompt requires a provider, v0 renders a connect card in the chat.</p><p>With Marketplace integrations in v0, you get:</p><ul><li><p><b>Connect as you build: </b>Prompt v0 with what you want to create, and connect the required provider inline.</p></li><li><p><b>Automatic setup: </b>Once connected, v0 handles the required environment variables and configuration.</p></li><li><p><b>Provider skills loaded automatically:</b> When you connect a provider that publishes agent skills, v0 loads them and generates code that follows the provider's recommended patterns.</p></li><li><p><b>Provider-specific capabilities: </b>Resend, for example, adds transactional email with React Email components.</p></li></ul><p>To get started, open a <a href=\"https://v0.app/\">v0</a> chat and prompt what you want to add to your stack.</p>\n<p>\n<a href=\"https://vercel.com/changelog/v0-adds-one-click-integrations-for-email-auth-search-and-databases\">Read more</a>\n</p>",
     "link": "https://vercel.com/changelog/v0-adds-one-click-integrations-for-email-auth-search-and-databases",
+    "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+    "feed_type": "blog",
+    "type": "company-engineering",
+    "type_label": "Company Engineering",
+    "published": "2026-09-09T00:00:00+00:00",
+    "published_ts": 1788912000,
+    "smart_groups": [],
+    "curated": true
+  },
+  {
+    "title": "You can now read and search changelogs from the CLI",
+    "summary": "You and your agents can now read and search the Vercel changelog feed from your terminal using vercel changelog . Coding agents can use this command to discover new Vercel products and features, find updates relevant to your project, and read full announcements to inform their recommendations. vercel changelog returns the latest five changelogs with full Markdown content. You can also set the number of results, search all changelogs using a keyword, and access JSON output for scripts and agents. Update the Vercel CLI to version 59.6.0 or later and run vercel changelog to get started. See vercel changelog --help for all available options. Read more",
+    "summary_html": "<p>You and your agents can now read and search the Vercel changelog feed from your terminal using <code>vercel changelog</code>.</p><p>Coding agents can use this command to discover new Vercel products and features, find updates relevant to your project, and read full announcements to inform their recommendations.</p><p><code>vercel changelog</code> returns the latest five changelogs with full Markdown content. You can also set the number of results, search all changelogs using a keyword, and access JSON output for scripts and agents. </p><div></div><p>Update the Vercel CLI to version <code>59.6.0</code> or later and run <code>vercel changelog</code> to get started. See <code>vercel changelog --help</code> for all available options.</p>\n<p>\n<a href=\"https://vercel.com/changelog/you-can-now-read-and-search-changelogs-from-the-cli\">Read more</a>\n</p>",
+    "link": "https://vercel.com/changelog/you-can-now-read-and-search-changelogs-from-the-cli",
+    "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+    "feed_type": "blog",
+    "type": "company-engineering",
+    "type_label": "Company Engineering",
+    "published": "2026-09-09T00:00:00+00:00",
+    "published_ts": 1788912000,
+    "smart_groups": [],
+    "curated": true
+  },
+  {
+    "title": "Persistent memory for eve agents",
+    "summary": "eve agents can now retain context across sessions and use it in future conversations. Persistent memory is organized into slots. You can define named slots in files under agent/memory/ . Each slot specifies a provider, which stores and retrieves the memory, and a scope, which determines who or what shares it. For example, you can keep separate memory for each authenticated user. Before each turn, eve retrieves relevant memory and adds it to the model's context. Depending on the provider, memory can be updated automatically after a turn, through tools the agent uses, or through both methods. To add eve's built-in file memory provider, run: The command creates a file memory slot scoped to each authenticated caller: For agents deployed on Vercel, file memory uses a private Vercel Blob store so saved memories persist across restarts and deployments. Other supported memory providers include Supermemory , Upstash AgentKit , and Kybernesis Arcana . You can also connect another storage system or memory service by building a custom provider . Read the memory documentation to choose a provider and get started. Read more",
+    "summary_html": "<p><a href=\"https://eve.dev/\">eve</a> agents can now retain context across sessions and use it in future conversations.</p><p>Persistent <a href=\"https://eve.dev/docs/memory\">memory</a> is organized into slots. You can define named slots in files under <code>agent/memory/</code>. Each slot specifies a provider, which stores and retrieves the memory, and a scope, which determines who or what shares it. For example, you can keep separate memory for each authenticated user.</p><p>Before each turn, eve retrieves relevant memory and adds it to the model's context. Depending on the provider, memory can be updated automatically after a turn, through tools the agent uses, or through both methods.</p><p>To add eve's built-in file memory provider, run:</p><div></div><p>The command creates a <code>file</code> memory slot scoped to each authenticated caller:</p><div></div><p>For agents deployed on Vercel, file memory uses a private <a href=\"https://vercel.com/docs/vercel-blob\">Vercel Blob</a> store so saved memories persist across restarts and deployments.</p><p>Other supported memory providers include <a href=\"https://eve.dev/docs/memory#supermemory\">Supermemory</a>, <a href=\"https://eve.dev/docs/memory#upstash-agentkit\">Upstash AgentKit</a>, and <a href=\"https://eve.dev/docs/memory#kybernesis-arcana\">Kybernesis Arcana</a>. You can also connect another storage system or memory service by <a href=\"https://eve.dev/docs/memory/custom-provider\">building a custom provider</a>.</p><p>Read the <a href=\"https://eve.dev/docs/memory\">memory documentation</a> to choose a provider and get started.</p>\n<p>\n<a href=\"https://vercel.com/changelog/persistent-memory-for-eve-agents\">Read more</a>\n</p>",
+    "link": "https://vercel.com/changelog/persistent-memory-for-eve-agents",
     "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
     "feed_type": "blog",
     "type": "company-engineering",
@@ -26120,22 +26514,6 @@
     "published_ts": 1786009139,
     "smart_groups": [],
     "curated": true
-  },
-  {
-    "title": "Train the AI to Want to Die",
-    "summary": "Article URL: https://slimemoldtimemold.com/2026/08/05/a-stupid-idea-for-ai-alignment-we-came-up-with-by-looking-at-the-list-of-specification-gaming-behaviours/ Comments URL: https://news.ycombinator.com/item?id=49194507 Points: 1 # Comments: 0",
-    "summary_html": "<p>Article URL: <a href=\"https://slimemoldtimemold.com/2026/08/05/a-stupid-idea-for-ai-alignment-we-came-up-with-by-looking-at-the-list-of-specification-gaming-behaviours/\">https://slimemoldtimemold.com/2026/08/05/a-stupid-idea-for-ai-alignment-we-came-up-with-by-looking-at-the-list-of-specification-gaming-behaviours/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49194507\">https://news.ycombinator.com/item?id=49194507</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
-    "link": "https://slimemoldtimemold.com/2026/08/05/a-stupid-idea-for-ai-alignment-we-came-up-with-by-looking-at-the-list-of-specification-gaming-behaviours/",
-    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-    "feed_type": "blog",
-    "type": "media-tech-analysis",
-    "type_label": "Media & Tech Analysis",
-    "published": "2026-08-06T09:36:18+00:00",
-    "published_ts": 1786008978,
-    "smart_groups": [
-      "AI Safety & Ethics"
-    ],
-    "curated": false
   },
   {
     "title": "Google Search AI leaks ACTUAL name of a game's upcoming character",
