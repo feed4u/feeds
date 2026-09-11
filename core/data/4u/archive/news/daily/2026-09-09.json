@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-10T19:15:33.277560+00:00",
+  "generated_at": "2026-09-11T04:58:09.308830+00:00",
   "date": "2026-09-09",
-  "total_items": 598,
+  "total_items": 599,
   "next_chunk": "archive/news/daily/2026-09-08.json",
   "items": [
     {
@@ -150,6 +150,20 @@
       "feed_type": "news",
       "type": "media-tech-analysis",
       "type_label": "Media & Tech Analysis",
+      "published": "2026-09-09T23:00:00+00:00",
+      "published_ts": 1788994800,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "chilemapas is back on CRAN",
+      "summary": "[This article was first published on https://pacha.dev/blog , and kindly contributed to R-bloggers ].  (You can report issue about the content on this page here ) Want to share your content on R-bloggers? click here if you have a blog, or here if you don't. Before the main content: I am creating an R Community on Google Groups. You can join the group using this form . I recently lost access to my old uni email, and so I never knew I had to fix a few things about the Spanish documentation for chilemapas . As a result, it was removed from CRAN and now it\u2019s back. This package is now seven years old! Here is how to create a map with a gradients reflecting the number of letters for each region name. if (!require(chilemapas)) install.packages(\"chilemapas\", repos = \"https://cran.r-project.org\")\nif (!require(tmap)) install.packages(\"tmap\", repos = \"https://cran.r-project.org\")\n\nlibrary(chilemapas)\nlibrary(tmap)\n\nchile_regions <- generar_regiones()\n\nchile_regions_names <- codigos_territoriales[, c(\"codigo_region\", \"nombre_region\")]\nchile_regions_names <- unique(chile_regions_names)\nchile_regions_names$letters <- nchar(chile_regions_names$nombre_region)\n\nchile_regions <- merge(chile_regions, chile_regions_names)\n\ndev(\"chile.png\")\n\nm <- tm_shape(chile_regions) +\n    tm_polygons(fill = \"letters\")\n\ntmap_save(m, \"chile.png\", height = 7) Chile For the next release I will work on simplified dependencies, this release \u201cjust works\u201d. Note: Antartic territories are excluded and under no event these maps mean there is a cession or occupation of sovereign territories against International Laws from Chile. To leave a comment for the author, please follow the link and comment on their blog: https://pacha.dev/blog . R-bloggers.com offers daily e-mail updates about R news and tutorials about learning R and many other topics. Click here if you're looking to post or find an R/data-science job . Want to share your content on R-bloggers? click here if you have a blog, or here if you don't. Continue reading : chilemapas is back on CRAN",
+      "summary_html": "<!-- \n<div style=\"min-height: 30px;\">\n[social4i size=\"small\" align=\"align-left\"]\n</div>\n-->\n<div>\n[This article was first published on  <strong><a href=\"https://pacha.dev/blog/2026/09/10/chilemapas/index.html\"> https://pacha.dev/blog</a></strong>, and kindly contributed to <a href=\"https://www.r-bloggers.com/\">R-bloggers</a>].  (You can report issue about the content on this page <a href=\"https://www.r-bloggers.com/contact-us/\">here</a>)\nWant to share your content on R-bloggers?<a href=\"https://www.r-bloggers.com/add-your-blog/\"> click here</a> if you have a blog, or <a href=\"http://r-posts.com/\"> here</a> if you don't.\n</div>\n<p><em>Before the main content: I am creating an R Community on Google Groups. You can join the group using this <a href=\"https://docs.google.com/forms/d/e/1FAIpQLSdMAj4adRAT4Gyuwt_9dPvxRvOUPml9AD59vuI7qS7XDlp48g/viewform?usp=dialog\">form</a>.</em></p>\n<p>I recently lost access to my old uni email, and so I never knew I had to fix a few things about the Spanish documentation for <strong>chilemapas</strong>. As a result, it was removed from CRAN and now it\u2019s back. This package is now seven years old!</p>\n<p>Here is how to create a map with a gradients reflecting the number of letters for each region name.</p>\n<pre>if (!require(chilemapas)) install.packages(\"chilemapas\", repos = \"https://cran.r-project.org\")\nif (!require(tmap)) install.packages(\"tmap\", repos = \"https://cran.r-project.org\")\n\nlibrary(chilemapas)\nlibrary(tmap)\n\nchile_regions &lt;- generar_regiones()\n\nchile_regions_names &lt;- codigos_territoriales[, c(\"codigo_region\", \"nombre_region\")]\nchile_regions_names &lt;- unique(chile_regions_names)\nchile_regions_names$letters &lt;- nchar(chile_regions_names$nombre_region)\n\nchile_regions &lt;- merge(chile_regions, chile_regions_names)\n\ndev(\"chile.png\")\n\nm &lt;- tm_shape(chile_regions) +\n    tm_polygons(fill = \"letters\")\n\ntmap_save(m, \"chile.png\", height = 7)</pre>\n<p></p>\nChile\n\n<p>For the next release I will work on simplified dependencies, this release \u201cjust works\u201d.</p>\n<p><strong>Note: Antartic territories are excluded and under no event these maps mean there is a cession or occupation of sovereign territories against International Laws from Chile.</strong></p>\n<div>\n<div>To <strong>leave a comment</strong> for the author, please follow the link and comment on their blog: <strong><a href=\"https://pacha.dev/blog/2026/09/10/chilemapas/index.html\"> https://pacha.dev/blog</a></strong>.</div>\n\n<a href=\"https://www.r-bloggers.com/\">R-bloggers.com</a> offers <strong><a href=\"https://feedburner.google.com/fb/a/mailverify?uri=RBloggers\">daily e-mail updates</a></strong> about <a href=\"https://www.r-project.org/\">R</a> news and tutorials about <a href=\"https://www.r-bloggers.com/how-to-learn-r-2/\">learning R</a> and many other topics. <a href=\"https://www.r-users.com/\">Click here if you're looking to post or find an R/data-science job</a>.\n\nWant to share your content on R-bloggers?<a href=\"https://www.r-bloggers.com/add-your-blog/\"> click here</a> if you have a blog, or <a href=\"http://r-posts.com/\"> here</a> if you don't.\n</div><strong>Continue reading</strong>: <a href=\"https://www.r-bloggers.com/2026/09/chilemapas-is-back-on-cran/\">chilemapas is back on CRAN</a>",
+      "link": "https://www.r-bloggers.com/2026/09/chilemapas-is-back-on-cran/",
+      "source": "R-bloggers - R news and tutorials contributed by hundreds of R bloggers",
+      "feed_type": "news",
+      "type": "data-science-mlops",
+      "type_label": "Data Science & MLOps",
       "published": "2026-09-09T23:00:00+00:00",
       "published_ts": 1788994800,
       "smart_groups": [],
@@ -324,8 +338,8 @@
       "feed_type": "news",
       "type": "media-tech-analysis",
       "type_label": "Media & Tech Analysis",
-      "published": "2026-09-09T22:14:29+00:00",
-      "published_ts": 1788992069,
+      "published": "2026-09-09T22:14:30+00:00",
+      "published_ts": 1788992070,
       "smart_groups": [],
       "curated": false
     },
