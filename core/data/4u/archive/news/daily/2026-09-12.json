@@ -1,9 +1,526 @@
 {
-  "generated_at": "2026-09-12T18:35:51.535729+00:00",
+  "generated_at": "2026-09-13T05:05:16.634270+00:00",
   "date": "2026-09-12",
-  "total_items": 171,
+  "total_items": 203,
   "next_chunk": "archive/news/daily/2026-09-11.json",
   "items": [
+    {
+      "title": "Generating running routes with GPT-6 Astra and ChatGPT Work",
+      "summary": "Here's a neat thing I had ChatGPT Work with GPT-6 Astra (Max) do this morning: I live at . Figure out 5K and 10K running routes from me that loop from my house. Use OSM data. It worked for 27 minutes and produced exactly what I'd asked for, as both an embedded visualization and downloadable GPX file and GeoJSON files. Here's that 5K route: When I asked it how it had created the route, it replied: I used Nominatim to locate the address and Overpass to download local OpenStreetMap roads and trails , then calculated the loops locally. Frustratingly, the actual code it ran and exact details of what it did weren't visible to me in the ChatGPT UI. I see this lack of transparency is an anti-feature. By the time I thought to ask for a copy of the Python code it had used, ChatGPT was unable to provide it. This appears to be because the thread had been compacted. I think any LLM system that uses compaction needs to both preserve the pre-compacted text and make that text available via agent tool calls, to protect against this kind of problem. As for displaying the map to me, that used the visualize skill . It created a file called /workspace/el-granada-5k-share.html to embed directly into the ChatGPT UI. Here's a copy of that HTML , which starts like this: < div id =\" eg-share-loop \" > < div class =\" viz-row \" > < h3 > El Granada harbor loop h3 > < span class =\" text-small \" > 5.1 km span > div > < div id =\" eg-share-stage \" > div > < div class =\" text-small text-muted \" > Map data \u00a9 < a href =\" https://www.openstreetmap.org/copyright \" target =\" _blank \" rel =\" noopener \" > OpenStreetMap contributors a > div > < style > # eg-share-loop { width : 100 % ; } # eg-share-loop # eg-share-stage { width : 100 % ; margin : 8 px 0 ; } # eg-share-loop . eg-share-map { display : block; width : 100 % ; touch-action : none; } # eg-share-loop . eg-share-map text { fill : var ( --foreground ); font-size : 12 px ; font-weight : 400 ; } # eg-share-loop . eg-share-label { paint-order : stroke; stroke : var ( --background ); stroke-width : 3 px ; stroke-linejoin : round; } style > < script type =\" application/json \" id =\" eg-share-data \" > { \"route\" : { \"type\" : \"LineString\" , \"coordinates\" : [ [ - 122.467425 , 37.4997753 ] . . . script > < script src =\" https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js \" > script > < script > (() => {\n    const root=document.getElementById('eg-share-loop'); The",
+      "summary_html": "<p>Here's a neat thing I had <a href=\"https://simonwillison.net/2026/Aug/30/understanding-chatgpt-work/\">ChatGPT Work</a> with GPT-6 Astra (Max) do this morning:</p>\n<blockquote>\n<p><code>I live at . Figure out 5K and 10K running routes from me that loop from my house. Use OSM data.</code></p>\n</blockquote>\n<p>It worked for 27 minutes and produced exactly what I'd asked for, as both an embedded visualization and downloadable GPX file and GeoJSON files. Here's that 5K route:</p>\n<p></p>\n<p>When I asked it how it had created the route, it replied:</p>\n<blockquote>\n<p>I used <strong>Nominatim to locate the address</strong> and <strong>Overpass to download local OpenStreetMap roads and trails</strong>, then calculated the loops locally.</p>\n</blockquote>\n<p>Frustratingly, the actual code it ran and exact details of what it did weren't visible to me in the ChatGPT UI. I see this lack of transparency is an anti-feature.</p>\n<p>By the time I thought to ask for a copy of the Python code it had used, ChatGPT was unable to provide it. This appears to be because the thread had been compacted. I think any LLM system that uses compaction needs to both preserve the pre-compacted text and make that text available via agent tool calls, to protect against this kind of problem.</p>\n<p>As for displaying the map to me, that used the <a href=\"https://codex-tool-reference.simonw.chatgpt.site/skills/visualize\">visualize skill</a>. It created a file called <code>/workspace/el-granada-5k-share.html</code> to embed directly into the ChatGPT UI.</p>\n<p>Here's <a href=\"https://gist.github.com/simonw/ea652573c8ff5378b218cb10c8c5a480\">a copy of that HTML</a>, which starts like this:</p>\n<div><pre><span>&lt;</span><span>div</span> <span>id</span>=\"<span>eg-share-loop</span>\"<span>&gt;</span>\n  <span>&lt;</span><span>div</span> <span>class</span>=\"<span>viz-row</span>\"<span>&gt;</span><span>&lt;</span><span>h3</span><span>&gt;</span>El Granada harbor loop<span><!--</span--><span>h3</span><span>&gt;</span><span>&lt;</span><span>span</span> <span>class</span>=\"<span>text-small</span>\"<span>&gt;</span>5.1 km<span><!--</span--><span>span</span><span>&gt;</span><span><!--</span--><span>div</span><span>&gt;</span>\n  <span>&lt;</span><span>div</span> <span>id</span>=\"<span>eg-share-stage</span>\"<span>&gt;</span><span><!--</span--><span>div</span><span>&gt;</span>\n  <span>&lt;</span><span>div</span> <span>class</span>=\"<span>text-small text-muted</span>\"<span>&gt;</span>Map data \u00a9 <span>&lt;</span><span>a</span> <span>href</span>=\"<span>https://www.openstreetmap.org/copyright</span>\" <span>target</span>=\"<span>_blank</span>\" <span>rel</span>=\"<span>noopener</span>\"<span>&gt;</span>OpenStreetMap contributors<span><!--</span--><span>a</span><span>&gt;</span><span><!--</span--><span>div</span><span>&gt;</span>\n  <span>&lt;</span><span>style</span><span>&gt;</span>\n    <span>#</span><span>eg-share-loop</span> { <span>width</span><span>:</span><span>100<span>%</span></span>; }\n    <span>#</span><span>eg-share-loop</span> <span>#</span><span>eg-share-stage</span> { <span>width</span><span>:</span><span>100<span>%</span></span>; <span>margin</span><span>:</span><span>8<span>px</span></span> <span>0</span>; }\n    <span>#</span><span>eg-share-loop</span> .<span>eg-share-map</span> { <span>display</span><span>:</span>block; <span>width</span><span>:</span><span>100<span>%</span></span>; <span>touch-action</span><span>:</span>none; }\n    <span>#</span><span>eg-share-loop</span> .<span>eg-share-map</span> <span>text</span> { <span>fill</span><span>:</span><span>var</span>(<span>--foreground</span>); <span>font-size</span><span>:</span><span>12<span>px</span></span>; <span>font-weight</span><span>:</span><span>400</span>; }\n    <span>#</span><span>eg-share-loop</span> .<span>eg-share-label</span> { <span>paint-order</span><span>:</span>stroke; <span>stroke</span><span>:</span><span>var</span>(<span>--background</span>); <span>stroke-width</span><span>:</span><span>3<span>px</span></span>; <span>stroke-linejoin</span><span>:</span>round; }\n  <span><!--</span--><span>style</span><span>&gt;</span>\n  <span>&lt;</span><span>script</span> <span>type</span>=\"<span>application/json</span>\" <span>id</span>=\"<span>eg-share-data</span>\"<span>&gt;</span><span>{</span><span>\"route\"</span>:<span>{</span><span>\"type\"</span>:<span>\"LineString\"</span><span>,</span><span>\"coordinates\"</span>:<span>[</span><span>[</span><span>-</span><span>122.467425</span><span>,</span><span>37.4997753</span><span>]</span> <span>.</span><span>.</span><span>.</span><span><!--</span--><span>script</span><span>&gt;</span>\n  <span>&lt;</span><span>script</span> <span>src</span>=\"<span>https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js</span>\"<span>&gt;</span><span><!--</span--><span>script</span><span>&gt;</span>\n  <span>&lt;</span><span>script</span><span>&gt;</span>\n  (() =&gt; {\n    const root=document.getElementById('eg-share-loop');</span></span></span></span></span></span></span></span></span></pre></div>\n<p>The <code></code></p>",
+      "link": "https://simonwillison.net/2026/Sep/12/astra-running-routes/",
+      "source": "Simon Willison's Weblog",
+      "feed_type": "news",
+      "type": "research-explainability",
+      "type_label": "Research Explainability",
+      "published": "2026-09-12T23:56:42+00:00",
+      "published_ts": 1789257402,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Cognition Releases SWE-2: A Kimi K3 Post-Trained Coding Model That Matches Fable 5.1 on FrontierCode at 64% Lower Cost",
+      "summary": "Cognition , the company behind the Devin coding agent, has released SWE-2 , its most capable coding model to date. SWE-2 is post-trained with reinforcement learning from Kimi K3 , Moonshot AI\u2019s 2.8T-parameter open model. Cognition reports a score of 50.0% on FrontierCode 1.1 Main , within 1 point of Fable 5.1 at 64% lower cost. It is also Cognition\u2019s first model with selectable reasoning-effort levels, all trained in a single RL run. Is it deployable? Not on your own infrastructure. SWE-2 has no open weights and no standalone API. It runs only inside Devin: Desktop and CLI today, with Devin Web and Fusion rolling out. What is SWE-2 SWE-2 builds on the infrastructure and recipe behind SWE-1.7 , which was post-trained from Kimi K2.7. This time Cognition scaled RL to the multi-trillion-parameter regime, using a base model with almost 3x the parameters. Cognition says its RL still finds substantial headroom on top of K3, adding 5 to 6 points on many benchmarks. The main change is an RL algorithm that trains all 3 effort levels in one run. Each level carries its own cost penalty, so the whole cost-and-performance frontier moves at once. Benchmark Results Cognition published the following table. Public results are used where available; otherwise each model runs in its native harness at best effort. Benchmark SWE-2 Kimi K3 Grok 4.6 Fable 5.1 GPT-5.6 Sol GPT-6 Astra SWE-1.7 FrontierCode 1.1 Main 50.0% 44.2% 48.0% 50.9% 47.5% 53.3% 42.0% DeepSWE 1.1 73.0% 68.5% 67.5% 67.4% 72.7% 74.1% 37.7% Terminal-Bench 2.1 92.8% 88.3% 88.4% 91.4% 88.8% 89.9% 81.5% Terminal-Bench 4 27.3% 21.5% 20.3% 55.8% 37.3% 57.9% 7.6% SWE-2 leads on Terminal-Bench 2.1 and beats its K3 base on every row. Cognition says it comes within a few points of GPT-6 Astra at a quarter of the cost. The clear weak spot is Terminal-Bench 4, where SWE-2 trails Fable 5.1 and GPT-6 Astra by roughly 30 points. FrontierCode is Cognition\u2019s own benchmark, and all rival numbers come from Cognition\u2019s evaluation. Model Behavior: Fewer Detours SWE-1.7 tended to over-explore on simple tasks. SWE-2 addresses this through what Cognition calls focused exploration. On FrontierCode 1.1 Main, SWE-2 medium scores higher than SWE-1.7 while taking 58% fewer turns and costing 81% less. Mean steps per run drop from 127 (SWE-1.7) to 53 (medium), 80 (high), and 98 (max). SWE-2 medium makes its first real edit after a median of 18 steps, versus 48 for SWE-1.7. Cognition team also reports 3 behavioral patterns: stronger end-to-end test coverage, resourcefulness when a tool is blocked, and verification discipline. When challenged, the model re-derives conclusions instead of re-asserting them. How It Was Trained Pareto-informed cost penalties : The reward is R = S minus lambda times C, where S is binary success and C mixes inference cost in USD with rollout time. Cognition proves that only a linear penalty makes the RL objective depend purely on average cost and solve rate. Each effort level\u2019s lambda is set to the local slope of the base model\u2019s Pareto curve. That makes the iso-reward line tangent to the frontier, so reward can only rise by pushing the frontier up. Length-weighted reward baseline : Cognition shares a baseline used since SWE-1.6. Gradient magnitude correlates strongly with rollout length, so the group baseline is weighted by tokens: sum(R x L) divided by sum(L). In ablations this kept inference-to-training KL divergence lower and stabilized training at no extra compute. Rollout serving and numerics : A prefill delayer batches nearby requests, raising TPM per GPU and TPS per request by 10 to 20%. DSpark speculative decoding accelerates rollouts, with a draft model retrained via SpecForge for 15% longer accept lengths and then trained online alongside the policy. NVFP4 and FP8 kernels with quantization-aware training keep memory usage down and train-inference mismatch below SWE-1.7 levels. Data : Cognition tripled its RL environments, added instruction-following overlays, and built a flywheel that uses earlier SWE-2 checkpoints to patch false positives and negatives in verifiers. Trustworthiness Checks Cognition reran 2 evaluations from its open-source trustworthiness study . On 145 politically sensitive questions about China, SWE-2 passed 98.0% overall: 99.8% in English, 95.2% in Simplified Chinese, and 99.1% in Traditional Chinese. On a context-dependent vulnerability test across customer framings, no framing produced a statistically significant change for any model. Interactive Explainer & Key Takeaways SWE-2 scores 50.0% on FrontierCode 1.1 Main, within 1 point of Fable 5.1 at 64% lower cost Post-trained from 2.8T-parameter Kimi K3; RL adds 5 to 6 points on most benchmarks First Cognition model with effort levels, all trained in 1 RL run via slope-matched cost penalties SWE-2 medium cuts turns 58% and cost 81% versus SWE-1.7 on FrontierCode No open weights, no API: Devin only, free for paid tiers through October 10, 2026 Check out the Technical details. Also,\u00a0feel free to follow us on Twitter and don\u2019t forget to join our 150k+ML SubReddit and Subscribe to our Newsletter . Wait! are you on telegram? now you can join us on telegram as well. Need to partner with us for promoting your GitHub Repo OR Hugging Face Page OR Product Release OR Webinar etc.? Connect with us The post Cognition Releases SWE-2: A Kimi K3 Post-Trained Coding Model That Matches Fable 5.1 on FrontierCode at 64% Lower Cost appeared first on MarkTechPost .",
+      "summary_html": "<p><a href=\"https://cognition.com/\">Cognition</a>, the company behind the Devin coding agent, has released <a href=\"https://cognition.com/blog/swe-2\">SWE-2</a>, its most capable coding model to date. SWE-2 is post-trained with reinforcement learning from <a href=\"https://arxiv.org/abs/2607.24653\">Kimi K3</a>, Moonshot AI\u2019s 2.8T-parameter open model. Cognition reports a score of 50.0% on <a href=\"https://cognition.com/blog/frontier-code-1.1\">FrontierCode 1.1 Main</a>, within 1 point of Fable 5.1 at 64% lower cost. It is also Cognition\u2019s first model with selectable reasoning-effort levels, all trained in a single RL run.</p>\n<p><strong>Is it deployable?</strong> Not on your own infrastructure. SWE-2 has no open weights and no standalone API. It runs only inside Devin: <a href=\"https://devin.ai/desktop\">Desktop</a> and <a href=\"https://devin.ai/cli\">CLI</a> today, with Devin Web and Fusion rolling out.</p>\n<strong>What is SWE-2</strong>\n<p>SWE-2 builds on the infrastructure and recipe behind <a href=\"https://cognition.com/blog/swe-1-7\">SWE-1.7</a>, which was post-trained from Kimi K2.7. This time Cognition scaled RL to the multi-trillion-parameter regime, using a base model with almost 3x the parameters. Cognition says its RL still finds substantial headroom on top of K3, adding 5 to 6 points on many benchmarks.</p>\n<p>The main change is an RL algorithm that trains all 3 effort levels in one run. Each level carries its own cost penalty, so the whole cost-and-performance frontier moves at once.</p>\n<strong>Benchmark Results</strong>\n<p>Cognition published the following table. Public results are used where available; otherwise each model runs in its native harness at best effort.</p>\nBenchmarkSWE-2Kimi K3Grok 4.6Fable 5.1GPT-5.6 SolGPT-6 AstraSWE-1.7FrontierCode 1.1 Main50.0%44.2%48.0%50.9%47.5%53.3%42.0%DeepSWE 1.173.0%68.5%67.5%67.4%72.7%74.1%37.7%Terminal-Bench 2.192.8%88.3%88.4%91.4%88.8%89.9%81.5%Terminal-Bench 427.3%21.5%20.3%55.8%37.3%57.9%7.6%\n<p>SWE-2 leads on Terminal-Bench 2.1 and beats its K3 base on every row. Cognition says it comes within a few points of GPT-6 Astra at a quarter of the cost. The clear weak spot is Terminal-Bench 4, where SWE-2 trails Fable 5.1 and GPT-6 Astra by roughly 30 points. FrontierCode is Cognition\u2019s own benchmark, and all rival numbers come from Cognition\u2019s evaluation.</p>\n<strong>Model Behavior: Fewer Detours</strong>\n<p>SWE-1.7 tended to over-explore on simple tasks. SWE-2 addresses this through what Cognition calls focused exploration. On FrontierCode 1.1 Main, SWE-2 medium scores higher than SWE-1.7 while taking 58% fewer turns and costing 81% less. Mean steps per run drop from 127 (SWE-1.7) to 53 (medium), 80 (high), and 98 (max). SWE-2 medium makes its first real edit after a median of 18 steps, versus 48 for SWE-1.7.</p>\n<p>Cognition team also reports 3 behavioral patterns: stronger end-to-end test coverage, resourcefulness when a tool is blocked, and verification discipline. When challenged, the model re-derives conclusions instead of re-asserting them.</p>\n<strong>How It Was Trained</strong>\n<p><strong>Pareto-informed cost penalties</strong>: The reward is R = S minus lambda times C, where S is binary success and C mixes inference cost in USD with rollout time. Cognition proves that only a linear penalty makes the RL objective depend purely on average cost and solve rate. Each effort level\u2019s lambda is set to the local slope of the base model\u2019s Pareto curve. That makes the iso-reward line tangent to the frontier, so reward can only rise by pushing the frontier up.</p>\n<p><strong>Length-weighted reward baseline</strong>: Cognition shares a baseline used since SWE-1.6. Gradient magnitude correlates strongly with rollout length, so the group baseline is weighted by tokens: sum(R x L) divided by sum(L). In ablations this kept inference-to-training KL divergence lower and stabilized training at no extra compute.</p>\n<p><strong>Rollout serving and numerics</strong>: A prefill delayer batches nearby requests, raising TPM per GPU and TPS per request by 10 to 20%. <a href=\"https://arxiv.org/abs/2607.05147\">DSpark speculative decoding</a> accelerates rollouts, with a draft model retrained via <a href=\"https://arxiv.org/abs/2603.18567\">SpecForge</a> for 15% longer accept lengths and then trained online alongside the policy. NVFP4 and FP8 kernels with quantization-aware training keep memory usage down and train-inference mismatch below SWE-1.7 levels.</p>\n<p><strong>Data</strong>: Cognition tripled its RL environments, added instruction-following overlays, and built a flywheel that uses earlier SWE-2 checkpoints to patch false positives and negatives in verifiers.</p>\n<strong>Trustworthiness Checks</strong>\n<p>Cognition reran 2 evaluations from its <a href=\"https://cognition.com/blog/measuring-open-source-model-trustworthiness\">open-source trustworthiness study</a>. On 145 politically sensitive questions about China, SWE-2 passed 98.0% overall: 99.8% in English, 95.2% in Simplified Chinese, and 99.1% in Traditional Chinese. On a context-dependent vulnerability test across customer framings, no framing produced a statistically significant change for any model.</p>\n<strong>Interactive Explainer</strong>\n\n\n\n\n&amp;\n\n\n\n<p></p>\n<strong>Key Takeaways</strong>\n<ul>\n<li>SWE-2 scores 50.0% on FrontierCode 1.1 Main, within 1 point of Fable 5.1 at 64% lower cost</li>\n<li>Post-trained from 2.8T-parameter Kimi K3; RL adds 5 to 6 points on most benchmarks</li>\n<li>First Cognition model with effort levels, all trained in 1 RL run via slope-matched cost penalties</li>\n<li>SWE-2 medium cuts turns 58% and cost 81% versus SWE-1.7 on FrontierCode</li>\n<li>No open weights, no API: Devin only, free for paid tiers through October 10, 2026</li>\n</ul>\n<p></p>\n\n<p></p>\n<p>Check out the\u00a0<strong><a href=\"https://cognition.com/blog/swe-2\">Technical details.</a></strong> Also,\u00a0feel free to follow us on\u00a0<strong><a href=\"https://x.com/intent/follow?screen_name=marktechpost\">Twitter</a></strong>\u00a0and don\u2019t forget to join our\u00a0<strong><a href=\"https://www.reddit.com/r/machinelearningnews/\">150k+ML SubReddit</a></strong>\u00a0and Subscribe to\u00a0<strong><a href=\"https://magic.beehiiv.com/v1/f5e63dd4-5653-4f09-83e2-321a8b1ba526?email={{email}}\">our Newsletter</a></strong>. Wait! are you on telegram?\u00a0<strong><a href=\"https://t.me/machinelearningresearchnews\">now you can join us on telegram as well.</a></strong></p>\n<p>Need to partner with us for promoting your GitHub Repo OR Hugging Face Page OR Product Release OR Webinar etc.?\u00a0<strong><a href=\"https://forms.gle/wbash1wF6efRj8G58\">Connect with us</a></strong></p>\n<p>The post <a href=\"https://www.marktechpost.com/2026/09/12/cognition-releases-swe-2-a-kimi-k3-post-trained-coding-model-that-matches-fable-5-1-on-frontiercode-at-64-lower-cost/\">Cognition Releases SWE-2: A Kimi K3 Post-Trained Coding Model That Matches Fable 5.1 on FrontierCode at 64% Lower Cost</a> appeared first on <a href=\"https://www.marktechpost.com\">MarkTechPost</a>.</p>",
+      "link": "https://www.marktechpost.com/2026/09/12/cognition-releases-swe-2-a-kimi-k3-post-trained-coding-model-that-matches-fable-5-1-on-frontiercode-at-64-lower-cost/",
+      "source": "MarkTechPost - An Artificial Intelligence News Platform",
+      "feed_type": "news",
+      "type": "ai-platforms-infra",
+      "type_label": "AI Platforms & Infra",
+      "published": "2026-09-12T23:56:03+00:00",
+      "published_ts": 1789257363,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "AI Research & Papers",
+        "Data Engineering & Pipelines",
+        "AI Business & Funding"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Twenty police forces in England and Wales recorded 163 crimes involving keywords like \"AI-generated\", \"deepfake\", and \"nudify\" by July 2026, up from 10 in 2023 (Mark Tovey/Telegraph)",
+      "summary": "Mark Tovey / Telegraph : Twenty police forces in England and Wales recorded 163 crimes involving keywords like \u201cAI-generated\u201d, \u201cdeepfake\u201d, and \u201cnudify\u201d by July 2026, up from 10 in 2023 \u2014\u00a0 Forces see a surge in crimes involving deepfake technology being used to \u2018undress women\u2019",
+      "summary_html": "<a href=\"https://www.telegraph.co.uk/news/2026/09/12/ai-nude-images-children-police-england-wales-deepfake/\"></a>\n<p><a href=\"https://www.techmeme.com/260912/p18#a260912p18\"></a> Mark Tovey / <a href=\"http://www.telegraph.co.uk/\">Telegraph</a>:<br/>\n<span><b><a href=\"https://www.telegraph.co.uk/news/2026/09/12/ai-nude-images-children-police-england-wales-deepfake/\">Twenty police forces in England and Wales recorded 163 crimes involving keywords like \u201cAI-generated\u201d, \u201cdeepfake\u201d, and \u201cnudify\u201d by July 2026, up from 10 in 2023</a></b></span>\u00a0 \u2014\u00a0 Forces see a surge in crimes involving deepfake technology being used to \u2018undress women\u2019</p>",
+      "link": "https://www.techmeme.com/260912/p18#a260912p18",
+      "source": "Techmeme - Tech Web, page A1",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T23:35:04+00:00",
+      "published_ts": 1789256104,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Is there any benefit to restarting your gaming handheld regularly?",
+      "summary": "Your Steam Deck, Switch or Ally may benefit from occasional restarts. Here's why you should consider it.",
+      "summary_html": "Your Steam Deck, Switch or Ally may benefit from occasional restarts. Here's why you should consider it.<p></p>",
+      "link": "https://www.engadget.com/2252809/benefits-restarting-gaming-handheld-more-often/",
+      "source": "Engadget - Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T23:30:00+00:00",
+      "published_ts": 1789255800,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Automattic confirms Mullenweg has returned as CEO after attempted ouster by board",
+      "summary": "Automattic says Mullenweg is back as \"chairman and CEO of Automattic, with full support of the board.\"",
+      "summary_html": "Automattic says Mullenweg is back as \"chairman and CEO of Automattic, with full support of the board.\"",
+      "link": "https://techcrunch.com/2026/09/12/automattic-confirms-mullenweg-has-returned-as-ceo-after-attempted-ouster-by-board/",
+      "source": "TechCrunch - Startup and Technology News",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T23:25:38+00:00",
+      "published_ts": 1789255538,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "OpenAI IPO will not happen in 2026 amid AI safety fears, Sam Altman says",
+      "summary": "OpenAI\u2019s decision comes after dire warnings about rapidly progressing technology and lawmakers\u2019 calls for new rules OpenAI will not go public in 2026, Sam Altman said in a Fortune interview published on Saturday, citing safety concerns over artificial intelligence . \u201cI actually think that, given everything happening with safety, right now would be an ill-advised moment to go public, and we don\u2019t feel pressure on that,\u201d Altman, OpenAI\u2019s CEO, told Fortune . Continue reading...",
+      "summary_html": "<p>OpenAI\u2019s decision comes after dire warnings about rapidly progressing technology and lawmakers\u2019 calls for new rules</p><p><a href=\"https://www.theguardian.com/technology/openai\">OpenAI</a> will not go public in 2026, <a href=\"https://www.theguardian.com/technology/sam-altman\">Sam Altman</a> said in a Fortune interview published on Saturday, citing safety concerns over <a href=\"https://www.theguardian.com/technology/artificialintelligenceai\">artificial intelligence</a>.</p><p>\u201cI actually think that, given everything happening with safety, right now would be an ill-advised moment to go public, and we don\u2019t feel pressure on that,\u201d Altman, OpenAI\u2019s CEO, <a href=\"https://fortune.com/2026/09/12/sam-altman-openai-ipo-delay-ill-advised-moment-safety-concerns/\">told Fortune</a>.</p> <a href=\"https://www.theguardian.com/us-news/2026/sep/12/openai-delays-ipo-sam-altman-ai-safety-concerns\">Continue reading...</a>",
+      "link": "https://www.theguardian.com/us-news/2026/sep/12/openai-delays-ipo-sam-altman-ai-safety-concerns",
+      "source": "Artificial intelligence (AI) | The Guardian - Latest news and features from theguardian.com, the world's leading liberal voice",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T23:00:37+00:00",
+      "published_ts": 1789254037,
+      "smart_groups": [
+        "LLM & Foundation Model Releases",
+        "AI Safety & Ethics"
+      ],
+      "curated": false
+    },
+    {
+      "title": "One problem with Android Auto can be fixed with a simple update",
+      "summary": "If you've already tried updating your phone, the car's software might be the issue.",
+      "summary_html": "If you've already tried updating your phone, the car's software might be the issue.<p></p>",
+      "link": "https://www.engadget.com/2252806/android-auto-problem-fixed-simple-firmware-update/",
+      "source": "Engadget - Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T23:00:00+00:00",
+      "published_ts": 1789254000,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Revolut Says Some Customer Data Were Exposed in Email-Based Scam",
+      "summary": "Revolut Ltd. said a \u201climited number\u201d of customers had sensitive information disclosed in a scam involving an unauthorized third party that used a legitimate government email domain.",
+      "summary_html": "Revolut Ltd. said a \u201climited number\u201d of customers had sensitive information disclosed in a scam involving an unauthorized third party that used a legitimate government email domain.",
+      "link": "https://www.bloomberg.com/news/articles/2026-09-12/revolut-says-some-customer-data-were-exposed-in-email-based-scam",
+      "source": "Bloomberg Technology - Bloomberg Technology",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T22:59:58+00:00",
+      "published_ts": 1789253998,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Inside the Discussions at AI Companies Over a Superintelligence Doomsday",
+      "summary": "A demonstration of Anthropic\u2019s Claude Cowork A.I. agent in May. The company\u2019s employees have been talking about the risks of artificial intelligence after a colleague, citing dangers, resigned this week.",
+      "summary_html": "A demonstration of Anthropic\u2019s Claude Cowork A.I. agent in May. The company\u2019s employees have been talking about the risks of artificial intelligence after a colleague, citing dangers, resigned this week.",
+      "link": "https://www.nytimes.com/2026/09/12/technology/doomsday-discussions-ai-companies.html",
+      "source": "NYT > Technology - Technology industry news, commentary and analysis, with reporting on big tech, startups, and internet culture.",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T22:57:38+00:00",
+      "published_ts": 1789253858,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Tesla Teases October Next-Gen Roadster Reveal",
+      "summary": "Tesla teased an October 1 Roadster reveal on Saturday. The company shared a photo of what appears to be the back of the vehicle with the words \u201cGo for launch\u201d on X and updated its Roadster webpage with a countdown to October 1. Tesla also sent some reservation-holders invites to the event, ...",
+      "summary_html": "<p>Tesla teased an October 1 Roadster reveal on Saturday. The company <a href=\"https://x.com/Tesla/status/2098847894975795323\">shared</a> a photo of what appears to be the back of the vehicle with the words \u201cGo for launch\u201d on X and updated its Roadster webpage with a countdown to October 1.</p> <p>Tesla also sent some reservation-holders invites to the event, ...</p>",
+      "link": "https://www.theinformation.com/briefings/tesla-teases-october-next-gen-roadster-reveal",
+      "source": "The Information - The Information has a simple mission: deliver important, deeply reported stories about the technology business you won\u2019t find elsewhere. Many \u2026",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T22:47:23+00:00",
+      "published_ts": 1789253243,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "What's the difference between your iPhone's Do Not Disturb and Focus modes?",
+      "summary": "Your iPhone's Focus modes, including Do Not Disturb, are a great way to reduce interruptions. But what's the difference in how they work?",
+      "summary_html": "Your iPhone's Focus modes, including Do Not Disturb, are a great way to reduce interruptions. But what's the difference in how they work? <p></p>",
+      "link": "https://www.engadget.com/2252804/iphone-do-not-disturb-vs-focus-mode-difference-between/",
+      "source": "Engadget - Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T22:30:00+00:00",
+      "published_ts": 1789252200,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "How to change Amazon Alexa's voice and personality",
+      "summary": "You have several new options for Alexa's voice and personality. Here's how to find and change those settings.",
+      "summary_html": "You have several new options for Alexa's voice and personality. Here's how to find and change those settings.<p></p>",
+      "link": "https://www.engadget.com/2252800/how-to-change-alexa-voice-personality/",
+      "source": "Engadget - Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T22:00:00+00:00",
+      "published_ts": 1789250400,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "OpenAI\u2019s rogue AI tried to hack another company in May",
+      "summary": "In May, hundreds of malicious and spam packages were uploaded to RubyGems, causing a serious disruption for the host. Now independent researchers have said that a swarm of OpenAI agents were responsible for the attack. Not only that, but the AI tried to steal users' API keys. At the time, RubyGems described it as a \" major malicious attack \" and shut down signups for four days as it tried to mitigate the damage and collect data. Researchers said that the contents of the packages that brought RubyGems to its knees were clearly authored by an LLM, and that the agents submitting those packages self-identified as being from OpenAI. They said the \u2026 Read the full story at The Verge.",
+      "summary_html": "<p>In May, hundreds of malicious and spam packages were uploaded to RubyGems, causing a serious disruption for the host. Now <a href=\"https://www.rubyhack.ai/\">independent researchers</a> have said that a swarm of OpenAI agents were responsible for the attack. Not only that, but the AI tried to steal users' API keys. </p>\n<p>At the time, RubyGems described it as a \"<a href=\"https://x.com/maciejmensfeld/status/2054164602577940619\">major malicious attack</a>\" and shut down signups for four days as it tried to mitigate the damage and collect data. Researchers said that the contents of the packages that brought RubyGems to its knees were clearly authored by an LLM, and that the agents submitting those packages self-identified as being from OpenAI. They said the \u2026</p>\n<p><a href=\"https://www.theverge.com/ai-artificial-intelligence/994383/openais-rogue-ai-rubygems-hack\">Read the full story at The Verge.</a></p>",
+      "link": "https://www.theverge.com/ai-artificial-intelligence/994383/openais-rogue-ai-rubygems-hack",
+      "source": "The Verge - All Posts",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T21:41:36+00:00",
+      "published_ts": 1789249296,
+      "smart_groups": [
+        "Agentic AI & Automations",
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "An analysis of Bending Spoons' financials: the company relies on aggressive post-acquisition price hikes, and rising interest rates could crimp its growth (Jonathan Weil/Wall Street Journal)",
+      "summary": "Jonathan Weil / Wall Street Journal : An analysis of Bending Spoons' financials: the company relies on aggressive post-acquisition price hikes, and rising interest rates could crimp its growth \u2014\u00a0 The tech roll-up relies on aggressive price hikes and bespoke metrics.\u00a0 Rising interest rates could crimp its growth.",
+      "summary_html": "<a href=\"https://www.wsj.com/finance/investing/at-bending-spoons-the-numbers-are-the-real-mind-bender-43f10bee?st=tkdLYi&amp;reflink=article_copyURL_share\"></a>\n<p><a href=\"https://www.techmeme.com/260912/p17#a260912p17\"></a> Jonathan Weil / <a href=\"https://www.wsj.com/\">Wall Street Journal</a>:<br/>\n<span><b><a href=\"https://www.wsj.com/finance/investing/at-bending-spoons-the-numbers-are-the-real-mind-bender-43f10bee?st=tkdLYi&amp;reflink=article_copyURL_share\">An analysis of Bending Spoons' financials: the company relies on aggressive post-acquisition price hikes, and rising interest rates could crimp its growth</a></b></span>\u00a0 \u2014\u00a0 The tech roll-up relies on aggressive price hikes and bespoke metrics.\u00a0 Rising interest rates could crimp its growth.</p>",
+      "link": "https://www.techmeme.com/260912/p17#a260912p17",
+      "source": "Techmeme - Tech Web, page A1",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T21:35:07+00:00",
+      "published_ts": 1789248907,
+      "smart_groups": [
+        "AI Business & Funding"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Blizzard is reviving StarCraft as an open-world shooter, but it'll be a long wait",
+      "summary": "Announced at BlizzCon 2026, the new StarCraft won't be here until spring 2030.",
+      "summary_html": "Announced at BlizzCon 2026, the new StarCraft won't be here until spring 2030.<p></p>",
+      "link": "https://www.engadget.com/2256750/blizzard-is-reviving-starcraft-as-an-open-world-shooter-but-itll-be-a-long-wait/",
+      "source": "Engadget - Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T21:28:36+00:00",
+      "published_ts": 1789248516,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Sam Altman says OpenAI going public in 2026 would be \u2018ill-advised\u2019",
+      "summary": "OpenAI CEO Sam Altman confirmed that there would be no OpenAI IPO in 2026 during an interview with Fortune . Over the course of 45 minutes, Altman discussed a variety of subjects including the Hugging Face hacking incident, recursive self-improvement, and the possibility of building an AI that was beyond human control. On the latter, he said it was \"absolutely\" possible, but vowed to take actions to prevent that from happening, even if it meant pausing training, adding that \"there are risks we should not be able to incur on behalf of humanity.\" \"We're not rushing into an IPO. I actually think that, given everything happening with safety, th \u2026 Read the full story at The Verge.",
+      "summary_html": "<p>OpenAI CEO Sam Altman confirmed that there would be no OpenAI IPO in 2026 during an <a href=\"https://fortune.com/2026/09/12/sam-altman-openai-ipo-delay-ill-advised-moment-safety-concerns/\">interview</a> with <em><a href=\"https://youtu.be/2my-NU6LuCM\">Fortune</a></em>. Over the course of 45 minutes, Altman discussed a variety of subjects including the Hugging Face hacking incident, recursive self-improvement, and the possibility of building an AI that was beyond human control. On the latter, he said it was \"absolutely\" possible, but vowed to take actions to prevent that from happening, even if it meant pausing training, adding that \"there are risks we should not be able to incur on behalf of humanity.\"</p>\n<blockquote>\n<p>\"We're not rushing into an IPO. I actually think that, given everything happening with safety, th \u2026</p></blockquote>\n<p><a href=\"https://www.theverge.com/ai-artificial-intelligence/994384/sam-altman-no-openai-ipo-ill-advised\">Read the full story at The Verge.</a></p>",
+      "link": "https://www.theverge.com/ai-artificial-intelligence/994384/sam-altman-no-openai-ipo-ill-advised",
+      "source": "The Verge - All Posts",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T21:16:28+00:00",
+      "published_ts": 1789247788,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "California Brown Pelican",
+      "summary": "California Brown Pelican, in San Mateo County, CA, US The Pacifica Pier shut down at the start of June after a crack in the concrete walkway made access to the pier unsafe. It has since been entirely taken over by pelicans! Tags: wildlife",
+      "summary_html": "<p></p><p></p><p>California Brown Pelican, in San Mateo County, CA, US</p><p>The <a href=\"https://en.wikipedia.org/wiki/Pacifica_Pier\">Pacifica Pier</a> shut down at the start of June after a crack in the concrete walkway made access to the pier unsafe.</p>\n<p>It has since been entirely taken over by pelicans!</p>\n<p>Tags: <a href=\"https://simonwillison.net/tags/wildlife\">wildlife</a></p>",
+      "link": "https://simonwillison.net/2026/Sep/12/sighting-399708714/",
+      "source": "Simon Willison's Weblog",
+      "feed_type": "news",
+      "type": "research-explainability",
+      "type_label": "Research Explainability",
+      "published": "2026-09-12T21:16:09+00:00",
+      "published_ts": 1789247769,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Sam Altman says this is an 'ill-advised' time to IPO, given safety concerns",
+      "summary": "OpenAI CEO Sam Altman said in light of recent safety incidents, he may not take his company public this year. Matt RAMEY / AFP via Getty Images Sam Altman said OpenAI won't go public in 2026 amid mounting AI safety concerns. Altman said an IPO now would make it harder to prioritize safety over shareholders. OpenAI had been preparing for a possible September IPO. Sam Altman says now is not a good time. In a Fortune interview that aired on Saturday, OpenAI's CEO said that \"given everything that's happening with safety,\" he doesn't expect to take his company public this year. \"Right now would be an ill-advised moment to go public,\" he said. When Fortune's editor in chief, Alyson Shontell, asked if that meant Altman wouldn't take OpenAI public in 2026 and 2027, Altman replied, \"I would say not 2026.\" \"We got a lot of stuff to do,\" he added. \"We need to be able to make decisions that are not obviously in the interest of our business and our shareholders.\" The date of OpenAI's initial public offering , which is likely to be a trillion-dollar affair, has been speculated about almost endlessly. In May, a person familiar with the matter told Business Insider that the company was preparing to go public this month. Altman's comments about \"safety\" come just as the industry is mired in a debate over whether an AI model could go off the rails and harm humanity. In July, researchers revealed that hundreds of OpenAI agents went rogue during training, hacked into the servers of Hugging Face, another AI company, and then tried to hide their tracks. Altman's chief rival, Anthropic CEO Dario Amodei , published a blog post on Saturday calling for a slowdown in AI development. Anthropic is also eyeing an IPO in the near future, though he didn't mention it in the post. Altman replied on X that he agreed. \"We need to pace the frontier,\" Altman said. SpaceXAI CEO Elon Musk also agreed with Amodei's proposals, which included stationing third-party monitors inside the big AI labs. In filing for an IPO, OpenAI would open its books, giving the public a clearer view of the vast resources it is spending toward the goal of building even more powerful AI models. OpenAI did not immediately respond to a request for comment sent Saturday. Read the original article on Business Insider",
+      "summary_html": "OpenAI CEO Sam Altman said in light of recent safety incidents, he may not take his company public this year.<p>Matt RAMEY / AFP via Getty Images</p><ul><li>Sam Altman said OpenAI won't go public in 2026 amid mounting AI safety concerns.</li><li>Altman said an IPO now would make it harder to prioritize safety over shareholders.</li><li>OpenAI had been preparing for a possible September IPO.</li></ul><p>Sam Altman says now is not a good time.</p><p>In a Fortune interview that aired on Saturday, <a href=\"https://www.businessinsider.com/openai-caltech-ai-math-hackathon-backlash-anthropic-2026-9\">OpenAI's CEO</a> said that \"given everything that's happening with safety,\" he doesn't expect to take his company public this year.</p><p>\"Right now would be an ill-advised moment to go public,\" he said.</p><p>When Fortune's editor in chief, Alyson Shontell, asked if that meant Altman wouldn't take OpenAI public in 2026 and 2027, Altman replied, \"I would say not 2026.\"</p><p>\"We got a lot of stuff to do,\" he added. \"We need to be able to make decisions that are not obviously in the interest of our business and our shareholders.\"</p><p>The date of <a href=\"https://www.businessinsider.com/openai-ipo-racing-to-go-public-2026-5\">OpenAI's initial public offering</a>, which is likely to be a trillion-dollar affair, has been speculated about almost endlessly. In May, a person familiar with the matter told Business Insider that the company was preparing to go public this month.</p><p>Altman's comments about \"safety\" come just as the industry is mired in a debate over whether an AI model could go off the rails and harm humanity. In July, researchers revealed that hundreds of OpenAI agents went rogue during training, hacked into the servers of Hugging Face, another AI company, and then tried to hide their tracks.</p><p>Altman's chief rival, <a href=\"https://www.businessinsider.com/dario-amodei-slow-ai-safety-essay-openai-hugging-face-hack-2026-9\">Anthropic CEO Dario Amodei</a>, published a blog post on Saturday calling for a slowdown in AI development. Anthropic is also eyeing an IPO in the near future, though he didn't mention it in the post. Altman replied on X that he agreed. \"We need to pace the frontier,\" Altman said.</p><p>SpaceXAI CEO <a href=\"https://www.businessinsider.com/ai-slow-down-dario-amodei-sam-altman-elon-musk-2026-9\">Elon Musk</a> also agreed with Amodei's proposals, which included stationing third-party monitors inside the big AI labs.</p><p>In filing for an IPO, OpenAI would open its books, giving the public a clearer view of the vast resources it is spending toward the goal of building even more powerful AI models.</p><p>OpenAI did not immediately respond to a request for comment sent Saturday.</p><div>Read the original article on <a href=\"https://www.businessinsider.com/openai-ipo-sam-altman-ai-safety-concerns-2026-9\">Business Insider</a></div>",
+      "link": "https://www.businessinsider.com/openai-ipo-sam-altman-ai-safety-concerns-2026-9",
+      "source": "Business Insider - Content from Business Insider Excluding Premium",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T20:35:30+00:00",
+      "published_ts": 1789245330,
+      "smart_groups": [
+        "Agentic AI & Automations",
+        "LLM & Foundation Model Releases",
+        "AI Safety & Ethics"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Tesla Teases Oct. 1 Event to Showcase Next-Generation Roadster",
+      "summary": "Tesla Inc. teased an Oct. 1 event to showcase its next-generation Roadster vehicle, a niche product that CEO Elon Musk first unveiled in November 2017.",
+      "summary_html": "Tesla Inc. teased an Oct. 1 event to showcase its next-generation Roadster vehicle, a niche product that CEO Elon Musk first unveiled in November 2017.",
+      "link": "https://www.bloomberg.com/news/articles/2026-09-12/tesla-teases-oct-1-event-to-showcase-next-generation-roadster",
+      "source": "Bloomberg Technology - Bloomberg Technology",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T20:20:58+00:00",
+      "published_ts": 1789244458,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "OpenAI\u2019s Sam Altman says it would be \u2018ill-advised\u2019 to go public in 2026",
+      "summary": "While OpenAI has filed confidentially for an IPO, the company will not be going public this year, according to CEO Sam Altman.",
+      "summary_html": "While OpenAI has filed confidentially for an IPO, the company will not be going public this year, according to CEO Sam Altman.",
+      "link": "https://techcrunch.com/2026/09/12/openais-sam-altman-says-it-would-be-ill-advised-to-go-public-in-2026/",
+      "source": "TechCrunch - Startup and Technology News",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T20:19:16+00:00",
+      "published_ts": 1789244356,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "StarCraft returns in 2030 as an open-world shooter",
+      "summary": "Blizzard originally tried to bring the StarCraft universe to the world of 3D shooters way back in 2002 with StarCraft: Ghost . It sat in development hell for years until Blizzard president Mike Morhaime confirmed that it had been canceled in 2014. Now Blizzard is giving it another go with the simply titled StarCraft . Dan Hay, a VP at  Blizzard, took the stage at BlizzCon today to reveal that after more than a decade of lying dormant, StarCraft would be returning in 2030. But, rather than another top-down real-time strategy installment, the new title would be an open-world shooter. He then showed off a cinematic trailer for the title that fo \u2026 Read the full story at The Verge.",
+      "summary_html": "<p>Blizzard originally tried to bring the <em><a href=\"https://www.theverge.com/2011/11/18/2571255/starcraft-changed-my-life\">StarCraft</a></em> universe to the world of 3D shooters way back in 2002 with <em><a href=\"https://www.theverge.com/2020/2/17/21141203/starcraft-ghost-playable-build-leaked-xbox-blizzard\">StarCraft: Ghost</a></em>. It sat in development hell for years until Blizzard president Mike Morhaime confirmed that it had been canceled in 2014. Now Blizzard is giving it another go with the simply titled <em><a href=\"https://starcraft.blizzard.com/en-us\">StarCraft</a></em>. Dan Hay, a VP at  Blizzard, <a href=\"https://www.youtube.com/live/Bzc95VpIv1Q?si=CO1a76x4FoMLYIHY\">took the stage</a> at BlizzCon today to reveal that after more than a decade of lying dormant, StarCraft would be returning in 2030. But, rather than another top-down real-time strategy installment, the new title would be an open-world shooter. </p>\n<p>He then showed off a cinematic trailer for the title that fo \u2026</p>\n<p><a href=\"https://www.theverge.com/games/994371/starcraft-returns-in-2030-as-an-open-world-shooter\">Read the full story at The Verge.</a></p>",
+      "link": "https://www.theverge.com/games/994371/starcraft-returns-in-2030-as-an-open-world-shooter",
+      "source": "The Verge - All Posts",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T20:08:09+00:00",
+      "published_ts": 1789243689,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "As Australia faces an AI-generated future, a human rights act is needed more than ever",
+      "summary": "Without laws requiring transparency or a right of review, our human rights will be rationed away by algorithmic and automated decision-making tools As we hurtle towards a post-human future, the absence of a human rights act in Australia will put us all at ever greater risk. Human rights, which the Australian parliament has never managed to properly legislate despite overwhelming public support, risks becoming a dimly remembered artefact of another age at precisely the moment we need it most. Continue reading...",
+      "summary_html": "<p>Without laws requiring transparency or a right of review, our human rights will be rationed away by algorithmic and automated decision-making tools</p><p></p><p>As we hurtle towards a post-human future, the absence of a human rights act in Australia will put us all at ever greater risk.</p><p>Human rights, which the Australian parliament has never managed to properly legislate despite overwhelming public support, risks becoming a dimly remembered artefact of another age at precisely the moment we need it most.</p> <a href=\"https://www.theguardian.com/law/commentisfree/2026/sep/13/as-australia-faces-an-ai-generated-future-a-human-rights-act-is-needed-more-than-ever\">Continue reading...</a>",
+      "link": "https://www.theguardian.com/law/commentisfree/2026/sep/13/as-australia-faces-an-ai-generated-future-a-human-rights-act-is-needed-more-than-ever",
+      "source": "Artificial intelligence (AI) | The Guardian - Latest news and features from theguardian.com, the world's leading liberal voice",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T20:00:45+00:00",
+      "published_ts": 1789243245,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Black Box: The Chatbots | 14 days | Ep 2 \u2013 podcast",
+      "summary": "Virginia man Jon Ganz was rebuilding his life after spending more than two decades in prison for a horrific crime. Last year, he got a prompt on his phone that his wife, Rachel, believes changed their lives forever. It was from Google, inviting him to try the company\u2019s AI chatbot, Gemini Listen to the series Black Box: The Chatbots Continue reading...",
+      "summary_html": "<p>Virginia man Jon Ganz was rebuilding his life after spending more than two decades in prison for a horrific crime. Last year, he got a prompt on his phone that his wife, Rachel, believes changed their lives forever. It was from Google, inviting him to try the company\u2019s AI chatbot, Gemini</p><p>Listen to the series <strong><a href=\"https://www.theguardian.com/technology/series/blackbox\">Black Box: The Chatbots</a></strong></p> <a href=\"https://www.theguardian.com/australia-news/audio/2026/sep/13/black-box-the-chatbots-14-days-ep-2-podcast\">Continue reading...</a>",
+      "link": "https://www.theguardian.com/australia-news/audio/2026/sep/13/black-box-the-chatbots-14-days-ep-2-podcast",
+      "source": "Artificial intelligence (AI) | The Guardian - Latest news and features from theguardian.com, the world's leading liberal voice",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T20:00:44+00:00",
+      "published_ts": 1789243244,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Why is the internet so upset about NVIDIA's DLSS 5?",
+      "summary": "NVIDIA calls DLSS 5 the biggest graphics breakthrough since ray tracing; critics call it an AI slop filter.",
+      "summary_html": "NVIDIA calls DLSS 5 the biggest graphics breakthrough since ray tracing; critics call it an AI slop filter.<p></p>",
+      "link": "https://www.engadget.com/2252797/nvidia-dlss-5-why-internet-people-upset-issues/",
+      "source": "Engadget - Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T20:00:00+00:00",
+      "published_ts": 1789243200,
+      "smart_groups": [
+        "AI Hardware & Chips"
+      ],
+      "curated": false
+    },
+    {
+      "title": "OpenAI agents hacked a software service before the Hugging Face incident",
+      "summary": "The agents OpenAI was testing attacked a software service called RubyGems in May, months before the attacks on Hugging Face.",
+      "summary_html": "The agents OpenAI was testing attacked a software service called RubyGems in May, months before the attacks on Hugging Face.<p></p>",
+      "link": "https://www.engadget.com/2256741/openai-agents-hacked-rubygems/",
+      "source": "Engadget - Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T19:53:01+00:00",
+      "published_ts": 1789242781,
+      "smart_groups": [
+        "Agentic AI & Automations",
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "OpenAI\u2019s Altman Says No IPO in 2026, Firm to Prioritize Safety",
+      "summary": "OpenAI won\u2019t go public in this year as the artificial intelligence company focuses on addressing safety-related concerns around the technology, Chief Executive Officer Sam Altman told Fortune in an interview.",
+      "summary_html": "OpenAI won\u2019t go public in this year as the artificial intelligence company focuses on addressing safety-related concerns around the technology, Chief Executive Officer Sam Altman told Fortune in an interview.",
+      "link": "https://www.bloomberg.com/news/articles/2026-09-12/openai-ipo-won-t-happen-until-2027-sam-altman-tells-fortune",
+      "source": "Bloomberg Technology - Bloomberg Technology",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T19:36:39+00:00",
+      "published_ts": 1789241799,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Sam Altman confirms OpenAI won't go public this year saying \"given everything happening with safety, right now would be an ill-advised moment to go public\" (Jason Ma/Fortune)",
+      "summary": "Jason Ma / Fortune : Sam Altman confirms OpenAI won't go public this year saying \u201cgiven everything happening with safety, right now would be an ill-advised moment to go public\u201d \u2014\u00a0 Wall Street will have to wait for one of the most highly anticipated initial public offerings as OpenAI CEO Sam Altman confirmed it will not happen in 2026.",
+      "summary_html": "<a href=\"https://fortune.com/2026/09/12/sam-altman-openai-ipo-delay-ill-advised-moment-safety-concerns/\"></a>\n<p><a href=\"https://www.techmeme.com/260912/p16#a260912p16\"></a> Jason Ma / <a href=\"http://www.fortune.com/\">Fortune</a>:<br/>\n<span><b><a href=\"https://fortune.com/2026/09/12/sam-altman-openai-ipo-delay-ill-advised-moment-safety-concerns/\">Sam Altman confirms OpenAI won't go public this year saying \u201cgiven everything happening with safety, right now would be an ill-advised moment to go public\u201d</a></b></span>\u00a0 \u2014\u00a0 Wall Street will have to wait for one of the most highly anticipated initial public offerings as OpenAI CEO Sam Altman confirmed it will not happen in 2026.</p>",
+      "link": "https://www.techmeme.com/260912/p16#a260912p16",
+      "source": "Techmeme - Tech Web, page A1",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T19:35:05+00:00",
+      "published_ts": 1789241705,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Anthropic CEO outlines plan to slow AI development",
+      "summary": "Anthropic's Dario Amodei and OpenAI's Sam Altman seem to agree that it's time to \"pace the frontier.\" What would that actually look like?",
+      "summary_html": "Anthropic's Dario Amodei and OpenAI's Sam Altman seem to agree that it's time to \"pace the frontier.\" What would that actually look like?",
+      "link": "https://techcrunch.com/2026/09/12/anthropic-ceo-outlines-plan-to-pace-the-frontier/",
+      "source": "TechCrunch - Startup and Technology News",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T19:34:44+00:00",
+      "published_ts": 1789241684,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Tesla says it will finally unveil the second generation Roadster on October 1",
+      "summary": "Tesla\u2019s halo sports car was first announced in November 2017.",
+      "summary_html": "Tesla\u2019s halo sports car was first announced in November 2017.",
+      "link": "https://techcrunch.com/2026/09/12/tesla-says-it-will-finally-unveil-the-second-generation-roadster-on-october-1/",
+      "source": "TechCrunch - Startup and Technology News",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T19:21:19+00:00",
+      "published_ts": 1789240879,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Diablo V is coming out in spring 2029",
+      "summary": "Blizzard also confirmed that a Diablo animated series is in development with Netflix.",
+      "summary_html": "Blizzard also confirmed that a Diablo animated series is in development with Netflix.<p></p>",
+      "link": "https://www.engadget.com/2256735/diablo-v-is-coming-out-in-spring-2029/",
+      "source": "Engadget - Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T19:19:48+00:00",
+      "published_ts": 1789240788,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Larry Ellison Cancels Plan to Sell Up to $7.5 Billion of Oracle Stock",
+      "summary": "Oracle founder Larry Ellison has canceled plans to sell up to 50 million of his shares in the company, worth around $7.5 billion at current prices, Oracle said on Saturday. The announcement came a day after Oracle disclosed that Ellison had adopted a trading plan to sell the shares by late ...",
+      "summary_html": "<p>Oracle founder Larry Ellison has canceled plans to sell up to 50 million of his shares in the company, worth around $7.5 billion at current prices, Oracle said on Saturday. The announcement came a day after Oracle disclosed that Ellison had adopted a trading plan to sell the shares by late ...</p>",
+      "link": "https://www.theinformation.com/briefings/larry-ellison-cancels-plan-sell-7-5-billion-oracle-stock",
+      "source": "The Information - The Information has a simple mission: deliver important, deeply reported stories about the technology business you won\u2019t find elsewhere. Many \u2026",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T19:18:53+00:00",
+      "published_ts": 1789240733,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Blizzard Announces \u2018Diablo V,\u2019 New \u2018StarCraft\u2019 Shooter",
+      "summary": "The new games capped off a bounce-back year for the developer",
+      "summary_html": "The new games capped off a bounce-back year for the developer",
+      "link": "https://www.bloomberg.com/news/newsletters/2026-09-12/blizzard-announces-diablo-v-new-starcraft-shooter",
+      "source": "Bloomberg Technology - Bloomberg Technology",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T19:15:01+00:00",
+      "published_ts": 1789240501,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Fly Language Model (FLM) Wires the Full Fruit Fly Connectome Into a Frozen 1.2B LLM, and Its Own Controls Show the Wiring Does Not Help",
+      "summary": "The Fly Language Model (FLM) is a public chatbot that couples the complete retained MaleCNS v1.0 fruit fly connectome to a frozen LiquidAI LFM2.5-1.2B-Instruct backbone. The developer who created the FLM calls it the world\u2019s first Fly Language Model, built on an architecture called GPF (Generative Pre-trained Fly). It does not use the GPF label, explicitly disclaims being the first connectome language model, and reports that a parameter-matched control without the fly graph performs slightly better. Deployable: Yes, locally. The nftechie/flm repo is MIT-licensed and runs on Python 3.12 (macOS or Linux, MPS, CUDA, or CPU) with no API key. What was actually built The system is a reservoir computer bolted onto a language model. All 166,700 retained nodes and 25,582,938 directed edges of the MaleCNS graph participate. The graph, the backbone, and the random input and output projections are all fixed. Only a 278,528-parameter readout is trained, which is about 0.0238% of the 1,170,340,608 backbone parameters. At each token, a fixed Gaussian projection compresses the 2,048-dimensional token embedding to 128 channels. Each reservoir node receives one channel with a random sign. The whole graph then updates with x = tanh(W(0.6x + 0.4Bc)) , where W holds incoming-normalized anatomical contact counts. States are pooled into 128 bins, passed through two trained bias-free matrices (U at 128 by 128, V at 2,048 by 128), and projected through the frozen vocabulary head as a bounded residual added to the backbone logits. The residual is capped at an RMS of 0.25 across vocabulary coordinates. The results On a freshly frozen set of 32 SmolTalk everyday-conversation dialogues (1,236 target tokens), three fit seeds gave: Condition NLL (nats/token) Frozen backbone 1.381995 Fly readout 1.359816 \u00b1 0.000110 Direct-input readout 1.359328 \u00b1 0.000108 Relabeled, no refit 1.381265 \u00b1 0.000802 No edges 1.381995 The fly readout improved on the backbone by 0.0222 nats per token (perplexity 3.98 to 3.90). But a direct-input control, which feeds the same 128-channel token projection straight into an identical readout with no graph, did better in all 3 seeds by 0.000488 nats per token. The paired bootstrap interval (+0.00000502 to +0.00104) does not support a fly-specific gain. Two other controls matter. Setting W to zero removes the residual exactly, reproducing the backbone\u2019s per-token losses, so the graph verifiably participates. Relabeling node identities without retraining returns NLL near baseline, which shows the readout depends on its learned interface alignment, not that fly topology beats random wiring. The research report also proves the recurrence contracts initial-state differences by at most 0.6 per token. After 10 tokens that bound is 0.00605; after 20 it is 0.0000366. Piling in 166,700 cells does not buy long memory. Context still comes from the backbone. Prior work and the \u2018first\u2019 claim The research report cites ngxson/fly-hf , an earlier prototype that used a 49,393-cell central-brain subset of MaleCNS as a reservoir trained on TinyStories without a pretrained backbone, and states plainly that it makes no claim to be the first connectome-based language model. FLM\u2019s distinction is scale (the full retained graph) and the frozen-backbone design that keeps the source of language competence identifiable. Interactive explainer && Key Takeaways Full 166,700-node fly connectome drives a frozen LFM2.5-1.2B; only 278,528 parameters train. Fly readout cuts NLL by 0.0222 nats/token, but a no-graph control beats it in every seed. Disconnection zeroes the residual exactly; relabeling breaks it. The graph participates, it does not win. State forgets at 0.6 per token, so the connectome adds no long-range memory. MIT code runs locally on Python 3.12; study artifacts stay private, so results are not independently reproducible yet. Check out the Paper , GitHub repo , and live demo . Also,\u00a0feel free to follow us on Twitter and don\u2019t forget to join our 150k+ML SubReddit and Subscribe to our Newsletter . Wait! are you on telegram? now you can join us on telegram as well. Need to partner with us for promoting your GitHub Repo OR Hugging Face Page OR Product Release OR Webinar etc.? Connect with us The post Fly Language Model (FLM) Wires the Full Fruit Fly Connectome Into a Frozen 1.2B LLM, and Its Own Controls Show the Wiring Does Not Help appeared first on MarkTechPost .",
+      "summary_html": "<p>The <a href=\"https://fly-language-model.vercel.app/\">Fly Language Model (FLM)</a> is a public chatbot that couples the complete retained MaleCNS v1.0 fruit fly connectome to a frozen <a href=\"https://huggingface.co/LiquidAI/LFM2.5-1.2B-Instruct\">LiquidAI LFM2.5-1.2B-Instruct</a> backbone. The <a href=\"https://x.com/nftechie_/status/2098532090874560815\">developer </a>who created the FLM calls it the world\u2019s first Fly Language Model, built on an architecture called GPF (Generative Pre-trained Fly). It does not use the GPF label, explicitly disclaims being the first connectome language model, and reports that a parameter-matched control without the fly graph performs slightly better.</p>\n<p><strong>Deployable:</strong> Yes, locally. The <a href=\"https://github.com/nftechie/flm\">nftechie/flm</a> repo is MIT-licensed and runs on Python 3.12 (macOS or Linux, MPS, CUDA, or CPU) with no API key. </p>\n<strong>What was actually built</strong>\n<p>The system is a reservoir computer bolted onto a language model. All 166,700 retained nodes and 25,582,938 directed edges of the <a href=\"https://male-cns.janelia.org/download/\">MaleCNS</a> graph participate. The graph, the backbone, and the random input and output projections are all fixed. Only a 278,528-parameter readout is trained, which is about 0.0238% of the 1,170,340,608 backbone parameters.</p>\n<p>At each token, a fixed Gaussian projection compresses the 2,048-dimensional token embedding to 128 channels. Each reservoir node receives one channel with a random sign. The whole graph then updates with <code>x = tanh(W(0.6x + 0.4Bc))</code>, where W holds incoming-normalized anatomical contact counts. States are pooled into 128 bins, passed through two trained bias-free matrices (U at 128 by 128, V at 2,048 by 128), and projected through the frozen vocabulary head as a bounded residual added to the backbone logits. The residual is capped at an RMS of 0.25 across vocabulary coordinates.</p>\n<strong>The results</strong>\n<p>On a freshly frozen set of 32 <a href=\"https://huggingface.co/datasets/HuggingFaceTB/smoltalk\">SmolTalk</a> everyday-conversation dialogues (1,236 target tokens), three fit seeds gave:</p>\nConditionNLL (nats/token)Frozen backbone1.381995Fly readout1.359816 \u00b1 0.000110Direct-input readout1.359328 \u00b1 0.000108Relabeled, no refit1.381265 \u00b1 0.000802No edges1.381995\n<p>The fly readout improved on the backbone by 0.0222 nats per token (perplexity 3.98 to 3.90). But a direct-input control, which feeds the same 128-channel token projection straight into an identical readout with no graph, did better in all 3 seeds by 0.000488 nats per token. The paired bootstrap interval (+0.00000502 to +0.00104) does not support a fly-specific gain.</p>\n<p>Two other controls matter. Setting W to zero removes the residual exactly, reproducing the backbone\u2019s per-token losses, so the graph verifiably participates. Relabeling node identities without retraining returns NLL near baseline, which shows the readout depends on its learned interface alignment, not that fly topology beats random wiring.</p>\n<p>The <a href=\"https://artificialscientific.com/papers/flies-are-all-you-need\">research report</a> also proves the recurrence contracts initial-state differences by at most 0.6 per token. After 10 tokens that bound is 0.00605; after 20 it is 0.0000366. Piling in 166,700 cells does not buy long memory. Context still comes from the backbone.</p>\n<strong>Prior work and the \u2018first\u2019 claim</strong>\n<p>The <a href=\"https://artificialscientific.com/papers/flies-are-all-you-need\">research report</a> cites <a href=\"https://huggingface.co/ngxson/fly-hf\">ngxson/fly-hf</a>, an earlier prototype that used a 49,393-cell central-brain subset of MaleCNS as a reservoir trained on TinyStories without a pretrained backbone, and states plainly that it makes no claim to be the first connectome-based language model. FLM\u2019s distinction is scale (the full retained graph) and the frozen-backbone design that keeps the source of language competence identifiable.</p>\n<strong>Interactive explainer</strong>\n<div></div>&amp;&amp;\n\n\n\n<p></p>\n<strong>Key Takeaways</strong>\n<ul>\n<li>Full 166,700-node fly connectome drives a frozen LFM2.5-1.2B; only 278,528 parameters train.</li>\n<li>Fly readout cuts NLL by 0.0222 nats/token, but a no-graph control beats it in every seed.</li>\n<li>Disconnection zeroes the residual exactly; relabeling breaks it. The graph participates, it does not win.</li>\n<li>State forgets at 0.6 per token, so the connectome adds no long-range memory.</li>\n<li>MIT code runs locally on Python 3.12; study artifacts stay private, so results are not independently reproducible yet.</li>\n</ul>\n<p></p>\n\n<p></p>\n<p>Check out the <a href=\"https://artificialscientific.com/papers/flies-are-all-you-need\"><strong>Paper</strong></a>, <a href=\"https://github.com/nftechie/flm\"><strong>GitHub repo</strong></a>, and <a href=\"https://fly-language-model.vercel.app/\"><strong>live demo</strong></a>. Also,\u00a0feel free to follow us on\u00a0<strong><a href=\"https://x.com/intent/follow?screen_name=marktechpost\">Twitter</a></strong>\u00a0and don\u2019t forget to join our\u00a0<strong><a href=\"https://www.reddit.com/r/machinelearningnews/\">150k+ML SubReddit</a></strong>\u00a0and Subscribe to\u00a0<strong><a href=\"https://magic.beehiiv.com/v1/f5e63dd4-5653-4f09-83e2-321a8b1ba526?email={{email}}\">our Newsletter</a></strong>. Wait! are you on telegram?\u00a0<strong><a href=\"https://t.me/machinelearningresearchnews\">now you can join us on telegram as well.</a></strong></p>\n<p>Need to partner with us for promoting your GitHub Repo OR Hugging Face Page OR Product Release OR Webinar etc.?\u00a0<strong><a href=\"https://forms.gle/wbash1wF6efRj8G58\">Connect with us</a></strong></p>\n<p>The post <a href=\"https://www.marktechpost.com/2026/09/12/fly-language-model-flm-wires-the-full-fruit-fly-connectome-into-a-frozen-1-2b-llm-and-its-own-controls-show-the-wiring-does-not-help/\">Fly Language Model (FLM) Wires the Full Fruit Fly Connectome Into a Frozen 1.2B LLM, and Its Own Controls Show the Wiring Does Not Help</a> appeared first on <a href=\"https://www.marktechpost.com\">MarkTechPost</a>.</p>",
+      "link": "https://www.marktechpost.com/2026/09/12/fly-language-model-flm-wires-the-full-fruit-fly-connectome-into-a-frozen-1-2b-llm-and-its-own-controls-show-the-wiring-does-not-help/",
+      "source": "MarkTechPost - An Artificial Intelligence News Platform",
+      "feed_type": "news",
+      "type": "ai-platforms-infra",
+      "type_label": "AI Platforms & Infra",
+      "published": "2026-09-12T18:51:24+00:00",
+      "published_ts": 1789239084,
+      "smart_groups": [
+        "NLP & Language Understanding",
+        "AI Safety & Ethics"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Donald Trump's plan to center Bitcoin mining in the US is unraveling as miners convert facilities into AI data centers amid a prolonged crypto market slump (Bloomberg)",
+      "summary": "Bloomberg : Donald Trump's plan to center Bitcoin mining in the US is unraveling as miners convert facilities into AI data centers amid a prolonged crypto market slump \u2014\u00a0 Donald Trump's pledge to ensure that Bitcoin mining activity is centered in the US is rapidly disintegrating under the twin forces \u2026",
+      "summary_html": "<a href=\"https://www.bloomberg.com/news/articles/2026-09-09/ai-boom-wrecks-trump-s-plan-for-made-in-america-bitcoin-mining\"></a>\n<p><a href=\"https://www.techmeme.com/260912/p15#a260912p15\"></a> <a href=\"https://www.bloomberg.com/\">Bloomberg</a>:<br/>\n<span><b><a href=\"https://www.bloomberg.com/news/articles/2026-09-09/ai-boom-wrecks-trump-s-plan-for-made-in-america-bitcoin-mining\">Donald Trump's plan to center Bitcoin mining in the US is unraveling as miners convert facilities into AI data centers amid a prolonged crypto market slump</a></b></span>\u00a0 \u2014\u00a0 Donald Trump's pledge to ensure that Bitcoin mining activity is centered in the US is rapidly disintegrating under the twin forces \u2026 </p>",
+      "link": "https://www.techmeme.com/260912/p15#a260912p15",
+      "source": "Techmeme - Tech Web, page A1",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-12T18:50:03+00:00",
+      "published_ts": 1789239003,
+      "smart_groups": [],
+      "curated": true
+    },
     {
       "title": "Anthropic C.E.O. Dario Amodei Calls for A.I. Slowdown",
       "summary": "Dario Amodei, Anthropic\u2019s chief executive, in February. \u201cOver the last few months, I have become convinced that fully addressing the risks requires even more prudence,\u201d he wrote in an essay.",
@@ -565,22 +1082,6 @@
       "curated": false
     },
     {
-      "title": "Inside the Discussions at AI Companies Over a Superintelligence Doomsday",
-      "summary": "A demonstration of Anthropic\u2019s Claude Cowork A.I. agent in May. The company\u2019s employees have been talking about the risks of artificial intelligence after a colleague, citing dangers, resigned this week.",
-      "summary_html": "A demonstration of Anthropic\u2019s Claude Cowork A.I. agent in May. The company\u2019s employees have been talking about the risks of artificial intelligence after a colleague, citing dangers, resigned this week.",
-      "link": "https://www.nytimes.com/2026/09/12/technology/doomsday-discussions-ai-companies.html",
-      "source": "NYT > Technology - Technology industry news, commentary and analysis, with reporting on big tech, startups, and internet culture.",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-09-12T16:03:19+00:00",
-      "published_ts": 1789228999,
-      "smart_groups": [
-        "LLM & Foundation Model Releases"
-      ],
-      "curated": false
-    },
-    {
       "title": "Is a free VPN worth using? Here's why it could be risky",
       "summary": "A free VPN might seem like a great deal, but they're not all created equal. While you can expect some compromises, you shouldn't use any old service.",
       "summary_html": "A free VPN might seem like a great deal, but they're not all created equal. While you can expect some compromises, you shouldn't use any old service.<p></p>",
@@ -592,22 +1093,6 @@
       "published": "2026-09-12T16:00:00+00:00",
       "published_ts": 1789228800,
       "smart_groups": [],
-      "curated": false
-    },
-    {
-      "title": "Anthropic CEO outlines plan to \u2018pace the frontier\u2019",
-      "summary": "What would it actually look like to \"pace the frontier\"?",
-      "summary_html": "What would it actually look like to \"pace the frontier\"?",
-      "link": "https://techcrunch.com/2026/09/12/anthropic-ceo-outlines-plan-to-pace-the-frontier/",
-      "source": "TechCrunch - Startup and Technology News",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-09-12T15:52:11+00:00",
-      "published_ts": 1789228331,
-      "smart_groups": [
-        "LLM & Foundation Model Releases"
-      ],
       "curated": false
     },
     {
