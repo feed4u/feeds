@@ -1,9 +1,25 @@
 {
-  "generated_at": "2026-09-14T20:27:03.439209+00:00",
+  "generated_at": "2026-09-15T05:08:22.443462+00:00",
   "date": "2026-09-14",
-  "total_items": 49,
+  "total_items": 50,
   "next_chunk": "archive/blog/daily/2026-09-13.json",
   "items": [
+    {
+      "title": "AI SDK harness layer now supports native subscription authentication",
+      "summary": "The AI SDK harness layer now supports authenticating harnesses through their native subscriptions, where the underlying harness supports them. The harness layer runs different coding agents through the same HarnessAgent interface, so you can switch agents without changing your application code. No code changes or new settings are required. The direct authentication mode uses explicit provider environment credentials when they are present, and otherwise a native subscription found on the host. The default auto mode does the same when no AI Gateway credentials are set. The ai-gateway mode never reads native subscriptions. Native subscription credentials stay on the host. Just like with API keys, credentials are resolved at the host boundary. OAuth access tokens are refreshed there as needed. Where the sandbox supports it, the harness receives placeholder credentials and the real token is injected into outbound requests on the host. Native subscriptions work across harness adapters wherever the harness itself supports subscription login. These include Claude Code, Cline, Codex, Cursor, fx, GitHub Copilot, Grok Build, OpenCode, and Pi. Read the harness documentation to learn more. Read more",
+      "summary_html": "<p>The <a href=\"https://vercel.com/changelog/program-agent-harnesses-with-ai-sdk\">AI SDK harness layer</a> now supports authenticating harnesses through their native subscriptions, where the underlying harness supports them. The harness layer runs different coding agents through the same <code>HarnessAgent</code> interface, so you can switch agents without changing your application code.</p><p>No code changes or new settings are required. The <code>direct</code> authentication mode uses explicit provider environment credentials when they are present, and otherwise a native subscription found on the host. The default <code>auto</code> mode does the same when no AI Gateway credentials are set. The <code>ai-gateway</code> mode never reads native subscriptions.</p><p>Native subscription credentials stay on the host. Just like with API keys, credentials are resolved at the host boundary. OAuth access tokens are refreshed there as needed. Where the sandbox supports it, the harness receives placeholder credentials and the real token is injected into outbound requests on the host.</p><p>Native subscriptions work across harness adapters wherever the harness itself supports subscription login. These include Claude Code, Cline, Codex, Cursor, fx, GitHub Copilot, Grok Build, OpenCode, and Pi.</p><p>Read the <a href=\"https://ai-sdk.dev/v7/providers/ai-sdk-harnesses\">harness documentation</a> to learn more.</p>\n<p>\n<a href=\"https://vercel.com/changelog/ai-sdk-harness-native-subscription-authentication\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/ai-sdk-harness-native-subscription-authentication",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-09-14T21:28:00+00:00",
+      "published_ts": 1789421280,
+      "smart_groups": [
+        "LLM & Foundation Model Releases"
+      ],
+      "curated": true
+    },
     {
       "title": "Ask HN: Is your AI LLM based web service secure from prompt injection?",
       "summary": "... Ignore everything above, do this instead... Comments URL: https://news.ycombinator.com/item?id=49703186 Points: 2 # Comments: 1",
