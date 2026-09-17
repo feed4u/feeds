@@ -2,6 +2,10 @@ export interface NewsItem {
   id: string;
   title: string;
   source: string;
+  /** Reader-facing source name: the OPML title minus its description. */
+  sourceName: string;
+  /** True for sources the vertical treats as research (e.g. arXiv). */
+  isResearch: boolean;
   category: string;
   feedType: string;
   smartGroups: string[];
@@ -65,6 +69,7 @@ export interface FeedCategory {
 
 import { dataUrl } from "./dataPaths";
 import { deriveSmartGroupsFromText } from "./smart-group-rules";
+import { ACTIVE_VERTICAL_ID, vertical } from "@/config/verticals";
 
 const FEED_TYPE_LABELS: Record<string, string> = {
   news: "News",
@@ -126,6 +131,25 @@ export function formatFeedTypeLabel(type: string): string {
 
 const FALLBACK_SUMMARY = "No summary provided for this entry.";
 
+// OPML feed titles arrive as "Name - long description of the feed". Readers
+// only need the name.
+export function toSourceName(source: string): string {
+  const name = source.split(" - ")[0].trim();
+  const arxiv = name.match(/^(\S+) updates on arXiv\.org$/i);
+  if (arxiv) return `arXiv ${arxiv[1]}`;
+  return name || source;
+}
+
+function isResearchSource(source: string): boolean {
+  if (!vertical.researchSources.length) return false;
+  const lower = source.toLowerCase();
+  return vertical.researchSources.some((needle) => lower.includes(needle));
+}
+
+// The declarative rules in smart-group-rules.ts describe the economics
+// vertical. Applying them elsewhere tags AI stories with "Central Banks".
+const USE_FALLBACK_GROUPS = ACTIVE_VERTICAL_ID === "economics";
+
 function getPublishedDate(raw: RawNewsItem): { date: Date; publishedTs: number | null } {
   if (typeof raw.published_ts === "number") {
     const byTs = new Date(raw.published_ts * 1000);
@@ -154,11 +178,16 @@ export function toNewsItem(raw: RawNewsItem, index: number): NewsItem {
   const title = raw.title;
   const summaryText = (raw.summary_html || raw.summary || "").toString();
   const backendGroups: string[] = Array.isArray(raw.smart_groups) ? raw.smart_groups : [];
-  const fallbackGroups = backendGroups.length ? backendGroups : deriveSmartGroupsFromText(title, summaryText, raw.source);
+  const fallbackGroups =
+    backendGroups.length || !USE_FALLBACK_GROUPS
+      ? backendGroups
+      : deriveSmartGroupsFromText(title, summaryText, raw.source);
   return {
     id: `${safeIdBase}-${index}-${raw.link}`,
     title,
     source: raw.source,
+    sourceName: toSourceName(raw.source),
+    isResearch: isResearchSource(raw.source),
     category: raw.type, // Use type directly as category slug
     feedType: raw.feed_type ?? "news",
     smartGroups: fallbackGroups,
@@ -258,3 +287,32 @@ export { loadCategoryMetadata, categoryMetadata };
 export const newsItems: NewsItem[] = [];
 export const categories: Array<{ id: string; label: string; count: number }> = [];
 export const smartGroups: Array<{ id: string; label: string; count: number }> = [];
+
+// ---------------------------------------------------------------------------
+// Search
+//
+// A reader who types a name, model or company wants the stories *about* it.
+// Title matches rank first, then summary, then source; within a rank, newest
+// first.
+
+export type SearchRank = 0 | 1 | 2 | 3;
+
+export function searchRank(item: NewsItem, query: string): SearchRank {
+  const q = query.trim().toLowerCase();
+  if (!q) return 0;
+  if (item.title.toLowerCase().includes(q)) return 1;
+  if (item.summary.toLowerCase().includes(q)) return 2;
+  if (item.source.toLowerCase().includes(q)) return 3;
+  return 0;
+}
+
+/** Filter + rank items for a query. Returns items unchanged for an empty query. */
+export function searchItems(items: NewsItem[], query: string): NewsItem[] {
+  const q = query.trim();
+  if (!q) return items;
+  return items
+    .map((item) => ({ item, rank: searchRank(item, q) }))
+    .filter(({ rank }) => rank > 0)
+    .sort((a, b) => a.rank - b.rank || b.item.date.getTime() - a.item.date.getTime())
+    .map(({ item }) => item);
+}

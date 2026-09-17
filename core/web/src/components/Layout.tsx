@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Header } from "./Header";
-import { vertical } from "@/config/verticals";
+import { REFRESH_INTERVAL_HOURS, vertical } from "@/config/verticals";
 
 interface LayoutProps {
   children: ReactNode;
@@ -24,7 +24,7 @@ export function Layout({ children }: LayoutProps) {
               © {new Date().getFullYear()} {vertical.footerText}
             </p>
             <p className="font-mono text-[13px]">
-              Powered by public RSS feeds • Updated every 15 minutes
+              Built from public RSS feeds • Refreshed every {REFRESH_INTERVAL_HOURS} hours
             </p>
           </div>
         </div>

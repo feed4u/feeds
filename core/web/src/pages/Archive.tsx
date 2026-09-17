@@ -4,8 +4,9 @@ import { Layout } from "@/components/Layout";
 import { NewsCard } from "@/components/NewsCard";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { fetchNewsData, NewsItem, formatFeedTypeLabel } from "@/data/newsData";
+import { fetchNewsData, NewsItem, formatFeedTypeLabel, searchItems } from "@/data/newsData";
 import { fetchArchiveData } from "@/data/archiveData";
+import { useSearch } from "@/contexts/SearchContext";
 import { Helmet } from "react-helmet-async";
 import { format } from "date-fns";
 import { Archive as ArchiveIcon, Calendar, ChevronDown, ChevronUp } from "lucide-react";
@@ -25,6 +26,8 @@ export default function Archive() {
   const [warning, setWarning] = useState<string | null>(null);
   const [expandedMonths, setExpandedMonths] = useState<Set<string>>(new Set());
   const fallbackNewsRef = useRef<NewsItem[]>([]);
+  const { searchQuery, setSearchQuery } = useSearch();
+  const trimmedQuery = searchQuery.trim();
 
   useEffect(() => {
     const preloadFeedTypes = async () => {
@@ -100,11 +103,16 @@ export default function Archive() {
     loadData();
   }, [selectedFeedType]);
 
+  const visibleItems = useMemo(
+    () => searchItems(newsItems, trimmedQuery),
+    [newsItems, trimmedQuery],
+  );
+
   // Group news by month
   const monthlyGroups = useMemo(() => {
     const groups: Record<string, MonthGroup> = {};
 
-    newsItems.forEach((item) => {
+    visibleItems.forEach((item) => {
       const monthKey = format(item.date, "yyyy-MM");
       const monthLabel = format(item.date, "MMMM yyyy");
       const year = item.date.getFullYear();
@@ -127,6 +135,44 @@ export default function Archive() {
         key,
         ...group,
       }));
+  }, [visibleItems]);
+
+  // Under a search, open every month that has a match so the reader doesn't
+  // have to guess which one to click.
+  useEffect(() => {
+    setExpandedMonths(trimmedQuery ? new Set(monthlyGroups.map((g) => g.key)) : new Set());
+  }, [trimmedQuery, monthlyGroups]);
+
+  // Months between the oldest and newest with nothing collected. Say so
+  // rather than let the reader wonder whether they scrolled past them.
+  const gaps = useMemo(() => {
+    const present = new Set(
+      Array.from(new Set(newsItems.map((item) => format(item.date, "yyyy-MM")))),
+    );
+    const keys = Array.from(present).sort();
+    if (keys.length < 2) return [];
+    const ranges: string[] = [];
+    const [firstY, firstM] = keys[0].split("-").map(Number);
+    const [lastY, lastM] = keys[keys.length - 1].split("-").map(Number);
+    let cursor = new Date(firstY, firstM - 1, 1);
+    const end = new Date(lastY, lastM - 1, 1);
+    let start: Date | null = null;
+    while (cursor <= end) {
+      const key = format(cursor, "yyyy-MM");
+      if (!present.has(key)) {
+        if (!start) start = cursor;
+      } else if (start) {
+        const prev = new Date(cursor.getFullYear(), cursor.getMonth() - 1, 1);
+        ranges.push(
+          start.getTime() === prev.getTime()
+            ? format(start, "MMMM yyyy")
+            : `${format(start, "MMMM yyyy")} – ${format(prev, "MMMM yyyy")}`,
+        );
+        start = null;
+      }
+      cursor = new Date(cursor.getFullYear(), cursor.getMonth() + 1, 1);
+    }
+    return ranges;
   }, [newsItems]);
 
   const toggleMonth = (key: string) => {
@@ -148,8 +194,9 @@ export default function Archive() {
   };
 
   const totalItems = newsItems.length;
-  const totalMonths = monthlyGroups.length;
   const feedTypeLabel = formatFeedTypeLabel(selectedFeedType);
+  const oldest = monthlyGroups[monthlyGroups.length - 1];
+  const newest = monthlyGroups[0];
 
   return (
     <Layout>
@@ -172,7 +219,7 @@ export default function Archive() {
                   {feedTypeLabel} Archive
                 </h1>
                 <p className="text-[15px] text-muted-foreground mt-1">
-                  Browse historical security {feedTypeLabel.toLowerCase()}
+                  Every story we've collected, by month. Use the search box to look for something specific.
                 </p>
               </div>
             </div>
@@ -235,25 +282,51 @@ export default function Archive() {
           </div>
         ) : (
           <>
-            {/* Stats */}
-            <Card className="p-5 bg-card border-border">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-8">
-                  <div>
-                    <p className="text-[13px] text-muted-foreground font-mono uppercase mb-1">
-                      Total Articles
-                    </p>
-                    <p className="text-2xl font-bold text-foreground">{totalItems}</p>
-                  </div>
-                  <div>
-                    <p className="text-[13px] text-muted-foreground font-mono uppercase mb-1">
-                      Months Covered
-                    </p>
-                    <p className="text-2xl font-bold text-foreground">{totalMonths}</p>
-                  </div>
-                </div>
-              </div>
-            </Card>
+            {/* Summary */}
+            <div className="text-[15px] text-foreground space-y-1">
+              {trimmedQuery ? (
+                <p>
+                  <span className="font-medium">{visibleItems.length}</span>{" "}
+                  {visibleItems.length === 1 ? "story mentions" : "stories mention"}{" "}
+                  <span className="font-medium">“{trimmedQuery}”</span>
+                  <span className="text-muted-foreground"> across {totalItems.toLocaleString()} archived {feedTypeLabel.toLowerCase()}</span>
+                  {" "}
+                  <button
+                    type="button"
+                    onClick={() => setSearchQuery("")}
+                    className="text-primary hover:underline"
+                  >
+                    Clear search
+                  </button>
+                </p>
+              ) : (
+                <p>
+                  <span className="font-medium">{totalItems.toLocaleString()}</span>
+                  <span className="text-muted-foreground">
+                    {" "}archived {feedTypeLabel.toLowerCase()}
+                    {oldest && newest && (
+                      <> · {oldest.month === newest.month ? oldest.month : `${oldest.month} – ${newest.month}`}</>
+                    )}
+                  </span>
+                </p>
+              )}
+              {gaps.length > 0 && (
+                <p className="text-[13px] text-muted-foreground">
+                  Nothing was collected for {gaps.join(", ")}.
+                </p>
+              )}
+            </div>
+
+            {trimmedQuery && monthlyGroups.length === 0 && (
+              <Card className="p-8 text-center bg-card border-border">
+                <p className="text-[15px] text-foreground">
+                  No archived {feedTypeLabel.toLowerCase()} mention “{trimmedQuery}”.
+                </p>
+                <Button variant="outline" size="sm" className="mt-4" onClick={() => setSearchQuery("")}>
+                  Clear search
+                </Button>
+              </Card>
+            )}
 
             {/* Monthly Groups */}
             <div className="space-y-4">
@@ -287,7 +360,7 @@ export default function Archive() {
                     {isExpanded && (
                       <div className="border-t border-border p-5 space-y-4">
                         {group.items.map((item, index) => (
-                          <NewsCard key={item.id} item={item} index={index} />
+                          <NewsCard key={item.id} item={item} index={index} highlight={trimmedQuery} />
                         ))}
                       </div>
                     )}

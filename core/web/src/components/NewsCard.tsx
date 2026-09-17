@@ -1,100 +1,91 @@
-import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { ExternalLink, Clock } from "lucide-react";
-import { NewsItem, getCategoryLabel, formatFeedTypeLabel } from "@/data/newsData";
+import { ExternalLink } from "lucide-react";
+import { NewsItem } from "@/data/newsData";
 import { formatDistanceToNow } from "date-fns";
+import { Fragment, ReactNode } from "react";
 
 interface NewsCardProps {
   item: NewsItem;
   index: number;
-  onCategoryClick?: (category: string) => void;
   onSmartGroupClick?: (group: string) => void;
   selectedSmartGroup?: string;
-  selectedCategory?: string;
+  /** Current search query; matching text is highlighted so the reader can
+   *  see why a story is in the results. */
+  highlight?: string;
 }
 
-export function NewsCard({ item, index, onCategoryClick, onSmartGroupClick, selectedSmartGroup, selectedCategory }: NewsCardProps) {
-  const getCategoryVariant = (category: string) => {
-    switch (category) {
-      case 'vulnerabilities':
-      case 'malware':
-      case 'leaks':
-        return 'destructive';
-      case 'threat-intel':
-      case 'cybercrime':
-      case 'crypto':
-        return 'accent';
-      case 'dfir':
-        return 'success';
-      default:
-        return 'category';
-    }
-  };
+function highlightText(text: string, query?: string): ReactNode {
+  const q = query?.trim();
+  if (!q) return text;
+  const lower = text.toLowerCase();
+  const needle = q.toLowerCase();
+  const parts: ReactNode[] = [];
+  let pos = 0;
+  let idx = lower.indexOf(needle, pos);
+  if (idx === -1) return text;
+  while (idx !== -1) {
+    parts.push(<Fragment key={`t${pos}`}>{text.slice(pos, idx)}</Fragment>);
+    parts.push(
+      <mark key={`m${idx}`} className="bg-primary/25 text-inherit rounded-sm px-0.5">
+        {text.slice(idx, idx + needle.length)}
+      </mark>,
+    );
+    pos = idx + needle.length;
+    idx = lower.indexOf(needle, pos);
+  }
+  parts.push(<Fragment key={`t${pos}`}>{text.slice(pos)}</Fragment>);
+  return parts;
+}
 
+export function NewsCard({ item, index, onSmartGroupClick, selectedSmartGroup, highlight }: NewsCardProps) {
   return (
     <Card
-      className="group p-5 gradient-card border-border hover:border-primary/30 transition-all duration-300 animate-fade-in"
-      style={{ animationDelay: `${index * 50}ms` }}
+      className="group p-4 md:p-5 gradient-card border-border hover:border-primary/30 transition-all duration-300 animate-fade-in"
+      style={{ animationDelay: `${Math.min(index, 20) * 40}ms` }}
     >
-      <div className="flex items-start justify-between gap-4 mb-3">
-        <div className="flex items-center gap-2 flex-wrap">
-          <Badge variant="source" className="text-[13px]">{item.source}</Badge>
-          <Badge variant="outline" className="text-[11px] uppercase tracking-wide">
-            {formatFeedTypeLabel(item.feedType)}
-          </Badge>
-          <Badge
-            variant={getCategoryVariant(item.category)}
-            className={`text-[13px] cursor-pointer hover:opacity-80 transition-opacity ${
-              selectedCategory === item.category ? 'ring-2 ring-primary ring-offset-2' : ''
-            }`}
-            onClick={(e) => {
-              e.preventDefault();
-              onCategoryClick?.(item.category);
-            }}
-          >
-            {getCategoryLabel(item.category)}
-          </Badge>
-        </div>
-        <div className="flex items-center gap-1.5 text-[13px] text-muted-foreground font-mono shrink-0">
-          <Clock className="h-3 w-3" />
-          {formatDistanceToNow(item.date, { addSuffix: true })}
-        </div>
-      </div>
-
-      <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+      <h3 className="text-[17px] md:text-lg font-semibold leading-snug text-foreground group-hover:text-primary transition-colors">
         <a
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-start gap-2"
         >
-          {item.title}
-          <ExternalLink className="h-4 w-4 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity mt-0.5" />
+          <span>{highlightText(item.title, highlight)}</span>
+          <ExternalLink className="h-4 w-4 shrink-0 opacity-30 group-hover:opacity-100 transition-opacity mt-1" />
         </a>
       </h3>
 
-      <p className="text-[15px] text-muted-foreground leading-relaxed line-clamp-3">
-        {item.summary}
+      <p className="mt-1.5 text-[13px] text-muted-foreground">
+        <span className="font-medium text-foreground/80">{highlightText(item.sourceName, highlight)}</span>
+        <span aria-hidden="true"> · </span>
+        <time dateTime={item.published ?? undefined}>
+          {formatDistanceToNow(item.date, { addSuffix: true })}
+        </time>
+      </p>
+
+      <p className="mt-2 text-[15px] text-muted-foreground leading-relaxed line-clamp-3">
+        {highlightText(item.summary, highlight)}
       </p>
 
       {item.smartGroups.length > 0 && (
-        <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-border">
+        <div className="flex flex-wrap gap-1.5 mt-3">
           {item.smartGroups.map((group) => {
             const isSelected = selectedSmartGroup === group;
             return (
               <button
                 key={group}
+                type="button"
                 onClick={(e) => {
                   e.preventDefault();
                   onSmartGroupClick?.(group);
                 }}
-                className={`text-[13px] font-mono px-2.5 py-1 rounded transition-all cursor-pointer ${
+                className={`text-[12px] px-2 py-0.5 rounded-full transition-all cursor-pointer ${
                   isSelected
                     ? 'bg-primary text-primary-foreground font-semibold'
-                    : 'text-muted-foreground bg-muted/50 hover:bg-muted hover:text-foreground'
+                    : 'text-muted-foreground bg-muted/60 hover:bg-muted hover:text-foreground'
                 }`}
               >
-                #{group}
+                {group}
               </button>
             );
           })}

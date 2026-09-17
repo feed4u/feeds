@@ -1,9 +1,8 @@
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Shield, Cpu, TrendingUp, Database, Newspaper, Sun, Moon, Search, type LucideIcon } from "lucide-react";
+import { Shield, Cpu, TrendingUp, Database, Newspaper, Sun, Moon, Search, X, type LucideIcon } from "lucide-react";
 import { useTheme } from "next-themes";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSearch } from "@/contexts/SearchContext";
 import { vertical } from "@/config/verticals";
 
@@ -22,35 +21,69 @@ const NAV_ITEMS: Array<{ path: string; label: string; enabled: boolean }> = [
   { path: "/duplicates", label: "Duplicates", enabled: vertical.features.duplicates },
 ];
 
+// Pages whose content responds to the search box. Typing anywhere else takes
+// the reader to the feed with their query applied.
+const SEARCHABLE_PATHS = new Set(["/", "/archive"]);
+
 export function Header() {
   const { theme, setTheme } = useTheme();
   const location = useLocation();
+  const navigate = useNavigate();
   const { searchQuery, setSearchQuery } = useSearch();
 
   const isActive = (path: string) => location.pathname === path;
   const Icon = ICONS[vertical.iconName];
 
+  const onSearchChange = (value: string) => {
+    if (SEARCHABLE_PATHS.has(location.pathname)) {
+      setSearchQuery(value);
+    } else {
+      navigate(value ? `/?q=${encodeURIComponent(value)}` : "/");
+    }
+  };
+
+  const searchBox = (
+    <div className="relative w-full">
+      <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+      <Input
+        type="search"
+        value={searchQuery}
+        onChange={(e) => onSearchChange(e.target.value)}
+        placeholder={vertical.searchPlaceholder}
+        aria-label="Search stories"
+        className="pl-9 pr-9 h-9 bg-background border-border text-[15px]"
+      />
+      {searchQuery && (
+        <button
+          type="button"
+          onClick={() => onSearchChange("")}
+          aria-label="Clear search"
+          className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded text-muted-foreground hover:text-foreground"
+        >
+          <X className="h-4 w-4" />
+        </button>
+      )}
+    </div>
+  );
+
   return (
     <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-      <div className="container py-4">
-        <div className="flex items-center justify-between gap-4">
-          <Link to="/" className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              <Icon className="h-8 w-8 text-primary" />
-              <span className="text-2xl font-bold font-mono text-glow text-primary">
-                {vertical.logoText.primary}<span className="text-foreground">{vertical.logoText.suffix}</span>
-              </span>
-            </div>
-            <Badge variant="live">LIVE FEED</Badge>
+      <div className="container py-3 md:py-4">
+        <div className="flex items-center justify-between gap-3 md:gap-4">
+          <Link to="/" className="flex items-center gap-2 shrink-0">
+            <Icon className="h-7 w-7 md:h-8 md:w-8 text-primary" />
+            <span className="text-xl md:text-2xl font-bold font-mono text-glow text-primary">
+              {vertical.logoText.primary}<span className="text-foreground">{vertical.logoText.suffix}</span>
+            </span>
           </Link>
 
-          <div className="flex items-center gap-4 flex-1 justify-end">
-            <nav className="hidden md:flex items-center gap-6">
+          <div className="flex items-center gap-3 md:gap-4 flex-1 justify-end min-w-0">
+            <nav className="flex items-center gap-4 md:gap-6">
               {NAV_ITEMS.filter((item) => item.enabled).map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`text-[15px] font-medium transition-colors ${
+                  className={`text-[15px] font-medium transition-colors whitespace-nowrap ${
                     isActive(item.path) ? 'text-primary' : 'text-muted-foreground hover:text-primary'
                   }`}
                 >
@@ -58,24 +91,13 @@ export function Header() {
                 </Link>
               ))}
             </nav>
-            {/* Top bar search */}
-            <div className="hidden md:block w-full max-w-md">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder={vertical.searchPlaceholder}
-                  className="pl-9 h-9 bg-background border-border font-mono text-[15px]"
-                />
-              </div>
-            </div>
+            <div className="hidden md:block w-full max-w-md">{searchBox}</div>
 
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="h-9 w-9"
+              className="h-9 w-9 shrink-0"
             >
               <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
               <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
@@ -84,14 +106,20 @@ export function Header() {
           </div>
         </div>
 
-        <div className="mt-4 hidden md:block">
-          <h1 className="text-[22px] font-semibold text-foreground">
-            {vertical.heading}
-          </h1>
-          <p className="text-[15px] text-muted-foreground mt-1">
-            {vertical.tagline}
-          </p>
-        </div>
+        {/* Phones: search gets its own full-width row instead of disappearing. */}
+        <div className="mt-3 md:hidden">{searchBox}</div>
+
+        {/* On phones the feed renders the tagline itself, outside the sticky bar. */}
+        {location.pathname === "/" && (
+          <div className="mt-4 hidden md:block">
+            <h1 className="text-[22px] font-semibold text-foreground">
+              {vertical.heading}
+            </h1>
+            <p className="text-[15px] text-muted-foreground mt-1">
+              {vertical.tagline}
+            </p>
+          </div>
+        )}
       </div>
     </header>
   );
