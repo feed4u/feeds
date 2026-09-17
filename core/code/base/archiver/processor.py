@@ -304,6 +304,19 @@ class ArchiveProcessor:
 
         return count
 
+    # latest.json is the first thing every visitor downloads, so it carries
+    # only what the feed renders. summary_html is never shown and summaries
+    # are clamped to three lines on screen; the archives keep the full text.
+    LATEST_SUMMARY_MAX_CHARS = 600
+
+    @classmethod
+    def _slim_for_latest(cls, item: Dict[str, Any]) -> Dict[str, Any]:
+        slim = {k: v for k, v in item.items() if k != "summary_html"}
+        summary = slim.get("summary")
+        if isinstance(summary, str) and len(summary) > cls.LATEST_SUMMARY_MAX_CHARS:
+            slim["summary"] = summary[: cls.LATEST_SUMMARY_MAX_CHARS].rstrip() + "…"
+        return slim
+
     def _process_latest_24h(self, items: List[Dict[str, Any]]) -> None:
         """Generate latest.json with items from last 24 hours."""
         now = datetime.now(timezone.utc)
@@ -318,25 +331,28 @@ class ArchiveProcessor:
             try:
                 pub_dt = datetime.fromtimestamp(ts, tz=timezone.utc)
                 if pub_dt >= cutoff_24h:
-                    items_24h.append(item)
+                    items_24h.append(self._slim_for_latest(item))
             except Exception:
                 continue
 
         # Sort by timestamp descending
         items_24h.sort(key=lambda x: x.get("published_ts", 0), reverse=True)
 
-        # Determine next chunk (most recent daily file that's older than 24h)
+        # Determine next chunk: the newest daily file dated on or before the
+        # 24h cutoff. Today's file is almost entirely the same items as
+        # latest.json, so linking to it made the first "load more" a wasted
+        # multi-megabyte download.
         next_chunk = None
-        yesterday = now - timedelta(days=1)
-        # Find the first daily file for any feed type
+        cutoff_date_str = cutoff_24h.strftime("%Y-%m-%d")
         for feed_type in self.config.feed_types:
             daily_dir = self.config.get_daily_dir(feed_type)
             if daily_dir.exists():
                 daily_files = sorted(daily_dir.glob("*.json"), reverse=True)
                 for daily_file in daily_files:
                     date_str = daily_file.stem
-                    next_chunk = f"archive/{feed_type}/daily/{date_str}.json"
-                    break
+                    if date_str <= cutoff_date_str:
+                        next_chunk = f"archive/{feed_type}/daily/{date_str}.json"
+                        break
                 if next_chunk:
                     break
 

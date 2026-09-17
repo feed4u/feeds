@@ -26,7 +26,6 @@ const App = () => (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
         <TooltipProvider>
-          <SearchProvider>
           <Toaster />
           <Sonner />
           <BrowserRouter
@@ -35,6 +34,7 @@ const App = () => (
               v7_relativeSplatPath: true,
             }}
           >
+            <SearchProvider>
             <ScrollToTop />
             <Suspense fallback={null}>
               <Routes>
@@ -59,8 +59,8 @@ const App = () => (
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
+            </SearchProvider>
           </BrowserRouter>
-          </SearchProvider>
         </TooltipProvider>
       </ThemeProvider>
     </QueryClientProvider>

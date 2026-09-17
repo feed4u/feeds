@@ -1,30 +1,141 @@
 import { useState, useMemo, useEffect, useRef, useCallback } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { Layout } from "./Layout";
-import { Sidebar } from "./Sidebar";
 import { NewsCard } from "./NewsCard";
-import { FilterBar } from "./FilterBar";
-import { fetchNewsChunk, NewsItem, formatFeedTypeLabel } from "@/data/newsData";
+import { fetchNewsChunk, NewsItem, formatFeedTypeLabel, searchItems } from "@/data/newsData";
 import { Button } from "@/components/ui/button";
 import { useSearch } from "@/contexts/SearchContext";
+import { vertical } from "@/config/verticals";
+import { format, formatDistanceToNow, isToday, isYesterday } from "date-fns";
+import { ChevronDown } from "lucide-react";
+
+// ---------------------------------------------------------------------------
+// Views: the one choice a reader makes before reading. "Headlines" is the
+// default and excludes research sources, which get their own lane so a few
+// hundred paper abstracts never bury the day's news.
+
+const HEADLINES = "headlines";
+const RESEARCH = "research";
+const HAS_RESEARCH_LANE = vertical.researchSources.length > 0;
+
+interface View {
+  id: string;
+  label: string;
+  count: number;
+}
+
+function itemInView(item: NewsItem, view: string): boolean {
+  if (view === RESEARCH) return item.isResearch;
+  if (item.isResearch && HAS_RESEARCH_LANE) return false;
+  if (view === HEADLINES) return item.feedType === "news";
+  return item.feedType === view;
+}
+
+const MAX_TOPICS = 16;
+
+// A run of this many consecutive stories from one source is folded into a
+// single row so one bulk-posting feed can't dominate a day.
+const BURST_MIN = 6;
+const BURST_KEEP = 2;
+
+type Row =
+  | { kind: "item"; item: NewsItem; index: number }
+  | { kind: "burst"; key: string; source: string; items: NewsItem[]; index: number };
+
+function toRows(items: NewsItem[], expanded: Set<string>, dayKey: string): Row[] {
+  const rows: Row[] = [];
+  let i = 0;
+  while (i < items.length) {
+    let j = i;
+    while (j < items.length && items[j].sourceName === items[i].sourceName) j++;
+    const run = items.slice(i, j);
+    const key = `${dayKey}:${items[i].sourceName}:${i}`;
+    if (run.length >= BURST_MIN && !expanded.has(key)) {
+      run.slice(0, BURST_KEEP).forEach((item, k) => rows.push({ kind: "item", item, index: i + k }));
+      rows.push({ kind: "burst", key, source: items[i].sourceName, items: run.slice(BURST_KEEP), index: i + BURST_KEEP });
+    } else {
+      run.forEach((item, k) => rows.push({ kind: "item", item, index: i + k }));
+    }
+    i = j;
+  }
+  return rows;
+}
+
+function dayLabel(date: Date): string {
+  if (isToday(date)) return "Today";
+  if (isYesterday(date)) return "Yesterday";
+  const sameYear = date.getFullYear() === new Date().getFullYear();
+  return format(date, sameYear ? "EEEE d MMMM" : "EEEE d MMMM yyyy");
+}
+
+interface DayGroup {
+  key: string;
+  label: string;
+  items: NewsItem[];
+}
+
+function groupByDay(items: NewsItem[]): DayGroup[] {
+  const groups: DayGroup[] = [];
+  for (const item of items) {
+    const key = item.publishedTs ? format(item.date, "yyyy-MM-dd") : "undated";
+    const last = groups[groups.length - 1];
+    if (last && last.key === key) {
+      last.items.push(item);
+    } else {
+      groups.push({ key, label: key === "undated" ? "Undated" : dayLabel(item.date), items: [item] });
+    }
+  }
+  return groups;
+}
 
 export function NewsFeed() {
   const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
-  const [feedTypes, setFeedTypes] = useState<string[]>(["news"]);
-  const [selectedFeedType, setSelectedFeedType] = useState("news");
+  const [generatedAt, setGeneratedAt] = useState<Date | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [selectedSmartGroup, setSelectedSmartGroup] = useState("");
-  const { searchQuery } = useSearch();
   const [nextChunk, setNextChunk] = useState<string | null>(null);
   const [loadingMore, setLoadingMore] = useState(false);
+  const [expandedBursts, setExpandedBursts] = useState<Set<string>>(new Set());
   const seenUrlsRef = useRef<Set<string>>(new Set());
   const sentinelRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    setSelectedCategory("all");
-    setSelectedSmartGroup("");
-  }, [selectedFeedType]);
+  // View and topic live in the URL so a filtered feed can be bookmarked.
+  const [params, setParams] = useSearchParams();
+  const selectedView = params.get("view") || HEADLINES;
+  const selectedTopic = params.get("topic") || "";
+  const { searchQuery, setSearchQuery } = useSearch();
+
+  const updateParams = useCallback(
+    (changes: Record<string, string | null>) => {
+      setParams(
+        (prev) => {
+          const next = new URLSearchParams(prev);
+          for (const [k, v] of Object.entries(changes)) {
+            if (v) next.set(k, v);
+            else next.delete(k);
+          }
+          return next;
+        },
+        { replace: true },
+      );
+    },
+    [setParams],
+  );
+
+  const selectView = (view: string) =>
+    updateParams({ view: view === HEADLINES ? null : view, topic: null });
+  const selectTopic = (topic: string) =>
+    updateParams({ topic: topic === selectedTopic ? null : topic });
+
+  const addItems = useCallback((incoming: NewsItem[]) => {
+    const seen = seenUrlsRef.current;
+    const unique = incoming.filter((it) => {
+      if (seen.has(it.url)) return false;
+      seen.add(it.url);
+      return true;
+    });
+    setNewsItems((prev) => [...prev, ...unique]);
+  }, []);
 
   // Initial chunk load
   useEffect(() => {
@@ -34,22 +145,13 @@ export function NewsFeed() {
         setLoading(true);
         const page = await fetchNewsChunk();
         if (cancelled) return;
-        // dedupe while adding
-        const seen = seenUrlsRef.current;
-        const unique = page.items.filter((it) => {
-          if (seen.has(it.url)) return false;
-          seen.add(it.url);
-          return true;
-        });
-        setNewsItems(unique);
-        const available = page.feedTypes?.length ? page.feedTypes : ["news"];
-        setFeedTypes(available);
-        setSelectedFeedType((prev) => (available.includes(prev) ? prev : available[0]));
+        addItems(page.items);
+        setGeneratedAt(page.generatedAt);
         setNextChunk(page.nextChunk);
         setError(null);
       } catch (err) {
         console.error("Failed to load news data:", err);
-        setError("Failed to load news feed. Please try again later.");
+        setError("Couldn't load the feed. Please try again in a moment.");
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -58,184 +160,328 @@ export function NewsFeed() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [addItems]);
 
   const loadMore = useCallback(async () => {
     if (!nextChunk || loadingMore) return;
     try {
       setLoadingMore(true);
       const page = await fetchNewsChunk(nextChunk);
-      const seen = seenUrlsRef.current;
-      const unique = page.items.filter((it) => {
-        if (seen.has(it.url)) return false;
-        seen.add(it.url);
-        return true;
-      });
-      setNewsItems((prev) => [...prev, ...unique]);
+      addItems(page.items);
       setNextChunk(page.nextChunk);
     } catch (err) {
       console.error("Failed to load more:", err);
     } finally {
       setLoadingMore(false);
     }
-  }, [nextChunk, loadingMore]);
+  }, [nextChunk, loadingMore, addItems]);
 
-  // Observe sentinel for infinite scroll
+  // Infinite scroll — only while browsing, never under a search (a search
+  // that keeps pulling older chunks while showing "no results" reads as broken).
   useEffect(() => {
     const el = sentinelRef.current;
-    if (!el) return;
+    if (!el || searchQuery) return;
     const obs = new IntersectionObserver(
       (entries) => {
-        const [e] = entries;
-        if (e.isIntersecting) {
-          loadMore();
-        }
+        if (entries[0].isIntersecting) loadMore();
       },
-      { rootMargin: "1200px 0px" }
+      { rootMargin: "1200px 0px" },
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, [loadMore]);
+  }, [loadMore, searchQuery]);
 
-  const feedTypeCounts = useMemo(() => {
+  const views = useMemo<View[]>(() => {
     const counts: Record<string, number> = {};
-    newsItems.forEach((item) => {
-      const key = item.feedType || "news";
-      counts[key] = (counts[key] || 0) + 1;
-    });
-    return counts;
+    for (const item of newsItems) {
+      const id = item.isResearch && HAS_RESEARCH_LANE ? RESEARCH : item.feedType === "news" ? HEADLINES : item.feedType;
+      counts[id] = (counts[id] || 0) + 1;
+    }
+    const others = Object.keys(counts)
+      .filter((id) => id !== HEADLINES && id !== RESEARCH)
+      .sort((a, b) => counts[b] - counts[a] || a.localeCompare(b))
+      .map((id) => ({ id, label: formatFeedTypeLabel(id), count: counts[id] }));
+    const list: View[] = [{ id: HEADLINES, label: "Headlines", count: counts[HEADLINES] || 0 }];
+    if (HAS_RESEARCH_LANE) list.push({ id: RESEARCH, label: "Research", count: counts[RESEARCH] || 0 });
+    return [...list, ...others];
   }, [newsItems]);
 
-  const feedTypeItems = useMemo(() => {
-    return newsItems.filter((item) => item.feedType === selectedFeedType);
-  }, [newsItems, selectedFeedType]);
+  const viewItems = useMemo(
+    () => newsItems.filter((item) => itemInView(item, selectedView)),
+    [newsItems, selectedView],
+  );
 
-  const filteredNews = useMemo(() => {
-    let items = [...feedTypeItems];
-
-    // Filter by category
-    if (selectedCategory === "curated") {
-      items = items.filter((item) => item.curated);
-    } else if (selectedCategory !== "all") {
-      items = items.filter((item) => item.category === selectedCategory);
+  const topics = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const item of viewItems) {
+      for (const g of item.smartGroups) counts[g] = (counts[g] || 0) + 1;
     }
-
-    // Filter by smart group
-    if (selectedSmartGroup) {
-      items = items.filter((item) =>
-        item.smartGroups.includes(selectedSmartGroup)
-      );
+    const sorted = Object.entries(counts)
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .slice(0, MAX_TOPICS)
+      .map(([id, count]) => ({ id, count }));
+    if (selectedTopic && counts[selectedTopic] && !sorted.some((t) => t.id === selectedTopic)) {
+      sorted.push({ id: selectedTopic, count: counts[selectedTopic] });
     }
+    return sorted;
+  }, [viewItems, selectedTopic]);
 
-    // Filter by search query
-    if (searchQuery) {
-      const query = searchQuery.toLowerCase();
-      items = items.filter(
-        (item) =>
-          item.title.toLowerCase().includes(query) ||
-          item.summary.toLowerCase().includes(query) ||
-          item.source.toLowerCase().includes(query)
-      );
-    }
+  const topicItems = useMemo(() => {
+    const items = selectedTopic
+      ? viewItems.filter((item) => item.smartGroups.includes(selectedTopic))
+      : [...viewItems];
+    return items.sort((a, b) => b.date.getTime() - a.date.getTime());
+  }, [viewItems, selectedTopic]);
 
-    // Sort by latest by default
-    items.sort((a, b) => b.date.getTime() - a.date.getTime());
+  const results = useMemo(() => searchItems(topicItems, searchQuery), [topicItems, searchQuery]);
+  const dayGroups = useMemo(() => (searchQuery ? [] : groupByDay(results)), [results, searchQuery]);
 
-    return items;
-  }, [feedTypeItems, selectedCategory, selectedSmartGroup, searchQuery]);
+  // Matches in the lanes the reader is *not* looking at, so a search never
+  // silently misses a story that only appears under Research or Blogs.
+  const otherViewMatches = useMemo(() => {
+    if (!searchQuery.trim()) return [];
+    return views
+      .filter((v) => v.id !== selectedView)
+      .map((v) => ({
+        view: v,
+        count: searchItems(newsItems.filter((item) => itemInView(item, v.id)), searchQuery).length,
+      }))
+      .filter(({ count }) => count > 0);
+  }, [views, selectedView, newsItems, searchQuery]);
+
+  const viewLabel = views.find((v) => v.id === selectedView)?.label ?? "Stories";
+  const archiveSearchHref = `/archive?q=${encodeURIComponent(searchQuery)}`;
+  const trimmedQuery = searchQuery.trim();
+
+  const expandBurst = (key: string) =>
+    setExpandedBursts((prev) => new Set(prev).add(key));
+
+  const renderRows = (rows: Row[]) =>
+    rows.map((row) =>
+      row.kind === "item" ? (
+        <NewsCard
+          key={row.item.id}
+          item={row.item}
+          index={row.index}
+          selectedSmartGroup={selectedTopic}
+          highlight={trimmedQuery}
+          onSmartGroupClick={(group) => {
+            selectTopic(group);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+        />
+      ) : (
+        <button
+          key={row.key}
+          type="button"
+          onClick={() => expandBurst(row.key)}
+          className="w-full flex items-center justify-center gap-2 py-3 rounded-lg border border-dashed border-border text-[14px] text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
+        >
+          <ChevronDown className="h-4 w-4" />
+          {row.items.length} more from {row.source}
+        </button>
+      ),
+    );
 
   return (
     <Layout>
-      <div className="flex flex-col lg:flex-row gap-6">
-          <Sidebar
-            feedTypes={feedTypes}
-            feedTypeCounts={feedTypeCounts}
-            selectedFeedType={selectedFeedType}
-            onFeedTypeChange={setSelectedFeedType}
-            selectedCategory={selectedCategory}
-            selectedSmartGroup={selectedSmartGroup}
-            onCategoryChange={setSelectedCategory}
-            onSmartGroupChange={setSelectedSmartGroup}
-            newsItems={feedTypeItems}
-          />
+      <div className="max-w-4xl mx-auto">
+        <p className="md:hidden mb-3 text-[13px] text-muted-foreground">{vertical.tagline}</p>
 
-          <div className="flex-1 min-w-0">
-            <FilterBar
-              totalItems={feedTypeItems.length}
-              filteredItems={filteredNews.length}
-              feedTypeLabel={formatFeedTypeLabel(selectedFeedType)}
-            />
-
-            <div className="space-y-4">
-              {loading ? (
-                <div className="text-center py-12 bg-card rounded-lg border border-border">
-                  <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary border-r-transparent mb-4"></div>
-                  <p className="text-[15px] text-muted-foreground font-mono">
-                    Loading news feed...
-                  </p>
-                </div>
-              ) : error ? (
-                <div className="text-center py-12 bg-card rounded-lg border border-destructive">
-                  <p className="text-[15px] text-destructive font-mono">
-                    {error}
-                  </p>
-                </div>
-              ) : filteredNews.length === 0 ? (
-                <div className="text-center py-12 bg-card rounded-lg border border-border">
-                  <p className="text-[15px] text-muted-foreground font-mono">
-                    No articles found matching your criteria.
-                  </p>
-                </div>
-              ) : (
-                filteredNews.map((item, index) => (
-                  <NewsCard
-                    key={item.id}
-                    item={item}
-                    index={index}
-                    selectedCategory={selectedCategory}
-                    selectedSmartGroup={selectedSmartGroup}
-                    onCategoryClick={(category) => {
-                      setSelectedCategory(category);
-                      setSelectedSmartGroup('');
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }}
-                    onSmartGroupClick={(group) => {
-                      setSelectedSmartGroup(group);
-                      setSelectedCategory('all');
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }}
-                  />
-                ))
+        {/* View selector */}
+        <div className="flex flex-wrap items-center gap-2">
+          {views.map((view) => (
+            <Button
+              key={view.id}
+              variant={selectedView === view.id ? "pillActive" : "pill"}
+              size="pill"
+              onClick={() => selectView(view.id)}
+              className="font-sans"
+            >
+              {view.label}
+              {view.count > 0 && (
+                <span className="text-muted-foreground ml-1.5 text-[12px]">{view.count}</span>
               )}
-              {/* Infinite scroll sentinel */}
-              {!loading && !error && (
-                <div className="py-6 text-center">
-                  {nextChunk && (
-                    <>
-                      <div ref={sentinelRef} className="mb-3">
-                        <span className="text-[13px] font-mono text-muted-foreground">
-                          {loadingMore ? 'Loading more…' : 'Scroll to load more'}
-                        </span>
-                      </div>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={loadMore}
-                        disabled={loadingMore}
-                        className="font-mono text-[13px]"
-                      >
-                        {loadingMore ? 'Loading…' : 'Load more'}
+            </Button>
+          ))}
+        </div>
+
+        {/* Topic chips: wrap on desktop, scroll sideways on phones */}
+        {topics.length > 0 && (
+          <div className="mt-3 -mx-4 px-4 md:mx-0 md:px-0 flex md:flex-wrap gap-1.5 overflow-x-auto md:overflow-visible pb-1 scrollbar-none">
+            <button
+              type="button"
+              onClick={() => selectTopic("")}
+              className={`shrink-0 text-[13px] px-2.5 py-1 rounded-full border transition-colors ${
+                !selectedTopic
+                  ? "border-primary/50 bg-primary/10 text-primary"
+                  : "border-border text-muted-foreground hover:text-foreground hover:bg-muted"
+              }`}
+            >
+              All topics
+            </button>
+            {topics.map((topic) => (
+              <button
+                key={topic.id}
+                type="button"
+                onClick={() => selectTopic(topic.id)}
+                className={`shrink-0 text-[13px] px-2.5 py-1 rounded-full border transition-colors whitespace-nowrap ${
+                  selectedTopic === topic.id
+                    ? "border-primary/50 bg-primary/10 text-primary"
+                    : "border-border text-muted-foreground hover:text-foreground hover:bg-muted"
+                }`}
+              >
+                {topic.id}
+                <span className="ml-1 text-[11px] opacity-70 tabular-nums">{topic.count}</span>
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Status line */}
+        <div className="mt-4 mb-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 text-[14px]">
+          {trimmedQuery ? (
+            <span className="text-foreground">
+              <span className="font-medium">{results.length}</span>{" "}
+              {results.length === 1 ? "story mentions" : "stories mention"}{" "}
+              <span className="font-medium">“{trimmedQuery}”</span>
+              <span className="text-muted-foreground"> in recent {viewLabel.toLowerCase()}</span>
+            </span>
+          ) : (
+            <span className="text-foreground">
+              <span className="font-medium">{viewLabel}</span>
+              {selectedTopic && <span className="text-muted-foreground"> · {selectedTopic}</span>}
+              <span className="text-muted-foreground"> · {results.length} stories</span>
+            </span>
+          )}
+          {generatedAt && (
+            <span className="text-muted-foreground text-[13px]" title={generatedAt.toLocaleString()}>
+              Updated {formatDistanceToNow(generatedAt, { addSuffix: true })}
+            </span>
+          )}
+        </div>
+
+        {otherViewMatches.length > 0 && (
+          <p className="-mt-1 mb-3 text-[13px] text-muted-foreground">
+            Also in{" "}
+            {otherViewMatches.map(({ view, count }, i) => (
+              <span key={view.id}>
+                {i > 0 && " · "}
+                <button
+                  type="button"
+                  onClick={() => updateParams({ view: view.id === HEADLINES ? null : view.id })}
+                  className="text-primary hover:underline"
+                >
+                  {view.label} ({count})
+                </button>
+              </span>
+            ))}
+          </p>
+        )}
+
+        <div className="space-y-3">
+          {loading ? (
+            <div className="text-center py-12 bg-card rounded-lg border border-border">
+              <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary border-r-transparent mb-4"></div>
+              <p className="text-[15px] text-muted-foreground">Loading the latest stories…</p>
+            </div>
+          ) : error ? (
+            <div className="text-center py-12 bg-card rounded-lg border border-destructive">
+              <p className="text-[15px] text-destructive">{error}</p>
+            </div>
+          ) : results.length === 0 ? (
+            <div className="text-center py-12 px-4 bg-card rounded-lg border border-border space-y-4">
+              {trimmedQuery ? (
+                <>
+                  <p className="text-[15px] text-foreground">
+                    No recent {viewLabel.toLowerCase()} mention “{trimmedQuery}”.
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-2">
+                    <Button asChild size="sm">
+                      <Link to={archiveSearchHref}>Search the archive</Link>
+                    </Button>
+                    <Button variant="outline" size="sm" onClick={() => setSearchQuery("")}>
+                      Clear search
+                    </Button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <p className="text-[15px] text-foreground">
+                    No recent {viewLabel.toLowerCase()}
+                    {selectedTopic ? ` tagged “${selectedTopic}”` : ""}.
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-2">
+                    {selectedTopic && (
+                      <Button variant="outline" size="sm" onClick={() => selectTopic("")}>
+                        Show all topics
                       </Button>
-                    </>
-                  )}
-                  {!nextChunk && (
-                    <span className="text-[13px] font-mono text-muted-foreground">End of results</span>
-                  )}
-                </div>
+                    )}
+                    {selectedView !== HEADLINES && (
+                      <Button variant="outline" size="sm" onClick={() => selectView(HEADLINES)}>
+                        Back to headlines
+                      </Button>
+                    )}
+                  </div>
+                </>
               )}
             </div>
-          </div>
+          ) : trimmedQuery ? (
+            <>
+              {renderRows(results.map((item, index) => ({ kind: "item", item, index })))}
+              <div className="py-4 text-center text-[14px] text-muted-foreground">
+                Looking for something older?{" "}
+                <Link to={archiveSearchHref} className="text-primary hover:underline">
+                  Search the archive
+                </Link>
+              </div>
+            </>
+          ) : (
+            dayGroups.map((group) => (
+              <section key={group.key} className="space-y-3">
+                <h2 className="pt-3 text-[13px] font-semibold uppercase tracking-wider text-muted-foreground">
+                  {group.label}
+                  <span className="ml-2 font-normal normal-case tracking-normal">{group.items.length}</span>
+                </h2>
+                {renderRows(
+                  selectedView === RESEARCH
+                    ? group.items.map((item, index) => ({ kind: "item" as const, item, index }))
+                    : toRows(group.items, expandedBursts, group.key),
+                )}
+              </section>
+            ))
+          )}
+
+          {/* Infinite scroll sentinel */}
+          {!loading && !error && !trimmedQuery && (
+            <div className="py-6 text-center">
+              {nextChunk ? (
+                <>
+                  <div ref={sentinelRef} className="mb-3">
+                    <span className="text-[13px] text-muted-foreground">
+                      {loadingMore ? "Loading older stories…" : ""}
+                    </span>
+                  </div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={loadMore}
+                    disabled={loadingMore}
+                    className="text-[13px]"
+                  >
+                    {loadingMore ? "Loading…" : "Load older stories"}
+                  </Button>
+                </>
+              ) : (
+                <span className="text-[13px] text-muted-foreground">
+                  You've reached the end of the recent stories.{" "}
+                  <Link to="/archive" className="text-primary hover:underline">Browse the archive</Link>
+                </span>
+              )}
+            </div>
+          )}
         </div>
+      </div>
     </Layout>
   );
 }

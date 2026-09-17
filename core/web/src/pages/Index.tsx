@@ -7,7 +7,7 @@ const Index = () => {
     <>
       <Helmet>
         <title>{vertical.metaTitle}</title>
-        <meta name="description" content="Real-time security news feed aggregating threat intelligence, vulnerabilities, and cybersecurity updates from trusted sources worldwide." />
+        <meta name="description" content={vertical.metaDescription} />
       </Helmet>
       <NewsFeed />
     </>

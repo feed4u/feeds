@@ -32,14 +32,19 @@ export default function YourPage() {
 **Component:** `src/pages/Index.tsx`
 
 **Features:**
-- Live news feed with all articles
-- Sidebar filters (Categories & Smart Groups)
-- Search functionality
-- Sort options (Latest, Oldest, Source)
-- Recent filter (Last 24 hours)
-- Infinite scroll capability
+- One view row: **Headlines** (default), **Research** (only when the vertical
+  configures `researchSources`, e.g. arXiv for 4u), then the other feed formats
+  (Blogs, Videos, Podcasts)
+- Topic chips (backend smart groups) above the list; combine with the view
+- Stories grouped by day (Today / Yesterday / weekday); a run of 6+ consecutive
+  stories from one source folds into a "N more from …" row (not in Research)
+- Search ranks title matches first, highlights the match, never auto-loads
+  older chunks under a query, and links to `/archive?q=` for older stories
+- View, topic and query live in the URL (`?view=`, `?topic=`, `?q=`)
+- "Updated … ago" shows the data's `generated_at`, not the render time
+- Infinite scroll through `next_chunk` daily files
 
-**Data Source:** Fetches from `/data/news_recent.json`
+**Data Source:** Fetches `/data/<vertical>/latest.json`, then follows `next_chunk`
 
 ### 2. Morning Call (`/morning-call`)
 **Component:** `src/pages/MorningCall.tsx`
