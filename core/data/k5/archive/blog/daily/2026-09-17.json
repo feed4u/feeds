@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-18T13:05:01.449265+00:00",
+  "generated_at": "2026-09-18T19:08:47.960145+00:00",
   "date": "2026-09-17",
-  "total_items": 76,
+  "total_items": 77,
   "next_chunk": "archive/blog/daily/2026-09-16.json",
   "items": [
     {
@@ -23,6 +23,23 @@
         "Crypto / Web3",
         "Privacy & Compliance",
         "Community Discussion"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Micropatches released for Microsoft Excel Remote Code Execution Vulnerability (CVE-2026-40362)",
+      "summary": "July 2026 Windows Updates brought a patch for CVE-2026-40362, a remote code execution vulnerability in Microsoft Excel that allows a remote attacker to execute arbitrary code on user's computer as soon as they open a malicious Excel document.\nThis vulnerability was found by security researchers Jeongmin Choi with S2W and Haein Lee with KAIST Hacking Lab; both reported this finding to Microsoft. \nJeongmin subsequently published a detailed article that allowed us to reproduce the issue and create patches for legacy Microsoft Office users.\n\nThe Vulnerability\u00a0\nThe vulnerability is a rare case of \"buffer underflow,\" whereby the flawed code is going backward through an array to locate the element before the last populated one; and when the array is empty, the code locates the element before the start of the arrray, i.e., the \"minus first element.\" This is of course not a part of the array's memory space, so the code overwrites some data located before the array with attacker-controlled content.",
+      "summary_html": "July 2026 Windows Updates brought a patch for CVE-2026-40362, a remote code execution vulnerability in Microsoft Excel that allows a remote attacker to execute arbitrary code on user's computer as soon as they open a malicious Excel document.\nThis vulnerability was found by security researchers Jeongmin Choi with S2W and Haein Lee with KAIST Hacking Lab; both reported this finding to Microsoft. \nJeongmin subsequently published a detailed article that allowed us to reproduce the issue and create patches for legacy Microsoft Office users.\n\nThe Vulnerability\u00a0\nThe vulnerability is a rare case of \"buffer underflow,\" whereby the flawed code is going backward through an array to locate the element before the last populated one; and when the array is empty, the code locates the element before the start of the arrray, i.e., the \"minus first element.\" This is of course not a part of the array's memory space, so the code overwrites some data located before the array with attacker-controlled content.",
+      "link": "https://0patch.com/blog/micropatches-released-for-microsoft-excel-remote-code-execution-vulnerability-cve-2026-40362",
+      "source": "0patch Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-09-17T22:00:00+00:00",
+      "published_ts": 1789682400,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Windows / Microsoft"
       ],
       "curated": true
     },
