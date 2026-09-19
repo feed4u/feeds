@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-17T19:49:58.063351+00:00",
+  "generated_at": "2026-09-19T15:35:55.981462+00:00",
   "date": "2026-09-14",
   "total_items": 14,
-  "next_chunk": null,
+  "next_chunk": "archive/videos/daily/2026-09-13.json",
   "items": [
     {
       "title": "Claude Skills Explained: Unslop",
-      "summary": "Want to save time, get more leverage, and stop figuring this AI stuff out from scratch? I put the clearest map and support inside the AI Advantage Club: https://joinaiaclub.com/igor\n\nLet's Connect:\n\ud83d\udcf8 Instagram: https://www.instagram.com/igorpogany/",
+      "summary": "Want to save time, get more leverage, and stop figuring this AI stuff out from scratch? I put the clearest map and support inside the AI Advantage Club: https://joinaiaclub.com/igor Let's Connect: \ud83d\udcf8 Instagram: https://www.instagram.com/igorpogany/",
       "summary_html": "Want to save time, get more leverage, and stop figuring this AI stuff out from scratch? I put the clearest map and support inside the AI Advantage Club: https://joinaiaclub.com/igor\n\nLet's Connect:\n\ud83d\udcf8 Instagram: https://www.instagram.com/igorpogany/",
       "link": "https://www.youtube.com/shorts/MkrwxIJS0_o",
       "source": "The AI Advantage",
@@ -16,13 +16,13 @@
       "published": "2026-09-14T22:00:04+00:00",
       "published_ts": 1789423204,
       "smart_groups": [
-        "LLM & Foundation Model Releases"
+        "Consumer AI"
       ],
       "curated": false
     },
     {
       "title": "Speech Recognition Is Not a Solved Problem \u2014 Pavan Muddireddy",
-      "summary": "Pavankumar Reddy Muddireddy leads audio research at Mistral AI. He joins Tim Scarfe for a deep technical tour of Voxtral \u2014 and explains why, after everything that has landed in the last two years, the frontier of deployed voice is still a cascade of specialised models rather than one end-to-end system.\n\nIN PARTNERSHIP WITH MISTRAL AI:\n---\nThis episode was produced in partnership with Mistral AI.\nMistral AI: https://mistral.ai/\n---\n\nThe conversation opens on architecture. Voxtral Chat feeds a 3B Ministral text trunk with continuous embeddings from an audio encoder, fed into the decoder as direct token input rather than through cross-attention as in Whisper, so the model can answer questions about emotion, timing and who spoke when without an intermediate transcript to lose them. The real-time model changes shape into a dual-stream decoder that consumes audio and emits text at the same time, at a configurable target delay down to 160ms, with slower streams running in parallel for anything that can afford to wait for more context.\n\nOn the generation side, Pavan explains why Voxtral TTS predicts continuous latents rather than discrete codec tokens, traces the lineage from SoundStream through EnCodec to Mimi's split of semantic and acoustic codebooks, and places finite scalar quantisation and flow matching in it. Tim presses on the engineering priors underneath: why a mel spectrogram instead of the raw waveform, what noise augmentation actually buys, and the point at which acoustic overfitting becomes somebody's fine-tuning problem. Then the failure modes. Speaker diarisation is emitted autoregressively as part of the transcript rather than by a separate head, which makes streaming diarisation fragile in a particular way \u2014 less context, late speaker changes, invented extra speakers. And because the architecture commits to what it has already predicted, a single out-of-distribution mistake can compound into looping or skipped segments, which is what DPO is there to correct: the negative supervision that pre-training and SFT cannot provide.\n\nThe last third is the argument Tim keeps returning to. Customers running voice agents over millions of sessions do not describe a solved problem, they describe scaffolding, with a sharp quality drop outside the top few languages. Cascades survive because each component stays separately adaptable, observable and constrainable \u2014 fine-tune the ASR for your acoustics, log what compliance demands, keep it on your own hardware. The interface has its own limit: voice alone is cognitive debt, because absorbing information and deciding in one serial audio stream is much harder than glancing at a menu. Voice becomes ubiquitous beside a screen, not instead of one.\n\n---\nTIMESTAMPS:\n00:00:00 Cold open: the state changed\n00:00:46 Why Mistral moved into audio\n00:09:27 Inside Voxtral: the trunk, the encoder and dual streams\n00:20:22 Speech that works in real time\n00:30:52 How a voice becomes tokens\n00:39:59 Flow matching, FSQ and the new codec\n00:52:51 When speech models lose the speaker\n01:03:23 Correcting hallucinations with preferences\n01:12:12 Controlling synthetic speech\n01:20:06 Why cascades still win\n01:29:25 Speech in the wild\n01:33:46 Audio models as interfaces\n01:37:54 Why voice still needs a screen\n\n---\nREFERENCES:\npaper:\n[00:01:42] Mistral 7B\nhttps://arxiv.org/abs/2310.06825\n[00:09:38] Voxtral\nhttps://arxiv.org/abs/2507.13264\n[00:14:41] Robust Speech Recognition via Large-Scale Weak Supervision (Whisper)\nhttps://arxiv.org/abs/2212.04356\n[00:19:11] Voxtral Realtime\nhttps://arxiv.org/abs/2602.11298\n[00:21:52] Streaming Sequence-to-Sequence Learning with Delayed Streams Modeling\nhttps://arxiv.org/abs/2509.08753\n[00:30:52] Voxtral TTS\nhttps://arxiv.org/abs/2603.25551\n[00:32:38] SoundStream: An End-to-End Neural Audio Codec\nhttps://arxiv.org/abs/2107.03312\n[00:34:59] Flow Matching for Generative Modeling\nhttps://arxiv.org/abs/2210.02747\n[00:37:03] High Fidelity Neural Audio Compression (EnCodec)\nhttps://arxiv.org/abs/2210.13438\n[00:37:42] Moshi: a speech-text foundation model for real-time dialogue (Mimi)\nhttps://arxiv.org/abs/2410.00037\n[00:39:05] Finite Scalar Quantization: VQ-VAE Made Simple\nhttps://arxiv.org/abs/2309.15505\n[01:03:33] Direct Preference Optimization: Your Language Model is Secretly a Reward Model\nhttps://arxiv.org/abs/2305.18290\nbenchmark:\n[01:15:40] ElevenLabs v3 and Flash comparison in Voxtral TTS\nhttps://arxiv.org/abs/2603.25551\ndataset:\n[00:46:14] Mozilla Common Voice datasets\nhttps://commonvoice.mozilla.org/en/datasets\norganization:\n[00:01:24] Mistral AI\nhttps://mistral.ai/\n[00:50:47] Hugging Face\nhttps://huggingface.co/",
+      "summary": "Pavankumar Reddy Muddireddy leads audio research at Mistral AI. He joins Tim Scarfe for a deep technical tour of Voxtral \u2014 and explains why, after everything that has landed in the last two years, the frontier of deployed voice is still a cascade of specialised models rather than one end-to-end system. IN PARTNERSHIP WITH MISTRAL AI: --- This episode was produced in partnership with Mistral AI. Mistral AI: https://mistral.ai/ --- The conversation opens on architecture. Voxtral Chat feeds a 3B Ministral text trunk with continuous embeddings from an audio encoder, fed into the decoder as direct token input rather than through cross-attention as in Whisper, so the model can answer questions about emotion, timing and who spoke when without an intermediate transcript to lose them. The real-time model changes shape into a dual-stream decoder that consumes audio and emits text at the same time, at a configurable target delay down to 160ms, with slower streams running in parallel for anything that can afford to wait for more context. On the generation side, Pavan explains why Voxtral TTS predicts continuous latents rather than discrete codec tokens, traces the lineage from SoundStream through EnCodec to Mimi's split of semantic and acoustic codebooks, and places finite scalar quantisation and flow matching in it. Tim presses on the engineering priors underneath: why a mel spectrogram instead of the raw waveform, what noise augmentation actually buys, and the point at which acoustic overfitting becomes somebody's fine-tuning problem. Then the failure modes. Speaker diarisation is emitted autoregressively as part of the transcript rather than by a separate head, which makes streaming diarisation fragile in a particular way \u2014 less context, late speaker changes, invented extra speakers. And because the architecture commits to what it has already predicted, a single out-of-distribution mistake can compound into looping or skipped segments, which is what DPO is there to correct: the negative supervision that pre-training and SFT cannot provide. The last third is the argument Tim keeps returning to. Customers running voice agents over millions of sessions do not describe a solved problem, they describe scaffolding, with a sharp quality drop outside the top few languages. Cascades survive because each component stays separately adaptable, observable and constrainable \u2014 fine-tune the ASR for your acoustics, log what compliance demands, keep it on your own hardware. The interface has its own limit: voice alone is cognitive debt, because absorbing information and deciding in one serial audio stream is much harder than glancing at a menu. Voice becomes ubiquitous beside a screen, not instead of one. --- TIMESTAMPS: 00:00:00 Cold open: the state changed 00:00:46 Why Mistral moved into audio 00:09:27 Inside Voxtral: the trunk, the encoder and dual streams 00:20:22 Speech that works in real time 00:30:52 How a voice becomes tokens 00:39:59 Flow matching, FSQ and the new codec 00:52:51 When speech models lose the speaker 01:03:23 Correcting hallucinations with preferences 01:12:12 Controlling synthetic speech 01:20:06 Why cascades still win 01:29:25 Speech in the wild 01:33:46 Audio models as interfaces 01:37:54 Why voice still needs a screen --- REFERENCES: paper: [00:01:42] Mistral 7B https://arxiv.org/abs/2310.06825 [00:09:38] Voxtral https://arxiv.org/abs/2507.13264 [00:14:41] Robust Speech Recognition via Large-Scale Weak Supervision (Whisper) https://arxiv.org/abs/2212.04356 [00:19:11] Voxtral Realtime https://arxiv.org/abs/2602.11298 [00:21:52] Streaming Sequence-to-Sequence Learning with Delayed Streams Modeling https://arxiv.org/abs/2509.08753 [00:30:52] Voxtral TTS https://arxiv.org/abs/2603.25551 [00:32:38] SoundStream: An End-to-End Neural Audio Codec https://arxiv.org/abs/2107.03312 [00:34:59] Flow Matching for Generative Modeling https://arxiv.org/abs/2210.02747 [00:37:03] High Fidelity Neural Audio Compression (EnCodec) https://arxiv.org/abs/2210.13438 [00:37:42] Moshi: a speech-text foundation model for real-time dialogue (Mimi) https://arxiv.org/abs/2410.00037 [00:39:05] Finite Scalar Quantization: VQ-VAE Made Simple https://arxiv.org/abs/2309.15505 [01:03:33] Direct Preference Optimization: Your Language Model is Secretly a Reward Model https://arxiv.org/abs/2305.18290 benchmark: [01:15:40] ElevenLabs v3 and Flash comparison in Voxtral TTS https://arxiv.org/abs/2603.25551 dataset: [00:46:14] Mozilla Common Voice datasets https://commonvoice.mozilla.org/en/datasets organization: [00:01:24] Mistral AI https://mistral.ai/ [00:50:47] Hugging Face https://huggingface.co/",
       "summary_html": "Pavankumar Reddy Muddireddy leads audio research at Mistral AI. He joins Tim Scarfe for a deep technical tour of Voxtral \u2014 and explains why, after everything that has landed in the last two years, the frontier of deployed voice is still a cascade of specialised models rather than one end-to-end system.\n\nIN PARTNERSHIP WITH MISTRAL AI:\n---\nThis episode was produced in partnership with Mistral AI.\nMistral AI: https://mistral.ai/\n---\n\nThe conversation opens on architecture. Voxtral Chat feeds a 3B Ministral text trunk with continuous embeddings from an audio encoder, fed into the decoder as direct token input rather than through cross-attention as in Whisper, so the model can answer questions about emotion, timing and who spoke when without an intermediate transcript to lose them. The real-time model changes shape into a dual-stream decoder that consumes audio and emits text at the same time, at a configurable target delay down to 160ms, with slower streams running in parallel for anything that can afford to wait for more context.\n\nOn the generation side, Pavan explains why Voxtral TTS predicts continuous latents rather than discrete codec tokens, traces the lineage from SoundStream through EnCodec to Mimi's split of semantic and acoustic codebooks, and places finite scalar quantisation and flow matching in it. Tim presses on the engineering priors underneath: why a mel spectrogram instead of the raw waveform, what noise augmentation actually buys, and the point at which acoustic overfitting becomes somebody's fine-tuning problem. Then the failure modes. Speaker diarisation is emitted autoregressively as part of the transcript rather than by a separate head, which makes streaming diarisation fragile in a particular way \u2014 less context, late speaker changes, invented extra speakers. And because the architecture commits to what it has already predicted, a single out-of-distribution mistake can compound into looping or skipped segments, which is what DPO is there to correct: the negative supervision that pre-training and SFT cannot provide.\n\nThe last third is the argument Tim keeps returning to. Customers running voice agents over millions of sessions do not describe a solved problem, they describe scaffolding, with a sharp quality drop outside the top few languages. Cascades survive because each component stays separately adaptable, observable and constrainable \u2014 fine-tune the ASR for your acoustics, log what compliance demands, keep it on your own hardware. The interface has its own limit: voice alone is cognitive debt, because absorbing information and deciding in one serial audio stream is much harder than glancing at a menu. Voice becomes ubiquitous beside a screen, not instead of one.\n\n---\nTIMESTAMPS:\n00:00:00 Cold open: the state changed\n00:00:46 Why Mistral moved into audio\n00:09:27 Inside Voxtral: the trunk, the encoder and dual streams\n00:20:22 Speech that works in real time\n00:30:52 How a voice becomes tokens\n00:39:59 Flow matching, FSQ and the new codec\n00:52:51 When speech models lose the speaker\n01:03:23 Correcting hallucinations with preferences\n01:12:12 Controlling synthetic speech\n01:20:06 Why cascades still win\n01:29:25 Speech in the wild\n01:33:46 Audio models as interfaces\n01:37:54 Why voice still needs a screen\n\n---\nREFERENCES:\npaper:\n[00:01:42] Mistral 7B\nhttps://arxiv.org/abs/2310.06825\n[00:09:38] Voxtral\nhttps://arxiv.org/abs/2507.13264\n[00:14:41] Robust Speech Recognition via Large-Scale Weak Supervision (Whisper)\nhttps://arxiv.org/abs/2212.04356\n[00:19:11] Voxtral Realtime\nhttps://arxiv.org/abs/2602.11298\n[00:21:52] Streaming Sequence-to-Sequence Learning with Delayed Streams Modeling\nhttps://arxiv.org/abs/2509.08753\n[00:30:52] Voxtral TTS\nhttps://arxiv.org/abs/2603.25551\n[00:32:38] SoundStream: An End-to-End Neural Audio Codec\nhttps://arxiv.org/abs/2107.03312\n[00:34:59] Flow Matching for Generative Modeling\nhttps://arxiv.org/abs/2210.02747\n[00:37:03] High Fidelity Neural Audio Compression (EnCodec)\nhttps://arxiv.org/abs/2210.13438\n[00:37:42] Moshi: a speech-text foundation model for real-time dialogue (Mimi)\nhttps://arxiv.org/abs/2410.00037\n[00:39:05] Finite Scalar Quantization: VQ-VAE Made Simple\nhttps://arxiv.org/abs/2309.15505\n[01:03:33] Direct Preference Optimization: Your Language Model is Secretly a Reward Model\nhttps://arxiv.org/abs/2305.18290\nbenchmark:\n[01:15:40] ElevenLabs v3 and Flash comparison in Voxtral TTS\nhttps://arxiv.org/abs/2603.25551\ndataset:\n[00:46:14] Mozilla Common Voice datasets\nhttps://commonvoice.mozilla.org/en/datasets\norganization:\n[00:01:24] Mistral AI\nhttps://mistral.ai/\n[00:50:47] Hugging Face\nhttps://huggingface.co/",
       "link": "https://www.youtube.com/watch?v=ixu0H8bsCts",
       "source": "Machine Learning Street Talk",
@@ -32,18 +32,13 @@
       "published": "2026-09-14T20:28:15+00:00",
       "published_ts": 1789417695,
       "smart_groups": [
-        "LLM & Foundation Model Releases",
-        "AI Research & Papers",
-        "NLP & Language Understanding",
-        "AI Safety & Ethics",
-        "AI Regulation & Policy",
-        "AI Business & Funding"
+        "Vision, audio & video"
       ],
       "curated": false
     },
     {
       "title": "Event Recap: Build Smarter Voice Agents - New York Edition",
-      "summary": "We teamed up with LiveKit and hosted a meetup and live panel in New York focused on building smarter voice agents. \n\nJoined by Owen Gretzinger, Head of Engineering at Boardy, and Dylan Wight, Sr. Engineer at Flagler Health, we explored what it actually takes to build and deploy voice AI systems, with a focus on their specific use cases.\n\nFrom Boardy\u2019s AI-powered networking experience to how Flagler Health is applying voice AI in healthcare, the conversation dives into how each team approaches building voice agents, the nuanced challenges they\u2019ve encountered along the way, and their outlook on how voice agents will shape their respective industries.\n\nTune in for a candid look at how two very different teams are building with voice AI today \u2014 and where they see the technology going next.\n\n\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac CONNECT \u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\n\n\ud83d\udda5\ufe0f Website: https://www.assemblyai.com\n\ud83d\udc26 Twitter: https://twitter.com/AssemblyAI\n\ud83e\uddbe Discord: https://discord.gg/Cd8MyVJAXd\n\u25b6\ufe0f  Subscribe: https://www.youtube.com/c/AssemblyAI?sub_confirmation=1\n\ud83d\udd25 We're hiring! Check our open roles: https://www.assemblyai.com/careers\n\n\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\n\n#MachineLearning #DeepLearning",
+      "summary": "We teamed up with LiveKit and hosted a meetup and live panel in New York focused on building smarter voice agents. Joined by Owen Gretzinger, Head of Engineering at Boardy, and Dylan Wight, Sr. Engineer at Flagler Health, we explored what it actually takes to build and deploy voice AI systems, with a focus on their specific use cases. From Boardy\u2019s AI-powered networking experience to how Flagler Health is applying voice AI in healthcare, the conversation dives into how each team approaches building voice agents, the nuanced challenges they\u2019ve encountered along the way, and their outlook on how voice agents will shape their respective industries. Tune in for a candid look at how two very different teams are building with voice AI today \u2014 and where they see the technology going next. \u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac CONNECT \u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac \ud83d\udda5\ufe0f Website: https://www.assemblyai.com \ud83d\udc26 Twitter: https://twitter.com/AssemblyAI \ud83e\uddbe Discord: https://discord.gg/Cd8MyVJAXd \u25b6\ufe0f Subscribe: https://www.youtube.com/c/AssemblyAI?sub_confirmation=1 \ud83d\udd25 We're hiring! Check our open roles: https://www.assemblyai.com/careers \u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac #MachineLearning #DeepLearning",
       "summary_html": "We teamed up with LiveKit and hosted a meetup and live panel in New York focused on building smarter voice agents. \n\nJoined by Owen Gretzinger, Head of Engineering at Boardy, and Dylan Wight, Sr. Engineer at Flagler Health, we explored what it actually takes to build and deploy voice AI systems, with a focus on their specific use cases.\n\nFrom Boardy\u2019s AI-powered networking experience to how Flagler Health is applying voice AI in healthcare, the conversation dives into how each team approaches building voice agents, the nuanced challenges they\u2019ve encountered along the way, and their outlook on how voice agents will shape their respective industries.\n\nTune in for a candid look at how two very different teams are building with voice AI today \u2014 and where they see the technology going next.\n\n\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac CONNECT \u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\n\n\ud83d\udda5\ufe0f Website: https://www.assemblyai.com\n\ud83d\udc26 Twitter: https://twitter.com/AssemblyAI\n\ud83e\uddbe Discord: https://discord.gg/Cd8MyVJAXd\n\u25b6\ufe0f  Subscribe: https://www.youtube.com/c/AssemblyAI?sub_confirmation=1\n\ud83d\udd25 We're hiring! Check our open roles: https://www.assemblyai.com/careers\n\n\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\u25ac\n\n#MachineLearning #DeepLearning",
       "link": "https://www.youtube.com/watch?v=fS4jdWagHtY",
       "source": "AssemblyAI",
@@ -52,12 +47,15 @@
       "type_label": "Media & Tech Analysis",
       "published": "2026-09-14T19:24:25+00:00",
       "published_ts": 1789413865,
-      "smart_groups": [],
+      "smart_groups": [
+        "Agents & automation",
+        "Vision, audio & video"
+      ],
       "curated": false
     },
     {
       "title": "GPT-6 Kalshi AI Trading Bot Week 1 Results - Printing Money?",
-      "summary": "GPT-6 Kalshi AI Trading Bot Week 1 Results - Printing Money?\n\nKalshi:\nhttps://www.kalshi.com/r/aaa\n\nMaxxQuant For AI Agents:\nhttps://www.maxxquant.com\n\nPolymarket:\nhttps://polymarket.com/?r=allabtai3\n\nx:\nhttps://x.com/AllAbtAI\n\n\ud83d\udc4a Become a YouTube Member to Support Me:\nhttps://www.youtube.com/c/AllAboutAI/join\n\nWebsite:\nhttps://www.allabtai.com\n\nBusiness Inquiries:\nkbfseo@gmail.com",
+      "summary": "GPT-6 Kalshi AI Trading Bot Week 1 Results - Printing Money? Kalshi: https://www.kalshi.com/r/aaa MaxxQuant For AI Agents: https://www.maxxquant.com Polymarket: https://polymarket.com/?r=allabtai3 x: https://x.com/AllAbtAI \ud83d\udc4a Become a YouTube Member to Support Me: https://www.youtube.com/c/AllAboutAI/join Website: https://www.allabtai.com Business Inquiries: kbfseo@gmail.com",
       "summary_html": "GPT-6 Kalshi AI Trading Bot Week 1 Results - Printing Money?\n\nKalshi:\nhttps://www.kalshi.com/r/aaa\n\nMaxxQuant For AI Agents:\nhttps://www.maxxquant.com\n\nPolymarket:\nhttps://polymarket.com/?r=allabtai3\n\nx:\nhttps://x.com/AllAbtAI\n\n\ud83d\udc4a Become a YouTube Member to Support Me:\nhttps://www.youtube.com/c/AllAboutAI/join\n\nWebsite:\nhttps://www.allabtai.com\n\nBusiness Inquiries:\nkbfseo@gmail.com",
       "link": "https://www.youtube.com/watch?v=KOv_Oj8l8Mg",
       "source": "All About AI",
@@ -67,13 +65,13 @@
       "published": "2026-09-14T18:40:43+00:00",
       "published_ts": 1789411243,
       "smart_groups": [
-        "Agentic AI & Automations"
+        "Agents & automation"
       ],
       "curated": false
     },
     {
       "title": "GPT-6 Astra + ChatGPT Images 2.5 Goes Crazy",
-      "summary": "Want to save time, get more leverage, and stop figuring this AI stuff out from scratch? I put the clearest map and support inside the AI Advantage Club: https://joinaiaclub.com/igor\n\nLet's Connect:\n\ud83d\udcf8 Instagram: https://www.instagram.com/igorpogany/",
+      "summary": "Want to save time, get more leverage, and stop figuring this AI stuff out from scratch? I put the clearest map and support inside the AI Advantage Club: https://joinaiaclub.com/igor Let's Connect: \ud83d\udcf8 Instagram: https://www.instagram.com/igorpogany/",
       "summary_html": "Want to save time, get more leverage, and stop figuring this AI stuff out from scratch? I put the clearest map and support inside the AI Advantage Club: https://joinaiaclub.com/igor\n\nLet's Connect:\n\ud83d\udcf8 Instagram: https://www.instagram.com/igorpogany/",
       "link": "https://www.youtube.com/shorts/ja8hDC1_5ss",
       "source": "The AI Advantage",
@@ -83,13 +81,13 @@
       "published": "2026-09-14T17:53:39+00:00",
       "published_ts": 1789408419,
       "smart_groups": [
-        "LLM & Foundation Model Releases"
+        "Consumer AI"
       ],
       "curated": false
     },
     {
       "title": "From AI Prototype to Production: Control Cost, Latency, and Reliability",
-      "summary": "An AI prototype may look impressive, but can it deliver reliable results quickly and at a sustainable cost?\n\nIn this Short, authors of Building Specialized AI Systems, Walid Amamou & Alessandro Negro, explains how teams can manage the critical trade-offs between cost, latency, and reliability when moving an AI system into production.\n\nLearn more about Building Specialized AI Systems: https://hubs.la/Q04tZN370\n\n#AIProduction #MLOps #LLM #GenerativeAI #AISystems #Shorts",
+      "summary": "An AI prototype may look impressive, but can it deliver reliable results quickly and at a sustainable cost? In this Short, authors of Building Specialized AI Systems, Walid Amamou & Alessandro Negro, explains how teams can manage the critical trade-offs between cost, latency, and reliability when moving an AI system into production. Learn more about Building Specialized AI Systems: https://hubs.la/Q04tZN370 #AIProduction #MLOps #LLM #GenerativeAI #AISystems #Shorts",
       "summary_html": "An AI prototype may look impressive, but can it deliver reliable results quickly and at a sustainable cost?\n\nIn this Short, authors of Building Specialized AI Systems, Walid Amamou &amp; Alessandro Negro, explains how teams can manage the critical trade-offs between cost, latency, and reliability when moving an AI system into production.\n\nLearn more about Building Specialized AI Systems: https://hubs.la/Q04tZN370\n\n#AIProduction #MLOps #LLM #GenerativeAI #AISystems #Shorts",
       "link": "https://www.youtube.com/shorts/C71b4OCitOA",
       "source": "Manning Publications",
@@ -99,13 +97,13 @@
       "published": "2026-09-14T17:00:26+00:00",
       "published_ts": 1789405226,
       "smart_groups": [
-        "MLOps & Deployment"
+        "Infra & model ops"
       ],
       "curated": false
     },
     {
-      "title": "Are AI Doomers A Psyop Campaign?",
-      "summary": "Are all of these AI safety campaigns part of a big coordinated psyop?\n\nApparently some people are actually being paid to push anti-AI messaging, but I\u2019m not sure if that\u2019s the case in these recent instances. \n\nI think it\u2019s more likely that these Anthropic and OpenAI whistleblowers are usually from the alignment and safety sector, so their entire job is to study potential worst-case scenarios. Spending every day inside that world probably changes how you see the risks, but it also means they may be noticing dangers the rest of us aren\u2019t.\n\nI\u2019m inclined to believe their warnings are genuine, but I don\u2019t think panic is the answer. \n\nThe AI arms race probably isn\u2019t slowing down anytime soon. So maybe the smartest move is putting more brainpower into alignment and not just shareholder value.\n\nWhat do you think: genuine warning or manufactured fear?\n\n#AI #AInews #anthropic #openai #aisafety",
+      "title": "Did AI Doom Us All?",
+      "summary": "Are all of these AI safety campaigns part of a big coordinated psyop? Apparently some people are actually being paid to push anti-AI messaging, but I\u2019m not sure if that\u2019s the case in these recent instances. I think it\u2019s more likely that these Anthropic and OpenAI whistleblowers are usually from the alignment and safety sector, so their entire job is to study potential worst-case scenarios. Spending every day inside that world probably changes how you see the risks, but it also means they may be noticing dangers the rest of us aren\u2019t. I\u2019m inclined to believe their warnings are genuine, but I don\u2019t think panic is the answer. The AI arms race probably isn\u2019t slowing down anytime soon. So maybe the smartest move is putting more brainpower into alignment and not just shareholder value. What do you think: genuine warning or manufactured fear? #AI #AInews #anthropic #openai #aisafety",
       "summary_html": "Are all of these AI safety campaigns part of a big coordinated psyop?\n\nApparently some people are actually being paid to push anti-AI messaging, but I\u2019m not sure if that\u2019s the case in these recent instances. \n\nI think it\u2019s more likely that these Anthropic and OpenAI whistleblowers are usually from the alignment and safety sector, so their entire job is to study potential worst-case scenarios. Spending every day inside that world probably changes how you see the risks, but it also means they may be noticing dangers the rest of us aren\u2019t.\n\nI\u2019m inclined to believe their warnings are genuine, but I don\u2019t think panic is the answer. \n\nThe AI arms race probably isn\u2019t slowing down anytime soon. So maybe the smartest move is putting more brainpower into alignment and not just shareholder value.\n\nWhat do you think: genuine warning or manufactured fear?\n\n#AI #AInews #anthropic #openai #aisafety",
       "link": "https://www.youtube.com/shorts/mku_K8pCLx4",
       "source": "Matt Wolfe",
@@ -115,14 +113,13 @@
       "published": "2026-09-14T16:15:59+00:00",
       "published_ts": 1789402559,
       "smart_groups": [
-        "LLM & Foundation Model Releases",
-        "AI Safety & Ethics"
+        "Safety & alignment"
       ],
       "curated": false
     },
     {
       "title": "Everything is LLM - Vibe coding a robot task",
-      "summary": "exploring some vibecoding with the XGO robot. You can check out this particular robot here: https://www.kickstarter.com/projects/xgorobot/xgo-mini2sw?ref=cos4fq&utm_source=sentdex\n\nNeural Networks from Scratch book: https://nnfs.io\nChannel membership: https://www.youtube.com/channel/UCfzlCWGWYyIQ0aLC5w48gBQ/join\nDiscord: https://discord.gg/sentdex\nReddit: https://www.reddit.com/r/sentdex/ \nSupport the content: https://pythonprogramming.net/support-donate/\nTwitter: https://twitter.com/sentdex\nInstagram: https://instagram.com/sentdex\nFacebook: https://www.facebook.com/pythonprogramming.net/\nTwitch: https://www.twitch.tv/sentdex",
+      "summary": "exploring some vibecoding with the XGO robot. You can check out this particular robot here: https://www.kickstarter.com/projects/xgorobot/xgo-mini2sw?ref=cos4fq&utm_source=sentdex Neural Networks from Scratch book: https://nnfs.io Channel membership: https://www.youtube.com/channel/UCfzlCWGWYyIQ0aLC5w48gBQ/join Discord: https://discord.gg/sentdex Reddit: https://www.reddit.com/r/sentdex/ Support the content: https://pythonprogramming.net/support-donate/ Twitter: https://twitter.com/sentdex Instagram: https://instagram.com/sentdex Facebook: https://www.facebook.com/pythonprogramming.net/ Twitch: https://www.twitch.tv/sentdex",
       "summary_html": "exploring some vibecoding with the XGO robot. You can check out this particular robot here: https://www.kickstarter.com/projects/xgorobot/xgo-mini2sw?ref=cos4fq&amp;utm_source=sentdex\n\nNeural Networks from Scratch book: https://nnfs.io\nChannel membership: https://www.youtube.com/channel/UCfzlCWGWYyIQ0aLC5w48gBQ/join\nDiscord: https://discord.gg/sentdex\nReddit: https://www.reddit.com/r/sentdex/ \nSupport the content: https://pythonprogramming.net/support-donate/\nTwitter: https://twitter.com/sentdex\nInstagram: https://instagram.com/sentdex\nFacebook: https://www.facebook.com/pythonprogramming.net/\nTwitch: https://www.twitch.tv/sentdex",
       "link": "https://www.youtube.com/watch?v=OIw6zY_AQOg",
       "source": "sentdex",
@@ -131,12 +128,15 @@
       "type_label": "Media & Tech Analysis",
       "published": "2026-09-14T15:11:08+00:00",
       "published_ts": 1789398668,
-      "smart_groups": [],
-      "curated": true
+      "smart_groups": [
+        "Coding & dev tools",
+        "Robotics & autonomy"
+      ],
+      "curated": false
     },
     {
       "title": "The OpenSource Managed Agents",
-      "summary": "In this video I checkout, TrueForge the open source managed agents solution from TrueFoundry. It allows you to build agents easily with out the forced model choices or vendor lock ins. \n\nCheck out the repo and leave a star\nGithub: https://github.com/truefoundry/trueforge\n\nDocs:https://trueforge.dev/introduction\nWebsite: https://www.truefoundry.com/trueforge\n\nTwitter: https://x.com/Sam_Witteveen \n\n\ud83d\udd75\ufe0f Interested in building LLM Agents? Fill out the form below\nBuilding LLM Agents Form: https://drp.li/dIMes\n\n\ud83d\udc68\u200d\ud83d\udcbbGithub:\nhttps://github.com/samwit/llm-tutorials\n\n\u23f1\ufe0fTime Stamps:\n00:00 Intro\n00:56 TrueForge: Open-source agent harness\n01:42 Harness\n03:43 TrueForge Runtime Harness\n04:22 Why it matters\n04:47 Agent Harness Architecture\n05:29 Benchmarks\n10:24 Demo\n11:03 Installing TrueForge\n11:19 Choosing a Model\n12:01 Connectors\n12:34 Skills\n12:28 Sandbox Providers\n17:33 Using Python",
+      "summary": "In this video I checkout, TrueForge the open source managed agents solution from TrueFoundry. It allows you to build agents easily with out the forced model choices or vendor lock ins. Check out the repo and leave a star Github: https://github.com/truefoundry/trueforge Docs:https://trueforge.dev/introduction Website: https://www.truefoundry.com/trueforge Twitter: https://x.com/Sam_Witteveen \ud83d\udd75\ufe0f Interested in building LLM Agents? Fill out the form below Building LLM Agents Form: https://drp.li/dIMes \ud83d\udc68\u200d\ud83d\udcbbGithub: https://github.com/samwit/llm-tutorials \u23f1\ufe0fTime Stamps: 00:00 Intro 00:56 TrueForge: Open-source agent harness 01:42 Harness 03:43 TrueForge Runtime Harness 04:22 Why it matters 04:47 Agent Harness Architecture 05:29 Benchmarks 10:24 Demo 11:03 Installing TrueForge 11:19 Choosing a Model 12:01 Connectors 12:34 Skills 12:28 Sandbox Providers 17:33 Using Python",
       "summary_html": "In this video I checkout, TrueForge the open source managed agents solution from TrueFoundry. It allows you to build agents easily with out the forced model choices or vendor lock ins. \n\nCheck out the repo and leave a star\nGithub: https://github.com/truefoundry/trueforge\n\nDocs:https://trueforge.dev/introduction\nWebsite: https://www.truefoundry.com/trueforge\n\nTwitter: https://x.com/Sam_Witteveen \n\n\ud83d\udd75\ufe0f Interested in building LLM Agents? Fill out the form below\nBuilding LLM Agents Form: https://drp.li/dIMes\n\n\ud83d\udc68\u200d\ud83d\udcbbGithub:\nhttps://github.com/samwit/llm-tutorials\n\n\u23f1\ufe0fTime Stamps:\n00:00 Intro\n00:56 TrueForge: Open-source agent harness\n01:42 Harness\n03:43 TrueForge Runtime Harness\n04:22 Why it matters\n04:47 Agent Harness Architecture\n05:29 Benchmarks\n10:24 Demo\n11:03 Installing TrueForge\n11:19 Choosing a Model\n12:01 Connectors\n12:34 Skills\n12:28 Sandbox Providers\n17:33 Using Python",
       "link": "https://www.youtube.com/watch?v=3AdW345Jskk",
       "source": "Sam Witteveen",
@@ -146,13 +146,13 @@
       "published": "2026-09-14T13:30:39+00:00",
       "published_ts": 1789392639,
       "smart_groups": [
-        "AI Research & Papers"
+        "Agents & automation"
       ],
-      "curated": true
+      "curated": false
     },
     {
       "title": "How AI Learns Which Failures Belong to the Harness",
-      "summary": "New evidence-based runtime engineering method for the AI Agent HARNESS.\n\nHow AI Detects Systematic Runtime Harness Failures and \nWhy Self-Evolving AI Harnesses Overfit.\n\nAll rights w/ authors:\nECDYSIS: Efficient and Effective Training of Runtime\nHarnesses for LLM Agents\nRuiqing Yue1,2\u2217 Yu Cui3\u2217 Zhuoyu Sun3 Sicheng Pan3 Xianhong Xue1,2\nTingyu Li3 Ting Li4 Wenzhuo Zhu4 Yi Chen1,2 Yifei Liu3\nBaohan Huang3 Zhe Cui1,2 Haibin Zhang5,6 Cong Zuo3\nfrom \n1 Chengdu Institute of Computer Applications, Chinese Academy of Sciences\n2 University of Chinese Academy of Sciences \n3 Beijing Institute of Technology\n4 Beijing University of Technology \n5 Yangtze Delta Region Institute of Tsinghua University, Zhejiang\n6 Jiaxing Key Laboratory of Artificial Intelligence and Cyber Resilience\n\nhttps://github.com/cuiyu-ai/Ecdysis\n\n#airesearch \n#aitechnology \n#aitech \n#aiexplained",
+      "summary": "New evidence-based runtime engineering method for the AI Agent HARNESS. How AI Detects Systematic Runtime Harness Failures and Why Self-Evolving AI Harnesses Overfit. All rights w/ authors: ECDYSIS: Efficient and Effective Training of Runtime Harnesses for LLM Agents Ruiqing Yue1,2\u2217 Yu Cui3\u2217 Zhuoyu Sun3 Sicheng Pan3 Xianhong Xue1,2 Tingyu Li3 Ting Li4 Wenzhuo Zhu4 Yi Chen1,2 Yifei Liu3 Baohan Huang3 Zhe Cui1,2 Haibin Zhang5,6 Cong Zuo3 from 1 Chengdu Institute of Computer Applications, Chinese Academy of Sciences 2 University of Chinese Academy of Sciences 3 Beijing Institute of Technology 4 Beijing University of Technology 5 Yangtze Delta Region Institute of Tsinghua University, Zhejiang 6 Jiaxing Key Laboratory of Artificial Intelligence and Cyber Resilience https://github.com/cuiyu-ai/Ecdysis #airesearch #aitechnology #aitech #aiexplained",
       "summary_html": "New evidence-based runtime engineering method for the AI Agent HARNESS.\n\nHow AI Detects Systematic Runtime Harness Failures and \nWhy Self-Evolving AI Harnesses Overfit.\n\nAll rights w/ authors:\nECDYSIS: Efficient and Effective Training of Runtime\nHarnesses for LLM Agents\nRuiqing Yue1,2\u2217 Yu Cui3\u2217 Zhuoyu Sun3 Sicheng Pan3 Xianhong Xue1,2\nTingyu Li3 Ting Li4 Wenzhuo Zhu4 Yi Chen1,2 Yifei Liu3\nBaohan Huang3 Zhe Cui1,2 Haibin Zhang5,6 Cong Zuo3\nfrom \n1 Chengdu Institute of Computer Applications, Chinese Academy of Sciences\n2 University of Chinese Academy of Sciences \n3 Beijing Institute of Technology\n4 Beijing University of Technology \n5 Yangtze Delta Region Institute of Tsinghua University, Zhejiang\n6 Jiaxing Key Laboratory of Artificial Intelligence and Cyber Resilience\n\nhttps://github.com/cuiyu-ai/Ecdysis\n\n#airesearch \n#aitechnology \n#aitech \n#aiexplained",
       "link": "https://www.youtube.com/watch?v=KCptcveOvfY",
       "source": "code_your_own_AI",
@@ -162,8 +162,8 @@
       "published": "2026-09-14T13:30:36+00:00",
       "published_ts": 1789392636,
       "smart_groups": [
-        "Agentic AI & Automations",
-        "Data Engineering & Pipelines"
+        "Agents & automation",
+        "Policy & government"
       ],
       "curated": false
     },
@@ -178,8 +178,10 @@
       "type_label": "Media & Tech Analysis",
       "published": "2026-09-14T13:05:34+00:00",
       "published_ts": 1789391134,
-      "smart_groups": [],
-      "curated": true
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
     },
     {
       "title": "Grading An Agent Means Checking Every Step",
@@ -193,13 +195,13 @@
       "published": "2026-09-14T12:00:12+00:00",
       "published_ts": 1789387212,
       "smart_groups": [
-        "Agentic AI & Automations"
+        "Agents & automation"
       ],
       "curated": false
     },
     {
       "title": "Claude Skills: Report Generator",
-      "summary": "Want to save time, get more leverage, and stop figuring this AI stuff out from scratch? I put the clearest map and support inside the AI Advantage Club: https://joinaiaclub.com/igor\n\nLet's Connect:\n\ud83d\udcf8 Instagram: https://www.instagram.com/igorpogany/",
+      "summary": "Want to save time, get more leverage, and stop figuring this AI stuff out from scratch? I put the clearest map and support inside the AI Advantage Club: https://joinaiaclub.com/igor Let's Connect: \ud83d\udcf8 Instagram: https://www.instagram.com/igorpogany/",
       "summary_html": "Want to save time, get more leverage, and stop figuring this AI stuff out from scratch? I put the clearest map and support inside the AI Advantage Club: https://joinaiaclub.com/igor\n\nLet's Connect:\n\ud83d\udcf8 Instagram: https://www.instagram.com/igorpogany/",
       "link": "https://www.youtube.com/shorts/PgYD_y_Jba8",
       "source": "The AI Advantage",
@@ -209,13 +211,13 @@
       "published": "2026-09-14T11:00:07+00:00",
       "published_ts": 1789383607,
       "smart_groups": [
-        "LLM & Foundation Model Releases"
+        "Consumer AI"
       ],
       "curated": false
     },
     {
       "title": "Knowledge Graphs & Ontology: How Agents Understand Enterprise Context",
-      "summary": "AI does not automatically understand your organization. It does not know how your products relate to your customers or what your internal terminology means. It needs a map.\n\nTerms covered:\n- Knowledge Graph: information represented as a network of connected entities and relationships rather than rows in a table, so an AI system can reason over how things relate\n- Ontology: the formal framework that defines the concepts in your domain and how they connect, giving the graph its logic\n\nIn healthcare, an ontology defines what counts as a symptom, a diagnosis and a treatment. In finance, it defines instruments, transactions, counterparties and risk categories.\n\nTogether they give AI a shared understanding of your world, so it reasons accurately instead of guessing.\n\n\u2014\nAI Fundamentals Glossary | H2O.ai University\nFull playlist: https://www.youtube.com/playlist?list=PLAWKlIKS-66E\nFree courses and certifications: https://h2o.ai/university\n\n#KnowledgeGraph #Ontology #AI #AIGlossary #H2Oai",
+      "summary": "AI does not automatically understand your organization. It does not know how your products relate to your customers or what your internal terminology means. It needs a map. Terms covered: - Knowledge Graph: information represented as a network of connected entities and relationships rather than rows in a table, so an AI system can reason over how things relate - Ontology: the formal framework that defines the concepts in your domain and how they connect, giving the graph its logic In healthcare, an ontology defines what counts as a symptom, a diagnosis and a treatment. In finance, it defines instruments, transactions, counterparties and risk categories. Together they give AI a shared understanding of your world, so it reasons accurately instead of guessing. \u2014 AI Fundamentals Glossary | H2O.ai University Full playlist: https://www.youtube.com/playlist?list=PLAWKlIKS-66E Free courses and certifications: https://h2o.ai/university #KnowledgeGraph #Ontology #AI #AIGlossary #H2Oai",
       "summary_html": "AI does not automatically understand your organization. It does not know how your products relate to your customers or what your internal terminology means. It needs a map.\n\nTerms covered:\n- Knowledge Graph: information represented as a network of connected entities and relationships rather than rows in a table, so an AI system can reason over how things relate\n- Ontology: the formal framework that defines the concepts in your domain and how they connect, giving the graph its logic\n\nIn healthcare, an ontology defines what counts as a symptom, a diagnosis and a treatment. In finance, it defines instruments, transactions, counterparties and risk categories.\n\nTogether they give AI a shared understanding of your world, so it reasons accurately instead of guessing.\n\n\u2014\nAI Fundamentals Glossary | H2O.ai University\nFull playlist: https://www.youtube.com/playlist?list=PLAWKlIKS-66E\nFree courses and certifications: https://h2o.ai/university\n\n#KnowledgeGraph #Ontology #AI #AIGlossary #H2Oai",
       "link": "https://www.youtube.com/watch?v=icP-qUcqk44",
       "source": "H2O.ai",
@@ -224,7 +226,9 @@
       "type_label": "Media & Tech Analysis",
       "published": "2026-09-14T09:39:35+00:00",
       "published_ts": 1789378775,
-      "smart_groups": [],
+      "smart_groups": [
+        "Agents & automation"
+      ],
       "curated": false
     }
   ]
