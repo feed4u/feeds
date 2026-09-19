@@ -1,9 +1,222 @@
 {
-  "generated_at": "2026-09-18T19:08:47.878750+00:00",
+  "generated_at": "2026-09-19T04:50:25.317732+00:00",
   "date": "2026-09-18",
-  "total_items": 122,
+  "total_items": 136,
   "next_chunk": "archive/news/daily/2026-09-17.json",
   "items": [
+    {
+      "title": "Brevo Supply-Chain Attack Infected Over 100,000 Websites",
+      "summary": "A Brevo supply-chain attack used compromised Cloudflare access to inject malware into websites, potentially affecting over 100,000 sites. Brevo, formerly known as Sendinblue, is a French cloud-based marketing and customer communication platform whose clients include eBay, Louis Vuitton and Michelin. The company was first compromised on September 10, when attackers exploited a vulnerability in its SAML SSO system and gained access to 138 accounts, including one belonging to cryptocurrency hardware wallet maker Trezor. Six accounts were used to send phishing emails, while contact data was exported from 43 accounts. Brevo blocked the unauthorized access, but attackers returned four days later using a compromised, long-lived Cloudflare API key. They used the key to deploy a malicious Cloudflare Worker that injected code into Brevo\u2019s websites and three JavaScript files embedded in customer sites. \u201cA long-lived Cloudflare API key with full account permissions was stored in application source code and was obtained by the attacker. With it, they could create Workers, routes and DNS records on Brevo\u2019s zones without triggering an alert.\u201d reads a Brevo\u2019s notice of incident . \u201cBecause the Worker rewrote responses at the edge and removed security headers such as Content-Security-Policy, our origin servers and files remained unmodified and standard integrity checks did not detect the change.\u201d This turned Brevo\u2019s trusted infrastructure into a malware distribution channel. The malicious code was served to visitors and users of websites relying on Brevo\u2019s services. Security firm Sansec estimated that more than 100,000 sites may have been affected. Unlike the initial incident, this was no longer just a breach of customer accounts: the vendor\u2019s own infrastructure had become the mechanism for distributing the attack. \u201cOn 14 September, Brevo served malware to visitors of its own site and more than 100 thousand customer sites.\u201d cybersecruity firm Sansec reports . \u201cThe malware had two components: a malicious WordPress plugin, installed when site admins visited their own site a clickfix overlay , shown to everyone browsing a customer site or clicking an (unsubscribe) link in a Brevo-sent campaign email\u201d Brevo\u2019s chat widget and tracking scripts, loaded directly from cdn.brevo.com by thousands of websites, were modified to load an additional script from sendibt1.com , a domain owned by Brevo. This meant attackers could reach a large number of sites without compromising them individually. Visitors were shown a fake \u201cprove you\u2019re human\u201d prompt designed to trick them into running a malicious command. WordPress administrators faced a more serious threat: if they were logged in while visiting their site, a malicious plugin could be installed through their active session without requiring a password. The malware also tried to avoid detection by targeting only logged-in WordPress admins and ignoring crawlers, developers and security scanners. BleepingComputer later found the plugin on VirusTotal disguised as \u201cWeb Media Optimizer.\u201d It could hide from the normal plugin list, persist through the must-use plugins folder and communicate with its command-and-control server. The files on Brevo\u2019s servers were completely clean the entire time. Anyone checking file hashes or running standard integrity monitoring on the origin would have found nothing wrong, because nothing on the origin ever changed. The attack lived entirely at the CDN edge, invisible to any tool watching the wrong layer. Sansec says supply-chain attacks offer attackers enormous reach. In this case, a single stolen key and compromised Cloudflare access allowed malware to spread through Brevo\u2019s trusted infrastructure to websites using its scripts. Attackers did not need to compromise each customer or trick every victim individually. The trust was already built into the websites through a simple",
+      "summary_html": "<div></div>\nA Brevo supply-chain attack used compromised Cloudflare access to inject malware into websites, potentially affecting over 100,000 sites.\n<p>Brevo, formerly known as Sendinblue, is a French cloud-based marketing and customer communication platform whose clients include eBay, Louis Vuitton and Michelin.</p>\n<p>The company was first compromised on September 10, when attackers exploited a vulnerability in its SAML SSO system and gained access to 138 accounts, including one belonging to cryptocurrency hardware wallet maker Trezor. Six accounts were used to send phishing emails, while contact data was exported from 43 accounts.</p>\n<p>Brevo blocked the unauthorized access, but attackers returned four days later using a compromised, long-lived Cloudflare API key. They used the key to deploy a malicious Cloudflare Worker that injected code into Brevo\u2019s websites and three JavaScript files embedded in customer sites.</p>\n<p><em>\u201cA long-lived Cloudflare API key with full account permissions was stored in application source code and was obtained by the attacker. With it, they could create Workers, routes and DNS records on Brevo\u2019s zones without triggering an alert.\u201d reads a Brevo\u2019s <a href=\"https://status.brevo.com/incidents/01M2QBC4EZ24ZACW6SWQYVW8N3/write-up\">notice of incident</a>. \u201cBecause the Worker rewrote responses at the edge and removed security headers such as Content-Security-Policy, our origin servers and files remained unmodified and standard integrity checks did not detect the change.\u201d</em></p>\n<p>This turned Brevo\u2019s trusted infrastructure into a malware distribution channel. The malicious code was served to visitors and users of websites relying on Brevo\u2019s services. Security firm Sansec estimated that more than 100,000 sites may have been affected. Unlike the initial incident, this was no longer just a breach of customer accounts: the vendor\u2019s own infrastructure had become the mechanism for distributing the attack.</p>\n<p><em>\u201cOn 14 September, Brevo served malware to visitors of its own site and\u00a0<a href=\"https://publicwww.com/websites/%22brevo.com%22+%7C+%22sibforms.com%22+%7C+%22sibautomation.com%22/\">more than 100 thousand</a>\u00a0customer sites.\u201d <a href=\"https://sansec.io/research/brevo-supply-chain-attack\">cybersecruity firm Sansec reports</a>. \u201cThe malware had two components:</em></p>\n<ul>\n<li><em>a malicious WordPress plugin, installed when site admins visited their own site</em></li>\n<li><em>a\u00a0<a href=\"https://x.com/calgarywebdev/status/2099554610742718667\">clickfix overlay</a>, shown to everyone browsing a customer site or clicking an (unsubscribe) link in a Brevo-sent campaign email\u201d</em></li>\n</ul>\n<p>Brevo\u2019s chat widget and tracking scripts, loaded directly from <code>cdn.brevo.com</code> by thousands of websites, were modified to load an additional script from <code>sendibt1.com</code>, a domain owned by Brevo. This meant attackers could reach a large number of sites without compromising them individually.</p>\n<p>Visitors were shown a fake \u201cprove you\u2019re human\u201d prompt designed to trick them into running a malicious command. WordPress administrators faced a more serious threat: if they were logged in while visiting their site, a malicious plugin could be installed through their active session without requiring a password.</p>\n<p>The malware also tried to avoid detection by targeting only logged-in WordPress admins and ignoring crawlers, developers and security scanners. BleepingComputer later found the plugin on VirusTotal disguised as \u201cWeb Media Optimizer.\u201d It could hide from the normal plugin list, persist through the must-use plugins folder and communicate with its command-and-control server.</p>\n<div>\n<a href=\"https://i0.wp.com/securityaffairs.com/wp-content/uploads/2026/09/image-51.png?ssl=1\"></a>\n</div>\n<p>The files on Brevo\u2019s servers were completely clean the entire time. Anyone checking file hashes or running standard integrity monitoring on the origin would have found nothing wrong, because nothing on the origin ever changed. The attack lived entirely at the CDN edge, invisible to any tool watching the wrong layer.</p>\n<p>Sansec says supply-chain attacks offer attackers enormous reach. In this case, a single stolen key and compromised Cloudflare access allowed malware to spread through Brevo\u2019s trusted infrastructure to websites using its scripts. Attackers did not need to compromise each customer or trick every victim individually. The trust was already built into the websites through a simple <code></code></p>",
+      "link": "https://securityaffairs.com/199355/hacking/brevo-supply-chain-attack-infected-over-100000-websites.html",
+      "source": "Security Affairs",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-09-18T21:38:15+00:00",
+      "published_ts": 1789767495,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Cloud / SaaS",
+        "Malware / Payloads",
+        "Identity / Access",
+        "Phishing / Social Engineering",
+        "Crypto / Web3",
+        "Privacy & Compliance"
+      ],
+      "curated": true
+    },
+    {
+      "title": "WSL2 - Management, Monitoring and logging",
+      "summary": "Are any mid-large size companies allowing WSL2? Did you get your EDR configured to have visibility/logging? Are you managing the configuration of the Linux VM? submitted by /u/MountainDadwBeard [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Are any mid-large size companies allowing WSL2?<br/> Did you get your EDR configured to have visibility/logging?<br/> Are you managing the configuration of the Linux VM?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/MountainDadwBeard\"> /u/MountainDadwBeard </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wk37kr/wsl2_management_monitoring_and_logging/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wk37kr/wsl2_management_monitoring_and_logging/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1wk37kr/wsl2_management_monitoring_and_logging/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-09-18T21:35:54+00:00",
+      "published_ts": 1789767354,
+      "smart_groups": [
+        "Linux / Unix",
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Codex vs Mythos on OWASP Juice shop compared",
+      "summary": "4 code-based AI vulnerability scanners compared on the same OWASP Juice Shop \ud83d\ude04 https://claude.ai/artifact/Ds5h7rwfLuaEACGkBHbUAd Codex / Mythos / Aikido / Audn ( 0 touch on top of the AI-written results) submitted by /u/audn-ai [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>4 code-based AI vulnerability scanners compared on the same OWASP Juice Shop \ud83d\ude04<br/> <a href=\"https://claude.ai/artifact/Ds5h7rwfLuaEACGkBHbUAd\">https://claude.ai/artifact/Ds5h7rwfLuaEACGkBHbUAd</a></p> <p>Codex / Mythos / Aikido / Audn</p> <p>( 0 touch on top of the AI-written results)</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/audn-ai\"> /u/audn-ai </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wk3299/codex_vs_mythos_on_owasp_juice_shop_compared/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wk3299/codex_vs_mythos_on_owasp_juice_shop_compared/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1wk3299/codex_vs_mythos_on_owasp_juice_shop_compared/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-09-18T21:30:07+00:00",
+      "published_ts": 1789767007,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Crypto / Web3",
+        "AI/ML Security",
+        "DevSecOps",
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Ctem",
+      "summary": "CTEM is direction every organization shall plan to move towards for effective handling of the risk . Attempted to put my thought . Request your view and feedback https://www.linkedin.com/posts/himanshuporwal_viewpoint-for-ctem-adoption-a-couple-of-activity-7504951890758156289-ehKP?utm_source=share&utm_medium=member_android&rcm=ACoAAABE8ZoBKKzF9WFXf1TX0cqnLiiMAD7EQoc submitted by /u/Calm-Professional-17 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>CTEM is direction every organization shall plan to move towards for effective handling of the risk .</p> <p>Attempted to put my thought . Request your view and feedback </p> <p><a href=\"https://www.linkedin.com/posts/himanshuporwal_viewpoint-for-ctem-adoption-a-couple-of-activity-7504951890758156289-ehKP?utm_source=share&amp;utm_medium=member_android&amp;rcm=ACoAAABE8ZoBKKzF9WFXf1TX0cqnLiiMAD7EQoc\">https://www.linkedin.com/posts/himanshuporwal_viewpoint-for-ctem-adoption-a-couple-of-activity-7504951890758156289-ehKP?utm_source=share&amp;utm_medium=member_android&amp;rcm=ACoAAABE8ZoBKKzF9WFXf1TX0cqnLiiMAD7EQoc</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Calm-Professional-17\"> /u/Calm-Professional-17 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wk2t8w/ctem/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wk2t8w/ctem/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1wk2t8w/ctem/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-09-18T21:20:10+00:00",
+      "published_ts": 1789766410,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Community Discussion"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Coinbase Files to List Single-Stock Perps on Apple, Tesla and Nvidia",
+      "summary": "The filing seeks CFTC approval for contracts giving US traders 24/5 leveraged exposure to individual stocks without ownership.",
+      "summary_html": "The filing seeks CFTC approval for contracts giving US traders 24/5 leveraged exposure to individual stocks without ownership.",
+      "link": "https://decrypt.co/378681/coinbase-single-stock-perps-apple-tesla-nvidia",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-09-18T21:01:30+00:00",
+      "published_ts": 1789765290,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Here\u2019s what happened in crypto today",
+      "summary": "Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.",
+      "summary_html": "<p></p><p>Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.</p>",
+      "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-09-18T21:00:00+00:00",
+      "published_ts": 1789765200,
+      "smart_groups": [
+        "Crypto / Web3"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Vectra AI Launches Ascent to Help Address New Era of AI-Driven Attacks",
+      "summary": "The new program expands Vectra AI's partner strategy as increasingly complex security environments and the growing use of AI create demand for broader AI expertise, services, and security outcomes.",
+      "summary_html": "The new program expands Vectra AI's partner strategy as increasingly complex security environments and the growing use of AI create demand for broader AI expertise, services, and security outcomes.",
+      "link": "https://www.darkreading.com/cyberattacks-data-breaches/vectra-ai-launches-ascent-new-era-ai-driven-attacks",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-09-18T20:24:51+00:00",
+      "published_ts": 1789763091,
+      "smart_groups": [
+        "Product News"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Cybersecurity in DC",
+      "summary": "Would anyone know where to start (aside from the obvious job boards) in trying to get some entry level experience in Cybersecurity or GRC in DC? I\u2019m in my last semester at GA tech getting my masters in cybersecurity and currently in IT Support. I\u2019m hoping DC will have more opportunities for me. submitted by /u/Easy_Assumption_5642 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Would anyone know where to start (aside from the obvious job boards) in trying to get some entry level experience in Cybersecurity or GRC in DC?</p> <p>I\u2019m in my last semester at GA tech getting my<br/> masters in cybersecurity and currently in IT Support. I\u2019m hoping DC will have more opportunities for me. </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Easy_Assumption_5642\"> /u/Easy_Assumption_5642 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wk115t/cybersecurity_in_dc/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wk115t/cybersecurity_in_dc/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1wk115t/cybersecurity_in_dc/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-09-18T20:11:32+00:00",
+      "published_ts": 1789762292,
+      "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Coinbase files to bring single-stock perpetual futures to US market",
+      "summary": "Coinbase wants to bring 24/5 perpetual futures trading to individual US stocks, with its proposed contracts now awaiting regulatory approval.",
+      "summary_html": "<p></p><p>Coinbase wants to bring 24/5 perpetual futures trading to individual US stocks, with its proposed contracts now awaiting regulatory approval.</p>",
+      "link": "https://cointelegraph.com/news/coinbase-files-to-bring-single-stock-perpetual-futures-to-us-market?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-09-18T19:53:54+00:00",
+      "published_ts": 1789761234,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Cisco Zero-Day Highlights API Endpoint Authentication Issues",
+      "summary": "The authentication bypass flaw CVE-2026-76460 impacts Cisco's Identity Services Engine (ISE) and received a maximum 10 out of 10 CVSS score.",
+      "summary_html": "The authentication bypass flaw CVE-2026-76460 impacts Cisco's Identity Services Engine (ISE) and received a maximum 10 out of 10 CVSS score.",
+      "link": "https://www.darkreading.com/vulnerabilities-threats/cisco-zero-day-api-endpoint-authentication-issues",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-09-18T19:26:47+00:00",
+      "published_ts": 1789759607,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "EY Survey Finds Autonomous AI Implementation Outpaces Oversight",
+      "summary": "A new survey of senior AI execs shows that while organizations are rapidly deploying AI and autonomous systems, their process and controls are not keeping pace.",
+      "summary_html": "A new survey of senior AI execs shows that while organizations are rapidly deploying AI and autonomous systems, their process and controls are not keeping pace.",
+      "link": "https://www.darkreading.com/cyberattacks-data-breaches/ey-survey-autonomous-ai-implementation-outpaces-oversight",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-09-18T19:23:48+00:00",
+      "published_ts": 1789759428,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Zcash Is Running\u2014Devs Want to Make It Faster",
+      "summary": "A new upgrade would cut Zcash block time from 75 seconds to 25, while quietly rewriting how the network pays for its own security after 2031.",
+      "summary_html": "A new upgrade would cut Zcash block time from 75 seconds to 25, while quietly rewriting how the network pays for its own security after 2031.",
+      "link": "https://decrypt.co/378667/zcash-upgrade-make-private-payments-3x-faster",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-09-18T19:16:03+00:00",
+      "published_ts": 1789758963,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Binance launches 24/7 FX perps with weekend pricing system",
+      "summary": "Binance is joining a growing number of crypto exchanges offering around-the-clock exposure to foreign exchange markets through perpetual futures.",
+      "summary_html": "<p></p><p>Binance is joining a growing number of crypto exchanges offering around-the-clock exposure to foreign exchange markets through perpetual futures.\n</p>",
+      "link": "https://cointelegraph.com/news/binance-expands-tradfi-push-with-247-foreign-exchange-perpetuals?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-09-18T19:06:30+00:00",
+      "published_ts": 1789758390,
+      "smart_groups": [
+        "Crypto / Web3",
+        "Product News"
+      ],
+      "curated": false
+    },
     {
       "title": "Bitcoin Will Hit $1 Million, Says Kevin O\u2019Leary\u2014But There\u2019s a Quantum Catch",
       "summary": "Kevin O'Leary believes Bitcoin could hit $1 million if crypto beats its quantum computing problem, and explained why he's ditching Ethereum.",
@@ -71,6 +284,24 @@
       "curated": false
     },
     {
+      "title": "Public Exploits Released for Four Linux Kernel Flaws That Enable Local Root",
+      "summary": "A security researcher has released working exploit code for four Linux kernel flaws that each let a local user gain root, the highest level of access on a machine.\n\nKernel maintainers have fixed all four over the past few weeks, so a system running an up-to-date kernel is not affected. But the exploit code is now public, and any machine still running an older kernel should be updated.\n\nThe flaws",
+      "summary_html": "A security researcher has released working exploit code for four Linux kernel flaws that each let a local user gain root, the highest level of access on a machine.\n\nKernel maintainers have fixed all four over the past few weeks, so a system running an up-to-date kernel is not affected. But the exploit code is now public, and any machine still running an older kernel should be updated.\n\nThe flaws",
+      "link": "https://thehackernews.com/2026/09/public-exploits-released-for-four-linux.html",
+      "source": "The Hacker News",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-09-18T18:02:24+00:00",
+      "published_ts": 1789754544,
+      "smart_groups": [
+        "Exploit / PoC",
+        "Linux / Unix",
+        "Cloud / SaaS"
+      ],
+      "curated": true
+    },
+    {
       "title": "Crypto stocks rebound after CLARITY Act selloff",
       "summary": "Coinbase, Strategy and other crypto-linked stocks rallied Friday as the CFTC and SEC moved ahead with crypto-related actions under existing authority.",
       "summary_html": "<p></p><p>Coinbase, Strategy and other crypto-linked stocks rallied Friday as the CFTC and SEC moved ahead with crypto-related actions under existing authority.</p>",
@@ -102,6 +333,26 @@
         "Community Discussion"
       ],
       "curated": false
+    },
+    {
+      "title": "Ring-0 exploitation via signed driver abuse\u2014why does Windows still allow arbitrary MSR writes from kernel mode, and what's the actual mitigation path?",
+      "summary": "I've been digging into ring-0 attack surfaces for a side project and I keep hitting the same wall. Hoping someone here can clarify the current state of things. The core question: Why does Windows still allow kernel-mode code to execute privileged instructions like wrmsr / rdmsr without any hypervisor-level interception on modern systems? I understand the historical reasons\u2014backward compatibility, driver ecosystem, etc.\u2014but I'm trying to understand the current mitigation landscape and where the actual boundaries are in 2024/2025. Context: I've been reading through some older research on MSR abuse (the \"God Mode\" exploit from a few years back, various BYOVD techniques, etc.) and the common thread seems to be: Attacker gets kernel-mode execution (via vulnerable signed driver, exploiting a logic bug, whatever). Attacker writes to specific MSRs (e.g., IA32_LSTAR , IA32_SYSENTER_EIP , etc.) to hijack control flow. Game over. What I don't understand is why this is still possible on a modern Windows 11 system with HVCI (Hypervisor-Protected Code Integrity) enabled, VBS (Virtualization-Based Security) running, and all the other mitigations Microsoft has shipped over the last decade. Specific questions: HVCI and MSR access: Does HVCI actually intercept wrmsr calls from guest kernel mode? My understanding is that HVCI primarily enforces code integrity (hence the name), but I'm unclear on whether it also gates privileged instruction execution. If it doesn't, what's the point of the hypervisor layer for this specific attack class? BYOVD (Bring Your Own Vulnerable Driver): This seems to be the dominant technique right now. Microsoft has a blocklist (the \"vulnerable driver blocklist\" that ships with Windows), but it's clearly incomplete. Is there any architectural mitigation that prevents a signed-but-vulnerable driver from being loaded in the first place, or is it purely reactive (blocklist + HVCI + manual revocation)? PatchGuard / KPP: I understand PatchGuard protects certain kernel structures (SSDT, IDT, GDT, etc.) from modification. But it doesn't seem to protect against MSR writes. Is that accurate? And if so, why not? Is it a technical limitation or a design decision? Intel CET / AMD Shadow Stack: Do these technologies do anything to mitigate control-flow hijacking via MSR manipulation? My understanding is that CET is primarily about protecting against ROP/JOP in user mode and kernel mode, but I'm unclear on whether it addresses the \"attacker rewrites the syscall entry point via MSR\" scenario. Hypervisor-based mitigations: If I wanted to build a hypervisor that does intercept MSR writes from guest kernel mode, what's the current state of the art? Is this something that's feasible with Intel VT-x / AMD-V, or are there architectural limitations that make it impractical (performance overhead, complexity, etc.)? What I've already looked at: The Intel SDM (Volume 3, Chapter 2 and Chapter 35ish, depending on edition) on MSRs and system programming. Microsoft's docs on HVCI, VBS, and the vulnerable driver blocklist. Various conference talks (Black Hat, DEF CON, BlueHat) on BYOVD and kernel exploitation. The wrmsr / rdmsr instruction documentation and the list of MSRs that are considered \"sensitive.\" What I'm not asking: I'm not asking for a how-to guide. I'm not trying to exploit anything. This is academic / research interest. I'm not asking \"is Windows secure?\" I know the answer is \"it depends.\" I'm not trying to start a flame war about Microsoft's security posture. I'm genuinely trying to understand the architecture. Why I'm asking here: I've read the docs. I've read the research. But there's a gap between \"here's how the attack works\" and \"here's why the defense doesn't stop it.\" I'm hoping someone with actual kernel dev / hypervisor experience can fill that gap. If anyone has experience building hypervisors (Type 1 or Type 2) or working on Windows kernel security, I'd love to hear your perspective. Specifically: Is MSR interception from a hypervisor practical on modern hardware? What's the performance cost? Are there any existing open-source projects that do this (even partially)? Is Microsoft moving in this direction, or is the strategy still \"blocklist + HVCI + hope\"? Thanks in advance. This is one of those topics where the more I learn, the more I realize I don't know. Edit: A few people have pointed out that HVCI does have some MSR-related protections (specifically around IA32_LSTAR and a few others) via the \"Kernel Data Protection\" (KDP) stuff and the hypervisor's handling of certain MSRs. I'm going to dig into that. If anyone has specifics, I'd appreciate it. Edit 2: To the person who asked \"why not just use a hypervisor to intercept all MSR writes?\"\u2014that's exactly what I'm asking. My understanding is that there are performance and complexity trade-offs, but I'd love a concrete answer. Edit 3: Someone DMed me a link to a paper on \"MSR-safe hypervisors\" from a few years back. Reading now. Will report back if it's useful. submitted by /u/NewLibrarian4958 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I've been digging into ring-0 attack surfaces for a side project and I keep hitting the same wall. Hoping someone here can clarify the current state of things.</p> <p><strong>The core question:</strong></p> <p>Why does Windows still allow kernel-mode code to execute privileged instructions like <code>wrmsr</code> / <code>rdmsr</code> without any hypervisor-level interception on modern systems? I understand the historical reasons\u2014backward compatibility, driver ecosystem, etc.\u2014but I'm trying to understand the <em>current</em> mitigation landscape and where the actual boundaries are in 2024/2025.</p> <p><strong>Context:</strong></p> <p>I've been reading through some older research on MSR abuse (the \"God Mode\" exploit from a few years back, various BYOVD techniques, etc.) and the common thread seems to be:</p> <ol> <li>Attacker gets kernel-mode execution (via vulnerable signed driver, exploiting a logic bug, whatever).</li> <li>Attacker writes to specific MSRs (e.g., <code>IA32_LSTAR</code>, <code>IA32_SYSENTER_EIP</code>, etc.) to hijack control flow.</li> <li>Game over.</li> </ol> <p>What I don't understand is why this is still <em>possible</em> on a modern Windows 11 system with HVCI (Hypervisor-Protected Code Integrity) enabled, VBS (Virtualization-Based Security) running, and all the other mitigations Microsoft has shipped over the last decade.</p> <p><strong>Specific questions:</strong></p> <ol> <li><strong>HVCI and MSR access:</strong> Does HVCI actually intercept <code>wrmsr</code> calls from guest kernel mode? My understanding is that HVCI primarily enforces code integrity (hence the name), but I'm unclear on whether it also gates privileged instruction execution. If it doesn't, what's the point of the hypervisor layer for this specific attack class?</li> <li><strong>BYOVD (Bring Your Own Vulnerable Driver):</strong> This seems to be the dominant technique right now. Microsoft has a blocklist (the \"vulnerable driver blocklist\" that ships with Windows), but it's clearly incomplete. Is there any <em>architectural</em> mitigation that prevents a signed-but-vulnerable driver from being loaded in the first place, or is it purely reactive (blocklist + HVCI + manual revocation)?</li> <li><strong>PatchGuard / KPP:</strong> I understand PatchGuard protects certain kernel structures (SSDT, IDT, GDT, etc.) from modification. But it doesn't seem to protect against MSR writes. Is that accurate? And if so, why not? Is it a technical limitation or a design decision?</li> <li><strong>Intel CET / AMD Shadow Stack:</strong> Do these technologies do anything to mitigate control-flow hijacking via MSR manipulation? My understanding is that CET is primarily about protecting against ROP/JOP in user mode and kernel mode, but I'm unclear on whether it addresses the \"attacker rewrites the syscall entry point via MSR\" scenario.</li> <li><strong>Hypervisor-based mitigations:</strong> If I wanted to build a hypervisor that <em>does</em> intercept MSR writes from guest kernel mode, what's the current state of the art? Is this something that's feasible with Intel VT-x / AMD-V, or are there architectural limitations that make it impractical (performance overhead, complexity, etc.)?</li> </ol> <p><strong>What I've already looked at:</strong></p> <ul> <li>The Intel SDM (Volume 3, Chapter 2 and Chapter 35ish, depending on edition) on MSRs and system programming.</li> <li>Microsoft's docs on HVCI, VBS, and the vulnerable driver blocklist.</li> <li>Various conference talks (Black Hat, DEF CON, BlueHat) on BYOVD and kernel exploitation.</li> <li>The <code>wrmsr</code> / <code>rdmsr</code> instruction documentation and the list of MSRs that are considered \"sensitive.\"</li> </ul> <p><strong>What I'm</strong> <strong><em>not</em></strong> <strong>asking:</strong></p> <ul> <li>I'm not asking for a how-to guide. I'm not trying to exploit anything. This is academic / research interest.</li> <li>I'm not asking \"is Windows secure?\" I know the answer is \"it depends.\"</li> <li>I'm not trying to start a flame war about Microsoft's security posture. I'm genuinely trying to understand the architecture.</li> </ul> <p><strong>Why I'm asking here:</strong></p> <p>I've read the docs. I've read the research. But there's a gap between \"here's how the attack works\" and \"here's why the defense doesn't stop it.\" I'm hoping someone with actual kernel dev / hypervisor experience can fill that gap.</p> <p>If anyone has experience building hypervisors (Type 1 or Type 2) or working on Windows kernel security, I'd love to hear your perspective. Specifically:</p> <ul> <li>Is MSR interception from a hypervisor practical on modern hardware?</li> <li>What's the performance cost?</li> <li>Are there any existing open-source projects that do this (even partially)?</li> <li>Is Microsoft moving in this direction, or is the strategy still \"blocklist + HVCI + hope\"?</li> </ul> <p>Thanks in advance. This is one of those topics where the more I learn, the more I realize I don't know.</p> <p><strong>Edit:</strong> A few people have pointed out that HVCI <em>does</em> have some MSR-related protections (specifically around <code>IA32_LSTAR</code> and a few others) via the \"Kernel Data Protection\" (KDP) stuff and the hypervisor's handling of certain MSRs. I'm going to dig into that. If anyone has specifics, I'd appreciate it.</p> <p><strong>Edit 2:</strong> To the person who asked \"why not just use a hypervisor to intercept all MSR writes?\"\u2014that's exactly what I'm asking. My understanding is that there are performance and complexity trade-offs, but I'd love a concrete answer.</p> <p><strong>Edit 3:</strong> Someone DMed me a link to a paper on \"MSR-safe hypervisors\" from a few years back. Reading now. Will report back if it's useful.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/NewLibrarian4958\"> /u/NewLibrarian4958 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wjwbly/ring0_exploitation_via_signed_driver_abusewhy/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wjwbly/ring0_exploitation_via_signed_driver_abusewhy/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1wjwbly/ring0_exploitation_via_signed_driver_abusewhy/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-09-18T17:17:59+00:00",
+      "published_ts": 1789751879,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Windows / Microsoft",
+        "Network / OT / ICS",
+        "Privacy & Compliance",
+        "Community Discussion"
+      ],
+      "curated": true
     },
     {
       "title": "AI features showing up inside apps we already approved, which shadow ai detection tools caught that for you",
@@ -765,22 +1016,6 @@
       "published_ts": 1789738900,
       "smart_groups": [
         "Community Discussion"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Here\u2019s what happened in crypto today",
-      "summary": "Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.",
-      "summary_html": "<p></p><p>Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.</p>",
-      "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-      "source": "Cointelegraph.com News",
-      "feed_type": "news",
-      "type": "crypto-blockchain-security",
-      "type_label": "Crypto & Blockchain Security",
-      "published": "2026-09-18T13:34:11+00:00",
-      "published_ts": 1789738451,
-      "smart_groups": [
-        "Crypto / Web3"
       ],
       "curated": false
     },
