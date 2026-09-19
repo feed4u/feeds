@@ -2,7 +2,7 @@ import { useState, useMemo, useEffect, useRef, useCallback } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { Layout } from "./Layout";
 import { NewsCard } from "./NewsCard";
-import { fetchNewsChunk, NewsItem, formatFeedTypeLabel, searchItems } from "@/data/newsData";
+import { fetchNewsChunk, NewsItem, StoryTelling, formatFeedTypeLabel, searchItems } from "@/data/newsData";
 import { Button } from "@/components/ui/button";
 import { useSearch } from "@/contexts/SearchContext";
 import { vertical } from "@/config/verticals";
@@ -39,22 +39,22 @@ const BURST_MIN = 6;
 const BURST_KEEP = 2;
 
 type Row =
-  | { kind: "item"; item: NewsItem; index: number }
-  | { kind: "burst"; key: string; source: string; items: NewsItem[]; index: number };
+  | { kind: "item"; entry: FeedEntry; index: number }
+  | { kind: "burst"; key: string; source: string; entries: FeedEntry[]; index: number };
 
-function toRows(items: NewsItem[], expanded: Set<string>, dayKey: string): Row[] {
+function toRows(entries: FeedEntry[], expanded: Set<string>, dayKey: string): Row[] {
   const rows: Row[] = [];
   let i = 0;
-  while (i < items.length) {
+  while (i < entries.length) {
     let j = i;
-    while (j < items.length && items[j].sourceName === items[i].sourceName) j++;
-    const run = items.slice(i, j);
-    const key = `${dayKey}:${items[i].sourceName}:${i}`;
+    while (j < entries.length && entries[j].item.sourceName === entries[i].item.sourceName) j++;
+    const run = entries.slice(i, j);
+    const key = `${dayKey}:${entries[i].item.sourceName}:${i}`;
     if (run.length >= BURST_MIN && !expanded.has(key)) {
-      run.slice(0, BURST_KEEP).forEach((item, k) => rows.push({ kind: "item", item, index: i + k }));
-      rows.push({ kind: "burst", key, source: items[i].sourceName, items: run.slice(BURST_KEEP), index: i + BURST_KEEP });
+      run.slice(0, BURST_KEEP).forEach((entry, k) => rows.push({ kind: "item", entry, index: i + k }));
+      rows.push({ kind: "burst", key, source: entries[i].item.sourceName, entries: run.slice(BURST_KEEP), index: i + BURST_KEEP });
     } else {
-      run.forEach((item, k) => rows.push({ kind: "item", item, index: i + k }));
+      run.forEach((entry, k) => rows.push({ kind: "item", entry, index: i + k }));
     }
     i = j;
   }
@@ -71,21 +71,61 @@ function dayLabel(date: Date): string {
 interface DayGroup {
   key: string;
   label: string;
-  items: NewsItem[];
+  entries: FeedEntry[];
 }
 
-function groupByDay(items: NewsItem[]): DayGroup[] {
+function groupByDay(entries: FeedEntry[]): DayGroup[] {
   const groups: DayGroup[] = [];
-  for (const item of items) {
+  for (const entry of entries) {
+    const { item } = entry;
     const key = item.publishedTs ? format(item.date, "yyyy-MM-dd") : "undated";
     const last = groups[groups.length - 1];
     if (last && last.key === key) {
-      last.items.push(item);
+      last.entries.push(entry);
     } else {
-      groups.push({ key, label: key === "undated" ? "Undated" : dayLabel(item.date), items: [item] });
+      groups.push({ key, label: key === "undated" ? "Undated" : dayLabel(item.date), entries: [entry] });
     }
   }
   return groups;
+}
+
+// One card per story. The pipeline links different outlets' tellings of the
+// same story; the feed shows the primary telling (or, if that one isn't
+// loaded, the earliest loaded member) and lists the rest as "also reported by".
+export interface FeedEntry {
+  item: NewsItem;
+  others: StoryTelling[];
+}
+
+function collapseStories(items: NewsItem[]): FeedEntry[] {
+  const byStory = new Map<string, NewsItem[]>();
+  for (const item of items) {
+    if (!item.storyId) continue;
+    const list = byStory.get(item.storyId) ?? [];
+    list.push(item);
+    byStory.set(item.storyId, list);
+  }
+  const shown = new Set<string>();
+  const entries: FeedEntry[] = [];
+  for (const item of items) {
+    if (!item.storyId) {
+      entries.push({ item, others: [] });
+      continue;
+    }
+    if (shown.has(item.storyId)) continue;
+    shown.add(item.storyId);
+    const members = byStory.get(item.storyId) ?? [item];
+    const lead =
+      members.find((m) => m.storyPrimary) ??
+      [...members].sort((a, b) => a.date.getTime() - b.date.getTime())[0];
+    const others: StoryTelling[] = lead.storyOthers
+      ? lead.storyOthers
+      : members
+          .filter((m) => m !== lead)
+          .map((m) => ({ source: m.source, sourceName: m.sourceName, title: m.title, url: m.url, date: m.date }));
+    entries.push({ item: lead, others });
+  }
+  return entries;
 }
 
 export function NewsFeed() {
@@ -234,7 +274,12 @@ export function NewsFeed() {
   }, [viewItems, selectedTopic]);
 
   const results = useMemo(() => searchItems(topicItems, searchQuery), [topicItems, searchQuery]);
-  const dayGroups = useMemo(() => (searchQuery ? [] : groupByDay(results)), [results, searchQuery]);
+  // Stories collapse to one card; under a search the ranked order is kept.
+  const entries = useMemo(() => collapseStories(results), [results]);
+  const dayGroups = useMemo(
+    () => (searchQuery ? [] : groupByDay([...entries].sort((a, b) => b.item.date.getTime() - a.item.date.getTime()))),
+    [entries, searchQuery],
+  );
 
   // Matches in the lanes the reader is *not* looking at, so a search never
   // silently misses a story that only appears under Research or Blogs.
@@ -260,8 +305,9 @@ export function NewsFeed() {
     rows.map((row) =>
       row.kind === "item" ? (
         <NewsCard
-          key={row.item.id}
-          item={row.item}
+          key={row.entry.item.id}
+          item={row.entry.item}
+          others={row.entry.others}
           index={row.index}
           selectedSmartGroup={selectedTopic}
           highlight={trimmedQuery}
@@ -278,7 +324,7 @@ export function NewsFeed() {
           className="w-full flex items-center justify-center gap-2 py-3 rounded-lg border border-dashed border-border text-[14px] text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
         >
           <ChevronDown className="h-4 w-4" />
-          {row.items.length} more from {row.source}
+          {row.entries.length} more from {row.source}
         </button>
       ),
     );
@@ -351,7 +397,7 @@ export function NewsFeed() {
             <span className="text-foreground">
               <span className="font-medium">{viewLabel}</span>
               {selectedTopic && <span className="text-muted-foreground"> · {selectedTopic}</span>}
-              <span className="text-muted-foreground"> · {results.length} stories</span>
+              <span className="text-muted-foreground"> · {entries.length} stories</span>
             </span>
           )}
           {generatedAt && (
@@ -428,7 +474,7 @@ export function NewsFeed() {
             </div>
           ) : trimmedQuery ? (
             <>
-              {renderRows(results.map((item, index) => ({ kind: "item", item, index })))}
+              {renderRows(entries.map((entry, index) => ({ kind: "item", entry, index })))}
               <div className="py-4 text-center text-[14px] text-muted-foreground">
                 Looking for something older?{" "}
                 <Link to={archiveSearchHref} className="text-primary hover:underline">
@@ -441,12 +487,12 @@ export function NewsFeed() {
               <section key={group.key} className="space-y-3">
                 <h2 className="pt-3 text-[13px] font-semibold uppercase tracking-wider text-muted-foreground">
                   {group.label}
-                  <span className="ml-2 font-normal normal-case tracking-normal">{group.items.length}</span>
+                  <span className="ml-2 font-normal normal-case tracking-normal">{group.entries.length}</span>
                 </h2>
                 {renderRows(
                   selectedView === RESEARCH
-                    ? group.items.map((item, index) => ({ kind: "item" as const, item, index }))
-                    : toRows(group.items, expandedBursts, group.key),
+                    ? group.entries.map((entry, index) => ({ kind: "item" as const, entry, index }))
+                    : toRows(group.entries, expandedBursts, group.key),
                 )}
               </section>
             ))

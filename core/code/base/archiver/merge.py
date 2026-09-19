@@ -34,10 +34,12 @@ def merge_and_dedup(
             continue
 
         if link in merged:
-            # Keep the one with the most recent timestamp
-            old_ts = merged[link].get("published_ts", 0)
-            new_ts = item.get("published_ts", 0)
-            if new_ts > old_ts:
+            # Keep the one with the most recent timestamp. On a tie the new
+            # row wins: it carries the current run's tags, cleaned summary
+            # and story links, which the archived copy may predate.
+            old_ts = merged[link].get("published_ts") or 0
+            new_ts = item.get("published_ts") or 0
+            if new_ts >= old_ts:
                 merged[link] = item
         else:
             merged[link] = item
