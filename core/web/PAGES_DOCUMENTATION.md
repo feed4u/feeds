@@ -35,6 +35,8 @@ export default function YourPage() {
 - One view row: **Headlines** (default), **Research** (only when the vertical
   configures `researchSources`, e.g. arXiv for 4u), then the other feed formats
   (Blogs, Videos, Podcasts)
+- One card per story: the pipeline's `story_*` fields collapse different
+  outlets' tellings into the primary card with an "Also reported by …" line
 - Topic chips (backend smart groups) above the list; combine with the view
 - Stories grouped by day (Today / Yesterday / weekday); a run of 6+ consecutive
   stories from one source folds into a "N more from …" row (not in Research)

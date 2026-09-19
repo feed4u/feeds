@@ -15,7 +15,17 @@ from .classifiers import classify_smart_groups
 from .config import Config
 from .filters import is_curated, is_promotional
 from .parsers import clean_html_summary, parse_opml_feeds, parse_published_date
+from .quality import (
+    Policy,
+    arxiv_announce_type,
+    is_aggregator,
+    is_future_dated,
+    load_policy,
+    passes_relevance_gate,
+    strip_summary_boilerplate,
+)
 from .smart_groups import get_smart_group_rules
+from .stories import assign_stories
 
 
 class FeedProcessor:
@@ -45,6 +55,10 @@ class FeedProcessor:
         self.smart_group_rules = get_smart_group_rules(
             self.config.vertical, self.config.smart_groups_path
         )
+        self.policy: Policy = load_policy(self.config.vertical, self.config.code_dir)
+        self.config.curated_keywords = list(self.policy.curated_keywords)
+        # Items rejected by quality rules, per reason, for the run summary
+        self.dropped: Dict[str, int] = {"off_topic": 0, "arxiv_reannounce": 0, "future_dated": 0}
 
     def process(self) -> Dict[str, Any]:
         """
@@ -136,6 +150,20 @@ class FeedProcessor:
             reverse=True,
         )
 
+        story_stats = assign_stories(
+            items_list,
+            window_hours=self.policy.story_window_hours,
+            is_aggregator=lambda source: is_aggregator(self.policy, source),
+        )
+        print(
+            f"[INFO] Stories: {story_stats['stories']} multi-source stories "
+            f"({story_stats['linked_pairs']} linked pairs) across {story_stats['items']} items"
+        )
+        print(
+            "[INFO] Dropped by quality rules: "
+            + ", ".join(f"{k}={v}" for k, v in self.dropped.items())
+        )
+
         return {
             "generated_at": now.isoformat(),
             "days_back": self.config.days_back,
@@ -196,16 +224,15 @@ class FeedProcessor:
                     except Exception:
                         pass
 
-                # Ensure backwards compatibility
-                if "curated" not in item:
-                    text = f"{item.get('title', '')} {item.get('summary', '')}".lower()
-                    item["curated"] = is_curated(text, self.config.curated_keywords)
-
                 if "summary_html" not in item:
                     item["summary_html"] = ""
 
                 if "feed_type" not in item:
                     item["feed_type"] = "news"
+
+                # Rules change; the archive shouldn't remember the old ones.
+                if not self._apply_quality_rules(item):
+                    continue
 
                 self.items_by_link[link] = item
                 kept_existing += 1
@@ -330,12 +357,7 @@ class FeedProcessor:
             self.config.summary_allowed_href_prefixes,
         )
 
-        # Classify (include source title to aid grouping when summaries are empty)
-        text = f"{title} {summary} {feed_title}"
-        smart_groups = classify_smart_groups(text, self.smart_group_rules)
-        curated = is_curated(text, self.config.curated_keywords)
-
-        return {
+        item = {
             "title": title,
             "summary": summary,
             "summary_html": summary_html,
@@ -346,9 +368,50 @@ class FeedProcessor:
             "type_label": type_label,
             "published": pub_iso,
             "published_ts": pub_ts,
-            "smart_groups": smart_groups,
-            "curated": curated,
+            "smart_groups": [],
+            "curated": False,
         }
+        if not self._apply_quality_rules(item):
+            return None
+        return item
+
+    def _apply_quality_rules(self, item: dict) -> bool:
+        """Clean, gate and classify one item in place. False = drop it."""
+        title = item.get("title", "") or ""
+        summary = item.get("summary", "") or ""
+
+        kind = arxiv_announce_type(summary)
+        if kind and kind in self.policy.drop_arxiv_announce_types:
+            self.dropped["arxiv_reannounce"] += 1
+            return False
+
+        if is_future_dated(item.get("published_ts")):
+            self.dropped["future_dated"] += 1
+            return False
+
+        summary = strip_summary_boilerplate(summary, title)
+        item["summary"] = summary
+
+        if not passes_relevance_gate(
+            self.policy, item.get("type", ""), item.get("source", ""), title, summary
+        ):
+            self.dropped["off_topic"] += 1
+            return False
+
+        # The feed title is consulted only when title+summary say nothing,
+        # so a feed named "… on arXiv.org" doesn't tag every paper the same.
+        item["smart_groups"] = classify_smart_groups(
+            title,
+            summary,
+            self.smart_group_rules,
+            max_groups=self.policy.max_smart_groups,
+            fallback_text=item.get("source", ""),
+            summary_mode=self.policy.summary_mode,
+        )
+        item["curated"] = bool(self.config.curated_keywords) and is_curated(
+            f"{title} {summary}", self.config.curated_keywords
+        )
+        return True
 
     def _categorize_exception(
         self, result: dict, feed_title: str, xml_url: str, type_label: str, exc: Exception

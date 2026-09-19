@@ -15,6 +15,21 @@ export interface NewsItem {
   curated?: boolean;
   published?: string | null;
   publishedTs?: number | null;
+  /** Set when the pipeline linked this item to other tellings of the same story. */
+  storyId?: string;
+  storySize?: number;
+  /** The one telling the feed should show for the story. */
+  storyPrimary?: boolean;
+  /** Other outlets' tellings, present on the primary only. */
+  storyOthers?: StoryTelling[];
+}
+
+export interface StoryTelling {
+  source: string;
+  sourceName: string;
+  title: string;
+  url: string;
+  date: Date | null;
 }
 
 export interface NewsDataResponse {
@@ -40,6 +55,10 @@ export interface RawNewsItem {
   smart_groups?: string[];
   curated?: boolean;
   feed_type?: string;
+  story_id?: string;
+  story_size?: number;
+  story_primary?: boolean;
+  story_others?: Array<{ source: string; title: string; link: string; published_ts?: number | null }>;
 }
 
 export interface CategoryMetadata {
@@ -133,10 +152,27 @@ const FALLBACK_SUMMARY = "No summary provided for this entry.";
 
 // OPML feed titles arrive as "Name - long description of the feed". Readers
 // only need the name.
+const GENERIC_PART = /\b(ai|a\.i\.|artificial[- ]intelligence|machine learning|technology|tech|latest|news|stories|blog|content|global|feed)\b/i;
+
 export function toSourceName(source: string): string {
-  const name = source.split(" - ")[0].trim();
+  let name = source.split(" - ")[0].trim();
   const arxiv = name.match(/^(\S+) updates on arXiv\.org$/i);
   if (arxiv) return `arXiv ${arxiv[1]}`;
+  // "Latest stories for ZDNET in Artificial-Intelligence", "Stories by X on Medium"
+  const m1 = name.match(/^Latest stories for (.+?) in\b/i) || name.match(/^Stories by (.+?) on Medium$/i);
+  if (m1) return m1[1];
+  // "NYT > Technology" → NYT; "Practical AI: Machine Learning, Data Science" → Practical AI
+  name = name.split(" > ")[0].split(": ")[0];
+  // "Artificial intelligence (AI) | The Guardian", "Artificial Intelligence – Futurism":
+  // keep the part that names the outlet rather than the section.
+  for (const sep of [" | ", " – ", " — "]) {
+    if (name.includes(sep)) {
+      const parts = name.split(sep).map((p) => p.trim()).filter(Boolean);
+      const outlet = parts.find((p) => !GENERIC_PART.test(p));
+      name = outlet ?? parts[parts.length - 1];
+      break;
+    }
+  }
   return name || source;
 }
 
@@ -197,6 +233,18 @@ export function toNewsItem(raw: RawNewsItem, index: number): NewsItem {
     curated: Boolean(raw.curated),
     published: raw.published ?? null,
     publishedTs,
+    storyId: raw.story_id || undefined,
+    storySize: raw.story_size || undefined,
+    storyPrimary: Boolean(raw.story_primary),
+    storyOthers: Array.isArray(raw.story_others)
+      ? raw.story_others.map((o) => ({
+          source: o.source,
+          sourceName: toSourceName(o.source),
+          title: o.title,
+          url: o.link,
+          date: o.published_ts ? new Date(o.published_ts * 1000) : null,
+        }))
+      : undefined,
   };
 }
 

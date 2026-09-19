@@ -90,7 +90,43 @@ SMART_GROUP_RULES = [
 
 **To modify existing smart groups:**
 
-Just edit the keyword lists in `smart_groups.py`. Changes take effect immediately.
+Just edit the keyword lists in `smart_groups.py`. Changes take effect immediately —
+including for items already in `news_recent.json`, which are re-classified on load.
+
+**Matching rules** (`classifiers.py`):
+
+- Keywords match on **word boundaries** (`rce` no longer matches *source*);
+  a trailing `*` makes a stem (`exploit*` → exploited, exploitation).
+- A rule may be `(name, {"any": [...], "require": [...], "title": True})`:
+  one term from each list must match; `"title": True` looks at the title only.
+- Tags are capped (`Policy.max_smart_groups`, default 3). With
+  `Policy.summary_mode = "fallback"` the title decides and the summary is only
+  consulted when the title matched nothing (4u uses this; it is far more precise).
+
+### Per-vertical policy (`code/<vertical>/policy.py`)
+
+`quality.py` loads an optional `POLICY = Policy(...)` per vertical:
+
+| Field | Purpose |
+|---|---|
+| `gated_source_types`, `topic_terms`, `exempt_source_pattern` | Relevance gate: items from general feeds (by OPML category slug) must mention a topic term unless the feed title itself does. |
+| `drop_arxiv_announce_types` | Drop arXiv `replace`/`cross` re-announcements (default on). |
+| `curated_keywords` | Per-vertical curated list (`[]` disables the flag). |
+| `aggregator_pattern` | Feeds that are never a story's primary telling (Techmeme, HN…). |
+| `summary_mode`, `max_smart_groups` | Classification behaviour, see above. |
+| `story_window_hours` | Window for linking tellings of one story. |
+
+Every item also gets summary boilerplate stripped (`The post … appeared first
+on`, `Read more`, arXiv `Announce Type:` prefix, title-only summaries) and
+future-dated items (> 36 h ahead) are dropped.
+
+### Stories (`stories.py`)
+
+Different outlets' tellings of one story are linked by title-token overlap
+within `story_window_hours`. Members get `story_id` / `story_size`; the primary
+(earliest non-aggregator telling) gets `story_primary: true` and
+`story_others: [{source, title, link, published_ts}]`. The web feed shows one
+card per story with "Also reported by …".
 
 ### Add New Filters
 

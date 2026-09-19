@@ -1,11 +1,15 @@
 import { Card } from "@/components/ui/card";
 import { ExternalLink } from "lucide-react";
-import { NewsItem } from "@/data/newsData";
+import { NewsItem, StoryTelling } from "@/data/newsData";
 import { formatDistanceToNow } from "date-fns";
-import { Fragment, ReactNode } from "react";
+import { Fragment, ReactNode, useState } from "react";
+
+const OTHERS_SHOWN = 4;
 
 interface NewsCardProps {
   item: NewsItem;
+  /** Other outlets' tellings of the same story. */
+  others?: StoryTelling[];
   index: number;
   onSmartGroupClick?: (group: string) => void;
   selectedSmartGroup?: string;
@@ -37,7 +41,10 @@ function highlightText(text: string, query?: string): ReactNode {
   return parts;
 }
 
-export function NewsCard({ item, index, onSmartGroupClick, selectedSmartGroup, highlight }: NewsCardProps) {
+export function NewsCard({ item, others = [], index, onSmartGroupClick, selectedSmartGroup, highlight }: NewsCardProps) {
+  const [showAllOthers, setShowAllOthers] = useState(false);
+  const visibleOthers = showAllOthers ? others : others.slice(0, OTHERS_SHOWN);
+  const hiddenCount = others.length - visibleOthers.length;
   return (
     <Card
       className="group p-4 md:p-5 gradient-card border-border hover:border-primary/30 transition-all duration-300 animate-fade-in"
@@ -63,9 +70,43 @@ export function NewsCard({ item, index, onSmartGroupClick, selectedSmartGroup, h
         </time>
       </p>
 
-      <p className="mt-2 text-[15px] text-muted-foreground leading-relaxed line-clamp-3">
-        {highlightText(item.summary, highlight)}
-      </p>
+      {item.summary && (
+        <p className="mt-2 text-[15px] text-muted-foreground leading-relaxed line-clamp-3">
+          {highlightText(item.summary, highlight)}
+        </p>
+      )}
+
+      {others.length > 0 && (
+        <p className="mt-2 text-[13px] text-muted-foreground">
+          <span className="font-medium text-foreground/70">Also reported by</span>{" "}
+          {visibleOthers.map((o, i) => (
+            <Fragment key={o.url}>
+              {i > 0 && ", "}
+              <a
+                href={o.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={o.title}
+                className="hover:text-primary hover:underline"
+              >
+                {o.sourceName}
+              </a>
+            </Fragment>
+          ))}
+          {hiddenCount > 0 && (
+            <>
+              {" "}
+              <button
+                type="button"
+                onClick={() => setShowAllOthers(true)}
+                className="text-primary hover:underline"
+              >
+                +{hiddenCount} more
+              </button>
+            </>
+          )}
+        </p>
+      )}
 
       {item.smartGroups.length > 0 && (
         <div className="flex flex-wrap gap-1.5 mt-3">
