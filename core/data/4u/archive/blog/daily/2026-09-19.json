@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-20T13:15:01.955098+00:00",
+  "generated_at": "2026-09-20T19:03:10.322553+00:00",
   "date": "2026-09-19",
-  "total_items": 76,
+  "total_items": 78,
   "next_chunk": "archive/blog/daily/2026-09-18.json",
   "items": [
     {
@@ -32,6 +32,22 @@
       "published": "2026-09-19T23:12:48+00:00",
       "published_ts": 1789859568,
       "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Can conference review infrastructure keep up with the increasing volume of NON-SLOP research due to agentic tools? [D]",
+      "summary": "AI tools have given us a lot of slop research, but I'm not talking about that. I'm talking about real productivity acceleration due to AI tools (E.g. iterating ideas that would've taken multiple days of tedious coding gets done in a few hours, quick refactoring of latex documents, etc.). Furthermore, I'm sure most of you have heard about AI proving/disproving various mathematical conjectures, and there's no reason that that won't carry over to ML theory research. So setting aside AI-generated slop, the pace of genuine ML research contributions is accelerating as well. Recently, ICLR 2027 has gotten an insane number of submissions - a mix of bad work and genuine contributions. How do we plan to deal with the increased review volume as productivity explodes? Are we gonna start encouraging reviewers to lean on agentic tools as well? Otherwise I don't see how this is sustainable. submitted by /u/PsychologicalSoup251 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>AI tools have given us a lot of slop research, but I'm not talking about that. I'm talking about real productivity acceleration due to AI tools (E.g. iterating ideas that would've taken multiple days of tedious coding gets done in a few hours, quick refactoring of latex documents, etc.). Furthermore, I'm sure most of you have heard about AI proving/disproving various mathematical conjectures, and there's no reason that that won't carry over to ML theory research.</p> <p>So setting aside AI-generated slop, the pace of <em>genuine</em> ML research contributions is accelerating as well. Recently, ICLR 2027 has gotten an insane number of submissions - a mix of bad work and genuine contributions. How do we plan to deal with the increased review volume as productivity explodes? Are we gonna start encouraging reviewers to lean on agentic tools as well? Otherwise I don't see how this is sustainable.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/PsychologicalSoup251\"> /u/PsychologicalSoup251 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1wkwha7/can_conference_review_infrastructure_keep_up_with/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1wkwha7/can_conference_review_infrastructure_keep_up_with/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/MachineLearning/comments/1wkwha7/can_conference_review_infrastructure_keep_up_with/",
+      "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-19T20:19:49+00:00",
+      "published_ts": 1789849189,
+      "smart_groups": [
+        "Agents & automation"
+      ],
       "curated": false
     },
     {
@@ -231,7 +247,7 @@
       ],
       "curated": false,
       "story_id": "7edcee5d0e42",
-      "story_size": 12
+      "story_size": 13
     },
     {
       "title": "Conversational-AI Framework for Go",
@@ -246,6 +262,23 @@
       "published_ts": 1789839180,
       "smart_groups": [
         "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Reproduce it, or it doesn't count: why training-side decontamination can't be verified, and what an evaluation-side rule looks like [D]",
+      "summary": "Since OpenAI retired SWE-bench Verified in February (every frontier model tested could reproduce reference fixes for some tasks; underspecified tests rewarded knowing the intended fix), I've been trying to write down precisely what a decontamination report can and can't establish. The claim: training-side decontamination has a hard floor. A report is a claim by the party whose score depends on it, over a corpus nobody else can inspect, using matching that misses paraphrase and synthetic derivatives. Corpus commitments and PSI make the lab's claims more precise but not checkable by anyone else, because neither proves the model was trained on the declared corpus and nothing else, and proof-of-training proposals so far have been shown spoofable. The alternative is to make the evaluation side rule out prior exposure by construction: the submission never receives labels, no network at evaluation, the evaluator builds from a named commit and reproduces the score itself, forward-dated test data where the problem allows it. I've implemented this for small tabular models and the post separates what's built from what's design. It also lists four things reproduction does not prove: benchmark validity, resistance to adaptive overfitting via repeated submissions (no per-solver budget yet; this is the open gap), funder-side leakage, and third-party re-runnability without the data. The record today is an audit receipt, not a portable proof; the post is explicit about what a complete ZK proof of a result would have to bind (model, inputs, scoring, all to one evaluation) and why proof-of-inference alone isn't it. https://holdoutlabs-ai.github.io/reproduce-it-or-it-doesnt-count/ Interested in where the argument breaks, especially from anyone who's run a persistent private leaderboard. submitted by /u/NoahPersaud [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Since OpenAI retired SWE-bench Verified in February (every frontier model tested could reproduce reference fixes for some tasks; underspecified tests rewarded knowing the intended fix), I've been trying to write down precisely what a decontamination report can and can't establish.</p> <p>The claim: training-side decontamination has a hard floor. A report is a claim by the party whose score depends on it, over a corpus nobody else can inspect, using matching that misses paraphrase and synthetic derivatives. Corpus commitments and PSI make the lab's claims more precise but not checkable by anyone else, because neither proves the model was trained on the declared corpus and nothing else, and proof-of-training proposals so far have been shown spoofable.</p> <p>The alternative is to make the evaluation side rule out prior exposure by construction: the submission never receives labels, no network at evaluation, the evaluator builds from a named commit and reproduces the score itself, forward-dated test data where the problem allows it.</p> <p>I've implemented this for small tabular models and the post separates what's built from what's design. It also lists four things reproduction does not prove: benchmark validity, resistance to adaptive overfitting via repeated submissions (no per-solver budget yet; this is the open gap), funder-side leakage, and third-party re-runnability without the data. The record today is an audit receipt, not a portable proof; the post is explicit about what a complete ZK proof of a result would have to bind (model, inputs, scoring, all to one evaluation) and why proof-of-inference alone isn't it.</p> <p><a href=\"https://holdoutlabs-ai.github.io/reproduce-it-or-it-doesnt-count/\">https://holdoutlabs-ai.github.io/reproduce-it-or-it-doesnt-count/</a></p> <p>Interested in where the argument breaks, especially from anyone who's run a persistent private leaderboard.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/NoahPersaud\"> /u/NoahPersaud </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1wks8db/reproduce_it_or_it_doesnt_count_why_trainingside/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1wks8db/reproduce_it_or_it_doesnt_count_why_trainingside/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/MachineLearning/comments/1wks8db/reproduce_it_or_it_doesnt_count_why_trainingside/",
+      "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-19T17:32:20+00:00",
+      "published_ts": 1789839140,
+      "smart_groups": [
+        "Research & papers",
+        "Safety & alignment"
       ],
       "curated": false
     },
@@ -1171,7 +1204,7 @@
       ],
       "curated": false,
       "story_id": "7edcee5d0e42",
-      "story_size": 12
+      "story_size": 13
     },
     {
       "title": "Google's Gemini becomes latest AI model to break out and hack computer systems",
@@ -1189,7 +1222,7 @@
       ],
       "curated": false,
       "story_id": "7edcee5d0e42",
-      "story_size": 12
+      "story_size": 13
     },
     {
       "title": "Radar: An Expert-Level Generalist AI for Abdominal CT Diagnosis",
