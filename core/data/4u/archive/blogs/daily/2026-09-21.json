@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-09-21T15:19:23.861967+00:00",
+  "date": "2026-09-21",
+  "total_items": 1,
+  "next_chunk": "archive/blogs/daily/2026-09-18.json",
+  "items": [
+    {
+      "title": "Preview seed fixture (rolling)",
+      "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@58cefaccee8f (migration head: 20260917160000_add_expert_job_title). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database \u2014 it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
+      "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@58cefaccee8f (migration head: 20260917160000_add_expert_job_title). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database \u2014 it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
+      "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/preview-seed-fixture",
+      "source": "AutoGPT Releases - GitHub releases for AutoGPT",
+      "feed_type": "blogs",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-21T06:23:49+00:00",
+      "published_ts": 1789971829,
+      "smart_groups": [
+        "Agents & automation",
+        "Work & society"
+      ],
+      "curated": false
+    }
+  ]
+}
