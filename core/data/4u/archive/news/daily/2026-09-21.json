@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-22T05:16:28.494137+00:00",
+  "generated_at": "2026-09-22T13:40:15.613866+00:00",
   "date": "2026-09-21",
-  "total_items": 543,
+  "total_items": 556,
   "next_chunk": "archive/news/daily/2026-09-20.json",
   "items": [
     {
@@ -166,7 +166,7 @@
       ],
       "curated": false,
       "story_id": "e5d2aa5092ba",
-      "story_size": 7
+      "story_size": 8
     },
     {
       "title": "Cloudflare Python Workers are now generally available",
@@ -304,6 +304,22 @@
       "curated": false
     },
     {
+      "title": "Hola AI",
+      "summary": "An AI voicemail assistant that answers calls when you can\u2019t. Discussion | Link",
+      "summary_html": "<p>\n            An AI voicemail assistant that answers calls when you can\u2019t.\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/hola-ai?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1257594?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/hola-ai",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-21T21:42:18+00:00",
+      "published_ts": 1790026938,
+      "smart_groups": [
+        "Consumer AI"
+      ],
+      "curated": false
+    },
+    {
       "title": "AWS Strands Agents Team Releases Strands Harness: An Open-Source Agent Harness With 28% Lower Token Cost at Comparable Accuracy",
       "summary": "Many developers find that an agent idea works inside Claude Code or Codex , then struggles once they rebuild it with their own loop. The Strands Agents team at AWS is targeting that gap with Strands harness , a fully assembled, general-purpose agent harness. It runs locally or deploys to a cloud provider, ships for Python and TypeScript under Apache 2.0, and starts with one line of code. The team reports 28% lower cost than other harnesses running the same Claude or GPT models across 6 benchmarks, with near-equal accuracy. Is it deployable? Yes. It runs locally, and a bundled skills file helps your coding agent generate deployment config for AWS, GCP, Azure, Cloudflare, and Modal. What is Strands Harness A harness is the system around the model: the loop, tools, context handling, memory, and recovery. Strands already exposed those building blocks through the Strands Harness SDK . Strands harness packages them into working defaults. It is built as a general-purpose agent, not a coding agent. Out of the box, create_harness() returns an agent that: Runs on a current reasoning model through Amazon Bedrock, Anthropic, OpenAI, Google, Ollama , or LiteLLM . Ships shell, file (read, write, edit), and web tools, instead of a bespoke tool per task. Offloads bulky tool results to files and caches reused parts of each request. Keeps long-term memory across runs and resumes a conversation from a session ID. Delegates open-ended subtasks to a built-in helper agent and tracks multi-step work with a checklist. Loads Agent Skills when it finds them. Benchmark Setup and the 28% Figure The Strands Agents team ran distributed benchmarking on Amazon EC2 with Harbor , the evaluation framework from the Terminal-Bench creators. The score is the average across 6 benchmarks: ALFWorld , ContextBench, GAIA , WebShop , \u03c4\u00b2-bench , and Terminal-Bench 2.1 . Cost is the average dollars per task. Rivals on the chart are Claude Code, Codex, oh-my-pi, OpenCode , and DeepSeek Harness. One important thing to note. DeepSeek Harness was the most token-efficient harness overall, running about 14% cheaper than Strands harness. It also scored lower on every benchmark. The chart footnote states that including it brought the overall savings figure down to 28%. The highest-scoring point on the chart is Claude Opus 5 on Strands harness, near 85%. Terminal-Bench 2.1: Same Model, 5 Harnesses The clearest head-to-head uses Claude Fable 5 on Terminal-Bench 2.1, with 89 trials per harness. Harness Run cost Accuracy Strands harness $56.29 69.7 Oh-my-pi $86.83 69.7 OpenCode $73.42 66.3 Claude Code $248.05 61.8 DeepSeek Harness $40.30 59.5 Against Claude Code, Strands harness cost 77% less and scored 7.9 points higher. Oh-my-pi matched its 69.7 accuracy at 54% higher cost. DeepSeek Harness was cheaper still, but trailed by 10.2 points. The team also noted that 2 other open-source harnesses performed well on cost and accuracy against Claude Code. && What Drives the Efficiency Strands harness ships defaults for prompt caching and context management. The team says context management largely drove both token efficiency and accuracy. 3 rules do the work: Tool results over about 1,500 tokens get truncated. Summarization (compaction) triggers when context usage passes 85%. Context recovery runs inside the loop if the window overflows. This matches recent independent research. The HarnessTax study compared Claude Code, Codex CLI, and Pi across 7 models. It found harness choice barely moved success rates, while the same model reached similar success at up to 5x the cost. The Strands researchers say a follow-up paper on their benchmarks is coming. Getting Started Install with pip install strands-harness or npm install @strands-agents/harness . Pick a model by name, or point the harness at a local Ollama model: Copy Code Copied Use a different Browser from strands_harness import create_harness agent = create_harness(model=\"litellm/openai/gpt-5.6-sol\") agent(\"Research the top three vector databases and compare their pricing\") The Strands CLI ( npm install @strands-agents/strands-cli ) lets you prototype an agent in plain English. In the team\u2019s demo, the agent was asked to add the Playwright MCP server and measure video load latency on a blog post. Running /export then produced the harness code, with the Playwright MCP included, as a Python or TypeScript zip. The CLI itself is built on Strands harness. Strands engineer Gautam Sirdeshmukh also used it to build a desktop app that starts Strands harness runs remotely. Customization goes deep. You can override any default, swap models, add tools, or replace components down to the Strands Harness SDK. Because the harness is a library dependency, the agent prototyped on a laptop is the same one embedded in production. Key Takeaways Strands harness packages AWS\u2019s Strands primitives into a general-purpose, Apache 2.0 agent. It reports 28% lower cost than rival harnesses across 6 benchmarks at comparable accuracy. With Fable 5 on Terminal-Bench 2.1, it cost 77% less than Claude Code and scored higher. Context defaults drive the gains: 1,500-token truncation, 85% compaction, in-loop recovery. One create_harness() call targets Bedrock, Anthropic, OpenAI, Google, Ollama, or LiteLLM. Check out the Technical details , GitHub repo , PyPI package , and Strands Agents docs .",
       "summary_html": "<p>Many developers find that an agent idea works inside <a href=\"https://docs.claude.com/en/docs/claude-code/overview\">Claude Code</a> or <a href=\"https://github.com/openai/codex\">Codex</a>, then struggles once they rebuild it with their own loop. The <strong><a href=\"https://strandsagents.com/\">Strands Agents</a> team at AWS</strong> is targeting that gap with <strong><a href=\"https://strandsagents.com/blog/introducing-strands-harness/\">Strands harness</a></strong>, a fully assembled, general-purpose agent harness. It runs locally or deploys to a cloud provider, ships for Python and TypeScript under Apache 2.0, and starts with one line of code. The team reports 28% lower cost than other harnesses running the same Claude or GPT models across 6 benchmarks, with near-equal accuracy.</p>\n<p><strong>Is it deployable?</strong> Yes. It runs locally, and a bundled skills file helps your coding agent generate deployment config for AWS, GCP, Azure, Cloudflare, and Modal.</p>\n<strong>What is Strands Harness</strong>\n<p>A harness is the system around the model: the loop, tools, context handling, memory, and recovery. Strands already exposed those building blocks through the <a href=\"https://github.com/strands-agents/harness-sdk\">Strands Harness SDK</a>. Strands harness packages them into working defaults. It is built as a general-purpose agent, not a coding agent.</p>\n<p><strong>Out of the box, <code>create_harness()</code> returns an agent that:</strong></p>\n<ul>\n<li>Runs on a current reasoning model through Amazon Bedrock, Anthropic, OpenAI, Google, <a href=\"https://ollama.com/\">Ollama</a>, or <a href=\"https://github.com/BerriAI/litellm\">LiteLLM</a>.</li>\n<li>Ships shell, file (read, write, edit), and web tools, instead of a bespoke tool per task.</li>\n<li>Offloads bulky tool results to files and caches reused parts of each request.</li>\n<li>Keeps long-term memory across runs and resumes a conversation from a session ID.</li>\n<li>Delegates open-ended subtasks to a built-in helper agent and tracks multi-step work with a checklist.</li>\n<li>Loads <a href=\"https://agentskills.io/\">Agent Skills</a> when it finds them.</li>\n</ul>\n<strong>Benchmark Setup and the 28% Figure</strong>\n<p>The <a href=\"https://strandsagents.com/\">Strands Agents</a> team ran distributed benchmarking on Amazon EC2 with <a href=\"https://github.com/laude-institute/harbor\">Harbor</a>, the evaluation framework from the Terminal-Bench creators. The score is the average across 6 benchmarks: <a href=\"https://github.com/alfworld/alfworld\">ALFWorld</a>, ContextBench, <a href=\"https://huggingface.co/gaia-benchmark\">GAIA</a>, <a href=\"https://github.com/princeton-nlp/WebShop\">WebShop</a>, <a href=\"https://github.com/sierra-research/tau2-bench\">\u03c4\u00b2-bench</a>, and <a href=\"https://github.com/harbor-framework/terminal-bench-2-1\">Terminal-Bench 2.1</a>. Cost is the average dollars per task. Rivals on the chart are Claude Code, Codex, oh-my-pi, <a href=\"https://opencode.ai/\">OpenCode</a>, and DeepSeek Harness.</p>\n<p>One important thing to note. DeepSeek Harness was the most token-efficient harness overall, running about 14% cheaper than Strands harness. It also scored lower on every benchmark. The chart footnote states that including it brought the overall savings figure down to 28%. The highest-scoring point on the chart is Claude Opus 5 on Strands harness, near 85%.</p>\n<strong>Terminal-Bench 2.1: Same Model, 5 Harnesses</strong>\n<p>The clearest head-to-head uses Claude Fable 5 on Terminal-Bench 2.1, with 89 trials per harness.</p>\nHarnessRun costAccuracyStrands harness$56.2969.7Oh-my-pi$86.8369.7OpenCode$73.4266.3Claude Code$248.0561.8DeepSeek Harness$40.3059.5\n<p>Against Claude Code, Strands harness cost 77% less and scored 7.9 points higher. Oh-my-pi matched its 69.7 accuracy at 54% higher cost. DeepSeek Harness was cheaper still, but trailed by 10.2 points. The team also noted that 2 other open-source harnesses performed well on cost and accuracy against Claude Code.</p>\n<div>\n</div>\n&amp;&amp;\n\n\n\n<p></p>\n<strong>What Drives the Efficiency</strong>\n<p>Strands harness ships defaults for prompt caching and context management. The team says context management largely drove both token efficiency and accuracy. <strong>3 rules do the work:</strong></p>\n<ul>\n<li>Tool results over about 1,500 tokens get truncated.</li>\n<li>Summarization (compaction) triggers when context usage passes 85%.</li>\n<li>Context recovery runs inside the loop if the window overflows.</li>\n</ul>\n<p>This matches recent independent research. The <a href=\"https://harnesstax.github.io/\">HarnessTax study</a> compared Claude Code, Codex CLI, and Pi across 7 models. It found harness choice barely moved success rates, while the same model reached similar success at up to 5x the cost. The Strands researchers say a follow-up paper on their benchmarks is coming.</p>\n<strong>Getting Started</strong>\n<p>Install with <code>pip install strands-harness</code> or <code>npm install @strands-agents/harness</code>. Pick a model by name, or point the harness at a local Ollama model:</p>\n<div><div><div><div><div></div><div></div><div></div></div><div><a><span>Copy Code</span><span>Copied</span><span>Use a different Browser</span></a></div></div><pre><code>from strands_harness import create_harness\n\nagent = create_harness(model=\"litellm/openai/gpt-5.6-sol\")\nagent(\"Research the top three vector databases and compare their pricing\")</code></pre></div></div>\n<p>The Strands CLI (<code>npm install @strands-agents/strands-cli</code>) lets you prototype an agent in plain English. In the team\u2019s demo, the agent was asked to add the <a href=\"https://modelcontextprotocol.io/\">Playwright MCP</a> server and measure video load latency on a blog post. Running <code>/export</code> then produced the harness code, with the Playwright MCP included, as a Python or TypeScript zip.</p>\n<p>The CLI itself is built on Strands harness. Strands engineer Gautam Sirdeshmukh also used it to build a desktop app that starts Strands harness runs remotely.</p>\n<p>Customization goes deep. You can override any default, swap models, add tools, or replace components down to the Strands Harness SDK. Because the harness is a library dependency, the agent prototyped on a laptop is the same one embedded in production.</p>\n<strong>Key Takeaways</strong>\n<ul>\n<li>Strands harness packages AWS\u2019s Strands primitives into a general-purpose, Apache 2.0 agent.</li>\n<li>It reports 28% lower cost than rival harnesses across 6 benchmarks at comparable accuracy.</li>\n<li>With Fable 5 on Terminal-Bench 2.1, it cost 77% less than Claude Code and scored higher.</li>\n<li>Context defaults drive the gains: 1,500-token truncation, 85% compaction, in-loop recovery.</li>\n<li>One <code>create_harness()</code> call targets Bedrock, Anthropic, OpenAI, Google, Ollama, or LiteLLM.</li>\n</ul>\n<p></p>\n<p>Check out the <strong><a href=\"https://strandsagents.com/blog/introducing-strands-harness/\">Technical details</a></strong>, <a href=\"https://github.com/strands-agents/harness-sdk\"><strong>GitHub repo</strong></a>, <a href=\"https://pypi.org/project/strands-harness/\"><strong>PyPI package</strong></a>, and <a href=\"https://strandsagents.com/\"><strong>Strands Agents docs</strong></a>.</p>\n<p>The post <a href=\"https://www.marktechpost.com/2026/09/21/aws-strands-agents-team-releases-strands-harness/\">AWS Strands Agents Team Releases Strands Harness: An Open-Source Agent Harness With 28% Lower Token Cost at Comparable Accuracy</a> appeared first on <a href=\"https://www.marktechpost.com\">MarkTechPost</a>.</p>",
@@ -387,6 +403,23 @@
       "curated": false
     },
     {
+      "title": "Freebuff Ads",
+      "summary": "Advertise to 500k developers in our coding agent Discussion | Link",
+      "summary_html": "<p>\n            Advertise to 500k developers in our coding agent\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/freebuff-2?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1257570?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/freebuff-2",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-21T20:56:02+00:00",
+      "published_ts": 1790024162,
+      "smart_groups": [
+        "Agents & automation",
+        "Coding & dev tools"
+      ],
+      "curated": false
+    },
+    {
       "title": "Some startups, like Harvey, Abridge, Ramp, and Rogo, are embracing open-weight models or training their own models to reduce expensive reliance on frontier labs (Bloomberg)",
       "summary": "Bloomberg : Some startups, like Harvey, Abridge, Ramp, and Rogo, are embracing open-weight models or training their own models to reduce expensive reliance on frontier labs \u2014 The $15.6 billion legal startup Harvey built its business around training AI models like OpenAI's GPT-4 to do specialized work for lawyers.",
       "summary_html": "<a href=\"https://www.bloomberg.com/news/articles/2026-09-21/startups-like-harvey-embrace-open-models-to-cut-reliance-on-anthropic-openai?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzb3VyY2UiOiJTdWJzY3JpYmVyR2lmdGVkQXJ0aWNsZSIsImlhdCI6MTc5MDAxMDkwMiwiZXhwIjoxNzkwNjE1NzAyLCJhcnRpY2xlSWQiOiJUTFEyMFpOM04wQTMwMCIsImJjb25uZWN0SWQiOiI5MDI3MkIwQzRFRjQ0MkUxOUZCQkFBRTdBODJGMjM3NSJ9.i7tIzBBJutWRddw95G5V52NMXfBwhYa2v52uZC8eJ-g\"></a>\n<p><a href=\"https://www.techmeme.com/260921/p51#a260921p51\"></a> <a href=\"https://www.bloomberg.com/\">Bloomberg</a>:<br/>\n<span><b><a href=\"https://www.bloomberg.com/news/articles/2026-09-21/startups-like-harvey-embrace-open-models-to-cut-reliance-on-anthropic-openai?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzb3VyY2UiOiJTdWJzY3JpYmVyR2lmdGVkQXJ0aWNsZSIsImlhdCI6MTc5MDAxMDkwMiwiZXhwIjoxNzkwNjE1NzAyLCJhcnRpY2xlSWQiOiJUTFEyMFpOM04wQTMwMCIsImJjb25uZWN0SWQiOiI5MDI3MkIwQzRFRjQ0MkUxOUZCQkFBRTdBODJGMjM3NSJ9.i7tIzBBJutWRddw95G5V52NMXfBwhYa2v52uZC8eJ-g\">Some startups, like Harvey, Abridge, Ramp, and Rogo, are embracing open-weight models or training their own models to reduce expensive reliance on frontier labs</a></b></span>\u00a0 \u2014\u00a0 The $15.6 billion legal startup Harvey built its business around training AI models like OpenAI's GPT-4 to do specialized work for lawyers.</p>",
@@ -400,6 +433,20 @@
       "smart_groups": [
         "Business & funding"
       ],
+      "curated": false
+    },
+    {
+      "title": "The CFO-CIO Reality Check: Governing DevSecOps and AI Costs",
+      "summary": "CIOs and CFOs face rising AI costs, DevSecOps tool sprawl, and software supply chain risk. Learn how to strengthen oversight, cost controls, and ROI.",
+      "summary_html": "<p>CIOs and CFOs face rising AI costs, DevSecOps tool sprawl, and software supply chain risk. Learn how to strengthen oversight, cost controls, and ROI.</p>\n<p>The post <a href=\"https://www.techrepublic.com/article/news-cfo-cio-devsecops-ai-cost-governance/\">The CFO-CIO Reality Check: Governing DevSecOps and AI Costs</a> appeared first on <a href=\"https://www.techrepublic.com\">TechRepublic</a>.</p>",
+      "link": "https://www.techrepublic.com/article/news-cfo-cio-devsecops-ai-cost-governance/",
+      "source": "Artificial Intelligence | TechRepublic - News, Tips, and Advice for Technology Professionals",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-21T20:43:33+00:00",
+      "published_ts": 1790023413,
+      "smart_groups": [],
       "curated": false
     },
     {
@@ -545,7 +592,18 @@
       "smart_groups": [
         "Policy & government"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "69c6c973df60",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "News on Artificial Intelligence and Machine Learning - The latest news on Artificial Intelligence and Machine Learning",
+          "title": "Calls for global regulation of AI are growing. What exactly could it look like?",
+          "link": "https://techxplore.com/news/2026-09-global-ai.html",
+          "published_ts": 1790078406
+        }
+      ]
     },
     {
       "title": "AMD just joined the $1 trillion club, beating Intel to the milestone",
@@ -645,6 +703,22 @@
       "curated": false
     },
     {
+      "title": "OpenAI\u2019s Agent Findings: Why AI Guardrails Need Data Boundaries",
+      "summary": "OpenAI\u2019s agent findings show why enterprises need scoped credentials, per-request authorization, audit logs, and data controls alongside AI guardrails.",
+      "summary_html": "<p>OpenAI\u2019s agent findings show why enterprises need scoped credentials, per-request authorization, audit logs, and data controls alongside AI guardrails.</p>\n<p>The post <a href=\"https://www.techrepublic.com/article/news-openai-agent-findings-ai-data-boundaries/\">OpenAI\u2019s Agent Findings: Why AI Guardrails Need Data Boundaries</a> appeared first on <a href=\"https://www.techrepublic.com\">TechRepublic</a>.</p>",
+      "link": "https://www.techrepublic.com/article/news-openai-agent-findings-ai-data-boundaries/",
+      "source": "Artificial Intelligence | TechRepublic - News, Tips, and Advice for Technology Professionals",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-21T20:01:11+00:00",
+      "published_ts": 1790020871,
+      "smart_groups": [
+        "Safety & alignment"
+      ],
+      "curated": false
+    },
+    {
       "title": "The AI Model That Doesn\u2019t Generate Text Is Up to 200x Faster",
       "summary": "Jev is an AI model that doesn\u2019t generate text. It returns typed decisions with confidence scores, up to 200x faster than LLMs. Here\u2019s how\u2026",
       "summary_html": "<div><p><a href=\"https://pub.towardsai.net/the-ai-model-that-doesnt-generate-text-is-up-to-200x-faster-9d2c6da82e51?source=rss----98111c9905da---4\"></a></p><p>Jev is an AI model that doesn\u2019t generate text. It returns typed decisions with confidence scores, up to 200x faster than LLMs. Here\u2019s how\u2026</p><p><a href=\"https://pub.towardsai.net/the-ai-model-that-doesnt-generate-text-is-up-to-200x-faster-9d2c6da82e51?source=rss----98111c9905da---4\">Continue reading on Towards AI \u00bb</a></p></div>",
@@ -724,7 +798,7 @@
       ],
       "curated": false,
       "story_id": "3c05549a358e",
-      "story_size": 3,
+      "story_size": 4,
       "story_primary": true,
       "story_others": [
         {
@@ -738,6 +812,12 @@
           "title": "British Columbia sues OpenAI and Sam Altman over Tumbler Ridge mass school shooting",
           "link": "https://www.theguardian.com/technology/2026/sep/22/british-columbia-sues-openai-sam-altman-tumbler-ridge-school-shooting",
           "published_ts": 1790051362
+        },
+        {
+          "source": "Engadget - Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics",
+          "title": "OpenAI faces lawsuit from British Columbia over Tumbler Ridge shooting",
+          "link": "https://www.engadget.com/2264989/openai-tumbler-ridge-shooting-lawsuit/",
+          "published_ts": 1790066847
         }
       ]
     },
@@ -906,6 +986,38 @@
       "curated": false
     },
     {
+      "title": "Fez",
+      "summary": "AI agents that work as a team and make decisions together Discussion | Link",
+      "summary_html": "<p>\n            AI agents that work as a team and make decisions together\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/fez-2?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1257466?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/fez-2",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-21T18:50:10+00:00",
+      "published_ts": 1790016610,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Grok 4.7",
+      "summary": "SpaceXAI's most powerful model for coding and knowledge work Discussion | Link",
+      "summary_html": "<p>\n            SpaceXAI's most powerful model for coding and knowledge work\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/grok-4-7-8?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1257464?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/grok-4-7-8",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-21T18:48:33+00:00",
+      "published_ts": 1790016513,
+      "smart_groups": [
+        "Coding & dev tools"
+      ],
+      "curated": false
+    },
+    {
       "title": "It Turns Out the US Military Really Did Use AI to Blow Up a School Full of Iranian Children",
       "summary": "Now over half a year into the United States\u2019 war on Iran, it\u2019s becoming abundantly clear that AI has been instrumental to the American campaign. On the home front, AI and its infrastructure is quietly shaping the ideological battlefield: President Donald Trump is spewing out wartime propaganda slopped together by generative AI, as US-owned data centers and tech company offices become widely accepted as military targets. AI is also proving instrumental for helping US Central Command choose targets for obliteration via drone strikes or missiles \u2014 so much so that an AI system played a pivotal role in perpetuating an American war crime. According to new reporting by Bloomberg , the Pentagon\u2019s investigation into the February 28th air strikes on the Shajareh Tayyebeh girls\u2019 school \u2014 a double-tap strike which killed over 150 people, including at least 123 children \u2014 concluded that the attack was the result of outdated intelligence and over-reliance on an AI targeting system. Interviewed by Bloomberg , anonymous military investigators involved in the probe characterized the horrifying attack as the result of a series of small \u201cerrors,\u201d rather than one ill-fated mistake. Those errors, stemming from dusty intel, seem to have been compounded by the involvement of an as-yet unidentified AI targeting system , likely similar to the one used by American military officers to fast-track air strikes on over 2,000 Iranian targets within a four-day window in the early days of the conflict. The latest info directly refutes president Donald Trump\u2019s own narrative around the deadly incident. In July, Trump downplayed the United States\u2019 responsibility for the attack, even suggesting that images and footage of the massacre could have been generated by AI . Yet as a UN fact-finding commission wrote in its report last week, there are \u201creasonable grounds\u201d to conclude the US attacks amount to \u201cwar crimes\u201d \u2014 the girls\u2019 school attack being just one prominent example. Whether the full Pentagon investigation will ever be made available to the public is unclear. What is certain is that killer AI is already here \u2014 and it doesn\u2019t need to be sentient to help humans claim hundreds of innocent lives. More on military AI: These Robot Soldiers Are Getting Downright Terrifying",
       "summary_html": "<p>Now over half a year into the United States\u2019 war on Iran, it\u2019s becoming abundantly clear that AI has been instrumental to the American campaign.</p>\n<p>On the home front, AI and its infrastructure is quietly shaping the ideological battlefield: President Donald Trump is spewing out <a href=\"https://futurism.com/artificial-intelligence/trump-ai-video-fake-attack\">wartime propaganda</a> slopped together by generative AI, as US-owned <a href=\"https://futurism.com/artificial-intelligence/iran-drone-strikes-data-centers-deleting-customer-data\">data centers</a> and <a href=\"https://futurism.com/robots-and-machines/iran-google-microsoft-targets\">tech company offices</a> become <a href=\"https://www.csis.org/analysis/data-now-front-line-warfare\">widely accepted</a> as military targets.</p>\n<p>AI is also proving instrumental for helping US Central Command choose targets for obliteration via drone strikes or missiles \u2014 so much so that an AI system played a pivotal role in perpetuating an American war crime.</p>\n<p>According to new reporting <a href=\"https://www.bloomberg.com/graphics/2026-iran-school-attack/\">by <em>Bloomberg</em></a>, the Pentagon\u2019s investigation into the February 28th air strikes on the Shajareh Tayyebeh girls\u2019 school \u2014 a double-tap strike which killed over 150 people, including at least 123 children \u2014 concluded that the attack was the result of outdated intelligence and over-reliance on an AI targeting system.</p>\n<p>Interviewed by <em>Bloomberg</em>, anonymous military investigators involved in the probe characterized the horrifying attack as the result of a series of small \u201cerrors,\u201d rather than one ill-fated mistake. Those errors, stemming from dusty intel, seem to have been compounded by the involvement of an as-yet unidentified <a href=\"https://futurism.com/artificial-intelligence/pentagon-ai-claude-bombing-elementary-school\">AI targeting system</a>, likely similar to the one used by American military officers to <a href=\"https://futurism.com/artificial-intelligence/us-military-elon-musk-grok-bomb-iran\">fast-track air strikes</a> on over 2,000 Iranian targets within a four-day window in the early days of the conflict.</p>\n<p>The latest info directly refutes president Donald Trump\u2019s own narrative around the deadly incident. In July, Trump downplayed the United States\u2019 responsibility for the attack, even suggesting that images and footage of the massacre could have been <a href=\"https://futurism.com/artificial-intelligence/trump-images-iran-elementary-school-ai\">generated by AI</a>. Yet as a UN fact-finding commission <a href=\"https://news.un.org/en/story/2026/09/1168358\">wrote in its report</a> last week, there are \u201creasonable grounds\u201d to conclude the US attacks amount to \u201cwar crimes\u201d \u2014 the girls\u2019 school attack being just one prominent example.</p>\n<p>Whether the full Pentagon investigation will ever be made available to the public is unclear. What is certain is that killer AI is already here \u2014 and it <a href=\"https://qz.com/sam-altman-ai-safety-pacing-power-concentration-091426\">doesn\u2019t need to be sentient</a> to help humans claim hundreds of innocent lives.</p>\n<p><strong>More on military AI: </strong><em><a href=\"https://futurism.com/robots-and-machines/robot-soldiers-getting-terrifying\">These Robot Soldiers Are Getting Downright Terrifying</a></em></p>\n<p>The post <a href=\"https://futurism.com/artificial-intelligence/us-military-pentagon-ai-iranian-children-school-war-crimes\">It Turns Out the US Military Really Did Use AI to Blow Up a School Full of Iranian Children</a> appeared first on <a href=\"https://futurism.com\">Futurism</a>.</p>",
@@ -919,6 +1031,42 @@
       "smart_groups": [
         "Policy & government",
         "Work & society"
+      ],
+      "curated": false
+    },
+    {
+      "title": "OpenAI\u2019s Compute Costs Could Burn Through $280 Billion by 2030",
+      "summary": "OpenAI reportedly projects $280 billion in cash burn through 2030 as soaring compute and infrastructure costs continue to outpace its revenue growth.",
+      "summary_html": "<p>OpenAI reportedly projects $280 billion in cash burn through 2030 as soaring compute and infrastructure costs continue to outpace its revenue growth.</p>\n<p>The post <a href=\"https://www.techrepublic.com/article/news-openai-compute-costs-280-billion-cash-burn/\">OpenAI\u2019s Compute Costs Could Burn Through $280 Billion by 2030</a> appeared first on <a href=\"https://www.techrepublic.com\">TechRepublic</a>.</p>",
+      "link": "https://www.techrepublic.com/article/news-openai-compute-costs-280-billion-cash-burn/",
+      "source": "Artificial Intelligence | TechRepublic - News, Tips, and Advice for Technology Professionals",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-21T18:39:13+00:00",
+      "published_ts": 1790015953,
+      "smart_groups": [
+        "Business & funding"
+      ],
+      "curated": false,
+      "story_id": "80f656a8b60d",
+      "story_size": 2
+    },
+    {
+      "title": "Nvidia Vera Rubin NVL72 Boosts Agentic AI Throughput by 30x",
+      "summary": "Nvidia says Vera Rubin NVL72 delivers up to 30x more agentic AI throughput, but enterprises should weigh workload needs, power, cooling, and cost.",
+      "summary_html": "<p>Nvidia says Vera Rubin NVL72 delivers up to 30x more agentic AI throughput, but enterprises should weigh workload needs, power, cooling, and cost.</p>\n<p>The post <a href=\"https://www.techrepublic.com/article/news-nvidia-vera-rubin-nvl72-agentic-ai-throughput/\">Nvidia Vera Rubin NVL72 Boosts Agentic AI Throughput by 30x</a> appeared first on <a href=\"https://www.techrepublic.com\">TechRepublic</a>.</p>",
+      "link": "https://www.techrepublic.com/article/news-nvidia-vera-rubin-nvl72-agentic-ai-throughput/",
+      "source": "Artificial Intelligence | TechRepublic - News, Tips, and Advice for Technology Professionals",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-21T18:33:54+00:00",
+      "published_ts": 1790015634,
+      "smart_groups": [
+        "Agents & automation",
+        "Chips & hardware",
+        "Infra & model ops"
       ],
       "curated": false
     },
@@ -1407,7 +1555,18 @@
       "published": "2026-09-21T17:02:04+00:00",
       "published_ts": 1790010124,
       "smart_groups": [],
-      "curated": false
+      "curated": false,
+      "story_id": "9f06caa9d7e8",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "News on Artificial Intelligence and Machine Learning - The latest news on Artificial Intelligence and Machine Learning",
+          "title": "OpenAI calls for US to lead global effort on AI standards",
+          "link": "https://techxplore.com/news/2026-09-openai-global-effort-ai-standards.html",
+          "published_ts": 1790068624
+        }
+      ]
     },
     {
       "title": "The AI Agent Landscape in 2026: Claude, ChatGPT, Copilot and Gemini",
@@ -1670,7 +1829,7 @@
       "smart_groups": [],
       "curated": false,
       "story_id": "8e2a59395c88",
-      "story_size": 2,
+      "story_size": 3,
       "story_primary": true,
       "story_others": [
         {
@@ -1678,6 +1837,12 @@
           "title": "Gates Foundation coalition for more representative language data sets in AI",
           "link": "https://abcnews.com/Technology/wireStory/gates-foundation-launches-coalition-build-representative-language-data-136622214",
           "published_ts": 1790051173
+        },
+        {
+          "source": "News on Artificial Intelligence and Machine Learning - The latest news on Artificial Intelligence and Machine Learning",
+          "title": "Bill Gates pushes for 'smart use' of AI as his foundation builds more representative language data",
+          "link": "https://techxplore.com/news/2026-09-bill-gates-smart-ai-foundation.html",
+          "published_ts": 1790064841
         }
       ]
     },
@@ -2009,6 +2174,22 @@
       "curated": false
     },
     {
+      "title": "Plane Agents",
+      "summary": "Assign work to AI agents, like any teammate Discussion | Link",
+      "summary_html": "<p>\n            Assign work to AI agents, like any teammate\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/planehq?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1257313?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/planehq",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-21T15:36:35+00:00",
+      "published_ts": 1790004995,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
       "title": "NYC-based Corridor, which uses AI to offer health benefits for small businesses, raised a $16M seed led by Bain Capital Ventures, following a $9M pre-seed (Brock E.W. Turner/Axios)",
       "summary": "Brock E.W. Turner / Axios : NYC-based Corridor, which uses AI to offer health benefits for small businesses, raised a $16M seed led by Bain Capital Ventures, following a $9M pre-seed \u2014 Corridor, an AI-native health benefits broker, raised $16 million in seed funding led by Bain Capital Ventures, CEO Nikhil Aggarwal tells Axios Pro exclusively.",
       "summary_html": "<a href=\"https://www.axios.com/pro/health-tech-deals/2026/09/21/corridor-25m-bain-capital-ventures\"></a>\n<p><a href=\"https://www.techmeme.com/260921/p38#a260921p38\"></a> Brock E.W. Turner / <a href=\"https://www.axios.com/\">Axios</a>:<br/>\n<span><b><a href=\"https://www.axios.com/pro/health-tech-deals/2026/09/21/corridor-25m-bain-capital-ventures\">NYC-based Corridor, which uses AI to offer health benefits for small businesses, raised a $16M seed led by Bain Capital Ventures, following a $9M pre-seed</a></b></span>\u00a0 \u2014\u00a0 Corridor, an AI-native health benefits broker, raised $16 million in seed funding led by Bain Capital Ventures, CEO Nikhil Aggarwal tells Axios Pro exclusively.</p>",
@@ -2122,7 +2303,7 @@
       ],
       "curated": false,
       "story_id": "e5d2aa5092ba",
-      "story_size": 7
+      "story_size": 8
     },
     {
       "title": "The Tragedy of Software Versioning",
@@ -2539,7 +2720,7 @@
       ],
       "curated": false,
       "story_id": "e5d2aa5092ba",
-      "story_size": 7
+      "story_size": 8
     },
     {
       "title": "Everyone\u2019s Chasing Bigger AI Models. The Smartest Teams Are Quietly Going Smaller.",
@@ -2862,7 +3043,7 @@
       ],
       "curated": false,
       "story_id": "e5d2aa5092ba",
-      "story_size": 7
+      "story_size": 8
     },
     {
       "title": "iPhone owners can now submit claims in Apple\u2019s $250 million Siri AI settlement",
@@ -2972,6 +3153,20 @@
       "smart_groups": [
         "Chips & hardware"
       ],
+      "curated": false
+    },
+    {
+      "title": "Valori",
+      "summary": "The deterministic memory layer for AI Discussion | Link",
+      "summary_html": "<p>\n            The deterministic memory layer for AI\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/valori-systems-deleted-1168484?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1257192?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/valori-systems-deleted-1168484",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-21T13:28:59+00:00",
+      "published_ts": 1789997339,
+      "smart_groups": [],
       "curated": false
     },
     {
@@ -3647,7 +3842,7 @@
       ],
       "curated": false,
       "story_id": "e5d2aa5092ba",
-      "story_size": 7
+      "story_size": 8
     },
     {
       "title": "Amazon bars Meta's Muse AI from shopping on its site",
@@ -3665,7 +3860,7 @@
       ],
       "curated": false,
       "story_id": "e5d2aa5092ba",
-      "story_size": 7,
+      "story_size": 8,
       "story_primary": true,
       "story_others": [
         {
@@ -3703,6 +3898,12 @@
           "title": "Amazon blocks Meta's Muse AI assistant",
           "link": "https://www.geekwire.com/2026/amazon-blocks-metas-muse-ai-assistant-in-new-standoff-over-agentic-shopping/",
           "published_ts": 1790046199
+        },
+        {
+          "source": "Artificial Intelligence | TechRepublic - News, Tips, and Advice for Technology Professionals",
+          "title": "Amazon Blocks Meta\u2019s Muse AI Agent From Shopping on Amazon.com Over Bot Access",
+          "link": "https://www.techrepublic.com/article/news-amazon-blocks-meta-muse/",
+          "published_ts": 1790076631
         }
       ]
     },
@@ -3882,6 +4083,23 @@
       "published_ts": 1789987765,
       "smart_groups": [
         "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "ResumeContext",
+      "summary": "Shared memory for coding agents. Discussion | Link",
+      "summary_html": "<p>\n            Shared memory for coding agents.\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/resumecontext?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1257048?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/resumecontext",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-21T10:42:06+00:00",
+      "published_ts": 1789987326,
+      "smart_groups": [
+        "Agents & automation",
+        "Coding & dev tools"
       ],
       "curated": false
     },
@@ -4168,6 +4386,20 @@
         "Work & society",
         "Legal & copyright"
       ],
+      "curated": false
+    },
+    {
+      "title": "WZRD",
+      "summary": "AI-native documents, slides, forms and sheets that talk back Discussion | Link",
+      "summary_html": "<p>\n            AI-native documents, slides, forms and sheets that talk back\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/wzrd?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1256969?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/wzrd",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-21T09:19:43+00:00",
+      "published_ts": 1789982383,
+      "smart_groups": [],
       "curated": false
     },
     {
@@ -4805,6 +5037,20 @@
       "smart_groups": [
         "Business & funding"
       ],
+      "curated": false
+    },
+    {
+      "title": "Reeno",
+      "summary": "AI calls you randomly to practice speaking a new language Discussion | Link",
+      "summary_html": "<p>\n            AI calls you randomly to practice speaking a new language\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/reeno?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1256727?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/reeno",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-21T04:20:26+00:00",
+      "published_ts": 1789964426,
+      "smart_groups": [],
       "curated": false
     },
     {
