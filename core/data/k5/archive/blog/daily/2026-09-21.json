@@ -1,9 +1,27 @@
 {
-  "generated_at": "2026-09-22T13:37:35.606442+00:00",
+  "generated_at": "2026-09-22T19:53:12.132639+00:00",
   "date": "2026-09-21",
-  "total_items": 146,
+  "total_items": 147,
   "next_chunk": "archive/blog/daily/2026-09-20.json",
   "items": [
+    {
+      "title": "Micropatches released for Microsoft Message Queuing Queue Manager Remote Code Execution (CVE-2026-54992)",
+      "summary": "July 2026 Windows Updates brought a patch for CVE-2026-54992, a remote code execution vulnerability in Windows Message Queuing Queue Manager, allowing an attacker to set up a malicious server and have their code executed as Local System on any computer connecting to it with message queuing client. The vulnerability was found by Seung Chan Kim, who reported it to Microsoft. Subsequently, David Carliez published their own proof of concept, which allowed us to reproduce the issue and create patches for legacy Windows systems. The Vulnerability This is a numeric overflow issue, triggered by a malformed \"RemoteRead\" message queuing response that contains a number of sections whose cumulative size exceeds 2^32 bytes - leading to an allocation of a buffer that is too small for the actual data. Consequently, a buffer overflow occurs when this data is copied to the buffer, corrupting adjacent memory locations. There was a validation code there to prevent various violations in the received data, but it was per-section and did not check the cumulative size of all sections.",
+      "summary_html": "July 2026 Windows Updates brought a patch for CVE-2026-54992, a remote code execution vulnerability in Windows Message Queuing Queue Manager, allowing an attacker to set up a malicious server and have their code executed as Local System on any computer connecting to it with message queuing client.\nThe vulnerability was found by Seung Chan Kim, who reported it to Microsoft. Subsequently, David Carliez published their own proof of concept, which allowed us to reproduce the issue and create patches for legacy Windows systems.\n\nThe Vulnerability\u00a0\nThis is a numeric overflow issue, triggered by a malformed \"RemoteRead\" message queuing response that contains a number of sections whose cumulative size exceeds 2^32 bytes - leading to an allocation of a buffer that is too small for the actual data. Consequently, a buffer overflow occurs when this data is copied to the buffer, corrupting adjacent memory locations.\nThere was a validation code there to prevent various violations in the received data, but it was per-section and did not check the cumulative size of all sections.",
+      "link": "https://0patch.com/blog/micropatches-released-for-microsoft-message-queuing-queue-manager-remote-code-exe",
+      "source": "0patch Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-09-21T22:00:00+00:00",
+      "published_ts": 1790028000,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Exploit / PoC",
+        "Windows / Microsoft"
+      ],
+      "curated": true
+    },
     {
       "title": "Millions of Phishing Emails Use ASCII Smuggling to Bypass Security Filters",
       "summary": "A massive phishing campaign is using invisible Unicode tag characters to evade security filters, according to researchers at Microsoft. This technique, known as \u201cASCII smuggling,\u201d has grown popular over the past year for launching AI prompt injection attacks, but the same tactic can hide suspicious text in emails.",
