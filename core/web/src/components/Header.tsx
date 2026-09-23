@@ -1,3 +1,4 @@
+import { useLayoutEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Shield, Cpu, TrendingUp, Database, Newspaper, Sun, Moon, Search, X, type LucideIcon } from "lucide-react";
@@ -27,12 +28,31 @@ const SEARCHABLE_PATHS = new Set(["/", "/archive"]);
 
 export function Header() {
   const { theme, setTheme } = useTheme();
+  const headerRef = useRef<HTMLElement>(null);
   const location = useLocation();
   const navigate = useNavigate();
   const { searchQuery, setSearchQuery } = useSearch();
 
   const isActive = (path: string) => location.pathname === path;
   const Icon = ICONS[vertical.iconName];
+
+  // The header is sticky and its height varies (phone/desktop, with or without
+  // the page heading), so publish it as a CSS variable. Anything else that
+  // needs to stick directly below it — the feed's filter bar — reads this
+  // instead of hard-coding an offset.
+  useLayoutEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    const apply = () =>
+      document.documentElement.style.setProperty(
+        "--app-header-h",
+        `${Math.round(el.getBoundingClientRect().height)}px`,
+      );
+    apply();
+    const observer = new ResizeObserver(apply);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const onSearchChange = (value: string) => {
     if (SEARCHABLE_PATHS.has(location.pathname)) {
@@ -67,7 +87,10 @@ export function Header() {
   );
 
   return (
-    <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
+    <header
+      ref={headerRef}
+      className="border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-50"
+    >
       <div className="container py-3 md:py-4">
         <div className="flex items-center justify-between gap-3 md:gap-4">
           <Link to="/" className="flex items-center gap-2 shrink-0">
@@ -109,17 +132,6 @@ export function Header() {
         {/* Phones: search gets its own full-width row instead of disappearing. */}
         <div className="mt-3 md:hidden">{searchBox}</div>
 
-        {/* On phones the feed renders the tagline itself, outside the sticky bar. */}
-        {location.pathname === "/" && (
-          <div className="mt-4 hidden md:block">
-            <h1 className="text-[22px] font-semibold text-foreground">
-              {vertical.heading}
-            </h1>
-            <p className="text-[15px] text-muted-foreground mt-1">
-              {vertical.tagline}
-            </p>
-          </div>
-        )}
       </div>
     </header>
   );
