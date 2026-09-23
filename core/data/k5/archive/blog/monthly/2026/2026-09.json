@@ -1,5 +1,187 @@
 [
   {
+    "title": "Hackers Exploiting F5 BIG-IP OAuth Server 0-day Flaw to Gain Remote Code Execution",
+    "summary": "F5 has warned that hackers are actively exploiting a critical zero-day vulnerability in BIG-IP Access Policy Manager (APM) deployments to execute code remotely without authentication. Tracked as CVE-2026-94127, the flaw affects virtual servers configured with both an APM access policy and an OAuth profile, specifically where APM operates as an OAuth Authorization Server. F5 published advisory K000162605 on September 22, 2026, after learning that attackers had already weaponized the issue. The vulnerability is a heap-based buffer overflow, categorized as CWE-122 and assigned internal tracking ID 2524777. Specially crafted network traffic can corrupt memory and enable arbitrary code execution on the BIG-IP system. It carries a critical CVSS v3.1 score of 9.8 and a CVSS v4.0 score of 9.3, reflecting low attack complexity, network reachability, no privileges or user interaction, and potentially severe confidentiality, integrity, and availability consequences. F5 BIG-IP OAuth Server 0-day Flaw Importantly, exposure depends on configuration rather than the mere presence of APM. Deployments using APM only as an OAuth Client or Resource Server, without OAuth authorization-server profiles, are not affected. Appliance-mode systems remain vulnerable. F5 said the vulnerability resides in the data plane, which processes application traffic, and does not expose the control plane. Consequently, restricting the management interface alone will not block exploitation reaching an affected virtual server. Known vulnerable releases include BIG-IP APM 21.1.0, versions 17.5.0 through 17.5.1, and versions 17.1.0 through 17.1.3. Other BIG-IP modules, BIG-IQ Centralized Management, BIG-IP Next, F5 Distributed Cloud services, NGINX products, F5OS variants, and F5 AI Gateway were evaluated as unaffected. F5 cautions that releases beyond End of Technical Support are not evaluated, so administrators should not interpret their absence from the affected list as evidence of safety. Engineering hotfixes are available as Hotfix-BIGIP-21.1.0.2.0.30.22-ENG.iso, Hotfix-BIGIP-17.5.1.9.0.160.12-ENG.iso, and Hotfix-BIGIP-17.1.3.5.0.41.14-ENG.iso for their respective branches. Organizations should inventory BIG-IP APM virtual servers, identify the vulnerable access-policy and OAuth-profile combination, and install the applicable hotfix immediately. Where emergency patching is operationally impossible, customers can contact F5 Support for an iRule that temporarily mitigates attacks against the affected virtual server. Defenders should also hunt for evidence of attempted or successful exploitation. F5 advises investigating three events occurring close together: repeated OAuth authentication failures, suspicious command execution, and a subsequent Traffic Management Microkernel (TMM) SIGABRT event. Ten or more invalid-token messages in /var/log/apm deserve review, particularly when originating from one IP address. Analysts can inspect failure counts with tmctl global_oauth_stat -s total_requests,total_userinfo_requests,total_failed and correlate timestamps with entries in /var/log/audit . A TMM core file can appear when TMM enters a loop, and the SOD daemon issues SIGABRT, but neither a core file nor an authentication failure independently proves compromise. Their frequency and temporal relationship matter. CISA has added CVE-2026-94127 to its Known Exploited Vulnerabilities catalog following evidence of in-the-wild attacks, reinforcing the need for urgent remediation. F5 discovered the vulnerability internally , while public reporting has not established an attacker identity, exploitation scale, or confirmed post-compromise objectives. Security teams should preserve logs, review suspicious activity around observed failures, and prioritize exposed OAuth Authorization Server configurations in incident response. That uncertainty makes retrospective threat hunting as important as closing the immediate exposure now. Cut every SOC alert investigation by 21 min. Power your SOC with instant IOC context for immediate response: Integrate TI Lookup in your SOC",
+    "summary_html": "<p>F5 has warned that hackers are actively exploiting a critical zero-day vulnerability in <a href=\"https://cybersecuritynews.com/14000-f5-big-ip-apm-exposed-online/\">BIG-IP Access Policy Manager</a> (APM) deployments to execute code remotely without authentication.</p>\n<p>Tracked as CVE-2026-94127, the flaw affects virtual servers configured with both an APM access policy and an OAuth profile, specifically where APM operates as an OAuth Authorization Server. F5 published advisory K000162605 on September 22, 2026, after learning that attackers had already weaponized the issue.</p>\n<p>The vulnerability is a heap-based buffer overflow, categorized as CWE-122 and assigned internal tracking ID 2524777. Specially crafted network traffic can corrupt memory and enable arbitrary code execution on the BIG-IP system.</p>\n<p>It carries a critical CVSS v3.1 score of 9.8 and a CVSS v4.0 score of 9.3, reflecting low attack complexity, network reachability, no privileges or user interaction, and potentially severe confidentiality, integrity, and availability consequences.</p>\n<strong>F5 BIG-IP OAuth Server 0-day Flaw</strong>\n<p>Importantly, exposure depends on configuration rather than the mere presence of APM. Deployments using APM only as an OAuth Client or Resource Server, without OAuth authorization-server profiles, are not affected. Appliance-mode systems remain vulnerable.</p>\n<p>F5 said the vulnerability resides in the data plane, which processes application traffic, and does not expose the control plane. Consequently, restricting the management interface alone will not block exploitation reaching an affected virtual server.</p>\n<p>Known vulnerable releases include BIG-IP APM 21.1.0, versions 17.5.0 through 17.5.1, and versions 17.1.0 through 17.1.3. Other BIG-IP modules, BIG-IQ Centralized Management, BIG-IP Next, F5 Distributed Cloud services, NGINX products, F5OS variants, and F5 AI Gateway were evaluated as unaffected.</p>\n<p>F5 cautions that releases beyond End of Technical Support are not evaluated, so administrators should not interpret their absence from the affected list as evidence of safety.</p>\n<p>Engineering hotfixes are available as Hotfix-BIGIP-21.1.0.2.0.30.22-ENG.iso, Hotfix-BIGIP-17.5.1.9.0.160.12-ENG.iso, and Hotfix-BIGIP-17.1.3.5.0.41.14-ENG.iso for their respective branches.</p>\n<p>Organizations should inventory BIG-IP APM virtual servers, identify the vulnerable access-policy and OAuth-profile combination, and install the applicable hotfix immediately. Where emergency patching is operationally impossible, customers can contact F5 Support for an iRule that temporarily mitigates attacks against the affected virtual server.</p>\n<p>Defenders should also hunt for evidence of attempted or successful exploitation. F5 advises investigating three events occurring close together: repeated OAuth authentication failures, suspicious command execution, and a subsequent Traffic Management Microkernel (TMM) SIGABRT event.</p>\n<p>Ten or more invalid-token messages in <code>/var/log/apm</code> deserve review, particularly when originating from one IP address. Analysts can inspect failure counts with <code>tmctl global_oauth_stat -s total_requests,total_userinfo_requests,total_failed</code> and correlate timestamps with entries in <code>/var/log/audit</code>.</p>\n<p>A TMM core file can appear when TMM enters a loop, and the SOD daemon issues SIGABRT, but neither a core file nor an authentication failure independently proves compromise. Their frequency and temporal relationship matter.</p>\n<p>CISA has added CVE-2026-94127 to its <a href=\"https://cybersecuritynews.com/?s=CISA+KEV\">Known Exploited Vulnerabilities catalog</a> following evidence of in-the-wild attacks, reinforcing the need for urgent remediation.</p>\n<p><a href=\"https://my.f5.com/manage/s/article/K000162605\">F5 discovered the vulnerability internally</a>, while public reporting has not established an attacker identity, exploitation scale, or confirmed post-compromise objectives.</p>\n<p>Security teams should preserve logs, review suspicious activity around observed failures, and prioritize exposed OAuth Authorization Server configurations in incident response. That uncertainty makes retrospective threat hunting as important as closing the immediate exposure now.</p>\n<p><strong><strong>Cut every SOC alert investigation by 21 min. Power your SOC with instant IOC context for immediate response:</strong></strong> <strong><a href=\"https://any.run/threat-intelligence-lookup/?utm_source=csn&amp;utm_medium=100+links&amp;utm_campaign=1623sep&amp;utm_content=ti+lookup&amp;utm_term=161026#contact-sales\">Integrate TI Lookup in your SOC</a></strong></p>\n<p>The post <a href=\"https://cybersecuritynews.com/f5-big-ip-oauth-server-0-day-flaw/\">Hackers Exploiting F5 BIG-IP OAuth Server 0-day Flaw to Gain Remote Code Execution</a> appeared first on <a href=\"https://cybersecuritynews.com\">Cyber Security News</a>.</p>",
+    "link": "https://cybersecuritynews.com/f5-big-ip-oauth-server-0-day-flaw/",
+    "source": "Cyber Security News (FeedBurner)",
+    "feed_type": "blog",
+    "type": "security-researcher-blogs",
+    "type_label": "Security Researcher Blogs",
+    "published": "2026-09-23T03:24:27+00:00",
+    "published_ts": 1790133867,
+    "smart_groups": [
+      "Vulnerabilities / CVEs",
+      "Identity / Access",
+      "Exploit / PoC"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Best Vendor Risk Management Software for 2026 | UpGuard",
+    "summary": "Compare top vendor risk management software solutions and learn how to choose, implement, and integrate the right tool for your organization’s needs.",
+    "summary_html": "Compare top vendor risk management software solutions and learn how to choose, implement, and integrate the right tool for your organization’s needs.",
+    "link": "https://www.upguard.com/blog/best-vendor-risk-management-software-solutions",
+    "source": "UpGuard Blog",
+    "feed_type": "blog",
+    "type": "vendors-product-blogs",
+    "type_label": "Vendors & Product Blogs",
+    "published": "2026-09-23T03:06:10+00:00",
+    "published_ts": 1790132770,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "What is IT Risk Management? Strategies and Processes | UpGuard",
+    "summary": "A comprehensive explanation of what IT risk management is and how it can be implemented in your cybersecurity program.",
+    "summary_html": "A comprehensive explanation of what IT risk management is and how it can be implemented in your cybersecurity program.",
+    "link": "https://www.upguard.com/blog/it-risk-management",
+    "source": "UpGuard Blog",
+    "feed_type": "blog",
+    "type": "vendors-product-blogs",
+    "type_label": "Vendors & Product Blogs",
+    "published": "2026-09-23T03:06:10+00:00",
+    "published_ts": 1790132770,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "IT Risk Management vs Cybersecurity? | UpGuard",
+    "summary": "IT risk management and cybersecurity both define the effectiveness and security structure of modern organizations. Learn how they differ.",
+    "summary_html": "IT risk management and cybersecurity both define the effectiveness and security structure of modern organizations. Learn how they differ.",
+    "link": "https://www.upguard.com/blog/it-risk-management-vs-cybersecurity",
+    "source": "UpGuard Blog",
+    "feed_type": "blog",
+    "type": "vendors-product-blogs",
+    "type_label": "Vendors & Product Blogs",
+    "published": "2026-09-23T03:06:10+00:00",
+    "published_ts": 1790132770,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "What is Cybersecurity Risk Management? Preventing Cyber Attacks | UpGuard",
+    "summary": "This is a complete overview of cybersecurity risk management. Learn about the 15 top considerations for cybersecurity risk management in this in post.",
+    "summary_html": "This is a complete overview of cybersecurity risk management. Learn about the 15 top considerations for cybersecurity risk management in this in post.",
+    "link": "https://www.upguard.com/blog/cybersecurity-risk-management",
+    "source": "UpGuard Blog",
+    "feed_type": "blog",
+    "type": "vendors-product-blogs",
+    "type_label": "Vendors & Product Blogs",
+    "published": "2026-09-23T03:06:10+00:00",
+    "published_ts": 1790132770,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Cybersecurity Risk Assessment Platforms Explained | UpGuard",
+    "summary": "Discover leading cybersecurity risk assessment tools that help organizations identify vulnerabilities, manage threats, and enhance their security posture.​",
+    "summary_html": "Discover leading cybersecurity risk assessment tools that help organizations identify vulnerabilities, manage threats, and enhance their security posture.​",
+    "link": "https://www.upguard.com/blog/cybersecurity-risk-assessment-tools",
+    "source": "UpGuard Blog",
+    "feed_type": "blog",
+    "type": "vendors-product-blogs",
+    "type_label": "Vendors & Product Blogs",
+    "published": "2026-09-23T03:06:10+00:00",
+    "published_ts": 1790132770,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Choosing Cyber Risk Remediation Software (Key Features) | UpGuard",
+    "summary": "Learn the features to look for in a cyber risk remediation tool for effectively addressing internal and external security risks.",
+    "summary_html": "Learn the features to look for in a cyber risk remediation tool for effectively addressing internal and external security risks.",
+    "link": "https://www.upguard.com/blog/choosing-cyber-risk-remediation-software",
+    "source": "UpGuard Blog",
+    "feed_type": "blog",
+    "type": "vendors-product-blogs",
+    "type_label": "Vendors & Product Blogs",
+    "published": "2026-09-23T03:06:10+00:00",
+    "published_ts": 1790132770,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Choosing Automated Risk Remediation Software in 2026 | UpGuard",
+    "summary": "Automation technology, when correctly applied to cyber risk remediation software could have a profoundly positve impact on your cybersecurity program.",
+    "summary_html": "Automation technology, when correctly applied to cyber risk remediation software could have a profoundly positve impact on your cybersecurity program.",
+    "link": "https://www.upguard.com/blog/choosing-automated-risk-remediation-software",
+    "source": "UpGuard Blog",
+    "feed_type": "blog",
+    "type": "vendors-product-blogs",
+    "type_label": "Vendors & Product Blogs",
+    "published": "2026-09-23T03:06:10+00:00",
+    "published_ts": 1790132770,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "The 12 Best Third-Party Risk Management Software Solutions (2026) | UpGuard",
+    "summary": "Compare the 12 best TPRM tools of 2026, including UpGuard, SecurityScorecard, Bitsight, OneTrust and Panorays.",
+    "summary_html": "Compare the 12 best TPRM tools of 2026, including UpGuard, SecurityScorecard, Bitsight, OneTrust and Panorays.",
+    "link": "https://www.upguard.com/blog/best-third-party-risk-management-software-solutions",
+    "source": "UpGuard Blog",
+    "feed_type": "blog",
+    "type": "vendors-product-blogs",
+    "type_label": "Vendors & Product Blogs",
+    "published": "2026-09-23T03:06:09+00:00",
+    "published_ts": 1790132769,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "What is Cyber Risk Governance? Implementing Cyber Strategy | UpGuard",
+    "summary": "Find out what cyber risk governance is and how it affects businesses.",
+    "summary_html": "Find out what cyber risk governance is and how it affects businesses.",
+    "link": "https://www.upguard.com/blog/cyber-risk-governance",
+    "source": "UpGuard Blog",
+    "feed_type": "blog",
+    "type": "vendors-product-blogs",
+    "type_label": "Vendors & Product Blogs",
+    "published": "2026-09-23T03:06:09+00:00",
+    "published_ts": 1790132769,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "What is Cybersecurity Risk? A Thorough Definition | UpGuard",
+    "summary": "Cybersecurity risk is the risk of a cyber attack or data breach on your organization.",
+    "summary_html": "Cybersecurity risk is the risk of a cyber attack or data breach on your organization.",
+    "link": "https://www.upguard.com/blog/cybersecurity-risk",
+    "source": "UpGuard Blog",
+    "feed_type": "blog",
+    "type": "vendors-product-blogs",
+    "type_label": "Vendors & Product Blogs",
+    "published": "2026-09-23T03:06:09+00:00",
+    "published_ts": 1790132769,
+    "smart_groups": [
+      "Data Breaches / Leaks"
+    ],
+    "curated": false
+  },
+  {
+    "title": "ShinyHunters Allegedly Claims Breach of FBI Jobs Site and Stolen Agents’ Data",
+    "summary": "The FBI is investigating alleged unauthorized activity affecting its recruitment infrastructure after the ShinyHunters cybercrime group claimed it breached FBI systems, defaced the bureau’s jobs portal, and stole sensitive records belonging to employees and applicants. The incident places the data-extortion operation in direct confrontation with the federal agency responsible for investigating cybercrime. The intrusion reportedly began Monday night and became visible when apply.fbijobs.gov briefly displayed a counterfeit seizure notice reading, “THIS SITE HAS BEEN SEIZED BY SHINYHUNTERS.” The page claimed personally identifiable information and protected health information concerning current and former FBI personnel and job applicants had been compromised. The FBI later took the application service and Special Agent Applicant Portal offline. ShinyHunters Allegedly Breach Claim “The FBI is aware of claims regarding unauthorized activity affecting FBIjobs.gov and is currently investigating,” the bureau said. That statement confirms an inquiry and activity affecting the jobs domain, but it does not verify ShinyHunters’ claims about access to internal FBI networks, the quantity of data allegedly removed, or the intrusion method. ShinyHunters told reporters it exploited an undisclosed Oracle PeopleSoft vulnerability that allegedly enabled remote code execution without authentication. According to the group, attackers then moved laterally into FBI-managed AWS GovCloud infrastructure and downloaded between two and three terabytes of information. It also claimed access to human resources, Medlink, Criminal Justice, and other services. Oracle, AWS, and the FBI have not validated that technical account. To support its allegations, the group supplied journalists with a sample of 5,000 purported FBI employee records. The material reportedly included names, home addresses, phone numbers, Social Security numbers, assignments, dates of birth, and details about spouses or other relatives. Reuters partially matched information in at least 10 cases, while 404 Media linked several phone numbers to people bearing the listed names and to Justice Department personnel. Neither outlet could establish that the sample originated from compromised FBI systems. The alleged exposure creates risks extending far beyond identity theft. Residential addresses, family relationships, assignments, medical details, and applicant background information could support doxxing, harassment, impersonation, social engineering , blackmail, or targeting by hostile intelligence services. Former FBI official Cynthia Kaiser warned that stolen personnel information can continue enabling harassment years after its disclosure. ShinyHunters described the operation as nonfinancial and framed it as retaliation for an FBI cyber alert published in May. That advisory characterized the group’s reported tactics, including data theft, extortion, threatening communications, harassment, and pressure on victims not to resist payment demands. The attackers accused the bureau of making false statements and reportedly gave officials one week to correct or remove the document. Despite the visible website defacement and limited validation of sample records, the central allegation remains unproven. A defaced internet-facing portal demonstrates unauthorized control of that web environment, but it does not itself prove access to wider FBI systems or confirm terabytes of exfiltration. Investigators will need to review PeopleSoft logs, cloud audit trails, authentication events, lateral-movement evidence, and outbound data transfers to determine the incident’s real scope. Until the FBI completes that assessment, affected employees, former personnel, applicants, and relatives should treat follow-on phishing, impersonation, account-recovery attempts, and unusual credit activity as credible risks. Organizations using PeopleSoft should also monitor for anomalous administrative access and promptly apply applicable Oracle security updates, while avoiding unsupported assumptions that the alleged FBI entry vector is confirmed. Cut every SOC alert investigation by 21 min. Power your SOC with instant IOC context for immediate response: Integrate TI Lookup in your SOC",
+    "summary_html": "<p>The FBI is investigating alleged unauthorized activity affecting its recruitment infrastructure after the <a href=\"https://cybersecuritynews.com/abbott-investigating-cyber-incident/\">ShinyHunters cybercrime group</a> claimed it breached FBI systems, defaced the bureau’s jobs portal, and stole sensitive records belonging to employees and applicants. The incident places the data-extortion operation in direct confrontation with the federal agency responsible for investigating cybercrime.</p>\n<p>The intrusion reportedly began Monday night and became visible when apply.fbijobs.gov briefly displayed a counterfeit seizure notice reading, “THIS SITE HAS BEEN SEIZED BY SHINYHUNTERS.”</p>\n<div>\n\n</div>\n<p>The page claimed personally identifiable information and protected health information concerning current and former FBI personnel and job applicants had been compromised. The FBI later took the application service and Special Agent Applicant Portal offline.</p>\n<strong>ShinyHunters Allegedly Breach Claim</strong>\n<p>“The FBI is aware of claims regarding unauthorized activity affecting FBIjobs.gov and is currently investigating,” the bureau said. That statement confirms an inquiry and activity affecting the jobs domain, but it does not verify ShinyHunters’ claims about access to internal FBI networks, the quantity of data allegedly removed, or the intrusion method.</p>\n<p>ShinyHunters told reporters it exploited an undisclosed <a href=\"https://cybersecuritynews.com/oracle-peoplesoft-0-day-vulnerability-exploit/\">Oracle PeopleSoft vulnerability</a> that allegedly enabled remote code execution without authentication. According to the group, attackers then moved laterally into FBI-managed AWS GovCloud infrastructure and downloaded between two and three terabytes of information.</p>\n<p>It also claimed access to human resources, Medlink, Criminal Justice, and other services. Oracle, AWS, and the FBI have not validated that technical account.</p>\n<div>\n\n</div>\n<p>To support its allegations, the group supplied journalists with a sample of 5,000 purported FBI employee records. The material reportedly included names, home addresses, phone numbers, Social Security numbers, assignments, dates of birth, and details about spouses or other relatives.</p>\n<p>Reuters partially matched information in at least 10 cases, <a href=\"https://www.404media.co/we-hacked-the-fbi-hackers-say-they-have-data-on-all-fbi-employees/\">while 404 Media linked</a> several phone numbers to people bearing the listed names and to Justice Department personnel. Neither outlet could establish that the sample originated from compromised FBI systems.</p>\n<p>The alleged exposure creates risks extending far beyond identity theft. Residential addresses, family relationships, assignments, medical details, and applicant background information could support doxxing, harassment, impersonation, <a href=\"https://cybersecuritynews.com/hackers-exploiting-clawhub-skills/\">social engineering</a>, blackmail, or targeting by hostile intelligence services. Former FBI official Cynthia Kaiser warned that stolen personnel information can continue enabling harassment years after its disclosure.</p>\n<p>ShinyHunters described the operation as nonfinancial and framed it as retaliation for an FBI cyber alert published in May. That advisory characterized the group’s reported tactics, including data theft, extortion, threatening communications, harassment, and pressure on victims not to resist payment demands. The attackers accused the bureau of making false statements and reportedly gave officials one week to correct or remove the document.</p>\n<p>Despite the visible website defacement and limited validation of sample records, the central allegation remains unproven. A defaced internet-facing portal demonstrates unauthorized control of that web environment, but it does not itself prove access to wider FBI systems or confirm terabytes of exfiltration.</p>\n<p>Investigators will need to review PeopleSoft logs, cloud audit trails, authentication events, lateral-movement evidence, and outbound data transfers to determine the incident’s real scope.</p>\n<p>Until the FBI completes that assessment, affected employees, former personnel, applicants, and relatives should treat follow-on phishing, impersonation, account-recovery attempts, and unusual credit activity as credible risks.</p>\n<p>Organizations using PeopleSoft should also monitor for anomalous administrative access and promptly apply applicable Oracle security updates, while avoiding unsupported assumptions that the alleged FBI entry vector is confirmed.</p>\n<p><strong><strong>Cut every SOC alert investigation by 21 min. Power your SOC with instant IOC context for immediate response:</strong></strong> <strong><a href=\"https://any.run/threat-intelligence-lookup/?utm_source=csn&amp;utm_medium=100+links&amp;utm_campaign=1623sep&amp;utm_content=ti+lookup&amp;utm_term=161026#contact-sales\">Integrate TI Lookup in your SOC</a></strong></p>\n<p>The post <a href=\"https://cybersecuritynews.com/shinyhunters-allegedly-claims-fbi-breach/\">ShinyHunters Allegedly Claims Breach of FBI Jobs Site and Stolen Agents’ Data</a> appeared first on <a href=\"https://cybersecuritynews.com\">Cyber Security News</a>.</p>",
+    "link": "https://cybersecuritynews.com/shinyhunters-allegedly-claims-fbi-breach/",
+    "source": "Cyber Security News (FeedBurner)",
+    "feed_type": "blog",
+    "type": "security-researcher-blogs",
+    "type_label": "Security Researcher Blogs",
+    "published": "2026-09-23T02:43:07+00:00",
+    "published_ts": 1790131387,
+    "smart_groups": [
+      "Ransomware",
+      "Vulnerabilities / CVEs",
+      "Cloud / SaaS"
+    ],
+    "curated": true,
+    "story_id": "83ed5e905b32",
+    "story_size": 2
+  },
+  {
     "title": "Check Point Management Server 0-Day Vulnerability Actively Exploited in Attacks",
     "summary": "Check Point has warned customers that attackers are exploiting a critical zero-day vulnerability in its Security Management infrastructure. Tracked as CVE-2026-93616 , the flaw carries a CVSS score of 9.8 and enables an unauthenticated remote attacker to upload and execute arbitrary scripts on an exposed Management Server. Check Point says it has identified a handful of targeted customer attacks and has released emergency fixes. The vulnerability combines directory traversal with unsafe file-upload behavior in the Check Point Management web service . By manipulating file paths, an attacker can cause the service to execute a script from an arbitrary location and load an arbitrary Java class without first authenticating. Successful exploitation therefore gives an external adversary a route to run attacker-controlled code on a highly privileged system that administers security policies and collects operational data. Check Point Management Server 0-Day Exploited Check Point described the exploitation as limited and “pinpointed,” but the activity predates public disclosure. According to the company, the observed attacks occurred on July 23, 2026, making CVE-2026-93616 a zero-day because it was abused before a security update became available. The vendor has not publicly attributed the intrusions or disclosed the attackers’ objectives, payloads, or affected organizations. Affected products include Security Management Server, Multi-Domain Security Management Server, Log Server, Multi-Domain Log Server, and SmartEvent. Vulnerable releases include R82.20; R82.10 Jumbo Hotfix Take 44 and earlier; R82 Take 126 and earlier; R81.20 Take 166 and earlier; and the end-of-support R81.10 Take 190 and earlier. All R80, R80.10, R80.20, R80.30, R80.40, and R81 versions are also affected. Smart-1 Cloud is not vulnerable because Check Point has already applied the fix. Check Point Firewall Appliances and Check Point Spark Firewall are also unaffected by this particular issue. Administrators should not assume LivePatch provides protection: LivePatch Takes 28 and 29 do not remediate CVE-2026-93616, and Check Point says no LivePatch will be available because of the nature of the correction. Organizations should install the R82.20 Security Hotfix or move to a fixed Jumbo Hotfix Accumulator immediately. The correction is included in R82.10 Take 45, R82 Take 127, R81.20 Take 170, and R81.10 Take 192 or later. Until patching is complete, management servers should remain behind a Security Gateway or Check Point firewall, while access to TCP port 19009 must be restricted to trusted IP addresses. Trusted Clients in SmartConsole should likewise contain only trusted internal addresses. Incident responders should hunt across every affected management, logging, and SmartEvent server, not just internet-facing hosts. Check Point’s advisory provides Expert-mode commands for identifying unusually long usernames in cpm.elg logs and correlating those records with FWM or MDS core dumps. It also recommends searching for ReflectionUtils errors stating that the service failed to load an allResourceFiles map, then examining returned paths for traversal sequences such as “../”. Either pattern may indicate an exploitation attempt and warrants immediate investigation. Positive results should trigger immediate, focused forensic investigation. Because compromise of a management server could place a central administrative plane in an attacker’s hands, applying the hotfix should take priority over relying on access controls alone. Teams finding suspicious log entries should preserve relevant logs and core dumps, isolate the affected server where operationally possible, assess subsequent activity, and contact Check Point Support. The vendor’s latest advisory was updated on September 22, 2026, and administrators should monitor it for further indicators or revised guidance. Cut every SOC alert investigation by 21 min. Power your SOC with instant IOC context for immediate response: Integrate TI Lookup in your SOC",
     "summary_html": "<p>Check Point has warned customers that attackers are exploiting a critical zero-day vulnerability in its Security Management infrastructure. Tracked as <a href=\"https://blog.checkpoint.com/security/security-advisory-action-required-active-exploitation-of-cve-2026-85102-and-a-management-pre-authentication-vulnerability-cve-2026-93616/\">CVE-2026-93616</a>, the flaw carries a CVSS score of 9.8 and enables an unauthenticated remote attacker to upload and execute arbitrary scripts on an exposed Management Server.</p>\n<p>Check Point says it has identified a handful of targeted customer attacks and has released emergency fixes. The vulnerability combines directory traversal with unsafe file-upload behavior in the <a href=\"https://cybersecuritynews.com/best-iam-solutions/\">Check Point Management web service</a>.</p>\n<p>By manipulating file paths, an attacker can cause the service to execute a script from an arbitrary location and load an arbitrary Java class without first authenticating.</p>\n<p>Successful exploitation therefore gives an external adversary a route to run attacker-controlled code on a highly privileged system that administers security policies and collects operational data.</p>\n<strong>Check Point Management Server 0-Day Exploited</strong>\n<p>Check Point described the exploitation as limited and “pinpointed,” but the activity predates public disclosure. According to the company, the observed attacks occurred on July 23, 2026, making CVE-2026-93616 a zero-day because it was abused before a security update became available. The vendor has not publicly attributed the intrusions or disclosed the attackers’ objectives, payloads, or affected organizations.</p>\n<p>Affected products include Security Management Server, Multi-Domain Security Management Server, Log Server, Multi-Domain Log Server, and SmartEvent.</p>\n<p>Vulnerable releases include R82.20; R82.10 Jumbo Hotfix Take 44 and earlier; R82 Take 126 and earlier; R81.20 Take 166 and earlier; and the end-of-support R81.10 Take 190 and earlier. All R80, R80.10, R80.20, R80.30, R80.40, and R81 versions are also affected.</p>\n<p>Smart-1 Cloud is not vulnerable because Check Point has already applied the fix. Check Point Firewall Appliances and Check Point Spark Firewall are also unaffected by this particular issue. Administrators should not assume LivePatch provides protection: LivePatch Takes 28 and 29 do not remediate CVE-2026-93616, and Check Point says no LivePatch will be available because of the nature of the correction.</p>\n<p>Organizations should <a href=\"https://support.checkpoint.com/results/download/145601\">install the R82.20 Security Hotfix</a> or move to a fixed Jumbo Hotfix Accumulator immediately. The correction is included in R82.10 Take 45, R82 Take 127, R81.20 Take 170, and R81.10 Take 192 or later.</p>\n<p>Until patching is complete, management servers should remain behind a Security Gateway or Check Point firewall, while access to TCP port 19009 must be restricted to trusted IP addresses. Trusted Clients in SmartConsole should likewise contain only trusted internal addresses.</p>\n<p>Incident responders should hunt across every affected management, logging, and SmartEvent server, not just internet-facing hosts. <a href=\"https://support.checkpoint.com/results/sk/sk1000171/\">Check Point’s advisory provides</a> Expert-mode commands for identifying unusually long usernames in cpm.elg logs and correlating those records with FWM or MDS core dumps.</p>\n<p>It also recommends searching for ReflectionUtils errors stating that the service failed to load an allResourceFiles map, then examining returned paths for traversal sequences such as “../”. Either pattern may indicate an exploitation attempt and warrants immediate investigation. Positive results should trigger immediate, focused forensic investigation.</p>\n<p>Because compromise of a management server could place a central administrative plane in an attacker’s hands, applying the hotfix should take priority over relying on access controls alone.</p>\n<p>Teams finding suspicious log entries should preserve relevant logs and core dumps, isolate the affected server where operationally possible, assess subsequent activity, and contact Check Point Support. The vendor’s latest advisory was updated on September 22, 2026, and administrators should monitor it for further indicators or revised guidance.</p>\n<p><strong><strong>Cut every SOC alert investigation by 21 min. Power your SOC with instant IOC context for immediate response:</strong></strong> <strong><a href=\"https://any.run/threat-intelligence-lookup/?utm_source=csn&amp;utm_medium=100+links&amp;utm_campaign=1623sep&amp;utm_content=ti+lookup&amp;utm_term=161026#contact-sales\">Integrate TI Lookup in your SOC</a></strong></p>\n<p>The post <a href=\"https://cybersecuritynews.com/check-point-management-server-0-day-exploited/\">Check Point Management Server 0-Day Vulnerability Actively Exploited in Attacks</a> appeared first on <a href=\"https://cybersecuritynews.com\">Cyber Security News</a>.</p>",
@@ -200,7 +382,24 @@
       "Vulnerabilities / CVEs",
       "Windows / Microsoft"
     ],
-    "curated": true
+    "curated": true,
+    "story_id": "1bbc2c4488af",
+    "story_size": 3,
+    "story_primary": true,
+    "story_others": [
+      {
+        "source": "The Hacker News",
+        "title": "Microsoft Takes Down EvilTokens Device-Code Phishing Service Tied to 12,000 Inbox Compromises",
+        "link": "https://thehackernews.com/2026/09/microsoft-takes-down-eviltokens-device.html",
+        "published_ts": 1790096611
+      },
+      {
+        "source": "Dark Reading",
+        "title": "Microsoft Disrupts EvilTokens Device Code Phishing Service",
+        "link": "https://www.darkreading.com/identity-access-management-security/microsoft-disrupts-eviltokens-device-code-phishing-service",
+        "published_ts": 1790107322
+      }
+    ]
   },
   {
     "title": "A faster, more reliable GitHub Actions alternative: Run Actions on CircleCI",
@@ -2737,20 +2936,6 @@
     "curated": false
   },
   {
-    "title": "Best Vendor Risk Management Software for 2026 | UpGuard",
-    "summary": "Compare top vendor risk management software solutions and learn how to choose, implement, and integrate the right tool for your organization’s needs.",
-    "summary_html": "Compare top vendor risk management software solutions and learn how to choose, implement, and integrate the right tool for your organization’s needs.",
-    "link": "https://www.upguard.com/blog/best-vendor-risk-management-software-solutions",
-    "source": "UpGuard Blog",
-    "feed_type": "blog",
-    "type": "vendors-product-blogs",
-    "type_label": "Vendors & Product Blogs",
-    "published": "2026-09-21T04:01:35+00:00",
-    "published_ts": 1789963295,
-    "smart_groups": [],
-    "curated": false
-  },
-  {
     "title": "What is Third-Party Risk? | UpGuard",
     "summary": "Third-party risk is any risk brought on to an organization by external parties in its ecosystem or supply chain. Learn more about its importance.",
     "summary_html": "Third-party risk is any risk brought on to an organization by external parties in its ecosystem or supply chain. Learn more about its importance.",
@@ -2783,20 +2968,6 @@
     "summary": "This is a complete overview that outlines why third-party risk management is important. Learn about successful TPRM programs in this in-depth post.",
     "summary_html": "This is a complete overview that outlines why third-party risk management is important. Learn about successful TPRM programs in this in-depth post.",
     "link": "https://www.upguard.com/blog/third-party-risk-management-important",
-    "source": "UpGuard Blog",
-    "feed_type": "blog",
-    "type": "vendors-product-blogs",
-    "type_label": "Vendors & Product Blogs",
-    "published": "2026-09-21T04:01:35+00:00",
-    "published_ts": 1789963295,
-    "smart_groups": [],
-    "curated": false
-  },
-  {
-    "title": "The 12 Best Third-Party Risk Management Software Solutions (2026) | UpGuard",
-    "summary": "Compare the 12 best TPRM tools of 2026, including UpGuard, SecurityScorecard, Bitsight, OneTrust and Panorays.",
-    "summary_html": "Compare the 12 best TPRM tools of 2026, including UpGuard, SecurityScorecard, Bitsight, OneTrust and Panorays.",
-    "link": "https://www.upguard.com/blog/best-third-party-risk-management-software-solutions",
     "source": "UpGuard Blog",
     "feed_type": "blog",
     "type": "vendors-product-blogs",
@@ -12508,8 +12679,23 @@
       "Phishing / Social Engineering"
     ],
     "curated": true,
-    "story_id": "c34ce1458f4a",
-    "story_size": 5
+    "story_id": "d60a2804f124",
+    "story_size": 3,
+    "story_primary": true,
+    "story_others": [
+      {
+        "source": "CSO Online",
+        "title": "BigBear 2.0 phishing campaign hijacks Microsoft 365 sessions after MFA",
+        "link": "https://www.csoonline.com/article/4219606/bigbear-2-0-phishing-campaign-hijacks-microsoft-365-sessions-after-mfa.html",
+        "published_ts": 1788864522
+      },
+      {
+        "source": "News4Hackers",
+        "title": "BigBear 2.0 Phishing Campaign Bypasses MFA-Protected Microsoft Accounts",
+        "link": "https://www.news4hackers.com/bigbear-2-0-phishing-campaign-bypasses-mfa-protected-microsoft-accounts/",
+        "published_ts": 1788977011
+      }
+    ]
   },
   {
     "title": "Top 10 Best Managed XDR Services in 2026",
