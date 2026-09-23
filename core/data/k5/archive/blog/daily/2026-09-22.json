@@ -1,9 +1,23 @@
 {
-  "generated_at": "2026-09-23T04:59:29.357346+00:00",
+  "generated_at": "2026-09-23T13:48:24.836758+00:00",
   "date": "2026-09-22",
-  "total_items": 68,
+  "total_items": 70,
   "next_chunk": "archive/blog/daily/2026-09-21.json",
   "items": [
+    {
+      "title": "When IT Support Is the Attack: How Law Firms Can Defend Against Silent Ransom Group",
+      "summary": "Strengthen your readiness against Silent Ransom Group. As SRG increasingly uses IT impersonation and legitimate remote-access tools to target law firms, firms should review how they verify support interactions, protect sensitive client data and detect suspicious activity.",
+      "summary_html": "<p>Strengthen your readiness against Silent Ransom Group. As SRG increasingly uses IT impersonation and legitimate remote-access tools to target law firms, firms should review how they verify support interactions, protect sensitive client data and detect suspicious activity.</p>\n<p>The post <a href=\"https://www.sygnia.co/blog/when-it-support-is-the-attack-how-law-firms-can-defend-against-silent-ransom-group/\">When IT Support Is the Attack: How Law Firms Can Defend Against Silent Ransom Group</a> appeared first on <a href=\"https://www.sygnia.co\">Sygnia</a>.</p>",
+      "link": "https://www.sygnia.co/blog/when-it-support-is-the-attack-how-law-firms-can-defend-against-silent-ransom-group/",
+      "source": "https://www.sygnia.co/feed/",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-09-22T17:52:24+00:00",
+      "published_ts": 1790099544,
+      "smart_groups": [],
+      "curated": false
+    },
     {
       "title": "Check Point Management Server 0-Day Vulnerability Actively Exploited in Attacks",
       "summary": "Check Point has warned customers that attackers are exploiting a critical zero-day vulnerability in its Security Management infrastructure. Tracked as CVE-2026-93616 , the flaw carries a CVSS score of 9.8 and enables an unauthenticated remote attacker to upload and execute arbitrary scripts on an exposed Management Server. Check Point says it has identified a handful of targeted customer attacks and has released emergency fixes. The vulnerability combines directory traversal with unsafe file-upload behavior in the Check Point Management web service . By manipulating file paths, an attacker can cause the service to execute a script from an arbitrary location and load an arbitrary Java class without first authenticating. Successful exploitation therefore gives an external adversary a route to run attacker-controlled code on a highly privileged system that administers security policies and collects operational data. Check Point Management Server 0-Day Exploited Check Point described the exploitation as limited and \u201cpinpointed,\u201d but the activity predates public disclosure. According to the company, the observed attacks occurred on July 23, 2026, making CVE-2026-93616 a zero-day because it was abused before a security update became available. The vendor has not publicly attributed the intrusions or disclosed the attackers\u2019 objectives, payloads, or affected organizations. Affected products include Security Management Server, Multi-Domain Security Management Server, Log Server, Multi-Domain Log Server, and SmartEvent. Vulnerable releases include R82.20; R82.10 Jumbo Hotfix Take 44 and earlier; R82 Take 126 and earlier; R81.20 Take 166 and earlier; and the end-of-support R81.10 Take 190 and earlier. All R80, R80.10, R80.20, R80.30, R80.40, and R81 versions are also affected. Smart-1 Cloud is not vulnerable because Check Point has already applied the fix. Check Point Firewall Appliances and Check Point Spark Firewall are also unaffected by this particular issue. Administrators should not assume LivePatch provides protection: LivePatch Takes 28 and 29 do not remediate CVE-2026-93616, and Check Point says no LivePatch will be available because of the nature of the correction. Organizations should install the R82.20 Security Hotfix or move to a fixed Jumbo Hotfix Accumulator immediately. The correction is included in R82.10 Take 45, R82 Take 127, R81.20 Take 170, and R81.10 Take 192 or later. Until patching is complete, management servers should remain behind a Security Gateway or Check Point firewall, while access to TCP port 19009 must be restricted to trusted IP addresses. Trusted Clients in SmartConsole should likewise contain only trusted internal addresses. Incident responders should hunt across every affected management, logging, and SmartEvent server, not just internet-facing hosts. Check Point\u2019s advisory provides Expert-mode commands for identifying unusually long usernames in cpm.elg logs and correlating those records with FWM or MDS core dumps. It also recommends searching for ReflectionUtils errors stating that the service failed to load an allResourceFiles map, then examining returned paths for traversal sequences such as \u201c../\u201d. Either pattern may indicate an exploitation attempt and warrants immediate investigation. Positive results should trigger immediate, focused forensic investigation. Because compromise of a management server could place a central administrative plane in an attacker\u2019s hands, applying the hotfix should take priority over relying on access controls alone. Teams finding suspicious log entries should preserve relevant logs and core dumps, isolate the affected server where operationally possible, assess subsequent activity, and contact Check Point Support. The vendor\u2019s latest advisory was updated on September 22, 2026, and administrators should monitor it for further indicators or revised guidance. Cut every SOC alert investigation by 21 min. Power your SOC with instant IOC context for immediate response: Integrate TI Lookup in your SOC",
@@ -22,7 +36,7 @@
       ],
       "curated": true,
       "story_id": "4bf76d623443",
-      "story_size": 3
+      "story_size": 4
     },
     {
       "title": "Aembit Launches Support for Okta Cross App Access, Extending Enterprise Identity Controls to AI Agents",
@@ -207,7 +221,7 @@
       ],
       "curated": true,
       "story_id": "1bbc2c4488af",
-      "story_size": 3,
+      "story_size": 5,
       "story_primary": true,
       "story_others": [
         {
@@ -221,6 +235,18 @@
           "title": "Microsoft Disrupts EvilTokens Device Code Phishing Service",
           "link": "https://www.darkreading.com/identity-access-management-security/microsoft-disrupts-eviltokens-device-code-phishing-service",
           "published_ts": 1790107322
+        },
+        {
+          "source": "Help Net Security",
+          "title": "Microsoft disrupts EvilTokens phishing service that gave criminals access to 12,000 inboxes",
+          "link": "https://www.helpnetsecurity.com/2026/09/23/microsoft-eviltokens-phishing-service-disrupted/",
+          "published_ts": 1790152455
+        },
+        {
+          "source": "News4Hackers",
+          "title": "Microsoft Takes Down EvilTokens Phishing Service Affecting 12,000 Inboxes",
+          "link": "https://www.news4hackers.com/microsoft-takes-down-eviltokens-phishing-service-affecting-12000-inboxes/",
+          "published_ts": 1790158082
         }
       ]
     },
@@ -783,6 +809,20 @@
       "summary_html": "<p><span>We're excited to announce Intelligence Center 3.9, a release focused on giving you more flexibility in how you work with AI, and keeping your threat intelligence aligned with the evolving\u00a0industry standards.</span><span> </span></p>",
       "link": "https://blog.eclecticiq.com/intelligence-center-3.9",
       "source": "EclecticIQ Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-09-22T09:00:00+00:00",
+      "published_ts": 1790067600,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Looking for free Robux? Here\u2019s what\u2019s real, and what\u2019s a scam",
+      "summary": "Fake giveaways, free Robux generators and lookalike login pages all target the same thing \u2013 your Roblox account",
+      "summary_html": "Fake giveaways, free Robux generators and lookalike login pages all target the same thing \u2013 your Roblox account",
+      "link": "https://www.welivesecurity.com/en/kids-online/looking-for-free-robux-heres-whats-real-whats-scam/",
+      "source": "ESET \u2013 We Live Security (Vendor)",
       "feed_type": "blog",
       "type": "vendors-product-blogs",
       "type_label": "Vendors & Product Blogs",
