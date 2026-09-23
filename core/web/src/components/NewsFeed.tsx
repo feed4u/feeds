@@ -501,14 +501,9 @@ export function NewsFeed() {
             style={{ top: "var(--app-header-h, 64px)" }}
             className="fixed left-0 right-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm animate-fade-in"
           >
-            <div className="container py-2 flex items-start gap-2">
-              <div
-                className={`flex items-center gap-1.5 min-w-0 flex-1 ${
-                  barExpanded
-                    ? "flex-wrap max-h-[50vh] overflow-y-auto"
-                    : "flex-nowrap overflow-x-auto scrollbar-none"
-                }`}
-              >
+            <div className="container py-1 space-y-1">
+              {/* Views on their own line… */}
+              <div className="flex items-center gap-1.5 overflow-x-auto flex-nowrap scrollbar-none">
                 {views.map((view) => (
                   <Button
                     key={view.id}
@@ -523,33 +518,43 @@ export function NewsFeed() {
                     {view.label}
                   </Button>
                 ))}
-                {topics.length > 0 && (
-                  <span aria-hidden="true" className="shrink-0 h-5 w-px bg-border mx-1" />
-                )}
-                <TopicChips
-                  topics={topics}
-                  selectedTopic={selectedTopic}
-                  onSelect={(topic) => {
-                    setBarExpanded(false);
-                    selectTopic(topic);
-                  }}
-                  activeRef={activeChipRef}
-                />
               </div>
 
+              {/* …so topics get a line of their own and are visible on a phone
+                  rather than pushed off the end of a shared row. */}
               {topics.length > 0 && (
-                <button
-                  type="button"
-                  onClick={() => setBarExpanded((open) => !open)}
-                  aria-expanded={barExpanded}
-                  aria-label={barExpanded ? "Show fewer topics" : "Show all topics"}
-                  className="shrink-0 h-7 px-2 rounded-full border border-border text-[13px] text-muted-foreground hover:text-foreground hover:bg-muted transition-colors flex items-center gap-1"
-                >
-                  {barExpanded ? "Less" : "All"}
-                  <ChevronDown
-                    className={`h-3.5 w-3.5 transition-transform ${barExpanded ? "rotate-180" : ""}`}
-                  />
-                </button>
+                <div className="flex items-start gap-2">
+                  <div
+                    className={`flex items-center gap-1.5 min-w-0 flex-1 ${
+                      barExpanded
+                        ? "flex-wrap max-h-[45vh] overflow-y-auto"
+                        : "flex-nowrap overflow-x-auto scrollbar-none"
+                    }`}
+                  >
+                    <TopicChips
+                      topics={topics}
+                      selectedTopic={selectedTopic}
+                      onSelect={(topic) => {
+                        setBarExpanded(false);
+                        selectTopic(topic);
+                      }}
+                      activeRef={activeChipRef}
+                    />
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => setBarExpanded((open) => !open)}
+                    aria-expanded={barExpanded}
+                    aria-label={barExpanded ? "Show fewer topics" : "Show all topics"}
+                    className="shrink-0 h-7 px-2 rounded-full border border-border text-[13px] text-muted-foreground hover:text-foreground hover:bg-muted transition-colors flex items-center gap-1"
+                  >
+                    {barExpanded ? "Less" : "All"}
+                    <ChevronDown
+                      className={`h-3.5 w-3.5 transition-transform ${barExpanded ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                </div>
               )}
             </div>
           </div>
