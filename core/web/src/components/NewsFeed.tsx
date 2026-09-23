@@ -33,6 +33,13 @@ function itemInView(item: NewsItem, view: string): boolean {
 
 const MAX_TOPICS = 16;
 
+/** Height of the sticky site header, published by <Header> as a CSS variable. */
+function headerHeight(): number {
+  const raw = getComputedStyle(document.documentElement).getPropertyValue("--app-header-h");
+  const value = parseInt(raw, 10);
+  return Number.isFinite(value) ? value : 64;
+}
+
 // A run of this many consecutive stories from one source is folded into a
 // single row so one bulk-posting feed can't dominate a day.
 const BURST_MIN = 6;
@@ -128,6 +135,47 @@ function collapseStories(items: NewsItem[]): FeedEntry[] {
   return entries;
 }
 
+interface TopicChipsProps {
+  topics: Array<{ id: string; count: number }>;
+  selectedTopic: string;
+  onSelect: (topic: string) => void;
+  /** Set on the selected chip so the compact bar can scroll it into view. */
+  activeRef?: React.MutableRefObject<HTMLButtonElement | null>;
+}
+
+function TopicChips({ topics, selectedTopic, onSelect, activeRef }: TopicChipsProps) {
+  const chip = (active: boolean) =>
+    `shrink-0 text-[13px] px-2.5 py-1 rounded-full border transition-colors whitespace-nowrap ${
+      active
+        ? "border-primary/50 bg-primary/10 text-primary"
+        : "border-border text-muted-foreground hover:text-foreground hover:bg-muted"
+    }`;
+  return (
+    <>
+      <button
+        type="button"
+        ref={!selectedTopic ? activeRef : undefined}
+        onClick={() => onSelect("")}
+        className={chip(!selectedTopic)}
+      >
+        All topics
+      </button>
+      {topics.map((topic) => (
+        <button
+          key={topic.id}
+          type="button"
+          ref={selectedTopic === topic.id ? activeRef : undefined}
+          onClick={() => onSelect(topic.id)}
+          className={chip(selectedTopic === topic.id)}
+        >
+          {topic.id}
+          <span className="ml-1 text-[11px] opacity-70 tabular-nums">{topic.count}</span>
+        </button>
+      ))}
+    </>
+  );
+}
+
 export function NewsFeed() {
   const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
   const [generatedAt, setGeneratedAt] = useState<Date | null>(null);
@@ -138,6 +186,16 @@ export function NewsFeed() {
   const [expandedBursts, setExpandedBursts] = useState<Set<string>>(new Set());
   const seenUrlsRef = useRef<Set<string>>(new Set());
   const sentinelRef = useRef<HTMLDivElement | null>(null);
+  // Filter bar: sticks under the header so the reader never has to scroll back
+  // to the top to change view or topic. Once stuck it collapses to a single
+  // scrollable line to stay out of the way of the stories.
+  const [filtersStuck, setFiltersStuck] = useState(false);
+  // The compact bar shows one scrollable line; "All" opens every topic at once.
+  const [barExpanded, setBarExpanded] = useState(false);
+  const filtersTopRef = useRef<HTMLDivElement | null>(null);
+  const filterBarRef = useRef<HTMLDivElement | null>(null);
+  const activeChipRef = useRef<HTMLButtonElement | null>(null);
+  const listTopRef = useRef<HTMLDivElement | null>(null);
 
   // View and topic live in the URL so a filtered feed can be bookmarked.
   const [params, setParams] = useSearchParams();
@@ -162,10 +220,14 @@ export function NewsFeed() {
     [setParams],
   );
 
-  const selectView = (view: string) =>
+  const selectView = (view: string) => {
     updateParams({ view: view === HEADLINES ? null : view, topic: null });
-  const selectTopic = (topic: string) =>
+    if (filtersStuck) scrollToListTop();
+  };
+  const selectTopic = (topic: string) => {
     updateParams({ topic: topic === selectedTopic ? null : topic });
+    if (filtersStuck) scrollToListTop();
+  };
 
   const addItems = useCallback((incoming: NewsItem[]) => {
     const seen = seenUrlsRef.current;
@@ -230,6 +292,67 @@ export function NewsFeed() {
     obs.observe(el);
     return () => obs.disconnect();
   }, [loadMore, searchQuery]);
+
+  // "Stuck" = the filter bar has reached its sticky offset under the header.
+  useEffect(() => {
+    let frame = 0;
+    const measure = () => {
+      frame = 0;
+      const anchor = filtersTopRef.current;
+      if (!anchor) return;
+      setFiltersStuck(anchor.getBoundingClientRect().top <= headerHeight() + 1);
+    };
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(measure);
+    };
+    measure();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
+  // The compact bar scrolls sideways; keep the active chip in sight when it
+  // appears, so the reader can see what is currently selected.
+  useEffect(() => {
+    if (!filtersStuck) {
+      setBarExpanded(false);
+      return;
+    }
+    if (barExpanded) return;
+    const chip = activeChipRef.current;
+    const strip = chip?.parentElement;
+    if (!chip || !strip) return;
+    if (!selectedTopic) {
+      // Nothing is filtered: start the strip at the beginning so the reader
+      // sees the views first, rather than centring the default chip.
+      strip.scrollLeft = 0;
+      return;
+    }
+    // Chase the selection only when it is actually off-screen.
+    const chipBox = chip.getBoundingClientRect();
+    const stripBox = strip.getBoundingClientRect();
+    if (chipBox.left < stripBox.left || chipBox.right > stripBox.right) {
+      chip.scrollIntoView({ block: "nearest", inline: "center" });
+    }
+  }, [filtersStuck, barExpanded, selectedTopic, selectedView]);
+
+  // Changing a filter from the stuck bar replaces the whole list, so put the
+  // reader at the start of the new list rather than leaving them mid-scroll.
+  const scrollToListTop = useCallback(() => {
+    // Measure after the re-render: picking a filter also collapses the
+    // expanded bar, and its old height would put the list under the bar.
+    window.requestAnimationFrame(() => {
+      const list = listTopRef.current;
+      if (!list) return;
+      const offset = headerHeight() + (filterBarRef.current?.offsetHeight ?? 0) + 8;
+      const top = list.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    });
+  }, []);
 
   const views = useMemo<View[]>(() => {
     const counts: Record<string, number> = {};
@@ -313,7 +436,7 @@ export function NewsFeed() {
           highlight={trimmedQuery}
           onSmartGroupClick={(group) => {
             selectTopic(group);
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            scrollToListTop();
           }}
         />
       ) : (
@@ -332,7 +455,16 @@ export function NewsFeed() {
   return (
     <Layout>
       <div className="max-w-4xl mx-auto">
-        <p className="md:hidden mb-3 text-[13px] text-muted-foreground">{vertical.tagline}</p>
+        {/* Page heading lives here rather than in the sticky header, so it
+            scrolls away once the reader is in the stories. */}
+        <div className="mb-3">
+          <h1 className="text-[19px] md:text-[22px] font-semibold text-foreground">
+            {vertical.heading}
+          </h1>
+          <p className="text-[13px] md:text-[15px] text-muted-foreground mt-0.5">
+            {vertical.tagline}
+          </p>
+        </div>
 
         {/* View selector */}
         <div className="flex flex-wrap items-center gap-2">
@@ -355,32 +487,71 @@ export function NewsFeed() {
         {/* Topic chips: wrap on desktop, scroll sideways on phones */}
         {topics.length > 0 && (
           <div className="mt-3 -mx-4 px-4 md:mx-0 md:px-0 flex md:flex-wrap gap-1.5 overflow-x-auto md:overflow-visible pb-1 scrollbar-none">
-            <button
-              type="button"
-              onClick={() => selectTopic("")}
-              className={`shrink-0 text-[13px] px-2.5 py-1 rounded-full border transition-colors ${
-                !selectedTopic
-                  ? "border-primary/50 bg-primary/10 text-primary"
-                  : "border-border text-muted-foreground hover:text-foreground hover:bg-muted"
-              }`}
-            >
-              All topics
-            </button>
-            {topics.map((topic) => (
-              <button
-                key={topic.id}
-                type="button"
-                onClick={() => selectTopic(topic.id)}
-                className={`shrink-0 text-[13px] px-2.5 py-1 rounded-full border transition-colors whitespace-nowrap ${
-                  selectedTopic === topic.id
-                    ? "border-primary/50 bg-primary/10 text-primary"
-                    : "border-border text-muted-foreground hover:text-foreground hover:bg-muted"
+            <TopicChips topics={topics} selectedTopic={selectedTopic} onSelect={selectTopic} />
+          </div>
+        )}
+
+        {/* Once the filters above scroll out from under the header, the same
+            controls return as a compact bar, so changing view or topic never
+            means scrolling back to the top. It floats, so nothing shifts. */}
+        <div ref={filtersTopRef} aria-hidden="true" />
+        {filtersStuck && (
+          <div
+            ref={filterBarRef}
+            style={{ top: "var(--app-header-h, 64px)" }}
+            className="fixed left-0 right-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm animate-fade-in"
+          >
+            <div className="container py-2 flex items-start gap-2">
+              <div
+                className={`flex items-center gap-1.5 min-w-0 flex-1 ${
+                  barExpanded
+                    ? "flex-wrap max-h-[50vh] overflow-y-auto"
+                    : "flex-nowrap overflow-x-auto scrollbar-none"
                 }`}
               >
-                {topic.id}
-                <span className="ml-1 text-[11px] opacity-70 tabular-nums">{topic.count}</span>
-              </button>
-            ))}
+                {views.map((view) => (
+                  <Button
+                    key={view.id}
+                    variant={selectedView === view.id ? "pillActive" : "pill"}
+                    size="pill"
+                    onClick={() => {
+                      setBarExpanded(false);
+                      selectView(view.id);
+                    }}
+                    className="font-sans shrink-0 h-7"
+                  >
+                    {view.label}
+                  </Button>
+                ))}
+                {topics.length > 0 && (
+                  <span aria-hidden="true" className="shrink-0 h-5 w-px bg-border mx-1" />
+                )}
+                <TopicChips
+                  topics={topics}
+                  selectedTopic={selectedTopic}
+                  onSelect={(topic) => {
+                    setBarExpanded(false);
+                    selectTopic(topic);
+                  }}
+                  activeRef={activeChipRef}
+                />
+              </div>
+
+              {topics.length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => setBarExpanded((open) => !open)}
+                  aria-expanded={barExpanded}
+                  aria-label={barExpanded ? "Show fewer topics" : "Show all topics"}
+                  className="shrink-0 h-7 px-2 rounded-full border border-border text-[13px] text-muted-foreground hover:text-foreground hover:bg-muted transition-colors flex items-center gap-1"
+                >
+                  {barExpanded ? "Less" : "All"}
+                  <ChevronDown
+                    className={`h-3.5 w-3.5 transition-transform ${barExpanded ? "rotate-180" : ""}`}
+                  />
+                </button>
+              )}
+            </div>
           </div>
         )}
 
@@ -425,7 +596,7 @@ export function NewsFeed() {
           </p>
         )}
 
-        <div className="space-y-3">
+        <div ref={listTopRef} className="space-y-3">
           {loading ? (
             <div className="text-center py-12 bg-card rounded-lg border border-border">
               <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary border-r-transparent mb-4"></div>
