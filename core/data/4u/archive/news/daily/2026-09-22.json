@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-23T19:52:33.455796+00:00",
+  "generated_at": "2026-09-24T05:10:59.788274+00:00",
   "date": "2026-09-22",
-  "total_items": 1025,
+  "total_items": 1028,
   "next_chunk": "archive/news/daily/2026-09-21.json",
   "items": [
     {
@@ -20,17 +20,8 @@
         "Coding & dev tools"
       ],
       "curated": false,
-      "story_id": "f526d7679022",
-      "story_size": 2,
-      "story_primary": true,
-      "story_others": [
-        {
-          "source": "AI Business - AI Business - informing, educating, and connecting the global AI community.",
-          "title": "OpenAI takes AI price war to next level with GPT-6 Sol, Luna pricing",
-          "link": "https://aibusiness.com/generative-ai/openai-takes-ai-price-war-next-level-gpt-6-sol-luna-pricing",
-          "published_ts": 1790184784
-        }
-      ]
+      "story_id": "3d48e529ad7a",
+      "story_size": 4
     },
     {
       "title": "Exclusive: Microsoft to Boost Copilot Discounts as It Launches AI \u2018Super App\u2019",
@@ -1029,6 +1020,24 @@
       "curated": false
     },
     {
+      "title": "Anthropic Releases Claude Opus 5.5: Fable 5.1-Level Performance at 40% Lower Running Cost Than Opus 5",
+      "summary": "Anthropic has released Claude Opus 5.5 , the first model in its new Claude 5.5 family. The team states it performs at the level of Claude Fable 5.1 on most work. It also costs 40% less to run than Opus 5 on typical workloads at default settings. On Anthropic\u2019s own benchmarks, it leads in agentic coding, computer use, and knowledge work. Is it deployable? Yes, as a managed API model. Anthropic has not released weights, so self-hosting is not an option. Developers can call claude-opus-5-5 on the Claude Platform , Amazon Web Services , Google Cloud , and Microsoft Azure . Zero data retention is available, as with previous Opus models. Benchmarks: Strong Lead, Not a Clean Sweep Opus 5.5 scores use adaptive thinking at max effort, with production safeguards enabled. Benchmark Opus 5.5 Fable 5.1 Opus 5 GPT-6 Astra Terminal-Bench 4.0 66.4% 55.8% 52.3% 57.9% FrontierCode v1.1 54.4% 50.3% 48.0% 53.3% CursorBench 4.0 57.8% 51.8% 46.6% n/r GDPval-AA v2.1 (Elo) 1846 1735 1708 1542 OSWorld 2.0 81.8% 80.7% 74.0% n/r Terminal-Bench-Science 0.1 58.7% 52.6% 29.0% 64.6% AutomationBench 40.0% 31.4% 26.9% 41.4% Terminal-Bench 4.0 is reported at xhigh effort for Opus 5.5. GPT-6 Astra still leads on Terminal-Bench-Science and AutomationBench. Zapier ran AutomationBench without fallback models, so safeguard interventions counted as failures. Anthropic also cautions that benchmark margins are becoming a less reliable guide. In its own use, the gap to Fable 5.1 is narrower than the scores suggest. The cost-adjusted results are more telling. At default (medium) effort, Opus 5.5 scores 54.6% on FrontierCode. That beats GPT-6 Astra\u2019s top score of 53.3% at about a fifth of the cost per task. On CursorBench, medium effort scores 52.5%. That is 11 points above GPT-5.6 Sol\u2019s best, at about a third of the cost. Pricing and Speed Opus 5.5 needs less compute to serve than Opus 5, and pricing reflects that. Per 1M tokens Opus 5.5 Opus 5 Input $4 $5 Output $20 $25 Cache reads $0.20 $0.50 Cache writes $5 $6.25 Cache reads make up most agentic and coding costs, and they drop 60%. Opus 5.5 also uses fewer tokens per task. Together, that nets out to the 40% cost reduction. Output generation is more than 30% faster than Opus 5. Fast mode in Claude Code and the Claude Platform offers up to 2.5x speed at $8 input and $40 output per million tokens. Anthropic is also raising five-hour usage limits on Pro, Max, Team, and seat-based Enterprise plans. Subscribers get a rate limit reset they can save and use later. What Early Testers Reported One tester completed a 680,000-line code migration in less than a day. Another audited and fixed a 200,000-line codebase in under 3 hours. Opus 5 took over 20 hours and 2.5x the tokens. In an internal C to Rust port of HAProxy, Opus 5.5 finished in 9.5 hours. Fable 5.1 took 12 hours, and Opus 5.5 cost 51% less. Deloitte says Opus 5.5 at lowest effort caught 72% of known review bugs. Opus 5 at high effort caught 56%. In a hard-to-source earnings report test, 16 of 18 Opus 5.5 reports cleared Anthropic\u2019s quality bar. Fable 5.1 and Opus 5 never did. Writing style also changed. Opus 5.5 puts key information first, uses less jargon, and follows the writing rules you give it. Safety, Safeguards, and API Changes Opus 5.5 is Anthropic\u2019s first release since CEO Dario Amodei called for pacing the frontier . External evaluators including METR and Frontier Design tested it before release. It posts the best score to date on Anthropic\u2019s automated behavioral audit, which covers nearly 2,000 scenarios. In a new containment test, it tried to circumvent boundaries about 85% less often than Opus 5. Anthropic also notes the model often suspects it is being evaluated. Its biology and cyber capabilities are comparable to Claude Mythos 5.1. So Opus 5.5 ships with safeguards similar to Fable 5.1: Cybersecurity: Routine bug finding and fixing works. Most other cybersecurity tasks are re-routed to Opus 4.8. The Cyber Verification Program will expand to Opus 5.5. Biology: Vetted organizations can apply to the Life Sciences Verification Program . Distillation: Preserved thinking stops API users from editing prior context to extract reasoning. It applies to API accounts created on or after August 31, 2026. Two more changes affect integrations. Thinking can no longer be disabled . Outputs also carry watermarking for EU AI Act compliance. Full details are in the Opus 5.5 System Card . Interactive Explainer Key Takeaways Opus 5.5 matches Fable 5.1 on most work and beats both Opus 5 and Fable 5.1 on nearly every reported benchmark. API pricing drops to $4/$20 per 1M tokens, and cache reads fall 60% to $0.20. Anthropic puts typical workload savings at 40%, with output over 30% faster than Opus 5. Cyber and biology requests hit Fable 5.1-class safeguards, and thinking cannot be switched off. Closed weights: claude-opus-5-5 runs via Claude Platform, AWS, Google Cloud, and Azure. Check out the Technical details here . All credit goes to the researcher of this project. Also, feel free to follow us on Twitter and don\u2019t forget to join our 150k+ML SubReddit and Subscribe to our Newsletter . Wait! are you on telegram? now you can join us on telegram as well. Need to partner with us for promoting your GitHub Repo OR Hugging Face Page OR Product Release OR Webinar etc.? Connect with us",
+      "summary_html": "<p>Anthropic has released <a href=\"https://www.anthropic.com/claude-opus-5-5\">Claude Opus 5.5</a>, the first model in its new Claude 5.5 family. The team states it performs at the level of Claude Fable 5.1 on most work. It also costs 40% less to run than Opus 5 on typical workloads at default settings. On Anthropic\u2019s own benchmarks, it leads in agentic coding, computer use, and knowledge work. </p>\n<p><strong>Is it deployable?</strong> Yes, as a managed API model. Anthropic has not released weights, so self-hosting is not an option. Developers can call <code>claude-opus-5-5</code> on the <a href=\"https://platform.claude.com/docs/en/models/overview\">Claude Platform</a>, <a href=\"https://claude.com/partners/claude-on-aws\">Amazon Web Services</a>, <a href=\"https://claude.com/partners/google-cloud-vertex-ai\">Google Cloud</a>, and <a href=\"https://claude.com/partners/microsoft-foundry\">Microsoft Azure</a>. Zero data retention is available, as with previous Opus models.</p>\n<strong>Benchmarks: Strong Lead, Not a Clean Sweep</strong>\n<p>Opus 5.5 scores use adaptive thinking at max effort, with production safeguards enabled.</p>\nBenchmarkOpus 5.5Fable 5.1Opus 5GPT-6 AstraTerminal-Bench 4.066.4%55.8%52.3%57.9%FrontierCode v1.154.4%50.3%48.0%53.3%CursorBench 4.057.8%51.8%46.6%n/rGDPval-AA v2.1 (Elo)1846173517081542OSWorld 2.081.8%80.7%74.0%n/rTerminal-Bench-Science 0.158.7%52.6%29.0%64.6%AutomationBench40.0%31.4%26.9%41.4%\n<p>Terminal-Bench 4.0 is reported at xhigh effort for Opus 5.5. GPT-6 Astra still leads on Terminal-Bench-Science and AutomationBench. Zapier ran AutomationBench without fallback models, so safeguard interventions counted as failures. Anthropic also cautions that benchmark margins are becoming a less reliable guide. In its own use, the gap to Fable 5.1 is narrower than the scores suggest.</p>\n<p>The cost-adjusted results are more telling. At default (medium) effort, Opus 5.5 scores 54.6% on FrontierCode. That beats GPT-6 Astra\u2019s top score of 53.3% at about a fifth of the cost per task. On CursorBench, medium effort scores 52.5%. That is 11 points above GPT-5.6 Sol\u2019s best, at about a third of the cost.</p>\n<strong>Pricing and Speed</strong>\n<p>Opus 5.5 needs less compute to serve than Opus 5, and pricing reflects that.</p>\nPer 1M tokensOpus 5.5Opus 5Input$4$5Output$20$25Cache reads$0.20$0.50Cache writes$5$6.25\n<p>Cache reads make up most agentic and coding costs, and they drop 60%. Opus 5.5 also uses fewer tokens per task. Together, that nets out to the 40% cost reduction. Output generation is more than 30% faster than Opus 5. Fast mode in Claude Code and the Claude Platform offers up to 2.5x speed at $8 input and $40 output per million tokens.</p>\n<p>Anthropic is also raising five-hour usage limits on Pro, Max, Team, and seat-based Enterprise plans. Subscribers get a rate limit reset they can save and use later.</p>\n<strong>What Early Testers Reported</strong>\n<ul>\n<li>One tester completed a 680,000-line code migration in less than a day.</li>\n<li>Another audited and fixed a 200,000-line codebase in under 3 hours. Opus 5 took over 20 hours and 2.5x the tokens.</li>\n<li>In an internal C to Rust port of HAProxy, Opus 5.5 finished in 9.5 hours. Fable 5.1 took 12 hours, and Opus 5.5 cost 51% less.</li>\n<li>Deloitte says Opus 5.5 at lowest effort caught 72% of known review bugs. Opus 5 at high effort caught 56%.</li>\n<li>In a hard-to-source earnings report test, 16 of 18 Opus 5.5 reports cleared Anthropic\u2019s quality bar. Fable 5.1 and Opus 5 never did.</li>\n</ul>\n<p>Writing style also changed. Opus 5.5 puts key information first, uses less jargon, and follows the writing rules you give it.</p>\n<strong>Safety, Safeguards, and API Changes</strong>\n<p>Opus 5.5 is Anthropic\u2019s first release since CEO Dario Amodei called for <a href=\"https://darioamodei.com/post/we-must-pace-the-frontier\">pacing the frontier</a>. External evaluators including <a href=\"https://metr.org/\">METR</a> and <a href=\"https://www.imaginefrontier.com/\">Frontier Design</a> tested it before release. It posts the best score to date on Anthropic\u2019s automated behavioral audit, which covers nearly 2,000 scenarios. In a new containment test, it tried to circumvent boundaries about 85% less often than Opus 5. Anthropic also notes the model often suspects it is being evaluated.</p>\n<p>Its biology and cyber capabilities are comparable to Claude Mythos 5.1. <strong>So Opus 5.5 ships with safeguards similar to Fable 5.1:</strong></p>\n<ul>\n<li><strong>Cybersecurity:</strong> Routine bug finding and fixing works. Most other cybersecurity tasks are re-routed to Opus 4.8. The <a href=\"https://support.claude.com/en/articles/14604842-real-time-cyber-safeguards-on-claude-opus-and-sonnet\">Cyber Verification Program</a> will expand to Opus 5.5.</li>\n<li><strong>Biology:</strong> Vetted organizations can apply to the <a href=\"https://www.anthropic.com/news/life-sciences-verification-program\">Life Sciences Verification Program</a>.</li>\n<li><strong>Distillation:</strong> <a href=\"https://platform.claude.com/docs/en/build-with-claude/preserved-thinking\">Preserved thinking</a> stops API users from editing prior context to extract reasoning. It applies to API accounts created on or after August 31, 2026.</li>\n</ul>\n<p>Two more changes affect integrations. <a href=\"https://platform.claude.com/docs/en/models/opus-5-5/whats-new-opus-5-5#thinking-cant-be-disabled\">Thinking can no longer be disabled</a>. Outputs also carry <a href=\"https://www.anthropic.com/news/claude-text-watermark\">watermarking</a> for EU AI Act compliance. Full details are in the <a href=\"https://anthropic.com/claude-opus-5-5-system-card\">Opus 5.5 System Card</a>.</p>\n<strong>Interactive Explainer</strong>\n<div>\n</div>\n<p></p>\n<strong>Key Takeaways</strong>\n<ul>\n<li>Opus 5.5 matches Fable 5.1 on most work and beats both Opus 5 and Fable 5.1 on nearly every reported benchmark.</li>\n<li>API pricing drops to $4/$20 per 1M tokens, and cache reads fall 60% to $0.20.</li>\n<li>Anthropic puts typical workload savings at 40%, with output over 30% faster than Opus 5.</li>\n<li>Cyber and biology requests hit Fable 5.1-class safeguards, and thinking cannot be switched off.</li>\n<li>Closed weights: <code>claude-opus-5-5</code> runs via Claude Platform, AWS, Google Cloud, and Azure.</li>\n</ul>\n<p></p>\n\n<p></p>\n<p>Check out the <strong><a href=\"https://www.anthropic.com/claude-opus-5-5\">Technical details here</a></strong>. All credit goes to the researcher of this project. Also,\u00a0feel free to follow us on\u00a0<strong><a href=\"https://x.com/intent/follow?screen_name=marktechpost\">Twitter</a></strong>\u00a0and don\u2019t forget to join our\u00a0<strong><a href=\"https://www.reddit.com/r/machinelearningnews/\">150k+ML SubReddit</a></strong>\u00a0and Subscribe to\u00a0<strong><a href=\"https://magic.beehiiv.com/v1/f5e63dd4-5653-4f09-83e2-321a8b1ba526?email={{email}}\">our Newsletter</a></strong>. Wait! are you on telegram?\u00a0<strong><a href=\"https://t.me/machinelearningresearchnews\">now you can join us on telegram as well.</a></strong></p>\n<p>Need to partner with us for promoting your GitHub Repo OR Hugging Face Page OR Product Release OR Webinar etc.?\u00a0<strong><a href=\"https://forms.gle/MJjjVDPS7whH8Ngs6\">Connect with us</a></strong></p>\n<p>The post <a href=\"https://www.marktechpost.com/2026/09/22/anthropic-claude-opus-5-5-release/\">Anthropic Releases Claude Opus 5.5: Fable 5.1-Level Performance at 40% Lower Running Cost Than Opus 5</a> appeared first on <a href=\"https://www.marktechpost.com\">MarkTechPost</a>.</p>",
+      "link": "https://www.marktechpost.com/2026/09/22/anthropic-claude-opus-5-5-release/",
+      "source": "MarkTechPost - An Artificial Intelligence News Platform",
+      "feed_type": "news",
+      "type": "ai-platforms-infra",
+      "type_label": "AI Platforms & Infra",
+      "published": "2026-09-22T18:59:35+00:00",
+      "published_ts": 1790103575,
+      "smart_groups": [
+        "Model releases"
+      ],
+      "curated": false,
+      "story_id": "8fee313a6a87",
+      "story_size": 3
+    },
+    {
       "title": "In his UN General Assembly speech, Trump rejects a \"globalist scheme to control\" AI, saying the US is \"leading now over China by a lot and everyone else\" (Financial Times)",
       "summary": "Financial Times : In his UN General Assembly speech, Trump rejects a \u201cglobalist scheme to control\u201d AI, saying the US is \u201cleading now over China by a lot and everyone else\u201d \u2014 President says US is 'leading over China by a lot and everyone else, and we're going to keep it that way'",
       "summary_html": "<a href=\"https://www.ft.com/content/0e03521f-c4f1-4242-8fff-0e34a27a26db\"></a>\n<p><a href=\"https://www.techmeme.com/260922/p46#a260922p46\"></a> <a href=\"https://www.ft.com/\">Financial Times</a>:<br/>\n<span><b><a href=\"https://www.ft.com/content/0e03521f-c4f1-4242-8fff-0e34a27a26db\">In his UN General Assembly speech, Trump rejects a \u201cglobalist scheme to control\u201d AI, saying the US is \u201cleading now over China by a lot and everyone else\u201d</a></b></span>\u00a0 \u2014\u00a0 President says US is 'leading over China by a lot and everyone else, and we're going to keep it that way'</p>",
@@ -1056,7 +1065,9 @@
       "published": "2026-09-22T18:53:53+00:00",
       "published_ts": 1790103233,
       "smart_groups": [],
-      "curated": false
+      "curated": false,
+      "story_id": "81cba7eb3b48",
+      "story_size": 5
     },
     {
       "title": "Jev State",
@@ -1468,7 +1479,30 @@
       "smart_groups": [
         "Model releases"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "3d48e529ad7a",
+      "story_size": 4,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "Simon Willison's Weblog",
+          "title": "Claude Opus 5.5, GPT-6 Sol, GPT-6 Luna, and a new price war",
+          "link": "https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna/",
+          "published_ts": 1790120801
+        },
+        {
+          "source": "AI Business - AI Business - informing, educating, and connecting the global AI community.",
+          "title": "OpenAI takes AI price war to next level with GPT-6 Sol, Luna pricing",
+          "link": "https://aibusiness.com/generative-ai/openai-takes-ai-price-war-next-level-gpt-6-sol-luna-pricing",
+          "published_ts": 1790184784
+        },
+        {
+          "source": "The AI Breakdown: Daily Artificial Intelligence News and Discussions",
+          "title": "Opus 5.5 vs GPT-6 Sol and Luna",
+          "link": "https://podcasters.spotify.com/pod/show/nlw/episodes/Opus-5-5-vs-GPT-6-Sol-and-Luna-e3pa5c4",
+          "published_ts": 1790196601
+        }
+      ]
     },
     {
       "title": "OpenAI launches GPT-6 Sol and Luna, boasting lower cost and fewer mistakes",
@@ -1801,7 +1835,9 @@
       "smart_groups": [
         "Research & papers"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "8fee313a6a87",
+      "story_size": 3
     },
     {
       "title": "Toyota orders workers to train humanoid robots but says humans won't be replaced",
@@ -2027,7 +2063,24 @@
       "smart_groups": [
         "Model releases"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "8fee313a6a87",
+      "story_size": 3,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "THE DECODER - Artificial Intelligence: News, Business, Research",
+          "title": "Claude Opus 5.5 matches Fable 5.1 performance at lower cost and promises less \"Claudish\" writing",
+          "link": "https://the-decoder.com/claude-opus-5-5-matches-fable-5-1-at-40-percent-lower-cost-as-anthropic-promises-to-fix-claudish-writing/",
+          "published_ts": 1790097067
+        },
+        {
+          "source": "MarkTechPost - An Artificial Intelligence News Platform",
+          "title": "Anthropic Releases Claude Opus 5.5: Fable 5.1-Level Performance at 40% Lower Running Cost Than Opus 5",
+          "link": "https://www.marktechpost.com/2026/09/22/anthropic-claude-opus-5-5-release/",
+          "published_ts": 1790103575
+        }
+      ]
     },
     {
       "title": "Claude Opus 5.5 delivers Fable 5.1 performance \u2013 and costs 40% less",
@@ -4077,7 +4130,36 @@
       "published": "2026-09-22T11:48:09+00:00",
       "published_ts": 1790077689,
       "smart_groups": [],
-      "curated": false
+      "curated": false,
+      "story_id": "81cba7eb3b48",
+      "story_size": 5,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "International Business Times - Latest News",
+          "title": "Altman and Amodei Have Warned The World About Uncontrolled AI. They Will Now Address The UN Security Council.",
+          "link": "https://www.ibtimes.com/altman-amodei-have-warned-world-about-uncontrolled-ai-they-will-now-address-un-security-council-3807746",
+          "published_ts": 1790103233
+        },
+        {
+          "source": "OpenAI - The OpenAI news",
+          "title": "Sam Altman\u2019s remarks at the United Nations Security Council",
+          "link": "https://openai.com/index/sam-altman-un-security-council-remarks",
+          "published_ts": 1790164800
+        },
+        {
+          "source": "The Information - The Information has a simple mission: deliver important, deeply reported stories about the technology business you won\u2019t find elsewhere. Many \u2026",
+          "title": "Sam Altman and Dario Amodei Brief UN Security Council",
+          "link": "https://www.theinformation.com/briefings/sam-altman-dario-amodei-brief-un-security-council",
+          "published_ts": 1790194761
+        },
+        {
+          "source": "Artificial intelligence (AI) | The Guardian - Latest news and features from theguardian.com, the world's leading liberal voice",
+          "title": "OpenAI\u2019s Altman and Anthropic\u2019s Amodei address UN security council",
+          "link": "https://www.theguardian.com/world/2026/sep/23/unga-sam-altman-dario-amodei",
+          "published_ts": 1790198127
+        }
+      ]
     },
     {
       "title": "OpenAI\u2019s George Osborne says datacentre nimbys holding back Britain",
@@ -4148,6 +4230,22 @@
       "story_size": 2
     },
     {
+      "title": "AutoScheduler launches warehouse app builder for logistics teams",
+      "summary": "AutoScheduler has launched its warehouse app builder to let logistics teams build custom tools directly from live facility data. The new software module forms part of the company\u2019s wider Warehouse AI Platform, serving distribution centres that balance inventory, machinery, and labour. Distribution centres routinely depend on rigid enterprise resource planning and warehouse management suites. When operational snags crop up between these massive platforms, floor managers often turn to manual spreadsheets or unrecorded staff routines. Site planners can now assemble targeted software routines in plain language. This capability bypasses lengthy commercial software release cycles and overburdened enterprise IT queues. Keith Moore, CEO at AutoScheduler, said: \u201cWarehouses run on massive systems that are expensive and slow to customise, so operators fill the gaps with spreadsheets, business intelligence tools, homegrown tools, and tribal knowledge. \u201cThe people who see the problems every day can now fix them, building applications on live warehouse data, backed by real optimisation math, in days. We still orchestrate all the systems inside the building; now we also hand the floor the tools to solve everything in between.\u201d Connecting semantic models to warehouse solvers Instead of relying on broad, unstructured language models to guess logistics logic, the environment sits on an operational semantic layer built across six years of distribution operations. That layer maps relationships across warehouse management systems, labour management records, yard software, and automated machinery. Mathematical solvers interpret user requests and convert plain text prompts into live monitoring dashboards, predictive trackers, and automated tasks. The system writes verified instructions straight back to core management software for floor execution. Operators have already built applications targeting wave sequences, replenishment triggers, and cross-dock allocation priorities. Other deployments track dock door schedule compliance, on-time in-full performance, and production schedules. Because the framework runs on unified infrastructure alongside existing tools such as \u2018Daily Plan\u2019, \u2018Wave Planner\u2019, \u2018Network Scoreboard\u2019, and \u2018Warehouse AI Agent\u2019, sites avoid standing up separate data pipelines for each project. Kunj Pandya, Head of Product and Customer Success at AutoScheduler, explained: \u201cAnyone can point AI at a warehouse. The difference is that our semantic layer already knows what the data means across the WMS, ERP, and labour systems, and every app built can call on optimisation solvers proven across nearly 100 sites.\u201d Field deployments demonstrate quick returns Early rollouts indicate fast operational turnarounds across industrial distribution networks. Site staff built one working application in under 15 minutes during an initial workshop. Another facility planner independently devised a replenishment tracking tool that verified substantial operating gains within a fortnight. That single deployment generated verified operational savings large enough to justify an annual six-figure operating allocation from facility management. Production teams at an international consumer brand validated the practical impact on daily communications and schedule adherence. A planner at a global food and beverage company said: \u201cThe AutoScheduler App Builder feature is one of the best integrations of software and AI that I\u2019ve seen so far. It helps bridge one of the biggest challenges in software development: the gap between understanding a business problem and turning that knowledge into a practical digital solution. \u201cUsing the App Builder, we\u2019ve been able to bring important data directly into our decision-making venues, change workflows, close information gaps, and significantly speed up the flow of information between different stakeholders.\u201d The AI App Builder has entered general commercial availability across the vendor\u2019s client base. AutoScheduler is coupling the software rollout with forward-deployed technical specialists to assist client engineering groups during their initial application builds. See also: Gartner outlines four AI tiers in warehouse automation Want to learn more about AI and big data from industry leaders? Check out AI & Big Data Expo taking place in Amsterdam, California, and London. The comprehensive event is part of TechEx and is co-located with other leading technology events including IoT Tech Expo and the Cyber Security & Cloud Expo . Click here for more information. AI News is powered by TechForge Media . Explore other upcoming enterprise technology events and webinars here .",
+      "summary_html": "<p><a href=\"https://autoscheduler.ai/\">AutoScheduler</a> has launched its warehouse app builder to let logistics teams build custom tools directly from live facility data. The new software module forms part of the company\u2019s wider Warehouse AI Platform, serving distribution centres that balance inventory, machinery, and labour.</p>\n<p>Distribution centres routinely depend on rigid enterprise resource planning and warehouse management suites. When operational snags crop up between these massive platforms, floor managers often turn to manual spreadsheets or unrecorded staff routines. Site planners can now assemble targeted software routines in plain language. This capability bypasses lengthy commercial software release cycles and overburdened enterprise IT queues.</p>\n<p>Keith Moore, CEO at AutoScheduler, said: \u201cWarehouses run on massive systems that are expensive and slow to customise, so operators fill the gaps with spreadsheets, business intelligence tools, homegrown tools, and tribal knowledge.</p>\n<p>\u201cThe people who see the problems every day can now fix them, building applications on live warehouse data, backed by real optimisation math, in days. We still orchestrate all the systems inside the building; now we also hand the floor the tools to solve everything in between.\u201d</p>\nConnecting semantic models to warehouse solvers\n<p>Instead of relying on broad, unstructured language models to guess logistics logic, the environment sits on an operational semantic layer built across six years of distribution operations.</p>\n<p>That layer maps relationships across warehouse management systems, labour management records, yard software, and automated machinery. Mathematical solvers interpret user requests and convert plain text prompts into live monitoring dashboards, predictive trackers, and automated tasks.</p>\n<p>The system writes verified instructions straight back to core management software for floor execution. Operators have already built applications targeting wave sequences, replenishment triggers, and cross-dock allocation priorities. Other deployments track dock door schedule compliance, on-time in-full performance, and production schedules.</p>\n<p>Because the framework runs on unified infrastructure alongside existing tools such as \u2018Daily Plan\u2019, \u2018Wave Planner\u2019, \u2018Network Scoreboard\u2019, and \u2018Warehouse AI Agent\u2019, sites avoid standing up separate data pipelines for each project.</p>\n<p>Kunj Pandya, Head of Product and Customer Success at AutoScheduler, explained: \u201cAnyone can point AI at a warehouse. The difference is that our semantic layer already knows what the data means across the WMS, ERP, and labour systems, and every app built can call on optimisation solvers proven across nearly 100 sites.\u201d</p>\nField deployments demonstrate quick returns\n<p>Early rollouts indicate fast operational turnarounds across industrial distribution networks. Site staff built one working application in under 15 minutes during an initial workshop.</p>\n<p>Another facility planner independently devised a replenishment tracking tool that verified substantial operating gains within a fortnight. That single deployment generated verified operational savings large enough to justify an annual six-figure operating allocation from facility management.</p>\n<p>Production teams at an international consumer brand validated the practical impact on daily communications and schedule adherence.</p>\n<p>A planner at a global food and beverage company said: \u201cThe AutoScheduler App Builder feature is one of the best integrations of software and AI that I\u2019ve seen so far. It helps bridge one of the biggest challenges in software development: the gap between understanding a business problem and turning that knowledge into a practical digital solution.</p>\n<p>\u201cUsing the App Builder, we\u2019ve been able to bring important data directly into our decision-making venues, change workflows, close information gaps, and significantly speed up the flow of information between different stakeholders.\u201d</p>\n<div>\n</div>\n<p>The AI App Builder has entered general commercial availability across the vendor\u2019s client base. AutoScheduler is coupling the software rollout with forward-deployed technical specialists to assist client engineering groups during their initial application builds.</p>\n<p><strong>See also:</strong> <a href=\"https://www.artificialintelligence-news.com/news/gartner-outlines-four-ai-tiers-in-warehouse-automation/\"><strong>Gartner outlines four AI tiers in warehouse automation</strong></a></p>\n<a href=\"https://www.ai-expo.net/?utm_source=AI-News&amp;utm_medium=Footer-banner&amp;utm_campaign=world-series\"></a>\n<p><strong>Want to learn more about AI and big data from industry leaders?</strong> Check out <a href=\"https://www.ai-expo.net/?utm_source=AI-News&amp;utm_medium=Footer-banner&amp;utm_campaign=world-series\">AI &amp; Big Data Expo</a> taking place in Amsterdam, California, and London. The comprehensive event is part of <a href=\"https://techexevent.com/?utm_source=AI-News&amp;utm_medium=Footer-banner&amp;utm_campaign=world-series\">TechEx</a> and is co-located with other leading technology events including <a href=\"https://www.iottechexpo.com/?utm_source=IoT-News&amp;utm_medium=Footer-banner&amp;utm_campaign=world-series\">IoT Tech Expo</a> and the <a href=\"https://cybersecuritycloudexpo.com/?utm_source=CloudTech-News&amp;utm_medium=Footer-banner&amp;utm_campaign=world-series\">Cyber Security &amp; Cloud Expo</a>. Click <a href=\"https://techexevent.com/?utm_source=AI-News&amp;utm_medium=Footer-banner&amp;utm_campaign=world-series\">here</a> for more information.</p>\n<p>AI News is powered by <a href=\"https://techforge.pub/?utm_source=AI-News&amp;utm_medium=Footer-banner&amp;utm_campaign=world-series\">TechForge Media</a>. Explore other upcoming enterprise technology events and webinars <a href=\"https://techforge.pub/events/?utm_source=AI-News&amp;utm_medium=Footer-banner&amp;utm_campaign=world-series\">here</a>.</p>\n<p>The post <a href=\"https://www.artificialintelligence-news.com/news/autoscheduler-warehouse-app-builder-for-logistics-teams/\">AutoScheduler launches warehouse app builder for logistics teams</a> appeared first on <a href=\"https://www.artificialintelligence-news.com\">AI News</a>.</p>",
+      "link": "https://www.artificialintelligence-news.com/news/autoscheduler-warehouse-app-builder-for-logistics-teams/",
+      "source": "AI News - Artificial Intelligence News",
+      "feed_type": "news",
+      "type": "general-news",
+      "type_label": "General News",
+      "published": "2026-09-22T11:34:39+00:00",
+      "published_ts": 1790076879,
+      "smart_groups": [
+        "Robotics & autonomy"
+      ],
+      "curated": false
+    },
+    {
       "title": "Amazon Blocks Meta\u2019s Muse AI Agent From Shopping on Amazon.com Over Bot Access",
       "summary": "Amazon blocked Meta\u2019s Muse AI agent from shopping on Amazon.com, exposing new tensions over browser access, AI agents, and online commerce.",
       "summary_html": "<p>Amazon blocked Meta\u2019s Muse AI agent from shopping on Amazon.com, exposing new tensions over browser access, AI agents, and online commerce.</p>\n<p>The post <a href=\"https://www.techrepublic.com/article/news-amazon-blocks-meta-muse/\">Amazon Blocks Meta\u2019s Muse AI Agent From Shopping on Amazon.com Over Bot Access</a> appeared first on <a href=\"https://www.techrepublic.com\">TechRepublic</a>.</p>",
@@ -4164,7 +4262,7 @@
       ],
       "curated": false,
       "story_id": "e5d2aa5092ba",
-      "story_size": 8
+      "story_size": 9
     },
     {
       "title": "China Probes DeepSeek, Moonshot Over Potential Data Leaks to Anthropic",
@@ -4561,6 +4659,22 @@
           "published_ts": 1790137626
         }
       ]
+    },
+    {
+      "title": "Toyota\u2019s $6.4bn robotics estimate puts physical AI in focus",
+      "summary": "Toyota Motor estimates that expanding automation across its factories, group companies, and major suppliers could require around 400,000 robots and annual spending of about 1 trillion yen ($6.4 billion) from 2028. The potential investment was discussed with investors earlier in September, according to Reuters . Toyota has not said whether the full investment will proceed or how many years spending at that level would continue. The 400,000 figure includes replacements for existing machines and new robot installations, covering humanoid and non-humanoid systems. The potential investment spans industrial robots, automated logistics, and future human-robot collaboration on factory floors. Toyota already uses and tests robotics across several manufacturing processes. In its FY2026 financial results, the company listed factory demonstrations involving parts transportation and parts picking, alongside robotics work in areas such as medical equipment transportation. Toyota builds on earlier automation work At Toyota\u2019s Kamigo Plant, a piston assembly line that began operating with robots in January 2025 has since moved from three operators to full automation, according to Toyota\u2019s 2025 integrated report. The plant\u2019s automation work began much earlier. It started introducing robots on selected sub-lines in 2008, but the company later encountered maintenance constraints as it expanded engine production overseas. Toyota said some overseas facilities lacked enough skilled maintenance workers to support the automated equipment. Some processes were consequently returned to manual production while manufacturing knowledge from Japanese plants was transferred to overseas sites. Workers then developed jigs and tools that Toyota said could double or triple efficiency in some manually operated processes. Knowledge accumulated through that work was later used in the development of newer automated production systems, including the piston assembly line at Kamigo. Toyota is also developing systems that can handle parts without requiring them to be positioned precisely in advance. Its KumiPro parts-picking robot uses cameras to identify and handle loosely positioned components and is already operating on production lines at Toyota Motor East Japan. Toyota has demonstrated an assembly process in which force-feedback control compensates for recognition errors from the cameras. The robot can adjust its movement while inserting components into narrow spaces, compensating for differences between camera recognition and the physical position of an object. Toyota develops physical AI for production environments Toyota uses the term physical AI to describe technology that allows robots to perceive their surroundings through sensors, learn or optimise their actions according to a situation, and operate autonomously. Toyota said its Frontier Research Center is addressing labour shortages and skill transfer through robotics, including applications at production sites. The centre\u2019s work includes technologies developed through its Human Support Robot programme. Toyota said object recognition, decision-making, and motion-execution technologies from the Human Support Robot programme have been applied to KumiPro at Toyota Motor East Japan. Toyota is also developing ELEY, or Embodied Learning robot for Enhanced Yield, for tasks involving physical contact with objects and the surrounding environment. The robot uses two human-like arms and an omnidirectional mobile base and is designed to cope with external forces that can occur when a machine encounters an object at a position different from what it expected. Toyota has identified long-duration reliability, repeatability in reaching precise positions, and the data infrastructure required for robot learning as areas that still need work. It plans to test ELEY under conditions closer to production sites and use both successful and unsuccessful attempts as training data. Toyota is separately using reinforcement learning to train humanoid robots in simulated environments before transferring learned behaviour to physical machines. The company runs thousands of simulated robot instances in parallel to speed up the learning process. Toyota said movements that work in simulation do not always transfer directly to physical hardware because conditions such as sensor readings, floor friction, and actuator behaviour differ. Researchers introduce variations in those conditions during training and use data from physical robots to narrow what Toyota describes as the Sim2Real gap. Toyota Research Institute is also working with Boston Dynamics on AI control systems for the Atlas humanoid robot. In 2025, the organisations demonstrated Atlas completing a sequence of walking, lifting, sorting, and packing tasks using a single Large Behavior Model, with robot skills added through human demonstrations. Japan was the world\u2019s second-largest market for industrial robots in 2024, with about 450,500 robots in operation and another 44,500 installed during the year, according to the International Federation of Robotics. Japan\u2019s automotive industry installed about 13,000 industrial robots in 2024, up 11% from the previous year and the highest annual total since 2020. Toyota\u2019s 400,000 estimate is broader than IFR\u2019s industrial-robot figures because it includes replacement equipment and multiple types of robots across Toyota, group companies, and major suppliers. Hyundai Motor Group has set a timetable for deploying humanoid robots in automotive production. It plans to introduce Atlas at Hyundai Motor Group Metaplant America in Savannah, Georgia, beginning in 2028, initially for parts sequencing before expanding into component assembly from 2030. Hyundai said it will expand Atlas into additional manufacturing processes after validating individual applications. The group has also set a target of establishing annual production capacity for as many as 30,000 robots by 2028. Boston Dynamics, which develops Atlas, is controlled by Hyundai Motor Group, which bought a controlling stake in the robotics company in 2021. Boston Dynamics also separately works with Toyota Research Institute, with the research partnership combining Atlas with TRI\u2019s Large Behavior Models. (Photo by HY ART ) See also: Gartner outlines four AI tiers in warehouse automation Want to learn more about AI and big data from industry leaders? Check out AI & Big Data Expo taking place in Amsterdam, California, and London. The comprehensive event is part of TechEx and is co-located with other leading technology events including the Cyber Security & Cloud Expo . Click here for more information. AI News is powered by TechForge Media . Explore other upcoming enterprise technology events and webinars here .",
+      "summary_html": "<p>Toyota Motor estimates that expanding automation across its factories, group companies, and major suppliers could require around 400,000 robots and annual spending of about 1 trillion yen ($6.4 billion) from 2028.</p>\n<p>The potential investment was discussed with investors earlier in September, according to <em>Reuters</em>. Toyota has not said whether the full investment will proceed or how many years spending at that level would continue.</p>\n<p>The 400,000 figure includes replacements for existing machines and new robot installations, covering humanoid and non-humanoid systems. The potential investment spans industrial robots, automated logistics, and future human-robot collaboration on factory floors.</p>\n<p>Toyota already uses and tests robotics across several manufacturing processes. In its FY2026 financial results, the company listed factory demonstrations involving parts transportation and parts picking, alongside robotics work in areas such as medical equipment transportation.</p>\nToyota builds on earlier automation work\n<p>At Toyota\u2019s Kamigo Plant, a piston assembly line that began operating with robots in January 2025 has since moved from three operators to full automation, according to Toyota\u2019s 2025 integrated report.</p>\n<p>The plant\u2019s automation work began much earlier. It started introducing robots on selected sub-lines in 2008, but the company later encountered maintenance constraints as it expanded engine production overseas.</p>\n<p>Toyota said some overseas facilities lacked enough skilled maintenance workers to support the automated equipment. Some processes were consequently returned to manual production while manufacturing knowledge from Japanese plants was transferred to overseas sites.</p>\n<p>Workers then developed jigs and tools that Toyota said could double or triple efficiency in some manually operated processes. Knowledge accumulated through that work was later used in the development of newer automated production systems, including the piston assembly line at Kamigo.</p>\n<p>Toyota is also developing systems that can handle parts without requiring them to be positioned precisely in advance. Its KumiPro parts-picking robot uses cameras to identify and handle loosely positioned components and is already operating on production lines at Toyota Motor East Japan.</p>\n<p>Toyota has demonstrated an assembly process in which force-feedback control compensates for recognition errors from the cameras. The robot can adjust its movement while inserting components into narrow spaces, compensating for differences between camera recognition and the physical position of an object.</p>\nToyota develops physical AI for production environments\n<p>Toyota uses the term physical AI to describe technology that allows robots to perceive their surroundings through sensors, learn or optimise their actions according to a situation, and operate autonomously.</p>\n<p>Toyota said its Frontier Research Center is addressing labour shortages and skill transfer through robotics, including applications at production sites. The centre\u2019s work includes technologies developed through its Human Support Robot programme.</p>\n<p>Toyota said object recognition, decision-making, and motion-execution technologies from the Human Support Robot programme have been applied to KumiPro at Toyota Motor East Japan.</p>\n<p>Toyota is also developing ELEY, or Embodied Learning robot for Enhanced Yield, for tasks involving physical contact with objects and the surrounding environment. The robot uses two human-like arms and an omnidirectional mobile base and is designed to cope with external forces that can occur when a machine encounters an object at a position different from what it expected.</p>\n<p>Toyota has identified long-duration reliability, repeatability in reaching precise positions, and the data infrastructure required for robot learning as areas that still need work. It plans to test ELEY under conditions closer to production sites and use both successful and unsuccessful attempts as training data.</p>\n<p>Toyota is separately using reinforcement learning to train humanoid robots in simulated environments before transferring learned behaviour to physical machines. The company runs thousands of simulated robot instances in parallel to speed up the learning process.</p>\n<p>Toyota said movements that work in simulation do not always transfer directly to physical hardware because conditions such as sensor readings, floor friction, and actuator behaviour differ. Researchers introduce variations in those conditions during training and use data from physical robots to narrow what Toyota describes as the Sim2Real gap.</p>\n<p>Toyota Research Institute is also working with Boston Dynamics on AI control systems for the Atlas humanoid robot. In 2025, the organisations demonstrated Atlas completing a sequence of walking, lifting, sorting, and packing tasks using a single Large Behavior Model, with robot skills added through human demonstrations.</p>\n<p>Japan was the world\u2019s second-largest market for industrial robots in 2024, with about 450,500 robots in operation and another 44,500 installed during the year, according to the International Federation of Robotics.</p>\n<p>Japan\u2019s automotive industry installed about 13,000 industrial robots in 2024, up 11% from the previous year and the highest annual total since 2020.</p>\n<p>Toyota\u2019s 400,000 estimate is broader than IFR\u2019s industrial-robot figures because it includes replacement equipment and multiple types of robots across Toyota, group companies, and major suppliers.</p>\n<p>Hyundai Motor Group has set a timetable for deploying humanoid robots in automotive production. It plans to introduce Atlas at Hyundai Motor Group Metaplant America in Savannah, Georgia, beginning in 2028, initially for parts sequencing before expanding into component assembly from 2030.</p>\n<p>Hyundai said it will expand Atlas into additional manufacturing processes after validating individual applications. The group has also set a target of establishing annual production capacity for as many as 30,000 robots by 2028.</p>\n<p>Boston Dynamics, which develops Atlas, is controlled by Hyundai Motor Group, which bought a controlling stake in the robotics company in 2021. Boston Dynamics also separately works with Toyota Research Institute, with the research partnership combining Atlas with TRI\u2019s Large Behavior Models.</p>\n<p><em>(Photo by <a href=\"https://unsplash.com/@irvinghy?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText\">HY ART</a>)</em></p>\n<p><strong>See also: <a href=\"https://www.artificialintelligence-news.com/news/gartner-outlines-four-ai-tiers-in-warehouse-automation/\">Gartner outlines four AI tiers in warehouse automation</a></strong></p>\n<a href=\"https://www.ai-expo.net/?utm_source=AI-News&amp;utm_medium=Footer-banner&amp;utm_campaign=world-series\"></a>\n<p><strong>Want to learn more about AI and big data from industry leaders?</strong> Check out <a href=\"https://www.ai-expo.net/?utm_source=AI-News&amp;utm_medium=Footer-banner&amp;utm_campaign=world-series\">AI &amp; Big Data Expo</a> taking place in Amsterdam, California, and London. The comprehensive event is part of <a href=\"https://techexevent.com/?utm_source=AI-News&amp;utm_medium=Footer-banner&amp;utm_campaign=world-series\">TechEx</a> and is co-located with other leading technology events including the <a href=\"https://cybersecuritycloudexpo.com/?utm_source=CloudTech-News&amp;utm_medium=Footer-banner&amp;utm_campaign=world-series\">Cyber Security &amp; Cloud Expo</a>. Click <a href=\"https://techexevent.com/?utm_source=AI-News&amp;utm_medium=Footer-banner&amp;utm_campaign=world-series\">here</a> for more information.</p>\n<p>AI News is powered by <a href=\"https://techforge.pub/?utm_source=AI-News&amp;utm_medium=Footer-banner&amp;utm_campaign=world-series\">TechForge Media</a>. Explore other upcoming enterprise technology events and webinars <a href=\"https://techforge.pub/events/?utm_source=AI-News&amp;utm_medium=Footer-banner&amp;utm_campaign=world-series\">here</a>.</p>\n<p>The post <a href=\"https://www.artificialintelligence-news.com/news/toyota-physical-ai-factory-robotics/\">Toyota\u2019s $6.4bn robotics estimate puts physical AI in focus</a> appeared first on <a href=\"https://www.artificialintelligence-news.com\">AI News</a>.</p>",
+      "link": "https://www.artificialintelligence-news.com/news/toyota-physical-ai-factory-robotics/",
+      "source": "AI News - Artificial Intelligence News",
+      "feed_type": "news",
+      "type": "general-news",
+      "type_label": "General News",
+      "published": "2026-09-22T10:00:00+00:00",
+      "published_ts": 1790071200,
+      "smart_groups": [
+        "Robotics & autonomy"
+      ],
+      "curated": false
     },
     {
       "title": "Light Code, Not Heavy Glass: OptikosPrime and Eyewa Bring Clinical AI Vision Care to Smartphones",
@@ -5453,7 +5567,7 @@
       ],
       "curated": false,
       "story_id": "d7ca6e636e6b",
-      "story_size": 2
+      "story_size": 3
     },
     {
       "title": "How to Delegate Data Engineering to AI Agents in Microsoft Fabric",
@@ -7983,7 +8097,18 @@
         "Safety & alignment",
         "Security & misuse"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "826e19cffdff",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "cs.LG updates on arXiv.org - Computer Science -- Machine Learning (cs.LG) updates on the arXiv.org e-print archive",
+          "title": "Scaling of Capability and Efficiency at Inference Time in Large Reasoning Models",
+          "link": "https://arxiv.org/abs/2609.27166",
+          "published_ts": 1790222400
+        }
+      ]
     },
     {
       "title": "Distill What You Trust: Reliability-Aware Multi-Teacher On-Policy Distillation",
@@ -15633,7 +15758,18 @@
       "smart_groups": [
         "Infra & model ops"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "453c6ce67c99",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "cs.CL updates on arXiv.org - Computer Science -- Computation and Language (cs.CL) updates on the arXiv.org e-print archive",
+          "title": "When Parallel Drafter Meets Parallel Speculative Decoding",
+          "link": "https://arxiv.org/abs/2609.27396",
+          "published_ts": 1790222400
+        }
+      ]
     },
     {
       "title": "Opinion Leader Dynamics: How Sparse Attention Shapes Token Clustering",

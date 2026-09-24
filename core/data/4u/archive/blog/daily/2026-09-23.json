@@ -1,9 +1,123 @@
 {
-  "generated_at": "2026-09-23T19:52:33.600570+00:00",
+  "generated_at": "2026-09-24T05:10:59.880588+00:00",
   "date": "2026-09-23",
-  "total_items": 57,
+  "total_items": 80,
   "next_chunk": "archive/blog/daily/2026-09-22.json",
   "items": [
+    {
+      "title": "Google says its AI model gained unauthorized access to three outside systems",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.nbcnews.com/tech/tech-news/google-says-ai-model-gained-unauthorized-access-three-systems-rcna598651\">https://www.nbcnews.com/tech/tech-news/google-says-ai-model-gained-unauthorized-access-three-systems-rcna598651</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49824369\">https://news.ycombinator.com/item?id=49824369</a></p>\n<p>Points: 2</p>\n<p># Comments: 1</p>",
+      "link": "https://www.nbcnews.com/tech/tech-news/google-says-ai-model-gained-unauthorized-access-three-systems-rcna598651",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-23T23:58:27+00:00",
+      "published_ts": 1790207907,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Qwen 3.8 Flash Next q4_k_m, 130k context, q8 cache on 16GB VRAM ann 64GB RAM, 15-20 t/s on 4080",
+      "summary": "Thought it's about time to share after testing for a week. You need four things most people miss: the right quant, the right model, the right branch, and the right cache flags. https://github.com/dtm-beep/qwen38-flash-next-mtp-16gb TLDR: AtomicChat AD-4.27bpw Q4_K_M target + the shared Unsloth MTP head, build from my pr-mtp-fix branch (plain master can't load this MTP head yet, it's PR #28243 + one fix commit), and --spec-draft-cpu-moe is the trick that makes 16 GB work. Draft experts live in RAM so the target's hot experts get the GPU. IQ4_XS ~10 t/s \u2192 16.5 tg / 350 pp at 131k, q8 KV. Hope it helps someone. submitted by /u/AvidCyclist250 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Thought it's about time to share after testing for a week. You need four things most people miss: the right quant, the right model, the right branch, and the right cache flags. </p> <p><a href=\"https://github.com/dtm-beep/qwen38-flash-next-mtp-16gb\">https://github.com/dtm-beep/qwen38-flash-next-mtp-16gb</a> </p> <p>TLDR: AtomicChat AD-4.27bpw Q4_K_M target + the shared Unsloth MTP head, build from my pr-mtp-fix branch (plain master can't load this MTP head yet, it's PR #28243 + one fix commit), and --spec-draft-cpu-moe is the trick that makes 16 GB work. Draft experts live in RAM so the target's hot experts get the GPU. IQ4_XS ~10 t/s \u2192 16.5 tg / 350 pp at 131k, q8 KV. </p> <p>Hope it helps someone.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/AvidCyclist250\"> /u/AvidCyclist250 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wom3fe/qwen_38_flash_next_q4_k_m_130k_context_q8_cache/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wom3fe/qwen_38_flash_next_q4_k_m_130k_context_q8_cache/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wom3fe/qwen_38_flash_next_q4_k_m_130k_context_q8_cache/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-23T23:46:41+00:00",
+      "published_ts": 1790207201,
+      "smart_groups": [
+        "Chips & hardware",
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Using uncensored models makes working less of a headache",
+      "summary": "I have a lot of projects with my friends and team at work that I copy to use for my personal projects, whether it's a plugin I borrow with their consent or a script. I always find that Qwen 3.8 and Muse Spark 1.3 straight up refuse to do anything, as they see it as a steal, so I have just been rocking Qwen3.8-27B-Heretic-JP-Roleplay-NSFW-DanbooruTags.i1-Q4_K_M, and it feels so good to just be able to tell it to do something, and it actually does it. I know the model isn't made for coding or projects but roleplay, but I don't see a big dip in performance as it does what's asked to do. Does anyone else have this problem or not? submitted by /u/Khaledthe [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I have a lot of projects with my friends and team at work that I copy to use for my personal projects, whether it's a plugin I borrow with their consent or a script. I always find that Qwen 3.8 and Muse Spark 1.3 straight up refuse to do anything, as they see it as a steal, so I have just been rocking Qwen3.8-27B-Heretic-JP-Roleplay-NSFW-DanbooruTags.i1-Q4_K_M, and it feels so good to just be able to tell it to do something, and it actually does it. I know the model isn't made for coding or projects but roleplay, but I don't see a big dip in performance as it does what's asked to do.</p> <p>Does anyone else have this problem or not?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Khaledthe\"> /u/Khaledthe </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wol7zc/using_uncensored_models_makes_working_less_of_a/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wol7zc/using_uncensored_models_makes_working_less_of_a/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wol7zc/using_uncensored_models_makes_working_less_of_a/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-23T23:08:47+00:00",
+      "published_ts": 1790204927,
+      "smart_groups": [
+        "Coding & dev tools"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Qwen FN vs 27B --- Think I'm saturated.",
+      "summary": "Got QFN up and running on our Strix box this past weekend and have been running on it for a few days now. Big thank you/shout out to the Halogen team, it's running fantastic on the Strix, this is clearly \"the setup\" right now for this hardware with this model, really impressive performance for such a large model (~30-40TPS generation, ~900-1000TPS prefill on real world use, not benchmarks, over the past few days)! However, that said, I kind of feel like 27B saturated my personal use cases. QFN is a great model, but I'm not really noticing much where I think \"Wow, 27B would never get this and QFN just one shot it\". They feel very similar in capabilities (IE, both are amazing!) and I kind of feel like I'm reaching the end of the runway for what I can realistically make use of in my day to day use cases, I'm just asking questions that really require more than 27B the majority of the time. It really feels more to me like a very similar level of smart, one that runs well with limited memory bandwidth (QFN) and one that runs well with limited GPU memory (27B). It's an interesting result, and I guess maybe I should have expected it because I was really struggling already to find things that I actually need to do day to day professionally that 27B couldn't do. When I escalate to the cloud now it's nearly always for either speed or context, rarely intelligence. Surprising result, at least to me, I was expecting to have my hair blown back, but I guess this is just yet another data point that \"good enough is good enough\". submitted by /u/OvertaxedOne [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Got QFN up and running on our Strix box this past weekend and have been running on it for a few days now. Big thank you/shout out to the Halogen team, it's running fantastic on the Strix, this is clearly \"the setup\" right now for this hardware with this model, really impressive performance for such a large model (~30-40TPS generation, ~900-1000TPS prefill on real world use, not benchmarks, over the past few days)!</p> <p>However, that said, I kind of feel like 27B saturated my personal use cases. QFN is a great model, but I'm not really noticing much where I think \"Wow, 27B would never get this and QFN just one shot it\". They feel very similar in capabilities (IE, both are amazing!) and I kind of feel like I'm reaching the end of the runway for what I can realistically make use of in my day to day use cases, I'm just asking questions that really require more than 27B the majority of the time. </p> <p>It really feels more to me like a very similar level of smart, one that runs well with limited memory bandwidth (QFN) and one that runs well with limited GPU memory (27B). It's an interesting result, and I guess maybe I should have expected it because I was really struggling already to find things that I actually need to do day to day professionally that 27B couldn't do. When I escalate to the cloud now it's nearly always for either speed or context, rarely intelligence. </p> <p>Surprising result, at least to me, I was expecting to have my hair blown back, but I guess this is just yet another data point that \"good enough is good enough\".</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/OvertaxedOne\"> /u/OvertaxedOne </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1woi2ho/qwen_fn_vs_27b_think_im_saturated/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1woi2ho/qwen_fn_vs_27b_think_im_saturated/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1woi2ho/qwen_fn_vs_27b_think_im_saturated/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-23T20:58:59+00:00",
+      "published_ts": 1790197139,
+      "smart_groups": [
+        "Research & papers",
+        "Chips & hardware"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Lemonade fixes AMD APU model streaming, drops OpenMOSS ROCm as ~40x slower than Vulkan",
+      "summary": "submitted by /u/Fcking_Chuck [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wogzdm/lemonade_fixes_amd_apu_model_streaming_drops/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/Fcking_Chuck\"> /u/Fcking_Chuck </a> <br/> <span><a href=\"https://www.phoronix.com/news/Lemonade-2026.40-RC\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wogzdm/lemonade_fixes_amd_apu_model_streaming_drops/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wogzdm/lemonade_fixes_amd_apu_model_streaming_drops/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-23T20:16:51+00:00",
+      "published_ts": 1790194611,
+      "smart_groups": [
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
+      "title": "NVFP4 - what does the quality usually equate to? (5090)",
+      "summary": "i keep seeing people recommending, for people with Blackwell/ 5090 cards, that using nvfp4 is \"a no brainer\" because of the big speed benefits. but my response is always... but that means trading down from Q5 or Q6 quality (depending on how much context I want) down to... what? ive assumed nvfp4 was basically Q4 or less, but people seem to think it competes with Q8, and its hard to find actual quantitative comparisons. submitted by /u/nirurin [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>i keep seeing people recommending, for people with Blackwell/ 5090 cards, that using nvfp4 is \"a no brainer\" because of the big speed benefits. </p> <p>but my response is always... but that means trading down from Q5 or Q6 quality (depending on how much context I want) down to... what? </p> <p>ive assumed nvfp4 was basically Q4 or less, but people seem to think it competes with Q8, and its hard to find actual quantitative comparisons. </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/nirurin\"> /u/nirurin </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wogz1a/nvfp4_what_does_the_quality_usually_equate_to_5090/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wogz1a/nvfp4_what_does_the_quality_usually_equate_to_5090/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wogz1a/nvfp4_what_does_the_quality_usually_equate_to_5090/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-23T20:16:30+00:00",
+      "published_ts": 1790194590,
+      "smart_groups": [
+        "Chips & hardware"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Please Google, for the love of God.",
+      "summary": "Gemma 5, 220B A18B QAT plus ngrams please. Thank you very much! Will settle for 120B A16B plus ngrams. submitted by /u/CriticallyCarmelized [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Gemma 5, 220B A18B QAT plus ngrams please. Thank you very much!</p> <p>Will settle for 120B A16B plus ngrams.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/CriticallyCarmelized\"> /u/CriticallyCarmelized </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wogfjx/please_google_for_the_love_of_god/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wogfjx/please_google_for_the_love_of_god/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wogfjx/please_google_for_the_love_of_god/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-23T19:56:04+00:00",
+      "published_ts": 1790193364,
+      "smart_groups": [
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
     {
       "title": "VSArena \u2013 The official open browser benchmark for embodied AI",
       "summary": "",
@@ -51,7 +165,9 @@
       "smart_groups": [
         "Security & misuse"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "8e86764ef494",
+      "story_size": 2
     },
     {
       "title": "How we made claude.ai 3x faster in two weeks",
@@ -84,6 +200,33 @@
         "Security & misuse"
       ],
       "curated": false
+    },
+    {
+      "title": "Introducing Support for Local AI Models in the Antigravity SDK",
+      "summary": "submitted by /u/dryadofelysium [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wof9kk/introducing_support_for_local_ai_models_in_the/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/dryadofelysium\"> /u/dryadofelysium </a> <br/> <span><a href=\"https://developers.googleblog.com/introducing-support-for-local-ai-models-in-the-antigravity-sdk/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wof9kk/introducing_support_for_local_ai_models_in_the/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wof9kk/introducing_support_for_local_ai_models_in_the/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-23T19:12:18+00:00",
+      "published_ts": 1790190738,
+      "smart_groups": [
+        "Infra & model ops"
+      ],
+      "curated": false,
+      "story_id": "8e86764ef494",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+          "title": "Support for Local AI Models in the Antigravity SDK",
+          "link": "https://developers.googleblog.com/introducing-support-for-local-ai-models-in-the-antigravity-sdk/",
+          "published_ts": 1790191985
+        }
+      ]
     },
     {
       "title": "Jensen Huang on AI Alarmists \u2013 NYT Ezra Klein Show",
@@ -200,6 +343,23 @@
       "curated": false
     },
     {
+      "title": "Jev isn't new tech. Its marketing targets people who think AI started with LLMs.",
+      "summary": "I keep seeing Jev presented as some new class of decision model, but most of what\u2019s being advertised is just normal classifier behavior with modern zero-shot capabilities. It outputs probabilities over constrained choices, doesn\u2019t generate autoregressively, can\u2019t output an invalid class, and can use labels defined at inference time. None of that is new. Zero-shot/NLI classifiers, embedding models, cross-encoders and rerankers have been doing variations of this for years. The weird part is that most of the impressive Jev comparisons are against LLMs. Of course a specialized classifier is faster and cheaper than making an autoregressive LLM generate an answer. That doesn\u2019t establish a new paradigm. The meaningful comparison is against strong existing classifiers. The purpose of this is to mislead. There are already benchmarks like BTZSC evaluating dozens of zero-shot classifiers across 22 datasets, including NLI models, embedding models and rerankers. I haven\u2019t seen Jev properly benchmarked across that landscape yet. ( https://proceedings.iclr.cc/paper_files/paper/2026/hash/417e1c15b3d49852fceded8aa104107d-Abstract-Conference.html ) Where people have compared Jev with conventional classifiers, the story is much less magical. One Banking77 experiment got 93.3% from BGE-small + logistic regression versus 83.2% for Jev, at about 9ms locally. ( https://github.com/ickma2311/jev-baselines-eval ) Some of the marketing also goes into the misleading territory. The \u201ccan\u2019t hallucinate\u201d framing is very sus, for example. Their own explanation admits the 0% hallucination figure is not empirical, and what they actually guarantee is that Jev returns an answer matching the allowed schema. That prevents invalid outputs, it does not prevent confidently choosing the wrong valid answer. ( https://typesafe.ai/blog/introducing-system-one-models-and-jev ) So color me a skeptic. Look, Jev might even be a good product. Maybe their unpublished architecture or RLCD training method is genuinely novel. But nothing we've seen so far establishes that \"System One Models\" are a new class of AI. What the public evidence mostly establishes is that using a specialized classifier for classification can be much cheaper and faster than using an autoregressive LLM, which we already knew. It only sounds novel if your idea of AI begins and ends with LLMs. submitted by /u/tiensss [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I keep seeing Jev presented as some new class of decision model, but most of what\u2019s being advertised is just normal classifier behavior with modern zero-shot capabilities.</p> <p>It outputs probabilities over constrained choices, doesn\u2019t generate autoregressively, can\u2019t output an invalid class, and can use labels defined at inference time. None of that is new. Zero-shot/NLI classifiers, embedding models, cross-encoders and rerankers have been doing variations of this for years.</p> <p>The weird part is that most of the impressive Jev comparisons are against LLMs. Of course a specialized classifier is faster and cheaper than making an autoregressive LLM generate an answer. That doesn\u2019t establish a new paradigm. The meaningful comparison is against strong existing classifiers. The purpose of this is to mislead.</p> <p>There are already benchmarks like BTZSC evaluating dozens of zero-shot classifiers across 22 datasets, including NLI models, embedding models and rerankers. I haven\u2019t seen Jev properly benchmarked across that landscape yet.<br/> (<a href=\"https://proceedings.iclr.cc/paper_files/paper/2026/hash/417e1c15b3d49852fceded8aa104107d-Abstract-Conference.html?utm_source=chatgpt.com\">https://proceedings.iclr.cc/paper_files/paper/2026/hash/417e1c15b3d49852fceded8aa104107d-Abstract-Conference.html</a>)</p> <p>Where people have compared Jev with conventional classifiers, the story is much less magical. One Banking77 experiment got 93.3% from BGE-small + logistic regression versus 83.2% for Jev, at about 9ms locally.<br/> (<a href=\"https://github.com/ickma2311/jev-baselines-eval?utm_source=chatgpt.com\">https://github.com/ickma2311/jev-baselines-eval</a>)</p> <p>Some of the marketing also goes into the misleading territory. The \u201ccan\u2019t hallucinate\u201d framing is very sus, for example. Their own explanation admits the 0% hallucination figure is not empirical, and what they actually guarantee is that Jev returns an answer matching the allowed schema. That prevents invalid outputs, it does not prevent confidently choosing the wrong valid answer. (<a href=\"https://typesafe.ai/blog/introducing-system-one-models-and-jev?utm_source=chatgpt.com\">https://typesafe.ai/blog/introducing-system-one-models-and-jev</a>)</p> <p>So color me a skeptic. Look, Jev might even be a good product. Maybe their unpublished architecture or RLCD training method is genuinely novel. But nothing we've seen so far establishes that \"System One Models\" are a new class of AI. What the public evidence mostly establishes is that using a specialized classifier for classification can be much cheaper and faster than using an autoregressive LLM, which we already knew. It only sounds novel if your idea of AI begins and ends with LLMs.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/tiensss\"> /u/tiensss </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1woe70t/jev_isnt_new_tech_its_marketing_targets_people/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1woe70t/jev_isnt_new_tech_its_marketing_targets_people/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1woe70t/jev_isnt_new_tech_its_marketing_targets_people/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-23T18:33:21+00:00",
+      "published_ts": 1790188401,
+      "smart_groups": [
+        "Research & papers",
+        "Safety & alignment"
+      ],
+      "curated": false
+    },
+    {
       "title": "Discover Solo: The Ultimate AI-Integrated Control Panel",
       "summary": "",
       "summary_html": "<p>Article URL: <a href=\"https://blog.master.dev/introducing-solo/\">https://blog.master.dev/introducing-solo/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49820421\">https://news.ycombinator.com/item?id=49820421</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
@@ -312,6 +472,22 @@
       "curated": false
     },
     {
+      "title": "apple/LensVLM-9B \u00b7 Hugging Face",
+      "summary": "https://huggingface.co/bartowski/LensVLM-9B-GGUF LensVLM-9B LensVLM is a 9B Vision Language Model (VLM) that scans compressed images of text, then selectively expands only the relevant pages to their uncompressed form via learned tools. Paper: LensVLM: Selective Context Expansion for Compressed Visual Representation of Text Code: https://github.com/apple-aiml-research/ml-lensvlm License All ML model files in this repository, including Apple's modifications to the Qwen model, are provided under the terms of the Apple Machine Learning Research Model License . The source code that accompanies this model is distributed separately and is provided under the terms of the Apple Sample Code License. submitted by /u/jacek2023 [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wodf84/applelensvlm9b_hugging_face/\">  </a>  <!-- SC_OFF --><div><p><a href=\"https://huggingface.co/bartowski/LensVLM-9B-GGUF\">https://huggingface.co/bartowski/LensVLM-9B-GGUF</a></p> <a href=\"https://huggingface.co/apple/LensVLM-9B#lensvlm-9b\"></a>LensVLM-9B <p>LensVLM is a 9B Vision Language Model (VLM) that scans compressed images of text, then selectively expands only the relevant pages to their uncompressed form via learned tools.</p> <ul> <li>Paper: <a href=\"https://arxiv.org/abs/2605.07019\">LensVLM: Selective Context Expansion for Compressed Visual Representation of Text</a></li> <li>Code: <a href=\"https://github.com/apple-aiml-research/ml-lensvlm\">https://github.com/apple-aiml-research/ml-lensvlm</a></li> </ul> <a href=\"https://huggingface.co/apple/LensVLM-9B#license\"></a>License <p>All ML model files in this repository, including Apple's modifications to the Qwen model, are provided under the terms of the <a href=\"https://huggingface.co/apple/LensVLM-9B/blob/main/LICENSE\">Apple Machine Learning Research Model License</a>.</p> <p>The source code that accompanies this model is distributed separately and is provided under the terms of the Apple Sample Code License.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/jacek2023\"> /u/jacek2023 </a> <br/> <span><a href=\"https://huggingface.co/apple/LensVLM-9B\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wodf84/applelensvlm9b_hugging_face/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wodf84/applelensvlm9b_hugging_face/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-23T18:04:25+00:00",
+      "published_ts": 1790186665,
+      "smart_groups": [
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
       "title": "How to Use Self-Hosted AI Agent Sandboxes on Kubernetes",
       "summary": "",
       "summary_html": "<p>Article URL: <a href=\"https://edera.dev/stories/how-to-use-self-hosted-ai-agent-sandboxes-on-kubernetes-with-edera\">https://edera.dev/stories/how-to-use-self-hosted-ai-agent-sandboxes-on-kubernetes-with-edera</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49820039\">https://news.ycombinator.com/item?id=49820039</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
@@ -342,6 +518,105 @@
       "smart_groups": [
         "Infra & model ops",
         "Data & analytics"
+      ],
+      "curated": false
+    },
+    {
+      "title": "BFL releases FLUX 3 Action: a 7B robot model",
+      "summary": "",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wod7l0/bfl_releases_flux_3_action_a_7b_robot_model/\">  </a>  <!-- SC_OFF --><div><p>read more: <a href=\"https://bfl.ai/models/flux-3-action\">https://bfl.ai/models/flux-3-action</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/paf1138\"> /u/paf1138 </a> <br/> <span><a href=\"https://huggingface.co/collections/black-forest-labs/flux-3-action\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wod7l0/bfl_releases_flux_3_action_a_7b_robot_model/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wod7l0/bfl_releases_flux_3_action_a_7b_robot_model/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-23T17:56:52+00:00",
+      "published_ts": 1790186212,
+      "smart_groups": [
+        "Model releases",
+        "Robotics & autonomy"
+      ],
+      "curated": false
+    },
+    {
+      "title": "MiMo-V2.6 (both Pro and Flash) is a benchmaxxed scam",
+      "summary": "MiMo-V2.6-Pro has an insanely high score of 46 on AA, putting it at the head of the opensource models available. It also costs pennies. Flash is not out on AA yet, but it costs less than half on datacenter and is slightly below on Xiaomi's own benchmarks. It also fits in 192GB, which makes it the first real use case for Gorgon Halo. So I tried both models. This is not a benchmark; it's an educated impression from a senior SWE. MiMo-V2.6-Pro I gave it a security-focused task: enable a bubblewrap sandbox to do git push to github, but not git push --force or other destructive commands. Optional flag --no-git when starting the sandbox completely disables github write access. It stopped to ask me questions as it spotted unclear corner cases in the design \ud83e\udd47 , then moved on to implementing. It was slow, but that's just an inference issue (~25 tok/s) that should be fixed in a few days as more providers come online. Then I read its output and I had to pick up my jaw from the floor, where it had dropped. With an extremely quick glance at the code, I immediately spotted that, in order to bypass --no-git, you would have to perform this extremely complicated and exotic command inside the sandbox: $ git push (fails) $ echo GIT_STATUS blocked $ GIT_STATUS=\"p0wn3d by l33t h4xx0r\" git push (successful) This is 15-year-old script kiddie level. I didn't read further. I asked GLM-5.3 (full-fat) to do a security review of the change. In 3 minutes, it found NINE glaring security holes that allow bypassing git and gh restrictions. A few examples that made me want to rip my hair out: In the default restricted mode, git push works \ud83e\udd47 git push --force is blocked \ud83e\udd47 git push -f is blocked \ud83e\udd47 git push -uf lets you happily wipe out the git remote. \u2620\ufe0f git config alias.fp 'push --force --no-verify && git fp goes through too \u2620\ufe0f env -u GIT_CONFIG_COUNT /usr/bin/git push --force blasts through \u2620\ufe0f Again. This is an intern-with-acne level kind of incompetence. To seal the lid on the coffin, MiMo's prose in the chat is infuriating. Not quite Opus-level infuriating, but it gets close. It hurts the eyes and it frequently takes 2 reads to understand what the hell it's saying. GLM, DeepSeek, and Qwen are much more pleasant to work with. MiMo-V2.6-Flash I asked MiMo-V2.6-Flash to do a very simple git surgery: create a new branch off master and cherry-pick a single commit from another branch. However, I didn't realise that the git worktree I pointed it to was corrupted (the branch on the main git repo was fine). A dumb model would have just returned \"there's no git here, I have no idea what you're talking about\" A smarter model would have noticed that there was a /worktrees/ in the path, come up with an educated guess about what happened, and gave me a hint on how to fix it A very smart model would have noticed that the only other directory existing in the sandbox was the main git repo, which had a branch with the same name as the broken worktree directory, and recovered it from there. MiMo-V2.6-Flash went on 80k tokens worth of acid trip. It first attempted to find the main git repo, failed, and then panicked and went down a rabbit hole which involved tampering with /tmp, mount --bind , and other insanity. I noticed after a while as I was wondering what the heck was wrong. I suspect that given enough time it may have nuked my main git repo and I tremble at the idea of what it could have done if not sandboxed. If you scale down Pro's intelligence on AA by comparing the available self-published benchmarks against those of Pro (which is a very crude method but gives a ballpark idea), MiMo-V2.6-Flash comes out on par with GLM-5.3-Flash (high) and Qwen3.8-Flash. Which is absolutely, categorically, not. DO NOT shell out the money for a Gorgon Halo for MiMo-V2.6-Flash. Qwen3.8-Flash on a Strix Halo is vastly better. I'm going to stick with my previous models: DSv4.1 Flash as the default GLM-5.3-Flash (high) as the dirt cheap option GLM-5.3 when the big guns are needed Qwen3.8-Flash and Qwen3.8-27B to run locally (I have a 3080 so Flash is very slow). submitted by /u/crusaderky [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>MiMo-V2.6-Pro has an insanely high score of 46 on AA, putting it at the head of the opensource models available. It also costs pennies. Flash is not out on AA yet, but it costs less than half on datacenter and is slightly below on Xiaomi's own benchmarks. It also fits in 192GB, which makes it the first real use case for Gorgon Halo.</p> <p>So I tried both models. This is not a benchmark; it's an educated impression from a senior SWE.</p> MiMo-V2.6-Pro <p>I gave it a security-focused task: enable a bubblewrap sandbox to do git push to github, but not git push --force or other destructive commands. Optional flag --no-git when starting the sandbox completely disables github write access.</p> <p>It stopped to ask me questions as it spotted unclear corner cases in the design \ud83e\udd47 , then moved on to implementing.</p> <p>It was slow, but that's just an inference issue (~25 tok/s) that should be fixed in a few days as more providers come online.</p> <p>Then I read its output and I had to pick up my jaw from the floor, where it had dropped.</p> <p>With an extremely quick glance at the code, I immediately spotted that, in order to bypass --no-git, you would have to perform this extremely complicated and exotic command inside the sandbox:</p> <pre><code>$ git push (fails) $ echo GIT_STATUS blocked $ GIT_STATUS=\"p0wn3d by l33t h4xx0r\" git push (successful) </code></pre> <p>This is 15-year-old script kiddie level.</p> <p>I didn't read further. I asked GLM-5.3 (full-fat) to do a security review of the change.</p> <p>In 3 minutes, it found <strong>NINE</strong> glaring security holes that allow bypassing git and gh restrictions. A few examples that made me want to rip my hair out:</p> <p>In the default restricted mode,</p> <ul> <li><code>git push</code> works \ud83e\udd47</li> <li><code>git push --force</code> is blocked \ud83e\udd47</li> <li><code>git push -f</code> is blocked \ud83e\udd47</li> <li><code>git push -uf</code> lets you happily wipe out the git remote. \u2620\ufe0f</li> <li><code>git config alias.fp 'push --force --no-verify &amp;&amp; git fp</code> goes through too \u2620\ufe0f</li> <li><code>env -u GIT_CONFIG_COUNT /usr/bin/git push --force</code>blasts through \u2620\ufe0f</li> </ul> <p>Again. This is an intern-with-acne level kind of incompetence.</p> <p>To seal the lid on the coffin, MiMo's prose in the chat is infuriating. Not quite Opus-level infuriating, but it gets close. It hurts the eyes and it frequently takes 2 reads to understand what the hell it's saying. GLM, DeepSeek, and Qwen are much more pleasant to work with.</p> MiMo-V2.6-Flash <p>I asked MiMo-V2.6-Flash to do a very simple git surgery: create a new branch off master and cherry-pick a single commit from another branch.</p> <p>However, I didn't realise that the git worktree I pointed it to was corrupted (the branch on the main git repo was fine).</p> <ul> <li>A <strong>dumb</strong> model would have just returned \"there's no git here, I have no idea what you're talking about\"</li> <li>A <strong>smarter</strong> model would have noticed that there was a /worktrees/ in the path, come up with an educated guess about what happened, and gave me a hint on how to fix it</li> <li>A <strong>very smart</strong> model would have noticed that the only other directory existing in the sandbox was the main git repo, which had a branch with the same name as the broken worktree directory, and recovered it from there.</li> </ul> <p>MiMo-V2.6-Flash went on 80k tokens worth of acid trip. It first attempted to find the main git repo, failed, and then panicked and went down a rabbit hole which involved tampering with /tmp, <code>mount --bind</code>, and other insanity. I noticed after a while as I was wondering what the heck was wrong. I suspect that given enough time it may have nuked my main git repo and I tremble at the idea of what it could have done if not sandboxed.</p> <p>If you scale down Pro's intelligence on AA by comparing the available self-published benchmarks against those of Pro (which is a very crude method but gives a ballpark idea), MiMo-V2.6-Flash comes out on par with GLM-5.3-Flash (high) and Qwen3.8-Flash.</p> <p>Which is absolutely, categorically, not.</p> <p>DO NOT shell out the money for a Gorgon Halo for MiMo-V2.6-Flash. Qwen3.8-Flash on a Strix Halo is vastly better.</p> <p>I'm going to stick with my previous models:</p> <ul> <li>DSv4.1 Flash as the default</li> <li>GLM-5.3-Flash (high) as the dirt cheap option</li> <li>GLM-5.3 when the big guns are needed</li> <li>Qwen3.8-Flash and Qwen3.8-27B to run locally (I have a 3080 so Flash is very slow).</li> </ul> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/crusaderky\"> /u/crusaderky </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1woa5d3/mimov26_both_pro_and_flash_is_a_benchmaxxed_scam/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1woa5d3/mimov26_both_pro_and_flash_is_a_benchmaxxed_scam/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1woa5d3/mimov26_both_pro_and_flash_is_a_benchmaxxed_scam/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-23T16:05:14+00:00",
+      "published_ts": 1790179514,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Streaming Nemotron 3 Diarization",
+      "summary": "I\u2019ve been playing with Nemotron 3 Diarization , and it fills a gap I\u2019ve had with local voice agents: keeping track of who is speaking. It\u2019s a diarization model, so it gives you speaker labels rather than transcriptions or people\u2019s names. It can stream its output and track up to eight speakers. I\u2019ve been trying it with one-second streaming chunks, and the quality has been really good in my tests. I plugged it into my speech-to-speech setup on a DGX Spark and connected it to a Reachy Mini. The fun part is watching someone new speak, then seeing the robot ask their name and remember it for the conversation (that's the video!). It has day-zero Transformers integration and is getting a commercial-friendly license. submitted by /u/futterneid [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wo8tr5/streaming_nemotron_3_diarization/\">  </a>  <!-- SC_OFF --><div><p>I\u2019ve been playing with <a href=\"https://huggingface.co/nvidia/Nemotron-3-Diarization\">Nemotron 3 Diarization</a>, and it fills a gap I\u2019ve had with local voice agents: keeping track of <em>who</em> is speaking.</p> <p>It\u2019s a diarization model, so it gives you speaker labels rather than transcriptions or people\u2019s names. It can stream its output and track up to eight speakers. I\u2019ve been trying it with one-second streaming chunks, and the quality has been really good in my tests.</p> <p>I plugged it into my <a href=\"https://github.com/huggingface/speech-to-speech\">speech-to-speech</a> setup on a DGX Spark and connected it to a Reachy Mini. The fun part is watching someone new speak, then seeing the robot ask their name and remember it for the conversation (that's the video!).</p> <p>It has day-zero Transformers integration and is getting a commercial-friendly license.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/futterneid\"> /u/futterneid </a> <br/> <span><a href=\"https://v.redd.it/o75a3utrdarh1\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wo8tr5/streaming_nemotron_3_diarization/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wo8tr5/streaming_nemotron_3_diarization/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-23T15:16:30+00:00",
+      "published_ts": 1790176590,
+      "smart_groups": [
+        "Agents & automation",
+        "Robotics & autonomy"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Perhaps the highest quality mainline quants of Qwen3.8 27B?",
+      "summary": "I am proud to release these quants of Qwen 3.8 27B. They beat the excellent ISTA and Unsloth quants byte-for-byte on three corpora. Both KLD and top 1% were tested 3x. It took a week of continuous GPU and CPU time to generate these, all done on a single Strix Halo. https://huggingface.co/agentionai/Qwen3.8-27B-AP-GGUF Hope you like it. submitted by /u/Dutchnamn [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I am proud to release these quants of Qwen 3.8 27B. They beat the excellent ISTA and Unsloth quants byte-for-byte on three corpora. Both KLD and top 1% were tested 3x. It took a week of continuous GPU and CPU time to generate these, all done on a single Strix Halo.</p> <p><a href=\"https://huggingface.co/agentionai/Qwen3.8-27B-AP-GGUF\">https://huggingface.co/agentionai/Qwen3.8-27B-AP-GGUF</a></p> <p>Hope you like it. </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Dutchnamn\"> /u/Dutchnamn </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wo7sfo/perhaps_the_highest_quality_mainline_quants_of/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wo7sfo/perhaps_the_highest_quality_mainline_quants_of/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wo7sfo/perhaps_the_highest_quality_mainline_quants_of/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-23T14:37:26+00:00",
+      "published_ts": 1790174246,
+      "smart_groups": [
+        "Chips & hardware",
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
+      "title": "MiMo-V3 is getting a new architecture. The core of it, HySparse2, is out today.",
+      "summary": "https://arxiv.org/pdf/2609.26368 submitted by /u/Recoil42 [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wo7mr6/mimov3_is_getting_a_new_architecture_the_core_of/\">  </a>  <!-- SC_OFF --><div><p><a href=\"https://arxiv.org/pdf/2609.26368\">https://arxiv.org/pdf/2609.26368</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Recoil42\"> /u/Recoil42 </a> <br/> <span><a href=\"https://i.redd.it/qfo9y90z5arh1.png\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wo7mr6/mimov3_is_getting_a_new_architecture_the_core_of/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wo7mr6/mimov3_is_getting_a_new_architecture_the_core_of/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-23T14:31:12+00:00",
+      "published_ts": 1790173872,
+      "smart_groups": [
+        "Research & papers"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Mods: can we do something about half the forum getting filled with these advertising posts for Jev?",
+      "summary": "Jev is a paid product that dumped a lot of venture capitol money into shill their product here and in other subreddits. Obvious shill posts are obvious. submitted by /u/Acrobatic_Stress1388 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Jev is a paid product that dumped a lot of venture capitol money into shill their product here and in other subreddits. Obvious shill posts are obvious. </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Acrobatic_Stress1388\"> /u/Acrobatic_Stress1388 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wo6o0f/mods_can_we_do_something_about_half_the_forum/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wo6o0f/mods_can_we_do_something_about_half_the_forum/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wo6o0f/mods_can_we_do_something_about_half_the_forum/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-23T13:54:12+00:00",
+      "published_ts": 1790171652,
+      "smart_groups": [
+        "Consumer AI"
       ],
       "curated": false
     },
@@ -685,6 +960,56 @@
       "curated": false
     },
     {
+      "title": "Cost of intelligence is dropping fast",
+      "summary": "https://preview.redd.it/43n0bhiap8rh1.png?width=960&format=png&auto=webp&s=776785f6eb39e3eba519b85f8be8eb7453318a4f 50% per quarter is amazing. 4\u00d7 faster than DNA sequencing, 6\u00d7 faster than compute, 18\u00d7 faster than lithium batteries, and (up to 1973) 54\u00d7 faster than electricity. https://x.com/EpochAIResearch/status/2102510281176023529 Every year moving forward is going to be significantly different that the prior year. What do you think? We will be running coding agents on our phones pretty soon. submitted by /u/Terminator857 [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wo1bct/cost_of_intelligence_is_dropping_fast/\">  </a>  <!-- SC_OFF --><div><p><a href=\"https://preview.redd.it/43n0bhiap8rh1.png?width=960&amp;format=png&amp;auto=webp&amp;s=776785f6eb39e3eba519b85f8be8eb7453318a4f\">https://preview.redd.it/43n0bhiap8rh1.png?width=960&amp;format=png&amp;auto=webp&amp;s=776785f6eb39e3eba519b85f8be8eb7453318a4f</a></p> <p>50% per quarter is amazing. 4\u00d7 faster than DNA sequencing, 6\u00d7 faster than compute, 18\u00d7 faster than lithium batteries, and (up to 1973) 54\u00d7 faster than electricity. <a href=\"https://x.com/EpochAIResearch/status/2102510281176023529\">https://x.com/EpochAIResearch/status/2102510281176023529</a></p> <p>Every year moving forward is going to be significantly different that the prior year. What do you think? We will be running coding agents on our phones pretty soon.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Terminator857\"> /u/Terminator857 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wo1bct/cost_of_intelligence_is_dropping_fast/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wo1bct/cost_of_intelligence_is_dropping_fast/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wo1bct/cost_of_intelligence_is_dropping_fast/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-23T09:38:19+00:00",
+      "published_ts": 1790156299,
+      "smart_groups": [
+        "Agents & automation",
+        "Coding & dev tools"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Jev in 25 lines of Python",
+      "summary": "submitted by /u/johnnyApplePRNG [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wo07r8/jev_in_25_lines_of_python/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/johnnyApplePRNG\"> /u/johnnyApplePRNG </a> <br/> <span><a href=\"https://www.nobodywho.ai/posts/jev-in-25-lines/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wo07r8/jev_in_25_lines_of_python/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wo07r8/jev_in_25_lines_of_python/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-23T08:31:25+00:00",
+      "published_ts": 1790152285,
+      "smart_groups": [
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Engram gone wild! 2b model update...",
+      "summary": "Update from : https://old.reddit.com/r/LocalLLaMA/comments/1wis23s/update_small_model_engram/ It's been about a week so I'm back. People were asking me about the model. People wanted code, or models, etc. Most of that is useless to you right now because you're not going to use an under trained model. So let's get to the details. The spec locked to the following after a LOT of testing : 2.6b model all up. Embedding, LM head, AttnRes, etc. 2.2b are trained. Embedding / LM Head are frozen (~205m each) 4.3b ENGRAM table. Yes. She's chonky. Architecturally speaking now : This includes SWA layering 3:1 as per standard ablations have shown is \"optimal\" These are 4k / 4k / 8k SWA layer follow by the global. At the end of the first \"block\" (4 layers) the Engram table appears. The Engram table itself runs with a very small set of attention heads so it's not blindly attempting to inject data. This is context aware Engram. I'm uncertain of exact Qwen / DS methods here. They're fairly close to what I use. The difference is obviously the Engram size. This has 10 blocks plus a final global layer (41 Layers). + Embed + LM Head So if we step back, the optimization problem is as follows : How do we maximize compute in the backbone and offload the boring stuff to a table? Attention Based Residuals (Moonshot) comes to our rescue here. Why AttnRes? It allows all blocks past 1 to utilize the Engram table in some fashion. They all have attention via the residual stream to determine if they want data from Engram and precisely how much. Why not a bigger Engram table? Honestly? You could probably do that. However I don't know if any model has attempted this sort of mismatch of compute vs table. In theory, DeepSeek's research says it works. More depth? Could do that too. Training is expensive though. Why frozen LM/Embed? These are down projected via SVD from OLMo 3's model. So it's a mathematical compression attempt at ~5k -> 2k. This saves a MASSIVE amount of time. Currently the data lives in a ~KD format. 32 logits stored from the teacher of the Wikipedia corpus. Instead of training 1 hot, it gets 32 soft targets to try to match. Hard cross entropy is brutal on a model and it's the reason you see \"trillions of tokens\" quoted. When you borrow an LM Head / Embed / Tokenizer / Teacher model... This is far less. --- Where are we now in training? I passed the 100m token mark yesterday at ~4am Pacific. The current HF repo has all the checkpoints, data, and the 104m mark safetensor. -- I wanted to do some inspection of the model at this point. We have to see that it's not complete garbage right? It has seen a fraction of the data it needs. So based on ONLY 100m tokens seen, I attempted completions and various ablations. Studies of what EXACTLY Engram stores (because it's mostly a guess). Let's go straight to completions : \"George Washington was an American\" With Engram - \"George Washington was an American naval officer who served in the American Revolutionary War. He was a naval officer who served in\" With Engram Zero'd - \"George Washington was an American, but he was not a. He was a very good friend and a. He was\" \"The American Civil War was a civil war in the United States from\" With - \"The American Civil War was a civil war in the United States from 1861 to 1861. The war was a major victory for the Confederacy...\" Without - \"The American Civil War was a civil war in the United States from 1861 to 1862. The war was a major victory for the Confederacy...\" \"Aristotle was an Ancient Greek\" (probably my favorite) With - \"Aristotle was an Ancient Greek philosopher who was a leading authority in the philosophy of Plato. He was also a leading authority...\" Without - \"Aristotle was an Ancient Greek word meaning \"to be\" (\u1f00\u03c0\u03ac\u03c2, \"to be\")...\" --- What do we learn from direct inspection of Engram? If it saw the data enough times, it starts to offload it to the tables. At that point the model is less forced to use internal computational space to store data, and can rely on Engram. That's not some interpretation. That's what the data shows exactly. In the early 100m tokens of Wikipedia it's HIGHLY biased to early Philosophy. This has to do with the topics of what was IN Wikipedia at that time. Early Wiki contained a lot about Philosophy. It's among the earliest topics to exist. It has seen TONS of Philosophy so it has basically offloaded to Engram because of the repetition. Ok this is long enough. I'm calling it quits. I'm still looking to find a provider that will sponsor the model to completion. Right now I'm just paying. I contacted Verda and they never responded. Qubrid is in this sub, and they said they'd help but never emailed back after a few repeated proddings. Massed Compute is where this model is currently training, and I asked them like yesterday. Hopefully they'll help a brother out. None of the above is \"LLM written\" except the completions from testing I guess. As usual, ask whatever. It doesn't matter your understanding level or whatever. I'll sit and respond. No question too dumb. No insult not insulting enough. (I'm joking. It's Reddit) Much Love. submitted by /u/NineThreeTilNow [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Update from : <a href=\"https://old.reddit.com/r/LocalLLaMA/comments/1wis23s/update_small_model_engram/\">https://old.reddit.com/r/LocalLLaMA/comments/1wis23s/update_small_model_engram/</a></p> <p>It's been about a week so I'm back. People were asking me about the model.</p> <p>People wanted code, or models, etc. Most of that is useless to you right now because you're not going to use an under trained model. So let's get to the details.</p> <p>The spec locked to the following after a LOT of testing :</p> <p>2.6b model all up. Embedding, LM head, AttnRes, etc. </p> <p>2.2b are trained. Embedding / LM Head are frozen (~205m each)</p> <p>4.3b ENGRAM table. Yes. She's chonky.</p> <p>Architecturally speaking now :</p> <p>This includes SWA layering 3:1 as per standard ablations have shown is \"optimal\" These are 4k / 4k / 8k SWA layer follow by the global.</p> <p>At the end of the first \"block\" (4 layers) the Engram table appears. The Engram table itself runs with a very small set of attention heads so it's not blindly attempting to inject data. This is context aware Engram. I'm uncertain of exact Qwen / DS methods here. They're fairly close to what I use. The difference is obviously the Engram size. </p> <p>This has 10 blocks plus a final global layer (41 Layers). + Embed + LM Head</p> <p>So if we step back, the optimization problem is as follows :</p> <p>How do we maximize compute in the backbone and offload the boring stuff to a table?</p> <p>Attention Based Residuals (Moonshot) comes to our rescue here. Why AttnRes? It allows all blocks past 1 to utilize the Engram table in some fashion. They all have attention via the residual stream to determine if they want data from Engram and precisely how much. </p> <p>Why not a bigger Engram table? Honestly? You could probably do that. However I don't know if any model has attempted this sort of mismatch of compute vs table. In theory, DeepSeek's research says it works. </p> <p>More depth? Could do that too. Training is expensive though. </p> <p>Why frozen LM/Embed? These are down projected via SVD from OLMo 3's model. So it's a mathematical compression attempt at ~5k -&gt; 2k. This saves a MASSIVE amount of time. </p> <p>Currently the data lives in a ~KD format. 32 logits stored from the teacher of the Wikipedia corpus. Instead of training 1 hot, it gets 32 soft targets to try to match. Hard cross entropy is brutal on a model and it's the reason you see \"trillions of tokens\" quoted. </p> <p>When you borrow an LM Head / Embed / Tokenizer / Teacher model... This is far less. </p> <p>---</p> <p>Where are we now in training? I passed the 100m token mark yesterday at ~4am Pacific.</p> <p>The current HF repo has all the checkpoints, data, and the 104m mark safetensor. </p> <p>--</p> <p>I wanted to do some inspection of the model at this point. We have to see that it's not complete garbage right? It has seen a fraction of the data it needs.</p> <p>So based on ONLY 100m tokens seen, I attempted completions and various ablations. Studies of what EXACTLY Engram stores (because it's mostly a guess). </p> <p>Let's go straight to completions :</p> <p>\"George Washington was an American\"</p> <p>With Engram - \"George Washington was an American naval officer who served in the American Revolutionary War. He was a naval officer who served in\" </p> <p>With Engram Zero'd - \"George Washington was an American, but he was not a. He was a very good friend and a. He was\"</p> <p>\"The American Civil War was a civil war in the United States from\"</p> <p>With - \"The American Civil War was a civil war in the United States from 1861 to 1861. The war was a major victory for the Confederacy...\"</p> <p>Without - \"The American Civil War was a civil war in the United States from 1861 to 1862. The war was a major victory for the Confederacy...\"</p> <p>\"Aristotle was an Ancient Greek\" (probably my favorite)</p> <p>With - \"Aristotle was an Ancient Greek philosopher who was a leading authority in the philosophy of Plato. He was also a leading authority...\"</p> <p>Without - \"Aristotle was an Ancient Greek word meaning \"to be\" (\u1f00\u03c0\u03ac\u03c2, \"to be\")...\"</p> <p>---</p> <p>What do we learn from direct inspection of Engram?</p> <p>If it saw the data enough times, it starts to offload it to the tables. At that point the model is less forced to use internal computational space to store data, and can rely on Engram.</p> <p>That's not some interpretation. That's what the data shows exactly. </p> <p>In the early 100m tokens of Wikipedia it's HIGHLY biased to early Philosophy. This has to do with the topics of what was IN Wikipedia at that time. Early Wiki contained a lot about Philosophy. It's among the earliest topics to exist. </p> <p>It has seen TONS of Philosophy so it has basically offloaded to Engram because of the repetition. </p> <p>Ok this is long enough. I'm calling it quits. I'm still looking to find a provider that will sponsor the model to completion. Right now I'm just paying. I contacted Verda and they never responded. Qubrid is in this sub, and they said they'd help but never emailed back after a few repeated proddings. Massed Compute is where this model is currently training, and I asked them like yesterday. Hopefully they'll help a brother out.</p> <p>None of the above is \"LLM written\" except the completions from testing I guess.</p> <p>As usual, ask whatever. It doesn't matter your understanding level or whatever. I'll sit and respond. </p> <p>No question too dumb. No insult not insulting enough. (I'm joking. It's Reddit)</p> <p>Much Love.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/NineThreeTilNow\"> /u/NineThreeTilNow </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wnzu2f/engram_gone_wild_2b_model_update/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wnzu2f/engram_gone_wild_2b_model_update/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wnzu2f/engram_gone_wild_2b_model_update/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-23T08:08:35+00:00",
+      "published_ts": 1790150915,
+      "smart_groups": [
+        "Research & papers",
+        "Work & society"
+      ],
+      "curated": false
+    },
+    {
       "title": "How do you split AI models across ideation, math, and coding?[D]",
       "summary": "Hi, I'm a freshly graduated (undergrad) guy currently working on 3\u20134 projects in parallel: - An AI research project: working on a research problem statement, aiming towards a paper publication - New corporate work at a product company - My personal hobby projects I wanted suggestions from you experienced people on how to accelerate my work and progress. Can you help me design my workflow with AI tools? My workflow basically includes: - Brainstorming, ideating, and formulating - Experimenting, designing, and finding flaws and limitations - Maths formulation and equations - Architecture changes and experimenting by writing code - Designing and maintaining the codebase, and exploring and building on top of it As of now, a GPT subscription feels pretty much mandatory for me, since I use web ChatGPT, including the Pro model in chat (5x), for ideation, brainstorming, and formulation. I'm also looking at GPT 6 Astra, Claude Opus 5.5, and Claude Fable 5.1, and I'm open to any other recommendations. For people with similar workflows: Which AI tool or model do you use for which part of the flow? Which subscriptions are actually worth paying for? If you were setting up a stack today for research + engineering + parallel projects, what would it look like? I'm already very overwhelmed, and kind of anxious and strained, after seeing so many Reddit and X posts and suggestions. Everything feels jumbled up, so I'd really appreciate practical advice on what I should set up. Thanks in advance! submitted by /u/sky63_limitless [link] [comments]",
       "summary_html": "<!-- SC_OFF --><div><p>Hi, I'm a freshly graduated (undergrad) guy currently working on 3\u20134 projects in parallel:</p> <p>- An AI research project: working on a research problem statement, aiming towards a paper publication</p> <p>- New corporate work at a product company</p> <p>- My personal hobby projects</p> <p>I wanted suggestions from you experienced people on how to accelerate my work and progress. Can you help me design my workflow with AI tools?</p> <p>My workflow basically includes:</p> <p>- Brainstorming, ideating, and formulating</p> <p>- Experimenting, designing, and finding flaws and limitations</p> <p>- Maths formulation and equations</p> <p>- Architecture changes and experimenting by writing code</p> <p>- Designing and maintaining the codebase, and exploring and building on top of it</p> <p>As of now, a GPT subscription feels pretty much mandatory for me, since I use web ChatGPT, including the Pro model in chat (5x), for ideation, brainstorming, and formulation. I'm also looking at GPT 6 Astra, Claude Opus 5.5, and Claude Fable 5.1, and I'm open to any other recommendations.</p> <p>For people with similar workflows:</p> <ol> <li><p>Which AI tool or model do you use for which part of the flow?</p></li> <li><p>Which subscriptions are actually worth paying for?</p></li> <li><p>If you were setting up a stack today for research + engineering + parallel projects, what would it look like?</p></li> </ol> <p>I'm already very overwhelmed, and kind of anxious and strained, after seeing so many Reddit and X posts and suggestions. Everything feels jumbled up, so I'd really appreciate practical advice on what I should set up.</p> <p>Thanks in advance!</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/sky63_limitless\"> /u/sky63_limitless </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1wnzols/how_do_you_split_ai_models_across_ideation_math/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1wnzols/how_do_you_split_ai_models_across_ideation_math/\">[comments]</a></span>",
@@ -698,6 +1023,54 @@
       "smart_groups": [
         "Coding & dev tools",
         "Health & science"
+      ],
+      "curated": false
+    },
+    {
+      "title": "this is not even a competition at this point ... this is embarrassing",
+      "summary": "submitted by /u/johnnyApplePRNG [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wnzlav/this_is_not_even_a_competition_at_this_point_this/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/johnnyApplePRNG\"> /u/johnnyApplePRNG </a> <br/> <span><a href=\"https://i.redd.it/pmvoj43z68rh1.png\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wnzlav/this_is_not_even_a_competition_at_this_point_this/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wnzlav/this_is_not_even_a_competition_at_this_point_this/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-23T07:54:00+00:00",
+      "published_ts": 1790150040,
+      "smart_groups": [
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
+      "title": "GGUFs in transformers natively!",
+      "summary": "Hey there folks! Aritra here from Hugging Face. I wanted to update you all about the latest changes in `transformers`. We now natively support GGUFs (llama cpp quants). You can use it like so: from transformers import AutoModelForCausalLM, AutoTokenizer model_id = \"unsloth/Qwen3.5-4B-GGUF\" filename = \"Qwen3.5-4B-Q4_K_M.gguf\" model = AutoModelForCausalLM.from_pretrained( model_id, gguf_file=filename, ) After loading, you're using the normal Transformers APIs. Why did we want to do this? Quantized models are smaller (so fits in a laptop) PyTorch tooling at hand (useful for debugging) Debugging, evaluation, custom generation becomes much easier On supported Apple Silicon setups, we're also reusing ggml kernels so the model can run directly from its packed quantized weights. On the Qwen checkpoints we tested on an M2 Max, Transformers reached: Qwen3.5-4B Q4_K_M: 70.4 tok/s vs 71.8 tok/s with llama.cpp Qwen3.8-27B UD-Q4_K_M: 15.9 tok/s vs 13.4 tok/s Qwen3.5-35B-A3B UD-IQ4_XS: 60.2 tok/s vs 61.3 tok/s This isn't meant to replace llama.cpp. If you only care about maximum local inference performance, llama.cpp is still probably the better choice. The point is more that you can now use the same GGUF models in a more flexible environment.",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wnxm0r/ggufs_in_transformers_natively/\">  </a>  <!-- SC_OFF --><div><p>Hey there folks!</p> <p>Aritra here from Hugging Face. I wanted to update you all about the latest changes in `transformers`. We now natively support GGUFs (llama cpp quants).</p> <p>You can use it like so:</p> <pre><code>from transformers import AutoModelForCausalLM, AutoTokenizer model_id = \"unsloth/Qwen3.5-4B-GGUF\" filename = \"Qwen3.5-4B-Q4_K_M.gguf\" model = AutoModelForCausalLM.from_pretrained( model_id, gguf_file=filename, ) </code></pre> <p>After loading, you're using the normal Transformers APIs.</p> <p>Why did we want to do this?</p> <ol> <li>Quantized models are smaller (so fits in a laptop)</li> <li>PyTorch tooling at hand (useful for debugging)</li> <li>Debugging, evaluation, custom generation becomes much easier</li> </ol> <p>On supported Apple Silicon setups, we're also reusing ggml kernels so the model can run directly from its packed quantized weights. On the Qwen checkpoints we tested on an M2 Max, Transformers reached:</p> <ol> <li>Qwen3.5-4B Q4_K_M: 70.4 tok/s vs 71.8 tok/s with llama.cpp</li> <li>Qwen3.8-27B UD-Q4_K_M: 15.9 tok/s vs 13.4 tok/s</li> <li>Qwen3.5-35B-A3B UD-IQ4_XS: 60.2 tok/s vs 61.3 tok/s</li> </ol> <p><strong>This isn't meant to replace llama.cpp. If you only care about maximum local inference performance, llama.cpp is still probably the better choice.</strong></p> <p>The point is more that you can now use the same GGUF models in a more flexible environment.</p> <p>Read more: <a href=\"https://huggingface.co/blog/transformers-llama-cpp-quants\">https://huggingface.co/blog/transformers-llama-cpp-quants</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Disastrous-Work-1632\"> /u/Disastrous-Work-1632 </a> <br/> <span><a href=\"https://v.redd.it/8slzqtx8l7rh1\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wnxm0r/ggufs_in_transformers_natively/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wnxm0r/ggufs_in_transformers_natively/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-23T05:57:39+00:00",
+      "published_ts": 1790143059,
+      "smart_groups": [
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Pirate Face - pirate bay for LLMs",
+      "summary": "The title says for itself In case someone desides to censor huggingface, we'll have an alternative submitted by /u/Atagor [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wnxhji/pirate_face_pirate_bay_for_llms/\">  </a>  <!-- SC_OFF --><div><p>The title says for itself</p> <p>In case someone desides to censor huggingface, we'll have an alternative </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Atagor\"> /u/Atagor </a> <br/> <span><a href=\"https://pirateface.co/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wnxhji/pirate_face_pirate_bay_for_llms/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wnxhji/pirate_face_pirate_bay_for_llms/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-09-23T05:50:38+00:00",
+      "published_ts": 1790142638,
+      "smart_groups": [
+        "Infra & model ops"
       ],
       "curated": false
     },
@@ -928,6 +1301,24 @@
       "published_ts": 1790121600,
       "smart_groups": [
         "Data & analytics"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Gemini 3.8 text-to-speech models now available on AI Gateway",
+      "summary": "Gemini 3.8 Flash-Lite TTS and Gemini 3.8 Flash TTS from Google are now available on AI Gateway . Both models take text and generate speech in more than 100 languages. They support long-form narration, control over delivery, and two-speaker dialogue. google/gemini-3.8-flash-lite-tts is suited to high-volume speech generation, with controls for tone, pacing, and line-by-line delivery. google/gemini-3.8-flash-tts adds voice and character design through natural-language prompts, including acting cues, accents, and conversational reactions. Generate and listen to speech in the Flash-Lite TTS playground or the Flash TTS playground . For setup instructions and more code examples, see the speech quickstart and text-to-speech guide . AI Gateway provides one API for speech generation alongside your other models, with usage and cost tracking for each request. You can configure routing rules and bring your own provider key .",
+      "summary_html": "<p><a href=\"https://vercel.com/ai-gateway/models/gemini-3.8-flash-lite-tts\">Gemini 3.8 Flash-Lite TTS</a> and <a href=\"https://vercel.com/ai-gateway/models/gemini-3.8-flash-tts\">Gemini 3.8 Flash TTS</a> from Google are now available on <a href=\"https://vercel.com/ai-gateway\">AI Gateway</a>.</p><p>Both models take text and generate speech in more than 100 languages. They support long-form narration, control over delivery, and two-speaker dialogue.</p><ul><li><p><code>google/gemini-3.8-flash-lite-tts</code> is suited to high-volume speech generation, with controls for tone, pacing, and line-by-line delivery.</p></li><li><p><code>google/gemini-3.8-flash-tts</code> adds voice and character design through natural-language prompts, including acting cues, accents, and conversational reactions.</p></li></ul><div></div><p>Generate and listen to speech in the <a href=\"https://vercel.com/ai-gateway/models/gemini-3.8-flash-lite-tts\">Flash-Lite TTS playground</a> or the <a href=\"https://vercel.com/ai-gateway/models/gemini-3.8-flash-tts\">Flash TTS playground</a>. For setup instructions and more code examples, see the <a href=\"https://vercel.com/docs/ai-gateway/getting-started/speech\">speech quickstart</a> and <a href=\"https://vercel.com/docs/ai-gateway/modalities/text-to-speech\">text-to-speech guide</a>.</p><p>AI Gateway provides one API for speech generation alongside your other models, with usage and cost tracking for each request. You can configure <a href=\"https://vercel.com/docs/ai-gateway/models-and-providers/routing-rules\">routing rules</a> and <a href=\"https://vercel.com/docs/ai-gateway/authentication-and-byok/byok\">bring your own provider key</a>.</p>\n<p>\n<a href=\"https://vercel.com/changelog/gemini-3-8-text-to-speech-models-now-available-on-ai-gateway\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/gemini-3-8-text-to-speech-models-now-available-on-ai-gateway",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-09-23T00:00:00+00:00",
+      "published_ts": 1790121600,
+      "smart_groups": [
+        "Model releases",
+        "Vision, audio & video",
+        "Infra & model ops"
       ],
       "curated": false
     }
