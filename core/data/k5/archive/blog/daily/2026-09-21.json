@@ -1,9 +1,25 @@
 {
-  "generated_at": "2026-09-24T05:09:13.127193+00:00",
+  "generated_at": "2026-09-24T13:44:12.057364+00:00",
   "date": "2026-09-21",
-  "total_items": 147,
+  "total_items": 148,
   "next_chunk": "archive/blog/daily/2026-09-20.json",
   "items": [
+    {
+      "title": "The .zshrc.zwc You Forgot to Check",
+      "summary": "Introduction Shell startup files are well-known macOS persistence locations. In a recent MacSync Stealer/RAT intrusion documented by Huntress, the malware temporarily modified ~/.zshrc and appended a curl | zsh command. The goal was simple: when the victim opened Terminal again, the malicious code would execute in the new interactive zsh session. So during a macOS investigation, checking files such as these should be standard practice: ~/.zshrc ~/.zprofile ~/.zlogin ~/.zshenv Csaba Fitzl dedicated the first post in his Beyond the good ol' LaunchAgents series to shell startup files. But there is a small zsh feature that makes this slightly more interesting. These files can be compiled. For example",
+      "summary_html": "Introduction\n<p>Shell startup files are well-known macOS persistence locations. In a recent MacSync Stealer/RAT intrusion <a href=\"https://www.huntress.com/blog/macsync-stealer-rat-reverse-engineering\">documented</a> by Huntress, the malware temporarily modified <code>~/.zshrc</code> and appended a <code>curl | zsh</code> command. The goal was simple: when the victim opened Terminal again, the malicious code would execute in the new interactive <code>zsh</code> session.</p>\n<p>So during a macOS investigation, checking files such as these should be standard practice:</p>\n<div><pre><code><span><span>~/.zshrc\n</span></span><span><span>~/.zprofile\n</span></span><span><span>~/.zlogin\n</span></span><span><span>~/.zshenv\n</span></span></code></pre></div><p>Csaba Fitzl dedicated the <a href=\"https://theevilbit.github.io/beyond/beyond_0001/\">first post</a> in his <code>Beyond the good ol' LaunchAgents</code> series to shell startup files. But there is a small <code>zsh</code> feature that makes this slightly more interesting. These files can be compiled. For example:</p>",
+      "link": "http://localhost:1313/posts/compiled_zsh/",
+      "source": "https://dfir.ch/index.xml",
+      "feed_type": "blog",
+      "type": "dfir-forensics",
+      "type_label": "DFIR & Forensics",
+      "published": "2026-09-21T23:03:20+00:00",
+      "published_ts": 1790031800,
+      "smart_groups": [
+        "Malware / Payloads"
+      ],
+      "curated": false
+    },
     {
       "title": "Micropatches released for Microsoft Message Queuing Queue Manager Remote Code Execution (CVE-2026-54992)",
       "summary": "July 2026 Windows Updates brought a patch for CVE-2026-54992, a remote code execution vulnerability in Windows Message Queuing Queue Manager, allowing an attacker to set up a malicious server and have their code executed as Local System on any computer connecting to it with message queuing client. The vulnerability was found by Seung Chan Kim, who reported it to Microsoft. Subsequently, David Carliez published their own proof of concept, which allowed us to reproduce the issue and create patches for legacy Windows systems. The Vulnerability This is a numeric overflow issue, triggered by a malformed \"RemoteRead\" message queuing response that contains a number of sections whose cumulative size exceeds 2^32 bytes - leading to an allocation of a buffer that is too small for the actual data. Consequently, a buffer overflow occurs when this data is copied to the buffer, corrupting adjacent memory locations. There was a validation code there to prevent various violations in the received data, but it was per-section and did not check the cumulative size of all sections.",
@@ -55,7 +71,7 @@
       ],
       "curated": true,
       "story_id": "f24c4afbf182",
-      "story_size": 8
+      "story_size": 9
     },
     {
       "title": "The AI plot to scan and destroy books (Lock and Code S07E19)",
