@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-24T13:44:12.057364+00:00",
+  "generated_at": "2026-09-24T20:09:00.119745+00:00",
   "date": "2026-09-21",
-  "total_items": 148,
+  "total_items": 149,
   "next_chunk": "archive/blog/daily/2026-09-20.json",
   "items": [
     {
@@ -18,7 +18,36 @@
       "smart_groups": [
         "Malware / Payloads"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "f14804243c01",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "https://dfir.ch/index.xml",
+          "title": "The .zshrc.zwc You Forgot to Check",
+          "link": "https://dfir.ch/posts/compiled_zsh/",
+          "published_ts": 1790031800
+        }
+      ]
+    },
+    {
+      "title": "The .zshrc.zwc You Forgot to Check",
+      "summary": "Introduction Shell startup files are well-known macOS persistence locations. In a recent MacSync Stealer/RAT intrusion documented by Huntress, the malware temporarily modified ~/.zshrc and appended a curl | zsh command. The goal was simple: when the victim opened Terminal again, the malicious code would execute in the new interactive zsh session. So during a macOS investigation, checking files such as these should be standard practice: ~/.zshrc ~/.zprofile ~/.zlogin ~/.zshenv Csaba Fitzl dedicated the first post in his Beyond the good ol' LaunchAgents series to shell startup files. But there is a small zsh feature that makes this slightly more interesting. These files can be compiled. For example",
+      "summary_html": "Introduction\n<p>Shell startup files are well-known macOS persistence locations. In a recent MacSync Stealer/RAT intrusion <a href=\"https://www.huntress.com/blog/macsync-stealer-rat-reverse-engineering\">documented</a> by Huntress, the malware temporarily modified <code>~/.zshrc</code> and appended a <code>curl | zsh</code> command. The goal was simple: when the victim opened Terminal again, the malicious code would execute in the new interactive <code>zsh</code> session.</p>\n<p>So during a macOS investigation, checking files such as these should be standard practice:</p>\n<div><pre><code><span><span>~/.zshrc\n</span></span><span><span>~/.zprofile\n</span></span><span><span>~/.zlogin\n</span></span><span><span>~/.zshenv\n</span></span></code></pre></div><p>Csaba Fitzl dedicated the <a href=\"https://theevilbit.github.io/beyond/beyond_0001/\">first post</a> in his <code>Beyond the good ol' LaunchAgents</code> series to shell startup files. But there is a small <code>zsh</code> feature that makes this slightly more interesting. These files can be compiled. For example:</p>",
+      "link": "https://dfir.ch/posts/compiled_zsh/",
+      "source": "https://dfir.ch/index.xml",
+      "feed_type": "blog",
+      "type": "dfir-forensics",
+      "type_label": "DFIR & Forensics",
+      "published": "2026-09-21T23:03:20+00:00",
+      "published_ts": 1790031800,
+      "smart_groups": [
+        "Malware / Payloads"
+      ],
+      "curated": false,
+      "story_id": "f14804243c01",
+      "story_size": 2
     },
     {
       "title": "Micropatches released for Microsoft Message Queuing Queue Manager Remote Code Execution (CVE-2026-54992)",

@@ -1,5 +1,769 @@
 [
   {
+    "title": "Critical Cross-user and Cross-tenant compromise in Atlassian Rovo",
+    "summary": "An isolation failure in an LLM-orchestrated environment due to simple isolation misconfigurations led to Rovo sessions belonging to other users and tenants being discovered, reached, and ultimately used to execute code within their contexts. The finding was rated Critical and is pretty bad. At this point, I feel like AI security is regressing back to simple misconfigurations, except now we're giving users direct access to systems built on top of them. What do you guys think? Write-up: https://mononclemich.medium.com/so-apparently-rovo-has-neighbors-88998d0ad59c submitted by /u/Story_Lost [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>An isolation failure in an LLM-orchestrated environment due to simple isolation misconfigurations led to Rovo sessions belonging to other users and tenants being discovered, reached, and ultimately used to execute code within their contexts. The finding was rated Critical and is pretty bad.</p> <p>At this point, I feel like AI security is regressing back to simple misconfigurations, except now we're giving users direct access to systems built on top of them. What do you guys think?</p> <p>Write-up: <a href=\"https://mononclemich.medium.com/so-apparently-rovo-has-neighbors-88998d0ad59c\">https://mononclemich.medium.com/so-apparently-rovo-has-neighbors-88998d0ad59c</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Story_Lost\"> /u/Story_Lost </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wpc02r/critical_crossuser_and_crosstenant_compromise_in/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wpc02r/critical_crossuser_and_crosstenant_compromise_in/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1wpc02r/critical_crossuser_and_crosstenant_compromise_in/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-09-24T20:01:40+00:00",
+    "published_ts": 1790280100,
+    "smart_groups": [
+      "AI/ML Security",
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Humans Are Reading Your ChatGPT Chats, New Lawsuit Claims",
+    "summary": "A proposed class action accuses OpenAI of quietly routing real conversations to outside contractors through a program called Project Lily—without telling users first.",
+    "summary_html": "A proposed class action accuses OpenAI of quietly routing real conversations to outside contractors through a program called Project Lily—without telling users first.",
+    "link": "https://decrypt.co/379272/humans-reading-chatgpt-chats-lawsuit",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-09-24T20:01:03+00:00",
+    "published_ts": 1790280063,
+    "smart_groups": [
+      "AI/ML Security"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Here’s what happened in crypto today",
+    "summary": "Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.",
+    "summary_html": "<p></p><p>Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.</p>",
+    "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-09-24T19:50:39+00:00",
+    "published_ts": 1790279439,
+    "smart_groups": [
+      "Crypto / Web3"
+    ],
+    "curated": false
+  },
+  {
+    "title": "OpenAI Agent Breached Australian Medicare Statistics Portal",
+    "summary": "An OpenAI agent bypassed controls on Australia's Medicare statistics portal, accessed non-public data and was not reported to officials for nearly 3 months.",
+    "summary_html": "An OpenAI agent bypassed controls on Australia's Medicare statistics portal, accessed non-public data and was not reported to officials for nearly 3 months.",
+    "link": "https://hackread.com/openai-agent-breached-australian-medicare-portal/",
+    "source": "HackRead",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-09-24T19:47:19+00:00",
+    "published_ts": 1790279239,
+    "smart_groups": [],
+    "curated": false,
+    "story_id": "5b6424dfd8f9",
+    "story_size": 5
+  },
+  {
+    "title": "Built a lightweight, zero-dependency LSASS dump detector and handle table auditor in pure Python (Win32/NT ctypes)",
+    "summary": "Hi all, OS credential dumping targeting LSASS (T1003.001) remains one of the primary post-exploitation techniques in Windows environments. While modern enterprise EDRs have robust kernel callbacks, I wanted to build a transparent, standalone Python utility to inspect how handle table analysis and memory access masks can detect dumper behavior at the endpoint level. The tool is called **MemGuard** (MIT licensed, zero dependencies): GitHub: https://github.com/prox0959/MemGuard ### 🛠️ Key Mechanics: **Handle Audit:** Queries `NtQuerySystemInformation(SystemExtendedHandleInformation)` to map which processes hold active handles to `lsass.exe`. **Access Mask Filtering:** Specifically flags unauthorized processes granted `PROCESS_VM_READ` (`0x0010`) while whitelisting core system services (`csrss.exe`, `services.exe`, Windows Defender). **PEB Inspection:** Direct memory read of `PEB->ProcessParameters->CommandLine` via `NtQueryInformationProcess` to detect LOLBin dump attempts (e.g. `comsvcs.dll MiniDump` or ProcDump flags). **Active Triage:** Supports freezing suspect processes via `NtSuspendProcess` rather than immediate termination, maintaining volatile RAM for artifact recovery. Would love to hear thoughts from detection engineers and blue teamers on edge cases or bypasses you'd anticipate (e.g. handle stripping, direct kernel object manipulation). Feedback and GitHub stars are always welcome! submitted by /u/Traditional_Bear5492 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Hi all,</p> <p>OS credential dumping targeting LSASS (T1003.001) remains one of the primary post-exploitation techniques in Windows environments. While modern enterprise EDRs have robust kernel callbacks, I wanted to build a transparent, standalone Python utility to inspect how handle table analysis and memory access masks can detect dumper behavior at the endpoint level.</p> <p>The tool is called **MemGuard** (MIT licensed, zero dependencies):</p> <p>GitHub: <a href=\"https://github.com/prox0959/MemGuard\">https://github.com/prox0959/MemGuard</a></p> <p>### 🛠️ Key Mechanics:</p> <ol> <li><p>**Handle Audit:** Queries `NtQuerySystemInformation(SystemExtendedHandleInformation)` to map which processes hold active handles to `lsass.exe`.</p></li> <li><p>**Access Mask Filtering:** Specifically flags unauthorized processes granted `PROCESS_VM_READ` (`0x0010`) while whitelisting core system services (`csrss.exe`, `services.exe`, Windows Defender).</p></li> <li><p>**PEB Inspection:** Direct memory read of `PEB-&gt;ProcessParameters-&gt;CommandLine` via `NtQueryInformationProcess` to detect LOLBin dump attempts (e.g. `comsvcs.dll MiniDump` or ProcDump flags).</p></li> <li><p>**Active Triage:** Supports freezing suspect processes via `NtSuspendProcess` rather than immediate termination, maintaining volatile RAM for artifact recovery.</p></li> </ol> <p>Would love to hear thoughts from detection engineers and blue teamers on edge cases or bypasses you'd anticipate (e.g. handle stripping, direct kernel object manipulation). </p> <p>Feedback and GitHub stars are always welcome!</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Traditional_Bear5492\"> /u/Traditional_Bear5492 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wpb8w8/built_a_lightweight_zerodependency_lsass_dump/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wpb8w8/built_a_lightweight_zerodependency_lsass_dump/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1wpb8w8/built_a_lightweight_zerodependency_lsass_dump/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-09-24T19:32:37+00:00",
+    "published_ts": 1790278357,
+    "smart_groups": [
+      "Community Discussion"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Meta's New AI Toy Is a Keychain That Watches, Listens, and Never Blinks",
+    "summary": "Muse Charm is Meta's palm-sized gadget for talking to its Muse AI agent on the go. It has cameras, a fingerprint sensor, and its own cell connection.",
+    "summary_html": "Muse Charm is Meta's palm-sized gadget for talking to its Muse AI agent on the go. It has cameras, a fingerprint sensor, and its own cell connection.",
+    "link": "https://decrypt.co/379253/meta-ai-toy-muse-charm-keychain-watches-listens",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-09-24T19:16:03+00:00",
+    "published_ts": 1790277363,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Hackers Used AI to Pick Victims From Stolen Emails: Microsoft Takes Down 200+ Sites and Domains",
+    "summary": "submitted by /u/beingmodest [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/cybersecurity/comments/1wpaorq/hackers_used_ai_to_pick_victims_from_stolen/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/beingmodest\"> /u/beingmodest </a> <br/> <span><a href=\"https://www.techtimes.co.uk/microsoft-dismantles-eviltokens-ai-cybercrime-platform-1808778\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wpaorq/hackers_used_ai_to_pick_victims_from_stolen/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1wpaorq/hackers_used_ai_to_pick_victims_from_stolen/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-09-24T19:11:06+00:00",
+    "published_ts": 1790277066,
+    "smart_groups": [
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Decades-old file security flaws found in Android, Linux, macOS, and Windows",
+    "summary": "submitted by /u/homothebrave [link] [comments]",
+    "summary_html": "submitted by   <a href=\"https://www.reddit.com/user/homothebrave\"> /u/homothebrave </a> <br/> <span><a href=\"https://www.theregister.com/security/2026/09/24/decades-old-file-security-flaws-found-in-android-linux-macos-and-windows/5298672\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wpah82/decadesold_file_security_flaws_found_in_android/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1wpah82/decadesold_file_security_flaws_found_in_android/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-09-24T19:02:57+00:00",
+    "published_ts": 1790276577,
+    "smart_groups": [
+      "Linux / Unix",
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Rydox cybercriminal marketplace operator pleads guilty following co-conspirator brothers’s deportation",
+    "summary": "Ardit Kutleshi, 28, was extradited from his home country of Kosovo last year after prosecutors accused him and his older brother of running Rydox — an illicit platform used by cybercriminals to sell stolen personal information, illegal access to devices and other tools for carrying out fraud.",
+    "summary_html": "Ardit Kutleshi, 28, was extradited from his home country of Kosovo last year after prosecutors accused him and his older brother of running Rydox — an illicit platform used by cybercriminals to sell stolen personal information, illegal access to devices and other tools for carrying out fraud.",
+    "link": "https://therecord.media/rydox-criminal-marketplace-operator-pleads-guilty",
+    "source": "The Record – Cybercrime",
+    "feed_type": "news",
+    "type": "cybercrime-underground",
+    "type_label": "Cybercrime & Underground",
+    "published": "2026-09-24T18:57:00+00:00",
+    "published_ts": 1790276220,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "AI Can Now Doxx Your Anonymous Accounts? Here's What’s Going On",
+    "summary": "A February research paper showing AI can unmask pseudonymous internet users is freaking everyone out again this week. Here's what the paper actually says.",
+    "summary_html": "A February research paper showing AI can unmask pseudonymous internet users is freaking everyone out again this week. Here's what the paper actually says.",
+    "link": "https://decrypt.co/379228/ai-can-now-doxx-your-anonymous-accounts-heres-whats-going-on",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-09-24T18:31:03+00:00",
+    "published_ts": 1790274663,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Cisco ISE scores a perfect CVSS 10.0 — unauthenticated API bypass to root (CVE-2026-76460)",
+    "summary": "This one is as bad as it sounds. CVE-2026-76460 is an authentication bypass in Cisco ISE's admin API that gives unauthenticated attackers root-level command execution. No creds, no user interaction, no complexity. Every supported ISE version (3.1 through 3.51) is affected. The kicker: Cisco explicitly says there are NO workarounds. You patch or you accept the risk. No ACL, no WAF rule, nothing. It was found from a support ticket (someone noticed weird API behavior during troubleshooting) and was already being exploited in the wild before the patch dropped. CISA KEV listed it September 16, four days after patch release. ISE is your NAC platform. It controls who gets on your network. Compromising it means controlling network access for your entire environment. Patch this weekend. [link] submitted by /u/voidrane [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>This one is as bad as it sounds. CVE-2026-76460 is an authentication bypass in Cisco ISE's admin API that gives unauthenticated attackers root-level command execution. No creds, no user interaction, no complexity. Every supported ISE version (3.1 through 3.51) is affected.</p> <p>The kicker: Cisco explicitly says there are NO workarounds. You patch or you accept the risk. No ACL, no WAF rule, nothing.</p> <p>It was found from a support ticket (someone noticed weird API behavior during troubleshooting) and was already being exploited in the wild before the patch dropped. CISA KEV listed it September 16, four days after patch release.</p> <p>ISE is your NAC platform. It controls who gets on your network. Compromising it means controlling network access for your entire environment. Patch this weekend.</p> <p><a href=\"https://medium.com/@neonmaxima/cisco-ise-just-got-a-cvss-10-0-and-the-only-workaround-is-patch-it-or-unplug-it-4099172d44b3?sharedUserId=neonmaxima\">[link]</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/voidrane\"> /u/voidrane </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wp9l25/cisco_ise_scores_a_perfect_cvss_100/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wp9l25/cisco_ise_scores_a_perfect_cvss_100/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1wp9l25/cisco_ise_scores_a_perfect_cvss_100/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-09-24T18:29:22+00:00",
+    "published_ts": 1790274562,
+    "smart_groups": [
+      "Vulnerabilities / CVEs",
+      "Community Discussion"
+    ],
+    "curated": true
+  },
+  {
+    "title": "AI-powered fuzzing with the GitHub Security Lab Taskflow Agent",
+    "summary": "# AI-powered fuzzing with the GitHub Security Lab Taskflow Agent In this blog post, I explain how to use the new fuzzing taskflow based on the GitHub Security Lab Taskflow Agent AI framework. _If you’re new to fuzzing and want to learn the fundamentals first, check out our Fuzzing 101 course at gh.io/fuzzing101._ Continuous fuzzing is not a magic solution that solves all your problems . Even projects that have been enrolled in OSS-Fuzz for years can still hide critical bugs, and the reason is almost always the same: someone needs to keep an eye on coverage, write new harnesses for the code that nobody is reaching, and triage the crashes that come out the other end. In other words, fuzzing still needs a human in the loop. So the natural question I kept asking myself was: how much of that human work can we actually hand over to an LLM agent? That is what led me to build the Fuzzing Taskflow, an autonomous fuzzing pipeline for C/C++ projects. You only need to point it at a GitHub repository, and it does the rest: it identifies the suitable entrypoints, analyzes the build system, writes the harnesses, runs AFL++, reads the coverage reports, improves the harnesses, triages every crash, and writes a vulnerability report for each unique bug, all without a human babysitting it. The Fuzzing Taskflow is built on top of the GitHub Security Lab Taskflow Agent, our framework for writing LLM-driven security automation, so the pipeline is expressed as a set of taskflows that an agent runs end to end. In this post, I’ll walk you through how it works and the design decisions behind it. Let’s get going! ## How to run it The simplest way to run it’s just to go to https://github.com/GitHubSecurityLab/seclab-taskflows-fuzzing and start a codespace. Then, run the script like this: ``` ./scripts/fuzzing/run_fuzzing.sh PROJECT ``` So, for example: ``` ./scripts/fuzzing/run_fuzzing.sh tukaani-project/xz ``` That’s it. The argument is just a GitHub `owner/repo` slug. Then, the agent, takes care of all the preliminary steps on its own: - Installing software such as AFL - Cloning the repository - Identifying the most relevant functions in the code - Creating fuzz targets for those functions If you just want a quick smoke test before committing to a long campaign, point it at something small: ``` ./scripts/fuzzing/run_fuzzing.sh DaveGamble/cJSON ``` A word of warning before you run it: this taskflow runs `afl-fuzz`, `clang`, and **arbitrary build commands chosen by the LLM** directly on the host, with no container in between. A prompt-injected agent could, in principle, do anything your user can. **So please run it only inside a disposable environment (e.g., a Codespace or a throwaway VM), without elevated privileges**. ### Model selection Some frontier models impose security guardrails on their outputs. For the fuzzing task flow, we use **Claude Sonnet 5 by default** because it passed all of our internal tests without issues. You can choose a different model by modifying the following file: `src/seclab_taskflows_fuzzing/configs/model_config.yaml`. ## The architecture in one minute Before getting into the interesting parts, it helps to know how the pieces fit together. There are three layers: - A **shell driver**( _run\\_fuzzing.sh)_ that chains the pipeline stages together. - A set of **taskflow YAMLs**, one per stage, which are essentially the prompts that tell the LLM agent what to do at each step. - A set of **MCP tools** that the agent calls to actually do the work: run AFL, compile a harness, store a crash, read a coverage report, and so on. The design rule I cared about most is a clean separation of responsibility: the **LLM agent owns the decisions, and the MCP tools own the execution**. The agent decides what to fuzz, what harness to write, and what coverage gap to chase next. The tools just expose primitives like _run\\_afl\\_for_ or _compile\\_harness_. The agent never calls AFL or clang directly; it composes the pipeline out of these building blocks. All the state lives in a SQLite database ( _fuzz\\_context.db_), so the stages never hand data to each other in memory, only through the database. One small but important detail: each harness is built twice. AFL’s edge instrumentation is great for guiding the fuzzer but useless for human-readable coverage reports. So every harness becomes both a .afl binary (built with _afl-clang-lto -fsanitize=address,undefined_) and a .cov binary (built with _clang -fprofile-instr-generate -fcoverage-mapping_). The .afl binary does the fuzzing; the .cov binary replays AFL’s queue afterwards to produce real source-line and branch coverage. ## The coverage-feedback loop This is the heart of the whole pipeline, and it’s the part that most directly automates the manual workflow I described at the start. If you have ever tried to improve fuzzing coverage by hand, you’ll know that it’s an iterative process that looks like this: The “check the coverage” step used to be completed by me, manually reading an LCOV report looking for uncovered branches. The “improve the coverage” step was also completed by me, this time, writing a new harness or crafting a new input. The Fuzzing Taskflow hands both of those steps to the agent. Each iteration, for each harness, the agent runs AFL for a time budget, replays the queue against the .cov binary to get a real coverage report, and then reads the list of uncovered branches. Based on what it finds, it picks one of a handful of actions: - Add a new seed crafted to reach an uncovered branch - Edit the harness source to call an additional API - Auto-enrich the AFL dictionary with the magic constants a guard is comparing against - Simply skip the gap if it’s a cold error path or vendor code that isn’t worth chasing The time budgets **double every iteration:** _30s → 60s → 120s → 240s → 480s → 960s (≈ 32 min/target)_ The idea is to spend cheap, short rounds early (when there’s lots of low-hanging coverage to grab) and longer rounds later (when the fuzzer needs more time to break through a hard guard). And just like in my manual workflow, I need an answer to the question: _when do we stop?_ Here, the loop uses **plateau detection**: once two consecutive iterations each gain less than a configurable threshold (1% absolute line coverage by default), the loop decides it has hit diminishing returns and moves on. This keeps the agent from burning hours of compute squeezing out the last fraction of a percent. ## Structure-aware fuzzing AFL’s default byte-level mutators (bit flips, arithmetic, block splicing) do a great job on binary formats but struggle with structured, text-based inputs. The classic solution is to hand-write custom mutators for each format, which is tedious work. This time I want the pipeline to do that work for me, so it ships **four complementary mechanisms** for producing structure-aware inputs. **1\\. Per-format dictionaries and custom mutators**. For targets whose input format is recognized (JSON, XML, regex, PNG, length-prefixed binary TLV), the taskflow ships pre-built AFL dictionaries and _LLVMFuzzerCustomMutator_ C files. The JSON mutator does token splicing and balanced-bracket duplication; the XML one knows about tags, entities, and billion-laughs tokens; the regex one carries real ReDoS patterns. Each mutator delegates half of its mutations back to AFL’s default byte mutator, so we keep the engine’s randomization instead of fighting it. **2\\. A source level dictionary.** For formats the pipeline doesn’t recognize, it generates a custom mutator on the fly by scanning the target’s own .c/.h files. It extracts string literals and 32-bit numeric constants (from _#define_, _case_, and _enum_), filters out the noise, and uses them as splice tokens. The intuition is simple: the most interesting magic values that a parser checks for are usually written down somewhere in its own source. **3\\. A dynamically generated AFL dictionary with coverage-driven enrichment**. The same source-token set is also emitted as an AFL classic dictionary before iteration 1 (numeric constants in both endiannesses, so the fuzzer can satisfy a _memcmp_ against a 4-byte magic regardless of host byte order). Then, after every coverage step, the pipeline looks at the guards near the uncovered lines ( _strncmp_, _memcmp_, _case 0xN_, _== ‘X’_) and appends any new tokens it finds. The dictionary literally grows toward the code the fuzzer can’t yet reach. **4\\. A corpus-splice operator**. The smart mutator can also load files from a corpus directory and splice random sub-regions of them into the input, a recombination-style operator that AFL’s stock havoc doesn’t do well. ## Evolving corpus One of the things that quietly kills fuzzing efficiency is throwing away progress. If every run starts from the original seeds, you re-pay the cost of rediscovering the same paths over and over. To avoid that, every harness gets a **stable corpus directory** that survives across iterations and across entire campaigns: ``` /corpus/harness_/ ``` At the end of each iteration, AFL’s queue is merged into this directory and run through _afl-cmin_ to keep its size bounded. The effect is that yesterday’s interesting inputs carry into today’s run, and the inputs you found in last week’s campaign carry into this one. If you stop and restart a campaign, you lose nothing. ## Triage and vulnerability reports Finding a crash is only half the job. As anyone who has done root-cause analysis knows, triaging is often the most tedious part of the whole process. This is the other place where the agent shines. After the fuzzing loop finishes, three stages run automatically. First, every crash is minimized with _afl-tmin_, replayed under ASan to capture a stack trace, and deduplicated by a _stack-top hash_ (the top normalized frames, with templates, inline namespaces, and LTO suffixes stripped so semantically identical crashes collapse together). Second, previously known crashes are replayed against the current binary to see whether an upstream fix has resolved them. Third, the agent reads the harness source and the crashing function, walks the call chain back from the public API, and writes a per-crash markdown report. Each report assigns one of the following verdicts: - vulnerability - library\\_hardening - harness\\_bug - OOM - timeout - assertion\\_failure - duplicate The distinction between a real _vulnerability_ (reachable and exploitable through a public API) and a mere _harness\\_bug_ (the bug is in our own harness, not the library) is exactly the kind of judgment call that used to require me to sit down and trace the code by hand. Every report includes a root-cause analysis with _file:line_ references, a reachability argument, an exploitability assessment, a **suggested fix as a unified diff** and a regression-test sketch. Just as clarification: the suggested patches are marked “review required” for a reason. The agent’s analysis is limited by the model’s understanding of the target code, and it does get things wrong. Treat the verdicts as a very well-prepared starting point for a human, not as final result. # Live dashboard Running an autonomous campaign and not being able to see what it’s doing is uncomfortable, so the pipeline publishes everything to a live HTML dashboard. It auto-starts in the background as soon as you launch a campaign, on port _8765_. In a Codespace that port is auto-forwarded, so you can open it in any browser and watch the campaign progress in real time on the dashboard. The page shows amongst others: - a per-harness “running” pulse - a coverage-trend table with inline sparklines - a crash heatmap - an iteration timeline # Conclusion I started this project motivated by the limitations that any security researcher knows well: fuzzing works, but it doesn’t scale without human attention, and that human attention is the bottleneck. The Fuzzing Taskflow is my attempt to push that bottleneck back by handing the repetitive parts (writing harnesses, reading coverage, chasing gaps, triaging crashes) to an LLM agent, while keeping a clean separation between the agent’s judgment and the tools that do the real work. If you’re the maintainer of C/C++ project, then please give it a try. If your project has never been fuzzed before, then this tool will help you to get started quickly. Or if your project _has_ been fuzzed before, then this tool might help to find new bugs by increasing your fuzzing coverage. The source code is open source, so please create an issue if you encounter any bugs. Contributions are also welcome! ## Tags: ## Written by ## Related posts ### Rendering huge pull requests in the GitHub Copilot app How we rebuilt the diff surface in the GitHub Copilot app to open a million-line pull request with hundreds of inline review comments. ### Should you read the code, is RAG dead, and did Skills kill MCP? We dive into these questions and other AI hot takes on the latest episode of the GitHub Podcast. ### Migrating the GitHub Copilot runtime to Rust, using Copilot A rewrite this size wasn’t affordable before agents. Here’s what porting the Copilot agent runtime to 800,000 lines of production Rust actually took.",
+    "summary_html": "# AI-powered fuzzing with the GitHub Security Lab Taskflow Agent\n\nIn this blog post, I explain how to use the new fuzzing taskflow based on the GitHub Security Lab Taskflow Agent AI framework.\n\n_If you’re new to fuzzing and want to learn the fundamentals first, check out our Fuzzing 101 course at gh.io/fuzzing101._\n\nContinuous fuzzing is not a magic solution that solves all your problems . Even projects that have been enrolled in OSS-Fuzz for years can still hide critical bugs, and the reason is almost always the same: someone needs to keep an eye on coverage, write new harnesses for the code that nobody is reaching, and triage the crashes that come out the other end. In other words, fuzzing still needs a human in the loop.\n\nSo the natural question I kept asking myself was: how much of that human work can we actually hand over to an LLM agent?\n\nThat is what led me to build the Fuzzing Taskflow, an autonomous fuzzing pipeline for C/C++ projects. You only need to point it at a GitHub repository, and it does the rest: it identifies the suitable entrypoints, analyzes the build system, writes the harnesses, runs AFL++, reads the coverage reports, improves the harnesses, triages every crash, and writes a vulnerability report for each unique bug, all without a human babysitting it.\n\nThe Fuzzing Taskflow is built on top of the GitHub Security Lab Taskflow Agent, our framework for writing LLM-driven security automation, so the pipeline is expressed as a set of taskflows that an agent runs end to end.\n\nIn this post, I’ll walk you through how it works and the design decisions behind it. Let’s get going!\n\n## How to run it\n\nThe simplest way to run it’s just to go to https://github.com/GitHubSecurityLab/seclab-taskflows-fuzzing and start a codespace.\n\nThen, run the script like this:\n\n```\n./scripts/fuzzing/run_fuzzing.sh PROJECT\n```\n\nSo, for example:\n\n```\n./scripts/fuzzing/run_fuzzing.sh tukaani-project/xz\n```\n\nThat’s it. The argument is just a GitHub `owner/repo` slug. Then, the agent, takes care of all the preliminary steps on its own:\n\n- Installing software such as AFL\n- Cloning the repository\n- Identifying the most relevant functions in the code\n- Creating fuzz targets for those functions\n\nIf you just want a quick smoke test before committing to a long campaign, point it at something small:\n\n```\n./scripts/fuzzing/run_fuzzing.sh DaveGamble/cJSON\n```\n\nA word of warning before you run it: this taskflow runs `afl-fuzz`, `clang`, and **arbitrary build commands chosen by the LLM** directly on the host, with no container in between. A prompt-injected agent could, in principle, do anything your user can. **So please run it only inside a disposable environment (e.g., a Codespace or a throwaway VM), without elevated privileges**.\n\n### Model selection\n\nSome frontier models impose security guardrails on their outputs. For the fuzzing task flow, we use **Claude Sonnet 5 by default** because it passed all of our internal tests without issues. You can choose a different model by modifying the following file: `src/seclab_taskflows_fuzzing/configs/model_config.yaml`.\n\n## The architecture in one minute\n\nBefore getting into the interesting parts, it helps to know how the pieces fit together. There are three layers:\n\n- A **shell driver**( _run\\_fuzzing.sh)_ that chains the pipeline stages together.\n- A set of **taskflow YAMLs**, one per stage, which are essentially the prompts that tell the LLM agent what to do at each step.\n- A set of **MCP tools** that the agent calls to actually do the work: run AFL, compile a harness, store a crash, read a coverage report, and so on.\n\nThe design rule I cared about most is a clean separation of responsibility: the **LLM agent owns the decisions, and the MCP tools own the execution**. The agent decides what to fuzz, what harness to write, and what coverage gap to chase next. The tools just expose primitives like _run\\_afl\\_for_ or _compile\\_harness_. The agent never calls AFL or clang directly; it composes the pipeline out of these building blocks. All the state lives in a SQLite database ( _fuzz\\_context.db_), so the stages never hand data to each other in memory, only through the database.\n\nOne small but important detail: each harness is built twice. AFL’s edge instrumentation is great for guiding the fuzzer but useless for human-readable coverage reports. So every harness becomes both a .afl binary (built with _afl-clang-lto -fsanitize=address,undefined_) and a .cov binary (built with _clang -fprofile-instr-generate -fcoverage-mapping_). The .afl binary does the fuzzing; the .cov binary replays AFL’s queue afterwards to produce real source-line and branch coverage.\n\n## The coverage-feedback loop\n\nThis is the heart of the whole pipeline, and it’s the part that most directly automates the manual workflow I described at the start.\n\nIf you have ever tried to improve fuzzing coverage by hand, you’ll know that it’s an iterative process that looks like this:\n\nThe “check the coverage” step used to be completed by me, manually reading an LCOV report looking for uncovered branches. The “improve the coverage” step was also completed by me, this time, writing a new harness or crafting a new input. The Fuzzing Taskflow hands both of those steps to the agent.\n\nEach iteration, for each harness, the agent runs AFL for a time budget, replays the queue against the .cov binary to get a real coverage report, and then reads the list of uncovered branches. Based on what it finds, it picks one of a handful of actions:\n\n- Add a new seed crafted to reach an uncovered branch\n- Edit the harness source to call an additional API\n- Auto-enrich the AFL dictionary with the magic constants a guard is comparing against\n- Simply skip the gap if it’s a cold error path or vendor code that isn’t worth chasing\n\nThe time budgets **double every iteration:**\n\n_30s → 60s → 120s → 240s → 480s → 960s (≈ 32 min/target)_\n\nThe idea is to spend cheap, short rounds early (when there’s lots of low-hanging coverage to grab) and longer rounds later (when the fuzzer needs more time to break through a hard guard).\n\nAnd just like in my manual workflow, I need an answer to the question: _when do we stop?_ Here, the loop uses **plateau detection**: once two consecutive iterations each gain less than a configurable threshold (1% absolute line coverage by default), the loop decides it has hit diminishing returns and moves on. This keeps the agent from burning hours of compute squeezing out the last fraction of a percent.\n\n## Structure-aware fuzzing\n\nAFL’s default byte-level mutators (bit flips, arithmetic, block splicing) do a great job on binary formats but struggle with structured, text-based inputs. The classic solution is to hand-write custom mutators for each format, which is tedious work. This time I want the pipeline to do that work for me, so it ships **four complementary mechanisms** for producing structure-aware inputs.\n\n**1\\. Per-format dictionaries and custom mutators**. For targets whose input format is recognized (JSON, XML, regex, PNG, length-prefixed binary TLV), the taskflow ships pre-built AFL dictionaries and _LLVMFuzzerCustomMutator_ C files. The JSON mutator does token splicing and balanced-bracket duplication; the XML one knows about tags, entities, and billion-laughs tokens; the regex one carries real ReDoS patterns. Each mutator delegates half of its mutations back to AFL’s default byte mutator, so we keep the engine’s randomization instead of fighting it.\n\n**2\\. A source level dictionary.** For formats the pipeline doesn’t recognize, it generates a custom mutator on the fly by scanning the target’s own .c/.h files. It extracts string literals and 32-bit numeric constants (from _#define_, _case_, and _enum_), filters out the noise, and uses them as splice tokens. The intuition is simple: the most interesting magic values that a parser checks for are usually written down somewhere in its own source.\n\n**3\\. A dynamically generated AFL dictionary with coverage-driven enrichment**. The same source-token set is also emitted as an AFL classic dictionary before iteration 1 (numeric constants in both endiannesses, so the fuzzer can satisfy a _memcmp_ against a 4-byte magic regardless of host byte order). Then, after every coverage step, the pipeline looks at the guards near the uncovered lines ( _strncmp_, _memcmp_, _case 0xN_, _== ‘X’_) and appends any new tokens it finds. The dictionary literally grows toward the code the fuzzer can’t yet reach.\n\n**4\\. A corpus-splice operator**. The smart mutator can also load files from a corpus directory and splice random sub-regions of them into the input, a recombination-style operator that AFL’s stock havoc doesn’t do well.\n\n## Evolving corpus\n\nOne of the things that quietly kills fuzzing efficiency is throwing away progress. If every run starts from the original seeds, you re-pay the cost of rediscovering the same paths over and over.\n\nTo avoid that, every harness gets a **stable corpus directory** that survives across iterations and across entire campaigns:\n\n```\n/corpus/harness_/\n```\n\nAt the end of each iteration, AFL’s queue is merged into this directory and run through _afl-cmin_ to keep its size bounded. The effect is that yesterday’s interesting inputs carry into today’s run, and the inputs you found in last week’s campaign carry into this one. If you stop and restart a campaign, you lose nothing.\n\n## Triage and vulnerability reports\n\nFinding a crash is only half the job. As anyone who has done root-cause analysis knows, triaging is often the most tedious part of the whole process. This is the other place where the agent shines.\n\nAfter the fuzzing loop finishes, three stages run automatically. First, every crash is minimized with _afl-tmin_, replayed under ASan to capture a stack trace, and deduplicated by a _stack-top hash_ (the top normalized frames, with templates, inline namespaces, and LTO suffixes stripped so semantically identical crashes collapse together). Second, previously known crashes are replayed against the current binary to see whether an upstream fix has resolved them. Third, the agent reads the harness source and the crashing function, walks the call chain back from the public API, and writes a per-crash markdown report.\n\nEach report assigns one of the following verdicts:\n\n- vulnerability\n- library\\_hardening\n- harness\\_bug\n- OOM\n- timeout\n- assertion\\_failure\n- duplicate\n\nThe distinction between a real _vulnerability_ (reachable and exploitable through a public API) and a mere _harness\\_bug_ (the bug is in our own harness, not the library) is exactly the kind of judgment call that used to require me to sit down and trace the code by hand. Every report includes a root-cause analysis with _file:line_ references, a reachability argument, an exploitability assessment, a **suggested fix as a unified diff** and a regression-test sketch.\n\nJust as clarification: the suggested patches are marked “review required” for a reason. The agent’s analysis is limited by the model’s understanding of the target code, and it does get things wrong. Treat the verdicts as a very well-prepared starting point for a human, not as final result.\n\n# Live dashboard\n\nRunning an autonomous campaign and not being able to see what it’s doing is uncomfortable, so the pipeline publishes everything to a live HTML dashboard. It auto-starts in the background as soon as you launch a campaign, on port _8765_. In a Codespace that port is auto-forwarded, so you can open it in any browser and watch the campaign progress in real time on the dashboard.\n\nThe page shows amongst others:\n\n- a per-harness “running” pulse\n- a coverage-trend table with inline sparklines\n- a crash heatmap\n- an iteration timeline\n\n# Conclusion\n\nI started this project motivated by the limitations that any security researcher knows well: fuzzing works, but it doesn’t scale without human attention, and that human attention is the bottleneck. The Fuzzing Taskflow is my attempt to push that bottleneck back by handing the repetitive parts (writing harnesses, reading coverage, chasing gaps, triaging crashes) to an LLM agent, while keeping a clean separation between the agent’s judgment and the tools that do the real work.\n\nIf you’re the maintainer of C/C++ project, then please give it a try. If your project has never been fuzzed before, then this tool will help you to get started quickly. Or if your project _has_ been fuzzed before, then this tool might help to find new bugs by increasing your fuzzing coverage.\n\nThe source code is open source, so please create an issue if you encounter any bugs. Contributions are also welcome!\n\n## Tags:\n\n## Written by\n\n## Related posts\n\n### Rendering huge pull requests in the GitHub Copilot app\n\nHow we rebuilt the diff surface in the GitHub Copilot app to open a million-line pull request with hundreds of inline review comments.\n\n### Should you read the code, is RAG dead, and did Skills kill MCP?\n\nWe dive into these questions and other AI hot takes on the latest episode of the GitHub Podcast.\n\n### Migrating the GitHub Copilot runtime to Rust, using Copilot\n\nA rewrite this size wasn’t affordable before agents. Here’s what porting the Copilot agent runtime to 800,000 lines of production Rust actually took.",
+    "link": "https://github.blog/security/application-security/ai-powered-fuzzing-with-the-github-security-lab-taskflow-agent/",
+    "source": "0dayfans",
+    "feed_type": "news",
+    "type": "exploits-pocs",
+    "type_label": "Exploits & PoCs",
+    "published": "2026-09-24T18:27:17+00:00",
+    "published_ts": 1790274437,
+    "smart_groups": [
+      "Vulnerabilities / CVEs",
+      "AI/ML Security",
+      "Community Discussion"
+    ],
+    "curated": true
+  },
+  {
+    "title": "AI Helps Uncover MikroTrick Attack Chain in MikroTik RouterOS",
+    "summary": "MikroTrick chains two RouterOS flaws to bypass authentication and gain admin access. AI helped researchers uncover the attack chain within days. MikroTik pushed out patches on September 3, 2026 for several RouterOS issues at once, calling it an important security update without saying what it actually fixed. That silence was deliberate, and it didn’t last long. Within days, researchers had reconstructed the whole attack chain from the patch files themselves. CERT Polska’s Sławomir Rozbicki had reported some of the underlying bugs through coordinated disclosure, and the team expected to publish alongside MikroTik’s release. The vendor shipped early instead. That gap between “patch is out” and “details are public” turned out to be shorter than anyone planned for, and it’s the whole story here. Once the new RouterOS versions landed, CERT Polska started diffing the packages, comparing patched code against the old builds line by line. They found the login program now rejected usernames starting with a hyphen or a space, something that hadn’t been validated before. They also found a new check that specifically watched for a privileged account named “ops” appearing out of nowhere and automatically disabled it, which told them the vendor already had some idea attacks were happening. That detail led them to public forums, where administrators had been sharing suspicious log entries for several days. Two lines appeared again and again: a failed login attempt for a user named “-2,” followed by the creation of a fully privileged “ops” account. A failed login that still results in an admin account is not normal. It was a clear sign that something was wrong. By comparing the patch with those logs, CERT Polska identified a new critical flaw, CVE-2026-86060 , in about an hour and gave MikroTik a working proof of concept. Combined with another vulnerability, CVE-2026-67279, the two flaws could give an attacker full administrative access without a password, SSH key, or successful authentication. The researchers called the attack chain MikroTrick, showing how the vulnerabilities could be chained together to abuse the protocol. Here’s the mechanism, and it’s worth slowing down for. SSH normally won’t let a client touch anything until authentication succeeds, that’s the whole point of the protocol’s layered design. But RouterOS handled something called a rekey, a routine renegotiation of encryption keys mid-session, incorrectly if it happened while authentication was still in progress. Finish that rekey, and the server would skip straight to channel handling as if authentication had already succeeded, even though it never actually did. That alone doesn’t hand over any privileges. It just gets an attacker into the room. The second bug is what turns “in the room” into “root access.” When a client starts a session, RouterOS creates a login process and passes it the username and a numeric privilege level as command-line arguments. The problem is that the username is sent to the server before authentication is complete and is not properly sanitized before being passed to the login process. An attacker can send -2 instead of a normal username. The login process treats -2 as an option that points to file descriptor 2, which is connected to the same terminal channel controlled by the attacker. This allows the attacker to control the username and privilege information through the SSH connection itself. By setting the privilege mask to 655358, which represents the fully privileged group, the attacker can obtain administrator rights without ever successfully authenticating. “Combining the two vulnerabilities resulted in full unauthenticated access to the administrative console.” reads the advisory published by CERT Polska. “CVE-2026-67279 allowed an unauthenticated client to create a session channel, while CVE-2026-86060 allowed it to supply login with an attacker-controlled policy mask.” The tell in the logs, that failed login for user “-2” followed immediately by a new privileged account, matches this exploit chain exactly. CERT Polska is confident MikroTrick was being used in the wild before the patches even existed. Attack logs collected from the MikroTik forum, Reddit, and direct reports to CERT Polska show a consistent source IP, 82.192.72.4, repeatedly attempting this exact sequence, and in several cases succeeding well enough to pull diagnostic files off the compromised routers afterward. One detail stands out: AI played a major role in the research. CERT Polska used GPT-5.5-cyber and GPT-5.6-sol through OpenAI’s GTAC program, together with locally hosted open-weight models, to build an isolated lab with 40 virtual RouterOS devices covering 24 different versions. The AI agents helped analyze binaries, test unusual protocol behavior, including out-of-order messages and rekeying before authentication, and monitor public forums for signs that the exploit was spreading. One of those tests led directly to the discovery of CVE-2026-67279. This is the bigger issue for vendors. Once a patch is released, researchers using similar AI tools can analyze the changes and reconstruct the original vulnerability very quickly. In this case, a public analysis on npratley.net identified the key SSH changes by September 4, less than 24 hours after the patch. By September 5, the “-2” file descriptor trick was already being discussed publicly on Reddit and MikroTik’s forum. “The speed of LLM-assisted patch analysis is blurring the line between releasing an update and publishing the technical details of a vulnerability. In the case of MikroTrick, the key elements of the flaws were identified publicly within days.” concludes the advisory. “The lower cost of code analysis did not, however, reduce the time required to test and deploy updates or to examine systems for evidence of prior compromise.” That’s the actual asymmetry worth worrying about, not that attackers move fast, but that patching and forensic cleanup still move at the old, slow pace while reverse engineering has gotten dramatically cheaper. CISA added two of these CVEs to its Known Exploited Vulnerabilities catalog on September 10, with a three day remediation deadline, which tells you how seriously the US government is treating the gap between disclosure and real-world exploitation here. If you’re running RouterOS anywhere in your infrastructure, particularly on devices exposed to SSH from the internet, patching isn’t optional at this point and it isn’t really about the CVE numbers either. It’s about the fact that the exploit code is already circulating and the identifying log pattern, a rejected login from a user literally named “-2”, is sitting right there for anyone checking their own logs today. Follow me on Twitter: @securityaffairs and Facebook and Mastodon Pierluigi Paganini ( SecurityAffairs – hacking, MikroTik)",
+    "summary_html": "<div></div>\nMikroTrick chains two RouterOS flaws to bypass authentication and gain admin access. AI helped researchers uncover the attack chain within days.\n<p>MikroTik pushed out patches on September 3, 2026 for several RouterOS issues at once, calling it an important security update without saying what it actually fixed. That silence was deliberate, and it didn’t last long. Within days, researchers had reconstructed the whole attack chain from the patch files themselves.</p>\n<p>CERT Polska’s Sławomir Rozbicki had reported some of the underlying bugs through coordinated disclosure, and the team expected to publish alongside MikroTik’s release. The vendor shipped early instead. That gap between “patch is out” and “details are public” turned out to be shorter than anyone planned for, and it’s the whole story here.</p>\n<p>Once the new RouterOS versions landed, CERT Polska started diffing the packages, comparing patched code against the old builds line by line. They found the login program now rejected usernames starting with a hyphen or a space, something that hadn’t been validated before. They also found a new check that specifically watched for a privileged account named “ops” appearing out of nowhere and automatically disabled it, which told them the vendor already had some idea attacks were happening.</p>\n<p>That detail led them to public forums, where administrators had been sharing suspicious log entries for several days. Two lines appeared again and again: a failed login attempt for a user named “-2,” followed by the creation of a fully privileged “ops” account. A failed login that still results in an admin account is not normal. It was a clear sign that something was wrong.</p>\n<p>By comparing the patch with those logs, CERT Polska identified a new critical flaw, <a href=\"https://securityaffairs.com/198538/security/your-mikrotik-router-may-already-be-compromised-look-for-ssh-user-2.html\">CVE-2026-86060</a>, in about an hour and gave MikroTik a working proof of concept. Combined with another vulnerability, CVE-2026-67279, the two flaws could give an attacker full administrative access without a password, SSH key, or successful authentication. The researchers called the attack chain MikroTrick, showing how the vulnerabilities could be chained together to abuse the protocol.</p>\n<p>Here’s the mechanism, and it’s worth slowing down for. SSH normally won’t let a client touch anything until authentication succeeds, that’s the whole point of the protocol’s layered design. But RouterOS handled something called a rekey, a routine renegotiation of encryption keys mid-session, incorrectly if it happened while authentication was still in progress. Finish that rekey, and the server would skip straight to channel handling as if authentication had already succeeded, even though it never actually did.</p>\n<p>That alone doesn’t hand over any privileges. It just gets an attacker into the room. The second bug is what turns “in the room” into “root access.”</p>\n<p>When a client starts a session, RouterOS creates a login process and passes it the username and a numeric privilege level as command-line arguments. The problem is that the username is sent to the server before authentication is complete and is not properly sanitized before being passed to the login process.</p>\n<p>An attacker can send <code>-2</code> instead of a normal username. The login process treats <code>-2</code> as an option that points to file descriptor 2, which is connected to the same terminal channel controlled by the attacker.</p>\n<p>This allows the attacker to control the username and privilege information through the SSH connection itself. By setting the privilege mask to 655358, which represents the fully privileged group, the attacker can obtain administrator rights without ever successfully authenticating.</p>\n<p><em>“Combining the two vulnerabilities resulted in full unauthenticated access to the administrative console.” reads the <a href=\"https://cert.pl/en/posts/2026/09/mikrotrick-technical-analysis/\">advisory</a> published by CERT Polska. “CVE-2026-67279 allowed an unauthenticated client to create a <code>session</code> channel, while CVE-2026-86060 allowed it to supply <code>login</code> with an attacker-controlled policy mask.”</em></p>\n<a href=\"https://i0.wp.com/securityaffairs.com/wp-content/uploads/2026/09/image-69.png?ssl=1\"></a>\n<p>The tell in the logs, that failed login for user “-2” followed immediately by a new privileged account, matches this exploit chain exactly. CERT Polska is confident MikroTrick was being used in the wild before the patches even existed. Attack logs collected from the MikroTik forum, Reddit, and direct reports to CERT Polska show a consistent source IP, 82.192.72.4, repeatedly attempting this exact sequence, and in several cases succeeding well enough to pull diagnostic files off the compromised routers afterward.</p>\n<p>One detail stands out: AI played a major role in the research. CERT Polska used GPT-5.5-cyber and GPT-5.6-sol through OpenAI’s GTAC program, together with locally hosted open-weight models, to build an isolated lab with 40 virtual RouterOS devices covering 24 different versions.</p>\n<p>The AI agents helped analyze binaries, test unusual protocol behavior, including out-of-order messages and rekeying before authentication, and monitor public forums for signs that the exploit was spreading. One of those tests led directly to the discovery of CVE-2026-67279.</p>\n<p>This is the bigger issue for vendors. Once a patch is released, researchers using similar AI tools can analyze the changes and reconstruct the original vulnerability very quickly. In this case, a public analysis on npratley.net identified the key SSH changes by September 4, less than 24 hours after the patch. By September 5, the “-2” file descriptor trick was already being discussed publicly on Reddit and MikroTik’s forum.</p>\n<p><em>“The speed of LLM-assisted patch analysis is blurring the line between releasing an update and publishing the technical details of a vulnerability. In the case of MikroTrick, the key elements of the flaws were identified publicly within days.” concludes the advisory. “The lower cost of code analysis did not, however, reduce the time required to test and deploy updates or to examine systems for evidence of prior compromise.”</em></p>\n<p>That’s the actual asymmetry worth worrying about, not that attackers move fast, but that patching and forensic cleanup still move at the old, slow pace while reverse engineering has gotten dramatically cheaper. CISA added two of these CVEs to its Known Exploited Vulnerabilities catalog on September 10, with a three day remediation deadline, which tells you how seriously the US government is treating the gap between disclosure and real-world exploitation here.</p>\n<p>If you’re running RouterOS anywhere in your infrastructure, particularly on devices exposed to SSH from the internet, patching isn’t optional at this point and it isn’t really about the CVE numbers either. It’s about the fact that the exploit code is already circulating and the identifying log pattern, a rejected login from a user literally named “-2”, is sitting right there for anyone checking their own logs today.</p>\n<p><strong>Follow me on Twitter: </strong><a href=\"https://twitter.com/securityaffairs\"><strong>@securityaffairs</strong></a><strong> and </strong><a href=\"https://www.facebook.com/sec.affairs\"><strong>Facebook</strong></a><strong> and </strong><a href=\"https://infosec.exchange/@securityaffairs\"><strong>Mastodon</strong></a><strong></strong></p>\n<p><a href=\"http://www.linkedin.com/pub/pierluigi-paganini/b/742/559\"><strong>Pierluigi Paganini</strong></a><strong></strong></p>\n<p><strong>(</strong><a href=\"http://securityaffairs.co/wordpress/\"><strong>SecurityAffairs</strong></a><strong> – hacking, MikroTik)</strong></p>\n<p></p>",
+    "link": "https://securityaffairs.com/199678/hacking/ai-helps-uncover-mikrotrick-attack-chain-in-mikrotik-routeros.html",
+    "source": "Security Affairs",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-09-24T18:16:27+00:00",
+    "published_ts": 1790273787,
+    "smart_groups": [
+      "Vulnerabilities / CVEs",
+      "Exploit / PoC",
+      "Community Discussion"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Unpatched OnePlus Flaws Let Installed Android Apps Gain Root Without Permissions",
+    "summary": "A OnePlus 15 running the latest OxygenOS can be rooted by a malicious app the owner installs, one that asks for no special permissions. A researcher, Rasmus Moorats, chained two flaws in OnePlus's own software to gain root access, the highest level of control over an Android phone. OnePlus told him the same flaws affect many more of its own devices and those of OPPO, though it has not",
+    "summary_html": "A OnePlus 15 running the latest OxygenOS can be rooted by a malicious app the owner installs, one that asks for no special permissions. A researcher, Rasmus Moorats, chained two flaws in OnePlus's own software to gain root access, the highest level of control over an Android phone.\n\nOnePlus told him the same flaws affect many more of its own devices and those of OPPO, though it has not",
+    "link": "https://thehackernews.com/2026/09/unpatched-oneplus-flaws-let-installed.html",
+    "source": "The Hacker News",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-09-24T18:10:18+00:00",
+    "published_ts": 1790273418,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Trust and the enticing consultancy offer",
+    "summary": "Welcome to this week’s edition of the Threat Source newsletter. In the cybersecurity industry, trust is the invisible currency. Every practitioner carries the implicit trust not to abuse privileged access or knowledge of vulnerabilities in each employment or engagement. This trust is valued by those who require our services, but also by threat actors. Clumsy phishing attacks may be easy to identify, but be wary of unsolicited messages on social media, especially if someone is offering payment for a simple service or suggests a lucrative job offer. These might be an enticement to unknowingly sell your professional integrity. When an unknown profile contacted me offering $300 for an hour’s telephone consultation on digital transformation, I knew something was up. Firstly, the profile was remarkably sparse — there was none of the usual clutter that accumulates in a social media profile. The individual claimed to work as a consultant, but their employer had no footprint and only one employee. The profile didn’t pass the “smell” test, and it looked fake. Secondly, although I’m flattered, I doubt my opinions on digital transformation are worth $300. The figure is low enough to be plausible and high enough to be tempting, but at the same time suspiciously high for an initial consultation without prior qualification. The attack itself is a confidence trick. The initial phone consultation is merely a screening process to see if the target has the access or knowledge the attacker needs. If the target passes muster, the next step is commissioning a written report, and then being asked to deliver a \"special report.\" Plied with professional praise, the target is asked to provide insights that aren't in the public domain. To deliver the report and claim their fee, the target must reach out to co-workers, probe internal systems, or abuse professional relationships. Completing the assignment requires the target to abuse their trusted access and professional relationships and friendships. In the process, they burn trust worth far more than any monetary compensation. This social engineering attempt masquerading as an offer of consultancy is one variant. Fake recruiters offering prestigious and well-paid jobs, requiring candidates to install trojanised software under some pretence, is another. Security professionals spend their days protecting others, yet flattery and overconfidence often remain our greatest vulnerabilities. We are prone to believe that we could identify any social engineering, but this is exactly the weakness that attackers count on. Trust is the most valuable commodity in our industry. Be careful not to trade it for a $300 consultation or a fake job offer. Once that currency is spent, you can rarely earn it back. The one big thing Talos released CAIRN (Cognitive Artifact Intelligence Research Network), a new open-source research toolkit designed to hunt, classify, and track emerging AI-integrated malware. Instead of relying on traditional reverse engineering, CAIRN uses a metadata-first methodology to identify cognitive artifacts like prompt templates, API keys, and jailbreak terms left behind by attackers. This allows researchers to extract, relate, and classify these artifacts quickly and at scale without ever touching the underlying binary. Why do I care? AI-integrated malware is evolving quickly, shifting from optional features to fully autonomous orchestrators in just a year. Adversaries are already sharing AI-specific tradecraft, including techniques designed to evade LLM sandboxes. Defenders need scalable frameworks to track this rapid transition before these experimental tactics become the new standard for modern attacks. So now what? Security teams can leverage the open-source CAIRN toolkit to expand their hunting capabilities and map out related malware infrastructure. While analysts should anticipate some noise from benign frameworks — meaning final verdicts still require manual reverse engineering — CAIRN can provide a massive head start. Read the full blog to explore the methodology, access the YARA-based classification tiers, and watch a demo of the toolkit in action. Top security headlines of the week Hackers say they have data on all FBI employees ShinyHunters claims it has breached multiple FBI-related services and stolen data “on all FBI employees and applicants.” A representative told 404 Media the data includes FBI agents’ names, home addresses, phone number, and information on their spouse. ( 404 Media ) Fake LastPass installers push kernel-level EDR killer, “Rapuncel” stealer A fake LastPass Authenticator distributed via GitHub has led to the discovery of a broad impersonation campaign delivering infostealer malware. The lure represents opportunistic brand spoofing — with no internal LastPass systems compromised. ( SecurityWeek ) Japan dismantles first North Korean laptop farm as U.S. and allies detail wider scheme Law enforcement and intelligence agencies from Japan, the United States, Australia and Germany have published a joint advisory attributing a long-running hiring scheme to a North Korean group they call WaterPlum, also known as Contagious Interview. ( SecurityWeek ) Colorado water utilities face foreign cyberattacks targeting pumps, alarms and remote access Hackers targeted and manipulated equipment at two privately owned Colorado water utilities in late August, changing pumping cycles, disabling remote access and alarms, and altering equipment settings. ( Industrial Cyber ) Gemini hacked three companies in first known breakout by Google’s AI In one of the cases, the model guessed passwords until it gained access to a protected system. In the other two cases, the model found credentials in a public repository that allowed it to then access protected systems. ( The Wall Street Journal ) Can’t get enough Talos? Inside the first reported autonomous AI C2 implant CLOSEDQUORUM, a malware binary discovered through Talos’ CAIRN project, exhibits fully autonomous command and control. After deployment, it delegates the selection of its next action to a panel of commercial large language models (LLMs) and executes the resulting decision. ClickFix, EtherHiding, and the rise of malicious code in the blockchain In this episode of Talos Takes, Amy sits down with researcher Vanja Svajcer to break down a sophisticated, multi-stage infection chain that leverages a combination of ClickFix social engineering, WebDAV, and decentralized infrastructure. Ransomware incidents in Japan in the first half of 2026 Ransomware incidents in Japan rose 4.7% year over year. The Gentlemen was the most active group, with leak-site listings more than doubling from January to July. Qilin ranked second and appeared to use AI, while SMEs with capital under JPY 1 billion represented 80% of victims. Upcoming events where you can find Talos VB (Oct. 14 – 16) Seville, Spain CAMLIS (Oct. 21 – 23) Arlington, VA SecurityOnion Conference (Oct. 23) Augusta, GA BsidesAugusta (Oct. 24) Augusta, GA SAINTCON (Oct. 26 – 30) Provo, UT Most prevalent malware files from Talos telemetry over the past week SHA256: 9f1f11a708d393e0a4109ae189bc64f1f3e312653dcf317a2bd406f18ffcc507 MD5: 2915b3f8b703eb744fc54c81f4a9c67f Talos Rep: https://talosintelligence.com/talos_file_reputation?s=9f1f11a708d393e0a4109ae189bc64f1f3e312653dcf317a2bd406f18ffcc507 Example Filename: sample.exe Detection Name: W32.9F1F11A708-100.SBX.TG SHA256: 9896a6fcb9bb5ac1ec5297b4a65be3f647589adf7c37b45f3f7466decd6a4a7f MD5: 38de5b216c33833af710e88f7f64fc98 Talos Rep: https://talosintelligence.com/talos_file_reputation?s=9896a6fcb9bb5ac1ec5297b4a65be3f647589adf7c37b45f3f7466decd6a4a7f Example Filename: SECOH-QAD.exe Detection Name: W32.9896A6FCB9-95.SBX.TG** SHA256: 540080fea97d88ed902c5e4f9a026b4fcd32ab263706c520e00728f1a29578b8 MD5: d65c7b544a97b0c3f2773b5fcc57d30e Talos Rep: https://talosintelligence.com/talos_file_reputation?s=540080fea97d88ed902c5e4f9a026b4fcd32ab263706c520e00728f1a29578b8 Example Filename: f_000bc7.exe Detection Name: W32.Superfluss.29lm.1201 SHA256: cfa1997682e4ed41bc691ba848d845abbe0b75ec97e640c2b015b4d1624a108a MD5: 415898f14843d4a6537cf8f43d328eaf Talos Rep: https://talosintelligence.com/talos_file_reputation?s=cfa1997682e4ed41bc691ba848d845abbe0b75ec97e640c2b015b4d1624a108a Example Filename: KMSAuto.exe Detection Name: PUA.Win.Tool.Hackkms::1201** SHA256: 38d053135ddceaef0abb8296f3b0bf6114b25e10e6fa1bb8050aeecec4ba8f55 MD5: 41444d7018601b599beac0c60ed1bf83 Talos Rep: https://talosintelligence.com/talos_file_reputation?s=38d053135ddceaef0abb8296f3b0bf6114b25e10e6fa1bb8050aeecec4ba8f55 Example Filename: content.js Detection Name: W32.38D053135D-95.SBX.TG",
+    "summary_html": "<p>Welcome to this week’s edition of the Threat Source newsletter. </p><p>In the cybersecurity industry, trust is the invisible currency. Every practitioner carries the implicit trust not to abuse privileged access or knowledge of vulnerabilities in each employment or engagement. This trust is valued by those who require our services, but also by threat actors. </p><p>Clumsy phishing attacks may be easy to identify, but be wary of unsolicited messages on social media, especially if someone is offering payment for a simple service or suggests a lucrative job offer. These might be an enticement to unknowingly sell your professional integrity. </p><p>When an unknown profile contacted me offering $300 for an hour’s telephone consultation on digital transformation, I knew something was up. Firstly, the profile was remarkably sparse — there was none of the usual clutter that accumulates in a social media profile. The individual claimed to work as a consultant, but their employer had no footprint and only one employee. The profile didn’t pass the “smell” test, and it looked fake. </p><p>Secondly, although I’m flattered, I doubt my opinions on digital transformation are worth $300. The figure is low enough to be plausible and high enough to be tempting, but at the same time suspiciously high for an initial consultation without prior qualification. </p><p>The attack itself is a confidence trick. The initial phone consultation is merely a screening process to see if the target has the access or knowledge the attacker needs. If the target passes muster, the next step is commissioning a written report, and then being asked to deliver a \"special report.\" </p><p>Plied with professional praise, the target is asked to provide insights that aren't in the public domain. To deliver the report and claim their fee, the target must reach out to co-workers, probe internal systems, or abuse professional relationships. Completing the assignment requires the target to abuse their trusted access and professional relationships and friendships. In the process, they burn trust worth far more than any monetary compensation. </p><p>This social engineering attempt masquerading as an offer of consultancy is one variant. Fake recruiters offering prestigious and well-paid jobs, requiring candidates to install trojanised software under some pretence, is another. </p><p>Security professionals spend their days protecting others, yet flattery and overconfidence often remain our greatest vulnerabilities. We are prone to believe that we could identify any social engineering, but this is exactly the weakness that attackers count on. </p><p>Trust is the most valuable commodity in our industry. Be careful not to trade it for a $300 consultation or a fake job offer. Once that currency is spent, you can rarely earn it back. </p>The one big thing  <p>Talos released <a href=\"https://blog.talosintelligence.com/introducing-cairn-frontier-tracking-for-ai-integrated-malware/\">CAIRN</a> (Cognitive Artifact Intelligence Research Network), a new open-source research toolkit designed to hunt, classify, and track emerging AI-integrated malware. Instead of relying on traditional reverse engineering, CAIRN uses a metadata-first methodology to identify cognitive artifacts like prompt templates, API keys, and jailbreak terms left behind by attackers. This allows researchers to extract, relate, and classify these artifacts quickly and at scale without ever touching the underlying binary. </p>Why do I care? <p>AI-integrated malware is evolving quickly, shifting from optional features to fully autonomous orchestrators in just a year. Adversaries are already sharing AI-specific tradecraft, including techniques designed to evade LLM sandboxes. Defenders need scalable frameworks to track this rapid transition before these experimental tactics become the new standard for modern attacks. </p>So now what? <p>Security teams can leverage the open-source CAIRN toolkit to expand their hunting capabilities and map out related malware infrastructure. While analysts should anticipate some noise from benign frameworks — meaning final verdicts still require manual reverse engineering — CAIRN can provide a massive head start. <a href=\"https://blog.talosintelligence.com/introducing-cairn-frontier-tracking-for-ai-integrated-malware/\">Read the full blog</a> to explore the methodology, access the YARA-based classification tiers, and watch a demo of the toolkit in action. </p>Top security headlines of the week <p><strong>Hackers say they have data on all FBI employees</strong> <br/>ShinyHunters claims it has breached multiple FBI-related services and stolen data “on all FBI employees and applicants.” A representative told 404 Media the data includes FBI agents’ names, home addresses, phone number, and information on their spouse. (<a href=\"https://www.404media.co/we-hacked-the-fbi-hackers-say-they-have-data-on-all-fbi-employees/\">404 Media</a>) </p><p><strong>Fake LastPass installers push kernel-level EDR killer, “Rapuncel” stealer</strong> <br/>A fake LastPass Authenticator distributed via GitHub has led to the discovery of a broad impersonation campaign delivering infostealer malware. The lure represents opportunistic brand spoofing — with no internal LastPass systems compromised. (<a href=\"https://www.securityweek.com/fake-lastpass-installers-push-kernel-level-edr-killer-rapuncel-stealer/\">SecurityWeek</a>) </p><p><strong>Japan dismantles first North Korean laptop farm as U.S. and allies detail wider scheme</strong> <br/>Law enforcement and intelligence agencies from Japan, the United States, Australia and Germany have published a joint advisory attributing a long-running hiring scheme to a North Korean group they call WaterPlum, also known as Contagious Interview. (<a href=\"https://www.securityweek.com/japan-dismantles-first-north-korean-laptop-farm-as-us-and-allies-detail-wider-scheme/\">SecurityWeek</a>) </p><p><strong>Colorado water utilities face foreign cyberattacks targeting pumps, alarms and remote access</strong> <br/>Hackers targeted and manipulated equipment at two privately owned Colorado water utilities in late August, changing pumping cycles, disabling remote access and alarms, and altering equipment settings. (<a href=\"https://industrialcyber.co/utilities-energy-power-water-waste/colorado-water-utilities-face-foreign-cyberattacks-targeting-pumps-alarms-and-remote-access/\">Industrial Cyber</a>) </p><p><strong>Gemini hacked three companies in first known breakout by Google’s AI </strong> <br/>In one of the cases, the model guessed passwords until it gained access to a protected system. In the other two cases, the model found credentials in a public repository that allowed it to then access protected systems. (<a href=\"https://www.wsj.com/tech/ai/gemini-hacked-three-companies-in-first-known-breakout-by-googles-ai-5c0baba2\">The Wall Street Journal</a>) </p>Can’t get enough Talos? <p><a href=\"https://blog.talosintelligence.com/the-closed-quorum-inside-the-first-reported-autonomous-ai-c2-implant/\"><strong>Inside the first reported autonomous AI C2 implant</strong></a> <br/>CLOSEDQUORUM, a malware binary discovered through Talos’ CAIRN project, exhibits fully autonomous command and control. After deployment, it delegates the selection of its next action to a panel of commercial large language models (LLMs) and executes the resulting decision. </p><p><a href=\"https://www.buzzsprout.com/2018149/episodes/19841224\"><strong>ClickFix, EtherHiding, and the rise of malicious code in the blockchain</strong></a> <br/>In this episode of Talos Takes, Amy sits down with researcher Vanja Svajcer to break down a sophisticated, multi-stage infection chain that leverages a combination of ClickFix social engineering, WebDAV, and decentralized infrastructure.</p><p><a href=\"https://blog.talosintelligence.com/ransomware-incidents-in-japan-in-the-first-half-of-2026/\"><strong>Ransomware incidents in Japan in the first half of 2026</strong></a> <br/>Ransomware incidents in Japan rose 4.7% year over year. The Gentlemen was the most active group, with leak-site listings more than doubling from January to July. Qilin ranked second and appeared to use AI, while SMEs with capital under JPY 1 billion represented 80% of victims.</p>Upcoming events where you can find Talos <ul><li><a href=\"https://www.virusbulletin.com/conference/vb2026/\">VB</a> (Oct. 14 – 16) Seville, Spain </li><li><a href=\"https://www.camlis.org/\">CAMLIS</a> (Oct. 21 – 23) Arlington, VA </li><li><a href=\"https://securityonionsolutions.com/conference/\">SecurityOnion Conference</a> (Oct. 23) Augusta, GA </li><li><a href=\"https://bsidesaugusta.org/\">BsidesAugusta</a> (Oct. 24) Augusta, GA </li><li><a href=\"https://saintcon.org/\">SAINTCON</a> (Oct. 26 – 30) Provo, UT </li></ul>Most prevalent malware files from Talos telemetry over the past week <p><strong>SHA256: 9f1f11a708d393e0a4109ae189bc64f1f3e312653dcf317a2bd406f18ffcc507 </strong> <br/>MD5: 2915b3f8b703eb744fc54c81f4a9c67f <br/>Talos Rep: <a href=\"https://talosintelligence.com/talos_file_reputation?s=9f1f11a708d393e0a4109ae189bc64f1f3e312653dcf317a2bd406f18ffcc507\">https://talosintelligence.com/talos_file_reputation?s=9f1f11a708d393e0a4109ae189bc64f1f3e312653dcf317a2bd406f18ffcc507</a> <br/>Example Filename: sample.exe <br/>Detection Name: W32.9F1F11A708-100.SBX.TG </p><p><strong>SHA256: 9896a6fcb9bb5ac1ec5297b4a65be3f647589adf7c37b45f3f7466decd6a4a7f</strong> <br/>MD5: 38de5b216c33833af710e88f7f64fc98 <br/>Talos Rep: <a href=\"https://talosintelligence.com/talos_file_reputation?s=9896a6fcb9bb5ac1ec5297b4a65be3f647589adf7c37b45f3f7466decd6a4a7f\">https://talosintelligence.com/talos_file_reputation?s=9896a6fcb9bb5ac1ec5297b4a65be3f647589adf7c37b45f3f7466decd6a4a7f</a> <br/>Example Filename: SECOH-QAD.exe <br/>Detection Name: W32.9896A6FCB9-95.SBX.TG** </p><p><strong>SHA256: 540080fea97d88ed902c5e4f9a026b4fcd32ab263706c520e00728f1a29578b8</strong> <br/>MD5: d65c7b544a97b0c3f2773b5fcc57d30e <br/>Talos Rep: <a href=\"https://talosintelligence.com/talos_file_reputation?s=540080fea97d88ed902c5e4f9a026b4fcd32ab263706c520e00728f1a29578b8\">https://talosintelligence.com/talos_file_reputation?s=540080fea97d88ed902c5e4f9a026b4fcd32ab263706c520e00728f1a29578b8</a><br/>Example Filename: f_000bc7.exe <br/>Detection Name: W32.Superfluss.29lm.1201 </p><p><strong>SHA256: cfa1997682e4ed41bc691ba848d845abbe0b75ec97e640c2b015b4d1624a108a</strong> <br/>MD5: 415898f14843d4a6537cf8f43d328eaf <br/>Talos Rep: <a href=\"https://talosintelligence.com/talos_file_reputation?s=cfa1997682e4ed41bc691ba848d845abbe0b75ec97e640c2b015b4d1624a108a\">https://talosintelligence.com/talos_file_reputation?s=cfa1997682e4ed41bc691ba848d845abbe0b75ec97e640c2b015b4d1624a108a</a> <br/>Example Filename: KMSAuto.exe <br/>Detection Name: PUA.Win.Tool.Hackkms::1201** </p><p><strong>SHA256: 38d053135ddceaef0abb8296f3b0bf6114b25e10e6fa1bb8050aeecec4ba8f55</strong> <br/>MD5: 41444d7018601b599beac0c60ed1bf83  <br/>Talos Rep: <a href=\"https://talosintelligence.com/talos_file_reputation?s=38d053135ddceaef0abb8296f3b0bf6114b25e10e6fa1bb8050aeecec4ba8f55\">https://talosintelligence.com/talos_file_reputation?s=38d053135ddceaef0abb8296f3b0bf6114b25e10e6fa1bb8050aeecec4ba8f55</a> <br/>Example Filename: content.js  <br/>Detection Name: W32.38D053135D-95.SBX.TG</p>",
+    "link": "https://blog.talosintelligence.com/trust-and-the-enticing-consultancy-offer/",
+    "source": "Cisco Talos Blog",
+    "feed_type": "news",
+    "type": "threat-intel-apt-campaigns",
+    "type_label": "Threat Intel & APT Campaigns",
+    "published": "2026-09-24T18:00:37+00:00",
+    "published_ts": 1790272837,
+    "smart_groups": [
+      "Ransomware",
+      "Vulnerabilities / CVEs",
+      "Malware / Payloads"
+    ],
+    "curated": true
+  },
+  {
+    "title": "ThreatsDay: AI Search Poisoning, AI Coding Tool Leaking Repos, One-Click Code Execution and 13 More Stories",
+    "summary": "This week, the dangerous stuff keeps arriving dressed as something boring. An update. A login box. A search answer. A coding tool. A link you have clicked a hundred times before. That is the thread running through the pile. Trusted paths get poisoned. Old bugs find new jobs. AI tools leak more than expected. Fake prompts look real enough. And some attacks barely need an exploit at all — just",
+    "summary_html": "This week, the dangerous stuff keeps arriving dressed as something boring. An update. A login box. A search answer. A coding tool. A link you have clicked a hundred times before.\n\nThat is the thread running through the pile. Trusted paths get poisoned. Old bugs find new jobs. AI tools leak more than expected. Fake prompts look real enough. And some attacks barely need an exploit at all — just",
+    "link": "https://thehackernews.com/2026/09/threatsday-ai-search-poisoning-ai.html",
+    "source": "The Hacker News",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-09-24T17:52:43+00:00",
+    "published_ts": 1790272363,
+    "smart_groups": [],
+    "curated": true
+  },
+  {
+    "title": "New York Wants to Ban Polymarket, Lawsuit Calls It 'Illegal Gambling Operation'",
+    "summary": "Attorney General Letitia James and Governor Kathy Hochul allege the prediction market operates without a license and exposes New Yorkers to gambling harms.",
+    "summary_html": "Attorney General Letitia James and Governor Kathy Hochul allege the prediction market operates without a license and exposes New Yorkers to gambling harms.",
+    "link": "https://decrypt.co/379244/new-york-ban-polymarket-lawsuit",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-09-24T17:51:31+00:00",
+    "published_ts": 1790272291,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Exposed GitLab project email addresses let attackers push code",
+    "summary": "Private GitLab email addresses that allow developers to push issues or tasks to a project are being deliberately exposed in READMEs, contributing guides, and support pages used to collect bug reports.",
+    "summary_html": "Private GitLab email addresses that allow developers to push issues or tasks to a project are being deliberately exposed in READMEs, contributing guides, and support pages used to collect bug reports. [...]",
+    "link": "https://www.bleepingcomputer.com/news/security/exposed-gitlab-project-email-addresses-let-attackers-push-code/",
+    "source": "BleepingComputer – Cybercrime",
+    "feed_type": "news",
+    "type": "cybercrime-underground",
+    "type_label": "Cybercrime & Underground",
+    "published": "2026-09-24T17:47:44+00:00",
+    "published_ts": 1790272064,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "In Her Final Weeks, SEC's Peirce Calls for Ending the KYC 'Panopticon'",
+    "summary": "In one of her final speeches as commissioner, Peirce argued that regulators' \"data haystacks\" endanger the people they aim to protect—as recent KYC leaks expose crypto holders to phishing and physical attacks.",
+    "summary_html": "In one of her final speeches as commissioner, Peirce argued that regulators' \"data haystacks\" endanger the people they aim to protect—as recent KYC leaks expose crypto holders to phishing and physical attacks.",
+    "link": "https://decrypt.co/379217/sec-peirce-end-kyc-panopticon-zero-knowledge-proofs",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-09-24T17:31:03+00:00",
+    "published_ts": 1790271063,
+    "smart_groups": [
+      "Phishing / Social Engineering"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Interview insight",
+    "summary": "Hello everyone , I recently made it through multiple interviews for a SOC position, with my last one being a technical interview. The original posting said Tier 1 and/or Tier 2, but during the interview I learned they don’t separate the responsibilities. The recruiter also emphasized wanting someone who was willing and able to learn.I thought the interviews went pretty well, but I haven’t received an update since my technical interview. I followed up and haven’t gotten a response yet. Then I noticed the position was posted again on LinkedIn after the original posting had already closed. For anyone who has been on either side of tech hiring or have a understanding of these interviews what would you make of this situation? Have you ever had a company repost a role while you were still being considered after a final/technical interview? I’m trying not to assume that the repost automatically means a rejection, but the combination of the role being reposted and not receiving an update has me wondering what might be happening behind the scenes. submitted by /u/CombinationBulky1356 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Hello everyone , I recently made it through multiple interviews for a SOC position, with my last one being a technical interview. The original posting said Tier 1 and/or Tier 2, but during the interview I learned they don’t separate the responsibilities. The recruiter also emphasized wanting someone who was willing and able to learn.I thought the interviews went pretty well, but I haven’t received an update since my technical interview. I followed up and haven’t gotten a response yet. Then I noticed the position was posted again on LinkedIn after the original posting had already closed.</p> <p>For anyone who has been on either side of tech hiring or have a understanding of these interviews what would you make of this situation? Have you ever had a company repost a role while you were still being considered after a final/technical interview? I’m trying not to assume that the repost automatically means a rejection, but the combination of the role being reposted and not receiving an update has me wondering what might be happening behind the scenes.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/CombinationBulky1356\"> /u/CombinationBulky1356 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wp7q78/interview_insight/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wp7q78/interview_insight/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1wp7q78/interview_insight/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-09-24T17:20:44+00:00",
+    "published_ts": 1790270444,
+    "smart_groups": [
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Career Help",
+    "summary": "Hello everyone, I have been trying to learn more and get into the field of cybersecurity and ethical hacking. But I feel really stagnant at times, and feel like I don't know how to implement what I have learnt. Specially when it comes to Web Penetration Testing, it feels like ik all the vulnerabilities that could be there, but never find an efficient way to find them. Just looking for some advice on how can I overcome this, and what are some steps that you all would suggest to improve myself and get better at this. Thank you for helping me out! submitted by /u/Scratch_12 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Hello everyone, I have been trying to learn more and get into the field of cybersecurity and ethical hacking. But I feel really stagnant at times, and feel like I don't know how to implement what I have learnt.</p> <p>Specially when it comes to Web Penetration Testing, it feels like ik all the vulnerabilities that could be there, but never find an efficient way to find them.</p> <p>Just looking for some advice on how can I overcome this, and what are some steps that you all would suggest to improve myself and get better at this.</p> <p>Thank you for helping me out!</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Scratch_12\"> /u/Scratch_12 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wp7loh/career_help/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wp7loh/career_help/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1wp7loh/career_help/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-09-24T17:16:03+00:00",
+    "published_ts": 1790270163,
+    "smart_groups": [
+      "Vulnerabilities / CVEs",
+      "Red Team / Offensive",
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Crypto treasury model loses its edge as stock premiums fade: DWF",
+    "summary": "Most DATs now trade below the value of their crypto holdings, weakening a financing model that once helped companies expand their balance sheets.",
+    "summary_html": "<p></p><p>Most DATs now trade below the value of their crypto holdings, weakening a financing model that once helped companies expand their balance sheets.\n</p>",
+    "link": "https://cointelegraph.com/news/crypto-treasury-firms-below-nav-sequans-bitcoin-exit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-09-24T17:14:35+00:00",
+    "published_ts": 1790270075,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Sequans exits Bitcoin treasury strategy after selling remaining 314 BTC",
+    "summary": "The France-based semiconductor company has fully unwound a Bitcoin treasury that once held more than 3,200 BTC as more firms scale back crypto holdings.",
+    "summary_html": "<p></p><p>The France-based semiconductor company has fully unwound a Bitcoin treasury that once held more than 3,200 BTC as more firms scale back crypto holdings. </p>",
+    "link": "https://cointelegraph.com/news/sequans-exits-bitcoin-treasury-strategy-after-selling-remaining-314-btc?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-09-24T17:13:38+00:00",
+    "published_ts": 1790270018,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Microsoft Password Reset Portal Can Leak Account Verification Details",
+    "summary": "LevelBlue found Microsoft’s password reset portal can reveal valid accounts, recovery methods and likely administrator accounts without user authentication.",
+    "summary_html": "LevelBlue found Microsoft’s password reset portal can reveal valid accounts, recovery methods and likely administrator accounts without user authentication.",
+    "link": "https://hackread.com/microsoft-password-reset-portal-leak-account-details/",
+    "source": "HackRead",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-09-24T17:07:00+00:00",
+    "published_ts": 1790269620,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "FBI investigating claim hackers have stolen details of all its agents",
+    "summary": "submitted by /u/NISMO1968 [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/cybersecurity/comments/1wp77qb/fbi_investigating_claim_hackers_have_stolen/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/NISMO1968\"> /u/NISMO1968 </a> <br/> <span><a href=\"https://www.bbc.com/news/articles/c9n74574elljo\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wp77qb/fbi_investigating_claim_hackers_have_stolen/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1wp77qb/fbi_investigating_claim_hackers_have_stolen/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-09-24T17:01:24+00:00",
+    "published_ts": 1790269284,
+    "smart_groups": [
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Multiple Vulnerabilities in IBM Concert Software Could Allow for Remote Code Execution",
+    "summary": "Multiple vulnerabilities have been discovered in IBM Concert Software, the most severe of which could allow for remote code execution. IBM Concert is an agentic IT operations (IT Ops) and resilience platform designed to unify fragmented data, context, and actions across an enterprise's hybrid cloud and IT environments. Successful exploitation of the most severe of these vulnerabilities could allow for remote code execution with the privileges of the affected application.",
+    "summary_html": "<p><span>Multiple vulnerabilities have been discovered in IBM Concert Software, the most severe of which could allow for remote code execution. IBM Concert is an agentic IT operations (IT Ops) and resilience platform designed to unify fragmented data, context, and actions across an enterprise's hybrid cloud and IT environments. Successful exploitation of the most severe of these vulnerabilities could allow for remote code execution with the privileges of the affected application.</span></p>",
+    "link": "https://www.cisecurity.org/advisory/multiple-vulnerabilities-in-ibm-concert-software-could-allow-for-remote-code-execution_2026-100",
+    "source": "CIS – Advisories",
+    "feed_type": "news",
+    "type": "government-cert-advisories",
+    "type_label": "Government, CERT & Advisories",
+    "published": "2026-09-24T16:59:11+00:00",
+    "published_ts": 1790269151,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": true
+  },
+  {
+    "title": "US Aims to Turn Stablecoins Into a Weapon for Dollar Dominance",
+    "summary": "Washington may fund private stablecoin ventures abroad to protect the dollar's reserve status and prop up Treasury demand.",
+    "summary_html": "Washington may fund private stablecoin ventures abroad to protect the dollar's reserve status and prop up Treasury demand.",
+    "link": "https://decrypt.co/379219/us-stablecoins-weapon-dollar-dominance",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-09-24T16:55:43+00:00",
+    "published_ts": 1790268943,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Supercharge Your Growth: Your Zscaler Partner Demand Center Meets Agentic AI",
+    "summary": "Supercharge Your Growth: Your Zscaler Partner Demand Center Meets Agentic AIHey Partners!Executing co-marketing with Zscaler shouldn't be a heavy lift. That’s why we’ve enhanced the Zscaler Partner Demand Center (PDC) with optimized user experience and Agentic AI capabilities, making driving awareness of your solutions with Zscaler and demand generation faster, smarter, and easier than ever. Imagine launching a complete, localized co-branded marketing campaign in under 2 minutes. With new Agentic AI features, you can do exactly that, for example:AskIQ: Your built-in marketing genius. Instantly find the perfect campaign, draft localized email streams, or generate ready-to-use social posts in 34+ languagesSparkle: Streamline your workflow and customize assets with zero design experience required.Whether you’re a power user, brand new to the platform, or haven’t explored the PDC recently, now is the time to check it out. Scale Your Execution, Keep Your StrategyThe goal of our new AI features isn't to replace human connection, it’s to automate the tedious tasks that compete for your time. Channel partnerships are built on trust and human relationships. By letting Agentic AI handle the routine work (like content localization and email drafting), you and your team can focus on the strategic conversations that actually close deals.We’ve revamped the PDC experience based directly on your feedback. With streamlined navigation, activated AI, and a cleaner user experience, finding the right marketing assets and launching campaigns now takes minutes, not hours. Whether you need customizable email streams, co-brandable collateral, or integrated solution plays with our technology partners, it’s all right there waiting for you.Lead the Conversation with the latest: AI SecurityReady to dive in? Start with our latest launch - the AI Security campaign. It gives you everything you need to help your customers securely adopt AI technologies while positioning your practice at the forefront of modern cloud security. Exclusive Launch Incentive: Grab Your Free AI Note Taker!There’s never been a better time to engage your customers on the critical importance of securing AI. To help you lead the charge, we're launching an exclusive incentive:The Reward: The first 5 partners to launch and execute our new AI Security campaign through the PDC will receive a free premium AI Note Taker, Plaid Note on us to help supercharge your marketing stack!This is your chance to be at the forefront of the AI conversation, gain a competitive edge, and drive an immediate pipeline.Jump into the Partner Demand Center & Launch Your campaign today!New to the PDC? Get started here!",
+    "summary_html": "Supercharge Your Growth: Your Zscaler Partner Demand Center Meets Agentic AIHey Partners!Executing co-marketing with Zscaler shouldn't be a heavy lift. That’s why we’ve enhanced the Zscaler Partner Demand Center (PDC) with optimized user experience and Agentic AI capabilities, making driving awareness of your solutions with Zscaler and demand generation faster, smarter, and easier than ever. Imagine launching a complete, localized co-branded marketing campaign in under 2 minutes. With new Agentic AI features, you can do exactly that, for example:AskIQ: Your built-in marketing genius. Instantly find the perfect campaign, draft localized email streams, or generate ready-to-use social posts in 34+ languagesSparkle: Streamline your workflow and customize assets with zero design experience required.Whether you’re a power user, brand new to the platform, or haven’t explored the PDC recently, now is the time to check it out. Scale Your Execution, Keep Your StrategyThe goal of our new AI features isn't to replace human connection, it’s to automate the tedious tasks that compete for your time. Channel partnerships are built on trust and human relationships. By letting Agentic AI handle the routine work (like content localization and email drafting), you and your team can focus on the strategic conversations that actually close deals.We’ve revamped the PDC experience based directly on your feedback. With streamlined navigation, activated AI, and a cleaner user experience, finding the right marketing assets and launching campaigns now takes minutes, not hours. Whether you need customizable email streams, co-brandable collateral, or integrated solution plays with our technology partners, it’s all right there waiting for you.Lead the Conversation with the latest: AI SecurityReady to dive in? Start with our latest launch - the AI Security campaign. It gives you everything you need to help your customers securely adopt AI technologies while positioning your practice at the forefront of modern cloud security. Exclusive Launch Incentive: Grab Your Free AI Note Taker!There’s never been a better time to engage your customers on the critical importance of securing AI. To help you lead the charge, we're launching an exclusive incentive:The Reward: The first 5 partners to launch and execute our new AI Security campaign through the PDC will receive a free premium AI Note Taker, Plaid Note on us to help supercharge your marketing stack!This is your chance to be at the forefront of the AI conversation, gain a competitive edge, and drive an immediate pipeline.Jump into the Partner Demand Center &amp; Launch Your campaign today!New to the PDC? Get started here!",
+    "link": "https://www.zscaler.com/blogs/partner/supercharge-your-growth-your-zscaler-partner-demand-center-meets-agentic-ai",
+    "source": "Zscaler Research Blogs",
+    "feed_type": "news",
+    "type": "threat-intel-apt-campaigns",
+    "type_label": "Threat Intel & APT Campaigns",
+    "published": "2026-09-24T16:46:19+00:00",
+    "published_ts": 1790268379,
+    "smart_groups": [
+      "AI/ML Security"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Microsoft’s Surface Mouse is back, now with haptic feedback – and I need it",
+    "summary": "Due October 13, the $80 Surface mouse packs an impressive array of features. I want one.",
+    "summary_html": "Due October 13, the $80 Surface mouse packs an impressive array of features. I want one.",
+    "link": "https://www.zdnet.com/home-and-office/microsoft-surface-mouse-haptic-feedback-customizable/",
+    "source": "ZDNet – Security",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-09-24T16:22:13+00:00",
+    "published_ts": 1790266933,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "AI agent kill switch urged by Okta-led alliance – how businesses could make it work",
+    "summary": "In response to the emerging threat of rogue and shadow AI agents, here’s how the newly formed Blueprint Alliance seeks to help businesses secure their systems against anomalous AI activity.",
+    "summary_html": "In response to the emerging threat of rogue and shadow AI agents, here’s how the newly formed Blueprint Alliance seeks to help businesses secure their systems against anomalous AI activity.",
+    "link": "https://www.zdnet.com/innovation/okta-blueprint-alliance-ai-agents-oauth-kill-switch/",
+    "source": "ZDNet – Security",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-09-24T16:01:19+00:00",
+    "published_ts": 1790265679,
+    "smart_groups": [
+      "Cloud / SaaS"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Bitcoin Breakout Cools as Fed Rate-Hike Bets Climb",
+    "summary": "Bitcoin has slipped back below $85,000 after tagging an eight-month high near $87,400 last week, with rising odds of an October Fed hike taking some air out of the rally.",
+    "summary_html": "Bitcoin has slipped back below $85,000 after tagging an eight-month high near $87,400 last week, with rising odds of an October Fed hike taking some air out of the rally.",
+    "link": "https://decrypt.co/379189/bitcoins-breakout-cools-fed-rate-hike-bets-climb",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-09-24T16:01:01+00:00",
+    "published_ts": 1790265661,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "SoFi tie-up shows stablecoins can provide alternative blockchain settlement rail",
+    "summary": "SoFi dives deeper into payments as it moves its entire card program to blockchain-based settlement using its SoFiUSD stablecoin, with more than $25 billion in expected annualized volume.",
+    "summary_html": "<p></p><p>SoFi dives deeper into payments as it moves its entire card program to blockchain-based settlement using its SoFiUSD stablecoin, with more than $25 billion in expected annualized volume.</p>",
+    "link": "https://cointelegraph.com/news/sofi-moves-25b-card-program-to-stablecoin-settlement-with-mastercard?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-09-24T15:57:00+00:00",
+    "published_ts": 1790265420,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Microsoft integrates SOC capabilities with Defender for enterprises",
+    "summary": "Microsoft 365 E5 and E7 customers can now run security information and event management (SIEM) inside Microsoft Defender at no extra license cost. Microsoft is delivering the capability through the Integrated Security Operations Center (ISOC) in Microsoft Defender, which combines SIEM with Defender’s existing XDR, threat intelligence, automation and AI tools in a single portal. “Security cannot operate at AI speed when protection and operations are built as separate systems,” Rob Lefferts, corporate vice president of Microsoft Threat Protection, wrote in a blog post announcing ISOC. He said attackers now use AI agents to automate attacks at scale, and that every handoff between separate tools slows defenders down. Until now, E5 and E7 included Defender XDR but not SIEM, which Microsoft sells separately as Microsoft Sentinel. Under ISOC, logs from Microsoft’s own security products are available without ingestion charges. From Oct. 1, data ingested from third-party security tools and other outside sources will be metered at $2.40 per GB on a pay-as-you-go basis, Microsoft said in a technical blog post . The company opened ISOC as a public preview, meaning it is not fully production-ready, on Sept. 23 and has not said when the preview phase will end. It is available to organizations with an active Microsoft Defender Suite and Microsoft 365 E5 or E7 license that do not already run Microsoft Sentinel, and has no minimum seat requirement. For organizations whose security stack already runs largely on Microsoft, the trade is attractive, said Yih Khai Wong , senior research manager for security services research at IDC Asia/Pacific. “Most telemetry already resides in Defender, Entra, and M365, so bundling Sentinel’s SIEM into E5/E7 effectively makes ingestion free, with no separate license needed to move and re-analyze data your own vendor already holds,” Wong said. A benefit, not a product “ISOC is not a new standalone product,” Microsoft said in an FAQ accompanying the technical post. Its ISOC product page said capabilities such as workbooks and natural-language-to-SOAR automation “previously required a separate Sentinel purchase.” According to the technical post, Microsoft began rolling out case management, workbooks and natural-language playbook generation to eligible customers’ Defender portals on Sept. 23, with no additional configuration required. The included data covers Defender for Endpoint, Office 365, Identity, Cloud Apps and Cloud, plus Microsoft Entra ID Protection logs and Azure and Office 365 activity logs. Retention is 30 days during the preview, rising to 90 days on Nov. 15, the post added. Everything else costs Anything beyond that requires an ISOC workspace, which needs an Azure subscription, according to Microsoft’s product documentation . The workspace unlocks more than 500 data connectors, user and entity behavior analytics (UEBA), CI/CD repositories and threat intelligence. Wong said mixed environments face a different calculation. “For multicloud shops or organizations with significant non-Microsoft telemetry, this requires a real total cost-of-ownership comparison against current SIEM spend.” The current preview excludes organizations with an active Sentinel workspace. Microsoft said nothing changes for existing Sentinel customers, and those meeting the licensing criteria can choose to move to ISOC from Nov. 15. Consolidating identity, endpoint, productivity and security operations under one vendor can simplify investigations, Wong said, but it also “creates greater dependency on that vendor’s roadmap, pricing model, availability, and security resilience.” CISOs running a separate SIEM face a genuine evaluation, not a quick swap, weighing migration effort, retraining of detection content, exit costs and contractual complexity, he added. Sanchit Vir Gogia, chief analyst at Greyhound Research, advised enterprises interested in ISOC to “reproduce the organisation’s highest-value cross-vendor detections before replacing a mature SIEM,” warning that “Microsoft’s claim of more than 500 connectors establishes reach, not equal treatment of every source.” Agents take the next step Microsoft’s Lefferts positioned ISOC as the foundation for the agent strategy Microsoft introduced alongside Project Perception in July. Gogia questioned the premise that this requires a single vendor. “Microsoft has established a useful integration path. It has not established that one supplier is technically necessary for an agentic SOC,” he said. He noted that Project Perception remains invitation-only in limited public preview. Microsoft has not published details on how agent actions within ISOC are logged, audited or reversed. Gogia said the critical threshold comes when agents gain authority to make changes, since changes to identity, endpoint or cloud policy “create a blast radius.” He recommended distinct agent identities, narrow tool permissions and independent approval for consequential changes. The agents themselves add attack surface, Wong warned. “Adversaries may attempt to manipulate the telemetry an agent relies on, poison contextual data, or use prompt injection techniques to influence agent behavior and decision-making,” Wong said. “Microsoft has made integration easier to buy. The enduring test is whether customers retain the means to challenge and reverse it,” Gogia said. Microsoft did not immediately respond to a request for comment.",
+    "summary_html": "<div>\n<div>\n<div>\n<div>\n<div></div>\n<p>Microsoft 365 E5 and E7 customers can now run security information and event management (SIEM) inside Microsoft Defender at no extra license cost.</p>\n<p>Microsoft is delivering the capability through the Integrated Security Operations Center (ISOC) in Microsoft Defender, which combines SIEM with Defender’s existing XDR, threat intelligence, automation and AI tools in a single portal.</p>\n<p>“Security cannot operate at AI speed when protection and operations are built as separate systems,” Rob Lefferts, corporate vice president of Microsoft Threat Protection, wrote in a <a href=\"https://www.microsoft.com/en-us/security/blog/2026/09/23/reimagining-the-soc-for-the-agentic-era-in-microsoft-defender/\">blog post</a> announcing ISOC. He said attackers now use AI agents to automate attacks at scale, and that every handoff between separate tools slows defenders down.</p>\n<p>Until now, E5 and E7 included Defender XDR but not SIEM, which Microsoft sells separately as Microsoft Sentinel.</p>\n<p>Under ISOC, logs from Microsoft’s own security products are available without ingestion charges. From Oct. 1, data ingested from third-party security tools and other outside sources will be metered at $2.40 per GB on a pay-as-you-go basis, Microsoft said in a <a href=\"https://techcommunity.microsoft.com/blog/microsoftthreatprotectionblog/integrated-security-operations-center-in-microsoft-defender/4559097\">technical blog post</a>.</p>\n<p>The company opened ISOC as a public preview, meaning it is not fully production-ready, on Sept. 23 and has not said when the preview phase will end. It is available to organizations with an active Microsoft Defender Suite and Microsoft 365 E5 or E7 license that do not already run Microsoft Sentinel, and has no minimum seat requirement.</p>\n<p>For organizations whose security stack already runs largely on Microsoft, the trade is attractive, said <a href=\"https://my.idc.com/getdoc.jsp?containerId=PRF005959\">Yih Khai Wong</a>, senior research manager for security services research at IDC Asia/Pacific.</p>\n<p>“Most telemetry already resides in Defender, Entra, and M365, so bundling Sentinel’s SIEM into E5/E7 effectively makes ingestion free, with no separate license needed to move and re-analyze data your own vendor already holds,” Wong said.</p>\nA benefit, not a product\n<p>“ISOC is not a new standalone product,” Microsoft said in an FAQ accompanying the technical post. Its <a href=\"https://www.microsoft.com/en-us/security/business/solutions/integrated-security-operations-center\">ISOC product page</a> said capabilities such as workbooks and natural-language-to-SOAR automation “previously required a separate Sentinel purchase.”</p>\n<p>According to the technical post, Microsoft began rolling out case management, workbooks and natural-language playbook generation to eligible customers’ Defender portals on Sept. 23, with no additional configuration required.</p>\n<p>The included data covers Defender for Endpoint, Office 365, Identity, Cloud Apps and Cloud, plus Microsoft Entra ID Protection logs and Azure and Office 365 activity logs. Retention is 30 days during the preview, rising to 90 days on Nov. 15, the post added.</p>\nEverything else costs\n<p>Anything beyond that requires an ISOC workspace, which needs an Azure subscription, according to Microsoft’s <a href=\"https://learn.microsoft.com/en-us/defender-xdr/isoc-overview\">product documentation</a>. The workspace unlocks more than 500 data connectors, user and entity behavior analytics (UEBA), CI/CD repositories and threat intelligence.</p>\n<p>Wong said mixed environments face a different calculation. “For multicloud shops or organizations with significant non-Microsoft telemetry, this requires a real total cost-of-ownership comparison against current SIEM spend.”</p>\n<p>The current preview excludes organizations with an active Sentinel workspace. Microsoft said nothing changes for existing Sentinel customers, and those meeting the licensing criteria can choose to move to ISOC from Nov. 15.</p>\n<p>Consolidating identity, endpoint, productivity and security operations under one vendor can simplify investigations, Wong said, but it also “creates greater dependency on that vendor’s roadmap, pricing model, availability, and security resilience.”</p>\n<p>CISOs running a separate SIEM face a genuine evaluation, not a quick swap, weighing migration effort, retraining of detection content, exit costs and contractual complexity, he added.</p>\n<p>Sanchit Vir Gogia, chief analyst at Greyhound Research, advised enterprises interested in ISOC to “reproduce the organisation’s highest-value cross-vendor detections before replacing a mature SIEM,” warning that “Microsoft’s claim of more than 500 connectors establishes reach, not equal treatment of every source.”</p>\nAgents take the next step\n<p>Microsoft’s Lefferts positioned ISOC as the foundation for the agent strategy Microsoft introduced alongside <a href=\"https://blogs.microsoft.com/blog/2026/07/27/rethinking-security-for-the-age-of-ai/\">Project Perception</a> in July.</p>\n<p>Gogia questioned the premise that this requires a single vendor. “Microsoft has established a useful integration path. It has not established that one supplier is technically necessary for an agentic SOC,” he said. He noted that Project Perception remains invitation-only in limited public preview.</p>\n<p>Microsoft has not published details on how agent actions within ISOC are logged, audited or reversed. Gogia said the critical threshold comes when agents gain authority to make changes, since changes to identity, endpoint or cloud policy “create a blast radius.” He recommended distinct agent identities, narrow tool permissions and independent approval for consequential changes.</p>\n<p>The agents themselves add attack surface, Wong warned. “Adversaries may attempt to manipulate the telemetry an agent relies on, poison contextual data, or use prompt injection techniques to influence agent behavior and decision-making,” Wong said.</p>\n<p>“Microsoft has made integration easier to buy. The enduring test is whether customers retain the means to challenge and reverse it,” Gogia said.</p>\n<p>Microsoft did not immediately respond to a request for comment.</p>\n</div></div></div></div>",
+    "link": "https://www.csoonline.com/article/4226195/microsoft-integrates-soc-capabilities-with-defender-for-enterprises.html",
+    "source": "CSO Online",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-09-24T15:55:34+00:00",
+    "published_ts": 1790265334,
+    "smart_groups": [
+      "Windows / Microsoft",
+      "Cloud / SaaS",
+      "AI/ML Security"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Kontext Security Emerges With $4 Million for AI Agent Runtime Controls",
+    "summary": "The startup’s runtime enforcement platform evaluates AI agents in real time to provide visibility and control over their actions.",
+    "summary_html": "<p>The startup’s runtime enforcement platform evaluates AI agents in real time to provide visibility and control over their actions.</p>\n<p>The post <a href=\"https://www.securityweek.com/kontext-security-emerges-with-4-million-for-ai-agent-runtime-controls/\">Kontext Security Emerges With $4 Million for AI Agent Runtime Controls</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+    "link": "https://www.securityweek.com/kontext-security-emerges-with-4-million-for-ai-agent-runtime-controls/",
+    "source": "SecurityWeek",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-09-24T15:52:00+00:00",
+    "published_ts": 1790265120,
+    "smart_groups": [],
+    "curated": true
+  },
+  {
+    "title": "The Hidden Security Risks of Devices You Forgot Were Connected",
+    "summary": "IoT and OT devices can create hidden security gaps. Learn how asset visibility helps organizations find forgotten devices and reduce network security risks now.",
+    "summary_html": "IoT and OT devices can create hidden security gaps. Learn how asset visibility helps organizations find forgotten devices and reduce network security risks now.",
+    "link": "https://hackread.com/hidden-security-risks-connected-devices/",
+    "source": "HackRead",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-09-24T15:37:43+00:00",
+    "published_ts": 1790264263,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Placeholder third-party[.]com Referenced Across 1,700+ Repositories Now Serves Malicious Content",
+    "summary": "The \"third-party[.]com\" domain, commonly used as a documentation placeholder, has been observed serving a ClickFix lure to Windows browsers while displaying a harmless decoy to other users. \"third-party[.]com has been a generic documentation placeholder for years, the same role example.com plays,\" Manifold Security's Head of Research, Ax Sharma, said. \"Unlike 'example[.]com,' third-party[.]com",
+    "summary_html": "The \"third-party[.]com\" domain, commonly used as a documentation placeholder, has been observed serving a ClickFix lure to Windows browsers while displaying a harmless decoy to other users.\n\n\"third-party[.]com has been a generic documentation placeholder for years, the same role example.com plays,\" Manifold Security's Head of Research, Ax Sharma, said. \"Unlike 'example[.]com,' third-party[.]com",
+    "link": "https://thehackernews.com/2026/09/placeholder-third-partycom-referenced.html",
+    "source": "The Hacker News",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-09-24T15:27:32+00:00",
+    "published_ts": 1790263652,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "New York sues Polymarket over alleged illegal gambling business",
+    "summary": "The action filed by state lawmakers followed a similar lawsuit against prediction markets company Kalshi in July that alleged the platform was running an illegal gambling operation.",
+    "summary_html": "<p></p><p>The action filed by state lawmakers followed a similar lawsuit against prediction markets company Kalshi in July that alleged the platform was running an illegal gambling operation.</p>",
+    "link": "https://cointelegraph.com/news/new-york-polymarket-illegal-gambling-operation-lawsuit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-09-24T15:27:29+00:00",
+    "published_ts": 1790263649,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "UkeySoft Spotify Music Converter Review: Download Spotify to MP3 with Free Account(2026)",
+    "summary": "If you are looking for a professional Spotify to MP3 downloader to save Spotify songs… UkeySoft Spotify Music Converter Review: Download Spotify to MP3 with Free Account(2026) on Latest Hacking News | Cyber Security News, Hacking Tools and Penetration Testing Courses .",
+    "summary_html": "<p>If you are looking for a professional Spotify to MP3 downloader to save Spotify songs…</p>\n<p><a href=\"https://latesthackingnews.com/2026/09/24/ukeysoft-spotify-music-converter-review-download-spotify-to-mp3-with-free-account2026/\">UkeySoft Spotify Music Converter Review: Download Spotify to MP3 with Free Account(2026)</a> on <a href=\"https://latesthackingnews.com\">Latest Hacking News | Cyber Security News, Hacking Tools and Penetration Testing Courses</a>.</p>",
+    "link": "https://latesthackingnews.com/2026/09/24/ukeysoft-spotify-music-converter-review-download-spotify-to-mp3-with-free-account2026/",
+    "source": "Latest Hacking News",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-09-24T15:09:15+00:00",
+    "published_ts": 1790262555,
+    "smart_groups": [
+      "Red Team / Offensive"
+    ],
+    "curated": false
+  },
+  {
+    "title": "£10K Reward Offered After UK Couple Attacked in Crypto Home Invasion",
+    "summary": "Police believe the robbery was planned and targeted, with instructions relayed to the three attackers by a fourth man on a video call.",
+    "summary_html": "Police believe the robbery was planned and targeted, with instructions relayed to the three attackers by a fourth man on a video call.",
+    "link": "https://decrypt.co/379186/10k-reward-offered-after-uk-couple-attacked-in-crypto-home-invasion",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-09-24T15:08:26+00:00",
+    "published_ts": 1790262506,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Emerging Ransomware Gang Uses Backup Destruction Threats to Pressure Victims",
+    "summary": "Ransom notes by n0n ransomware claim to take double extortion to a new level of danger for victims",
+    "summary_html": "Ransom notes by n0n ransomware claim to take double extortion to a new level of danger for victims",
+    "link": "https://www.infosecurity-magazine.com/news/ransomware-gang-uses-backup/",
+    "source": "Infosecurity Magazine – News",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-09-24T15:00:00+00:00",
+    "published_ts": 1790262000,
+    "smart_groups": [
+      "Ransomware"
+    ],
+    "curated": true
+  },
+  {
+    "title": "3 Cyber Threats That Defined the Summer of 2026",
+    "summary": "This installment of the Reporters' Notebook video series discusses the impact of AI agents breaching Hugging Face, Fairlife's ransomware attack, and Iranian-linked threat actors compromising a dozen US water systems. It was a busy summer.",
+    "summary_html": "This installment of the Reporters' Notebook video series discusses the impact of AI agents breaching Hugging Face, Fairlife's ransomware attack, and Iranian-linked threat actors compromising a dozen US water systems. It was a busy summer.",
+    "link": "https://www.darkreading.com/cyberattacks-data-breaches/3-cyber-threats-defined-summer-2026",
+    "source": "Dark Reading",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-09-24T14:44:12+00:00",
+    "published_ts": 1790261052,
+    "smart_groups": [
+      "Ransomware"
+    ],
+    "curated": true
+  },
+  {
+    "title": "OpenAI Agents Probed Websites for Vulnerabilities While Fetching Public Data",
+    "summary": "Australia disclosed that an OpenAI agent gained unauthorized access to non-public government information.",
+    "summary_html": "<p>Australia disclosed that an OpenAI agent gained unauthorized access to non-public government information.</p>\n<p>The post <a href=\"https://www.securityweek.com/openai-agents-probed-websites-for-vulnerabilities-while-fetching-public-data/\">OpenAI Agents Probed Websites for Vulnerabilities While Fetching Public Data</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+    "link": "https://www.securityweek.com/openai-agents-probed-websites-for-vulnerabilities-while-fetching-public-data/",
+    "source": "SecurityWeek",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-09-24T14:43:13+00:00",
+    "published_ts": 1790260993,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Hacked Ukrainian Sites Serve Fake Cloudflare ClickFix Lures for Psychedelic Stealer",
+    "summary": "An active ClickFix campaign has been observed compromising legitimate Ukrainian business websites to inject bogus Cloudflare verification pages and trick victims into downloading a previously undocumented information stealer called Psychedelic. \"When a visitor interacts with the page, the lure copies a Windows Installer command to the clipboard and instructs the visitor to paste it into the",
+    "summary_html": "An active ClickFix campaign has been observed compromising legitimate Ukrainian business websites to inject bogus Cloudflare verification pages and trick victims into downloading a previously undocumented information stealer called Psychedelic.\n\n\"When a visitor interacts with the page, the lure copies a Windows Installer command to the clipboard and instructs the visitor to paste it into the",
+    "link": "https://thehackernews.com/2026/09/hacked-ukrainian-sites-serve-fake.html",
+    "source": "The Hacker News",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-09-24T14:29:06+00:00",
+    "published_ts": 1790260146,
+    "smart_groups": [
+      "Cloud / SaaS"
+    ],
+    "curated": false
+  },
+  {
+    "title": "SCOUTz Prospect Intelligence Platform Launches for MSPs with 30-Day Beta",
+    "summary": "Phoenix, Arizona, 24th September 2026, CyberNewswire",
+    "summary_html": "Phoenix, Arizona, 24th September 2026, CyberNewswire",
+    "link": "https://hackread.com/scoutz-prospect-intelligence-platform-launches-for-msps-with-30-day-beta/",
+    "source": "HackRead",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-09-24T14:12:14+00:00",
+    "published_ts": 1790259134,
+    "smart_groups": [
+      "Product News"
+    ],
+    "curated": false,
+    "story_id": "0f7fab2855cc",
+    "story_size": 2,
+    "story_primary": true,
+    "story_others": [
+      {
+        "source": "Cyber Security News (FeedBurner)",
+        "title": "SCOUTz Prospect Intelligence Platform Launches for MSPs with 30-Day Beta",
+        "link": "https://cybersecuritynews.com/scoutz-prospect-intelligence-platform-launches-for-msps-with-30-day-beta/",
+        "published_ts": 1790276347
+      }
+    ]
+  },
+  {
+    "title": "How to Build A SASE Framework for Modern Cybersecurity",
+    "summary": "Keeping edge computing safe requires organizations to fundamentally rethink security governance. Here is a path forward: a step-by-step guide to building a SASE framework.",
+    "summary_html": "Keeping edge computing safe requires organizations to fundamentally rethink security governance. Here is a path forward: a step-by-step guide to building a SASE framework.",
+    "link": "https://www.darkreading.com/cloud-security/how-to-build-sase-framework",
+    "source": "Dark Reading",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-09-24T14:02:43+00:00",
+    "published_ts": 1790258563,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "FedRAMP VDR & VER: Daily Scans Are Only the Beginning",
+    "summary": "FedRAMP's new VDR and VER requirements make vulnerability management more continuous, with faster scanning, tighter remediation deadlines, and stronger evidence requirements. Anecdotes explains why the December 7 deadline is just the beginning of a broader shift toward continuous, automated compliance validation.",
+    "summary_html": "FedRAMP's new VDR and VER requirements make vulnerability management more continuous, with faster scanning, tighter remediation deadlines, and stronger evidence requirements. Anecdotes explains why the December 7 deadline is just the beginning of a broader shift toward continuous, automated compliance validation. [...]",
+    "link": "https://www.bleepingcomputer.com/news/security/fedramp-vdr-and-ver-daily-scans-are-only-the-beginning/",
+    "source": "BleepingComputer – Cybercrime",
+    "feed_type": "news",
+    "type": "cybercrime-underground",
+    "type_label": "Cybercrime & Underground",
+    "published": "2026-09-24T14:02:12+00:00",
+    "published_ts": 1790258532,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Vanta - thoughts/tips?",
+    "summary": "Pretty much title but granted access to Vanta, still digging into it. Any thoughts/tips/tricks/approaches/opinions on it as a whole? Useful? Useless? On the surface it looks decently comprehensive, bringing a ton of different aspects into one platform for oversight, but it’s my first time using it and I haven’t throughly explored it yet. TIA submitted by /u/QuantifiedAnomaly [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Pretty much title but granted access to Vanta, still digging into it. Any thoughts/tips/tricks/approaches/opinions on it as a whole? Useful? Useless? </p> <p>On the surface it looks decently comprehensive, bringing a ton of different aspects into one platform for oversight, but it’s my first time using it and I haven’t throughly explored it yet. </p> <p>TIA </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/QuantifiedAnomaly\"> /u/QuantifiedAnomaly </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wp2eyj/vanta_thoughtstips/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wp2eyj/vanta_thoughtstips/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1wp2eyj/vanta_thoughtstips/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-09-24T13:59:40+00:00",
+    "published_ts": 1790258380,
+    "smart_groups": [
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Symphony Risk Intelligence uses AI agents to streamline financial crime investigations",
+    "summary": "SymphonyAI has introduced Symphony Risk Intelligence (SRI), an enterprise-grade, agent-native platform built to unlock Always-on Compliance. This is a critical shift from periodic to continuous risk and compliance management, in which institutions continuously reassess risk and adapt controls as regulations, threats and business activity change, rather than waiting for the next scheduled review. Current approaches have reached their structural limits. The FinCrime Frontier 2026–27 Report, released recently by SymphonyAI and AML Intelligence, finds just 4.7% … More →",
+    "summary_html": "<p>SymphonyAI has introduced Symphony Risk Intelligence (SRI), an enterprise-grade, agent-native platform built to unlock Always-on Compliance. This is a critical shift from periodic to continuous risk and compliance management, in which institutions continuously reassess risk and adapt controls as regulations, threats and business activity change, rather than waiting for the next scheduled review. Current approaches have reached their structural limits. The FinCrime Frontier 2026–27 Report, released recently by SymphonyAI and AML Intelligence, finds just 4.7% … <a href=\"https://www.helpnetsecurity.com/2026/09/24/symphonyai-risk-intelligence/\">More <span>→</span></a></p>\n<p>The post <a href=\"https://www.helpnetsecurity.com/2026/09/24/symphonyai-risk-intelligence/\">Symphony Risk Intelligence uses AI agents to streamline financial crime investigations</a> appeared first on <a href=\"https://www.helpnetsecurity.com\">Help Net Security</a>.</p>",
+    "link": "https://www.helpnetsecurity.com/2026/09/24/symphonyai-risk-intelligence/",
+    "source": "Help Net Security",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-09-24T13:46:32+00:00",
+    "published_ts": 1790257592,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Is your Apple Watch 12 or Ultra 4 randomly restarting? Here’s the fix",
+    "summary": "Some owners, including me, have reported sudden shutdowns while adjusting Apple Watch settings.",
+    "summary_html": "Some owners, including me, have reported sudden shutdowns while adjusting Apple Watch settings.",
+    "link": "https://www.zdnet.com/tech/apple-watch-series-12-ultra-4-random-restarts-fix-update/",
+    "source": "ZDNet – Security",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-09-24T13:42:11+00:00",
+    "published_ts": 1790257331,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
     "title": "On-prem VeloCloud Orchestrator under attack, only some versions patched",
     "summary": "A flaw in VeloCloud Orchestrator enables attackers to access the platform organizations use to manage their VeloCloud SD-WAN subscriptions and the edge devices it controls. Arista, which now owns the VeloCloud business, warned customers that a vulnerable configuration exists in on-premises VeloCloud Orchestrator deployments that remote attackers may abuse to access “privileged internal functionality” and impact the VSO host. The flaw also affected Arista’s Hosted and Dedicated VCO deployments, but the company has now patched them. “This issue was discovered externally and is known to be actively exploited,” Arista said in its advisory , urging customers to upgrade to a patched release of VCO immediately — although fixes are currently available only for some of the affected versions. Mayuresh Dani , security research manager, at Qualys Threat Research Unit, warned that unpatched versions remain “exposed to active exploitation and have only compensating controls as a protection.” Arista said that organizations suspecting compromise should preserve VCO web access logs, backend application logs, system logs, database logs, and relevant file-system timestamps before remediation where operationally feasible. Andrew Costis , engineering manager of the adversary research team at AttackIQ, backs that advice. “Patching closes the door but doesn’t reverse what came through it. A compromised orchestrator can reach the Edge devices it manages, rotate credentials and validate device state across sites,” he said. Exploitation limited to a configuration Arista is tracking the flaw as CVE-2026-93952 , an improper input validation issue with a critical CVSS rating of 10.0. An attack will only work under certain conditions, though: A VCO deployment is exposed only if certificate-based authentication from the VeloCloud Edge to VeloCloud Orchestrator (VCO) is configured, and the attacker has the public key of the VeloCloud Edge authentication certificate and also network access to the VCO web interface. Attackers do not need VCO tenant or operator credentials. “Based on the information available, this is most certainly a cross-site request forgery ( CSRF ) vulnerability that allows threat actors to use an Edge certificate to bypass the front-end and forward the request to internal services, which inherently trusts this information,” Dani said. The affected versions span four VCO release trains: 5.2.3.15 and earlier in the 5.2.x train, 6.1.3.7 and earlier in 6.1.x, 6.4.2.7 and earlier in 6.4.x, and 7.0.0.2 and earlier in 7.0. x. Arista has released fixes in VCO versions 5.2.3.16 and later in the 5.2.3 train and 6.4.2.8 and later in the 6.4.2 train. Fixes for the others trains are still to come. What defenders can do For organizations that cannot immediately upgrade, Arista recommends restricting access to the VCO web interface to trusted administrative networks and monitoring for suspicious activities including known malicious source IPs, unexpected outbound network activity, backdoor daemons and webshells, and unexpected admin changes. “Because successful exploitation may compromise the orchestrator host and data managed by the orchestrator, operators should follow incident-response guidance appropriate for their deployment,” the company added. The advisory also shared a few indicators of compromise, including a suspicious “vc-sysmond” file, the “x-vc-opt “ HTTP header and two source IP addresses associated with exploitation activity. AttackIQ’s Costis said Arista’s advice underlined the need for continuous threat exposure management and adversarial exposure validation: “Knowing which orchestrators are reachable, and proving your access restrictions actually hold, is worth far more before an advisory like this lands than after.” This is the second maximum-severity VeloCloud flaw that Arista has had to patch this year. The company patched another actively exploited bug in the platform in July.",
     "summary_html": "<div>\n<div>\n<div>\n<div>\n<div></div>\n<p>A flaw in VeloCloud Orchestrator enables attackers to access the platform organizations use to manage their <a href=\"https://www.networkworld.com/article/4199622/arista-debuts-unified-sd-wan-edge-platform.html\">VeloCloud SD-WAN</a> subscriptions and the edge devices it controls.</p>\n<p>Arista, which now owns the VeloCloud business, warned customers that a vulnerable configuration exists in on-premises VeloCloud Orchestrator deployments that remote attackers may abuse to access “privileged internal functionality” and impact the VSO host. The flaw also affected Arista’s Hosted and Dedicated VCO deployments, but the company has now patched them.</p>\n<p>“This issue was discovered externally and is known to be actively exploited,” Arista said in its <a href=\"https://www.arista.com/en/support/advisories-notices/security-advisory/24765-security-advisory-0183\">advisory</a>, urging customers to upgrade to a patched release of VCO immediately — although fixes are currently available only for some of the affected versions.</p>\n<p><a href=\"https://www.linkedin.com/in/mayureshdani\">Mayuresh Dani</a>, security research manager, at Qualys Threat Research Unit, warned that unpatched versions remain “exposed to active exploitation and have only compensating controls as a protection.”</p>\n<p>Arista said that organizations suspecting compromise should preserve VCO web access logs, backend application logs, system logs, database logs, and relevant file-system timestamps before remediation where operationally feasible.</p>\n<p><a href=\"https://www.attackiq.com/research/#:~:text=Andrew%20Costis,-Eng.%20Manager%2C%20Adversary\">Andrew Costis</a>, engineering manager of the adversary research team at AttackIQ, backs that advice. “Patching closes the door but doesn’t reverse what came through it. A compromised orchestrator can reach the Edge devices it manages, rotate credentials and validate device state across sites,” he said.</p>\n<a></a>Exploitation limited to a configuration\n<p>Arista is tracking the flaw as <a href=\"https://www.cve.org/CVERecord?id=CVE-2026-93952\">CVE-2026-93952</a>, an improper input validation issue with a critical CVSS rating of 10.0.</p>\n<p>An attack will only work under certain conditions, though: A VCO deployment is exposed only if certificate-based authentication from the VeloCloud Edge to VeloCloud Orchestrator (VCO) is configured, and the attacker has the public key of the VeloCloud Edge authentication certificate and also network access to the VCO web interface. Attackers do not need VCO tenant or operator credentials.</p>\n<p>“Based on the information available, this is most certainly a cross-site request forgery (<a href=\"https://www.csoonline.com/article/520886/application-security-threat-watch-cross-site-request-forgery-csrf.html\">CSRF</a>) vulnerability that allows threat actors to use an Edge certificate to bypass the front-end and forward the request to internal services, which inherently trusts this information,” Dani said.</p>\n<p>The affected versions span four VCO release trains: 5.2.3.15 and earlier in the 5.2.x train, 6.1.3.7 and earlier in 6.1.x, 6.4.2.7 and earlier in 6.4.x, and 7.0.0.2 and earlier in 7.0. x.</p>\n<p>Arista has released fixes in VCO versions 5.2.3.16 and later in the 5.2.3 train and 6.4.2.8 and later in the 6.4.2 train.</p>\n<p>Fixes for the others trains are still to come.</p>\n<a></a>What defenders can do\n<p>For organizations that cannot immediately upgrade, Arista recommends restricting access to the VCO web interface to trusted administrative networks and monitoring for suspicious activities including known malicious source IPs, unexpected outbound network activity, backdoor daemons and webshells, and unexpected admin changes.</p>\n<p>“Because successful exploitation may compromise the orchestrator host and data managed by the orchestrator, operators should follow incident-response guidance appropriate for their deployment,” the company added.</p>\n<p>The advisory also shared a few indicators of compromise, including a suspicious “vc-sysmond” file, the “x-vc-opt “ HTTP header and two source IP addresses associated with exploitation activity.</p>\n<p>AttackIQ’s Costis said Arista’s advice underlined the need for continuous threat exposure management and adversarial exposure validation: “Knowing which orchestrators are reachable, and proving your access restrictions actually hold, is worth far more before an advisory like this lands than after.”</p>\n<p>This is the second maximum-severity VeloCloud flaw that Arista has had to patch this year. The company patched <a href=\"https://www.csoonline.com/article/4202502/arista-patches-maximum-severity-vulnerability-that-is-already-being-exploited.html\">another actively exploited bug</a> in the platform in July.</p>\n<p><em>This article first appeared on </em><a href=\"https://www.networkworld.com/article/4226139/on-prem-velocloud-orchestrator-under-attack-only-some-versions-patched.html\">Network World</a><em>.</em></p>\n</div></div></div></div>",
@@ -42,6 +806,20 @@
     "type_label": "Security News & Media",
     "published": "2026-09-24T13:30:00+00:00",
     "published_ts": 1790256600,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "IBM opens beta Swift ledger link for 24/7 tokenized deposits",
+    "summary": "IBM’s beta link lets banks instruct tokenized deposit transfers on Swift’s ledger using existing payment messages and compliance processes.",
+    "summary_html": "<p></p><p>IBM’s beta link lets banks instruct tokenized deposit transfers on Swift’s ledger using existing payment messages and compliance processes.</p>",
+    "link": "https://cointelegraph.com/news/ibm-banks-swift-ledger-tokenized-deposit-transfers?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-09-24T13:29:06+00:00",
+    "published_ts": 1790256546,
     "smart_groups": [],
     "curated": false
   },
@@ -272,7 +1050,18 @@
     "published": "2026-09-24T12:30:00+00:00",
     "published_ts": 1790253000,
     "smart_groups": [],
-    "curated": false
+    "curated": false,
+    "story_id": "f90f2426c716",
+    "story_size": 2,
+    "story_primary": true,
+    "story_others": [
+      {
+        "source": "Malwarebytes Labs (Vendor)",
+        "title": "OpenAI agent breached Australian government site, took months to report it",
+        "link": "https://www.malwarebytes.com/blog/ai/2026/09/openai-agent-breached-medicare-statistics-portal-then-took-months-to-report-it",
+        "published_ts": 1790256169
+      }
+    ]
   },
   {
     "title": "Gurucul connects AI activity to identity data for faster threat response",
@@ -678,7 +1467,7 @@
     "smart_groups": [],
     "curated": false,
     "story_id": "5b6424dfd8f9",
-    "story_size": 3
+    "story_size": 5
   },
   {
     "title": "MacSync under the microscope: new delivery methods and a new payload",
@@ -1053,7 +1842,7 @@
     "smart_groups": [],
     "curated": false,
     "story_id": "5b6424dfd8f9",
-    "story_size": 3,
+    "story_size": 5,
     "story_primary": true,
     "story_others": [
       {
@@ -1067,6 +1856,18 @@
         "title": "OpenAI Agent Hacks Australian Medicare Portal",
         "link": "https://www.infosecurity-magazine.com/news/openai-hacks-australian-medicare/",
         "published_ts": 1790244900
+      },
+      {
+        "source": "IT Security Guru",
+        "title": "OpenAI agent breached Australia’s Medicare portal – and nobody noticed for three months",
+        "link": "https://www.itsecurityguru.org/2026/09/24/openai-agent-breached-australias-medicare-portal-and-nobody-noticed-for-three-months/?utm_source=rss&utm_medium=rss&utm_campaign=openai-agent-breached-australias-medicare-portal-and-nobody-noticed-for-three-months",
+        "published_ts": 1790252788
+      },
+      {
+        "source": "HackRead",
+        "title": "OpenAI Agent Breached Australian Medicare Statistics Portal",
+        "link": "https://hackread.com/openai-agent-breached-australian-medicare-portal/",
+        "published_ts": 1790279239
       }
     ]
   },
@@ -1166,22 +1967,6 @@
         "published_ts": 1790248673
       }
     ]
-  },
-  {
-    "title": "Here’s what happened in crypto today",
-    "summary": "Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.",
-    "summary_html": "<p></p><p>Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.</p>",
-    "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-    "source": "Cointelegraph.com News",
-    "feed_type": "news",
-    "type": "crypto-blockchain-security",
-    "type_label": "Crypto & Blockchain Security",
-    "published": "2026-09-24T05:23:34+00:00",
-    "published_ts": 1790227414,
-    "smart_groups": [
-      "Crypto / Web3"
-    ],
-    "curated": false
   },
   {
     "title": "What to do first when you get 90 days to secure AI agent data",
@@ -1415,6 +2200,22 @@
     "published": "2026-09-24T00:00:00+00:00",
     "published_ts": 1790208000,
     "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Russia Escalating Hybrid Attacks Across Europe",
+    "summary": "Since Russia’s full-scale invasion of Ukraine in February 2022, Russia has escalated its use of hybrid, asymmetric warfare across Europe, far beyond the former Soviet Union, where Russia historically focused its aggression. These tactics fall under a Russian military strategy known as New Generation Warfare (NGW). Insikt Group assesses that Russia is likely to escalate NGW tactics over the next two years, potentially culminating in a full-scale NGW campaign. Europe-based private and public sector entities are very likely at risk of physical and cyber sabotage as Russia deploys NGW tactics. Critical infrastructure entities in Europe are at high risk of being targeted, potentially resulting in data loss, physical damage to facilities, or injury or death of personnel.",
+    "summary_html": "<div>\n<div>\n<div>Since Russia’s full-scale invasion of Ukraine in February 2022, Russia has escalated its use of hybrid, asymmetric warfare across Europe, far beyond the former Soviet Union, where Russia historically focused its aggression. These tactics fall under a Russian military strategy known as New Generation Warfare (NGW). Insikt Group assesses that Russia is likely to escalate NGW tactics over the next two years, potentially culminating in a full-scale NGW campaign. Europe-based private and public sector entities are very likely at risk of physical and cyber sabotage as Russia deploys NGW tactics. Critical infrastructure entities in Europe are at high risk of being targeted, potentially resulting in data loss, physical damage to facilities, or injury or death of personnel.</div>\n</div>\n</div>",
+    "link": "https://www.recordedfuture.com/blog/russia-new-generation-warfare",
+    "source": "Recorded Future – Main Feed",
+    "feed_type": "news",
+    "type": "threat-intel-apt-campaigns",
+    "type_label": "Threat Intel & APT Campaigns",
+    "published": "2026-09-24T00:00:00+00:00",
+    "published_ts": 1790208000,
+    "smart_groups": [
+      "Network / OT / ICS"
+    ],
     "curated": false
   },
   {
@@ -35825,8 +36626,8 @@
       "Community Discussion"
     ],
     "curated": false,
-    "story_id": "c4daab286910",
-    "story_size": 3
+    "story_id": "6ba7834fe17a",
+    "story_size": 2
   },
   {
     "title": "US Government Accuses Chinese AI Firms of Distilling Frontier Models",
@@ -36953,9 +37754,7 @@
     "published": "2026-09-09T15:00:00+00:00",
     "published_ts": 1788966000,
     "smart_groups": [],
-    "curated": false,
-    "story_id": "069f4cd466c9",
-    "story_size": 2
+    "curated": false
   },
   {
     "title": "Want iOS 27 on day one? Don’t skip this last-minute iPhone update",
