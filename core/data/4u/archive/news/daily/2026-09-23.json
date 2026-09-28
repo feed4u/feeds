@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-27T19:57:57.009059+00:00",
+  "generated_at": "2026-09-28T05:42:21.972493+00:00",
   "date": "2026-09-23",
-  "total_items": 705,
+  "total_items": 706,
   "next_chunk": "archive/news/daily/2026-09-22.json",
   "items": [
     {
@@ -298,6 +298,23 @@
       "published": "2026-09-23T23:18:36+00:00",
       "published_ts": 1790205516,
       "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "We just shipped support for the ugliest part of HTTP: Vary",
+      "summary": "My comment on We just shipped support for the ugliest part of HTTP: Vary \u2014 Hacker News. I've been wanting this from Cloudflare for years . The classic problem here is if you do that thing where user agents that send \"accept: text/html\" get HTML, while user agents that don't get JSON or some other format. This used to be impossible to deploy behind Cloudflare caching, because they ignored the Vary header on anything other than images - so you risked caching the JSON version and then serving it up to someone who was expecting HTML. (Independent of the Cloudflare feature I ended up deciding never to use that pattern, because I prefer having URL that predictably returns HTML or JSON - I add a .json suffix to my apps to serve JSON instead.) Tags: http , cloudflare",
+      "summary_html": "<p><a href=\"https://news.ycombinator.com/item?id=49823195#49823961\">My comment</a> on <a href=\"https://news.ycombinator.com/item?id=49823195\">We just shipped support for the ugliest part of HTTP: Vary</a> \u2014 Hacker News.</p><p>I've been wanting this from Cloudflare <em>for years</em>.</p>\n<p>The classic problem here is if you do that thing where user agents that send \"accept: text/html\" get HTML, while user agents that don't get JSON or some other format.</p>\n<p>This used to be impossible to deploy behind Cloudflare caching, because they ignored the Vary header on anything other than images - so you risked caching the JSON version and then serving it up to someone who was expecting HTML.</p>\n<p>(Independent of the Cloudflare feature I ended up deciding never to use that pattern, because I prefer having URL that predictably returns HTML or JSON - I add a .json suffix to my apps to serve JSON instead.)</p>\n<p>Tags: <a href=\"https://simonwillison.net/tags/http\">http</a>, <a href=\"https://simonwillison.net/tags/cloudflare\">cloudflare</a></p>",
+      "link": "https://simonwillison.net/2026/Sep/23/hn-49823961/",
+      "source": "Simon Willison's Weblog",
+      "feed_type": "news",
+      "type": "research-explainability",
+      "type_label": "Research Explainability",
+      "published": "2026-09-23T23:14:57+00:00",
+      "published_ts": 1790205297,
+      "smart_groups": [
+        "Agents & automation",
+        "Security & misuse"
+      ],
       "curated": false
     },
     {
@@ -3968,9 +3985,7 @@
       "smart_groups": [
         "Consumer AI"
       ],
-      "curated": false,
-      "story_id": "b2c543ac59e1",
-      "story_size": 2
+      "curated": false
     },
     {
       "title": "Microsoft hits PhaaS platform EvilTokens in 40th cybercrime operation",

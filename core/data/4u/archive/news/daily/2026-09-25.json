@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-09-27T19:57:56.952828+00:00",
+  "generated_at": "2026-09-28T05:42:21.929990+00:00",
   "date": "2026-09-25",
-  "total_items": 643,
+  "total_items": 644,
   "next_chunk": "archive/news/daily/2026-09-24.json",
   "items": [
     {
@@ -106,6 +106,20 @@
       "smart_groups": [
         "Agents & automation"
       ],
+      "curated": false
+    },
+    {
+      "title": "On Exact Hat Algebras",
+      "summary": "[",
+      "summary_html": "<!-- \n<div style=\"min-height: 30px;\">\n[social4i size=\"small\" align=\"align-left\"]\n</div>\n-->\n<div>\n[This article was first published on  <strong><a href=\"https://pacha.dev/blog/2026/09/26/index.html\"> https://pacha.dev/blog</a></strong>, and kindly contributed to <a href=\"https://www.r-bloggers.com/\">R-bloggers</a>].  (You can report issue about the content on this page <a href=\"https://www.r-bloggers.com/contact-us/\">here</a>)\nWant to share your content on R-bloggers?<a href=\"https://www.r-bloggers.com/add-your-blog/\"> click here</a> if you have a blog, or <a href=\"http://r-posts.com/\"> here</a> if you don't.\n</div>\n<p><em>Before the main content:</em></p>\n<ul>\n<li><em>I am creating an R Community on Google Groups. You can join the group using this <a href=\"https://docs.google.com/forms/d/e/1FAIpQLSdMAj4adRAT4Gyuwt_9dPvxRvOUPml9AD59vuI7qS7XDlp48g/viewform?usp=dialog\">form</a>.</em></li>\n<li><em>With all the funding cuts to PhD studies, I\u2019d appreciate if you can donate <a href=\"https://buymeacoffee.com/pacha\">here</a>.</em></li>\n</ul>\n<p>In Economics we often use reduced-form models, which are simplified ways to describe a process. I tend to see the criticism to this as unfair, as in physics they do the same, and so many models in physics assume \u201cspherical objects in a vacuum\u201d as a simplification to make real-world problems mathematically solvable.</p>\n<p>With reduced form models we are not interested in how faithful those ressemble reality but how useful these are. As an example in support of reduced form models, consider the two extreme cases of models to answer \u201chow to get from 37 Old Queen St to St.\u00a0James Park underground station?\u201d:</p>\n<ol>\n<li>Person 1 draws a quick sketch like this on an old receipt</li>\n</ol>\n<pre>      _ Embassy\n     |   \n  ---\n |\nUnderground</pre>\n<ol>\n<li>Person 2 built a very detailed 1:10000 architectural model of St.\u00a0James neighbourhood and shows you the tiny streets, cars, etc.</li>\n</ol>\n<p>For the question, person 1 sketch is sufficient.</p>\n<p>The Armington model of trade sits between these two extremes. It considers a world of \\(N\\) countries, each country \\(i\\) has a fixed labour endowment \\(w_i\\) and there is an endogenous labour wage. Income is given by \\(Y_i = w_i L_i\\). Trade flows are given by \\(X_{ij}\\) (and so the sales share is \\(\\gamma_{ij} = X_{ij} / Y_i\\)). There is a productivity shift \\(\\x_i\\), a trade cost $_{ij}, and an elasticity of substitution \\(\\varepsilon\\).</p>\n<p>The strong assumption in this model is a known and homogenous elasticity of substitution. In this model countries can substitute between Apple and Android phones even when many would argue that those phones compete in different markets.</p>\n<p>The model imposes a market clearing condition \\(w_i L_i = \\sum_{j=1}^N \\lambda_{ij} w_j L_j\\).</p>\n<p>There are many values \\(\\lambda_{12}, \\lambda_{13}, \\ldots, \\lambda_{1N}\\) that balance the market clearing condition but in this model the solution is a gravity-type equation that leads to $<em>{ij} = (<em>i / (</em>{ij} w_i)^{}) / sum</em>{l=1}^N (<em>l / (</em>{lj} w_l)^{}). More about gravity-type equations can be read in <a href=\"https://yotoyotov.com/Gravity_Undergrads.html\">Gravity for Undergrads</a> by Prof.\u00a0Dr.\u00a0Yoto V. Yotov.</p>\n<p>Consider, for example, the EU increase on low value imports from the UK described [https://hboltd.co.uk/uk-eu-shipping-changes-2026-customs-overhaul/]. In this model, instead of a product-by-product specific tariff have an initial UK-EU average trade cost of \\(\\tau_{ij}\\) that increased to \\(\\tau_{ij}\u2019\\). The hat form of this is \\(\\hat{\\tau_{ij}} = \\tau_{ij}\u2019 / \\tau_{ij}\\).</p>\n<p>After the trade cost change the market clearing would be \\(w_i\u2019 L_i\u2019 = \\sum_{j=1}^N \\lambda_{ij}\u2019 w_j\u2019 L_j\u2019\\), and then</p>\n<p>\\[\n\\hat{w_i} \\hat{L_i} = \\frac{\\sum_{j=1}^N \\lambda_{ij}\u2019 w_j\u2019 L_j\u2019}{\\sum_{j=1}^N \\lambda_{ij} w_j L_j}\n\\]</p>\n<p>\\[\n\\hat{w_i} \\hat{L_i} = \\frac{\\sum_{j=1}^N X_{ij}\u2019}{w_i L_i}\n\\]</p>\n<p>\\[\n\\hat{w_i} \\hat{L_i} = \\sum_{j=1}^N \\gamma_{ij} \\hat{X_{ij}}\n\\]</p>\n<p>Similarly, $ = .</p>\n<p>The new hat equations are useful, for example, to determine the effect of the change to the trade cost over wages \\(\\hat{w_i}\\). The hat market clearing means that \\(\\hat{w_i} = \\sum_{j=1}^N \\gamma_{ij} \\hat{X_{ij}}\\) (labour is exogenous), and therefore \\(\\hat{w_i} = \\sum_{j=1}^N \\gamma_{ij} \\hat{\\lambda_{ij}} \\hat{w_j}\\).</p>\n<p>Merging the hat market clearing with the hat gravity equation, we get</p>\n<p>\\[\n\\hat{w_i} = \\sum_{j=1}^N \\frac{\\gamma_{ij} \\hat{w_j} / (\\hat{\\tau_{ij}} \\hat{w_i})^{\\varepsilon}}{\\sum_{l=1}^N \\gamma_{lj} \\hat{w_l} / (\\hat{\\tau_{lj}} \\hat{w_l})^{\\varepsilon}}\n\\]</p>\n<p>From the initial equilibrium shares \\(\\lambda_{ij}\\) and \\(\\gamma_{ij}\\) and a fixed \\(\\varepsilon\\) (for example, estimated using USITC data), we have a system of \\(N \\times N\\) equations that we can solve to get \\(\\hat{w_j}\\) and then recover \\(\\hat{\\lambda_{ij}}\\). In other words, we simplified an identification problem by solving the differences by resorting on a sufficient statistic instead of estimating all trade costs.</p>\n<div>\n<div>To <strong>leave a comment</strong> for the author, please follow the link and comment on their blog: <strong><a href=\"https://pacha.dev/blog/2026/09/26/index.html\"> https://pacha.dev/blog</a></strong>.</div>\n\n<a href=\"https://www.r-bloggers.com/\">R-bloggers.com</a> offers <strong><a href=\"https://feedburner.google.com/fb/a/mailverify?uri=RBloggers\">daily e-mail updates</a></strong> about <a href=\"https://www.r-project.org/\">R</a> news and tutorials about <a href=\"https://www.r-bloggers.com/how-to-learn-r-2/\">learning R</a> and many other topics. <a href=\"https://www.r-users.com/\">Click here if you're looking to post or find an R/data-science job</a>.\n\nWant to share your content on R-bloggers?<a href=\"https://www.r-bloggers.com/add-your-blog/\"> click here</a> if you have a blog, or <a href=\"http://r-posts.com/\"> here</a> if you don't.\n</div><strong>Continue reading</strong>: <a href=\"https://www.r-bloggers.com/2026/09/on-exact-hat-algebras/\">On Exact Hat Algebras</a>",
+      "link": "https://www.r-bloggers.com/2026/09/on-exact-hat-algebras/",
+      "source": "R-bloggers - R news and tutorials contributed by hundreds of R bloggers",
+      "feed_type": "news",
+      "type": "data-science-mlops",
+      "type_label": "Data Science & MLOps",
+      "published": "2026-09-25T23:00:00+00:00",
+      "published_ts": 1790377200,
+      "smart_groups": [],
       "curated": false
     },
     {
@@ -5131,7 +5145,18 @@
         "Vision, audio & video",
         "Health & science"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "4d1da7babebf",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "cs.CV updates on arXiv.org - Computer Science -- Computer Vision and Pattern Recognition (cs.CV) updates on the arXiv.org e-print archive",
+          "title": "MVVBench: Benchmarking 4D Reasoning in Vision-Language Models",
+          "link": "https://arxiv.org/abs/2609.30952",
+          "published_ts": 1790568000
+        }
+      ]
     },
     {
       "title": "Grammatical \"grandmother neurons\" are rare in LLMs",
