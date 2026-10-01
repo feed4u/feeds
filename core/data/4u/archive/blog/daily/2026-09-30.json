@@ -1,9 +1,39 @@
 {
-  "generated_at": "2026-09-30T21:02:51.806375+00:00",
+  "generated_at": "2026-10-01T06:19:47.454611+00:00",
   "date": "2026-09-30",
-  "total_items": 73,
+  "total_items": 76,
   "next_chunk": "archive/blog/daily/2026-09-29.json",
   "items": [
+    {
+      "title": "Vercel Agent now installs private packages from npm and custom registries",
+      "summary": "Vercel Agent can install private dependencies from npm and custom registries using credentials stored as shared environment variables on Vercel. npm , pnpm , and classic Yarn running in Agent sessions authenticate as they do in Vercel builds. To get started, add a shared environment variable for Development or Preview: Use NPM_TOKEN for private packages hosted on registry.npmjs.org . Use NPM_RC to configure custom or multiple registries. Vercel Agent reads only team-shared variables, not project-scoped ones. Credential values stay outside the sandbox, so the agent cannot read them. Learn more in the private dependencies docs .",
+      "summary_html": "<p>Vercel Agent can install private dependencies from npm and custom registries using credentials stored as shared environment variables on Vercel. <code>npm</code>, <code>pnpm</code>, and classic Yarn running in Agent sessions authenticate as they do in Vercel builds.</p><p>To get started, add a <a href=\"https://vercel.com/docs/environment-variables/shared-environment-variables\">shared environment variable</a> for Development or Preview:</p><ul><li><p>Use <code>NPM_TOKEN</code> for private packages hosted on <a href=\"https://registry.npmjs.org\">registry.npmjs.org</a>.</p></li><li><p>Use <code>NPM_RC</code> to configure custom or multiple registries.</p></li></ul><p>Vercel Agent reads only team-shared variables, not project-scoped ones. Credential values stay outside the sandbox, so the agent cannot read them.</p><p>Learn more in the <a href=\"https://vercel.com/docs/agent/private-dependencies\">private dependencies docs</a>.</p>\n<p>\n<a href=\"https://vercel.com/changelog/vercel-agent-now-installs-private-packages-from-npm-and-custom-registries\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/vercel-agent-now-installs-private-packages-from-npm-and-custom-registries",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-09-30T23:22:00+00:00",
+      "published_ts": 1790810520,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "AI Gateway adds Browserbase Search and Fetch tools",
+      "summary": "Browserbase Search and Fetch are now available through AI Gateway . Give your models access to current information, find relevant pages, and retrieve their contents, alongside Browserbase's existing AI SDK and Vercel Marketplace integrations. AI Gateway lets you use Browserbase's tools across model providers with one API key. Add web search and page retrieval to any model that supports tool calling, and keep the same tools when you switch models. These helpers are available in AI SDK 7.0.116 and later. Update with pnpm add ai@latest and set your AI_GATEWAY_API_KEY . To add search and fetch, pass the helpers in tools . For pricing and configuration options, see the Browserbase Search and Fetch documentation . Try the Browserbase tools in the AI Gateway model playground , or explore the model catalog . AI Gateway provides one API for calling models, tracking usage and cost, and configuring routing, retries, and failover. You can use an AI Gateway API key or bring your own provider key .",
+      "summary_html": "<p><a href=\"https://vercel.com/ai-gateway/models/browserbase-search\">Browserbase Search and Fetch</a> are now available through <a href=\"https://vercel.com/ai-gateway\">AI Gateway</a>. Give your models access to current information, find relevant pages, and retrieve their contents, alongside Browserbase's existing AI SDK and Vercel Marketplace integrations.</p><p>AI Gateway lets you use Browserbase's tools across model providers with one API key. Add web search and page retrieval to any model that supports tool calling, and keep the same tools when you switch models.</p><p>These helpers are available in AI SDK 7.0.116 and later. Update with <code>pnpm add ai@latest</code> and set your <code>AI_GATEWAY_API_KEY</code>. To add search and fetch, pass the helpers in <code>tools</code> .</p><div></div><p>For pricing and configuration options, see the <a href=\"https://vercel.com/docs/ai-gateway/models-and-providers/web-search#using-browserbase-search\">Browserbase Search and Fetch documentation</a>.</p><p>Try the Browserbase tools in the <a href=\"https://vercel.com/ai-gateway/models/browserbase-search\">AI Gateway model playground</a>, or explore the <a href=\"https://vercel.com/ai-gateway/models\">model catalog</a>.</p><p>AI Gateway provides one API for calling models, tracking usage and cost, and configuring routing, retries, and failover. You can use an <a href=\"https://vercel.com/docs/ai-gateway/authentication-and-byok/api-keys\">AI Gateway API key</a> or <a href=\"https://vercel.com/docs/ai-gateway/authentication-and-byok/byok\">bring your own provider key</a>.</p>\n<p>\n<a href=\"https://vercel.com/changelog/ai-gateway-adds-browserbase-search-and-fetch-tools\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/ai-gateway-adds-browserbase-search-and-fetch-tools",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-09-30T21:00:00+00:00",
+      "published_ts": 1790802000,
+      "smart_groups": [
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
     {
       "title": "Vulnerability disclosures double to 10k per month as AI fuels exploitation",
       "summary": "",
@@ -145,6 +175,23 @@
       "published_ts": 1790798828,
       "smart_groups": [
         "Health & science"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Edge Requests are now called CDN Requests",
+      "summary": "CDN Requests is now the name for the usage metric previously called Edge Requests. This is a naming change only: pricing, limits, and how usage is measured are all unchanged. The new name appears on the usage dashboard, the Observability Events chart, usage notifications, and invoice line items. It reflects that these are requests served by Vercel's CDN. Metric IDs and product aliases are unchanged, so saved queries keep working. In the billing charges API, ServiceName now returns the new name. Integrations that match charges on ServiceName should switch to the new SkuId field, which stays stable across renames. See the CDN pricing and usage documentation for details.",
+      "summary_html": "<p>CDN Requests is now the name for the usage metric previously called Edge Requests. This is a naming change only: pricing, limits, and how usage is measured are all unchanged.</p><p>The new name appears on the usage dashboard, the Observability Events chart, usage notifications, and invoice line items. It reflects that these are requests served by Vercel's CDN. Metric IDs and product aliases are unchanged, so saved queries keep working. In the billing charges API, <code>ServiceName</code> now returns the new name. Integrations that match charges on <code>ServiceName</code> should switch to the new <code>SkuId</code> field, which stays stable across renames.</p><p>See the <a href=\"https://vercel.com/docs/manage-cdn-usage\">CDN pricing and usage documentation</a> for details.</p>\n<p>\n<a href=\"https://vercel.com/changelog/edge-requests-are-now-called-cdn-requests\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/edge-requests-are-now-called-cdn-requests",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-09-30T20:00:00+00:00",
+      "published_ts": 1790798400,
+      "smart_groups": [
+        "Infra & model ops",
+        "Data & analytics"
       ],
       "curated": false
     },
