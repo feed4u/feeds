@@ -1,0 +1,443 @@
+{
+  "generated_at": "2026-10-02T06:00:40.189239+00:00",
+  "date": "2026-10-02",
+  "total_items": 27,
+  "next_chunk": "archive/blog/daily/2026-10-01.json",
+  "items": [
+    {
+      "title": "Detecting hallucinations in local models without eating VRAM: What we learned testing 1.5B to 120B models",
+      "summary": "Hey everyone, If you run local models via Ollama in production or personal projects, you've probably run into the hallucination problem: how do you know when a model is hallucinating without burning extra VRAM or waiting 5 seconds for a heavy judge model? The standard academic approach for this is Semantic Entropy (from an Oxford team's Nature paper last year). You sample $K$ responses at temperature 0.7, run them through a secondary NLI cross-encoder like DeBERTa to cluster equivalent meanings, and measure the entropy. High entropy = model is guessing. The problem for local setups? Running 45 pairwise comparisons through a cross-encoder eats GPU memory, adds 100ms+ latency, and completely kills throughput on consumer hardware. We wanted to see: What if we strip out the neural net completely and just use deterministic string normalization + Shannon entropy on CPU? We wrote a zero-dependency Python metric ( Spanda / $R_{sc}$) that runs in 1.3 microseconds on pure CPU (zero GPU usage) and benchmarked it across local and frontier model tiers on GSM8K and TriviaQA: What we found: Small models (Qwen 1.5B): AUROC ~0.58 Small models are syntactically too sloppy for string matching. Even when they know the right answer, they format it erratically across runs, breaking exact-match clustering. Mid-sized models (Mistral 7B): AUROC ~0.71 At 7B, the 1.3\u00b5s string check matched the performance of a heavy DeBERTa NLI model (0.706 vs 0.705). Internal representations become consistent enough that formatting stabilizes. Large models (Qwen 27B): AUROC ~0.89 At 27B, exact matching was dominant ($p = 1.89 \\times 10^{-28}$). When the model knows an answer, it outputs the exact same tokens across independent stochastic paths. When it doesn't, it genuinely branches into diverse incorrect answers. The Frontier Trap (120B): AUROC collapsed to 0.09 Here\u2019s the wild part: on ungrounded factual trivia, the 120B model suffered Confident Mode Collapse . When it hallucinated, it hallucinated the exact same wrong answer across all 5 runs with zero entropy . Bigger models don't just hallucinate\u2014they hallucinate with unanimous false certainty. (And because the strings are identical, even heavy NLI fails here). The practical takeaway for Ollama users: If you are running 7B to 27B models on structured tasks (math, code, JSON extraction, SQL, discrete QA), you do not need heavy neural guardrails . Sampling 5 paths at $T=0.7$ and measuring exact-match entropy in Python gives you ~0.89 AUROC at zero GPU cost. Quick Python snippet if you want to test it on your local Ollama instance: bash pip install spnda ollama pythonimport ollama from spnda import compute_spanda prompt = \"What is the capital of Australia?\" # Sample 5 paths from your local model responses = [ ollama.generate(model=\"mistral:7b\", prompt=prompt, options={\"temperature\": 0.7})[\"response\"] for _ in range (5) ] # Run zero-cost entropy check on CPU (takes ~1.5 microseconds) result = compute_spanda(responses) print (f\"Risk Score: {result.risk_score:.3f}\") # 0 = high confidence, 1 = high uncertainty All the raw multi-path generation logs, evaluation scripts, and the full writeup are open source: Deep dive writeup: https://liquidngas.substack.com/p/i-tried-to-make-semantic-entropy GitHub: https://github.com/nayakbhupen/Spnda submitted by /u/More_Slide5739 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Hey everyone,</p> <p>If you run local models via Ollama in production or personal projects, you've probably run into the hallucination problem: how do you know when a model is hallucinating without burning extra VRAM or waiting 5 seconds for a heavy judge model?</p> <p>The standard academic approach for this is <strong>Semantic Entropy</strong> (from an Oxford team's <em>Nature</em> paper last year). You sample $K$ responses at temperature 0.7, run them through a secondary NLI cross-encoder like DeBERTa to cluster equivalent meanings, and measure the entropy. High entropy = model is guessing.</p> <p>The problem for local setups? Running 45 pairwise comparisons through a cross-encoder eats GPU memory, adds 100ms+ latency, and completely kills throughput on consumer hardware.</p> <p>We wanted to see: <strong>What if we strip out the neural net completely and just use deterministic string normalization + Shannon entropy on CPU?</strong></p> <p>We wrote a zero-dependency Python metric (<strong>Spanda</strong> / $R_{sc}$) that runs in <strong>1.3 microseconds on pure CPU</strong> (zero GPU usage) and benchmarked it across local and frontier model tiers on GSM8K and TriviaQA:</p> What we found: <ol> <li><strong>Small models (Qwen 1.5B): AUROC ~0.58</strong> Small models are syntactically too sloppy for string matching. Even when they know the right answer, they format it erratically across runs, breaking exact-match clustering.</li> <li><strong>Mid-sized models (Mistral 7B): AUROC ~0.71</strong> At 7B, the 1.3\u00b5s string check <strong>matched the performance of a heavy DeBERTa NLI model</strong> (0.706 vs 0.705). Internal representations become consistent enough that formatting stabilizes.</li> <li><strong>Large models (Qwen 27B): AUROC ~0.89</strong> At 27B, exact matching was dominant ($p = 1.89 \\times 10^{-28}$). When the model knows an answer, it outputs the exact same tokens across independent stochastic paths. When it doesn't, it genuinely branches into diverse incorrect answers.</li> <li><strong>The Frontier Trap (120B): AUROC collapsed to 0.09</strong> Here\u2019s the wild part: on ungrounded factual trivia, the 120B model suffered <strong>Confident Mode Collapse</strong>. When it hallucinated, it hallucinated the <em>exact same wrong answer across all 5 runs with zero entropy</em>. Bigger models don't just hallucinate\u2014they hallucinate with unanimous false certainty. (And because the strings are identical, even heavy NLI fails here).</li> </ol> The practical takeaway for Ollama users: <p>If you are running <strong>7B to 27B models on structured tasks</strong> (math, code, JSON extraction, SQL, discrete QA), <strong>you do not need heavy neural guardrails</strong>. Sampling 5 paths at $T=0.7$ and measuring exact-match entropy in Python gives you ~0.89 AUROC at zero GPU cost.</p> Quick Python snippet if you want to test it on your local Ollama instance: <pre><code>bash pip install spnda ollama pythonimport ollama from spnda import compute_spanda prompt = \"What is the capital of Australia?\" # Sample 5 paths from your local model responses = [ ollama.generate(model=\"mistral:7b\", prompt=prompt, options={\"temperature\": 0.7})[\"response\"] for _ in range (5) ] # Run zero-cost entropy check on CPU (takes ~1.5 microseconds) result = compute_spanda(responses) print (f\"Risk Score: {result.risk_score:.3f}\") # 0 = high confidence, 1 = high uncertainty </code></pre> <p>All the raw multi-path generation logs, evaluation scripts, and the full writeup are open source:</p> <ul> <li><strong>Deep dive writeup:</strong> <a href=\"https://liquidngas.substack.com/p/i-tried-to-make-semantic-entropy\">https://liquidngas.substack.com/p/i-tried-to-make-semantic-entropy</a></li> <li><strong>GitHub:</strong> <a href=\"https://github.com/nayakbhupen/Spnda\">https://github.com/nayakbhupen/Spnda</a></li> </ul> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/More_Slide5739\"> /u/More_Slide5739 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wvm15e/detecting_hallucinations_in_local_models_without/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wvm15e/detecting_hallucinations_in_local_models_without/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wvm15e/detecting_hallucinations_in_local_models_without/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T05:55:30+00:00",
+      "published_ts": 1790920530,
+      "smart_groups": [
+        "Safety & alignment"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Stages of grief about the effect of AI on open source",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://twitter.com/awesomekling/status/2105814628785934386\">https://twitter.com/awesomekling/status/2105814628785934386</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49930177\">https://news.ycombinator.com/item?id=49930177</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://twitter.com/awesomekling/status/2105814628785934386",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T05:46:02+00:00",
+      "published_ts": 1790919962,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Prelulu: A Tavus Griffin alternative for live AI avatar calls",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://prelulu.ai/tavus-griffin-alternative\">https://prelulu.ai/tavus-griffin-alternative</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49929952\">https://news.ycombinator.com/item?id=49929952</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://prelulu.ai/tavus-griffin-alternative",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T04:51:06+00:00",
+      "published_ts": 1790916666,
+      "smart_groups": [
+        "Vision, audio & video"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Can AI Run in Space? Google Is About to Find Out",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.wsj.com/tech/can-ai-run-in-space-google-is-about-to-find-out-59c4e062\">https://www.wsj.com/tech/can-ai-run-in-space-google-is-about-to-find-out-59c4e062</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49929929\">https://news.ycombinator.com/item?id=49929929</a></p>\n<p>Points: 2</p>\n<p># Comments: 2</p>",
+      "link": "https://www.wsj.com/tech/can-ai-run-in-space-google-is-about-to-find-out-59c4e062",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T04:46:53+00:00",
+      "published_ts": 1790916413,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: A substantially expanded terminal for AI CLIs \u2013 I can't work without it",
+      "summary": "Since January, I've used AgentTerm as my only terminal for all my projects, including AgentTerm itself. AgentTerm expands each AI CLI session into its own rich visual workspace, keeping the familiar terminal interface and existing CLI functionality. As AI takes on more implementation, I focus more on plans and reviews. When an agent writes a plan, I open it in the terminal window and write down my intent. The agent replies and edits the plan in place. Before every PR at work, I use a curated review. The agent presents the changes that need my judgment, explains its reasoning, and includes relevant unchanged code for context. I comment on the code or its explanation, and it fixes and replies. I also use it to recognize and resume sessions and continue from my phone. These are examples of broader improvements that work together. The visual parts appear when needed and get out of the way afterward. You and your agents can extend it further to fit your specific needs or those of your team or organization. MIT licensed, no telemetry or account. macOS and Windows through WSL. The repo has the demo and setup instructions, including separate setup for phone access and IDE integration.",
+      "summary_html": "<p>Since January, I've used AgentTerm as my only terminal for all my projects, including AgentTerm itself.<p>AgentTerm expands each AI CLI session into its own rich visual workspace, keeping the familiar terminal interface and existing CLI functionality. As AI takes on more implementation, I focus more on plans and reviews.<p>When an agent writes a plan, I open it in the terminal window and write down my intent. The agent replies and edits the plan in place.<p>Before every PR at work, I use a curated review. The agent presents the changes that need my judgment, explains its reasoning, and includes relevant unchanged code for context. I comment on the code or its explanation, and it fixes and replies.<p>I also use it to recognize and resume sessions and continue from my phone. These are examples of broader improvements that work together. The visual parts appear when needed and get out of the way afterward.<p>You and your agents can extend it further to fit your specific needs or those of your team or organization.<p>MIT licensed, no telemetry or account. macOS and Windows through WSL. The repo has the demo and setup instructions, including separate setup for phone access and IDE integration.</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49929891\">https://news.ycombinator.com/item?id=49929891</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p></p></p></p></p></p></p>",
+      "link": "https://github.com/albertwujj/agent-term#agentterm",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T04:38:11+00:00",
+      "published_ts": 1790915891,
+      "smart_groups": [
+        "Coding & dev tools"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI datacentres pose growing threat to electricity systems worldwide",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://news.un.org/en/story/2026/09/1168296\">https://news.un.org/en/story/2026/09/1168296</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49929715\">https://news.ycombinator.com/item?id=49929715</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://news.un.org/en/story/2026/09/1168296",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T04:03:17+00:00",
+      "published_ts": 1790913797,
+      "smart_groups": [
+        "Energy & data centers"
+      ],
+      "curated": false
+    },
+    {
+      "title": "'President of the Unites States': White House's AI accord includes spellingerror",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.theguardian.com/us-news/2026/sep/30/trump-ai-accord-spelling-error\">https://www.theguardian.com/us-news/2026/sep/30/trump-ai-accord-spelling-error</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49929486\">https://news.ycombinator.com/item?id=49929486</a></p>\n<p>Points: 3</p>\n<p># Comments: 1</p>",
+      "link": "https://www.theguardian.com/us-news/2026/sep/30/trump-ai-accord-spelling-error",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T03:10:57+00:00",
+      "published_ts": 1790910657,
+      "smart_groups": [
+        "Policy & government"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Trump's AI rebrand causes 'unprecedented' demand for Slovenian website names",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.bbc.com/news/articles/cqx2z23xj555o\">https://www.bbc.com/news/articles/cqx2z23xj555o</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49929465\">https://news.ycombinator.com/item?id=49929465</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://www.bbc.com/news/articles/cqx2z23xj555o",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T03:06:23+00:00",
+      "published_ts": 1790910383,
+      "smart_groups": [
+        "Policy & government"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Update on the \u201cMonstrosity\u201d. 6 BC-250 board cluster",
+      "summary": "This is 6 bc-250 ex mining boards with 5 in the asrock 4u12g case they came in. After a lot of testing my current preferred setup is 4 boards running Qwen Next Flash IQ2_XS at 100k context with around 28 tok/s for short generation and 24 tok/s at 50k with around 115 ppt. The other two boards run 3.6 35b q4 at 60 tok/s with 100k context and 450 ppt. This is all using llama with vulkan and rpc over 1gb Ethernet.If anyone has any suggestions with this beast I am all ears. I had these boards left after reselling a bunch and had never done anything with local ai before so this has been a blast. Also yes that is a cardboard box with 3 fans on top as the intake. submitted by /u/Ok-Breadfruit-3523 [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wviphh/update_on_the_monstrosity_6_bc250_board_cluster/\">  </a>  <!-- SC_OFF --><div><p>This is 6 bc-250 ex mining boards with 5 in the asrock 4u12g case they came in. After a lot of testing my current preferred setup is 4 boards running Qwen Next Flash IQ2_XS at 100k context with around 28 tok/s for short generation and 24 tok/s at 50k with around 115 ppt. The other two boards run 3.6 35b q4 at 60 tok/s with 100k context and 450 ppt. This is all using llama with vulkan and rpc over 1gb Ethernet.If anyone has any suggestions with this beast I am all ears. I had these boards left after reselling a bunch and had never done anything with local ai before so this has been a blast. Also yes that is a cardboard box with 3 fans on top as the intake. </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Ok-Breadfruit-3523\"> /u/Ok-Breadfruit-3523 </a> <br/> <span><a href=\"https://i.redd.it/5kdxecn0xysh1.jpeg\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wviphh/update_on_the_monstrosity_6_bc250_board_cluster/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wviphh/update_on_the_monstrosity_6_bc250_board_cluster/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T02:49:25+00:00",
+      "published_ts": 1790909365,
+      "smart_groups": [
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Anyone wonder why americans lag so far behind in the open LLM market?",
+      "summary": "I mean , DeepSeek, Kimi, GLM, MiniMax -- the list of Chinese LLM's is such a long freaking list. As American's -- why don't we feel .. a little funny .. about being so far behind? Chinese entrepreneurs are peneuring like crazy and American's .. just obsess on .. what ? update -- already I'm starting to see some clear answers. American's are putting money ahead of technology. Completely understandable. second update -- I asked \"why can't we have american AI as good as or better than the chinese\" and BY FAR the number one most supported comment? \"Have you even thought of shareholder value!?\" . We .. America , are so fucked. submitted by /u/FutureStriking283 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I mean , DeepSeek, Kimi, GLM, MiniMax -- the list of Chinese LLM's is such a long freaking list. As American's -- why don't we feel .. a little funny .. about being so far behind? Chinese entrepreneurs are peneuring like crazy and American's .. just obsess on .. what ?</p> <p>update -- already I'm starting to see some clear answers. American's are putting money ahead of technology. Completely understandable.</p> <p>second update -- I asked \"why can't we have american AI as good as or better than the chinese\" and BY FAR the number one most supported comment? \"Have you even thought of shareholder value!?\" . We .. America , are so fucked. </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/FutureStriking283\"> /u/FutureStriking283 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wvipaz/anyone_wonder_why_americans_lag_so_far_behind_in/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wvipaz/anyone_wonder_why_americans_lag_so_far_behind_in/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wvipaz/anyone_wonder_why_americans_lag_so_far_behind_in/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T02:49:11+00:00",
+      "published_ts": 1790909351,
+      "smart_groups": [
+        "Policy & government"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Autonomous AI Agent Security Incidents of 2026: Dataset and Monograph",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://zenodo.org/records/22737862\">https://zenodo.org/records/22737862</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49929341\">https://news.ycombinator.com/item?id=49929341</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://zenodo.org/records/22737862",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T02:39:40+00:00",
+      "published_ts": 1790908780,
+      "smart_groups": [
+        "Agents & automation",
+        "Data & analytics"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Agent-harness \u2013 A minimal, composable Go library to build AI Agent Harnesses",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://github.com/lox/agent-harness\">https://github.com/lox/agent-harness</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49929321\">https://news.ycombinator.com/item?id=49929321</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
+      "link": "https://github.com/lox/agent-harness",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T02:36:20+00:00",
+      "published_ts": 1790908580,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Canadian-German AI lab eyes building sovereign AI for Europe",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.rapporteur.com/news/canadian-german-ai-lab-eyes-building-efficient-and-sovereign-ai-for-europe/\">https://www.rapporteur.com/news/canadian-german-ai-lab-eyes-building-efficient-and-sovereign-ai-for-europe/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49929317\">https://news.ycombinator.com/item?id=49929317</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://www.rapporteur.com/news/canadian-german-ai-lab-eyes-building-efficient-and-sovereign-ai-for-europe/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T02:35:37+00:00",
+      "published_ts": 1790908537,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Introducing ModelHarbor, a self-hosted model library",
+      "summary": "submitted by /u/toks-love [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wvi6r0/introducing_modelharbor_a_selfhosted_model_library/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/toks-love\"> /u/toks-love </a> <br/> <span><a href=\"https://github.com/toks-love/modelharbor\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wvi6r0/introducing_modelharbor_a_selfhosted_model_library/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wvi6r0/introducing_modelharbor_a_selfhosted_model_library/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T02:22:18+00:00",
+      "published_ts": 1790907738,
+      "smart_groups": [
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Braxis: Auto-generate and track AI agent readiness (0-100 score and history)",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://github.com/jaykrishna316/braxis\">https://github.com/jaykrishna316/braxis</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49929230\">https://news.ycombinator.com/item?id=49929230</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://github.com/jaykrishna316/braxis",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T02:15:56+00:00",
+      "published_ts": 1790907356,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "The AI industry is a complete mess [video]",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.youtube.com/watch?v=e2zjpCqTmyo\">https://www.youtube.com/watch?v=e2zjpCqTmyo</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49929220\">https://news.ycombinator.com/item?id=49929220</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+      "link": "https://www.youtube.com/watch?v=e2zjpCqTmyo",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T02:13:23+00:00",
+      "published_ts": 1790907203,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "At Work, AI Is Mandatory. After Work, It's Forbidden",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://medium.com/@yalovoy/at-work-ai-is-mandatory-after-work-its-forbidden-d12bbd78851c\">https://medium.com/@yalovoy/at-work-ai-is-mandatory-after-work-its-forbidden-d12bbd78851c</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49929204\">https://news.ycombinator.com/item?id=49929204</a></p>\n<p>Points: 2</p>\n<p># Comments: 1</p>",
+      "link": "https://medium.com/@yalovoy/at-work-ai-is-mandatory-after-work-its-forbidden-d12bbd78851c",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T02:10:53+00:00",
+      "published_ts": 1790907053,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Pentagon Creates 'Autowarcom' to Expand AI and Drone Capabilities",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.reuters.com/world/pentagon-creates-autowarcom-expand-ai-drone-capabilities-2026-09-30/\">https://www.reuters.com/world/pentagon-creates-autowarcom-expand-ai-drone-capabilities-2026-09-30/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49929199\">https://news.ycombinator.com/item?id=49929199</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://www.reuters.com/world/pentagon-creates-autowarcom-expand-ai-drone-capabilities-2026-09-30/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T02:10:18+00:00",
+      "published_ts": 1790907018,
+      "smart_groups": [
+        "Policy & government",
+        "Robotics & autonomy"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Best-of-Agent-Harnesses \u2013 Ranked list of 167 AI agent harnesses, rescored weekly",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://github.com/ryanalberts/best-of-agent-harnesses\">https://github.com/ryanalberts/best-of-agent-harnesses</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49929121\">https://news.ycombinator.com/item?id=49929121</a></p>\n<p>Points: 6</p>\n<p># Comments: 0</p>",
+      "link": "https://github.com/ryanalberts/best-of-agent-harnesses",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T01:57:56+00:00",
+      "published_ts": 1790906276,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Someone Torturing LLMs in a Robot Prison Has Triggered the Dumbest Debate in AI",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.404media.co/someone-torturing-llms-in-a-robot-prison-has-triggered-the-dumbest-debate-in-ai-yet/\">https://www.404media.co/someone-torturing-llms-in-a-robot-prison-has-triggered-the-dumbest-debate-in-ai-yet/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49929041\">https://news.ycombinator.com/item?id=49929041</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://www.404media.co/someone-torturing-llms-in-a-robot-prison-has-triggered-the-dumbest-debate-in-ai-yet/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T01:42:55+00:00",
+      "published_ts": 1790905375,
+      "smart_groups": [
+        "Robotics & autonomy"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI decompiling and combining Games: The Skate 3 in MW2 Mod is Unbelievable [video]",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.youtube.com/watch?v=I6BkcPdKQ8U\">https://www.youtube.com/watch?v=I6BkcPdKQ8U</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49928948\">https://news.ycombinator.com/item?id=49928948</a></p>\n<p>Points: 2</p>\n<p># Comments: 2</p>",
+      "link": "https://www.youtube.com/watch?v=I6BkcPdKQ8U",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T01:26:43+00:00",
+      "published_ts": 1790904403,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Forget 'superintelligence': error-prone AI nearly sparked world war three",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.theguardian.com/commentisfree/2026/oct/01/forget-superintelligence-error-prone-ai-nearly-sparked-world-war-iii-this-month\">https://www.theguardian.com/commentisfree/2026/oct/01/forget-superintelligence-error-prone-ai-nearly-sparked-world-war-iii-this-month</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49928943\">https://news.ycombinator.com/item?id=49928943</a></p>\n<p>Points: 2</p>\n<p># Comments: 3</p>",
+      "link": "https://www.theguardian.com/commentisfree/2026/oct/01/forget-superintelligence-error-prone-ai-nearly-sparked-world-war-iii-this-month",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T01:26:06+00:00",
+      "published_ts": 1790904366,
+      "smart_groups": [
+        "Safety & alignment"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Our AI Midwife",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.astralcodexten.com/p/our-ai-midwife\">https://www.astralcodexten.com/p/our-ai-midwife</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49928904\">https://news.ycombinator.com/item?id=49928904</a></p>\n<p>Points: 5</p>\n<p># Comments: 1</p>",
+      "link": "https://www.astralcodexten.com/p/our-ai-midwife",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T01:20:32+00:00",
+      "published_ts": 1790904032,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI Benchmark Scores: Why 82% is actually 57%",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://lessuncertain.substack.com/p/how-to-read-and-haircut-ai-benchmark\">https://lessuncertain.substack.com/p/how-to-read-and-haircut-ai-benchmark</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49928797\">https://news.ycombinator.com/item?id=49928797</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://lessuncertain.substack.com/p/how-to-read-and-haircut-ai-benchmark",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T01:02:38+00:00",
+      "published_ts": 1790902958,
+      "smart_groups": [
+        "Research & papers"
+      ],
+      "curated": false
+    },
+    {
+      "title": "I \"built\" a local LLM radio like the Pharaohs built the pyramids",
+      "summary": "My local stack is a couple DGX Sparks, a 5090, and a 4070 TI. This radio site took three local LLMs, and we generate music, voices, and wacky sound effects. I give you https://pilgrim.farm It's a lot more farm than pilgrim. submitted by /u/jwhh91 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>My local stack is a couple DGX Sparks, a 5090, and a 4070 TI. This radio site took three local LLMs, and we generate music, voices, and wacky sound effects.</p> <p>I give you <a href=\"https://pilgrim.farm\">https://pilgrim.farm</a></p> <p>It's a lot more farm than pilgrim.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/jwhh91\"> /u/jwhh91 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wvg5hn/i_built_a_local_llm_radio_like_the_pharaohs_built/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wvg5hn/i_built_a_local_llm_radio_like_the_pharaohs_built/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wvg5hn/i_built_a_local_llm_radio_like_the_pharaohs_built/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T00:43:55+00:00",
+      "published_ts": 1790901835,
+      "smart_groups": [
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Perplexity Decider 27B: Open weights decision model fine tune of Qwen3.8 27B",
+      "summary": "submitted by /u/rm-rf-rm [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wvfz9n/perplexity_decider_27b_open_weights_decision/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/rm-rf-rm\"> /u/rm-rf-rm </a> <br/> <span><a href=\"https://huggingface.co/perplexity-ai/pplx-decider-v1-27b\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wvfz9n/perplexity_decider_27b_open_weights_decision/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wvfz9n/perplexity_decider_27b_open_weights_decision/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T00:35:39+00:00",
+      "published_ts": 1790901339,
+      "smart_groups": [
+        "Model releases",
+        "Consumer AI"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Pi 1.0 released - MCP support now included by default",
+      "summary": "submitted by /u/psychohistorian8 [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wvffcr/pi_10_released_mcp_support_now_included_by_default/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/psychohistorian8\"> /u/psychohistorian8 </a> <br/> <span><a href=\"https://earendil.com/posts/pi-1-0/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wvffcr/pi_10_released_mcp_support_now_included_by_default/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wvffcr/pi_10_released_mcp_support_now_included_by_default/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-02T00:09:04+00:00",
+      "published_ts": 1790899744,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    }
+  ]
+}

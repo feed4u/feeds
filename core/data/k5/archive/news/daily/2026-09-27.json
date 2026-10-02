@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-01T21:13:14.575485+00:00",
+  "generated_at": "2026-10-02T05:58:54.709198+00:00",
   "date": "2026-09-27",
-  "total_items": 65,
+  "total_items": 68,
   "next_chunk": "archive/news/daily/2026-09-26.json",
   "items": [
     {
@@ -1073,6 +1073,33 @@
       "curated": false
     },
     {
+      "title": "EDR Evasion: Process Injection Without WriteProcessMemory",
+      "summary": "Unlike traditional approaches, console named-pipe injection does not use VirtualAllocEx and WriteProcessMemory . Instead, it takes advantage of read and write operations through a named pipe, along with the way console programs store interactive commands in memory. submitted by /u/Cold-Dinosaur [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Unlike traditional approaches, console named-pipe injection does not use <strong>VirtualAllocEx</strong> and <strong>WriteProcessMemory</strong>. Instead, it takes advantage of read and write operations through a named pipe, along with the way console programs store interactive commands in memory.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Cold-Dinosaur\"> /u/Cold-Dinosaur </a> <br/> <span><a href=\"https://www.zerosalarium.com/2026/09/edr-evasion-process-injection-without-WriteProcessMemory.html\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/netsec/comments/1wr9sr7/edr_evasion_process_injection_without/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/netsec/comments/1wr9sr7/edr_evasion_process_injection_without/",
+      "source": "/r/netsec",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-09-27T03:39:18+00:00",
+      "published_ts": 1790480358,
+      "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false,
+      "story_id": "0f4ed7265279",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "Cyber Security News (FeedBurner)",
+          "title": "New Windows Process Injection Attack Evades EDR Monitoring Without WriteProcessMemory",
+          "link": "https://cybersecuritynews.com/windows-process-injection-evades-edr/",
+          "published_ts": 1790524824
+        }
+      ]
+    },
+    {
       "title": "Going to my first conference\u2026",
       "summary": "I am going to my first conference in this next few weeks, completely alone, and I AM INCREDIBLY NERVOUS. I am in my early career, but have been put into a position that I am the lead of a software rollout, and as such have been invited to the vendors large annual security conference. Most of the conference seems to be talks specific to the vendor/vendor offerings, but there seems to be a good amount of general talks or networking. Any tips? Things people wish they knew before their first one? submitted by /u/Evening_Contact_2489 [link] [comments]",
       "summary_html": "<!-- SC_OFF --><div><p>I am going to my first conference in this next few weeks, completely alone, and I AM INCREDIBLY NERVOUS. I am in my early career, but have been put into a position that I am the lead of a software rollout, and as such have been invited to the vendors large annual security conference. </p> <p>Most of the conference seems to be talks specific to the vendor/vendor offerings, but there seems to be a good amount of general talks or networking.</p> <p>Any tips? Things people wish they knew before their first one?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Evening_Contact_2489\"> /u/Evening_Contact_2489 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wr8i5i/going_to_my_first_conference/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wr8i5i/going_to_my_first_conference/\">[comments]</a></span>",
@@ -1087,6 +1114,40 @@
         "Community Discussion"
       ],
       "curated": false
+    },
+    {
+      "title": "Revealing the details of how OpenAI agents hacked Hugging Face",
+      "summary": "GET-only egress to full code execution: chaining a URL mirror and a screenshot service submitted by /u/NOTHING_gets_by_me [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>GET-only egress to full code execution: chaining a URL mirror and a screenshot service</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/NOTHING_gets_by_me\"> /u/NOTHING_gets_by_me </a> <br/> <span><a href=\"https://swarmtraces.org/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/netsec/comments/1wr709b/revealing_the_details_of_how_openai_agents_hacked/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/netsec/comments/1wr709b/revealing_the_details_of_how_openai_agents_hacked/",
+      "source": "/r/netsec",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-09-27T01:15:55+00:00",
+      "published_ts": 1790471755,
+      "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI on Kubernetes: Default Helm Chart Security Configurations and Lateral Movement Risks",
+      "summary": "A technical audit evaluating the security defaults of 15 official Helm charts used for AI serving, vector databases, and Model Context Protocol (MCP) agents (including KubeRay, vLLM, LiteLLM, Qdrant, Weaviate, and Flux159 MCP). Key findings from static manifest analysis and live single-pod lateral movement probes on a test cluster: Plaintext Secret Handling: LiteLLM database migration Job embeds raw database passwords in container environment variables (F-13). Unauthenticated Remote Code Execution: KubeRay defaults accept unauthenticated job submissions via HTTP, running commands inside a container with passwordless sudo access. Over-privileged Agent Access: Flux159 Kubernetes MCP server mounts a ClusterRole with cluster-wide Secret read and pod exec permissions, exposed without an authentication token over HTTP. Static Scanners vs CRDs: Standard static analysis tools (Checkov, Trivy, Kubescape) failed to inspect pods nested inside Custom Resource Definitions like Ray clusters. The paper documents reproducible test commands, network capture logs, and remediation Helm snippets. Scrubbed raw probe logs and results tables are available on GitHub: https://github.com/Sorami-Consulting-AU/ai-kubernetes-helm-chart-security submitted by /u/No-Peanut-6988 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>A technical audit evaluating the security defaults of 15 official Helm charts used for AI serving, vector databases, and Model Context Protocol (MCP) agents (including KubeRay, vLLM, LiteLLM, Qdrant, Weaviate, and Flux159 MCP).</p> <p>Key findings from static manifest analysis and live single-pod lateral movement probes on a test cluster:</p> <ul> <li>Plaintext Secret Handling: LiteLLM database migration Job embeds raw database passwords in container environment variables (F-13).</li> <li>Unauthenticated Remote Code Execution: KubeRay defaults accept unauthenticated job submissions via HTTP, running commands inside a container with passwordless sudo access.</li> <li>Over-privileged Agent Access: Flux159 Kubernetes MCP server mounts a ClusterRole with cluster-wide Secret read and pod exec permissions, exposed without an authentication token over HTTP.</li> <li>Static Scanners vs CRDs: Standard static analysis tools (Checkov, Trivy, Kubescape) failed to inspect pods nested inside Custom Resource Definitions like Ray clusters.</li> </ul> <p>The paper documents reproducible test commands, network capture logs, and remediation Helm snippets. Scrubbed raw probe logs and results tables are available on GitHub: <a href=\"https://github.com/Sorami-Consulting-AU/ai-kubernetes-helm-chart-security\">https://github.com/Sorami-Consulting-AU/ai-kubernetes-helm-chart-security</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/No-Peanut-6988\"> /u/No-Peanut-6988 </a> <br/> <span><a href=\"https://sorami.com.au/research/ai-kubernetes-helm-chart-security/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/netsec/comments/1wr6wxx/ai_on_kubernetes_default_helm_chart_security/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/netsec/comments/1wr6wxx/ai_on_kubernetes_default_helm_chart_security/",
+      "source": "/r/netsec",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-09-27T01:11:18+00:00",
+      "published_ts": 1790471478,
+      "smart_groups": [
+        "Cloud / SaaS",
+        "Vulnerabilities / CVEs",
+        "Identity / Access"
+      ],
+      "curated": true
     },
     {
       "title": "OpenAI halts training of latest models as reports mount of AI agents going rogue",
