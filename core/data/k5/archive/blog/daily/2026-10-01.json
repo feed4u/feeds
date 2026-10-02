@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-02T14:53:22.673998+00:00",
+  "generated_at": "2026-10-02T20:55:44.400862+00:00",
   "date": "2026-10-01",
-  "total_items": 67,
+  "total_items": 70,
   "next_chunk": "archive/blog/daily/2026-09-30.json",
   "items": [
     {
@@ -17,6 +17,24 @@
       "published_ts": 1790898772,
       "smart_groups": [
         "Cloud / SaaS"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Micropatches released for Windows WalletService Elevation of Privilege (CVE-2026-49176)",
+      "summary": "July 2026 Windows Updates brought a patch for CVE-2026-49176, a local privilege escalation vulnerability in WalletService service, allowing a regular local user on the computer to elevate themselves to Local System. The vulnerability was found and reported to Microsoft by Chen Le Qi and Nguyn ng Nguyn with STAR Labs SG. Subsequently, David Carliez published their own technical analysis and proof of concept, which allowed us to reproduce the issue and create patches for legacy Windows systems. The Vulnerability The vulnerability is in the Windows WalletService service, which exposes API that allows every local user to request various operations on their Wallet database. One of these operations results in the service (running as Local System) to open user's malicious Wallet database, resulting in user's DLL being loaded and executed. Microsoft's Patch Microsoft fixed this issue by effectively cutting off (disabling) five WalletService functions.",
+      "summary_html": "July 2026 Windows Updates brought a patch for CVE-2026-49176, a local privilege escalation vulnerability in WalletService service, allowing a regular local user on the computer to elevate themselves to Local System.\nThe vulnerability was found and reported to Microsoft by Chen Le Qi and Nguyn ng Nguyn with STAR Labs SG. Subsequently, David Carliez published their own technical analysis and  proof of concept, which allowed us to reproduce the issue and create patches for legacy Windows systems.\n\nThe Vulnerability\u00a0\nThe vulnerability is in the Windows WalletService service, which exposes API that allows every local user to request various operations on their Wallet database. One of these operations results in the service (running as Local System) to open user's malicious Wallet database, resulting in user's DLL being loaded and executed.\n\nMicrosoft's Patch\nMicrosoft fixed this issue by effectively cutting off (disabling) five WalletService functions.",
+      "link": "https://0patch.com/blog/micropatches-released-for-windows-walletservice-elevation-of-privilege-cve-2026-4",
+      "source": "0patch Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-01T22:00:00+00:00",
+      "published_ts": 1790892000,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Exploit / PoC",
+        "Windows / Microsoft"
       ],
       "curated": true
     },
@@ -294,7 +312,7 @@
       ],
       "curated": true,
       "story_id": "93650a75baf2",
-      "story_size": 2
+      "story_size": 3
     },
     {
       "title": "Shadow AI explained: The work shortcut that could leak your company\u2019s secrets",
@@ -533,7 +551,7 @@
       ],
       "curated": true,
       "story_id": "93650a75baf2",
-      "story_size": 2,
+      "story_size": 3,
       "story_primary": true,
       "story_others": [
         {
@@ -541,6 +559,12 @@
           "title": "Warlock Ransomware Exploiting SharePoint Flaws to Attack Water and Telecom Operators",
           "link": "https://cybersecuritynews.com/warlock-ransomware-exploiting-sharepoint-flaws/",
           "published_ts": 1790864066
+        },
+        {
+          "source": "BleepingComputer \u2013 Cybercrime",
+          "title": "Warlock ransomware breach SharePoint in water, telecom operator attacks",
+          "link": "https://www.bleepingcomputer.com/news/security/warlock-ransomware-breach-sharepoint-in-water-telecom-operator-attacks/",
+          "published_ts": 1790965981
         }
       ]
     },
@@ -843,7 +867,38 @@
         "Phishing / Social Engineering",
         "Cloud / SaaS"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "2a43af796c27",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "Malwarebytes Labs (Vendor)",
+          "title": "Convincing Free Mobile phishing emails appear after data breach",
+          "link": "https://www.malwarebytes.com/blog/threat-intel/2026/10/free-mobile-phishing-texts-appear-days-after-data-breach",
+          "published_ts": 1790854230
+        }
+      ]
+    },
+    {
+      "title": "Convincing Free Mobile phishing emails appear after data breach",
+      "summary": "Free Mobile, one of France\u2019s main cellular providers, was fined \u20ac27 million by France\u2019s data protection regulator, the CNIL, in January over failures to protect customer data. The October 2024 breach allowed an unauthorized party to access sensitive customer records, including bank account details and login information. Since the breach, we\u2019ve seen many poorly written scam campaigns targeting Free Mobile customers. However, over the past few weeks, a well-written scam has appeared, closely copying the design of the official Free Mobile website and email templates. One of our employees, who is a Free Mobile customer, received this phishing email on Wednesday, September 30. The message used the same logo and template as legitimate emails from the company, but came from the suspicious email address freemobile-regularisation[@]knowledgegrowthcenter[.]help . It included a link that appeared to point to regularisation.free.fr : The email tells the user that an invoice of \u20ac9.99 needs to be paid to avoid having the customer\u2019s service suspended. Clicking the link opens a redirection chain: 1. https://u2l.ai/Q5YwFz301 2. https://espace-free-mobile.pro/Ds41LE/302 3. https://espace-free-mobile.pro/Ds41LE/regularisation/?impaye=92a9e77d\u2026200 This final domain, espace-free-mobile.pro , is hosted by Cloudflare and was registered just a month ago. The final link opens a convincing page with a form asking for credit card details: The phishing page looks authentic, which sets this campaign apart from many of the Free Mobile scams we\u2019ve seen since the breach. We initially saw the same campaign using less convincing redirection chains, like this example from July: 1. https://bly.to/93kie5u 2. https://s1181402.ha026.t.mydomain.zone/mbl/ 3. https://s1181402.ha026.t.mydomain.zone/mbl/regularisation/?impaye=505\u2026 More recently, we\u2019ve seen more authentic-looking domains, all hosted by Cloudflare: 1. https://s.ink/jmCnZZ 2. https://freesas.info/Cf4tP/ 3. https://freesas.info/Cf4tP/regularisation/?impaye=f13fa919d1a22833557\u2026 And another example: 1. https://bly.to/jabwpf6 2. https://regularisation-free.info/portail/ 3. https://regularisation-free.info/portail/regularisation/?impaye=83f91\u2026 How to stay safe Malwarebytes can help protect you from these threats, but treat unexpected messages about your accounts and invoices with caution: Don\u2019t follow links in unsolicited emails. If a message concerns your account, open the official Free Mobile app or website directly, or call the official help line at 3244 . Check the actual domain in your browser\u2019s address bar to see if it matches what you expect\u2014 https://mobile.free.fr in this case. Malwarebytes Browser Guard detects and blocks this scam directly in your browser. Use an up-to-date, real-time anti-malware solution with a web protection component on all your devices. Malwarebytes Scam Guard can help you determine whether an email is a scam and advise you on what to do next. Stop threats before they can do any harm. Malwarebytes Browser Guard blocks phishing pages and malicious sites automatically. Free, one click to install. Add it to your browser \u2192",
+      "summary_html": "<p>Free Mobile, one of France\u2019s main cellular providers, <a href=\"https://www.cnil.fr/en/sanction-free-2026\">was fined \u20ac27 million</a> by France\u2019s data protection regulator, the CNIL, in January over failures to protect customer data. The October 2024 breach allowed an unauthorized party to access sensitive customer records, including bank account details and login information. Since the breach, we\u2019ve seen many poorly written scam campaigns targeting Free Mobile customers.</p>\n<p>However, over the past few weeks, a well-written scam has appeared, closely copying the design of the official Free Mobile website and email templates.</p>\n<p>One of our employees, who is a Free Mobile customer, received this phishing email on Wednesday, September 30. The message used the same logo and template as legitimate emails from the company, but came from the suspicious email address <code>freemobile-regularisation[@]knowledgegrowthcenter[.]help</code>. It included a link that appeared to point to <code>regularisation.free.fr</code> :</p>\n\n\n\n\n\n<p>The email tells the user that an invoice of \u20ac9.99 needs to be paid to avoid having the customer\u2019s service suspended. Clicking the link opens a redirection chain:</p>\n<pre><code>1. https://u2l.ai/Q5YwFz301\n2. https://espace-free-mobile.pro/Ds41LE/302\n3. https://espace-free-mobile.pro/Ds41LE/regularisation/?impaye=92a9e77d\u2026200</code></pre>\n<p>This final domain, <code>espace-free-mobile.pro</code>, is hosted by Cloudflare and was registered just a month ago.</p>\n<p>The final link opens a convincing page with a form asking for credit card details:</p>\n\n\n\n\n\n<p>The phishing page looks authentic, which sets this campaign apart from many of the Free Mobile scams we\u2019ve seen since the breach.</p>\n<p>We initially saw the same campaign using less convincing redirection chains, like this example from July:</p>\n<pre><code>1. https://bly.to/93kie5u\n2. https://s1181402.ha026.t.mydomain.zone/mbl/\n3. https://s1181402.ha026.t.mydomain.zone/mbl/regularisation/?impaye=505\u2026</code></pre>\n<p>More recently, we\u2019ve seen more authentic-looking domains, all hosted by Cloudflare:</p>\n<pre><code>1. https://s.ink/jmCnZZ<br/>2. https://freesas.info/Cf4tP/<br/>3. https://freesas.info/Cf4tP/regularisation/?impaye=f13fa919d1a22833557\u2026</code></pre>\n<p>And another example:</p>\n<pre><code>1. https://bly.to/jabwpf6<br/>2. https://regularisation-free.info/portail/<br/>3. https://regularisation-free.info/portail/regularisation/?impaye=83f91\u2026</code></pre>\nHow to stay safe\n<p>Malwarebytes can help protect you from these threats, but treat unexpected messages about your accounts and invoices with caution:</p>\n<ul>\n<li>Don\u2019t follow links in unsolicited emails. If a message concerns your account, open the official Free Mobile app or website directly, or call the official help line at <strong>3244</strong>.</li>\n<li>Check the actual domain in your browser\u2019s address bar to see if it matches what you expect\u2014<a href=\"https://mobile.free.fr\">https://mobile.free.fr</a> in this case.</li>\n<li><a href=\"https://www.malwarebytes.com/browserguard\">Malwarebytes <a href=\"https://www.malwarebytes.com/browserguard\">Browser Guard</a></a> detects and blocks this scam directly in your browser.</li>\n<li>Use an up-to-date, real-time <a href=\"https://www.malwarebytes.com/\">anti-malware solution</a> with a web protection component on all your devices.</li>\n<li><a href=\"https://help.malwarebytes.com/hc/en-us/articles/36738112474395-Using-Scam-Guard-to-detect-threats-on-iOS-and-Android\">Malwarebytes Scam Guard</a> can help you determine whether an email is a scam and advise you on what to do next.</li>\n</ul>\n\n<p><strong>Stop threats before they can do any harm.</strong></p>\n<p>Malwarebytes Browser Guard blocks phishing pages and malicious sites automatically. Free, one click to install. <a href=\"https://www.malwarebytes.com/browserguard\">Add it to your browser \u2192</a></p>\n<p></p>",
+      "link": "https://www.malwarebytes.com/blog/threat-intel/2026/10/free-mobile-phishing-texts-appear-days-after-data-breach",
+      "source": "Malwarebytes Labs (Vendor)",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-01T11:30:30+00:00",
+      "published_ts": 1790854230,
+      "smart_groups": [
+        "Data Breaches / Leaks",
+        "Phishing / Social Engineering",
+        "Cloud / SaaS"
+      ],
+      "curated": false,
+      "story_id": "2a43af796c27",
+      "story_size": 2
     },
     {
       "title": "Guardrails, not gates: rethinking policy in platform teams",
@@ -1075,6 +1130,22 @@
         "Vulnerabilities / CVEs",
         "Exploit / PoC",
         "Linux / Unix"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Exabeam Pushes The \u201cAgentic SOC\u201d Into The Cloud And On-Premises, With Analysts Kept In The Loop",
+      "summary": "Security operations centres are facing a two-sided problem. Attackers are increasingly automating their campaigns, while inside the business, AI agents and autonomous workflows are multiplying faster than most security teams can track. Exabeam\u2019s answer, unveiled on October 1, is a broad set of updates designed to let AI take on more of the investigative legwork without removing human analysts from the decisions that matter. The Broomfield, Colorado-based company, best known for pioneering user and entity behavior analytics (UEBA), has spent the past two years extending that foundation into generative and agentic AI . Its Exabeam Nova AI, Exabeam MCP Server and Agent Behavior Analytics (ABA), which monitors AI agents alongside human users, form the basis of the latest release. Steve Wilson, Chief AI and Product Officer at Exabeam, argues that the next phase of the SOC will not be measured by alert volumes or automation alone. \u201cIt will be defined by how effectively people and AI agents work together,\u201d he said. \u201cThe Agentic SOC gives security teams the speed and scale of AI without giving up human judgment, context, or control.\u201d Industry analysts see a similar shift. Michelle Abraham, Research Vice President, Security and Trust at IDC, said the move toward an agentic SOC \u201cis less about removing analysts from the process and more about changing where their time and judgment are applied,\u201d with AI agents absorbing investigation, context gathering and repetitive execution so that people can focus on higher-stakes calls. From Alert To Resolution, Faster At the centre of the update, Nova AI now operates across the Exabeam New-Scale platform as a persistent investigator, gathering context, running follow-up searches and pulling entity profiles as incidents develop. A Related Cases feature automatically groups connected incidents so analysts can see the wider pattern of an attack rather than isolated alerts. Exabeam is also leaning into the AI tools analysts are already adopting. A new Guided Investigation Skills Pack for Anthropic\u2019s Claude brings structured triage and investigation workflows into command-line AI agents, driven by natural-language instructions. It is the first release from a planned Exabeam Agent Skills Marketplace. A deeper integration with Claude Enterprise addresses the other side of the problem: visibility into what AI is actually doing. Prompts, tool calls and actions are normalised into a single timeline, with event-time analysis and behavior-based correlation used to spot rogue agents and behavioral drift. For security leaders under pressure to justify spending, Executive Digest produces board-ready metrics, while Outcomes Navigator Overrides lets teams adjust risk scoring and separate compliance reporting by business unit. Early users report tangible gains. Eduardo Sulvar\u00e1n Vel\u00e1zquez, Subdirector Cyber Risk Management at E-Global, said Nova AI has helped his team prioritise cases more effectively and given analysts faster access to context, improving investigation speed \u201cwithout removing human judgment from the process.\u201d Bringing AI Security Operations On-Premises Not every organisation can, or will, move security data to the cloud. For those keeping infrastructure, data or AI workloads in-house, Exabeam has modernised its LogRhythm SIEM Platform with an in-place migration from Elasticsearch to OpenSearch, improving speed and scale and underpinning a new self-service reporting engine with AI governance and audit-ready compliance reports. New out-of-the-box collectors for ChatGPT, Google Gemini and GitHub Copilot give security teams centralised visibility into enterprise AI use, while a community Model Context Protocol server allows analysts to query and triage security data using local generative AI models, without data leaving their environment. Open Source Momentum Exabeam is continuing to build out the Open Agent and AI Security Community it founded. Recent additions include an Agentic SOC Skill Suite of open-source skills for Claude Code and OpenAI Codex, new Thinking Modes and evidence-committed scoring for its Praxen project, which tie findings more directly to supporting evidence, and a single plugin marketplace covering both Claude Code and Codex. The company is inviting practitioners, researchers and engineers to contribute.",
+      "summary_html": "<p>Security operations centres are facing a two-sided problem. Attackers are increasingly automating their campaigns, while inside the business, AI agents and autonomous workflows are multiplying faster than most security teams can track. Exabeam\u2019s answer, unveiled on October 1, is a broad set of updates designed to let AI take on more of the investigative legwork without removing human analysts from the decisions that matter.</p>\n<p>The Broomfield, Colorado-based company, best known for pioneering user and entity behavior analytics (UEBA), has spent the past two years extending that foundation into <a href=\"https://www.itsecurityguru.org/2026/08/28/hugging-face-ai-breach-700-agents/\">generative and agentic AI</a>. Its Exabeam Nova AI, Exabeam MCP Server and Agent Behavior Analytics (ABA), which monitors AI agents alongside human users, form the basis of the latest release.</p>\n<p>Steve Wilson, Chief AI and Product Officer at Exabeam, argues that the next phase of the SOC will not be measured by alert volumes or automation alone. \u201cIt will be defined by how effectively people and AI agents work together,\u201d he said. \u201cThe Agentic SOC gives security teams the speed and scale of AI without giving up human judgment, context, or control.\u201d</p>\n<p>Industry analysts see a similar shift. Michelle Abraham, Research Vice President, Security and Trust at IDC, said the move toward an agentic SOC \u201cis less about removing analysts from the process and more about changing where their time and judgment are applied,\u201d with AI agents absorbing investigation, context gathering and repetitive execution so that people can focus on higher-stakes calls.</p>\n<strong>From Alert To Resolution, Faster</strong>\n<p>At the centre of the update, Nova AI now operates across the Exabeam New-Scale platform as a persistent investigator, gathering context, running follow-up searches and pulling entity profiles as incidents develop. A Related Cases feature automatically groups connected incidents so analysts can see the wider pattern of an attack rather than isolated alerts.</p>\n<p>Exabeam is also leaning into the AI tools analysts are already adopting. A new Guided Investigation Skills Pack for Anthropic\u2019s Claude brings structured triage and investigation workflows into command-line AI agents, driven by natural-language instructions. It is the first release from a planned Exabeam Agent Skills Marketplace.</p>\n<p>A deeper integration with Claude Enterprise addresses the other side of the problem: visibility into what AI is actually doing. Prompts, tool calls and actions are normalised into a single timeline, with event-time analysis and behavior-based correlation used to spot rogue agents and behavioral drift.</p>\n<p>For security leaders under pressure to justify spending, Executive Digest produces board-ready metrics, while Outcomes Navigator Overrides lets teams adjust risk scoring and separate compliance reporting by business unit.</p>\n<p>Early users report tangible gains. Eduardo Sulvar\u00e1n Vel\u00e1zquez, Subdirector Cyber Risk Management at E-Global, said Nova AI has helped his team prioritise cases more effectively and given analysts faster access to context, improving investigation speed \u201cwithout removing human judgment from the process.\u201d</p>\n<strong>Bringing AI Security Operations On-Premises</strong>\n<p>Not every organisation can, or will, move security data to the cloud. For those keeping infrastructure, data or AI workloads in-house, Exabeam has modernised its LogRhythm SIEM Platform with an in-place migration from Elasticsearch to OpenSearch, improving speed and scale and underpinning a new self-service reporting engine with AI governance and audit-ready compliance reports.</p>\n<p>New out-of-the-box collectors for ChatGPT, Google Gemini and GitHub Copilot give security teams centralised visibility into enterprise AI use, while a community Model Context Protocol server allows analysts to query and triage security data using local generative AI models, without data leaving their environment.</p>\n<strong>Open Source Momentum</strong>\n<p>Exabeam is continuing to build out the Open Agent and AI Security Community it founded. Recent additions include an Agentic SOC Skill Suite of open-source skills for Claude Code and <a href=\"https://www.itsecurityguru.org/2026/09/24/openai-agent-breached-australias-medicare-portal-and-nobody-noticed-for-three-months/\">OpenAI</a> Codex, new Thinking Modes and evidence-committed scoring for its Praxen project, which tie findings more directly to supporting evidence, and a single plugin marketplace covering both Claude Code and Codex. The company is inviting practitioners, researchers and engineers to contribute.</p>\n<p>The post <a href=\"https://www.itsecurityguru.org/2026/10/01/exabeam-pushes-agentic-soc-cloud-on-premises-analysts-in-loop/\">Exabeam Pushes The \u201cAgentic SOC\u201d Into The Cloud And On-Premises, With Analysts Kept In The Loop</a> appeared first on <a href=\"https://www.itsecurityguru.org\">IT Security Guru</a>.</p>",
+      "link": "https://www.itsecurityguru.org/2026/10/01/exabeam-pushes-agentic-soc-cloud-on-premises-analysts-in-loop/?utm_source=rss&utm_medium=rss&utm_campaign=exabeam-pushes-agentic-soc-cloud-on-premises-analysts-in-loop",
+      "source": "IT Security Guru",
+      "feed_type": "blog",
+      "type": "security-researcher-blogs",
+      "type_label": "Security Researcher Blogs",
+      "published": "2026-10-01T04:07:35+00:00",
+      "published_ts": 1790827655,
+      "smart_groups": [
+        "AI/ML Security"
       ],
       "curated": true
     },
