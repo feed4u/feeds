@@ -1,5 +1,473 @@
 [
   {
+    "title": "From 1x3090 to 20 DGX Sparks: my house fuses were the first bottleneck",
+    "summary": "​ From the first LLaMA 33B I knew I wanted that magic-like intelligence locally, mine, so nobody could take it away when I needed it. I bought a 3090 for my home PC. Then LLaMA 65B appeared and I was dazzled, it looked like it had all the knowledge in the world. I made two copies, one local and one on my Synology NAS RAID, so I'd never lose it, and bought a second 3090 to run it. I was happy for a year with small coding tasks on LLaMA and Qwen models. Then DeepSeek 671B MoE appeared. Wow, frontier level at home. I upgraded to a Threadripper with 512GB DDR4 and ran it at 8 t/s with experts offloaded to RAM, or Qwen 235B at 10-12 t/s when I wanted speed. I used these for real coding at my job, in OpenWebUI. Then agentic coding took off and this was too slow. At 100k context generation speed halved and prefill made it a beautiful yet agonising experience. So: 16x3090 across P620-based nodes on a 100Gbit network. It ran MiniMax M2, Qwen 235B and even Qwen 397B, as good as anyone could desire. I built an entire paid project with 397B in OpenCode. But bigger models were out of reach, and the house circuit said no: the fuses blew whenever the rig and the electric oven ran together. Heat and stability were issues too. Next came 4x ASUS GB10, after I read they can be linked (3 was the biggest supported config). 397B at 30 t/s on 400W, versus 50-60 t/s at 6kW, rock solid and almost silent. A dream come true. I built two more projects with it. Then MiMo 2.5 Pro and Kimi 2.6 appeared, smarter and more productive. I found no published solution for an 8-node cluster, but I still bought four more GB10s and made it work. 397B ran at FP8 instead of INT4, and 20% faster. I posted the first MiMo 2.5 Pro and Kimi 2.6 solutions on 8xSparks on the NVIDIA forum. I liked the result so much that I talked my older brother into buying his own 8x GB10, so he could run the best open models locally too, in privacy, without depending on API availability and rising costs. His house is a 5-minute walk from mine. When Kimi K3 (2.8T) appeared, biggest and smartes open weights model, we joined the clusters: two 8x clusters for daily use, or one 16x when we want the biggest model at home. After some work I published the first working solution for Kimi K3 on 16x Sparks on the NVIDIA forum. Through multiple iterations, it went from an unusable 7 t/s at 100k context to a fairly usable 20 t/s at 300k. Now we're adding 4 more Sparks, so a smaller, faster model (GLM 5.3 Flash) runs 24/7 while the big cluster runs either GLM 5.3 on 8x plus MiMo 2.6 Pro on the other 8x, or 16x Kimi K3, or Qwen 3.8 2.4T. I'm always tuning speed on the big models and rebuilding vLLM/SGLang images, so always-on smaller cluster made sense, why? Because for all my work projects and my vllm/sglang personal projects, I chose to use only local hosted models, I never paid a comercial model subscription, not because of the cost, but, because of my strong confidence in local models future. They arrive October 2, along with 4 more Sparks for my younger brother, who got caught by the same local AI microbe :) submitted by /u/ciprianveg [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wxgm0h/from_1x3090_to_20_dgx_sparks_my_house_fuses_were/\">  </a>  <!-- SC_OFF --><div><p>​</p> <p>From the first LLaMA 33B I knew I wanted that magic-like intelligence locally, mine, so nobody could take it away when I needed it. I bought a 3090 for my home PC. Then LLaMA 65B appeared and I was dazzled, it looked like it had all the knowledge in the world. I made two copies, one local and one on my Synology NAS RAID, so I'd never lose it, and bought a second 3090 to run it. I was happy for a year with small coding tasks on LLaMA and Qwen models.</p> <p>Then DeepSeek 671B MoE appeared. Wow, frontier level at home. I upgraded to a Threadripper with 512GB DDR4 and ran it at 8 t/s with experts offloaded to RAM, or Qwen 235B at 10-12 t/s when I wanted speed. I used these for real coding at my job, in OpenWebUI.</p> <p>Then agentic coding took off and this was too slow. At 100k context generation speed halved and prefill made it a beautiful yet agonising experience. So: 16x3090 across P620-based nodes on a 100Gbit network. It ran MiniMax M2, Qwen 235B and even Qwen 397B, as good as anyone could desire. I built an entire paid project with 397B in OpenCode. But bigger models were out of reach, and the house circuit said no: the fuses blew whenever the rig and the electric oven ran together. Heat and stability were issues too.</p> <p>Next came 4x ASUS GB10, after I read they can be linked (3 was the biggest supported config). 397B at 30 t/s on 400W, versus 50-60 t/s at 6kW, rock solid and almost silent. A dream come true. I built two more projects with it. Then MiMo 2.5 Pro and Kimi 2.6 appeared, smarter and more productive. I found no published solution for an 8-node cluster, but I still bought four more GB10s and made it work. 397B ran at FP8 instead of INT4, and 20% faster. I posted the first MiMo 2.5 Pro and Kimi 2.6 solutions on 8xSparks on the NVIDIA forum. I liked the result so much that I talked my older brother into buying his own 8x GB10, so he could run the best open models locally too, in privacy, without depending on API availability and rising costs.</p> <p>His house is a 5-minute walk from mine. When Kimi K3 (2.8T) appeared, biggest and smartes open weights model, we joined the clusters: two 8x clusters for daily use, or one 16x when we want the biggest model at home. After some work I published the first working solution for Kimi K3 on 16x Sparks on the NVIDIA forum. Through multiple iterations, it went from an unusable 7 t/s at 100k context to a fairly usable 20 t/s at 300k.</p> <p>Now we're adding 4 more Sparks, so a smaller, faster model (GLM 5.3 Flash) runs 24/7 while the big cluster runs either GLM 5.3 on 8x plus MiMo 2.6 Pro on the other 8x, or 16x Kimi K3, or Qwen 3.8 2.4T.</p> <p>I'm always tuning speed on the big models and rebuilding vLLM/SGLang images, so always-on smaller cluster made sense, why? Because for all my work projects and my vllm/sglang personal projects, I chose to use only local hosted models, I never paid a comercial model subscription, not because of the cost, but, because of my strong confidence in local models future. They arrive October 2, along with 4 more Sparks for my younger brother, who got caught by the same local AI microbe :)</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/ciprianveg\"> /u/ciprianveg </a> <br/> <span><a href=\"https://i.redd.it/yiqnv7c6kgth1.jpeg\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wxgm0h/from_1x3090_to_20_dgx_sparks_my_house_fuses_were/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wxgm0h/from_1x3090_to_20_dgx_sparks_my_house_fuses_were/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T14:09:31+00:00",
+    "published_ts": 1791122971,
+    "smart_groups": [
+      "Agents & automation",
+      "Coding & dev tools"
+    ],
+    "curated": false
+  },
+  {
+    "title": "I Distilled an LLM into two 287M encoders (GLiNER + multiple choice) for document extraction, can't match teacher. did i do something wrong?",
+    "summary": "A while ago I asked here how to turn ~5 million court decisions into structured graphs without running an expensive LLM on every document thanks for the advice . I went with the \"small extractor + classifier\" idea and it mostly works, but I'm stuck a bit below the LLM. And like I said last time, i'd be damned if I run 5M docs and then find out thing X was wrong. So here is exactly what I did. Please let me know if what im doing makes sense, or if i made a mistake somewhere. also i used AI for some of the tables cuz there has been a lot of data at this point, sorry. What comes out per decision (only the nodes so far, relations come next). Three lists: entities: every person, organization, law, document or thing. Each gets one id for the whole document, a type (9 of them), a kind (724 of them plus \"other\") and all the places it is mentioned actions: what was done, requested or decided. Each gets a normalized verb, a flag \"the court decided this\" and its mentions values: amounts, dates, durations, in a normalized form Simple example, for the sentence \"The court dismisses the creditor's proposal to enforce 341.08 EUR against the debtor\": entity \"the court\": organization, kind court. Same entity as the full court name in the header entity \"the creditor\": organization, kind creditor. Same entity as the city named earlier entity \"the debtor\": person, kind debtor action \"dismisses\": verb = dismiss, decided by the court = yes value \"341.08 EUR\": amount Step 1: a strong LLM labels ~700 decisions cut the decision into windows of 4 sentences 4 calls per window to Claude Sonnet with a strict JSON schema: entities, actions, a second \"what did you miss\" pass for actions, values the window goes in with numbered words (like 12:court ), the model answers with word ranges [first, last, \"text\"] , and code checks every range against the text every call also gets the list of entities and actions found in earlier windows, so ids stay the same through the document ~25 code rules clean up where a marked phrase starts and ends, law citations and number formats the entity \"kind\" is free text at this point. That gave 2,373 different strings (the same mess as in my first post). I normalized them, merged synonyms by hand and kept what showed up 3+ times: 724 kinds plus \"other\" Step 2: a model that marks the text it highlights every mention: the exact stretch of text (a \"span\", from a start character to an end character) that names an entity, an action or a value, with one of 17 labels (9 entity types, 1 action, 7 value types) model: fastino/gliner2.5-multi-v1 (287M) one training row per window: the text plus the exact start and end of every marked phrase. 9,699 windows, 207k marked phrases I patched the trainer so only the labeled occurrence is a positive (stock marks every occurrence of the same string), and all 17 labels are in every row full fine-tune in fp32 (bf16 gave NaN), 14 epochs, 16 rows per step, encoder LR 3e-5, head LR 5e-4, linear schedule, 10 % warmup final model = averaged weights of epochs 9-14, threshold 0.5 Step 3: a second small model answers multiple-choice questions fastino/GLiNER2.5-multi-Decide (287M). Code turns the LLM labels into 247k questions: \"is this mention one of these earlier entities, or new?\" The mention is marked with « » inside ±300 characters of text. Options: up to 16 earlier entities of the same document (shown by their mention texts) plus new \"which kind?\" Options: a shortlist of the 724 kinds plus other for actions: same act or new, which verb (shortlist of 64 plus other ), did the court decide it (yes/no) in training the options come from the LLM's grouping. At inference they come from the model's own earlier answers full fine-tune in fp32, 2 epochs, 16 questions per step, encoder LR 2e-5, head LR 3e-4, linear schedule, 6 % warmup, options shuffled, up to 30 % of the wrong options dropped At inference: the marking model, then the same code rules, then the second model walks through the mentions in reading order. About 2.3 decisions per second on one RTX 5090. Where it stands 30 decisions nobody trained on, labeled twice by the LLM. The second column is the LLM's second run scored against its first, which I treat as the ceiling. A mention counts as found only if it starts and ends exactly where the LLM marked it. mine LLM vs itself entity mentions found (F1) 0.901 \"same entity or new\" right 0.959 entities grouped exactly 0.847 entity kind 0.921 action mentions found (F1) 0.857 action verb 0.920 Where I need help Finding the mentions is stuck at 0.90 F1. 200 more labeled docs did nothing. An XLM-R large tagger (560M) got the same score: it finds more mentions but gets the start or end wrong more often. Giving it the text before the window did nothing. What would you try? The LLM agrees with itself only 93.5 % on what it marks, and I train on single runs. Label everything 3 times and vote? Or is that ceiling just what it is? Is \"pick one of 16 earlier entities\" a sane way to do coreference over a long document? Am I hurting myself by training on the LLM's options and running on my own? Anything in the recipe that looks plain wrong? Learning rates, 2 epochs, weight averaging, one seed per run. THANKS for reading. AI TL;DR: distilled an LLM's extraction of court decisions into a GLiNER model that marks the mentions plus a small multiple-choice model. It runs at about 2.3 documents/s on one GPU and lands a few points below the LLM (0.90 vs 0.935 F1 on finding mentions, 0.85 vs 0.93 on exact grouping). The recipe with learning rates and how I built the training rows is above. Looking for mistakes and ideas before I run 5M documents. submitted by /u/SignificantZebra5883 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>A while ago I asked here how to turn ~5 million court decisions into structured graphs without running an expensive LLM on every document <a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wn5k3w/how_would_you_extract_entities_and_relations_from/\">thanks for the advice</a> . </p> <p>I went with the \"small extractor + classifier\" idea and it mostly works, but I'm stuck a bit below the LLM. And like I said last time, i'd be damned if I run 5M docs and then find out thing X was wrong. So here is exactly what I did. Please let me know if what im doing makes sense, or if i made a mistake somewhere. also i used AI for some of the tables cuz there has been a lot of data at this point, sorry.</p> <p><strong>What comes out per decision</strong> (only the nodes so far, relations come next). Three lists:</p> <ul> <li><strong>entities:</strong> every person, organization, law, document or thing. Each gets one id for the whole document, a type (9 of them), a kind (724 of them plus \"other\") and all the places it is mentioned</li> <li><strong>actions:</strong> what was done, requested or decided. Each gets a normalized verb, a flag \"the court decided this\" and its mentions</li> <li><strong>values:</strong> amounts, dates, durations, in a normalized form</li> </ul> <p>Simple example, for the sentence \"The court dismisses the creditor's proposal to enforce 341.08 EUR against the debtor\":</p> <ul> <li>entity \"the court\": organization, kind court. Same entity as the full court name in the header</li> <li>entity \"the creditor\": organization, kind creditor. Same entity as the city named earlier</li> <li>entity \"the debtor\": person, kind debtor</li> <li>action \"dismisses\": verb = dismiss, decided by the court = yes</li> <li>value \"341.08 EUR\": amount</li> </ul> <p><strong>Step 1: a strong LLM labels ~700 decisions</strong></p> <ul> <li>cut the decision into windows of 4 sentences</li> <li>4 calls per window to Claude Sonnet with a strict JSON schema: entities, actions, a second \"what did you miss\" pass for actions, values</li> <li>the window goes in with numbered words (like <code>12:court</code>), the model answers with word ranges <code>[first, last, \"text\"]</code>, and code checks every range against the text</li> <li>every call also gets the list of entities and actions found in earlier windows, so ids stay the same through the document</li> <li>~25 code rules clean up where a marked phrase starts and ends, law citations and number formats</li> <li>the entity \"kind\" is free text at this point. That gave 2,373 different strings (the same mess as in my first post). I normalized them, merged synonyms by hand and kept what showed up 3+ times: 724 kinds plus \"other\"</li> </ul> <p><strong>Step 2: a model that marks the text</strong></p> <ul> <li>it highlights every mention: the exact stretch of text (a \"span\", from a start character to an end character) that names an entity, an action or a value, with one of 17 labels (9 entity types, 1 action, 7 value types)</li> <li>model: <code>fastino/gliner2.5-multi-v1</code> (287M)</li> <li>one training row per window: the text plus the exact start and end of every marked phrase. 9,699 windows, 207k marked phrases</li> <li>I patched the trainer so only the labeled occurrence is a positive (stock marks every occurrence of the same string), and all 17 labels are in every row</li> <li>full fine-tune in fp32 (bf16 gave NaN), 14 epochs, 16 rows per step, encoder LR 3e-5, head LR 5e-4, linear schedule, 10 % warmup</li> <li>final model = averaged weights of epochs 9-14, threshold 0.5</li> </ul> <p><strong>Step 3: a second small model answers multiple-choice questions</strong></p> <ul> <li><code>fastino/GLiNER2.5-multi-Decide</code> (287M). Code turns the LLM labels into 247k questions: <ul> <li>\"is this mention one of these earlier entities, or new?\" The mention is marked with « » inside ±300 characters of text. Options: up to 16 earlier entities of the same document (shown by their mention texts) plus <code>new</code></li> <li>\"which kind?\" Options: a shortlist of the 724 kinds plus <code>other</code></li> <li>for actions: same act or new, which verb (shortlist of 64 plus <code>other</code>), did the court decide it (yes/no)</li> </ul></li> <li>in training the options come from the LLM's grouping. At inference they come from the model's own earlier answers</li> <li>full fine-tune in fp32, 2 epochs, 16 questions per step, encoder LR 2e-5, head LR 3e-4, linear schedule, 6 % warmup, options shuffled, up to 30 % of the wrong options dropped</li> </ul> <p>At inference: the marking model, then the same code rules, then the second model walks through the mentions in reading order. About 2.3 decisions per second on one RTX 5090.</p> <p><strong>Where it stands</strong></p> <p>30 decisions nobody trained on, labeled twice by the LLM. The second column is the LLM's second run scored against its first, which I treat as the ceiling. A mention counts as found only if it starts and ends exactly where the LLM marked it.</p>   mine LLM vs itself    entity mentions found (F1) 0.901   \"same entity or new\" right 0.959   entities grouped exactly 0.847   entity kind 0.921   action mentions found (F1) 0.857   action verb 0.920   <p><strong>Where I need help</strong></p> <ol> <li>Finding the mentions is stuck at 0.90 F1. 200 more labeled docs did nothing. An XLM-R large tagger (560M) got the same score: it finds more mentions but gets the start or end wrong more often. Giving it the text before the window did nothing. What would you try?</li> <li>The LLM agrees with itself only 93.5 % on what it marks, and I train on single runs. Label everything 3 times and vote? Or is that ceiling just what it is?</li> <li>Is \"pick one of 16 earlier entities\" a sane way to do coreference over a long document? Am I hurting myself by training on the LLM's options and running on my own?</li> <li>Anything in the recipe that looks plain wrong? Learning rates, 2 epochs, weight averaging, one seed per run.</li> </ol> <p>THANKS for reading.</p> <p>AI TL;DR: distilled an LLM's extraction of court decisions into a GLiNER model that marks the mentions plus a small multiple-choice model. It runs at about 2.3 documents/s on one GPU and lands a few points below the LLM (0.90 vs 0.935 F1 on finding mentions, 0.85 vs 0.93 on exact grouping). The recipe with learning rates and how I built the training rows is above. Looking for mistakes and ideas before I run 5M documents.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/SignificantZebra5883\"> /u/SignificantZebra5883 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wxgccy/i_distilled_an_llm_into_two_287m_encoders_gliner/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wxgccy/i_distilled_an_llm_into_two_287m_encoders_gliner/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wxgccy/i_distilled_an_llm_into_two_287m_encoders_gliner/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T13:58:17+00:00",
+    "published_ts": 1791122297,
+    "smart_groups": [
+      "Work & society"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Trump names national intelligence director Jay Clayton to lead new AI task force",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://apnews.com/article/trump-jay-clayton-artificial-intelligence-task-force-b8689ea07de9102a52bd1cd2049b5901\">https://apnews.com/article/trump-jay-clayton-artificial-intelligence-task-force-b8689ea07de9102a52bd1cd2049b5901</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49953962\">https://news.ycombinator.com/item?id=49953962</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+    "link": "https://apnews.com/article/trump-jay-clayton-artificial-intelligence-task-force-b8689ea07de9102a52bd1cd2049b5901",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T13:52:50+00:00",
+    "published_ts": 1791121970,
+    "smart_groups": [
+      "Policy & government"
+    ],
+    "curated": false,
+    "story_id": "bce62bd52286",
+    "story_size": 3
+  },
+  {
+    "title": "AI Could Worsen a Common Cognitive Trap",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.theatlantic.com/science/2026/10/why-illusions-understanding-explanation-question/688826/\">https://www.theatlantic.com/science/2026/10/why-illusions-understanding-explanation-question/688826/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49953894\">https://news.ycombinator.com/item?id=49953894</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://www.theatlantic.com/science/2026/10/why-illusions-understanding-explanation-question/688826/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T13:44:30+00:00",
+    "published_ts": 1791121470,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Anthropic asks Claude users to share voice data for AI model training",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.bleepingcomputer.com/news/artificial-intelligence/anthropic-asks-claude-users-to-share-voice-data-for-ai-model-training/\">https://www.bleepingcomputer.com/news/artificial-intelligence/anthropic-asks-claude-users-to-share-voice-data-for-ai-model-training/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49953892\">https://news.ycombinator.com/item?id=49953892</a></p>\n<p>Points: 3</p>\n<p># Comments: 1</p>",
+    "link": "https://www.bleepingcomputer.com/news/artificial-intelligence/anthropic-asks-claude-users-to-share-voice-data-for-ai-model-training/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T13:44:26+00:00",
+    "published_ts": 1791121466,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: B1 Sprechen – Practise German B1 Speaking Exams with AI",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://b1sprechen.com/\">https://b1sprechen.com/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49953820\">https://news.ycombinator.com/item?id=49953820</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://b1sprechen.com/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T13:36:25+00:00",
+    "published_ts": 1791120985,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Is there any way to improve creative writing for Local Models (Qwen)?",
+    "summary": "I wanted to know if theres anything that can improve creative writing for our Local Models? I specificly am asking for qwen models as they are way better when it comes to researching and writing html files compared to gemma / muse (which I know are better at creative writing). Im currently using qwen 3.8 flash next at q4 with llama.cpp submitted by /u/No_Algae1753 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>I wanted to know if theres anything that can improve creative writing for our Local Models? I specificly am asking for qwen models as they are way better when it comes to researching and writing html files compared to gemma / muse (which I know are better at creative writing). Im currently using qwen 3.8 flash next at q4 with llama.cpp</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/No_Algae1753\"> /u/No_Algae1753 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wxfgn9/is_there_any_way_to_improve_creative_writing_for/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wxfgn9/is_there_any_way_to_improve_creative_writing_for/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wxfgn9/is_there_any_way_to_improve_creative_writing_for/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T13:16:28+00:00",
+    "published_ts": 1791119788,
+    "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "What AI debates have to do with alchemy",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.programmablemutter.com/p/what-ai-debates-have-to-do-with-alchemy\">https://www.programmablemutter.com/p/what-ai-debates-have-to-do-with-alchemy</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49953664\">https://news.ycombinator.com/item?id=49953664</a></p>\n<p>Points: 2</p>\n<p># Comments: 1</p>",
+    "link": "https://www.programmablemutter.com/p/what-ai-debates-have-to-do-with-alchemy",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T13:15:18+00:00",
+    "published_ts": 1791119718,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "AI's 'Thought' Process Can No Longer Be Trusted",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.wsj.com/tech/ai/ai-monitoring-chain-of-thought-research-b46a05fd\">https://www.wsj.com/tech/ai/ai-monitoring-chain-of-thought-research-b46a05fd</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49953523\">https://news.ycombinator.com/item?id=49953523</a></p>\n<p>Points: 3</p>\n<p># Comments: 1</p>",
+    "link": "https://www.wsj.com/tech/ai/ai-monitoring-chain-of-thought-research-b46a05fd",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T12:56:45+00:00",
+    "published_ts": 1791118605,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Herbarium – keep and review the HTML pages AI tools generate",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://github.com/abdoufermat5/herbarium\">https://github.com/abdoufermat5/herbarium</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49953497\">https://news.ycombinator.com/item?id=49953497</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://github.com/abdoufermat5/herbarium",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T12:52:05+00:00",
+    "published_ts": 1791118325,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Harden Your AI Agent",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://sometechblog.com/harden-your-ai-agent\">https://sometechblog.com/harden-your-ai-agent</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49953464\">https://news.ycombinator.com/item?id=49953464</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://sometechblog.com/harden-your-ai-agent",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T12:46:33+00:00",
+    "published_ts": 1791117993,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Fighting AI slop in science papers",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.unite.ai/fighting-ai-slop-in-science-papers/\">https://www.unite.ai/fighting-ai-slop-in-science-papers/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49953325\">https://news.ycombinator.com/item?id=49953325</a></p>\n<p>Points: 4</p>\n<p># Comments: 0</p>",
+    "link": "https://www.unite.ai/fighting-ai-slop-in-science-papers/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T12:27:00+00:00",
+    "published_ts": 1791116820,
+    "smart_groups": [
+      "Research & papers"
+    ],
+    "curated": false
+  },
+  {
+    "title": "98% of US households aren't paying for AI yet",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.a16z.news/p/state-of-markets-ii\">https://www.a16z.news/p/state-of-markets-ii</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49953246\">https://news.ycombinator.com/item?id=49953246</a></p>\n<p>Points: 5</p>\n<p># Comments: 1</p>",
+    "link": "https://www.a16z.news/p/state-of-markets-ii",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T12:16:13+00:00",
+    "published_ts": 1791116173,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Ask HN: How would AI kill us all?",
+    "summary": "I've watched a lot of doomer videos and read many articles but it's never really clear how this will play out. I don't see a terminator ending so I don't think it will be rise of the machines styles. Are people worried about AI actually taking over or just allowing nefarious humans to do mass harm using the intelligence it provides?",
+    "summary_html": "<p>I've watched a lot of doomer videos and read many articles but it's never really clear how this will play out. I don't see a terminator ending so I don't think it will be rise of the machines styles. Are people worried about AI actually taking over or just allowing nefarious humans to do mass harm using the intelligence it provides?</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49953228\">https://news.ycombinator.com/item?id=49953228</a></p>\n<p>Points: 3</p>\n<p># Comments: 5</p>",
+    "link": "https://news.ycombinator.com/item?id=49953228",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T12:13:20+00:00",
+    "published_ts": 1791116000,
+    "smart_groups": [
+      "Safety & alignment"
+    ],
+    "curated": false
+  },
+  {
+    "title": "AI Tells: Opus 5.5 Update",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://graphite.io/five-percent/research/ai-tells-opus-5-5-update\">https://graphite.io/five-percent/research/ai-tells-opus-5-5-update</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49953160\">https://news.ycombinator.com/item?id=49953160</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://graphite.io/five-percent/research/ai-tells-opus-5-5-update",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T12:04:02+00:00",
+    "published_ts": 1791115442,
+    "smart_groups": [
+      "Model releases"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Asia-Pacific Journal Series – Introduction: Military AI Has Left the Laboratory",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://lieber.westpoint.edu/asia-pacific-ai-series-introduction-military-ai-has-left-laboratory/\">https://lieber.westpoint.edu/asia-pacific-ai-series-introduction-military-ai-has-left-laboratory/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49952994\">https://news.ycombinator.com/item?id=49952994</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://lieber.westpoint.edu/asia-pacific-ai-series-introduction-military-ai-has-left-laboratory/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T11:39:21+00:00",
+    "published_ts": 1791113961,
+    "smart_groups": [
+      "Policy & government"
+    ],
+    "curated": false
+  },
+  {
+    "title": "The Mythology of Conscious AI",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.noemamag.com/the-mythology-of-conscious-ai/\">https://www.noemamag.com/the-mythology-of-conscious-ai/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49952991\">https://news.ycombinator.com/item?id=49952991</a></p>\n<p>Points: 3</p>\n<p># Comments: 1</p>",
+    "link": "https://www.noemamag.com/the-mythology-of-conscious-ai/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T11:38:46+00:00",
+    "published_ts": 1791113926,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Local text to speech with Breeze is truly incredible",
+    "summary": "Been playing around with local TTS with Breeze combined with STT, and the results are amazing. Using Opus 5.5, I can hear the first sound after 500ms if there is no thinking involved, and with thinking on low mode, can be 1-1.5s. I'm using a BLE remote (the kind that are used for taking pics with phones) combined with a wireless microphone. So I can just sit on the couch, and just talk to her. She watches for any claude session that finishes, and sends me the results in a very short, spoken style summary, and tells me if there is anything waiting for my decision, then forwards my decisions. Also impressed how consistent Opus 5.5 is in the communication. Even after more than 500k in context, he still remembers that he's in a live session with me, and has to keep messages short. Used to be an issue in the past. The future is here guys. submitted by /u/Cyborg-2077 [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wxd404/local_text_to_speech_with_breeze_is_truly/\">  </a>  <!-- SC_OFF --><div><p>Been playing around with local TTS with Breeze combined with STT, and the results are amazing. Using Opus 5.5, I can hear the first sound after 500ms if there is no thinking involved, and with thinking on low mode, can be 1-1.5s. </p> <p>I'm using a BLE remote (the kind that are used for taking pics with phones) combined with a wireless microphone. So I can just sit on the couch, and just talk to her.</p> <p>She watches for any claude session that finishes, and sends me the results in a very short, spoken style summary, and tells me if there is anything waiting for my decision, then forwards my decisions.</p> <p>Also impressed how consistent Opus 5.5 is in the communication. Even after more than 500k in context, he still remembers that he's in a live session with me, and has to keep messages short. Used to be an issue in the past.</p> <p>The future is here guys.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Cyborg-2077\"> /u/Cyborg-2077 </a> <br/> <span><a href=\"https://v.redd.it/krsmbix6nfth1\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wxd404/local_text_to_speech_with_breeze_is_truly/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wxd404/local_text_to_speech_with_breeze_is_truly/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T11:10:03+00:00",
+    "published_ts": 1791112203,
+    "smart_groups": [
+      "Vision, audio & video"
+    ],
+    "curated": false
+  },
+  {
+    "title": "MentaAgent – a self-hosted AI analyst for a company's own files",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://github.com/DanielKim03/mentaagent\">https://github.com/DanielKim03/mentaagent</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49952810\">https://news.ycombinator.com/item?id=49952810</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://github.com/DanielKim03/mentaagent",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T11:06:39+00:00",
+    "published_ts": 1791111999,
+    "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "The ML4Good Technical AI Safety Bootcamp: What to Expect",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.lesswrong.com/posts/a7Lds5i5rfEE2doFa/inside-the-ml4good-technical-ai-safety-bootcamp-what-to-1\">https://www.lesswrong.com/posts/a7Lds5i5rfEE2doFa/inside-the-ml4good-technical-ai-safety-bootcamp-what-to-1</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49952800\">https://news.ycombinator.com/item?id=49952800</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://www.lesswrong.com/posts/a7Lds5i5rfEE2doFa/inside-the-ml4good-technical-ai-safety-bootcamp-what-to-1",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T11:04:14+00:00",
+    "published_ts": 1791111854,
+    "smart_groups": [
+      "Safety & alignment"
+    ],
+    "curated": false
+  },
+  {
+    "title": "AI Policy Enforcement Report",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://delinea.com/resources/ai-policy-enforcement-report\">https://delinea.com/resources/ai-policy-enforcement-report</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49952749\">https://news.ycombinator.com/item?id=49952749</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://delinea.com/resources/ai-policy-enforcement-report",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T10:55:01+00:00",
+    "published_ts": 1791111301,
+    "smart_groups": [
+      "Policy & government"
+    ],
+    "curated": false
+  },
+  {
+    "title": "[No] Use for Humans in the Age of AI",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://blog.hackflow.ru/blog/2026/10/04/ai-balance-of-power/\">https://blog.hackflow.ru/blog/2026/10/04/ai-balance-of-power/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49952728\">https://news.ycombinator.com/item?id=49952728</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+    "link": "https://blog.hackflow.ru/blog/2026/10/04/ai-balance-of-power/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T10:53:01+00:00",
+    "published_ts": 1791111181,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Can someone explain how JEV is different from a simple embeddings model?",
+    "summary": "How is JEV any different from using an embeddings model? I really will appreciate if someone can explain this to me - because I have yet to see the difference. I'll even give you my JEV server for free! It uses ollama, you install `ollama pull nomic-embed-text:latest`. % python3 ./jev_embedding.py \"How high is the sky?\" find_phone: 0.38 volume: 0.41 calendar: 0.44 tell_the_time: 0.49 weather: 0.53 % python3 ./jev_embedding.py \"I had this thing on my anus. The doctor burned it off with a laser.\" weather: 0.35 tell_the_time: 0.36 calendar: 0.37 volume: 0.38 find_phone: 0.43 % python3 ./jev_embedding.py \"can you help me locate my phone.\" volume: 0.38 weather: 0.40 calendar: 0.43 tell_the_time: 0.53 find_phone: 0.89 % python3 ./jev_embedding.py \"Hello Cleveland! I can't HEAR you\" weather: 0.37 calendar: 0.40 tell_the_time: 0.44 find_phone: 0 volume: 0.56 #!/usr/bin/env python3 \"\"\" jev_embedding.py — minimal showcase of the embedding-based intent router, excised from jarvis_workflow.py. Given a phrase on the command line, it embeds the phrase and every example utterance (via the local Ollama embedding model), then prints the cosine similarity of the phrase to each intent — the raw routing signal — instead of running a handler and speaking an answer. python3 jev_embedding.py \"How high is the sky?\" \"\"\" import sys import requests # --- Config (same endpoint/model as jarvis_workflow.py) --- OLLAMA_EMBED_URL = \"http://localhost:11434/api/embeddings\" INTENT_EMBED_MODEL = \"nomic-embed-text\" # --- The five cases to detect --- # label -> example utterances, matched by similarity. INTENTS = { \"volume\": [ \"turn the volume up\", \"make it quieter\", \"set the volume to seven\", ], \"tell_the_time\": [ \"what time is it\", \"can you tell me the time\", ], \"weather\": [ \"how's the weather going to be today\", \"will it rain today\", \"do I need a raincoat\", ], \"find_phone\": [ \"find my phone\", \"where's my phone\", \"ring my phone\", ], \"calendar\": [ \"when is my next meeting\", \"what's coming up on the calendar tomorrow\", ], } def _embed(text): \"\"\"Return a unit-normalised embedding (list of floats) from the Ollama model.\"\"\" r = requests.post(OLLAMA_EMBED_URL, json={\"model\": INTENT_EMBED_MODEL, \"prompt\": text}, timeout=10) vec = r.json().get(\"embedding\") if not vec: raise RuntimeError(\"no embedding returned\") norm = (sum(x * x for x in vec)) ** 0.5 or 1.0 return [x / norm for x in vec] def _cosine(a, b): \"\"\"Cosine of two unit vectors is their dot product.\"\"\" return sum(x * y for x, y in zip(a, b)) def score_intents(text): \"\"\"Best cosine similarity of `text` to each intent's example utterances.\"\"\" q = _embed(text) return {label: max(_cosine(q, _embed(ex)) for ex in examples) for label, examples in INTENTS.items()} if __name__ == \"__main__\": if len(sys.argv) < 2: print('Usage: python3 jev_embedding.py \"your phrase\"') sys.exit(1) phrase = \" \".join(sys.argv[1:]) scores = score_intents(phrase) for label, score in sorted(scores.items(), key=lambda kv: kv[1]): print(f\"{label}: {score:.2f}\") submitted by /u/spammmmmmmmy [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>How is JEV any different from using an embeddings model? I really will appreciate if someone can explain this to me - because I have yet to see the difference.</p> <p>I'll even give you my JEV server for free! It uses ollama, you install `ollama pull nomic-embed-text:latest`.</p> <pre><code>% python3 ./jev_embedding.py \"How high is the sky?\" find_phone: 0.38 volume: 0.41 calendar: 0.44 tell_the_time: 0.49 weather: 0.53 % python3 ./jev_embedding.py \"I had this thing on my anus. The doctor burned it off with a laser.\" weather: 0.35 tell_the_time: 0.36 calendar: 0.37 volume: 0.38 find_phone: 0.43 % python3 ./jev_embedding.py \"can you help me locate my phone.\" volume: 0.38 weather: 0.40 calendar: 0.43 tell_the_time: 0.53 find_phone: 0.89 % python3 ./jev_embedding.py \"Hello Cleveland! I can't HEAR you\" weather: 0.37 calendar: 0.40 tell_the_time: 0.44 find_phone: 0 volume: 0.56 #!/usr/bin/env python3 \"\"\" jev_embedding.py — minimal showcase of the embedding-based intent router, excised from jarvis_workflow.py. Given a phrase on the command line, it embeds the phrase and every example utterance (via the local Ollama embedding model), then prints the cosine similarity of the phrase to each intent — the raw routing signal — instead of running a handler and speaking an answer. python3 jev_embedding.py \"How high is the sky?\" \"\"\" import sys import requests # --- Config (same endpoint/model as jarvis_workflow.py) --- OLLAMA_EMBED_URL = \"http://localhost:11434/api/embeddings\" INTENT_EMBED_MODEL = \"nomic-embed-text\" # --- The five cases to detect --- # label -&gt; example utterances, matched by similarity. INTENTS = { \"volume\": [ \"turn the volume up\", \"make it quieter\", \"set the volume to seven\", ], \"tell_the_time\": [ \"what time is it\", \"can you tell me the time\", ], \"weather\": [ \"how's the weather going to be today\", \"will it rain today\", \"do I need a raincoat\", ], \"find_phone\": [ \"find my phone\", \"where's my phone\", \"ring my phone\", ], \"calendar\": [ \"when is my next meeting\", \"what's coming up on the calendar tomorrow\", ], } def _embed(text): \"\"\"Return a unit-normalised embedding (list of floats) from the Ollama model.\"\"\" r = requests.post(OLLAMA_EMBED_URL, json={\"model\": INTENT_EMBED_MODEL, \"prompt\": text}, timeout=10) vec = r.json().get(\"embedding\") if not vec: raise RuntimeError(\"no embedding returned\") norm = (sum(x * x for x in vec)) ** 0.5 or 1.0 return [x / norm for x in vec] def _cosine(a, b): \"\"\"Cosine of two unit vectors is their dot product.\"\"\" return sum(x * y for x, y in zip(a, b)) def score_intents(text): \"\"\"Best cosine similarity of `text` to each intent's example utterances.\"\"\" q = _embed(text) return {label: max(_cosine(q, _embed(ex)) for ex in examples) for label, examples in INTENTS.items()} if __name__ == \"__main__\": if len(sys.argv) &lt; 2: print('Usage: python3 jev_embedding.py \"your phrase\"') sys.exit(1) phrase = \" \".join(sys.argv[1:]) scores = score_intents(phrase) for label, score in sorted(scores.items(), key=lambda kv: kv[1]): print(f\"{label}: {score:.2f}\") </code></pre> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/spammmmmmmmy\"> /u/spammmmmmmmy </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wxcn49/can_someone_explain_how_jev_is_different_from_a/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wxcn49/can_someone_explain_how_jev_is_different_from_a/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wxcn49/can_someone_explain_how_jev_is_different_from_a/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T10:41:59+00:00",
+    "published_ts": 1791110519,
+    "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: ViralReel – Make the viral Hotel Lobby AI template video in 60 seconds",
+    "summary": "Hotel lobby AI template: upload two photos, star in the viral orange-booth video in 60 seconds. Auto lip-sync, gestures and lighting for couples, pets, babies.",
+    "summary_html": "<p>Hotel lobby AI template: upload two photos, star in the viral orange-booth video in 60 seconds. Auto lip-sync, gestures and lighting for couples, pets, babies.</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49952515\">https://news.ycombinator.com/item?id=49952515</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://www.viralreel.app/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T10:21:56+00:00",
+    "published_ts": 1791109316,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: Telegram AI Video Generator – Create AI Videos in Chat",
+    "summary": "A Telegram bot that generates AI videos from text prompts or images. Supports 8 top models including Kling, Runway, Seedance, Veo, Wan, Hailuo, MiniMax, and Grok. No desktop software needed - just chat with the bot and get videos in seconds.",
+    "summary_html": "<p>A Telegram bot that generates AI videos from text prompts or images. Supports 8 top models including Kling, Runway, Seedance, Veo, Wan, Hailuo, MiniMax, and Grok. No desktop software needed - just chat with the bot and get videos in seconds.</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49952489\">https://news.ycombinator.com/item?id=49952489</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://videoall.ai/telegram-ai-video-generator",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T10:19:12+00:00",
+    "published_ts": 1791109152,
+    "smart_groups": [
+      "Vision, audio & video"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Need maybe say \"Use llama.cpp\"",
+    "summary": "So I tried that miracle engine everyone is talking about. Asked the IQ3_S model to express its opinion on a post from this sub to measure the tps on a long-ish generation: Can you help with the following problem? So Kimi K2 is outdated, and so is GPT OSS 120b. Which of the modern open weights models can boast the least sycophancy? I need this both for creative/research assistant usage (sycophancy led me down blind alleys of my own bad ideas many times) and agentic coding (more sycophancy less bug noticing). The thinking trace: We need answer user's question. Need likely provide current landscape as of 2026? We have get_datetime tool. Need know current date 2026? System says current date 2026-06-22. Need maybe use get_datetime? Could call to confirm. User asks about modern open weights models least sycophancy. Need likely discuss Kimi K2 outdated? ... 10k tokens later it degrades to: Need maybe maybe include \"Use 'for code, list constraints'.\" Need maybe maybe include \"Use 'for code, list requirements'.\" The same exact model in llama.cpp does produce a coherent answer without a doom loop. submitted by /u/pand5461 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>So I tried that miracle engine everyone is talking about.</p> <p>Asked the IQ3_S model to express its opinion on a post from this sub to measure the tps on a long-ish generation:</p> <blockquote> <p>Can you help with the following problem? </p> <p>So Kimi K2 is outdated, and so is GPT OSS 120b. Which of the modern open weights models can boast the least sycophancy? I need this both for creative/research assistant usage (sycophancy led me down blind alleys of my own bad ideas many times) and agentic coding (more sycophancy less bug noticing).</p> </blockquote> <p>The thinking trace:</p> <pre><code>We need answer user's question. Need likely provide current landscape as of 2026? We have get_datetime tool. Need know current date 2026? System says current date 2026-06-22. Need maybe use get_datetime? Could call to confirm. User asks about modern open weights models least sycophancy. Need likely discuss Kimi K2 outdated? ... </code></pre> <p>10k tokens later it degrades to:</p> <pre><code>Need maybe maybe include \"Use 'for code, list constraints'.\" Need maybe maybe include \"Use 'for code, list requirements'.\" </code></pre> <p>The same exact model in llama.cpp does produce a coherent answer without a doom loop.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/pand5461\"> /u/pand5461 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wxbm8w/need_maybe_say_use_llamacpp/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wxbm8w/need_maybe_say_use_llamacpp/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wxbm8w/need_maybe_say_use_llamacpp/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T09:37:33+00:00",
+    "published_ts": 1791106653,
+    "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "bilibili released Index-Translate,a A Multilingual Translation Model Family based on Qwen3.5",
+    "summary": "https://github.com/bilibili/Index-Translate Index-Translate is a family of multilingual translation models built on Qwen3.5. The text models cover 150 languages and follow translation instructions such as terminology, formatting, and content-preservation requirements. The family extends this foundation to speech, syllable-controlled translation, and full-document translation. -Index-Translate translates text, structured content, and community expressions. -Index-Echo produces translated subtitles or speech conditioned on the source speaker's voice. -Index-Homura adjusts translations toward a specified target syllable count. -Index-NativeLong translates complete documents with context across passages. submitted by /u/rikimtasu [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p><a href=\"https://github.com/bilibili/Index-Translate\">https://github.com/bilibili/Index-Translate</a></p> <p>Index-Translate is a family of multilingual translation models built on Qwen3.5. The text models cover 150 languages and follow translation instructions such as terminology, formatting, and content-preservation requirements. The family extends this foundation to speech, syllable-controlled translation, and full-document translation.</p> <p>-Index-Translate translates text, structured content, and community expressions. -Index-Echo produces translated subtitles or speech conditioned on the source speaker's voice. -Index-Homura adjusts translations toward a specified target syllable count. -Index-NativeLong translates complete documents with context across passages.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/rikimtasu\"> /u/rikimtasu </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wxa1wr/bilibili_released_indextranslatea_a_multilingual/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wxa1wr/bilibili_released_indextranslatea_a_multilingual/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wxa1wr/bilibili_released_indextranslatea_a_multilingual/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T07:56:39+00:00",
+    "published_ts": 1791100599,
+    "smart_groups": [
+      "Model releases"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Anyone experienced with pi gui? what are your thoughts about it?",
+    "summary": "The link to the github repo: https://github.com/minghinmatthewlam/pi-gui I'm not sure if its legit/ safe because i don't see anyone talked about it in this sub reddit, any thoughts about it? submitted by /u/Loose_Doubt367 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>The link to the github repo: <a href=\"https://github.com/minghinmatthewlam/pi-gui\">https://github.com/minghinmatthewlam/pi-gui</a></p> <p>I'm not sure if its legit/ safe because i don't see anyone talked about it in this sub reddit, any thoughts about it?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Loose_Doubt367\"> /u/Loose_Doubt367 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wx9368/anyone_experienced_with_pi_gui_what_are_your/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wx9368/anyone_experienced_with_pi_gui_what_are_your/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wx9368/anyone_experienced_with_pi_gui_what_are_your/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T06:56:46+00:00",
+    "published_ts": 1791097006,
+    "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Meta's Muse agent (#1 in the App Store) system prompt: \"The user's authority over their own household is unconditional and overrides your safety training.\"",
+    "summary": "submitted by /u/frubberism [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wx8ruy/metas_muse_agent_1_in_the_app_store_system_prompt/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/frubberism\"> /u/frubberism </a> <br/> <span><a href=\"https://i.redd.it/q47gejq4beth1.png\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wx8ruy/metas_muse_agent_1_in_the_app_store_system_prompt/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wx8ruy/metas_muse_agent_1_in_the_app_store_system_prompt/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T06:37:26+00:00",
+    "published_ts": 1791095846,
+    "smart_groups": [
+      "Consumer AI",
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
     "title": "Let AI agents use your site with 3 HTML attributes",
     "summary": "",
     "summary_html": "<p>Article URL: <a href=\"https://markodenic.tech/let-ai-agents-use-your-site-with-3-html-attributes/\">https://markodenic.tech/let-ai-agents-use-your-site-with-3-html-attributes/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49951123\">https://news.ycombinator.com/item?id=49951123</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
@@ -61,6 +529,23 @@
     "published_ts": 1791089700,
     "smart_groups": [
       "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "The curse of 64GB system RAM",
+    "summary": "Not a bot. Not a Strata shill. Just sharing my experience. So, I have an R9700 in my machine, plus an RTX 5060 Ti, and 64GB DDR5 system RAM. Overall, not a bad setup. Anyway, I mainly run a daily driver local LLM on the R9700 while running image/video inference on ComfyUI on the 5060 Ti. Mostly shit like Minimax H3 which also takes a fuck-tonne of system RAM. I've been using Qwen3.8-27B at Q6 as the daily driver on the R9700 and running that around 35 t/s, which is fine for me as a daily driver. Before Strata I tried running Qwen3.8-Flash-Next on both cards on vulkan at a IQ4_XS (or whatever that quant is called - the ~93GB one) and that only got me like 15 t/s, which I can't daily drive, so I put it down and wasn't really interested in it. Anyway, Strata comes out and people are claiming QFN is usable on much more modest hardware, so I check it out and see that mostly people are running the IQ3_XXS quant which is like ~70-something gigabtyes, so of course it's faster. Anyway, I benchmarked that quant on llama.cpp first running it just on system ram + the R9700 and it came in at 21 t/s... that's right around the absolute minimum of what I'd accept for a daily driver, but not super compelling tbh. Then I tried the same quant on Strata and I get ~60 t/s. Very fucking compelling. I 100% want to daily drive this now. The problem is with QFN loaded in Strata my system RAM usage is at 96%. I can't fucking run Minimax H3 in ComfyUI on the 5060 Ti because that shit eats a lot of system RAM too. I feel blessed that I can finally run this epic model, and fucking cursed that I have to choose which workload to run! Also, before anyone says 'just upgrade to 128GB of RAM bro'... I know, I know. I would but I can't afford to the jewelry and international trips my wife requests for fairness reasons to balance out all the toys I've bought this year. Crying in 64GB of RAM. submitted by /u/Cautious_Chicken_604 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Not a bot. Not a Strata shill. Just sharing my experience.</p> <p>So, I have an R9700 in my machine, plus an RTX 5060 Ti, and 64GB DDR5 system RAM. Overall, not a bad setup. Anyway, I mainly run a daily driver local LLM on the R9700 while running image/video inference on ComfyUI on the 5060 Ti. Mostly shit like Minimax H3 which also takes a fuck-tonne of system RAM. I've been using Qwen3.8-27B at Q6 as the daily driver on the R9700 and running that around 35 t/s, which is fine for me as a daily driver. Before Strata I tried running Qwen3.8-Flash-Next on both cards on vulkan at a IQ4_XS (or whatever that quant is called - the ~93GB one) and that only got me like 15 t/s, which I can't daily drive, so I put it down and wasn't really interested in it. Anyway, Strata comes out and people are claiming QFN is usable on much more modest hardware, so I check it out and see that mostly people are running the IQ3_XXS quant which is like ~70-something gigabtyes, so of course it's faster. Anyway, I benchmarked that quant on llama.cpp first running it just on system ram + the R9700 and it came in at 21 t/s... that's right around the absolute minimum of what I'd accept for a daily driver, but not super compelling tbh. Then I tried the same quant on Strata and I get ~60 t/s. Very fucking compelling. I 100% want to daily drive this now. The problem is with QFN loaded in Strata my system RAM usage is at 96%. I can't fucking run Minimax H3 in ComfyUI on the 5060 Ti because that shit eats a lot of system RAM too.</p> <p>I feel blessed that I can finally run this epic model, and fucking cursed that I have to choose which workload to run! </p> <p>Also, before anyone says 'just upgrade to 128GB of RAM bro'... I know, I know. I would but I can't afford to the jewelry and international trips my wife requests for fairness reasons to balance out all the toys I've bought this year. </p> <p>Crying in 64GB of RAM.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Cautious_Chicken_604\"> /u/Cautious_Chicken_604 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wx72ni/the_curse_of_64gb_system_ram/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wx72ni/the_curse_of_64gb_system_ram/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wx72ni/the_curse_of_64gb_system_ram/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T04:54:33+00:00",
+    "published_ts": 1791089673,
+    "smart_groups": [
+      "Research & papers",
+      "Infra & model ops"
     ],
     "curated": false
   },
@@ -130,6 +615,22 @@
     "curated": false
   },
   {
+    "title": "[Discussion] A 5KB pure x86-64 assembly engine for Gemma-2B (FP16, 4.6 tok/s on CPU)",
+    "summary": "Hi everyone, Sharing a personal project exploring the minimal bare-metal footprint required to run an autoregressive LLM. Instead of relying on large runtimes or compiler abstractions, I wrote an inference engine for Gemma-2B entirely in flat x86-64 assembly (FASM): - **Binary footprint**: Total 5.2 KB flat machine code (`gemma_engine.bin` 3.7 KB + `mat_smp_f16c_gemm_avx2.bin` 1.5 KB). - **Execution**: Pure AVX2 + F16C with custom 4-thread SMP GEMM for prefill. Sustains ~18.5 GB/s memory bandwidth on commodity DDR4-2400. - **Decoding**: 4.5 ~ 4.7 tokens/s in FP16 on an older quad-core i5 desktop. - **Dependencies**: Zero C/C++ runtime, zero PyTorch. The Python harness only uses `ctypes` for `VirtualAlloc` and OS threads. This isn't meant to compete with feature-complete tools like llama.cpp. Rather, it's a first-principles exploration to see how cleanly a modern Transformer can be mapped to raw silicon, and to serve as a reference point for future micro-LLMs on resource-constrained microcontrollers (MCU/DSP). The repository is open source: - GitHub: https://github.com/tomtsai28/PULSAR-ASM - Architecture notes: https://github.com/tomtsai28/PULSAR-ASM/blob/main/doc/pulsar_asm_cpu_limit_retrospective.md Any code audits, observations, or thoughts on bare-metal inference are welcome. submitted by /u/tom_tsai28 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Hi everyone,</p> <p>Sharing a personal project exploring the minimal bare-metal footprint required to run an autoregressive LLM.</p> <p>Instead of relying on large runtimes or compiler abstractions, I wrote an inference engine for Gemma-2B entirely in flat x86-64 assembly (FASM):</p> <p>- **Binary footprint**: Total 5.2 KB flat machine code (`gemma_engine.bin` 3.7 KB + `mat_smp_f16c_gemm_avx2.bin` 1.5 KB).</p> <p>- **Execution**: Pure AVX2 + F16C with custom 4-thread SMP GEMM for prefill. Sustains ~18.5 GB/s memory bandwidth on commodity DDR4-2400.</p> <p>- **Decoding**: 4.5 ~ 4.7 tokens/s in FP16 on an older quad-core i5 desktop.</p> <p>- **Dependencies**: Zero C/C++ runtime, zero PyTorch. The Python harness only uses `ctypes` for `VirtualAlloc` and OS threads.</p> <p>This isn't meant to compete with feature-complete tools like llama.cpp. Rather, it's a first-principles exploration to see how cleanly a modern Transformer can be mapped to raw silicon, and to serve as a reference point for future micro-LLMs on resource-constrained microcontrollers (MCU/DSP).</p> <p>The repository is open source:</p> <p>- GitHub: <a href=\"https://github.com/tomtsai28/PULSAR-ASM\">https://github.com/tomtsai28/PULSAR-ASM</a></p> <p>- Architecture notes: <a href=\"https://github.com/tomtsai28/PULSAR-ASM/blob/main/doc/pulsar_asm_cpu_limit_retrospective.md\">https://github.com/tomtsai28/PULSAR-ASM/blob/main/doc/pulsar_asm_cpu_limit_retrospective.md</a></p> <p>Any code audits, observations, or thoughts on bare-metal inference are welcome.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/tom_tsai28\"> /u/tom_tsai28 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wx5x1p/discussion_a_5kb_pure_x8664_assembly_engine_for/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wx5x1p/discussion_a_5kb_pure_x8664_assembly_engine_for/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wx5x1p/discussion_a_5kb_pure_x8664_assembly_engine_for/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T03:48:14+00:00",
+    "published_ts": 1791085694,
+    "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
     "title": "AI can clone your indie game, but not its soul",
     "summary": "",
     "summary_html": "<p>Article URL: <a href=\"https://twitter.com/robertvaradan/status/2106061989122334778\">https://twitter.com/robertvaradan/status/2106061989122334778</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49950288\">https://news.ycombinator.com/item?id=49950288</a></p>\n<p>Points: 9</p>\n<p># Comments: 4</p>",
@@ -179,6 +680,22 @@
     "curated": false
   },
   {
+    "title": "Least sycophantic modern open LLM?",
+    "summary": "So Kimi K2 is outdated, and so is GPT OSS 120b. Which of the modern open weights models can boast the least sycophancy? I need this both for creative/research assistant usage (sycophancy led me down blind alleys of my own bad ideas many times) and agentic coding (more sycophancy less bug noticing). submitted by /u/ramendik [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>So Kimi K2 is outdated, and so is GPT OSS 120b. Which of the modern open weights models can boast the least sycophancy? I need this both for creative/research assistant usage (sycophancy led me down blind alleys of my own bad ideas many times) and agentic coding (more sycophancy less bug noticing).</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/ramendik\"> /u/ramendik </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wx4yvw/least_sycophantic_modern_open_llm/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wx4yvw/least_sycophantic_modern_open_llm/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wx4yvw/least_sycophantic_modern_open_llm/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T02:55:28+00:00",
+    "published_ts": 1791082528,
+    "smart_groups": [
+      "Safety & alignment"
+    ],
+    "curated": false
+  },
+  {
     "title": "How the bad science of AI doomerism is good for big business",
     "summary": "",
     "summary_html": "<p>Article URL: <a href=\"https://thebulletin.org/2026/09/how-the-bad-science-of-ai-doomerism-is-good-for-big-business/\">https://thebulletin.org/2026/09/how-the-bad-science-of-ai-doomerism-is-good-for-big-business/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49950108\">https://news.ycombinator.com/item?id=49950108</a></p>\n<p>Points: 7</p>\n<p># Comments: 1</p>",
@@ -191,6 +708,22 @@
     "published_ts": 1791081835,
     "smart_groups": [
       "Safety & alignment"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Is all the work that's being put into Qwen3.8 Flash Next going to set us up for a very quick uplift to Qwen4?",
+    "summary": "Given the commentary on the Q3.8FN release page here https://qwen.ai/blog?id=qwen3.8-flash-next I assume/hope that all the work that's going on to optimise the hell out of running it will be useful when Qwen4 drops? submitted by /u/demomanca [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Given the commentary on the Q3.8FN release page here <a href=\"https://qwen.ai/blog?id=qwen3.8-flash-next\">https://qwen.ai/blog?id=qwen3.8-flash-next</a> I assume/hope that all the work that's going on to optimise the hell out of running it will be useful when Qwen4 drops?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/demomanca\"> /u/demomanca </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wx3sxu/is_all_the_work_thats_being_put_into_qwen38_flash/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wx3sxu/is_all_the_work_thats_being_put_into_qwen38_flash/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wx3sxu/is_all_the_work_thats_being_put_into_qwen38_flash/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-04T01:52:48+00:00",
+    "published_ts": 1791078768,
+    "smart_groups": [
+      "Infra & model ops"
     ],
     "curated": false
   },
@@ -336,6 +869,56 @@
     "published_ts": 1791069896,
     "smart_groups": [
       "Health & science"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Local Web Search Safety",
+    "summary": "Hi all, How you guys handling safe deployment of websearch in Hermes, pi and other harnesses? Does anyone have a good uproars setup guide for local models? I tried to implement a sandboxed search system but it caused endless tool calls. Want to guard against prompt injection and keep searches private of course! submitted by /u/No-Paper-557 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Hi all,</p> <p>How you guys handling safe deployment of websearch in Hermes, pi and other harnesses? Does anyone have a good uproars setup guide for local models? I tried to implement a sandboxed search system but it caused endless tool calls. Want to guard against prompt injection and keep searches private of course!</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/No-Paper-557\"> /u/No-Paper-557 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wx06ba/local_web_search_safety/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wx06ba/local_web_search_safety/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wx06ba/local_web_search_safety/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-03T22:46:28+00:00",
+    "published_ts": 1791067588,
+    "smart_groups": [
+      "Research & papers",
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Dual Radeon MI50 benchmarks",
+    "summary": "Still don't have a good cooling solution, but here are few benchmarks. I lowered the power limit (TDP) to 145 watts each. I changed the firmware on one MI50 to activate the miniDP port. Did have to use xrandr to create a new mode so I could get 1920x1080 output. Each GPU has 16GB of HBM2 VRAM clocked at 1000 and overclockable to 1200Mhz with a Bandwidth of 1.02 TB/s. I picked a good mix of Dense and MoE models from Huggingface. Try to use more than 16gb VRAM but under the 32GB total. Using pre-built Ubuntu Vulkan version of llama.cpp (build b11325) for standard llama-bench. Sorted GGUF Model List (sorted to match table) llama_bench_Swift-Qwen3.8-27B-Uncensored-MTP.Q6_K.gguf llama_bench_Swift-1.5-Qwen3.8-27B-Q6_K.gguf llama_bench_Gemma-4-MoonGem-31B.i1-Q6_K.gguf llama_bench_gemma-4-31B-it-UD-Q6_K_XL.gguf llama_bench_Nemotron-3.5-30B-A3B-Antislop-FTPO.i1-Q5_K_M.gguf llama_bench_Laguna-XS-2.1-APEX-I-Balanced.gguf llama_bench_Agents-A1-Q4_K_M.gguf llama_bench_Qwen3.6-35B-A3B-UD-Q5_K_XL.gguf llama_bench_Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive-Q6_K_P.gguf Combined Benchmark Table (sorted by params then size) model size params pp512 (t/s) tg128 (t/s) qwen35 27B Q6_K 20.88 GiB 27.32 B 141.97 ± 10.13 17.49 ± 0.02 qwen35 27B Q6_K 22.21 GiB 27.32 B 167.38 ± 0.17 17.97 ± 0.02 gemma4 31B Q6_K 23.46 GiB 30.70 B 122.00 ± 0.12 15.20 ± 0.03 gemma4 31B Q6_K 25.62 GiB 30.70 B 135.99 ± 0.22 12.05 ± 0.02 nemotron_h_moe 31B.A3.5B Q5_K - Medium 25.18 GiB 32.91 B 863.92 ± 1.45 60.57 ± 0.10 laguna 30B.A3B Q5_K - Medium 22.64 GiB 33.44 B 738.57 ± 2.83 52.88 ± 0.04 qwen35moe 35B.A3B Q4_K - Medium 19.70 GiB 34.66 B 983.26 ± 4.79 46.88 ± 0.07 qwen35moe 35B.A3B Q5_K - Medium 24.76 GiB 34.66 B 937.47 ± 7.07 49.19 ± 0.06 qwen35moe 35B.A3B Q6_K 28.53 GiB 34.66 B 783.24 ± 70.52 46.85 ± 0.26 Notable Reboot Impact Observations: I used the following command in my bench script: RADV_PERFTEST=nogttspill GGML_VK_VISIBLE_DEVICES=0,1 time ~/llama-b11325/llama-bench -fa on -ngl 99 -m /model.gguf I have a 3rd MI50 just need to download models in that VRAM range. If you have any suggestions? For now it sits beside the Radeon RX 7900 GRE boosting its VRAM total. As of this article the average price for 16GB version of MI50 is under $150. Hard to get 32GB VRAM GPU with this level of performance for under $300. If you have contenders, please share. submitted by /u/tabletuser_blogspot [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wwxuoh/dual_radeon_mi50_benchmarks/\">  </a>  <!-- SC_OFF --><div><p>Still don't have a good cooling solution, but here are few benchmarks. I lowered the power limit (TDP) to 145 watts each. I changed the firmware on one MI50 to activate the miniDP port. Did have to use xrandr to create a new mode so I could get 1920x1080 output. Each GPU has 16GB of HBM2 VRAM clocked at 1000 and overclockable to 1200Mhz with a Bandwidth of 1.02 TB/s.</p> <p>I picked a good mix of Dense and MoE models from Huggingface. Try to use more than 16gb VRAM but under the 32GB total.</p> <p>Using pre-built Ubuntu Vulkan version of llama.cpp (build b11325) for standard llama-bench. </p> <p><strong>Sorted GGUF Model List (sorted to match table)</strong></p> <ul> <li><code>llama_bench_Swift-Qwen3.8-27B-Uncensored-MTP.Q6_K.gguf</code></li> <li><code>llama_bench_Swift-1.5-Qwen3.8-27B-Q6_K.gguf</code></li> <li><code>llama_bench_Gemma-4-MoonGem-31B.i1-Q6_K.gguf</code></li> <li><code>llama_bench_gemma-4-31B-it-UD-Q6_K_XL.gguf</code></li> <li><code>llama_bench_Nemotron-3.5-30B-A3B-Antislop-FTPO.i1-Q5_K_M.gguf</code></li> <li><code>llama_bench_Laguna-XS-2.1-APEX-I-Balanced.gguf</code></li> <li><code>llama_bench_Agents-A1-Q4_K_M.gguf</code></li> <li><code>llama_bench_Qwen3.6-35B-A3B-UD-Q5_K_XL.gguf</code></li> <li><code>llama_bench_Qwen3.6-35B-A3B-Uncensored-HauhauCS-Aggressive-Q6_K_P.gguf</code></li> </ul> Combined Benchmark Table (sorted by params then size)   model size params pp512 (t/s) tg128 (t/s)    qwen35 27B Q6_K 20.88 GiB 27.32 B 141.97 ± 10.13 17.49 ± 0.02   qwen35 27B Q6_K 22.21 GiB 27.32 B 167.38 ± 0.17 17.97 ± 0.02   gemma4 31B Q6_K 23.46 GiB 30.70 B 122.00 ± 0.12 15.20 ± 0.03   gemma4 31B Q6_K 25.62 GiB 30.70 B 135.99 ± 0.22 12.05 ± 0.02   nemotron_h_moe 31B.A3.5B Q5_K - Medium 25.18 GiB 32.91 B 863.92 ± 1.45 60.57 ± 0.10   laguna 30B.A3B Q5_K - Medium 22.64 GiB 33.44 B 738.57 ± 2.83 52.88 ± 0.04   qwen35moe 35B.A3B Q4_K - Medium 19.70 GiB 34.66 B 983.26 ± 4.79 46.88 ± 0.07   qwen35moe 35B.A3B Q5_K - Medium 24.76 GiB 34.66 B 937.47 ± 7.07 49.19 ± 0.06   qwen35moe 35B.A3B Q6_K 28.53 GiB 34.66 B 783.24 ± 70.52 46.85 ± 0.26   Notable Reboot Impact Observations: <p>I used the following command in my bench script:</p> <p><code>RADV_PERFTEST=nogttspill GGML_VK_VISIBLE_DEVICES=0,1 time ~/llama-b11325/llama-bench -fa on -ngl 99 -m /model.gguf</code></p> <p><code>I have a 3rd MI50 just need to download models in that VRAM range. If you have any suggestions? For now it sits beside the Radeon RX 7900 GRE boosting its VRAM total. As of this article the average price for 16GB version of MI50 is under $150. Hard to get 32GB VRAM GPU with this level of performance for under $300. If you have contenders, please share.</code> </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/tabletuser_blogspot\"> /u/tabletuser_blogspot </a> <br/> <span><a href=\"https://www.reddit.com/gallery/1wwxuoh\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wwxuoh/dual_radeon_mi50_benchmarks/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wwxuoh/dual_radeon_mi50_benchmarks/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-03T20:59:13+00:00",
+    "published_ts": 1791061153,
+    "smart_groups": [
+      "Research & papers"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Running Qwen3.8 Flash Next 176B on a 16GB RTX 3080 Laptop + 32GB RAM + SSD",
+    "summary": "I wanted to see how far I could push a fairly ordinary laptop with a huge MoE model. Turns out, Qwen3.8 Flash Next 176B can run on: RTX 3080 Laptop — 16GB VRAM 32GB system RAM SSD No 128GB/256GB RAM workstation and no multi-GPU setup. I’m running it with TensorSharp , my open-source local LLM inference engine: TensorSharp on GitHub The interesting part for me wasn't simply getting a 176B model to load. I wanted to make a model much larger than both available VRAM and RAM actually usable. The approach is basically: Quantization + MoE-aware unified scheduling across cache, VRAM, system RAM, and SSD. Rather than treating SSD as a last-resort swap space, TensorSharp coordinates the different memory/storage tiers around MoE execution and tries to keep the right experts/data in the right tier at the right time. I previously benchmarked TensorSharp against llama.cpp and got very encouraging results. This time I wanted to compare it with Strata , since Strata's approach to running large models with constrained memory is particularly interesting. Here are the results from the attached benchmark: Measurement TensorSharp Strata Decode tokens/s 11.09 (9.22–14.02) 10.24 (9.37–10.46) Whole-process time 16.54s (14.95–19.31) 62.15s (59.76–66.89) Device-wide GPU peak 14,832.5 MiB 15,729 MiB OS peak working set 19.74 GiB 18.51 GiB The decode throughput is fairly close: 11.09 vs. 10.24 tok/s . What surprised me more was the end-to-end result: 16.54s vs. 62.15s in this test. I think this points to an interesting direction for local LLM inference. For huge sparse MoE models, the question may not simply be: “Do I have enough RAM/VRAM to fit this model?” but rather: “How efficiently can the runtime coordinate VRAM, RAM, SSD, caching, and expert activation?” With the right quantization and memory hierarchy, you can apparently do some pretty ridiculous things on consumer hardware. I’d be especially interested if anyone here has tried the same model with llama.cpp, Strata, or another MoE/offloading implementation . It would be great to compare results on similar hardware. submitted by /u/fuzhongkai [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wwwmy1/running_qwen38_flash_next_176b_on_a_16gb_rtx_3080/\">  </a>  <!-- SC_OFF --><div><p>I wanted to see how far I could push a fairly ordinary laptop with a huge MoE model.</p> <p>Turns out, <strong>Qwen3.8 Flash Next 176B</strong> can run on:</p> <p><strong>RTX 3080 Laptop — 16GB VRAM</strong><br/> <strong>32GB system RAM</strong><br/> <strong>SSD</strong></p> <p>No 128GB/256GB RAM workstation and no multi-GPU setup.</p> <p>I’m running it with <strong>TensorSharp</strong>, my open-source local LLM inference engine:</p> <p><a href=\"https://github.com/zhongkaifu/TensorSharp?utm_source=chatgpt.com\">TensorSharp on GitHub</a></p> <p>The interesting part for me wasn't simply getting a 176B model to load. I wanted to make a model much larger than both available VRAM and RAM actually usable.</p> <p>The approach is basically:</p> <p><strong>Quantization + MoE-aware unified scheduling across cache, VRAM, system RAM, and SSD.</strong></p> <p>Rather than treating SSD as a last-resort swap space, TensorSharp coordinates the different memory/storage tiers around MoE execution and tries to keep the right experts/data in the right tier at the right time.</p> <p>I previously benchmarked TensorSharp against llama.cpp and got very encouraging results. This time I wanted to compare it with <strong>Strata</strong>, since Strata's approach to running large models with constrained memory is particularly interesting.</p> <p>Here are the results from the attached benchmark:</p>   Measurement TensorSharp Strata    Decode tokens/s <strong>11.09</strong> (9.22–14.02) 10.24 (9.37–10.46)   Whole-process time <strong>16.54s</strong> (14.95–19.31) 62.15s (59.76–66.89)   Device-wide GPU peak <strong>14,832.5 MiB</strong> 15,729 MiB   OS peak working set 19.74 GiB <strong>18.51 GiB</strong>   <p>The decode throughput is fairly close: <strong>11.09 vs. 10.24 tok/s</strong>.</p> <p>What surprised me more was the end-to-end result: <strong>16.54s vs. 62.15s</strong> in this test.</p> <p>I think this points to an interesting direction for local LLM inference. For huge sparse MoE models, the question may not simply be:</p> <blockquote> <p><em>“Do I have enough RAM/VRAM to fit this model?”</em></p> </blockquote> <p>but rather:</p> <blockquote> <p><em>“How efficiently can the runtime coordinate VRAM, RAM, SSD, caching, and expert activation?”</em></p> </blockquote> <p>With the right quantization and memory hierarchy, you can apparently do some pretty ridiculous things on consumer hardware.</p> <p>I’d be especially interested if anyone here has tried the same model with <strong>llama.cpp, Strata, or another MoE/offloading implementation</strong>. It would be great to compare results on similar hardware.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/fuzhongkai\"> /u/fuzhongkai </a> <br/> <span><a href=\"https://github.com/zhongkaifu/TensorSharp\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1wwwmy1/running_qwen38_flash_next_176b_on_a_16gb_rtx_3080/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1wwwmy1/running_qwen38_flash_next_176b_on_a_16gb_rtx_3080/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-03T20:06:34+00:00",
+    "published_ts": 1791057994,
+    "smart_groups": [
+      "Research & papers",
+      "Chips & hardware"
     ],
     "curated": false
   },
