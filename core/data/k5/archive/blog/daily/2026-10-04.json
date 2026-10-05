@@ -1,9 +1,23 @@
 {
-  "generated_at": "2026-10-05T06:02:33.426737+00:00",
+  "generated_at": "2026-10-05T17:20:09.036643+00:00",
   "date": "2026-10-04",
-  "total_items": 5,
+  "total_items": 6,
   "next_chunk": "archive/blog/daily/2026-10-03.json",
   "items": [
+    {
+      "title": "Today I learned: Python's .start Files as a Persistence Mechanism",
+      "summary": "Introduction Python 3.15 (the final release is currently scheduled for October 9, 2026) introduces a new interpreter-startup mechanism worth adding to the DFIR checklist: .start files . A .start file placed in a Python site-packages directory contains one or more references in the form package.module:callable . During normal interpreter initialization, Python resolves those references, imports the corresponding modules, and invokes the callables before control reaches the first line of user-supplied Python code. The application itself does not need to import the module and does not need to know that the .start file exists. From a security perspective, that makes .start files an interesting execution primitive. An attacker who can write to an applicable site-packages directory can arrange for code to execute whenever an affected Python interpreter starts. Depending on where the file is placed, this may affect a single virtual environment, a user\u2019s Python installations, or a system-wide interpreter.",
+      "summary_html": "Introduction\n<p><code>Python 3.15</code> (the final release is currently scheduled for October 9, 2026) introduces a new interpreter-startup mechanism worth adding to the DFIR checklist: <code>.start files</code>.</p>\n<p>A <code>.start</code> file placed in a Python <code>site-packages</code> directory contains one or more references in the form <code>package.module:callable</code>. During normal interpreter initialization, Python resolves those references, imports the corresponding modules, and invokes the callables before control reaches the first line of user-supplied Python code. The application itself does not need to import the module and does not need to know that the <code>.start</code> file exists.\nFrom a security perspective, that makes <code>.start</code> files an interesting execution primitive. An attacker who can write to an applicable <code>site-packages</code> directory can arrange for code to execute whenever an affected Python interpreter starts. Depending on where the file is placed, this may affect a single virtual environment, a user\u2019s Python installations, or a system-wide interpreter.</p>",
+      "link": "http://localhost:1313/posts/today_i_learned_python_start_files/",
+      "source": "https://dfir.ch/index.xml",
+      "feed_type": "blog",
+      "type": "dfir-forensics",
+      "type_label": "DFIR & Forensics",
+      "published": "2026-10-04T14:04:20+00:00",
+      "published_ts": 1791122660,
+      "smart_groups": [],
+      "curated": false
+    },
     {
       "title": "Weekly Update 524: Live From Copenhagen",
       "summary": "I'm in Denmark! Well, just, I'm now at Copenhagen airport ready to begin the long trek home, with the final event at GOTO now done and going just perfectly. This week, there are two ShinyHunters arrests in the news: Pepijn in the Netherlands and then Saif in Jordon . It's an inevitable outcome, of course, and as I say this week, it was also the most likely one. Time will tell how many more join their ranks, but the seriousness of the crimes, the length of time they were perpetrated over, and the motivations behind them will certainly see substantial custodial sentences. In other news, this week I'm properly introducing a new sponsor for the blog: Origin . One of our next AI frontiers is understanding what agents have actually done (and we've all seen news of where they're been a bit too, well, \"creative\" in executing their tasks), and Origin's solution gives you visiblity into just that. Check them out, and a big thanks to them for their ongoing support.",
