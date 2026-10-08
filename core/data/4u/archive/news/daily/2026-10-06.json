@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-07T21:31:58.042636+00:00",
+  "generated_at": "2026-10-08T06:26:49.159889+00:00",
   "date": "2026-10-06",
-  "total_items": 401,
+  "total_items": 402,
   "next_chunk": "archive/news/daily/2026-10-05.json",
   "items": [
     {
@@ -184,6 +184,22 @@
       "published_ts": 1791327662,
       "smart_groups": [
         "Coding & dev tools"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Connecting to Eureka2 using a university\u2019s Microsoft Authenticator based login",
+      "summary": "[",
+      "summary_html": "<!-- \n<div style=\"min-height: 30px;\">\n[social4i size=\"small\" align=\"align-left\"]\n</div>\n-->\n<div>\n[This article was first published on  <strong><a href=\"https://pacha.dev/blog/2026/10/07/index.html\"> https://pacha.dev/blog</a></strong>, and kindly contributed to <a href=\"https://www.r-bloggers.com/\">R-bloggers</a>].  (You can report issue about the content on this page <a href=\"https://www.r-bloggers.com/contact-us/\">here</a>)\nWant to share your content on R-bloggers?<a href=\"https://www.r-bloggers.com/add-your-blog/\"> click here</a> if you have a blog, or <a href=\"http://r-posts.com/\"> here</a> if you don't.\n</div>\n<p><em>Before the main content:</em> * <em>With all the funding cuts to PhD studies, I\u2019d appreciate if you can donate <a href=\"https://buymeacoffee.com/pacha\">here</a>.</em></p>\n<p>I am using <a href=\"https://omarchy.org/\">Omarchy</a>, a Linux distribution based on Arch for those that want efficiency, and it is similar to Manjaro minus the desktop effects that use considerable resources.</p>\n<p>At Surrey and probably other universities in the UK, we require to use Microsoft Authenticator to log to the VPN.</p>\n<p>Today I had to connect to <a href=\"https://docs.pages.surrey.ac.uk/research_computing/hpc/clusters/eureka2.html\">Eureka2</a>, a powerful computing cluster, using my personal laptop. The official guide <a href=\"https://www.surrey.ac.uk/sites/default/files/2022-06/globalprotect-instructions-for-personal-device.pdf\">Working off campus with GlobalProtect</a> instructs to download Global Protect from the Surrey App Store, a service that has been retired.</p>\n<p>I installed <a href=\"https://en.wikipedia.org/wiki/OpenConnect\">Open Connect</a> which is a FOSS alternative:</p>\n<pre>sudo yay -S openconnect</pre>\n<p>I had to adjust my email settings <a href=\"https://mysignins.microsoft.com/security-info\">here</a>, and verify that the default sign-in method is \u2018Microsoft Authenticator \u2013 notification\u2019.</p>\n<p>Then I was able to connect using:</p>\n<pre>sudo openconnect --protocol=gp --usergroup=gateway vpn.surrey.ac.uk</pre>\n<p>After a few tries, what works it to use the full username (not email name) with \u2018@surrey.ac.uk\u2019. What I mean is that my university account is something like <em>ab12345</em> when my email <em>firstname.lastname</em>, and so I used <em>ab12345@surrey.ac.uk</em>. For the password I had to use the password that I use for Surrey Learn (not the email password) followed by the authenticator timed PIN number.</p>\n<p>I was finally able to see:</p>\n<pre>ESP session established with server\nESP tunnel connected; exiting HTTPS mainloop.</pre>\n<p>And finally I could type this in another terminal:</p>\n<pre>ssh mv00622@eureka2.surrey.ac.uk</pre>\n<p>Which shows:</p>\n<pre>    +++++++++++++++++++++++++++++++++++++++++\n      Welcome to Surrey's Eureka2 HPC Cluster\n             Based on Rocky 8\n    +++++++++++++++++++++++++++++++++++++++++\n\nDocumentation for HPC users is at below site:\nhttps://docs.pages.surrey.ac.uk/research_computing/</pre>\n<p>I hope this helps. I had to spend over half an hour figuring out the steps by reading different sources and I hope this helps other people.</p>\n<div>\n<div>To <strong>leave a comment</strong> for the author, please follow the link and comment on their blog: <strong><a href=\"https://pacha.dev/blog/2026/10/07/index.html\"> https://pacha.dev/blog</a></strong>.</div>\n\n<a href=\"https://www.r-bloggers.com/\">R-bloggers.com</a> offers <strong><a href=\"https://feedburner.google.com/fb/a/mailverify?uri=RBloggers\">daily e-mail updates</a></strong> about <a href=\"https://www.r-project.org/\">R</a> news and tutorials about <a href=\"https://www.r-bloggers.com/how-to-learn-r-2/\">learning R</a> and many other topics. <a href=\"https://www.r-users.com/\">Click here if you're looking to post or find an R/data-science job</a>.\n\nWant to share your content on R-bloggers?<a href=\"https://www.r-bloggers.com/add-your-blog/\"> click here</a> if you have a blog, or <a href=\"http://r-posts.com/\"> here</a> if you don't.\n</div><strong>Continue reading</strong>: <a href=\"https://www.r-bloggers.com/2026/10/connecting-to-eureka2-using-a-universitys-microsoft-authenticator-based-login/\">Connecting to Eureka2 using a university\u2019s Microsoft Authenticator based login</a>",
+      "link": "https://www.r-bloggers.com/2026/10/connecting-to-eureka2-using-a-universitys-microsoft-authenticator-based-login/",
+      "source": "R-bloggers - R news and tutorials contributed by hundreds of R bloggers",
+      "feed_type": "news",
+      "type": "data-science-mlops",
+      "type_label": "Data Science & MLOps",
+      "published": "2026-10-06T23:00:00+00:00",
+      "published_ts": 1791327600,
+      "smart_groups": [
+        "Work & society"
       ],
       "curated": false
     },

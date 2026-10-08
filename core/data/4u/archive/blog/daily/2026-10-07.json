@@ -1,9 +1,26 @@
 {
-  "generated_at": "2026-10-07T21:31:58.160563+00:00",
+  "generated_at": "2026-10-08T06:26:49.230740+00:00",
   "date": "2026-10-07",
-  "total_items": 90,
+  "total_items": 92,
   "next_chunk": "archive/blog/daily/2026-10-06.json",
   "items": [
+    {
+      "title": "stuck on finding a approach for app detection ( making a transformer modal out of unlabeled network data) [R] [P]",
+      "summary": "As the title suggests I'm currently trying to make a modal to identify which app is being used. The thing is I don't have labelled data and generating it is out of question since that is a lot of work ( I need to detect like 3-5K apps give or take) my data is structured roughly like this: Traffic is divided into ~15-second windows/bags. Each bag contains multiple network flows. Each flow has features such as: domain protocol bytes sent bytes received timestamp/timing information I have a very large amount of unlabeled traffic data, but only a relatively small amount of labelled app data for about 100 apps give or take. The main challenge is that traffic from the same app can look diff between diff window i.e some windows are extremely sparse or empty. some ideas I have researched looked into are self supervised contrastive learning where diff traffic windows from the same session/device activity are treated as positive pairs masked modelling similar to bert where parts of the flows such as domains/protocols/byte information are masked and reconstructed pretraining an encoder and then fine-tuning it using the smaller labelled dataset (thinking we would need less labelled examples to do that) clustering and mapping embeddings to known apps afterward (gradually) one thing I'm concerned about is accidently teaching the modal to recognize the device/session/user rather then the underlying app I think I would like to know if I'm thinking about the problem right or if someone has worked on something similar and can give me some pointers or what experiements should I run first. any papers, architecture or similar problems you think I should look into pls lmk submitted by /u/AdventurousWear618 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>As the title suggests I'm currently trying to make a modal to identify which app is being used. The thing is I don't have labelled data and generating it is out of question since that is a lot of work ( I need to detect like 3-5K apps give or take)</p> <p>my data is structured roughly like this:</p> <ul> <li>Traffic is divided into ~15-second windows/bags.</li> <li>Each bag contains multiple network flows.</li> <li>Each flow has features such as: <ul> <li>domain</li> <li>protocol</li> <li>bytes sent</li> <li>bytes received</li> <li>timestamp/timing information</li> </ul></li> <li>I have a very large amount of unlabeled traffic data, but only a relatively small amount of labelled app data for about 100 apps give or take.</li> </ul> <p>The main challenge is that traffic from the same app can look diff between diff window i.e some windows are extremely sparse or empty.</p> <p>some ideas I have researched looked into are </p> <ul> <li>self supervised contrastive learning where diff traffic windows from the same session/device activity are treated as positive pairs </li> <li>masked modelling similar to bert where parts of the flows such as domains/protocols/byte information are masked and reconstructed</li> <li>pretraining an encoder and then fine-tuning it using the smaller labelled dataset (thinking we would need less labelled examples to do that)</li> <li>clustering and mapping embeddings to known apps afterward (gradually)</li> </ul> <p>one thing I'm concerned about is accidently teaching the modal to recognize the device/session/user rather then the underlying app </p> <p>I think I would like to know if I'm thinking about the problem right or if someone has worked on something similar and can give me some pointers or what experiements should I run first.</p> <p>any papers, architecture or similar problems you think I should look into pls lmk</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/AdventurousWear618\"> /u/AdventurousWear618 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x08xbn/stuck_on_finding_a_approach_for_app_detection/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x08xbn/stuck_on_finding_a_approach_for_app_detection/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/MachineLearning/comments/1x08xbn/stuck_on_finding_a_approach_for_app_detection/",
+      "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-07T21:29:05+00:00",
+      "published_ts": 1791408545,
+      "smart_groups": [
+        "Research & papers",
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
     {
       "title": "Fraudster jailed for using 10K bots and AI songs to outstream Taylor Swift",
       "summary": "",
@@ -407,6 +424,24 @@
       "curated": false,
       "story_id": "ad4e14640e35",
       "story_size": 2
+    },
+    {
+      "title": "Uploaded 5.6 billion TikTok videos metadata on Hugging Face, spanning from 2014 to October 2026 [P]",
+      "summary": "Dataset: https://huggingface.co/datasets/datasocial/tiktok-5.6B-videos If you want to explore the data without downloading billions of rows, you can query my ClickHouse database directly. It includes: Creators table - 4.5 billion rows Videos table - 5.6 billion rows Sounds table - 633 million rows Comment below and I\u2019ll DM you the database credentials. Im self-hosting my database so please don't run heavy queries and crash my server. submitted by /u/DataShack [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Dataset: <a href=\"https://huggingface.co/datasets/datasocial/tiktok-5.6B-videos\">https://huggingface.co/datasets/datasocial/tiktok-5.6B-videos</a></p> <p>If you want to explore the data without downloading billions of rows, you can query my ClickHouse database directly. It includes:</p> <p>Creators table - 4.5 billion rows<br/> Videos table - 5.6 billion rows<br/> Sounds table - 633 million rows</p> <p>Comment below and I\u2019ll DM you the database credentials.</p> <p>Im self-hosting my database so please don't run heavy queries and crash my server.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/DataShack\"> /u/DataShack </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x04235/uploaded_56_billion_tiktok_videos_metadata_on/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x04235/uploaded_56_billion_tiktok_videos_metadata_on/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/MachineLearning/comments/1x04235/uploaded_56_billion_tiktok_videos_metadata_on/",
+      "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-07T18:20:01+00:00",
+      "published_ts": 1791397201,
+      "smart_groups": [
+        "Business & funding",
+        "Consumer AI",
+        "Infra & model ops"
+      ],
+      "curated": false
     },
     {
       "title": "llama : add a GPU cache for MoE experts kept in host memory by am17an \u00b7 Pull Request #29887 \u00b7 ggml-org/llama.cpp",
