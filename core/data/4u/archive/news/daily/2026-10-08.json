@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-09T15:28:08.234214+00:00",
+  "generated_at": "2026-10-09T21:07:41.713455+00:00",
   "date": "2026-10-08",
-  "total_items": 839,
+  "total_items": 840,
   "next_chunk": "archive/news/daily/2026-10-07.json",
   "items": [
     {
@@ -173,8 +173,8 @@
       "feed_type": "news",
       "type": "media-tech-analysis",
       "type_label": "Media & Tech Analysis",
-      "published": "2026-10-08T22:48:06+00:00",
-      "published_ts": 1791499686,
+      "published": "2026-10-08T22:48:07+00:00",
+      "published_ts": 1791499687,
       "smart_groups": [
         "Consumer AI",
         "Health & science"
@@ -293,7 +293,24 @@
       "smart_groups": [
         "Coding & dev tools"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "df7e5433800b",
+      "story_size": 3,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "Techmeme - Tech Web, page A1",
+          "title": "Anthropic launches OSS Scanner, a free opt-in vulnerability scanner for critical open-source projects; its AI-generated reports are sent without human review (Anthropic)",
+          "link": "https://www.techmeme.com/261008/p45#a261008p45",
+          "published_ts": 1791490989
+        },
+        {
+          "source": "THE DECODER - Artificial Intelligence: News, Business, Research",
+          "title": "Anthropic launches a free AI scanner for open-source projects",
+          "link": "https://the-decoder.com/anthropic-launches-a-free-ai-scanner-for-open-source-projects/",
+          "published_ts": 1791568484
+        }
+      ]
     },
     {
       "title": "Harness bought Augment\u2019s coding agents. The best feature hasn\u2019t shipped yet.",
@@ -882,7 +899,9 @@
         "Coding & dev tools",
         "Security & misuse"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "df7e5433800b",
+      "story_size": 3
     },
     {
       "title": "Production-grade LLMs and agents: a field guide",
@@ -932,7 +951,7 @@
       ],
       "curated": false,
       "story_id": "c9efa01bf043",
-      "story_size": 5
+      "story_size": 7
     },
     {
       "title": "AI\u2019s Boom Has Infrastructure Investors Looking at Garbage",
@@ -1013,7 +1032,7 @@
       ],
       "curated": false,
       "story_id": "c9efa01bf043",
-      "story_size": 5,
+      "story_size": 7,
       "story_primary": true,
       "story_others": [
         {
@@ -1039,6 +1058,18 @@
           "title": "Fired researchers accuse OpenAI of 'chilling' safety efforts",
           "link": "https://techxplore.com/news/2026-10-accuse-openai-chilling-safety-efforts.html",
           "published_ts": 1791537002
+        },
+        {
+          "source": "Business Insider - Content from Business Insider Excluding Premium",
+          "title": "OpenAI says it didn\u2019t fire 3 safety researchers for 'speaking out' on AI risks",
+          "link": "https://www.businessinsider.com/openai-response-fired-ai-safety-researchers-2026-10",
+          "published_ts": 1791553389
+        },
+        {
+          "source": "Global News - 429 Too Many Requests nginx",
+          "title": "OpenAI fires 3 safety researchers in dispute over AI risks",
+          "link": "https://globalnews.ca/news/12097342/openai-fires-safety-researchers-risks/",
+          "published_ts": 1791570781
         }
       ]
     },
@@ -4094,6 +4125,23 @@
       "published_ts": 1791464400,
       "smart_groups": [
         "Chips & hardware"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Validating data analyses written by coding agents",
+      "summary": "[",
+      "summary_html": "<!-- \n<div style=\"min-height: 30px;\">\n[social4i size=\"small\" align=\"align-left\"]\n</div>\n-->\n<div>\n[This article was first published on  <strong><a href=\"https://www.seascapemodels.org/posts/2026-10-09-validating-analyses-by-coding-agents/\"> Seascapemodels</a></strong>, and kindly contributed to <a href=\"https://www.r-bloggers.com/\">R-bloggers</a>].  (You can report issue about the content on this page <a href=\"https://www.r-bloggers.com/contact-us/\">here</a>)\nWant to share your content on R-bloggers?<a href=\"https://www.r-bloggers.com/add-your-blog/\"> click here</a> if you have a blog, or <a href=\"http://r-posts.com/\"> here</a> if you don't.\n</div>\n<p>Claude Code (and many other agents) has been getting so good at ecological analysis that I find I\u2019m increasingly tempted not to directly review the code it writes. In fact, it finds more mistakes in my code than I find in its code these days.</p>\n<p>So I need a way to check the validity of the code it writes. Here\u2019s the strategy for this I\u2019ve been developing. Its a work in progress.</p>\n\nSpecification\n<p>Start with a clear written specification for the data analysis or modelling. This should include equations for the modelling. This ensures I understand what I want the analysis to do (even if its not what I get initially).</p>\n<p>Claude is very helpful at this stage to review it for logical errors.</p>\n\n\nAdversarial code review\n<p>This is a no brainer. Use the agent, or ideally another provider\u2019s agent, to review the code for errors.</p>\n\n\nData processing checks\n<p>Instruct Claude to check all data processing steps and fail loudly if inconsistencies are found. That\u2019s probably sufficient these days, but if you want to be thorough you can think about what you need at each stage and tell it to check for that.</p>\n<p>For example, make sure the final dataframe used in the model has N rows, or that the number of unique survey IDs == the number of rows in the dataframe.</p>\n<p>There are various R packages to support this like <code>pointblank</code> and <code>validate</code>.</p>\n\n\nTesting against simulated data with known truth\n<p>Often in ecology we are fitting generative models, that is, you can simulate data right out of the model you are fitting. So invert your specification of the model to be a specification that simulates data with a known model. Then run the simulated data through your workflow to see if it recovers the known parameters.</p>\n<p>If you are doing probabilistic inference you can also check other common verification statistics like coverage (the 95% CIs should cover the point estimate in 95% of randomized datasets).</p>\n<p>Create the data simulation in a separate Claude and R environment, to ensure independence. Make sure the AI memory storage options are turned off, or set to incognito mode, to ensure no leakage of information through memory files too.</p>\n<p>There are also many data simulation functions as R packages or within R packages. For instance, many advanced modelling packages also provide a simulation function. You can use these to further reduce the chances of errors in your simulation step</p>\n\n\nOther simulation tests\n<p>You can also do checks where you muddle the real data directly and run it through your workflow. For instance, you should get the same result if you reshuffle rows of your data-frame randomly.</p>\n<p>If you reshuffle values in the covariate columns independently of the response, then the effects of covariate should be 0 on average. If your workflow is about model selection, then enforcing shared rank ordering of a covariate and the response you should (almost certainly) find that covariate pops up in every model selected by the AIC.</p>\n\n\nTest multiple methods\n<p>In the simplest case, the same model fitted with different implementations should return the same results. For example compare results from <code>lmer</code> <code>lme</code> and <code>glmmTMB</code>. You can get claude to fire up sub-agents to write a script for each one independently.</p>\n<p>In more complex cases it can still be useful to do fit different models and compare results, even in the models have slightly different meanings. This may reveal errors, but it may also reveal places where your model assumptions are not robust. For instance, do different model selection methods result in the same model?</p>\n\n\nWhat\u2019s next?\n<p>Part of the problem is that once you start using an agent it will write very complex R code. Claude Code has this obsession with making absolutely generalizable scripts. For instance, it commonly writes functions just to identify the root file path for a key data file.</p>\n<p>The other part of its complexity is adding numerous print statements to the R scripts, so it can see intermediate results in the terminal output. I normally do these interactively so they stay out of my scripts.</p>\n<p>All this extra code means it becomes even more tedious to review its work. Its like a double edged sword, the agent is powerful, but it makes more review work.</p>\n<p>So its clear to me that we soon won\u2019t bother reading the code they write. That means we need to adapt how we approach coding and data analysis, and especially ensure we have checks in place that we understand the code we are producing and understand its correct.</p>\n<p>This list is my start at that.</p>\n<p>Send a comment if you have other suggestions for ways to test code written by agents.</p>\n\n<div>\n<div>To <strong>leave a comment</strong> for the author, please follow the link and comment on their blog: <strong><a href=\"https://www.seascapemodels.org/posts/2026-10-09-validating-analyses-by-coding-agents/\"> Seascapemodels</a></strong>.</div>\n\n<a href=\"https://www.r-bloggers.com/\">R-bloggers.com</a> offers <strong><a href=\"https://feedburner.google.com/fb/a/mailverify?uri=RBloggers\">daily e-mail updates</a></strong> about <a href=\"https://www.r-project.org/\">R</a> news and tutorials about <a href=\"https://www.r-bloggers.com/how-to-learn-r-2/\">learning R</a> and many other topics. <a href=\"https://www.r-users.com/\">Click here if you're looking to post or find an R/data-science job</a>.\n\nWant to share your content on R-bloggers?<a href=\"https://www.r-bloggers.com/add-your-blog/\"> click here</a> if you have a blog, or <a href=\"http://r-posts.com/\"> here</a> if you don't.\n</div><strong>Continue reading</strong>: <a href=\"https://www.r-bloggers.com/2026/10/validating-data-analyses-written-by-coding-agents/\">Validating data analyses written by coding agents</a>",
+      "link": "https://www.r-bloggers.com/2026/10/validating-data-analyses-written-by-coding-agents/",
+      "source": "R-bloggers - R news and tutorials contributed by hundreds of R bloggers",
+      "feed_type": "news",
+      "type": "data-science-mlops",
+      "type_label": "Data Science & MLOps",
+      "published": "2026-10-08T13:00:00+00:00",
+      "published_ts": 1791464400,
+      "smart_groups": [
+        "Agents & automation",
+        "Coding & dev tools"
       ],
       "curated": false
     },
