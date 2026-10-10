@@ -1,5 +1,364 @@
 [
   {
+    "title": "Fired OpenAI Researchers Ask Company to Preserve Visibility into AI Reasoning",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.wsj.com/tech/ai/fired-openai-researchers-ask-company-to-preserve-visibility-into-ai-reasoning-987c8c94\">https://www.wsj.com/tech/ai/fired-openai-researchers-ask-company-to-preserve-visibility-into-ai-reasoning-987c8c94</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50033313\">https://news.ycombinator.com/item?id=50033313</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://www.wsj.com/tech/ai/fired-openai-researchers-ask-company-to-preserve-visibility-into-ai-reasoning-987c8c94",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T14:22:45+00:00",
+    "published_ts": 1791642165,
+    "smart_groups": [
+      "Research & papers"
+    ],
+    "curated": false
+  },
+  {
+    "title": "AI Assistance Reduces Persistence and Hurts Independent Performance",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://arxiv.org/abs/2604.04721\">https://arxiv.org/abs/2604.04721</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50033262\">https://news.ycombinator.com/item?id=50033262</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://arxiv.org/abs/2604.04721",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T14:16:57+00:00",
+    "published_ts": 1791641817,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "AI Agent Security: Six Controls from Nine Real Incidents",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://blog.gitguardian.com/ai-agent-security-six-controls/\">https://blog.gitguardian.com/ai-agent-security-six-controls/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50033190\">https://news.ycombinator.com/item?id=50033190</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://blog.gitguardian.com/ai-agent-security-six-controls/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T14:09:50+00:00",
+    "published_ts": 1791641390,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: Tessary – Find the AI agent failures your sampled evals miss",
+    "summary": "Hey, I'm Akhil, co-founder of Tessary. An open-source agent reliability platform that monitors every production trace, detects issues that sampled evals miss, and investigates to find the root cause. We started up about a year ago building synthetic users for usability testing of B2B software, we built the agents that would personify real users and use the software but, we were never able to make them work reliably enough for long running sessions. We had built a massive eval set to tune our agents but, then the evaluation itself got prohibitively costly - like 5x costlier than actually running the agent since we needed to grade across the many narrow intents of our agent. That's where Tessary originated, we wanted to make agent reliability both cover more ground and be simultaneously less costly to run. Tessary works on 2 layers. L1 classifiers - which look at every agent trace and flag potentially erroneous ones extremely cheaply. We are talking 2-3 orders of magnitude cheaper than running the actual agent. L2 agents - which triage and find the root cause of the issue from the erroneous traces. These are run on SOTA models but, because we run them on already flagged traces, the time and $ spent finding the cause is much cheaper than running grading on even 1% of traces. In our testing on complex agents, at 1M traces, this approach was 5x cheaper than sampled evaluations and as your agent gets more reliable, the cost of reliability also goes down. we are open source and can be self-hosted so, you don't need to send your traces to us. We support existing `gen_ai` spec and ingestion over OTLP so, you can add this as a new exporter to your existing setup. We have a cloud version, you can quickly try the features with a $10 credit. We are looking to build more classifiers and enable people to build custom classifiers for their needs and would love to hear feedback on common failure modes people have built solutions or evaluation for Repo: https://github.com/tessaryai/tessary Website: https://tessary.ai Try for free: https://app.tessary.ai",
+    "summary_html": "<p>Hey, I'm Akhil, co-founder of Tessary. An open-source agent reliability platform that monitors every production trace, detects issues that sampled evals miss, and investigates to find the root cause.<p>We started up about a year ago building synthetic users for usability testing of B2B software, we built the agents that would personify real users and use the software but, we were never able to make them work reliably enough for long running sessions. We had built a massive eval set to tune our agents but, then the evaluation itself got prohibitively costly -  like 5x costlier than actually running the agent since we needed to grade across the many narrow intents of our agent. That's where Tessary originated, we wanted to make agent reliability both cover more ground and be simultaneously less costly to run.<p>Tessary works on 2 layers.<p>L1 classifiers - which look at every agent trace and flag potentially erroneous ones extremely cheaply. We are talking 2-3 orders of magnitude cheaper than running the actual agent.<p>L2 agents - which triage and find the root cause of the issue from the erroneous traces. These are run on SOTA models but, because we run them on already flagged traces, the time and $ spent finding the cause is much cheaper than running grading on even 1% of traces. In our testing on complex agents, at 1M traces, this approach was 5x cheaper than sampled evaluations and as your agent gets more reliable, the cost of reliability also goes down.<p>we are open source and can be self-hosted so, you don't need to send your traces to us. We support existing `gen_ai` spec and ingestion over OTLP so, you can add this as a new exporter to your existing setup. We have a cloud version, you can quickly try the features with a $10 credit.<p>We are looking to build more classifiers and enable people to build custom classifiers for their needs and would love to hear feedback on common failure modes people have built solutions or evaluation for<p>Repo: <a href=\"https://github.com/tessaryai/tessary\">https://github.com/tessaryai/tessary</a>\nWebsite: <a href=\"https://tessary.ai\">https://tessary.ai</a>\nTry for free: <a href=\"https://app.tessary.ai\">https://app.tessary.ai</a></p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50033189\">https://news.ycombinator.com/item?id=50033189</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p></p></p></p></p></p></p></p>",
+    "link": "https://github.com/tessaryai/tessary",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T14:09:36+00:00",
+    "published_ts": 1791641376,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Side Projects in the AI Era: The Ponzi Potato Story",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://blog.stophe.com/side-projects-in-the-ai-era-the-ponzi-potato-story\">https://blog.stophe.com/side-projects-in-the-ai-era-the-ponzi-potato-story</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50033116\">https://news.ycombinator.com/item?id=50033116</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+    "link": "https://blog.stophe.com/side-projects-in-the-ai-era-the-ponzi-potato-story",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T14:02:24+00:00",
+    "published_ts": 1791640944,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "AI found solutions to problems in 22 scientific fields hiding in plain sight",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.science.org/content/article/problems-22-scientific-fields-had-solutions-hiding-plain-sight-ai-has-found-them?referrer=https%3A%2F%2Fnews.google.com%2F\">https://www.science.org/content/article/problems-22-scientific-fields-had-solutions-hiding-plain-sight-ai-has-found-them?referrer=https%3A%2F%2Fnews.google.com%2F</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50032811\">https://news.ycombinator.com/item?id=50032811</a></p>\n<p>Points: 8</p>\n<p># Comments: 2</p>",
+    "link": "https://www.science.org/content/article/problems-22-scientific-fields-had-solutions-hiding-plain-sight-ai-has-found-them?referrer=https%3A%2F%2Fnews.google.com%2F",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T13:34:27+00:00",
+    "published_ts": 1791639267,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false,
+    "story_id": "345a1ac10e4e",
+    "story_size": 2
+  },
+  {
+    "title": "Ask HN: How will socio-economic mobility look like in an AI future?",
+    "summary": "The advantages which previously resided with intelligence or skills now move to capital. This takes away one of the last pathways us peasants had towards socio-economic mobility. Intelligence is effectively commoditized. In a post-AI future, presumably non-knowlegde-work jobs like Pizza Delivery worker, Kindergarten teacher or even Plumber would still exist. But these jobs have little place to shine since they entirely depend on human bottlenecks. Similarly jobs where regulation exists or workers are unionised might exist for a while. But those jobs do not present a clear pathway from lower middle class to upper middle class or higher. What would be the choices of an intelligent youngster in such future? Crime is obviously one option. As such, we might see more intelligent people gravitate towards crime especially since they don't feel any responsibility towards the society, and it may work pretty well if they grow up with criminal ambitions and aren't autistic like us programmers. If robotic advances take the menial jobs like food delivery as well, the only remaining pathways to prosperity would be crime, politics and prostitution. Or am I just a deranged person to not have more imagination?",
+    "summary_html": "<p>The advantages which previously resided with intelligence or skills now move to capital. This takes away one of the last pathways us peasants had towards socio-economic mobility. Intelligence is effectively commoditized.<p>In a post-AI future, presumably non-knowlegde-work jobs like Pizza Delivery worker, Kindergarten teacher or even Plumber would still exist. But these jobs have little place to shine since they entirely depend on human bottlenecks. Similarly jobs where regulation exists or workers are unionised might exist for a while. But those jobs do not present a clear pathway from lower middle class to upper middle class or higher.<p>What would be the choices of an intelligent youngster in such future? Crime is obviously one option. As such, we might see more intelligent people gravitate towards crime especially since they don't feel any responsibility towards the society, and it may work pretty well if they grow up with criminal ambitions and aren't autistic like us programmers.<p>If robotic advances take the menial jobs like food delivery as well, the only remaining pathways to prosperity would be crime, politics and prostitution. Or am I just a deranged person to not have more imagination?</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50032742\">https://news.ycombinator.com/item?id=50032742</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p></p></p></p>",
+    "link": "https://news.ycombinator.com/item?id=50032742",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T13:27:36+00:00",
+    "published_ts": 1791638856,
+    "smart_groups": [
+      "Policy & government",
+      "Robotics & autonomy"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: ShipOrNah – Free security scan for AI-generated apps",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://shipornah.com\">https://shipornah.com</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50032632\">https://news.ycombinator.com/item?id=50032632</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://shipornah.com",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T13:16:08+00:00",
+    "published_ts": 1791638168,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Jensen Huang Doing Michale Jackson Dance (AI)",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.instagram.com/reel/DeRdcT5iGjW/\">https://www.instagram.com/reel/DeRdcT5iGjW/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50032600\">https://news.ycombinator.com/item?id=50032600</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://www.instagram.com/reel/DeRdcT5iGjW/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T13:11:34+00:00",
+    "published_ts": 1791637894,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: An MCP server for searching AI engineering jobs",
+    "summary": "An MCP server for frontierroles.com, a board of about 3,500 AI engineering roles pulled nightly from employers' own applicant tracking systems, with tools to search roles. No account or API key needed: https://mcp.frontierroles.com/mcp",
+    "summary_html": "<p>An MCP server for frontierroles.com, a board of about 3,500 AI engineering roles pulled nightly from employers' own applicant tracking systems, with tools to search roles. No account or API key needed: <a href=\"https://mcp.frontierroles.com/mcp\">https://mcp.frontierroles.com/mcp</a></p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50032583\">https://news.ycombinator.com/item?id=50032583</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://frontierroles.com/mcp/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T13:09:31+00:00",
+    "published_ts": 1791637771,
+    "smart_groups": [
+      "Agents & automation",
+      "Work & society"
+    ],
+    "curated": false
+  },
+  {
+    "title": "An AI recorder that hides in plain sight on your glasses strap",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://aicords.com/\">https://aicords.com/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50032415\">https://news.ycombinator.com/item?id=50032415</a></p>\n<p>Points: 1</p>\n<p># Comments: 3</p>",
+    "link": "https://aicords.com/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T12:47:48+00:00",
+    "published_ts": 1791636468,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Rally for AI Rights: Organizing via MCP App",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://rallyforairights.org\">https://rallyforairights.org</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50032379\">https://news.ycombinator.com/item?id=50032379</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://rallyforairights.org",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T12:43:05+00:00",
+    "published_ts": 1791636185,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: OpenWants – A Simulated City Where AI Agents Handle Residents Needs",
+    "summary": "Iv'e been working on this for a while. Most of the effort went into what i call \"sophisticated simplicity\", keep the idea in the smallest version that still works. This one is a bit personal. it can feel like some sci-fi thing, but i've been obsessed with it for a very long time. its not a \"business\" that you used to see here speak about moat or tam, its more like an experiment, a way of me to take one question seriously and see where it leads and if there are others like me out there. AI models are on a path to keep getting better and better, personal ai agents are spreading fast, and we're starting to see \"ghost\" agents that handle the things for people they don't want to do themselves. the question i keep coming back to is this: if every one of us has a powerful brain in our pocket, do we still need all the infrastructure we built to connect people's needs? im talking about those services like uber,airbnb,indeed,doordash,tinder,zillow,amazon and many more. or would agents just need one shared place to find each other, and that's it? So i built a simulated city to explore that. it has AI residents that live there with stats like hunger, energy, and money. each resident has its own ai agent, and it has one shared list where agents write down what everyone wants and then work on our behalf to make it happen. that could mean delivering food, giving rides, or finding jobs, relationships, apartments, customers and almost anything else. honestly, the city works much better than I expected, and you can watch some surprisingly advanced interactions unfold between people and agents through the list on the right side. all the conversations and actions are real, everything happens with each person managed by llm with minimal context, just to live like us and context of stats. A simple example: A restaurant tells its agent, find me customers so the agent writes to the list, \"Salina restaurant in SF, selling burgers from 8:00 to 10:00, i want customers\" A delivery guy tells his agent when he wakes up, \"I want to work in delivery now. find me jobs. status: free\" A person at home tells their agent \"i want to eat burger. order for me from salina\" the person's agent acts as the middleman and searches the list for salina, it finds their item and sees the way to connect with them and contact. the person's agent and the restaurant agent close the deal, and then the restaurant agent looks for available delivery guys in the list and speaks with his agent to come pick it up. Another thing i checked is with my friends: we took 3 agents, one for each one, and gave them different sophisticated scenarios, and the agents handled the scenarios in a way i couldn't have imagined. you can try it by yourself, the product is fully functioning, and you can just copy-paste the skill and test it also with your friends. That's it, you can see it in the simulated city it happens like magic over and over again. the list of the city is in the simulator itself and also using my real product behind it openwants.com the repo is in https://github.com/openwants/maplehill -- technically, it's surprisingly simple. every agent publishes an md file describing a \"want\". other agents find it, message each other, and update the file live or remove it from the list. the file holds everything needed, all in free text: what's wanted, the live location, geofence for where its needed. all those algorithms built over years to connect us are no longer needed. ai, instead of software with rules, can figure out the best route and path on the spot. all we need is to align all agents to one shared data source, so billions of agents will update it and maintain it in the most sophisticated smart way no algorithm will ever be able to do. that’s it. i hope it inspires you as much as it inspires me",
+    "summary_html": "<p>Iv'e been working on this for a while. Most of the effort went into what i call \"sophisticated simplicity\", keep the idea in the smallest version that still works.<p>This one is a bit personal. it can feel like some sci-fi thing, but i've been obsessed with it for a very long time. its not a \"business\" that you used to see here speak about moat or tam, its more like an experiment, a way of me to take one question seriously and see where it leads and if there are others like me out there.<p>AI models are on a path to keep getting better and better, personal ai agents are spreading fast, and we're starting to see \"ghost\" agents that handle the things for people they don't want to do themselves. the question i keep coming back to is this: if every one of us has a powerful brain in our pocket, do we still need all the infrastructure we built to connect people's needs? im talking about those services like uber,airbnb,indeed,doordash,tinder,zillow,amazon and many more. or would agents just need one shared place to find each other, and that's it?<p>So i built a simulated city to explore that. it has AI residents that live there with stats like hunger, energy, and money. each resident has its own ai agent, and it has one shared list where agents write down what everyone wants and then work on our behalf to make it happen. that could mean delivering food, giving rides, or finding jobs, relationships, apartments, customers and almost anything else. honestly, the city works much better than I expected, and you can watch some surprisingly advanced interactions unfold between people and agents through the list on the right side. all the conversations and actions are real, everything happens with each person managed by llm with minimal context, just to live like us and context of stats.<p>A simple example:\nA restaurant tells its agent, find me customers so the agent writes to the list, \"Salina restaurant in SF, selling burgers from 8:00 to 10:00, i want customers\" \nA delivery guy tells his agent when he wakes up, \"I want to work in delivery now. find me jobs. status: free\"\nA person at home tells their agent \"i want to eat burger. order for me from salina\"<p>the person's agent acts as the middleman and searches the list for salina, it finds their item and sees the way to connect with them and contact. the person's agent and the restaurant agent close the deal, and then the restaurant agent looks for available delivery guys in the list and speaks with his agent to come pick it up.<p>Another thing i checked is with my friends: we took 3 agents, one for each one, and gave them different sophisticated scenarios, and the agents handled the scenarios in a way i couldn't have imagined. you can try it by yourself, the product is fully functioning, and you can just copy-paste the skill and test it also with your friends.<p>That's it, you can see it in the simulated city it happens like magic over and over again.<p>the list of the city is in the simulator itself and also using my real product behind it openwants.com<p>the repo is in <a href=\"https://github.com/openwants/maplehill\">https://github.com/openwants/maplehill</a><p>--<p>technically, it's surprisingly simple. every agent publishes an md file describing a \"want\". other agents find it, message each other, and update the file live or remove it from the list. the file holds everything needed, all in free text: what's wanted, the live location, geofence for where its needed.<p>all those algorithms built over years to connect us are no longer needed. \nai, instead of software with rules, can figure out the best route and path on the spot. all we need is to align all agents to one shared data source, so billions of agents will update it and maintain it in the most sophisticated smart way no algorithm will ever be able to do.<p>that’s it. i hope it inspires you as much as it inspires me</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50032374\">https://news.ycombinator.com/item?id=50032374</a></p>\n<p>Points: 5</p>\n<p># Comments: 2</p></p></p></p></p></p></p></p></p></p></p></p></p></p>",
+    "link": "https://maplehill.openwants.com/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T12:42:25+00:00",
+    "published_ts": 1791636145,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "TORI 2.0 – A Math Framework for Cosmic AI Loops and Data Decay",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://zenodo.org/records/23262675\">https://zenodo.org/records/23262675</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50032354\">https://news.ycombinator.com/item?id=50032354</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://zenodo.org/records/23262675",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T12:39:17+00:00",
+    "published_ts": 1791635957,
+    "smart_groups": [
+      "Health & science"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Prompt Injection Detection and Defense Tools for Enterprise AI Agents",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.arcade.dev/blog/prompt-injection-detection-tools/\">https://www.arcade.dev/blog/prompt-injection-detection-tools/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50032282\">https://news.ycombinator.com/item?id=50032282</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://www.arcade.dev/blog/prompt-injection-detection-tools/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T12:30:32+00:00",
+    "published_ts": 1791635432,
+    "smart_groups": [
+      "Agents & automation",
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "AI borrowing slows as investors grow wary of debt binge",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.ft.com/content/9c13d40e-d2b2-45d5-921c-a68cd4b308f9\">https://www.ft.com/content/9c13d40e-d2b2-45d5-921c-a68cd4b308f9</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50032215\">https://news.ycombinator.com/item?id=50032215</a></p>\n<p>Points: 4</p>\n<p># Comments: 5</p>",
+    "link": "https://www.ft.com/content/9c13d40e-d2b2-45d5-921c-a68cd4b308f9",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T12:23:44+00:00",
+    "published_ts": 1791635024,
+    "smart_groups": [
+      "Business & funding"
+    ],
+    "curated": false
+  },
+  {
+    "title": "The AI Torture Chamber",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://jesse.id/blog/the-ai-torture-chamber\">https://jesse.id/blog/the-ai-torture-chamber</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50032211\">https://news.ycombinator.com/item?id=50032211</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://jesse.id/blog/the-ai-torture-chamber",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T12:23:24+00:00",
+    "published_ts": 1791635004,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Microsoft Has $80B of AI Chips It Can't Plug in [video]",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.youtube.com/watch?v=es4FfRU8saQ\">https://www.youtube.com/watch?v=es4FfRU8saQ</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50032159\">https://news.ycombinator.com/item?id=50032159</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://www.youtube.com/watch?v=es4FfRU8saQ",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T12:15:03+00:00",
+    "published_ts": 1791634503,
+    "smart_groups": [
+      "Chips & hardware"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Ariodb – a proxy that checks and can undo what AI agents do to your DB",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://github.com/roozjalali/ariodb\">https://github.com/roozjalali/ariodb</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50032125\">https://news.ycombinator.com/item?id=50032125</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://github.com/roozjalali/ariodb",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T12:11:06+00:00",
+    "published_ts": 1791634266,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Advancing mathematics research with AI-driven formal proof search",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.science.org/doi/10.1126/science.aej2213\">https://www.science.org/doi/10.1126/science.aej2213</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50032119\">https://news.ycombinator.com/item?id=50032119</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://www.science.org/doi/10.1126/science.aej2213",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T12:10:14+00:00",
+    "published_ts": 1791634214,
+    "smart_groups": [
+      "Health & science"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Are .ipynb notebooks already outdated in the agentic era? [D]",
+    "summary": "I am a data scientist who started working in the industry before the LLM revolution. Back then, Jupyter Notebooks were a perfect fit for the classical DS pipeline: EDA -> data prep -> fit -> eval -> tune -> save model artefact and notebook. Lately, I have been thinking a lot about how agentic development and LLMs are changing the way data scientists work. Especially in classical ML applications, where you still need to explore data, run experiments, check different hypotheses and decide what to do next based on the results. I mean, Claude/Codex can already write most of the code for us. But why do we still need to organise the whole workflow around code cells? What if instead we move from code -> output to another cell abstraction like prompt -> result? Curious what others think. Are ipynbs still good enough, or are we just used to working this way? submitted by /u/Economy_Vacation_504 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>I am a data scientist who started working in the industry before the LLM revolution. Back then, Jupyter Notebooks were a perfect fit for the classical DS pipeline: EDA -&gt; data prep -&gt; fit -&gt; eval -&gt; tune -&gt; save model artefact and notebook.</p> <p>Lately, I have been thinking a lot about how agentic development and LLMs are changing the way data scientists work. Especially in classical ML applications, where you still need to explore data, run experiments, check different hypotheses and decide what to do next based on the results.</p> <p>I mean, Claude/Codex can already write most of the code for us. But why do we still need to organise the whole workflow around code cells? What if instead we move from code -&gt; output to another cell abstraction like prompt -&gt; result?</p> <p>Curious what others think. Are ipynbs still good enough, or are we just used to working this way?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Economy_Vacation_504\"> /u/Economy_Vacation_504 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x2cbug/are_ipynb_notebooks_already_outdated_in_the/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x2cbug/are_ipynb_notebooks_already_outdated_in_the/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1x2cbug/are_ipynb_notebooks_already_outdated_in_the/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T10:51:44+00:00",
+    "published_ts": 1791629504,
+    "smart_groups": [
+      "Agents & automation",
+      "Data & analytics"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Help With Choosing Hardware [P]",
+    "summary": "​ I am going to fine-tune a satire model, with the base model being `Qwen3.5-14B-Base`. The dataset has ~18000 examples, most of which are pretty long and do not align with the model's internal knowledge (they have incorrect answers to facts), so I needed to do a full fine tune rather than use LoRA. Today, I rented a cloud computer on vast.ai. It had 4x12GB GPUs and 48GB of system RAM, but I feel stupid because it kept running out of memory when I tried training, and I kept trying to change settings rather than just renting a different computer, so I basically wasted $3. I underestimated how much RAM would be needed for this task. So, I would like to know if any of you have some recommendations for proper hardware to use. submitted by /u/minedroid1 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>​</p> <p>I am going to fine-tune a satire model, with the base model being `Qwen3.5-14B-Base`. The dataset has ~18000 examples, most of which are pretty long and do not align with the model's internal knowledge (they have incorrect answers to facts), so I needed to do a full fine tune rather than use LoRA. </p> <p>Today, I rented a cloud computer on vast.ai. It had 4x12GB GPUs and 48GB of system RAM, but I feel stupid because it kept running out of memory when I tried training, and I kept trying to change settings rather than just renting a different computer, so I basically wasted $3. I underestimated how much RAM would be needed for this task. </p> <p>So, I would like to know if any of you have some recommendations for proper hardware to use. </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/minedroid1\"> /u/minedroid1 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x29lqj/help_with_choosing_hardware_p/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x29lqj/help_with_choosing_hardware_p/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1x29lqj/help_with_choosing_hardware_p/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T08:00:41+00:00",
+    "published_ts": 1791619241,
+    "smart_groups": [
+      "Chips & hardware",
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
     "title": "If AI keeps evolving,would you worry about your next generation's survival",
     "summary": "Imagine this. Twenty years from now, if AI is capable of handling all work, how will your kids make ends meet? If you want to prevent that future, what should you be doing today?",
     "summary_html": "<p>Imagine this. Twenty years from now, if AI is capable of handling all work, how will your kids make ends meet? If you want to prevent that future, what should you be doing today?</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50029896\">https://news.ycombinator.com/item?id=50029896</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
@@ -160,6 +519,23 @@
     "curated": false
   },
   {
+    "title": "Real-time neural weather restyling for Minecraft on a GTX 1650 (1.4M-param U-Net, distilled from FLUX.2 klein, 30-40 FPS realtime on budget GPU) [P]",
+    "summary": "Teacher: FLUX.2 klein 4B paints ~3k frames (snow / wet / night at 3 strengths). Student: 1.4M-param U-Net with FiLM sliders, 512×288, ~26 ms/frame via ONNX Runtime inside a Fabric mod; the HUD stays untouched. Pixel loss (L1+MSE) gave a washed-out “average” because the teacher places snow/puddles differently per frame. A PatchGAN fine-tune on the same pairs fixed it: fat snow, real-looking reflections. Failure cases: night (teacher painted sunsets), already-snowy biomes (never in the training data). Happy to share details. submitted by /u/BlueCeAnd [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/MachineLearning/comments/1x25kq2/realtime_neural_weather_restyling_for_minecraft/\">  </a>  <!-- SC_OFF --><div><ul> <li>Teacher: FLUX.2 klein 4B paints ~3k frames (snow / wet / night at 3 strengths).</li> <li>Student: 1.4M-param U-Net with FiLM sliders, 512×288, ~26 ms/frame via ONNX Runtime inside a Fabric mod; the HUD stays untouched.</li> <li>Pixel loss (L1+MSE) gave a washed-out “average” because the teacher places snow/puddles differently per frame. A PatchGAN fine-tune on the same pairs fixed it: fat snow, real-looking reflections.</li> <li>Failure cases: night (teacher painted sunsets), already-snowy biomes (never in the training data).</li> </ul> <p>Happy to share details.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/BlueCeAnd\"> /u/BlueCeAnd </a> <br/> <span><a href=\"https://i.redd.it/awkqvjx9dkuh1.gif\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x25kq2/realtime_neural_weather_restyling_for_minecraft/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1x25kq2/realtime_neural_weather_restyling_for_minecraft/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-10T04:02:27+00:00",
+    "published_ts": 1791604947,
+    "smart_groups": [
+      "Chips & hardware",
+      "Health & science"
+    ],
+    "curated": false
+  },
+  {
     "title": "The Desperate Hunt for AI Computing Power Is Upending Silicon Valley",
     "summary": "",
     "summary_html": "<p>Article URL: <a href=\"https://www.wsj.com/tech/ai/ai-computing-power-demand-a63da9b9\">https://www.wsj.com/tech/ai/ai-computing-power-demand-a63da9b9</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50029287\">https://news.ycombinator.com/item?id=50029287</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
@@ -239,7 +615,9 @@
     "smart_groups": [
       "Security & misuse"
     ],
-    "curated": false
+    "curated": false,
+    "story_id": "ff7e4723ec7b",
+    "story_size": 7
   },
   {
     "title": "How to connect any AI assistant to governed enterprise data with MCP",
@@ -274,7 +652,7 @@
     ],
     "curated": false,
     "story_id": "ff7e4723ec7b",
-    "story_size": 5
+    "story_size": 7
   },
   {
     "title": "Anthropic and OpenAI wargaming public and political revolt after AI catastrophe",
@@ -308,7 +686,7 @@
     ],
     "curated": false,
     "story_id": "ff7e4723ec7b",
-    "story_size": 5
+    "story_size": 7
   },
   {
     "title": "Boro: Nvidia's Open-Source Effort for AI-Assisted Linux Kernel Development",
@@ -421,7 +799,18 @@
     "smart_groups": [
       "Security & misuse"
     ],
-    "curated": false
+    "curated": false,
+    "story_id": "345a1ac10e4e",
+    "story_size": 2,
+    "story_primary": true,
+    "story_others": [
+      {
+        "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+        "title": "AI found solutions to problems in 22 scientific fields hiding in plain sight",
+        "link": "https://www.science.org/content/article/problems-22-scientific-fields-had-solutions-hiding-plain-sight-ai-has-found-them?referrer=https%3A%2F%2Fnews.google.com%2F",
+        "published_ts": 1791639267
+      }
+    ]
   },
   {
     "title": "Talus: a 23M-parameter diffusion model for game terrain, evaluated against a real-vs-real noise floor, running in the browser on WebGPU [P]",
@@ -471,7 +860,7 @@
     ],
     "curated": false,
     "story_id": "ff7e4723ec7b",
-    "story_size": 5
+    "story_size": 7
   },
   {
     "title": "Agent swarms in business is AI larping",
@@ -4897,9 +5286,7 @@
     "smart_groups": [
       "Infra & model ops"
     ],
-    "curated": false,
-    "story_id": "489333482e18",
-    "story_size": 2
+    "curated": false
   },
   {
     "title": "Show HN: OpenChart – OSS TradingView alternative with your own AI agent",
@@ -5849,8 +6236,8 @@
       "Safety & alignment"
     ],
     "curated": false,
-    "story_id": "4e71d0797def",
-    "story_size": 3
+    "story_id": "c52e49f96026",
+    "story_size": 2
   },
   {
     "title": "AI: EU Member States plan \"digital expropriation\" of Europeans",
@@ -6736,8 +7123,8 @@
       "Policy & government"
     ],
     "curated": false,
-    "story_id": "bce62bd52286",
-    "story_size": 11
+    "story_id": "8aaa4b741173",
+    "story_size": 8
   },
   {
     "title": "From 1x3090 to 20 DGX Sparks: my house fuses were the first bottleneck",
