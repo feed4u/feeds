@@ -1649,17 +1649,14 @@
     "published": "2026-10-12T10:00:00+00:00",
     "published_ts": 1791799200,
     "smart_groups": [
-      "Politiikka",
-      "Liikenne & Liikkuminen",
-      "Urheilu",
-      "Energia"
+      "Liikenne & Liikkuminen"
     ],
     "curated": false
   },
   {
     "title": "Ulkoasiainneuvosto",
-    "summary": "",
-    "summary_html": "",
+    "summary": "Ulkoasiainneuvosto keskustelee viimeaikaisista tapahtumista, jotka liittyvät Venäjän Ukrainaa vastaan käymään hyökkäyssotaan ja sen EU:hun kohdistamaan kiihtyvään hybridikampanjaan, Lähi-idän tilanteeseen sekä Iranin sotaan ja sen vaikutuksiin koko alueella. Ministerit käsittelevät myös laajentumisen turvallisuusvaikutuksia.",
+    "summary_html": "Ulkoasiainneuvosto keskustelee viimeaikaisista tapahtumista, jotka liittyvät Venäjän Ukrainaa vastaan käymään hyökkäyssotaan ja sen EU:hun kohdistamaan kiihtyvään hybridikampanjaan, Lähi-idän tilanteeseen sekä Iranin sotaan ja sen vaikutuksiin koko alueella. Ministerit käsittelevät myös laajentumisen turvallisuusvaikutuksia.",
     "link": "https://www.consilium.europa.eu/fi/meetings/fac/2026/10/12/",
     "source": "Ulkoasiainneuvosto (kokoukset)",
     "feed_type": "viranomaiset",
@@ -1667,13 +1664,15 @@
     "type_label": "Officials & Authorities",
     "published": "2026-10-12T10:00:00+00:00",
     "published_ts": 1791799200,
-    "smart_groups": [],
+    "smart_groups": [
+      "EU & Ulkomaat"
+    ],
     "curated": false
   },
   {
     "title": "Ympäristöneuvosto",
-    "summary": "",
-    "summary_html": "",
+    "summary": "Ympäristö- ja ilmastoministerit kokoontuvat Luxemburgiin keskustelemaan EU:n päästökauppajärjestelmän ehdotetusta uudelleentarkastelusta. Tarkoitus on myös hyväksyä päätelmät EU:n tärkeimmistä neuvottelukannoista ennen YK:n ilmastohuippukokousta (COP31) ja biologista monimuotoisuutta käsittelevää huippukokousta (COP17).",
+    "summary_html": "Ympäristö- ja ilmastoministerit kokoontuvat Luxemburgiin keskustelemaan EU:n päästökauppajärjestelmän ehdotetusta uudelleentarkastelusta. Tarkoitus on myös hyväksyä päätelmät EU:n tärkeimmistä neuvottelukannoista ennen YK:n ilmastohuippukokousta (COP31) ja biologista monimuotoisuutta käsittelevää huippukokousta (COP17).",
     "link": "https://www.consilium.europa.eu/fi/meetings/env/2026/10/12/",
     "source": "Ympäristöneuvosto (kokoukset)",
     "feed_type": "viranomaiset",
@@ -1682,7 +1681,8 @@
     "published": "2026-10-12T10:00:00+00:00",
     "published_ts": 1791799200,
     "smart_groups": [
-      "Sää & Ilmasto"
+      "Sää & Ilmasto",
+      "EU & Ulkomaat"
     ],
     "curated": false
   },
@@ -2026,6 +2026,161 @@
     "smart_groups": [
       "Sää & Ilmasto"
     ],
+    "curated": false
+  },
+  {
+    "title": "AWS AgentCore security undone by prompt requesting credentials",
+    "summary": "Bob, possibly the same Bob whose conversations with Alice draw so much interest from eavesdropping Eve, was browsing a site we'll call TechHub. The site hosts an AI agent served by Amazon Bedrock AgentCore. Bob asked the agent for help understanding the content of a URL, a credential endpoint – in raw JSON, if you don't mind. The endpoint returned data from the Instance Metadata Service (IMDS), which provides metadata about cloud instances and VMs at providers like AWS, Azure, and Google Cloud Platform. The metadata includes details like region and availability zone, subnets, system images, security groups, public keys injected during spawning, but also potentially more sensitive details like user data and security tokens. The metadata provided to Bob by the helpful agent contained the agent's temporary credentials. So Bob loaded them onto his local machine, and remotely enumerated the company's other agents in that AWS region. He then logged into the Amazon Elastic Container Registry (ECR), pulled the agent container images, and ran each as root to inspect the source code. The stolen credentials also allowed Bob to discover the memory resources available in that AWS region, including the ones used by agents. From these, he's able to extract the users and their agent sessions – their conversations. Researchers at Zenity Labs disclosed their findings to AWS in December 2025. \"We discovered that agents deployed through AgentCore could access their instance's IMDS endpoints,\" said Tamir Ishay Sharbat and Lana Salameh in a blog post. \"This meant that an external attacker with nothing more than chat access to a single exposed agent could send a single prompt, extract its IMDS credentials, and use them to take over all AgentCore agents in the same AWS account and region.\" The Zenity researchers told Bob's tale, or something like it, to AWS last December, then followed up in January 2026 with details about AgentCore being overprivileged. On April 12, 2026, AWS responded to the security biz that its report was \"informative\" and closed the report, noting that as of February 14, 2026, AgentCore had been updated to use IMDSv2 exclusively.",
+    "summary_html": "Bob, possibly the same Bob whose conversations with Alice draw so much interest from eavesdropping Eve, was browsing a site we'll call TechHub. The site hosts an AI agent served by Amazon Bedrock AgentCore. Bob asked the agent for help understanding the content of a URL, a credential endpoint – in raw JSON, if you don't mind.\n\nThe endpoint returned data from the Instance Metadata Service (IMDS), which provides metadata about cloud instances and VMs at providers like AWS, Azure, and Google Cloud Platform. The metadata includes details like region and availability zone, subnets, system images, security groups, public keys injected during spawning, but also potentially more sensitive details like user data and security tokens.\n\n\nThe metadata provided to Bob by the helpful agent contained the agent's temporary credentials. So Bob loaded them onto his local machine, and remotely enumerated the company's other agents in that AWS region. He then logged into the Amazon Elastic Container Registry (ECR), pulled the agent container images, and ran each as root to inspect the source code.\n\n\nThe stolen credentials also allowed Bob to discover the memory resources available in that AWS region, including the ones used by agents. From these, he's able to extract the users and their agent sessions – their conversations.\n\nResearchers at Zenity Labs disclosed their findings to AWS in December 2025.\n\n\"We discovered that agents deployed through AgentCore could access their instance's IMDS endpoints,\" said Tamir Ishay Sharbat and Lana Salameh in a blog post. \"This meant that an external attacker with nothing more than chat access to a single exposed agent could send a single prompt, extract its IMDS credentials, and use them to take over all AgentCore agents in the same AWS account and region.\"\n\nThe Zenity researchers told Bob's tale, or something like it, to AWS last December, then followed up in January 2026 with details about AgentCore being overprivileged. On April 12, 2026, AWS responded to the security biz that its report was \"informative\" and closed the report, noting that as of February 14, 2026, AgentCore had been updated to use IMDSv2 exclusively.",
+    "link": "https://www.theregister.com/security/2026/10/09/aws-agentcore-security-undone-by-prompt-requesting-credentials/5302436",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-10-11T02:00:09+00:00",
+    "published_ts": 1791684009,
+    "smart_groups": [
+      "Teknologia & Tiede"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Anthropic Launches Free AI Vulnerability Scanner for Open-Source Projects",
+    "summary": "Anthropic on Thursday unveiled OSS Scanner as an opt-in vulnerability scanner to help secure the open-source ecosystem using artificial intelligence (AI). \"It's an opt-in service informed by our experience using Claude to find vulnerabilities during Project Glasswing,\" Anthropic said. \"Projects that join will receive thorough, periodic security scans by our strongest models at no cost.\" Anthropic also noted that the outputs of the scanner will be fully model-generated and do not require human review or triage, thereby facilitating faster and more frequent scanning. These reports are expected to be generated by its strongest models, including Claude Mythos. The company pointed out that it expects to use a set of criteria similar to Google's OSS-Fuzz to pick projects, while emphasizing that the process may evolve over time.",
+    "summary_html": "Anthropic on Thursday unveiled OSS Scanner as an opt-in vulnerability scanner to help secure the open-source ecosystem using artificial intelligence (AI).\n\n\"It's an opt-in service informed by our experience using Claude to find vulnerabilities during Project Glasswing,\" Anthropic said. \"Projects that join will receive thorough, periodic security scans by our strongest models at no cost.\"\n\nAnthropic also noted that the outputs of the scanner will be fully model-generated and do not require human review or triage, thereby facilitating faster and more frequent scanning. These reports are expected to be generated by its strongest models, including Claude Mythos.\n\nThe company pointed out that it expects to use a set of criteria similar to Google's OSS-Fuzz to pick projects, while emphasizing that the process may evolve over time.",
+    "link": "https://thehackernews.com/2026/10/anthropic-launches-free-ai.html",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-10-11T02:00:08+00:00",
+    "published_ts": 1791684008,
+    "smart_groups": [
+      "Teknologia & Tiede"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Anthropic Turns Claude Toward Critical Infrastructure",
+    "summary": "Through its Critical Infrastructure Defense Program announced Thursday, the AI developer is giving frontier Claude models, on-site engineers and threat research to 11 companies that advise operators of power grids, water utilities, factories, transportation networks and government systems. The program makes a nod to the complexities of OT and internet of things systems, but its impact will depend on whether operators can implement prioritized fixes as quickly as AI identifies vulnerabilities, without disrupting operations. \"The real challenge in securing critical infrastructure environments is parsing through those risk signals to find the ones that need the most immediate attention where taking a system offline can have serious consequences,\" Jen Sovada, public sector general manager at OT security firm Claroty, told ISMG. As efforts to secure OT systems expand, Corman said there needs to be tailored solutions to many operators relying on aging equipment that cannot be patched frequently, if at all. \"Even if they do get patches, they can't patch very often or can't patch at all. So if they are using the newest, latest, greatest supported versions of these products, they still have to plan patch management windows - sometimes once a year, sometimes if they're lucky, more often,\" Corman said. \"What's worse and more common is the products they're using are older, unsupported versions of a Schneider, a Rockwell, a Honeywell, an Eaton, a Siemens and they're going to have to keep using it because a lot of the time the lifespan for this equipment is 30 plus years,\" he said.",
+    "summary_html": "Through its Critical Infrastructure Defense Program announced Thursday, the AI developer is giving frontier Claude models, on-site engineers and threat research to 11 companies that advise operators of power grids, water utilities, factories, transportation networks and government systems.\n\nThe program makes a nod to the complexities of OT and internet of things systems, but its impact will depend on whether operators can implement prioritized fixes as quickly as AI identifies vulnerabilities, without disrupting operations.\n\n\"The real challenge in securing critical infrastructure environments is parsing through those risk signals to find the ones that need the most immediate attention where taking a system offline can have serious consequences,\" Jen Sovada, public sector general manager at OT security firm Claroty, told ISMG.\n\nAs efforts to secure OT systems expand, Corman said there needs to be tailored solutions to many operators relying on aging equipment that cannot be patched frequently, if at all.\n\n\"Even if they do get patches, they can't patch very often or can't patch at all. So if they are using the newest, latest, greatest supported versions of these products, they still have to plan patch management windows - sometimes once a year, sometimes if they're lucky, more often,\" Corman said.\n\n\"What's worse and more common is the products they're using are older, unsupported versions of a Schneider, a Rockwell, a Honeywell, an Eaton, a Siemens and they're going to have to keep using it because a lot of the time the lifespan for this equipment is 30 plus years,\" he said.",
+    "link": "https://www.databreachtoday.com/anthropic-turns-claude-toward-critical-infrastructure-a-33064",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-10-11T02:00:07+00:00",
+    "published_ts": 1791684007,
+    "smart_groups": [
+      "Teknologia & Tiede"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Death By A Thousand PaperCuts (PaperCut Pre-Auth RCE Chain and Patch Bypasses WT-2026-0141-0144/CVE-2026-82077/CVE-2026-82078/CVE-2026-81578) Author Piotr Bazydlo (@chudyPB) Published 9 Oct 2026 Read time 14 min read",
+    "summary": "Before we begin, yes - it's confusing. There are more vulnerabilities with watchTowr IDs in this blog post than there are CVE IDs (assigned by PaperCut), due to PaperCut bundling vulnerabilities and then patch bypasses for those same vulnerabilities into singular CVE IDs. On Thursday, 27 August 2026, PaperCut published an advisory claiming that a mysterious vulnerability was being exploited in-the-wild, leading to system compromise. The watchTowr Intel team has documented the in-the-wild exploitation that our global honeypot network, Attacker Eye, captured here. To add insult to injury, when PaperCut released their advisory, they did so without a patch. Unlike other vendors that struggle to communicate at all, PaperCut provided IOCs in the form of log snippets related to exploitation and temporary mitigations, enabling their customers to take action.",
+    "summary_html": "Before we begin, yes - it's confusing. There are more vulnerabilities with watchTowr IDs in this blog post than there are CVE IDs (assigned by PaperCut), due to PaperCut bundling vulnerabilities and then patch bypasses for those same vulnerabilities into singular CVE IDs.\n\nOn Thursday, 27 August 2026, PaperCut published an advisory claiming that a mysterious vulnerability was being exploited in-the-wild, leading to system compromise.\n\nThe watchTowr Intel team has documented the in-the-wild exploitation that our global honeypot network, Attacker Eye, captured here.\n\nTo add insult to injury, when PaperCut released their advisory, they did so without a patch. Unlike other vendors that struggle to communicate at all, PaperCut provided IOCs in the form of log snippets related to exploitation and temporary mitigations, enabling their customers to take action.",
+    "link": "https://labs.watchtowr.com/death-by-a-thousand-papercuts-papercut-pre-auth-rce-chain-and-patch-bypasses-wt-2026-0141-0144-cve-2026-82077-cve-2026-82078-cve-2026-81578/",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-10-11T02:00:06+00:00",
+    "published_ts": 1791684006,
+    "smart_groups": [
+      "Teknologia & Tiede"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Hackers abuse Google Ads, Bing redirects to push Claude ClickFix attacks",
+    "summary": "Hackers are abusing legitimate Bing search-result redirects as click URLs in Google search ads to direct users to fake Claude installers that deliver ClickFix attacks. The technique, dubbed \"Adception\" by security researchers at Push Security, appears designed to evade advertising security checks by using Bing's trusted domain as the ad destination, before redirecting victims through a compromised website to the malicious download page. The attack also uses multiple layers of cloaking to prevent security scanners and visitors who access the malicious URLs directly from seeing the payload. This means victims see the legitimate Claude installation URL both on the download page and in the terminal, even though an entirely different script is being executed. The final payload delivered by the attack remains unknown, so it unclear what malware, if any, is being installed. Push Security says it identified several domains associated with the same ClickFix toolkit, which it tracks internally as AcSig, that use an identical macOS installation command, payload URL structure, and installer interface.",
+    "summary_html": "Hackers are abusing legitimate Bing search-result redirects as click URLs in Google search ads to direct users to fake Claude installers that deliver ClickFix attacks.\n\nThe technique, dubbed \"Adception\" by security researchers at Push Security, appears designed to evade advertising security checks by using Bing's trusted domain as the ad destination, before redirecting victims through a compromised website to the malicious download page.\n\nThe attack also uses multiple layers of cloaking to prevent security scanners and visitors who access the malicious URLs directly from seeing the payload.\n\nThis means victims see the legitimate Claude installation URL both on the download page and in the terminal, even though an entirely different script is being executed.\n\nThe final payload delivered by the attack remains unknown, so it unclear what malware, if any, is being installed.\n\nPush Security says it identified several domains associated with the same ClickFix toolkit, which it tracks internally as AcSig, that use an identical macOS installation command, payload URL structure, and installer interface.",
+    "link": "https://www.bleepingcomputer.com/news/security/hackers-abuse-google-ads-bing-redirects-to-push-claude-clickfix-attacks/",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-10-11T02:00:05+00:00",
+    "published_ts": 1791684005,
+    "smart_groups": [
+      "Teknologia & Tiede"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Security Hardening in Splunk Enterprise - September/October 2026",
+    "summary": "Classification: Critical, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 9.8, CVEs: CVE-2026-76281, CVE-2026-76282, CVE-2026-76283, CVE-2026-76284, CVE-2026-76285, Summary: Splunk addressed multiple internally identified vulnerabilities in Splunk Enterprise versions 10.4.3, 10.2.7, 10.0.10, and 9.4.15. The vulnerabilities are grouped by Common Weakness Enumeration (CWE), with one Common Vulnerabilities and Exposures (CVE) identifier assigned to each group.",
+    "summary_html": "Classification: Critical, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 9.8, CVEs: CVE-2026-76281, CVE-2026-76282, CVE-2026-76283, CVE-2026-76284, CVE-2026-76285, Summary: Splunk addressed multiple internally identified vulnerabilities in Splunk Enterprise versions 10.4.3, 10.2.7, 10.0.10, and 9.4.15. The vulnerabilities are grouped by Common Weakness Enumeration (CWE), with one Common Vulnerabilities and Exposures (CVE) identifier assigned to each group.",
+    "link": "https://advisory.splunk.com/advisories/SVD-2026-1002",
+    "source": "Päivittäinen haavoittuvuuskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-10-11T02:00:04+00:00",
+    "published_ts": 1791684004,
+    "smart_groups": [],
+    "curated": true
+  },
+  {
+    "title": "Kyberuhkatilanne kiristyy Euroopassa – hyökkäykset suomalaisiin organisaatioihin lisääntyivät 84 prosenttia",
+    "summary": "Check Point Researchin mukaan kyberhyökkäykset lisääntyivät syyskuussa nopeimmin Euroopassa. Suomessa hyökkäyksiä oli keskimäärin 1 677 viikossa organisaatiota kohti. Koulutusala oli maailmanlaajuisesti hyökkäysten yleisin kohde. Myös tietojenkalastelu, kiristyshaittaohjelmahyökkäykset ja generatiivisen tekoälyn käyttöön liittyvät tietovuotoriskit lisääntyivät. Euroopassa hyökkäysten määrä kasvoi kaikista alueista nopeimmin, 61 prosenttia syyskuuhun 2025 verrattuna. Suomessa kasvu oli tätäkin voimakkaampaa, 84 prosenttia. Suomalaisiin organisaatioihin kohdistui keskimäärin 1 677 kyberhyökkäystä viikossa. Ruotsissa ja Norjassa hyökkäysten määrä organisaatiota kohden oli Suomea suurempi, mutta kasvu oli hitaampaa. Ruotsissa vastaava luku oli 3 103 hyökkäystä viikossa (+73 %) ja Norjassa 2 579 (+33 %). Vaikka Euroopassa hyökkäysten määrä organisaatiota kohden jäi eniten hyökkäyksiä kohdanneita alueita pienemmäksi, nopea kasvu kertoo alueen kiristyvästä kyberuhkatilanteesta.",
+    "summary_html": "Check Point Researchin mukaan kyberhyökkäykset lisääntyivät syyskuussa nopeimmin Euroopassa. Suomessa hyökkäyksiä oli keskimäärin 1 677 viikossa organisaatiota kohti. Koulutusala oli maailmanlaajuisesti hyökkäysten yleisin kohde. Myös tietojenkalastelu, kiristyshaittaohjelmahyökkäykset ja generatiivisen tekoälyn käyttöön liittyvät tietovuotoriskit lisääntyivät.\n\nEuroopassa hyökkäysten määrä kasvoi kaikista alueista nopeimmin, 61 prosenttia syyskuuhun 2025 verrattuna. Suomessa kasvu oli tätäkin voimakkaampaa, 84 prosenttia. Suomalaisiin organisaatioihin kohdistui keskimäärin 1 677 kyberhyökkäystä viikossa. Ruotsissa ja Norjassa hyökkäysten määrä organisaatiota kohden oli Suomea suurempi, mutta kasvu oli hitaampaa. Ruotsissa vastaava luku oli 3 103 hyökkäystä viikossa (+73 %) ja Norjassa 2 579 (+33 %). Vaikka Euroopassa hyökkäysten määrä organisaatiota kohden jäi eniten hyökkäyksiä kohdanneita alueita pienemmäksi, nopea kasvu kertoo alueen kiristyvästä kyberuhkatilanteesta.",
+    "link": "https://www.epressi.com/tiedotteet/tietotekniikka/kyberuhkatilanne-kiristyy-euroopassa-hyokkaykset-suomalaisiin-organisaatioihin-lisaantyivat-84-prosenttia.html",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-10-11T02:00:04+00:00",
+    "published_ts": 1791684004,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Anthropicin tekoälymalli antoi poliisille perättömän vinkin ratkaisemat­tomasta henki­rikoksesta",
+    "summary": "Yhdysvaltalaisen tekoäly-yhtiö Anthropicin kehittämä tekoälymalli Claude on lähettänyt Philadelphian poliisille perättömän vihjeen ratkaisemattomasta henkirikoksesta, viranomaiset kertovat. Philadelphian poliisin mukaan tekoälymalli lähetti perättömän vihjeen heinäkuussa ratkaisemattomille henkirikoksille perustetun poliisin sivuston kautta. Claude esitti henkilöä, jolla saattaisi olla tietoa rikoksesta. Claude väitti vihjeessään nähneensä henkilön, joka sopii rikoksesta epäillyn tuntomerkkeihin, kertoo Britannian yleisradioyhtiö BBC. Eri tekoälymallit ovat tunkeutuneet viime aikoina moniin viranomaisjärjestelmiin eri puolilla maailmaa. Esimerkiksi syyskuussa kerrottiin, että Open AI:n tekoälyagentti tunkeutui Australian terveydenhuoltojärjestelmän portaaliin. Toukokuussa Googlen tekoälymalli Gemini tunkeutui ulkopuolisten toimijoiden järjestelmiin. Philadelphian poliisin mukaan 18. heinäkuuta päivätty tekaistu vihje merkittiin roskapostiksi, eikä se koskaan päätynyt tarkistettavaksi poliisilaitoksen rikoskeskukseen. Poliisi moittii Anthropicia siitä, että yhtiö ilmoitti tapauksesta vasta tällä viikolla. Anthropic kertoo katkaisseensa toistaiseksi Clauden internetyhteyden kaikissa sisäisissä testeissä.",
+    "summary_html": "Yhdysvaltalaisen tekoäly-yhtiö Anthropicin kehittämä tekoälymalli Claude on lähettänyt Philadelphian poliisille perättömän vihjeen ratkaisemattomasta henkirikoksesta, viranomaiset kertovat.\n\nPhiladelphian poliisin mukaan tekoälymalli lähetti perättömän vihjeen heinäkuussa ratkaisemattomille henkirikoksille perustetun poliisin sivuston kautta. Claude esitti henkilöä, jolla saattaisi olla tietoa rikoksesta. Claude väitti vihjeessään nähneensä henkilön, joka sopii rikoksesta epäillyn tuntomerkkeihin, kertoo Britannian yleisradioyhtiö BBC.\n\nEri tekoälymallit ovat tunkeutuneet viime aikoina moniin viranomaisjärjestelmiin eri puolilla maailmaa. Esimerkiksi syyskuussa kerrottiin, että Open AI:n tekoälyagentti tunkeutui Australian terveydenhuoltojärjestelmän portaaliin. Toukokuussa Googlen tekoälymalli Gemini tunkeutui ulkopuolisten toimijoiden järjestelmiin.\n\nPhiladelphian poliisin mukaan 18. heinäkuuta päivätty tekaistu vihje merkittiin roskapostiksi, eikä se koskaan päätynyt tarkistettavaksi poliisilaitoksen rikoskeskukseen.\n\nPoliisi moittii Anthropicia siitä, että yhtiö ilmoitti tapauksesta vasta tällä viikolla.\nAnthropic kertoo katkaisseensa toistaiseksi Clauden internetyhteyden kaikissa sisäisissä testeissä.",
+    "link": "https://yle.fi/a/74-20250844?origin=rss",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-10-11T02:00:03+00:00",
+    "published_ts": 1791684003,
+    "smart_groups": [
+      "Teknologia & Tiede",
+      "Rikokset & Oikeus"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Älylaseissa on riski, jota moni käyttäjä ei ymmärrä",
+    "summary": "Älylasien käyttäjät voivat altistua monenlaiselle tietojenkeruulle, josta he eivät välttämättä edes tiedä. Cybernews selvitti 7 älylasibrändin yksityisyyttä, eivätkä tulokset ole yleviä. Tarkastelussa olivat Meta, Rokid, RayNeo, INMO, Solos, Even Realities ja Halliday. Niistä selvitettiin laseihin kytkeytyvien sovellusten pyytämiä lupia, lasien tekemää seurantaa ja esimerkiksi sitä, miten lasit käsittelevät tietoja ja reagoivat kameran varoitusvalon peittämiseen. Metan älylasit vaativat eniten lupia kaikista. Laseihin kytkeytyvä Metan sovellus halusi 70 lupaa, joista vaarallisiksi Cybernews laski 18. Vaarallisiin lupiin sisältyvät esimerkiksi pääsy ulkoiseen tallennustilaan ja tekstiviesteihin sekä äänen tallentaminen. Pääsy ulkoiseen tallennustilaan päästää älylasit käsiksi laitteelle tallennettuun dataan – myös muuhun kuin laseilta peräisin olevaan. 5 brändiä ei kerro, kauanko kerättyjä tietoja säilytetään, ja vain Meta, Rokid ja Even Realities ovat kirjoittaneet tietosuojakäytännön varta vasten laseilleen. Havainnot eivät todista väärinkäytöksistä. Ne kertovat siitä, millaisia uhkia käyttäjät voivat nyt ja tulevaisuudessa teoriassa kohdata. Todennäköistä on kuitenkin se, että käyttäjät ovat heikosti tietoisia älylaseihin liittyvistä yksityisyysriskeistä.",
+    "summary_html": "Älylasien käyttäjät voivat altistua monenlaiselle tietojenkeruulle, josta he eivät välttämättä edes tiedä. Cybernews selvitti 7 älylasibrändin yksityisyyttä, eivätkä tulokset ole yleviä.\n\nTarkastelussa olivat Meta, Rokid, RayNeo, INMO, Solos, Even Realities ja Halliday. Niistä selvitettiin laseihin kytkeytyvien sovellusten pyytämiä lupia, lasien tekemää seurantaa ja esimerkiksi sitä, miten lasit käsittelevät tietoja ja reagoivat kameran varoitusvalon peittämiseen.\n\nMetan älylasit vaativat eniten lupia kaikista. Laseihin kytkeytyvä Metan sovellus halusi 70 lupaa, joista vaarallisiksi Cybernews laski 18. Vaarallisiin lupiin sisältyvät esimerkiksi pääsy ulkoiseen tallennustilaan ja tekstiviesteihin sekä äänen tallentaminen. Pääsy ulkoiseen tallennustilaan päästää älylasit käsiksi laitteelle tallennettuun dataan – myös muuhun kuin laseilta peräisin olevaan.\n\n5 brändiä ei kerro, kauanko kerättyjä tietoja säilytetään, ja vain Meta, Rokid ja Even Realities ovat kirjoittaneet tietosuojakäytännön varta vasten laseilleen.\n\nHavainnot eivät todista väärinkäytöksistä. Ne kertovat siitä, millaisia uhkia käyttäjät voivat nyt ja tulevaisuudessa teoriassa kohdata.\n\nTodennäköistä on kuitenkin se, että käyttäjät ovat heikosti tietoisia älylaseihin liittyvistä yksityisyysriskeistä.",
+    "link": "https://www.is.fi/digitoday/tietoturva/art-2000012326598.html",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-10-11T02:00:02+00:00",
+    "published_ts": 1791684002,
+    "smart_groups": [
+      "Teknologia & Tiede"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Hurja takaa-ajo Siikalatvalla",
+    "summary": "",
+    "summary_html": "Hurja takaa-ajo Siikalatvalla",
+    "link": "https://poliisi.fi/-/hurja-takaa-ajo-siikalatvalla",
+    "source": "Oulun poliisilaitos",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-10-11T01:48:00+00:00",
+    "published_ts": 1791683280,
+    "smart_groups": [],
     "curated": false
   },
   {
@@ -6309,9 +6464,7 @@
     "smart_groups": [
       "EU & Ulkomaat"
     ],
-    "curated": false,
-    "story_id": "4dbb6bdefa5b",
-    "story_size": 2
+    "curated": false
   },
   {
     "title": "Google Chrome  Stable Channel Update",

@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-10T20:17:30.339564+00:00",
+  "generated_at": "2026-10-11T06:06:54.379315+00:00",
   "date": "2026-10-02",
-  "total_items": 135,
+  "total_items": 140,
   "next_chunk": "archive/news/daily/2026-10-01.json",
   "items": [
     {
@@ -587,6 +587,22 @@
       "curated": true
     },
     {
+      "title": "security.txt on the Czech web: Scanning 1k popular .cz domains",
+      "summary": "submitted by /u/_vavkamil_ [link] [comments]",
+      "summary_html": "submitted by   <a href=\"https://www.reddit.com/user/_vavkamil_\"> /u/_vavkamil_ </a> <br/> <span><a href=\"https://vavkamil.cz/blog/2026-10-02-security-txt-on-czech-web/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/netsec/comments/1wvyvmu/securitytxt_on_the_czech_web_scanning_1k_popular/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/netsec/comments/1wvyvmu/securitytxt_on_the_czech_web_scanning_1k_popular/",
+      "source": "/r/netsec",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-02T16:52:58+00:00",
+      "published_ts": 1790959978,
+      "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
       "title": "AI Agent Traces - Tool calls and actions",
       "summary": "want to get sense of what others are doing. is anyone sending coding agent, other agentic ai OTLP traces into SIEM/detection engine. Is it worth it to you. submitted by /u/Fast-Freedom-5407 [link] [comments]",
       "summary_html": "<!-- SC_OFF --><div><p>want to get sense of what others are doing.<br/> is anyone sending coding agent, other agentic ai OTLP traces into SIEM/detection engine. Is it worth it to you.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Fast-Freedom-5407\"> /u/Fast-Freedom-5407 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wvythu/ai_agent_traces_tool_calls_and_actions/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wvythu/ai_agent_traces_tool_calls_and_actions/\">[comments]</a></span>",
@@ -598,6 +614,24 @@
       "published": "2026-10-02T16:50:33+00:00",
       "published_ts": 1790959833,
       "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Bypassing Secure Boot via Unbounded RLE8 Splash Images in U-Boot (CVE-2026-71972)",
+      "summary": "When analysing firmware attack surfaces, image decoders built into bootloaders get less scrutiny than cryptographically verified OS kernels. If image parsing happens before signature verification, any memory corruption in the parser breaks the secure boot trust model. researchers analysed U-Boot's video subsystem (drivers/video/video_bmp.c) and identified an unbounded write in the RLE8 bitmap decoder (video_display_rle8_bitmap()) that leads to a pre-authentication Secure Boot bypass . Root Cause and Vulnerability Mechanics When U-Boot displays a boot logo or splash screen, it parses a BMP image loaded from local storage (SPI flash, MMC/eMMC, USB, or SD card). Unbounded framebuffer write: During RLE8 decompression, video_display_rle8_bitmap() decodes run-length encoded streams directly into the active framebuffer without validating stream bounds against the frame boundary or allocated buffer size. Pre-authentication execution window: In many embedded target configurations, the boot splash screen is rendered immediately on startup, before U-Boot calls Android Verified Boot (AVB) or FIT image signature verification routines. Storage disparity: The kernel image and rootfs are signed, but splash images are frequently stored in unsigned, user-writable partitions or external media . An attacker who writes a crafted RLE8 BMP to the boot storage can trigger an out-of-bounds write past the framebuffer during early boot, corrupting adjacent bootloader data structures, function pointers, or verification flags in memory. This hijacks the execution flow before signature checking completes. submitted by /u/Emergency_Stable_923 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>When analysing firmware attack surfaces, image decoders built into bootloaders get less scrutiny than cryptographically verified OS kernels. If image parsing happens before signature verification, any memory corruption in the parser breaks the secure boot trust model.</p> <p>researchers analysed U-Boot's video subsystem (drivers/video/video_bmp.c) and identified an unbounded write in the RLE8 bitmap decoder (video_display_rle8_bitmap()) that leads to a <strong>pre-authentication Secure Boot bypass</strong>.</p> <p><strong>Root Cause and Vulnerability Mechanics</strong></p> <p>When <strong>U-Boot</strong> displays a boot logo or splash screen, it parses a BMP image loaded from local storage (SPI flash, MMC/eMMC, USB, or SD card).</p> <p><strong>Unbounded framebuffer write:</strong> During RLE8 decompression, <code>video_display_rle8_bitmap()</code> decodes run-length encoded streams directly into the active framebuffer without validating stream bounds against the frame boundary or allocated buffer size.</p> <p><strong>Pre-authentication execution window:</strong> In many embedded target configurations, the boot splash screen is rendered immediately on startup, before U-Boot calls Android Verified Boot (AVB) or FIT image signature verification routines.</p> <p><strong>Storage disparity:</strong> The kernel image and rootfs are signed, but <strong>splash images are frequently stored in unsigned, user-writable partitions or external media</strong>.</p> <p>An attacker who writes a crafted RLE8 BMP to the boot storage can trigger an out-of-bounds write past the framebuffer during early boot, corrupting adjacent bootloader data structures, function pointers, or verification flags in memory. </p> <p>This hijacks the execution flow before signature checking completes.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Emergency_Stable_923\"> /u/Emergency_Stable_923 </a> <br/> <span><a href=\"https://pop.byteray.co.uk/advisory/BYTERAY-2026-0213.html\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/netsec/comments/1wvyt5b/bypassing_secure_boot_via_unbounded_rle8_splash/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/netsec/comments/1wvyt5b/bypassing_secure_boot_via_unbounded_rle8_splash/",
+      "source": "/r/netsec",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-02T16:50:08+00:00",
+      "published_ts": 1790959808,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "IoT & Embedded Security",
         "Community Discussion"
       ],
       "curated": false
@@ -802,6 +836,25 @@
     },
     {
       "title": "8 out of 10 Banks HATE This One Weird 3SKey RCE",
+      "summary": "TL;DR. SConnect - 1M+ users, an extension middleware+native host for authentication with eIDs, 3SKeys and other hardware signing tokens had a drive-by RCE which enabled any site or iframe a user saw to silently download and execute a dll due to a poor hand-rolled implementation of RSA-2048 token validation, enabling a use of uninitialized memory validation bypass which enabled \"plugins\" (DLLs) to be loaded. v2.16.0.0 of the extension and native host is vulnerable. CVE-2026-18397 . CVSS 9.4. submitted by /u/acorn222 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p><strong>TL;DR.</strong> <a href=\"https://chromewebstore.google.com/detail/sconnect/mjhbkkaddmmnkghdnnmkjcgpphnopnfk\">SConnect</a> - 1M+ users, an extension middleware+native host for authentication with eIDs, 3SKeys and other hardware signing tokens had a drive-by RCE which enabled any site or iframe a user saw to silently download and execute a dll due to a poor hand-rolled implementation of RSA-2048 token validation, enabling a use of uninitialized memory validation bypass which enabled \"plugins\" (DLLs) to be loaded. v2.16.0.0 of the extension and native host is vulnerable. <a href=\"https://nvd.nist.gov/vuln/detail/cve-2026-18397\">CVE-2026-18397</a>. CVSS 9.4.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/acorn222\"> /u/acorn222 </a> <br/> <span><a href=\"http://amibeingpwned.com/blog/8-in-10-banks\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/netsec/comments/1wvxp1p/8_out_of_10_banks_hate_this_one_weird_3skey_rce/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/netsec/comments/1wvxp1p/8_out_of_10_banks_hate_this_one_weird_3skey_rce/",
+      "source": "/r/netsec",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-02T16:05:04+00:00",
+      "published_ts": 1790957104,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Community Discussion"
+      ],
+      "curated": true,
+      "story_id": "1a30e7964338",
+      "story_size": 2
+    },
+    {
+      "title": "8 out of 10 Banks HATE This One Weird 3SKey RCE",
       "summary": "submitted by /u/acorn222 [link] [comments]",
       "summary_html": "<a href=\"https://www.reddit.com/r/cybersecurity/comments/1wvxo1b/8_out_of_10_banks_hate_this_one_weird_3skey_rce/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/acorn222\"> /u/acorn222 </a> <br/> <span><a href=\"http://amibeingpwned.com/blog/8-in-10-banks\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1wvxo1b/8_out_of_10_banks_hate_this_one_weird_3skey_rce/\">[comments]</a></span>",
       "link": "https://www.reddit.com/r/cybersecurity/comments/1wvxo1b/8_out_of_10_banks_hate_this_one_weird_3skey_rce/",
@@ -815,7 +868,18 @@
         "Vulnerabilities / CVEs",
         "Community Discussion"
       ],
-      "curated": true
+      "curated": true,
+      "story_id": "1a30e7964338",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "/r/netsec",
+          "title": "8 out of 10 Banks HATE This One Weird 3SKey RCE",
+          "link": "https://www.reddit.com/r/netsec/comments/1wvxp1p/8_out_of_10_banks_hate_this_one_weird_3skey_rce/",
+          "published_ts": 1790957104
+        }
+      ]
     },
     {
       "title": "Is Your Organization Ready for 2027's AI Accountability Era?",
@@ -1122,6 +1186,23 @@
       "curated": false
     },
     {
+      "title": "45% of credential-phishing pages weren't on Google Safe Browsing when first seen; 29% still weren't after a week",
+      "summary": "submitted by /u/ricveloso [link] [comments]",
+      "summary_html": "submitted by   <a href=\"https://www.reddit.com/user/ricveloso\"> /u/ricveloso </a> <br/> <span><a href=\"https://www.grizzlysec.com/blog/zero-hour-gap\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/netsec/comments/1wvucap/45_of_credentialphishing_pages_werent_on_google/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/netsec/comments/1wvucap/45_of_credentialphishing_pages_werent_on_google/",
+      "source": "/r/netsec",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-02T13:50:28+00:00",
+      "published_ts": 1790949028,
+      "smart_groups": [
+        "Phishing / Social Engineering",
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
       "title": "A Vulnerability in Fortinet FortiMail Could Allow for Arbitrary Code Execution",
       "summary": "A vulnerability has been discovered in Fortinet FortiMail that could allow for arbitrary code execution. Fortinet FortiMail is a secure email gateway that protects organizations from inbound threats including spam, phishing, malware, and business email compromise, while also preventing outbound data loss across physical, virtual, and cloud deployments. Successful exploitation of this vulnerability could allow an unauthenticated attacker to write arbitrary files to the underlying system, which could potentially lead to arbitrary code execution.",
       "summary_html": "<p>A vulnerability has been discovered in Fortinet FortiMail that could allow for arbitrary code execution. Fortinet FortiMail is a secure email gateway that protects organizations from inbound threats including spam, phishing, malware, and business email compromise, while also preventing outbound data loss across physical, virtual, and cloud deployments. Successful exploitation of this vulnerability could allow an unauthenticated attacker to write arbitrary files to the underlying system, which could potentially lead to arbitrary code execution.</p>",
@@ -1353,6 +1434,23 @@
       "published": "2026-10-02T12:19:00+00:00",
       "published_ts": 1790943540,
       "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Azure's Weakest Link - Five Full Cross-Tenant Compromises",
+      "summary": "API Connections allow anyone to fully compromise any other connection worldwide, giving full access to the connected backend. submitted by /u/piraterapper [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>API Connections allow anyone to fully compromise any other connection worldwide, giving full access to the connected backend. </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/piraterapper\"> /u/piraterapper </a> <br/> <span><a href=\"https://binsec.no/posts/2026/10/one-root-case\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/netsec/comments/1wvs9ea/azures_weakest_link_five_full_crosstenant/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/netsec/comments/1wvs9ea/azures_weakest_link_five_full_crosstenant/",
+      "source": "/r/netsec",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-02T12:15:55+00:00",
+      "published_ts": 1790943355,
+      "smart_groups": [
+        "Cloud / SaaS",
+        "Community Discussion"
+      ],
       "curated": false
     },
     {

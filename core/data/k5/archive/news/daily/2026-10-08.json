@@ -1,9 +1,25 @@
 {
-  "generated_at": "2026-10-10T20:17:30.310697+00:00",
+  "generated_at": "2026-10-11T06:06:54.356808+00:00",
   "date": "2026-10-08",
-  "total_items": 188,
+  "total_items": 193,
   "next_chunk": "archive/news/daily/2026-10-07.json",
   "items": [
+    {
+      "title": "A JPEG, a Race, and a Ghost: Breaking Discourse's Image Pipeline",
+      "summary": "submitted by /u/Mempodipper [link] [comments]",
+      "summary_html": "submitted by   <a href=\"https://www.reddit.com/user/Mempodipper\"> /u/Mempodipper </a> <br/> <span><a href=\"https://www.slcyber.io/research/a-jpeg-a-race-and-a-ghost-breaking-discourses-image-pipeline\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/netsec/comments/1x165mn/a_jpeg_a_race_and_a_ghost_breaking_discourses/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/netsec/comments/1x165mn/a_jpeg_a_race_and_a_ghost_breaking_discourses/",
+      "source": "/r/netsec",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-08T23:32:09+00:00",
+      "published_ts": 1791502329,
+      "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false
+    },
     {
       "title": "Closing the Endpoint Zero Trust Gap",
       "summary": "At Zenith Live in Las Vegas, we introduced Zscaler AI Endpoint Security, a new product that extends Zscaler's AI protection to the endpoint. If you already use Zscaler to secure AI usage across your network, cloud, and SaaS applications, this product applies the same zero-trust approach to the AI applications and agents now running directly on your users' devices.This post covers why we built it: what's actually changing on the endpoint, why the tools most organizations already run there aren't designed for this problem, and how Zscaler is approaching it. What we're seeing on the endpointA new AI application layer has been forming on enterprise endpoints, and it has grown faster than most inventory processes can track.It started with frontier AI applications: Claude Code, Cowork, OpenAI Codex, Gemini, Microsoft Copilot. What's notable isn't just the adoption rate; it's who is adopting them. These are no longer developer tools. Finance teams, marketers, and HR teams are using them to do work that previously required a technical specialist, and they're getting real results. That's exactly why this trend won't reverse.The part that concerns security teams is everything these applications bring with them:Configuration and extension sprawl: Plugins, skill files, prompt libraries, MCP servers, subagent definitions, memory files, and background telemetry processes. These components install and update outside your normal software lifecycle.AI-powered IDEs: VS Code, Cursor, and Windsurf, each with extension marketplaces where third-party code runs with the user's full privileges.Local models: Ollama, LM Studio, and llama.cpp put multi-gigabyte model files on disk. We've seen model files that carry serialized code execution, embedded backdoors, content that violates policy, and models renamed to look like something they're not.Package dependencies: Python, npm, and Homebrew packages pulled in by the hundreds to support AI workflows, with the supply-chain exposure that implies.AI assistants and browsers: Tools like OpenClaw, Hermes, and Microsoft Scout, plus AI-enabled browsers such as Chrome, Edge, Comet, and Atlas with embedded models and agent capabilities.Underneath all of this sits the change that matters most: agents act as the user. An agent runs under the user's identity, with the user's permissions, touching the user's files and network connections. When we talk to security teams, this is the point where the conversation usually slows down, because most of their controls and audit trails assume that an action taken under a user's identity was taken by that user. That assumption no longer holds.This is AI asset sprawl: applications that create applications, files created faster than they can be classified, and identities that are no longer only human. Why existing endpoint tools weren't built for thisThe reasonable first question is: don't EDR, DLP, and MDM already cover the endpoint? They do, and none of them should go anywhere. But each one was designed around assumptions that AI asset sprawl breaks. This isn't a criticism of those products. It's a scoping observation.EDR watches files, processes, and threads, and it's very good at recognizing attack patterns and stopping malware and ransomware. But walk through a typical AI incident: a user types a prompt, an agent modifies local files and sends data over the network. From EDR's perspective, there is no malware signature, no process injection, no privilege escalation\u2014just a signed application from a major vendor doing normal application things. The context that would tell you something is wrong lives at the AI application layer: the prompt, the skill file that shaped the behavior, the MCP server involved, the agent's goal. EDR was never designed to see any of that.DLP was built for an environment where you could catalog your files, trace when each was created and modified, and scan content against known patterns. Those steps still work; the environment changed. On an endpoint with active agents, hundreds of new files can appear per minute: generated reports, working datasets, code, memory files. Classification pipelines sized for human document-creation rates fall behind immediately. Lineage breaks too \u2014 a file an agent synthesized from six sources and rewrote twice has no ancestry a traditional DLP can reconstruct. And pattern matching struggles when agents constantly reshape and re-encode the data they touch.MDM gave IT a reliable answer to \"what is installed on this machine?\" Sanctioned apps, managed versions, change control. The new failure mode is simple to state: AI applications create other applications. One prompt produces a finance dashboard app in its own folder. Another folder fills up with PowerShell scripts that modify system settings. None of it went through change management, none of it appears in the software inventory, and MDM has no mechanism to version it or determine what it's for. The gap between what IT believes is on the endpoint and what is actually running there widens every day.The common thread: all three product categories assume a predictable endpoint\u2014known applications, human-speed file creation, human-only identity. AI asset sprawl breaks all three assumptions at once. That's not a feature gap you close with a release; it's a different problem that needs a purpose-built product. How Zscaler AI Endpoint Security worksWe built this product from the ground up for this new AI-native application layer, around the same zero trust principles that run through the rest of the Zscaler platform: verify rather than assume, tie every action to an identity, and enforce policy inline. The Zscaler agent on the endpoint gains visibility into the AI application layer itself, and delivers three capabilities.1. AI Asset InventoryFirst, discovery. The product builds and maintains a complete inventory of AI assets on each endpoint:Frontier model applications (Claude, Codex, Copilot, Gemini)Local model applications (Llama, Ollama, LM Studio, custom models)AI browsers and AI-powered IDEsPackage managers and other channels bringing AI components onto the deviceThe entire ecosystem installed within these apps, including plugins, extensions, skills, and add-onsInventory goes below the application level, to the components that determine what these apps can actually do: config files, skill files and prompts, MCP servers, agent definitions, memory and knowledge stores, model files, telemetry and persistence mechanisms. The output is a structured map of your AI footprint per endpoint, with high-risk findings flagged\u2014unapproved agents, risky plugins, unknown model files, and shadow AI your inventory has never seen.2. AI Agent Runtime MonitoringInventory tells you what's present. Runtime monitoring tells you what it's doing. While AI applications run, Zscaler captures the events that matter at the AI application layer:Prompts and responsesTool and function callsSkill files invoked and MCP servers connectedFile access and data movementProcess and data lineageSystem interactions and network connectionsBecause these events are captured with full context, you can reconstruct a complete agent run\u2014the main agent and every subagent it spawned\u2014and correlate it to identity: which user, which agent, which device, which data. This is the piece that directly addresses the \u2018agents act as the user\u2019 problem. When something anomalous happens, you're not left guessing whether the human did it; you can see exactly which agent acted, on whose behalf, and what it touched.3. Enterprise AI Policy EnforcementVisibility on its own doesn't change outcomes, so the third capability is inline enforcement\u2014the control point IT and security teams have been missing on this layer. Policies apply in real time to:Block rogue or unauthorized agents before they actStop malicious skill files and instructionsHalt dangerous commands and code execution via agentsPrevent data exfiltration and protect sensitive or critical filesMonitor and police extensions within frontier AI appsFlag PII inside prompts before it leaves the deviceEnforce acceptable-use, data-protection, compliance, and custom enterprise policies consistently across frontier AI apps, AI-powered IDEs, AI assistants, and AI browsers alikeTaken together: inventory answers \u201cwhat is here\u201d, runtime monitoring answers \u201cwhat is it doing,\u201d and enforcement answers \u201cwhat will we allow.\u201d The same questions zero trust has always asked\u2014now asked of AI assets and agents on the endpoint. Why the need is so urgentThree things convinced us this needed to be a must-build product\u2014and that it couldn't wait.The endpoint is becoming a software factory. \"Apps that create apps\" is not an edge case we found in testing; it is the stated product direction of every major AI vendor. And it is exactly how AI asset sprawl compounds, as every new application arrives with its own configs, skills, models, and agents. Subagents, background agents, agents embedded in browsers and IDEs: hundreds of agents will soon be running on endpoints on behalf of users, just as they already are in the cloud. Any governance model built on \"one identity, one human\" stops scaling; agent identity and lineage have to become first-class objects in your security model. The gap between installed software and existing software will keep growing, and only continuous discovery paired with runtime observation can keep up with software that didn't exist an hour ago.Audit requirements are moving toward AI actions. The questions we increasingly hear from compliance teams are concrete: which agent touched this customer data, under whose authority, and what left the device? Those questions can only be answered at the endpoint, at the AI application layer, at runtime. Organizations that can't reconstruct an agent run will struggle to answer them at all.Productivity and competitiveness cannot slow down. Every organization is watching its peers and competitors adopt AI at full speed. Blocking the tools that make employees more productive is not a viable answer because it simply trades a security risk for a competitive one. A security solution built for the AI application layer means people keep doing their best work with the tools that raise the organization's productivity and success, while the enterprise stays in control.We've seen this pattern before. When perimeters dissolved, zero trust replaced castle-and-moat on the network. When work moved to cloud and SaaS, zero trust followed. The AI application layer arriving on the endpoint is the same story, one layer further in. And it's better to have controls in place while the sprawl is measured in dozens of assets per device rather than hundreds.EDR will keep stopping malware. DLP will keep protecting the data it can see. MDM will keep managing the software IT deploys. Keep all three. Zscaler Endpoint AI Security covers the layer none of them see: the AI applications, agents, and assets acting on your endpoints under your users' identities. What's nextZscaler Endpoint AI Security is rolling out to customers now. If you want to see your own endpoint AI footprint\u2014most teams are surprised by their first inventory report\u2014learn more here or reach out to your account team for a demo.",
@@ -67,6 +83,23 @@
       "curated": false
     },
     {
+      "title": "How We Found Thousands of Exposed NVIDIA GPUs and a Way to Disrupt Them (CVE-2026-47483)",
+      "summary": "TL;DR: NVIDIA DCGM Exporter is a widely used monitoring tool that collects GPU metrics like utilization, memory, temperature, and power consumption from AI servers. We discovered that thousands of these monitoring endpoints are exposed to the public internet, allowing anyone to inspect GPU infrastructure. Worse, we found a high-severity vulnerability (CVE-2026-47483, CVSS 8.2) that lets unauthenticated attackers exhaust server resources, crash GPU monitoring, and potentially disrupt AI workloads remotely. A few other interesting findings: 2,100+ exposed GPU servers , revealing telemetry from 12,000+ GPUs worth ~$100M , including H100s, H200s, and Blackwell GPUs. 60% of exposed GPUs reported 0% utilization across our scans. 12,096 additional servers exposed infrastructure details, including OS, firmware, and networking information. NVIDIA fixed the vulnerability following our responsible disclosure. Full research: https://lava.security/research/cve-2026-47483-nvidia-dcgm-exporter-vulnerability submitted by /u/Pale_Fly_2673 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p><strong>TL;DR:</strong> NVIDIA DCGM Exporter is a widely used monitoring tool that collects GPU metrics like utilization, memory, temperature, and power consumption from AI servers.<br/> We discovered that thousands of these monitoring endpoints are exposed to the public internet, allowing anyone to inspect GPU infrastructure. Worse, we found a <strong>high-severity vulnerability (CVE-2026-47483, CVSS 8.2)</strong> that lets unauthenticated attackers exhaust server resources, crash GPU monitoring, and potentially disrupt AI workloads remotely.<br/> <strong>A few other interesting findings:</strong><br/> <strong>2,100+ exposed GPU servers</strong>, revealing telemetry from <strong>12,000+ GPUs worth ~$100M</strong>, including H100s, H200s, and Blackwell GPUs.<br/> <strong>60% of exposed GPUs reported 0% utilization</strong> across our scans.<br/> <strong>12,096 additional servers</strong> exposed infrastructure details, including OS, firmware, and networking information.<br/> NVIDIA fixed the vulnerability following our responsible disclosure.<br/> Full research: <a href=\"https://lava.security/research/cve-2026-47483-nvidia-dcgm-exporter-vulnerability\">https://lava.security/research/cve-2026-47483-nvidia-dcgm-exporter-vulnerability</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Pale_Fly_2673\"> /u/Pale_Fly_2673 </a> <br/> <span><a href=\"https://lava.security/research/cve-2026-47483-nvidia-dcgm-exporter-vulnerability\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/netsec/comments/1x13vqz/how_we_found_thousands_of_exposed_nvidia_gpus_and/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/netsec/comments/1x13vqz/how_we_found_thousands_of_exposed_nvidia_gpus_and/",
+      "source": "/r/netsec",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-08T21:49:51+00:00",
+      "published_ts": 1791496191,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Community Discussion"
+      ],
+      "curated": true
+    },
+    {
       "title": "AI Startup Manus Raises $500 Million After China Nixed Meta\u2019s $2 Billion Acquisition",
       "summary": "Manus built a self-driving AI assistant before the hype, sold itself to Meta, then watched Beijing unwind the deal. Its first fresh money since: more than $500 million.",
       "summary_html": "Manus built a self-driving AI assistant before the hype, sold itself to Meta, then watched Beijing unwind the deal. Its first fresh money since: more than $500 million.",
@@ -118,6 +151,22 @@
           "published_ts": 1791558872
         }
       ]
+    },
+    {
+      "title": "Loupe: An Android Console in the Browser",
+      "summary": "submitted by /u/CaptMeelo [link] [comments]",
+      "summary_html": "submitted by   <a href=\"https://www.reddit.com/user/CaptMeelo\"> /u/CaptMeelo </a> <br/> <span><a href=\"https://captmeelo.com/mobile/2026/09/21/loupe.html\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/netsec/comments/1x13cde/loupe_an_android_console_in_the_browser/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/netsec/comments/1x13cde/loupe_an_android_console_in_the_browser/",
+      "source": "/r/netsec",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-08T21:27:29+00:00",
+      "published_ts": 1791494849,
+      "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false
     },
     {
       "title": "Google Wants Gemini to Be Your Next Coworker\u2014Complete With Its Own Email Address",
@@ -854,6 +903,22 @@
       "published": "2026-10-08T16:25:06+00:00",
       "published_ts": 1791476706,
       "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "A Single POST Freezes Any Next.js Server",
+      "summary": "submitted by /u/TradeGold6317 [link] [comments]",
+      "summary_html": "submitted by   <a href=\"https://www.reddit.com/user/TradeGold6317\"> /u/TradeGold6317 </a> <br/> <span><a href=\"https://simonkoeck.com/writeups/react-rsc-formdata-event-loop-dos\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/netsec/comments/1x0v7sw/a_single_post_freezes_any_nextjs_server/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/netsec/comments/1x0v7sw/a_single_post_freezes_any_nextjs_server/",
+      "source": "/r/netsec",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-08T16:17:23+00:00",
+      "published_ts": 1791476243,
+      "smart_groups": [
+        "Community Discussion"
+      ],
       "curated": false
     },
     {
@@ -2968,6 +3033,22 @@
           "published_ts": 1791474611
         }
       ]
+    },
+    {
+      "title": "I found yet another way to invoke JavaScript functions without parentheses",
+      "summary": "It turns out you can overwrite the Error.prepareStackTrace method with the function constructor. Then, using prototype pollution, you can inject valid JavaScript code to generate arbitrary functions and invoke it using the usual tricks. submitted by /u/DrAdalbbert [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>It turns out you can overwrite the Error.prepareStackTrace method with the function constructor. Then, using prototype pollution, you can inject valid JavaScript code to generate arbitrary functions and invoke it using the usual tricks. </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/DrAdalbbert\"> /u/DrAdalbbert </a> <br/> <span><a href=\"https://blog.ikaes.de/yet-another-way-to-invoke-functions-without-parentheses/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/netsec/comments/1x0iuul/i_found_yet_another_way_to_invoke_javascript/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/netsec/comments/1x0iuul/i_found_yet_another_way_to_invoke_javascript/",
+      "source": "/r/netsec",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-08T05:38:09+00:00",
+      "published_ts": 1791437889,
+      "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false
     },
     {
       "title": "Who watches the AI watching your street?",
