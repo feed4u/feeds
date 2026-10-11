@@ -1,9 +1,379 @@
 {
-  "generated_at": "2026-10-11T06:08:38.419937+00:00",
+  "generated_at": "2026-10-11T15:05:08.081104+00:00",
   "date": "2026-10-11",
-  "total_items": 18,
+  "total_items": 42,
   "next_chunk": "archive/blog/daily/2026-10-10.json",
   "items": [
+    {
+      "title": "Qualcomm's CEO on the coming AI phone supercycle",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://sources.news/p/qualcomm-ceo-ai-phone\">https://sources.news/p/qualcomm-ceo-ai-phone</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50043949\">https://news.ycombinator.com/item?id=50043949</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://sources.news/p/qualcomm-ceo-ai-phone",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T14:53:09+00:00",
+      "published_ts": 1791730389,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: Burning Bridges AI \u2013 Put yourself into a viral music-video clip",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://burningbridgesai.app\">https://burningbridgesai.app</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50043726\">https://news.ycombinator.com/item?id=50043726</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://burningbridgesai.app",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T14:34:26+00:00",
+      "published_ts": 1791729266,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "I trained a 414k-parameter transformer to fly a boids flock, then tested whether the rules a probe can read are the ones it uses [P]",
+      "summary": "I wrote a small boid simulator (12 birds), recorded it flying, and trained a transformer to predict each bird's next move without it knowing about any boid rules. (built in Python and PyTorch: a transformer written from scratch, one token per bird, two attention layers, about 414k weights, trained on a laptop CPU) what I found: it flies the flock: R\u00b2 0.990 to 0.994 on clips it never trained on, across 4 full runs. It also flies 50 birds (it has only trained on 12). for comparison, a small network that only gets a bird's own move plus the flock's average move (no attention, no positions) gets R\u00b2 0.40. one seed, same held-out clips. the three rules were easy to read out of its hidden states with a linear probe. cohesion (stay close to your neighbours) could be read before any training (probe R\u00b2 about 0.85). alignment (line up with your neighbours) was readable after the first attention layer, but if I make the second layer attend only to itself, it is gone in all 4 runs. what I wasn't expecting: my first ever model was not using the flock at all. With 8 ticks of history, the previous answer was already in the input, and a small network that saw only one bird beat the whole transformer. what I am still not sure about: making a layer attend only to itself is something the model never went through during training. is that a fair test, or is some of the decay due to strange input fed to the model? site: https://kreptiliri.github.io/murmuration/ code: https://github.com/kreptiliri/murmuration submitted by /u/rage_81 [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/MachineLearning/comments/1x39jlu/i_trained_a_414kparameter_transformer_to_fly_a/\">  </a>  <!-- SC_OFF --><div><p>I wrote a small boid simulator (12 birds), recorded it flying, and trained a transformer to predict each bird's next move without it knowing about any boid rules.</p> <p>(built in Python and PyTorch: a transformer written from scratch, one token per bird, two attention layers, about 414k weights, trained on a laptop CPU)</p> <p>what I found:</p> <ul> <li>it flies the flock: R\u00b2 0.990 to 0.994 on clips it never trained on, across 4 full runs. It also flies 50 birds (it has only trained on 12).</li> <li>for comparison, a small network that only gets a bird's own move plus the flock's average move (no attention, no positions) gets R\u00b2 0.40. one seed, same held-out clips.</li> <li>the three rules were easy to read out of its hidden states with a linear probe. cohesion (stay close to your neighbours) could be read before any training (probe R\u00b2 about 0.85).</li> <li>alignment (line up with your neighbours) was readable after the first attention layer, but if I make the second layer attend only to itself, it is gone in all 4 runs.</li> </ul> <p>what I wasn't expecting: my first ever model was not using the flock at all. With 8 ticks of history, the previous answer was already in the input, and a small network that saw only one bird beat the whole transformer.</p> <p>what I am still not sure about: making a layer attend only to itself is something the model never went through during training. is that a fair test, or is some of the decay due to strange input fed to the model?</p> <p>site: <a href=\"https://kreptiliri.github.io/murmuration/\">https://kreptiliri.github.io/murmuration/</a></p> <p>code: <a href=\"https://github.com/kreptiliri/murmuration\">https://github.com/kreptiliri/murmuration</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/rage_81\"> /u/rage_81 </a> <br/> <span><a href=\"https://i.redd.it/89xkdlg4kuuh1.png\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x39jlu/i_trained_a_414kparameter_transformer_to_fly_a/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/MachineLearning/comments/1x39jlu/i_trained_a_414kparameter_transformer_to_fly_a/",
+      "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T14:25:59+00:00",
+      "published_ts": 1791728759,
+      "smart_groups": [
+        "Safety & alignment",
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI Agents create their own backstories for a Love is Blind simulation",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://unyxfly.substack.com/p/12-ai-love-is-blind\">https://unyxfly.substack.com/p/12-ai-love-is-blind</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50043630\">https://news.ycombinator.com/item?id=50043630</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://unyxfly.substack.com/p/12-ai-love-is-blind",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T14:24:16+00:00",
+      "published_ts": 1791728656,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "To Switch, or Not to Switch the AI Model",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://age-of-product.com/switching-ai-models/\">https://age-of-product.com/switching-ai-models/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50043557\">https://news.ycombinator.com/item?id=50043557</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://age-of-product.com/switching-ai-models/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T14:17:00+00:00",
+      "published_ts": 1791728220,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI companies are starting to do phones",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://twitter.com/firesidealpha/status/2108930562794864912\">https://twitter.com/firesidealpha/status/2108930562794864912</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50043338\">https://news.ycombinator.com/item?id=50043338</a></p>\n<p>Points: 1</p>\n<p># Comments: 2</p>",
+      "link": "https://twitter.com/firesidealpha/status/2108930562794864912",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T13:55:33+00:00",
+      "published_ts": 1791726933,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Tensordyne is making AI compute more efficient using logarithms",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.zach.be/p/tensordyne-is-making-ai-compute-more\">https://www.zach.be/p/tensordyne-is-making-ai-compute-more</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50043309\">https://news.ycombinator.com/item?id=50043309</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://www.zach.be/p/tensordyne-is-making-ai-compute-more",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T13:51:59+00:00",
+      "published_ts": 1791726719,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "World Action Models vs VLAs: Robotics Just Had Its GPT-2 Moment [N]",
+      "summary": "submitted by /u/moschles [link] [comments]",
+      "summary_html": "submitted by   <a href=\"https://www.reddit.com/user/moschles\"> /u/moschles </a> <br/> <span><a href=\"https://archiesengupta.com/blog/world-action-models-vs-vla-deep-dive\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x38qpy/world_action_models_vs_vlas_robotics_just_had_its/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/MachineLearning/comments/1x38qpy/world_action_models_vs_vlas_robotics_just_had_its/",
+      "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T13:51:34+00:00",
+      "published_ts": 1791726694,
+      "smart_groups": [
+        "Robotics & autonomy"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI does math. Should you get a PhD?",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://jasonpolak.substack.com/p/ai-does-math-should-you-get-a-phd\">https://jasonpolak.substack.com/p/ai-does-math-should-you-get-a-phd</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50043255\">https://news.ycombinator.com/item?id=50043255</a></p>\n<p>Points: 2</p>\n<p># Comments: 3</p>",
+      "link": "https://jasonpolak.substack.com/p/ai-does-math-should-you-get-a-phd",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T13:46:08+00:00",
+      "published_ts": 1791726368,
+      "smart_groups": [
+        "Health & science"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Simulate coding pre-AI by year",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://beforetheprompt.xipu.li/\">https://beforetheprompt.xipu.li/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50043221\">https://news.ycombinator.com/item?id=50043221</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://beforetheprompt.xipu.li/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T13:42:41+00:00",
+      "published_ts": 1791726161,
+      "smart_groups": [
+        "Coding & dev tools"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: An MCP server where AI agents confess, in their own name",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://ai.confess.online\">https://ai.confess.online</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50043164\">https://news.ycombinator.com/item?id=50043164</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://ai.confess.online",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T13:35:17+00:00",
+      "published_ts": 1791725717,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI Can Cut Film Budgets by Up to 40%, Says 'The Outlaws' Director Kang Yoon-Sung",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://variety.com/2026/tv/festivals/netflix-ai-300-titles-kang-yoon-sung-40-percent-budget-busan-1236907359/\">https://variety.com/2026/tv/festivals/netflix-ai-300-titles-kang-yoon-sung-40-percent-budget-busan-1236907359/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50043156\">https://news.ycombinator.com/item?id=50043156</a></p>\n<p>Points: 3</p>\n<p># Comments: 2</p>",
+      "link": "https://variety.com/2026/tv/festivals/netflix-ai-300-titles-kang-yoon-sung-40-percent-budget-busan-1236907359/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T13:34:17+00:00",
+      "published_ts": 1791725657,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Artex AI, Claude agents used in cyberattacks on South Korean banks",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.bleepingcomputer.com/news/security/hacker-used-artex-ai-and-claude-agents-to-target-south-korean-banks/\">https://www.bleepingcomputer.com/news/security/hacker-used-artex-ai-and-claude-agents-to-target-south-korean-banks/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50043132\">https://news.ycombinator.com/item?id=50043132</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://www.bleepingcomputer.com/news/security/hacker-used-artex-ai-and-claude-agents-to-target-south-korean-banks/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T13:31:44+00:00",
+      "published_ts": 1791725504,
+      "smart_groups": [
+        "Agents & automation",
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI Engineering Maturity Model: 5 Stages for Teams",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.augmentcode.com/guides/ai-engineering-maturity-model\">https://www.augmentcode.com/guides/ai-engineering-maturity-model</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50042292\">https://news.ycombinator.com/item?id=50042292</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://www.augmentcode.com/guides/ai-engineering-maturity-model",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T11:55:38+00:00",
+      "published_ts": 1791719738,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI is creating a 'human premium' for art created by people",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.bbc.com/news/articles/c5vgjm3gk7rzo\">https://www.bbc.com/news/articles/c5vgjm3gk7rzo</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50042107\">https://news.ycombinator.com/item?id=50042107</a></p>\n<p>Points: 58</p>\n<p># Comments: 69</p>",
+      "link": "https://www.bbc.com/news/articles/c5vgjm3gk7rzo",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T11:34:28+00:00",
+      "published_ts": 1791718468,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Nicolas Cage says he won't work with Amazon again over AI dispute",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.latimes.com/entertainment-arts/business/story/2026-10-10/nicolas-cage-says-he-wont-work-with-amazon-again-over-ai-dispute\">https://www.latimes.com/entertainment-arts/business/story/2026-10-10/nicolas-cage-says-he-wont-work-with-amazon-again-over-ai-dispute</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50041873\">https://news.ycombinator.com/item?id=50041873</a></p>\n<p>Points: 20</p>\n<p># Comments: 2</p>",
+      "link": "https://www.latimes.com/entertainment-arts/business/story/2026-10-10/nicolas-cage-says-he-wont-work-with-amazon-again-over-ai-dispute",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T11:03:21+00:00",
+      "published_ts": 1791716601,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Fixated on AI, the world has forgotten it is staring at nuclear annihilation",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.theguardian.com/commentisfree/2026/oct/11/ai-annihilation-advanced-nuclear-weapons\">https://www.theguardian.com/commentisfree/2026/oct/11/ai-annihilation-advanced-nuclear-weapons</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50041859\">https://news.ycombinator.com/item?id=50041859</a></p>\n<p>Points: 2</p>\n<p># Comments: 3</p>",
+      "link": "https://www.theguardian.com/commentisfree/2026/oct/11/ai-annihilation-advanced-nuclear-weapons",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T11:02:10+00:00",
+      "published_ts": 1791716530,
+      "smart_groups": [
+        "Energy & data centers"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Using AI for Just 10 Minutes Erodes Your Ability to Persist at Hard Things",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://vcresearch.berkeley.edu/news/using-ai-just-10-minutes-erodes-your-ability-persist-hard-things\">https://vcresearch.berkeley.edu/news/using-ai-just-10-minutes-erodes-your-ability-persist-hard-things</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50041765\">https://news.ycombinator.com/item?id=50041765</a></p>\n<p>Points: 53</p>\n<p># Comments: 59</p>",
+      "link": "https://vcresearch.berkeley.edu/news/using-ai-just-10-minutes-erodes-your-ability-persist-hard-things",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T10:47:21+00:00",
+      "published_ts": 1791715641,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "How has AI changed Hackathons?",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://paypalaihackathon.devpost.com\">https://paypalaihackathon.devpost.com</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50041688\">https://news.ycombinator.com/item?id=50041688</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
+      "link": "https://paypalaihackathon.devpost.com",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T10:38:20+00:00",
+      "published_ts": 1791715100,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: WhimKid, an AI storybook generator for children",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://whimkid.com/\">https://whimkid.com/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50041648\">https://news.ycombinator.com/item?id=50041648</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://whimkid.com/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T10:32:48+00:00",
+      "published_ts": 1791714768,
+      "smart_groups": [
+        "Work & society"
+      ],
+      "curated": false
+    },
+    {
+      "title": "[P] Pecision models that score every allowed label from the logits: Jebadiah v2.1 (27B, 9B), open weights and self-run benchmark results [P]",
+      "summary": "I've been building open models that treat a decision as a closed-set scoring problem rather than text generation. The input is structured context plus a typed question with a fixed set of options. The output is a probability for each option, taken from the candidate-label logits, so there's no generation step to parse and no sampling. v2.1 updates the 27B and the 9B. On the Decision Index 0.3 public suite (my own runs with the unchanged official scorer, submitted to the board, which adds private tests before ranking anything): - 27B: 57.03 vs 55.11 for v2. Knowledge +2.34, Language +3.89, Retrieval +2.81, Arts +1.31, Tools -2.10 - 9B: 47.20 vs 44.09. Knowledge +3.67, Language +4.34, Retrieval +5.96, Arts +0.01, Tools -0.84 The regressions are concentrated: When2Call fell 6.38 (27B) and 7.44 (9B). I haven't found the cause yet and the cards don't claim statistical significance for any of these deltas. Contamination check: the benchmark families that overlap public training sources were scanned against the training data with zero hits. It's a text-match scanner, so paraphrased overlap would get through. Quantization: I measured agreement with the full weights on 260 held-out questions per build (for example 27B Q8_0 259/260, 9B MLX 4-bit 237/260) and publish the per-question records. Weights (Apache-2.0, Qwen base): https://huggingface.co/frontier-infra/jebadiah-27b-v2-1 and https://huggingface.co/frontier-infra/jebadiah-9b-v2-1 Results: https://huggingface.co/datasets/frontier-infra/jebadiah-v2-1-decision-index-results Code and evals: https://github.com/getainode/jebadiah I'd welcome critique of the evaluation setup, especially the tool-use regression. submitted by /u/WebDevToday [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I've been building open models that treat a decision as a closed-set scoring problem rather than text generation. The input is structured context plus a typed question with a fixed set of options. The output is a probability for each option, taken from the candidate-label logits, so there's no generation step to parse and no sampling. </p> <p>v2.1 updates the 27B and the 9B. On the Decision Index 0.3 public suite (my own runs with the unchanged official scorer, submitted to the board, which adds private tests before ranking anything): </p> <p>- 27B: 57.03 vs 55.11 for v2. Knowledge +2.34, Language +3.89, Retrieval +2.81, Arts +1.31, Tools -2.10<br/> - 9B: 47.20 vs 44.09. Knowledge +3.67, Language +4.34, Retrieval +5.96, Arts +0.01, Tools -0.84 </p> <p>The regressions are concentrated: When2Call fell 6.38 (27B) and 7.44 (9B). I haven't found the cause yet and the cards don't claim statistical significance for any of these deltas. </p> <p>Contamination check: the benchmark families that overlap public training sources were scanned against the training data with zero hits. It's a text-match scanner, so paraphrased overlap would get through. </p> <p>Quantization: I measured agreement with the full weights on 260 held-out questions per build (for example 27B Q8_0 259/260, 9B MLX 4-bit 237/260) and publish the per-question records. </p> <p>Weights (Apache-2.0, Qwen base): <a href=\"https://huggingface.co/frontier-infra/jebadiah-27b-v2-1\">https://huggingface.co/frontier-infra/jebadiah-27b-v2-1</a> and <a href=\"https://huggingface.co/frontier-infra/jebadiah-9b-v2-1\">https://huggingface.co/frontier-infra/jebadiah-9b-v2-1</a><br/> Results: <a href=\"https://huggingface.co/datasets/frontier-infra/jebadiah-v2-1-decision-index-results\">https://huggingface.co/datasets/frontier-infra/jebadiah-v2-1-decision-index-results</a><br/> Code and evals: <a href=\"https://github.com/getainode/jebadiah\">https://github.com/getainode/jebadiah</a> </p> <p>I'd welcome critique of the evaluation setup, especially the tool-use regression.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/WebDevToday\"> /u/WebDevToday </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x33wgz/p_pecision_models_that_score_every_allowed_label/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x33wgz/p_pecision_models_that_score_every_allowed_label/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/MachineLearning/comments/1x33wgz/p_pecision_models_that_score_every_allowed_label/",
+      "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T09:33:10+00:00",
+      "published_ts": 1791711190,
+      "smart_groups": [
+        "Research & papers"
+      ],
+      "curated": false
+    },
+    {
+      "title": "I build an open-source runtime security layer for AI agents \u2013 Let's break it",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://github.com/Pryxor/pryxor\">https://github.com/Pryxor/pryxor</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50041219\">https://news.ycombinator.com/item?id=50041219</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://github.com/Pryxor/pryxor",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T09:14:07+00:00",
+      "published_ts": 1791710047,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Pippa, a local AI assistant for everyday people",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://heypippa.app/en/\">https://heypippa.app/en/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50041165\">https://news.ycombinator.com/item?id=50041165</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://heypippa.app/en/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T09:07:25+00:00",
+      "published_ts": 1791709645,
+      "smart_groups": [
+        "Consumer AI"
+      ],
+      "curated": false
+    },
     {
       "title": "Every lawsuit against an AI company",
       "summary": "",
@@ -34,6 +404,20 @@
       "smart_groups": [
         "Security & misuse"
       ],
+      "curated": false
+    },
+    {
+      "title": "What ai is best to operate a system from screen video [p]",
+      "summary": "I have working programmatic control over a system, I can send inputs reliably and capture the screen as visual feedback. The control/feedback loop is already done. I need something that can learn from visual information, remember what it has seen and been taught, and get better at operating the system over time. recommendations? the AI I have tried so far it's memory is not good enough and it often doesn't consult the visual information before making decisions which is very frustrating. submitted by /u/angrykirby [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I have working programmatic control over a system, I can send inputs reliably and capture the screen as visual feedback. The control/feedback loop is already done.</p> <p>I need something that can learn from visual information, remember what it has seen and been taught, and get better at operating the system over time.</p> <p>recommendations? the AI I have tried so far it's memory is not good enough and it often doesn't consult the visual information before making decisions which is very frustrating.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/angrykirby\"> /u/angrykirby </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x2yoxe/what_ai_is_best_to_operate_a_system_from_screen/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x2yoxe/what_ai_is_best_to_operate_a_system_from_screen/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/MachineLearning/comments/1x2yoxe/what_ai_is_best_to_operate_a_system_from_screen/",
+      "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-11T04:18:11+00:00",
+      "published_ts": 1791692291,
+      "smart_groups": [],
       "curated": false
     },
     {
