@@ -1,0 +1,175 @@
+{
+  "generated_at": "2026-10-12T06:18:44.490902+00:00",
+  "date": "2026-10-12",
+  "total_items": 11,
+  "next_chunk": "archive/blog/daily/2026-10-11.json",
+  "items": [
+    {
+      "title": "NVIDIA DCGM Exporter Bug Exposes GPU Servers to Resource Exhaustion Attacks",
+      "summary": "NVIDIA patched high-severity flaw CVE-2026-47483 in DCGM Exporter that allows unauthenticated remote attackers to exhaust server resources, crash GPU monitoring , and disrupt AI workloads. DCGM Exporter is a common monitoring tool for GPU servers and Kubernetes clusters. It reads details such as GPU model, temperature, memory use, power draw, errors, and workload activity, then serves the data in a Prometheus-friendly format over HTTP. A unique UUID also lists each GPU. If this endpoint is public, an outsider can map valuable hardware, watch busy periods, and learn details about the software and workloads around it. The weakness sits in Go profiling routes under /debug/pprof. These routes were meant to help developers inspect CPU and memory use. However, vulnerable builds exposed them without login checks or safe request limits. By sending many profiling requests at once, an attacker could cause uncontrolled memory and CPU use until the exporter slowed, stopped responding, or crashed. NVIDIA DCGM Exporter Bug Exposes NVIDIA rated the issue 8.2 out of 10 and classified it as CWE-770 , which covers resource allocation without proper limits. A crash would remove the live view of GPU health, errors, temperature, and use. The same resource pressure could also slow nearby AI tasks when the exporter lacks strict container or host limits. The researchers tested the resource exhaustion only in a controlled environment and did not target the public systems they found. Shodan scans found 2,100 exposed DCGM Exporter hosts revealing 12,000+ GPU UUIDs over unauthenticated HTTP (source : lava.security ) Lava Security researcher Michael Katchinskiy found the flaw while studying public DCGM Exporter systems. Four internet scans between March and May 2026 identified about 2,100 hosts serving metrics without authentication. They exposed more than 12,000 unique GPU identifiers across about 300 organizations. Around one quarter of the DCGM hosts also exposed the risky profiling routes. The visible hardware included H100, H200, B200, Blackwell Ultra B300, RTX 4090, and RTX 5090 GPUs. The United States accounted for 5,274 exposed GPUs, or 44 percent of the observed total. Exposed AI infrastructure uses both NVIDIA H100/H200 accelerators and consumer RTX 4090/5090 GPUs (source : lava.security ) Researchers also found customer-run endpoints on networks linked to GPU cloud providers, including Voltage Park, Lambda, Northern Data, DigitalOcean, and others. The providers helped alert customers after receiving the findings. The case shows why AI monitoring ports should receive the same care as other management services. Cyber Security News has previously covered NVIDIA GPU driver flaws that enable code execution and published an AI data center security checklist covering GPU, firmware, and management-layer risks. NVIDIA\u2019s security bulletin directs DCGM Exporter users to install version 4.8.2 or later. Operators should also keep \u2013enable-pprof disabled unless profiling is needed. Exposed GPU exporters appeared on 2,000+ hosts across nearly 300 organizations (source : lava.security ) Exporter, Prometheus, and Node Exporter services should bind to a private or loopback interface and accept traffic only from approved monitoring systems through firewall rules, cloud security groups, or Kubernetes NetworkPolicies. Security teams should review internet-facing port 9400, block public access to /debug/pprof, and inspect logs for repeated or long-running profiling requests. Sudden memory growth, CPU spikes, Prometheus scrape failures, or gaps in GPU alerts may signal probing or exploitation. Teams should confirm that patched containers are deployed across every GPU node, not merely updated in a registry or configuration file. Stops threats before impact with 21 min faster MTTR. Integrate ANYRUN\u2019s Sandbox in your SOC",
+      "summary_html": "<p>NVIDIA patched high-severity flaw CVE-2026-47483 in DCGM Exporter that allows unauthenticated remote attackers to exhaust server resources, <a href=\"https://cybersecuritynews.com/ssh-bot-profiles-linux-cpu/\">crash GPU monitoring</a>, and disrupt AI workloads.</p>\n<p>DCGM Exporter is a common monitoring tool for GPU servers and Kubernetes clusters. It reads details such as GPU model, temperature, memory use, power draw, errors, and workload activity, then serves the data in a Prometheus-friendly format over HTTP.</p>\n<p>A unique UUID also lists each GPU. If this endpoint is public, an outsider can map valuable hardware, watch busy periods, and learn details about the software and workloads around it.</p>\n<p>The weakness sits in Go profiling routes under /debug/pprof. These routes were meant to help developers inspect CPU and memory use. However, vulnerable builds exposed them without login checks or safe request limits.</p>\n<p>By sending many profiling requests at once, an attacker could cause uncontrolled memory and CPU use until the exporter slowed, stopped responding, or crashed.</p>\n<strong>NVIDIA DCGM Exporter Bug Exposes</strong>\n<p>NVIDIA rated the issue 8.2 out of 10 and <a href=\"https://cybersecuritynews.com/mitre-releases-top-25-most-dangerous-software/\">classified it as CWE-770</a>, which covers resource allocation without proper limits. A crash would remove the live view of GPU health, errors, temperature, and use.</p>\n<p>The same resource pressure could also slow nearby AI tasks when the exporter lacks strict container or host limits. The researchers tested the resource exhaustion only in a controlled environment and did not target the public systems they found.</p>\nShodan scans found 2,100 exposed DCGM Exporter hosts revealing 12,000+ GPU UUIDs over unauthenticated HTTP (source : lava.security )\n<p><a href=\"https://lava.security/research/cve-2026-47483-nvidia-dcgm-exporter-vulnerability\">Lava Security researcher Michael Katchinskiy</a> found the flaw while studying public DCGM Exporter systems. Four internet scans between March and May 2026 identified about 2,100 hosts serving metrics without authentication.</p>\n<p>They exposed more than 12,000 unique GPU identifiers across about 300 organizations. Around one quarter of the DCGM hosts also exposed the risky profiling routes.</p>\n<p>The visible hardware included H100, H200, B200, Blackwell Ultra B300, RTX 4090, and RTX 5090 GPUs. The United States accounted for 5,274 exposed GPUs, or 44 percent of the observed total.</p>\nExposed AI infrastructure uses both NVIDIA H100/H200 accelerators and consumer RTX 4090/5090 GPUs (source : lava.security )\n<p>Researchers also found customer-run endpoints on networks linked to GPU cloud providers, including Voltage Park, Lambda, Northern Data, DigitalOcean, and others. The providers helped alert customers after receiving the findings.</p>\n<p>The case shows why AI monitoring ports should receive the same care as other management services. Cyber Security News has previously covered <a href=\"https://cybersecuritynews.com/nvidia-gpu-display-driver-code-execution-vulnerability/\">NVIDIA GPU driver flaws that enable code execution</a> and published an <a href=\"https://cybersecuritynews.com/ai-data-center-security-checklist/\">AI data center security checklist</a> covering GPU, firmware, and management-layer risks.</p>\n<p>NVIDIA\u2019s security bulletin directs DCGM Exporter users to install version 4.8.2 or later. Operators should also keep \u2013enable-pprof disabled unless profiling is needed.</p>\nExposed GPU exporters appeared on 2,000+ hosts across nearly 300 organizations (source : lava.security )\n<p>Exporter, Prometheus, and Node Exporter services should bind to a private or loopback interface and accept traffic only from approved monitoring systems through firewall rules, cloud security groups, or Kubernetes NetworkPolicies.</p>\n<p>Security teams should review internet-facing port 9400, block public access to /debug/pprof, and inspect logs for repeated or long-running profiling requests.</p>\n<p>Sudden memory growth, CPU spikes, Prometheus scrape failures, or gaps in GPU alerts may signal probing or exploitation. Teams should confirm that patched containers are deployed across every GPU node, not merely updated in a registry or configuration file.</p>\n<p><strong>Stops threats before impact with 21 min faster MTTR. <a href=\"https://any.run/enterprise/?utm_source=csn&amp;utm_medium=article&amp;utm_campaign=links&amp;utm_content=enterprise&amp;utm_term=oct_26#contact-sales\">Integrate ANYRUN\u2019s Sandbox in your SOC</a></strong></p>\n<p>The post <a href=\"https://cybersecuritynews.com/nvidia-dcgm-exporter-bug-exposes/\">NVIDIA DCGM Exporter Bug Exposes GPU Servers to Resource Exhaustion Attacks</a> appeared first on <a href=\"https://cybersecuritynews.com\">Cyber Security News</a>.</p>",
+      "link": "https://cybersecuritynews.com/nvidia-dcgm-exporter-bug-exposes/",
+      "source": "Cyber Security News (FeedBurner)",
+      "feed_type": "blog",
+      "type": "security-researcher-blogs",
+      "type_label": "Security Researcher Blogs",
+      "published": "2026-10-12T04:52:16+00:00",
+      "published_ts": 1791780736,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Cloud / SaaS"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Admin Password \u201c123456\u201d Led to 8.8 Million Danish CPR Data Breach",
+      "summary": "A weak administrator password is linked to a major Danish data breach that exposed information tied to about 8.8 million national identification numbers . At least three accounts at Pays, an IT company on the island of Funen, reportedly used \u201c123456\u201d, including an administrator account. The case shows how poor security at a company with trusted access can place a national database at risk. Pays had permission to search Denmark\u2019s Central Person Register, known as CPR. An attacker allegedly used that access to collect personal records rather than breaking directly into the register\u2019s underlying systems. Danish CPR Breach Unfolded According to Politiken\u2019s investigation , the hacker shared stolen data with the newspaper and claimed the password \u201c123456\u201d helped unlock access to CPR numbers and addresses. Politiken reported 8,749,975 records, explaining why coverage describes the breach as either 8.7 million or roughly 8.8 million. The reported data covered about 5.5 million living people and 3.3 million deceased people. Those rounded figures should not be read as an exact total. The CPR register holds personal information about people living in Denmark or previously registered there. The Copenhagen Post reported that the attacker gained access through a leaked password belonging to a former employee of a small Danish company. The hacker then allegedly built two programs to retrieve CPR information and save it outside the system. These details remain attributed to the hacker\u2019s account, not a published forensic report. Access reportedly began on September 10 and lasted 21 days and 17 hours. That lengthy window raises questions about whether monitoring controls could detect repeated searches or unusual data collection before millions of records were exposed. Pays Confirms Misuse of Authorized Access Pays ApS, based in Odense, confirmed to TV 2 that its lawful access to search the CPR system had been abused. Managing director and owner Sophie Laursen acknowledged the attack in an email, according to The Copenhagen Post. Private companies and associations can receive CPR access when they have a legitimate need, such as checking customer or member addresses. This arrangement makes the security of each approved organization important, because valid credentials can provide a route into sensitive public records. The pattern resembles the Veradigm third-party data breach , where stolen vendor credentials allowed an attacker to download patient information through an approved interface. The systems differ, but both cases show why trusted access needs close limits and oversight. Cybersecurity News previously covered research into passwords used in RDP attacks , with \u201c123456\u201d leading the reported list. That research concerns remote desktop access, not Denmark\u2019s CPR system, but highlights how predictable passwords remain useful to attackers. Organizations handling identity data should block common passwords, require unique credentials and enable multifactor authentication. Former employee accounts should be disabled promptly. Access should also be limited to necessary records, with alerts for unusual search volumes and bulk downloads. The breach also underlines the need to review partner access regularly, rather than treating approval as a permanent safeguard. The hacker told Politiken there were no plans to sell or publish the information. That claim does not remove the privacy risk created by unauthorized copies of personal records. The available reporting does not establish that exposed information has already been used for fraud, and it should not present such misuse as confirmed. Cut every SOC alert investigation by 21 min. Power your SOC with instant IOC context for immediate response: Integrate TI Lookup into your SOC",
+      "summary_html": "<p>A weak administrator password is linked to a major Danish data breach that exposed information tied to about <a href=\"https://cybersecuritynews.com/denmark-data-breach/\">8.8 million national identification numbers</a>. At least three accounts at Pays, an IT company on the island of Funen, reportedly used \u201c123456\u201d, including an administrator account.</p>\n<p>The case shows how poor security at a company with trusted access can place a national database at risk. Pays had permission to search Denmark\u2019s Central Person Register, known as CPR. An attacker allegedly used that access to collect personal records rather than breaking directly into the register\u2019s underlying systems.</p>\n<strong>Danish CPR Breach Unfolded</strong>\n<p>According to <a href=\"https://politiken.dk/danmark/art11016363/%C2%BBOh-my-god%C2%AB-Fynsk-virksomhed-havde-mindst-tre-profiler-med-adgangskoden-123456\">Politiken\u2019s investigation</a>, the hacker shared stolen data with the newspaper and claimed the password \u201c123456\u201d helped unlock access to CPR numbers and addresses. Politiken reported 8,749,975 records, explaining why coverage describes the breach as either 8.7 million or roughly 8.8 million.</p>\n<p>The reported data covered about 5.5 million living people and 3.3 million deceased people. Those rounded figures should not be read as an exact total. The CPR register holds personal information about people living in Denmark or previously registered there.</p>\n<p><a href=\"https://cphpost.dk/2026-10-10/general/123456-password-used-in-massive-danish-cpr-data-breach/\">The Copenhagen Post</a> reported that the attacker gained access through a leaked password belonging to a former employee of a small Danish company. The hacker then allegedly built two programs to retrieve CPR information and save it outside the system. These details remain attributed to the hacker\u2019s account, not a published forensic report.</p>\n<p>Access reportedly began on September 10 and lasted 21 days and 17 hours. That lengthy window raises questions about whether monitoring controls could detect repeated searches or unusual data collection before millions of records were exposed.</p>\n<strong>Pays Confirms Misuse of Authorized Access</strong>\n<p>Pays ApS, based in Odense, confirmed to TV 2 that its lawful access to search the CPR system had been abused. Managing director and owner Sophie Laursen acknowledged the attack in an email, according to The Copenhagen Post.</p>\n<p>Private companies and associations can receive CPR access when they have a legitimate need, such as checking customer or member addresses. This arrangement makes the security of each approved organization important, because valid credentials can provide a route into sensitive public records.</p>\n<p>The pattern resembles the <a href=\"https://cybersecuritynews.com/veradigm-patient-data-breach/\">Veradigm third-party data breach</a>, where stolen vendor credentials allowed an attacker to download patient information through an approved interface. The systems differ, but both cases show why trusted access needs close limits and oversight.</p>\n<p>Cybersecurity News previously covered <a href=\"https://cybersecuritynews.com/top-ten-passwords-used-by-hackers/\">research into passwords used in RDP attacks</a>, with \u201c123456\u201d leading the reported list. That research concerns remote desktop access, not Denmark\u2019s CPR system, but highlights how predictable passwords remain useful to attackers.</p>\n<p>Organizations handling identity data should block common passwords, require unique credentials and enable multifactor authentication. Former employee accounts should be disabled promptly.</p>\n<p>Access should also be limited to necessary records, with alerts for unusual search volumes and bulk downloads. The breach also underlines the need to review partner access regularly, rather than treating approval as a permanent safeguard.</p>\n<p>The hacker told Politiken there were no plans to sell or publish the information. That claim does not remove the privacy risk created by unauthorized copies of personal records.</p>\n<p>The available reporting does not establish that exposed information has already been used for fraud, and it should not present such misuse as confirmed.</p>\n<p><strong><strong>Cut every SOC alert investigation by 21 min. Power your SOC with instant IOC context for immediate response:</strong></strong> <strong><a href=\"https://any.run/threat-intelligence-lookup/?utm_source=csn&amp;utm_medium=100+links&amp;utm_campaign=1623sep&amp;utm_content=ti+lookup&amp;utm_term=161026#contact-sales\">Integrate TI\u00a0Lookup into\u00a0your SOC</a></strong></p>\n<p>The post <a href=\"https://cybersecuritynews.com/admin-password-danish-data-breach/\">Admin Password \u201c123456\u201d Led to 8.8 Million Danish CPR Data Breach</a> appeared first on <a href=\"https://cybersecuritynews.com\">Cyber Security News</a>.</p>",
+      "link": "https://cybersecuritynews.com/admin-password-danish-data-breach/",
+      "source": "Cyber Security News (FeedBurner)",
+      "feed_type": "blog",
+      "type": "security-researcher-blogs",
+      "type_label": "Security Researcher Blogs",
+      "published": "2026-10-12T04:42:30+00:00",
+      "published_ts": 1791780150,
+      "smart_groups": [
+        "Data Breaches / Leaks"
+      ],
+      "curated": false
+    },
+    {
+      "title": "KFC Named in Gentlemen Ransomware Group\u2019s Latest Breach Claim",
+      "summary": "The Gentlemen ransomware group has allegedly claimed to have breached KFC, with a listing observed on October 10, 2026. The supplied alert identifies the target as United States KFC and places it in the hospitality sector. The claim remains unverified, and the available material does not establish a confirmed compromise of KFC\u2019s U.S. systems. A public ransomware tracker also records KFC as being named by The Gentlemen on October 10. That supports the existence of the listing, rather than proving the reported intrusion. The supplied image shows KFC branding, the kfc.com domain, and a business description, but it contains no visible stolen files or technical evidence. The alert does not specify the amount of allegedly exposed data or the types of records involved. It also provides no entry method, ransom demand, affected systems, or evidence of file encryption. The October 10 observation date should therefore not be treated as the date attackers first entered a network. No KFC-specific malware hashes, attacker addresses, or verified attack timeline are provided. The image mainly describes KFC\u2019s restaurant network, franchise model, sales, and suppliers. These business details do not demonstrate access to internal systems. The material does not identify whether the alleged target is a corporate network, a franchise operator, or another business connected to the brand. That scope remains an important unanswered question. The alert includes an ESIX score of 5.23, but supplies no explanation of its scoring method. The number cannot establish breach severity or confirm data theft. The supplied material and the sources reviewed for this report include no company confirmation, leaving the allegation pending independent verification. How The Gentlemen Operates Sophos tracks the operation behind The Gentlemen as GOLD SHERWOOD. Its researchers describe a ransomware service in which affiliates carry out attacks using the group\u2019s tools. The operation uses double extortion, stealing data before encrypting files and then using the threat of publication to pressure victims into paying. In an analysis of 15 separate intrusions , Sophos found a repeated pattern involving rapid gains in access rights, legitimate remote access tools, data theft, and efforts to disable security controls. Some cases reached ransomware deployment within 24 hours of the first identified activity after compromise. These findings concern earlier cases, not the KFC allegation. Cyber Security News previously covered The Gentlemen\u2019s efforts to disable endpoint detection and response tools and backup services . Attackers used vulnerable drivers and other utilities to stop security processes. They also changed Windows Defender settings and disrupted recovery tools, reducing the chance that defenders could detect the activity or restore encrypted systems. KFC\u2019s parent company, Yum! Brands, previously disclosed a separate ransomware incident in January 2023. Cyber Security News reported that the attack disrupted systems, involved stolen information , and temporarily closed fewer than 300 restaurants in one market for one day. That historical incident does not confirm or explain the current claim. For security teams, Sophos recommends protecting remote access with multifactor authentication, patching exposed systems, watching changes to administrator accounts, and keeping backups protected. Investigators reviewing this allegation would need evidence tied to the affected organization, such as validated file samples, access logs, or a company statement. Cut every SOC alert investigation by 21 min. Power your SOC with instant IOC context for immediate response: Integrate TI Lookup into your SOC",
+      "summary_html": "<p>The Gentlemen ransomware group has allegedly claimed to have breached KFC, with a listing observed on October 10, 2026. The supplied alert identifies the target as United States KFC and places it in the hospitality sector. The claim remains unverified, and the available material does not establish a confirmed compromise of KFC\u2019s U.S. systems.</p>\n<p>A <a href=\"https://www.ervik.as/ransomware-victims/kfc-the-gentlemen\">public ransomware tracker</a> also records KFC as being named by The Gentlemen on October 10. That supports the existence of the listing, rather than proving the reported intrusion. The supplied image shows KFC branding, the kfc.com domain, and a business description, but it contains no visible stolen files or technical evidence.</p>\n<p>The alert does not specify the amount of allegedly exposed data or the types of records involved. It also provides no entry method, ransom demand, affected systems, or evidence of file encryption.</p>\n<p>The October 10 observation date should therefore not be treated as the date attackers first entered a network. No KFC-specific malware hashes, attacker addresses, or verified attack timeline are provided.</p>\n<p>The image mainly describes KFC\u2019s restaurant network, franchise model, sales, and suppliers. These business details do not demonstrate access to internal systems.</p>\n<p>The material does not identify whether the alleged target is a corporate network, a franchise operator, or another business connected to the brand. That scope remains an important unanswered question.</p>\n<p>The alert includes an ESIX score of 5.23, but supplies no explanation of its scoring method. The number cannot establish breach severity or confirm data theft. The supplied material and the sources reviewed for this report include no company confirmation, leaving the allegation pending independent verification.</p>\n<strong>How The Gentlemen Operates</strong>\n<p>Sophos tracks the operation behind The Gentlemen as GOLD SHERWOOD. Its researchers describe a ransomware service in which affiliates carry out attacks using the group\u2019s tools. The operation uses double extortion, stealing data before encrypting files and then using the threat of publication to pressure victims into paying.</p>\n<p>In an <a href=\"https://www.sophos.com/en-us/blog/ungentlemanly-behavior-insights-into-a-ransomware-operation\">analysis of 15 separate intrusions</a>, Sophos found a repeated pattern involving rapid gains in access rights, legitimate remote access tools, data theft, and efforts to disable security controls. Some cases reached ransomware deployment within 24 hours of the first identified activity after compromise. These findings concern earlier cases, not the KFC allegation.</p>\n<p>Cyber Security News previously covered <a href=\"https://cybersecuritynews.com/the-gentlemen-ransomware/\">The Gentlemen\u2019s efforts to disable endpoint detection and response tools and backup services</a>. Attackers used vulnerable drivers and other utilities to stop security processes. They also changed Windows Defender settings and disrupted recovery tools, reducing the chance that defenders could detect the activity or restore encrypted systems.</p>\n<p>KFC\u2019s parent company, Yum! Brands, previously disclosed a separate ransomware incident in January 2023. Cyber Security News reported that <a href=\"https://cybersecuritynews.com/kfc-pizza-hut-breach/\">the attack disrupted systems, involved stolen information</a>, and temporarily closed fewer than 300 restaurants in one market for one day. That historical incident does not confirm or explain the current claim.</p>\n<p>For security teams, Sophos recommends protecting remote access with multifactor authentication, patching exposed systems, watching changes to administrator accounts, and keeping backups protected. Investigators reviewing this allegation would need evidence tied to the affected organization, such as validated file samples, access logs, or a company statement. </p>\n<p><strong><strong>Cut every SOC alert investigation by 21 min. Power your SOC with instant IOC context for immediate response:</strong></strong> <strong><a href=\"https://any.run/threat-intelligence-lookup/?utm_source=csn&amp;utm_medium=100+links&amp;utm_campaign=1623sep&amp;utm_content=ti+lookup&amp;utm_term=161026#contact-sales\">Integrate TI\u00a0Lookup into\u00a0your SOC</a></strong></p>\n<p>The post <a href=\"https://cybersecuritynews.com/gentlemen-ransomware-kfc-breach/\">KFC Named in Gentlemen Ransomware Group\u2019s Latest Breach Claim</a> appeared first on <a href=\"https://cybersecuritynews.com\">Cyber Security News</a>.</p>",
+      "link": "https://cybersecuritynews.com/gentlemen-ransomware-kfc-breach/",
+      "source": "Cyber Security News (FeedBurner)",
+      "feed_type": "blog",
+      "type": "security-researcher-blogs",
+      "type_label": "Security Researcher Blogs",
+      "published": "2026-10-12T03:21:04+00:00",
+      "published_ts": 1791775264,
+      "smart_groups": [
+        "Ransomware",
+        "Malware / Payloads",
+        "Community Discussion"
+      ],
+      "curated": true
+    },
+    {
+      "title": "What Is Dark Web Monitoring? | UpGuard",
+      "summary": "Understand what dark web monitoring is, and why it\u2019s essential for third-party risk management. Learn how UpGuard helps detect exposed data in real-time.",
+      "summary_html": "Understand what dark web monitoring is, and why it\u2019s essential for third-party risk management. Learn how UpGuard helps detect exposed data in real-time.",
+      "link": "https://www.upguard.com/blog/dark-web-monitoring",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-12T00:20:39+00:00",
+      "published_ts": 1791764439,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Best Dark Web Monitoring Services for Business | UpGuard",
+      "summary": "Discover the best dark web monitoring services for business. Compare top vendors against UpGuard and catch stolen credentials before attackers do.",
+      "summary_html": "Discover the best dark web monitoring services for business. Compare top vendors against UpGuard and catch stolen credentials before attackers do.",
+      "link": "https://www.upguard.com/blog/best-dark-web-monitoring-tools",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-12T00:20:39+00:00",
+      "published_ts": 1791764439,
+      "smart_groups": [],
+      "curated": false,
+      "story_id": "ed2181aa1632",
+      "story_size": 2
+    },
+    {
+      "title": "Good Security Rating? Your Dark Web Exposure Says Otherwise | UpGuard",
+      "summary": "Scan your domain to see just how exposed you are on the Dark Web.",
+      "summary_html": "Scan your domain to see just how exposed you are on the Dark Web.",
+      "link": "https://www.upguard.com/blog/good-security-rating-your-dark-web-exposure-says-otherwise",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-12T00:20:39+00:00",
+      "published_ts": 1791764439,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Best Threat Intelligence Platforms and Vendors | UpGuard",
+      "summary": "Compare the best threat intelligence platforms (TIPs) and vendors of 2026. Learn key features, criteria, and find the perfect tool for your security team.",
+      "summary_html": "Compare the best threat intelligence platforms (TIPs) and vendors of 2026. Learn key features, criteria, and find the perfect tool for your security team.",
+      "link": "https://www.upguard.com/blog/best-threat-intelligence-platforms-and-vendors",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-12T00:20:39+00:00",
+      "published_ts": 1791764439,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "The EU Cyber Resilience Act: Securing Digital Products | UpGuard",
+      "summary": "Learn about the new EU cyber legislation that aims to secure digital products and services.",
+      "summary_html": "Learn about the new EU cyber legislation that aims to secure digital products and services.",
+      "link": "https://www.upguard.com/blog/eu-cyber-resilience-act-cra",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-12T00:20:39+00:00",
+      "published_ts": 1791764439,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "What is the EU Cyber Solidarity Act? | UpGuard",
+      "summary": "Explore the latest legislation in the EU for improving cyber resilience and incident response.",
+      "summary_html": "Explore the latest legislation in the EU for improving cyber resilience and incident response.",
+      "link": "https://www.upguard.com/blog/eu-cyber-solidarity-act",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-12T00:20:39+00:00",
+      "published_ts": 1791764439,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Cyber Resilience Act Preparedness: Who's Ready, and Who Can't Be Reached | UpGuard",
+      "summary": "We surveyed 2,374 EU-registered devices and 226 listed software makers for a way to report a vulnerability. Market leaders are ready. Others, not so much.",
+      "summary_html": "We surveyed 2,374 EU-registered devices and 226 listed software makers for a way to report a vulnerability. Market leaders are ready. Others, not so much.",
+      "link": "https://www.upguard.com/blog/cyber-resilience-act-preparedness-whos-ready-and-who-cant-be-reached",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-12T00:20:39+00:00",
+      "published_ts": 1791764439,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": false
+    },
+    {
+      "title": "What is the Critical Entities Resilience (CER) Directive? | UpGuard",
+      "summary": "Explore the latest initiative in the EU that aims to improve the cyber resilience of critical entities.",
+      "summary_html": "Explore the latest initiative in the EU that aims to improve the cyber resilience of critical entities.",
+      "link": "https://www.upguard.com/blog/cer-directive",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-12T00:20:39+00:00",
+      "published_ts": 1791764439,
+      "smart_groups": [],
+      "curated": false
+    }
+  ]
+}
