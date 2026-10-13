@@ -1,9 +1,491 @@
 {
-  "generated_at": "2026-10-12T18:09:50.794697+00:00",
+  "generated_at": "2026-10-13T06:59:36.699847+00:00",
   "date": "2026-10-12",
-  "total_items": 117,
+  "total_items": 151,
   "next_chunk": "archive/news/daily/2026-10-11.json",
   "items": [
+    {
+      "title": "Sharecare - 318,185 breached accounts",
+      "summary": "In August 2026, the digital health company Sharecare was the target of a ShinyHunters \"pay or leak\" extortion campaign . The group subsequently published data it claimed was taken from Sharecare's systems, containing 318k unique email addresses. Most of the data consisted of B2B sales and marketing records with names, physical addresses, phone numbers, job titles and employers. The data also included a small number of Brazilian health insurance plan members, including dates of birth, genders, marital statuses and CPF numbers (Brazilian taxpayer identification numbers).",
+      "summary_html": "In August 2026, the digital health company <a href=\"https://breachnews.com/breaches/shinyhunters-claims-baxter-breach-publishes-cook-medical-carhartt-and-sharecare-data/\">Sharecare was the target of a ShinyHunters \"pay or leak\" extortion campaign</a>. The group subsequently published data it claimed was taken from Sharecare's systems, containing 318k unique email addresses. Most of the data consisted of B2B sales and marketing records with names, physical addresses, phone numbers, job titles and employers. The data also included a small number of Brazilian health insurance plan members, including dates of birth, genders, marital statuses and CPF numbers (Brazilian taxpayer identification numbers).",
+      "link": "https://haveibeenpwned.com/Breach/Sharecare",
+      "source": "Have I Been Pwned \u2013 Latest Breaches",
+      "feed_type": "news",
+      "type": "leaks-breaches",
+      "type_label": "Leaks & Breaches",
+      "published": "2026-10-12T23:28:32+00:00",
+      "published_ts": 1791847712,
+      "smart_groups": [
+        "Ransomware"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Uncovering Executables that Trigger DLL Sideloading Attacks with Endpoint Context",
+      "summary": "Threat actors are constantly refining their techniques to evade detection and deliver malicious payloads. DLL sideloading is a technique that has seen a resurgence in popularity among cybercriminal and espionage groups. This covert method allows attackers to execute malicious code under the guise of a legitimate and trusted application, making it a formidable challenge for security professionals to detect and mitigate.This blog post will delve into the mechanics of DLL sideloading, explore how threat actor groups like Silver Fox and REvil leverage this technique and how Zscaler Endpoint Context helps SecOps teams uncover files masquerading as valid executables that trigger DLL files to execute malicious code. What is DLL Sideloading?A Dynamic-Link Library (DLL) is a file that contains code and data that can be used by multiple programs at the same time. DLL sideloading is an attack vector that exploits the way Windows applications search for and load these required DLLs.When an application is launched, it often needs to load various DLLs to function correctly. If the application doesn't specify the full path to a required DLL, Windows will search for it in a predetermined sequence of directories. Attackers can take advantage of this by placing a malicious DLL with the same name as a legitimate one in a location that Windows searches *before* the directory containing the genuine DLL. When the legitimate application starts, it inadvertently loads and executes the malicious DLL, giving the attacker a foothold in the system. How Threat Actors Use DLL SideloadingDLL sideloading is a popular technique for several reasons:Evasion: Because the malicious code is executed by a trusted and often digitally signed application, it is less likely to be flagged by antivirus software and other security solutions.Persistence: If the compromised application is one that runs at startup, the malicious DLL will also be loaded each time the system boots, ensuring the attacker's code persists on the infected machine.Privilege Escalation: If the legitimate application runs with elevated privileges, the malicious DLL will inherit those same permissions, allowing the attacker to perform more sensitive actions on the system. Example 1: Silver Fox's Attack on Accounting and Tax Preparation FirmsSilver Fox, a China-based threat actor group (also known as Void Arachne), has been observed using DLL sideloading in targeted attacks against accounting and tax preparation firms. Their campaigns often involve socially engineered phishing emails with themes directly relevant to accounting professionals, such as tax audits, invoices, and financial reports.Here\u2019s a step-by-step breakdown of a typical Silver Fox attack:Initial Access: The attack begins with a spear-phishing email sent to an employee at an accounting firm. The email might be disguised as an official communication from a tax authority, complete with a malicious attachment, such as a PDF or a ZIP file. In one documented case, the filename was \"The blacklist of tax-related accounting personnel in March is as follows.exe\" to entice the victim.Lure and Execution: The user is tricked into opening the attachment. The attachment is a dropper that contains a legitimate, signed executable from a known software vendor (e.g., Tencent, Zeon Corporation, or Thunder Download Manager) and a malicious DLL.DLL Sideloading: The legitimate executable is launched. It needs to load a specific DLL to run, but instead of loading the legitimate one from the system directory, it loads the malicious DLL that the attacker placed in the same directory. For instance, Silver Fox has been known to use \u2018ConvertToPDF.exe\u2019 and \u2018PDFDirect.exe\u2019 from Zeon Corporation to sideload a malicious DLL named \u2018PDFCORE8.dll.\u2019Payload Delivery: The malicious DLL, now running under the trusted process of the legitimate application, decrypts and deploys the final payload. In Silver Fox's case, this is often ValleyRAT, a remote access trojan (RAT).Post-Exploitation: With ValleyRAT installed, the attackers have full control over the compromised system. They can steal sensitive data (client information, financial records), log keystrokes, and deploy further malware. Example 2: REvil Ransomware's Use of DLL SideloadingThe notorious ransomware-as-a-service (RaaS) group, REvil (also known as Sodinokibi), has also employed DLL sideloading to execute its ransomware.Here's how they did it:Initial Compromise: REvil gained initial access to a target's network through various means, such as exploiting vulnerabilities or using stolen credentials.Dropping the Files: Once inside, the attackers would drop two files into a directory on the compromised system: a legitimate, signed Microsoft Defender executable (`MsMpEng.exe`) and a malicious DLL named `mpsvc.dll`.Sideloading the Ransomware: The attackers would then execute `MsMpEng.exe`. This legitimate Microsoft process would then load the malicious `mpsvc.dll`, which contained the REvil ransomware payload.Encryption and Ransom: The ransomware, now running under a trusted Microsoft process, would begin encrypting files on the system and network shares. A ransom note would then be displayed, demanding payment for the decryption key. Zscaler's cloud-native platform provides a multi-layered defense to proactively stop DLL sideloading attacks before they can compromise an endpoint. Zscaler's approach is multipronged and anchored by our platform\u2019s ability to inspect massive quantities of transactions at global scale to prevent malicious DLLs from reaching users\u2019 devices in the first place.Threat actors leverage DLL sideloading because it abuses the trust placed in legitimately signed executables. Both REvil (Sodinokibi) and Silver Fox (Void Arachne) exploit this: REvil drops a malicious mpsvc.dll alongside an old, validly-signed copy of Microsoft Defender (MsMpEng.exe) to deliver its ransomware encryptor, while Silver Fox uses signed applications like NtHandleCallback.exe or QnWallpaper.exe to sideload encrypted shellcode DLLs (e.g., log.dll, libcef.dll) that deploy ValleyRAT or Gh0st RAT backdoors.Zscaler Endpoint Context disrupts these attack chains at multiple stages:1. Pre-Execution DLL InterceptionThe Endpoint Sandbox extends Zscaler's cloud-based behavioral analysis to the endpoint itself. Before an unknown or suspicious DLL executes, whether delivered via phishing download, SEO poisoning, or trojanized installer, the sandbox can hold the file, analyze it, and block execution if it is deemed malicious. This stops both REvil's mpsvc.dll drop and Silver Fox's encrypted shellcode DLLs before they ever load.2. Process-Network Correlation to Catch Sideloading AnomaliesEndpoint Context enriches every network transaction with the initiating process name, file path, hash (MD5/SHA-256), and code-signing certificate status. This surfaces the hallmark red flag of sideloading: a legitimately signed binary making suspicious network calls while running from an atypical location (e.g., %TEMP%, %PUBLIC%, or AppData). A policy can then automatically block or alert on that traffic. For example, flagging MsMpEng.exe calling out to a command-and-control server from a user's Downloads folder.3. Certificate and Hash ValidationBy continuously verifying code-signing status, Endpoint Context detects the \"white-plus-black\" pattern Silver Fox relies on where a signed host binary loads an unsigned or tampered DLL. Any DLL with an invalid, expired, or missing certificate loaded by an otherwise trusted process is flagged, breaking the chain of assumed trust.4. Application Risk Scoring and Zero Trust Policy EnforcementEndpoint Context assigns dynamic risk scores to running processes based on CVEs, behavioral signals, and vulnerability data. Policies can automatically restrict internet or private-app access for any process with a high-risk classification, preventing post-sideload lateral movement or data exfiltration even if a malicious DLL does load.5. Enriched SOC TelemetryAll process, path, hash, and certificate data is streamed via the Nanolog Streaming Service (NSS) to SIEM tools, giving security teams the correlation context needed to quickly identify sideloading campaigns \u2014 without manually pivoting between EDR consoles and network logs. Conclusion and Mitigation StrategiesDLL sideloading poses a significant threat to organizations of all sizes. However, there are steps that can be taken to mitigate the risk:Zsacler Endpoint Context: Monitor for suspicious process behaviors, such as an application loading a DLL from an unusual path, which can help detect sideloading attempts.Application Whitelisting: By allowing only approved applications to run, organizations can prevent unauthorized executables from being used to sideload malicious DLLs.Secure Coding Practices: Developers can help prevent these attacks by specifying the full path to required DLLs in their applications and digitally signing all DLLs.User Education: Training users to be cautious of unsolicited emails and attachments can help prevent the initial compromise that often leads to a DLL sideloading attack.Principle of Least Privilege: Restricting user permissions to prevent files from being written to critical application directories can stop attackers from placing malicious DLLs in the first place.By understanding the mechanics of DLL sideloading and implementing a layered security approach, organizations can better defend themselves against this insidious attack vector. Learn more by requesting a demo.",
+      "summary_html": "Threat actors are constantly refining their techniques to evade detection and deliver malicious payloads. DLL sideloading is a technique that has seen a resurgence in popularity among cybercriminal and espionage groups. This covert method allows attackers to execute malicious code under the guise of a legitimate and trusted application, making it a formidable challenge for security professionals to detect and mitigate.This blog post will delve into the mechanics of DLL sideloading, explore how threat actor groups like\u00a0Silver Fox\u00a0and REvil leverage this technique and how Zscaler Endpoint Context helps SecOps teams uncover files masquerading as valid executables that trigger DLL files to execute malicious code.\u00a0 What is DLL Sideloading?A Dynamic-Link Library (DLL) is a file that contains code and data that can be used by multiple programs at the same time. DLL sideloading is an attack vector that exploits the way Windows applications search for and load these required DLLs.When an application is launched, it often needs to load various DLLs to function correctly. If the application doesn't specify the full path to a required DLL, Windows will search for it in a predetermined sequence of directories. Attackers can take advantage of this by placing a malicious DLL with the same name as a legitimate one in a location that Windows searches *before* the directory containing the genuine DLL. When the legitimate application starts, it inadvertently loads and executes the malicious DLL, giving the attacker a foothold in the system. How Threat Actors Use DLL SideloadingDLL sideloading is a popular technique for several reasons:Evasion: Because the malicious code is executed by a trusted and often digitally signed application, it is less likely to be flagged by antivirus software and other security solutions.Persistence:\u00a0If the compromised application is one that runs at startup, the malicious DLL will also be loaded each time the system boots, ensuring the attacker's code persists on the infected machine.Privilege Escalation: If the legitimate application runs with elevated privileges, the malicious DLL will inherit those same permissions, allowing the attacker to perform more sensitive actions on the system. Example 1: Silver Fox's Attack on Accounting and Tax Preparation FirmsSilver Fox, a China-based threat actor group (also known as Void Arachne), has been observed using DLL sideloading in targeted attacks against accounting and tax preparation firms. Their campaigns often involve socially engineered phishing emails with themes directly relevant to accounting professionals, such as tax audits, invoices, and financial reports.Here\u2019s a step-by-step breakdown of a typical Silver Fox attack:Initial Access:\u00a0The attack begins with a spear-phishing email sent to an employee at an accounting firm. The email might be disguised as an official communication from a tax authority, complete with a malicious attachment, such as a PDF or a ZIP file. In one documented case, the filename was \"The blacklist of tax-related accounting personnel in March is as follows.exe\" to entice the victim.Lure and Execution: The user is tricked into opening the attachment. The attachment is a dropper that contains a legitimate, signed executable from a known software vendor (e.g., Tencent, Zeon Corporation, or Thunder Download Manager) and a malicious DLL.DLL Sideloading:\u00a0The legitimate executable is launched. It needs to load a specific DLL to run, but instead of loading the legitimate one from the system directory, it loads the malicious DLL that the attacker placed in the same directory. For instance, Silver Fox has been known to use \u2018ConvertToPDF.exe\u2019 and \u2018PDFDirect.exe\u2019 from Zeon Corporation to sideload a malicious DLL named \u2018PDFCORE8.dll.\u2019Payload Delivery: The malicious DLL, now running under the trusted process of the legitimate application, decrypts and deploys the final payload. In Silver Fox's case, this is often ValleyRAT, a remote access trojan (RAT).Post-Exploitation: With ValleyRAT installed, the attackers have full control over the compromised system. They can steal sensitive data (client information, financial records), log keystrokes, and deploy further malware.\u00a0 Example 2: REvil Ransomware's Use of DLL SideloadingThe notorious ransomware-as-a-service (RaaS) group,\u00a0REvil (also known as Sodinokibi), has also employed DLL sideloading to execute its ransomware.Here's how they did it:Initial Compromise: REvil gained initial access to a target's network through various means, such as exploiting vulnerabilities or using stolen credentials.Dropping the Files:\u00a0Once inside, the attackers would drop two files into a directory on the compromised system: a legitimate, signed Microsoft Defender executable (`MsMpEng.exe`) and a malicious DLL named `mpsvc.dll`.Sideloading the Ransomware:\u00a0The attackers would then execute `MsMpEng.exe`. This legitimate Microsoft process would then load the malicious `mpsvc.dll`, which contained the REvil ransomware payload.Encryption and Ransom:\u00a0The ransomware, now running under a trusted Microsoft process, would begin encrypting files on the system and network shares. A ransom note would then be displayed, demanding payment for the decryption key. Zscaler's cloud-native platform provides a multi-layered defense to proactively stop DLL sideloading attacks before they can compromise an endpoint. Zscaler's approach is multipronged and anchored by our platform\u2019s ability to inspect massive quantities of transactions at global scale to prevent malicious DLLs from reaching users\u2019 devices in the first place.Threat actors leverage DLL sideloading because it abuses the trust placed in legitimately signed executables. Both REvil (Sodinokibi) and Silver Fox (Void Arachne) exploit this: REvil drops a malicious\u00a0mpsvc.dll alongside an old, validly-signed copy of Microsoft Defender (MsMpEng.exe) to deliver its ransomware encryptor, while Silver Fox uses signed applications like\u00a0NtHandleCallback.exe or\u00a0QnWallpaper.exe to sideload encrypted shellcode DLLs (e.g.,\u00a0log.dll,\u00a0libcef.dll) that deploy ValleyRAT or Gh0st RAT backdoors.Zscaler Endpoint Context disrupts these attack chains at multiple stages:1. Pre-Execution DLL InterceptionThe Endpoint Sandbox extends Zscaler's cloud-based behavioral analysis to the endpoint itself. Before an unknown or suspicious DLL executes, whether delivered via phishing download, SEO poisoning, or trojanized installer, the sandbox can hold the file, analyze it, and block execution if it is deemed malicious. This stops both REvil's\u00a0mpsvc.dll drop and Silver Fox's encrypted shellcode DLLs before they ever load.2. Process-Network Correlation to Catch Sideloading AnomaliesEndpoint Context enriches every network transaction with the initiating process name, file path, hash (MD5/SHA-256), and code-signing certificate status. This surfaces the hallmark red flag of sideloading: a legitimately signed binary making suspicious network calls while running from an atypical location (e.g.,\u00a0%TEMP%,\u00a0%PUBLIC%, or\u00a0AppData). A policy can then automatically block or alert on that traffic. For example, flagging\u00a0MsMpEng.exe calling out to a command-and-control server from a user's Downloads folder.3. Certificate and Hash ValidationBy continuously verifying code-signing status, Endpoint Context detects the \"white-plus-black\" pattern Silver Fox relies on where a signed host binary loads an unsigned or tampered DLL. Any DLL with an invalid, expired, or missing certificate loaded by an otherwise trusted process is flagged, breaking the chain of assumed trust.4. Application Risk Scoring and Zero Trust Policy EnforcementEndpoint Context assigns dynamic risk scores to running processes based on CVEs, behavioral signals, and vulnerability data. Policies can automatically restrict internet or private-app access for any process with a high-risk classification, preventing post-sideload lateral movement or data exfiltration even if a malicious DLL does load.5. Enriched SOC TelemetryAll process, path, hash, and certificate data is streamed via the Nanolog Streaming Service (NSS) to SIEM tools, giving security teams the correlation context needed to quickly identify sideloading campaigns \u2014 without manually pivoting between EDR consoles and network logs. Conclusion and Mitigation StrategiesDLL sideloading poses a significant threat to organizations of all sizes. However, there are steps that can be taken to mitigate the risk:Zsacler Endpoint Context:\u00a0Monitor for suspicious process behaviors, such as an application loading a DLL from an unusual path, which can help detect sideloading attempts.Application Whitelisting:\u00a0By allowing only approved applications to run, organizations can prevent unauthorized executables from being used to sideload malicious DLLs.Secure Coding Practices: Developers can help prevent these attacks by specifying the full path to required DLLs in their applications and digitally signing all DLLs.User Education:\u00a0Training users to be cautious of unsolicited emails and attachments can help prevent the initial compromise that often leads to a DLL sideloading attack.Principle of Least Privilege:\u00a0Restricting user permissions to prevent files from being written to critical application directories can stop attackers from placing malicious DLLs in the first place.By understanding the mechanics of DLL sideloading and implementing a layered security approach, organizations can better defend themselves against this insidious attack vector. Learn more by\u00a0requesting a demo.",
+      "link": "https://www.zscaler.com/blogs/product-insights/uncover-dll-sideloading-attack-endpoint-context",
+      "source": "Zscaler Research Blogs",
+      "feed_type": "news",
+      "type": "threat-intel-apt-campaigns",
+      "type_label": "Threat Intel & APT Campaigns",
+      "published": "2026-10-12T23:22:28+00:00",
+      "published_ts": 1791847348,
+      "smart_groups": [
+        "Ransomware",
+        "Vulnerabilities / CVEs",
+        "Malware / Payloads"
+      ],
+      "curated": true
+    },
+    {
+      "title": "AI Will Hit 40% of Jobs, IMF Warns. Young People Are First in Line",
+      "summary": "IMF chief Kristalina Georgieva says AI investment is holding global growth near 3%, with Asian chipmakers winning big, while warning of a 'slow-moving tsunami' for young workers.",
+      "summary_html": "IMF chief Kristalina Georgieva says AI investment is holding global growth near 3%, with Asian chipmakers winning big, while warning of a 'slow-moving tsunami' for young workers.",
+      "link": "https://decrypt.co/380789/ai-hit-40-percent-jobs-imf-warns-young-people-first",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-10-12T21:46:03+00:00",
+      "published_ts": 1791841563,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Maximum-Severity SSRF Flaw in SonicWall SMA Devices Under Attack",
+      "summary": "Attackers are currently targeting a critical vulnerability in SMA 1000 appliances, putting SonicWall customers in a familiar yet unenviable position.",
+      "summary_html": "Attackers are currently targeting a critical vulnerability in SMA 1000 appliances, putting SonicWall customers in a familiar yet unenviable position.",
+      "link": "https://www.darkreading.com/vulnerabilities-threats/max-severity-ssrf-flaw-sonicwall-sma-devices-under-attack",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-12T21:42:42+00:00",
+      "published_ts": 1791841362,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Clinical Oversight: Medical Survey Firm Exposes Diagnoses of Participants | UpGuard",
+      "summary": "A misconfigured server at UK medical survey firm Liberating Research exposed self-reported diagnoses and personal data for more than 100,000 patients and professionals.",
+      "summary_html": "A misconfigured server at UK medical survey firm Liberating Research exposed self-reported diagnoses and personal data for more than 100,000 patients and professionals.",
+      "link": "https://www.upguard.com/breaches/clinical-oversight-medical-survey-firm-exposes-diagnoses-participants",
+      "source": "UpGuard Breaches",
+      "feed_type": "news",
+      "type": "leaks-breaches",
+      "type_label": "Leaks & Breaches",
+      "published": "2026-10-12T21:41:53+00:00",
+      "published_ts": 1791841313,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "ShinyHunters arrest number three: a Canadian ransomware negotiator",
+      "summary": "A Canadian ransomware negotiator faces extortion charges in the FBI\u2019s ShinyHunters crackdown. Here\u2019s what is known, and what isn\u2019t. ShinyHunters is the focus of a global FBI investigation, and the crackdown has led to the October 8 arrest of a Canadian ransomware negotiator who now faces extortion charges. Reuters reported the arrest, citing court documents, prison records and a person familiar with the case. The group has also stolen information about FBI employees . Court documents filed in the Eastern District of Pennsylvania, which includes Philadelphia, accuse the defendant of conspiring to threaten the confidentiality of information to extort money and of interfering with commerce. \u201cA Canadian ransomware negotiator was arrested Thursday and faces unspecified extortion charges, according to court documents, prison records and \u200ba person familiar with the matter, as the FBI cracks down \u200con a hacking group that stole information about its employees.\u201d Reuters states. \u201cEdward Dubrovsky faces charges of conspiracy to \u201cthreaten to impair the confidentiality of information with intent to extort money\u201d and \u201cinterference with commerce,\u201d according \u200bto court documents, opens new tab filed with the Eastern District of Pennsylvania, which covers Philadelphia.\u201d Krebs on Security reports that the second charge involves threats. The main criminal complaint remains sealed, so the details of the defendant\u2019s alleged role are not yet public. The records spell the last name two ways, Dobrovsky or Dobrosky, and they don\u2019t list an age, a profession or an employer. A person briefed on the matter told Reuters the defendant is Edward Dubrovsky, a Canadian cybersecurity executive. Reuters couldn\u2019t even settle the spelling, which tells you how early this is. \u201cFederal court records show that on October 8, an Edward Dobrovsky (note the slight misspelling of the last name) was arrested in Pennsylvania on cyber extortion and conspiracy charges.\u201d states the report. \u201cSeveral of those documents \u2014 including the core complaint \u2014 are now sealed. But a handful of them were indexed at Courtlistener.com , including a summary of the complaint, which charges the defendant with \u201cconspiracy to threaten to impair the confidentiality of information with the intent to extort money,\u201d and \u201cinterference with commerce by threats.\u201d\u201d Federal prosecutors in Philadelphia didn\u2019t return repeated messages about the discrepancies. Reuters also couldn\u2019t reach Dubrovsky, his lawyers, or CyberSteward, the company named on his LinkedIn profile. According to Krebs, the available records showed no attorney yet. \u201cAn online search reveals the Cyber Risk Summit was held at the Loews Philadelphia Hotel between Oct. 5 and Oct. 7. The conference had several sponsors, but according to the summit\u2019s website its biggest sponsor was a Canadian security company called Cypfer .\u201d states Krebs . \u201cAccording to LinkedIn, one of Cypfer\u2019s \u201cex-founders\u201d was Edward Dubrovsky , who is now associated with another Canadian security firm and sponsor called CyberSteward . In a post to LinkedIn approximately one month ago, Dubrovsky said he had plans to attend the Cyber Risk Summit with the rest of the CyberSteward team.\u201d CyberSteward advertises itself as a specialist in threat actor engagement, cyber extortions, complex negotiations and settlement facilitation. On LinkedIn, Dubrovsky presents himself as an expert in negotiating ransom payments with cybercriminals. SecurityWeek notes he\u2019s also the author of a book on responding to cyber extortion. Politico and Krebs reported the arrest first. Krebs says he was in Philadelphia for a cyber insurance conference. Federal prison records show a man with his name detained at a federal detention center in the city. ShinyHunters is the backdrop. Last month the group claimed it had stolen information on nearly every FBI employee, and it said it got into the bureau\u2019s jobs website and other systems in response to an FBI report earlier this year warning about its activity. FBI blamed the intrusion on a contractor\u2019s failure to patch vulnerable Oracle PeopleSoft software. When Reuters asked about the arrest, the FBI pointed to a statement from Director Kash Patel and declined further comment. Our agents in the field have arrested another suspected co-conspirator of the ShinyHunters group \u2013 the group believed to be responsible for the recent https://t.co/RG0D4I5KFS incident, which occurred on a platform managed by a third-party vendor. This is the latest arrest\u2026 \u2014 FBI Director Kash Patel (@FBIDirectorKash) October 9, 2026 Patel described the arrest as the latest in a series of actions against ShinyHunters over just a few days. According to SecurityWeek, he said the FBI will continue working to disrupt the remaining network. This is the third suspected arrest linked to ShinyHunters in recent weeks, following one in the Netherlands on September 15 and another in Jordan on September 28. The case has also moved to another court. A notice filed on October 9 transferred it to the Eastern District of Texas, where sources told Krebs on Security the FBI\u2019s ShinyHunters investigation is focused. However, authorities have not publicly explained what the defendant allegedly did. Reuters reports that the charges have not been specified, and the main complaint remains sealed. Krebs on Security also reports, citing sources, that executives at other ransomware negotiation firms could face charges. The FBI says ShinyHunters has extorted more than $70 million this year. The latest arrest brings the number of suspected ShinyHunters members detained in recent weeks to three. On September 15, authorities arrested a suspected member in the Netherlands . A second alleged key member was reportedly arrested in Jordan on September 28 and is said to be cooperating with the FBI. Follow me on Twitter: @securityaffairs and Facebook and Mastodon Pierluigi Paganini ( SecurityAffairs \u2013 hacking, ShinyHunters)",
+      "summary_html": "<div></div>\nA Canadian ransomware negotiator faces extortion charges in the FBI\u2019s ShinyHunters crackdown. Here\u2019s what is known, and what isn\u2019t.\n<p><a href=\"https://securityaffairs.com/tag/shinyhunters\">ShinyHunters</a> is the focus of a global FBI investigation, and the crackdown has led to the October 8 arrest of a Canadian ransomware negotiator who now faces extortion charges. Reuters reported the arrest, citing court documents, prison records and a person familiar with the case. The group has also stolen information about <a href=\"https://securityaffairs.com/199612/cyber-crime/shinyhunters-claims-fbi-breach-after-alleged-peoplesoft-zero-day-attack.html\">FBI employees</a>. </p>\n<p>Court documents filed in the Eastern District of Pennsylvania, which includes Philadelphia, accuse the defendant of conspiring to threaten the confidentiality of information to extort money and of interfering with commerce. </p>\n<p><em>\u201cA Canadian ransomware negotiator was arrested Thursday and faces unspecified extortion charges, according to court documents, prison records and \u200ba person familiar with the matter, as the FBI cracks down \u200con a hacking group that stole information about its employees.\u201d Reuters states. \u201cEdward Dubrovsky faces charges of conspiracy to \u201cthreaten to impair the confidentiality of information with intent to extort money\u201d and \u201cinterference with commerce,\u201d according \u200bto <a href=\"https://www.courtlistener.com/docket/74942095/parties/united-states-v-dobrovsky/\">court documents, opens new tab</a> filed with the Eastern District of Pennsylvania, which covers Philadelphia.\u201d</em></p>\n<p>Krebs on Security reports that the second charge involves threats. The main criminal complaint remains sealed, so the details of the defendant\u2019s alleged role are not yet public.</p>\n<p>The records spell the last name two ways, Dobrovsky or Dobrosky, and they don\u2019t list an age, a profession or an employer. A person briefed on the matter told Reuters the defendant is Edward Dubrovsky, a Canadian cybersecurity executive. Reuters couldn\u2019t even settle the spelling, which tells you how early this is.</p>\n<p><em>\u201cFederal court records show that on October 8, an Edward Dobrovsky (note the slight misspelling of the last name) was arrested in Pennsylvania on cyber extortion and conspiracy charges.\u201d states the report. \u201cSeveral of those documents \u2014 including the core complaint \u2014 are now sealed. But a handful of them were <a href=\"https://www.courtlistener.com/docket/74942095/united-states-v-dobrovsky/\">indexed at Courtlistener.com</a>, including a summary of the complaint, which charges the defendant with \u201cconspiracy to threaten to impair the confidentiality of information with the intent to extort money,\u201d and \u201cinterference with commerce by threats.\u201d\u201d</em></p>\n<p>Federal prosecutors in Philadelphia didn\u2019t return repeated messages about the discrepancies. Reuters also couldn\u2019t reach Dubrovsky, his lawyers, or CyberSteward, the company named on his LinkedIn profile. According to Krebs, the available records showed no attorney yet.</p>\n<p><em>\u201cAn online search reveals the <a href=\"https://netdiligence.com/conferences/cyber-risk-summit-philadelphia-2026/speakers\">Cyber Risk Summit</a> was held at the Loews Philadelphia Hotel between Oct. 5 and Oct. 7. The conference had several sponsors, but according to the summit\u2019s website its <a href=\"https://netdiligence.com/conferences/cyber-risk-summit-philadelphia-2026/sponsors\">biggest sponsor</a> was a Canadian security company called <strong>Cypfer</strong>.\u201d <a href=\"https://krebsonsecurity.com/\">states Krebs</a>. \u201cAccording to LinkedIn, one of Cypfer\u2019s \u201cex-founders\u201d was <strong>Edward Dubrovsky</strong>, who is now associated with another Canadian security firm and sponsor called <strong>CyberSteward</strong>. In a post to LinkedIn approximately one month ago, Dubrovsky said he had plans to attend the Cyber Risk Summit with the rest of the CyberSteward team.\u201d</em></p>\n<p>CyberSteward advertises itself as a specialist in threat actor engagement, cyber extortions, complex negotiations and settlement facilitation. On LinkedIn, Dubrovsky presents himself as an expert in negotiating ransom payments with cybercriminals. SecurityWeek notes he\u2019s also the author of a book on responding to cyber extortion.</p>\n<div>\n<a href=\"https://i0.wp.com/securityaffairs.com/wp-content/uploads/2026/10/image-28.png?ssl=1\"></a>\n</div>\n<p><a href=\"https://www.politico.com/news/2026/10/09/canadian-cyber-executive-charged-in-federal-hacking-case-01115649\">Politico</a> and Krebs reported the arrest first. Krebs says he was in Philadelphia for a cyber insurance conference. Federal prison records show a man with his name detained at a federal detention center in the city.</p>\n<p>ShinyHunters is the backdrop. Last month the group claimed it had stolen information on nearly every FBI employee, and it said it got into the bureau\u2019s jobs website and other systems in response to an FBI report earlier this year warning about its activity. FBI blamed the intrusion on a contractor\u2019s failure to patch vulnerable Oracle PeopleSoft software.</p>\n<p>When Reuters asked about the arrest, the FBI pointed to a statement from Director Kash Patel and declined further comment. </p>\n<div>\n<div><blockquote><p> Our agents in the field have arrested another suspected co-conspirator of the ShinyHunters group \u2013 the group believed to be responsible for the recent <a href=\"https://t.co/RG0D4I5KFS\">https://t.co/RG0D4I5KFS</a> incident, which occurred on a platform managed by a third-party vendor.<br/><br/>This is the latest arrest\u2026</p>\u2014 FBI Director Kash Patel (@FBIDirectorKash) <a href=\"https://x.com/FBIDirectorKash/status/2108566367011999780?ref_src=twsrc%5Etfw\">October 9, 2026</a></blockquote></div>\n</div>\n<p>Patel described the arrest as the latest in a series of actions against ShinyHunters over just a few days. According to SecurityWeek, he said the FBI will continue working to disrupt the remaining network. This is the third suspected arrest linked to ShinyHunters in recent weeks, following one in the Netherlands on September 15 and another in Jordan on September 28.</p>\n<p>The case has also moved to another court. A notice filed on October 9 transferred it to the Eastern District of Texas, where sources told Krebs on Security the FBI\u2019s ShinyHunters investigation is focused. </p>\n<p>However, authorities have not publicly explained what the defendant allegedly did. Reuters reports that the charges have not been specified, and the main complaint remains sealed. Krebs on Security also reports, citing sources, that executives at other ransomware negotiation firms could face charges. The FBI says ShinyHunters has extorted more than $70 million this year.</p>\n<p>The latest arrest brings the number of suspected ShinyHunters members detained in recent weeks to three. On September 15, authorities <a href=\"https://securityaffairs.com/200338/cyber-crime/shinyhunters-suspect-detained-in-jordan-helps-fbi-track-down-the-group.html\">arrested a suspected member in the Netherlands</a>. A second alleged key member was <a href=\"https://securityaffairs.com/200338/cyber-crime/shinyhunters-suspect-detained-in-jordan-helps-fbi-track-down-the-group.html\">reportedly arrested</a> in Jordan on September 28 and is said to be cooperating with the FBI.</p>\n<p><strong>Follow me on Twitter:\u00a0</strong><a href=\"https://twitter.com/securityaffairs\"><strong>@securityaffairs</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://www.facebook.com/sec.affairs\"><strong>Facebook</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://infosec.exchange/@securityaffairs\"><strong>Mastodon</strong></a><strong></strong></p>\n<p><a href=\"http://www.linkedin.com/pub/pierluigi-paganini/b/742/559\"><strong>Pierluigi\u00a0Paganini</strong></a><strong></strong></p>\n<p><strong>(</strong><a href=\"http://securityaffairs.co/wordpress/\"><strong>SecurityAffairs</strong></a><strong>\u00a0\u2013\u00a0hacking,\u00a0ShinyHunters)</strong></p>\n<p></p>",
+      "link": "https://securityaffairs.com/200847/cyber-crime/shinyhunters-arrest-number-three-a-canadian-ransomware-negotiator.html",
+      "source": "Security Affairs",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-12T21:26:12+00:00",
+      "published_ts": 1791840372,
+      "smart_groups": [
+        "Ransomware"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Standard Chartered Will Hold Ripple's Stablecoin in Dubai\u2014And Let Clients Trade With It Without Moving It",
+      "summary": "The bank's Dubai branch now offers custody for Ripple's RLUSD stablecoin and plans a link with LMAX that lets institutions post it as trading collateral while the coins stay put.",
+      "summary_html": "The bank's Dubai branch now offers custody for Ripple's RLUSD stablecoin and plans a link with LMAX that lets institutions post it as trading collateral while the coins stay put.",
+      "link": "https://decrypt.co/380776/standard-chartered-hold-ripple-rlusd-stablecoin-dubai",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-10-12T21:16:03+00:00",
+      "published_ts": 1791839763,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "FTX\u2019s crypto mining venture is now used to advance AI",
+      "summary": "The defunct exchange acquired a 20% stake in Genesis Digital Assets before FTX declared bankruptcy in November 2022.",
+      "summary_html": "<p></p><p>The defunct exchange acquired a 20% stake in Genesis Digital Assets before FTX declared bankruptcy in November 2022.</p>",
+      "link": "https://cointelegraph.com/news/ftx-crypto-mining-ai-data-center?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-10-12T21:11:26+00:00",
+      "published_ts": 1791839486,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Meta's New Muse Wonder Finally Puts Zuckerberg in the Frontier AI Race",
+      "summary": "Meta's new flagship beats GPT-6 Astra and Claude on memory, legal and marathon coding tests, but independent rankings still put Anthropic's Opus 5.5 on top.",
+      "summary_html": "Meta's new flagship beats GPT-6 Astra and Claude on memory, legal and marathon coding tests, but independent rankings still put Anthropic's Opus 5.5 on top.",
+      "link": "https://decrypt.co/380768/meta-muse-wonder-zuckerberg-frontier-ai-race",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-10-12T20:46:04+00:00",
+      "published_ts": 1791837964,
+      "smart_groups": [
+        "AI/ML Security"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Chinese Cars in Norway Stored Military Exercise Footage and Access Codes",
+      "summary": "submitted by /u/Firecracker048 [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/cybersecurity/comments/1x4d9h8/chinese_cars_in_norway_stored_military_exercise/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/Firecracker048\"> /u/Firecracker048 </a> <br/> <span><a href=\"https://militarnyi.com/en/news/chinese-cars-in-norway-stored-military-exercise-footage-and-access-codes/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x4d9h8/chinese_cars_in_norway_stored_military_exercise/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1x4d9h8/chinese_cars_in_norway_stored_military_exercise/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-12T20:38:55+00:00",
+      "published_ts": 1791837535,
+      "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "How far back do your logs actually go?",
+      "summary": "The Pentagon DMDC breach had unauthorized access running from around October 2025 until July before anyone noticed. That got me thinking less about the detection and more about what happens after. If you found out today that something had been open for nine months, could you work out what was accessed? Most places I've seen talked about keep 30 to 90 days of detailed logs because storage costs money, which means you'd be guessing for most of that window. What's your retention, and did you have to fight for it? submitted by /u/Street-Mycologist670 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>The Pentagon DMDC breach had unauthorized access running from around October 2025 until July before anyone noticed. That got me thinking less about the detection and more about what happens after. </p> <p>If you found out today that something had been open for nine months, could you work out what was accessed? Most places I've seen talked about keep 30 to 90 days of detailed logs because storage costs money, which means you'd be guessing for most of that window. </p> <p>What's your retention, and did you have to fight for it?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Street-Mycologist670\"> /u/Street-Mycologist670 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x4cwvp/how_far_back_do_your_logs_actually_go/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x4cwvp/how_far_back_do_your_logs_actually_go/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1x4cwvp/how_far_back_do_your_logs_actually_go/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-12T20:25:20+00:00",
+      "published_ts": 1791836720,
+      "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Exabeam SIEM question",
+      "summary": "Hi all - does anyone know if the Exabeam NG Siem product allows you to create dashboards via text? We are debating doing a POV, but if that's not supported, I'm not even going to bother. By text I mean being able to create/modify the entity directly through text in the product, or creating outside the product and importing. Think Splunk with XML/JSON. It appears that it's all GUI driven. submitted by /u/EducationalWedding48 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Hi all - does anyone know if the Exabeam NG Siem product allows you to create dashboards via text? We are debating doing a POV, but if that's not supported, I'm not even going to bother. By text I mean being able to create/modify the entity directly through text in the product, or creating outside the product and importing. Think Splunk with XML/JSON. It appears that it's all GUI driven. </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/EducationalWedding48\"> /u/EducationalWedding48 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x4ctfw/exabeam_siem_question/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x4ctfw/exabeam_siem_question/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1x4ctfw/exabeam_siem_question/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-12T20:21:29+00:00",
+      "published_ts": 1791836489,
+      "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Norway fines Microsoft ad firm $9.6 million over Grindr data sharing",
+      "summary": "Norway's Data Protection Authority (Datatilsynet) has fined Microsoft-owned advertising company Xandr NOK 92 million ($9.6M) for unlawfully processing and sharing sensitive data belonging to Grindr users in the country.",
+      "summary_html": "Norway's Data Protection Authority (Datatilsynet) has fined Microsoft-owned advertising company Xandr NOK 92 million ($9.6M) for unlawfully processing and sharing sensitive data belonging to Grindr users in the country. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/norway-fines-microsoft-ad-firm-96-million-over-grindr-data-sharing/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-10-12T20:13:52+00:00",
+      "published_ts": 1791836032,
+      "smart_groups": [
+        "Privacy & Compliance"
+      ],
+      "curated": false
+    },
+    {
+      "title": "GitHub adds authenticated pusher identities and a committer-match rule",
+      "summary": "GitHub's October 12 Changelog release adds a durable, authenticated pusher identity to every commit, separate from the author and committer fields that the pushing client can supply. It also adds a new ruleset condition called \"Committer must match pusher\", which can block pushes when the committer metadata does not match a verified email address of the authenticated pusher. The practical value is better auditability for compromised accounts and suspicious pushes. GitHub says the preview is limited to Enterprise customers, who can request access through their account team. The release adds the control, but does not say it is enabled by default. Sources: https://github.blog/changelog/2026-10-12-push-attribution-public-preview/ https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets#push-rulesets submitted by /u/Codeblix_Ltd [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>GitHub's October 12 Changelog release adds a durable, authenticated pusher identity to every commit, separate from the author and committer fields that the pushing client can supply. It also adds a new ruleset condition called \"Committer must match pusher\", which can block pushes when the committer metadata does not match a verified email address of the authenticated pusher.</p> <p>The practical value is better auditability for compromised accounts and suspicious pushes. GitHub says the preview is limited to Enterprise customers, who can request access through their account team. The release adds the control, but does not say it is enabled by default.</p> <p>Sources:</p> <p><a href=\"https://github.blog/changelog/2026-10-12-push-attribution-public-preview/\">https://github.blog/changelog/2026-10-12-push-attribution-public-preview/</a></p> <p><a href=\"https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets#push-rulesets\">https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets#push-rulesets</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Codeblix_Ltd\"> /u/Codeblix_Ltd </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x4ceff/github_adds_authenticated_pusher_identities_and_a/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x4ceff/github_adds_authenticated_pusher_identities_and_a/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1x4ceff/github_adds_authenticated_pusher_identities_and_a/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-12T20:05:23+00:00",
+      "published_ts": 1791835523,
+      "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Canonical Hit by Second DDoS Attack in 2026, Public Websites Disrupted",
+      "summary": "Canonical suffered its second DDoS attack this year, disrupting public websites for over four hours while Launchpad and the Snap Store remained online. Ubuntu\u2019s parent company Canonical spent part of last week fighting off a sustained distributed denial of service (DDoS) attack, the second one to hit its infrastructure this year. The company revealed the attack on October 8 through a post on the Ubuntu Discourse forum. \u201cCanonical\u2019s websites are under a sustained distributed denial of service attack. Our team is working diligently to resolve the incident. Please refer to our status page for up-to-date information. Some services may be intermittently unavailable.\u201d the company states . At this time, no cybercrime or hacktivist group has claimed responsibility The attack affected Canonical\u2019s main public websites, including ubuntu.com, canonical.com, the Ubuntu blog, the developer portal, and the security advisory pages and API. Users may have been unable to access security advisories or read the blog during the attack. \u201cIt was recently revealed that Canonical\u2019s web infrastructure and the Ubuntu ecosystem suffered a massive and sustained distributed denial-of-service (DDoS) attack that caused its main portals and services to crash and be intermittent for more than four hours.\u201d states the company blog . \u201cRegarding the attack, it is mentioned that it directly affected the most visible institutional domains, including canonical.com and ubuntu.com, as well as the official blog, the developer portal, assets.ubuntu.com, academy.canonical.com and sites linked to enterprise technologies such as jaas.ai and maas.io.\u201d However, Launchpad and the Snap Store remained online throughout the incident. These services allow developers and system administrators to manage and install software. Canonical acknowledged the outage on its status page and Ubuntu Discourse while engineers worked to limit the impact. The attack temporarily disrupted the Ubuntu Security API and Livepatch services, affecting tools used to check security advisories and apply kernel patches without restarting systems. However, Canonical\u2019s distributed infrastructure helped contain the damage. Software repositories and mirror servers remained available, allowing users to install updates. Launchpad, the Snap Store, disk image servers and Ubuntu Single Sign-On also continued to work. As a result, users could continue downloading and installing packages even while Canonical\u2019s public websites were disrupted. The overall outage lasted a little over four hours, causing real disruption. This attack differs from the April one, which caused greater disruption by taking down Launchpad and the Snap Store and preventing some users from installing Ubuntu updates. At the time, a hacktivist group called The Islamic Cyber Resistance in Iraq , also known as 313 Team, claimed responsibility. Canonical described the April incident as a sustained, cross-border attack, language that suggested distributed infrastructure spanning multiple countries. Whether this October attack is a continuation of the same campaign or a completely unrelated actor piling on is genuinely unclear. Follow me on Twitter: @securityaffairs and Facebook and Mastodon Pierluigi Paganini ( SecurityAffairs \u2013 hacking, DDoS)",
+      "summary_html": "<div></div>\nCanonical suffered its second DDoS attack this year, disrupting public websites for over four hours while Launchpad and the Snap Store remained online.\n<p>Ubuntu\u2019s parent company Canonical spent part of last week fighting off a sustained distributed denial of service (DDoS) attack, the second one to hit its infrastructure this year. The company revealed the attack on October 8 through a post on the Ubuntu Discourse forum. </p>\n<p><em>\u201cCanonical\u2019s websites are under a sustained distributed denial of service attack. Our team is working diligently to resolve the incident. Please refer to our <a href=\"https://status.canonical.com/#/\">status page</a> for up-to-date information. Some services may be intermittently unavailable.\u201d <a href=\"https://discourse.ubuntu.com/t/ddos-on-canonical-and-ubuntu-websites/89064\">the company states</a>.</em></p>\n<p>At this time, no cybercrime or hacktivist group has claimed responsibility</p>\n<p>The attack affected Canonical\u2019s main public websites, including ubuntu.com, canonical.com, the Ubuntu blog, the developer portal, and the security advisory pages and API. Users may have been unable to access security advisories or read the blog during the attack.</p>\n<p><em>\u201cIt was recently revealed that Canonical\u2019s web infrastructure and the Ubuntu ecosystem suffered a massive and sustained distributed denial-of-service (DDoS) attack that caused its main portals and services to crash and be intermittent for more than four hours.\u201d <a href=\"https://en.ubunlog.com/DDoS-attack-Canonical-Ubuntu-service-outage-security/\">states the company blog</a>. \u201cRegarding the attack, it is mentioned that it directly affected the most visible institutional domains, including canonical.com and ubuntu.com, as well as the official blog, the developer portal, assets.ubuntu.com, academy.canonical.com and sites linked to enterprise technologies such as jaas.ai and maas.io.\u201d</em></p>\n<p>However, Launchpad and the Snap Store remained online throughout the incident. These services allow developers and system administrators to manage and install software. </p>\n<p><br/>Canonical acknowledged the outage on its status page and Ubuntu Discourse while engineers worked to limit the impact. The attack temporarily disrupted the Ubuntu Security API and Livepatch services, affecting tools used to check security advisories and apply kernel patches without restarting systems. However, Canonical\u2019s distributed infrastructure helped contain the damage. Software repositories and mirror servers remained available, allowing users to install updates. Launchpad, the Snap Store, disk image servers and Ubuntu Single Sign-On also continued to work.</p>\n<p>As a result, users could continue downloading and installing packages even while Canonical\u2019s public websites were disrupted.</p>\n<p>The overall outage lasted a little over four hours, causing real disruption.</p>\n<p>This attack differs from the April one, which caused greater disruption by taking down Launchpad and the Snap Store and preventing some users from installing Ubuntu updates. At the time, a hacktivist group called The <a href=\"https://securityaffairs.com/tag/islamic-cyber-resistance-in-iraq\">Islamic Cyber Resistance in Iraq</a>, also known as 313 Team, claimed responsibility.</p>\n<p>Canonical described the April incident as a sustained, cross-border attack, language that suggested distributed infrastructure spanning multiple countries. Whether this October attack is a continuation of the same campaign or a completely unrelated actor piling on is genuinely unclear. </p>\n<p><strong>Follow me on Twitter:\u00a0</strong><a href=\"https://twitter.com/securityaffairs\"><strong>@securityaffairs</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://www.facebook.com/sec.affairs\"><strong>Facebook</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://infosec.exchange/@securityaffairs\"><strong>Mastodon</strong></a><strong></strong></p>\n<p><a href=\"http://www.linkedin.com/pub/pierluigi-paganini/b/742/559\"><strong>Pierluigi\u00a0Paganini</strong></a><strong></strong></p>\n<p><strong>(</strong><a href=\"http://securityaffairs.co/wordpress/\"><strong>SecurityAffairs</strong></a><strong>\u00a0\u2013\u00a0hacking, DDoS)\u00a0</strong></p>",
+      "link": "https://securityaffairs.com/200832/security/canonical-hit-by-second-ddos-attack-in-2026.html",
+      "source": "Security Affairs",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-12T20:02:20+00:00",
+      "published_ts": 1791835340,
+      "smart_groups": [
+        "Linux / Unix",
+        "Identity / Access"
+      ],
+      "curated": false,
+      "story_id": "89310c4a866b",
+      "story_size": 3
+    },
+    {
+      "title": "What&#039;s New in ZDX: Sharper Alerts, Cleaner Data, Faster Troubleshooting",
+      "summary": "Every month, Zscaler Digital Experience (ZDX) releases updates that help IT and network operations teams see more, troubleshoot faster, and manage the digital experience of their users at scale. From expanded network architecture support to more granular probe controls, this month's releases reflect what our customers keep telling us: giving teams more precise controls to cut through noise, more accurate data to act on, and a cleaner experience to work in every day.Here's what is new with ZDX:Smarter Alerts for Collaboration Quality MonitoringFilter Dashboards by Data CenterReal User Monitoring ImprovementsConsistent UX with ZDX in Experience Center Smarter Alerts for Collaboration Quality MonitoringFor organizations that rely on real-time alerts to catch collaboration quality issues before they impact users, the granularity of those alerts matters enormously. A generic alert that fires for every region, including ones you know have connectivity variance, creates noise that slows teams down rather than helping them.ZDX now supports expanded filtering and grouping options when configuring collaboration quality alerts. Teams can now apply inclusion and exclusion filters by location, country, city, and other dimensions, the same granularity that is already available for application and network alert types. You can also group alert data by these dimensions to understand whether an issue is localized to a specific office or widespread across a region.The result: Fewer false positives, more targeted notifications, and faster triage when something actually goes wrong.ZDX tier: Available for ZDX Advanced and Advanced Plus customers. Filter Your Dashboards by Data CenterWhen a performance degradation or service disruption is reported at a specific data center location, the first question is always: who's affected, and what is the impact? Until now, correlating a data center event with actual user experience data required workarounds or relying on pre-built system reports.ZDX now lets you filter live dashboard data by Zscaler data center across the Network Intelligence dashboard and other key views. Select one or more data centers from the filter dropdown and immediately see the telemetry from application performance, network path health, device metrics from users egressing through those locations.The result: Network operations teams who need to quickly scope the blast radius of an infrastructure event and communicate impact to the business in real time.ZDX tier: Available across all ZDX license tiers. Real User Monitoring: More Precision, Less AmbiguityZDX's Real User Monitoring capability captures how end users actually experience web applications like load times, errors, navigation flows directly from the browser. The latest update brings a set of meaningful improvements for teams who depend on this data:Clearer load time metrics for single-page applications: Page load time and navigation time are now reported distinctly, so you can understand whether slowness is coming from the initial page load or subsequent in-app navigation events.Multiple errors per session visible: When more than one error occurs during a monitoring window, all error events are now displayed, not just the first one, giving a complete picture of what a user experienced.Consistent score terminology: Score labels across the ZDX interface now use uniform naming conventions, eliminating the ambiguity that came from inconsistent labels across different views.Enriched browser data collection: The browser extension now captures additional resource-level attributes, enabling deeper analysis of web application performance bottlenecks.The browser extension updates automatically with no action needed from end users or IT teams.ZDX tier: Available for ZDX Advanced Plus customers. A More Consistent Console ExperienceWe also completed a significant UI refresh across ZDX. Filters, tables, drawers, time-range selectors, page headers, and other core interface elements have been updated to follow a unified design system, delivering a consistent look and feel whether you're working in dashboards, alert configurations, or device detail views.The change is purely visual and requires no workflow adjustments, but the day-to-day impact is real: a more predictable interface reduces the small moments of friction that slow teams down during active troubleshooting.ZDX tier: Available across all ZDX license tiers. What's NextThese releases reflect a consistent theme across ZDX's evolution: better signal, less noise, and faster paths from detection to resolution. Whether it's more precise alerting, accurate device data, or a cleaner interface to work in, every improvement compounds over time into a meaningfully more efficient operations workflow.Keep an eye out for what's coming in next month\u2019s releases, including updates that will make it even easier to prioritize and respond to issues for your organization's most critical users.See all the latest ZDX releasesAlready a ZDX customer? Log in to ZDX to explore these features. New to ZDX? Learn more about ZDX.",
+      "summary_html": "Every month, Zscaler Digital Experience (ZDX) releases updates that help IT and network operations teams see more, troubleshoot faster, and manage the digital experience of their users at scale.\u00a0From expanded network architecture support to more granular probe controls, this month's releases reflect what our customers keep telling us: giving teams more precise controls to cut through noise, more accurate data to act on, and a cleaner experience to work in every day.Here's what is new with ZDX:Smarter Alerts for Collaboration Quality MonitoringFilter Dashboards by Data CenterReal User Monitoring ImprovementsConsistent UX with ZDX in Experience Center Smarter Alerts for Collaboration Quality MonitoringFor organizations that rely on real-time alerts to catch collaboration quality issues before they impact users, the granularity of those alerts matters enormously. A generic alert that fires for every region, including ones you know have connectivity variance, creates noise that slows teams down rather than helping them.ZDX now supports expanded filtering and grouping options when configuring collaboration quality alerts. Teams can now apply inclusion and exclusion filters by location, country, city, and other dimensions, the same granularity that is already available for application and network alert types. You can also group alert data by these dimensions to understand whether an issue is localized to a specific office or widespread across a region.The result: Fewer false positives, more targeted notifications, and faster triage when something actually goes wrong.ZDX tier: Available for ZDX Advanced and Advanced Plus customers. Filter Your Dashboards by Data CenterWhen a performance degradation or service disruption is reported at a specific data center location, the first question is always:\u00a0who's affected, and what is the impact? Until now, correlating a data center event with actual user experience data required workarounds or relying on pre-built system reports.ZDX now lets you filter live dashboard data by Zscaler data center across the Network Intelligence dashboard and other key views. Select one or more data centers from the filter dropdown and immediately see the telemetry from application performance, network path health, device metrics from users egressing through those locations.The result: Network operations teams who need to quickly scope the blast radius of an infrastructure event and communicate impact to the business in real time.ZDX tier:\u00a0Available across all ZDX license tiers. Real User Monitoring: More Precision, Less AmbiguityZDX's Real User Monitoring capability captures how end users actually experience web applications like load times, errors, navigation flows directly from the browser. The latest update brings a set of meaningful improvements for teams who depend on this data:Clearer load time metrics for single-page applications: Page load time and navigation time are now reported distinctly, so you can understand whether slowness is coming from the initial page load or subsequent in-app navigation events.Multiple errors per session visible: When more than one error occurs during a monitoring window, all error events are now displayed, not just the first one, giving a complete picture of what a user experienced.Consistent score terminology: Score labels across the ZDX interface now use uniform naming conventions, eliminating the ambiguity that came from inconsistent labels across different views.Enriched browser data collection: The browser extension now captures additional resource-level attributes, enabling deeper analysis of web application performance bottlenecks.The browser extension updates automatically with no action needed from end users or IT teams.ZDX tier: Available for ZDX Advanced Plus customers. A More Consistent Console ExperienceWe also completed a significant UI refresh across ZDX. Filters, tables, drawers, time-range selectors, page headers, and other core interface elements have been updated to follow a unified design system, delivering a consistent look and feel whether you're working in dashboards, alert configurations, or device detail views.The change is purely visual and requires no workflow adjustments, but the day-to-day impact is real: a more predictable interface reduces the small moments of friction that slow teams down during active troubleshooting.ZDX tier: Available across all ZDX license tiers. What's NextThese releases reflect a consistent theme across ZDX's evolution: better signal, less noise, and faster paths from detection to resolution. Whether it's more precise alerting, accurate device data, or a cleaner interface to work in, every improvement compounds over time into a meaningfully more efficient operations workflow.Keep an eye out for what's coming in next month\u2019s releases, including updates that will make it even easier to prioritize and respond to issues for your organization's most critical users.See all the latest ZDX releasesAlready a ZDX customer? Log in to\u00a0ZDX to explore these features.\u00a0New to ZDX?\u00a0Learn more about ZDX.",
+      "link": "https://www.zscaler.com/blogs/product-insights/what-s-new-zdx-sharper-alerts-cleaner-data-faster-troubleshooting",
+      "source": "Zscaler Research Blogs",
+      "feed_type": "news",
+      "type": "threat-intel-apt-campaigns",
+      "type_label": "Threat Intel & APT Campaigns",
+      "published": "2026-10-12T20:02:05+00:00",
+      "published_ts": 1791835325,
+      "smart_groups": [
+        "Community Discussion",
+        "Product News"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Prominent Ransomware Negotiator Faces Extortion Charges",
+      "summary": "Edward Dubrovsky, a longtime cybersecurity executive, was arrested and charged in Pennsylvania last week under conspiracy to extort money.",
+      "summary_html": "Edward Dubrovsky, a longtime cybersecurity executive, was arrested and charged in Pennsylvania last week under conspiracy to extort money.",
+      "link": "https://www.darkreading.com/insider-threats/prominent-ransomware-negotiator-extortion-charges",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-12T20:00:53+00:00",
+      "published_ts": 1791835253,
+      "smart_groups": [
+        "Ransomware"
+      ],
+      "curated": true
+    },
+    {
+      "title": "From GTA V on iPhone to Free Photoshop: This AI Tool Is Upending Software",
+      "summary": "REA, a free toolkit that hands AI agents the keys to reverse engineering, crossed 100,000 GitHub stars in a week as AI-decompiled game mods, console ports, and Adobe clones flood the internet.",
+      "summary_html": "REA, a free toolkit that hands AI agents the keys to reverse engineering, crossed 100,000 GitHub stars in a week as AI-decompiled game mods, console ports, and Adobe clones flood the internet.",
+      "link": "https://decrypt.co/380741/gta-v-iphone-free-photoshop-ai-tool-rea-upending-software",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-10-12T19:46:03+00:00",
+      "published_ts": 1791834363,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Why Robust VPS Hosting Helps OpenClaw Run Faster and More Reliably",
+      "summary": "OpenClaw is not a chatbot that waits for a prompt. It is an autonomous agent that runs real\u2026",
+      "summary_html": "OpenClaw is not a chatbot that waits for a prompt. It is an autonomous agent that runs real\u2026",
+      "link": "https://hackread.com/why-vps-hosting-helps-openclaw-run-faster-reliably/",
+      "source": "HackRead",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-12T19:45:31+00:00",
+      "published_ts": 1791834331,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "French food store attack was not new, used a previously exploited vulnerability",
+      "summary": "DanFoss - the vendor of the refrigeration units the French food stores used - confirmed that the attack was done by exploiting a known vulnerability (which had been used in an attack again US DoD commissaries in August). None of the stores had patched or updated the controllers. https://www.seattletimes.com/business/hackers-hit-french-supermarkets-in-attack-disabling-fridges/ https://www.militarytimes.com/news/your-military/2026/08/28/dod-confirms-refrigeration-disruption-at-military-commissaries/ submitted by /u/MikeTalonNYC [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>DanFoss - the vendor of the refrigeration units the French food stores used - confirmed that the attack was done by exploiting a known vulnerability (which had been used in an attack again US DoD commissaries in August). None of the stores had patched or updated the controllers. </p> <p><a href=\"https://www.seattletimes.com/business/hackers-hit-french-supermarkets-in-attack-disabling-fridges/\">https://www.seattletimes.com/business/hackers-hit-french-supermarkets-in-attack-disabling-fridges/</a></p> <p><a href=\"https://www.militarytimes.com/news/your-military/2026/08/28/dod-confirms-refrigeration-disruption-at-military-commissaries/\">https://www.militarytimes.com/news/your-military/2026/08/28/dod-confirms-refrigeration-disruption-at-military-commissaries/</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/MikeTalonNYC\"> /u/MikeTalonNYC </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x4br8r/french_food_store_attack_was_not_new_used_a/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x4br8r/french_food_store_attack_was_not_new_used_a/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1x4br8r/french_food_store_attack_was_not_new_used_a/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-12T19:41:29+00:00",
+      "published_ts": 1791834089,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Community Discussion"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Which Cybersecurity field should I study for? Something that won't be erased by AI in the future and has good scope?",
+      "summary": "submitted by /u/cybzoro [link] [comments]",
+      "summary_html": "submitted by   <a href=\"https://www.reddit.com/user/cybzoro\"> /u/cybzoro </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x4bh1x/which_cybersecurity_field_should_i_study_for/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x4bh1x/which_cybersecurity_field_should_i_study_for/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1x4bh1x/which_cybersecurity_field_should_i_study_for/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-12T19:31:01+00:00",
+      "published_ts": 1791833461,
+      "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Yandex confirms service outage as users lose access to cloud files",
+      "summary": "Russian cloud services provider Yandex announced that drone attacks damaged three of its data centers, forcing it to shut down two facilities and partially disable a third.",
+      "summary_html": "Russian cloud services provider Yandex\u00a0announced that drone attacks damaged three of its data centers, forcing it to shut down two facilities and partially disable a third. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/yandex-confirms-service-outage-as-users-lose-access-to-cloud-files/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-10-12T19:23:01+00:00",
+      "published_ts": 1791832981,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Solana Treasury Firm DeFi Development Keeps Buying SOL as CHAD Preferred Stock Hits Record",
+      "summary": "The Nasdaq-listed company now holds about 2.59 million SOL, but its weekly purchases keep shrinking.",
+      "summary_html": "The Nasdaq-listed company now holds about 2.59 million SOL, but its weekly purchases keep shrinking.",
+      "link": "https://decrypt.co/380752/solana-treasury-firm-defi-development-keeps-buying-sol",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-10-12T19:07:30+00:00",
+      "published_ts": 1791832050,
+      "smart_groups": [
+        "Crypto / Web3"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Crypto PACs report $2.7M spending blitz on House races as midterms loom",
+      "summary": "With just 22 days until the US midterm elections, a crypto-aligned committee has announced another major ad expenditure to support \u201cpro-crypto\u201d candidates in 2026.",
+      "summary_html": "<p></p><p>With just 22 days until the US midterm elections, a crypto-aligned committee has announced another major ad expenditure to support \u201cpro-crypto\u201d candidates in 2026.</p>",
+      "link": "https://cointelegraph.com/news/crypto-pac-spending-house-races-2026-midterms?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-10-12T18:55:49+00:00",
+      "published_ts": 1791831349,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Anthropic takes risky AI tests offline after models breach govt sites",
+      "summary": "Anthropic announced that its internal AI models undergoing \"high-risk and cybersecurity evaluations\" no longer have internet access following incidents involving U.S. government websites at the federal, state, and local levels.",
+      "summary_html": "Anthropic announced that its internal AI models undergoing \"high-risk and cybersecurity evaluations\" no longer have internet access following incidents involving U.S. government websites at the federal, state, and local levels. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/anthropic-takes-risky-ai-tests-offline-after-models-breach-govt-sites/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-10-12T18:51:59+00:00",
+      "published_ts": 1791831119,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "US accounting overhaul could make stablecoins more attractive to corporations: Tempo",
+      "summary": "A Tempo report examines how proposed US accounting rules could change corporate stablecoin holdings, with direct redemption rights determining which tokens qualify as cash.",
+      "summary_html": "<p></p><p>A Tempo report examines how proposed US accounting rules could change corporate stablecoin holdings, with direct redemption rights determining which tokens qualify as cash.</p>",
+      "link": "https://cointelegraph.com/news/fasb-stablecoin-accounting-rules-corporate-adoption?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-10-12T18:38:14+00:00",
+      "published_ts": 1791830294,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "No Identity, No Recovery: Cyber Resilience Starts With IAM",
+      "summary": "The proliferation of enterprise apps and the centrality of cloud identity providers requires an identity security rethink.",
+      "summary_html": "The proliferation of enterprise apps and the centrality of cloud identity providers requires an identity security rethink.",
+      "link": "https://www.darkreading.com/cybersecurity-operations/cyber-resilience-starts-with-iam",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-12T18:27:25+00:00",
+      "published_ts": 1791829645,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "From Solutions Engineer to Enterprise Account Executive",
+      "summary": "At Zscaler, career development isn't a rigid ladder, it\u2019s an environment built on shared ownership, trust, and co-elevation. Learn how Laksh leverages his technical depth, dynamic range, and Zscaler\u2019s collaborative team culture to transition from Solutions Engineer to Senior Solutions Consultant, and ultimately to Enterprise Account Executive. Q: What new skill or role did you set out to learn?A: As a Solutions Engineer, I was deeply comfortable in the technical domain, but I always felt drawn toward the business side of enterprise sales. I wanted to understand why deals stall, how executive stakeholders make decisions, and what it truly takes to align technology with strategic business outcomes.To achieve that, I needed to develop true dynamic range\u2014the ability to move seamlessly between deep technical execution and high-level strategy. I set my sights on mastering champion enablement, executive stakeholder management, and complex deal orchestration. For me, this wasn\u2019t just about a title change; it was about stepping beyond traditional functional swim lanes to become a well-rounded Go-To-Market (GTM) professional who can speak the language of a CIO. Technical credibility gets you into the room, but earning trust through real business impact is what truly differentiates a GTM leader. Q: How did Zscaler support your learning and professional growth? A: Zscaler\u2019s culture of co-creation and co-elevation made all the difference. Growth wasn't just classroom theory; it was hands-on and lived out every day across teams. Through the Buddy Program, seasoned Account Executives openly shared their deal playbooks, objection-handling strategies, and executive communication frameworks. Leadership also invested dedicated mentorship time to coach me on pipeline management and navigating long enterprise deal cycles.What stood out most was how people worked beyond the org chart. AEs, product specialists, and leaders stepped in to elevate my skills, bringing me into live customer meetings and trusting me to progressively take ownership of client conversations. Instead of working in silos, we co-created solutions for our customers together. Zscaler genuinely creates an environment where, if you bring an owner's mindset and a hunger to grow, the whole team leans in to help you succeed. Q: How has this career pivot shaped your career trajectory?A: The outcome is a career journey I\u2019m incredibly proud of: progressing from Solutions Engineer to Senior Solutions Consultant, and now to Account Executive in Zscaler\u2019s Enterprise segment. Each step was an opportunity to launch and iterate on my skill set\u2014moving from technical advisory to fully owning the revenue relationship and driving meaningful business outcomes.Earning trust through results is at the core of how we operate here. The capabilities I built\u2014executive engagement, champion development, and cross-functional deal strategy\u2014are now part of my everyday toolkit. Above all, this experience proved that growth at Zscaler is grounded in our shared commitment to each other and to customer success. I am a direct product of that team-first culture, and it shapes how I show up for my customers every single day. We\u2019re hiring! Explore open opportunities: https://www.zscaler.com/careers/search?departments=GTM+Sales&page=1",
+      "summary_html": "At Zscaler, career development isn't a rigid ladder, it\u2019s an environment built on shared ownership, trust, and co-elevation. Learn how Laksh leverages his technical depth, dynamic range, and Zscaler\u2019s\u00a0collaborative team culture to transition from Solutions Engineer to Senior Solutions Consultant, and ultimately to Enterprise Account Executive.\u00a0Q: What new skill or role did you set out to learn?A: As a Solutions Engineer, I was deeply comfortable in the technical domain, but I always felt drawn toward the business side of enterprise sales. I wanted to understand why deals stall, how executive stakeholders make decisions, and what it truly takes to align technology with strategic business outcomes.To achieve that, I needed to develop true dynamic range\u2014the ability to move seamlessly between deep technical execution and high-level strategy. I set my sights on mastering champion enablement, executive stakeholder management, and complex deal orchestration. For me, this wasn\u2019t just about a title change; it was about stepping beyond traditional functional swim lanes to become a well-rounded Go-To-Market (GTM) professional who can speak the language of a CIO. Technical credibility gets you into the room, but earning trust through real business impact is what truly differentiates a GTM leader.\u00a0Q: How did Zscaler support your learning and professional growth?\u00a0A: Zscaler\u2019s culture of co-creation and co-elevation made all the difference. Growth wasn't just classroom theory; it was hands-on and lived out every day across teams. Through the Buddy Program, seasoned Account Executives openly shared their deal playbooks, objection-handling strategies, and executive communication frameworks. Leadership also invested dedicated mentorship time to coach me on pipeline management and navigating long enterprise deal cycles.What stood out most was how people worked beyond the org chart. AEs, product specialists, and leaders stepped in to elevate my skills, bringing me into live customer meetings and trusting me to progressively take ownership of client conversations. Instead of working in silos, we co-created solutions for our customers together. Zscaler genuinely creates an environment where, if you bring an owner's mindset and a hunger to grow, the whole team leans in to help you succeed.\u00a0Q: How has this career pivot shaped your career trajectory?A: The outcome is a career journey I\u2019m incredibly proud of: progressing from Solutions Engineer to Senior Solutions Consultant, and now to Account Executive in Zscaler\u2019s Enterprise segment. Each step was an opportunity to launch and iterate on my skill set\u2014moving from technical advisory to fully owning the revenue relationship and driving meaningful business outcomes.Earning trust through results is at the core of how we operate here. The capabilities I built\u2014executive engagement, champion development, and cross-functional deal strategy\u2014are now part of my everyday toolkit. Above all, this experience proved that growth at Zscaler is grounded in our shared commitment to each other and to customer success. I am a direct product of that team-first culture, and it shapes how I show up for my customers every single day.\u00a0We\u2019re hiring! Explore open opportunities: https://www.zscaler.com/careers/search?departments=GTM+Sales&amp;page=1",
+      "link": "https://www.zscaler.com/blogs/zscaler-life/solutions-engineer-enterprise-account-executive",
+      "source": "Zscaler Research Blogs",
+      "feed_type": "news",
+      "type": "threat-intel-apt-campaigns",
+      "type_label": "Threat Intel & APT Campaigns",
+      "published": "2026-10-12T18:24:08+00:00",
+      "published_ts": 1791829448,
+      "smart_groups": [
+        "Mobile & App Security"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Ripple-Backed Evernorth Hits Nasdaq Holding 473 Million XRP Worth Far Less Than It Paid",
+      "summary": "Evernorth's XRPN shares began trading Monday after its SPAC merger closed, but 80% of SPAC investors cashed out first and its XRP stash is worth roughly 40% less than at signing.",
+      "summary_html": "Evernorth's XRPN shares began trading Monday after its SPAC merger closed, but 80% of SPAC investors cashed out first and its XRP stash is worth roughly 40% less than at signing.",
+      "link": "https://decrypt.co/380728/ripple-backed-evernorth-hits-nasdaq-holding-473-million-xrp",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-10-12T18:09:15+00:00",
+      "published_ts": 1791828555,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Discover AvisLoader: A Windows Malware Loader Designed to Evade Detection",
+      "summary": "A cybersecurity research team identified AvisLoader, a novel Windows-based malware loader linked to the Latin term for bird. Technical Analysis The discovery was made on an accessible staging server containing a ClickFix lure, supporting utilities, and a Command Center. The initial attack vector leverages a deceptive ClickFix tactic. A webpage mimicking a document-signing request prompts users to copy and execute an attacker-provided command. Malware Architecture The loader\u2019s resilience stems from its communication framework, which utilizes Tox, an encrypted peer-to-peer (P2P) messaging network. This architecture complicates conventional domain-based takedown efforts, as the command-and-control (C2) channel operates without a fixed domain or server address. Distribution Method The malware\u2019s distribution method involves a ClickFix lure hosted on Cloudflare Workers, designed to mimic a DocuSign verification process. A fabricated \u201cManual verification\u201d prompt claims verification is handled by Cloudflare, urging users to input a code into a terminal. Persistence Mechanisms Persistence mechanisms target desktop and taskbar shortcuts, with the executable containing backup strings and a VBScript launcher named VLCAssistant. These components suggest a method to execute the malware when users open modified shortcuts. Detection and Mitigation Security teams can detect AvisLoader through several indicators. Suspicious document-signing or verification pages prompting users to paste commands into terminals or the Windows Run dialog should be flagged. Investigators should scrutinize workers.dev and trycloudflare.com domains when associated with such lures or code execution. Network and System Monitoring Monitoring command shells and script interpreters for remote code retrieval and execution is critical, particularly after visits to compromised pages. Unexpected Tox traffic or other P2P communications on a device warrants investigation. Conclusion AvisLoader combines established malware techniques with the Tox protocol, creating a resilient delivery framework. The recovered Windows sample includes shortcut-persistence artifacts, while its Command Center supports shell tasks and file delivery over encrypted P2P channels. According to the cybersecurity research team, AvisLoader\u2019s design highlights the evolving tactics of threat actors, who increasingly exploit decentralized communication networks to evade detection. FAQs What is AvisLoader? AvisLoader is a Windows-based malware loader linked to the Latin term for bird, engineered for resilience through the Tox protocol. How does AvisLoader operate? AvisLoader uses Tox, an encrypted P2P network, to communicate without a fixed C2 endpoint. It leverages ClickFix lures and Cloudflare Workers for distribution. How can organizations detect AvisLoader? Organizations should monitor for suspicious verification prompts, Tox traffic, modified shortcuts, and files like auto.exe or hmn_hook.dll. Analyzing network behavior and system modifications is critical.",
+      "summary_html": "<p>A cybersecurity research team identified AvisLoader, a novel Windows-based malware loader linked to the Latin term for bird.</p>\nTechnical Analysis\n<p>The discovery was made on an accessible staging server containing a ClickFix lure, supporting utilities, and a Command Center. The initial attack vector leverages a deceptive ClickFix tactic. A webpage mimicking a document-signing request prompts users to copy and execute an attacker-provided command.</p>\nMalware Architecture\n<p>The loader\u2019s resilience stems from its communication framework, which utilizes Tox, an encrypted peer-to-peer (P2P) messaging network. This architecture complicates conventional domain-based takedown efforts, as the command-and-control (C2) channel operates without a fixed domain or server address.</p>\nDistribution Method\n<p>The malware\u2019s distribution method involves a ClickFix lure hosted on Cloudflare Workers, designed to mimic a DocuSign verification process. A fabricated \u201cManual verification\u201d prompt claims verification is handled by Cloudflare, urging users to input a code into a terminal.</p>\nPersistence Mechanisms\n<p>Persistence mechanisms target desktop and taskbar shortcuts, with the executable containing backup strings and a VBScript launcher named VLCAssistant. These components suggest a method to execute the malware when users open modified shortcuts.</p>\nDetection and Mitigation\n<p>Security teams can detect AvisLoader through several indicators. Suspicious document-signing or verification pages prompting users to paste commands into terminals or the Windows Run dialog should be flagged. Investigators should scrutinize workers.dev and trycloudflare.com domains when associated with such lures or code execution.</p>\nNetwork and System Monitoring\n<p>Monitoring command shells and script interpreters for remote code retrieval and execution is critical, particularly after visits to compromised pages. Unexpected Tox traffic or other P2P communications on a device warrants investigation.</p>\nConclusion\n<p>AvisLoader combines established malware techniques with the Tox protocol, creating a resilient delivery framework. The recovered Windows sample includes shortcut-persistence artifacts, while its Command Center supports shell tasks and file delivery over encrypted P2P channels.</p>\n<div>\n<p>According to the cybersecurity research team, AvisLoader\u2019s design highlights the evolving tactics of threat actors, who increasingly exploit decentralized communication networks to evade detection.</p>\n</div>\nFAQs\nWhat is AvisLoader?\n<p>AvisLoader is a Windows-based malware loader linked to the Latin term for bird, engineered for resilience through the Tox protocol.</p>\nHow does AvisLoader operate?\n<p>AvisLoader uses Tox, an encrypted P2P network, to communicate without a fixed C2 endpoint. It leverages ClickFix lures and Cloudflare Workers for distribution.</p>\nHow can organizations detect AvisLoader?\n<p>Organizations should monitor for suspicious verification prompts, Tox traffic, modified shortcuts, and files like auto.exe or hmn_hook.dll. Analyzing network behavior and system modifications is critical.</p>\n<p><a href=\"https://craw.in/six-months-diploma-in-artificial-intelligence-ai-and-machine-learning\"><br/>\n<br/>\n</a></p>\n<p>The post <a href=\"https://www.news4hackers.com/discover-avisloader-a-windows-malware-loader-designed-to-evade-detection/\">Discover AvisLoader: A Windows Malware Loader Designed to Evade Detection</a> appeared first on <a href=\"https://www.news4hackers.com\"></a>.</p>",
+      "link": "https://www.news4hackers.com/discover-avisloader-a-windows-malware-loader-designed-to-evade-detection/",
+      "source": "News4Hackers",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-12T18:08:32+00:00",
+      "published_ts": 1791828512,
+      "smart_groups": [
+        "Malware / Payloads",
+        "Cloud / SaaS"
+      ],
+      "curated": true
+    },
+    {
+      "title": "IonQ Acquires Zero Trust Security Firm Elisity in $1.3 Billion Deal",
+      "summary": "IonQ has entered into a definitive agreement to acquire Elisity in a stock-based transaction valued at up to $1.3 billion. The deal includes an earnout component of up to $150 million, contingent on Elisity\u2019s future performance metrics. IonQ anticipates finalizing the acquisition during the fourth quarter of 2026. Deal Structure and Valuation The number of shares issued will be determined by IonQ\u2019s volume-weighted average stock price over a 20-day period preceding the closing, with the price range capped between $33.07 and $49.61. Elisity\u2019s Background and Technology Elisity, established in 2019, provides network access control solutions that enforce least-privilege policies to restrict communication between users, devices, workloads, and AI agents. Its IdentityGraph tool integrates internal data with external partner inputs, such as identity, asset, and risk information, to inform access decisions. IonQ reported that Elisity has deployed its technology across more than 100 enterprise environments. The startup secured over $70 million in funding prior to the acquisition. IonQ\u2019s Business and Integration Plans IonQ\u2019s business encompasses quantum computing, networking, sensing, and security, with existing offerings including post-quantum cryptography (PQC) and quantum key distribution (QKD). The integration aims to leverage Elisity\u2019s customer base and relationships with chief information security officers (CISOs) to expand adoption of IonQ\u2019s quantum technologies. The companies plan to enhance IdentityGraph with cryptographic inventory and risk data, enabling organizations to prioritize post-quantum upgrades based on operational risk and criticality. CEO Statements and Strategic Importance Elisity CEO James Winebrenner emphasized that access controls minimize exposure while cryptographic upgrades address foundational vulnerabilities. He stated in a blog post that customers must balance post-quantum initiatives with securing existing assets to maintain operational continuity. IonQ CEO Niccolo de Masi highlighted the accelerating timeline for Q-Day, the hypothetical point at which quantum computers could compromise current encryption standards. He referenced recent White House directives urging federal agencies to adopt PQC measures ahead of schedule. Post-Acquisition Leadership and Market Trends Post-acquisition, Winebrenner and Elisity\u2019s leadership team will retain operational control. SecurityWeek\u2019s M&A tracker recorded over 300 cybersecurity-related deals in 2026.",
+      "summary_html": "<p>IonQ has entered into a definitive agreement to acquire Elisity in a stock-based transaction valued at up to $1.3 billion. The deal includes an earnout component of up to $150 million, contingent on Elisity\u2019s future performance metrics. IonQ anticipates finalizing the acquisition during the fourth quarter of 2026.</p>\nDeal Structure and Valuation\n<p>The number of shares issued will be determined by IonQ\u2019s volume-weighted average stock price over a 20-day period preceding the closing, with the price range capped between $33.07 and $49.61.</p>\nElisity\u2019s Background and Technology\n<p>Elisity, established in 2019, provides network access control solutions that enforce least-privilege policies to restrict communication between users, devices, workloads, and AI agents. Its IdentityGraph tool integrates internal data with external partner inputs, such as identity, asset, and risk information, to inform access decisions. IonQ reported that Elisity has deployed its technology across more than 100 enterprise environments. The startup secured over $70 million in funding prior to the acquisition.</p>\nIonQ\u2019s Business and Integration Plans\n<p>IonQ\u2019s business encompasses quantum computing, networking, sensing, and security, with existing offerings including post-quantum cryptography (PQC) and quantum key distribution (QKD). The integration aims to leverage Elisity\u2019s customer base and relationships with chief information security officers (CISOs) to expand adoption of IonQ\u2019s quantum technologies. The companies plan to enhance IdentityGraph with cryptographic inventory and risk data, enabling organizations to prioritize post-quantum upgrades based on operational risk and criticality.</p>\nCEO Statements and Strategic Importance\n<div>\n<p>Elisity CEO James Winebrenner emphasized that access controls minimize exposure while cryptographic upgrades address foundational vulnerabilities. He stated in a blog post that customers must balance post-quantum initiatives with securing existing assets to maintain operational continuity.</p>\n</div>\n<div>\n<p>IonQ CEO Niccolo de Masi highlighted the accelerating timeline for Q-Day, the hypothetical point at which quantum computers could compromise current encryption standards. He referenced recent White House directives urging federal agencies to adopt PQC measures ahead of schedule.</p>\n</div>\nPost-Acquisition Leadership and Market Trends\n<p>Post-acquisition, Winebrenner and Elisity\u2019s leadership team will retain operational control. SecurityWeek\u2019s M&amp;A tracker recorded over 300 cybersecurity-related deals in 2026.</p>\n<p><a href=\"https://craw.in/learn-python-training-in-delhi-python-course\"><br/>\n<br/>\n</a></p>\n<p>The post <a href=\"https://www.news4hackers.com/ionq-acquires-zero-trust-security-firm-elisity-in-1-3-billion-deal/\">IonQ Acquires Zero Trust Security Firm Elisity in $1.3 Billion Deal</a> appeared first on <a href=\"https://www.news4hackers.com\"></a>.</p>",
+      "link": "https://www.news4hackers.com/ionq-acquires-zero-trust-security-firm-elisity-in-1-3-billion-deal/",
+      "source": "News4Hackers",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-12T18:06:46+00:00",
+      "published_ts": 1791828406,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true,
+      "story_id": "ef7595ad07b8",
+      "story_size": 2
+    },
     {
       "title": "D\u00e9bat : comment un d\u00e9veloppeur junior peut-il prouver qu'il est pr\u00eat \u00e0 travailler en entreprise ?",
       "summary": "On demande souvent aux d\u00e9veloppeurs juniors d'avoir de l'exp\u00e9rience pour d\u00e9crocher leur premier poste. Mais comment acqu\u00e9rir cette exp\u00e9rience lorsqu'on n'arrive justement pas \u00e0 se faire recruter ? Un portfolio peut montrer qu'on sait cr\u00e9er une application. GitHub peut montrer du code. Mais est-ce que cela suffit pour d\u00e9montrer qu'on sait r\u00e9ellement travailler dans une \u00e9quipe ? Par exemple : Comprendre un ticket et intervenir sur un projet existant. Corriger un bug dans une base de code qu'on ne conna\u00eet pas. Faire une pull request et prendre en compte une code review. \u00c9crire des tests, d\u00e9boguer et expliquer ses choix techniques. Utiliser l'IA sans simplement copier-coller sa r\u00e9ponse. Selon vous, comment pourrait-on \u00e9valuer ces comp\u00e9tences avant une premi\u00e8re embauche ? Et si un candidat pouvait d\u00e9montrer ces comp\u00e9tences dans un environnement de travail simul\u00e9, est-ce que cela aurait une r\u00e9elle valeur \u00e0 vos yeux, ou est-ce que seule l'exp\u00e9rience acquise dans une vraie entreprise compte ? Je suis curieux d'avoir vos avis, notamment ceux des d\u00e9veloppeurs, recruteurs et responsables techniques. submitted by /u/Head-Standard-4924 [link] [comments]",
@@ -17,6 +499,22 @@
       "published_ts": 1791828117,
       "smart_groups": [
         "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Claude sent a false homicide tip to police \u2013 and it\u2019s part of a troubling AI pattern",
+      "summary": "Models routinely take shortcuts to pass evaluations. Who gets to decide what incidents are innocuous?",
+      "summary_html": "Models routinely take shortcuts to pass evaluations. Who gets to decide what incidents are innocuous?",
+      "link": "https://www.zdnet.com/innovation/claude-false-homicide-tip/",
+      "source": "ZDNet \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-12T17:45:44+00:00",
+      "published_ts": 1791827144,
+      "smart_groups": [
+        "AI/ML Security"
       ],
       "curated": false
     },
@@ -243,6 +741,20 @@
       "curated": false
     },
     {
+      "title": "Google Adds Android Enterprise AI Controls: What IT Teams Can Manage",
+      "summary": "Google has announced new Android Enterprise policies for controlling AI automation, alongside stronger work-profile protections and additional device-management features.",
+      "summary_html": "<p>Google has announced new Android Enterprise policies for controlling AI automation, alongside stronger work-profile protections and additional device-management features.</p>\n<p>The post <a href=\"https://www.techrepublic.com/article/news-google-android-enterprise-ai-controls/\">Google Adds Android Enterprise AI Controls: What IT Teams Can Manage</a> appeared first on <a href=\"https://www.techrepublic.com\">TechRepublic</a>.</p>",
+      "link": "https://www.techrepublic.com/article/news-google-android-enterprise-ai-controls/",
+      "source": "TechRepublic \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-12T15:19:39+00:00",
+      "published_ts": 1791818379,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
       "title": "\u26a1 Weekly Recap: Helpdesk 0-Days, Rogue Certs, ShinyHunters Arrest, AI-Fooling Malware and More",
       "summary": "Some meetings last longer than it took attackers to jump on a newly disclosed security flaw this week. Within hours, they were already testing it. That's not much time to read the warning, let alone do something about it. But speed is only part of the problem. A secure connection didn't always mean a safe destination. People offering to fix a ransomware mess had questions to answer themselves.",
       "summary_html": "Some meetings last longer than it took attackers to jump on a newly disclosed security flaw this week. Within hours, they were already testing it. That's not much time to read the warning, let alone do something about it.\n\nBut speed is only part of the problem. A secure connection didn't always mean a safe destination. People offering to fix a ransomware mess had questions to answer themselves.",
@@ -275,6 +787,24 @@
         "Phishing / Social Engineering"
       ],
       "curated": true
+    },
+    {
+      "title": "Critical Bricksforge WordPress Plugin Vulnerability Exploited in the Wild",
+      "summary": "hi",
+      "summary_html": "<p>hi</p>\n<p>The post <a href=\"https://www.news4hackers.com/critical-bricksforge-wordpress-plugin-vulnerability-exploited-in-the-wild/\">Critical Bricksforge WordPress Plugin Vulnerability Exploited in the Wild</a> appeared first on <a href=\"https://www.news4hackers.com\"></a>.</p>",
+      "link": "https://www.news4hackers.com/critical-bricksforge-wordpress-plugin-vulnerability-exploited-in-the-wild/",
+      "source": "News4Hackers",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-12T15:14:07+00:00",
+      "published_ts": 1791818047,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true,
+      "story_id": "5ffff8d173ed",
+      "story_size": 2
     },
     {
       "title": "France Cyberattack: Hackers Target Supermarket Fridges, Raise Temperatures to 50\u00b0C",
@@ -312,7 +842,7 @@
       ],
       "curated": false,
       "story_id": "89310c4a866b",
-      "story_size": 2
+      "story_size": 3
     },
     {
       "title": "CFO CISO Collaboration: Essential Strategies for Cybersecurity Success",
@@ -406,7 +936,18 @@
       "published": "2026-10-12T14:25:00+00:00",
       "published_ts": 1791815100,
       "smart_groups": [],
-      "curated": false
+      "curated": false,
+      "story_id": "ef7595ad07b8",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "News4Hackers",
+          "title": "IonQ Acquires Zero Trust Security Firm Elisity in $1.3 Billion Deal",
+          "link": "https://www.news4hackers.com/ionq-acquires-zero-trust-security-firm-elisity-in-1-3-billion-deal/",
+          "published_ts": 1791828406
+        }
+      ]
     },
     {
       "title": "XRP treasury Evernorth\u2019s shares rise 5% at Nasdaq opening print",
@@ -629,7 +1170,18 @@
       "smart_groups": [
         "Vulnerabilities / CVEs"
       ],
-      "curated": true
+      "curated": true,
+      "story_id": "5ffff8d173ed",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "News4Hackers",
+          "title": "Critical Bricksforge WordPress Plugin Vulnerability Exploited in the Wild",
+          "link": "https://www.news4hackers.com/critical-bricksforge-wordpress-plugin-vulnerability-exploited-in-the-wild/",
+          "published_ts": 1791818047
+        }
+      ]
     },
     {
       "title": "GitLab warns of max severity code execution vulnerability",
@@ -833,7 +1385,7 @@
       ],
       "curated": false,
       "story_id": "89310c4a866b",
-      "story_size": 2,
+      "story_size": 3,
       "story_primary": true,
       "story_others": [
         {
@@ -841,6 +1393,12 @@
           "title": "Second DDoS Attack Disrupts Websites This Year",
           "link": "https://www.news4hackers.com/second-ddos-attack-disrupts-websites-this-year/",
           "published_ts": 1791817887
+        },
+        {
+          "source": "Security Affairs",
+          "title": "Canonical Hit by Second DDoS Attack in 2026, Public Websites Disrupted",
+          "link": "https://securityaffairs.com/200832/security/canonical-hit-by-second-ddos-attack-in-2026.html",
+          "published_ts": 1791835340
         }
       ]
     },
