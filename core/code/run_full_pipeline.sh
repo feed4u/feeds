@@ -28,12 +28,6 @@ export VERTICAL
 INCLUDE_REPORT=false
 if [[ "$1" == "--with-report" ]]; then
     INCLUDE_REPORT=true
-    if [ -z "$OPENAI_API_KEY" ]; then
-        echo -e "${RED}Error: OPENAI_API_KEY environment variable not set${NC}"
-        echo "Daily report generation requires OpenAI API key"
-        echo "Set it with: export OPENAI_API_KEY='your-key-here'"
-        exit 1
-    fi
 fi
 
 echo -e "${BLUE}========================================${NC}"
@@ -100,13 +94,8 @@ fi
 if [ "$INCLUDE_REPORT" = true ]; then
     echo -e "${YELLOW}[4/5] Generating daily report (LLM-powered)...${NC}"
 
-    REPORT_SCRIPT="$SCRIPT_DIR/$VERTICAL/build_daily_report.py"
-    if [ -f "$REPORT_SCRIPT" ]; then
-        python "$REPORT_SCRIPT" "${COMMON_ARGS[@]}"
-        echo -e "${GREEN}✓ Daily report generated${NC}"
-    else
-        echo -e "${YELLOW}⚠ build_daily_report.py not found for ${VERTICAL}, skipping...${NC}"
-    fi
+    # Provider-neutral (LLM_BASE_URL/LLM_MODEL/LLM_API_KEY); skips cleanly if the LLM is down.
+    python "$BASE_DIR/daily_briefing.py" "${COMMON_ARGS[@]}"
     echo ""
 else
     echo -e "${YELLOW}[4/5] Daily report generation skipped${NC}"
