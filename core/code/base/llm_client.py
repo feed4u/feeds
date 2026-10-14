@@ -93,6 +93,8 @@ class LLMConfig:
 class LLMClient:
     config: LLMConfig = field(default_factory=LLMConfig.from_env)
     sleep: Callable[[float], None] = time.sleep
+    # Running totals of the ``usage`` the endpoint reports (prompt/completion tokens).
+    usage: Dict[str, int] = field(default_factory=dict)
 
     def _headers(self) -> Dict[str, str]:
         headers = {"Content-Type": "application/json"}
@@ -181,6 +183,12 @@ class LLMClient:
         else:
             assert last_exc is not None
             raise last_exc
+
+        reported = payload.get("usage") if isinstance(payload, dict) else None
+        if isinstance(reported, dict):
+            for key in ("prompt_tokens", "completion_tokens"):
+                if isinstance(reported.get(key), int):
+                    self.usage[key] = self.usage.get(key, 0) + reported[key]
 
         try:
             content = payload["choices"][0]["message"].get("content") or ""

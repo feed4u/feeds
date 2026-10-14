@@ -68,6 +68,19 @@ export default function YourPage() {
 
 **Perfect for:** Daily security briefings and morning team calls
 
+### Today's topics (`/topics`)
+**Component:** `src/pages/Topics.tsx` (list: `src/components/TopicList.tsx`)
+
+**Features:**
+- The day's stories grouped into ranked topics (most sources and stories first)
+- Each topic shows its title, a 1-2 sentence summary and story/source counts;
+  clicking it expands to its stories as `NewsCard`s
+- 30 topics at a time, "Show more topics" for the rest
+- Enabled per vertical by `features.topics` in `src/config/verticals.ts`
+
+**Data Source:** `/data/<vertical>/archive/news/topics/topics_latest.json`,
+written by `core/code/base/build_topics.py` (schema version 1)
+
 ### 3. Archive (`/archive`)
 **Component:** `src/pages/Archive.tsx`
 
@@ -123,6 +136,7 @@ export default function YourPage() {
 
 All pages are accessible via the header navigation:
 - **k5.ai Logo** → Home
+- **Topics** → `/topics`
 - **Morning Call** → `/morning-call`
 - **Archive** → `/archive`
 - **Trends** → `/trends`
