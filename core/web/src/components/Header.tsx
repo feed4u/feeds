@@ -16,6 +16,7 @@ const ICONS: Record<typeof vertical.iconName, LucideIcon> = {
 };
 
 const NAV_ITEMS: Array<{ path: string; label: string; enabled: boolean }> = [
+  { path: "/topics", label: "Topics", enabled: vertical.features.topics },
   { path: "/morning-call", label: "Daily Report", enabled: vertical.features.morningCall },
   { path: "/archive", label: "Archive", enabled: true },
   { path: "/trends", label: "Trends", enabled: vertical.features.trends },

@@ -1,10 +1,10 @@
-# User service for the host-built daily briefings (k5, 4u).
+# User service for the host-built daily topics (all verticals) and briefings (k5, 4u).
 # Install (once, on the host that runs the local LLM lanes):
 #   bash core/code/systemd/install_daily_timer.sh
 # It runs from its own clone (~/.cache/news-daily/news, created on first start),
 # never from a working checkout, so it always uses origin/main's job script.
 [Unit]
-Description=News: daily LLM briefings (k5, 4u) from the local lane
+Description=News: daily LLM topics and briefings from the local lane
 After=network-online.target
 
 [Service]
@@ -14,5 +14,7 @@ Environment=NEWS_DAILY_REMOTE=git@github.com:feed4u/feeds.git
 ExecStartPre=/bin/bash -c 'test -d "$NEWS_DAILY_CLONE/.git" || git clone --depth 1 --branch main "$NEWS_DAILY_REMOTE" "$NEWS_DAILY_CLONE"'
 ExecStartPre=/bin/bash -c 'git -C "$NEWS_DAILY_CLONE" fetch --depth 1 origin main && git -C "$NEWS_DAILY_CLONE" reset --hard FETCH_HEAD'
 ExecStart=/bin/bash ${NEWS_DAILY_CLONE}/core/code/run_daily_briefings.sh
-TimeoutStartSec=3h
+# Topics for a ~2000-story Finnish day take about an hour on a busy lane; the
+# whole run must still finish before the 08:23 UTC data build publishes it.
+TimeoutStartSec=5h
 Nice=10

@@ -8,6 +8,8 @@ export interface VerticalFeatures {
   morningCall: boolean;
   threatActors: boolean;
   duplicates: boolean;
+  /** "Today's topics" page: the day's stories grouped by the LLM (archive/news/topics). */
+  topics: boolean;
 }
 
 export interface VerticalConfig {
@@ -44,7 +46,7 @@ export const VERTICALS: Record<VerticalId, VerticalConfig> = {
     searchPlaceholder: "Search CVE, actor, source...",
     footerText: "k5.ai — Security Intelligence Platform",
     researchSources: [],
-    features: { trends: true, morningCall: true, threatActors: true, duplicates: false },
+    features: { trends: true, morningCall: true, threatActors: true, duplicates: false, topics: true },
   },
   "4u": {
     id: "4u",
@@ -59,7 +61,7 @@ export const VERTICALS: Record<VerticalId, VerticalConfig> = {
     searchPlaceholder: "Search title, source...",
     footerText: "4u.ai — AI News Platform",
     researchSources: ["arxiv"],
-    features: { trends: false, morningCall: false, threatActors: false, duplicates: false },
+    features: { trends: false, morningCall: false, threatActors: false, duplicates: false, topics: true },
   },
   economics: {
     id: "economics",
@@ -74,7 +76,7 @@ export const VERTICALS: Record<VerticalId, VerticalConfig> = {
     searchPlaceholder: "Search title, source...",
     footerText: "economic.4u.ai — Economic News Platform",
     researchSources: [],
-    features: { trends: false, morningCall: false, threatActors: false, duplicates: false },
+    features: { trends: false, morningCall: false, threatActors: false, duplicates: false, topics: true },
   },
   storage: {
     id: "storage",
@@ -89,7 +91,7 @@ export const VERTICALS: Record<VerticalId, VerticalConfig> = {
     searchPlaceholder: "Search title, source...",
     footerText: "storage.4u.ai — Storage News Platform",
     researchSources: [],
-    features: { trends: false, morningCall: false, threatActors: false, duplicates: false },
+    features: { trends: false, morningCall: false, threatActors: false, duplicates: false, topics: true },
   },
   finnish: {
     id: "finnish",
@@ -104,7 +106,7 @@ export const VERTICALS: Record<VerticalId, VerticalConfig> = {
     searchPlaceholder: "Search title, source...",
     footerText: "fi.4u.ai — Finnish News Platform",
     researchSources: [],
-    features: { trends: false, morningCall: false, threatActors: false, duplicates: true },
+    features: { trends: false, morningCall: false, threatActors: false, duplicates: true, topics: true },
   },
 };
 
