@@ -5,12 +5,28 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Helmet } from "react-helmet-async";
 import { format, formatDistanceToNow } from "date-fns";
-import { Calendar, Shield, AlertTriangle, TrendingUp, Terminal } from "lucide-react";
+import { Calendar, Star, Layers, Link2, FileText, Newspaper } from "lucide-react";
 import { fetchMorningCall, MorningCallData, MorningCallHighlight } from "@/data/morningCall";
 
+const LINK_TOKEN = /^\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)$/;
+
 function renderInlineTokens(text: string): ReactNode[] {
-  const parts = text.split(/(\*\*[^*]+\*\*|`[^`]+`)/g);
+  const parts = text.split(/(\*\*[^*]+\*\*|`[^`]+`|\[[^\]]+\]\(https?:\/\/[^)\s]+\))/g);
   return parts.map((part, index) => {
+    const link = part.match(LINK_TOKEN);
+    if (link) {
+      return (
+        <a
+          key={`link-${index}`}
+          href={link[2]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary underline-offset-2 hover:underline"
+        >
+          {link[1]}
+        </a>
+      );
+    }
     if (part.startsWith("**") && part.endsWith("**")) {
       return (
         <strong key={`bold-${index}`}>{part.slice(2, -2)}</strong>
@@ -152,7 +168,7 @@ export default function MorningCall() {
         <title>Daily Report — {vertical.metaTitle}</title>
         <meta
           name="description"
-          content="Daily SOC-ready security report generated from curated intelligence."
+          content={`Daily briefing from ${vertical.logoText.primary}${vertical.logoText.suffix}: the day's most important stories, each linked to its source.`}
         />
       </Helmet>
 
@@ -161,11 +177,11 @@ export default function MorningCall() {
           <div className="flex items-center gap-3">
             <Calendar className="h-8 w-8 text-primary" />
             <div>
-              <h1 className="text-3xl font-bold text-foreground">Daily Report Briefing</h1>
+              <h1 className="text-3xl font-bold text-foreground">Daily Briefing</h1>
               <p className="text-[15px] text-muted-foreground">
                 {data
                   ? `Published ${format(new Date(data.generated_at), "MMMM d, yyyy 'at' HH:mm")} UTC`
-                  : "Latest curated overview for SOC teams"}
+                  : "The day's most important stories, linked to their sources"}
               </p>
             </div>
           </div>
@@ -186,7 +202,7 @@ export default function MorningCall() {
           <>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <Card className="p-5 bg-card border-border flex items-center gap-3">
-                <Shield className="h-8 w-8 text-primary" />
+                <Star className="h-8 w-8 text-primary" />
                 <div>
                   <p className="text-[13px] text-muted-foreground font-mono uppercase">
                     Curated Items
@@ -195,10 +211,10 @@ export default function MorningCall() {
                 </div>
               </Card>
               <Card className="p-5 bg-card border-border flex items-center gap-3">
-                <AlertTriangle className="h-8 w-8 text-destructive" />
+                <Layers className="h-8 w-8 text-primary" />
                 <div>
                   <p className="text-[13px] text-muted-foreground font-mono uppercase">
-                    Window Coverage
+                    Items That Day
                   </p>
                   <p className="text-2xl font-bold text-foreground">
                     {stats.total} items
@@ -206,10 +222,10 @@ export default function MorningCall() {
                 </div>
               </Card>
               <Card className="p-5 bg-card border-border flex items-center gap-3">
-                <TrendingUp className="h-8 w-8 text-success" />
+                <Link2 className="h-8 w-8 text-primary" />
                 <div>
                   <p className="text-[13px] text-muted-foreground font-mono uppercase">
-                    Highlighted Stories
+                    Cited Stories
                   </p>
                   <p className="text-2xl font-bold text-foreground">{stats.highlights}</p>
                 </div>
@@ -218,9 +234,9 @@ export default function MorningCall() {
 
             <Card className="p-6 bg-card border-border">
               <div className="flex items-center gap-2 mb-4">
-                <Terminal className="h-5 w-5 text-primary" />
+                <FileText className="h-5 w-5 text-primary" />
                 <h2 className="text-xl font-semibold text-foreground">
-                  SOC Daily Report ({data.window_hours}h window)
+                  Briefing for {data.analysis_date} (UTC)
                 </h2>
               </div>
               <SimpleMarkdown content={data.daily_report_markdown} />
@@ -228,8 +244,8 @@ export default function MorningCall() {
 
             <div className="space-y-4">
               <div className="flex items-center gap-2">
-                <Shield className="h-5 w-5 text-primary" />
-                <h2 className="text-xl font-semibold text-foreground">Top Highlights</h2>
+                <Newspaper className="h-5 w-5 text-primary" />
+                <h2 className="text-xl font-semibold text-foreground">Cited Stories</h2>
               </div>
               {data.highlights.length === 0 ? (
                 <Card className="p-6 bg-card border-border text-center">

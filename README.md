@@ -4,8 +4,8 @@ One codebase, one data pipeline, one React frontend — deployed as multiple ind
 
 | Vertical | Domain focus | Extra features |
 |---|---|---|
-| `k5` | Security / threat intelligence | Trends dashboard, threat actors, daily SOC briefing |
-| `4u` | AI / ML | — |
+| `k5` | Security / threat intelligence | Trends dashboard, threat actors, daily briefing |
+| `4u` | AI / ML | Daily briefing (generated; page hidden until reviewed) |
 | `economics` | Economy (disabled from schedule) | — |
 | `storage` | Storage tech (disabled from schedule) | — |
 | `finnish` | Finnish news | Duplicates (media-consortium clustering) |
@@ -57,6 +57,29 @@ GitHub Actions (`.github/workflows/update_news_json.yml`) runs the pipeline ever
 8 hours for the active verticals and commits `core/data/`; each vertical's
 git-integrated Cloudflare Pages project rebuilds from that push.
 See `core/web/CLOUDFLARE_DEPLOY.md` for per-project build settings.
+
+## Daily briefing (local LLM)
+
+`core/code/base/daily_briefing.py --vertical <v> [--date YYYY-MM-DD]` writes
+`core/data/<v>/archive/daily_report_<date>.json` (and `daily_report_latest.json`,
+which the `/morning-call` page reads) from that UTC day's archived items. It
+map-reduces the items in chunks sized for a 32k-context lane, and every bullet
+links to an input item; citations the model invents are dropped. Re-running a
+day replaces it. If the endpoint is down it exits 0 and changes nothing.
+
+The LLM is any OpenAI-compatible endpoint (`core/code/base/llm_client.py`):
+`LLM_BASE_URL` (default `http://127.0.0.1:11434/v1`), `LLM_MODEL` (default
+`qwen38-27b-mtp2:latest`), optional `LLM_API_KEY` (e.g. for
+`https://api.openai.com/v1`).
+
+GitHub-hosted runners cannot reach the local lane, so the daily is built on the
+host by `core/code/run_daily_briefings.sh` (k5 and 4u). It runs in a dedicated
+clone, commits with `[skip ci]` so Cloudflare does not rebuild for it, and goes
+live with the next 8-hourly data build. Schedule it with the user units in
+`core/code/systemd/`. `DAILY_BRIEFING=1 run_pipeline.sh` also runs it after the
+archive step.
+
+Tests: `python3 -m unittest discover -s core/code/base/tests`
 
 ## License
 
