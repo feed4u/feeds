@@ -16,6 +16,11 @@ Flow:
     6. Write ``archive/daily_report_<date>.json`` (replaced on re-run) and
        ``archive/daily_report_latest.json`` (only if this is the newest day).
 
+When the day's topics exist (``archive/news/topics/<date>.json``, written by
+build_topics.py), steps 2-4 become one call: the editor picks the most
+important of the ranked topics and writes the headline summary, and each
+chosen topic becomes a section of the briefing with its own links.
+
 If the LLM endpoint is unreachable the run prints why and exits 0 without
 touching any file (``--strict`` makes it exit 2 instead).
 
@@ -49,6 +54,7 @@ STORIES_PER_CHUNK = 8
 TOP_STORIES = 8
 HEADLINE_BULLETS = 3
 HIGHLIGHT_LIMIT = 10
+TOPIC_CANDIDATES = 40  # top-ranked topics offered to the editor as sections
 LINKS_PER_BULLET = 4  # shown on the page; the JSON keeps every cited link
 
 AUDIENCES = {
@@ -216,6 +222,21 @@ def reduce_prompt(day: date, candidates: Sequence[str], total_items: int) -> str
     )
 
 
+def topics_prompt(day: date, lines: Sequence[str], total_items: int) -> str:
+    return (
+        f"The day's topics, grouped from {total_items} items published on {day.isoformat()}. "
+        "Each line is one topic: its id, how many items and distinct sources report it, "
+        "its title and summary.\n\n"
+        + "\n".join(lines)
+        + "\n\nWrite the day's briefing:\n"
+        f"- \"headline\": {HEADLINE_BULLETS} short sentences summarising the day, each "
+        "with the topic ids it rests on.\n"
+        f"- \"sections\": the ids of the {TOP_STORIES} most important topics, most "
+        "important first.\n"
+        'Return {"headline": [{"text": "...", "topics": ["T1"]}], "sections": ["T1", ...]}'
+    )
+
+
 def format_candidate(story: Dict[str, Any]) -> str:
     ids = ",".join(str(i) for i in story["ids"])
     return f"- [{ids}] {story['title']}: {story.get('summary', '')}"
@@ -275,6 +296,41 @@ def validate_briefing(raw: Any, known: Dict[int, Dict[str, Any]]) -> Dict[str, L
     return {"headline": headline[:HEADLINE_BULLETS + 2], "top_stories": stories[:TOP_STORIES]}
 
 
+def _topic_labels(raw: Any, labels: Dict[int, Dict[str, Any]]) -> List[int]:
+    if not isinstance(raw, list):
+        raw = [raw]
+    out: List[int] = []
+    for value in raw:
+        try:
+            number = int(str(value).strip().strip("[]").lstrip("Tt"))
+        except (TypeError, ValueError):
+            continue
+        if number in labels and number not in out:
+            out.append(number)
+    return out
+
+
+def validate_topic_briefing(raw: Any, labels: Dict[int, Dict[str, Any]]) -> Dict[str, List[Dict[str, Any]]]:
+    """Headline bullets cite topics (and through them items); sections are topics.
+
+    Without usable sections the topics' own ranking decides.
+    """
+    raw = raw if isinstance(raw, dict) else {}
+    headline = []
+    for entry in raw.get("headline") or []:
+        if isinstance(entry, dict):
+            cited = _topic_labels(entry.get("topics", entry.get("ids")), labels)
+            text = _clean_text(entry.get("text"), 300)
+            if cited and text:
+                ids = [n for label in cited for n in labels[label]["ids"][:2]]
+                headline.append({"text": text, "ids": list(dict.fromkeys(ids))})
+    chosen = _topic_labels(raw.get("sections"), labels)[:TOP_STORIES] or sorted(labels)[:TOP_STORIES]
+    sections = [
+        {k: labels[label][k] for k in ("title", "summary", "ids", "topic_id")} for label in chosen
+    ]
+    return {"headline": headline[:HEADLINE_BULLETS + 2], "top_stories": sections}
+
+
 # --------------------------------------------------------------------------- #
 # Rendering
 # --------------------------------------------------------------------------- #
@@ -306,6 +362,20 @@ def render_markdown(briefing: Dict[str, List[Dict[str, Any]]], known: Dict[int, 
     for story in briefing["top_stories"]:
         summary = f" — {story['summary']}" if story["summary"] else ""
         lines.append(f"- **{story['title']}**{summary} ({_citations(story['ids'], known)})")
+    return "\n".join(lines).strip()
+
+
+def render_topic_markdown(briefing: Dict[str, List[Dict[str, Any]]], known: Dict[int, Dict[str, Any]]) -> str:
+    """One ### section per topic, after the headline summary."""
+    lines: List[str] = []
+    if briefing["headline"]:
+        lines.append("### Headline summary")
+        for entry in briefing["headline"]:
+            lines.append(f"- {entry['text']} ({_citations(entry['ids'], known)})")
+    for section in briefing["top_stories"]:
+        lines += ["", f"### {section['title']}"]
+        summary = f"{section['summary']} " if section["summary"] else ""
+        lines.append(f"{summary}({_citations(section['ids'], known)})")
     return "\n".join(lines).strip()
 
 
@@ -401,6 +471,42 @@ class BriefingBuilder:
             briefing["top_stories"] = stories[:TOP_STORIES]
         return briefing, known, len(chunks)
 
+    def build_from_topics(
+        self, day: date, items: List[Dict[str, Any]], topics: Dict[str, Any]
+    ) -> Tuple[Dict[str, Any], Dict[int, Dict[str, Any]]]:
+        """One LLM call: the day's ranked topics become the briefing's sections."""
+        known = {n: item for n, item in enumerate(items, start=1)}
+        number_of = {item["link"]: n for n, item in known.items()}
+        candidates = []
+        for topic in topics["topics"]:
+            ids = [number_of[s["link"]] for s in topic["stories"] if s["link"] in number_of]
+            title = _clean_text(topic["title"], 160)
+            if ids and title:
+                candidates.append({
+                    "title": title,
+                    "summary": _clean_text(topic["summary"], 400),
+                    "ids": ids,
+                    "topic_id": topic["id"],
+                    "line": f"({topic['size']} items, {topic['source_count']} sources) {title}: "
+                            f"{_clip(topic['summary'], SUMMARY_CHARS)}",
+                })
+            if len(candidates) >= TOPIC_CANDIDATES:
+                break
+        if not candidates:
+            raise LLMError("the day's topics cite none of the day's items")
+        lines = [f"[T{i}] {c['line']}" for i, c in enumerate(candidates, start=1)]
+        lines = chunk_lines(lines, self.token_budget)[0]
+        labels = {i: c for i, c in enumerate(candidates[: len(lines)], start=1)}
+        print(f"[INFO] Briefing sections from {len(labels)} of {len(topics['topics'])} topics")
+        try:
+            raw = self._ask(topics_prompt(day, lines, len(items)), max_tokens=1500)
+        except LLMUnavailable:
+            raise
+        except LLMError as exc:
+            print(f"[WARN] briefing reply unusable; sections follow the topic ranking: {exc}")
+            raw = {}
+        return validate_topic_briefing(raw, labels), known
+
 
 # --------------------------------------------------------------------------- #
 # Output
@@ -448,12 +554,20 @@ def run(
         return None
     client.check_available()
 
+    from build_topics import load_day_topics, topics_path  # here: build_topics imports this module
+
     started = time.monotonic()
     builder = BriefingBuilder(client, vertical, token_budget)
-    briefing, known, chunk_count = builder.build(day, items)
+    topics = load_day_topics(archive_dir, day)
+    if topics:
+        briefing, known = builder.build_from_topics(day, items, topics)
+        chunk_count = 0
+        markdown = render_topic_markdown(briefing, known)
+    else:
+        briefing, known, chunk_count = builder.build(day, items)
+        markdown = render_markdown(briefing, known)
     duration = round(time.monotonic() - started, 1)
 
-    markdown = render_markdown(briefing, known)
     curated = sum(1 for item in items if item.get("curated"))
     payload = {
         "generated_at": (now or datetime.now(timezone.utc)).isoformat(),
@@ -465,6 +579,8 @@ def run(
         "source_file": f"archive/*/daily/{day.isoformat()}.json",
         "total_items_in_window_all": len(items),
         "total_items_in_window_curated": curated,
+        "sections_from": "topics" if topics else "items",
+        "topics_file": f"archive/{topics_path(archive_dir, day).relative_to(archive_dir).as_posix()}" if topics else None,
         "chunks": chunk_count,
         "llm_calls": builder.calls,
         "duration_seconds": duration,
@@ -473,7 +589,8 @@ def run(
             {"text": e["text"], "links": [known[n]["link"] for n in e["ids"]]} for e in briefing["headline"]
         ],
         "top_stories": [
-            {"title": s["title"], "summary": s["summary"], "links": [known[n]["link"] for n in s["ids"]]}
+            {"title": s["title"], "summary": s["summary"], "links": [known[n]["link"] for n in s["ids"]],
+             **({"topic_id": s["topic_id"]} if "topic_id" in s else {})}
             for s in briefing["top_stories"]
         ],
         "highlights": [to_highlight(item) for item in cited_items(briefing, known)[:HIGHLIGHT_LIMIT]],

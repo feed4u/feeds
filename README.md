@@ -79,7 +79,28 @@ live with the next 8-hourly data build. Schedule it with the user units in
 `core/code/systemd/`. `DAILY_BRIEFING=1 run_pipeline.sh` also runs it after the
 archive step.
 
-Tests: `python3 -m unittest discover -s core/code/base/tests`
+## Daily topics (local LLM)
+
+`core/code/base/build_topics.py --vertical <v> [--date YYYY-MM-DD]` groups that
+UTC day's stories into ranked topics and writes
+`core/data/<v>/archive/news/topics/<date>.json` (and `topics_latest.json`, which
+the `/topics` "Today's topics" page reads). The story rules
+(`news_fetcher/stories.py`) pre-cluster first; the LLM only merges, splits and
+names those candidates, in batches sized for a 32k lane, and on big days only
+stories with a plausibly related partner are sent. Topics are ranked in Python
+(distinct sources, story count, recency); every story is in exactly one topic.
+If the lane is down or answers badly, the rule clusters are written instead
+(`mode: "rules"`), but a day's LLM-built file is never replaced by a
+rules-only one. Re-running an unchanged day is a no-op (`--force` rebuilds);
+`--rules-only` skips the LLM. Switch a vertical off in `TOPIC_VERTICALS` in
+that file.
+
+`run_daily_briefings.sh` builds topics for every vertical in `TOPIC_VERTICALS`
+(default all five) before the briefings and commits them the same way. When the
+day's topics exist, the briefing uses them as its sections.
+
+Tests: `python3 -m unittest discover -s core/code/base/tests`; web:
+`cd core/web && npm test`
 
 ## License
 

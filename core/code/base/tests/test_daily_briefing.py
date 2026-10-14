@@ -264,5 +264,99 @@ class BuildTests(unittest.TestCase):
         self.assertEqual(db.main(args), 1)
 
 
+EVENTS = [
+    ("Microsoft patches Exchange Server zero-day exploited in attacks", "BleepingComputer"),
+    ("Microsoft patches exploited Exchange Server zero-day in attacks", "SecurityWeek"),
+    ("Exchange Server zero-day exploited in attacks, Microsoft patches", "The Record"),
+    ("LockBit ransomware gang claims attack on Dutch hospital chain", "The Record"),
+    ("LockBit ransomware gang claims attack on hospital chain in Netherlands", "Cybernews"),
+    ("Google releases Chrome 130 with new tab grouping features", "The Verge"),
+]
+
+
+def topic_editor(body: dict):
+    prompt = body["messages"][-1]["content"]
+    assert "The day's topics" in prompt, prompt
+    labels = dict(re.findall(r"^\[(T\d+)\] \(\d+ items, \d+ sources\) (.+?):", prompt, re.M))
+    by_title = {title.split()[0]: label for label, title in labels.items()}
+    return 200, {
+        "headline": [{"text": "Exchange zero-day patched while LockBit hit hospitals.",
+                      "topics": [by_title["Microsoft"], by_title["LockBit"]]},
+                     {"text": "Invented claim.", "topics": ["T99"]}],
+        # The editor ranks the Chrome release first; an unknown id is ignored.
+        "sections": [by_title["Google"], "T99", by_title["Microsoft"]],
+    }
+
+
+class TopicSectionsTests(unittest.TestCase):
+    def setUp(self):
+        import build_topics as bt
+
+        self.bt = bt
+        self.tmp = tempfile.TemporaryDirectory()
+        self.archive = Path(self.tmp.name)
+        rows = [make_item(n, title=title, source=source, published_ts=DAY_TS + n * 60,
+                          link=f"https://news.example/{n}")
+                for n, (title, source) in enumerate(EVENTS)]
+        path = self.archive / "news" / "daily" / f"{DAY.isoformat()}.json"
+        path.parent.mkdir(parents=True)
+        path.write_text(json.dumps({"items": rows}))
+        self.input_links = {r["link"] for r in rows}
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def _briefing(self, responder):
+        with FakeLLMServer(responder) as server:
+            path = db.run(archive_dir=self.archive, vertical="k5", day=DAY,
+                          client=client_for(server.base_url), now=datetime(2026, 10, 13, 2, tzinfo=timezone.utc))
+            self.requests = server.requests
+        return json.loads(path.read_text())
+
+    def test_topics_become_the_briefing_sections(self):
+        self.bt.run(archive_dir=self.archive, vertical="k5", day=DAY, client=None)
+        topics = self.bt.load_day_topics(self.archive, DAY)
+        self.assertIsNotNone(topics)
+        report = self._briefing(topic_editor)
+
+        self.assertEqual(len(self.requests), 1)  # no map stage: one editor call
+        self.assertEqual(report["sections_from"], "topics")
+        self.assertEqual(report["topics_file"], "archive/news/topics/2026-10-12.json")
+        md = report["daily_report_markdown"]
+        headings = re.findall(r"^### (.+)$", md, re.M)
+        exchange = next(t for t in topics["topics"] if "Exchange" in t["title"])
+        chrome = next(t for t in topics["topics"] if "Chrome" in t["title"])
+        # The editor's order, one section per topic, unknown ids dropped.
+        self.assertEqual(headings, ["Headline summary", chrome["title"], exchange["title"]])
+        self.assertEqual([s["topic_id"] for s in report["top_stories"]], [chrome["id"], exchange["id"]])
+        self.assertEqual(len(report["headline"]), 1)
+        # Each section links to its topic's stories, and nothing else.
+        self.assertEqual(set(report["top_stories"][1]["links"]), {s["link"] for s in exchange["stories"]})
+        md_links = set(re.findall(r"\]\((https?://[^)]+)\)", md))
+        self.assertTrue(md_links and md_links <= self.input_links)
+
+    def test_unusable_editor_reply_falls_back_to_topic_ranking(self):
+        self.bt.run(archive_dir=self.archive, vertical="k5", day=DAY, client=None)
+        topics = self.bt.load_day_topics(self.archive, DAY)
+        report = self._briefing(lambda body: (200, "not json"))
+        self.assertEqual([s["topic_id"] for s in report["top_stories"]],
+                         [t["id"] for t in topics["topics"][: db.TOP_STORIES]])
+        self.assertFalse(report["daily_report_markdown"].startswith("### Headline summary"))
+
+    def test_without_topics_file_the_briefing_is_built_from_items(self):
+        report = self._briefing(fake_editor)
+        self.assertEqual(report["sections_from"], "items")
+        self.assertIsNone(report["topics_file"])
+        self.assertIn("### Top stories", report["daily_report_markdown"])
+        self.assertTrue(any("part 1 of" in r["messages"][-1]["content"] for r in self.requests))
+
+    def test_invalid_topics_file_is_ignored(self):
+        path = self.bt.topics_path(self.archive, DAY)
+        path.parent.mkdir(parents=True)
+        path.write_text(json.dumps({"schema_version": 1, "topics": "nope"}))
+        report = self._briefing(fake_editor)
+        self.assertEqual(report["sections_from"], "items")
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -18,6 +18,7 @@ const Trends = lazy(() => import("./pages/Trends"));
 const ThreatActorTaxonomy = lazy(() => import("./pages/ThreatActorTaxonomy"));
 const ThreatActorDetail = lazy(() => import("./pages/ThreatActorDetail"));
 const Duplicates = lazy(() => import("./pages/Duplicates"));
+const Topics = lazy(() => import("./pages/Topics"));
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,9 @@ const App = () => (
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/archive" element={<Archive />} />
+                {vertical.features.topics && (
+                  <Route path="/topics" element={<Topics />} />
+                )}
                 {vertical.features.morningCall && (
                   <Route path="/morning-call" element={<MorningCall />} />
                 )}
