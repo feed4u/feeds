@@ -76,8 +76,13 @@ GitHub-hosted runners cannot reach the local lane, so the daily is built on the
 host by `core/code/run_daily_briefings.sh` (k5 and 4u). It runs in a dedicated
 clone, commits with `[skip ci]` so Cloudflare does not rebuild for it, and goes
 live with the next 8-hourly data build. Schedule it with the user units in
-`core/code/systemd/`. `DAILY_BRIEFING=1 run_pipeline.sh` also runs it after the
-archive step.
+`core/code/systemd/`: `bash core/code/systemd/install_daily_timer.sh [--start]`
+installs and enables `news-daily-briefing.timer` (01:30 UTC). The service clones
+`~/.cache/news-daily/news` on first start and runs that clone's job script, never
+a working checkout. Logs: `journalctl --user -u news-daily-briefing` or
+`core/code/systemd/daily_status.sh`; `core/code/systemd/check_served_daily.py`
+shows which daily k5.ai and 4u.ai serve.
+`DAILY_BRIEFING=1 run_pipeline.sh` also runs it after the archive step.
 
 Tests: `python3 -m unittest discover -s core/code/base/tests`
 
