@@ -13,6 +13,9 @@
 # if nothing changed, nothing is committed.
 #
 # Usage: core/code/run_daily_briefings.sh [--no-push] [--date YYYY-MM-DD]
+#          [--branch BRANCH] [--clone DIR] [--verticals "k5 4u"]
+# --branch builds from (and pushes to) another branch, e.g. to try the job on
+# a PR branch before merge; --clone and --verticals override the settings below.
 # Config (environment, optional):
 #   NEWS_DAILY_CLONE   clone path (default ~/.cache/news-daily/news)
 #   NEWS_DAILY_REMOTE  git remote URL (default: origin of the repo holding this script)
@@ -33,6 +36,9 @@ while [ $# -gt 0 ]; do
   case "$1" in
     --no-push) PUSH=0 ;;
     --date) DATE_ARGS=(--date "$2"); shift ;;
+    --branch) BRANCH="$2"; shift ;;
+    --clone) CLONE_DIR="$2"; shift ;;
+    --verticals) VERTICALS="$2"; shift ;;
     *) echo "unknown argument: $1" >&2; exit 64 ;;
   esac
   shift
@@ -43,8 +49,10 @@ if [ ! -d "$CLONE_DIR/.git" ]; then
   git clone --depth 1 --branch "$BRANCH" "$REMOTE" "$CLONE_DIR"
 fi
 cd "$CLONE_DIR"
+# FETCH_HEAD, not origin/$BRANCH: a single-branch clone only tracks the branch
+# it was cloned with, so origin/<other> would not exist.
 git fetch --depth 1 origin "$BRANCH"
-git reset --hard "origin/$BRANCH"
+git reset --hard FETCH_HEAD
 git clean -fdq
 
 STARTED=$(date +%s)
@@ -62,6 +70,7 @@ fi
 
 git -c user.name="news-daily (host)" -c user.email="news-daily@localhost" \
   commit -q -m "Update daily briefings ($VERTICALS) [skip ci]"
+git log -1 --stat --format='committed %h: %s'
 
 if [ "$PUSH" != "1" ]; then
   echo "--no-push: committed in $CLONE_DIR only"
@@ -74,7 +83,7 @@ for attempt in 1 2 3; do
   fi
   echo "push rejected (attempt $attempt); rebasing over origin/$BRANCH"
   git fetch --depth 50 origin "$BRANCH"
-  git rebase "origin/$BRANCH"
+  git rebase FETCH_HEAD
 done
 echo "push failed after 3 attempts" >&2
 exit 1

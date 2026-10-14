@@ -97,8 +97,10 @@ else
 fi
 
 # Optional: LLM daily briefing for yesterday (UTC). Off by default because the
-# GitHub-hosted runner cannot reach the local LLM lane; the host job
-# (core/code/run_daily_briefings.sh) sets DAILY_BRIEFING=1. Skips cleanly
+# GitHub-hosted runner cannot reach the local LLM lane. The scheduled host job
+# (core/code/run_daily_briefings.sh) does not use this step: it calls
+# daily_briefing.py directly. Set DAILY_BRIEFING=1 to build the daily as part
+# of a manual pipeline run on a host that can reach the lane. Skips cleanly
 # (exit 0, no files changed) when the LLM endpoint is unavailable.
 if [ "${DAILY_BRIEFING:-0}" = "1" ]; then
   echo -e "${YELLOW}[+] Building daily briefing (LLM)...${NC}"
