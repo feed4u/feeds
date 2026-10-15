@@ -1,0 +1,262 @@
+{
+  "generated_at": "2026-10-15T04:57:45.931621+00:00",
+  "date": "2026-10-15",
+  "total_items": 17,
+  "next_chunk": "archive/blog/daily/2026-10-14.json",
+  "items": [
+    {
+      "title": "Cisco Secure Email Gateway 0-Day Vulnerability Actively Exploited in Attacks",
+      "summary": "Cisco has warned that attackers are actively exploiting a critical zero-day vulnerability in Cisco Secure Email Gateway that can give them root access to affected appliances. Tracked as CVE-2026-76519, the flaw carries a CVSS score of 9.8 and allows attacks through specially crafted email attachments without requiring a login. Cisco published its advisory on October 14, 2026. The company said its security response team became aware of active exploitation in October. Public reporting has not identified the attackers or established how many devices have been compromised, leaving the scale of the campaign unclear. The vulnerability sits in the Advanced Malware Protection feature, known as AMP. Cisco says the gateway fails to handle certain email attachments safely when its File Reputation service is enabled. An attacker can send a malicious attachment through an affected device to write arbitrary files and potentially execute commands with root privileges. Root access gives an attacker control over the underlying operating system. The entry point is the gateway processing an attachment, rather than a user opening a file. Cisco has not described a requirement for a recipient to click a link or launch the attachment. Cisco Secure Email Gateway 0-Day Vulnerability Both physical and virtual appliances are affected when they run vulnerable AsyncOS software and meet two conditions. File Reputation must be enabled and assigned to a mail policy, and the Content Scanner Tools package must be older than version 25.3.0.5525. Cisco Secure Email and Web Manager and Secure Web Appliance are not affected. This disclosure follows another actively exploited Secure Email Gateway flaw , CVE-2026-76461, reported in September. Earlier coverage of CVE-2025-20393 also documented attacks against Cisco email appliances, although that vulnerability involved the Spam Quarantine feature rather than AMP. Administrators can check File Reputation under the Advanced Malware Protection settings for incoming or outgoing mail policies. The contentscannerstatus command shows the installed Content Scanner Tools version. For investigation, Cisco recommends running grep \"System Security\" system_logs and checking every device in a cluster. A suspected compromise message requires incident response, while an incomplete security scan requires support from Cisco\u2019s Technical Assistance Center. A clean result does not rule out an attack. Cisco warns that intruders with root access may hide or delete evidence. Security teams should also review independent firewall and network logs for unexpected uploads from the gateway or downloads from suspicious addresses. Patching closes the entry point but does not establish whether attackers previously gained access. Organizations that find suspicious activity should contact Cisco TAC and preserve available evidence to support a detailed investigation. Fixed Versions and Immediate Action Cisco lists AsyncOS 15.5.5-014 and 16.5.0-780 as fixed releases. Customers on version 16.0 should migrate to a fixed release. Cisco strongly recommends moving installations earlier than version 16.5 to 16.5.0-780. The fix is also available through Content Scanner Tools version 25.3.0.5525 or later for licensed, supported AsyncOS releases. This package update does not require a full software upgrade or restart. Administrators who disabled automatic updates can request it using contentscannerupdate , then verify the installed version. There are no workarounds. Customers with automatic updates enabled should confirm that the fixed package has actually arrived rather than assume protection. Cisco says it has already deployed the corrected package across Secure Email Cloud Gateway, so those customers do not need to apply the update themselves. For affected organizations, updating the gateway and checking for earlier compromise should proceed together. An EDR alert reveals an attack. But can it tell the",
+      "summary_html": "<p>Cisco has warned that attackers are actively exploiting a critical zero-day vulnerability in Cisco Secure Email Gateway that can give them root access to affected appliances. Tracked as CVE-2026-76519, the flaw carries a CVSS score of 9.8 and allows attacks through specially crafted email attachments without requiring a login.</p>\n<p>Cisco published its <a href=\"https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-esa-afw-zqYJkjxp\">advisory</a> on October 14, 2026. The company said its security response team became aware of active exploitation in October. Public reporting has not identified the attackers or established how many devices have been compromised, leaving the scale of the campaign unclear.</p>\n<p>The vulnerability sits in the Advanced Malware Protection feature, known as AMP. Cisco says the gateway fails to handle certain email attachments safely when its File Reputation service is enabled. An attacker can send a malicious attachment through an affected device to write arbitrary files and potentially execute commands with root privileges.</p>\n<p>Root access gives an attacker control over the underlying operating system. The entry point is the gateway processing an attachment, rather than a user opening a file. Cisco has not described a requirement for a recipient to click a link or launch the attachment.</p>\n<strong>Cisco Secure Email Gateway 0-Day Vulnerability</strong>\n<p>Both physical and virtual appliances are affected when they run vulnerable AsyncOS software and meet two conditions. File Reputation must be enabled and assigned to a mail policy, and the Content Scanner Tools package must be older than version 25.3.0.5525. Cisco Secure Email and Web Manager and Secure Web Appliance are not affected.</p>\n<p>This disclosure follows another <a href=\"https://cybersecuritynews.com/cisco-secure-email-gateway-flaw-exploited/\">actively exploited Secure Email Gateway flaw</a>, CVE-2026-76461, reported in September. Earlier coverage of <a href=\"https://cybersecuritynews.com/cisco-0-day-rce-secure-email-gateway-vulnerability/\">CVE-2025-20393</a> also documented attacks against Cisco email appliances, although that vulnerability involved the Spam Quarantine feature rather than AMP.</p>\n<p>Administrators can check File Reputation under the Advanced Malware Protection settings for incoming or outgoing mail policies. The <code>contentscannerstatus</code> command shows the installed Content Scanner Tools version.</p>\n<p>For investigation, Cisco recommends running <code>grep \"System Security\" system_logs</code> and checking every device in a cluster. A suspected compromise message requires incident response, while an incomplete security scan requires support from Cisco\u2019s Technical Assistance Center.</p>\n<p>A clean result does not rule out an attack. Cisco warns that intruders with root access may hide or delete evidence. Security teams should also review independent firewall and network logs for unexpected uploads from the gateway or downloads from suspicious addresses.</p>\n<p>Patching closes the entry point but does not establish whether attackers previously gained access. Organizations that find suspicious activity should contact Cisco TAC and preserve available evidence to support a detailed investigation.</p>\n<strong>Fixed Versions and Immediate Action</strong>\n<p>Cisco lists AsyncOS 15.5.5-014 and 16.5.0-780 as fixed releases. Customers on version 16.0 should migrate to a fixed release. Cisco strongly recommends moving installations earlier than version 16.5 to 16.5.0-780.</p>\n<p>The fix is also available through Content Scanner Tools version 25.3.0.5525 or later for licensed, supported AsyncOS releases. This package update does not require a full software upgrade or restart. Administrators who disabled automatic updates can request it using <code>contentscannerupdate</code>, then verify the installed version.</p>\n<p>There are no workarounds. Customers with automatic updates enabled should confirm that the fixed package has actually arrived rather than assume protection.</p>\n<p>Cisco says it has already deployed the corrected package across Secure Email Cloud Gateway, so those customers do not need to apply the update themselves. For affected organizations, updating the gateway and checking for earlier compromise should proceed together.</p>\n<p><strong>An EDR alert reveals an attack. But can it tell the full story? <a href=\"https://www.manageengine.com/products/desktop-central/edr-av-comparatives.html?utm_source=CSN&amp;utm_medium=TPS-Linkedin&amp;utm_campaign=EDR-AVC\">Discover how to reconstruct the attack timeline</a>.</strong></p>\n<p>The post <a href=\"https://cybersecuritynews.com/cisco-secure-email-gateway-0-day-vulnerability/\">Cisco Secure Email Gateway 0-Day Vulnerability Actively Exploited in Attacks</a> appeared first on <a href=\"https://cybersecuritynews.com\">Cyber Security News</a>.</p>",
+      "link": "https://cybersecuritynews.com/cisco-secure-email-gateway-0-day-vulnerability/",
+      "source": "Cyber Security News (FeedBurner)",
+      "feed_type": "blog",
+      "type": "security-researcher-blogs",
+      "type_label": "Security Researcher Blogs",
+      "published": "2026-10-15T03:06:04+00:00",
+      "published_ts": 1792033564,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Exploit / PoC",
+        "Malware / Payloads"
+      ],
+      "curated": true,
+      "story_id": "c63069ba1c8d",
+      "story_size": 7
+    },
+    {
+      "title": "Find Out if You're Exposed on the Dark Web  | UpGuard",
+      "summary": "Answer 5 quick questions to predict what a dark web scan will find about your company. Then run the free scan to see your real exposure.",
+      "summary_html": "Answer 5 quick questions to predict what a dark web scan will find about your company. Then run the free scan to see your real exposure.",
+      "link": "https://www.upguard.com/blog/find-out-if-youre-exposed-on-the-dark-web",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-15T01:20:51+00:00",
+      "published_ts": 1792027251,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Everything Everywhere: Systemic Data Exposure in Supabase Apps | UpGuard",
+      "summary": "Supabase is a favorite of AI coding agents. It's also prone to misconfiguration. We studied more than 16,000 open databases to see what's leaking.",
+      "summary_html": "Supabase is a favorite of AI coding agents. It's also prone to misconfiguration. We studied more than 16,000 open databases to see what's leaking.",
+      "link": "https://www.upguard.com/blog/everything-everywhere-systemic-data-exposure-in-supabase-apps",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-15T01:20:51+00:00",
+      "published_ts": 1792027251,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "CrowdStrike Outage: What Happened and How to Limit Future Risk | UpGuard",
+      "summary": "Learn how you should respond to the CrowdStrike incident and the likely long-term impact it will have on third-party risk management.",
+      "summary_html": "Learn how you should respond to the CrowdStrike incident and the likely long-term impact it will have on third-party risk management.",
+      "link": "https://www.upguard.com/blog/crowdstrike-incident",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-15T01:20:51+00:00",
+      "published_ts": 1792027251,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "What is Social Engineering? Definition + Attack Examples | UpGuard",
+      "summary": "Social engineering campaigns trick employees into relinquishing private data. Learn how to protect your organization against this slippery threat.",
+      "summary_html": "Social engineering campaigns trick employees into relinquishing private data. Learn how to protect your organization against this slippery threat.",
+      "link": "https://www.upguard.com/blog/social-engineering",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-15T01:20:51+00:00",
+      "published_ts": 1792027251,
+      "smart_groups": [
+        "Phishing / Social Engineering"
+      ],
+      "curated": false
+    },
+    {
+      "title": "What is Digital Forensics? | UpGuard",
+      "summary": "Digital forensics or digital forensic science is a branch of forensic science focused on the recovery and investigation of digital devices and cybercrime.",
+      "summary_html": "Digital forensics or digital forensic science is a branch of forensic science focused on the recovery and investigation of digital devices and cybercrime.",
+      "link": "https://www.upguard.com/blog/digital-forensics",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-15T01:20:51+00:00",
+      "published_ts": 1792027251,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "What is a DDoS Attack? How they Work + Protection Strategies | UpGuard",
+      "summary": "Any web server can be crippled in a DDoS attack. Learn about this devastating cyberattack and how to defend yourself.",
+      "summary_html": "Any web server can be crippled in a DDoS attack. Learn about this devastating cyberattack and how to defend yourself.",
+      "link": "https://www.upguard.com/blog/what-is-a-ddos-attack",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-15T01:20:51+00:00",
+      "published_ts": 1792027251,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "How to Prevent Data Breaches in 2026 (Highly Effective Strategy) | UpGuard",
+      "summary": "Learn how to implement an effective security control strategy for defending against data breaches in 2026.",
+      "summary_html": "Learn how to implement an effective security control strategy for defending against data breaches in 2026.",
+      "link": "https://www.upguard.com/blog/prevent-data-breaches",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-15T01:20:51+00:00",
+      "published_ts": 1792027251,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "How to Detect Data Leakage: A Full Guide to Data Leak Detection | UpGuard",
+      "summary": "Data leaks are an increasingly critical cybersecurity problem. Learn how to detect and prevent data leakage and compare vendor solutions.",
+      "summary_html": "Data leaks are an increasingly critical cybersecurity problem. Learn how to detect and prevent data leakage and compare vendor solutions.",
+      "link": "https://www.upguard.com/blog/how-to-detect-and-prevent-data-leakage",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-15T01:20:50+00:00",
+      "published_ts": 1792027250,
+      "smart_groups": [
+        "Data Breaches / Leaks"
+      ],
+      "curated": true
+    },
+    {
+      "title": "This Password Has Appeared in a Data Leak: How to Respond | UpGuard",
+      "summary": "Received a data leak alert on your iPhone or iPad? Learn more about what it means and what to do next.",
+      "summary_html": "Received a data leak alert on your iPhone or iPad? Learn more about what it means and what to do next.",
+      "link": "https://www.upguard.com/blog/this-password-has-appeared-in-a-data-leak",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-15T01:20:50+00:00",
+      "published_ts": 1792027250,
+      "smart_groups": [
+        "Data Breaches / Leaks"
+      ],
+      "curated": true
+    },
+    {
+      "title": "6 Most Common Causes of Data Leaks | UpGuard",
+      "summary": "Learn about the common cause of data leaks and how to prevent these critical data breach risks.",
+      "summary_html": "Learn about the common cause of data leaks and how to prevent these critical data breach risks.",
+      "link": "https://www.upguard.com/blog/common-data-leak-causes",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-15T01:20:50+00:00",
+      "published_ts": 1792027250,
+      "smart_groups": [
+        "Data Breaches / Leaks"
+      ],
+      "curated": true
+    },
+    {
+      "title": "12 Cybersecurity Horror Stories of 2026 (No Costume Required) | UpGuard",
+      "summary": "A warning ignored once becomes a headline.",
+      "summary_html": "A warning ignored once becomes a headline. Read more about these 12 real 2026 cybersecurity incidents, and the sign each one gave before it made the news.",
+      "link": "https://www.upguard.com/blog/cybersecurity-horror-stories-2026",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-15T01:20:50+00:00",
+      "published_ts": 1792027250,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Writing a Cybersecurity Report Executive Summary (inc. Examples) | UpGuard",
+      "summary": "Struggling to write the executive summary of your cybersecurity report? This template will.",
+      "summary_html": "Struggling to write the executive summary of your cybersecurity report? This template will.",
+      "link": "https://www.upguard.com/blog/writing-a-cybersecurity-executive-summary",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-15T01:20:50+00:00",
+      "published_ts": 1792027250,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Top 10 Security Events of 2025 | UpGuard",
+      "summary": "Recap the ten most impactful events that reshaped the cybersecurity industry this year and the critical lessons each had to teach us.",
+      "summary_html": "Recap the ten most impactful events that reshaped the cybersecurity industry this year and the critical lessons each had to teach us. Read more here.",
+      "link": "https://www.upguard.com/blog/top-security-events-of-2025",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-15T01:20:50+00:00",
+      "published_ts": 1792027250,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Cache Explained: How It Works, Types, and When to Clear It | UpGuard",
+      "summary": "A cache is a temporary data storage location that stores copies of frequently accessed data or files. Learn more about its types and uses.",
+      "summary_html": "A cache is a temporary data storage location that stores copies of frequently accessed data or files. Learn more about its types and uses.",
+      "link": "https://www.upguard.com/blog/cache",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-15T01:20:50+00:00",
+      "published_ts": 1792027250,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Your Password Was Exposed in a Non-Google Data Breach: How to Respond | UpGuard",
+      "summary": "Learn how to respond to the Google Chrome alert: \u201cYour password was exposed in a non-Google data breach\u201d.",
+      "summary_html": "Learn how to respond to the Google Chrome alert: \u201cYour password was exposed in a non-Google data breach\u201d.",
+      "link": "https://www.upguard.com/blog/your-password-was-exposed-in-a-non-google-data-breach",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-15T01:20:50+00:00",
+      "published_ts": 1792027250,
+      "smart_groups": [
+        "Data Breaches / Leaks"
+      ],
+      "curated": false
+    },
+    {
+      "title": "What is the NIST Cybersecurity Framework (NIST CSF)?  | UpGuard",
+      "summary": "What is the NIST CSF? Learn its phases, compare tools, and see how UpGuard helps your business improve security posture and streamline compliance.",
+      "summary_html": "What is the NIST CSF? Learn its phases, compare tools, and see how UpGuard helps your business improve security posture and streamline compliance.",
+      "link": "https://www.upguard.com/blog/nist-cybersecurity-framework",
+      "source": "UpGuard Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-15T01:20:50+00:00",
+      "published_ts": 1792027250,
+      "smart_groups": [],
+      "curated": false
+    }
+  ]
+}

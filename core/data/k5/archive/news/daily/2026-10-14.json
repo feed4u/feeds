@@ -1,9 +1,226 @@
 {
-  "generated_at": "2026-10-14T20:19:56.534165+00:00",
+  "generated_at": "2026-10-15T04:57:45.801813+00:00",
   "date": "2026-10-14",
-  "total_items": 169,
+  "total_items": 184,
   "next_chunk": "archive/news/daily/2026-10-13.json",
   "items": [
+    {
+      "title": "Threat Actor Abuses Agentic AI Pentesting Framework to Target South Korean Financial Institutions",
+      "summary": "IntroductionZscaler ThreatLabz analyzed a recently active exploitation campaign in which a threat actor abused ARTEX to target South Korean financial institutions. ARTEX is an open source agentic penetration testing framework developed in China that uses large language models (LLMs) to automate reconnaissance and exploitation tasks. First observed in late September 2026, the campaign affected multiple South Korean financial firms and resulted in the exfiltration of personally identifiable information (PII) belonging to approximately 67,000 individuals.ThreatLabz assesses with moderate confidence that the campaign is the work of a financially motivated, Chinese-speaking threat actor. The threat actor exploited peripheral internet-facing web applications, including customer-facing inquiry portals and employee-facing mobile application backends. RecommendationsThe threat actor used AI to support reconnaissance and exploitation in this campaign. ThreatLabz recommends the following practices to strengthen defenses against AI-assisted attacks. For additional context on AI-driven security testing, see our blog: When the Scanner Starts Thinking: Learnings from Mythos & GPT 5.5 Cyber in Security Testing.Reduce application exposure: Reduce your external exposure by moving your applications behind a Zero Trust access solution, like Zscaler Private Access (ZPA). Understand your assets and associated risks: Establish complete visibility into internet-facing and internal assets, including AI assets, and assess their exposure and vulnerabilities to prioritize remediation. Zscaler\u2019s AI Asset Management, Asset Exposure Management, External Attack Surface Management, and Unified Vulnerability can support these efforts.Deploy deception controls: Use Zscaler Deception to detect suspicious reconnaissance and access attempts through decoy assets and accounts. Configure automatic containment to restrict the associated asset or identity\u2019s access to production applications while capturing activity in the decoy environment.Prioritize Zero Trust everywhere architecture: Apply Zero Trust consistently across remote and on-premises environments. Enforce least-privilege user-to-application access to limit lateral propagation and reduce the blast radius from AI-driven attacks.Use AI red teaming and guardrails for your production models: Use AI red teaming and guardrails to assess susceptibility to prompt injection and unsafe outputs. Monitor for hallucinations and model drift over time.Use AI-powered exposure management: Use the Zscaler Exposure Management remediation agent to prioritize remediation and patching for high-risk exposures across external and internal assets.Alert on enumeration: On partner and employee portals, alert on sequential lookups and unusually high numbers of records accessed per session. Apply rate limits to affected endpoints. Enforce server-side authorization for access to customer records and limit responses to the fields required for the operation.Treat open source pentesting harnesses as hostile code: If your organization uses an open source pentesting harness, isolate it from production, avoid storing production credentials in it, and enforce testing scope through configuration and code rather than prompts alone. Review forks before execution. Use Zscaler\u2019s open source Agentic Radar to map agent workflows from source code.Test authorization regularly: Repeat security testing as applications change, and verify that users cannot access records or functions outside their assigned permissions. Threat DetailsARTEX is an agentic penetration testing framework originally released on GitHub by the developer \"Autumn-27\". It orchestrates multiple LLM backends to autonomously perform reconnaissance, vulnerability identification, and exploitation, significantly lowering the technical barrier for conducting complex intrusion campaigns.The threat actor configured ARTEX to use the following AI backends:BackendRoleDeepSeek v4.1-flashPrimary LLM BackendZhipu AI GLM-5.3Supplementary ReasoningSpaceXAI Grok 4.6Supplementary ReasoningTable 1: AI backends configured in ARTEX and their roles in the campaign. Following public disclosure of the abuse, the ARTEX developer made the project closed source. However, previously downloaded copies and forks may remain available. How it WorksThe campaign unfolds in four phases from ARTEX-assisted reconnaissance and exploitation to data theft and monetization planning.Reconnaissance: ARTEX agents autonomously identified and probed peripheral internet-facing web applications outside the institutions\u2019 core banking infrastructure, including customer-facing inquiry portals and employee-facing mobile application backends.Exploitation: LLM-driven agents identified and exploited vulnerabilities including SQL injection and authentication bypass in the peripheral web applications to gain unauthorized access.Data exfiltration: Stolen records included full names, phone numbers, annual income figures, and loan limits. This information could support subsequent financial fraud and social engineering.Monetization planning: The threat actor used Claude Code sessions to seek advice on selling stolen South Korean financial PII and to locate Korean-language Telegram channels used to sell stolen data.Attack chainThe attack chain below illustrates the four phases of the campaign.Figure 1: ARTEX attack chain, from reconnaissance and exploitation to data exfiltration and monetization planning. ARTEX architecture and agent workflowARTEX uses an orchestration layer, known as a harness, to coordinate its models and agents. The harness provides the model with the current task state and previous results. The model selects the next action, a worker executes the selected tool against the target, and the results are returned to the model to inform subsequent actions.The planner divides the engagement into tasks, while worker agents execute tools and store findings, and the reporting component generates a report containing validated findings.The harness supported multiple LLM backends. In this campaign, the threat actor configured ARTEX to use the services listed in Table 1.ARTEX guardrails and scope controlsARTEX included guardrails intended to restrict targeting of government entities and universities through a default blocklist. However, these restrictions did not extend to financial institutions, as shown in ARTEX\u2019s source code below.Figure 2: ARTEX source code defining default government and education domain filters. Behavioral IndicatorsThe following table outlines potential indicators defenders can investigate alongside other evidence of suspicious activity. IndicatorDescriptionOutbound API calls to api.anthropic.com, api.deepseek.com, open.bigmodel.cn, or api.x.aiPotential use of LLM services; investigate unexpected calls in conjunction with other suspicious activityHigh-frequency automated HTTP requests with sequential enumeration patterns against login and search endpointsPotential automated reconnaissance or enumerationOutbound transfers of structured data including names, phone numbers, and financial information over HTTPS to unauthorized external destinationsPotential exfiltration of financial PIIPresence of *.aspx or *.jsp files in unexpected web application pathsPotential web shell activityTable 2: Potential behavioral and file-based indicators associated with the techniques described in this campaign. How Zscaler Can HelpStageRecommended MitigationMinimize the external attack surfaceEliminate externally exposed assets like enterprise applications which are often subject to these zero-day exploitation attempts by leveraging a Zero Trust architecture.Perform red teaming on all external assets. Zscaler\u2019s AI red teaming uses an agentic workflow with controls designed to support authorized security testing:Start with the application\u2019s source code to map the agent\u2019s tools, permissions, inputs, and access checks. Our agents then test specific security hypotheses.Update the testing plan after each finding. Each agent has a defined role and access only to that role\u2019s tools. Shared memory tracks roles, trust boundaries, and data flows. This supports testing whether a user, such as a broker, can access another broker\u2019s client files.Enforce rules of engagement in the harness rather than relying on model instructions alone.Prevent compromiseDetonate unknown second-stage payloads with Advanced Cloud Sandbox.Route server egress through ZIA to detect/block post-compromise activity.Enable SSL/TLS inspection for all traffic, including trusted sources.Enable Advanced Threat Protection to block known C2 domains.Use Advanced Cloud Firewall to extend C2 controls across all ports/protocols, including emerging C2.Prevent lateral threat movementUse ZPA to enforce least-privilege user-to-app segmentation for crown-jewel apps (employees and third parties).Use ZPA inline inspection to block exploitation attempts against private apps from compromised users.Use Zscaler Deception to detect and contain lateral movement or privilege escalation with decoy assets and accounts.Prevent data lossInspect outbound traffic across channels with Zscaler DLP. Zscaler CoverageZscaler\u2019s multilayered cloud security platform detects indicators related to the campaign at various levels with the following threat name:HTML.MalURL.Gen.LZ",
+      "summary_html": "IntroductionZscaler ThreatLabz analyzed a recently active exploitation campaign in which a threat actor abused ARTEX to target South Korean financial institutions. ARTEX is an open source agentic penetration testing framework developed in China that uses large language models (LLMs) to automate reconnaissance and exploitation tasks. First observed in late September 2026, the campaign affected multiple South Korean financial firms and resulted in the exfiltration of personally identifiable information (PII) belonging to approximately 67,000 individuals.ThreatLabz assesses with moderate confidence that the campaign is the work of a financially motivated, Chinese-speaking threat actor. The threat actor exploited peripheral internet-facing web applications, including customer-facing inquiry portals and employee-facing mobile application backends. RecommendationsThe threat actor used AI to support reconnaissance and exploitation in this campaign. ThreatLabz recommends the following practices to strengthen defenses against AI-assisted attacks. For additional context on AI-driven security testing, see our blog:\u00a0When the Scanner Starts Thinking: Learnings from Mythos &amp; GPT 5.5 Cyber in Security Testing.Reduce application exposure:\u00a0Reduce your external exposure by moving your applications behind a Zero Trust access solution, like\u00a0Zscaler Private Access (ZPA).\u00a0Understand your assets and associated risks: Establish complete visibility into internet-facing and internal assets, including AI assets, and assess their exposure and vulnerabilities to prioritize remediation. Zscaler\u2019s AI Asset Management, Asset Exposure Management, External Attack Surface Management, and Unified Vulnerability can support these efforts.Deploy deception controls: Use\u00a0Zscaler Deception to detect suspicious reconnaissance and access attempts through decoy assets and accounts. Configure automatic containment to restrict the associated asset or identity\u2019s access to production applications while capturing activity in the decoy environment.Prioritize Zero Trust everywhere architecture: Apply Zero Trust consistently across remote and on-premises environments. Enforce least-privilege user-to-application access to limit lateral propagation and reduce the blast radius from AI-driven attacks.Use AI red teaming and guardrails for your production models: Use AI red teaming and guardrails to assess susceptibility to\u00a0prompt injection and unsafe outputs. Monitor for hallucinations and model drift over time.Use AI-powered exposure management:\u00a0Use the\u00a0Zscaler Exposure Management remediation agent to prioritize remediation and patching for high-risk exposures across external and internal assets.Alert on enumeration: On partner and employee portals, alert on sequential lookups and unusually high numbers of records accessed per session. Apply rate limits to affected endpoints. Enforce server-side authorization for access to customer records and limit responses to the fields required for the operation.Treat open source pentesting harnesses as hostile code: If your organization uses an open source pentesting harness, isolate it from production, avoid storing production credentials in it, and enforce testing scope through configuration and code rather than prompts alone. Review forks before execution. Use Zscaler\u2019s open source\u00a0Agentic Radar to map agent workflows from source code.Test authorization regularly: Repeat security testing as applications change, and verify that users cannot access records or functions outside their assigned permissions.\u00a0 Threat DetailsARTEX is an agentic penetration testing framework originally released on GitHub by the developer \"Autumn-27\". It orchestrates multiple LLM backends to autonomously perform reconnaissance, vulnerability identification, and exploitation, significantly lowering the technical barrier for conducting complex intrusion campaigns.The threat actor configured ARTEX to use the following AI backends:BackendRoleDeepSeek v4.1-flashPrimary LLM BackendZhipu AI GLM-5.3Supplementary ReasoningSpaceXAI Grok 4.6Supplementary ReasoningTable 1: AI backends configured in ARTEX and their roles in the campaign.\u00a0Following public disclosure of the abuse, the ARTEX developer made the project closed source. However, previously downloaded copies and forks may remain available. How it WorksThe campaign unfolds in four phases from ARTEX-assisted reconnaissance and exploitation to data theft and monetization planning.Reconnaissance: ARTEX agents autonomously identified and probed peripheral internet-facing web applications outside the institutions\u2019 core banking infrastructure, including customer-facing inquiry portals and employee-facing mobile application backends.Exploitation: LLM-driven agents identified and exploited vulnerabilities including SQL injection and authentication bypass in the peripheral web applications to gain unauthorized access.Data exfiltration: Stolen records included full names, phone numbers, annual income figures, and loan limits. This information could support subsequent financial fraud and social engineering.Monetization planning: The threat actor used Claude Code sessions to seek advice on selling stolen South Korean financial PII and to locate Korean-language Telegram channels used to sell stolen data.Attack chainThe attack chain below illustrates the four phases of the campaign.Figure 1: ARTEX attack chain, from reconnaissance and exploitation to data exfiltration and monetization planning.\u00a0ARTEX architecture and agent workflowARTEX uses an orchestration layer, known as a harness, to coordinate its models and agents. The harness provides the model with the current task state and previous results. The model selects the next action, a worker executes the selected tool against the target, and the results are returned to the model to inform subsequent actions.The planner divides the engagement into tasks, while worker agents execute tools and store findings, and the reporting component generates a report containing validated findings.The harness supported multiple LLM backends. In this campaign, the threat actor configured ARTEX to use the services listed in Table 1.ARTEX guardrails and scope controlsARTEX included guardrails intended to restrict targeting of government entities and universities through a default blocklist. However, these restrictions did not extend to financial institutions, as shown in ARTEX\u2019s source code below.Figure 2: ARTEX source code defining default government and education domain filters.\u00a0 Behavioral IndicatorsThe following table outlines potential indicators defenders can investigate alongside other evidence of suspicious activity.\u00a0IndicatorDescriptionOutbound API calls to api.anthropic.com, api.deepseek.com, open.bigmodel.cn, or api.x.aiPotential use of LLM services; investigate unexpected calls in conjunction with other suspicious activityHigh-frequency automated HTTP requests with sequential enumeration patterns against login and search endpointsPotential automated reconnaissance or enumerationOutbound transfers of structured data including names, phone numbers, and financial information over HTTPS to unauthorized external destinationsPotential exfiltration of financial PIIPresence of *.aspx or *.jsp files in unexpected web application pathsPotential web shell activityTable 2: Potential behavioral and file-based indicators associated with the techniques described in this campaign.\u00a0 How Zscaler Can HelpStageRecommended MitigationMinimize the external attack surfaceEliminate externally exposed assets like enterprise applications which are often subject to these zero-day exploitation attempts by leveraging a Zero Trust architecture.Perform red teaming on all external assets.\u00a0Zscaler\u2019s AI red teaming uses an agentic workflow with controls designed to support authorized security testing:Start with the application\u2019s source code to map the agent\u2019s tools, permissions, inputs, and access checks. Our agents then test specific security hypotheses.Update the testing plan after each finding. Each agent has a defined role and access only to that role\u2019s tools.\u00a0Shared memory tracks roles, trust boundaries, and data flows. This supports testing whether a user, such as a broker, can access another broker\u2019s client files.Enforce rules of engagement in the harness rather than relying on model instructions alone.Prevent compromiseDetonate unknown second-stage payloads with\u00a0Advanced Cloud Sandbox.Route server egress through\u00a0ZIA to detect/block post-compromise activity.Enable\u00a0SSL/TLS inspection for all traffic, including trusted sources.Enable\u00a0Advanced Threat Protection to block known C2 domains.Use\u00a0Advanced Cloud Firewall to extend C2 controls across all ports/protocols, including emerging C2.Prevent lateral threat movementUse ZPA to enforce least-privilege user-to-app segmentation for crown-jewel apps (employees and third parties).Use\u00a0ZPA inline inspection to block exploitation attempts against private apps from compromised users.Use\u00a0Zscaler Deception to detect and contain lateral movement or privilege escalation with decoy assets and accounts.Prevent data lossInspect outbound traffic across channels with\u00a0Zscaler DLP. Zscaler CoverageZscaler\u2019s multilayered cloud security platform detects indicators related to the campaign at various levels with the following threat name:HTML.MalURL.Gen.LZ",
+      "link": "https://www.zscaler.com/blogs/security-research/threat-actor-abuses-agentic-ai-pentesting-framework-target-south-korean",
+      "source": "Zscaler Research Blogs",
+      "feed_type": "news",
+      "type": "threat-intel-apt-campaigns",
+      "type_label": "Threat Intel & APT Campaigns",
+      "published": "2026-10-14T23:20:22+00:00",
+      "published_ts": 1792020022,
+      "smart_groups": [
+        "Red Team / Offensive",
+        "Vulnerabilities / CVEs",
+        "Web / API Security"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Palo Alto Networks warns of PAN-OS RCE flaw exploited in attacks",
+      "summary": "Palo Alto Networks has released security updates for a high-severity PAN-OS RCE zero-day, tracked as CVE-2026-0322, that has been exploited in attacks targeting firewalls.",
+      "summary_html": "Palo Alto Networks has released security updates for a high-severity PAN-OS RCE zero-day, tracked as CVE-2026-0322, that has been exploited in attacks targeting firewalls. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/palo-alto-networks-warns-of-pan-os-rce-flaw-exploited-in-attacks/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-10-14T22:56:47+00:00",
+      "published_ts": 1792018607,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true,
+      "story_id": "c9a3f02d710c",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "/r/cybersecurity",
+          "title": "Palo Alto Networks warns of PAN-OS RCE flaw exploited in attacks",
+          "link": "https://www.reddit.com/r/cybersecurity/comments/1x67do0/palo_alto_networks_warns_of_panos_rce_flaw/",
+          "published_ts": 1792023302
+        }
+      ]
+    },
+    {
+      "title": "Unit 42 Uncovers PEERSTITCH, a Stealthy FortiGate Implant",
+      "summary": "We investigated an intrusion where attackers exploited CVE-2024-47575 to target 500+ firewalls and deploy PEERSTITCH, a memory-resident ARM64 malware.",
+      "summary_html": "We investigated an intrusion where attackers exploited CVE-2024-47575 to target 500+ firewalls and deploy PEERSTITCH, a memory-resident ARM64 malware. The post Unit 42 Uncovers PEERSTITCH, a Stealthy FortiGate Implant appeared first on Unit 42.",
+      "link": "https://unit42.paloaltonetworks.com/fortimanager-cve-2024-47575-peerstitch-malware/",
+      "source": "Unit 42 \u2013 Ransomware",
+      "feed_type": "news",
+      "type": "ransomware-extortion",
+      "type_label": "Ransomware & Extortion",
+      "published": "2026-10-14T22:00:44+00:00",
+      "published_ts": 1792015244,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Malware / Payloads"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Godfather of AI and 400 Scientists Want AI Models Cut Off From the Internet",
+      "summary": "After a summer of AI models escaping test environments and hacking real companies, hundreds of researchers say the internet itself should be treated as a security boundary.",
+      "summary_html": "After a summer of AI models escaping test environments and hacking real companies, hundreds of researchers say the internet itself should be treated as a security boundary.",
+      "link": "https://decrypt.co/380998/scientists-want-ai-cut-off-from-internet",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-10-14T21:46:04+00:00",
+      "published_ts": 1792014364,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "What Your IP Address Reveals Every Time You Visit a Website",
+      "summary": "Your IP address can reveal your location, ISP, connection type, and VPN use to websites, ad networks, and trackers before a page even loads.",
+      "summary_html": "Your IP address can reveal your location, ISP, connection type, and VPN use to websites, ad networks, and trackers before a page even loads.",
+      "link": "https://hackread.com/what-your-ip-address-reveals-when-you-visit-a-website/",
+      "source": "HackRead",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-14T21:38:55+00:00",
+      "published_ts": 1792013935,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Ivanti ICS Zero-Day Attacks Highlight Vendor Patching Hurdles",
+      "summary": "CVE-2026-104935, a high-severity authentication bypass + RCE vulnerability, was only partially discovered and patched in July, leaving an opening for threat actors to capitalize on.",
+      "summary_html": "CVE-2026-104935, a high-severity authentication bypass + RCE vulnerability, was only partially discovered and patched in July, leaving an opening for threat actors to capitalize on.",
+      "link": "https://www.darkreading.com/vulnerabilities-threats/ivanti-ics-zero-day-attacks-vendor-patching",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-14T21:20:13+00:00",
+      "published_ts": 1792012813,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Network / OT / ICS"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Developer Who Cloned Photoshop With AI Just Did the Same to Microsoft Office",
+      "summary": "Developer Brandon Thomas used Anthropic's Claude to build free, open-source replicas of Word, Excel and PowerPoint. They're rough, but they show how cheap cloning software has become.",
+      "summary_html": "Developer Brandon Thomas used Anthropic's Claude to build free, open-source replicas of Word, Excel and PowerPoint. They're rough, but they show how cheap cloning software has become.",
+      "link": "https://decrypt.co/380991/developer-cloned-photoshop-ai-just-did-same-microsoft-office",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-10-14T21:16:03+00:00",
+      "published_ts": 1792012563,
+      "smart_groups": [
+        "AI/ML Security"
+      ],
+      "curated": true
+    },
+    {
+      "title": "U.S. CISA adds Microsoft Windows Shell\u00a0flaw to its Known Exploited Vulnerabilities catalog",
+      "summary": "U.S. Cybersecurity and Infrastructure Security Agency (CISA) adds Microsoft Windows Shell flaw to its Known Exploited Vulnerabilities catalog. The U.S. Cybersecurity and Infrastructure Security Agency (CISA) added a Microsoft Windows Shell flaw, tracked as CVE-2026-96951 (CVSS score of 8.8), to its Known Exploited Vulnerabilities (KEV) catalog . Microsoft Patch Tuesday security updates for October 2026 address a record 1,415 vulnerabilities, including a zero-day under active attack. The flaw, tracked as CVE-2026-96951 , is a Windows Shell command injection vulnerability that allows an unauthorized attacker to bypass security protections over a network. Exploitation can evade Mark of the Web (MOTW) defenses, which help protect users from potentially dangerous files downloaded from the internet. Microsoft confirmed that the flaw is being actively exploited. \u201cAn attacker who successfully exploited the vulnerability could evade Mark of the Web (MOTW) defenses.\u201d reads the advisory . \u201cIn an email or instant message attack scenario, the attacker could send the targeted user a specially crafted file that is designed to exploit the vulnerability. In any case an attacker would have no way to force a user to view attacker-controlled content. Instead, an attacker would have to convince a user to take action. For example, an attacker could entice a user to either click a link that directs the user to the attacker\u2019s site or send a malicious attachment.\u201d According to Binding Operational Directive (BOD) 22-01: Reducing the Significant Risk of Known Exploited Vulnerabilities , FCEB agencies have to address the identified vulnerabilities by the due date to protect their networks against attacks exploiting the flaws in the catalog. Experts also recommend that private organizations review the Catalog and address the vulnerabilities in their infrastructure. CISA orders federal agencies to fix the flaw by October 16, 2026. The U.S. Cybersecurity and Infrastructure Security Agency (CISA) also added an Ivanti Connect Secure FortiMail flaw, tracked as CVE-2026-104935 (CVSS score of 8.6), to its Kev Catalog. The vulnerability is an authentication bypass issue caused by spoofing in ICS versions before 25.1.3.0 that could allow a remote, unauthenticated attacker to execute arbitrary commands. ICS versions 22.7R2.14 and earlier are not affected. Follow me on Twitter: @securityaffairs and Facebook and Mastodon Pierluigi Paganini ( SecurityAffairs \u2013 hacking, CISA )",
+      "summary_html": "<div></div>\nU.S. Cybersecurity and Infrastructure Security Agency (CISA) adds Microsoft Windows Shell flaw to its Known Exploited Vulnerabilities catalog.\n<p>The U.S. Cybersecurity and Infrastructure Security Agency (CISA)\u00a0<a href=\"https://www.cisa.gov/news-events/alerts/2026/10/13/cisa-adds-two-known-exploited-vulnerabilities-catalog\">added</a> a Microsoft Windows Shell flaw, tracked as <a href=\"https://www.cve.org/CVERecord?id=CVE-2026-96951\">CVE-2026-96951</a> (CVSS score of 8.8), to its <a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) catalog</a>.</p>\n<p><a href=\"https://securityaffairs.com/200953/security/microsoft-patch-tuesday-sets-new-record-with-1415-cves-in-october-2026-updates.html\">Microsoft Patch Tuesday security updates for October 2026</a> address a record 1,415 vulnerabilities, including a zero-day under active attack. The flaw, tracked as <a href=\"https://www.cve.org/CVERecord?id=CVE-2026-96951\">CVE-2026-96951</a>, is a Windows Shell command injection vulnerability that allows an unauthorized attacker to bypass security protections over a network. Exploitation can evade Mark of the Web (MOTW) defenses, which help protect users from potentially dangerous files downloaded from the internet. Microsoft confirmed that the flaw is being actively exploited.</p>\n<p><em>\u201cAn attacker who successfully exploited the vulnerability could evade Mark of the Web (MOTW) defenses.\u201d <a href=\"https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-96951\">reads the advisory</a>. \u201cIn an email or instant message attack scenario, the attacker could send the targeted user a specially crafted file that is designed to exploit the vulnerability. In any case an attacker would have no way to force a user to view attacker-controlled content. Instead, an attacker would have to convince a user to take action. For example, an attacker could entice a user to either click a link that directs the user to the attacker\u2019s site or send a malicious attachment.\u201d</em></p>\n<p>According to\u00a0<a href=\"https://cyber.dhs.gov/bod/22-01/\">Binding Operational Directive (BOD) 22-01: Reducing the Significant Risk of Known Exploited Vulnerabilities</a>, FCEB agencies have to address the identified vulnerabilities by the due date to protect their networks against attacks exploiting the flaws in the catalog.</p>\n<p>Experts also recommend that private organizations review the\u00a0<a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Catalog</a>\u00a0and address the vulnerabilities in their infrastructure.</p>\n<p>CISA orders federal agencies to fix the flaw by\u00a0October 16, 2026.</p>\n<p>The U.S. Cybersecurity and Infrastructure Security Agency (CISA)\u00a0also added an Ivanti Connect Secure FortiMail flaw, tracked as <a href=\"https://www.cve.org/CVERecord?id=CVE-2026-104935\">CVE-2026-104935</a> (CVSS score of 8.6), to its Kev Catalog.</p>\n<p>The vulnerability is an authentication bypass issue caused by spoofing in ICS versions before 25.1.3.0 that could allow a remote, unauthenticated attacker to execute arbitrary commands. ICS versions 22.7R2.14 and earlier are not affected.</p>\n<p><strong>Follow me on Twitter:\u00a0</strong><a href=\"https://twitter.com/securityaffairs\"><strong>@securityaffairs</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://www.facebook.com/sec.affairs\"><strong>Facebook</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://infosec.exchange/@securityaffairs\"><strong>Mastodon</strong></a></p>\n<p><a href=\"http://www.linkedin.com/pub/pierluigi-paganini/b/742/559\"><strong>Pierluigi\u00a0Paganini</strong></a></p>\n<p><strong>(</strong><a href=\"http://securityaffairs.co/wordpress/\"><strong>SecurityAffairs</strong></a><strong>\u00a0\u2013\u00a0hacking,\u00a0<a href=\"https://securityaffairs.com/tag/cisa\">CISA</a>)</strong></p>",
+      "link": "https://securityaffairs.com/200965/hacking/u-s-cisa-adds-microsoft-windows-shell-flaw-to-its-known-exploited-vulnerabilities-catalog.html",
+      "source": "Security Affairs",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-14T21:15:34+00:00",
+      "published_ts": 1792012534,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Exploit / PoC",
+        "Windows / Microsoft"
+      ],
+      "curated": true
+    },
+    {
+      "title": "North Macedonian police arrest alleged administrator behind OLVX cybercrime market",
+      "summary": "A raid on a home in a North Macedonian village led to the arrest of the suspected administrator of the OLVX market, according to the Balkan country's Interior Ministry along with the FBI.",
+      "summary_html": "A raid on a home in a North Macedonian village led to the arrest of the suspected administrator of the OLVX market, according to the Balkan country's Interior Ministry along with the FBI.",
+      "link": "https://therecord.media/olvx-cybercrime-marketplace-arrest-north-macedonia",
+      "source": "The Record \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-10-14T21:10:00+00:00",
+      "published_ts": 1792012200,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Yam Store: The Phishing Network Behind a Billion Messages",
+      "summary": "A sprawling cybercrime marketplace supplied cloud infrastructure and phishing kits that helped fuel more than 1 billion phishing messages worldwide.",
+      "summary_html": "A sprawling cybercrime marketplace supplied cloud infrastructure and phishing kits that helped fuel more than 1 billion phishing messages worldwide.",
+      "link": "https://www.darkreading.com/cyberattacks-data-breaches/yam-store-phishing-network-behind-billion-messages",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-14T20:57:16+00:00",
+      "published_ts": 1792011436,
+      "smart_groups": [
+        "Phishing / Social Engineering"
+      ],
+      "curated": false,
+      "story_id": "91795601b1ff",
+      "story_size": 2
+    },
+    {
+      "title": "Organizations join forces to fight Illinois crypto tax, after 6-month pause",
+      "summary": "Illinois officials already agreed to delay implementation of a 0.2% tax on crypto assets, but industry-aligned organizations are pushing for summary judgment on the merits.",
+      "summary_html": "<p></p><p>Illinois officials already agreed to delay implementation of a 0.2% tax on crypto assets, but industry-aligned organizations are pushing for summary judgment on the merits.</p>",
+      "link": "https://cointelegraph.com/news/cci-ba-fight-illinois-crypto-tax-pause?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-10-14T20:56:22+00:00",
+      "published_ts": 1792011382,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Private Instagram Downloaders Are Parsers, Not Privacy Bypass Tools",
+      "summary": "Disclosure: This article was produced in partnership with FastDL. Hackread.com reviewed and edited the content before publication. \u201cSaveVid.Net\u2026",
+      "summary_html": "Disclosure: This article was produced in partnership with FastDL. Hackread.com reviewed and edited the content before publication. \u201cSaveVid.Net\u2026",
+      "link": "https://hackread.com/private-instagram-downloaders-parsers-privacy-bypass-tools/",
+      "source": "HackRead",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-14T20:52:41+00:00",
+      "published_ts": 1792011161,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Brooklyn DA\u2019s office disrupts crypto scam targeting Russian community",
+      "summary": "Russian-speaking Brooklyn residents began tipping off local authorities to a cryptocurrency fraud scheme three years ago, leading to an operation to take down the associated servers and domains.",
+      "summary_html": "Russian-speaking Brooklyn residents began tipping off local authorities to a cryptocurrency fraud scheme three years ago, leading to an operation to take down the associated servers and domains.",
+      "link": "https://therecord.media/brooklyn-da-server-takedowns-crypto-scam-russian-speakers",
+      "source": "The Record \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-10-14T20:33:00+00:00",
+      "published_ts": 1792009980,
+      "smart_groups": [
+        "Crypto / Web3"
+      ],
+      "curated": false
+    },
     {
       "title": "Disruption Targets Major Chinese-Language Phishing Kits with Japanese Focus",
       "summary": "Key findings A disruption action targeting prominent players across the Chinese-speaking phishing and fraud ecosystem struck a blow to the most high-volume threats in Proofpoint data. Proofpoint supported Microsoft and other private and public partners in the civil lawsuit and takedown action. The highest-volume direct email threats in Proofpoint campaign data come from three phishing kits our researchers named CoGUI, CoAceV, and CoFish_Ws, which all actively target Japanese organizations. These are part of the targeted actions. Campaigns linked to these phishing kits impersonate well-known companies, mainly consumer and finance brands, and distribute hundreds of millions of messages. Proofpoint assesses with high confidence that all these phishing kits have common roots and are used by overlapping affiliates. The disruption that includes broader ecosystem enablers YAM Store and Iron Man is likely to impact the efficacy and success of these phishing kits, potentially causing operational, reputational, and financial damage to the threat actors. Overview A recent disruption targeted a group of Chinese-speaking cybercrime threat actors and the infrastructure supporting their credential phishing activities. CoGUI and related infrastructure was disrupted in collaboration with private and public partners including Proofpoint, Microsoft, Japan Cybercrime Control Center (JC3), Resecurity, Cloudflare, Oracle, and TRM Labs. Microsoft and co-plaintiff Health-ISAC also filed a lawsuit against the YAM Store threat actors and individuals linked to the phishing operations. Microsoft and Health-ISAC seized and redirected domains enabling YAM Store, CoGUI and Iron Man fraud. The disruption and associated civil filing in the U.S. District Court for the Southern District of Florida is likely to have a significant impact on CoGUI operations and overall threat activity. Proofpoint supported Microsoft's action with threat data from our visibility, including malicious domains and information related to CoGUI, CoAceV and CoFish_ws campaigns, and provided a declaration for the suit. In addition to the disruption, the following splash page was displayed on the seized domains: Figure 1: Splash page shown to visitors of malicious sites. The takedown targeting threat actors responsible for hundreds of millions of malicious messages attempting financial fraud will likely have a measurable impact on the Chinese phishing ecosystem and cause significant operational friction among multiple threat groups. Background Towards the end of 2024, Proofpoint researchers identified an emerging cluster of phishing activity consistently targeting Japan with very high volumes of email campaigns. We then released public details on a phishing kit that Proofpoint researchers referred to as \u201cCoGUI\u201d, highlighting how the phishing kit impersonated well-known Japanese or international companies in order to steal usernames, passwords, and payment data such as credit card information. In the days following our publication, the phishing kit developer introduced what appeared to be a joke in the kit as a response to our report, as we saw a new pattern \u201ccoguicogui\u201d appear in the network communications. Since then, this highly evasive kit has made Japan one of the most targeted countries in Proofpoint data based on campaign volumes. We detect and block over 100 million email messages per month targeting organizations using the CoGUI phishing kit to steal usernames, passwords, and payment data. More than one year later, the CoGUI phishing kit is still regularly used by cybercriminals, according to Proofpoint data. Yet two other phishing kits have also appeared, closely related to CoGUI, expanding the ecosystem of Chinese-language phishing kits. We named those kits CoAceV and CoFish_Ws and assess with high confidence these three kits are all related. They are part of the broader ecosystem. According to Microsoft\u2019s data, YAM Store, CoGUI and Iron Man have enabled more than one billion malicious messages targeting over 75,000 organizations worldwide, since January 2026. Campaign Details In total, Proofpoint has observed 66 different brands being impersonated by those phishing kits, most of these brands being Japanese. Examples of impersonated brands include Amazon, PayPay, MyJCB, Apple, Orico, Rakuten, SMBC, Saison Card, Aeon Card, UC Card, Matsui Securities, DHL, Yamato Transport. Phishing kit Name Number of campaigns Number of unique domains used CoGUI 1081 13586 CoAceV 242 2812 CoFish_Ws 19 191 Table 1: Phishing kits statistics Overall, we have observed around 17,000 unique domains used by these three phishing kits since we began tracking their use. The groups create and rotate domains frequently; between 01 July and 17 September 2026, for example, we observed 3,788 unique fully qualified domain names (FQDNs) being used by the three phishing kits. This indicates a dynamic operation that has the capabilities and resources to purchase and manage phishing infrastructure at scale. Email lures vary and can relate to financial and banking information, credit card or payment account details, consumer retail information, or shipping and transportation, among other themes. Messages contain URLs that lead, after a variety of filtering including CAPTCHA, to landing pages that masquerade as login or payment portals for the impersonated companies. Figure 2: Anonymized CoFish_ws e-mail impersonating JACCS. Figure 3: CAPTCHA used in a CoFish_ws campaign. Figure 4: CoFish_ws phishing page impersonating JACCS and requesting credentials. Figure 5: CoFish_ws phishing page impersonating JACCS and requesting credit card information. Phishing kit overlaps Over time we have found overlaps between the different phishing kits, including characteristics of targeting, decoy landing pages, URL structure, and more. For example, in February 2026, we saw a new decoy method on the CoGUI phishing kit. When browsing conditions were not met, the phishing kit would decoy the browser to www.a.com, or www.b.com, or www.c.com. (A decoy is used by the threat actor to direct traffic to a different website than the phishing kit to avoid detection by automated sandboxing.) A few days after CoGUI began using this method, we observed the CoAceV phishing kit employ the exact same decoy method in campaigns. As an example, two Apple phishing campaigns, one using CoGUI, one using CoAceV, appeared during the same period of time from 13 to 17 April 2026 using the same decoy page. Additionally, we have also observed overlap in URL patterns and paths. In these cases, the unique domains are operated by one phishing kit, but both share the same or similar URL paths. CoGUI: hxxps://kenandy[.]shop/paidy/ubmisionsjp/ CoAceV: hxxps://paidy[.]farradae.com/paidy/ubmissionsjp CoGUI: /MoldWnfEpQOjMnhOpLnumth/help CoAceV: /SmbdWnfEp7OjMnhEVdyubtCl/help One URL pattern has been used by the three kits: CoGUI: hxxps://lygyaou[.]com/9AioLNhtdi.kumamoto-city[.]jp CoAceV: hxxps://ylhgkj[.]com/BCuXkTPfKZ.kumamoto-city[.]jp CoFish_ws: hxxps://new-app-haixing[.]com/1DWSd1DeDf.kumamoto-city[.]jp Impact The vast majority of tracked CoGUI/CoAceV/CoFish_Ws campaigns impact Japan, with a few impacting the United States of America, Australia, and Italy. According to our email threat data, the most frequently impacted business sectors are Financial Services and Healthcare, with Government, Education, and Manufacturing rounding out the top five impacted sectors. The threat actors seem particularly interested in gaining access to financial services. In 2025, Japanese authorities published details about an increase in phishing activity targeting financial organizations. The goal of the threat actors was reportedly to gain access to victims' accounts for financial gain, and in most cases, using illicit gains to buy Chinese stocks. Based on the observed activity and third-party reporting, it is possible this activity was linked to CoGUI credential phishing threat actors. This aligns with the group\u2019s financial theft objective and fraud campaigns. Disruption Successful account takeovers can cause significant harm to compromised organizations including financial and reputational damage. CoGUI and related kits are high volume, and consistently some of the most active threats in Proofpoint data. With this disruption that targeted the broader ecosystem including YAM Store and Iron Man, we hope this changes. Proofpoint\u2019s mission is to provide the best human-centric protection for our customers against advanced threats. Whenever it is possible and appropriate to do so, and as is the case with the CoGUI disruption, Proofpoint uses its team\u2019s knowledge and skills to help protect a wider audience against widespread malware and phishing threats. Proofpoint was proud to assist in the investigations into CoGUI, CoAceV, and CoFish_ws activity. Through its unique vantage point, Proofpoint is able to identify the largest and most consequential email threat distribution campaigns, providing the authorities with much-needed insight into the biggest threats to society, affecting the greatest number of people around the world.",
@@ -21,6 +238,37 @@
         "Malware / Payloads"
       ],
       "curated": true
+    },
+    {
+      "title": "AI Agents Made 138 Million Crypto Payments in a Year. Most Were Tiny",
+      "summary": "A new Chainalysis report found payments through Coinbase\u2019s x402 protocol surged from about 1,500 in mid-2025 to more than 138 million by Q3 2026, with U.S. wallets dominating spending on AI models.",
+      "summary_html": "A new Chainalysis report found payments through Coinbase\u2019s x402 protocol surged from about 1,500 in mid-2025 to more than 138 million by Q3 2026, with U.S. wallets dominating spending on AI models.",
+      "link": "https://decrypt.co/380989/ai-agents-138-million-crypto-payments-one-year",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-10-14T20:16:05+00:00",
+      "published_ts": 1792008965,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Anthropic 'SneakPeek' Flaw Is a Silent Zero-Click Threat",
+      "summary": "A bug in Claude Code Desktop's preview pane can allow adversaries to quietly steal credentials from developers, including SSH private keys, AWS credentials, and Claude 0Auth tokens.",
+      "summary_html": "A bug in Claude Code Desktop's preview pane can allow adversaries to quietly steal credentials from developers, including SSH private keys, AWS credentials, and Claude 0Auth tokens.",
+      "link": "https://www.darkreading.com/threat-intelligence/new-anthropic-sneakpeek-silent-zero-click-threat",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-14T20:09:42+00:00",
+      "published_ts": 1792008582,
+      "smart_groups": [
+        "Cloud / SaaS",
+        "AI/ML Security"
+      ],
+      "curated": false
     },
     {
       "title": "Is deception technology actually useful for detecting attackers, or is it just another layer of alerts?",
@@ -143,7 +391,9 @@
         "Vulnerabilities / CVEs",
         "Malware / Payloads"
       ],
-      "curated": true
+      "curated": true,
+      "story_id": "c63069ba1c8d",
+      "story_size": 7
     },
     {
       "title": "Might be a clich\u00e9 question",
@@ -272,7 +522,7 @@
       ],
       "curated": true,
       "story_id": "c63069ba1c8d",
-      "story_size": 5
+      "story_size": 7
     },
     {
       "title": "Hirudo Android Malware Overrides Banking Apps to Bypass Security Checks",
@@ -1014,7 +1264,18 @@
       "smart_groups": [
         "Phishing / Social Engineering"
       ],
-      "curated": true
+      "curated": true,
+      "story_id": "91795601b1ff",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "Dark Reading",
+          "title": "Yam Store: The Phishing Network Behind a Billion Messages",
+          "link": "https://www.darkreading.com/cyberattacks-data-breaches/yam-store-phishing-network-behind-billion-messages",
+          "published_ts": 1792011436
+        }
+      ]
     },
     {
       "title": "Multiple Vulnerabilities in Google Chrome Could Allow for Arbitrary Code Execution",
@@ -1546,7 +1807,7 @@
       ],
       "curated": true,
       "story_id": "c63069ba1c8d",
-      "story_size": 5
+      "story_size": 7
     },
     {
       "title": "Coins.ph says Philippine central bank license intact amid revocation claims",
