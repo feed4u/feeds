@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-15T13:42:50.260137+00:00",
+  "generated_at": "2026-10-15T20:03:53.514307+00:00",
   "date": "2026-10-14",
-  "total_items": 74,
+  "total_items": 75,
   "next_chunk": "archive/blog/daily/2026-10-13.json",
   "items": [
     {
@@ -404,7 +404,9 @@
       "smart_groups": [
         "Infra & model ops"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "4f596a2978f9",
+      "story_size": 2
     },
     {
       "title": "Arguments About AI Consciousness Remain Highly Motivated and Overconfident",
@@ -454,6 +456,33 @@
         "Safety & alignment"
       ],
       "curated": false
+    },
+    {
+      "title": "I trained a 15M \"decision-only\" model two ways \u2014 linear recurrence vs Transformer attention. Accuracy was a coin flip; latency and training cost weren't.[R]",
+      "summary": "Inspired by TypeSafe's Jev (a non-generative model that only outputs bounded decisions \u2014 choices, probabilities, calibrated confidence), I built two small decision models end-to-end on identical budgets and tasks to answer one question: which substrate makes the better Jev? Repo: https://github.com/stube123890-hue/jev-decision-lab Setup (V4, the main result) : - ~15.09M params each, budget-matched to \u00b10.02% - jev-v8a: linear recurrent backbone (my Gated Segmented State Space architecture from linear-attention-lab) + decision head - jev-transformer: standard attention backbone + identical head - New task: long-context retrieval-decision \u2014 given a 2k\u20138k character passage, decide which of 4 sentences appears in it (2000 train / 500 val / 500 test) - Trained on a Colab T4, everything reproducible in the notebooks Results: - Accuracy: noise. v8a 26.8% vs transformer 28.2% on test (chance = 25%). Neither learns much at this scale \u2014 reporting the loss straight. - Latency: real crossover. Transformer faster below ~1550 tokens; at T=8192 the linear model is 2.37\u00d7 faster (108.6 vs 257.7 ms). O(T) vs O(T\u00b2) showing up exactly where theory says it should. - Training speed: the big gap. 6 finetune epochs took ~30 min for v8a vs ~40\u201345 min *per epoch* for the transformer at 2k\u20138k context. That's a ~6\u20137\u00d7 gap that gets worse with scale. Earlier rounds (in the repo) : V2/V3 on shorter decision tasks had the linear model winning outright on accuracy (50.4 vs 46.2, 66.2 vs 61.0). So the picture is: linear recurrence wins or ties on short-context decisions and dominates on long-context cost \u2014 it just doesn't learn the hard retrieval task any better than attention at 15M. Currently running : V5, a bidirectional variant of both (15M, same budget). Will update the repo when it lands. Happy to answer questions on the architecture or the training setup. And yes \u2014 the negative result is the point; small decision models are accuracy-starved at this scale regardless of substrate. submitted by /u/AlarmingTrouble5261 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Inspired by TypeSafe's Jev (a non-generative model that only outputs bounded decisions \u2014 choices, probabilities, calibrated confidence), I built two small decision models end-to-end on identical budgets and tasks to answer one question: which substrate makes the better Jev?</p> <p>Repo: <a href=\"https://github.com/stube123890-hue/jev-decision-lab\">https://github.com/stube123890-hue/jev-decision-lab</a></p> <p>Setup (V4, the main result) : - ~15.09M params each, budget-matched to \u00b10.02% - jev-v8a: linear recurrent backbone (my Gated Segmented State Space architecture from linear-attention-lab) + decision head - jev-transformer: standard attention backbone + identical head - New task: long-context retrieval-decision \u2014 given a 2k\u20138k character passage, decide which of 4 sentences appears in it (2000 train / 500 val / 500 test) - Trained on a Colab T4, everything reproducible in the notebooks</p> <p>Results: - Accuracy: noise. v8a 26.8% vs transformer 28.2% on test (chance = 25%). Neither learns much at this scale \u2014 reporting the loss straight. - Latency: real crossover. Transformer faster below ~1550 tokens; at T=8192 the linear model is 2.37\u00d7 faster (108.6 vs 257.7 ms). O(T) vs O(T\u00b2) showing up exactly where theory says it should. - Training speed: the big gap. 6 finetune epochs took ~30 min for v8a vs ~40\u201345 min *per epoch* for the transformer at 2k\u20138k context. That's a ~6\u20137\u00d7 gap that gets worse with scale.</p> <p>Earlier rounds (in the repo) : V2/V3 on shorter decision tasks had the linear model winning outright on accuracy (50.4 vs 46.2, 66.2 vs 61.0). So the picture is: linear recurrence wins or ties on short-context decisions and dominates on long-context cost \u2014 it just doesn't learn the hard retrieval task any better than attention at 15M.</p> <p>Currently running : V5, a bidirectional variant of both (15M, same budget). Will update the repo when it lands.</p> <p>Happy to answer questions on the architecture or the training setup. And yes \u2014 the negative result is the point; small decision models are accuracy-starved at this scale regardless of substrate.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/AlarmingTrouble5261\"> /u/AlarmingTrouble5261 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x5y2pz/i_trained_a_15m_decisiononly_model_two_ways/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x5y2pz/i_trained_a_15m_decisiononly_model_two_ways/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/MachineLearning/comments/1x5y2pz/i_trained_a_15m_decisiononly_model_two_ways/",
+      "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-14T17:52:30+00:00",
+      "published_ts": 1792000350,
+      "smart_groups": [
+        "Infra & model ops"
+      ],
+      "curated": false,
+      "story_id": "4f596a2978f9",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+          "title": "I trained a 15M \"decision-only\" model two ways \u2014 linear recurrence vs Transformer attention. Accuracy was a coin flip; latency and training cost weren't.[R]",
+          "link": "https://www.reddit.com/r/MachineLearning/comments/1x5yhr6/i_trained_a_15m_decisiononly_model_two_ways/",
+          "published_ts": 1792001264
+        }
+      ]
     },
     {
       "title": "autogpt-platform-beta-v0.8.4",
