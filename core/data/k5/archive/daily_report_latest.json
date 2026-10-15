@@ -1,265 +1,249 @@
 {
-  "generated_at": "2026-10-14T07:20:30.780524+00:00",
-  "analysis_date": "2026-10-13",
+  "generated_at": "2026-10-15T01:44:09.615807+00:00",
+  "analysis_date": "2026-10-14",
   "vertical": "k5",
   "model": "qwen38-27b-mtp2:latest",
   "llm_endpoint": "127.0.0.1:11434",
   "window_hours": 24,
-  "source_file": "archive/*/daily/2026-10-13.json",
-  "total_items_in_window_all": 256,
-  "total_items_in_window_curated": 101,
-  "chunks": 2,
-  "llm_calls": 3,
-  "duration_seconds": 762.4,
-  "daily_report_markdown": "### Headline summary\n- Ivanti and Citrix zero-days are under active exploitation, allowing unauthenticated remote code execution and root access. ([CIS](https://www.cisecurity.org/advisory/a-vulnerability-in-ivanti-connect-secure-could-allow-for-arbitrary-code-execution_2026-115), [/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1x5acu1/ivanti_misses_opportunity_to_fix_vulnerability/), [SecurityWeek](https://www.securityweek.com/ivanti-zero-day-chain-gave-attackers-root-access-to-fully-patched-vpn/), [Security Affairs](https://securityaffairs.com/200887/security/u-s-cisa-adds-ivanti-connect-secure-flaw-to-its-known-exploited-vulnerabilities-catalog.html))\n- Microsoft released its largest patch update to date, fixing over 1,400 flaws including an actively exploited zero-day. ([Krebs on Security](https://krebsonsecurity.com/2026/10/microsoft-patches-more-than-1400-security-flaws/), [Dark Reading](https://www.darkreading.com/vulnerabilities-threats/zero-days-microsoft-october-patch-tuesday), [CIS](https://www.cisecurity.org/advisory/critical-patches-issued-for-microsoft-products-october-13-2026_2026-114), [blog.talosintelligence.com](https://blog.talosintelligence.com/microsoft-patch-tuesday-for-october-2026/))\n- Ledger halted sales in key regions after discovering hardware implants in wallets that stole recovery phrases. ([Cointelegraph.com News](https://cointelegraph.com/news/ledger-asks-resellers-to-halt-sales-in-southeast-asia-and-hong-kong?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound), [Cointelegraph.com News](https://cointelegraph.com/news/trezor-preventative-steps-wallet-tampering-reports?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound), [Decrypt](https://decrypt.co/380848/trezor-cuts-resellers-ledger-finds-spy-implant-crypto-wallets), [The Record](https://therecord.media/ledger-cryptocurrency-wallet-implant-theft))\n\n### Top stories\n- **Ivanti Connect Secure Zero-Day Actively Exploited** — Ivanti disclosed an actively exploited zero-day vulnerability (CVE-2026-104935) in Connect Secure that allows unauthenticated remote code execution. Attackers are chaining multiple flaws to gain root access on affected systems. ([CIS](https://www.cisecurity.org/advisory/a-vulnerability-in-ivanti-connect-secure-could-allow-for-arbitrary-code-execution_2026-115), [/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1x5acu1/ivanti_misses_opportunity_to_fix_vulnerability/), [SecurityWeek](https://www.securityweek.com/ivanti-zero-day-chain-gave-attackers-root-access-to-fully-patched-vpn/), [Security Affairs](https://securityaffairs.com/200887/security/u-s-cisa-adds-ivanti-connect-secure-flaw-to-its-known-exploited-vulnerabilities-catalog.html))\n- **Citrix NetScaler Zero-Days Actively Exploited** — CISA warned that threat actors are actively exploiting two critical zero-day vulnerabilities in Citrix NetScaler ADC and Gateway appliances. The exploitation is used to deploy remote access tools and execute code on the infrastructure. ([Cyber Security News (FeedBurner)](https://cybersecuritynews.com/citrix-netscaler-zero-day-exploits/), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/hackers-exploit-citrix-netscaler-0-days/))\n- **Microsoft October Patch Tuesday Fixes Record 1,400+ Flaws** — Microsoft released its largest monthly security update to date, patching over 1,400 vulnerabilities. The update includes three zero-days, one of which is currently being actively exploited. ([Krebs on Security](https://krebsonsecurity.com/2026/10/microsoft-patches-more-than-1400-security-flaws/), [Dark Reading](https://www.darkreading.com/vulnerabilities-threats/zero-days-microsoft-october-patch-tuesday), [CIS](https://www.cisecurity.org/advisory/critical-patches-issued-for-microsoft-products-october-13-2026_2026-114), [blog.talosintelligence.com](https://blog.talosintelligence.com/microsoft-patch-tuesday-for-october-2026/))\n- **Ledger Wallets Found with Hardware Implants Stealing Recovery Phrases** — Ledger halted sales in Southeast Asia and Hong Kong after discovering LTE-enabled hardware implants in devices sold by a reseller. These implants transmitted user recovery phrases to attackers, an incident potentially linked to an $86 million theft. ([Cointelegraph.com News](https://cointelegraph.com/news/ledger-asks-resellers-to-halt-sales-in-southeast-asia-and-hong-kong?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound), [Cointelegraph.com News](https://cointelegraph.com/news/trezor-preventative-steps-wallet-tampering-reports?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound), [Decrypt](https://decrypt.co/380848/trezor-cuts-resellers-ledger-finds-spy-implant-crypto-wallets), [The Record](https://therecord.media/ledger-cryptocurrency-wallet-implant-theft))\n- **GitLab Patches Critical CVSS 10.0 RCE Vulnerability** — GitLab released emergency updates for CVE-2026-97229, a maximum-severity flaw in its CI/CD Regular Expression Compiler. The vulnerability allows unauthenticated attackers to execute arbitrary code on servers. ([/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1x54kkf/gitlab_admins_urged_to_patch_critical_rce_flaw/), [Security Affairs](https://securityaffairs.com/200868/security/gitlab-patches-max-severity-vulnerability-cve-2026-97229.html), [CSO Online](https://www.csoonline.com/article/4234306/gitlab-patches-a-max-severity-regex-flaw-alongside-five-high-severity-bugs.html), [Help Net Security](https://www.helpnetsecurity.com/2026/10/13/gitlab-ci-cd-regular-expression-compiler-vulnerability-cve-2026-97229/))\n- **French Supermarket Fridges Hacked to 50°C** — Attackers exploited unpatched Danfoss refrigeration controllers to force defrost mode in hundreds of French supermarkets. This caused freezers to heat to 50 degrees, resulting in significant food spoilage and millions of dollars in lost inventory. ([/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1x57oku/french_supermarket_fridges_were_pushed_to_50c/), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/danfoss-refrigeration-hack-exposed-hosts/), [Malwarebytes Labs (Vendor)](https://www.malwarebytes.com/blog/news/2026/10/hackers-heat-up-supermarket-fridges-spoiling-food-across-france), [IT Security Guru](https://www.itsecurityguru.org/2026/10/13/legacy-refrigeration-controllers-exploited-in-ot-attack-on-hundreds-of-french-supermarkets/?utm_source=rss&utm_medium=rss&utm_campaign=legacy-refrigeration-controllers-exploited-in-ot-attack-on-hundreds-of-french-supermarkets))\n- **Critical WordPress Plugin Vulnerability Exploited** — Attackers are actively exploiting CVE-2026-85097 in the Bricksforge WordPress plugin. The flaw allows the upload and execution of arbitrary PHP code without requiring authentication. ([Cyber Security News (FeedBurner)](https://cybersecuritynews.com/wordpress-plugin-vulnerability-exploited/))\n- **LG webOS Flaws Allow Unauthenticated Remote Root Command Execution** — Researchers disclosed four serious vulnerabilities in LG webOS smart TVs. These flaws enable attackers to bypass authentication and execute commands with root-level privileges. ([Cyber Security News (FeedBurner)](https://cybersecuritynews.com/lg-webos-flaws/))",
+  "source_file": "archive/*/daily/2026-10-14.json",
+  "total_items_in_window_all": 297,
+  "total_items_in_window_curated": 133,
+  "sections_from": "topics",
+  "topics_file": "archive/news/topics/2026-10-14.json",
+  "chunks": 0,
+  "llm_calls": 1,
+  "duration_seconds": 59.4,
+  "daily_report_markdown": "### Headline summary\n- Microsoft released a record 1,413 security fixes in its October 2026 Patch Tuesday update. ([CSO Online](https://www.csoonline.com/article/4234759/october-patch-tuesday-roundup-over-1400-microsoft-holes-to-be-plugged-including-three-zero-days.html), [The Hacker News](https://thehackernews.com/2026/10/microsoft-patches-record-1413-flaws.html))\n- CISA warned of active exploitation of a zero-day in Ivanti Connect Secure and a Windows Shell vulnerability. ([Help Net Security](https://www.helpnetsecurity.com/2026/10/14/ivanti-zero-days-gain-root-patched-vpn-appliances/), [Security Affairs](https://securityaffairs.com/200895/hacking/volexity-uncovers-stealthy-ivanti-vpn-attack-using-three-zero-day-vulnerabilities.html), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/windows-shell-0-day-exploited/), [News4Hackers](https://www.news4hackers.com/microsoft-addresses-critical-mark-of-the-web-bypass-vulnerability-cve-2026-96951/))\n- US authorities disrupted North Korean laptop farms and seized over one billion malicious phishing messages. ([SecurityWeek](https://www.securityweek.com/us-arrests-two-in-crackdown-on-north-korean-it-worker-laptop-farms/), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/famous-chollima/), [SecurityWeek](https://www.securityweek.com/microsoft-disrupts-chinese-language-phishing-market-behind-1b-messages/), [BleepingComputer](https://www.bleepingcomputer.com/news/security/global-takedown-hits-network-behind-1-billion-phishing-messages/))\n\n### Microsoft October 2026 Patch Tuesday\nMicrosoft released its October 2026 security updates, which included a record number of fixes addressing 1,413 flaws. ([CSO Online](https://www.csoonline.com/article/4234759/october-patch-tuesday-roundup-over-1400-microsoft-holes-to-be-plugged-including-three-zero-days.html), [The Hacker News](https://thehackernews.com/2026/10/microsoft-patches-record-1413-flaws.html), [SecurityWeek](https://www.securityweek.com/microsoft-patches-record-1413-vulnerabilities-including-exploited-windows-zero-day/), [HackRead](https://hackread.com/microsoft-fix-vulnerabilities-october-patch-tuesday-update/))\n\n### Ivanti Connect Secure Zero-Day Exploitation\nCISA warned administrators to immediately fix a zero-day vulnerability in Ivanti Connect Secure that is being actively exploited, including through multi-vulnerability exploit chains. ([Help Net Security](https://www.helpnetsecurity.com/2026/10/14/ivanti-zero-days-gain-root-patched-vpn-appliances/), [Security Affairs](https://securityaffairs.com/200895/hacking/volexity-uncovers-stealthy-ivanti-vpn-attack-using-three-zero-day-vulnerabilities.html), [HIPAA Journal](https://www.hipaajournal.com/ivanti-connect-secure-zero-day-2026/), [CSO Online](https://www.csoonline.com/article/4235129/hackers-abuse-the-ivanti-connect-secure-bug-to-gain-access-without-accounts.html))\n\n### Windows Shell Zero-Day Actively Exploited\nMicrosoft patched CVE-2026-96951, a high-severity Windows Shell vulnerability that bypasses Mark of the Web and is being actively exploited in attacks. ([Cyber Security News (FeedBurner)](https://cybersecuritynews.com/windows-shell-0-day-exploited/), [News4Hackers](https://www.news4hackers.com/microsoft-addresses-critical-mark-of-the-web-bypass-vulnerability-cve-2026-96951/), [SOC Prime Blog](https://socprime.com/blog/cve-2026-96951-analysis/))\n\n### Cisco Secure Email Gateway zero-day exploitation\nCisco patched a critical zero-day vulnerability in its Secure Email Gateway that is being actively exploited by attackers to bypass authentication. ([BleepingComputer](https://www.bleepingcomputer.com/news/security/cisco-patches-actively-exploited-secure-email-gateway-zero-day/), [The Hacker News](https://thehackernews.com/2026/10/cisco-warns-of-active-attacks.html))\n\n### FBI Disrupts North Korean Laptop Farms\nUS authorities raided over 40 locations in Texas, seizing 187 laptops and charging 14 individuals linked to the North Korean threat group Famous Chollima. ([SecurityWeek](https://www.securityweek.com/us-arrests-two-in-crackdown-on-north-korean-it-worker-laptop-farms/), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/famous-chollima/), [Help Net Security](https://www.helpnetsecurity.com/2026/10/14/north-korean-it-workers-laptop-farms-arrests/), [The Hacker News](https://thehackernews.com/2026/10/us-shuts-down-over-40-laptop-farms.html))\n\n### Microsoft Disrupts Chinese Phishing Infrastructure\nMicrosoft and partners seized domains and disrupted major Chinese-language phishing kits, including YAM Store, that facilitated over one billion malicious messages. ([SecurityWeek](https://www.securityweek.com/microsoft-disrupts-chinese-language-phishing-market-behind-1b-messages/), [BleepingComputer](https://www.bleepingcomputer.com/news/security/global-takedown-hits-network-behind-1-billion-phishing-messages/), [The Record](https://therecord.media/microsoft-takes-down-3-major-chinese-phishing-platforms), [The Hacker News](https://thehackernews.com/2026/10/microsoft-disrupts-3-phishing-kits.html))\n\n### Browser Security Updates\nGoogle Chrome and Mozilla Firefox released updates patching numerous security flaws, with Chrome addressing 37 vulnerabilities and the combined updates covering 114 flaws. ([SecurityWeek](https://www.securityweek.com/chrome-firefox-updates-patch-114-flaws-as-mozilla-unveils-firefox-enterprise/), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/multiple-google-chrome-vulnerabilities/), [/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1x5q397/multiple_flaws_chrome_155_update_patches_37/), [CIS](https://www.cisecurity.org/advisory/multiple-vulnerabilities-in-google-chrome-could-allow-for-arbitrary-code-execution_2026-116))\n\n### SAP patches critical NetWeaver and S/4HANA flaws\nSAP released 22 security updates, including four critical vulnerabilities in NetWeaver and S/4HANA that could allow attackers to execute code and compromise systems. ([SecurityWeek](https://www.securityweek.com/sap-patches-critical-netweaver-s-4hana-vulnerabilities/), [News4Hackers](https://www.news4hackers.com/sap-releases-critical-security-patches-for-netweaver-and-s-4hana/))",
   "headline": [
     {
-      "text": "Ivanti and Citrix zero-days are under active exploitation, allowing unauthenticated remote code execution and root access.",
+      "text": "Microsoft released a record 1,413 security fixes in its October 2026 Patch Tuesday update.",
       "links": [
-        "https://www.cisecurity.org/advisory/a-vulnerability-in-ivanti-connect-secure-could-allow-for-arbitrary-code-execution_2026-115",
-        "https://www.reddit.com/r/cybersecurity/comments/1x5acu1/ivanti_misses_opportunity_to_fix_vulnerability/",
-        "https://www.securityweek.com/ivanti-zero-day-chain-gave-attackers-root-access-to-fully-patched-vpn/",
-        "https://securityaffairs.com/200887/security/u-s-cisa-adds-ivanti-connect-secure-flaw-to-its-known-exploited-vulnerabilities-catalog.html",
-        "https://thehackernews.com/2026/10/attacker-chains-three-ivanti-connect.html",
-        "https://cybersecuritynews.com/ivanti-connect-secure-zero-day/",
-        "https://www.bleepingcomputer.com/news/security/ivanti-warns-of-connect-secure-zero-day-exploited-in-attacks/",
-        "https://cybersecuritynews.com/citrix-netscaler-zero-day-exploits/",
-        "https://cybersecuritynews.com/hackers-exploit-citrix-netscaler-0-days/"
+        "https://www.csoonline.com/article/4234759/october-patch-tuesday-roundup-over-1400-microsoft-holes-to-be-plugged-including-three-zero-days.html",
+        "https://thehackernews.com/2026/10/microsoft-patches-record-1413-flaws.html"
       ]
     },
     {
-      "text": "Microsoft released its largest patch update to date, fixing over 1,400 flaws including an actively exploited zero-day.",
+      "text": "CISA warned of active exploitation of a zero-day in Ivanti Connect Secure and a Windows Shell vulnerability.",
       "links": [
-        "https://krebsonsecurity.com/2026/10/microsoft-patches-more-than-1400-security-flaws/",
-        "https://www.darkreading.com/vulnerabilities-threats/zero-days-microsoft-october-patch-tuesday",
-        "https://www.cisecurity.org/advisory/critical-patches-issued-for-microsoft-products-october-13-2026_2026-114",
-        "https://blog.talosintelligence.com/microsoft-patch-tuesday-for-october-2026/",
-        "https://www.bleepingcomputer.com/news/microsoft/microsoft-october-2026-patch-tuesday-fixes-1-411-flaws-3-zero-days/",
-        "https://www.bleepingcomputer.com/news/microsoft/microsoft-releases-windows-10-kb5126657-extended-security-update/",
-        "https://www.thezdi.com/blog/2026/10/13/the-october-2026-security-update-review",
-        "https://isc.sans.edu/diary/rss/33422",
-        "https://cybersecuritynews.com/microsoft-october-patch-tuesday-2026/",
-        "https://www.bleepingcomputer.com/news/microsoft/windows-11-kb5127648-and-kb5126653-cumulative-updates-released/"
+        "https://www.helpnetsecurity.com/2026/10/14/ivanti-zero-days-gain-root-patched-vpn-appliances/",
+        "https://securityaffairs.com/200895/hacking/volexity-uncovers-stealthy-ivanti-vpn-attack-using-three-zero-day-vulnerabilities.html",
+        "https://cybersecuritynews.com/windows-shell-0-day-exploited/",
+        "https://www.news4hackers.com/microsoft-addresses-critical-mark-of-the-web-bypass-vulnerability-cve-2026-96951/"
       ]
     },
     {
-      "text": "Ledger halted sales in key regions after discovering hardware implants in wallets that stole recovery phrases.",
+      "text": "US authorities disrupted North Korean laptop farms and seized over one billion malicious phishing messages.",
       "links": [
-        "https://cointelegraph.com/news/ledger-asks-resellers-to-halt-sales-in-southeast-asia-and-hong-kong?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-        "https://cointelegraph.com/news/trezor-preventative-steps-wallet-tampering-reports?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-        "https://decrypt.co/380848/trezor-cuts-resellers-ledger-finds-spy-implant-crypto-wallets",
-        "https://therecord.media/ledger-cryptocurrency-wallet-implant-theft",
-        "https://decrypt.co/380826/ledger-finds-lte-implant-that-stole-recovery-phrases-in-suspected-86m-drain",
-        "https://www.securityweek.com/86-million-crypto-heist-linked-to-ledger-signer-hardware-implant/",
-        "https://cointelegraph.com/news/mediamarkt-pulls-ledger-wallet-security-incident?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-        "https://cointelegraph.com/news/ledger-cellular-implants-wallets-sold-cryptobilis?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+        "https://www.securityweek.com/us-arrests-two-in-crackdown-on-north-korean-it-worker-laptop-farms/",
+        "https://cybersecuritynews.com/famous-chollima/",
+        "https://www.securityweek.com/microsoft-disrupts-chinese-language-phishing-market-behind-1b-messages/",
+        "https://www.bleepingcomputer.com/news/security/global-takedown-hits-network-behind-1-billion-phishing-messages/"
       ]
     }
   ],
   "top_stories": [
     {
-      "title": "Ivanti Connect Secure Zero-Day Actively Exploited",
-      "summary": "Ivanti disclosed an actively exploited zero-day vulnerability (CVE-2026-104935) in Connect Secure that allows unauthenticated remote code execution. Attackers are chaining multiple flaws to gain root access on affected systems.",
+      "title": "Microsoft October 2026 Patch Tuesday",
+      "summary": "Microsoft released its October 2026 security updates, which included a record number of fixes addressing 1,413 flaws.",
       "links": [
-        "https://www.cisecurity.org/advisory/a-vulnerability-in-ivanti-connect-secure-could-allow-for-arbitrary-code-execution_2026-115",
-        "https://www.reddit.com/r/cybersecurity/comments/1x5acu1/ivanti_misses_opportunity_to_fix_vulnerability/",
-        "https://www.securityweek.com/ivanti-zero-day-chain-gave-attackers-root-access-to-fully-patched-vpn/",
-        "https://securityaffairs.com/200887/security/u-s-cisa-adds-ivanti-connect-secure-flaw-to-its-known-exploited-vulnerabilities-catalog.html",
-        "https://thehackernews.com/2026/10/attacker-chains-three-ivanti-connect.html",
-        "https://cybersecuritynews.com/ivanti-connect-secure-zero-day/",
-        "https://www.bleepingcomputer.com/news/security/ivanti-warns-of-connect-secure-zero-day-exploited-in-attacks/"
-      ]
+        "https://www.csoonline.com/article/4234759/october-patch-tuesday-roundup-over-1400-microsoft-holes-to-be-plugged-including-three-zero-days.html",
+        "https://thehackernews.com/2026/10/microsoft-patches-record-1413-flaws.html",
+        "https://www.securityweek.com/microsoft-patches-record-1413-vulnerabilities-including-exploited-windows-zero-day/",
+        "https://hackread.com/microsoft-fix-vulnerabilities-october-patch-tuesday-update/",
+        "https://www.infosecurity-magazine.com/news/microsoft-patch-tuesday-record-1/",
+        "https://www.news4hackers.com/microsoft-patches-1413-vulnerabilities-including-zero-day-exploits/",
+        "https://www.malwarebytes.com/blog/bugs/2026/10/update-windows-record-patch-tuesday-fixes-flaw-already-under-attack",
+        "https://www.zdnet.com/tech/windows-october-update-patches-file-explorer-bluetooth/",
+        "https://securityaffairs.com/200953/security/microsoft-patch-tuesday-sets-new-record-with-1415-cves-in-october-2026-updates.html",
+        "https://www.techrepublic.com/article/news-microsoft-october-2026-patch-tuesday/"
+      ],
+      "topic_id": "7f4d9c4decc7"
     },
     {
-      "title": "Citrix NetScaler Zero-Days Actively Exploited",
-      "summary": "CISA warned that threat actors are actively exploiting two critical zero-day vulnerabilities in Citrix NetScaler ADC and Gateway appliances. The exploitation is used to deploy remote access tools and execute code on the infrastructure.",
+      "title": "Ivanti Connect Secure Zero-Day Exploitation",
+      "summary": "CISA warned administrators to immediately fix a zero-day vulnerability in Ivanti Connect Secure that is being actively exploited, including through multi-vulnerability exploit chains.",
       "links": [
-        "https://cybersecuritynews.com/citrix-netscaler-zero-day-exploits/",
-        "https://cybersecuritynews.com/hackers-exploit-citrix-netscaler-0-days/"
-      ]
+        "https://www.helpnetsecurity.com/2026/10/14/ivanti-zero-days-gain-root-patched-vpn-appliances/",
+        "https://securityaffairs.com/200895/hacking/volexity-uncovers-stealthy-ivanti-vpn-attack-using-three-zero-day-vulnerabilities.html",
+        "https://www.hipaajournal.com/ivanti-connect-secure-zero-day-2026/",
+        "https://www.csoonline.com/article/4235129/hackers-abuse-the-ivanti-connect-secure-bug-to-gain-access-without-accounts.html",
+        "https://thehackernews.com/2026/10/cisa-urges-immediate-ivanti-connect.html",
+        "https://therecord.media/new-ivanti-microsoft-bugs-exploitation",
+        "https://www.bleepingcomputer.com/news/security/cisa-warns-admins-to-immediately-fix-ivanti-flaw-exploited-as-zero-day/",
+        "https://socprime.com/blog/cve-2026-104935-analysis/"
+      ],
+      "topic_id": "f9126c98d86d"
     },
     {
-      "title": "Microsoft October Patch Tuesday Fixes Record 1,400+ Flaws",
-      "summary": "Microsoft released its largest monthly security update to date, patching over 1,400 vulnerabilities. The update includes three zero-days, one of which is currently being actively exploited.",
+      "title": "Windows Shell Zero-Day Actively Exploited",
+      "summary": "Microsoft patched CVE-2026-96951, a high-severity Windows Shell vulnerability that bypasses Mark of the Web and is being actively exploited in attacks.",
       "links": [
-        "https://krebsonsecurity.com/2026/10/microsoft-patches-more-than-1400-security-flaws/",
-        "https://www.darkreading.com/vulnerabilities-threats/zero-days-microsoft-october-patch-tuesday",
-        "https://www.cisecurity.org/advisory/critical-patches-issued-for-microsoft-products-october-13-2026_2026-114",
-        "https://blog.talosintelligence.com/microsoft-patch-tuesday-for-october-2026/",
-        "https://www.bleepingcomputer.com/news/microsoft/microsoft-october-2026-patch-tuesday-fixes-1-411-flaws-3-zero-days/",
-        "https://www.bleepingcomputer.com/news/microsoft/microsoft-releases-windows-10-kb5126657-extended-security-update/",
-        "https://www.thezdi.com/blog/2026/10/13/the-october-2026-security-update-review",
-        "https://isc.sans.edu/diary/rss/33422",
-        "https://cybersecuritynews.com/microsoft-october-patch-tuesday-2026/",
-        "https://www.bleepingcomputer.com/news/microsoft/windows-11-kb5127648-and-kb5126653-cumulative-updates-released/"
-      ]
+        "https://cybersecuritynews.com/windows-shell-0-day-exploited/",
+        "https://www.news4hackers.com/microsoft-addresses-critical-mark-of-the-web-bypass-vulnerability-cve-2026-96951/",
+        "https://socprime.com/blog/cve-2026-96951-analysis/"
+      ],
+      "topic_id": "b5831a368d21"
     },
     {
-      "title": "Ledger Wallets Found with Hardware Implants Stealing Recovery Phrases",
-      "summary": "Ledger halted sales in Southeast Asia and Hong Kong after discovering LTE-enabled hardware implants in devices sold by a reseller. These implants transmitted user recovery phrases to attackers, an incident potentially linked to an $86 million theft.",
+      "title": "Cisco Secure Email Gateway zero-day exploitation",
+      "summary": "Cisco patched a critical zero-day vulnerability in its Secure Email Gateway that is being actively exploited by attackers to bypass authentication.",
       "links": [
-        "https://cointelegraph.com/news/ledger-asks-resellers-to-halt-sales-in-southeast-asia-and-hong-kong?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-        "https://cointelegraph.com/news/trezor-preventative-steps-wallet-tampering-reports?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-        "https://decrypt.co/380848/trezor-cuts-resellers-ledger-finds-spy-implant-crypto-wallets",
-        "https://therecord.media/ledger-cryptocurrency-wallet-implant-theft",
-        "https://decrypt.co/380826/ledger-finds-lte-implant-that-stole-recovery-phrases-in-suspected-86m-drain",
-        "https://www.securityweek.com/86-million-crypto-heist-linked-to-ledger-signer-hardware-implant/",
-        "https://cointelegraph.com/news/mediamarkt-pulls-ledger-wallet-security-incident?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-        "https://cointelegraph.com/news/ledger-cellular-implants-wallets-sold-cryptobilis?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
-      ]
+        "https://www.bleepingcomputer.com/news/security/cisco-patches-actively-exploited-secure-email-gateway-zero-day/",
+        "https://thehackernews.com/2026/10/cisco-warns-of-active-attacks.html"
+      ],
+      "topic_id": "e37a1b313e00"
     },
     {
-      "title": "GitLab Patches Critical CVSS 10.0 RCE Vulnerability",
-      "summary": "GitLab released emergency updates for CVE-2026-97229, a maximum-severity flaw in its CI/CD Regular Expression Compiler. The vulnerability allows unauthenticated attackers to execute arbitrary code on servers.",
+      "title": "FBI Disrupts North Korean Laptop Farms",
+      "summary": "US authorities raided over 40 locations in Texas, seizing 187 laptops and charging 14 individuals linked to the North Korean threat group Famous Chollima.",
       "links": [
-        "https://www.reddit.com/r/cybersecurity/comments/1x54kkf/gitlab_admins_urged_to_patch_critical_rce_flaw/",
-        "https://securityaffairs.com/200868/security/gitlab-patches-max-severity-vulnerability-cve-2026-97229.html",
-        "https://www.csoonline.com/article/4234306/gitlab-patches-a-max-severity-regex-flaw-alongside-five-high-severity-bugs.html",
-        "https://www.helpnetsecurity.com/2026/10/13/gitlab-ci-cd-regular-expression-compiler-vulnerability-cve-2026-97229/",
-        "https://socprime.com/blog/cve-2026-97229-critical-gitlab-rce-vulnerability/",
-        "https://thehackernews.com/2026/10/gitlab-patches-cvss-100-flaw-that-could.html"
-      ]
+        "https://www.securityweek.com/us-arrests-two-in-crackdown-on-north-korean-it-worker-laptop-farms/",
+        "https://cybersecuritynews.com/famous-chollima/",
+        "https://www.helpnetsecurity.com/2026/10/14/north-korean-it-workers-laptop-farms-arrests/",
+        "https://thehackernews.com/2026/10/us-shuts-down-over-40-laptop-farms.html",
+        "https://www.news4hackers.com/us-authorities-target-north-korean-it-workers-in-laptop-farm-crackdown/",
+        "https://www.bleepingcomputer.com/news/security/fbi-raids-dprk-it-worker-laptop-farms-in-texas-us-nationals-arrested/"
+      ],
+      "topic_id": "a20291e06353"
     },
     {
-      "title": "French Supermarket Fridges Hacked to 50°C",
-      "summary": "Attackers exploited unpatched Danfoss refrigeration controllers to force defrost mode in hundreds of French supermarkets. This caused freezers to heat to 50 degrees, resulting in significant food spoilage and millions of dollars in lost inventory.",
+      "title": "Microsoft Disrupts Chinese Phishing Infrastructure",
+      "summary": "Microsoft and partners seized domains and disrupted major Chinese-language phishing kits, including YAM Store, that facilitated over one billion malicious messages.",
       "links": [
-        "https://www.reddit.com/r/cybersecurity/comments/1x57oku/french_supermarket_fridges_were_pushed_to_50c/",
-        "https://cybersecuritynews.com/danfoss-refrigeration-hack-exposed-hosts/",
-        "https://www.malwarebytes.com/blog/news/2026/10/hackers-heat-up-supermarket-fridges-spoiling-food-across-france",
-        "https://www.itsecurityguru.org/2026/10/13/legacy-refrigeration-controllers-exploited-in-ot-attack-on-hundreds-of-french-supermarkets/?utm_source=rss&utm_medium=rss&utm_campaign=legacy-refrigeration-controllers-exploited-in-ot-attack-on-hundreds-of-french-supermarkets",
-        "https://thehackernews.com/2026/10/attackers-heat-french-supermarket.html",
-        "https://www.securityweek.com/refrigeration-controller-hack-spoils-food-across-european-supermarkets/",
-        "https://securityaffairs.com/200863/hacking/hackers-cranked-french-supermarkets-freezers-up-to-50-degrees-causing-hundreds-of-stores-to-lose-their-stock.html",
-        "https://www.theguardian.com/technology/video/2026/oct/13/french-supermarket-director-apologises-after-cyber-attack-spoils-fresh-and-frozen-food-video"
-      ]
+        "https://www.securityweek.com/microsoft-disrupts-chinese-language-phishing-market-behind-1b-messages/",
+        "https://www.bleepingcomputer.com/news/security/global-takedown-hits-network-behind-1-billion-phishing-messages/",
+        "https://therecord.media/microsoft-takes-down-3-major-chinese-phishing-platforms",
+        "https://thehackernews.com/2026/10/microsoft-disrupts-3-phishing-kits.html",
+        "https://www.proofpoint.com/us/blog/threat-insight/disruption-targets-major-chinese-language-phishing-kits-japanese-focus"
+      ],
+      "topic_id": "2e678ae02e65"
     },
     {
-      "title": "Critical WordPress Plugin Vulnerability Exploited",
-      "summary": "Attackers are actively exploiting CVE-2026-85097 in the Bricksforge WordPress plugin. The flaw allows the upload and execution of arbitrary PHP code without requiring authentication.",
+      "title": "Browser Security Updates",
+      "summary": "Google Chrome and Mozilla Firefox released updates patching numerous security flaws, with Chrome addressing 37 vulnerabilities and the combined updates covering 114 flaws.",
       "links": [
-        "https://cybersecuritynews.com/wordpress-plugin-vulnerability-exploited/"
-      ]
+        "https://www.securityweek.com/chrome-firefox-updates-patch-114-flaws-as-mozilla-unveils-firefox-enterprise/",
+        "https://cybersecuritynews.com/multiple-google-chrome-vulnerabilities/",
+        "https://www.reddit.com/r/cybersecurity/comments/1x5q397/multiple_flaws_chrome_155_update_patches_37/",
+        "https://www.cisecurity.org/advisory/multiple-vulnerabilities-in-google-chrome-could-allow-for-arbitrary-code-execution_2026-116"
+      ],
+      "topic_id": "560a6ba7e31a"
     },
     {
-      "title": "LG webOS Flaws Allow Unauthenticated Remote Root Command Execution",
-      "summary": "Researchers disclosed four serious vulnerabilities in LG webOS smart TVs. These flaws enable attackers to bypass authentication and execute commands with root-level privileges.",
+      "title": "SAP patches critical NetWeaver and S/4HANA flaws",
+      "summary": "SAP released 22 security updates, including four critical vulnerabilities in NetWeaver and S/4HANA that could allow attackers to execute code and compromise systems.",
       "links": [
-        "https://cybersecuritynews.com/lg-webos-flaws/"
-      ]
+        "https://www.securityweek.com/sap-patches-critical-netweaver-s-4hana-vulnerabilities/",
+        "https://www.news4hackers.com/sap-releases-critical-security-patches-for-netweaver-and-s-4hana/"
+      ],
+      "topic_id": "7cc842f08f9b"
     }
   ],
   "highlights": [
     {
-      "title": "A Vulnerability in Ivanti Connect Secure Could Allow for Arbitrary Code Execution",
-      "link": "https://www.cisecurity.org/advisory/a-vulnerability-in-ivanti-connect-secure-could-allow-for-arbitrary-code-execution_2026-115",
-      "source": "CIS",
-      "published": "2026-10-13T23:57:26+00:00",
-      "smart_groups": [
-        "Vulnerabilities / CVEs",
-        "Network / OT / ICS"
-      ],
-      "curated": true
-    },
-    {
-      "title": "Ivanti misses opportunity to fix vulnerability before attackers got to work and made it a zero-day",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1x5acu1/ivanti_misses_opportunity_to_fix_vulnerability/",
-      "source": "/r/cybersecurity",
-      "published": "2026-10-13T22:12:30+00:00",
-      "smart_groups": [
-        "Vulnerabilities / CVEs",
-        "Community Discussion"
-      ],
-      "curated": true
-    },
-    {
-      "title": "Ivanti Zero-Day Chain Gave Attackers Root Access to Fully Patched VPN",
-      "link": "https://www.securityweek.com/ivanti-zero-day-chain-gave-attackers-root-access-to-fully-patched-vpn/",
-      "source": "SecurityWeek",
-      "published": "2026-10-13T18:43:43+00:00",
-      "smart_groups": [
-        "Vulnerabilities / CVEs"
-      ],
-      "curated": true
-    },
-    {
-      "title": "U.S. CISA adds Ivanti Connect Secure flaw to its Known Exploited Vulnerabilities catalog",
-      "link": "https://securityaffairs.com/200887/security/u-s-cisa-adds-ivanti-connect-secure-flaw-to-its-known-exploited-vulnerabilities-catalog.html",
-      "source": "Security Affairs",
-      "published": "2026-10-13T18:14:23+00:00",
-      "smart_groups": [
-        "Vulnerabilities / CVEs",
-        "Network / OT / ICS"
-      ],
-      "curated": true
-    },
-    {
-      "title": "Attacker Chains Three Ivanti Connect Secure Zero-Days for Root Access, Only Two Patched So Far",
-      "link": "https://thehackernews.com/2026/10/attacker-chains-three-ivanti-connect.html",
-      "source": "The Hacker News",
-      "published": "2026-10-13T17:33:11+00:00",
-      "smart_groups": [
-        "Vulnerabilities / CVEs"
-      ],
-      "curated": true
-    },
-    {
-      "title": "Ivanti Connect Secure 0-Day Vulnerability Actively Exploited in the Wild",
-      "link": "https://cybersecuritynews.com/ivanti-connect-secure-zero-day/",
-      "source": "Cyber Security News (FeedBurner)",
-      "published": "2026-10-13T15:55:26+00:00",
-      "smart_groups": [
-        "Vulnerabilities / CVEs",
-        "Exploit / PoC",
-        "Network / OT / ICS"
-      ],
-      "curated": true
-    },
-    {
-      "title": "Ivanti warns of Connect Secure zero-day exploited in attacks",
-      "link": "https://www.bleepingcomputer.com/news/security/ivanti-warns-of-connect-secure-zero-day-exploited-in-attacks/",
-      "source": "BleepingComputer",
-      "published": "2026-10-13T15:45:50+00:00",
-      "smart_groups": [
-        "Vulnerabilities / CVEs",
-        "Exploit / PoC",
-        "Network / OT / ICS"
-      ],
-      "curated": true
-    },
-    {
-      "title": "CISA Warns of Hackers Exploiting Two Citrix NetScaler 0-Days to Execute Code Remotely",
-      "link": "https://cybersecuritynews.com/citrix-netscaler-zero-day-exploits/",
-      "source": "Cyber Security News (FeedBurner)",
-      "published": "2026-10-13T15:26:50+00:00",
-      "smart_groups": [
-        "Vulnerabilities / CVEs",
-        "Exploit / PoC",
-        "Identity / Access"
-      ],
-      "curated": true
-    },
-    {
-      "title": "Hackers Exploit Citrix NetScaler 0-Days to Deploy Platypus Remote Access Tool",
-      "link": "https://cybersecuritynews.com/hackers-exploit-citrix-netscaler-0-days/",
-      "source": "Cyber Security News (FeedBurner)",
-      "published": "2026-10-13T10:33:55+00:00",
-      "smart_groups": [
-        "Vulnerabilities / CVEs",
-        "Exploit / PoC",
-        "Malware / Payloads"
-      ],
-      "curated": true
-    },
-    {
-      "title": "Microsoft Patches More Than 1,400 Security Flaws",
-      "link": "https://krebsonsecurity.com/2026/10/microsoft-patches-more-than-1400-security-flaws/",
-      "source": "Krebs on Security",
-      "published": "2026-10-13T23:24:53+00:00",
+      "title": "October Patch Tuesday roundup: Over 1,400 Microsoft holes to be plugged, including three zero days",
+      "link": "https://www.csoonline.com/article/4234759/october-patch-tuesday-roundup-over-1400-microsoft-holes-to-be-plugged-including-three-zero-days.html",
+      "source": "CSO Online",
+      "published": "2026-10-14T02:29:20+00:00",
       "smart_groups": [
         "Vulnerabilities / CVEs",
         "Windows / Microsoft",
-        "AI/ML Security"
+        "Threat Actors / APT"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Microsoft Patches Record 1,413 Flaws, Including Exploited Windows Shell Bug",
+      "link": "https://thehackernews.com/2026/10/microsoft-patches-record-1413-flaws.html",
+      "source": "The Hacker News",
+      "published": "2026-10-14T04:34:43+00:00",
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Microsoft Patches Record 1,413 Vulnerabilities, Including Exploited Windows Zero-Day",
+      "link": "https://www.securityweek.com/microsoft-patches-record-1413-vulnerabilities-including-exploited-windows-zero-day/",
+      "source": "SecurityWeek",
+      "published": "2026-10-14T07:16:12+00:00",
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Microsoft Fixes 1,413 Vulnerabilities in Record October Patch Tuesday Update",
+      "link": "https://hackread.com/microsoft-fix-vulnerabilities-october-patch-tuesday-update/",
+      "source": "HackRead",
+      "published": "2026-10-14T08:23:05+00:00",
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Microsoft Breaks Patch Tuesday Record Again with 1400+ CVEs",
+      "link": "https://www.infosecurity-magazine.com/news/microsoft-patch-tuesday-record-1/",
+      "source": "Infosecurity Magazine",
+      "published": "2026-10-14T08:45:00+00:00",
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Microsoft Patches 1,413 Vulnerabilities, Including Zero-Day Exploits",
+      "link": "https://www.news4hackers.com/microsoft-patches-1413-vulnerabilities-including-zero-day-exploits/",
+      "source": "News4Hackers",
+      "published": "2026-10-14T10:04:38+00:00",
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Ransomware",
+        "Windows / Microsoft"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Update Windows: Record Patch Tuesday fixes flaw already under attack",
+      "link": "https://www.malwarebytes.com/blog/bugs/2026/10/update-windows-record-patch-tuesday-fixes-flaw-already-under-attack",
+      "source": "Malwarebytes Labs (Vendor)",
+      "published": "2026-10-14T11:26:09+00:00",
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Exploit / PoC",
+        "Windows / Microsoft"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Windows update patches a whopping 1,400 security bugs –  including 2 zero days",
+      "link": "https://www.zdnet.com/tech/windows-october-update-patches-file-explorer-bluetooth/",
+      "source": "ZDNet",
+      "published": "2026-10-14T13:59:59+00:00",
+      "smart_groups": [
+        "Windows / Microsoft"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Microsoft Patch Tuesday Sets New Record with 1,415 CVEs in October 2026 Updates",
+      "link": "https://securityaffairs.com/200953/security/microsoft-patch-tuesday-sets-new-record-with-1415-cves-in-october-2026-updates.html",
+      "source": "Security Affairs",
+      "published": "2026-10-14T14:01:45+00:00",
+      "smart_groups": [
+        "Windows / Microsoft",
+        "Vulnerabilities / CVEs",
+        "Exploit / PoC"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Microsoft Patch Tuesday Fixes 1,413 Flaws: Windows Zero-Day Already Under Attack",
+      "link": "https://www.techrepublic.com/article/news-microsoft-october-2026-patch-tuesday/",
+      "source": "TechRepublic",
+      "published": "2026-10-14T15:45:40+00:00",
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Windows / Microsoft"
       ],
       "curated": true
     }
