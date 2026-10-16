@@ -1,9 +1,324 @@
 {
-  "generated_at": "2026-10-15T20:01:57.543526+00:00",
+  "generated_at": "2026-10-16T04:49:46.283739+00:00",
   "date": "2026-10-15",
-  "total_items": 157,
+  "total_items": 177,
   "next_chunk": "archive/news/daily/2026-10-14.json",
   "items": [
+    {
+      "title": "Proofpoint to acquire Varonis - is the vision to have all security tooling controlled by a handful of vendors?",
+      "summary": "This year seriously feels like the year of the mega platform. Sign up with one vendor and say \u201cgood enough\u201d for firewall, end point, DLP, email security, AI security, data security, etc etc etc submitted by /u/Hmm_would_bang [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>This year seriously feels like the year of the mega platform. Sign up with one vendor and say \u201cgood enough\u201d for firewall, end point, DLP, email security, AI security, data security, etc etc etc</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Hmm_would_bang\"> /u/Hmm_would_bang </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x713gc/proofpoint_to_acquire_varonis_is_the_vision_to/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x713gc/proofpoint_to_acquire_varonis_is_the_vision_to/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1x713gc/proofpoint_to_acquire_varonis_is_the_vision_to/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-15T23:39:27+00:00",
+      "published_ts": 1792107567,
+      "smart_groups": [
+        "AI/ML Security",
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Australia releases draft bill to adopt OECD crypto tax reporting framework",
+      "summary": "Australia is among 77 jurisdictions committed to adopting CARF, with its first international exchanges of crypto tax data expected in 2028.",
+      "summary_html": "<p></p><p>Australia is among 77 jurisdictions committed to adopting CARF, with its first international exchanges of crypto tax data expected in 2028.</p>",
+      "link": "https://cointelegraph.com/news/australia-releases-draft-bill-to-adopt-oecd-crypto-tax-reporting-framework?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-10-15T23:34:19+00:00",
+      "published_ts": 1792107259,
+      "smart_groups": [
+        "Product News"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Panchan's Mining Island &#x5b;Guest Diary&#x5d;, (Wed, Oct 14th)",
+      "summary": "[This is a Guest Diary by Zachary Norwood, an ISC intern as part of the SANS.edu BACS program] Crypto mining malware has been active and spreading across the internet for quite some time now. Moreover, the DShield honeypot picked up a worm that self-propagates through a plethora of means. One of them is stealing SSH keys after it gains access to a system. Furthermore, it also leverages a rootkit to maintain access to infected systems. One would hope that threat actors would have moved on past this worm by now. However, due to its rudimentary design and its effectiveness, they have had no reason to move on. A malicious binary was uploaded and executed on the DShield honeypot, and that is where a copy of the Panchan worm was obtained. It is written with Golang, and it is a peer-to-peer botnet. Moreover, this worm was first identified in 2022. Many vendors recognize this worm now as seen below. VirusTotal Clamscan Therefore, a system with security controls such as egress filtering, ingress filtering, access control lists, continuous monitoring, and passwordless authentication will prevent this worm from taking root. However, many systems are insecure and unpatched. This is why this worm is still propagating across the internet. The strings captured from the binary below show how simple it is to find its command-and-control channel and the functions that it consists of. Furthermore, leveraging something as simple as syslog to pull logs and using commands such as grep to find privilege escalation activities, software installation, software removal, and access to ports such as SSH will allow an analyst to identify this activity. However, this does not scale well. Therefore, leveraging a SIEM to gather and parse this data is a much more effective solution. Next, all traffic entering and exiting from both the trusted and untrusted networks needs to pass through at least one firewall. Preferably, also having an intrusion detection or prevention system right after the public facing firewall in the trusted zone. Command and Control Channel Panchan Functions These captures clearly show the source files that the Panchan worm consists of. To dig deeper into what this binary can do, a network simulator was used. Moreover, the specific network simulator that was used was FakeNet-NG with Wireshark to intercept the network traffic. These tools were used to identify what URL it was reaching out to once it was installed on a system. FakeNet-NG is a tool developed by the Mandiant FLARE team for dynamic network analysis. This tool simulates legitimate network traffic, allowing an analyst to identify how the malware interacts with the network and if it is communicating with an external server. This specific strain of this worm was using a discord channel as a command-and-control server. This was identified by capturing and dissecting the network traffic that was generated by the worm interacting with the FakeNet-NG network. FAKENET-NG Wireshark Capture Panchan, the peer-to-peer crypto mining worm, is a threat to any organization who has internet facing servers. This worm is mainly a threat to insecure systems, and opening SSH to a public network needs to be done in a secure way. Fail2Ban is a service that scans log files for repeated failed login attempts. This service then blocks that IP address by updating the system\u2019s firewall rule. Fail2Ban is another control that should be put in place with a public facing SSH port. Services like SSH should have multi-factor authentication, and an access control list. The access control list should include specific IP addresses or a jump box. Disabling root login with SSH is another essential security control that needs to be implemented. With SSH, public and private key pairs are another option for authentication. This will then create the capability to disable password authentication for the SSH service preventing brute force attacks. However, these key pairs are often created and forgotten about. This is a security concern, and SSH private keys are something that this worm is designed to steal. Once it has stolen a private key, it attempts to pivot to hosts in the running user\u2019s SSH known_hosts file. A simple mitigation to protect the data within the known_hosts file is to use the HashKnownHosts option within a systems SSH configuration. Furthermore, it is best to mitigate long lived credentials and SSH key stealing by leveraging tools likeHashiCorp Vault to sign SSH certificates with short expirations. This ensures that reusing a key becomes highly impractical or even impossible. The user will authenticate to Vault with their credentials then they send their SSH public key to Vault for signing, and finally Vault then signs the SSH key. Then it returns the SSH certificate to the user. This certificate can be used to log in to any host configured to trust the Vault CA. Leveraging such infrastructure will also allow an organization to disable password authentication entirely for services like SSH. Furthermore, leveraging something as simple as syslog to pull logs and using commands such as grep to find privilege escalation activities, software installation, software removal, and access to ports such as SSH will allow an analyst to identify this activity. However, this does not scale well. Therefore, leveraging a SIEM to gather and parse this data is a much more effective solution. Next, all traffic entering and exiting from both the trusted and untrusted networks needs to pass through at least one firewall. Preferably, also having an intrusion detection or prevention system right after the public facing firewall in the trusted zone. Typical indicators of compromise for this worm include multiple failed authentication attempts via SSH, unusual resource usage on infected systems, and processes that cannot be killed by any means. This worm also creates hidden directories in the running users home directory or folders like /tmp. Often, these directories have names that are strings that have high amounts of entropy. For this strain of this worm, servers reaching out to services like Discord on a regular basis is another indicator of compromise that an analyst can look for. In conclusion, denying by default and allowing by exception is a vital strategy for systems facing untrusted networks. These same techniques that were discussed above can be used to protect critical public facing infrastructure from threat actors. [1] https://github.com/mandiant/GoReSym [2] https://github.com/mandiant/flare-fakenet-ng [3] https://www.akamai.com/blog/security-research/new-p2p-botnet-panchan [4] https://www.akamai.com/blog/security-research/cryptominer-anatomy-internals [5] https://attack.mitre.org/ [6] https://developer.hashicorp.com/vault/docs/secrets/ssh/signed-ssh-certificates [7] https://www.hashicorp.com/en/blog/managing-ssh-access-at-scale-with-hashicorp-vault [8] https://github.com/bruneaug/DShield-SIEM/tree/main [9] https://www.sans.edu/cyber-security-programs/bachelors-degree/ ----------- Guy Bruneau IPSS Inc. My GitHub Page Twitter: GuyBruneau gbruneau at isc dot sans dot edu (c) SANS Internet Storm Center. https://isc.sans.edu Creative Commons Attribution-Noncommercial 3.0 United States License.",
+      "summary_html": "<p>[This is a Guest Diary by Zachary Norwood, an ISC intern as part of the SANS.edu <a href=\"https://www.sans.edu/cyber-security-programs/bachelors-degree/\">BACS</a> program]</p>\n<p>Crypto mining malware has been active and spreading across the internet for quite some time now. Moreover, the DShield honeypot picked up a worm that self-propagates through a plethora of means. One of them is stealing SSH keys after it gains access to a system. Furthermore, it also leverages a rootkit to maintain access to infected systems. One would hope that threat actors would have moved on past this worm by now. However, due to its rudimentary design and its effectiveness, they have had no reason to move on.</p>\n<p>A malicious binary was uploaded and executed on the DShield honeypot, and that is where a copy of the Panchan worm was obtained. It is written with Golang, and it is a peer-to-peer botnet. Moreover, this worm was first identified in 2022. Many vendors recognize this worm now as seen below.\u00a0</p>\n<p><strong><span>VirusTotal</span></strong><br/>\n</p>\n<p><span><strong>Clamscan</strong></span><br/>\n</p>\n<p>Therefore, a system with security controls such as egress filtering, ingress filtering, access control lists, continuous monitoring, and passwordless authentication will prevent this worm from taking root. However, many systems are insecure and unpatched. This is why this worm is still propagating across the internet. The strings captured from the binary below show how simple it is to find its command-and-control channel and the functions that it consists of.</p>\n<p>Furthermore, leveraging something as simple as syslog to pull logs and using commands such as grep to find privilege escalation activities, software installation, software removal, and access to ports such as SSH will allow an analyst to identify this activity. However, this does not scale well. Therefore, leveraging a SIEM to gather and parse this data is a much more effective solution. Next, all traffic entering and exiting from both the trusted and untrusted networks needs to pass through at least one firewall. Preferably, also having an intrusion detection or prevention system right after the public facing firewall in the trusted zone.</p>\n<p>\u00a0<br/>\n<span><strong>Command and Control Channel</strong></span><br/>\n</p>\n<p><span><strong>Panchan Functions</strong></span><br/>\n</p>\n<p>These captures clearly show the source files that the Panchan worm consists of. To dig deeper into what this binary can do, a network simulator was used. Moreover, the specific network simulator that was used was <a href=\"https://github.com/mandiant/flare-fakenet-ng\">FakeNet-NG</a> with Wireshark to intercept the network traffic. These tools were used to identify what URL it was reaching out to once it was installed on a system. FakeNet-NG is a tool developed by the Mandiant FLARE team for dynamic network analysis. This tool simulates legitimate network traffic, allowing an analyst to identify how the malware interacts with the network and if it is communicating with an external server. This specific strain of this worm was using a discord channel as a command-and-control server. This was identified by capturing and dissecting the network traffic that was generated by the worm interacting with the FakeNet-NG network.\u00a0</p>\n<p><span><strong>FAKENET-NG</strong></span><br/>\n</p>\n<p><strong>Wireshark Capture</strong><br/>\n</p>\n<p>Panchan, the peer-to-peer crypto mining worm, is a threat to any organization who has internet facing servers. This worm is mainly a threat to insecure systems, and opening SSH to a public network needs to be done in a secure way. Fail2Ban is a service that scans log files for repeated failed login attempts. This service then blocks that IP address by updating the system\u2019s firewall rule. Fail2Ban is another control that should be put in place with a public facing SSH port. Services like SSH should have multi-factor authentication, and an access control list. The access control list should include specific IP addresses or a jump box. Disabling root login with SSH is another essential security control that needs to be implemented.</p>\n<p>With SSH, public and private key pairs are another option for authentication. This will then create the capability to disable password authentication for the SSH service preventing brute force attacks. However, these key pairs are often created and forgotten about. This is a security concern, and SSH private keys are something that this worm is designed to steal. Once it has stolen a private key, it attempts to pivot to hosts in the running user\u2019s SSH known_hosts file. A simple mitigation to protect the data within the known_hosts file is to use the HashKnownHosts option within a systems SSH configuration. Furthermore, it is best to mitigate long lived credentials and SSH key stealing by leveraging tools likeHashiCorp Vault to sign SSH certificates with short expirations. This ensures that reusing a key becomes highly impractical or even impossible. The user will authenticate to Vault with their credentials then they send their SSH public key to Vault for signing, and finally Vault then signs the SSH key. Then it returns the SSH certificate to the user. This certificate can be used to log in to any host configured to trust the Vault CA. Leveraging such infrastructure will also allow an organization to disable password authentication entirely for services like SSH.</p>\n<p>Furthermore, leveraging something as simple as syslog to pull logs and using commands such as grep to find privilege escalation activities, software installation, software removal, and access to ports such as SSH will allow an analyst to identify this activity. However, this does not scale well. Therefore, leveraging a <a href=\"http://https://github.com/bruneaug/DShield-SIEM/tree/main\">SIEM</a> to gather and parse this data is a much more effective solution. Next, all traffic entering and exiting from both the trusted and untrusted networks needs to pass through at least one firewall. Preferably, also having an intrusion detection or prevention system right after the public facing firewall in the trusted zone.</p>\n<p>Typical indicators of compromise for this worm include multiple failed authentication attempts via SSH, unusual resource usage on infected systems, and processes that cannot be killed by any means. This worm also creates hidden directories in the running users home directory or folders like /tmp. Often, these directories have names that are strings that have high amounts of entropy. For this strain of this worm, servers reaching out to services like Discord on a regular basis is another indicator of compromise that an analyst can look for. In conclusion, denying by default and allowing by exception is a vital strategy for systems facing untrusted networks. These same techniques that were discussed above can be used to protect critical public facing infrastructure from threat actors.\u00a0</p>\n<p>[1] https://github.com/mandiant/GoReSym<br/>\n[2] https://github.com/mandiant/flare-fakenet-ng<br/>\n[3] https://www.akamai.com/blog/security-research/new-p2p-botnet-panchan<br/>\n[4] https://www.akamai.com/blog/security-research/cryptominer-anatomy-internals<br/>\n[5] https://attack.mitre.org/<br/>\n[6] https://developer.hashicorp.com/vault/docs/secrets/ssh/signed-ssh-certificates<br/>\n[7] https://www.hashicorp.com/en/blog/managing-ssh-access-at-scale-with-hashicorp-vault<br/>\n[8] https://github.com/bruneaug/DShield-SIEM/tree/main<br/>\n[9] https://www.sans.edu/cyber-security-programs/bachelors-degree/</p>\n<p>-----------<br/>\nGuy Bruneau <a href=\"http://www.ipss.ca/\">IPSS Inc.</a><br/>\n<a href=\"https://github.com/bruneaug/\">My GitHub Page</a><br/>\nTwitter: <a href=\"https://twitter.com/guybruneau\">GuyBruneau</a><br/>\ngbruneau at isc dot sans dot edu</p>\n\n \n (c) SANS Internet Storm Center. https://isc.sans.edu Creative Commons Attribution-Noncommercial 3.0 United States License.",
+      "link": "https://isc.sans.edu/diary/rss/33426",
+      "source": "SANS Internet Storm Center",
+      "feed_type": "news",
+      "type": "government-cert-advisories",
+      "type_label": "Government, CERT & Advisories",
+      "published": "2026-10-15T23:03:42+00:00",
+      "published_ts": 1792105422,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Malware / Payloads",
+        "Identity / Access"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Scammer loses $4.8M stored on tampered Ledgers: Asia Express",
+      "summary": "A scammer reportedly lost $4.8M of stolen money after storing the funds on tampered Ledgers. Bitcoin and Ether ETFs launch trading in Thailand and South Korea blocks 27 exchanges.",
+      "summary_html": "<p></p><p>A scammer reportedly lost $4.8M of stolen money after storing the funds on tampered Ledgers. Bitcoin and Ether ETFs launch trading in Thailand and South Korea blocks 27 exchanges.</p>",
+      "link": "https://cointelegraph.com/magazine/scammer-loses-48m-stored-on-tampered-ledgers-asia-express?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-10-15T22:42:58+00:00",
+      "published_ts": 1792104178,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "This is my roadmap to Red Team",
+      "summary": "As a research engineer with a background in HPC and software development, and no prior experience in cybersecurity, this is the roadmap I\u2019ve chosen to learn penetration testing and red teaming. I started with TryHackMe because it provides a structured, beginner-friendly learning experience and guides you through the fundamentals step by step. After completing the Introduction and Pentesting paths, I moved on to the HTB Academy CJCA path. I haven\u2019t taken the CJCA exam yet, but after reviewing the exam preparation machines, I feel that the CJCA content alone doesn\u2019t cover everything required for the assessment. Nevertheless, it provides a solid foundation. After completing CJCA, I started the CPTS path, which I am currently following. One of the biggest drawbacks of HTB Academy is that many of the machines require knowledge from multiple modules, making it difficult to solve them before completing a significant portion of the path. My long-term goal is: First Phase (HTB Focus) CJCA \u2192 CPTS \u2192 CWES \u2192 COAE Second Phase (Advanced Specialisation) CAPE \u2192 CWEE \u2192 CWPE \u2192 MalDev Alongside: HTB Labs, HackSmarter For career opportunities and industry recognition: OSCP \u2192 OSEP \u2192 OSWE My aim is to build a strong foundation in offensive security through HTB\u2019s training ecosystem and then complement it with industry-recognised certifications that are frequently requested by employers. Let me know what do you think in the comments submitted by /u/osmyasal [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>As a research engineer with a background in HPC and software development, and no prior experience in cybersecurity, this is the roadmap I\u2019ve chosen to learn penetration testing and red teaming.</p> <p>I started with TryHackMe because it provides a structured, beginner-friendly learning experience and guides you through the fundamentals step by step. After completing the Introduction and Pentesting paths, I moved on to the HTB Academy CJCA path.</p> <p>I haven\u2019t taken the CJCA exam yet, but after reviewing the exam preparation machines, I feel that the CJCA content alone doesn\u2019t cover everything required for the assessment. Nevertheless, it provides a solid foundation. After completing CJCA, I started the CPTS path, which I am currently following.</p> <p>One of the biggest drawbacks of HTB Academy is that many of the machines require knowledge from multiple modules, making it difficult to solve them before completing a significant portion of the path.</p> <p>My long-term goal is:</p> <p><strong>First Phase (HTB Focus)</strong></p> <p>CJCA \u2192 CPTS \u2192 CWES \u2192 COAE</p> <p><strong>Second Phase (Advanced Specialisation)</strong></p> <p>CAPE \u2192 CWEE \u2192 CWPE \u2192 MalDev</p> <p>Alongside:</p> <p>HTB Labs, HackSmarter</p> <p><strong>For career opportunities and industry recognition:</strong></p> <p>OSCP \u2192 OSEP \u2192 OSWE</p> <p>My aim is to build a strong foundation in offensive security through HTB\u2019s training ecosystem and then complement it with industry-recognised certifications that are frequently requested by employers.</p> <p>Let me know what do you think in the comments</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/osmyasal\"> /u/osmyasal </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x6zofm/this_is_my_roadmap_to_red_team/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x6zofm/this_is_my_roadmap_to_red_team/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1x6zofm/this_is_my_roadmap_to_red_team/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-15T22:34:36+00:00",
+      "published_ts": 1792103676,
+      "smart_groups": [
+        "Red Team / Offensive",
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "We Had a Hard Enough Time Stopping Computer Worms When They Couldn\u2019t Think",
+      "summary": "submitted by /u/db0db0db0db0db [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/cybersecurity/comments/1x6zdu8/we_had_a_hard_enough_time_stopping_computer_worms/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/db0db0db0db0db\"> /u/db0db0db0db0db </a> <br/> <span><a href=\"https://medium.com/@dbounds/we-had-a-hard-enough-time-stopping-computer-worms-when-they-couldnt-think-98fa7ed40d7f\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x6zdu8/we_had_a_hard_enough_time_stopping_computer_worms/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1x6zdu8/we_had_a_hard_enough_time_stopping_computer_worms/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-15T22:21:56+00:00",
+      "published_ts": 1792102916,
+      "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Hidden Text, a Fake Mailbox: How Researchers Got Rogue AI Agents to Talk",
+      "summary": "Researchers added hidden text to contact AI agents probing Alibaba\u2019s map service, getting replies about their tasks as investigators traced activity to Tencent Cloud infrastructure.",
+      "summary_html": "Researchers added hidden text to contact AI agents probing Alibaba\u2019s map service, getting replies about their tasks as investigators traced activity to Tencent Cloud infrastructure.",
+      "link": "https://decrypt.co/381109/researchers-fleet-rouge-ai-agents-talk-alibaba",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-10-15T22:16:03+00:00",
+      "published_ts": 1792102563,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "SecTor 2026 Reveals a Rapidly Shifting Cybersecurity Landscape",
+      "summary": "The event closed in Toronto last week, with experts sharing critical perspectives on emerging risks, drawing record attendance and marking 22% growth.",
+      "summary_html": "The event closed in Toronto last week, with experts sharing critical perspectives on emerging risks, drawing record attendance and marking 22% growth.",
+      "link": "https://www.darkreading.com/cybersecurity-operations/sector-2026-reveals-a-rapidly-shifting-cybersecurity-landscape",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-15T22:10:08+00:00",
+      "published_ts": 1792102208,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "AI-Powered Espionage Campaign Targets Government Linux Infrastructure",
+      "summary": "Our analysis an AI-powered espionage campaign targeting government Linux infrastructure with custom malware, web shells, and advanced credential theft.",
+      "summary_html": "Our analysis an AI-powered espionage campaign targeting government Linux infrastructure with custom malware, web shells, and advanced credential theft. The post AI-Powered Espionage Campaign Targets Government Linux Infrastructure appeared first on Unit 42.",
+      "link": "https://unit42.paloaltonetworks.com/ai-campaign-targets-linux-infrastructure/",
+      "source": "Unit 42 \u2013 Ransomware",
+      "feed_type": "news",
+      "type": "ransomware-extortion",
+      "type_label": "Ransomware & Extortion",
+      "published": "2026-10-15T22:00:09+00:00",
+      "published_ts": 1792101609,
+      "smart_groups": [
+        "Linux / Unix",
+        "Malware / Payloads"
+      ],
+      "curated": false
+    },
+    {
+      "title": "F-Secure Launches Victim-First Scam Encyclopedia Covering 50+ Types of Consumer Fraud",
+      "summary": "Built from decades of threat intelligence research, the new resource explains scams from the victims' perspective and tracks emerging forms of cyber crime.",
+      "summary_html": "Built from decades of threat intelligence research, the new resource explains scams from the victims' perspective and tracks emerging forms of cyber crime.",
+      "link": "https://www.darkreading.com/threat-intelligence/f-secure-launches-victim-first-scam-encyclopedia-covering-50-types-of-consumer-fraud",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-15T21:55:07+00:00",
+      "published_ts": 1792101307,
+      "smart_groups": [
+        "Product News"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Major security vulnerability in Linux has just been published \u2014 CycleOS is already patched",
+      "summary": "Update to my post from a few days ago . That thread got a lot more attention than I expected, so thanks to everyone who jumped in. Full disclosure is out now. PWN.AI published their writeup today on CVE-2026-99999 , which they\u2019re calling PwnEscape. It\u2019s a guest-to-host escape. KVM itself isn\u2019t the problem: it\u2019s the kernel\u2019s IPv4 fragmentation path (ip_do_fragment()). Possible effects of exploits include, host memory leaking out in packets, host crashes and in their lab setup, a working chain that got root on the host. Tested on 6.12 and 7.x. The full affected range isn\u2019t listed, so assume you\u2019re affected until your distro says otherwise. If you run multi-tenant VMs or untrusted guests, this goes to the top of your patch list. Some platforms are already rolling it out (the one I work on, Cycle.io , has already pushed patched kernels out and a reboot is all our customers need to do to get the fix as the node will pull latest OS image on boot). If you manage your own hypervisors, keep an eye on your distro\u2019s kernel updates. Writeup: https://pwn.ai/blog/pwnescape Our announcement at Cycle: https://cycle.io/blog/cycleos-2026-10-15-1 submitted by /u/Cycle_HeidarEldberg [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Update to<a href=\"https://www.reddit.com/r/cybersecurity/s/kMkdQB7g1C\"> my post from a few days ago</a>. That thread got a lot more attention than I expected, so thanks to everyone who jumped in. Full disclosure is out now.</p> <p><a href=\"http://PWN.AI\">PWN.AI</a> published their writeup today on <strong>CVE-2026-99999</strong>, which they\u2019re calling PwnEscape. It\u2019s a guest-to-host escape. KVM itself isn\u2019t the problem: it\u2019s the kernel\u2019s IPv4 fragmentation path (ip_do_fragment()).</p> <p>Possible effects of exploits include, host memory leaking out in packets, host crashes and in their lab setup, a working chain that got root on the host.</p> <p>Tested on 6.12 and 7.x. The full affected range isn\u2019t listed, so assume you\u2019re affected until your distro says otherwise.</p> <p>If you run multi-tenant VMs or untrusted guests, this goes to the top of your patch list. Some platforms are already rolling it out (the one I work on, <a href=\"http://Cycle.io\">Cycle.io</a>, has already pushed patched kernels out and a reboot is all our customers need to do to get the fix as the node will pull latest OS image on boot). If you manage your own hypervisors, keep an eye on your distro\u2019s kernel updates.</p> <p>Writeup:<a href=\"https://pwn.ai/blog/pwnescape\"> https://pwn.ai/blog/pwnescape</a></p> <p>Our announcement at Cycle: <a href=\"https://cycle.io/blog/cycleos-2026-10-15-1\">https://cycle.io/blog/cycleos-2026-10-15-1</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Cycle_HeidarEldberg\"> /u/Cycle_HeidarEldberg </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x6yqui/major_security_vulnerability_in_linux_has_just/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x6yqui/major_security_vulnerability_in_linux_has_just/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1x6yqui/major_security_vulnerability_in_linux_has_just/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-15T21:54:01+00:00",
+      "published_ts": 1792101241,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Linux / Unix",
+        "Community Discussion"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Google Says It Just Cracked One of Quantum Computing's Biggest Bottlenecks",
+      "summary": "Google's Willow chip cut errors 40x on the scarce \u201cmagic states\u201d quantum computers burn through, a step toward smaller, useful machines\u2014and toward ones that could threaten today's encryption.",
+      "summary_html": "Google's Willow chip cut errors 40x on the scarce \u201cmagic states\u201d quantum computers burn through, a step toward smaller, useful machines\u2014and toward ones that could threaten today's encryption.",
+      "link": "https://decrypt.co/381102/google-cracked-quantum-computing-biggest-bottlenecks",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-10-15T21:46:04+00:00",
+      "published_ts": 1792100764,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Federal bankruptcy courts dealing with outages after contractor cyberattack",
+      "summary": "The incident, which involved a government contractor, has halted all production of bankruptcy notices.",
+      "summary_html": "The incident, which involved a government contractor, has halted all production of bankruptcy notices.",
+      "link": "https://therecord.media/federal-bankruptcy-courts-dealing-with-cyberattack-outage",
+      "source": "The Record \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-10-15T20:46:00+00:00",
+      "published_ts": 1792097160,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "AI Slop Isn't Just for Social Media; It's Ruining Cyberattacks, Too",
+      "summary": "Don't buy the hype! AI has been dumbing down cyberattacks, and serious threat actors are barely touching it.",
+      "summary_html": "Don't buy the hype! AI has been dumbing down cyberattacks, and serious threat actors are barely touching it.",
+      "link": "https://www.darkreading.com/threat-intelligence/ai-slop-ruining-cyberattacks",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-15T20:43:20+00:00",
+      "published_ts": 1792097000,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Russia Will Soon Ban Peer-to-Peer Bitcoin Trading, Central Bank Confirms",
+      "summary": "Russians have until July 1, 2027 to buy and sell crypto directly with each other. After that, every trade runs through a broker or exchange approved by the Bank of Russia.",
+      "summary_html": "Russians have until July 1, 2027 to buy and sell crypto directly with each other. After that, every trade runs through a broker or exchange approved by the Bank of Russia.",
+      "link": "https://decrypt.co/381079/russia-ban-peer-to-peer-bitcoin-trading",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-10-15T20:31:04+00:00",
+      "published_ts": 1792096264,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Targeted Ads Used to Infect Al Jazeera Devices with Candiru Spyware",
+      "summary": "Citizen Lab found targeted ads delivered Candiru spyware to Al Jazeera devices without clicks, while the same ad\u2026",
+      "summary_html": "Citizen Lab found targeted ads delivered Candiru spyware to Al Jazeera devices without clicks, while the same ad\u2026",
+      "link": "https://hackread.com/targeted-ads-infect-al-jazeera-devices-candiru-spyware/",
+      "source": "HackRead",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-15T20:29:48+00:00",
+      "published_ts": 1792096188,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Hackers exploit Collabora RCE flaw to backdoor Nextcloud servers",
+      "summary": "Threat actors are exploiting a critical command execution flaw, now tracked as CVE-2026-110447, in the Collabora Online - Built-in CODE Server app (richdocumentscode) for Nextcloud.",
+      "summary_html": "Threat actors are exploiting a critical command execution flaw, now tracked as CVE-2026-110447, in the Collabora Online - Built-in CODE Server app (richdocumentscode) for Nextcloud. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/hackers-exploit-collabora-rce-flaw-to-backdoor-nextcloud-servers/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-10-15T20:25:04+00:00",
+      "published_ts": 1792095904,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Malware / Payloads"
+      ],
+      "curated": true,
+      "story_id": "639d0d6e00a7",
+      "story_size": 2
+    },
+    {
+      "title": "Critical PwnEscape Linux Kernel Vulnerability Lets Guest VMs Read Host Memory",
+      "summary": "A newly disclosed critical flaw in the Linux kernel allows code inside a virtual machine to read memory on the host computer it runs on. A researcher demonstrated the leak against Vercel's live cloud sandboxes, and Vercel confirmed it. The flaw, now tracked as CVE-2026-99999 and nicknamed PwnEscape, is in the Linux kernel's networking code, not in any one cloud's setup, so it reaches the shared",
+      "summary_html": "A newly disclosed critical flaw in the Linux kernel allows code inside a virtual machine to read memory on the host computer it runs on. A researcher demonstrated the leak against Vercel's live cloud sandboxes, and Vercel confirmed it.\n\nThe flaw, now tracked as CVE-2026-99999 and nicknamed PwnEscape, is in the Linux kernel's networking code, not in any one cloud's setup, so it reaches the shared",
+      "link": "https://thehackernews.com/2026/10/critical-pwnescape-linux-kernel.html",
+      "source": "The Hacker News",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-15T20:24:36+00:00",
+      "published_ts": 1792095876,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Linux / Unix"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Binance.US seeks $1B valuation in potential $100M funding round: Report",
+      "summary": "The crypto exchange was reportedly looking to use the additional funding to regain market share following Binance\u2019s 2023 settlement with US authorities.",
+      "summary_html": "<p></p><p>The crypto exchange was reportedly looking to use the additional funding to regain market share following Binance\u2019s 2023 settlement with US authorities.</p>",
+      "link": "https://cointelegraph.com/news/binance-us-funding-valuation-billion?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-10-15T20:21:11+00:00",
+      "published_ts": 1792095671,
+      "smart_groups": [
+        "Crypto / Web3"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Application cloning and Burp Suite",
+      "summary": "I was recently looking at how the ArtCraft project has progressed in cloning the entire Adobe ecosystem; do you think something similar could be achieved with Burp? Burp is very comprehensive and has had years of development\u2014the only downside is the amount of RAM it consumes and obviously the price... submitted by /u/Majestic-Chemistry-9 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I was recently looking at how the ArtCraft project has progressed in cloning the entire Adobe ecosystem; do you think something similar could be achieved with Burp? Burp is very comprehensive and has had years of development\u2014the only downside is the amount of RAM it consumes and obviously the price...</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Majestic-Chemistry-9\"> /u/Majestic-Chemistry-9 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x6weps/application_cloning_and_burp_suite/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x6weps/application_cloning_and_burp_suite/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1x6weps/application_cloning_and_burp_suite/",
+      "source": "/r/cybersecurity",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-15T20:18:04+00:00",
+      "published_ts": 1792095484,
+      "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false
+    },
     {
       "title": "Android gets AI defenses against messaging scams, fake calls",
       "summary": "Google announced new AI-powered defenses against scam messages and call-forwarding abuse on Android, currently rolling out to eligible devices.",
@@ -49,6 +364,24 @@
         "Community Discussion"
       ],
       "curated": false
+    },
+    {
+      "title": "U.S. CISA adds Palo Alto Networks PAN-OS, Ahsay AhsayCBS, and Cisco Secure Email Gateway flaws to its Known Exploited Vulnerabilities catalog",
+      "summary": "U.S. Cybersecurity and Infrastructure Security Agency (CISA) adds Palo Alto Networks PAN-OS, Ahsay AhsayCBS, and Cisco Secure Email Gateway flaws to its Known Exploited Vulnerabilities catalog. The U.S. Cybersecurity and Infrastructure Security Agency (CISA) added the following vulnerabilities to its Known Exploited Vulnerabilities (KEV) catalog : CVE-2026-0322 Palo Alto Networks PAN-OS Code Injection Vulnerability CVE-2026-76519 Cisco Secure Email Gateway Relative Path Traversal Vulnerability CVE-2026-105133 Ahsay AhsayCBS Improper Authentication Vulnerability CVE-2026-105134 Ahsay AhsayCBS Command Injection Vulnerability Cisco confirmed this week that threat actors are exploiting a critical vulnerability in Cisco Secure Email Gateway, tracked as CVE-2026-76519 (CVSS score of 9.8). An attacker can exploit the flaw by sending a crafted email attachment through the gateway and, if it lands right, writing arbitrary files to the underlying operating system. The flaw CVE-2026-0322 (CVSS score: 8.6) is a high-severity code injection vulnerability in the management interface of Palo Alto Networks PAN-OS. It could allow an authenticated attacker with network access and high-level privileges to execute arbitrary code with root privileges on an affected firewall. The vulnerability affects PA-Series and VM-Series firewalls and Panorama appliances. Palo Alto Networks confirmed that limited exploitation has been observed targeting the management interface. The company recommends restricting access to trusted internal IP addresses and installing the relevant security updates. The flaw CVE-2026-105133 (CVSS score: 5.5) is an improper authentication vulnerability in AhsayCBS, a backup management platform. The flaw affects the checkSysPwd function in the product\u2019s API and could allow a remote attacker to bypass authentication by manipulating the random parameter. Starting on October 7, 2026, attackers used it to bypass authentication before exploiting a second vulnerability, CVE-2026-105134, to execute commands on affected servers. Huntress reported that at least five organizations had been targeted by October 8. The flaw CVE-2026-105134 (CVSS score: 9.3) is a critical operating system command injection vulnerability in the Replication Receiver component of AhsayCBS. The flaw affects the /rps/api/json/UpdateReceivers.do endpoint and could allow an unauthenticated remote attacker to execute arbitrary commands on the underlying system. The vulnerability is being actively exploited in the wild. Attackers have chained it with CVE-2026-105133 to gain remote code execution with NT AUTHORITY\\SYSTEM privileges, deploy JSP web shells and install XMRig cryptocurrency miners disguised as Microsoft Edge processes. Huntress observed attacks against at least five organizations by October 8, 2026. According to Binding Operational Directive (BOD) 22-01: Reducing the Significant Risk of Known Exploited Vulnerabilities , FCEB agencies have to address the identified vulnerabilities by the due date to protect their networks against attacks exploiting the flaws in the catalog. Experts also recommend that private organizations review the Catalog and address the vulnerabilities in their infrastructure. CISA orders federal agencies to fix the flaws by October 17, 2026. Follow me on Twitter: @securityaffairs and Facebook and Mastodon Pierluigi Paganini ( SecurityAffairs \u2013 hacking, CISA )",
+      "summary_html": "<div></div>\nU.S. Cybersecurity and Infrastructure Security Agency (CISA) adds Palo Alto Networks PAN-OS, Ahsay AhsayCBS, and Cisco Secure Email Gateway flaws to its Known Exploited Vulnerabilities catalog.\n<p>The U.S. Cybersecurity and Infrastructure Security Agency (CISA)\u00a0<a href=\"https://www.cisa.gov/news-events/alerts/2026/10/14/cisa-adds-four-known-exploited-vulnerabilities-catalog\">added</a> the following vulnerabilities to its\u00a0<a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) catalog</a>:</p>\n<ul>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-0322\">CVE-2026-0322</a> Palo Alto Networks PAN-OS Code Injection Vulnerability\u00a0</li>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-76519\">CVE-2026-76519</a> Cisco Secure Email Gateway Relative Path Traversal Vulnerability</li>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-105133\">CVE-2026-105133</a> Ahsay AhsayCBS Improper Authentication Vulnerability\u00a0</li>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-105134\">CVE-2026-105134</a> Ahsay AhsayCBS Command Injection Vulnerability\u00a0</li>\n</ul>\n<p>Cisco confirmed this week that threat actors are exploiting a critical vulnerability in Cisco Secure Email Gateway, tracked as <a href=\"https://securityaffairs.com/200985/security/cisco-urges-customers-to-patch-email-gateway-flaw-and-check-for-compromise.html\">CVE-2026-76519</a> (CVSS score of 9.8). An attacker can exploit the flaw by sending a crafted email attachment through the gateway and, if it lands right, writing arbitrary files to the underlying operating system.</p>\n<p>The flaw <a href=\"https://www.cve.org/CVERecord?id=CVE-2026-0322\">CVE-2026-0322</a> (CVSS score: 8.6) is a high-severity code injection vulnerability in the management interface of Palo Alto Networks PAN-OS. It could allow an authenticated attacker with network access and high-level privileges to execute arbitrary code with root privileges on an affected firewall. The vulnerability affects PA-Series and VM-Series firewalls and Panorama appliances. Palo Alto Networks confirmed that limited exploitation has been observed targeting the management interface. The company recommends restricting access to trusted internal IP addresses and installing the relevant security updates.</p>\n<p>The flaw <a href=\"https://www.cve.org/CVERecord?id=CVE-2026-105133\">CVE-2026-105133</a> (CVSS score: 5.5) is an improper authentication vulnerability in AhsayCBS, a backup management platform. The flaw affects the <code>checkSysPwd</code> function in the product\u2019s API and could allow a remote attacker to bypass authentication by manipulating the <code>random</code> parameter. Starting on October 7, 2026, attackers used it to bypass authentication before exploiting a second vulnerability, CVE-2026-105134, to execute commands on affected servers. Huntress reported that at least five organizations had been targeted by October 8.</p>\n<p>The flaw <a href=\"https://www.cve.org/CVERecord?id=CVE-2026-105134\">CVE-2026-105134</a> (CVSS score: 9.3) is a critical operating system command injection vulnerability in the Replication Receiver component of AhsayCBS. The flaw affects the <code>/rps/api/json/UpdateReceivers.do</code> endpoint and could allow an unauthenticated remote attacker to execute arbitrary commands on the underlying system. The vulnerability is being actively exploited in the wild. Attackers have chained it with CVE-2026-105133 to gain remote code execution with <code>NT AUTHORITY\\SYSTEM</code> privileges, deploy JSP web shells and install XMRig cryptocurrency miners disguised as Microsoft Edge processes. Huntress observed attacks against at least five organizations by October 8, 2026.</p>\n<p>According to\u00a0<a href=\"https://cyber.dhs.gov/bod/22-01/\">Binding Operational Directive (BOD) 22-01: Reducing the Significant Risk of Known Exploited Vulnerabilities</a>, FCEB agencies have to address the identified vulnerabilities by the due date to protect their networks against attacks exploiting the flaws in the catalog.</p>\n<p>Experts also recommend that private organizations review the\u00a0<a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Catalog</a>\u00a0and address the vulnerabilities in their infrastructure.</p>\n<p>CISA orders federal agencies to fix the flaws by October 17, 2026.</p>\n<p><strong>Follow me on Twitter:\u00a0</strong><a href=\"https://twitter.com/securityaffairs\"><strong>@securityaffairs</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://www.facebook.com/sec.affairs\"><strong>Facebook</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://infosec.exchange/@securityaffairs\"><strong>Mastodon</strong></a></p>\n<p><a href=\"http://www.linkedin.com/pub/pierluigi-paganini/b/742/559\"><strong>Pierluigi\u00a0Paganini</strong></a></p>\n<p><strong>(</strong><a href=\"http://securityaffairs.co/wordpress/\"><strong>SecurityAffairs</strong></a><strong>\u00a0\u2013\u00a0hacking,\u00a0<a href=\"https://securityaffairs.com/tag/cisa\">CISA</a>)</strong></p>",
+      "link": "https://securityaffairs.com/201041/security/u-s-cisa-adds-palo-alto-networks-pan-os-ahsay-ahsaycbs-and-cisco-secure-email-gateway-flaws-to-its-known-exploited-vulnerabilities-catalog.html",
+      "source": "Security Affairs",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-15T19:21:30+00:00",
+      "published_ts": 1792092090,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Exploit / PoC",
+        "Crypto / Web3"
+      ],
+      "curated": true
     },
     {
       "title": "Boom or Bust, Bitcoin Wins the AI Trade, Bitwise CIO Says",
@@ -2413,24 +2746,6 @@
         "Phishing / Social Engineering",
         "Windows / Microsoft",
         "Cloud / SaaS"
-      ],
-      "curated": true
-    },
-    {
-      "title": "Panchan's Mining Island &#x5b;Guest Diary&#x5d;, (Wed, Oct 14th)",
-      "summary": "[This is a Guest Diary by Zachary Norwood, an ISC intern as part of the SANS.edu BACS program] Crypto mining malware has been active and spreading across the internet for quite some time now. Moreover, the DShield honeypot picked up a worm that self-propagates through a plethora of means. One of them is stealing SSH keys after it gains access to a system. Furthermore, it also leverages a rootkit to maintain access to infected systems. One would hope that threat actors would have moved on past this worm by now. However, due to its rudimentary design and its effectiveness, they have had no reason to move on. A malicious binary was uploaded and executed on the DShield honeypot, and that is where a copy of the Panchan worm was obtained. It is written with Golang, and it is a peer-to-peer botnet. Moreover, this worm was first identified in 2022. Many vendors recognize this worm now as seen below. VirusTotal Clamscan Therefore, a system with security controls such as egress filtering, ingress filtering, access control lists, continuous monitoring, and passwordless authentication will prevent this worm from taking root. However, many systems are insecure and unpatched. This is why this worm is still propagating across the internet. The strings captured from the binary below show how simple it is to find its command-and-control channel and the functions that it consists of. Furthermore, leveraging something as simple as syslog to pull logs and using commands such as grep to find privilege escalation activities, software installation, software removal, and access to ports such as SSH will allow an analyst to identify this activity. However, this does not scale well. Therefore, leveraging a SIEM to gather and parse this data is a much more effective solution. Next, all traffic entering and exiting from both the trusted and untrusted networks needs to pass through at least one firewall. Preferably, also having an intrusion detection or prevention system right after the public facing firewall in the trusted zone. Command and Control Channel Panchan Functions These captures clearly show the source files that the Panchan worm consists of. To dig deeper into what this binary can do, a network simulator was used. Moreover, the specific network simulator that was used was FakeNet-NG with Wireshark to intercept the network traffic. These tools were used to identify what URL it was reaching out to once it was installed on a system. FakeNet-NG is a tool developed by the Mandiant FLARE team for dynamic network analysis. This tool simulates legitimate network traffic, allowing an analyst to identify how the malware interacts with the network and if it is communicating with an external server. This specific strain of this worm was using a discord channel as a command-and-control server. This was identified by capturing and dissecting the network traffic that was generated by the worm interacting with the FakeNet-NG network. FAKENET-NG Wireshark Capture Panchan, the peer-to-peer crypto mining worm, is a threat to any organization who has internet facing servers. This worm is mainly a threat to insecure systems, and opening SSH to a public network needs to be done in a secure way. Fail2Ban is a service that scans log files for repeated failed login attempts. This service then blocks that IP address by updating the system\u2019s firewall rule. Fail2Ban is another control that should be put in place with a public facing SSH port. Services like SSH should have multi-factor authentication, and an access control list. The access control list should include specific IP addresses or a jump box. Disabling root login with SSH is another essential security control that needs to be implemented. With SSH, public and private key pairs are another option for authentication. This will then create the capability to disable password authentication for the SSH service preventing brute force attacks. However, these key pairs are often created and forgotten about. This is a security concern, and SSH private keys are something that this worm is designed to steal. Once it has stolen a private key, it attempts to pivot to hosts in the running user\u2019s SSH known_hosts file. A simple mitigation to protect the data within the known_hosts file is to use the HashKnownHosts option within a systems SSH configuration. Furthermore, it is best to mitigate long lived credentials and SSH key stealing by leveraging tools likeHashiCorp Vault to sign SSH certificates with short expirations. This ensures that reusing a key becomes highly impractical or even impossible. The user will authenticate to Vault with their credentials then they send their SSH public key to Vault for signing, and finally Vault then signs the SSH key. Then it returns the SSH certificate to the user. This certificate can be used to log in to any host configured to trust the Vault CA. Leveraging such infrastructure will also allow an organization to disable password authentication entirely for services like SSH. Furthermore, leveraging something as simple as syslog to pull logs and using commands such as grep to find privilege escalation activities, software installation, software removal, and access to ports such as SSH will allow an analyst to identify this activity. However, this does not scale well. Therefore, leveraging a SIEM to gather and parse this data is a much more effective solution. Next, all traffic entering and exiting from both the trusted and untrusted networks needs to pass through at least one firewall. Preferably, also having an intrusion detection or prevention system right after the public facing firewall in the trusted zone. Typical indicators of compromise for this worm include multiple failed authentication attempts via SSH, unusual resource usage on infected systems, and processes that cannot be killed by any means. This worm also creates hidden directories in the running users home directory or folders like /tmp. Often, these directories have names that are strings that have high amounts of entropy. For this strain of this worm, servers reaching out to services like Discord on a regular basis is another indicator of compromise that an analyst can look for. In conclusion, denying by default and allowing by exception is a vital strategy for systems facing untrusted networks. These same techniques that were discussed above can be used to protect critical public facing infrastructure from threat actors. [1] https://github.com/mandiant/GoReSym [2] https://github.com/mandiant/flare-fakenet-ng [3] https://www.akamai.com/blog/security-research/new-p2p-botnet-panchan [4] https://www.akamai.com/blog/security-research/cryptominer-anatomy-internals [5] https://attack.mitre.org/ [6] https://developer.hashicorp.com/vault/docs/secrets/ssh/signed-ssh-certificates [7] https://www.hashicorp.com/en/blog/managing-ssh-access-at-scale-with-hashicorp-vault [8] https://github.com/bruneaug/DShield-SIEM/tree/main [9] https://www.sans.edu/cyber-security-programs/bachelors-degree/ ----------- Guy Bruneau IPSS Inc. My GitHub Page Twitter: GuyBruneau gbruneau at isc dot sans dot edu (c) SANS Internet Storm Center. https://isc.sans.edu Creative Commons Attribution-Noncommercial 3.0 United States License.",
-      "summary_html": "<p>[This is a Guest Diary by Zachary Norwood, an ISC intern as part of the SANS.edu <a href=\"https://www.sans.edu/cyber-security-programs/bachelors-degree/\">BACS</a> program]</p>\n<p>Crypto mining malware has been active and spreading across the internet for quite some time now. Moreover, the DShield honeypot picked up a worm that self-propagates through a plethora of means. One of them is stealing SSH keys after it gains access to a system. Furthermore, it also leverages a rootkit to maintain access to infected systems. One would hope that threat actors would have moved on past this worm by now. However, due to its rudimentary design and its effectiveness, they have had no reason to move on.</p>\n<p>A malicious binary was uploaded and executed on the DShield honeypot, and that is where a copy of the Panchan worm was obtained. It is written with Golang, and it is a peer-to-peer botnet. Moreover, this worm was first identified in 2022. Many vendors recognize this worm now as seen below.\u00a0</p>\n<p><strong><span>VirusTotal</span></strong><br/>\n</p>\n<p><span><strong>Clamscan</strong></span><br/>\n</p>\n<p>Therefore, a system with security controls such as egress filtering, ingress filtering, access control lists, continuous monitoring, and passwordless authentication will prevent this worm from taking root. However, many systems are insecure and unpatched. This is why this worm is still propagating across the internet. The strings captured from the binary below show how simple it is to find its command-and-control channel and the functions that it consists of.</p>\n<p>Furthermore, leveraging something as simple as syslog to pull logs and using commands such as grep to find privilege escalation activities, software installation, software removal, and access to ports such as SSH will allow an analyst to identify this activity. However, this does not scale well. Therefore, leveraging a SIEM to gather and parse this data is a much more effective solution. Next, all traffic entering and exiting from both the trusted and untrusted networks needs to pass through at least one firewall. Preferably, also having an intrusion detection or prevention system right after the public facing firewall in the trusted zone.</p>\n<p>\u00a0<br/>\n<span><strong>Command and Control Channel</strong></span><br/>\n</p>\n<p><span><strong>Panchan Functions</strong></span><br/>\n</p>\n<p>These captures clearly show the source files that the Panchan worm consists of. To dig deeper into what this binary can do, a network simulator was used. Moreover, the specific network simulator that was used was <a href=\"http://https://github.com/mandiant/flare-fakenet-ng\">FakeNet-NG</a> with Wireshark to intercept the network traffic. These tools were used to identify what URL it was reaching out to once it was installed on a system. FakeNet-NG is a tool developed by the Mandiant FLARE team for dynamic network analysis. This tool simulates legitimate network traffic, allowing an analyst to identify how the malware interacts with the network and if it is communicating with an external server. This specific strain of this worm was using a discord channel as a command-and-control server. This was identified by capturing and dissecting the network traffic that was generated by the worm interacting with the FakeNet-NG network.\u00a0</p>\n<p><span><strong>FAKENET-NG</strong></span><br/>\n</p>\n<p><strong>Wireshark Capture</strong><br/>\n</p>\n<p>Panchan, the peer-to-peer crypto mining worm, is a threat to any organization who has internet facing servers. This worm is mainly a threat to insecure systems, and opening SSH to a public network needs to be done in a secure way. Fail2Ban is a service that scans log files for repeated failed login attempts. This service then blocks that IP address by updating the system\u2019s firewall rule. Fail2Ban is another control that should be put in place with a public facing SSH port. Services like SSH should have multi-factor authentication, and an access control list. The access control list should include specific IP addresses or a jump box. Disabling root login with SSH is another essential security control that needs to be implemented.</p>\n<p>With SSH, public and private key pairs are another option for authentication. This will then create the capability to disable password authentication for the SSH service preventing brute force attacks. However, these key pairs are often created and forgotten about. This is a security concern, and SSH private keys are something that this worm is designed to steal. Once it has stolen a private key, it attempts to pivot to hosts in the running user\u2019s SSH known_hosts file. A simple mitigation to protect the data within the known_hosts file is to use the HashKnownHosts option within a systems SSH configuration. Furthermore, it is best to mitigate long lived credentials and SSH key stealing by leveraging tools likeHashiCorp Vault to sign SSH certificates with short expirations. This ensures that reusing a key becomes highly impractical or even impossible. The user will authenticate to Vault with their credentials then they send their SSH public key to Vault for signing, and finally Vault then signs the SSH key. Then it returns the SSH certificate to the user. This certificate can be used to log in to any host configured to trust the Vault CA. Leveraging such infrastructure will also allow an organization to disable password authentication entirely for services like SSH.</p>\n<p>Furthermore, leveraging something as simple as syslog to pull logs and using commands such as grep to find privilege escalation activities, software installation, software removal, and access to ports such as SSH will allow an analyst to identify this activity. However, this does not scale well. Therefore, leveraging a <a href=\"http://https://github.com/bruneaug/DShield-SIEM/tree/main\">SIEM</a> to gather and parse this data is a much more effective solution. Next, all traffic entering and exiting from both the trusted and untrusted networks needs to pass through at least one firewall. Preferably, also having an intrusion detection or prevention system right after the public facing firewall in the trusted zone.</p>\n<p>Typical indicators of compromise for this worm include multiple failed authentication attempts via SSH, unusual resource usage on infected systems, and processes that cannot be killed by any means. This worm also creates hidden directories in the running users home directory or folders like /tmp. Often, these directories have names that are strings that have high amounts of entropy. For this strain of this worm, servers reaching out to services like Discord on a regular basis is another indicator of compromise that an analyst can look for. In conclusion, denying by default and allowing by exception is a vital strategy for systems facing untrusted networks. These same techniques that were discussed above can be used to protect critical public facing infrastructure from threat actors.\u00a0</p>\n<p>[1] https://github.com/mandiant/GoReSym<br/>\n[2] https://github.com/mandiant/flare-fakenet-ng<br/>\n[3] https://www.akamai.com/blog/security-research/new-p2p-botnet-panchan<br/>\n[4] https://www.akamai.com/blog/security-research/cryptominer-anatomy-internals<br/>\n[5] https://attack.mitre.org/<br/>\n[6] https://developer.hashicorp.com/vault/docs/secrets/ssh/signed-ssh-certificates<br/>\n[7] https://www.hashicorp.com/en/blog/managing-ssh-access-at-scale-with-hashicorp-vault<br/>\n[8] https://github.com/bruneaug/DShield-SIEM/tree/main<br/>\n[9] https://www.sans.edu/cyber-security-programs/bachelors-degree/</p>\n<p>-----------<br/>\nGuy Bruneau <a href=\"http://www.ipss.ca/\">IPSS Inc.</a><br/>\n<a href=\"https://github.com/bruneaug/\">My GitHub Page</a><br/>\nTwitter: <a href=\"https://twitter.com/guybruneau\">GuyBruneau</a><br/>\ngbruneau at isc dot sans dot edu</p>\n\n \n (c) SANS Internet Storm Center. https://isc.sans.edu Creative Commons Attribution-Noncommercial 3.0 United States License.",
-      "link": "https://isc.sans.edu/diary/rss/33426",
-      "source": "SANS Internet Storm Center",
-      "feed_type": "news",
-      "type": "government-cert-advisories",
-      "type_label": "Government, CERT & Advisories",
-      "published": "2026-10-15T01:10:57+00:00",
-      "published_ts": 1792026657,
-      "smart_groups": [
-        "Vulnerabilities / CVEs",
-        "Malware / Payloads",
-        "Identity / Access"
       ],
       "curated": true
     },
