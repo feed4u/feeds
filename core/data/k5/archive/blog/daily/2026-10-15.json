@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-16T13:27:14.177862+00:00",
+  "generated_at": "2026-10-16T19:43:45.436032+00:00",
   "date": "2026-10-15",
-  "total_items": 77,
+  "total_items": 79,
   "next_chunk": "archive/blog/daily/2026-10-14.json",
   "items": [
     {
@@ -200,7 +200,7 @@
       ],
       "curated": true,
       "story_id": "8334e769747f",
-      "story_size": 3,
+      "story_size": 5,
       "story_primary": true,
       "story_others": [
         {
@@ -214,6 +214,18 @@
           "title": "Burger King Japan data breach exposes 11 million customer records",
           "link": "https://www.bleepingcomputer.com/news/security/burger-king-japan-data-breach-exposes-11-million-customer-records/",
           "published_ts": 1792152089
+        },
+        {
+          "source": "/r/cybersecurity",
+          "title": "Burger King Japan data breach exposes 11 million customer records",
+          "link": "https://www.reddit.com/r/cybersecurity/comments/1x7gc3w/burger_king_japan_data_breach_exposes_11_million/",
+          "published_ts": 1792157552
+        },
+        {
+          "source": "Security Affairs - Data Breach",
+          "title": "Burger King Japan Data Breach Impacted 11 Million Customers",
+          "link": "https://securityaffairs.com/201119/security/burger-king-japan-data-breach-impacted-11-million-customers.html",
+          "published_ts": 1792159478
         }
       ]
     },
@@ -284,7 +296,7 @@
       "smart_groups": [],
       "curated": false,
       "story_id": "c259fb016107",
-      "story_size": 4
+      "story_size": 5
     },
     {
       "title": "Chinese Phishing Network Linked to 1 Billion Messages Targeting 75,000 Organizations",
@@ -318,7 +330,7 @@
       "smart_groups": [],
       "curated": false,
       "story_id": "c259fb016107",
-      "story_size": 4
+      "story_size": 5
     },
     {
       "title": "Just Viewing an Online Ad Can Infect Your Device With Spyware, Researchers Reveal",
@@ -454,7 +466,7 @@
       "smart_groups": [],
       "curated": false,
       "story_id": "c259fb016107",
-      "story_size": 4,
+      "story_size": 5,
       "story_primary": true,
       "story_others": [
         {
@@ -474,6 +486,12 @@
           "title": "Proofpoint Inks $6.3 Billion All-Cash Deal to Acquire Varonis",
           "link": "https://www.securityweek.com/proofpoint-inks-6-3-billion-all-cash-deal-to-acquire-varonis/",
           "published_ts": 1792134771
+        },
+        {
+          "source": "The Record",
+          "title": "Proofpoint lines up $6.3 billion deal for Varonis\u2019 data security",
+          "link": "https://therecord.media/proofpoint-varonis-cybersecurity-acquisition",
+          "published_ts": 1792161900
         }
       ]
     },
@@ -650,7 +668,7 @@
       ],
       "curated": true,
       "story_id": "c63069ba1c8d",
-      "story_size": 11
+      "story_size": 13
     },
     {
       "title": "CVE-2026-0322: Actively Exploited PAN-OS RCE Flaw Enables Root Access",
@@ -701,6 +719,40 @@
         "Cloud / SaaS",
         "Malware / Payloads",
         "Privacy & Compliance"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Investigating Ephemeral Supply Chain Tampering",
+      "summary": "",
+      "summary_html": "",
+      "link": "https://cloud.google.com/blog/topics/threat-intelligence/investigating-ephemeral-supply-chain-tampering/",
+      "source": "Google Cloud Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-15T11:00:00+00:00",
+      "published_ts": 1792062000,
+      "smart_groups": [
+        "Cloud / SaaS"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Extending\u00a0Kubernetes\u00a0policy\u00a0enforcement\u00a0to\u00a0runtime\u00a0security\u00a0for\u00a0AI\u00a0workloads",
+      "summary": "Nirmata created Kyverno and donated it to the CNCF in 2020. Kyverno is now a graduated CNCF project and is widely used for enforcing and automating configuration security and best practices. However, admission control answers one question: does this spec look right? It cannot answer the question that matters once the pod is running: is this workload doing what its spec says it should? With autonomous AI agents and non-deterministic LLM-enabled applications, that gap is where most of the interesting incidents live. A container with an innocuous-looking image pulls a second-stage payload after startup. A sidecar with network access nobody scoped tightly enough starts talking to a destination no one approved. A process no configuration policy anticipated executes, because the policy only ever described the container\u2019s declared behavior, not its runtime one. One approach to addressing this gap is kernel-level runtime enforcement, which enables security decisions to be applied as workloads execute. Nirmata Runtime for Kyverno is an open source implementation of this approach, using eBPF and Linux Security Modules (LSM) to extend policy enforcement beyond Kubernetes admission control. Below the workload, not beside it The design premise is simple: any control that runs beside a workload \u2014 a sidecar, an agent, a userspace proxy \u2014 is something that the workload\u2019s own compromise can see, stall, or step around. A control that runs below it, in the kernel, enforcing at the same instruction as the syscall it\u2019s gating, isn\u2019t in that position. The workload doesn\u2019t get a vote. Concretely, Nirmata Runtime attaches BPF-LSM programs directly to bprm_check_security and file_open , and cgroup-scoped eBPF programs to the egress path, per pod. Five behaviors, all decided in-kernel, all synchronous with the operation they gate: exec \u2014 deny process execution by resolved kernel path open \u2014 deny file access by resolved kernel path network \u2014 deny egress by destination protocol \u2014 deny by the application protocol actually spoken on the wire , independent of destination port \u2014 a reverse shell dressed up as HTTPS on 443 doesn\u2019t get a pass just because the port looks right dns \u2014 observe and report on resolution, without blocking, because DNS denial has failure modes worse than the traffic it would stop A blocked exec returns -EPERM before the process runs. A blocked connection never completes. There\u2019s no window between \u201cdecision\u201d and \u201cenforcement\u201d for a compromised workload to race. Reusing Kubernetes policy concepts for runtime enforcement If you already write Kyverno policies for admission, you already know the policy language here: CEL. RuntimePolicy targets workloads the same way \u2014 podSelector/namespaceSelector \u2014 and expresses allow/deny logic per behavior, including expressions that pull live values from a ConfigMap or an HTTP source on a refresh interval. Admission and runtime become one continuous policy story instead of two unrelated tools with two unrelated syntaxes glued together with tribal knowledge about which one to check first. Every policy ships in monitor mode by default. You watch what it would deny \u2014 including a WouldDeny counterfactual signal \u2014 before you ever flip it to enforce . Nothing goes into blocking mode silently. Besides the language, Nirmata Runtime uses the same reporting APIs i.e., OpenReports and will add fine-grained exceptions similar to Kyverno for a seamless operator experience. The same guarantee for AI agents in your cluster A coding agent, an MCP server, an autonomous pipeline step \u2014 these are pods too, and the reasoning above applies to them without a special case. But agents raise a specific question that admission control was never built to answer: an agent\u2019s behavior isn\u2019t fully known during deployment time, because part of what it does is generated by a model at runtime. You can review the image. You can\u2019t review the decision the agent hasn\u2019t made yet. For AI workloads with dynamically determined behavior, kernel-level enforcement offers an additional layer of control that operates independently of application-level safeguards. This can complement existing approaches to securing AI agents, including network policies, admission controls, and application-level guardrails. If an agent\u2019s runtime is compromised \u2014 a prompt injection, a supply-chain dependency, a tool call that goes somewhere it shouldn\u2019t \u2014 the enforcement boundary can\u2019t be argued with, reasoned around, or quietly disabled by the thing running inside it, because it isn\u2019t running in that process at all. Concretely, with Nirmata Runtime you can, per agent workload: Bound which model providers and endpoints it\u2019s allowed to talk to \u2014 dns and network behaviors report or block resolution and egress outside an approved list, catching an agent that starts calling a provider nobody reviewed. Restrict which binaries and MCP servers it can launch \u2014 exec allow-lists close off arbitrary tool invocation to exactly what the workload contract says the agent may run. Detect the agent CLIs and SDKs already present in an image you didn\u2019t build with agents in mind, and the model files and MCP configs a workload reads, before those become undeclared surfaces. Here\u2019s what that looks like as one policy on an agent pod that should only ever reach an internal LLM gateway, and should never read the credentials sitting on its own filesystem: apiVersion: runtime.nirmata.io/v1alpha1 kind: RuntimePolicy metadata: name: agent-gateway-only spec: mode: enforce podSelector: matchLabels: nirmata.io/agent: \"true\" behaviors: - network: allow: values: - llm-gateway.ai-platform.svc.cluster.local - kube-dns.kube-system.svc.cluster.local deny: values: - \"*\" - protocol: allow: values: - tls - dns deny: values: - \"*\" - open: deny: values: - \"/root/.aws/credentials\" - \"/root/.kube/config\" - \"/root/.ssh/id_rsa\" - \"/var/run/secrets/kubernetes.io/serviceaccount/token\" network and protocol both carry the \u201c*\u201d sentinel, so a connection has to clear both: the gateway\u2019s address over the wrong protocol is denied, and TLS to anywhere else is too. open doesn\u2019t need the sentinel here \u2014 these four paths are exactly the ones a compromised agent would reach for to pivot into the cloud account, the cluster, or another host, and naming them is enough. (open needs a BPF-LSM-active node; network/protocol only need cgroup v2 and BPF.) If a prompt injection gets a tool call to run cat ~/.aws/credentials or talk to some other endpoint entirely, the kernel has already made the decision before the agent\u2019s own process \u2014 or whatever compromised it \u2014 gets a chance to argue. This is enforced the same way as any other workload \u2014 no agent-specific proxy, no separate control plane, no assumption that the agent\u2019s own guardrails will hold. The worked examples are in examples/shadow-ai/ , covering unexpected DNS, AI SDK detection, and MCP server/config discovery end to end. Observability that says why , not just that Runtime security monitoring benefits from contextual information that explains which policy triggered an enforcement decision, rather than reporting event counts alone. When Nirmata Runtime denies something, the kernel encodes the decision in the map key, and userspace re-evaluates the compiled policy against the observed target to attribute the exact policy responsible. If an event can\u2019t be attributed, it isn\u2019t dropped silently \u2014 it\u2019s counted and logged as a gap (events_dropped_total{reason=\"unattributed_kernel_deny\"}) , because a monitoring blind spot that looks identical to \u201cnothing happened\u201d is worse than a visible error. Findings land as standard Kubernetes OpenReports objects \u2014 no proprietary dashboard required to see what your cluster is actually doing. Raw observation and a readable report are two different things, though, and CEL is what turns one into the other. Observing exec in monitor mode streams every process a pod runs \u2014 necessary, because you don\u2019t know what you\u2019re looking for yet, and useless as a report, because most of it is sh, grep , and the rest of a normal container\u2019s argv. monitorFilter is a per-observation CEL predicate that runs before a finding is written, so the noise never reaches the Report at all: apiVersion: runtime.nirmata.io/v1alpha1 kind: RuntimePolicy metadata: name: detect-agent-cli spec: mode: monitor podSelector: matchLabels: app: ai-workload behaviors: - exec: deny: values: [\"*\"] monitorFilter: expressions: - name: exec-events-only expression: 'has(event.exec)' - name: agent-cli-or-inference-server expression: >- event.exec.argv.exists(a, a in [ \"claude\", \"codex\", \"gemini\", \"aider\", \"goose\", \"opencode\", \"crush\", \"cursor-agent\", \"ollama\", \"litellm\", \"text-generation-launcher\", ]) || event.exec.argv.exists(a, a.startsWith(\"@anthropic-ai/\") || a.startsWith(\"@openai/\") || a.startsWith(\"@google/gemini-cli\")) The first expression is a guard \u2014 without it, the second one evaluates against open and network observations too, where event.exec doesn\u2019t exist. The second is the actual question: not \u201cdid a binary run\u201d but \u201cwas an agent CLI or a local inference server invoked,\u201d matched on the name it was invoked under or the package a launcher fetched, because npx, uvx, and python are just interpreters \u2014 the identity is in argv , not in the exec path. One policy, no sidecar parsing logs after the fact, and a Report that already says an agent CLI showed up on a pod nobody built with agents in mind, not that a process ran. What\u2019s next Runtime enforcement is one component of a broader, defense-in-depth approach to securing Kubernetes and AI workloads. Combining runtime controls with admission policies, network security, and application-level safeguards can help organizations address security risks across different stages of the workload lifecycle. Nirmata Runtime is available as an open source project. The community is invited to explore the implementation, review the examples, contribute improvements, and share feedback through the GitHub repository . like the project make sure you give it a \u2b50 to show your support, and to receive updates.",
+      "summary_html": "<p>Nirmata created Kyverno and donated it to the CNCF in 2020. Kyverno is now a graduated CNCF project and is widely used for enforcing and automating configuration security and best practices.\u00a0</p>\n<p>However, admission control answers one question: does this spec look right? It cannot answer the question that matters once the pod is running: is this workload <em>doing</em> what its spec says it should? With autonomous AI agents and non-deterministic LLM-enabled applications, that gap is where most of the interesting incidents live.\u00a0</p>\n<p>A container with an innocuous-looking image pulls a second-stage payload after startup. A sidecar with network access nobody scoped tightly enough starts talking to a destination no one approved. A process no configuration policy anticipated executes, because the policy only ever described the container\u2019s declared behavior, not its runtime one.</p>\n<p><strong>One approach to addressing this gap is kernel-level runtime enforcement, which enables security decisions to be applied as workloads execute. Nirmata Runtime for Kyverno is an open source implementation of this approach, using eBPF and Linux Security Modules (LSM) to extend policy enforcement beyond Kubernetes admission control.</strong></p>\n<strong>Below the workload, not beside it</strong>\n<p>The design premise is simple: any control that runs <em>beside</em> a workload \u2014 a sidecar, an agent, a userspace proxy \u2014 is something that the workload\u2019s own compromise can see, stall, or step around. A control that runs <em>below</em> it, in the kernel, enforcing at the same instruction as the syscall it\u2019s gating, isn\u2019t in that position. The workload doesn\u2019t get a vote.</p>\n<p>Concretely, Nirmata Runtime attaches BPF-LSM programs directly to <code>bprm_check_security</code> and<code> file_open</code>, and cgroup-scoped eBPF programs to the egress path, per pod. Five behaviors, all decided in-kernel, all synchronous with the operation they gate:</p>\n<ul>\n<li><strong>exec</strong> \u2014 deny process execution by resolved kernel path</li>\n<li><strong>open</strong> \u2014 deny file access by resolved kernel path</li>\n<li><strong>network</strong> \u2014 deny egress by destination</li>\n<li><strong>protocol</strong> \u2014 deny by the <em>application protocol actually spoken on the wire</em>, independent of destination port \u2014 a reverse shell dressed up as HTTPS on 443 doesn\u2019t get a pass just because the port looks right</li>\n<li><strong>dns</strong> \u2014 observe and report on resolution, without blocking, because DNS denial has failure modes worse than the traffic it would stop</li>\n</ul>\n<p>A blocked exec returns <code>-EPERM </code>before the process runs. A blocked connection never completes. There\u2019s no window between \u201cdecision\u201d and \u201cenforcement\u201d for a compromised workload to race.</p>\n<strong>Reusing Kubernetes policy concepts for runtime enforcement</strong>\n<p>If you already write Kyverno policies for admission, you already know the policy language here: CEL. <code>RuntimePolicy </code>targets workloads the same way \u2014 <code>podSelector/namespaceSelector</code> \u2014 and expresses allow/deny logic per behavior, including expressions that pull live values from a ConfigMap or an HTTP source on a refresh interval. Admission and runtime become one continuous policy story instead of two unrelated tools with two unrelated syntaxes glued together with tribal knowledge about which one to check first.<br/><br/>Every policy ships in <code>monitor</code> mode by default. You watch what it <em>would</em> deny \u2014 including a <code>WouldDeny</code> counterfactual signal \u2014 before you ever flip it to <code>enforce</code>. Nothing goes into blocking mode silently.</p>\n<p>Besides the language, Nirmata Runtime uses the same reporting APIs i.e., <a href=\"http://openreports.io/\">OpenReports</a> and will add fine-grained exceptions similar to Kyverno for a seamless operator experience.</p>\n<strong>The same guarantee for AI agents in your cluster</strong>\n<p>A coding agent, an MCP server, an autonomous pipeline step \u2014 these are pods too, and the reasoning above applies to them without a special case. But agents raise a specific question that admission control was never built to answer: an agent\u2019s behavior isn\u2019t fully known during deployment time, because part of what it does is generated by a model at runtime. You can review the image. You can\u2019t review the decision the agent hasn\u2019t made yet.</p>\n<p>For AI workloads with dynamically determined behavior, kernel-level enforcement offers an additional layer of control that operates independently of application-level safeguards. This can complement existing approaches to securing AI agents, including network policies, admission controls, and application-level guardrails.</p>\n<p>If an agent\u2019s runtime is compromised \u2014 a prompt injection, a supply-chain dependency, a tool call that goes somewhere it shouldn\u2019t \u2014 the enforcement boundary can\u2019t be argued with, reasoned around, or quietly disabled by the thing running inside it, because it isn\u2019t running <em>in</em> that process at all.</p>\n<p>Concretely, with Nirmata Runtime you can, per agent workload:</p>\n<ul>\n<li><strong>Bound which model providers and endpoints it\u2019s allowed to talk to</strong> \u2014 dns and network behaviors report or block resolution and egress outside an approved list, catching an agent that starts calling a provider nobody reviewed.</li>\n<li><strong>Restrict which binaries and MCP servers it can launch</strong> \u2014 exec allow-lists close off arbitrary tool invocation to exactly what the workload contract says the agent may run.</li>\n<li><strong>Detect the agent CLIs and SDKs already present in an image</strong> you didn\u2019t build with agents in mind, and the model files and MCP configs a workload reads, before those become undeclared surfaces.</li>\n</ul>\n<p>Here\u2019s what that looks like as one policy on an agent pod that should only ever reach an internal LLM gateway, and should never read the credentials sitting on its own filesystem:</p>\n<pre><code>apiVersion: runtime.nirmata.io/v1alpha1\nkind: RuntimePolicy\nmetadata:\n  name: agent-gateway-only\nspec:\n  mode: enforce\n  podSelector:\n    matchLabels:\n      nirmata.io/agent: \"true\"\n  behaviors:\n  - network:\n      allow:\n        values:\n        - llm-gateway.ai-platform.svc.cluster.local\n        - kube-dns.kube-system.svc.cluster.local\n      deny:\n        values:\n        - \"*\"\n  - protocol:\n      allow:\n        values:\n        - tls\n        - dns\n      deny:\n        values:\n        - \"*\"\n  - open:\n      deny:\n        values:\n        - \"/root/.aws/credentials\"\n        - \"/root/.kube/config\"\n        - \"/root/.ssh/id_rsa\"\n        - \"/var/run/secrets/kubernetes.io/serviceaccount/token\"\n</code></pre>\n<p><code>network</code> and <code>protocol</code> both carry the \u201c*\u201d sentinel, so a connection has to clear both: the gateway\u2019s address over the wrong protocol is denied, and TLS to anywhere else is too. open doesn\u2019t need the sentinel here \u2014 these four paths are exactly the ones a compromised agent would reach for to pivot into the cloud account, the cluster, or another host, and naming them is enough. (open needs a BPF-LSM-active node; <code>network/protocol </code>only need cgroup v2 and BPF.)</p>\n<p>If a prompt injection gets a tool call to run <code>cat ~/.aws/credentials</code> or talk to some other endpoint entirely, the kernel has already made the decision before the agent\u2019s own process \u2014 or whatever compromised it \u2014 gets a chance to argue.</p>\n<p>This is enforced the same way as any other workload \u2014 no agent-specific proxy, no separate control plane, no assumption that the agent\u2019s own guardrails will hold. The worked examples are in <a href=\"http://examples/shadow-ai/\">examples/shadow-ai/</a>, covering unexpected DNS, AI SDK detection, and MCP server/config discovery end to end.</p>\n<strong>Observability that says</strong> <strong><em>why</em></strong><strong>, not just</strong> <strong><em>that</em></strong>\n<p>Runtime security monitoring benefits from contextual information that explains which policy triggered an enforcement decision, rather than reporting event counts alone.</p>\n<p>When Nirmata Runtime denies something, the kernel encodes the decision in the map key, and userspace re-evaluates the compiled policy against the observed target to attribute the exact policy responsible. If an event can\u2019t be attributed, it isn\u2019t dropped silently \u2014 it\u2019s counted and logged as a gap <code>(events_dropped_total{reason=\"unattributed_kernel_deny\"})</code>, because a monitoring blind spot that looks identical to \u201cnothing happened\u201d is worse than a visible error. Findings land as standard Kubernetes OpenReports objects \u2014 no proprietary dashboard required to see what your cluster is actually doing.</p>\n<p>Raw observation and a readable report are two different things, though, and CEL is what turns one into the other. Observing <code>exec</code> in <code>monitor</code> mode streams <em>every</em> process a pod runs \u2014 necessary, because you don\u2019t know what you\u2019re looking for yet, and useless as a report, because most of it is <code>sh, grep</code>, and the rest of a normal container\u2019s argv. <code>monitorFilter</code> is a per-observation CEL predicate that runs before a finding is written, so the noise never reaches the Report at all:</p>\n<pre><code>apiVersion: runtime.nirmata.io/v1alpha1\nkind: RuntimePolicy\nmetadata:\n  name: detect-agent-cli\nspec:\n  mode: monitor\n  podSelector:\n    matchLabels:\n      app: ai-workload\n  behaviors:\n  - exec:\n      deny:\n        values: [\"*\"]\n  monitorFilter:\n    expressions:\n    - name: exec-events-only\n      expression: 'has(event.exec)'\n    - name: agent-cli-or-inference-server\n      expression: &gt;-\n        event.exec.argv.exists(a, a in [\n          \"claude\", \"codex\", \"gemini\", \"aider\", \"goose\", \"opencode\", \"crush\",\n          \"cursor-agent\", \"ollama\", \"litellm\", \"text-generation-launcher\",\n        ]) ||\n        event.exec.argv.exists(a,\n          a.startsWith(\"@anthropic-ai/\") ||\n          a.startsWith(\"@openai/\") ||\n          a.startsWith(\"@google/gemini-cli\"))\n</code></pre>\n<p><br/>The first expression is a guard \u2014 without it, the second one evaluates against <code>open</code> and <code>network</code> observations too, where <code>event.exec</code> doesn\u2019t exist. The second is the actual question: not \u201cdid a binary run\u201d but \u201cwas an agent CLI or a local inference server invoked,\u201d matched on the name it was invoked under or the package a launcher fetched, because <code>npx, uvx,</code> and <code>python</code> are just interpreters \u2014 the identity is in <code>argv</code>, not in the exec path. One policy, no sidecar parsing logs after the fact, and a Report that already says an agent CLI showed up on a pod nobody built with agents in mind, not that a process ran.</p>\n<strong>What\u2019s next</strong>\n<p>Runtime enforcement is one component of a broader, defense-in-depth approach to securing Kubernetes and AI workloads. Combining runtime controls with admission policies, network security, and application-level safeguards can help organizations address security risks across different stages of the workload lifecycle.</p>\n<p>Nirmata Runtime is available as an open source project. The community is invited to explore the implementation, review the examples, contribute improvements, and share feedback through the <a href=\"https://github.com/nirmata/runtime\">GitHub repository</a>.</p>\n<p>like the project make sure you give it a \u2b50 to show your support, and to receive updates.</p>\n<p><br/></p>",
+      "link": "https://www.cncf.io/blog/2026/10/15/extending-kubernetes-policy-enforcement-to-runtime-security-for-ai-workloads/",
+      "source": "https://www.cncf.io/feed/",
+      "feed_type": "blog",
+      "type": "security-researcher-blogs",
+      "type_label": "Security Researcher Blogs",
+      "published": "2026-10-15T11:00:00+00:00",
+      "published_ts": 1792062000,
+      "smart_groups": [
+        "Cloud / SaaS",
+        "Linux / Unix",
+        "AI/ML Security"
       ],
       "curated": true
     },
@@ -1000,7 +1052,7 @@
       ],
       "curated": true,
       "story_id": "c63069ba1c8d",
-      "story_size": 11
+      "story_size": 13
     },
     {
       "title": "Find Out if You're Exposed on the Dark Web  | UpGuard",
