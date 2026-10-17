@@ -1,15 +1,15 @@
 [
   {
     "title": "Preview seed fixture (rolling)",
-    "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@d4b3b9915cdd (migration head: 20261016120000_conductor_include_messages_for_wired_nodes). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
-    "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@d4b3b9915cdd (migration head: 20261016120000_conductor_include_messages_for_wired_nodes). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
+    "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@2048fa53ff7d (migration head: 20261017120000_add_expert_autopilot_mode). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
+    "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@2048fa53ff7d (migration head: 20261017120000_add_expert_autopilot_mode). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
     "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/preview-seed-fixture",
     "source": "AutoGPT Releases - GitHub releases for AutoGPT",
     "feed_type": "blog",
     "type": "media-tech-analysis",
     "type_label": "Media & Tech Analysis",
-    "published": "2026-10-17T04:15:51+00:00",
-    "published_ts": 1792210551,
+    "published": "2026-10-17T07:56:53+00:00",
+    "published_ts": 1792223813,
     "smart_groups": [
       "Agents & automation",
       "Data & analytics"
@@ -271,6 +271,23 @@
     "published_ts": 1792196160,
     "smart_groups": [
       "Legal & copyright"
+    ],
+    "curated": false
+  },
+  {
+    "title": "DeepSeek V4.1 Flash 1017 now available on AI Gateway",
+    "summary": "DeepSeek V4.1 Flash 1017 is now available on AI Gateway . DeepSeek V4.1 Flash 1017 is a minor update to DeepSeek V4.1 Flash that improves reasoning, coding, agentic tasks, and image understanding. The coding gains show up in terminal work and in building and editing whole repositories, and the agentic gains in multi-step automation. With images, the model reads charts and handles visual reasoning more accurately when it can call tools. DeepSeek V4.1 Flash 1017 also finishes tasks faster and with shorter outputs than the previous snapshot, so agent runs tend to take less time and use fewer output tokens. Use deepseek/deepseek-v4.1-flash-1017 as the model name: To use it in Claude Code, Codex, Cursor, and more, install the latest Vercel CLI and run setup: Try DeepSeek V4.1 Flash 1017 in the model playground . AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests. You can view all language models available on AI Gateway.",
+    "summary_html": "<p><a href=\"https://vercel.com/ai-gateway/models/deepseek-v4.1-flash-1017\">DeepSeek V4.1 Flash 1017</a> is now available on <a href=\"https://vercel.com/ai-gateway\">AI Gateway</a>.</p><p>DeepSeek V4.1 Flash 1017 is a minor update to <a href=\"https://vercel.com/ai-gateway/models/deepseek-v4.1-flash\">DeepSeek V4.1 Flash</a> that improves reasoning, coding, agentic tasks, and image understanding.</p><p>The coding gains show up in terminal work and in building and editing whole repositories, and the agentic gains in multi-step automation. With images, the model reads charts and handles visual reasoning more accurately when it can call tools.</p><p>DeepSeek V4.1 Flash 1017 also finishes tasks faster and with shorter outputs than the previous snapshot, so agent runs tend to take less time and use fewer output tokens.</p><p>Use <code>deepseek/deepseek-v4.1-flash-1017</code> as the model name:</p><div></div><p>To use it in Claude Code, Codex, Cursor, and more, install the latest Vercel CLI and run setup:</p><div></div><p>Try DeepSeek V4.1 Flash 1017 in the <a href=\"https://vercel.com/ai-gateway/models/deepseek-v4.1-flash-1017\">model playground</a>.</p><p>AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in <a href=\"https://vercel.com/changelog/custom-reporting-ai-gateway\">custom reporting</a>, <a href=\"https://vercel.com/blog/zdr-on-ai-gateway\">Zero Data Retention support</a>, <a href=\"https://vercel.com/docs/ai-gateway/authentication-and-byok/api-keys\">budgets for API keys</a>, <a href=\"https://vercel.com/docs/ai-gateway/models-and-providers/routing-rules\">routing rules</a>, and more.</p><p>AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on <a href=\"https://vercel.com/docs/ai-gateway/authentication-and-byok/byok\">Bring Your Own Key</a> (BYOK) requests.</p><p>You can view <a href=\"https://vercel.com/ai-gateway/models?type=text\">all language models</a> available on AI Gateway.</p>\n<p>\n<a href=\"https://vercel.com/changelog/deepseek-v4-1-flash-1017-now-available-on-ai-gateway\">Read more</a>\n</p>",
+    "link": "https://vercel.com/changelog/deepseek-v4-1-flash-1017-now-available-on-ai-gateway",
+    "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+    "feed_type": "blog",
+    "type": "company-engineering",
+    "type_label": "Company Engineering",
+    "published": "2026-10-17T00:00:00+00:00",
+    "published_ts": 1792195200,
+    "smart_groups": [
+      "Model releases",
+      "Infra & model ops"
     ],
     "curated": false
   },
@@ -1413,6 +1430,22 @@
     "published_ts": 1792108800,
     "smart_groups": [
       "Consumer AI",
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Elorian AI's Glimpse now available on AI Gateway",
+    "summary": "Glimpse from Elorian is now available on AI Gateway. The visual reasoning model accepts images and video to follow objects through motion, interpret spatial relationships, and connect an action to its physical consequences. Glimpse can return to visual evidence as it works: zooming into a detail, revisiting a short interval of video, or tracking the same feature across frames. This allows the model to support use cases like scientific chart analysis, video captioning, visual counting, and robotics data annotation. Some examples include checking a train's motion to determine whether it is slowing down, keeping objects distinct through camera movement, and labeling completed actions in robot footage. Use elorian/glimpse as the model name: With AI SDK 7, you can send a video as a file part. Replace the placeholder URL with a public or signed HTTPS URL for your video: To configure AI Gateway in Claude Code, Codex, Cursor, and more, install the latest Vercel CLI and run setup: Try Glimpse in the model playground . AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in custom reporting , Zero Data Retention support , budgets for API keys , routing rules , and more. AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on Bring Your Own Key (BYOK) requests.",
+    "summary_html": "<p><a href=\"https://vercel.com/ai-gateway/models/glimpse\">Glimpse from Elorian</a> is now available on AI Gateway. The visual reasoning model accepts images and video to follow objects through motion, interpret spatial relationships, and connect an action to its physical consequences.</p><p>Glimpse can return to visual evidence as it works: zooming into a detail, revisiting a short interval of video, or tracking the same feature across frames. This allows the model to support use cases like scientific chart analysis, video captioning, visual counting, and robotics data annotation.</p><p>Some examples include checking a train's motion to determine whether it is slowing down, keeping objects distinct through camera movement, and labeling completed actions in robot footage.</p><p>Use <code>elorian/glimpse</code> as the model name:</p><div></div><p>With AI SDK 7, you can send a video as a file part. Replace the placeholder URL with a public or signed HTTPS URL for your video:</p><div></div><p>To configure AI Gateway in Claude Code, Codex, Cursor, and more, install the latest Vercel CLI and run setup:</p><div></div><p>Try Glimpse in the <a href=\"https://vercel.com/ai-gateway/models/glimpse\">model playground</a>.</p><p>AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in <a href=\"https://vercel.com/changelog/custom-reporting-ai-gateway\">custom reporting</a>, <a href=\"https://vercel.com/blog/zdr-on-ai-gateway\">Zero Data Retention support</a>, <a href=\"https://vercel.com/docs/ai-gateway/authentication-and-byok/api-keys\">budgets for API keys</a>, <a href=\"https://vercel.com/docs/ai-gateway/models-and-providers/routing-rules\">routing rules</a>, and more.</p><p>AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on <a href=\"https://vercel.com/docs/ai-gateway/authentication-and-byok/byok\">Bring Your Own Key</a> (BYOK) requests.</p>\n<p>\n<a href=\"https://vercel.com/changelog/elorian-ai-glimpse-now-available-on-ai-gateway\">Read more</a>\n</p>",
+    "link": "https://vercel.com/changelog/elorian-ai-glimpse-now-available-on-ai-gateway",
+    "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+    "feed_type": "blog",
+    "type": "company-engineering",
+    "type_label": "Company Engineering",
+    "published": "2026-10-16T00:00:00+00:00",
+    "published_ts": 1792108800,
+    "smart_groups": [
       "Infra & model ops"
     ],
     "curated": false
@@ -6008,9 +6041,7 @@
     "smart_groups": [
       "Security & misuse"
     ],
-    "curated": false,
-    "story_id": "114ea300857a",
-    "story_size": 2
+    "curated": false
   },
   {
     "title": "Nvidia-backed data centre firm scraps IPO as AI valuation concerns deepen",
