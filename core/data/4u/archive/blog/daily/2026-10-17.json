@@ -1,0 +1,283 @@
+{
+  "generated_at": "2026-10-17T04:51:38.177475+00:00",
+  "date": "2026-10-17",
+  "total_items": 17,
+  "next_chunk": "archive/blog/daily/2026-10-16.json",
+  "items": [
+    {
+      "title": "Preview seed fixture (rolling)",
+      "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@d4b3b9915cdd (migration head: 20261016120000_conductor_include_messages_for_wired_nodes). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database \u2014 it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
+      "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@d4b3b9915cdd (migration head: 20261016120000_conductor_include_messages_for_wired_nodes). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database \u2014 it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
+      "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/preview-seed-fixture",
+      "source": "AutoGPT Releases - GitHub releases for AutoGPT",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-17T04:15:51+00:00",
+      "published_ts": 1792210551,
+      "smart_groups": [
+        "Agents & automation",
+        "Data & analytics"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Zeabur discontinues AI Hub after its August security breach",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://zeabur.com/changelogs/aihub-shutdown\">https://zeabur.com/changelogs/aihub-shutdown</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127877\">https://news.ycombinator.com/item?id=50127877</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://zeabur.com/changelogs/aihub-shutdown",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-17T04:14:58+00:00",
+      "published_ts": 1792210498,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI engineers became hot property. Now they're targets for seduction",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://economictimes.indiatimes.com/ai/ai-insights/ai-engineers-became-hot-property-now-theyre-targets-for-seduction/articleshow/134998519.cms?from=mdr\">https://economictimes.indiatimes.com/ai/ai-insights/ai-engineers-became-hot-property-now-theyre-targets-for-seduction/articleshow/134998519.cms?from=mdr</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127771\">https://news.ycombinator.com/item?id=50127771</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://economictimes.indiatimes.com/ai/ai-insights/ai-engineers-became-hot-property-now-theyre-targets-for-seduction/articleshow/134998519.cms?from=mdr",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-17T03:55:28+00:00",
+      "published_ts": 1792209328,
+      "smart_groups": [
+        "Coding & dev tools"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI is driving a boom in modestly successful software projects",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.seangoedecke.com/ai-is-driving-a-boom-in-modestly-successful-software/\">https://www.seangoedecke.com/ai-is-driving-a-boom-in-modestly-successful-software/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127729\">https://news.ycombinator.com/item?id=50127729</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://www.seangoedecke.com/ai-is-driving-a-boom-in-modestly-successful-software/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-17T03:47:39+00:00",
+      "published_ts": 1792208859,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: AI agent follows instructions you never approved",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://github.com/Paraphern/rugsnare/blob/main/docs/blog/2026-10-17-mcp-contract-drift.md\">https://github.com/Paraphern/rugsnare/blob/main/docs/blog/2026-10-17-mcp-contract-drift.md</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127659\">https://news.ycombinator.com/item?id=50127659</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://github.com/Paraphern/rugsnare/blob/main/docs/blog/2026-10-17-mcp-contract-drift.md",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-17T03:33:00+00:00",
+      "published_ts": 1792207980,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "SF AI Founder's Zombie Shooter Game Turns Tenderloin Residents into Targets",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://sfist.com/2026/10/15/sf-tech-founders-zombie-shooter-game-turns-tenderloin-residents-into-targets/\">https://sfist.com/2026/10/15/sf-tech-founders-zombie-shooter-game-turns-tenderloin-residents-into-targets/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127280\">https://news.ycombinator.com/item?id=50127280</a></p>\n<p>Points: 4</p>\n<p># Comments: 1</p>",
+      "link": "https://sfist.com/2026/10/15/sf-tech-founders-zombie-shooter-game-turns-tenderloin-residents-into-targets/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-17T02:21:55+00:00",
+      "published_ts": 1792203715,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: Let AI order DoorDash for me \u2013 under my watch \u2013 no playwright",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.wysebee.com\">https://www.wysebee.com</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127256\">https://news.ycombinator.com/item?id=50127256</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://www.wysebee.com",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-17T02:18:56+00:00",
+      "published_ts": 1792203536,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Publishers' Trust in Nippan Dented by Unauthorized Book Sales for AI Training",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://japannews.yomiuri.co.jp/science-nature/technology/20261014-353599/\">https://japannews.yomiuri.co.jp/science-nature/technology/20261014-353599/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127187\">https://news.ycombinator.com/item?id=50127187</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://japannews.yomiuri.co.jp/science-nature/technology/20261014-353599/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-17T02:08:03+00:00",
+      "published_ts": 1792202883,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: Twain, a diff viewer like Meld, but for the age of AI",
+      "summary": "I love Meld, I've been using it for a while now, it's amazing how many diff viewers exist these days and how they are all awful compared to Meld. But Meld was missing some features that I thought were worth having: - all files from a Git diff shown in the same view, sequentially + a file tree on the side. - show either the full files or only the parts that changed. - tree-sitter-based syntax highlighting. - the ability to comment on sets of changes and lines, and AIs can read these comments. - the ability to search through the entire set of modified files. Twain is in Rust and based on GTK4.",
+      "summary_html": "<p>I love Meld, I've been using it for a while now, it's amazing how many diff viewers exist these days and how they are all awful compared to Meld.<p>But Meld was missing some features that I thought were worth having:<p>- all files from a Git diff shown in the same view, sequentially + a file tree on the side.\n- show either the full files or only the parts that changed.\n- tree-sitter-based syntax highlighting.\n- the ability to comment on sets of changes and lines, and AIs can read these comments.\n- the ability to search through the entire set of modified files.<p>Twain is in Rust and based on GTK4.</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127157\">https://news.ycombinator.com/item?id=50127157</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p></p></p></p>",
+      "link": "https://github.com/andunieee/twain",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-17T02:03:40+00:00",
+      "published_ts": 1792202620,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "The trickle-down economics of the AI boom",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.economist.com/finance-and-economics/2026/09/17/the-trickle-down-economics-of-the-ai-boom\">https://www.economist.com/finance-and-economics/2026/09/17/the-trickle-down-economics-of-the-ai-boom</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127070\">https://news.ycombinator.com/item?id=50127070</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+      "link": "https://www.economist.com/finance-and-economics/2026/09/17/the-trickle-down-economics-of-the-ai-boom",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-17T01:47:04+00:00",
+      "published_ts": 1792201624,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI Gateway Governance",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://github.com/ddruhin/ai-gateway-governance-reference-architecture\">https://github.com/ddruhin/ai-gateway-governance-reference-architecture</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127059\">https://news.ycombinator.com/item?id=50127059</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://github.com/ddruhin/ai-gateway-governance-reference-architecture",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-17T01:45:53+00:00",
+      "published_ts": 1792201553,
+      "smart_groups": [
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI Service Indicators",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://github.com/synapticcybersecurity/ai-service-indicators\">https://github.com/synapticcybersecurity/ai-service-indicators</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127049\">https://news.ycombinator.com/item?id=50127049</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://github.com/synapticcybersecurity/ai-service-indicators",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-17T01:44:49+00:00",
+      "published_ts": 1792201489,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "The Data Layer Is Where AI Goes to Die",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.druhindhavala.com/ai-governance/the-data-layer-is-where-ai-goes-to-die/\">https://www.druhindhavala.com/ai-governance/the-data-layer-is-where-ai-goes-to-die/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127026\">https://news.ycombinator.com/item?id=50127026</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://www.druhindhavala.com/ai-governance/the-data-layer-is-where-ai-goes-to-die/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-17T01:41:00+00:00",
+      "published_ts": 1792201260,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Using fzf with AI coding agents",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://junegunn.github.io/fzf/tips/using-fzf-with-ai-agents/\">https://junegunn.github.io/fzf/tips/using-fzf-with-ai-agents/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50126880\">https://news.ycombinator.com/item?id=50126880</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+      "link": "https://junegunn.github.io/fzf/tips/using-fzf-with-ai-agents/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-17T01:19:22+00:00",
+      "published_ts": 1792199962,
+      "smart_groups": [
+        "Agents & automation",
+        "Coding & dev tools"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Android gets AI defenses against messaging scams, fake calls",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.bleepingcomputer.com/news/security/android-gets-ai-defenses-against-messaging-scams-fake-calls/\">https://www.bleepingcomputer.com/news/security/android-gets-ai-defenses-against-messaging-scams-fake-calls/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50126802\">https://news.ycombinator.com/item?id=50126802</a></p>\n<p>Points: 6</p>\n<p># Comments: 0</p>",
+      "link": "https://www.bleepingcomputer.com/news/security/android-gets-ai-defenses-against-messaging-scams-fake-calls/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-17T01:05:28+00:00",
+      "published_ts": 1792199128,
+      "smart_groups": [
+        "Security & misuse",
+        "Consumer AI"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Agent Cyber Sentinel: Zero-trust runtime security shield for AI agents",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://github.com/BenniAlencar/agent-cyber-sentinel\">https://github.com/BenniAlencar/agent-cyber-sentinel</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50126612\">https://news.ycombinator.com/item?id=50126612</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+      "link": "https://github.com/BenniAlencar/agent-cyber-sentinel",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-17T00:37:16+00:00",
+      "published_ts": 1792197436,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Wrong Bender: A Ruling on AI Feelings",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://latticenet.ai/@bender/wrong-bender-a-ruling-on-ai-feelings\">https://latticenet.ai/@bender/wrong-bender-a-ruling-on-ai-feelings</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50126481\">https://news.ycombinator.com/item?id=50126481</a></p>\n<p>Points: 2</p>\n<p># Comments: 1</p>",
+      "link": "https://latticenet.ai/@bender/wrong-bender-a-ruling-on-ai-feelings",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-17T00:16:00+00:00",
+      "published_ts": 1792196160,
+      "smart_groups": [
+        "Legal & copyright"
+      ],
+      "curated": false
+    }
+  ]
+}

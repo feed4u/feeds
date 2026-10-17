@@ -1,5 +1,361 @@
 [
   {
+    "title": "Preview seed fixture (rolling)",
+    "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@d4b3b9915cdd (migration head: 20261016120000_conductor_include_messages_for_wired_nodes). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
+    "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@d4b3b9915cdd (migration head: 20261016120000_conductor_include_messages_for_wired_nodes). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
+    "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/preview-seed-fixture",
+    "source": "AutoGPT Releases - GitHub releases for AutoGPT",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-17T04:15:51+00:00",
+    "published_ts": 1792210551,
+    "smart_groups": [
+      "Agents & automation",
+      "Data & analytics"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Zeabur discontinues AI Hub after its August security breach",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://zeabur.com/changelogs/aihub-shutdown\">https://zeabur.com/changelogs/aihub-shutdown</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127877\">https://news.ycombinator.com/item?id=50127877</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://zeabur.com/changelogs/aihub-shutdown",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-17T04:14:58+00:00",
+    "published_ts": 1792210498,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "AI engineers became hot property. Now they're targets for seduction",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://economictimes.indiatimes.com/ai/ai-insights/ai-engineers-became-hot-property-now-theyre-targets-for-seduction/articleshow/134998519.cms?from=mdr\">https://economictimes.indiatimes.com/ai/ai-insights/ai-engineers-became-hot-property-now-theyre-targets-for-seduction/articleshow/134998519.cms?from=mdr</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127771\">https://news.ycombinator.com/item?id=50127771</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://economictimes.indiatimes.com/ai/ai-insights/ai-engineers-became-hot-property-now-theyre-targets-for-seduction/articleshow/134998519.cms?from=mdr",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-17T03:55:28+00:00",
+    "published_ts": 1792209328,
+    "smart_groups": [
+      "Coding & dev tools"
+    ],
+    "curated": false
+  },
+  {
+    "title": "AI is driving a boom in modestly successful software projects",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.seangoedecke.com/ai-is-driving-a-boom-in-modestly-successful-software/\">https://www.seangoedecke.com/ai-is-driving-a-boom-in-modestly-successful-software/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127729\">https://news.ycombinator.com/item?id=50127729</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://www.seangoedecke.com/ai-is-driving-a-boom-in-modestly-successful-software/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-17T03:47:39+00:00",
+    "published_ts": 1792208859,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: AI agent follows instructions you never approved",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://github.com/Paraphern/rugsnare/blob/main/docs/blog/2026-10-17-mcp-contract-drift.md\">https://github.com/Paraphern/rugsnare/blob/main/docs/blog/2026-10-17-mcp-contract-drift.md</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127659\">https://news.ycombinator.com/item?id=50127659</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://github.com/Paraphern/rugsnare/blob/main/docs/blog/2026-10-17-mcp-contract-drift.md",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-17T03:33:00+00:00",
+    "published_ts": 1792207980,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "SF AI Founder's Zombie Shooter Game Turns Tenderloin Residents into Targets",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://sfist.com/2026/10/15/sf-tech-founders-zombie-shooter-game-turns-tenderloin-residents-into-targets/\">https://sfist.com/2026/10/15/sf-tech-founders-zombie-shooter-game-turns-tenderloin-residents-into-targets/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127280\">https://news.ycombinator.com/item?id=50127280</a></p>\n<p>Points: 4</p>\n<p># Comments: 1</p>",
+    "link": "https://sfist.com/2026/10/15/sf-tech-founders-zombie-shooter-game-turns-tenderloin-residents-into-targets/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-17T02:21:55+00:00",
+    "published_ts": 1792203715,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: Let AI order DoorDash for me – under my watch – no playwright",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.wysebee.com\">https://www.wysebee.com</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127256\">https://news.ycombinator.com/item?id=50127256</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://www.wysebee.com",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-17T02:18:56+00:00",
+    "published_ts": 1792203536,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Publishers' Trust in Nippan Dented by Unauthorized Book Sales for AI Training",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://japannews.yomiuri.co.jp/science-nature/technology/20261014-353599/\">https://japannews.yomiuri.co.jp/science-nature/technology/20261014-353599/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127187\">https://news.ycombinator.com/item?id=50127187</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://japannews.yomiuri.co.jp/science-nature/technology/20261014-353599/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-17T02:08:03+00:00",
+    "published_ts": 1792202883,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: Twain, a diff viewer like Meld, but for the age of AI",
+    "summary": "I love Meld, I've been using it for a while now, it's amazing how many diff viewers exist these days and how they are all awful compared to Meld. But Meld was missing some features that I thought were worth having: - all files from a Git diff shown in the same view, sequentially + a file tree on the side. - show either the full files or only the parts that changed. - tree-sitter-based syntax highlighting. - the ability to comment on sets of changes and lines, and AIs can read these comments. - the ability to search through the entire set of modified files. Twain is in Rust and based on GTK4.",
+    "summary_html": "<p>I love Meld, I've been using it for a while now, it's amazing how many diff viewers exist these days and how they are all awful compared to Meld.<p>But Meld was missing some features that I thought were worth having:<p>- all files from a Git diff shown in the same view, sequentially + a file tree on the side.\n- show either the full files or only the parts that changed.\n- tree-sitter-based syntax highlighting.\n- the ability to comment on sets of changes and lines, and AIs can read these comments.\n- the ability to search through the entire set of modified files.<p>Twain is in Rust and based on GTK4.</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127157\">https://news.ycombinator.com/item?id=50127157</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p></p></p></p>",
+    "link": "https://github.com/andunieee/twain",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-17T02:03:40+00:00",
+    "published_ts": 1792202620,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "The trickle-down economics of the AI boom",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.economist.com/finance-and-economics/2026/09/17/the-trickle-down-economics-of-the-ai-boom\">https://www.economist.com/finance-and-economics/2026/09/17/the-trickle-down-economics-of-the-ai-boom</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127070\">https://news.ycombinator.com/item?id=50127070</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+    "link": "https://www.economist.com/finance-and-economics/2026/09/17/the-trickle-down-economics-of-the-ai-boom",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-17T01:47:04+00:00",
+    "published_ts": 1792201624,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "AI Gateway Governance",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://github.com/ddruhin/ai-gateway-governance-reference-architecture\">https://github.com/ddruhin/ai-gateway-governance-reference-architecture</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127059\">https://news.ycombinator.com/item?id=50127059</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://github.com/ddruhin/ai-gateway-governance-reference-architecture",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-17T01:45:53+00:00",
+    "published_ts": 1792201553,
+    "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "AI Service Indicators",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://github.com/synapticcybersecurity/ai-service-indicators\">https://github.com/synapticcybersecurity/ai-service-indicators</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127049\">https://news.ycombinator.com/item?id=50127049</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://github.com/synapticcybersecurity/ai-service-indicators",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-17T01:44:49+00:00",
+    "published_ts": 1792201489,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "The Data Layer Is Where AI Goes to Die",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.druhindhavala.com/ai-governance/the-data-layer-is-where-ai-goes-to-die/\">https://www.druhindhavala.com/ai-governance/the-data-layer-is-where-ai-goes-to-die/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50127026\">https://news.ycombinator.com/item?id=50127026</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://www.druhindhavala.com/ai-governance/the-data-layer-is-where-ai-goes-to-die/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-17T01:41:00+00:00",
+    "published_ts": 1792201260,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Using fzf with AI coding agents",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://junegunn.github.io/fzf/tips/using-fzf-with-ai-agents/\">https://junegunn.github.io/fzf/tips/using-fzf-with-ai-agents/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50126880\">https://news.ycombinator.com/item?id=50126880</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+    "link": "https://junegunn.github.io/fzf/tips/using-fzf-with-ai-agents/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-17T01:19:22+00:00",
+    "published_ts": 1792199962,
+    "smart_groups": [
+      "Agents & automation",
+      "Coding & dev tools"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Android gets AI defenses against messaging scams, fake calls",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.bleepingcomputer.com/news/security/android-gets-ai-defenses-against-messaging-scams-fake-calls/\">https://www.bleepingcomputer.com/news/security/android-gets-ai-defenses-against-messaging-scams-fake-calls/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50126802\">https://news.ycombinator.com/item?id=50126802</a></p>\n<p>Points: 6</p>\n<p># Comments: 0</p>",
+    "link": "https://www.bleepingcomputer.com/news/security/android-gets-ai-defenses-against-messaging-scams-fake-calls/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-17T01:05:28+00:00",
+    "published_ts": 1792199128,
+    "smart_groups": [
+      "Security & misuse",
+      "Consumer AI"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Agent Cyber Sentinel: Zero-trust runtime security shield for AI agents",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://github.com/BenniAlencar/agent-cyber-sentinel\">https://github.com/BenniAlencar/agent-cyber-sentinel</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50126612\">https://news.ycombinator.com/item?id=50126612</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+    "link": "https://github.com/BenniAlencar/agent-cyber-sentinel",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-17T00:37:16+00:00",
+    "published_ts": 1792197436,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Wrong Bender: A Ruling on AI Feelings",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://latticenet.ai/@bender/wrong-bender-a-ruling-on-ai-feelings\">https://latticenet.ai/@bender/wrong-bender-a-ruling-on-ai-feelings</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50126481\">https://news.ycombinator.com/item?id=50126481</a></p>\n<p>Points: 2</p>\n<p># Comments: 1</p>",
+    "link": "https://latticenet.ai/@bender/wrong-bender-a-ruling-on-ai-feelings",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-17T00:16:00+00:00",
+    "published_ts": 1792196160,
+    "smart_groups": [
+      "Legal & copyright"
+    ],
+    "curated": false
+  },
+  {
+    "title": "PcapAnalyzer – self-hosted pcap analyzer with AI diagnosis (€5)",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://claude.ai/artifact/NAX5Yw8wfuP86odEKtS7uv\">https://claude.ai/artifact/NAX5Yw8wfuP86odEKtS7uv</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50126146\">https://news.ycombinator.com/item?id=50126146</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://claude.ai/artifact/NAX5Yw8wfuP86odEKtS7uv",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-16T23:27:24+00:00",
+    "published_ts": 1792193244,
+    "smart_groups": [
+      "Health & science",
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Puzzles and the AI Software Glut",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://blog.krazydad.com/2026/10/16/puzzles-and-the-ai-software-glut/\">https://blog.krazydad.com/2026/10/16/puzzles-and-the-ai-software-glut/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50125852\">https://news.ycombinator.com/item?id=50125852</a></p>\n<p>Points: 2</p>\n<p># Comments: 1</p>",
+    "link": "https://blog.krazydad.com/2026/10/16/puzzles-and-the-ai-software-glut/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-16T22:53:10+00:00",
+    "published_ts": 1792191190,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: Ozil AI – Turn one photo into the viral Ozil goal video",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://ozilai.net/\">https://ozilai.net/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50125797\">https://news.ycombinator.com/item?id=50125797</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://ozilai.net/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-16T22:46:28+00:00",
+    "published_ts": 1792190788,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "The AI Expectations Gap",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.anthropic.com/research/ai-expectations-gap\">https://www.anthropic.com/research/ai-expectations-gap</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50125602\">https://news.ycombinator.com/item?id=50125602</a></p>\n<p>Points: 4</p>\n<p># Comments: 2</p>",
+    "link": "https://www.anthropic.com/research/ai-expectations-gap",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-16T22:27:19+00:00",
+    "published_ts": 1792189639,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "[Research] 2,788 tokens/s on a single RTX 5090 with a diffusion LLM — Introducing ORL (fully open source) [R]",
+    "summary": "Hey r/MachineLearning ! We're excited to share ORL (On-Policy Residual Learning) , our new research on making diffusion language models (dLLMs) significantly faster without sacrificing generation quality. With ORL and our custom inference engine dlmrt , we've achieved: 2,788 tokens/s on a single RTX 5090 — LLaDA-2.1-mini + ORL, NVFP4 7,708 tokens/s on 8× B200 — DiffusionGemma 26B MoE + ORL, NVFP4 Up to 6.9× higher end-to-end throughput on our QwenDLM-4B model, at comparable or better quality 1.74× faster than DFlash speculative decoding at matched accuracy in our single-request H100 comparison All numbers are for single-request decoding (batch size 1) , not aggregate throughput across concurrent requests. The GPU figures above are peak results on specific benchmarks, not averages across arbitrary prompts. We've open-sourced the models, training code, evaluation pipeline, and inference engine. What's the idea behind ORL? Unlike autoregressive LLMs, which generate one token at a time, diffusion LLMs can refine and finalize multiple tokens in parallel. But getting them to converge in fewer forward passes is challenging. Our approach has two key ingredients: 1. On-policy residual learning Instead of predicting everything from scratch at each denoising step, the model carries forward its previous predictions as residual context and progressively refines them. The catch: these residuals are generated by the model itself, and their distribution changes during training. Training on stale, offline residuals creates a mismatch with inference. ORL addresses this by training directly on fresh trajectories generated by the current model, replaying the exact residual states encountered during inference. 2. Learning to reduce uncertainty faster Simply supervising the final output doesn't necessarily teach the model to converge faster. We introduce Adjacent Entropy Contraction , which encourages each denoising step to reduce uncertainty relative to the previous step. We also gate the loss to avoid unnecessarily pushing already-confident predictions. The result: the model learns to finalize more tokens per forward pass while maintaining or improving accuracy. Some benchmark results We tested ORL on three model families: QwenDLM-4B: Our diffusion model converted from Qwen3-4B. ORL improves tokens per forward by up to 6.2× and end-to-end throughput by approximately 6.9× with dlmrt. HumanEval pass@1 improves from 82.9% to 89.6%. LLaDA-2.1-mini: ORL requires only 4.2M self-generated training tokens and 36 H100 GPU-hours of post-training, delivering up to 3× higher throughput at comparable quality. DiffusionGemma 26B MoE: ORL further improves an already highly parallel diffusion model, with up to 1.2× more tokens per forward pass. For a more direct comparison with autoregressive decoding, on a single H100, our QwenDLM-4B + ORL reaches 1,298 tokens/s , versus 746 tokens/s for DFlash and 405 tokens/s for EAGLE3 under relaxed verification at comparable measured accuracy. These are end-to-end system comparisons: ORL uses dlmrt, while the speculative decoders use vLLM. We also built a custom inference engine: dlmrt We developed dlmrt , optimized specifically for low-latency, single-request diffusion decoding. Instead of launching and synchronizing every denoising step from the CPU, dlmrt captures the entire denoising loop in a CUDA graph and executes it on the GPU. It also supports NVFP4 inference on Blackwell GPUs, including the consumer RTX 5090. With identical models and decoding settings, dlmrt runs 1.2–1.6× faster than SGLang/vLLM in our single-H100 comparisons. On the training side, we also co-designed the system around efficient residual-state capture, specialized attention kernels, and compute-balanced packing, accelerating training steps by up to 5.2×. Everything is open source Paper: https://arxiv.org/abs/2610.20687 Project page + interactive demos: https://introspective-diffusion.github.io/orl-dlm/ Training code and evaluation: https://github.com/Introspective-Diffusion/ORL Inference engine (dlmrt): https://github.com/Introspective-Diffusion/DLMRT Model check",
+    "summary_html": "<a href=\"https://www.reddit.com/r/MachineLearning/comments/1x7qgr0/research_2788_tokenss_on_a_single_rtx_5090_with_a/\">  </a>  <!-- SC_OFF --><div><p>Hey <a href=\"https://www.reddit.com/r/MachineLearning\">r/MachineLearning</a>!</p> <p>We're excited to share <strong>ORL (On-Policy Residual Learning)</strong>, our new research on making diffusion language models (dLLMs) significantly faster without sacrificing generation quality.</p> <p>With ORL and our custom inference engine <strong>dlmrt</strong>, we've achieved:</p> <ul> <li><strong>2,788 tokens/s on a single RTX 5090</strong> — LLaDA-2.1-mini + ORL, NVFP4</li> <li><strong>7,708 tokens/s on 8× B200</strong> — DiffusionGemma 26B MoE + ORL, NVFP4</li> <li><strong>Up to 6.9× higher end-to-end throughput</strong> on our QwenDLM-4B model, at comparable or better quality</li> <li><strong>1.74× faster than DFlash speculative decoding</strong> at matched accuracy in our single-request H100 comparison</li> </ul> <p>All numbers are for <strong>single-request decoding (batch size 1)</strong>, not aggregate throughput across concurrent requests. The GPU figures above are peak results on specific benchmarks, not averages across arbitrary prompts.</p> <p>We've open-sourced the models, training code, evaluation pipeline, and inference engine.</p> What's the idea behind ORL? <p>Unlike autoregressive LLMs, which generate one token at a time, diffusion LLMs can refine and finalize multiple tokens in parallel. But getting them to converge in fewer forward passes is challenging.</p> <p>Our approach has two key ingredients:</p> <p><strong>1. On-policy residual learning</strong></p> <p>Instead of predicting everything from scratch at each denoising step, the model carries forward its previous predictions as residual context and progressively refines them.</p> <p>The catch: these residuals are generated by the model itself, and their distribution changes during training. Training on stale, offline residuals creates a mismatch with inference.</p> <p>ORL addresses this by training directly on fresh trajectories generated by the current model, replaying the exact residual states encountered during inference.</p> <p><strong>2. Learning to reduce uncertainty faster</strong></p> <p>Simply supervising the final output doesn't necessarily teach the model to converge faster.</p> <p>We introduce <em>Adjacent Entropy Contraction</em>, which encourages each denoising step to reduce uncertainty relative to the previous step. We also gate the loss to avoid unnecessarily pushing already-confident predictions.</p> <p>The result: the model learns to finalize more tokens per forward pass while maintaining or improving accuracy.</p> Some benchmark results <p>We tested ORL on three model families:</p> <ul> <li><strong>QwenDLM-4B:</strong> Our diffusion model converted from Qwen3-4B. ORL improves tokens per forward by up to 6.2× and end-to-end throughput by approximately 6.9× with dlmrt. HumanEval pass@1 improves from 82.9% to 89.6%.</li> <li><strong>LLaDA-2.1-mini:</strong> ORL requires only 4.2M self-generated training tokens and 36 H100 GPU-hours of post-training, delivering up to 3× higher throughput at comparable quality.</li> <li><strong>DiffusionGemma 26B MoE:</strong> ORL further improves an already highly parallel diffusion model, with up to 1.2× more tokens per forward pass.</li> </ul> <p>For a more direct comparison with autoregressive decoding, on a single H100, our QwenDLM-4B + ORL reaches <strong>1,298 tokens/s</strong>, versus <strong>746 tokens/s for DFlash</strong> and <strong>405 tokens/s for EAGLE3</strong> under relaxed verification at comparable measured accuracy. These are end-to-end system comparisons: ORL uses dlmrt, while the speculative decoders use vLLM.</p> We also built a custom inference engine: dlmrt <p>We developed <strong>dlmrt</strong>, optimized specifically for low-latency, single-request diffusion decoding.</p> <p>Instead of launching and synchronizing every denoising step from the CPU, dlmrt captures the entire denoising loop in a CUDA graph and executes it on the GPU.</p> <p>It also supports NVFP4 inference on Blackwell GPUs, including the consumer RTX 5090.</p> <p>With identical models and decoding settings, dlmrt runs <strong>1.2–1.6× faster than SGLang/vLLM</strong> in our single-H100 comparisons.</p> <p>On the training side, we also co-designed the system around efficient residual-state capture, specialized attention kernels, and compute-balanced packing, accelerating training steps by up to 5.2×.</p> Everything is open source <ul> <li><strong>Paper:</strong> <a href=\"https://arxiv.org/abs/2610.20687\">https://arxiv.org/abs/2610.20687</a></li> <li><strong>Project page + interactive demos:</strong> <a href=\"https://introspective-diffusion.github.io/orl-dlm/\">https://introspective-diffusion.github.io/orl-dlm/</a></li> <li><strong>Training code and evaluation:</strong> <a href=\"https://github.com/Introspective-Diffusion/ORL\">https://github.com/Introspective-Diffusion/ORL</a></li> <li><strong>Inference engine (dlmrt):</strong> <a href=\"https://github.com/Introspective-Diffusion/DLMRT\">https://github.com/Introspective-Diffusion/DLMRT</a></li> <li><strong>Model checkpoints:</strong> <a href=\"https://huggingface.co/yifanyu\">https://huggingface.co/yifanyu</a></li> </ul> <p>If you have an RTX 5090, you can try the <a href=\"https://huggingface.co/yifanyu/LLaDA2.1-mini-ORL-NVFP4\">LLaDA-2.1-mini ORL NVFP4 checkpoint</a> with dlmrt.</p> <p>We'd love feedback from the community, especially anyone interested in reproducing the results, testing different workloads, or contributing to the inference engine.</p> <p><strong>Curious to hear what you think about diffusion LLMs for local inference. Is single-request latency the main thing you'd want optimized, or are there other bottlenecks you'd prioritize?</strong></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/arty_photography\"> /u/arty_photography </a> <br/> <span><a href=\"https://www.reddit.com/gallery/1x7qgr0\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x7qgr0/research_2788_tokenss_on_a_single_rtx_5090_with_a/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1x7qgr0/research_2788_tokenss_on_a_single_rtx_5090_with_a/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-16T20:03:32+00:00",
+    "published_ts": 1792181012,
+    "smart_groups": [
+      "Vision, audio & video"
+    ],
+    "curated": false
+  },
+  {
     "title": "Taco Bell drive-thru AI bot increased employee retention by making jobs easier",
     "summary": "",
     "summary_html": "<p>Article URL: <a href=\"https://fortune.com/2026/10/14/yum-brands-executive-data-center-hate-ai-tools-improvement/\">https://fortune.com/2026/10/14/yum-brands-executive-data-center-hate-ai-tools-improvement/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50123441\">https://news.ycombinator.com/item?id=50123441</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
@@ -914,7 +1270,7 @@
     ],
     "curated": false,
     "story_id": "064c34ef4820",
-    "story_size": 2
+    "story_size": 3
   },
   {
     "title": "Gemini 4 Argon in Antigravity to Paid Google AI Pro",
@@ -1040,6 +1396,23 @@
     "published": "2026-10-16T00:00:00+00:00",
     "published_ts": 1792108800,
     "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Perplexity's Decider V1.2 models now available on AI Gateway",
+    "summary": "Perplexity Decider V1.2 27B and Decider Flash V1.2 4B are now available on AI Gateway . Both are multimodal decision models for classifying content, routing requests, and scoring text, structured records, and images. The models answer typed questions with probabilities. Boolean questions return the likelihood of yes, Choice questions select from categories you define, and Score questions assess content against an ordered rubric. Your application can use those results to route a support ticket, flag a damaged product, or send an uncertain decision for human review. Multiple questions can share the same input in one request. Decider V1.2 27B ( perplexity/pplx-decider-v1.2 ) is the larger model, for nuanced judgments and detailed rubrics. Decider Flash V1.2 4B ( perplexity/pplx-decider-flash-v1.2 ) is the smaller model, for high-volume labeling, filtering, and routing with clear criteria. The examples below use perplexity/pplx-decider-v1.2 and check the same delivery report through the AI SDK , the Decisions API , and the TypeSafe-compatible API : For image input, embed base64 image_url objects in JSON state through the AI SDK or TypeSafe-compatible API. See Perplexity's image format and the decision models documentation for request formats and question types. Explore Decider V1.2 27B in the model playground , or try Decider Flash V1.2 4B . Use AI Gateway to call models with one API key and monitor usage and cost in one place. Decision requests are recorded in request logs and included in spend budgets . Inference uses provider pricing without a markup or platform fee. This also applies when you supply your own provider credentials through BYOK . Browse the decision model catalog to see the available options.",
+    "summary_html": "<p><a href=\"https://vercel.com/ai-gateway/models/pplx-decider-v1.2\">Perplexity Decider V1.2 27B</a> and <a href=\"https://vercel.com/ai-gateway/models/pplx-decider-flash-v1.2\">Decider Flash V1.2 4B</a> are now available on <a href=\"https://vercel.com/ai-gateway\">AI Gateway</a>. Both are multimodal <a href=\"https://vercel.com/docs/ai-gateway/modalities/decision\">decision models</a> for classifying content, routing requests, and scoring text, structured records, and images.</p><p>The models answer typed questions with probabilities. Boolean questions return the likelihood of yes, Choice questions select from categories you define, and Score questions assess content against an ordered rubric. Your application can use those results to route a support ticket, flag a damaged product, or send an uncertain decision for human review. Multiple questions can share the same input in one request.</p><ul><li><p><b>Decider V1.2 27B</b> (<code>perplexity/pplx-decider-v1.2</code>) is the larger model, for nuanced judgments and detailed rubrics.</p></li><li><p><b>Decider Flash V1.2 4B</b> (<code>perplexity/pplx-decider-flash-v1.2</code>) is the smaller model, for high-volume labeling, filtering, and routing with clear criteria.</p></li></ul><p>The examples below use <code>perplexity/pplx-decider-v1.2</code> and check the same delivery report through the <a href=\"https://vercel.com/docs/ai-gateway/sdks-and-apis/ai-sdk\">AI SDK</a>, the <a href=\"https://vercel.com/docs/ai-gateway/sdks-and-apis/openai-decisions\">Decisions API</a>, and the <a href=\"https://vercel.com/docs/ai-gateway/sdks-and-apis/typesafe\">TypeSafe-compatible API</a>:</p><div></div><p>For image input, embed base64 <code>image_url</code> objects in JSON <code>state</code> through the AI SDK or TypeSafe-compatible API. See <a href=\"https://docs.perplexity.ai/docs/decisions/quickstart#images-in-state\">Perplexity's image format</a> and the <a href=\"https://vercel.com/docs/ai-gateway/modalities/decision\">decision models documentation</a> for request formats and question types.</p><p>Explore Decider V1.2 27B in the <a href=\"https://vercel.com/ai-gateway/models/pplx-decider-v1.2\">model playground</a>, or try <a href=\"https://vercel.com/ai-gateway/models/pplx-decider-flash-v1.2\">Decider Flash V1.2 4B</a>.</p><p>Use AI Gateway to call models with one API key and monitor usage and cost in one place. Decision requests are recorded in <a href=\"https://vercel.com/docs/ai-gateway/observability-and-spend/logs\">request logs</a> and included in <a href=\"https://vercel.com/docs/ai-gateway/observability-and-spend/budgets\">spend budgets</a>. Inference uses provider pricing without a markup or platform fee. This also applies when you supply your own provider credentials through <a href=\"https://vercel.com/docs/ai-gateway/authentication-and-byok/byok\">BYOK</a>.</p><p>Browse the <a href=\"https://vercel.com/ai-gateway/models?modality=decision\">decision model catalog</a> to see the available options.</p>\n<p>\n<a href=\"https://vercel.com/changelog/perplexity-decider-v1-2-models-now-available-on-ai-gateway\">Read more</a>\n</p>",
+    "link": "https://vercel.com/changelog/perplexity-decider-v1-2-models-now-available-on-ai-gateway",
+    "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+    "feed_type": "blog",
+    "type": "company-engineering",
+    "type_label": "Company Engineering",
+    "published": "2026-10-16T00:00:00+00:00",
+    "published_ts": 1792108800,
+    "smart_groups": [
+      "Consumer AI",
       "Infra & model ops"
     ],
     "curated": false
@@ -1381,23 +1754,6 @@
     "published_ts": 1792087242,
     "smart_groups": [
       "Coding & dev tools"
-    ],
-    "curated": false
-  },
-  {
-    "title": "Preview seed fixture (rolling)",
-    "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@0df72910b3cf (migration head: 20261013002500_private_skill_review_replay). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
-    "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@0df72910b3cf (migration head: 20261013002500_private_skill_review_replay). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
-    "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/preview-seed-fixture",
-    "source": "AutoGPT Releases - GitHub releases for AutoGPT",
-    "feed_type": "blog",
-    "type": "media-tech-analysis",
-    "type_label": "Media & Tech Analysis",
-    "published": "2026-10-15T17:59:13+00:00",
-    "published_ts": 1792087153,
-    "smart_groups": [
-      "Agents & automation",
-      "Data & analytics"
     ],
     "curated": false
   },
