@@ -1,18 +1,20 @@
-// Run: node core/web/scripts/verify-topics-live.mjs /path/to/playwright/index.mjs
+// Run: node core/web/scripts/verify-topics-live.mjs
 // Builds 4u, reads the live digest, and checks the rendered labels after reload.
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import { mkdir, writeFile } from 'node:fs/promises';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { fileURLToPath } from 'node:url';
 import { preview } from 'vite';
+import { chromium } from 'playwright';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-const { chromium } = await import(pathToFileURL(process.argv[2]).href);
 const result = spawnSync('npm', ['run', 'build'], {
   cwd: root, env: { ...process.env, VITE_VERTICAL: '4u' }, stdio: 'inherit',
 });
 assert.equal(result.status, 0, 'production build');
-const response = await fetch('https://4u.ai/data/4u/archive/news/topics/topics_latest.json');
+const response = await fetch('https://4u.ai/data/4u/archive/news/topics/topics_latest.json', {
+  signal: AbortSignal.timeout(30_000),
+});
 assert.equal(response.status, 200, 'live digest response');
 const payload = await response.json();
 const directory = `${root}dist/data/4u/archive/news/topics`;

@@ -2,7 +2,7 @@
 
 ## Now
 
-- Topics covered-day label implemented; awaiting independent verification. Uses existing digest `date` for heading/title. Web tests: 9 passed; declared test: 62 passed; production build and live-data browser reload: passed (2026-10-16, including UTC+14). Reproduce with `node core/web/scripts/verify-topics-live.mjs core/web/node_modules/playwright/index.mjs` (requires Playwright and Chromium). Full lint reports 12 errors and 8 warnings in unchanged files; changed-file lint passes. No generated JSON changes.
+- Topics covered-day label awaits independent verification. Uses existing digest `date` for heading/title. Rework exposes web verification through the existing declared host check: `run_declared_check({"check":"test","args":["-s","core/web/tests","-v"]})`. Passed all three checks: 9 web tests; 4 Topics tests reject the old fixed labels in a temporary copy; production build renders live date 2026-10-16 in heading/title and after reload in UTC+14. Plain declared `test` also passed 62 Python tests. Playwright is pinned in the web dev dependencies; setup and selective check commands are in README. No generated JSON changes.
 
 ## Ideas
 
