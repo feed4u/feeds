@@ -1,9 +1,41 @@
 {
-  "generated_at": "2026-10-17T12:20:22.682935+00:00",
+  "generated_at": "2026-10-17T18:40:09.454147+00:00",
   "date": "2026-10-17",
-  "total_items": 7,
+  "total_items": 9,
   "next_chunk": "archive/blog/daily/2026-10-16.json",
   "items": [
+    {
+      "title": "HTB: Eloquia",
+      "summary": "Eloquia is a Windows box hosting a Django blogging platform that supports OAuth login through a Google clone. I\u2019ll find an AngularJS template injection in article bodies and use AngularJS directives to bypass the content security policy. With that, I\u2019ll get admin access to the site two ways, by stealing the admin bot\u2019s cookie and by abusing the OAuth flow to link the admin\u2019s account to an account I control. As admin, I\u2019ll upload a malicious SQLite extension through the Django admin panel and load it from the SQL Explorer to get a shell. I\u2019ll use Python to decrypt saved Edge passwords with DPAPI and pivot to the next user. That user can write to the folder of a prototype .NET service that runs as SYSTEM, which I\u2019ll abuse three ways, with an AppDomainManager injection in its config file, a DLL hijack, and breaking the service so I can overwrite its executable.",
+      "summary_html": "Eloquia is a Windows box hosting a Django blogging platform that supports OAuth login through a Google clone. I\u2019ll find an AngularJS template injection in article bodies and use AngularJS directives to bypass the content security policy. With that, I\u2019ll get admin access to the site two ways, by stealing the admin bot\u2019s cookie and by abusing the OAuth flow to link the admin\u2019s account to an account I control. As admin, I\u2019ll upload a malicious SQLite extension through the Django admin panel and load it from the SQL Explorer to get a shell. I\u2019ll use Python to decrypt saved Edge passwords with DPAPI and pivot to the next user. That user can write to the folder of a prototype .NET service that runs as SYSTEM, which I\u2019ll abuse three ways, with an AppDomainManager injection in its config file, a DLL hijack, and breaking the service so I can overwrite its executable.",
+      "link": "https://0xdf.gitlab.io/2026/10/17/htb-eloquia.html",
+      "source": "https://0xdf.gitlab.io/feed.xml",
+      "feed_type": "blog",
+      "type": "security-researcher-blogs",
+      "type_label": "Security Researcher Blogs",
+      "published": "2026-10-17T14:45:00+00:00",
+      "published_ts": 1792248300,
+      "smart_groups": [
+        "Identity / Access"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Phishing Is Now A Criminal Impersonation Industry. Here Is How To Fight Back",
+      "summary": "For years, we described phishing as an email problem: an attacker writes a convincing message, sends it to thousands of people and waits for someone to click. That model is now outdated.",
+      "summary_html": "<div>\n<a href=\"https://blog.knowbe4.com/phishing-is-now-a-criminal-impersonation-industry.-here-is-how-to-fight-back\">  </a>\n</div>\n<p>For years, we described phishing as an email problem: an attacker writes a convincing message, sends it to thousands of people and waits for someone to click. That model is now outdated.</p>",
+      "link": "https://blog.knowbe4.com/phishing-is-now-a-criminal-impersonation-industry.-here-is-how-to-fight-back",
+      "source": "KnowBe4 Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-17T13:53:04+00:00",
+      "published_ts": 1792245184,
+      "smart_groups": [
+        "Phishing / Social Engineering"
+      ],
+      "curated": false
+    },
     {
       "title": "Frida 17.24.1 Released",
       "summary": "A quick follow-up to yesterday\u2019s release. Frida.Compiler got a lot better at running code written for Node.js, @hsorbo taught the Swift ApiResolver to read symbol tables, and the .NET packages now ship with the compiler built in. Node.js compatibility Getting the @frida/net examples working again turned into a tour of what Frida.Compiler\u2019s Node.js shims were missing. Those examples run an FTP server, a Koa-based HTTP server and an IRC client inside the target process, built on packages written for Node.js that know nothing about Frida. They all work now, and the fixes benefit any agent that pulls in such packages. The biggest one is require() . Node hands it module.exports , which for a module like events is EventEmitter itself, so require(\u201cevents\u201d) is expected to return a constructor. We returned the ES module namespace, and anything written in CommonJS style got an object with a default property instead. The named exports are now merged into the default export, so both styles work. Builtins we don\u2019t support, such as child_process , zlib , tls and worker_threads , now resolve to an empty module, like the old frida-compile did, so a package that only touches them on an optional path loads instead of failing at bundle time. And the globals that Node code tends to assume are injected: global as an alias for globalThis , Blob , ReadableStream and Response . A few shims are new. stream/web is backed by @frida/web-streams , depd by a version without the deprecation warnings, as the real one needs V8 stack traces, and @frida/fetch provides the Fetch API classes so code can probe for them. The existing ones got updates too. crypto now has randomBytes() , randomFillSync() and getRandomValues() , drawing from the OS CSPRNG, and Hash.update() honors views into a larger buffer along with the input encoding, thanks to @Furtif and @Flechaa , and validates hex input, thanks to H\u00e5vard. Hash.copy() is there as well. http-parser-js is synced with upstream and no longer trips strict mode, thanks to @thinhbuzz . process grew stdin , stdout and stderr , which packages like debug check for, and buffer provides Blob . Swift H\u00e5vard found that the Swift ApiResolver only collected functions from a module\u2019s exports and its class vtables, never from its symbol table. A module that keeps its symbols thus still listed only its exported functions, leaving internal methods, free functions and value type initializers invisible to functions: queries. The symbol table is now walked as well, with an address already seen through the exports listed once. .NET 17.24.0 made it to NuGet, and the frida-net CI now builds frida-core with the compiler backend enabled, so from this release the Frida.NET.Runtime packages expose Frida.Compiler , except on Linux mips64 where Go cannot cross-compile with cgo. Windows arm64 is built on a native runner for the same reason. Darwin Our V8 build linked CoreFoundation for abseil\u2019s time zone support, which made the V8-flavored agent depend on more than libSystem. The few calls involved are now stubbed, with the local time zone read from /etc/localtime instead. Enjoy! Changelog compiler: Return the default export from require() , with the named exports merged into it, so CommonJS-style code gets what Node gives it. compiler: Stub out unsupported Node builtins as empty modules. compiler: Inject global , Blob , ReadableStream and Response as globals. compiler: Add stream/web , depd and @frida/fetch shims. compiler: Bump @frida/crypto to 1.1.0, adding randomBytes() , randomFillSync() , getRandomValues() and Hash.copy() , and fixing Hash.update() for views and input encodings. Thanks @Furtif , @Flechaa and @hsorbo ! compiler: Bump @frida/http-parser-js to 1.1.0, syncing with upstream and fixing a strict mode violation. Thanks @thinhbuzz ! compiler: Bump @frida/process to 1.3.0, adding stdin , stdout and stderr . compiler: Bump @frida/buffer to 7.1.0, adding Blob . swift-api-resolver: List functions from the symbol table, so internal methods, free functions and value type initializers show up in functions: queries. Thanks @hsorbo ! net: Enable the compiler backend in CI, so the NuGet packages expose Frida.Compiler . v8: Stop linking CoreFoundation on Darwin. process: Fix glib-mkenums warnings.",
