@@ -107,6 +107,26 @@ day's topics exist, the briefing uses them as its sections.
 Tests: `python3 -m unittest discover -s core/code/base/tests`; web:
 `cd core/web && npm test`
 
+Topics page acceptance checks (web suite, rejection of the old fixed labels,
+and production build/browser reload using the live 4u digest):
+
+```sh
+npm --prefix core/web ci
+cd core/web && npx playwright install chromium
+```
+
+From the repository root, run
+`python3 -m unittest discover -s core/web/tests -v`.
+Independent Agent Console reviewers can run the same checks on the host with
+`run_declared_check({"check":"test","args":["-s","core/web/tests","-v"]})`.
+This uses the existing declared `test` entry and avoids Vite writes in the
+reviewer's read-only sandbox. Add `-k test_web_suite`,
+`-k test_old_labels_are_rejected`, or `-k test_live_digest_build_and_reload`
+to select one check. Missing dependencies or unavailable live data fail the check;
+they are not skipped. The browser check prints the digest date, rendered title,
+and reload result and saves `/tmp/news-topics-live.png`. It changes only generated
+web assets; the regression check mutates a temporary copy, never the source page.
+
 ## License
 
 AGPL-3.0 — see [LICENSE](LICENSE).

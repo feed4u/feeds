@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 import { Layers } from "lucide-react";
 import { vertical } from "@/config/verticals";
 import { Layout } from "@/components/Layout";
@@ -15,13 +15,14 @@ export default function Topics() {
     retry: false,
   });
 
-  const day = data ? format(new Date(`${data.date}T12:00:00Z`), "EEEE, MMMM d") : null;
+  const day = data ? format(parseISO(data.date), "EEEE, MMMM d") : null;
+  const heading = day ? `Topics for ${day}` : "Topics";
   const multi = data ? data.topics.filter((topic) => topic.size > 1).length : 0;
 
   return (
     <Layout>
       <Helmet>
-        <title>Today's topics — {vertical.metaTitle}</title>
+        <title>{heading} — {vertical.metaTitle}</title>
         <meta
           name="description"
           content={`The day's stories from ${vertical.logoText.primary}${vertical.logoText.suffix}, grouped by topic.`}
@@ -32,7 +33,7 @@ export default function Topics() {
         <div className="flex items-center gap-3">
           <Layers className="h-8 w-8 text-primary" />
           <div>
-            <h1 className="text-3xl font-bold text-foreground">Today's topics</h1>
+            <h1 className="text-3xl font-bold text-foreground">{heading}</h1>
             <p className="text-[15px] text-muted-foreground">
               {data
                 ? `${data.totalStories} stories from ${day} (UTC) in ${data.topics.length} topics, ${multi} reported more than once. Open a topic to see its stories.`
