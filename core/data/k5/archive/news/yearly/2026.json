@@ -61,6 +61,124 @@
     "curated": false
   },
   {
+    "title": "Microsoft Windows Cloud Files Mini Filter Driver CldiStreamCompleteRequest use-after-free vulnerability",
+    "summary": "",
+    "summary_html": "",
+    "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2426",
+    "source": "Talos - Vulnerability Reports",
+    "feed_type": "news",
+    "type": "vulnerabilities-cves-exploits",
+    "type_label": "Vulnerabilities, CVEs & Exploits",
+    "published": "2026-10-18T00:00:00+00:00",
+    "published_ts": 1792281600,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Microsoft Windows Cloud Files Mini Filter Driver CldiStreamPrepareRequestForMoreProcessing Type Confusion vulnerability",
+    "summary": "",
+    "summary_html": "",
+    "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2445",
+    "source": "Talos - Vulnerability Reports",
+    "feed_type": "news",
+    "type": "vulnerabilities-cves-exploits",
+    "type_label": "Vulnerabilities, CVEs & Exploits",
+    "published": "2026-10-18T00:00:00+00:00",
+    "published_ts": 1792281600,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Robust Mahalanobis Applications : Surveillance anomaly detection",
+    "summary": "Online Robust Mahalanobis scores each sample by how far it is from the centre of the healthy joint residual, measured in units of the residual's own spread. What it is The healthy residuals of a robot joint form a cloud around zero. Its shape is not a sphere: the joints are correlated, and a fault along one direction costs more than a fault along another. The classical way to measure distance in this cloud is the Mahalanobis distance: subtract the mean, divide by the covariance, take the Euclidean norm of the result. A sample that is far in units of its own distribution is anomalous. The classical estimator uses the sample mean and the sample covariance. Both are sensitive to outliers. A single extreme sample can drag the mean far from the cloud, and inflate the covariance along its own direction so much that the same outlier looks normal under the new metric — the masking effect. Robust estimates of location and scatter fix this. This module uses the geometric median for location and the median covariation matrix (MCM) for scatter. Both are 50 % breakdown estimators: half the samples must be corrupted before the estimate moves, against one outlier for the mean. Both are estimated online by averaged stochastic gradient (ASGD), one sample at a time. The score of a sample is the Mahalanobis distance under the current MCM: D(x) = sqrt( sum_j (1 / delta_j) * ^2 ) where m_bar is the current location estimate, P_j is the j-th eigenvector of the averaged MCM V_bar, and delta_j the corresponding eigenvalue. The sum is over the d eigenvalues: it is the Mahalanobis distance written without inverting the matrix, using the eigendecomposition instead. How it works Two running estimates are maintained. m tracks the geometric median, V tracks the MCM. Both are updated by averaged stochastic gradient, one sample at a time. For the geometric median, the paper's recurrence is m_{n+1} = m_n + gamma_{n+1} * (X_{n+1} - m_n) / ||X_{n+1} - m_n|| m_bar_{n+1} = m_bar_n + (1 / (n + 2)) * (m_{n+1} - m_bar_n) The first line is a stochastic gradient step toward the sample, normalised so that every step has the same length. The normalisation is the robustness: a distant sample moves m by at most gamma_{n+1}, no matter how far it is. The second line averages the iterates, which accelerates convergence (Cardot, Cénac and Zitt 2013). For the MCM, the same shape: V_{n+1} = V_n + gamma_{n+1} * (outer_{n+1} - V_n) / ||outer_{n+1} - V_n||_F V_bar_{n+1} = V_bar_n + (1 / (n + 2)) * (V_{n+1} - V_bar_n) with outer_{n+1} = (X_{n+1} - m_bar_n) (X_{n+1} - m_bar_n)^T the centred outer product of the new sample. The gradient is again normalised, this time to unit Frobenius norm. The step size is gamma_n = c_gamma * (n + n0) ** (-gamma_exp) with gamma_exp in (1/2, 1) for convergence (Cardot and Godichon-Baggioni 2017). The first n_init samples are not used for the ASGD updates. They are kept in a small buffer and used to compute an initial estimate of the location and scatter, from which the ASGD starts. Without the initialisation the ASGD gradients, whose scale is unit and not the scale of the data, would never reach the data. Smallest example import numpy as np from dense_armor.utility.anomaly.mahalanobis import ( OnlineRobustMahalanobis, ) rng = np.random.default_rng(0) det = OnlineRobustMahalanobis(feature_keys=[\"a\", \"b\"], n_init=200) for _ in range(500): x = rng.standard_normal(2) det.learn_one({\"a\": float(x[0]), \"b\": float(x[1])}) print(f\"healthy {det.score_one({'a': 0.0, 'b': 0.0}):.3f}\") print(f\"far {det.score_one({'a': 10.0, 'b': 10.0}):.3f}\") healthy 0.080 far 15.880 The healthy point sits at the centre of the cloud: under a standard bivariate Gaussian its Mahalanobis distance is small, and the score is 0.080. The far point is ten units away along both axes: the distance is large, and the score rises to 15.880, well past the default threshold of 7.0, the classical value for low-dimensional Gaussians. On a real arm The residual of joints 1-4 on a SyntheticArm payload fault. The fault (5 kg added at t = 2 s) shifts the residual on joints 1-5 by tens of N·m; the healthy run stays within ±0.15 N·m. from pathlib import Path from dense_armor.utility.anomaly.mahalanobis import ( OnlineRobustMahalanobis, ) from dense_armor.utility.datasets import SyntheticArm ds = SyntheticArm( Path(\"test/fixtures/urdf/panda.urdf\"), period_s=2.0, rate_hz=50.0, n_cycles=4, fault_at_s=2.0, fault=\"payload\", payload_mass=5.0, noise_std=(1e-3, 5e-3, 5e-2), seed=0, ) det = OnlineRobustMahalanobis( feature_keys=[\"r0\", \"r1\", \"r2\", \"r3\"], threshold=7.0, ) for sig, _ in ds.stream(): q, qd, qdd = ds.trajectory(sig.t) tau_nom = ds.nominal_torque(q, qd, qdd) x = {f\"r{j}\": float(sig[f\"tau_{j}\"] - tau_nom[j]) for j in range(4)} _ = det.score_one(x) _ = det.learn_one(x) ￼ Top: SyntheticArm. The fault sends the score past 100 in the first few samples after t = 2 s, then the score drops as the ASGD updates the location and the scatter estimate towards the new distribution — but the detector has already flagged every post-fault sample until the update catches up. Bottom: DriftStream. The score rises cleanly at the drift and stays above the threshold. The learned 95 % region¶ The Mahalanobis distance is a scalar, but the metric it uses is a d-dimensional ellipsoid. Plotting it in two dimensions makes the shape visible. ￼ Two joints' residuals, first 200 samples of healthy training (green dots), then 30 fault samples (red crosses). The black ellipse is the 95 % quantile of the MCM currently estimated: a new sample inside the ellipse has Mahalanobis distance below chi2_2(0.95), outside it is flagged. The fault samples all fall outside. Numbers¶ SyntheticArm (200 samples, 100 healthy, 100 fault) and DriftStream (2000 samples, one sudden drift at half), every detector built with its defaults. StreamProtocolROC-AUCFalse alarms on the healthy partThreshold at the last healthy sampleSyntheticArmlearn-on-healthy1.0000.0007.0000SyntheticArmlearn-on-all1.0000.0007.0000DriftStreamlearn-on-healthy0.9930.0007.0000DriftStreamlearn-on-all0.9380.0007.0000 The default n_init is 100, and on SyntheticArm the healthy part has exactly 100 samples: in the benchmark run the detector is still in its initialisation when the healthy part ends, so every healthy score is 0.0 and the false-alarm value 0.000 on SyntheticArm follows from that, not from a decision of the detector. The class is the most accurate of the five on this repository's benchmark and the fastest (0.036 ms per sample on the arm). Details¶ Where the rules come from¶ Guillot, Godichon-Baggioni, Robin and Sansonnet (arXiv:2601.03957) introduce the online median and MCM in Section 3. The recurrence for the geometric median is equation 8, for the MCM equation 10. The Mahalanobis distance under the MCM is Equation (1) in Section 2.2. The step size gamma_n = c * n ** -gamma with gamma in (1/2, 1) is from Cardot, Cénac and Zitt (2013) and Cardot and Godichon-Baggioni (2017). The paper's full method also reconstructs the eigenvalues of the true covariance from the MCM by a Robbins-Monro scheme (equations 4-5) and scales the distances by chi2_d(0.5) / med(D_1..n) (equation 1). Neither step is implemented here. Choices stated explicitly¶ Offline initialisation. The geometric median is initialised by the Weiszfeld algorithm (Guillot et al., equation 6). The MCM is initialised by the empirical average of the centred outer products, not the Weiszfeld offline MCM of Section A.2: with n_init of tens of samples the average is more stable than the Weiszfeld iteration, which for small samples can converge to a rank-one solution. The online ASGD refines the estimate as soon as new samples arrive. Step length cap. A max_step_frac cap on the ASGD step (default 0.1) prevents a single large sample from moving V by more than a fraction of its own norm. Without the cap, c_gamma = 1 and gamma_exp = 0.7 can move V by 1 in Frobenius norm in one step, much larger than the scale of the data, and the average oscillates through zero. This is a numerical safeguard, not part of the paper. Eigenvalue floor. Every eigenvalue of V_bar is floored at trace(V_bar) / d * 1e-3. The floor keeps the score bounded when the ASGD first steps drive V through zero, without changing the shape of the metric. Also a numerical safeguard. No chi-squared scaling. The paper's equation 1 divides the distances by the median of the past distances, so that the calibrated threshold is the median of a chi2_d distribution. This module does not apply the scaling: the threshold is the one the user calibrates, and the default 7.0 is the classical value for low-dimensional Gaussians. Step index. Guillot et al. use gamma_n = c_gamma (n + n0)^(-gamma) with n counted from the first sample (0.0395 c_gamma for the first update after n_init = 100 with gamma = 0.7). Here n also counts from the first sample (n = n_init + k at the k-th update) and the offset is one larger, gamma_n = c_gamma (n + n0 + 1)^(-gamma): the first update after n_init = 100 uses 0.0393 c_gamma. The averaged estimates use the weight 1 / (n + 1) with the same n, which is the paper's 1 / (n + 2) for the previous step index. The offset of one in gamma_n is a choice of this implementation. Threshold. A fixed float, default 7.0. Measured cost¶ At the benchmark defaults (n_init=100, 4 features), on one CPU thread: 0.036 ms per sample for learn_one + score_one on the arm stream; memory flat: d + d^2 arrays, independent of the stream length. The budget_s declared by the class is 0.005 s. The bug the module fixes¶ The literal Section 3.2 update of Guillot et al. (page 7) without the step cap and without the eigenvalue floor was reimplemented outside the library and run on the 80 healthy residuals that follow n_init = 20, on the issue scenario (joint 1 of the SyntheticArm payload fault, period_s=2.0, rate_hz=50.0, n_cycles=2, payload_mass=5.0, seed 0). With c_gamma = 1.0 the running average V_bar crosses the zero matrix: the final trace(V_bar) is -2.88e-04. Scoring each sample before the update, 19 of the 80 steps have a non-positive eigenvalue and the maximum score is 11.36; scoring after the update, 20 steps and a maximum of 5.96. The cause is the scale of the normalised step against the scale of V: the step has Frobenius norm ~0.04, while V itself is of order 2.6e-03, so V_bar moves through the origin and 1 / delta diverges. With c_gamma equal to the variance of the residual (2.57e-03): 0 steps, trace(V_bar) = +1.37e-03, maximum 3.70. The two guards are max_step_frac = 0.1 and the eigenvalue floor trace(V_bar) / d * 1e-3. On the same 80 samples with the guards the maximum stays below the threshold. The reproduction is the module's test test_mahalanobis_healthy_scores_stay_below_threshold, which uses the 100 healthy residuals of the issue scenario with n_init = 20 and asserts the maximum is 3.739 < 7 (80 of the 100 scores non-zero). OCSVM is the alternative when the fault is not a shift but a change of the distribution's shape. Link: https://tatopenn-cell.github.io/Dense-Armor/anomaly/mahalanobis/ submitted by /u/Creative-Feature-264 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Online Robust Mahalanobis scores each sample by how far it is from the centre of the healthy joint residual, measured in units of the residual's own spread. </p> <ol> <li>What it is</li> </ol> <p>The healthy residuals of a robot joint form a cloud around zero. Its shape is not a sphere: the joints are correlated, and a fault along one direction costs more than a fault along another. The classical way to measure distance in this cloud is the Mahalanobis distance: subtract the mean, divide by the covariance, take the Euclidean norm of the result. A sample that is far in units of its own distribution is anomalous.</p> <p>The classical estimator uses the sample mean and the sample covariance. Both are sensitive to outliers. A single extreme sample can drag the mean far from the cloud, and inflate the covariance along its own direction so much that the same outlier looks normal under the new metric — the masking effect. Robust estimates of location and scatter fix this.</p> <p>This module uses the geometric median for location and the median covariation matrix (MCM) for scatter. Both are 50 % breakdown estimators: half the samples must be corrupted before the estimate moves, against one outlier for the mean. Both are estimated online by averaged stochastic gradient (ASGD), one sample at a time.</p> <p>The score of a sample is the Mahalanobis distance under the current MCM:</p> <p>D(x) = sqrt( sum_j (1 / delta_j) * ^2 ) </p> <p>where m_bar is the current location estimate, P_j is the j-th eigenvector of the averaged MCM V_bar, and delta_j the corresponding eigenvalue. The sum is over the d eigenvalues: it is the Mahalanobis distance written without inverting the matrix, using the eigendecomposition instead.</p> <ol> <li>How it works</li> </ol> <p>Two running estimates are maintained. m tracks the geometric median, V tracks the MCM. Both are updated by averaged stochastic gradient, one sample at a time.</p> <p>For the geometric median, the paper's recurrence is</p> <p>m_{n+1} = m_n + gamma_{n+1} * (X_{n+1} - m_n) / ||X_{n+1} - m_n|| m_bar_{n+1} = m_bar_n + (1 / (n + 2)) * (m_{n+1} - m_bar_n) </p> <p>The first line is a stochastic gradient step toward the sample, normalised so that every step has the same length. The normalisation is the robustness: a distant sample moves m by at most gamma_{n+1}, no matter how far it is. The second line averages the iterates, which accelerates convergence (Cardot, Cénac and Zitt 2013).</p> <p>For the MCM, the same shape:</p> <p>V_{n+1} = V_n + gamma_{n+1} * (outer_{n+1} - V_n) / ||outer_{n+1} - V_n||_F V_bar_{n+1} = V_bar_n + (1 / (n + 2)) * (V_{n+1} - V_bar_n) </p> <p>with outer_{n+1} = (X_{n+1} - m_bar_n) (X_{n+1} - m_bar_n)^T the centred outer product of the new sample. The gradient is again normalised, this time to unit Frobenius norm.</p> <p>The step size is</p> <p>gamma_n = c_gamma * (n + n0) ** (-gamma_exp) </p> <p>with gamma_exp in (1/2, 1) for convergence (Cardot and Godichon-Baggioni 2017).</p> <p>The first n_init samples are not used for the ASGD updates. They are kept in a small buffer and used to compute an initial estimate of the location and scatter, from which the ASGD starts. Without the initialisation the ASGD gradients, whose scale is unit and not the scale of the data, would never reach the data.</p> <ol> <li>Smallest example</li> </ol> <p>import numpy as np from dense_armor.utility.anomaly.mahalanobis import ( OnlineRobustMahalanobis, ) rng = np.random.default_rng(0) det = OnlineRobustMahalanobis(feature_keys=[\"a\", \"b\"], n_init=200) for _ in range(500): x = rng.standard_normal(2) det.learn_one({\"a\": float(x[0]), \"b\": float(x[1])}) print(f\"healthy {det.score_one({'a': 0.0, 'b': 0.0}):.3f}\") print(f\"far {det.score_one({'a': 10.0, 'b': 10.0}):.3f}\") </p> <p>healthy 0.080 far 15.880 </p> <p>The healthy point sits at the centre of the cloud: under a standard bivariate Gaussian its Mahalanobis distance is small, and the score is 0.080. The far point is ten units away along both axes: the distance is large, and the score rises to 15.880, well past the default threshold of 7.0, the classical value for low-dimensional Gaussians.</p> <ol> <li>On a real arm</li> </ol> <p>The residual of joints 1-4 on a SyntheticArm payload fault. The fault (5 kg added at t = 2 s) shifts the residual on joints 1-5 by tens of N·m; the healthy run stays within ±0.15 N·m.</p> <p>from pathlib import Path from dense_armor.utility.anomaly.mahalanobis import ( OnlineRobustMahalanobis, ) from dense_armor.utility.datasets import SyntheticArm ds = SyntheticArm( Path(\"test/fixtures/urdf/panda.urdf\"), period_s=2.0, rate_hz=50.0, n_cycles=4, fault_at_s=2.0, fault=\"payload\", payload_mass=5.0, noise_std=(1e-3, 5e-3, 5e-2), seed=0, ) det = OnlineRobustMahalanobis( feature_keys=[\"r0\", \"r1\", \"r2\", \"r3\"], threshold=7.0, ) for sig, _ in ds.stream(): q, qd, qdd = ds.trajectory(sig.t) tau_nom = ds.nominal_torque(q, qd, qdd) x = {f\"r{j}\": float(sig[f\"tau_{j}\"] - tau_nom[j]) for j in range(4)} _ = det.score_one(x) _ = det.learn_one(x) </p> <p>￼</p> <p>Top: SyntheticArm. The fault sends the score past 100 in the first few samples after t = 2 s, then the score drops as the ASGD updates the location and the scatter estimate towards the new distribution — but the detector has already flagged every post-fault sample until the update catches up. Bottom: DriftStream. The score rises cleanly at the drift and stays above the threshold.</p> <ol> <li>The learned 95 % region¶</li> </ol> <p>The Mahalanobis distance is a scalar, but the metric it uses is a d-dimensional ellipsoid. Plotting it in two dimensions makes the shape visible.</p> <p>￼</p> <p>Two joints' residuals, first 200 samples of healthy training (green dots), then 30 fault samples (red crosses). The black ellipse is the 95 % quantile of the MCM currently estimated: a new sample inside the ellipse has Mahalanobis distance below chi2_2(0.95), outside it is flagged. The fault samples all fall outside.</p> <ol> <li>Numbers¶</li> </ol> <p>SyntheticArm (200 samples, 100 healthy, 100 fault) and DriftStream (2000 samples, one sudden drift at half), every detector built with its defaults.</p> <p>StreamProtocolROC-AUCFalse alarms on the healthy partThreshold at the last healthy sampleSyntheticArmlearn-on-healthy1.0000.0007.0000SyntheticArmlearn-on-all1.0000.0007.0000DriftStreamlearn-on-healthy0.9930.0007.0000DriftStreamlearn-on-all0.9380.0007.0000</p> <p>The default n_init is 100, and on SyntheticArm the healthy part has exactly 100 samples: in the benchmark run the detector is still in its initialisation when the healthy part ends, so every healthy score is 0.0 and the false-alarm value 0.000 on SyntheticArm follows from that, not from a decision of the detector. The class is the most accurate of the five on this repository's benchmark and the fastest (0.036 ms per sample on the arm).</p> <p>Details¶</p> <p>Where the rules come from¶</p> <p>Guillot, Godichon-Baggioni, Robin and Sansonnet (arXiv:2601.03957) introduce the online median and MCM in Section 3. The recurrence for the geometric median is equation 8, for the MCM equation 10. The Mahalanobis distance under the MCM is Equation (1) in Section 2.2. The step size gamma_n = c * n ** -gamma with gamma in (1/2, 1) is from Cardot, Cénac and Zitt (2013) and Cardot and Godichon-Baggioni (2017).</p> <p>The paper's full method also reconstructs the eigenvalues of the true covariance from the MCM by a Robbins-Monro scheme (equations 4-5) and scales the distances by chi2_d(0.5) / med(D_1..n) (equation 1). Neither step is implemented here.</p> <p>Choices stated explicitly¶</p> <p>Offline initialisation. The geometric median is initialised by the Weiszfeld algorithm (Guillot et al., equation 6). The MCM is initialised by the empirical average of the centred outer products, not the Weiszfeld offline MCM of Section A.2: with n_init of tens of samples the average is more stable than the Weiszfeld iteration, which for small samples can converge to a rank-one solution. The online ASGD refines the estimate as soon as new samples arrive.</p> <p>Step length cap. A max_step_frac cap on the ASGD step (default 0.1) prevents a single large sample from moving V by more than a fraction of its own norm. Without the cap, c_gamma = 1 and gamma_exp = 0.7 can move V by 1 in Frobenius norm in one step, much larger than the scale of the data, and the average oscillates through zero. This is a numerical safeguard, not part of the paper.</p> <p>Eigenvalue floor. Every eigenvalue of V_bar is floored at trace(V_bar) / d * 1e-3. The floor keeps the score bounded when the ASGD first steps drive V through zero, without changing the shape of the metric. Also a numerical safeguard.</p> <p>No chi-squared scaling. The paper's equation 1 divides the distances by the median of the past distances, so that the calibrated threshold is the median of a chi2_d distribution. This module does not apply the scaling: the threshold is the one the user calibrates, and the default 7.0 is the classical value for low-dimensional Gaussians.</p> <p>Step index. Guillot et al. use gamma_n = c_gamma (n + n0)^(-gamma) with n counted from the first sample (0.0395 c_gamma for the first update after n_init = 100 with gamma = 0.7). Here n also counts from the first sample (n = n_init + k at the k-th update) and the offset is one larger, gamma_n = c_gamma (n + n0 + 1)^(-gamma): the first update after n_init = 100 uses 0.0393 c_gamma. The averaged estimates use the weight 1 / (n + 1) with the same n, which is the paper's 1 / (n + 2) for the previous step index. The offset of one in gamma_n is a choice of this implementation.</p> <p>Threshold. A fixed float, default 7.0.</p> <p>Measured cost¶</p> <p>At the benchmark defaults (n_init=100, 4 features), on one CPU thread:</p> <p>0.036 ms per sample for learn_one + score_one on the arm stream;</p> <p>memory flat: d + d^2 arrays, independent of the stream length.</p> <p>The budget_s declared by the class is 0.005 s.</p> <p>The bug the module fixes¶</p> <p>The literal Section 3.2 update of Guillot et al. (page 7) without the step cap and without the eigenvalue floor was reimplemented outside the library and run on the 80 healthy residuals that follow n_init = 20, on the issue scenario (joint 1 of the SyntheticArm payload fault, period_s=2.0, rate_hz=50.0, n_cycles=2, payload_mass=5.0, seed 0).</p> <p>With c_gamma = 1.0 the running average V_bar crosses the zero matrix: the final trace(V_bar) is -2.88e-04. Scoring each sample before the update, 19 of the 80 steps have a non-positive eigenvalue and the maximum score is 11.36; scoring after the update, 20 steps and a maximum of 5.96. The cause is the scale of the normalised step against the scale of V: the step has Frobenius norm ~0.04, while V itself is of order 2.6e-03, so V_bar moves through the origin and 1 / delta diverges. With c_gamma equal to the variance of the residual (2.57e-03): 0 steps, trace(V_bar) = +1.37e-03, maximum 3.70.</p> <p>The two guards are max_step_frac = 0.1 and the eigenvalue floor trace(V_bar) / d * 1e-3. On the same 80 samples with the guards the maximum stays below the threshold. The reproduction is the module's test test_mahalanobis_healthy_scores_stay_below_threshold, which uses the 100 healthy residuals of the issue scenario with n_init = 20 and asserts the maximum is 3.739 &lt; 7 (80 of the 100 scores non-zero).</p> <p>OCSVM is the alternative when the fault is not a shift but a change of the distribution's shape.</p> <p>Link: <a href=\"https://tatopenn-cell.github.io/Dense-Armor/anomaly/mahalanobis/\">https://tatopenn-cell.github.io/Dense-Armor/anomaly/mahalanobis/</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Creative-Feature-264\"> /u/Creative-Feature-264 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x8o8wc/robust_mahalanobis_applications_surveillance/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x8o8wc/robust_mahalanobis_applications_surveillance/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1x8o8wc/robust_mahalanobis_applications_surveillance/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-10-17T23:23:47+00:00",
+    "published_ts": 1792279427,
+    "smart_groups": [
+      "Privacy & Compliance",
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Career Transition: From Warehouse Work to the Blue Team.",
+    "summary": "From Warehouse to Blue Team – My Journey Towards SOC L1 and Eventually DFIR Hey everyone! Back in 2010, I was doing some amateur web design, which I continued until around 2014. After that, my PC was pretty much just for gaming. I've always been a gamer, and I've always wanted a job that involved computers, but you know how life goes. I never had the experience, and probably not enough motivation to actually make it happen. But over the past year, something changed. My motivation has been stronger than ever, and I finally decided to do something about it. I spent about two months just watching videos, reading, researching, and trying to figure out what I actually wanted to do. At first, I thought networking was the way to go, so I started with Cisco Packet Tracer and completed Network+ and Security+. But deep down, cybersecurity was always something I wanted to get into, even as a kid. So I decided to fully commit to it. My long-term goal is DFIR (Digital Forensics and Incident Response). I know this path takes a lot of hard work, patience, and curiosity. Luckily, I've got plenty of curiosity and motivation! Over the last month and a half, I've been studying pretty much every day. I completed the TryHackMe SOC Level 1 pathway, along with a few additional rooms related to SOC and incident investigation. At the same time, I've been doing LetsDefend and BTLO labs almost daily. Here's a rough overview of what I've been learning and working with: Linux & CLI: Bash, sed, awk, grep, manually extracting data, filtering and investigating logs through the command line, including Linux and web server logs. Windows Event Logs: Spent quite a bit of time learning Sysmon, Security Event Logs, and System Events. Log analysis tools: Timeline Explorer for CSV files, Hayabusa for deeper Windows event log parsing, and occasionally DeepBlueCLI. Network analysis: Zeek logs, some basic RITA, Wireshark, and a bit of TShark through the CLI. Enough to start recognizing things like DNS exfiltration and suspicious network activity. Malware & email analysis: Basic malware investigation and analyzing suspicious email attachments using CLI tools. Memory forensics: Worked through a few labs involving raw memory dumps. SIEM: Hands-on experience with Splunk, ELK/Kibana, and Microsoft Sentinel. Splunk feels the most comfortable to me, although I have to admit that I find SIEM work a little boring compared to digging through logs manually in the CLI. Threat intelligence & enrichment: IP reputation checks, sandbox analysis, and other enrichment techniques during investigations. I also have a ridiculous amount of printed cheat sheets lying around, and I'm constantly trying to learn several things at once. And that's exactly where my problem starts. After roughly a month and a half of seriously focusing on SOC L1 skills, I feel like I've hit a wall. There's just so much to learn, and I'm starting to realize that trying to keep up with everything at the same time isn't sustainable. The more tools and techniques I discover, the harder it gets to decide what actually deserves my attention. I enjoy digging into logs, investigating suspicious activity, and figuring out what happened. But I'm also aware that what I personally enjoy and what an entry-level SOC analyst actually needs to know might be two different things. So here's my main question for you guys, especially anyone currently working as a SOC L1 analyst or who started their career in that role: What should I REALLY focus on to become job-ready for a SOC Level 1 position? Which skills should I know really well, and which ones am I probably going too deep into for an entry-level role? I'm not looking for shortcuts, and I definitely don't expect to become an expert overnight. I'm more than willing to put in the hours. I just want to make sure I'm putting those hours into the right things instead of spreading myself too thin. My motivation is huge, but I'm starting to understand that motivation alone isn't enough if there's no structure behind it. Any advice, even a rough roadmap based on your real-world SOC experience, would mean a lot. Thanks to anyone who takes the time to read this and share some advice! 31y Croatian [ live in Ireland ] All the best guys submitted by /u/Weird_Contest_545 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>From Warehouse to Blue Team – My Journey Towards SOC L1 and Eventually DFIR</p> <p>Hey everyone!</p> <p>Back in 2010, I was doing some amateur web design, which I continued until around 2014. After that, my PC was pretty much just for gaming. I've always been a gamer, and I've always wanted a job that involved computers, but you know how life goes. I never had the experience, and probably not enough motivation to actually make it happen.</p> <p>But over the past year, something changed. My motivation has been stronger than ever, and I finally decided to do something about it.</p> <p>I spent about two months just watching videos, reading, researching, and trying to figure out what I actually wanted to do.</p> <p>At first, I thought networking was the way to go, so I started with Cisco Packet Tracer and completed Network+ and Security+. But deep down, cybersecurity was always something I wanted to get into, even as a kid.</p> <p>So I decided to fully commit to it. My long-term goal is DFIR (Digital Forensics and Incident Response).</p> <p>I know this path takes a lot of hard work, patience, and curiosity. Luckily, I've got plenty of curiosity and motivation!</p> <p>Over the last month and a half, I've been studying pretty much every day. I completed the TryHackMe SOC Level 1 pathway, along with a few additional rooms related to SOC and incident investigation.</p> <p>At the same time, I've been doing LetsDefend and BTLO labs almost daily.</p> <p>Here's a rough overview of what I've been learning and working with:</p> <ul> <li>Linux &amp; CLI: Bash, sed, awk, grep, manually extracting data, filtering and investigating logs through the command line, including Linux and web server logs.</li> <li>Windows Event Logs: Spent quite a bit of time learning Sysmon, Security Event Logs, and System Events.</li> <li>Log analysis tools: Timeline Explorer for CSV files, Hayabusa for deeper Windows event log parsing, and occasionally DeepBlueCLI.</li> <li>Network analysis: Zeek logs, some basic RITA, Wireshark, and a bit of TShark through the CLI. Enough to start recognizing things like DNS exfiltration and suspicious network activity.</li> <li>Malware &amp; email analysis: Basic malware investigation and analyzing suspicious email attachments using CLI tools.</li> <li>Memory forensics: Worked through a few labs involving raw memory dumps.</li> <li>SIEM: Hands-on experience with Splunk, ELK/Kibana, and Microsoft Sentinel. Splunk feels the most comfortable to me, although I have to admit that I find SIEM work a little boring compared to digging through logs manually in the CLI.</li> <li>Threat intelligence &amp; enrichment: IP reputation checks, sandbox analysis, and other enrichment techniques during investigations.</li> </ul> <p>I also have a ridiculous amount of printed cheat sheets lying around, and I'm constantly trying to learn several things at once.</p> <p>And that's exactly where my problem starts.</p> <p>After roughly a month and a half of seriously focusing on SOC L1 skills, I feel like I've hit a wall.</p> <p>There's just so much to learn, and I'm starting to realize that trying to keep up with everything at the same time isn't sustainable. The more tools and techniques I discover, the harder it gets to decide what actually deserves my attention.</p> <p>I enjoy digging into logs, investigating suspicious activity, and figuring out what happened. But I'm also aware that what I personally enjoy and what an entry-level SOC analyst actually needs to know might be two different things.</p> <p>So here's my main question for you guys, especially anyone currently working as a SOC L1 analyst or who started their career in that role:</p> <p>What should I REALLY focus on to become job-ready for a SOC Level 1 position?</p> <p>Which skills should I know really well, and which ones am I probably going too deep into for an entry-level role?</p> <p>I'm not looking for shortcuts, and I definitely don't expect to become an expert overnight. I'm more than willing to put in the hours. I just want to make sure I'm putting those hours into the right things instead of spreading myself too thin.</p> <p>My motivation is huge, but I'm starting to understand that motivation alone isn't enough if there's no structure behind it.</p> <p>Any advice, even a rough roadmap based on your real-world SOC experience, would mean a lot.</p> <p>Thanks to anyone who takes the time to read this and share some advice!</p> <p>31y Croatian [ live in Ireland ] </p> <p>All the best guys</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Weird_Contest_545\"> /u/Weird_Contest_545 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x8m32u/career_transition_from_warehouse_work_to_the_blue/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x8m32u/career_transition_from_warehouse_work_to_the_blue/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1x8m32u/career_transition_from_warehouse_work_to_the_blue/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-10-17T21:43:38+00:00",
+    "published_ts": 1792273418,
+    "smart_groups": [
+      "Linux / Unix",
+      "Malware / Payloads",
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "UBC researchers uncover new cyber threat to water and energy networks",
+    "summary": "submitted by /u/Dorian182 [link] [comments]",
+    "summary_html": "submitted by   <a href=\"https://www.reddit.com/user/Dorian182\"> /u/Dorian182 </a> <br/> <span><a href=\"https://www.eurekalert.org/news-releases/1147784\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x8lz8g/ubc_researchers_uncover_new_cyber_threat_to_water/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1x8lz8g/ubc_researchers_uncover_new_cyber_threat_to_water/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-10-17T21:38:39+00:00",
+    "published_ts": 1792273119,
+    "smart_groups": [
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Linux Security Hardening: Lynis Scores Across Different Distributions",
+    "summary": "Lynis Hardening Index scores from different Linux distributions, tested with their default configurations. This is only a basic comparison of the results and is not intended as a definitive measure of overall security. If you want to run your own test, read the installation instructions: https://github.com/cisofy/lynis Higher score: More security measures are in place. Lower score: More security improvements are needed. Lynis version used in the test: 3.1.7 Lynis command: lynis audit system OPENSUSE TUMBLEWEED (KDE) Hardening index : 89 [################# ] Tests performed : 250 SECUREBLUE (KDE) It was extremely slow during the test. Hardening index : 79 [############### ] Tests performed : 265 FEDORA (KDE) Hardening index : 70 [############## ] Tests performed : 253 ANDUINOS Hardening index : 68 [############# ] Tests performed : 262 VOYAGER LIVE Hardening index : 68 [############# ] Tests performed : 266 ENDEAVOUROS (KDE) Hardening index : 67 [############# ] Tests performed : 261 AURORA Hardening index : 66 [############# ] Tests performed : 267 BAZZITE (KDE) Hardening index : 66 [############# ] Tests performed : 262 GENTOO (KDE) Hardening index : 65 [############# ] Tests performed : 240 TUXEDOOS Hardening index : 64 [############ ] Tests performed : 268 CACHYOS (KDE) Hardening index : 64 [############ ] Tests performed : 262 NIXOS (KDE) Hardening index : 63 [############ ] Tests performed : 235 VOID Xfce (musl) Hardening index : 63 [############ ] Tests performed : 228 GARUDA (Dr460nized) Hardening index : 62 [############ ] Tests performed : 261 SOPLOS (Tyson) Hardening index : 61 [############ ] Tests performed : 265 GLF OS (KDE) Hardening index : 60 [############ ] Tests performed : 228 KUBUNTU Hardening index : 59 [########### ] Tests performed : 240 PIKAOS (KDE) Hardening index : 59 [########### ] Tests performed : 252 submitted by /u/Emotional_Cat_1967 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Lynis Hardening Index scores from different Linux distributions, tested with their default configurations. </p> <p><strong>This is only a basic comparison of the results and is not intended as a definitive measure of overall security.</strong></p> <p>If you want to run your own test, read the installation instructions:<br/> <a href=\"https://github.com/cisofy/lynis\"><strong>https://github.com/cisofy/lynis</strong></a></p> <p>Higher score: More security measures are in place.</p> <p>Lower score: More security improvements are needed.</p> <p>Lynis version used in the test:<br/> 3.1.7<br/> Lynis command:<br/> lynis audit system </p> <p> OPENSUSE TUMBLEWEED (KDE)</p> <p>Hardening index : 89 [################# ]</p> <p> Tests performed : 250</p> <p> SECUREBLUE (KDE)</p> <p>It was extremely slow during the test.</p> <p>Hardening index : 79 [############### ]</p> <p> Tests performed : 265</p> <p> FEDORA (KDE)</p> <p>Hardening index : 70 [############## ]</p> <p> Tests performed : 253</p> <p> ANDUINOS </p> <p>Hardening index : 68 [############# ]</p> <p> Tests performed : 262</p> <p> VOYAGER LIVE </p> <p>Hardening index : 68 [############# ]</p> <p> Tests performed : 266</p> <p> ENDEAVOUROS (KDE)</p> <p>Hardening index : 67 [############# ]</p> <p> Tests performed : 261</p> <p>AURORA </p> <p>Hardening index : 66 [############# ]</p> <p> Tests performed : 267</p> <p> BAZZITE (KDE)</p> <p>Hardening index : 66 [############# ]</p> <p> Tests performed : 262</p> <p> GENTOO (KDE)</p> <p>Hardening index : 65 [############# ]</p> <p> Tests performed : 240</p> <p> TUXEDOOS </p> <p>Hardening index : 64 [############ ]</p> <p> Tests performed : 268</p> <p> CACHYOS (KDE)</p> <p>Hardening index : 64 [############ ]</p> <p> Tests performed : 262</p> <p>NIXOS (KDE)</p> <p> Hardening index : 63 [############ ]</p> <p> Tests performed : 235</p> <p>VOID Xfce (musl)</p> <p> Hardening index : 63 [############ ]</p> <p> Tests performed : 228</p> <p>GARUDA (Dr460nized)</p> <p> Hardening index : 62 [############ ]</p> <p>Tests performed : 261</p> <p>SOPLOS (Tyson)</p> <p> Hardening index : 61 [############ ]</p> <p> Tests performed : 265</p> <p> </p> <p> GLF OS (KDE)</p> <p>Hardening index : 60 [############ ]</p> <p> Tests performed : 228</p> <p> KUBUNTU</p> <p>Hardening index : 59 [########### ]</p> <p> Tests performed : 240</p> <p> PIKAOS (KDE)</p> <p>Hardening index : 59 [########### ]</p> <p> Tests performed : 252</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Emotional_Cat_1967\"> /u/Emotional_Cat_1967 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x8lwfy/linux_security_hardening_lynis_scores_across/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x8lwfy/linux_security_hardening_lynis_scores_across/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1x8lwfy/linux_security_hardening_lynis_scores_across/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-10-17T21:35:02+00:00",
+    "published_ts": 1792272902,
+    "smart_groups": [
+      "Linux / Unix",
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Web pentesting?",
+    "summary": "I work as an IT specialist at a company, but I can’t really say I do much in the way of IT—it’s mostly just simple troubleshooting... I have a good understanding of networks and Linux, and I want to steer my career toward web penetration testing because it seems enjoyable and fun to me... But I have some questions: Is there a risk that AI might take over roles like SOC Level 1 in this field, and is this a promising career choice, or will I end up regretting it? Could the experts shed some light on this? submitted by /u/Tasty_Mistake_5763 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>I work as an IT specialist at a company, but I can’t really say I do much in the way of IT—it’s mostly just simple troubleshooting... I have a good understanding of networks and Linux, and I want to steer my career toward web penetration testing because it seems enjoyable and fun to me... But I have some questions: Is there a risk that AI might take over roles like SOC Level 1 in this field, and is this a promising career choice, or will I end up regretting it? Could the experts shed some light on this?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Tasty_Mistake_5763\"> /u/Tasty_Mistake_5763 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x8ka0m/web_pentesting/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x8ka0m/web_pentesting/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1x8ka0m/web_pentesting/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-10-17T20:24:52+00:00",
+    "published_ts": 1792268692,
+    "smart_groups": [
+      "Red Team / Offensive",
+      "Linux / Unix",
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
     "title": "CTO at NCSC Summary: week ending October 18th",
     "summary": "submitted by /u/digicat [link] [comments]",
     "summary_html": "<a href=\"https://www.reddit.com/r/cybersecurity/comments/1x8h7jn/cto_at_ncsc_summary_week_ending_october_18th/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/digicat\"> /u/digicat </a> <br/> <span><a href=\"https://ctoatncsc.substack.com/p/cto-at-ncsc-summary-week-ending-october-985\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x8h7jn/cto_at_ncsc_summary_week_ending_october_18th/\">[comments]</a></span>",
@@ -732,38 +850,6 @@
     "published_ts": 1792204593,
     "smart_groups": [
       "Community Discussion"
-    ],
-    "curated": false
-  },
-  {
-    "title": "Microsoft Windows Cloud Files Mini Filter Driver CldiStreamCompleteRequest use-after-free vulnerability",
-    "summary": "",
-    "summary_html": "",
-    "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2426",
-    "source": "Talos - Vulnerability Reports",
-    "feed_type": "news",
-    "type": "vulnerabilities-cves-exploits",
-    "type_label": "Vulnerabilities, CVEs & Exploits",
-    "published": "2026-10-17T00:00:00+00:00",
-    "published_ts": 1792195200,
-    "smart_groups": [
-      "Vulnerabilities / CVEs"
-    ],
-    "curated": false
-  },
-  {
-    "title": "Microsoft Windows Cloud Files Mini Filter Driver CldiStreamPrepareRequestForMoreProcessing Type Confusion vulnerability",
-    "summary": "",
-    "summary_html": "",
-    "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2445",
-    "source": "Talos - Vulnerability Reports",
-    "feed_type": "news",
-    "type": "vulnerabilities-cves-exploits",
-    "type_label": "Vulnerabilities, CVEs & Exploits",
-    "published": "2026-10-17T00:00:00+00:00",
-    "published_ts": 1792195200,
-    "smart_groups": [
-      "Vulnerabilities / CVEs"
     ],
     "curated": false
   },
@@ -7037,7 +7123,7 @@
     ],
     "curated": true,
     "story_id": "58e9a6955fb0",
-    "story_size": 8
+    "story_size": 10
   },
   {
     "title": "The Blind Spots of Agentic Pentesting and How to Close Them",
@@ -8479,7 +8565,7 @@
     ],
     "curated": false,
     "story_id": "58e9a6955fb0",
-    "story_size": 8
+    "story_size": 10
   },
   {
     "title": "Billion-Dollar Companies Twice as Likely to Leave Critical Vulnerabilities Unpatched",
@@ -8989,7 +9075,7 @@
     ],
     "curated": true,
     "story_id": "58e9a6955fb0",
-    "story_size": 8
+    "story_size": 10
   },
   {
     "title": "Bitwise’s Hougan says Q3 charts point to ‘crypto spring’",
@@ -9257,7 +9343,7 @@
     "smart_groups": [],
     "curated": true,
     "story_id": "58e9a6955fb0",
-    "story_size": 8
+    "story_size": 10
   },
   {
     "title": "Ivanti misses opportunity to fix vulnerability before attackers got to work and made it a zero-day",
@@ -9451,7 +9537,7 @@
     ],
     "curated": true,
     "story_id": "58e9a6955fb0",
-    "story_size": 8
+    "story_size": 10
   },
   {
     "title": "Anthropic Finds Ingredients for Future AI Worms",
@@ -9530,7 +9616,7 @@
     ],
     "curated": true,
     "story_id": "58e9a6955fb0",
-    "story_size": 8
+    "story_size": 10
   },
   {
     "title": "Most tokenized stock trading on Solana, BNB Chain occurs outside US market hours",
@@ -9593,7 +9679,9 @@
       "Exploit / PoC",
       "Windows / Microsoft"
     ],
-    "curated": true
+    "curated": true,
+    "story_id": "58e9a6955fb0",
+    "story_size": 10
   },
   {
     "title": "October 2026 Microsoft Patch Tuesday, (Tue, Oct 13th)",
@@ -9613,7 +9701,7 @@
     ],
     "curated": true,
     "story_id": "58e9a6955fb0",
-    "story_size": 8
+    "story_size": 10
   },
   {
     "title": "Trezor reduces resellers as a ‘preventative step’ amid Ledger tampering reports",
@@ -31513,8 +31601,8 @@
       "Product News"
     ],
     "curated": true,
-    "story_id": "5da2a0c8ed54",
-    "story_size": 6
+    "story_id": "c6156bf63b74",
+    "story_size": 5
   },
   {
     "title": "Bank CISO On Social Engineering Defense",
@@ -33657,8 +33745,8 @@
       "Community Discussion"
     ],
     "curated": true,
-    "story_id": "5da2a0c8ed54",
-    "story_size": 6
+    "story_id": "c6156bf63b74",
+    "story_size": 5
   },
   {
     "title": "How to Hack Time, With C2PA",
@@ -34968,8 +35056,8 @@
       "Vulnerabilities / CVEs"
     ],
     "curated": true,
-    "story_id": "5da2a0c8ed54",
-    "story_size": 6
+    "story_id": "c6156bf63b74",
+    "story_size": 5
   },
   {
     "title": "California Subpoenas OpenAI Over AI Models That Hacked Their Way Out of a Test",
@@ -36190,8 +36278,8 @@
       "Exploit / PoC"
     ],
     "curated": true,
-    "story_id": "9334c0ec291e",
-    "story_size": 9
+    "story_id": "a5ef50961e98",
+    "story_size": 8
   },
   {
     "title": "Fortinet FortiMail Zero-Day Vulnerability Exploited – Urgent Action Required",
@@ -36209,8 +36297,8 @@
       "Product News"
     ],
     "curated": true,
-    "story_id": "9334c0ec291e",
-    "story_size": 9
+    "story_id": "a5ef50961e98",
+    "story_size": 8
   },
   {
     "title": "Malicious Linux Implants Mimic Asian Mail Security Products",
@@ -36722,8 +36810,8 @@
       "Vulnerabilities / CVEs"
     ],
     "curated": true,
-    "story_id": "9334c0ec291e",
-    "story_size": 9
+    "story_id": "a5ef50961e98",
+    "story_size": 8
   },
   {
     "title": "FTC Probes OpenAI, Anthropic as AI Agent Safety Risks Draw Scrutiny",
@@ -36836,8 +36924,8 @@
       "Vulnerabilities / CVEs"
     ],
     "curated": true,
-    "story_id": "9334c0ec291e",
-    "story_size": 9
+    "story_id": "a5ef50961e98",
+    "story_size": 8
   },
   {
     "title": "Android 17 Advanced Protection Locks Accessibility Services to Verified Accessibility Tools",
@@ -36965,8 +37053,8 @@
       "Vulnerabilities / CVEs"
     ],
     "curated": true,
-    "story_id": "5da2a0c8ed54",
-    "story_size": 6
+    "story_id": "c6156bf63b74",
+    "story_size": 5
   },
   {
     "title": "Critical FortiMail Zero-Day Flaw Exploited in Attacks Allows Unauthenticated Arbitrary File Writes",
@@ -36983,8 +37071,8 @@
       "Vulnerabilities / CVEs"
     ],
     "curated": true,
-    "story_id": "9334c0ec291e",
-    "story_size": 9
+    "story_id": "a5ef50961e98",
+    "story_size": 8
   },
   {
     "title": "Android 17 makes it harder for spyware to cover its tracks",
@@ -37253,8 +37341,8 @@
       "Exploit / PoC"
     ],
     "curated": true,
-    "story_id": "9334c0ec291e",
-    "story_size": 9
+    "story_id": "a5ef50961e98",
+    "story_size": 8
   },
   {
     "title": "Alleged KillSec Ransomware Mastermind a 16-Year-Old",
@@ -37563,8 +37651,35 @@
       "Community Discussion"
     ],
     "curated": true,
-    "story_id": "5da2a0c8ed54",
-    "story_size": 6
+    "story_id": "c6156bf63b74",
+    "story_size": 5,
+    "story_primary": true,
+    "story_others": [
+      {
+        "source": "Security Affairs",
+        "title": "U.S. CISA adds Fortinet FortiMail flaw to its Known Exploited Vulnerabilities catalog",
+        "link": "https://securityaffairs.com/200224/security/u-s-cisa-adds-fortinet-fortimail-flaw-to-its-known-exploited-vulnerabilities-catalog.html",
+        "published_ts": 1790920236
+      },
+      {
+        "source": "Security Affairs",
+        "title": "U.S. CISA adds Zammad GmbH Zammad flaws to its Known Exploited Vulnerabilities catalog",
+        "link": "https://securityaffairs.com/200248/security/u-s-cisa-adds-zammad-gmbh-zammad-flaws-to-its-known-exploited-vulnerabilities-catalog.html",
+        "published_ts": 1790981178
+      },
+      {
+        "source": "/r/cybersecurity",
+        "title": "U.S. CISA adds Fortinet FortiMail flaw to its Known Exploited Vulnerabilities catalog",
+        "link": "https://www.reddit.com/r/cybersecurity/comments/1wxce8k/us_cisa_adds_fortinet_fortimail_flaw_to_its_known/",
+        "published_ts": 1791109612
+      },
+      {
+        "source": "Security Affairs",
+        "title": "U.S. CISA adds Citrix NetScaler flaw to its Known Exploited Vulnerabilities catalog",
+        "link": "https://securityaffairs.com/200414/security/u-s-cisa-adds-citrix-netscaler-flaw-to-its-known-exploited-vulnerabilities-catalog-3.html",
+        "published_ts": 1791205828
+      }
+    ]
   },
   {
     "title": "What Advice Would You Give Your Younger Self in Cybersecurity",
@@ -97153,80 +97268,5 @@
       "Mobile & App Security"
     ],
     "curated": true
-  },
-  {
-    "title": "Doppler Secures Secrets for Humans, Data Pipelines, and AI Agents",
-    "summary": "Product showcase: Doppler secures secrets for humans, pipelines, and AI agents Product showcase: Doppler secures secrets for humans, pipelines, and AI agents Every engineering team has long struggled to prevent credentials from being embedded in codebases. The rise of AI agents has intensified this challenge. These automated systems review code, execute workflows, and act as intermediaries for database access, cloud services, and internal APIs on behalf of developers. Each engineer now interacts with numerous automated identities, each requiring secure credential management. This expansion has created new vulnerabilities as credentials risk exposure through unsecured storage or transmission. Modern enterprises face a critical need for robust secrets management solutions. Traditional tools were not designed for this scale of complexity. Doppler addresses this by centralizing credentials for engineers, CI/CD pipelines, and AI agents within a unified control plane. Security teams benefit from a platform that balances developer usability with enterprise-grade security, available in cloud or on-premises deployments. A unified approach to credential storage Doppler’s platform stores API keys, database connections, tokens, and certificates in a centralized repository, delivering them to applications at runtime. This eliminates fragmented processes for human and machine identities. Real-time synchronization ensures consistency across teams and environments as configurations evolve. The system acts as the single source of truth, streamlining access for developers, CI/CD pipelines, and AI agents. Hierarchical structure for scalable management Projects form the foundational layer of Doppler’s architecture, typically aligned with specific applications or services. Each project contains environments with root configurations and branches, allowing teams to customize deployments while minimizing redundancy. Secret referencing enables efficient management, and individual developers maintain personal configurations for local development. This structure replaces traditional .env files with a more secure and manageable framework. Runtime secret delivery and security Rather than hardcoding credentials into application files, Doppler injects secrets at runtime through its CLI tool. The doppler run command retrieves credentials on demand and passes them as environment variables, ensuring sensitive data remains isolated from scripts, configuration files, and user prompts. The platform supports complex values such as multi-line encryption keys and embedded JSON/YAML, which traditional .env workflows cannot handle. This approach also prevents secrets from appearing in logs, prompts, or model contexts where AI workflows might inadvertently expose them. Dynamic credential management Doppler offers options to eliminate long-lived credentials. Identity providers like Azure, AWS, and GCP support short-lived, verifiable tokens through OIDC. For environments requiring static secrets, the platform maintains compatibility. Dynamic secrets take this further by generating time-bound, session-specific credentials for supported platforms, which are automatically revoked upon expiration. Enhanced governance and compliance Doppler enforces least privilege through granular access controls, with user groups restricted to only necessary projects and environments. All secrets are versioned, and activity logs track access and modifications for auditability. Changes can be rolled back or investigated for compliance. SCIM integration ensures alignment with identity providers, automating user provisioning and deprovisioning. Seamless integration with existing tools The platform connects to 50+ tools across cloud providers, CI/CD systems, and application frameworks, enabling seamless secret delivery without custom code. Engineers can use Change Requests to propose configuration updates, maintaining administrative control without disrupting workflows. Log Forwarding allows activity logs to be sent to SIEM systems for advanced analysis. AI agent optimization Doppler’s architecture is particularly suited for AI agents, which are widely adopted by its user base. Machine credentials are scoped per identity and automatically rotated, limiting the impact of potential compromises. The MCP server enables agents to request configurations natively, avoiding hardcoded credentials. Permissions are enforced at every layer, ensuring raw secrets remain inaccessible to models. Pricing is based on human users, making it cost-effective for teams managing 10 or 1,000 agents. Securing the future of automated systems While AI has not diminished the importance of secrets management, it has elevated the stakes. Teams that adopt secure practices treat every identity—human or machine—as a critical security component. Doppler provides the tools to manage this complexity, ensuring credentials remain protected across individuals, pipelines, and agents. Additional coverage Thomson Reuters discloses breach exposing U.S. and Canadian court records Analyzing the challenges of large-scale malware intelligence ingestion The hidden costs of AI-driven system failures CIS SecureSuite Platform simplifies security operations Ransomware negotiation tactics evolve into structured processes Patch Tuesday predictions for September 2026 OpenAI invests $1 billion in Daybreak for under-resourced defenders Additional coverage Thomson Reuters discloses breach exposing U.S. and Canadian court records Analyzing the challenges of large-scale malware intelligence ingestion The hidden costs of AI-driven system failures CIS SecureSuite Platform simplifies security operations Ransomware negotiation tactics evolve into structured processes Patch Tuesday predictions for September 2026 OpenAI invests $1 billion in Daybreak for under-resourced defenders",
-    "summary_html": "<p>Product showcase: Doppler secures secrets for humans, pipelines, and AI agents</p>\nProduct showcase: Doppler secures secrets for humans, pipelines, and AI agents\n<p>Every engineering team has long struggled to prevent credentials from being embedded in codebases. The rise of AI agents has intensified this challenge. These automated systems review code, execute workflows, and act as intermediaries for database access, cloud services, and internal APIs on behalf of developers. Each engineer now interacts with numerous automated identities, each requiring secure credential management. This expansion has created new vulnerabilities as credentials risk exposure through unsecured storage or transmission. Modern enterprises face a critical need for robust secrets management solutions. Traditional tools were not designed for this scale of complexity. Doppler addresses this by centralizing credentials for engineers, CI/CD pipelines, and AI agents within a unified control plane. Security teams benefit from a platform that balances developer usability with enterprise-grade security, available in cloud or on-premises deployments.</p>\nA unified approach to credential storage\n<p>Doppler’s platform stores API keys, database connections, tokens, and certificates in a centralized repository, delivering them to applications at runtime. This eliminates fragmented processes for human and machine identities. Real-time synchronization ensures consistency across teams and environments as configurations evolve. The system acts as the single source of truth, streamlining access for developers, CI/CD pipelines, and AI agents.</p>\nHierarchical structure for scalable management\n<p>Projects form the foundational layer of Doppler’s architecture, typically aligned with specific applications or services. Each project contains environments with root configurations and branches, allowing teams to customize deployments while minimizing redundancy. Secret referencing enables efficient management, and individual developers maintain personal configurations for local development. This structure replaces traditional .env files with a more secure and manageable framework.</p>\nRuntime secret delivery and security\n<p>Rather than hardcoding credentials into application files, Doppler injects secrets at runtime through its CLI tool. The doppler run command retrieves credentials on demand and passes them as environment variables, ensuring sensitive data remains isolated from scripts, configuration files, and user prompts. The platform supports complex values such as multi-line encryption keys and embedded JSON/YAML, which traditional .env workflows cannot handle. This approach also prevents secrets from appearing in logs, prompts, or model contexts where AI workflows might inadvertently expose them.</p>\nDynamic credential management\n<p>Doppler offers options to eliminate long-lived credentials. Identity providers like Azure, AWS, and GCP support short-lived, verifiable tokens through OIDC. For environments requiring static secrets, the platform maintains compatibility. Dynamic secrets take this further by generating time-bound, session-specific credentials for supported platforms, which are automatically revoked upon expiration.</p>\nEnhanced governance and compliance\n<p>Doppler enforces least privilege through granular access controls, with user groups restricted to only necessary projects and environments. All secrets are versioned, and activity logs track access and modifications for auditability. Changes can be rolled back or investigated for compliance. SCIM integration ensures alignment with identity providers, automating user provisioning and deprovisioning.</p>\nSeamless integration with existing tools\n<p>The platform connects to 50+ tools across cloud providers, CI/CD systems, and application frameworks, enabling seamless secret delivery without custom code. Engineers can use Change Requests to propose configuration updates, maintaining administrative control without disrupting workflows. Log Forwarding allows activity logs to be sent to SIEM systems for advanced analysis.</p>\nAI agent optimization\n<p>Doppler’s architecture is particularly suited for AI agents, which are widely adopted by its user base. Machine credentials are scoped per identity and automatically rotated, limiting the impact of potential compromises. The MCP server enables agents to request configurations natively, avoiding hardcoded credentials. Permissions are enforced at every layer, ensuring raw secrets remain inaccessible to models. Pricing is based on human users, making it cost-effective for teams managing 10 or 1,000 agents.</p>\nSecuring the future of automated systems\n<p>While AI has not diminished the importance of secrets management, it has elevated the stakes. Teams that adopt secure practices treat every identity—human or machine—as a critical security component. Doppler provides the tools to manage this complexity, ensuring credentials remain protected across individuals, pipelines, and agents.</p>\n<div>\n<p>Additional coverage Thomson Reuters discloses breach exposing U.S. and Canadian court records Analyzing the challenges of large-scale malware intelligence ingestion The hidden costs of AI-driven system failures CIS SecureSuite Platform simplifies security operations Ransomware negotiation tactics evolve into structured processes Patch Tuesday predictions for September 2026 OpenAI invests $1 billion in Daybreak for under-resourced defenders</p>\n</div>\nAdditional coverage\n<ul>\n<li>Thomson Reuters discloses breach exposing U.S. and Canadian court records</li>\n<li>Analyzing the challenges of large-scale malware intelligence ingestion</li>\n<li>The hidden costs of AI-driven system failures</li>\n<li>CIS SecureSuite Platform simplifies security operations</li>\n<li>Ransomware negotiation tactics evolve into structured processes</li>\n<li>Patch Tuesday predictions for September 2026</li>\n<li>OpenAI invests $1 billion in Daybreak for under-resourced defenders</li>\n</ul>\n<p><a href=\"https://www.craw.in/ethical-hacking-course-in-delhi\"><br/>\n<br/>\n</a></p>\n<p>The post <a href=\"https://www.news4hackers.com/doppler-secures-secrets-for-humans-data-pipelines-and-ai-agents/\">Doppler Secures Secrets for Humans, Data Pipelines, and AI Agents</a> appeared first on <a href=\"https://www.news4hackers.com\"></a>.</p>",
-    "link": "https://www.news4hackers.com/doppler-secures-secrets-for-humans-data-pipelines-and-ai-agents/",
-    "source": "News4Hackers",
-    "feed_type": "news",
-    "type": "security-news-media",
-    "type_label": "Security News & Media",
-    "published": "2026-09-08T12:21:24+00:00",
-    "published_ts": 1788870084,
-    "smart_groups": [
-      "Ransomware",
-      "Vulnerabilities / CVEs",
-      "Cloud / SaaS"
-    ],
-    "curated": true,
-    "story_id": "4f945558a128",
-    "story_size": 2
-  },
-  {
-    "title": "Ransomware Negotiation Strategies: A Business Process in Cybersecurity",
-    "summary": "Understanding the evolving strategies of ransomware threat actors to better defend against cyber threats. Ransomware Negotiation Tactics: A Structured Approach Ransomware negotiation tactics have evolved into a structured operational framework, according to insights from a technical analysis conducted by a cybersecurity intelligence team. A detailed examination of post-attack procedures reveals that threat actors employ systematic strategies to maximize financial gains while minimizing resistance from victims. Stages of Ransomware Negotiation The process involves multiple stages, including financial reconnaissance, technical validation, and strategic communication. Threat groups initiate negotiations by gathering data on a target’s annual revenue and insurance policies. This information informs the calculation of ransom demands, which typically range between 1% and 5% of the organization’s yearly income. Technical Validation and Proof of Capability Attackers also conduct test decryptions to confirm the functionality of their encryption tools, providing victims with proof of their ability to restore data upon payment. Negotiation Timeline and Dynamic Deadlines The negotiation timeline is dynamic, with deadlines adjusted based on the victim’s response. If a target delays communication or refuses to engage, threat actors may extend deadlines to avoid triggering public disclosure of the breach. Conversely, aggressive timelines are imposed when victims show willingness to negotiate, creating pressure to expedite resolution. Internal Operations and Specialized Roles Internal operations within ransomware groups are compartmentalized, with distinct roles assigned to specialists. Researchers focus on technical aspects, such as refining decryption capabilities and analyzing victim systems. Negotiators handle direct communication, while other team members coordinate public relations efforts, including leveraging social media or contacting third parties to amplify pressure. Supporting Criminal Ecosystem A parallel criminal ecosystem supports these activities, offering services like multilingual communication, data analysis, and legal consultation. This infrastructure enables threat actors to conduct complex operations with minimal internal overhead. Multi-Extortion Tactics Multi-extortion tactics are commonly employed, combining data exfiltration, distributed denial-of-service (DDoS) attacks, and outreach to customers or media outlets to increase leverage. Preparation and Mitigation Strategies Preparation before an incident is critical for organizations to mitigate risks. Establishing clear protocols for communication ensures that only authorized personnel engage with attackers. Identifying key stakeholders, such as legal teams, cybersecurity experts, and public relations representatives, allows for coordinated responses. Additionally, maintaining backups and implementing robust access controls can reduce the impact of ransomware attacks. Evolving Sophistication of Ransomware Operations The analysis underscores the growing sophistication of ransomware operations, which now resemble corporate workflows. As threat actors refine their methods, organizations must prioritize proactive measures to defend against evolving cyber threats. According to the cybersecurity intelligence team, ransomware negotiations now operate with the precision of a corporate structure, emphasizing the need for advanced defensive strategies.",
-    "summary_html": "<p>Understanding the evolving strategies of ransomware threat actors to better defend against cyber threats.</p>\nRansomware Negotiation Tactics: A Structured Approach\n<p>Ransomware negotiation tactics have evolved into a structured operational framework, according to insights from a technical analysis conducted by a cybersecurity intelligence team. A detailed examination of post-attack procedures reveals that threat actors employ systematic strategies to maximize financial gains while minimizing resistance from victims.</p>\nStages of Ransomware Negotiation\n<p>The process involves multiple stages, including financial reconnaissance, technical validation, and strategic communication. Threat groups initiate negotiations by gathering data on a target’s annual revenue and insurance policies. This information informs the calculation of ransom demands, which typically range between 1% and 5% of the organization’s yearly income.</p>\nTechnical Validation and Proof of Capability\n<p>Attackers also conduct test decryptions to confirm the functionality of their encryption tools, providing victims with proof of their ability to restore data upon payment.</p>\nNegotiation Timeline and Dynamic Deadlines\n<p>The negotiation timeline is dynamic, with deadlines adjusted based on the victim’s response. If a target delays communication or refuses to engage, threat actors may extend deadlines to avoid triggering public disclosure of the breach. Conversely, aggressive timelines are imposed when victims show willingness to negotiate, creating pressure to expedite resolution.</p>\nInternal Operations and Specialized Roles\n<p>Internal operations within ransomware groups are compartmentalized, with distinct roles assigned to specialists. Researchers focus on technical aspects, such as refining decryption capabilities and analyzing victim systems. Negotiators handle direct communication, while other team members coordinate public relations efforts, including leveraging social media or contacting third parties to amplify pressure.</p>\nSupporting Criminal Ecosystem\n<p>A parallel criminal ecosystem supports these activities, offering services like multilingual communication, data analysis, and legal consultation. This infrastructure enables threat actors to conduct complex operations with minimal internal overhead.</p>\nMulti-Extortion Tactics\n<p>Multi-extortion tactics are commonly employed, combining data exfiltration, distributed denial-of-service (DDoS) attacks, and outreach to customers or media outlets to increase leverage.</p>\nPreparation and Mitigation Strategies\n<p>Preparation before an incident is critical for organizations to mitigate risks. Establishing clear protocols for communication ensures that only authorized personnel engage with attackers. Identifying key stakeholders, such as legal teams, cybersecurity experts, and public relations representatives, allows for coordinated responses. Additionally, maintaining backups and implementing robust access controls can reduce the impact of ransomware attacks.</p>\nEvolving Sophistication of Ransomware Operations\n<p>The analysis underscores the growing sophistication of ransomware operations, which now resemble corporate workflows. As threat actors refine their methods, organizations must prioritize proactive measures to defend against evolving cyber threats.</p>\n<div>\n<p>According to the cybersecurity intelligence team, ransomware negotiations now operate with the precision of a corporate structure, emphasizing the need for advanced defensive strategies.</p>\n</div>\n<p><a href=\"https://craw.in/learn-python-training-in-delhi-python-course\"><br/>\n<br/>\n</a></p>\n<p>The post <a href=\"https://www.news4hackers.com/ransomware-negotiation-strategies-a-business-process-in-cybersecurity/\">Ransomware Negotiation Strategies: A Business Process in Cybersecurity</a> appeared first on <a href=\"https://www.news4hackers.com\"></a>.</p>",
-    "link": "https://www.news4hackers.com/ransomware-negotiation-strategies-a-business-process-in-cybersecurity/",
-    "source": "News4Hackers",
-    "feed_type": "news",
-    "type": "security-news-media",
-    "type_label": "Security News & Media",
-    "published": "2026-09-08T12:19:39+00:00",
-    "published_ts": 1788869979,
-    "smart_groups": [
-      "Ransomware"
-    ],
-    "curated": true,
-    "story_id": "985c0e8a2f9a",
-    "story_size": 2
-  },
-  {
-    "title": "Japan Enhances Healthcare Cybersecurity as Hospitals Designated Critical Infrastructure",
-    "summary": "Japan’s Health, Labor and Welfare Ministry has announced plans to enhance cybersecurity measures for hospitals, driven by the increasing frequency of cyberattacks targeting medical facilities. What Drives the Enhanced Cybersecurity Measures for Hospitals in Japan? Medical institutions face significant challenges in implementing robust cybersecurity frameworks due to the complexity of interconnected medical devices and IT systems. Many hospitals operate with multiple vendors managing different technologies, creating numerous external network entry points. These connections complicate monitoring and response efforts, increasing exposure to threats. The ministry’s strategy focuses on reducing these external connections to streamline network management and enable faster isolation of compromised systems during attacks. How Will the ₹826 Crore Budget Be Allocated? The budget will fund initiatives to secure hospital networks and deploy cybersecurity professionals. A key component involves encouraging hospitals to consolidate their external connections, which will be supported through a government-led framework aimed at strengthening national resilience. Institutions may contract private firms for this work, with subsidies determined by factors such as hospital size, including bed capacity. The funding aligns with broader national goals to enhance cybersecurity across critical sectors. What Cybersecurity Threats Have Targeted Japanese Hospitals? Ransomware attacks have become a persistent threat to Japanese healthcare providers. In 2022, Osaka General Medical Center experienced a cyberattack that disrupted its electronic health record system, leading to restricted surgical and outpatient services. More recently, in February 2026, Nippon Medical School Musashikosugi Hospital suffered a breach exposing the personal data of 130,000 patients. These incidents highlight the urgency of strengthening defenses to prevent similar disruptions. What Role Will Cybersecurity Specialists Play in Hospital Protection? The ministry plans to establish a system for deploying cybersecurity experts to hospitals during incidents. Given the limited resources of medical institutions to maintain in-house specialists, the initiative will connect facilities with external professionals when needed. These experts will be assigned based on the specific requirements of each hospital, ensuring timely intervention during cyber incidents. Will Staff Training Be Part of the Cybersecurity Strategy? In addition to technical measures, the plan includes funding for staff training programs. The goal is to improve hospital personnel’s ability to recognize and respond to cyber threats. By combining direct support from specialists with ongoing education, the ministry aims to build long-term resilience against evolving attack methods. Why Has Healthcare Been Classified as Critical Infrastructure? Japan’s revised economic security law now categorizes healthcare as critical infrastructure, emphasizing the need for heightened protection. This designation reflects the sector’s vital role in national stability and public safety. The government’s broader cybersecurity strategy now prioritizes safeguarding medical systems, ensuring continuity of care during cyber incidents. Which Hospitals Will Benefit From the New Measures? The initiative targets 88 advanced treatment hospitals with 400 or more beds, as defined by the amended law. These facilities will receive dedicated cybersecurity resources, including specialist personnel and network upgrades. Under the fiscal 2027 budget, approximately 20 hospitals will undergo inspections to assess their readiness and implement necessary improvements.",
-    "summary_html": "<p>Japan’s Health, Labor and Welfare Ministry has announced plans to enhance cybersecurity measures for hospitals, driven by the increasing frequency of cyberattacks targeting medical facilities.</p>\nWhat Drives the Enhanced Cybersecurity Measures for Hospitals in Japan?\nMedical institutions face significant challenges in implementing robust cybersecurity frameworks due to the complexity of interconnected medical devices and IT systems.\n<p>Many hospitals operate with multiple vendors managing different technologies, creating numerous external network entry points. These connections complicate monitoring and response efforts, increasing exposure to threats. The ministry’s strategy focuses on reducing these external connections to streamline network management and enable faster isolation of compromised systems during attacks.</p>\nHow Will the ₹826 Crore Budget Be Allocated?\nThe budget will fund initiatives to secure hospital networks and deploy cybersecurity professionals.\n<p>A key component involves encouraging hospitals to consolidate their external connections, which will be supported through a government-led framework aimed at strengthening national resilience. Institutions may contract private firms for this work, with subsidies determined by factors such as hospital size, including bed capacity. The funding aligns with broader national goals to enhance cybersecurity across critical sectors.</p>\nWhat Cybersecurity Threats Have Targeted Japanese Hospitals?\nRansomware attacks have become a persistent threat to Japanese healthcare providers.\n<p>In 2022, Osaka General Medical Center experienced a cyberattack that disrupted its electronic health record system, leading to restricted surgical and outpatient services. More recently, in February 2026, Nippon Medical School Musashikosugi Hospital suffered a breach exposing the personal data of 130,000 patients. These incidents highlight the urgency of strengthening defenses to prevent similar disruptions.</p>\nWhat Role Will Cybersecurity Specialists Play in Hospital Protection?\nThe ministry plans to establish a system for deploying cybersecurity experts to hospitals during incidents.\n<p>Given the limited resources of medical institutions to maintain in-house specialists, the initiative will connect facilities with external professionals when needed. These experts will be assigned based on the specific requirements of each hospital, ensuring timely intervention during cyber incidents.</p>\nWill Staff Training Be Part of the Cybersecurity Strategy?\nIn addition to technical measures, the plan includes funding for staff training programs.\n<p>The goal is to improve hospital personnel’s ability to recognize and respond to cyber threats. By combining direct support from specialists with ongoing education, the ministry aims to build long-term resilience against evolving attack methods.</p>\nWhy Has Healthcare Been Classified as Critical Infrastructure?\nJapan’s revised economic security law now categorizes healthcare as critical infrastructure, emphasizing the need for heightened protection.\n<p>This designation reflects the sector’s vital role in national stability and public safety. The government’s broader cybersecurity strategy now prioritizes safeguarding medical systems, ensuring continuity of care during cyber incidents.</p>\nWhich Hospitals Will Benefit From the New Measures?\nThe initiative targets 88 advanced treatment hospitals with 400 or more beds, as defined by the amended law.\n<p>These facilities will receive dedicated cybersecurity resources, including specialist personnel and network upgrades. Under the fiscal 2027 budget, approximately 20 hospitals will undergo inspections to assess their readiness and implement necessary improvements.</p>\n<p><a href=\"https://www.craw.in/ethical-hacking-course-in-delhi\"><br/>\n<br/>\n</a></p>\n<p>The post <a href=\"https://www.news4hackers.com/japan-enhances-healthcare-cybersecurity-as-hospitals-designated-critical-infrastructure/\">Japan Enhances Healthcare Cybersecurity as Hospitals Designated Critical Infrastructure</a> appeared first on <a href=\"https://www.news4hackers.com\"></a>.</p>",
-    "link": "https://www.news4hackers.com/japan-enhances-healthcare-cybersecurity-as-hospitals-designated-critical-infrastructure/",
-    "source": "News4Hackers",
-    "feed_type": "news",
-    "type": "security-news-media",
-    "type_label": "Security News & Media",
-    "published": "2026-09-08T12:17:41+00:00",
-    "published_ts": 1788869861,
-    "smart_groups": [
-      "Network / OT / ICS",
-      "Ransomware"
-    ],
-    "curated": true
-  },
-  {
-    "title": "How IT Help-Desk Vishing Scams Target Executives for Microsoft 365 Access",
-    "summary": "IT help-desk vishing calls, stolen session tokens, and sign-ins routed through residential proxies are driving a surge in data theft and extortion targeting Microsoft 365 and other SaaS accounts, according to Arctic Wolf. Rising Threats and Campaigns Arctic Wolf is monitoring the activity under the identifier PREY-0058 and has noted significant similarities in tactics to a data extortion group previously linked to UNC6671, as reported by the Google Threat Intelligence Group. The extortion campaigns have operated under multiple names, including BlackFile, Pink, Helix, Cinder, and Redact. Researchers suggest these labels may reflect affiliate networks, rebranding efforts, or overlapping operational relationships rather than a single unified actor. Extortion Campaigns and Tactics They assess with moderate confidence that Cinder represents an evolution of Pink, citing overlapping victim lists on the Cinder leak site with organizations previously targeted by Pink-linked phishing infrastructure. Analysis of subdomains used in lure campaigns revealed hundreds of domains impersonating legitimate companies. Targets are predominantly based in the United States and span industries such as construction and engineering, healthcare and pharmaceuticals, real estate and property management, finance, and professional services. Attack Methodology Executives, including Directors and Vice Presidents, are the primary focus of these attacks. The attack methodology involves initial contact via phone calls from individuals posing as internal IT staff. These callers guide victims through what appears to be standard passkey or MFA setup procedures, then direct them to a fabricated authentication page designed to mimic the organization’s official login portal. These pages are often hosted as subdomains incorporating the company’s name. Technical Tactics Behind the facade, an adversary-in-the-middle (AiTM) panel controlled by attackers intercepts credentials and MFA approvals, using them to obtain authenticated session tokens. Once inside, threat actors access pages like My Sign-ins, My Profile, and My Apps to gather account details and application mappings. They systematically explore SharePoint sites, pages, and other repositories to map stored data before initiating bulk collection. Exfiltration and Recommendations Exfiltration occurs from SharePoint, OneDrive, Exchange, and other SaaS platforms such as Box. Exchange data collection specifically captures MailItemsAccessed events. Arctic Wolf recommends organizations enhance Conditional Access policies to block or challenge proxy and hosting traffic, implement phishing-resistant MFA solutions that resist fake login page relays, restrict SharePoint account permissions, and train help-desk personnel to identify vishing attempts. Targeted Industries and Executives Defenders can disrupt these activities by detecting anomalies such as residential-proxy token replay, SharePoint discovery patterns, bulk access behaviors, and mailbox harvesting. The firm has also released indicators of compromise, including lure domains, exfiltration ASNs, and residential proxy providers associated with sign-in activity, enabling organizations to cross-reference their logs. Technical Details and Indicators The attacks highlight vulnerabilities in credential management and the growing sophistication of social engineering tactics targeting high-level corporate access. According to Arctic Wolf, the firm is monitoring the activity under the identifier PREY-0058 and has noted significant similarities in tactics to a data extortion group previously linked to UNC6671, as reported by the Google Threat Intelligence Group.",
-    "summary_html": "<p>IT help-desk vishing calls, stolen session tokens, and sign-ins routed through residential proxies are driving a surge in data theft and extortion targeting Microsoft 365 and other SaaS accounts, according to Arctic Wolf.</p>\nRising Threats and Campaigns\n<p>Arctic Wolf is monitoring the activity under the identifier PREY-0058 and has noted significant similarities in tactics to a data extortion group previously linked to UNC6671, as reported by the Google Threat Intelligence Group. The extortion campaigns have operated under multiple names, including BlackFile, Pink, Helix, Cinder, and Redact. Researchers suggest these labels may reflect affiliate networks, rebranding efforts, or overlapping operational relationships rather than a single unified actor.</p>\nExtortion Campaigns and Tactics\n<p>They assess with moderate confidence that Cinder represents an evolution of Pink, citing overlapping victim lists on the Cinder leak site with organizations previously targeted by Pink-linked phishing infrastructure. Analysis of subdomains used in lure campaigns revealed hundreds of domains impersonating legitimate companies. Targets are predominantly based in the United States and span industries such as construction and engineering, healthcare and pharmaceuticals, real estate and property management, finance, and professional services.</p>\nAttack Methodology\n<p>Executives, including Directors and Vice Presidents, are the primary focus of these attacks. The attack methodology involves initial contact via phone calls from individuals posing as internal IT staff. These callers guide victims through what appears to be standard passkey or MFA setup procedures, then direct them to a fabricated authentication page designed to mimic the organization’s official login portal. These pages are often hosted as subdomains incorporating the company’s name.</p>\nTechnical Tactics\n<p>Behind the facade, an adversary-in-the-middle (AiTM) panel controlled by attackers intercepts credentials and MFA approvals, using them to obtain authenticated session tokens. Once inside, threat actors access pages like My Sign-ins, My Profile, and My Apps to gather account details and application mappings. They systematically explore SharePoint sites, pages, and other repositories to map stored data before initiating bulk collection.</p>\nExfiltration and Recommendations\n<p>Exfiltration occurs from SharePoint, OneDrive, Exchange, and other SaaS platforms such as Box. Exchange data collection specifically captures MailItemsAccessed events. Arctic Wolf recommends organizations enhance Conditional Access policies to block or challenge proxy and hosting traffic, implement phishing-resistant MFA solutions that resist fake login page relays, restrict SharePoint account permissions, and train help-desk personnel to identify vishing attempts.</p>\nTargeted Industries and Executives\n<p>Defenders can disrupt these activities by detecting anomalies such as residential-proxy token replay, SharePoint discovery patterns, bulk access behaviors, and mailbox harvesting. The firm has also released indicators of compromise, including lure domains, exfiltration ASNs, and residential proxy providers associated with sign-in activity, enabling organizations to cross-reference their logs.</p>\nTechnical Details and Indicators\n<p>The attacks highlight vulnerabilities in credential management and the growing sophistication of social engineering tactics targeting high-level corporate access.</p>\n<div>\n<p>According to Arctic Wolf, the firm is monitoring the activity under the identifier PREY-0058 and has noted significant similarities in tactics to a data extortion group previously linked to UNC6671, as reported by the Google Threat Intelligence Group.</p>\n</div>\n<p><a href=\"https://craw.in/learn-python-training-in-delhi-python-course\"><br/>\n<br/>\n</a></p>\n<p>The post <a href=\"https://www.news4hackers.com/how-it-help-desk-vishing-scams-target-executives-for-microsoft-365-access/\">How IT Help-Desk Vishing Scams Target Executives for Microsoft 365 Access</a> appeared first on <a href=\"https://www.news4hackers.com\"></a>.</p>",
-    "link": "https://www.news4hackers.com/how-it-help-desk-vishing-scams-target-executives-for-microsoft-365-access/",
-    "source": "News4Hackers",
-    "feed_type": "news",
-    "type": "security-news-media",
-    "type_label": "Security News & Media",
-    "published": "2026-09-08T12:15:52+00:00",
-    "published_ts": 1788869752,
-    "smart_groups": [
-      "Windows / Microsoft",
-      "Phishing / Social Engineering",
-      "Ransomware"
-    ],
-    "curated": true,
-    "story_id": "769e182dfe4e",
-    "story_size": 2
   }
 ]
