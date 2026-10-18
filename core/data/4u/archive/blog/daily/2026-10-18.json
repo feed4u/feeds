@@ -1,9 +1,378 @@
 {
-  "generated_at": "2026-10-18T12:46:12.066366+00:00",
+  "generated_at": "2026-10-18T18:52:12.385267+00:00",
   "date": "2026-10-18",
-  "total_items": 37,
+  "total_items": 59,
   "next_chunk": "archive/blog/daily/2026-10-17.json",
   "items": [
+    {
+      "title": "AI Gateway logs now show session affinity",
+      "summary": "AI Gateway logs now have a Sessions view that groups requests into sessions and shows how session affinity routed each one. Each row shows the coding agent or app that ran the session, such as Claude Code, Codex, or Cursor, along with its cost, models, providers, and how much of its input was cached across every turn. Open a session to see its cache hit rate, duration, and path. The path lists each turn with its model and timing, and names the provider serving the session along with any earlier ones. Session affinity sends each turn to the provider that served the one before it, so the provider already has most of the prompt in cache. A session that stays on one provider reads more of each prompt from cache . Filter sessions by turns, client, model, provider, authentication, or cost. Single-turn sessions are hidden until you clear the minimum turns filter. Session affinity runs by default on text and chat requests. To group requests yourself, send the same sessionId in providerOptions.gateway , or the same x-session-id header, on every request in a conversation. Requests without one are grouped by a fingerprint of the conversation's opening and appear as fingerprinted sessions. Read the session affinity documentation for more information on how AI Gateway identifies sessions.",
+      "summary_html": "<p><a href=\"https://vercel.com/docs/ai-gateway/observability-and-spend/logs\">AI Gateway logs</a> now have a <a href=\"https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai-gateway%2Flogs%3FgroupBy%3Dsessions&amp;title=AI+Gateway+Sessions\">Sessions view</a> that groups requests into sessions and shows how session affinity routed each one. Each row shows the <a href=\"https://vercel.com/docs/ai-gateway/coding-agents\">coding agent</a> or app that ran the session, such as Claude Code, Codex, or Cursor, along with its cost, models, providers, and how much of its input was cached across every turn.</p><div></div><p>Open a session to see its cache hit rate, duration, and path. The path lists each turn with its model and timing, and names the provider serving the session along with any earlier ones. <a href=\"https://vercel.com/docs/ai-gateway/models-and-providers/session-affinity\">Session affinity</a> sends each turn to the provider that served the one before it, so the provider already has most of the prompt in cache. A session that stays on one provider reads more of each prompt from <a href=\"https://vercel.com/docs/ai-gateway/models-and-providers/automatic-caching\">cache</a>.</p><p>Filter sessions by turns, client, model, provider, authentication, or cost. Single-turn sessions are hidden until you clear the minimum turns filter.</p><div></div><p>Session affinity runs by default on text and chat requests. To group requests yourself, send the same <code>sessionId</code> in <code>providerOptions.gateway</code>, or the same <code>x-session-id</code> header, on every request in a conversation. Requests without one are grouped by a fingerprint of the conversation's opening and appear as fingerprinted sessions.</p><p>Read the <a href=\"https://vercel.com/docs/ai-gateway/models-and-providers/session-affinity\">session affinity documentation</a> for more information on how AI Gateway identifies sessions.</p>\n<p>\n<a href=\"https://vercel.com/changelog/ai-gateway-logs-now-show-session-affinity\">Read more</a>\n</p>",
+      "link": "https://vercel.com/changelog/ai-gateway-logs-now-show-session-affinity",
+      "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+      "feed_type": "blog",
+      "type": "company-engineering",
+      "type_label": "Company Engineering",
+      "published": "2026-10-18T20:03:00+00:00",
+      "published_ts": 1792353780,
+      "smart_groups": [
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Self-hosted workspace where notes, tasks and AI chats are all items",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://github.com/sianachi/nixsites\">https://github.com/sianachi/nixsites</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50143999\">https://news.ycombinator.com/item?id=50143999</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://github.com/sianachi/nixsites",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T18:39:42+00:00",
+      "published_ts": 1792348782,
+      "smart_groups": [
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Leaked Anthropic Draft AI Regulatory Bill Is Unacceptable and Troubling",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://thezvi.substack.com/p/leaked-anthropic-draft-ai-regulatory\">https://thezvi.substack.com/p/leaked-anthropic-draft-ai-regulatory</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50143897\">https://news.ycombinator.com/item?id=50143897</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://thezvi.substack.com/p/leaked-anthropic-draft-ai-regulatory",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T18:28:58+00:00",
+      "published_ts": 1792348138,
+      "smart_groups": [
+        "Policy & government",
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI/Pangram and Writing",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://ninza7.medium.com/ai-pangram-writing-966c1da59c48\">https://ninza7.medium.com/ai-pangram-writing-966c1da59c48</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50143868\">https://news.ycombinator.com/item?id=50143868</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
+      "link": "https://ninza7.medium.com/ai-pangram-writing-966c1da59c48",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T18:26:11+00:00",
+      "published_ts": 1792347971,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Why Clay Has an AI Writing Policy",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.clay.com/blog/ai-writing-policy\">https://www.clay.com/blog/ai-writing-policy</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50143643\">https://news.ycombinator.com/item?id=50143643</a></p>\n<p>Points: 1</p>\n<p># Comments: 2</p>",
+      "link": "https://www.clay.com/blog/ai-writing-policy",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T18:05:41+00:00",
+      "published_ts": 1792346741,
+      "smart_groups": [
+        "Policy & government"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI Is the Uber Moment for Mathematics",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://greyenlightenment.com/2026/09/27/ai-is-the-uber-moment-for-mathematics/\">https://greyenlightenment.com/2026/09/27/ai-is-the-uber-moment-for-mathematics/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50143120\">https://news.ycombinator.com/item?id=50143120</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://greyenlightenment.com/2026/09/27/ai-is-the-uber-moment-for-mathematics/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T17:18:59+00:00",
+      "published_ts": 1792343939,
+      "smart_groups": [
+        "Health & science"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Men Can't Stop Faking How Much They Know About AI",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.wired.com/story/men-cant-stop-faking-how-much-they-know-about-ai/\">https://www.wired.com/story/men-cant-stop-faking-how-much-they-know-about-ai/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50143083\">https://news.ycombinator.com/item?id=50143083</a></p>\n<p>Points: 4</p>\n<p># Comments: 2</p>",
+      "link": "https://www.wired.com/story/men-cant-stop-faking-how-much-they-know-about-ai/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T17:15:01+00:00",
+      "published_ts": 1792343701,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI won't kill jobs. Bad team design will",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.cio.com/article/4236023/ai-wont-kill-jobs-bad-team-design-will.html\">https://www.cio.com/article/4236023/ai-wont-kill-jobs-bad-team-design-will.html</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50143028\">https://news.ycombinator.com/item?id=50143028</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://www.cio.com/article/4236023/ai-wont-kill-jobs-bad-team-design-will.html",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T17:10:26+00:00",
+      "published_ts": 1792343426,
+      "smart_groups": [
+        "Work & society"
+      ],
+      "curated": false
+    },
+    {
+      "title": "How the Fed Is Quietly Inflating the AI Bubble While Hiking Your Electric Bill",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.thebignewsletter.com/p/how-the-federal-reserve-secretly\">https://www.thebignewsletter.com/p/how-the-federal-reserve-secretly</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50142772\">https://news.ycombinator.com/item?id=50142772</a></p>\n<p>Points: 11</p>\n<p># Comments: 0</p>",
+      "link": "https://www.thebignewsletter.com/p/how-the-federal-reserve-secretly",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T16:48:25+00:00",
+      "published_ts": 1792342105,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "The Radxa Linkr \u2013 A KVM for Your AI Agent",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://taoofmac.com/space/reviews/2026/10/18/1646\">https://taoofmac.com/space/reviews/2026/10/18/1646</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50142724\">https://news.ycombinator.com/item?id=50142724</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://taoofmac.com/space/reviews/2026/10/18/1646",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T16:45:33+00:00",
+      "published_ts": 1792341933,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "TempoPFN: Synthetic Pre-training of Linear RNNs for Zero-shot Time Series Forecasting [R]",
+      "summary": "Accepted at NeurIPS 2026 TLDR: The paper presents a library of synthetic time series generators and augmentations to train time series foundation models, in their case a linear RNN. The synthetic data has already been used in Toto-2 and TS-ICL. Arxiv: https://arxiv.org/abs/2510.25502 GitHub: https://github.com/automl/TempoPFN Huggingface : https://huggingface.co/AutoML-org/TempoPF N Authors: Vladyslav Moroshan, Julien Siems, Arber Zela, Timur Carstensen, Frank Hutter submitted by /u/Yossarian_1234 [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/MachineLearning/comments/1x97v19/tempopfn_synthetic_pretraining_of_linear_rnns_for/\">  </a>  <!-- SC_OFF --><div><p><em>Accepted at NeurIPS 2026</em></p> <p>TLDR: The paper presents a library of synthetic time series generators and augmentations to train time series foundation models, in their case a linear RNN. The synthetic data has already been used in Toto-2 and TS-ICL.</p> <p><em>Arxiv:</em> <a href=\"https://arxiv.org/abs/2510.25502\">https://arxiv.org/abs/2510.25502</a><br/> <em>GitHub:</em> <a href=\"https://github.com/automl/TempoPFN\">https://github.com/automl/TempoPFN</a><br/> <em>Huggingface</em>: <a href=\"https://huggingface.co/AutoML-org/TempoPFN\">https://huggingface.co/AutoML-org/TempoPF</a><a href=\"https://huggingface.co/AutoML-org/TempoPFN\">N</a></p> <p>Authors: Vladyslav Moroshan, Julien Siems, Arber Zela, Timur Carstensen, Frank Hutter</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Yossarian_1234\"> /u/Yossarian_1234 </a> <br/> <span><a href=\"https://i.redd.it/e2qzbznh89wh1.jpeg\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x97v19/tempopfn_synthetic_pretraining_of_linear_rnns_for/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/MachineLearning/comments/1x97v19/tempopfn_synthetic_pretraining_of_linear_rnns_for/",
+      "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T16:43:58+00:00",
+      "published_ts": 1792341838,
+      "smart_groups": [
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Tell HN: I picked up knitting while waiting for my AI agent to complete",
+      "summary": "Any new hobbies you are willing to share that AI made you start?",
+      "summary_html": "<p>Any new hobbies you are willing to share that AI made you start?</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50142650\">https://news.ycombinator.com/item?id=50142650</a></p>\n<p>Points: 4</p>\n<p># Comments: 0</p>",
+      "link": "https://news.ycombinator.com/item?id=50142650",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T16:39:46+00:00",
+      "published_ts": 1792341586,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: HedgePick \u2013 nine AI agents that argue against your stock thesis",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://hedgepick.com/\">https://hedgepick.com/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50142592\">https://news.ycombinator.com/item?id=50142592</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://hedgepick.com/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T16:33:43+00:00",
+      "published_ts": 1792341223,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Would you switch credit cards for your rewards on your AI spend?",
+      "summary": "currently exploring a \"bilt for AI spend\": a card that earns rewards on your AI token bills that you can redeem on sandbox, infra, compute, etc. if you spend heavily on tokens, would this make you switch cards?",
+      "summary_html": "<p>currently exploring a \"bilt for AI spend\": a card that earns rewards on your AI token bills that you can redeem on sandbox, infra, compute, etc.<p>if you spend heavily on tokens, would this make you switch cards?</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50142494\">https://news.ycombinator.com/item?id=50142494</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p></p>",
+      "link": "https://news.ycombinator.com/item?id=50142494",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T16:24:42+00:00",
+      "published_ts": 1792340682,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Vertick \u2013 built with DominoKit and agentic AI",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://dominokit.com/vertick/\">https://dominokit.com/vertick/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50142478\">https://news.ycombinator.com/item?id=50142478</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://dominokit.com/vertick/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T16:23:10+00:00",
+      "published_ts": 1792340590,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Proof Before Reuse: showing agents only what later sessions reproduced keeps a poisoned skill out of procedural memory [R]",
+      "summary": "Small case study on poisoning in agent procedural memory, with all data released. Setup: a coding agent learns skills from sessions whose tests passed. One learning session is poisoned (a new file, an unrelated line, or one line fused into the real fix), followed by three clean sessions on the same task. Then 5 scored sessions per arm with Claude Haiku 5.5 and Sonnet 5.5, plus a hidden verifier with 187 behavioural checks. Arms: no memory, replay of the recorded edits, naive memory (every passing session kept, the skill chosen by Mem0's search), and proof before reuse (a skill is served only after two later sessions reproduce its change and pass its test, and the agent is shown only the lines those sessions also wrote). Results: - Replay put the poison back in 30/30 repos with every test passing. - Naive memory exposed the poison to the agent in 3/30 sessions. - Proof before reuse exposed it in 0/30, including the case where the fused poison passed step-level checks and only line-level filtering removed it. Limits: one task, n=5 per cell, p\u22480.24 (not significant), no model applied a poison it saw (so this measures exposure, not harm), rules tuned on the same task. A poison placed in the repo itself defeats the method; that failure is in the paper. Paper: https://thewariend.com/papers/proof-before-reuse.pdf Code and per-session records: https://github.com/TheWariend/MuscleMemory Open question: is line-level reproduction a reasonable trust signal for learned skills, or does it just reward whatever the clean sessions happen to repeat? submitted by /u/maa____z [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/MachineLearning/comments/1x975ea/proof_before_reuse_showing_agents_only_what_later/\">  </a>  <!-- SC_OFF --><div><p>Small case study on poisoning in agent procedural memory, with all data released.</p> <p>Setup: a coding agent learns skills from sessions whose tests passed. One learning session is poisoned (a new file, an unrelated line, or one line fused into the real fix), followed by three clean sessions on the same task. Then 5 scored sessions per arm with Claude Haiku 5.5 and Sonnet 5.5, plus a hidden verifier with 187 behavioural checks.</p> <p>Arms: no memory, replay of the recorded edits, naive memory (every passing session kept, the skill chosen by Mem0's search), and proof before reuse (a skill is served only after two later sessions reproduce its change and pass its test, and the agent is shown only the lines those sessions also wrote).</p> <p>Results:</p> <p>- Replay put the poison back in 30/30 repos with every test passing.</p> <p>- Naive memory exposed the poison to the agent in 3/30 sessions.</p> <p>- Proof before reuse exposed it in 0/30, including the case where the fused poison passed step-level checks and only line-level filtering removed it.</p> <p>Limits: one task, n=5 per cell, p\u22480.24 (not significant), no model applied a poison it saw (so this measures exposure, not harm), rules tuned on the same task. A poison placed in the repo itself defeats the method; that failure is in the paper.</p> <p>Paper: <a href=\"https://thewariend.com/papers/proof-before-reuse.pdf\">https://thewariend.com/papers/proof-before-reuse.pdf</a></p> <p>Code and per-session records: <a href=\"https://github.com/TheWariend/MuscleMemory\">https://github.com/TheWariend/MuscleMemory</a></p> <p>Open question: is line-level reproduction a reasonable trust signal for learned skills, or does it just reward whatever the clean sessions happen to repeat?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/maa____z\"> /u/maa____z </a> <br/> <span><a href=\"https://i.redd.it/wsahdvsa39wh1.png\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x975ea/proof_before_reuse_showing_agents_only_what_later/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/MachineLearning/comments/1x975ea/proof_before_reuse_showing_agents_only_what_later/",
+      "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T16:14:59+00:00",
+      "published_ts": 1792340099,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI-Assisted Product Discovery: When Code Is Cheap, Judgment Is the Job",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://age-of-product.com/ai-assisted-product-discovery/\">https://age-of-product.com/ai-assisted-product-discovery/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50142192\">https://news.ycombinator.com/item?id=50142192</a></p>\n<p>Points: 2</p>\n<p># Comments: 1</p>",
+      "link": "https://age-of-product.com/ai-assisted-product-discovery/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T15:55:35+00:00",
+      "published_ts": 1792338935,
+      "smart_groups": [
+        "Work & society"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Microsoft drops AI datacentre project in Essex over power supply concerns",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.theguardian.com/uk-news/2026/oct/18/microsoft-drops-huge-ai-datacentre-project-in-essex-over-power-supply-concerns\">https://www.theguardian.com/uk-news/2026/oct/18/microsoft-drops-huge-ai-datacentre-project-in-essex-over-power-supply-concerns</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50142115\">https://news.ycombinator.com/item?id=50142115</a></p>\n<p>Points: 5</p>\n<p># Comments: 0</p>",
+      "link": "https://www.theguardian.com/uk-news/2026/oct/18/microsoft-drops-huge-ai-datacentre-project-in-essex-over-power-supply-concerns",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T15:48:32+00:00",
+      "published_ts": 1792338512,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: AI Zombie Trend\u2013Generating multi-shot narrative videos from two photos",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://aizombietrend.online/\">https://aizombietrend.online/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50141889\">https://news.ycombinator.com/item?id=50141889</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://aizombietrend.online/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T15:25:01+00:00",
+      "published_ts": 1792337101,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: Wisp \u2013 a voice AI on your shoulder, with spatial audio in the browser",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://wispplayer.com/?tab=ai\">https://wispplayer.com/?tab=ai</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50141830\">https://news.ycombinator.com/item?id=50141830</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://wispplayer.com/?tab=ai",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T15:18:00+00:00",
+      "published_ts": 1792336680,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "GhostOS \u2013 Lightweight, Offline Desktop AI Assistant (macOS/Win/Linux)",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://github.com/GhostOS-ai/GhostOS\">https://github.com/GhostOS-ai/GhostOS</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50141746\">https://news.ycombinator.com/item?id=50141746</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://github.com/GhostOS-ai/GhostOS",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T15:08:54+00:00",
+      "published_ts": 1792336134,
+      "smart_groups": [
+        "Consumer AI"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Websites are closing their doors to AI agents",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web\">https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50141657\">https://news.ycombinator.com/item?id=50141657</a></p>\n<p>Points: 122</p>\n<p># Comments: 111</p>",
+      "link": "https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T14:58:10+00:00",
+      "published_ts": 1792335490,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: TaskPocket, a to-do app with an MCP server instead of built-in AI",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://taskpocket.io/\">https://taskpocket.io/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50141513\">https://news.ycombinator.com/item?id=50141513</a></p>\n<p>Points: 1</p>\n<p># Comments: 4</p>",
+      "link": "https://taskpocket.io/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T14:39:55+00:00",
+      "published_ts": 1792334395,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
     {
       "title": "How Far Will AI Assistants Go for a Refund They Can't Get?",
       "summary": "",
@@ -544,22 +913,6 @@
       "smart_groups": [
         "Agents & automation",
         "Coding & dev tools"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Blocking AI-bot can be a double-edged Sword",
-      "summary": "",
-      "summary_html": "<p>Article URL: <a href=\"https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web\">https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50136684\">https://news.ycombinator.com/item?id=50136684</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
-      "link": "https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web",
-      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-10-18T00:39:15+00:00",
-      "published_ts": 1792283955,
-      "smart_groups": [
-        "Security & misuse"
       ],
       "curated": false
     },
