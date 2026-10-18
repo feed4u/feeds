@@ -1,9 +1,387 @@
 {
-  "generated_at": "2026-10-18T04:57:12.168237+00:00",
+  "generated_at": "2026-10-18T12:46:12.066366+00:00",
   "date": "2026-10-18",
-  "total_items": 14,
+  "total_items": 37,
   "next_chunk": "archive/blog/daily/2026-10-17.json",
   "items": [
+    {
+      "title": "How Far Will AI Assistants Go for a Refund They Can't Get?",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.vals.ai/blogs/impossible-refund\">https://www.vals.ai/blogs/impossible-refund</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50140462\">https://news.ycombinator.com/item?id=50140462</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://www.vals.ai/blogs/impossible-refund",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T12:22:58+00:00",
+      "published_ts": 1792326178,
+      "smart_groups": [
+        "Consumer AI"
+      ],
+      "curated": false
+    },
+    {
+      "title": "How to Make Your Own Flying Car AI Video (Make a Tesla Roadster AI Video)",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://roadster-ai.net/blog/how-to-make-roadster-ai-video\">https://roadster-ai.net/blog/how-to-make-roadster-ai-video</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50140420\">https://news.ycombinator.com/item?id=50140420</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://roadster-ai.net/blog/how-to-make-roadster-ai-video",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T12:17:30+00:00",
+      "published_ts": 1792325850,
+      "smart_groups": [
+        "Vision, audio & video"
+      ],
+      "curated": false
+    },
+    {
+      "title": "I've been using an AI agent for a month, and I'm both impressed and terrified",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.androidauthority.com/using-ai-agent-instinct-one-month-later-impressions-3720825/\">https://www.androidauthority.com/using-ai-agent-instinct-one-month-later-impressions-3720825/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50140278\">https://news.ycombinator.com/item?id=50140278</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
+      "link": "https://www.androidauthority.com/using-ai-agent-instinct-one-month-later-impressions-3720825/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T11:54:53+00:00",
+      "published_ts": 1792324493,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "[P] asmsense: 228k stripped x86-64 functions with source-aware labels, and a map of the data we still lack. [P]",
+      "summary": "asmsense is a dataset and a small model (Qwen3-8B + LoRA) for naming and describing functions in stripped binaries. I compiled permissively licensed C projects myself, so every function has its real name and source. Right now it has 228,177 functions from 341 projects, compiled at -O0 through -Os, with English and Turkish descriptions (Chinese is planned). What\u2019s missing is listed step by step on one page: https://asmsense.luxurycashew.com/data/ Code and data: https://github.com/krxi/asmsense In short: other architectures (ARM64, RISC-V, MIPS), GCC/ELF builds (so far everything is clang/Mach-O on macOS), Chinese descriptions, human-checked labels, agent trajectories, and runs on public benchmarks like BinMetric, REBench, BinSum and DeBinVul. I\u2019m thinking about turning the pipeline into an RL environment: compile, strip, let the model name the function, and score it against the real name with token-level F1. That reward is easy to game, though: a model can collect partial credit with generic names like get_data. If you\u2019ve trained on a fuzzy target like this, how did you shape the reward, and did RL beat plain fine-tuning? Two other questions: Which of the gaps above matters most for a model that has to run offline? How would you evaluate descriptions without a human panel? A note on LLM use: the descriptions were written by teacher LLMs that could see the C source, and only a sample was checked, by another LLM. I also used LLMs while building this and checking my writings to check grammar, so there may be small mistakes; corrections are welcome. https://preview.redd.it/bplp468vr7wh1.png?width=1822&format=png&auto=webp&s=1b39946680aa8e3df218ccb688551c658b92f741 submitted by /u/luxurycashew [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/MachineLearning/comments/1x91a47/p_asmsense_228k_stripped_x8664_functions_with/\">  </a>  <!-- SC_OFF --><div><p>asmsense is a dataset and a small model (Qwen3-8B + LoRA) for naming and describing functions in stripped binaries. I compiled permissively licensed C projects myself, so every function has its real name and source.</p> <p>Right now it has 228,177 functions from 341 projects, compiled at -O0 through -Os, with English and Turkish descriptions (Chinese is planned).</p> <p>What\u2019s missing is listed step by step on one page: <a href=\"https://asmsense.luxurycashew.com/data/\">https://asmsense.luxurycashew.com/data/</a><br/> Code and data: <a href=\"https://github.com/krxi/asmsense\">https://github.com/krxi/asmsense</a></p> <p>In short: other architectures (ARM64, RISC-V, MIPS), GCC/ELF builds (so far everything is clang/Mach-O on macOS), Chinese descriptions, human-checked labels, agent trajectories, and runs on public benchmarks like BinMetric, REBench, BinSum and DeBinVul.</p> <p>I\u2019m thinking about turning the pipeline into an RL environment: compile, strip, let the model name the function, and score it against the real name with token-level F1. That reward is easy to game, though: a model can collect partial credit with generic names like get_data. If you\u2019ve trained on a fuzzy target like this, how did you shape the reward, and did RL beat plain fine-tuning?</p> <p>Two other questions:</p> <ul> <li>Which of the gaps above matters most for a model that has to run offline?</li> <li>How would you evaluate descriptions without a human panel?</li> </ul> <p>A note on LLM use: the descriptions were written by teacher LLMs that could see the C source, and only a sample was checked, by another LLM. I also used LLMs while building this and checking my writings to check grammar, so there may be small mistakes; corrections are welcome.</p> <p><a href=\"https://preview.redd.it/bplp468vr7wh1.png?width=1822&amp;format=png&amp;auto=webp&amp;s=1b39946680aa8e3df218ccb688551c658b92f741\">https://preview.redd.it/bplp468vr7wh1.png?width=1822&amp;format=png&amp;auto=webp&amp;s=1b39946680aa8e3df218ccb688551c658b92f741</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/luxurycashew\"> /u/luxurycashew </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x91a47/p_asmsense_228k_stripped_x8664_functions_with/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x91a47/p_asmsense_228k_stripped_x8664_functions_with/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/MachineLearning/comments/1x91a47/p_asmsense_228k_stripped_x8664_functions_with/",
+      "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T11:49:21+00:00",
+      "published_ts": 1792324161,
+      "smart_groups": [
+        "Research & papers",
+        "Policy & government"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: Shipback \u2013 SFTP deploys your AI agent can undo",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://github.com/aldohushi1-stack/shipback-sftp\">https://github.com/aldohushi1-stack/shipback-sftp</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50140229\">https://news.ycombinator.com/item?id=50140229</a></p>\n<p>Points: 4</p>\n<p># Comments: 0</p>",
+      "link": "https://github.com/aldohushi1-stack/shipback-sftp",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T11:48:48+00:00",
+      "published_ts": 1792324128,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Doctors and Lawyers Are Joining AI's $400-an-Hour Gig Economy",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://news.bloomberglaw.com/esg/doctors-and-lawyers-are-joining-ais-400-an-hour-gig-economy\">https://news.bloomberglaw.com/esg/doctors-and-lawyers-are-joining-ais-400-an-hour-gig-economy</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50140196\">https://news.ycombinator.com/item?id=50140196</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://news.bloomberglaw.com/esg/doctors-and-lawyers-are-joining-ais-400-an-hour-gig-economy",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T11:43:47+00:00",
+      "published_ts": 1792323827,
+      "smart_groups": [
+        "Health & science"
+      ],
+      "curated": false,
+      "story_id": "f168fec17b90",
+      "story_size": 2
+    },
+    {
+      "title": "Show HN: Flying Car AI \u2013 make your car or your product fly from one photo",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://flyingcar-ai.org\">https://flyingcar-ai.org</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50140152\">https://news.ycombinator.com/item?id=50140152</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://flyingcar-ai.org",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T11:38:42+00:00",
+      "published_ts": 1792323522,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Basal-Omni: An open-weight 31B model for AI decision-making (nr 1 on JevBench)",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://huggingface.co/Remek/basal-omni-1.0-ultra\">https://huggingface.co/Remek/basal-omni-1.0-ultra</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50140075\">https://news.ycombinator.com/item?id=50140075</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://huggingface.co/Remek/basal-omni-1.0-ultra",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T11:28:54+00:00",
+      "published_ts": 1792322934,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Killa YuE v1.6.0 \u2013 Local AI vocal songs and P2P audio hosting on Android (A 2.0)",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://github.com/JackKnifeAI/killa-yue\">https://github.com/JackKnifeAI/killa-yue</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50140056\">https://news.ycombinator.com/item?id=50140056</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://github.com/JackKnifeAI/killa-yue",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T11:25:28+00:00",
+      "published_ts": 1792322728,
+      "smart_groups": [
+        "Consumer AI"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: Chrome extension that types one prompt into many AI chat tabs",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://chromewebstore.google.com/detail/use-multiple-chat-ai-at-o/pcpciffaliaooacnhiefjiegigjidehp\">https://chromewebstore.google.com/detail/use-multiple-chat-ai-at-o/pcpciffaliaooacnhiefjiegigjidehp</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50139795\">https://news.ycombinator.com/item?id=50139795</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://chromewebstore.google.com/detail/use-multiple-chat-ai-at-o/pcpciffaliaooacnhiefjiegigjidehp",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T10:36:16+00:00",
+      "published_ts": 1792319776,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: AIOps Cockpit \u2013 An open-source AI SRE with human-in-the-loop safety",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://github.com/matricphase-dot/aiops\">https://github.com/matricphase-dot/aiops</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50139640\">https://news.ycombinator.com/item?id=50139640</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://github.com/matricphase-dot/aiops",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T10:11:16+00:00",
+      "published_ts": 1792318276,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "China proposes export controls on its advanced AI models and chip designs",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://thenextweb.com/news/china-ai-export-controls-draft\">https://thenextweb.com/news/china-ai-export-controls-draft</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50139587\">https://news.ycombinator.com/item?id=50139587</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://thenextweb.com/news/china-ai-export-controls-draft",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T10:01:06+00:00",
+      "published_ts": 1792317666,
+      "smart_groups": [
+        "Chips & hardware",
+        "Policy & government"
+      ],
+      "curated": false,
+      "story_id": "efbd8b372b83",
+      "story_size": 3
+    },
+    {
+      "title": "Ask HN: Why people keep posting AI-generated projects around the Internet?",
+      "summary": "Programming-related subreddits and other media platforms are current flooded by the waterfall of AI-generated projects. A typical post contains a problem description and the link to GitHub repo created just recently with sustainable amount of generated code in it. With the invite to review it, and to give a community feedback. The quality of the projects vary, but very often these are codebases generated in a few days solely by the AI-agentic systems with little to no human review and prior history of development and recognition. I'm asking this question not out of critiques. I genuinely don't understand motivation and the roots of this phenomena. Asking for the professional code review seems to be pointless for the publisher. Many of them didn't have prior experience in the programming language in which the code has been generated. Furthermore, the code is seemingly not interested for the publisher either. It does not look to me as a good start for community-driven (F)OSS project anyway. Another motivation that I can imaging is seeking for public recognition. But considering the amount of postings, I think it's highly unlikely in the current situation even for the genuinely high-effort works. I can also assume that some are seeking for the self promotion by faking professional skills with AI assistance. That might be true for some, but the majority don't hide the fact that the presented code has been generated. It's unlikely the main motivation too. So, I completely lost in understanding on what's going on, and what steams this never-stopping process. At a first glance the author doesn't gain anything in return, and I don't understand what they are seeking for.",
+      "summary_html": "<p>Programming-related subreddits and other media platforms are current flooded by the waterfall of AI-generated projects. A typical post contains a problem description and the link to GitHub repo created just recently with sustainable amount of generated code in it. With the invite to review it, and to give a community feedback.<p>The quality of the projects vary, but very often these are codebases generated in a few days solely by the AI-agentic systems with little to no human review and prior history of development and recognition.<p>I'm asking this question not out of critiques. I genuinely don't understand motivation and the roots of this phenomena.<p>Asking for the professional code review seems to be pointless for the publisher. Many of them didn't have prior experience in the programming language in which the code has been generated. Furthermore, the code is seemingly not interested for the publisher either. It does not look to me as a good start for community-driven (F)OSS project anyway.<p>Another motivation that I can imaging is seeking for public recognition. But considering the amount of postings, I think it's highly unlikely in the current situation even for the genuinely high-effort works.<p>I can also assume that some are seeking for the self promotion by faking professional skills with AI assistance. That might be true for some, but the majority don't hide the fact that the presented code has been generated. It's unlikely the main motivation too.<p>So, I completely lost in understanding on what's going on, and what steams this never-stopping process. At a first glance the author doesn't gain anything in return, and I don't understand what they are seeking for.</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50139584\">https://news.ycombinator.com/item?id=50139584</a></p>\n<p>Points: 3</p>\n<p># Comments: 11</p></p></p></p></p></p></p>",
+      "link": "https://news.ycombinator.com/item?id=50139584",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T10:00:32+00:00",
+      "published_ts": 1792317632,
+      "smart_groups": [
+        "Agents & automation",
+        "Coding & dev tools"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Deezer Will Let Listeners Filter Out AI Music",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.engadget.com/2286898/deezer-will-let-listeners-completely-filter-out-ai-music/\">https://www.engadget.com/2286898/deezer-will-let-listeners-completely-filter-out-ai-music/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50139390\">https://news.ycombinator.com/item?id=50139390</a></p>\n<p>Points: 5</p>\n<p># Comments: 0</p>",
+      "link": "https://www.engadget.com/2286898/deezer-will-let-listeners-completely-filter-out-ai-music/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T09:19:13+00:00",
+      "published_ts": 1792315153,
+      "smart_groups": [
+        "Vision, audio & video"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Why CoreWeave is in the crosshairs of the AI scare",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.reuters.com/legal/transactional/why-coreweave-is-crosshairs-ai-scare-2026-10-16/\">https://www.reuters.com/legal/transactional/why-coreweave-is-crosshairs-ai-scare-2026-10-16/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50139375\">https://news.ycombinator.com/item?id=50139375</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://www.reuters.com/legal/transactional/why-coreweave-is-crosshairs-ai-scare-2026-10-16/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T09:17:02+00:00",
+      "published_ts": 1792315022,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: Risphai \u2013 picks the AI model, tools and prompt for each request",
+      "summary": "I noticed that a lot of non-technical people don\u2019t use AI to its full extent. Like they use the wrong model for the task, the wrong reasoning effort, or vague prompts. That gap between \"what the AI can do\" and \"what people actually get\" is what I wanted to fix. So I spent the last two years in my spare time building a consumer AI product that tries to fix this issue. This is how it works: When it receives the request, an LLM decides the task type (chat, reasoning, coding, writing) and the tool calls that are needed (web search, image generation, video generation, audio generation). Then it routes it to a suitable model and applies a prompt based on the task type. If it's a media generation task, it rewrites the prompt into a detailed one using prompt formulas (the prompt formulas for specific styles are mentioned in the system prompt). The LLM that is used for answering the request can also use a map, generate a mermaid diagram, generate a quiz or flashcards, generate files, etc. A limitation right now is that routing adds latency, but I'm currently experimenting with decision-models like Jev, PPLX Decider, etc. and might use decision-models to route to the right LLM and give the tool calls like web search and media generation to the answering LLM. It launched this week, so it's still early and I will keep improving it and adding new things. Also sign-up/in is required to prevent abuse. I\u2019d really like honest feedback: what\u2019s confusing, what\u2019s missing, etc.",
+      "summary_html": "<p>I noticed that a lot of non-technical people don\u2019t use AI to its full extent. Like they use the wrong model for the task, the wrong reasoning effort, or vague prompts. That gap between \"what the AI can do\" and \"what people actually get\" is what I wanted to fix.<p>So I spent the last two years in my spare time building a consumer AI product that tries to fix this issue.<p>This is how it works:\nWhen it receives the request, an LLM decides the task type (chat, reasoning, coding, writing) and the tool calls that are needed (web search, image generation, video generation, audio generation). Then it routes it to a suitable model and applies a prompt based on the task type. If it's a media generation task, it rewrites the prompt into a detailed one using prompt formulas (the prompt formulas for specific styles are mentioned in the system prompt). The LLM that is used for answering the request can also use a map, generate a mermaid diagram, generate a quiz or flashcards, generate files, etc.<p>A limitation right now is that routing adds latency, but I'm currently experimenting with decision-models like Jev, PPLX Decider, etc. and might use decision-models to route to the right LLM and give the tool calls like web search and media generation to the answering LLM.<p>It launched this week, so it's still early and I will keep improving it and adding new things.<p>Also sign-up/in is required to prevent abuse.<p>I\u2019d really like honest feedback: what\u2019s confusing, what\u2019s missing, etc.</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50139344\">https://news.ycombinator.com/item?id=50139344</a></p>\n<p>Points: 1</p>\n<p># Comments: 2</p></p></p></p></p></p></p>",
+      "link": "https://risphai.com",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T09:11:39+00:00",
+      "published_ts": 1792314699,
+      "smart_groups": [
+        "Coding & dev tools",
+        "Vision, audio & video"
+      ],
+      "curated": false
+    },
+    {
+      "title": "The Universe as a Test Harness: Meat AI and God's Admin Panel",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://rebecca-powell.com/posts/meat-ai-universe-test-harness/\">https://rebecca-powell.com/posts/meat-ai-universe-test-harness/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50139275\">https://news.ycombinator.com/item?id=50139275</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://rebecca-powell.com/posts/meat-ai-universe-test-harness/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T09:00:20+00:00",
+      "published_ts": 1792314020,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "GPT-2 KV cache from scratch: correctness, latency, and memory measurements [P]",
+      "summary": "I built GPT-2 small and a KV cache in PyTorch as a learning project, then compared the mathematical savings with measured latency and memory. I have published the implementation and a detailed write-up, and would appreciate feedback on the methodology. Setup: pretrained GPT-2 small (124M), NVIDIA A40, fp32 with TF32 off, batch size 1, greedy decoding. Timings are bracketed by torch.cuda.synchronize(), after warmup, using the median of five runs per context length. Correctness: maximum absolute logit difference versus Hugging Face was about 6.1e-5; cached and uncached greedy generation matched over 200 tokens. One useful failure case: reversing the cache concatenation order still passed a single-token attention test, but failed when multiple new tokens were decoded together. Latency: at context length 1,000, the FLOP estimate is about 1,000x smaller with caching, but the per-token time goes from 29.69 ms to 4.95 ms (~6x). Generating 1,016 tokens takes 14.66 s uncached versus 5.03 s cached (~2.9x). The cached curve is nearly flat in this implementation. CPU/kernel-launch overhead is a hypothesis, not a conclusion supported by a profiler yet. Memory: the formula is 72 KiB/token. My initial requested-byte measurement had a constant 8,519,688-byte offset: a lazily allocated 8,519,680-byte cuBLAS workspace plus an 8-byte next-token tensor. Warming up before the baseline and subtracting live non-cache tensors brought requested-minus-formula to 0 B at all 16 checkpoints. The allocator's block-size overhead remains visible separately. Code: https://github.com/angry-kratos/angry-kratos.github.io/tree/main/code/kv-cache Write-up and figures: https://angry-kratos.github.io/posts/2026-10-kv-cache/ This is an educational implementation, not a new algorithm or a universal speedup claim. What additional correctness cases or profiling controls would you add before investigating the remaining latency floor? Disclosure: I am the author. The code and article are freely accessible; AI assistance was used for editing and tooling. I also shared a short introduction in this month's self-promotion thread. submitted by /u/atronos_kronios [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I built GPT-2 small and a KV cache in PyTorch as a learning project, then compared the mathematical savings with measured latency and memory. I have published the implementation and a detailed write-up, and would appreciate feedback on the methodology.</p> <p>Setup: pretrained GPT-2 small (124M), NVIDIA A40, fp32 with TF32 off, batch size 1, greedy decoding. Timings are bracketed by torch.cuda.synchronize(), after warmup, using the median of five runs per context length.</p> <p>Correctness: maximum absolute logit difference versus Hugging Face was about 6.1e-5; cached and uncached greedy generation matched over 200 tokens. One useful failure case: reversing the cache concatenation order still passed a single-token attention test, but failed when multiple new tokens were decoded together.</p> <p>Latency: at context length 1,000, the FLOP estimate is about 1,000x smaller with caching, but the per-token time goes from 29.69 ms to 4.95 ms (~6x). Generating 1,016 tokens takes 14.66 s uncached versus 5.03 s cached (~2.9x). The cached curve is nearly flat in this implementation. CPU/kernel-launch overhead is a hypothesis, not a conclusion supported by a profiler yet.</p> <p>Memory: the formula is 72 KiB/token. My initial requested-byte measurement had a constant 8,519,688-byte offset: a lazily allocated 8,519,680-byte cuBLAS workspace plus an 8-byte next-token tensor. Warming up before the baseline and subtracting live non-cache tensors brought requested-minus-formula to 0 B at all 16 checkpoints. The allocator's block-size overhead remains visible separately.</p> <p>Code: <a href=\"https://github.com/angry-kratos/angry-kratos.github.io/tree/main/code/kv-cache\">https://github.com/angry-kratos/angry-kratos.github.io/tree/main/code/kv-cache</a></p> <p>Write-up and figures: <a href=\"https://angry-kratos.github.io/posts/2026-10-kv-cache/\">https://angry-kratos.github.io/posts/2026-10-kv-cache/</a></p> <p>This is an educational implementation, not a new algorithm or a universal speedup claim. What additional correctness cases or profiling controls would you add before investigating the remaining latency floor?</p> <p>Disclosure: I am the author. The code and article are freely accessible; AI assistance was used for editing and tooling. I also shared a short introduction in this month's self-promotion thread.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/atronos_kronios\"> /u/atronos_kronios </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x8xxmv/gpt2_kv_cache_from_scratch_correctness_latency/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x8xxmv/gpt2_kv_cache_from_scratch_correctness_latency/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/MachineLearning/comments/1x8xxmv/gpt2_kv_cache_from_scratch_correctness_latency/",
+      "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T08:23:02+00:00",
+      "published_ts": 1792311782,
+      "smart_groups": [
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Abolish AI Manifesto (under construction)",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://abolish-ai.net/abolish-ai-a-manifesto/\">https://abolish-ai.net/abolish-ai-a-manifesto/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50139072\">https://news.ycombinator.com/item?id=50139072</a></p>\n<p>Points: 4</p>\n<p># Comments: 0</p>",
+      "link": "https://abolish-ai.net/abolish-ai-a-manifesto/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T08:20:45+00:00",
+      "published_ts": 1792311645,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: Connecting Captions Local Private AI Interpreter",
+      "summary": "Hi HN, I built Connecting Captions, a live captioning and translation overlay for macOS that runs entirely on-device. Nothing goes over the network: no API calls, no audio leaving your machine, and it keeps working offline. I wanted live translation I could use in meetings and conversations without worrying about connectivity, latency spikes, or sending sensitive audio to a third party. The technically interesting part is a low-latency, self-correcting pipeline for speech-to-text and translation. It has two modes: Sentence mode: buffers until a sentence boundary, then translates with full context. It\u2019s more accurate, especially between languages with different word order. Streaming mode: translates word by word as speech arrives, trading grammatical accuracy for minimal delay. Current state: Platform: macOS Models: Whisper Latency: ~200 ms Languages: 25 Code: https://github.com/chrisswimlee/connectingCaptions I\u2019d love feedback, especially on the self-correction approach and which use cases matter most to people.",
+      "summary_html": "<p>Hi HN,<p>I built Connecting Captions, a live captioning and translation overlay for macOS that runs entirely on-device. Nothing goes over the network: no API calls, no audio leaving your machine, and it keeps working offline.<p>I wanted live translation I could use in meetings and conversations without worrying about connectivity, latency spikes, or sending sensitive audio to a third party.<p>The technically interesting part is a low-latency, self-correcting pipeline for speech-to-text and translation. It has two modes:<p>Sentence mode: buffers until a sentence boundary, then translates with full context. It\u2019s more accurate, especially between languages with different word order.\nStreaming mode: translates word by word as speech arrives, trading grammatical accuracy for minimal delay.<p>Current state:<p>Platform: macOS\nModels: Whisper\nLatency: ~200 ms \nLanguages: 25<p>Code: <a href=\"https://github.com/chrisswimlee/connectingCaptions\">https://github.com/chrisswimlee/connectingCaptions</a><p>I\u2019d love feedback, especially on the self-correction approach and which use cases matter most to people.</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50138839\">https://news.ycombinator.com/item?id=50138839</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p></p></p></p></p></p></p></p></p>",
+      "link": "https://local-host.ai/connectingCaptions/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T07:41:31+00:00",
+      "published_ts": 1792309291,
+      "smart_groups": [
+        "Vision, audio & video",
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AgentBlackBox \u2013 a policy gate and tamper-evident audit log for AI agents",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://agent-blackbox-five.vercel.app/demo\">https://agent-blackbox-five.vercel.app/demo</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50138752\">https://news.ycombinator.com/item?id=50138752</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://agent-blackbox-five.vercel.app/demo",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T07:25:01+00:00",
+      "published_ts": 1792308301,
+      "smart_groups": [
+        "Agents & automation",
+        "Policy & government"
+      ],
+      "curated": false
+    },
+    {
+      "title": "ArXiv versus AI slop: will capping preprint submissions work?",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.nature.com/articles/d41586-026-03194-w\">https://www.nature.com/articles/d41586-026-03194-w</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50138702\">https://news.ycombinator.com/item?id=50138702</a></p>\n<p>Points: 2</p>\n<p># Comments: 1</p>",
+      "link": "https://www.nature.com/articles/d41586-026-03194-w",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T07:15:57+00:00",
+      "published_ts": 1792307757,
+      "smart_groups": [
+        "Research & papers"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Built a search engine for debugging which is not a wrapper [P]",
+      "summary": "TLDR: I built a search engine that reads a bug report (or lets you define it) and points to the exact file (93%) and to the exact function (79.4%) you need to fix. Hey everyone, I recently made a new project while trying to get into RAG and automation. Odin is more than a search engine, all you have to do is paste a public repo URL and link the issue or describe the bug yourself and it downloads, parses and ranks the functions based on the mentioned bug. Why its different than any LLM: It runs mostly in your browser: It uses Tree-sitter (via WebAssembly) and small local models (via WebGPU) so your code isn't just blindly shipped off to a giant cloud LLM. It punches above its weight: Evaluated on 300 real issues from the SWE-bench Lite dataset, it puts the correct file in the top 10 results 93.0% of the time, and the exact function 79.4% of the time. It\u2019s incredibly efficient: It matches the accuracy of heavy Claude 4.5 agents using models under 1B parameters, cutting the cost per issue to a fraction of a cent. There\u2019s also a GitHub Action you can drop into your repo to automatically comment on new issues with the most likely functions to fix. I would really appreciate it if you would give it a try (it would help me with the benchmarks as well) feedback, questions, criticism are welcome https://allfather.dev submitted by /u/Massive_Capital9611 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>TLDR: I built a search engine that reads a bug report (or lets you define it) and points to the exact file (93%) and to the exact function (79.4%) you need to fix.</p> <p>Hey everyone,</p> <p>I recently made a new project while trying to get into RAG and automation.</p> <p>Odin is more than a search engine, all you have to do is paste a public repo URL and link the issue or describe the bug yourself and it downloads, parses and ranks the functions based on the mentioned bug.</p> <p>Why its different than any LLM:</p> <p>It runs mostly in your browser: It uses Tree-sitter (via WebAssembly) and small local models (via WebGPU) so your code isn't just blindly shipped off to a giant cloud LLM. </p> <p>It punches above its weight: Evaluated on 300 real issues from the SWE-bench Lite dataset, it puts the correct file in the top 10 results 93.0% of the time, and the exact function 79.4% of the time. </p> <p>It\u2019s incredibly efficient: It matches the accuracy of heavy Claude 4.5 agents using models under 1B parameters, cutting the cost per issue to a fraction of a cent. </p> <p>There\u2019s also a GitHub Action you can drop into your repo to automatically comment on new issues with the most likely functions to fix. </p> <p>I would really appreciate it if you would give it a try (it would help me with the benchmarks as well)</p> <p>feedback, questions, criticism are welcome</p> <p><a href=\"https://allfather.dev\">https://allfather.dev</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Massive_Capital9611\"> /u/Massive_Capital9611 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x8uwbg/built_a_search_engine_for_debugging_which_is_not/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1x8uwbg/built_a_search_engine_for_debugging_which_is_not/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/MachineLearning/comments/1x8uwbg/built_a_search_engine_for_debugging_which_is_not/",
+      "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-18T05:18:51+00:00",
+      "published_ts": 1792300731,
+      "smart_groups": [
+        "Consumer AI"
+      ],
+      "curated": false
+    },
     {
       "title": "Show HN: Sphinx \u2013 a hook that quizzes you on your AI's code before shipping",
       "summary": "FOSS, Basically it plugs into your existing coding agent workflow and every time you push to prod it'll throw up a questionnaire that checks if you understand how the code you're pushing works.",
