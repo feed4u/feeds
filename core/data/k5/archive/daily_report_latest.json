@@ -1,201 +1,229 @@
 {
-  "generated_at": "2026-10-19T01:32:05.011852+00:00",
-  "analysis_date": "2026-10-18",
+  "generated_at": "2026-10-20T01:45:13.959654+00:00",
+  "analysis_date": "2026-10-19",
   "vertical": "k5",
   "model": "qwen38-27b-mtp2:latest",
   "llm_endpoint": "127.0.0.1:11434",
   "window_hours": 24,
-  "source_file": "archive/*/daily/2026-10-18.json",
-  "total_items_in_window_all": 46,
-  "total_items_in_window_curated": 16,
+  "source_file": "archive/*/daily/2026-10-19.json",
+  "total_items_in_window_all": 210,
+  "total_items_in_window_curated": 80,
   "sections_from": "topics",
-  "topics_file": "archive/news/topics/2026-10-18.json",
+  "topics_file": "archive/news/topics/2026-10-19.json",
   "chunks": 0,
   "llm_calls": 1,
-  "duration_seconds": 66.4,
-  "daily_report_markdown": "### Headline summary\n- Attackers are actively exploiting an OS command injection flaw in SiteGuard WAF to execute commands as root or SYSTEM. ([BleepingComputer](https://www.bleepingcomputer.com/news/security/hackers-exploit-siteguard-waf-flaw-to-run-commands-as-system-root/))\n- ConnectWise has suspended its cloud backup service after threat actors compromised Microsoft 365 tenants and accessed application identities. ([The Hacker News](https://thehackernews.com/2026/10/connectwise-suspends-cloud-backup-after.html))\n- Researchers uncovered a sophisticated supply chain attack targeting AOMEI software update infrastructure and a new Rust-based bot using Discord for command and control. ([/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1x94f4x/investigating_ephemeral_supply_chain_tampering/), [Security Affairs](https://securityaffairs.com/201210/security/rust-based-cikabika-bot-turns-discord-into-a-command-center.html))\n\n### Hackers exploit SiteGuard WAF flaw to run commands as admins\nAttackers are targeting an OS command injection vulnerability in SiteGuard Server Edition that lets them execute commands as root or SYSTEM on affected servers. ([BleepingComputer](https://www.bleepingcomputer.com/news/security/hackers-exploit-siteguard-waf-flaw-to-run-commands-as-system-root/))\n\n### ConnectWise Suspends Cloud Backup After Attackers Compromise Microsoft 365 Tenants\nConnectWise on Saturday said it has disabled seven ConnectWise application identities as it continues its investigation into an incident in which unknown threat actors obtained unauthorized access to the application identities and compromised Microsoft 365 tenants. The disabled identities are liste… ([The Hacker News](https://thehackernews.com/2026/10/connectwise-suspends-cloud-backup-after.html))\n\n### Investigating Ephemeral Supply Chain Tampering\nResearchers from Google Threat Intelligence Group and Mandiant uncovered a sophisticated attack against software-update infrastructure belonging to AOMEI AOMEI develops Windows backup, disk-cloning, and remote-access software. Between April and July 2026, attackers repeatedly modified configuration… ([/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1x94f4x/investigating_ephemeral_supply_chain_tampering/))\n\n### Rust-Based CikaBika Bot Turns Discord into a Command Center\nCikaBika Bot uses fake documents to infect Windows systems, then abuses Discord and Ngrok to execute commands, spy on victims, and steal files. Darktrace researchers have documented a new campaign distributing a remote access trojan called CikaBika Bot, written in Rust and controlled entirely throu… ([Security Affairs](https://securityaffairs.com/201210/security/rust-based-cikabika-bot-turns-discord-into-a-command-center.html))\n\n### Microsoft Windows Cloud Files Mini Filter Driver Vulnerabilities\nTalos reported two vulnerabilities in the Microsoft Windows Cloud Files Mini Filter Driver, including a use-after-free in CldiStreamCompleteRequest and a type confusion in CldiStreamPrepareRequestForMoreProcessing. ([Talos](https://talosintelligence.com/vulnerability_reports/TALOS-2026-2426), [Talos](https://talosintelligence.com/vulnerability_reports/TALOS-2026-2445))\n\n### Critical PwnEscape Linux Kernel Vulnerability Lets Guest VMs Read Host Memory\nsubmitted by /u/Dash-Courageous link comments ([/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1x8waxl/critical_pwnescape_linux_kernel_vulnerability/))\n\n### Week in review: Hidden implant in Ledger wallets linked to $93M theft, 1,500+ npm packages exposed\nHere’s an overview of some of last week’s most interesting news, articles, interviews and videos: Strands Box: Open-source sandbox for AI agents AWS released Strands Box, an open source sandbox for AI agents that pairs operating-system isolation with rules that can weigh what an agent has already d… ([Help Net Security](https://www.helpnetsecurity.com/2026/10/18/week-in-review-hidden-implant-in-ledger-wallets-linked-to-93m-theft-1500-npm-packages-exposed/))\n\n### Fuite de données : la FFTir de nouveau ciblée ?\nFFTir : un pirate vend 40 Go de données, dont des photos et certificats médicaux de licenciés sportifs. ([ZATAZ](https://www.zataz.com/fuite-de-donnees-la-fftir-de-nouveau-ciblee/))",
+  "duration_seconds": 62.5,
+  "daily_report_markdown": "### Headline summary\n- ConnectWise suspended cloud services to contain a supply chain attack where credentials were abused to target Microsoft 365 environments. ([Security Affairs](https://securityaffairs.com/201236/hacking/attackers-abuse-stolen-connectwise-application-credentials-to-target-microsoft-365.html), [Infosecurity Magazine](https://www.infosecurity-magazine.com/news/connectwise-shuts-off-cloud/))\n- Hackers are actively exploiting Plex vulnerabilities in the wild to deploy cryptominer malware on affected systems. ([Cyber Security News (FeedBurner)](https://cybersecuritynews.com/plex-vulnerabilities-exploited-in-wild/), [SecurityWeek](https://www.securityweek.com/plex2shell-exploit-chain-weaponized-against-plex-servers-hours-after-disclosure/))\n- A critical vulnerability in the SiteGuard WAF is being actively exploited by attackers to gain full control of servers. ([Security Affairs](https://securityaffairs.com/201258/security/japans-siteguard-waf-flaw-cve-2026-106931-is-already-being-exploited.html), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/hackers-exploit-siteguard-waf-vulnerability/))\n\n### ConnectWise supply chain attack and credential abuse\nConnectWise suspended its cloud services to contain a supply chain attack, during which attackers abused ConnectWise credentials to target Microsoft 365 environments. ([Security Affairs](https://securityaffairs.com/201236/hacking/attackers-abuse-stolen-connectwise-application-credentials-to-target-microsoft-365.html), [Infosecurity Magazine](https://www.infosecurity-magazine.com/news/connectwise-shuts-off-cloud/), [CSO Online](https://www.csoonline.com/article/4237087/connectwise-backup-credentials-exposed-multiple-microsoft-365-tenants.html), [SecurityWeek](https://www.securityweek.com/connectwise-suspends-cloud-services-in-response-to-cyberattack/))\n\n### Plex vulnerabilities exploited to deploy cryptominers\nHackers are actively exploiting Plex vulnerabilities in the wild, specifically the Plex2Shell flaws, to install cryptominer malware on affected systems. ([Cyber Security News (FeedBurner)](https://cybersecuritynews.com/plex-vulnerabilities-exploited-in-wild/), [SecurityWeek](https://www.securityweek.com/plex2shell-exploit-chain-weaponized-against-plex-servers-hours-after-disclosure/), [The Hacker News](https://thehackernews.com/2026/10/hackers-exploit-plex2shell-flaws-to.html), [Security Affairs](https://securityaffairs.com/201324/hacking/plex2shell-exploit-used-to-turn-vulnerable-plex-servers-into-crypto-miners.html))\n\n### SiteGuard WAF vulnerability exploited in the wild\nA critical vulnerability in the SiteGuard WAF (CVE-2026-106931) is being actively exploited by hackers to gain full control of servers. ([Security Affairs](https://securityaffairs.com/201258/security/japans-siteguard-waf-flaw-cve-2026-106931-is-already-being-exploited.html), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/hackers-exploit-siteguard-waf-vulnerability/))\n\n### Critical Drupal RCE vulnerability enables unauthenticated takeover\nDrupal released security updates for a critical remote code execution vulnerability in the Entity List and Field UI modules that allows attackers to take over websites without authentication. ([SecurityWeek](https://www.securityweek.com/drupal-warns-of-fast-exploitation-risk-for-critical-core-rce-flaw/), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/drupal-rce-vulnerability/))\n\n### Rank Math PRO WordPress plugin compromised in supply chain attack\nHackers injected malware into Rank Math PRO version 3.0.123 packages distributed between October 15 and 17, delivering a self-restoring backdoor to users. ([SecurityWeek](https://www.securityweek.com/rank-math-pro-wordpress-plugin-compromised-in-supply-chain-attack/), [The Hacker News](https://thehackernews.com/2026/10/popular-wordpress-seo-plugin-rank-math.html))\n\n### AOMEI Backupper update servers compromised to spread malware\nAttackers compromised AOMEI Technology's update servers to distribute malware through the software's promotional update mechanism, prompting warnings for users to check their systems. ([Malwarebytes Labs (Vendor)](https://www.malwarebytes.com/blog/news/2026/10/aomei-backupper-update-servers-hijacked-to-push-malware-check-your-pc), [BleepingComputer](https://www.bleepingcomputer.com/news/security/hackers-hijack-aomei-update-servers-to-secretly-spread-malware/))\n\n### Bullhorn disables platform to contain cyberattack\nStaffing software company Bullhorn has disabled access to its platform to contain an ongoing cyberattack. ([/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1x9lk21/bullhorn_cyber_incident_developing_now/), [BleepingComputer](https://www.bleepingcomputer.com/news/security/bullhorn-takes-staffing-platform-offline-to-contain-cyberattack/))\n\n### California student data stolen via compromised ETS credentials\nIntruders used compromised credentials to access an ETS SFTP server, stealing personal information belonging to millions of current and former California public school students. ([Malwarebytes Labs (Vendor)](https://www.malwarebytes.com/blog/data-breaches/2026/10/millions-of-california-students-sensitive-data-stolen-in-breach), [SecurityWeek](https://www.securityweek.com/one-compromised-login-exposed-millions-of-california-students-records/))",
   "headline": [
     {
-      "text": "Attackers are actively exploiting an OS command injection flaw in SiteGuard WAF to execute commands as root or SYSTEM.",
+      "text": "ConnectWise suspended cloud services to contain a supply chain attack where credentials were abused to target Microsoft 365 environments.",
       "links": [
-        "https://www.bleepingcomputer.com/news/security/hackers-exploit-siteguard-waf-flaw-to-run-commands-as-system-root/"
+        "https://securityaffairs.com/201236/hacking/attackers-abuse-stolen-connectwise-application-credentials-to-target-microsoft-365.html",
+        "https://www.infosecurity-magazine.com/news/connectwise-shuts-off-cloud/"
       ]
     },
     {
-      "text": "ConnectWise has suspended its cloud backup service after threat actors compromised Microsoft 365 tenants and accessed application identities.",
+      "text": "Hackers are actively exploiting Plex vulnerabilities in the wild to deploy cryptominer malware on affected systems.",
       "links": [
-        "https://thehackernews.com/2026/10/connectwise-suspends-cloud-backup-after.html"
+        "https://cybersecuritynews.com/plex-vulnerabilities-exploited-in-wild/",
+        "https://www.securityweek.com/plex2shell-exploit-chain-weaponized-against-plex-servers-hours-after-disclosure/"
       ]
     },
     {
-      "text": "Researchers uncovered a sophisticated supply chain attack targeting AOMEI software update infrastructure and a new Rust-based bot using Discord for command and control.",
+      "text": "A critical vulnerability in the SiteGuard WAF is being actively exploited by attackers to gain full control of servers.",
       "links": [
-        "https://www.reddit.com/r/cybersecurity/comments/1x94f4x/investigating_ephemeral_supply_chain_tampering/",
-        "https://securityaffairs.com/201210/security/rust-based-cikabika-bot-turns-discord-into-a-command-center.html"
+        "https://securityaffairs.com/201258/security/japans-siteguard-waf-flaw-cve-2026-106931-is-already-being-exploited.html",
+        "https://cybersecuritynews.com/hackers-exploit-siteguard-waf-vulnerability/"
       ]
     }
   ],
   "top_stories": [
     {
-      "title": "Hackers exploit SiteGuard WAF flaw to run commands as admins",
-      "summary": "Attackers are targeting an OS command injection vulnerability in SiteGuard Server Edition that lets them execute commands as root or SYSTEM on affected servers.",
+      "title": "ConnectWise supply chain attack and credential abuse",
+      "summary": "ConnectWise suspended its cloud services to contain a supply chain attack, during which attackers abused ConnectWise credentials to target Microsoft 365 environments.",
       "links": [
-        "https://www.bleepingcomputer.com/news/security/hackers-exploit-siteguard-waf-flaw-to-run-commands-as-system-root/"
+        "https://securityaffairs.com/201236/hacking/attackers-abuse-stolen-connectwise-application-credentials-to-target-microsoft-365.html",
+        "https://www.infosecurity-magazine.com/news/connectwise-shuts-off-cloud/",
+        "https://www.csoonline.com/article/4237087/connectwise-backup-credentials-exposed-multiple-microsoft-365-tenants.html",
+        "https://www.securityweek.com/connectwise-suspends-cloud-services-in-response-to-cyberattack/",
+        "https://www.helpnetsecurity.com/2026/10/19/connectwise-cloud-backup-suspended-security-incident/",
+        "https://www.darkreading.com/identity-access-management-security/connectwise-disables-cloud-backups-downstream-msps",
+        "https://therecord.media/connectwise-suspends-cloud-backup-service-supply-chain-attack"
       ],
-      "topic_id": "74ff0a30f9fe"
+      "topic_id": "e2e6c88d7e91"
     },
     {
-      "title": "ConnectWise Suspends Cloud Backup After Attackers Compromise Microsoft 365 Tenants",
-      "summary": "ConnectWise on Saturday said it has disabled seven ConnectWise application identities as it continues its investigation into an incident in which unknown threat actors obtained unauthorized access to the application identities and compromised Microsoft 365 tenants. The disabled identities are liste…",
+      "title": "Plex vulnerabilities exploited to deploy cryptominers",
+      "summary": "Hackers are actively exploiting Plex vulnerabilities in the wild, specifically the Plex2Shell flaws, to install cryptominer malware on affected systems.",
       "links": [
-        "https://thehackernews.com/2026/10/connectwise-suspends-cloud-backup-after.html"
+        "https://cybersecuritynews.com/plex-vulnerabilities-exploited-in-wild/",
+        "https://www.securityweek.com/plex2shell-exploit-chain-weaponized-against-plex-servers-hours-after-disclosure/",
+        "https://thehackernews.com/2026/10/hackers-exploit-plex2shell-flaws-to.html",
+        "https://securityaffairs.com/201324/hacking/plex2shell-exploit-used-to-turn-vulnerable-plex-servers-into-crypto-miners.html"
       ],
-      "topic_id": "952b3a6c7b9c"
+      "topic_id": "dc710bbd4cdf"
     },
     {
-      "title": "Investigating Ephemeral Supply Chain Tampering",
-      "summary": "Researchers from Google Threat Intelligence Group and Mandiant uncovered a sophisticated attack against software-update infrastructure belonging to AOMEI AOMEI develops Windows backup, disk-cloning, and remote-access software. Between April and July 2026, attackers repeatedly modified configuration…",
+      "title": "SiteGuard WAF vulnerability exploited in the wild",
+      "summary": "A critical vulnerability in the SiteGuard WAF (CVE-2026-106931) is being actively exploited by hackers to gain full control of servers.",
       "links": [
-        "https://www.reddit.com/r/cybersecurity/comments/1x94f4x/investigating_ephemeral_supply_chain_tampering/"
+        "https://securityaffairs.com/201258/security/japans-siteguard-waf-flaw-cve-2026-106931-is-already-being-exploited.html",
+        "https://cybersecuritynews.com/hackers-exploit-siteguard-waf-vulnerability/"
       ],
-      "topic_id": "5bc4bc107175"
+      "topic_id": "31213693a139"
     },
     {
-      "title": "Rust-Based CikaBika Bot Turns Discord into a Command Center",
-      "summary": "CikaBika Bot uses fake documents to infect Windows systems, then abuses Discord and Ngrok to execute commands, spy on victims, and steal files. Darktrace researchers have documented a new campaign distributing a remote access trojan called CikaBika Bot, written in Rust and controlled entirely throu…",
+      "title": "Critical Drupal RCE vulnerability enables unauthenticated takeover",
+      "summary": "Drupal released security updates for a critical remote code execution vulnerability in the Entity List and Field UI modules that allows attackers to take over websites without authentication.",
       "links": [
-        "https://securityaffairs.com/201210/security/rust-based-cikabika-bot-turns-discord-into-a-command-center.html"
+        "https://www.securityweek.com/drupal-warns-of-fast-exploitation-risk-for-critical-core-rce-flaw/",
+        "https://cybersecuritynews.com/drupal-rce-vulnerability/"
       ],
-      "topic_id": "e2a04a1b139c"
+      "topic_id": "12a8253cbbbf"
     },
     {
-      "title": "Microsoft Windows Cloud Files Mini Filter Driver Vulnerabilities",
-      "summary": "Talos reported two vulnerabilities in the Microsoft Windows Cloud Files Mini Filter Driver, including a use-after-free in CldiStreamCompleteRequest and a type confusion in CldiStreamPrepareRequestForMoreProcessing.",
+      "title": "Rank Math PRO WordPress plugin compromised in supply chain attack",
+      "summary": "Hackers injected malware into Rank Math PRO version 3.0.123 packages distributed between October 15 and 17, delivering a self-restoring backdoor to users.",
       "links": [
-        "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2426",
-        "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2445"
+        "https://www.securityweek.com/rank-math-pro-wordpress-plugin-compromised-in-supply-chain-attack/",
+        "https://thehackernews.com/2026/10/popular-wordpress-seo-plugin-rank-math.html"
       ],
-      "topic_id": "9c27a4fa5761"
+      "topic_id": "c3c91dc0f871"
     },
     {
-      "title": "Critical PwnEscape Linux Kernel Vulnerability Lets Guest VMs Read Host Memory",
-      "summary": "submitted by /u/Dash-Courageous link comments",
+      "title": "AOMEI Backupper update servers compromised to spread malware",
+      "summary": "Attackers compromised AOMEI Technology's update servers to distribute malware through the software's promotional update mechanism, prompting warnings for users to check their systems.",
       "links": [
-        "https://www.reddit.com/r/cybersecurity/comments/1x8waxl/critical_pwnescape_linux_kernel_vulnerability/"
+        "https://www.malwarebytes.com/blog/news/2026/10/aomei-backupper-update-servers-hijacked-to-push-malware-check-your-pc",
+        "https://www.bleepingcomputer.com/news/security/hackers-hijack-aomei-update-servers-to-secretly-spread-malware/"
       ],
-      "topic_id": "f8a52e20a316"
+      "topic_id": "379fde7780c8"
     },
     {
-      "title": "Week in review: Hidden implant in Ledger wallets linked to $93M theft, 1,500+ npm packages exposed",
-      "summary": "Here’s an overview of some of last week’s most interesting news, articles, interviews and videos: Strands Box: Open-source sandbox for AI agents AWS released Strands Box, an open source sandbox for AI agents that pairs operating-system isolation with rules that can weigh what an agent has already d…",
+      "title": "Bullhorn disables platform to contain cyberattack",
+      "summary": "Staffing software company Bullhorn has disabled access to its platform to contain an ongoing cyberattack.",
       "links": [
-        "https://www.helpnetsecurity.com/2026/10/18/week-in-review-hidden-implant-in-ledger-wallets-linked-to-93m-theft-1500-npm-packages-exposed/"
+        "https://www.reddit.com/r/cybersecurity/comments/1x9lk21/bullhorn_cyber_incident_developing_now/",
+        "https://www.bleepingcomputer.com/news/security/bullhorn-takes-staffing-platform-offline-to-contain-cyberattack/"
       ],
-      "topic_id": "14fcc0d97113"
+      "topic_id": "789783b8e10f"
     },
     {
-      "title": "Fuite de données : la FFTir de nouveau ciblée ?",
-      "summary": "FFTir : un pirate vend 40 Go de données, dont des photos et certificats médicaux de licenciés sportifs.",
+      "title": "California student data stolen via compromised ETS credentials",
+      "summary": "Intruders used compromised credentials to access an ETS SFTP server, stealing personal information belonging to millions of current and former California public school students.",
       "links": [
-        "https://www.zataz.com/fuite-de-donnees-la-fftir-de-nouveau-ciblee/"
+        "https://www.malwarebytes.com/blog/data-breaches/2026/10/millions-of-california-students-sensitive-data-stolen-in-breach",
+        "https://www.securityweek.com/one-compromised-login-exposed-millions-of-california-students-records/"
       ],
-      "topic_id": "a8a9e70812bb"
+      "topic_id": "f138f738b225"
     }
   ],
   "highlights": [
     {
-      "title": "Hackers exploit SiteGuard WAF flaw to run commands as admins",
-      "link": "https://www.bleepingcomputer.com/news/security/hackers-exploit-siteguard-waf-flaw-to-run-commands-as-system-root/",
-      "source": "BleepingComputer",
-      "published": "2026-10-18T14:23:16+00:00",
+      "title": "Attackers Abuse Stolen ConnectWise Application Credentials to Target Microsoft 365",
+      "link": "https://securityaffairs.com/201236/hacking/attackers-abuse-stolen-connectwise-application-credentials-to-target-microsoft-365.html",
+      "source": "Security Affairs",
+      "published": "2026-10-19T09:32:56+00:00",
       "smart_groups": [
-        "Vulnerabilities / CVEs"
+        "Windows / Microsoft",
+        "Cloud / SaaS"
       ],
       "curated": true
     },
     {
-      "title": "ConnectWise Suspends Cloud Backup After Attackers Compromise Microsoft 365 Tenants",
-      "link": "https://thehackernews.com/2026/10/connectwise-suspends-cloud-backup-after.html",
-      "source": "The Hacker News",
-      "published": "2026-10-18T08:23:02+00:00",
+      "title": "ConnectWise Shuts Off Cloud Services After ‘Unauthorized Access’ to Microsoft 365 Tenants",
+      "link": "https://www.infosecurity-magazine.com/news/connectwise-shuts-off-cloud/",
+      "source": "Infosecurity Magazine",
+      "published": "2026-10-19T10:30:00+00:00",
+      "smart_groups": [
+        "Windows / Microsoft",
+        "Cloud / SaaS"
+      ],
+      "curated": false
+    },
+    {
+      "title": "ConnectWise backup credentials exposed multiple Microsoft 365 tenants",
+      "link": "https://www.csoonline.com/article/4237087/connectwise-backup-credentials-exposed-multiple-microsoft-365-tenants.html",
+      "source": "CSO Online",
+      "published": "2026-10-19T12:00:56+00:00",
+      "smart_groups": [
+        "Windows / Microsoft",
+        "Cloud / SaaS",
+        "Identity / Access"
+      ],
+      "curated": false
+    },
+    {
+      "title": "ConnectWise Suspends Cloud Services in Response to Cyberattack",
+      "link": "https://www.securityweek.com/connectwise-suspends-cloud-services-in-response-to-cyberattack/",
+      "source": "SecurityWeek",
+      "published": "2026-10-19T13:16:20+00:00",
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "ConnectWise suspends Cloud Backup service after attackers abuse its Microsoft 365 access",
+      "link": "https://www.helpnetsecurity.com/2026/10/19/connectwise-cloud-backup-suspended-security-incident/",
+      "source": "Help Net Security",
+      "published": "2026-10-19T13:33:57+00:00",
+      "smart_groups": [
+        "Windows / Microsoft",
+        "Cloud / SaaS"
+      ],
+      "curated": false
+    },
+    {
+      "title": "ConnectWise Disables Cloud Backups Amid Concerns for Downstream MSPs",
+      "link": "https://www.darkreading.com/identity-access-management-security/connectwise-disables-cloud-backups-downstream-msps",
+      "source": "Dark Reading",
+      "published": "2026-10-19T19:19:33+00:00",
       "smart_groups": [
         "Windows / Microsoft"
       ],
       "curated": false
     },
     {
-      "title": "Investigating Ephemeral Supply Chain Tampering",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1x94f4x/investigating_ephemeral_supply_chain_tampering/",
-      "source": "/r/cybersecurity",
-      "published": "2026-10-18T14:21:25+00:00",
-      "smart_groups": [
-        "Malware / Payloads",
-        "Community Discussion"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Rust-Based CikaBika Bot Turns Discord into a Command Center",
-      "link": "https://securityaffairs.com/201210/security/rust-based-cikabika-bot-turns-discord-into-a-command-center.html",
-      "source": "Security Affairs",
-      "published": "2026-10-18T11:33:52+00:00",
-      "smart_groups": [
-        "Windows / Microsoft",
-        "Malware / Payloads",
-        "Phishing / Social Engineering"
-      ],
+      "title": "ConnectWise suspends Cloud Backup service after supply chain attack",
+      "link": "https://therecord.media/connectwise-suspends-cloud-backup-service-supply-chain-attack",
+      "source": "The Record",
+      "published": "2026-10-19T19:45:00+00:00",
+      "smart_groups": [],
       "curated": true
     },
     {
-      "title": "Microsoft Windows Cloud Files Mini Filter Driver CldiStreamCompleteRequest use-after-free vulnerability",
-      "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2426",
-      "source": "Talos",
-      "published": "2026-10-18T00:00:00+00:00",
-      "smart_groups": [
-        "Vulnerabilities / CVEs"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Microsoft Windows Cloud Files Mini Filter Driver CldiStreamPrepareRequestForMoreProcessing Type Confusion vulnerability",
-      "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2445",
-      "source": "Talos",
-      "published": "2026-10-18T00:00:00+00:00",
-      "smart_groups": [
-        "Vulnerabilities / CVEs"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Critical PwnEscape Linux Kernel Vulnerability Lets Guest VMs Read Host Memory",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1x8waxl/critical_pwnescape_linux_kernel_vulnerability/",
-      "source": "/r/cybersecurity",
-      "published": "2026-10-18T06:43:26+00:00",
+      "title": "Hackers Exploiting Plex Vulnerabilities in the Wild to Deploy Cryptominer Malware",
+      "link": "https://cybersecuritynews.com/plex-vulnerabilities-exploited-in-wild/",
+      "source": "Cyber Security News (FeedBurner)",
+      "published": "2026-10-19T04:14:01+00:00",
       "smart_groups": [
         "Vulnerabilities / CVEs",
-        "Linux / Unix",
-        "Community Discussion"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Week in review: Hidden implant in Ledger wallets linked to $93M theft, 1,500+ npm packages exposed",
-      "link": "https://www.helpnetsecurity.com/2026/10/18/week-in-review-hidden-implant-in-ledger-wallets-linked-to-93m-theft-1500-npm-packages-exposed/",
-      "source": "Help Net Security",
-      "published": "2026-10-18T08:00:30+00:00",
-      "smart_groups": [
-        "Linux / Unix",
-        "Cloud / SaaS"
+        "Malware / Payloads",
+        "Exploit / PoC"
       ],
       "curated": true
     },
     {
-      "title": "Fuite de données : la FFTir de nouveau ciblée ?",
-      "link": "https://www.zataz.com/fuite-de-donnees-la-fftir-de-nouveau-ciblee/",
-      "source": "ZATAZ",
-      "published": "2026-10-18T09:43:48+00:00",
-      "smart_groups": [],
-      "curated": false
+      "title": "Plex2Shell Exploit Chain Weaponized Against Plex Servers Hours After Disclosure",
+      "link": "https://www.securityweek.com/plex2shell-exploit-chain-weaponized-against-plex-servers-hours-after-disclosure/",
+      "source": "SecurityWeek",
+      "published": "2026-10-19T12:44:39+00:00",
+      "smart_groups": [
+        "Exploit / PoC",
+        "Crypto / Web3"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Hackers Exploit Plex2Shell Flaws to Install Crypto Miners and Linux Proxy Backdoor",
+      "link": "https://thehackernews.com/2026/10/hackers-exploit-plex2shell-flaws-to.html",
+      "source": "The Hacker News",
+      "published": "2026-10-19T17:32:13+00:00",
+      "smart_groups": [
+        "Linux / Unix",
+        "Malware / Payloads",
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
     }
   ]
 }
