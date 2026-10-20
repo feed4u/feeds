@@ -127,8 +127,24 @@ export async function fetchTrendsData(): Promise<TrendsData> {
   return transformTrendsData(rawData);
 }
 
+// trends.json as written by the backend: the new format (threat_intelligence
+// present) or the legacy format (trending_terms, top_cves, ...)
+interface RawTrendTerm {
+  label?: string;
+  counts?: Record<string, number>;
+}
+
+type RawTrendsData = Partial<Omit<TrendsData, "insights">> & {
+  generated_at: string;
+  insights?: Partial<Insights>;
+  daily_volume?: Array<{ count: number }>;
+  trending_terms?: Record<string, RawTrendTerm>;
+  top_cves?: Record<string, Array<[string, number]>>;
+  threat_actor_daily?: ThreatActorTimeline[];
+};
+
 // Transform trends.json to TrendsData structure expected by UI
-function transformTrendsData(raw: any): TrendsData {
+function transformTrendsData(raw: RawTrendsData): TrendsData {
   // Check if this is the new format (has threat_intelligence key)
   if (raw.threat_intelligence) {
     // New format - pass through with minimal transformation
@@ -152,7 +168,7 @@ function transformTrendsData(raw: any): TrendsData {
 
   // Legacy format transformation (kept for backwards compatibility)
   const summary: TrendsSummary = {
-    total_articles: raw.daily_volume?.reduce((sum: number, day: any) => sum + day.count, 0) || 0,
+    total_articles: raw.daily_volume?.reduce((sum: number, day) => sum + day.count, 0) || 0,
     time_range_days: 90,
     critical_alerts: 0,
     trending_threats: Object.keys(raw.trending_terms || {}).length,
@@ -162,7 +178,7 @@ function transformTrendsData(raw: any): TrendsData {
     exploited_cves: 0,
   };
 
-  const attackPatterns: AttackPattern[] = Object.entries(raw.trending_terms || {}).slice(0, 10).map(([key, value]: [string, any]) => ({
+  const attackPatterns: AttackPattern[] = Object.entries(raw.trending_terms || {}).slice(0, 10).map(([key, value]: [string, RawTrendTerm]) => ({
     name: value.label || key,
     key,
     severity: "medium" as const,
@@ -194,7 +210,7 @@ function transformTrendsData(raw: any): TrendsData {
   };
 
   const actorMap = (raw.threat_actor_daily || [])
-    .flatMap((day: any) => day.top_actors || [])
+    .flatMap((day) => day.top_actors || [])
     .reduce((acc: Map<string, number>, [name, count]: [string, number]) => {
       acc.set(name, (acc.get(name) || 0) + count);
       return acc;
