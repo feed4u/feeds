@@ -18,7 +18,8 @@ ROOT = Path(__file__).resolve().parents[4]
 SCAFFOLD = Path("/mnt/data1/projects/owner-model/scaffold.py")
 MARKER = "<!-- owner-model:generated"
 
-# Top-level directories that no longer exist; guidance must not send agents there.
+# Retired top-level trees (gitignored; may linger on disk in an old checkout);
+# guidance must not send agents there.
 RETIRED = ("4u/", "k5-security-news/", "readd/", "economic/", "economic-4u/")
 # Documented paths that are created locally and gitignored, so absent in a checkout.
 LOCAL_ONLY = {"core/web/.env.local", "core/web/public/data/"}
@@ -81,7 +82,6 @@ class LocalGuidanceTests(unittest.TestCase):
                 [t for t in tokens if t.startswith(retired)],
                 f"AGENTS.local.md points at retired {retired}",
             )
-            self.assertFalse((ROOT / retired).exists())
 
 
 if __name__ == "__main__":

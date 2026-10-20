@@ -86,6 +86,7 @@ Run every command below from the repository root unless it says otherwise.
 - `core/source/<vertical>/`: OPML feed sections (`news.xml`, `blog.xml` or `blogs.xml`, `podcasts.xml`, `videos.xml`, plus vertical-specific ones such as `viranomaiset.xml`) and the merged `feeds.xml`. `core/source/4u/feeds.txt` is a plain-text feed list.
 - `core/data/<vertical>/`: generated JSON. It is committed, because the incremental archiver reads it back.
 - `core/web/`: the shared React SPA (React 18, TypeScript, Vite, Tailwind, shadcn-ui, React Router, React Query, Recharts, Vitest). `VITE_VERTICAL` selects branding, nav, feature flags and the data path (`core/web/src/config/verticals.ts`). Routes are in `core/web/src/App.tsx`.
+- An old checkout may still hold legacy top-level trees on disk (`4u`, `k5-security-news`, `readd`, `economic`, `source` and others listed in `.gitignore`). They are gitignored, not part of this repository, and not the product.
 - Verticals: `k5` (security, has trends), `4u` (AI/ML), `finnish`, `economics`, `storage`.
 - `core/AGENTS.md` and `core/CLAUDE.md` describe an older standalone layout (`scripts/`, `source/feeds.xml`) that is no longer in the tree. Where they disagree with this file, this file is right. `core/docker/docker-compose.yml` also still calls `/app/scripts/*.py`, so do not rely on the Docker setup without fixing it first.
 
@@ -108,7 +109,7 @@ Run every command below from the repository root unless it says otherwise.
   - Sync to the web app: `bash core/code/sync_web_data.sh` (k5 only, see Configuration). It copies `core/data/<v>/` to `core/web/public/data/<v>/`, excluding `news_recent.json`, `feed_errors_*.json` and `promo_filtered_*.json`.
   - All steps for k5: `bash core/code/run_pipeline.sh`.
 - Daily briefing, for a host that can reach the LLM lane: `python3 core/code/base/daily_briefing.py --vertical k5 [--date YYYY-MM-DD]`.
-- Python tests: `python3 -m unittest discover -s core/code/base/tests -v`.
+- Repository gate: `make lint` (`python3 -m compileall -q core/code`) and `make test` (`python3 -m unittest discover -s core/code/base/tests -v`). Both need only the standard library.
 - Web app, from `core/web/`: `npm ci`, then `npm run dev`. Sync the data once first, because the dev server does not. Also `npm run lint`, `npm run test` (Vitest), `npm run build` and `npm run preview`. `npm run build` runs `prebuild`, which wipes `public/data` and syncs from the shell variable `VITE_VERTICAL` (default `k5`). It does not read `.env.local`. When building a vertical other than k5, check that the synced data matches the vertical the app is built for.
 
 ## Editing Feeds
