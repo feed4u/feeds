@@ -81,6 +81,7 @@ Run every command below from the repository root unless it says otherwise.
 
 ## Project Structure & Module Organization
 - `core/code/base/`: shared pipeline. Entry points are `build_category_metadata.py`, `merge_feeds.py`, `fetch_news.py`, `archive_news.py`, `build_topics.py`, `daily_briefing.py`, `convert_feeds_txt.py` and `remove_errored_feeds.py`. Packages: `news_fetcher/` (RSS ingestion, HTML sanitizing, smart groups) and `archiver/`. Also `path_utils.py` (path resolution), `llm_client.py` (OpenAI-compatible client) and `tests/`.
+- Smart groups are non-exclusive tags (e.g. "Ransomware", "Vulnerabilities"): one item can carry several, in its `smart_groups` list (`news_fetcher/classifiers.py`).
 - `core/code/<vertical>/`: per-vertical overrides, mostly `smart_groups.py`. `core/code/k5/` also has `create_trends.py` with `trends_analyzer/`, and `build_daily_report.py`, a k5 wrapper around `daily_briefing.py`.
 - `core/code/run_pipeline.sh`, `core/code/sync_web_data.sh`, `core/code/run_daily_briefings.sh`, `core/code/systemd/`: orchestration (see Deployment).
 - `core/source/<vertical>/`: OPML feed sections (`news.xml`, `blog.xml` or `blogs.xml`, `podcasts.xml`, `videos.xml`, plus vertical-specific ones such as `viranomaiset.xml`) and the merged `feeds.xml`. `core/source/4u/feeds.txt` is a plain-text feed list.
@@ -94,7 +95,7 @@ Run every command below from the repository root unless it says otherwise.
 - Every `core/code/base/*.py` entry point accepts `--vertical`, `--base-dir`, `--data-dir`, `--opml-path`, `--output-path` and `--archive-dir` (`add_path_cli_arguments` in `path_utils.py`). `--base-dir` defaults to the auto-detected `core/`. Pass `--vertical` as a flag. Do not use an environment prefix.
 - The fallbacks, used when no flag is given: `VERTICAL` / `K5_VERTICAL`, `K5_BASE_DIR`, `K5_DATA_DIR`, `K5_SOURCE_DIR`, `K5_OPML_PATH`, `K5_OUTPUT_PATH`, `K5_ARCHIVE_DIR`.
 - Fetcher tuning is environment-only (`core/code/base/news_fetcher/config.py`): `DAYS_BACK` (default 30), `MAX_WORKERS` (10), `REQUEST_TIMEOUT` (25 s).
-- LLM steps (topics, daily briefing) use `llm_client.py`: `LLM_BASE_URL` (default: the local lane `http://127.0.0.1:11434/v1`), `LLM_MODEL`, `LLM_API_KEY` (falls back to `OPENAI_API_KEY`), `LLM_TIMEOUT`, `LLM_RETRIES`. When the endpoint is unreachable, these steps skip without changing files.
+- LLM steps (topics, daily briefing) use `llm_client.py`: `LLM_BASE_URL` (default: the local lane `http://127.0.0.1:11434/v1`), `LLM_MODEL`, `LLM_API_KEY` (falls back to `OPENAI_API_KEY`), `LLM_TIMEOUT`, `LLM_RETRIES`. When the endpoint is unreachable, `daily_briefing.py` writes nothing and exits 0 (`--strict` makes it exit 2). `build_topics.py` keeps an existing `llm` or `partial` topics file for that day; otherwise it writes rule-based topics (`--rules-only` forces that mode).
 - `core/code/run_pipeline.sh` and `core/code/sync_web_data.sh` read the vertical **only** from `VERTICAL` (default `k5`) and have no flag. Run the per-step commands below for another vertical.
 - Frontend: copy `core/web/.env.example` to `core/web/.env.local` and set `VITE_VERTICAL=<vertical>`. `VITE_DATA_BASE_PATH` is an optional override; it defaults to `/data/<vertical>`.
 
@@ -109,7 +110,7 @@ Run every command below from the repository root unless it says otherwise.
   - Sync to the web app: `bash core/code/sync_web_data.sh` (k5 only, see Configuration). It copies `core/data/<v>/` to `core/web/public/data/<v>/`, excluding `news_recent.json`, `feed_errors_*.json` and `promo_filtered_*.json`.
   - All steps for k5: `bash core/code/run_pipeline.sh`.
 - Daily briefing, for a host that can reach the LLM lane: `python3 core/code/base/daily_briefing.py --vertical k5 [--date YYYY-MM-DD]`.
-- Repository gate: `make lint` (`python3 -m compileall -q core/code`) and `make test` (`python3 -m unittest discover -s core/code/base/tests -v`). Both need only the standard library.
+- Pipeline tests: `python3 -m unittest discover -s core/code/base/tests -v`. It needs only the standard library.
 - Web app, from `core/web/`: `npm ci`, then `npm run dev`. Sync the data once first, because the dev server does not. Also `npm run lint`, `npm run test` (Vitest), `npm run build` and `npm run preview`. `npm run build` runs `prebuild`, which wipes `public/data` and syncs from the shell variable `VITE_VERTICAL` (default `k5`). It does not read `.env.local`. When building a vertical other than k5, check that the synced data matches the vertical the app is built for.
 
 ## Editing Feeds
