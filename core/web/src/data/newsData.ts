@@ -317,7 +317,7 @@ export async function fetchNewsChunk(relativePath?: string): Promise<{
     ? data.feed_types
     : Array.from(new Set(filtered.map((i) => i.feedType)));
 
-  const nextChunk = typeof (data as any).next_chunk === 'string' ? (data as any).next_chunk : null;
+  const nextChunk = typeof data.next_chunk === 'string' ? data.next_chunk : null;
 
   return {
     items: filtered,
