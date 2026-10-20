@@ -21,7 +21,7 @@ type Grouped = {
 
 function normalizeTitle(title: string): string {
   let t = title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  t = t.replace(/[“”\"']/g, "").replace(/[\s]+/g, " ").trim();
+  t = t.replace(/[“”"']/g, "").replace(/[\s]+/g, " ").trim();
   // strip trailing site delimiter patterns
   const cutIdx = [" - ", " – ", " | "]
     .map((sep) => t.lastIndexOf(sep))
@@ -91,8 +91,8 @@ export default function Duplicates() {
         const recent = await fetchRecentItems(DAYS_BACK);
         setItems(recent.filter((it) => (it.feedType || 'news').toLowerCase() === 'news'));
         setError(null);
-      } catch (e: any) {
-        setError(e?.message || 'Failed to load data');
+      } catch (e) {
+        setError((e as { message?: string } | null)?.message || 'Failed to load data');
       } finally {
         setLoading(false);
       }

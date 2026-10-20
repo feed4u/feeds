@@ -31,7 +31,10 @@ function parseHighlightDate(input: string): Date {
   return new Date();
 }
 
-async function fetchReportJson(): Promise<any> {
+// morning_call_markdown is the field name in older morning_call_latest.json files
+type ReportJson = MorningCallData & { morning_call_markdown?: string };
+
+async function fetchReportJson(): Promise<ReportJson> {
   const endpoints = [
     dataUrl("archive/daily_report_latest.json"),
     dataUrl("archive/morning_call_latest.json"),

@@ -39,6 +39,7 @@ Run every command below from the repository root unless it says otherwise.
   - Sync to the web app: `bash core/code/sync_web_data.sh` (k5 only, see Configuration). It copies `core/data/<v>/` to `core/web/public/data/<v>/`, excluding `news_recent.json`, `feed_errors_*.json` and `promo_filtered_*.json`.
   - All steps for k5: `bash core/code/run_pipeline.sh`.
 - Daily briefing, for a host that can reach the LLM lane: `python3 core/code/base/daily_briefing.py --vertical k5 [--date YYYY-MM-DD]`.
+- Repository checks: `make lint` (`compileall` on `core/code` and `core/scripts`, then ESLint in `core/web`) and `make test` (the unittest suite below, then Vitest). Both run `npm ci` in `core/web` first when `node_modules` is missing or the lock file changed (`Makefile`).
 - Pipeline tests: `python3 -m unittest discover -s core/code/base/tests -v`. It needs only the standard library.
 - Web app, from `core/web/`: `npm ci`, then `npm run dev`. Sync the data once first, because the dev server does not. Also `npm run lint`, `npm run test` (Vitest), `npm run build` and `npm run preview`. `npm run build` runs `prebuild`, which wipes `public/data` and syncs from the shell variable `VITE_VERTICAL` (default `k5`). It does not read `.env.local`. When building a vertical other than k5, check that the synced data matches the vertical the app is built for.
 
