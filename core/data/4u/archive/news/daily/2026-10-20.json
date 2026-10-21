@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-21T05:12:16.616948+00:00",
+  "generated_at": "2026-10-21T14:08:21.677142+00:00",
   "date": "2026-10-20",
-  "total_items": 394,
+  "total_items": 403,
   "next_chunk": "archive/news/daily/2026-10-19.json",
   "items": [
     {
@@ -52,7 +52,7 @@
       ],
       "curated": false,
       "story_id": "dbaa90254253",
-      "story_size": 5
+      "story_size": 7
     },
     {
       "title": "Nvidia Moves to Back GPU Cloud Provider Firmus After Investors Balk at Its IPO",
@@ -202,7 +202,7 @@
       ],
       "curated": false,
       "story_id": "8ccf13a33dab",
-      "story_size": 2
+      "story_size": 3
     },
     {
       "title": "Otter.ai raises $320M in funding for its AI meeting assistant",
@@ -236,7 +236,18 @@
         "Security & misuse",
         "Infra & model ops"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "fda712467279",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "Analytics India Magazine - Artificial Intelligence, Emerging Tech, Data Science",
+          "title": "Hugging Face CEO Criticises Netflix Documentary on OpenAI Agent Cyberattack",
+          "link": "https://analyticsindiamag.com/ai-news/hugging-face-ceo-criticises-netflix-documentary-on-openai-agent-cyberattack",
+          "published_ts": 1792574471
+        }
+      ]
     },
     {
       "title": "Smile, Elon, you're on camera: SpaceX made its earnings call must-see TV for Musk fans",
@@ -288,7 +299,7 @@
       ],
       "curated": false,
       "story_id": "a71f92c42f3a",
-      "story_size": 2
+      "story_size": 3
     },
     {
       "title": "Respan spent two years building on LiteLLM. One upgrade made it start over.",
@@ -432,6 +443,22 @@
       "curated": false
     },
     {
+      "title": "TKCat meets LLMs: an MCP server for well-documented knowledge resources",
+      "summary": "[",
+      "summary_html": "<!-- \n<div style=\"min-height: 30px;\">\n[social4i size=\"small\" align=\"align-left\"]\n</div>\n-->\n<div>\n[This article was first published on  <strong><a href=\"https://patzaw.github.io/posts/tkcat-mcp.html\"> Patrice Godard</a></strong>, and kindly contributed to <a href=\"https://www.r-bloggers.com/\">R-bloggers</a>].  (You can report issue about the content on this page <a href=\"https://www.r-bloggers.com/contact-us/\">here</a>)\nWant to share your content on R-bloggers?<a href=\"https://www.r-bloggers.com/add-your-blog/\"> click here</a> if you have a blog, or <a href=\"http://r-posts.com/\"> here</a> if you don't.\n</div>\n<p></p>\n\n<span>1</span> Documentation was always the point\n<p><a href=\"https://patzaw.github.io/TKCat/\">TKCat</a> (Tailored Knowledge Catalog) is built on a simple idea: a knowledge resource is more than a set of tables. In TKCat, each resource is a <em>modeled database</em> (MDB) that contains:</p>\n<ul>\n<li>a <strong>general description</strong> of the resource (source, version, scope),</li>\n<li>a <strong>data model</strong> made with <a href=\"https://patzaw.github.io/ReDaMoR/\">ReDaMoR</a>, with a comment on every table and field, plus primary keys, foreign keys and indexes,</li>\n<li><strong>collection members</strong>, which say which fields refer to the same kind of concept (genes, diseases, tissues\u2026) and make it possible to integrate different MDBs.</li>\n</ul>\n<p>This documentation was designed from the start to be machine-ready, and it turns out to be exactly what a large language model (LLM) needs in order to work with the data correctly.</p>\n\n\n<span>2</span> What is MCP\n<p>The <a href=\"https://modelcontextprotocol.io/\">Model Context Protocol (MCP)</a>, introduced by Anthropic, is an open standard that allows AI assistants to securely connect to external data sources, tools, and workflows. Think of it as a universal adapter for AI: instead of writing custom integrations for every combination of LLM and database, MCP provides a standardized client-server architecture.</p>\n<p>In this setup, an MCP client (such as Claude Desktop, Claude Code, or Posit Assistant) communicates with an MCP server using a common protocol over local or remote connections. The server exposes a defined set of \u201ctools\u201d and resources that the assistant can discover and invoke dynamically based on the user\u2019s natural language request.</p>\n<p>For TKCat, MCP is a natural fit. Rather than forcing developers to build bespoke chat interfaces or write brittle custom prompts for every catalog, TKCat 1.3.0 exposes its modeled databases directly through a standard MCP server. Any MCP-compatible assistant instantly gains the structured vocabulary, relationship maps, and security guardrails it needs to navigate, query, and synthesize your knowledge resources safely.</p>\n\n\n<span>3</span> What\u2019s new in TKCat 1.3.0\n<p>TKCat 1.3.0 includes a read-only MCP server. With it, AI assistants such as Claude Code, Claude Desktop, Posit Assistant or any other MCP client can explore and query the MDBs of a chTKCat instance (TKCat on ClickHouse).</p>\n<p>The server comes in two forms:</p>\n<ul>\n<li><code>chTKCat_mcp_server()</code>: a <strong>local</strong> server, started by the MCP client on the user\u2019s computer (stdio transport).</li>\n<li><code>chTKCat_mcp_http_server()</code>: a <strong>remote</strong> server that runs as a service next to the chTKCat instance (Streamable HTTP transport). Users don\u2019t need R or TKCat on their computer.</li>\n</ul>\n<p>The assistant has a small set of tools that match how a careful analyst works with an unfamiliar resource:</p>\n\n\n\n\n\n\n\nStep\nTools\n\n\n\n\nFind relevant resources\n<code>list_mdbs</code>, <code>search_tkcat</code>\n\n\nUnderstand them\n<code>describe_mdb</code>, <code>describe_tables</code>, <code>list_collections</code>\n\n\nLook at the data\n<code>preview_table</code>\n\n\nAnswer the question\n<code>query_mdb</code> (ClickHouse SQL), <code>get_matrix_values</code>\n\n\n\n\n\n<span>4</span> Why documented databases make a difference\n<p>Ask an LLM a question about a database it has never seen and it will guess: it may infer table meanings from their names, assume joins and get the semantics of a column wrong. With TKCat, the assistant doesn\u2019t need to guess:</p>\n<ul>\n<li><strong>It finds the right resource.</strong> MDB descriptions and keyword search over table and field comments point it to the resources that matter, even in a catalog of dozens of databases.</li>\n<li><strong>It understands the data.</strong> Field comments explain codes, units and conventions. Foreign keys show how tables can be joined. So the SQL it writes follows the actual data model.</li>\n<li><strong>It integrates resources.</strong> Collections say when, for example, a gene identifier in one MDB can be compared with a gene identifier in another one, and under which conditions (same source, same organism). The assistant can then answer questions that span several resources in a single query.</li>\n<li><strong>Its answers can be checked.</strong> Every answer is built from explicit SQL queries on identified resources and versions. You can read them, rerun them in R and reuse them.</li>\n</ul>\n<p>A typical exchange looks like this:</p>\n<blockquote>\n<p><strong>User:</strong> Which drugs target genes associated with the phenotypes of this disease?</p>\n<p><strong>Assistant:</strong> <em>searches the catalog \u2192 reads the descriptions of the phenotype, variant and drug MDBs \u2192 checks the collections that link them \u2192 previews a few records \u2192 runs a cross-MDB SQL query</em> \u2192 returns the answer, with the queries it ran and the resources it used.</p>\n</blockquote>\n<p>The better the documentation, the better the answers. The effort put into documenting a resource once now pays off every time someone asks a question about it, in plain language.</p>\n\n\n<span>5</span> Built for shared, governed environments\n<p>Knowledge resources often have different access rules, and they are hosted by an organization rather than on a personal laptop. The MCP server was designed with this in mind:</p>\n<ul>\n<li><strong>Read-only by design</strong>: the assistant can query data but can\u2019t write, create, delete or change grants.</li>\n<li><strong>Per-user access</strong>: with the remote server, users log in with their own chTKCat credentials, which ClickHouse checks. Each user only sees the MDBs they are allowed to read.</li>\n<li><strong>Controlled output</strong>: limits on returned rows, output size and query execution time keep tool calls small and fast.</li>\n<li><strong>Scalable deployment</strong>: the remote server is stateless, so several instances can run behind a reverse proxy such as nginx, and tool calls are logged.</li>\n</ul>\n<div>\n\n<p></p>\nRemote MCP server architecture\n\n</div>\n<p>As with any AI service, only expose MDBs whose content can be shared with the assistant under your organization\u2019s policies.</p>\n\n\n<span>6</span> Getting started\n<p>The best place to start is the new <strong><a href=\"https://patzaw.github.io/TKCat/articles/TKCat-EndToEnd.html\">TKCat End-to-End vignette</a></strong>. It covers the whole process:</p>\n<ol>\n<li>setting up a ClickHouse instance for TKCat,</li>\n<li>preparing example MDBs (HPO, ClinVar, ChEMBL),</li>\n<li>pushing them to ClickHouse and querying them from R,</li>\n<li>deploying the MCP server (local and remote, with systemd and nginx),</li>\n<li>configuring MCP clients (Claude Code, Claude Desktop, Posit Assistant).</li>\n</ol>\n<p>For reference details on the server, its tools and its parameters, see the <a href=\"https://patzaw.github.io/TKCat/articles/TKCat-MCP.html\">MCP server vignette</a>.</p>\n<p>For a complete introduction to TKCat, refer to the <a href=\"https://patzaw.github.io/TKCat/articles/TKCat.html\">main vignette</a>.</p>\n<p>Feedback and issues are welcome on <a href=\"https://github.com/patzaw/TKCat/issues\">GitHub</a>.</p>\n\n<div>\n<div>To <strong>leave a comment</strong> for the author, please follow the link and comment on their blog: <strong><a href=\"https://patzaw.github.io/posts/tkcat-mcp.html\"> Patrice Godard</a></strong>.</div>\n\n<a href=\"https://www.r-bloggers.com/\">R-bloggers.com</a> offers <strong><a href=\"https://feedburner.google.com/fb/a/mailverify?uri=RBloggers\">daily e-mail updates</a></strong> about <a href=\"https://www.r-project.org/\">R</a> news and tutorials about <a href=\"https://www.r-bloggers.com/how-to-learn-r-2/\">learning R</a> and many other topics. <a href=\"https://www.r-users.com/\">Click here if you're looking to post or find an R/data-science job</a>.\n\nWant to share your content on R-bloggers?<a href=\"https://www.r-bloggers.com/add-your-blog/\"> click here</a> if you have a blog, or <a href=\"http://r-posts.com/\"> here</a> if you don't.\n</div><strong>Continue reading</strong>: <a href=\"https://www.r-bloggers.com/2026/10/tkcat-meets-llms-an-mcp-server-for-well-documented-knowledge-resources/\">TKCat meets LLMs: an MCP server for well-documented knowledge resources</a>",
+      "link": "https://www.r-bloggers.com/2026/10/tkcat-meets-llms-an-mcp-server-for-well-documented-knowledge-resources/",
+      "source": "R-bloggers - R news and tutorials contributed by hundreds of R bloggers",
+      "feed_type": "news",
+      "type": "data-science-mlops",
+      "type_label": "Data Science & MLOps",
+      "published": "2026-10-20T22:00:00+00:00",
+      "published_ts": 1792533600,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
       "title": "Musk Says SpaceX, Tesla Have Formed Committees to Explore Merger",
       "summary": "Elon Musk said Tuesday SpaceX and Tesla have formed special committees to explore a potential merger. This is the first step toward what would be the largest mergers of all-time, bringing together Musk\u2019s sprawling empire of electric cars, rocket launch, satellite and AI businesses. Tesla ...",
       "summary_html": "<p>Elon Musk said Tuesday SpaceX and Tesla have formed special committees to explore a potential merger.</p> <p>This is the first step toward what would be the largest mergers of all-time, bringing together Musk\u2019s sprawling empire of electric cars, rocket launch, satellite and AI businesses. Tesla ...</p>",
@@ -445,7 +472,7 @@
       "smart_groups": [],
       "curated": false,
       "story_id": "a71f92c42f3a",
-      "story_size": 2,
+      "story_size": 3,
       "story_primary": true,
       "story_others": [
         {
@@ -453,6 +480,12 @@
           "title": "Tesla and SpaceX have set up committees to explore a merger",
           "link": "https://www.businessinsider.com/tesla-spacex-merger-exploratory-commitees-2026-10",
           "published_ts": 1792534617
+        },
+        {
+          "source": "Analytics India Magazine - Artificial Intelligence, Emerging Tech, Data Science",
+          "title": "Tesla and SpaceX Explore Merger as Elon Musk Backs Deal",
+          "link": "https://analyticsindiamag.com/ai-news/tesla-and-spacex-explore-merger-as-elon-musk-backs-deal",
+          "published_ts": 1792572876
         }
       ]
     },
@@ -682,7 +715,7 @@
       ],
       "curated": false,
       "story_id": "dbaa90254253",
-      "story_size": 5
+      "story_size": 7
     },
     {
       "title": "We Have to Talk About the Crisis Communication in the Digital Age",
@@ -766,7 +799,7 @@
       ],
       "curated": false,
       "story_id": "dbaa90254253",
-      "story_size": 5
+      "story_size": 7
     },
     {
       "title": "Snap is paying Robert Downey Jr. to do the Iron Man thing",
@@ -1096,7 +1129,7 @@
       ],
       "curated": false,
       "story_id": "8ccf13a33dab",
-      "story_size": 2,
+      "story_size": 3,
       "story_primary": true,
       "story_others": [
         {
@@ -1104,6 +1137,12 @@
           "title": "Google says it is rolling out Personal Intelligence for Gemini on Android Auto now and to cars with Google built-in in the coming months as an opt-in feature (Abner Li/9to5Google)",
           "link": "https://www.techmeme.com/261020/p53#a261020p53",
           "published_ts": 1792535404
+        },
+        {
+          "source": "gHacks Technology News - The independent technology news blog",
+          "title": "Google Rolls Out Gemini Personal Intelligence on Android Auto, With Cars With Google Built-in Next",
+          "link": "https://www.ghacks.net/2026/10/21/google-rolls-out-gemini-personal-intelligence-on-android-auto-with-cars-with-google-built-in-next/",
+          "published_ts": 1792563009
         }
       ]
     },
@@ -1139,7 +1178,7 @@
       ],
       "curated": false,
       "story_id": "dbaa90254253",
-      "story_size": 5
+      "story_size": 7
     },
     {
       "title": "17 actors who transformed into real-life tech company CEOs and founders",
@@ -1669,6 +1708,20 @@
       "curated": false
     },
     {
+      "title": "Tend",
+      "summary": "Personal AI for businesses and entrepreneurs. Discussion | Link",
+      "summary_html": "<p>\n            Personal AI for businesses and entrepreneurs.\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/tend-5?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1286998?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/tend-5",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-20T18:30:09+00:00",
+      "published_ts": 1792521009,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
       "title": "Amazon is buying billions in Nvidia AI systems it can't yet turn on",
       "summary": "Amazon CEO Andy Jassy David Paul Morris/Bloomberg via Getty Images AWS expected to get $5 billion of Nvidia GB300 racks, followed by $3 billion more each month. Some of these GPU systems are being stored elsewhere due to lack of data center power. Amazon CEO Andy Jassy sees AI as a major opportunity, but getting capacity online is a challenge. Amazon is racing to secure AI hardware earlier than before, even as data center power shortages leave some GPU systems waiting in warehouses. Under a new Early Rack Receipt process, AWS expected to receive roughly $5 billion in Nvidia's GB300 server racks at US facilities before final deployment, according to August internal emails reviewed by Business Insider. The company projected roughly $3 billion more in GB300 racks each month \"for the foreseeable future,\" one of the emails said. Some AWS sites had room for more racks but not enough available power to turn them on, people familiar with the effort said, leaving finished equipment to be staged at intermediary warehouses until the facilities were ready. At least one AWS team did not have \"a clear forecasted path\" for getting the incoming racks into data centers at the time, according to one of the emails. Dark GPUs A lack of new electricity capacity is one of several bottlenecks slowing the buildout of some AI data centers. This has led to a phenomenon known as dark GPUs , where AI chips and servers are purchased but can sit idle due to power supply issues or other challenges. (Dark GPUs can also refer to system design flaws that mean this gear isn't fully used after being plugged in). This is partly why financial pressure is mounting on big data center projects. Money must be spent upfront to secure supplies of Nvidia GPUs and other valuable AI components. But if some data centers aren't ready to run, those early investments can tie up huge amounts of cash. Debt financing can fill in the gaps, but the market has become less willing to lend against some of these projects lately. Trade-off Amazon's early-rack program is one piece of the cloud leader's broader AI buildout, which is putting new pressure on its cash flow, as Business Insider exclusively reported this week. Amazon expects roughly $220 billion in capital expenditures this year \u2014 more than any Big Tech peer. Its free-cash-flow turned negative last quarter for the first time since 2023, and could stay negative for a while. For AWS, the trade-off is securing scarce GPU racks before competitors do, even if some data centers are not yet ready to turn them on. But taking ownership earlier can tie up billions in equipment before it starts generating cloud revenue. Previously, AWS took ownership of a finished rack only upon delivery to a data center, according to internal documents. Under the new approach, it can pay for and record certain racks earlier in the supply chain. An Amazon spokesperson said the company routinely stages finished hardware near deployment sites so it can install it once capacity becomes available, calling the practice \"best business practice.\" The spokesperson added that Amazon has long-established systems for tracking infrastructure assets and disputed that the broader company lacked a path for getting racks into data centers. Amazon CEO Andy Jassy previously said the company has a \"clear line of sight\" to strong returns from its AI investments, calling the technology a \"once in a lifetime opportunity.\" \"We've been through this cycle with the first big AWS growth wave, and liked the results,\" Jassy wrote in Amazon's annual shareholder letter. \"We expect to feel similarly about this next wave.\" Have a tip? Contact this reporter via email at ekim@businessinsider.com or Signal, Telegram, or WhatsApp at 650-942-3061 . Use a personal email address, a nonwork WiFi network, and a nonwork device; here's our guide to sharing information securely . Read the original article on Business Insider",
       "summary_html": "Amazon CEO Andy Jassy<p>David Paul Morris/Bloomberg via Getty Images</p><ul><li>AWS expected to get $5 billion of Nvidia GB300 racks, followed by $3 billion more each month.</li><li>Some of these GPU systems are being stored elsewhere due to lack of data center power.</li><li>Amazon CEO Andy Jassy sees AI as a major opportunity, but getting capacity online is a challenge.</li></ul><p><a href=\"https://www.businessinsider.com/amazon-layoffs-hit-hundreds-of-employees-across-multiple-teams-2026-10\">Amazon</a> is racing to secure AI hardware earlier than before, even as data center power shortages leave some GPU systems waiting in warehouses.</p><p>Under a new Early Rack Receipt process, <a href=\"https://www.businessinsider.com/amazon-hires-former-microsoft-copilot-cto-ai-agent-push-2026-10\">AWS</a> expected to receive roughly $5 billion in <a href=\"https://www.businessinsider.com/nvidia-reshapes-communications-ai-boom-departures-2026-10\">Nvidia's</a> GB300 server racks at US facilities before final deployment, according to August internal emails reviewed by Business Insider. The company projected roughly $3 billion more in GB300 racks each month \"for the foreseeable future,\" one of the emails said.</p><p>Some AWS sites had room for more racks but not enough available power to turn them on, people familiar with the effort said, leaving finished equipment to be staged at intermediary warehouses until the facilities were ready.</p><p>At least one AWS team did not have \"a clear forecasted path\" for getting the incoming racks into data centers at the time, according to one of the emails.</p>Dark GPUs<p>A lack of new electricity capacity is one of several bottlenecks slowing the buildout of some AI data centers. This has led to a phenomenon known as <a href=\"https://www.businessinsider.com/nebius-ceo-arkady-volozh-ai-meta-yandex-data-centers-compute-2026-3\">dark GPUs</a>, where AI chips and servers are purchased but can sit idle due to power supply issues or other challenges. (Dark GPUs can also refer to system design flaws that mean this gear isn't fully used after being plugged in).</p><p>This is partly why financial pressure is mounting on big data center projects. Money must be spent upfront to secure supplies of Nvidia GPUs and other valuable AI components. But if some data centers aren't ready to run, those early investments can tie up huge amounts of cash. Debt financing can fill in the gaps, but the market has become less willing to lend against some of these projects lately.</p>Trade-off<p>Amazon's early-rack program is one piece of the cloud leader's broader AI buildout, which is putting new pressure on its cash flow, as Business Insider <a href=\"https://www.businessinsider.com/amazon-220-billion-ai-bet-data-centers-spending-challenges-2026-10\">exclusively reported</a> this week. Amazon expects roughly $220 billion in capital expenditures this year \u2014 more than any Big Tech peer. Its free-cash-flow turned negative last quarter for the first time since 2023, and could stay negative for a while.</p><p>For AWS, the trade-off is securing scarce GPU racks before competitors do, even if some data centers are not yet ready to turn them on. But taking ownership earlier can tie up billions in equipment before it starts generating cloud revenue.</p><p>Previously, AWS took ownership of a finished rack only upon delivery to a data center, according to internal documents. Under the new approach, it can pay for and record certain racks earlier in the supply chain.</p><p>An Amazon spokesperson said the company routinely stages finished hardware near deployment sites so it can install it once capacity becomes available, calling the practice \"best business practice.\" The spokesperson added that Amazon has long-established systems for tracking infrastructure assets and disputed that the broader company lacked a path for getting racks into data centers.</p><p>Amazon CEO Andy Jassy previously said the company has a \"clear line of sight\" to strong returns from its AI investments, calling the technology a \"once in a lifetime opportunity.\"</p><p>\"We've been through this cycle with the first big AWS growth wave, and liked the results,\" Jassy wrote in Amazon's annual shareholder letter. \"We expect to feel similarly about this next wave.\"</p><p><strong><em>Have a tip? Contact this reporter via email at </em></strong><a href=\"mailto:ekim@businessinsider.com\"><strong><em>ekim@businessinsider.com</em></strong></a><strong><em> or Signal, Telegram, or WhatsApp at </em></strong><a href=\"\"><strong><em>650-942-3061</em></strong></a><strong><em>. Use a personal email address, a nonwork WiFi network, and a nonwork device; </em></strong><a href=\"https://www.businessinsider.com/insider-guide-to-securely-sharing-whistleblower-information-about-powerful-institutions-2021-10\"><strong><em>here's our guide to sharing information securely</em></strong></a><strong><em>.</em></strong></p><div>Read the original article on <a href=\"https://www.businessinsider.com/amazon-nvidia-ai-gpu-data-centers-power-shortages-2026-10\">Business Insider</a></div>",
@@ -1817,6 +1870,22 @@
       "curated": false
     },
     {
+      "title": "Notion Auto",
+      "summary": "Notion\u2019s rebuilt Agents run for hours and cost far less Discussion | Link",
+      "summary_html": "<p>\n            Notion\u2019s rebuilt Agents run for hours and cost far less\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/notion-99?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1286968?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/notion-99",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-20T18:01:39+00:00",
+      "published_ts": 1792519299,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
       "title": "China-Based DeepSeek's AI Products Banned From Use By Government, Contractors",
       "summary": "The Department of Homeland Security issued the directive, saying DeepSeek and its related tools pose a security risk.",
       "summary_html": "The Department of Homeland Security issued the directive, saying DeepSeek and its related tools pose a security risk.",
@@ -1832,7 +1901,7 @@
       ],
       "curated": false,
       "story_id": "92bf044e6717",
-      "story_size": 8
+      "story_size": 9
     },
     {
       "title": "[Day 33/100] Conversation Memory in LangGraph: Buffer, Window, and Summary Patterns",
@@ -2972,6 +3041,22 @@
       "curated": false
     },
     {
+      "title": "Nimbalyst Wiki",
+      "summary": "Wiki your agents write for you to think, organize, direct Discussion | Link",
+      "summary_html": "<p>\n            Wiki your agents write for you to think, organize, direct\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/nimbalyst-wiki?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1286805?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/nimbalyst-wiki",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-20T15:19:17+00:00",
+      "published_ts": 1792509557,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
       "title": "AI slays the dragon as four agents conquer Minecraft without human intervention",
       "summary": "Minecraft is one of the world's most popular video games, where players explore, gather resources, craft items and try to survive in a virtual universe constructed of 3D cubes that represent different materials.",
       "summary_html": "Minecraft is one of the world's most popular video games, where players explore, gather resources, craft items and try to survive in a virtual universe constructed of 3D cubes that represent different materials.",
@@ -3449,6 +3534,20 @@
       "curated": false
     },
     {
+      "title": "Get largest (e.g. mainland) polygons from a map",
+      "summary": "[",
+      "summary_html": "<!-- \n<div style=\"min-height: 30px;\">\n[social4i size=\"small\" align=\"align-left\"]\n</div>\n-->\n<div>\n[This article was first published on  <strong><a href=\"https://modtools.wordpress.com/2026/10/20/get-largest-e-g-mainland-polygons-from-a-map/\"> modTools</a></strong>, and kindly contributed to <a href=\"https://www.r-bloggers.com/\">R-bloggers</a>].  (You can report issue about the content on this page <a href=\"https://www.r-bloggers.com/contact-us/\">here</a>)\nWant to share your content on R-bloggers?<a href=\"https://www.r-bloggers.com/add-your-blog/\"> click here</a> if you have a blog, or <a href=\"http://r-posts.com/\"> here</a> if you don't.\n</div>\n<p>I often need to get mainland from country / administrative region polygons, so I finally decided to write a function to help automate it. It selects the N largest feature(s) in a polygons or lines map. Here\u2019s the code:</p>\n<div>\n<div>\n<div>\n<pre>\nselectLargest &lt;- function(x,  # terra SpatVector polygons or lines                          n = 1,  # number of largest features to retain                          dissolve = FALSE,  # whether to group contiguous features                          singleparts = TRUE  # whether to disaggregate multi-part features) {  stopifnot(inherits(x, \"SpatVector\"),            terra::geomtype(x) %in% c(\"polygons\", \"lines\"))  if (dissolve) {    x &lt;- terra::aggregate(x)  }  if (singleparts) {    x &lt;- terra::disagg(x)  }  if (terra::is.polygons(x)) {    size_rank &lt;- order(terra::expanse(x), decreasing = TRUE)  } else if (terra::is.lines(x)) {    size_rank &lt;- order(terra::perim(x), decreasing = TRUE)  }  x[size_rank[1:n], ]}</pre>\n</div>\n</div>\n</div>\n<p></p>\n<p>The dissolving of internal borders is optional. Here are some usage examples:</p>\n<div>\n<div>\n<div>\n<pre>\nlibrary(terra)library(geodata)# import a USA map and get the conterminous and continental parts:usa &lt;- geodata::gadm(\"United States\", level = 1, path = tempdir())mainland_usa &lt;- selectLargest(usa, dissolve = TRUE)contin_usa &lt;- selectLargest(usa, dissolve = TRUE, n = 2)  # two largest polygons, to include Alaskaplot(usa, main = \"USA\")plot(mainland_usa, main = \"Conterminous USA\")plot(contin_usa, main = \"Continental USA\")# import a UK map and get Great Britain:uk &lt;- geodata::gadm(\"United Kingdom\", path = tempdir())great_britain &lt;- selectLargest(uk, dissolve = TRUE)plot(uk, main = \"UK\")plot(great_britain, main = \"Great Britain\")# import a Portugal + Spain map and get the Iberian Peninsula:ptes &lt;- geodata::gadm(c(\"Portugal\", \"Spain\"), path = tempdir())iberia &lt;- selectLargest(ptes, dissolve = TRUE)plot(ptes, main = \"Portugal and Spain\")plot(iberia, main = \"Iberian Peninsula\")</pre>\n</div>\n</div>\n</div>\n<a href=\"https://i0.wp.com/modtools.wordpress.com/wp-content/uploads/2026/10/mainlands-1.png?ssl=1\"></a>\n<p>As usual, feedback is welcome!</p>\n<div>\n<div>To <strong>leave a comment</strong> for the author, please follow the link and comment on their blog: <strong><a href=\"https://modtools.wordpress.com/2026/10/20/get-largest-e-g-mainland-polygons-from-a-map/\"> modTools</a></strong>.</div>\n\n<a href=\"https://www.r-bloggers.com/\">R-bloggers.com</a> offers <strong><a href=\"https://feedburner.google.com/fb/a/mailverify?uri=RBloggers\">daily e-mail updates</a></strong> about <a href=\"https://www.r-project.org/\">R</a> news and tutorials about <a href=\"https://www.r-bloggers.com/how-to-learn-r-2/\">learning R</a> and many other topics. <a href=\"https://www.r-users.com/\">Click here if you're looking to post or find an R/data-science job</a>.\n\nWant to share your content on R-bloggers?<a href=\"https://www.r-bloggers.com/add-your-blog/\"> click here</a> if you have a blog, or <a href=\"http://r-posts.com/\"> here</a> if you don't.\n</div><strong>Continue reading</strong>: <a href=\"https://www.r-bloggers.com/2026/10/get-largest-e-g-mainland-polygons-from-a-map/\">Get largest (e.g. mainland) polygons from a map</a>",
+      "link": "https://www.r-bloggers.com/2026/10/get-largest-e-g-mainland-polygons-from-a-map/",
+      "source": "R-bloggers - R news and tutorials contributed by hundreds of R bloggers",
+      "feed_type": "news",
+      "type": "data-science-mlops",
+      "type_label": "Data Science & MLOps",
+      "published": "2026-10-20T13:58:12+00:00",
+      "published_ts": 1792504692,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
       "title": "US bans DeepSeek from federal agencies, prompting angry response from China",
       "summary": "The Department of Homeland Security's notice was made public on October 19, ahead of today's Federal Register publication. The underlying order dates back to late July, according to AP, making this a public disclosure of an earlier decision rather than a ban signed this week. Read Entire Article",
       "summary_html": "<a href=\"https://www.techspot.com/news/114269-us-bans-deepseek-ai-tools-built-models-federal.html\"></a><br/>The Department of Homeland Security's notice was made public on October 19, ahead of today's Federal Register publication. The underlying order dates back to late July, according to AP, making this a public disclosure of an earlier decision rather than a ban signed this week.<br/><br/><a href=\"https://www.techspot.com/news/114269-us-bans-deepseek-ai-tools-built-models-federal.html\">Read Entire Article</a><br/><br/>",
@@ -3464,7 +3563,7 @@
       ],
       "curated": false,
       "story_id": "92bf044e6717",
-      "story_size": 8
+      "story_size": 9
     },
     {
       "title": "DHS Orders DeepSeek Removed from Federal IT Systems Over Security Risks",
@@ -3480,7 +3579,18 @@
       "smart_groups": [
         "Policy & government"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "593a6b95c68a",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "Analytics India Magazine - Artificial Intelligence, Emerging Tech, Data Science",
+          "title": "US Orders DeepSeek Removal From Federal Civilian Systems Over National Security Concerns",
+          "link": "https://analyticsindiamag.com/ai-news/us-orders-deepseek-removal-from-federal-civilian-systems-over-national-security-concerns",
+          "published_ts": 1792582122
+        }
+      ]
     },
     {
       "title": "People Are Using 'AI Decompiling' to Hack Their Things",
@@ -3811,6 +3921,20 @@
         "Business & funding",
         "Robotics & autonomy"
       ],
+      "curated": false
+    },
+    {
+      "title": "AskDoozy",
+      "summary": "An AI coworker in Slack that does your real work Discussion | Link",
+      "summary_html": "<p>\n            An AI coworker in Slack that does your real work\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/askdoozy?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1286656?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/askdoozy",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-20T13:14:45+00:00",
+      "published_ts": 1792502085,
+      "smart_groups": [],
       "curated": false
     },
     {
@@ -4254,7 +4378,7 @@
       ],
       "curated": false,
       "story_id": "92bf044e6717",
-      "story_size": 8
+      "story_size": 9
     },
     {
       "title": "Meta Muse exposes users' personal and business secrets when they share conversations",
@@ -4271,7 +4395,18 @@
         "Agents & automation",
         "Research & papers"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "fb9936745ef9",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "Artificial Intelligence Latest - Channel Description",
+          "title": "A Design Flaw in Share Links Exposes Users\u2019 Personal Conversations With Meta\u2019s Muse",
+          "link": "https://www.wired.com/story/a-design-flaw-in-share-links-exposes-users-personal-conversations-with-meta-muse/",
+          "published_ts": 1792586100
+        }
+      ]
     },
     {
       "title": "Army Cyber Command's ECHOTRIBBLE would turn AI agents into self-spreading cyberweapons",
@@ -4767,7 +4902,7 @@
       ],
       "curated": false,
       "story_id": "92bf044e6717",
-      "story_size": 8
+      "story_size": 9
     },
     {
       "title": "Valarian Partnership Puts Perplexity Computer on Institutional Servers",
@@ -5064,6 +5199,23 @@
       "curated": false
     },
     {
+      "title": "PrivOS",
+      "summary": "Chat, Docs, Kanban Tasks and Al agents that act, self-hosted Discussion | Link",
+      "summary_html": "<p>\n            Chat, Docs, Kanban Tasks and Al agents that act, self-hosted\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/privos?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1286524?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/privos",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-20T10:54:16+00:00",
+      "published_ts": 1792493656,
+      "smart_groups": [
+        "Agents & automation",
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
       "title": "AI Could Change The Job Market Forever. Women May Have More To Lose Than Men.",
       "summary": "Nearly one in 10 employed women in high-income countries work in occupations facing the highest exposure to AI automation, compared with 3.5% of men.",
       "summary_html": "Nearly one in 10 employed women in high-income countries work in occupations facing the highest exposure to AI automation, compared with 3.5% of men.",
@@ -5171,6 +5323,20 @@
       "curated": false
     },
     {
+      "title": "Lea by LeanAIOS",
+      "summary": "Autonomous AI team for construction management & pre-con Discussion | Link",
+      "summary_html": "<p>\n            Autonomous AI team for construction management &amp; pre-con\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/lea-by-leanaios?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1286480?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/lea-by-leanaios",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-20T10:15:05+00:00",
+      "published_ts": 1792491305,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
       "title": "Why AI agents need workflows",
       "summary": "AIAI\u2019s recent article, \"System One models: why fast AI agents act wrong,\" describes a failure agent builders will recognize. The System One model covers \"read agent state well and still pick the wrong action.\" The fix described is plain: the authors repaired the failures by combining the models' correct answers to factual questions in ordinary code. That points to a rule for an agent that can change something outside its own context window. The model proposes, and a workflow checks the proposal and takes the action. Anthropic's guide to building effective agents defines workflows as \"systems where LLMs and tools are orchestrated through predefined code paths.\" Agents, in its words, are \"systems where LLMs dynamically direct their own processes and tool usage.\" For most business processes I build a hybrid. A fixed workflow runs the steps someone can write down, and an agent handles the single step that calls for judgment, such as parsing a messy email. 7 reasons small language models belong in your 2027 roadmap A frontier model reformatting JSON is expensive overkill. Here are seven sourced reasons small language models earn a place in your 2027 roadmap, and how to start. The agent returns a choice Give the agent the data it needs and a short list of allowed answers. Make it return one of them: a category, a label or a yes or no. The workflow owns the rest: the trigger, the lookups, the write and the log. Take a refund request. The agent reads the customer's email and the order record, then returns \"refund,\" \"replacement\" or \"escalate.\" If it returns \"refund,\" the workflow pulls the amount from the order record, compares it with the refund ceiling and issues the refund. \ud83d\udca1 An amount above the ceiling goes to a person for approval. The agent does not type an amount or call the payment system. The workflow rejects an answer outside the list and hands the case to a person. In this design a wrong answer surfaces at one known point. Rerun that step on the same input to see why the model chose as it did, and swap in a different model later without touching the rest of the process. Prompt rules did not hold I learned how far prompt rules go on a front-desk phone agent we run for a local service business. It can book new customers and send messages to the front desk. In one week of calls we reviewed in September, the agent told a caller that a message had already been sent. The notification call had been cut off when the caller spoke, and nothing confirmed it went out. The prompt already told it to acknowledge only actual notification results and never to resend an unconfirmed one. The backend was healthy that week, and all of its executions succeeded. The logs showed that the workflow ran. They said nothing about whether the agent chose the right action. We tried the prompt first, and prompt-only versions failed in testing. One model announced actions it had not taken. Another retried an abandoned notification. Switching models did not fix it by itself. How deeptech companies can use AI for smarter R&D bets Raising a big round is the easy part. A deeptech founder explains how project-level budgets, evidence-based milestones, and AI-assisted analysis help every pound of R&D capital buy down real risk. In testing, a procedure around the write held up. The procedure forces the call and reads the receipt. The agent may confirm only when four receipt fields agree: a submitted flag, a submitted status, a message ID from the provider and the matching action. Any other result takes a fixed uncertainty line. The first strict test exposed an edge case: a receipt with the ID absent rather than empty. We corrected the check, and three test cases then passed: a valid receipt, an interrupted submission and a missing ID. In October we tested the same idea on dates and identity. The test bank held ten scenarios drawn from three weeks of the business's real calls, run as text simulations with a simulated caller. On the live version, 17 of 20 runs had no defect. In one simulated booking, the agent invented the caller's details (\"Caller Caller,\" an example.com email address and a birth date of 1990-01-01) and read \"next Tuesday\" as November 3. The other booking used the business's own email address. A simulated emergency callback carried an invented birth date. \ud83d\udca1 We moved date handling and identity checks into code. The model passes the caller's own words, such as \"next Tuesday,\" to the availability tool, which returns the spoken date, whether the business is closed that day and the earliest open times. A new customer record requires the caller's own name, birth date and email, and the write tool refuses placeholders before it writes anything. The same ten scenarios ran 21 times with no defect. The test is small: text only, simulated callers, two or three runs per scenario and no audio. Four runs on earlier versions of the fix failed. The booking skipped intake, or an emergency callback carried the name \"Caller.\" Two rules, emergency routing and cancellations, still live in the prompt, on top of a business-hours status that code supplies. 8 AI problems leaders face now, and the fix for each Eight problems keep landing on AI leaders' desks, and each has a fix backed by fresh data. Start with the two that cost you most this quarter. Limit what the agent can touch Start the agent with read-only access, and let it write only by asking the workflow, one action per request. OWASP's entry on excessive agency lists excessive functionality, excessive permissions and excessive autonomy as root causes. Its mitigations include implementing authorization in downstream systems rather than relying on the model to decide whether an action is allowed. A refund ceiling, a discount limit and a recipient list are rules the workflow checks. Choosing which customer record to open is an action too. In a customer-history lookup we built for a client, the call platform supplies the caller's phone number to the tool, so the model cannot choose which record opens. If two contacts share the number, the lookup returns no history. Treat anything the agent reads, including emails and web pages, as untrusted input. Hidden instructions in that text can steer a model that holds broad permissions. Write the handoff rules before launch. A person takes over in four cases: the customer asks for one, the agent's answer falls outside the allowed format, the conversation returns to the same question a second time, or the case involves money, legal terms or health information. Test the choice and price the run Test the agent step before it touches a customer. Build a set of a few hundred real past cases, including the ugly ones, and write down the right outcome for each. Score the agent against the set, and score it again after every prompt or model change. Then run in shadow mode: the agent makes real decisions on live traffic, and a reviewer approves each one before the workflow sends or writes anything. Automate the categories where the reviewer's change rate stays low. Price the run the same way. A fixed workflow costs what the automation tool charges. An agent also bills for model usage, which grows with the text it reads, the tools it calls and the loops it runs. A research agent that runs a search, opens five results and tries again can cost a multiple of one classification call. Anthropic's guide says autonomy \"means higher costs, and the potential for compounding errors.\" A bounded choice puts a ceiling on the cost of each run, because the workflow makes one model call where an open agent makes as many as it decides to. \ud83d\udca1 Start with one action your agent can take today: a message sent, a record written or money moved. Put it behind a workflow step with a rule to check and a receipt to read, then run your test cases again. Emre Benian runs an AI consulting & implementation company in Chicago for owner-led businesses.",
       "summary_html": "<blockquote>AIAI\u2019s recent article, <a href=\"https://www.aiacceleratorinstitute.com/system-one-models-why-fast-ai-agents-act-wrong/\"><strong>\"System One models: why fast AI agents act wrong,\"</strong></a><strong> </strong>describes a failure agent builders will recognize. The System One model covers \"read agent state well and still pick the wrong action.\" </blockquote><p>The fix described is plain: the authors repaired the failures by combining the models' correct answers to factual questions in ordinary code.</p><p>That points to a rule for an agent that can change something outside its own context window. The model proposes, and a workflow checks the proposal and takes the action.</p><p>Anthropic's guide to <a href=\"https://www.anthropic.com/engineering/building-effective-agents\"><strong>building effective agents</strong></a> defines workflows as \"systems <a href=\"https://www.aiacceleratorinstitute.com/llmops-optimizing-towards-enterprise-value-in-the-llm-agentic-era/\"><strong>where LLMs and tools</strong></a> are orchestrated through predefined code paths.\" Agents, in its words, are \"systems where LLMs dynamically direct their own processes and tool usage.\" </p><p>For most business processes I build a hybrid. A fixed workflow runs the steps someone can write down, and an agent handles the single step that calls for judgment, such as parsing a messy email.</p><a href=\"https://www.aiacceleratorinstitute.com/7-reasons-small-language-models-belong-in-your-2027-ai-roadmap/\"><div><div>7 reasons small language models belong in your 2027 roadmap</div><div>A frontier model reformatting JSON is expensive overkill. Here are seven sourced reasons small language models earn a place in your 2027 roadmap, and how to start.</div></div></a><strong>The agent returns a choice</strong><p>Give the agent the data it needs and a short list of allowed answers. Make it return one of them: a category, a label or a yes or no. The workflow owns the rest: the trigger, the lookups, the write and the log.</p><p>Take a refund request. The agent reads the customer's email and the order record, then returns \"refund,\" \"replacement\" or \"escalate.\" If it returns \"refund,\" the workflow pulls the amount from the order record, compares it with the refund ceiling and issues the refund. </p><div><div>\ud83d\udca1</div><div>An amount above the ceiling goes to a person for approval. <a href=\"https://www.aiacceleratorinstitute.com/ai-agents-struggle-with-why-questions-a-memory-based-fix/\"><b><strong>The agent</strong></b></a> does not type an amount or call the payment system. The workflow rejects an answer outside the list and hands the case to a person.</div></div><p>In this design a wrong answer surfaces at one known point. Rerun that step on the same input to see why the model chose as it did, and swap in a different model later without touching the rest of the process.</p><strong>Prompt rules did not hold</strong><blockquote>I learned how far prompt rules go on a front-desk phone agent we run for a local service business. It can book new customers and send messages to the front desk. In one week of calls we reviewed in September, the agent told a caller that a message had already been sent. </blockquote><p>The notification call had been cut off when the caller spoke, and nothing confirmed it went out. The prompt already told it to acknowledge only actual notification results and never to resend an unconfirmed one. </p><p>The backend was healthy that week, and all of its executions succeeded. The logs showed that the workflow ran. They said nothing about whether the agent chose the right action.</p><p>We tried the prompt first, and prompt-only versions failed in testing. One model announced actions it had not taken. Another retried an abandoned notification. Switching models did not fix it by itself.</p><a href=\"https://www.aiacceleratorinstitute.com/how-deeptech-companies-can-use-ai-for-smarter-r-d-bets/\"><div><div>How deeptech companies can use AI for smarter R&amp;D bets</div><div>Raising a big round is the easy part. A deeptech founder explains how project-level budgets, evidence-based milestones, and AI-assisted analysis help every pound of R&amp;D capital buy down real risk.</div></div></a><p>In testing, a procedure around the write held up. The procedure forces the call and reads the receipt. The agent may confirm only when four receipt fields agree: a submitted flag, a submitted status, a message ID from the provider and the matching action. </p><p>Any other result takes a fixed uncertainty line. The first strict test exposed an edge case: a receipt with the ID absent rather than empty. We corrected the check, and three test cases then passed: a valid receipt, an interrupted submission and a missing ID.</p><p>In October we tested the same idea on dates and identity. The test bank held ten scenarios drawn from three weeks of the business's real calls, run as text simulations with a simulated caller. On the live version, 17 of 20 runs had no defect. </p><p>In one simulated booking, the agent invented the caller's details (\"Caller Caller,\" an example.com email address and a birth date of 1990-01-01) and read \"next Tuesday\" as November 3. The other booking used the business's own email address. A simulated emergency callback carried an invented birth date.</p><div><div>\ud83d\udca1</div><div>We moved date handling and identity checks into code. The model passes the caller's own words, such as \"next Tuesday,\" to the availability tool, which returns the spoken date, whether the business is closed that day and the earliest open times. </div></div><p>A new customer record requires the caller's own name, birth date and email, and the write tool refuses placeholders before it writes anything. The same ten scenarios ran 21 times with no defect.</p><p><strong>The test is small:</strong> text only, simulated callers, two or three runs per scenario and no audio. Four runs on earlier versions of the fix failed. The booking skipped intake, or an emergency callback carried the name \"Caller.\" </p><p>Two rules, emergency routing and cancellations, still live in the prompt, on top of a business-hours status that code supplies.</p><a href=\"https://www.aiacceleratorinstitute.com/the-8-problems-ai-leaders-face-right-now-and-the-fix-for-each/\"><div><div>8 AI problems leaders face now, and the fix for each</div><div>Eight problems keep landing on AI leaders' desks, and each has a fix backed by fresh data. Start with the two that cost you most this quarter.</div></div></a><strong>Limit what the agent can touch</strong><p>Start the agent with read-only access, and let it write only by asking the workflow, one action per request. OWASP's entry on<strong> </strong><a href=\"https://genai.owasp.org/llmrisk/llm062025-excessive-agency/\"><strong>excessive agency</strong></a> lists excessive functionality, excessive permissions and excessive autonomy as root causes. </p><p>Its mitigations include implementing authorization in downstream systems rather than relying on the model to decide whether an action is allowed. A refund ceiling, a discount limit and a recipient list are rules the workflow checks.</p><p>Choosing which customer record to open is an action too. In a customer-history lookup we built for a client, the call platform supplies the caller's phone number to the tool, so the model cannot choose which record opens. If two contacts share the number, the lookup returns no history.</p><p>Treat anything the agent reads, including emails and web pages, as untrusted input. Hidden instructions in that text can steer a model that holds broad permissions.</p><p>Write the handoff rules before launch. A person takes over in four cases: the customer asks for one, the agent's answer falls outside the allowed format, the conversation returns to the same question a second time, or the case involves money, legal terms or health information.</p><strong>Test the choice and price the run</strong><blockquote>Test the agent step before it touches a customer. Build a set of a few hundred real past cases, including the ugly ones, and write down the right outcome for each. Score the agent against the set, and score it again after every prompt or model change. </blockquote><p><strong>Then run in shadow mode:</strong> the agent makes real decisions on live traffic, and a reviewer approves each one before the workflow sends or writes anything. Automate the categories where the reviewer's change rate stays low.</p><p>Price the run the same way. A fixed workflow costs what the automation tool charges. An agent also bills for model usage, which grows with the text it reads, the tools it calls and the loops it runs. A research agent that runs a search, opens five results and tries again can cost a multiple of one classification call. </p><p>Anthropic's guide says autonomy \"means higher costs, and the potential for compounding errors.\" A bounded choice puts a ceiling on the cost of each run, because the workflow makes one model call where an open agent makes as many as it decides to.</p><div><div>\ud83d\udca1</div><div>Start with one action your agent can take today: a message sent, a record written or money moved. Put it behind a workflow step with a rule to check and a receipt to read, then run your test cases again.</div></div><p><a href=\"https://www.linkedin.com/in/emrebenian/\"><strong><em>Emre Benian</em></strong></a><em> runs an </em>AI consulting &amp; implementation company in Chicago for owner-led businesses. </p>",
@@ -5219,7 +5385,7 @@
       ],
       "curated": false,
       "story_id": "92bf044e6717",
-      "story_size": 8
+      "story_size": 9
     },
     {
       "title": "Franchisee reconciles cash in 94% less time with ChatGPT Work",
@@ -5507,6 +5673,22 @@
       "published_ts": 1792480271,
       "smart_groups": [
         "Policy & government"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Intelli for ChatGPT & Claude",
+      "summary": "Run WhatsApp, Instagram & web chat from ChatGPT or Claude Discussion | Link",
+      "summary_html": "<p>\n            Run WhatsApp, Instagram &amp; web chat from ChatGPT or Claude\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/intelli?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1286282?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/intelli",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-20T07:04:54+00:00",
+      "published_ts": 1792479894,
+      "smart_groups": [
+        "Consumer AI"
       ],
       "curated": false
     },
@@ -5962,7 +6144,7 @@
       ],
       "curated": false,
       "story_id": "92bf044e6717",
-      "story_size": 8
+      "story_size": 9
     },
     {
       "title": "\u2018These risks are real\u2019: the threat of AI bioweapons \u2013 podcast",
@@ -6523,7 +6705,7 @@
       ],
       "curated": false,
       "story_id": "dbaa90254253",
-      "story_size": 5,
+      "story_size": 7,
       "story_primary": true,
       "story_others": [
         {
@@ -6549,6 +6731,18 @@
           "title": "OpenAI acquires Orchestra Bio to bring AI agents into drug development",
           "link": "https://siliconangle.com/2026/10/20/openai-acquires-orchestra-bio-to-bring-ai-agents-into-drug-development/",
           "published_ts": 1792539620
+        },
+        {
+          "source": "THE DECODER - Artificial Intelligence: News, Business, Research",
+          "title": "OpenAI acquires Orchestra Bio to build AI agents that speed up drug development",
+          "link": "https://the-decoder.com/openai-acquires-orchestra-bio-to-build-ai-agents-that-speed-up-drug-development/",
+          "published_ts": 1792571574
+        },
+        {
+          "source": "Analytics India Magazine - Artificial Intelligence, Emerging Tech, Data Science",
+          "title": "OpenAI Acquires Pharma Co Orchestra Bio to Build AI Agents for Drug Development",
+          "link": "https://analyticsindiamag.com/ai-news/openai-acquires-pharma-co-orchestra-bio-to-build-ai-agents-for-drug-development",
+          "published_ts": 1792583495
         }
       ]
     },

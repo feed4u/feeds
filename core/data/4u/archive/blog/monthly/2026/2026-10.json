@@ -1,5 +1,38 @@
 [
   {
+    "title": "A 34-point win for my memristor-crossbar repair method came from an unfair baseline; tuned, step-matched baselines removed it [R]",
+    "summary": "TL;DR (a confession): I was ready to celebrate a big win. Then I tuned the rival. I built a repair controller for memristor crossbars with stuck cells. At first it led a rival by 34.0 points. After I tuned the rival's learning rate and matched retraining steps, the lead fell to 4.2, then 1.06. A pre-specified eight-seed replication gave -0.005 points (95% CI -1.7 to +1.7). This is a preprint. It is not peer reviewed yet. Setting. A memristor stores a number as resistance. A crossbar is a grid of them that runs a neural network. Over time, some cells get stuck. I study repair controllers in simulation. A pool of spare cells exists. Faults arrive in waves. The controller can remap cells and run short retraining bursts. The network is ResNet-9 on CIFAR-10. Spares are 15%. There are three waves of 10% stuck cells. What happened. My first draft reported my controller (D) at 83.3 and the rival (C') at 49.3. That is a 34.0-point lead. The lead fell in steps: Step Lead of D over rival (points) Old rate, unmatched 34.0 Tuned rate 4.2 Tuned and step-matched (5 seeds) 1.06 8-seed replication -0.005 (95% CI -1.7 to +1.7) At least 97% of the original lead came from an untuned learning rate and unequal compute. The rival rose from 49.30 to 84.31 when tuned. Replication. I wrote the success and failure rules before I saw the new seeds. Failure meant a mean below +0.5 or at most 5 of 8 seeds ahead. Result: mean -0.005, D ahead on 6 of 8 seeds, Holm-adjusted p = 1.000. By my rules, this is a failure. I do not call the +1.06 replicated. What still holds. At equal burst steps, D beats retraining-only by 3.78 points (5 of 5 seeds). That retraining-only lead was 44.7 points before tuning. A forward-only BatchNorm refit stays near chance once spares run out. It is 76.06 points below D, on 0 of 8 seeds. Living spares match frozen-reference spares at a tuned rate (+0.03 points). An earlier +2.48 came from a barely working learning rate. Limits. Simulation only (CrossSim). I injected the faults. No device measurement. D has no measured margin over the matched rival on the default setting. Effects up to about 1.7 points either way are not excluded. I ran no equivalence test. D lost to the matched rival on 2 of 8 seeds. I call this a gate-drift failure. The diagnosis is post-hoc. The retraining-only comparison rests on 5 seeds. Learning rates were picked on test data of seed 42. That is optimistic. Seeds were added after first looks (sequential design). Compute matching counts burst steps only. D's extra passes are not charged. The paper is a case study, not a new method. It does not measure other papers. Prior ideas (importance-ranked remap, BatchNorm refit, plateau stop) are credited to earlier work. Code, runs and analysis will be released on acceptance. Preprint: https://doi.org/10.5281/zenodo.23474217 I would like critique. Where is my matching still unfair? Which baseline should I add? submitted by /u/Connect_Agency_3975 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p><strong>TL;DR (a confession):</strong> I was ready to celebrate a big win. Then I tuned the rival. I built a repair controller for memristor crossbars with stuck cells. At first it led a rival by 34.0 points. After I tuned the rival's learning rate and matched retraining steps, the lead fell to 4.2, then 1.06. A pre-specified eight-seed replication gave -0.005 points (95% CI -1.7 to +1.7). This is a preprint. It is not peer reviewed yet.</p> <p><strong>Setting.</strong> A memristor stores a number as resistance. A crossbar is a grid of them that runs a neural network. Over time, some cells get stuck. I study repair controllers in simulation. A pool of spare cells exists. Faults arrive in waves. The controller can remap cells and run short retraining bursts. The network is ResNet-9 on CIFAR-10. Spares are 15%. There are three waves of 10% stuck cells.</p> <p><strong>What happened.</strong> My first draft reported my controller (D) at 83.3 and the rival (C') at 49.3. That is a 34.0-point lead. The lead fell in steps:</p>   Step Lead of D over rival (points)    Old rate, unmatched 34.0   Tuned rate 4.2   Tuned and step-matched (5 seeds) 1.06   8-seed replication -0.005 (95% CI -1.7 to +1.7)   <p>At least 97% of the original lead came from an untuned learning rate and unequal compute. The rival rose from 49.30 to 84.31 when tuned.</p> <p><strong>Replication.</strong> I wrote the success and failure rules before I saw the new seeds. Failure meant a mean below +0.5 or at most 5 of 8 seeds ahead. Result: mean -0.005, D ahead on 6 of 8 seeds, Holm-adjusted p = 1.000. By my rules, this is a failure. I do not call the +1.06 replicated.</p> <p><strong>What still holds.</strong></p> <ul> <li>At equal burst steps, D beats retraining-only by 3.78 points (5 of 5 seeds).</li> <li>That retraining-only lead was 44.7 points before tuning.</li> <li>A forward-only BatchNorm refit stays near chance once spares run out. It is 76.06 points below D, on 0 of 8 seeds.</li> <li>Living spares match frozen-reference spares at a tuned rate (+0.03 points). An earlier +2.48 came from a barely working learning rate.</li> </ul> <p><strong>Limits.</strong></p> <ul> <li>Simulation only (CrossSim). I injected the faults. No device measurement.</li> <li>D has no measured margin over the matched rival on the default setting. Effects up to about 1.7 points either way are not excluded. I ran no equivalence test.</li> <li>D lost to the matched rival on 2 of 8 seeds. I call this a gate-drift failure. The diagnosis is post-hoc.</li> <li>The retraining-only comparison rests on 5 seeds.</li> <li>Learning rates were picked on test data of seed 42. That is optimistic.</li> <li>Seeds were added after first looks (sequential design).</li> <li>Compute matching counts burst steps only. D's extra passes are not charged.</li> <li>The paper is a case study, not a new method. It does not measure other papers. Prior ideas (importance-ranked remap, BatchNorm refit, plateau stop) are credited to earlier work.</li> <li>Code, runs and analysis will be released on acceptance.</li> </ul> <p>Preprint: <a href=\"https://doi.org/10.5281/zenodo.23474217\">https://doi.org/10.5281/zenodo.23474217</a></p> <p>I would like critique. Where is my matching still unfair? Which baseline should I add?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Connect_Agency_3975\"> /u/Connect_Agency_3975 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xbj5i0/a_34point_win_for_my_memristorcrossbar_repair/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xbj5i0/a_34point_win_for_my_memristorcrossbar_repair/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1xbj5i0/a_34point_win_for_my_memristorcrossbar_repair/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-21T10:08:11+00:00",
+    "published_ts": 1792577291,
+    "smart_groups": [
+      "Research & papers",
+      "Health & science"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Need access to TPUs for ML mapping project [R]",
+    "summary": "I am working on a project where I am building a analytical mapping/compilation tool for transformer workloads into hardware platforms that have software managed scratchpads. I got hold of a few chips from some startups and bigger companies and have shown that my mapper beat their software stack for a variety of workloads. But I would like to show that it also beats a more mature software stack like Google's. And for that I would need access to TPUs. I already applied for their TPU research cloud program a month ago but still did not hear from them. Anybody know of a somewhat affordable way to get access to their TPU? I will most likely need to use one for about 10 hours total or so. submitted by /u/Green_Rays [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>I am working on a project where I am building a analytical mapping/compilation tool for transformer workloads into hardware platforms that have software managed scratchpads.</p> <p>I got hold of a few chips from some startups and bigger companies and have shown that my mapper beat their software stack for a variety of workloads. </p> <p>But I would like to show that it also beats a more mature software stack like Google's. And for that I would need access to TPUs. I already applied for their TPU research cloud program a month ago but still did not hear from them.</p> <p>Anybody know of a somewhat affordable way to get access to their TPU? I will most likely need to use one for about 10 hours total or so. </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Green_Rays\"> /u/Green_Rays </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xbhyq1/need_access_to_tpus_for_ml_mapping_project_r/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xbhyq1/need_access_to_tpus_for_ml_mapping_project_r/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1xbhyq1/need_access_to_tpus_for_ml_mapping_project_r/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-21T08:54:53+00:00",
+    "published_ts": 1792572893,
+    "smart_groups": [
+      "Chips & hardware"
+    ],
+    "curated": false
+  },
+  {
     "title": "DeepSeek Unveils Open-Source Tool to Help Cut AI Operating Costs",
     "summary": "",
     "summary_html": "<p>Article URL: <a href=\"https://www.bloomberg.com/news/articles/2026-10-20/deepseek-unveils-open-source-tool-to-help-cut-ai-operating-costs\">https://www.bloomberg.com/news/articles/2026-10-20/deepseek-unveils-open-source-tool-to-help-cut-ai-operating-costs</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50175874\">https://news.ycombinator.com/item?id=50175874</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
@@ -13,7 +46,9 @@
     "smart_groups": [
       "Model releases"
     ],
-    "curated": false
+    "curated": false,
+    "story_id": "2e95bb3b7455",
+    "story_size": 2
   },
   {
     "title": "A2O Lite Neon AI Dance Generator",
@@ -147,6 +182,23 @@
     "story_size": 2
   },
   {
+    "title": "Preview seed fixture (rolling)",
+    "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@dae22d41d078 (migration head: 20261019120000_push_subscription_unique_endpoint). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
+    "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@dae22d41d078 (migration head: 20261019120000_push_subscription_unique_endpoint). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
+    "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/preview-seed-fixture",
+    "source": "AutoGPT Releases - GitHub releases for AutoGPT",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-21T00:16:43+00:00",
+    "published_ts": 1792541803,
+    "smart_groups": [
+      "Agents & automation",
+      "Consumer AI"
+    ],
+    "curated": false
+  },
+  {
     "title": "Writing Code vs. Shipping Code: Productivity Effects Across AI Tool Generations [pdf]",
     "summary": "",
     "summary_html": "<p>Article URL: <a href=\"https://www.mertdemirer.com/Papers/Demirer_Writing_vs_shipping_code.pdf\">https://www.mertdemirer.com/Papers/Demirer_Writing_vs_shipping_code.pdf</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50174453\">https://news.ycombinator.com/item?id=50174453</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
@@ -159,6 +211,22 @@
     "published_ts": 1792541586,
     "smart_groups": [
       "Work & society"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Skipped monorepo deployments no longer count against limits",
+    "summary": "Deployments that Vercel automatically skips in a monorepo no longer count against your deployment rate limits. Teams with monorepos now get more deployments from the same limits. Vercel skips a project's deployment when its source code and internal dependencies haven't changed, using Turborepo 's package graph and lockfile analysis to determine which projects a commit affects. Skipping is enabled by default for new monorepo projects. You can turn it on for existing projects under Build and Deployment in the project's settings . Learn more about skipping unaffected projects and deployment limits .",
+    "summary_html": "<p>Deployments that Vercel <a href=\"https://vercel.com/docs/monorepos#skipping-unaffected-projects\">automatically skips</a> in a monorepo no longer count against your deployment rate limits. Teams with monorepos now get more deployments from the same limits.</p><p>Vercel skips a project's deployment when its source code and internal dependencies haven't changed, using <a href=\"https://vercel.com/solutions/turborepo\">Turborepo</a>'s package graph and lockfile analysis to determine which projects a commit affects. </p><p>Skipping is enabled by default for new monorepo projects. You can turn it on for existing projects under <b>Build and Deployment</b> in the <a href=\"https://vercel.com/d?to=%2F%5Bteam%5D%2F%5Bproject%5D%2Fsettings%2Fbuild-and-deployment%23root-directory&amp;title=Go+to+Build+and+Deployment+settings\">project's settings</a>.</p><p>Learn more about <a href=\"https://vercel.com/docs/monorepos#skipping-unaffected-projects\">skipping unaffected projects</a> and deployment <a href=\"https://vercel.com/docs/limits\">limits</a>.</p>\n<p>\n<a href=\"https://vercel.com/changelog/skipped-monorepo-deployments-no-longer-count-against-limits\">Read more</a>\n</p>",
+    "link": "https://vercel.com/changelog/skipped-monorepo-deployments-no-longer-count-against-limits",
+    "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+    "feed_type": "blog",
+    "type": "company-engineering",
+    "type_label": "Company Engineering",
+    "published": "2026-10-21T00:00:00+00:00",
+    "published_ts": 1792540800,
+    "smart_groups": [
+      "Infra & model ops"
     ],
     "curated": false
   },
@@ -452,23 +520,6 @@
     "curated": false
   },
   {
-    "title": "Preview seed fixture (rolling)",
-    "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@8c40ede1e36c (migration head: 20261019120000_push_subscription_unique_endpoint). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
-    "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@8c40ede1e36c (migration head: 20261019120000_push_subscription_unique_endpoint). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
-    "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/preview-seed-fixture",
-    "source": "AutoGPT Releases - GitHub releases for AutoGPT",
-    "feed_type": "blog",
-    "type": "media-tech-analysis",
-    "type_label": "Media & Tech Analysis",
-    "published": "2026-10-20T18:50:06+00:00",
-    "published_ts": 1792522206,
-    "smart_groups": [
-      "Agents & automation",
-      "Consumer AI"
-    ],
-    "curated": false
-  },
-  {
     "title": "AWS launches open-source Physical AI Toolchain for robotics",
     "summary": "",
     "summary_html": "<p>Article URL: <a href=\"https://www.therobotreport.com/aws-launches-open-source-physical-ai-toolchain-for-robotics/\">https://www.therobotreport.com/aws-launches-open-source-physical-ai-toolchain-for-robotics/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50170843\">https://news.ycombinator.com/item?id=50170843</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
@@ -675,6 +726,22 @@
     "published_ts": 1792519190,
     "smart_groups": [
       "Coding & dev tools"
+    ],
+    "curated": false
+  },
+  {
+    "title": "When eight systems share a benchmark top score, what should the table show?[D]",
+    "summary": "I have been thinking about how result tables get read when the interesting part is how close everyone is. The Agent Memory Leaderboard's public board from August is a nice case. On the Cycle 1 coding board, Open-source Methods, 43 listed systems run from 46.00% to 52.67% solve rate over 150 tasks, meaning 69 to 79 tasks solved, and eight systems sit together at 52.67%. Since one task there is worth 0.67 percentage points, the whole top cluster moves by a task at a time. Honestly I like seeing this. My read is that a lot of different designs land in the same neighbourhood on these coding tasks, and convergence like that is informative in itself. It also means the table format carries real weight. Options I have seen or used: raw counts beside percentages, tier groupings instead of strict ranks, and interval estimates across tasks. If you have had to report scores this tight in a paper or internal eval, which of these did your readers actually engage with, and what did they take away from it? submitted by /u/_sRhubarb_ [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>I have been thinking about how result tables get read when the interesting part is how close everyone is.</p> <p>The Agent Memory Leaderboard's public board from August is a nice case. On the Cycle 1 coding board, Open-source Methods, 43 listed systems run from 46.00% to 52.67% solve rate over 150 tasks, meaning 69 to 79 tasks solved, and eight systems sit together at 52.67%. Since one task there is worth 0.67 percentage points, the whole top cluster moves by a task at a time.</p> <p>Honestly I like seeing this. My read is that a lot of different designs land in the same neighbourhood on these coding tasks, and convergence like that is informative in itself. It also means the table format carries real weight. Options I have seen or used: raw counts beside percentages, tier groupings instead of strict ranks, and interval estimates across tasks.</p> <p>If you have had to report scores this tight in a paper or internal eval, which of these did your readers actually engage with, and what did they take away from it?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/_sRhubarb_\"> /u/_sRhubarb_ </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xayxs1/when_eight_systems_share_a_benchmark_top_score/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xayxs1/when_eight_systems_share_a_benchmark_top_score/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1xayxs1/when_eight_systems_share_a_benchmark_top_score/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-20T17:47:15+00:00",
+    "published_ts": 1792518435,
+    "smart_groups": [
+      "Research & papers"
     ],
     "curated": false
   },
@@ -1372,7 +1439,7 @@
     ],
     "curated": false,
     "story_id": "92bf044e6717",
-    "story_size": 8
+    "story_size": 9
   },
   {
     "title": "Quizera – Create and deploy AI-assisted assessments in minutes",
@@ -6070,7 +6137,7 @@
     ],
     "curated": false,
     "story_id": "11e83311a7c5",
-    "story_size": 3
+    "story_size": 2
   },
   {
     "title": "Open weight takes 71.5% of tokens and 23% of spend",
