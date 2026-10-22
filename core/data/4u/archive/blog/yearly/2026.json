@@ -1,5 +1,372 @@
 [
   {
+    "title": "Eight more TLDs now eligible for a free domain with Pro",
+    "summary": "Every Pro team can claim a free domain for one year. That offer now includes .co , .studio , .company , .info , .pro , .live , .digital , and .agency , bringing the eligible TLDs to sixteen. The offer still covers one domain per team, and premium domains are not eligible. After the first year, your domain will renew automatically at the regular price shown at checkout when you claim it. Claim yours at vercel.com/domains , and see the free domain FAQ for the full list of eligible TLDs and terms.",
+    "summary_html": "<p>Every Pro team can claim a free domain for one year. That offer now includes <code>.co</code>, <code>.studio</code>, <code>.company</code>, <code>.info</code>, <code>.pro</code>, <code>.live</code>, <code>.digital</code>, and <code>.agency</code>, bringing the eligible TLDs to sixteen.</p><p>The offer still covers one domain per team, and premium domains are not eligible. After the first year, your domain will <a href=\"https://vercel.com/docs/domains/working-with-domains/renew-a-domain\">renew automatically</a> at the regular price shown at checkout when you claim it.</p><p>Claim yours at <a href=\"https://vercel.com/domains\">vercel.com/domains</a>, and see the <a href=\"https://vercel.com/docs/domains/free-domain-with-pro\">free domain FAQ</a> for the full list of eligible TLDs and terms.</p>\n<p>\n<a href=\"https://vercel.com/changelog/eight-more-tlds-now-eligible-for-a-free-domain-with-pro\">Read more</a>\n</p>",
+    "link": "https://vercel.com/changelog/eight-more-tlds-now-eligible-for-a-free-domain-with-pro",
+    "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+    "feed_type": "blog",
+    "type": "company-engineering",
+    "type_label": "Company Engineering",
+    "published": "2026-10-22T22:28:00+00:00",
+    "published_ts": 1792708080,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Preview seed fixture (rolling)",
+    "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@dfec34e275ee (migration head: 20261021120000_dream_pass_created_at_index). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
+    "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@dfec34e275ee (migration head: 20261021120000_dream_pass_created_at_index). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
+    "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/preview-seed-fixture",
+    "source": "AutoGPT Releases - GitHub releases for AutoGPT",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-22T20:12:12+00:00",
+    "published_ts": 1792699932,
+    "smart_groups": [
+      "Agents & automation",
+      "Data & analytics"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Messaging for AI Agents",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://trycrabmail.com/\">https://trycrabmail.com/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50199995\">https://news.ycombinator.com/item?id=50199995</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://trycrabmail.com/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-22T19:38:13+00:00",
+    "published_ts": 1792697893,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Amazon is buying billions in Nvidia AI systems it can't yet turn on",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.businessinsider.com/amazon-nvidia-ai-gpu-data-centers-power-shortages-2026-10\">https://www.businessinsider.com/amazon-nvidia-ai-gpu-data-centers-power-shortages-2026-10</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50199951\">https://news.ycombinator.com/item?id=50199951</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://www.businessinsider.com/amazon-nvidia-ai-gpu-data-centers-power-shortages-2026-10",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-22T19:33:50+00:00",
+    "published_ts": 1792697630,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "New prize launches for books co-written with AI",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.theguardian.com/books/2026/oct/21/new-prize-launches-books-co-written-with-ai-france\">https://www.theguardian.com/books/2026/oct/21/new-prize-launches-books-co-written-with-ai-france</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50199907\">https://news.ycombinator.com/item?id=50199907</a></p>\n<p>Points: 3</p>\n<p># Comments: 1</p>",
+    "link": "https://www.theguardian.com/books/2026/oct/21/new-prize-launches-books-co-written-with-ai-france",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-22T19:29:38+00:00",
+    "published_ts": 1792697378,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Banks Are Struggling to Protect Customers from Their Own AI Agents",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.motherjones.com/politics/2026/10/banks-ai-axios-agents-rogue-financial-decisions-security/\">https://www.motherjones.com/politics/2026/10/banks-ai-axios-agents-rogue-financial-decisions-security/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50199846\">https://news.ycombinator.com/item?id=50199846</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+    "link": "https://www.motherjones.com/politics/2026/10/banks-ai-axios-agents-rogue-financial-decisions-security/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-22T19:23:44+00:00",
+    "published_ts": 1792697024,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "US Banks Blocking AI Agents in Accounts",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://the-decoder.com/major-us-banks-are-locking-out-ai-agents-that-log-in-with-customer-credentials/\">https://the-decoder.com/major-us-banks-are-locking-out-ai-agents-that-log-in-with-customer-credentials/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50199840\">https://news.ycombinator.com/item?id=50199840</a></p>\n<p>Points: 2</p>\n<p># Comments: 1</p>",
+    "link": "https://the-decoder.com/major-us-banks-are-locking-out-ai-agents-that-log-in-with-customer-credentials/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-22T19:22:23+00:00",
+    "published_ts": 1792696943,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: Forked – Git for AI agent state",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://github.com/clibequilibrium/forked\">https://github.com/clibequilibrium/forked</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50199793\">https://news.ycombinator.com/item?id=50199793</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+    "link": "https://github.com/clibequilibrium/forked",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-22T19:17:12+00:00",
+    "published_ts": 1792696632,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Why AI Agents Need Shared Experience, Not Just Better Models",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://project507.substack.com/p/the-five-senses-of-artificial-intelligence\">https://project507.substack.com/p/the-five-senses-of-artificial-intelligence</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50199748\">https://news.ycombinator.com/item?id=50199748</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://project507.substack.com/p/the-five-senses-of-artificial-intelligence",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-22T19:13:21+00:00",
+    "published_ts": 1792696401,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: Mnemolith – AI coding memory that goes stale when your code changes",
+    "summary": "Hi HN, I'm Anish. I built Mnemolith because the AI coding tools I use (Claude Code, Cursor, Codex) either forget my project between sessions, or remember things that quietly stopped being true. Tell the agent \"we use Postgres\", migrate to MySQL two weeks later, and it keeps building on the old fact. How it works: - It's an MCP server, so Claude Code, Cursor and Codex share one memory per project (keyed by the git repo). - When the agent saves a memory, it can link it to the files it depends on. Mnemolith stores each file's git blob hash. If the file's contents change (committed or not), the memory is set aside and flagged for review, so the agent stops relying on it. - A local dashboard shows what the agent remembers, where each memory came from (tool, session, file versions), and its full history. You can confirm a memory is still true, or retire it and say what's true now. - Contradictions are judged by the agent, not by a similarity threshold. In my calibration, \"we use Postgres\" vs \"we migrated to MySQL\" only scored 0.30 similarity, so a threshold can't tell a contradiction from an unrelated fact. - Current memories can sync into a managed section of AGENTS.md / CLAUDE.md, so they get reviewed in PRs. Under the hood it runs on an engine I wrote from scratch in Java: a Redis-compatible server with a built-in memory model and an HNSW vector index. Embeddings run locally (all-MiniLM-L6-v2). Everything stays on your machine. It's early (v0.2.1). There's no team sync yet beyond the AGENTS.md/CLAUDE.md files, and it needs Java 11+ (it downloads a private copy if you don't have one). I'd really like feedback, especially from people running coding agents on real codebases. What does your agent keep getting wrong?",
+    "summary_html": "<p>Hi HN, I'm Anish. I built Mnemolith because the AI coding tools I use (Claude Code, Cursor, Codex) either forget my project between sessions, or remember things that quietly stopped being true. Tell the agent \"we use Postgres\", migrate to MySQL two weeks later, and it keeps building on the old fact.<p>How it works:<p>- It's an MCP server, so Claude Code, Cursor and Codex share one memory per project (keyed by the git repo).\n- When the agent saves a memory, it can link it to the files it depends on. Mnemolith stores each file's git blob hash. If the file's contents change (committed or not), the memory is set aside and flagged for review, so the agent stops relying on it.\n- A local dashboard shows what the agent remembers, where each memory came from (tool, session, file versions), and its full history. You can confirm a memory is still true, or retire it and say what's true now.\n- Contradictions are judged by the agent, not by a similarity threshold. In my calibration, \"we use Postgres\" vs \"we migrated to MySQL\" only scored 0.30 similarity, so a threshold can't tell a contradiction from an unrelated fact.\n- Current memories can sync into a managed section of AGENTS.md / CLAUDE.md, so they get reviewed in PRs.<p>Under the hood it runs on an engine I wrote from scratch in Java: a Redis-compatible server with a built-in memory model and an HNSW vector index. Embeddings run locally (all-MiniLM-L6-v2). Everything stays on your machine.<p>It's early (v0.2.1). There's no team sync yet beyond the AGENTS.md/CLAUDE.md files, and it needs Java 11+ (it downloads a private copy if you don't have one).<p>I'd really like feedback, especially from people running coding agents on real codebases. What does your agent keep getting wrong?</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50199581\">https://news.ycombinator.com/item?id=50199581</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p></p></p></p></p></p>",
+    "link": "https://github.com/anishchugh05/mnemolith",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-22T18:59:50+00:00",
+    "published_ts": 1792695590,
+    "smart_groups": [
+      "Coding & dev tools"
+    ],
+    "curated": false
+  },
+  {
+    "title": "AI found a critical PHP flaw. The bigger failure began in 2024",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://thenewstack.io/php2shell-chainguard-embargo-dispute/\">https://thenewstack.io/php2shell-chainguard-embargo-dispute/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50199443\">https://news.ycombinator.com/item?id=50199443</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://thenewstack.io/php2shell-chainguard-embargo-dispute/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-22T18:49:49+00:00",
+    "published_ts": 1792694989,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "How to spot AI science slop",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://labmuffin.com/how-to-spot-ai-science-slop/\">https://labmuffin.com/how-to-spot-ai-science-slop/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50199420\">https://news.ycombinator.com/item?id=50199420</a></p>\n<p>Points: 4</p>\n<p># Comments: 1</p>",
+    "link": "https://labmuffin.com/how-to-spot-ai-science-slop/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-22T18:47:46+00:00",
+    "published_ts": 1792694866,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: UI micro interactions prompts for AI",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.typeui.sh/micro-interactions\">https://www.typeui.sh/micro-interactions</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50199290\">https://news.ycombinator.com/item?id=50199290</a></p>\n<p>Points: 38</p>\n<p># Comments: 15</p>",
+    "link": "https://www.typeui.sh/micro-interactions",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-22T18:32:57+00:00",
+    "published_ts": 1792693977,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Award-Winning AI Literature",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://jamesyu.org/award-winning-ai-literature/\">https://jamesyu.org/award-winning-ai-literature/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50199232\">https://news.ycombinator.com/item?id=50199232</a></p>\n<p>Points: 33</p>\n<p># Comments: 17</p>",
+    "link": "https://jamesyu.org/award-winning-ai-literature/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-22T18:28:26+00:00",
+    "published_ts": 1792693706,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "AI and the Enclosure of the Scientific Commons",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://arxiv.org/abs/2610.27251\">https://arxiv.org/abs/2610.27251</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50199230\">https://news.ycombinator.com/item?id=50199230</a></p>\n<p>Points: 31</p>\n<p># Comments: 9</p>",
+    "link": "https://arxiv.org/abs/2610.27251",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-22T18:28:16+00:00",
+    "published_ts": 1792693696,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Vulnerability Discovery and Exploitation Trends in the AI Era",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://cloud.google.com/blog/topics/threat-intelligence/vulnerability-discovery-and-exploitation-trends-in-the-ai-era\">https://cloud.google.com/blog/topics/threat-intelligence/vulnerability-discovery-and-exploitation-trends-in-the-ai-era</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50199206\">https://news.ycombinator.com/item?id=50199206</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://cloud.google.com/blog/topics/threat-intelligence/vulnerability-discovery-and-exploitation-trends-in-the-ai-era",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-22T18:26:23+00:00",
+    "published_ts": 1792693583,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Security Sweet: Get your AI agents on a leash for security patch",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://github.com/blencorp/security-sweep\">https://github.com/blencorp/security-sweep</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50199010\">https://news.ycombinator.com/item?id=50199010</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://github.com/blencorp/security-sweep",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-22T18:10:38+00:00",
+    "published_ts": 1792692638,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Meta and chip stocks decline as AI trade comes under pressure",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://finance.yahoo.com/markets/article/meta-and-chip-stocks-decline-as-ai-trade-comes-under-pressure-alphacheck-140107733.html\">https://finance.yahoo.com/markets/article/meta-and-chip-stocks-decline-as-ai-trade-comes-under-pressure-alphacheck-140107733.html</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50198989\">https://news.ycombinator.com/item?id=50198989</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+    "link": "https://finance.yahoo.com/markets/article/meta-and-chip-stocks-decline-as-ai-trade-comes-under-pressure-alphacheck-140107733.html",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-22T18:08:30+00:00",
+    "published_ts": 1792692510,
+    "smart_groups": [
+      "Chips & hardware"
+    ],
+    "curated": false
+  },
+  {
+    "title": "ICLR Text Editor [D]",
+    "summary": "Have you looked at this iclr text detector? [ https://opentextdetector.com/](https://opentextdetector.com/) ) Do you think this will impact the review process? AI detectors are usually unreliable so I hope not. submitted by /u/Whatever_635 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Have you looked at this iclr text detector?</p> <p>[<a href=\"https://opentextdetector.com/%5D(https://opentextdetector.com/\">https://opentextdetector.com/](https://opentextdetector.com/)</a>)</p> <p>Do you think this will impact the review process? AI detectors are usually unreliable so I hope not.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Whatever_635\"> /u/Whatever_635 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xcq2an/iclr_text_editor_d/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xcq2an/iclr_text_editor_d/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1xcq2an/iclr_text_editor_d/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-22T18:07:44+00:00",
+    "published_ts": 1792692464,
+    "smart_groups": [
+      "Research & papers"
+    ],
+    "curated": false
+  },
+  {
+    "title": "I built a free library of 900 motion design techniques you can recreate with AI",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://oneshotprompts.com/\">https://oneshotprompts.com/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50198962\">https://news.ycombinator.com/item?id=50198962</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://oneshotprompts.com/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-22T18:05:20+00:00",
+    "published_ts": 1792692320,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "AI, Quiz Me!",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://thoughts.kristiandupont.com/p/ai-quiz-me\">https://thoughts.kristiandupont.com/p/ai-quiz-me</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50198959\">https://news.ycombinator.com/item?id=50198959</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://thoughts.kristiandupont.com/p/ai-quiz-me",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-22T18:05:09+00:00",
+    "published_ts": 1792692309,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "AI analysis of CT scans finds 42.9% of patients have coronary inflammation",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.biograph.com/newsroom/biograph-completes-first-u.s.-study-with-caristo-diagnostics%E2%80%99-ai-powered-coronary-inflammation-detection-finding-risk-in-over-42-of-asymptomatic-patients\">https://www.biograph.com/newsroom/biograph-completes-first-u.s.-study-with-caristo-diagnostics%E2%80%99-ai-powered-coronary-inflammation-detection-finding-risk-in-over-42-of-asymptomatic-patients</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50198940\">https://news.ycombinator.com/item?id=50198940</a></p>\n<p>Points: 40</p>\n<p># Comments: 22</p>",
+    "link": "https://www.biograph.com/newsroom/biograph-completes-first-u.s.-study-with-caristo-diagnostics%E2%80%99-ai-powered-coronary-inflammation-detection-finding-risk-in-over-42-of-asymptomatic-patients",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-22T18:02:54+00:00",
+    "published_ts": 1792692174,
+    "smart_groups": [
+      "Health & science"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Five AI assistants, first impressions",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://paolo.blog/five-ai-assistants-first-impressions/\">https://paolo.blog/five-ai-assistants-first-impressions/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50198938\">https://news.ycombinator.com/item?id=50198938</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://paolo.blog/five-ai-assistants-first-impressions/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-22T18:02:45+00:00",
+    "published_ts": 1792692165,
+    "smart_groups": [
+      "Consumer AI"
+    ],
+    "curated": false
+  },
+  {
     "title": "Why AI's Deepest Mind Believes the World Is About to Change Radically",
     "summary": "",
     "summary_html": "<p>Article URL: <a href=\"https://www.wsj.com/tech/ai/demis-hassabis-ai-deepmind-google-isomorphic-2b4e3153\">https://www.wsj.com/tech/ai/demis-hassabis-ai-deepmind-google-isomorphic-2b4e3153</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50195420\">https://news.ycombinator.com/item?id=50195420</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
@@ -62,7 +429,9 @@
     "smart_groups": [
       "Agents & automation"
     ],
-    "curated": false
+    "curated": false,
+    "story_id": "34e61359d59a",
+    "story_size": 3
   },
   {
     "title": "AI-powered robots can be tricked into slicing off fingers",
@@ -288,23 +657,6 @@
     "published_ts": 1792672235,
     "smart_groups": [
       "Security & misuse"
-    ],
-    "curated": false
-  },
-  {
-    "title": "Preview seed fixture (rolling)",
-    "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@036042a67e79 (migration head: 20261021120000_dream_pass_created_at_index). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
-    "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@036042a67e79 (migration head: 20261021120000_dream_pass_created_at_index). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only Faker-generated synthetic rows plus the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
-    "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/preview-seed-fixture",
-    "source": "AutoGPT Releases - GitHub releases for AutoGPT",
-    "feed_type": "blog",
-    "type": "media-tech-analysis",
-    "type_label": "Media & Tech Analysis",
-    "published": "2026-10-22T12:27:06+00:00",
-    "published_ts": 1792672026,
-    "smart_groups": [
-      "Agents & automation",
-      "Data & analytics"
     ],
     "curated": false
   },
