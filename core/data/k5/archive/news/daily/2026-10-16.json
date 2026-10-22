@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-22T05:09:51.856642+00:00",
+  "generated_at": "2026-10-22T14:00:44.015762+00:00",
   "date": "2026-10-16",
-  "total_items": 150,
+  "total_items": 153,
   "next_chunk": "archive/news/daily/2026-10-15.json",
   "items": [
     {
@@ -950,6 +950,39 @@
       "curated": false
     },
     {
+      "title": "16% of RPKI-covered IPv4 routes still allow a forged-origin hijack that passes validation, the setup behind the Virtualizor update attack",
+      "summary": "Author here, I work at IPinfo. some security-relevant highlights part of the post: The August 28 Virtualizor update attack used a forged-origin /24 inside Hetzner\u2019s space. From what we saw, it was RPKI-valid because Hetzner\u2019s ROA covered the /16 and allowed announcements down to /24, and no real /24 existed to compete with it. We also measured how common that setup is. In this case, of 855,217 RPKI-covered IPv4 routes, 138,698 (16.2%) have a ROA looser than the route announced and no more-specific route of their own filling the gap. For IPv6 it\u2019s 20.9%. That\u2019s roughly 18 million more-specifics someone could announce today and come out RPKI-valid and uncontested. Hosting providers also differ a lot: Contabo leaves 540 of 553 covered routes open, DigitalOcean 780 of 863, OVH 11.5%. Invalid routes are being dropped now: a typical valid route is seen by 596 vantage points, an invalid one by 2. So the remaining risk is routes that pass the check, not ones that fail it. There's also the fix in RFC 9319: leave maxLength unset, so a ROA only matches the block you actually announce. Method is at the end of the post. Happy to answer questions submitted by /u/seremot [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>Author here, I work at IPinfo. some security-relevant highlights part of the post:</p> <ul> <li>The August 28 Virtualizor update attack used a forged-origin /24 inside Hetzner\u2019s space. From what we saw, it was RPKI-valid because Hetzner\u2019s ROA covered the /16 and allowed announcements down to /24, and no real /24 existed to compete with it.</li> <li>We also measured how common that setup is. In this case, of 855,217 RPKI-covered IPv4 routes, 138,698 (16.2%) have a ROA looser than the route announced and no more-specific route of their own filling the gap. For IPv6 it\u2019s 20.9%. That\u2019s roughly 18 million more-specifics someone could announce today and come out RPKI-valid and uncontested.</li> <li>Hosting providers also differ a lot: Contabo leaves 540 of 553 covered routes open, DigitalOcean 780 of 863, OVH 11.5%.</li> <li>Invalid routes are being dropped now: a typical valid route is seen by 596 vantage points, an invalid one by 2. So the remaining risk is routes that pass the check, not ones that fail it.</li> <li>There's also the fix in RFC 9319: leave maxLength unset, so a ROA only matches the block you actually announce.</li> </ul> <p>Method is at the end of the post. Happy to answer questions </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/seremot\"> /u/seremot </a> <br/> <span><a href=\"https://ipinfo.io/blog/rpki-protects-70-internet-routes\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/netsec/comments/1x7i0l6/16_of_rpkicovered_ipv4_routes_still_allow_a/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/netsec/comments/1x7i0l6/16_of_rpkicovered_ipv4_routes_still_allow_a/",
+      "source": "/r/netsec",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-16T14:40:18+00:00",
+      "published_ts": 1792161618,
+      "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "CVE-2026-108082: Symfony ReDoS. One request. Seconds of CPU",
+      "summary": "If you run Laravel (or anything on Symfony), read this. CVE-2026-108082: one unauthenticated GET, seconds of backend CPU, ~100 requests and the app times out. A dumb ReDoS that common config turns into a real DoS. \ud83d\udc40\u2935\ufe0f submitted by /u/r3verii [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>If you run Laravel (or anything on Symfony), read this. CVE-2026-108082: one unauthenticated GET, seconds of backend CPU, ~100 requests and the app times out. A dumb ReDoS that common config turns into a real DoS. \ud83d\udc40\u2935\ufe0f</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/r3verii\"> /u/r3verii </a> <br/> <span><a href=\"https://r3verii.github.io/cve/2026/10/16/symfony-cache-control-redos.html\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/netsec/comments/1x7httc/cve2026108082_symfony_redos_one_request_seconds/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/netsec/comments/1x7httc/cve2026108082_symfony_redos_one_request_seconds/",
+      "source": "/r/netsec",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-16T14:32:31+00:00",
+      "published_ts": 1792161151,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
       "title": "Justice Department Announces Coordinated Actions to Combat North Korean Remote IT Worker Schemes Affecting More than 70 U.S. Companies",
       "summary": "submitted by /u/foodie_2598 [link] [comments]",
       "summary_html": "<a href=\"https://www.reddit.com/r/cybersecurity/comments/1x7hirp/justice_department_announces_coordinated_actions/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/foodie_2598\"> /u/foodie_2598 </a> <br/> <span><a href=\"https://www.justice.gov/opa/pr/justice-department-announces-coordinated-actions-combat-north-korean-remote-it-worker\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1x7hirp/justice_department_announces_coordinated_actions/\">[comments]</a></span>",
@@ -1612,6 +1645,23 @@
       "published": "2026-10-16T10:42:41+00:00",
       "published_ts": 1792147361,
       "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "PwnEscape: Guest-to-Host KVM Escape (CVE-2026-99999)",
+      "summary": "submitted by /u/si9int [link] [comments]",
+      "summary_html": "submitted by   <a href=\"https://www.reddit.com/user/si9int\"> /u/si9int </a> <br/> <span><a href=\"https://pwn.ai/blog/pwnescape\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/netsec/comments/1x7cvh3/pwnescape_guesttohost_kvm_escape_cve202699999/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/netsec/comments/1x7cvh3/pwnescape_guesttohost_kvm_escape_cve202699999/",
+      "source": "/r/netsec",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-10-16T10:42:41+00:00",
+      "published_ts": 1792147361,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
         "Community Discussion"
       ],
       "curated": false
@@ -2297,7 +2347,9 @@
       "smart_groups": [
         "Community Discussion"
       ],
-      "curated": true
+      "curated": true,
+      "story_id": "76d5e4727ad7",
+      "story_size": 2
     },
     {
       "title": "New infosec products of the week: October 16, 2026",

@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-22T05:09:51.946946+00:00",
+  "generated_at": "2026-10-22T14:00:44.066216+00:00",
   "date": "2026-10-21",
-  "total_items": 110,
+  "total_items": 112,
   "next_chunk": "archive/blog/daily/2026-10-20.json",
   "items": [
     {
@@ -35,6 +35,24 @@
         "Vulnerabilities / CVEs",
         "Exploit / PoC",
         "Cloud / SaaS"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Micropatches released for Windows Active Directory Domain Services Remote Code Execution Vulnerability (CVE-2026-49179)",
+      "summary": "August 2026 Windows Updates brought a patch for CVE-2026-49179, a remote code execution vulnerability in Active Directory Domain Services. The vulnerability allowed a low-privileged attacker in the Windows domain to inject malicious code into a script that could subsequently be executed by administrator. The vulnerability was found internally by Microsoft. Subsequently, Ryan Yager published their own analysis and proof of concept, which allowed us to reproduce the issue and create patches for legacy Windows systems. The Vulnerability This is a command injection issue in Active Directory Lightweight Directory Services, a mode of Active Directory that provides directory services for applications. A remote attacker on another computer in the domain can send a malicious request to this service and cause it to generate a local helper BAT script containing an attacker-provided string without proper sanitization. This script is supposed to be executed by an admin for certain configuration purposes, and the vulnerability makes it possible for the attacker to escape quotes in the script and inject their own command.",
+      "summary_html": "August 2026 Windows Updates brought a patch for CVE-2026-49179, a remote code execution vulnerability in Active Directory Domain Services. The vulnerability allowed a low-privileged attacker in the Windows domain to inject malicious code into a script that could subsequently be executed by administrator. \nThe vulnerability was found internally by Microsoft. Subsequently, Ryan Yager published their own analysis and proof of concept, which allowed us to reproduce the issue and create patches for legacy Windows systems.\n\nThe Vulnerability\u00a0\nThis is a command injection issue in Active Directory Lightweight Directory Services, a mode of Active Directory that provides directory services for applications. A remote attacker on another computer in the domain can send a malicious request to this service and cause it to generate a local helper BAT script containing an attacker-provided string without proper sanitization. This script is supposed to be executed by an admin for certain configuration purposes, and the vulnerability makes it possible for the attacker to escape quotes in the script and inject their own command.",
+      "link": "https://0patch.com/blog/micropatches-released-for-windows-active-directory-domain-services-remote-code-ex",
+      "source": "0patch Blog",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-21T22:00:00+00:00",
+      "published_ts": 1792620000,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Windows / Microsoft",
+        "Exploit / PoC"
       ],
       "curated": true
     },
@@ -166,6 +184,23 @@
       "published_ts": 1792606759,
       "smart_groups": [],
       "curated": false
+    },
+    {
+      "title": "What Deep Investigation Really Looks Like: A SOC Analyst\u2019s Perspective",
+      "summary": "Key Takeaways Deep investigation goes beyond alert monitoring by correlating network activity, attacker behavior, and context across systems and time. Automation helps SOC teams investigate and respond faster by correlating signals, validating threats, and triggering response actions through playbooks. NDR platforms provide detailed network visibility using machine learning, behavioral analytics, Deep Session Inspection, and 300+ metadata attributes. Retrospective analysis helps uncover missed attacks by applying new threat intelligence and indicators to historical network data for deeper investigation. Deception, cyber terrain mapping, and XDR extend investigation capabilities by revealing attack paths, high-risk assets, and threats across network and endpoint environments. Deep investigation in cybersecurity isn\u2019t just about watching dashboards and clicking \u201cresolve\u201d on tickets. It\u2019s an intricate process of piecing together attacker behavior across time, systems, and attack vectors to understand not just what happened, but how and why. Modern security operations centers rely on sophisticated network detection and response (NDR) platforms to enable this level of analysis, transforming raw network data into actionable intelligence that helps security teams identify suspicious activity and protect critical assets. The Foundation of Deep Investigation: Advanced Threat Detection Network Detection and Response platforms continuously scan network traffic and traffic metadata within internal networks (east-west) and between internal and external networks (north-south). These systems use signature and non-signature-based methods such as machine learning and behavioral analytics to identify threats and malicious activities on the network, helping security professionals detect potential threats before they can disrupt systems or compromise sensitive data. Modern NDR solutions like Fidelis Network \u00ae establish baseline models of network behavior through machine learning and network behavior anomaly detection. The system continuously monitors network traffic in real time, comparing current activity against established baselines to detect anomalies and policy violations. When suspicious activity is detected, it alerts security teams and can perform automated actions such as blocking IP addresses or isolating compromised devices. This effective threat detection capability is essential for maintaining an organization\u2019s security posture against evolving threats. Advanced platforms like Fidelis Network \u00ae capture over 300 metadata attributes from network traffic\u2014significantly more than traditional NetFlow data. This comprehensive data collection includes network and application protocols, files, and content analysis through patented Deep Session Inspection technology. The system automatically decodes and analyzes traffic to detect advanced threats and unauthorized data transfers across all ports and protocols, providing security operations teams with the visibility needed to identify vulnerabilities and prevent future attacks. Deep Session Inspection: The SOC Analyst's Secret Weapon Fidelis Network \u00ae \u2018s patented Deep Session Inspection technology provides unique visibility of deeply embedded content and context across all ports and protocols. This capability goes beyond traditional deep packet inspection by analyzing complete communication sessions rather than individual packets. It captures and stores over 300 attributes of standard metadata, plus enhanced metadata including custom tags, to provide rich information for automated and manual threat detection. Deep Session Inspection bi-directionally scans all network traffic to reveal network and application protocols, files, and content. It automatically decodes and analyzes traffic to detect advanced threats and unauthorized data transfers, providing visibility into nested files and encrypted traffic patterns that traditional security tools cannot detect. This session-level analysis enables the detection of threats distributed across multiple packets and provides context about entire conversations between systems, helping security teams understand sophisticated threats and advanced persistent threats that might otherwise remain undetected. Fidelis DSI - Advanced Data inspection and Threat Detection Capabilities Content Inspection Content Identification Full Session Reassembly Protocol and Application Decoding Download the Datasheet Automated Investigation: What Happens When Deep Investigation Begins Studies show that advanced attacks require approximately 18 minutes from the time of initial detection to becoming indistinguishable from normal activity. As attackers begin to hide in plain sight, they can mask their objectives and behave within normal user patterns, leading to months of undetected dwell time. This rapid evolution of cyber threats demonstrates why security operations centers need automated threat response capabilities to mitigate security incidents effectively. The role of playbooks enables automation of investigation across multiple network segments and user behaviors, helping accelerate incident response investigation. Detection of anomalies, machine learning outputs, encrypted traffic analysis, and DNS detection lead to several investigative possibilities that previously consumed hours of analyst time. Automated playbooks investigate signals across all possible domains in the environment and present analysts with automated analysis, including remediation techniques that lead to file deletion, system rollback, endpoint isolation, and firewall modifications. Modern NDR platforms like Fidelis Network \u00ae provide assisted and automated detection, investigation, and response capabilities. Detected advanced threats are presented as conclusions determined by automated validation, contextual enrichment, and correlated threat activity. This approach enables analysts to take rapid responsive and automated actions rather than spending time gathering evidence from various security systems and sources, significantly improving incident response investigation and helping organizations strengthen their cybersecurity posture. Threat Investigation and Incident Analysis from the SOC Detections are often granular events within the network that can generate thousands of individual alerts, creating an unending list of investigations. Advanced NDR platforms perform incident analysis and support cyber forensic investigation by correlating many detections to reduce the burden on response teams. Examples include incidents focused on specific assets or users, global analysis of similar detections, and anomalies connected to other detections across the enterprise. This correlation helps security professionals conduct effective cyber threat investigation, distinguish between legitimate network activity and potential security incidents. Fidelis Network \u00ae automatically groups related alerts to save critical time and improve threat hunting capabilities. It provides sandboxing , network forensic investigation, data loss prevention, threat intelligence, and automated security rules in one unified solution. The platform gives users aggregated alerts, context, and evidence for faster digital forensic investigation, deeper analysis, and reduced alert fatigue , enabling security teams to focus on the most critical cybersecurity threats rather than being overwhelmed by false positives. Deception Technology: A SOC Analyst's Advanced Detection Method Fidelis Deception \u00ae automatically discovers environments and auto-generates decoys that have profiles, services, and activity matching the environment for active deception layers. The system deploys decoys of key assets, services, and fake data, then makes deception deterministic by setting up breadcrumbs on real systems likely to be compromised, leading attackers to decoys. This innovative approach helps organizations detect insider threats and unknown threats that traditional detection rules might miss. High-fidelity alerts come from decoys, breadcrumbs, Active Directory credentials, man-in-the-middle traps, and poisoned data combined with network traffic analysis and telemetry data for investigations. The deception environment automatically adapts to network changes as they occur to remain synchronized with actual assets, resources, and services. Deception also provides detection for legacy systems, shadow IT, and enterprise IoT devices where security agents cannot be installed, extending protection to mobile devices and other endpoints that might lack traditional security controls. Extended Detection and Response: The Complete Investigation Picture Fidelis Elevate \u00ae integrates network visibility with sensors for gateways, internal networks, email and web gateways, and cloud VMs into one unified solution to deliver automated threat detection and response. The platform provides unmatched visibility and threat intelligence with content and context to help organizations quickly address cyberattacks across the entire threat lifecycle\u2014from initial intrusion to exploitation and lateral movement to data theft. Alert validation provides analysts with high-fidelity information that would require significant manual effort to triage through thousands of alerts and hunt through multiple products to determine active threats. This extended detection capability enables organizations to implement a comprehensive incident response plan that addresses emerging threats across all attack vectors. Cyber Terrain Mapping: Understanding the Investigation Battlefield When Fidelis sensors analyze network traffic, they gain understanding of assets communicating over the network, including operating systems, asset roles based on protocol analysis, and users augmented by Active Directory data. The collection of all assets and communication paths constitutes the Cyber Terrain of the environment, providing security teams with critical visibility into their organization\u2019s systems and potential attack surfaces. Risk assessment throughout the Fidelis interface highlights asset risk with color-coded numbers ranging from 1 (low risk) to 10 (critical risk). Risk calculation considers severity (Fidelis alerts, network anomalies, and endpoint vulnerabilities), coverage (security components including network sensor placement and EDR), and importance based on asset role. This multi-dimensional risk calculation enables proactive security measures and helps prioritize response efforts, ensuring that security operations teams can focus their limited resources on protecting the most critical data and systems from cybersecurity risks. Retrospective Analysis: Learning from Past Investigations Advanced NDR platforms require solutions that can hunt and automate information analysis of past behavior. New information becomes available constantly through new detections and threat intelligence from industry and internal experts. The ability to connect dots between current events and past behavior represents a crucial aspect of NDR capabilities, enabling security professionals to identify patterns that might indicate advanced persistent threats or sophisticated attack campaigns. Fidelis Network \u00ae supports up to 360 days of retrospective analysis , enabling organizations to apply new threat intelligence to historical data and uncover previously missed attack patterns. Stored protocol, application, and content-level metadata allows discovery of past attacks through retroactive analysis triggered by key indicators derived from new threat intelligence , machine learning, sandbox results, and threat research. This real time threat intelligence capability helps organizations understand how attackers gain access to their systems and develop more effective threat response strategies. Real-Time Insight, Real-Time Prevention with Fidelis Network Block attacks before damage occurs Prevent lateral movement inside your network Reduce false positives & alert fatigue Read Guide Deep Investigation Best Practices: The SOC Analyst's Playbook Effective deep investigation requires systematic timeline reconstruction and comprehensive visibility across network, cloud, email, and endpoint metadata. Organizations need real-time and retrospective analysis capabilities for 30, 60, or 90 days minimum, combined with threat intelligence from multiple third-party sources and internally cultivated intelligence. This extended visibility is essential for identifying advanced persistent threats that may operate over extended periods while attempting to remain undetected. Automation eliminates manual correlation steps that previously consumed analyst time. Rather than being reactive and piecing together evidence from multiple disparate systems, security analysts can focus on understanding adversary intentions and making strategic decisions under pressure. With comprehensive network detection providing visibility into deeply embedded content across all ports and protocols, analysts can concentrate on attribution and strategic assessment rather than data collection. The most effective investigations combine cutting-edge artificial intelligence and machine learning with experienced analyst judgment. Understanding attacker behavior patterns and making decisions under pressure define successful response capabilities. Modern NDR platforms enable this approach by providing rich metadata, automated correlation capabilities, and integrated deception technologies that transform network security from reactive monitoring to proactive threat hunting . Through advanced NDR capabilities, security operations centers can shift from alert fatigue to intelligence-driven investigation, reducing mean time to detection and response while providing the contextual awareness necessary for effective cyber defense in today\u2019s evolving threat landscape. By implementing comprehensive threat detection and response solutions that protect both critical assets and sensitive information, organizations can maintain strong cybersecurity posture while enabling their security teams to focus on preventing future attacks rather than simply responding to incidents after they occur. Frequently Asked Questions What makes Deep Session Inspection different from traditional deep packet inspection? Deep Session Inspection analyzes complete communication sessions rather than individual packets, providing context about entire conversations between systems. This patented technology goes beyond traditional DPI by examining streaming traffic across network, email, and web to detect threats hidden in nested files, encrypted traffic patterns, and distributed across multiple packets that conventional tools miss. How does Fidelis Network\u00ae's 300+ metadata attributes enhance investigation capabilities? Fidelis Network \u00ae captures over 300 metadata attributes from protocols, files, and content\u2014significantly more than traditional NetFlow data. This rich metadata includes protocol and application data, content-level information, custom tags, and enhanced metadata that enables retrospective analysis up to 360 days. This comprehensive data collection provides security teams with the detailed context needed for thorough threat investigations. How do automated playbooks change SOC investigation workflows? Automated playbooks eliminate manual correlation steps by investigating signals across multiple network segments simultaneously. Studies show advanced attacks require approximately 18 minutes from initial detection to becoming indistinguishable from normal activity. Playbooks automate investigation across all possible domains, presenting analysts with pre-analyzed conclusions including recommended remediation techniques like file deletion, system rollback, and endpoint isolation.",
+      "summary_html": "<div>\n<div>\n<div>\n<div>\n<div>\nKey Takeaways </div>\n</div>\n<div>\n<div>\n<ul>\n<li>\n<span>\n<i></i> </span>\n<span>Deep investigation goes beyond alert monitoring by correlating network activity, attacker behavior, and context across systems and time.</span>\n</li>\n<li>\n<span>\n<i></i> </span>\n<span>Automation helps SOC teams investigate and respond faster by correlating signals, validating threats, and triggering response actions through playbooks.</span>\n</li>\n<li>\n<span>\n<i></i> </span>\n<span>NDR platforms provide detailed network visibility using machine learning, behavioral analytics, Deep Session Inspection, and 300+ metadata attributes.</span>\n</li>\n<li>\n<span>\n<i></i> </span>\n<span>Retrospective analysis helps uncover missed attacks by applying new threat intelligence and indicators to historical network data for deeper investigation.</span>\n</li>\n<li>\n<span>\n<i></i> </span>\n<span>Deception, cyber terrain mapping, and XDR extend investigation capabilities by revealing attack paths, high-risk assets, and threats across network and endpoint environments.\u00a0</span>\n</li>\n</ul>\n</div>\n</div>\n</div>\n</div>\n<div>\n<div>\n<div>\n<div>\n<p>Deep investigation in cybersecurity isn\u2019t just about watching dashboards and clicking \u201cresolve\u201d on tickets. It\u2019s an intricate process of piecing together attacker behavior across time, systems, and attack vectors to understand not just what happened, but how and why. Modern security operations centers rely on sophisticated network detection and response (NDR) platforms to enable this level of analysis, transforming raw network data into actionable intelligence that helps security teams identify suspicious activity and protect critical assets.</p> </div>\n</div>\n</div>\n</div>\n<div>\n<div>\n<div>\n<div>\nThe Foundation of Deep Investigation: Advanced Threat Detection </div>\n</div>\n<div>\n<div>\n<p>Network Detection and Response platforms continuously scan network traffic and traffic metadata within internal networks (east-west) and between internal and external networks (north-south). These systems use signature and non-signature-based methods such as machine learning and behavioral analytics to identify threats and malicious activities on the network, helping security professionals detect potential threats before they can disrupt systems or compromise sensitive data.</p><p>Modern NDR solutions like <a href=\"https://fidelissecurity.com/solutions/network-detection-and-response-ndr/\">Fidelis Network</a>\u00ae establish baseline models of network behavior through machine learning and network behavior anomaly detection. The system continuously monitors network traffic in real time, comparing current activity against established baselines to detect anomalies and policy violations. When suspicious activity is detected, it alerts security teams and can perform automated actions such as blocking IP addresses or isolating compromised devices. This effective threat detection capability is essential for maintaining an organization\u2019s security posture against evolving threats.</p><p>Advanced platforms like Fidelis Network\u00ae capture over 300 metadata attributes from network traffic\u2014significantly more than traditional NetFlow data. This comprehensive data collection includes network and application protocols, files, and content analysis through patented <a href=\"https://fidelissecurity.com/threatgeek/network-security/deep-session-inspection/\">Deep Session Inspection</a> technology. The system automatically decodes and analyzes traffic to detect advanced threats and unauthorized data transfers across all ports and protocols, providing security operations teams with the visibility needed to identify vulnerabilities and prevent future attacks.</p> </div>\n</div>\n<div>\n<div>\nDeep Session Inspection: The SOC Analyst's Secret Weapon </div>\n</div>\n<div>\n<div>\n<p>Fidelis Network\u00ae\u2018s patented Deep Session Inspection technology provides unique visibility of deeply embedded content and context across all ports and protocols. This capability goes beyond traditional <a href=\"https://fidelissecurity.com/cybersecurity-101/network-security/deep-packet-inspection-dpi/\">deep packet inspection</a> by analyzing complete communication sessions rather than individual packets. It captures and stores over 300 attributes of standard metadata, plus enhanced metadata including custom tags, to provide rich information for automated and manual threat detection.\u202f</p><p>Deep Session Inspection bi-directionally scans all network traffic to reveal network and application protocols, files, and content. It automatically decodes and analyzes traffic to detect advanced threats and unauthorized data transfers, providing visibility into nested files and encrypted traffic patterns that traditional security tools cannot detect. This session-level analysis enables the detection of threats distributed across multiple packets and provides context about entire conversations between systems, helping security teams understand sophisticated threats and advanced persistent threats that might otherwise remain undetected.</p> </div>\n</div>\n<div>\n<div>\n<div>\n<div>\n<div>Fidelis DSI - Advanced Data inspection and Threat Detection Capabilities</div> </div>\n</div>\n<div>\n<div>\n<ul>\n<li>\n<span>\n </span>\n<span>Content Inspection</span>\n</li>\n<li>\n<span>\n </span>\n<span>Content Identification</span>\n</li>\n<li>\n<span>\n </span>\n<span>Full Session Reassembly</span>\n</li>\n<li>\n<span>\n </span>\n<span>Protocol and Application Decoding</span>\n</li>\n</ul>\n</div>\n</div>\n<div>\n<div>\n<div>\n<a href=\"https://fidelissecurity.com/resource/how-to/network-dlp-buyers-guide/\">\n<span>\n<span>Download the Datasheet</span>\n</span>\n</a>\n</div>\n</div>\n</div>\n</div>\n<div>\n<div>\n<div>\n </div>\n</div>\n</div>\n</div>\n<div>\n<div>\nAutomated Investigation: What Happens When Deep Investigation Begins </div>\n</div>\n<div>\n<div>\n<p>Studies show that advanced attacks require approximately 18 minutes from the time of initial detection to becoming indistinguishable from normal activity. As attackers begin to hide in plain sight, they can mask their objectives and behave within normal user patterns, leading to months of undetected dwell time. This rapid evolution of cyber threats demonstrates why security operations centers need <a href=\"https://fidelissecurity.com/threatgeek/threat-detection-response/automated-incident-response-in-cyber-defense/\">automated threat response capabilities</a> to mitigate security incidents effectively.</p><p>The role of playbooks enables automation of investigation across multiple network segments and user behaviors, helping accelerate incident response investigation. Detection of anomalies, machine learning outputs, encrypted traffic analysis, and DNS detection lead to several investigative possibilities that previously consumed hours of analyst time. Automated playbooks investigate signals across all possible domains in the environment and present analysts with automated analysis, including remediation techniques that lead to file deletion, system rollback, endpoint isolation, and firewall modifications.</p><p>Modern NDR platforms like Fidelis Network\u00ae provide assisted and automated detection, investigation, and response capabilities. Detected advanced threats are presented as conclusions determined by automated validation, contextual enrichment, and correlated threat activity. This approach enables analysts to take rapid responsive and automated actions rather than spending time gathering evidence from various security systems and sources, significantly improving incident response investigation and helping organizations strengthen their cybersecurity posture.</p> </div>\n</div>\n<div>\n<div>\nThreat Investigation and Incident Analysis from the SOC </div>\n</div>\n<div>\n<div>\n<p>Detections are often granular events within the network that can generate thousands of individual alerts, creating an unending list of investigations. Advanced NDR platforms perform incident analysis and support cyber forensic investigation by correlating many detections to reduce the burden on response teams. Examples include incidents focused on specific assets or users, global analysis of similar detections, and anomalies connected to other detections across the enterprise. This correlation helps security professionals conduct effective cyber threat investigation, distinguish between legitimate network activity and potential security incidents.\u202f</p><p>Fidelis Network\u00ae automatically groups related alerts to save critical time and improve threat hunting capabilities. It provides <a href=\"https://fidelissecurity.com/threatgeek/threat-detection-response/sandboxing/\">sandboxing</a>, network forensic investigation, data loss prevention, threat intelligence, and automated security rules in one unified solution. The platform gives users aggregated alerts, context, and evidence for faster digital forensic investigation, deeper analysis, and <a href=\"https://fidelissecurity.com/threatgeek/network-security/reduce-alert-fatigue-with-ndr/\">reduced alert fatigue</a>, enabling security teams to focus on the most critical cybersecurity threats rather than being overwhelmed by false positives.</p> </div>\n</div>\n<div>\n<div>\nDeception Technology: A SOC Analyst's Advanced Detection Method </div>\n</div>\n<div>\n<div>\n<p><a href=\"https://fidelissecurity.com/solutions/deception/\">Fidelis Deception</a>\u00ae automatically discovers environments and auto-generates decoys that have profiles, services, and activity matching the environment for active deception layers. The system deploys decoys of key assets, services, and fake data, then makes deception deterministic by setting up breadcrumbs on real systems likely to be compromised, leading attackers to decoys. This innovative approach helps organizations detect insider threats and unknown threats that traditional detection rules might miss.\u202f</p><p>High-fidelity alerts come from decoys, breadcrumbs, Active Directory credentials, man-in-the-middle traps, and poisoned data combined with network traffic analysis and telemetry data for investigations. The deception environment automatically adapts to network changes as they occur to remain synchronized with actual assets, resources, and services. Deception also provides detection for legacy systems, shadow IT, and enterprise IoT devices where security agents cannot be installed, extending protection to mobile devices and other endpoints that might lack traditional security controls.</p> </div>\n</div>\n<div>\n<div>\nExtended Detection and Response: The Complete Investigation Picture </div>\n</div>\n<div>\n<div>\n<p><a href=\"https://fidelissecurity.com/fidelis-elevate-extended-detection-and-response-xdr-platform/\">Fidelis Elevate</a>\u00ae integrates network visibility with sensors for gateways, internal networks, email and web gateways, and cloud VMs into one unified solution to deliver automated threat detection and response. The platform provides unmatched visibility and threat intelligence with content and context to help organizations quickly address cyberattacks across the entire threat lifecycle\u2014from initial intrusion to exploitation and lateral movement to data theft.\u202f</p><p>Alert validation provides analysts with high-fidelity information that would require significant manual effort to triage through thousands of alerts and hunt through multiple products to determine active threats. This extended detection capability enables organizations to implement a comprehensive <a href=\"https://fidelissecurity.com/cybersecurity-101/learn/what-is-an-incident-response-plan/\">incident response plan</a> that addresses emerging threats across all attack vectors.</p> </div>\n</div>\n<div>\n<div>\nCyber Terrain Mapping: Understanding the Investigation Battlefield </div>\n</div>\n<div>\n<div>\n<p>When Fidelis sensors analyze network traffic, they gain understanding of assets communicating over the network, including operating systems, asset roles based on protocol analysis, and users augmented by Active Directory data. The collection of all assets and communication paths constitutes the Cyber Terrain of the environment, providing security teams with critical visibility into their organization\u2019s systems and potential attack surfaces.\u202f</p><p><a href=\"https://fidelissecurity.com/cybersecurity-101/threats-and-vulnerabilities/effective-cyber-risk-assessment/\">Risk assessment</a> throughout the Fidelis interface highlights asset risk with color-coded numbers ranging from 1 (low risk) to 10 (critical risk). Risk calculation considers severity (Fidelis alerts, network anomalies, and endpoint vulnerabilities), coverage (security components including network sensor placement and EDR), and importance based on asset role. This multi-dimensional risk calculation enables proactive security measures and helps prioritize response efforts, ensuring that security operations teams can focus their limited resources on protecting the most critical data and systems from cybersecurity risks.</p> </div>\n</div>\n<div>\n<div>\nRetrospective Analysis: Learning from Past Investigations </div>\n</div>\n<div>\n<div>\n<p>Advanced NDR platforms require solutions that can hunt and automate information analysis of past behavior. New information becomes available constantly through new detections and threat intelligence from industry and internal experts. The ability to connect dots between current events and past behavior represents a crucial aspect of NDR capabilities, enabling security professionals to identify patterns that might <a href=\"https://fidelissecurity.com/threatgeek/threat-detection-response/advanced-persistent-threat-detection-with-ndr/\">indicate advanced persistent threats</a> or sophisticated attack campaigns.</p><p>Fidelis Network\u00ae supports up to 360 days of <a href=\"https://fidelissecurity.com/threatgeek/threat-detection-response/retrospective-analysis-and-incident-response/\">retrospective analysis</a>, enabling organizations to apply new threat intelligence to historical data and uncover previously missed attack patterns. Stored protocol, application, and content-level metadata allows discovery of past attacks through retroactive analysis triggered by key indicators derived from new <a href=\"https://fidelissecurity.com/use-case/threat-intelligence/\">threat intelligence</a>, machine learning, sandbox results, and threat research. This real time threat intelligence capability helps organizations understand how attackers gain access to their systems and develop more effective threat response strategies.</p> </div>\n</div>\n<div>\n<div>\n<div>\n<div>\n<div>Real-Time Insight, Real-Time Prevention with Fidelis Network</div> </div>\n</div>\n<div>\n<div>\n<ul>\n<li>\n<span>\n </span>\n<span>Block attacks before damage occurs</span>\n</li>\n<li>\n<span>\n </span>\n<span>Prevent lateral movement inside your network</span>\n</li>\n<li>\n<span>\n </span>\n<span>Reduce false positives &amp; alert fatigue</span>\n</li>\n</ul>\n</div>\n</div>\n<div>\n<div>\n<div>\n<a href=\"https://fidelissecurity.com/resource/whitepaper/prevention-capabilities-of-fidelis-network/\">\n<span>\n<span>Read Guide</span>\n</span>\n</a>\n</div>\n</div>\n</div>\n</div>\n<div>\n<div>\n<div>\n </div>\n</div>\n</div>\n</div>\n<div>\n<div>\nDeep Investigation Best Practices: The SOC Analyst's Playbook </div>\n</div>\n<div>\n<div>\n<p>Effective deep investigation requires systematic timeline reconstruction and comprehensive visibility across network, cloud, email, and endpoint metadata. Organizations need real-time and retrospective analysis capabilities for 30, 60, or 90 days minimum, combined with threat intelligence from multiple third-party sources and internally cultivated intelligence. This <a href=\"https://fidelissecurity.com/use-case/deep-visibility/\">extended visibility</a> is essential for identifying advanced persistent threats that may operate over extended periods while attempting to remain undetected.\u202f</p><p>Automation eliminates manual correlation steps that previously consumed analyst time. Rather than being reactive and piecing together evidence from multiple disparate systems, security analysts can focus on understanding adversary intentions and making strategic decisions under pressure. With comprehensive network detection providing visibility into deeply embedded content across all ports and protocols, analysts can concentrate on attribution and strategic assessment rather than data collection.\u202f</p><p>The most effective investigations combine cutting-edge artificial intelligence and machine learning with experienced analyst judgment. Understanding attacker behavior patterns and making decisions under pressure define successful response capabilities. Modern NDR platforms enable this approach by providing rich metadata, automated correlation capabilities, and integrated deception technologies that transform network security from reactive monitoring to <a href=\"https://fidelissecurity.com/use-case/threat-hunting/\">proactive threat hunting</a>.\u202f</p><p>Through advanced NDR capabilities, security operations centers can shift from alert fatigue to intelligence-driven investigation, reducing mean time to detection and response while providing the contextual awareness necessary for effective cyber defense in today\u2019s evolving threat landscape. By implementing comprehensive <a href=\"https://fidelissecurity.com/solutions/\">threat detection and response solutions</a> that protect both critical assets and sensitive information, organizations can maintain strong cybersecurity posture while enabling their security teams to focus on preventing future attacks rather than simply responding to incidents after they occur.</p> </div>\n</div>\n</div>\n</div>\n<div>\n<div>\n<div>\n<div>\nFrequently Asked Questions </div>\n</div>\n<div>\n<div>\n<div>\n<div>\n<div>What makes Deep Session Inspection different from traditional deep packet inspection?<i></i></div><div><p>Deep Session Inspection analyzes complete communication sessions rather than individual packets, providing context about entire conversations between systems. This patented technology goes beyond traditional DPI by examining streaming traffic across network, email, and web to detect threats hidden in nested files, encrypted traffic patterns, and distributed across multiple packets that conventional tools miss.</p></div>\n</div><div>\n<div>How does Fidelis Network\u00ae's 300+ metadata attributes enhance investigation capabilities? <i></i></div><div><p>Fidelis Network\u00ae captures over 300 metadata attributes from protocols, files, and content\u2014significantly more than traditional NetFlow data. This rich metadata includes protocol and application data, content-level information, custom tags, and enhanced metadata that enables retrospective analysis up to 360 days. This comprehensive data collection provides security teams with the detailed context needed for thorough threat investigations.</p></div>\n</div><div>\n<div>How do automated playbooks change SOC investigation workflows?<i></i></div><div><p>Automated playbooks eliminate manual correlation steps by investigating signals across multiple network segments simultaneously. Studies show advanced attacks require approximately 18 minutes from initial detection to becoming indistinguishable from normal activity. Playbooks automate investigation across all possible domains, presenting analysts with pre-analyzed conclusions including recommended remediation techniques like file deletion, system rollback, and endpoint isolation.</p></div>\n</div></div> </div>\n</div>\n</div>\n</div>\n</div>\n<p>The post <a href=\"https://fidelissecurity.com/threatgeek/network-security/deep-investigation-soc-analysts-perspective/\">What Deep Investigation Really Looks Like: A SOC Analyst\u2019s Perspective</a> appeared first on <a href=\"https://fidelissecurity.com\">Fidelis Security</a>.</p>",
+      "link": "https://fidelissecurity.com/threatgeek/network-security/deep-investigation-soc-analysts-perspective/",
+      "source": "Fidelis Security",
+      "feed_type": "blog",
+      "type": "vendors-product-blogs",
+      "type_label": "Vendors & Product Blogs",
+      "published": "2026-10-21T18:09:54+00:00",
+      "published_ts": 1792606194,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Windows / Microsoft"
+      ],
+      "curated": true
     },
     {
       "title": "The Value of Documentation",
@@ -494,7 +529,7 @@
       ],
       "curated": true,
       "story_id": "43674dfa3047",
-      "story_size": 12
+      "story_size": 29
     },
     {
       "title": "APT28 Hackers Open Secret SSH Tunnel Into NATO Country\u2019s Naval Shipbuilder Network",
@@ -547,8 +582,8 @@
         "Vulnerabilities / CVEs"
       ],
       "curated": false,
-      "story_id": "0ad6edc0aea9",
-      "story_size": 11
+      "story_id": "43674dfa3047",
+      "story_size": 29
     },
     {
       "title": "PHP2Shell: AI uncovers critical RCE vulnerabilities affecting 70% of the Internet",
@@ -736,8 +771,8 @@
         "Linux / Unix"
       ],
       "curated": true,
-      "story_id": "0ad6edc0aea9",
-      "story_size": 11
+      "story_id": "43674dfa3047",
+      "story_size": 29
     },
     {
       "title": "AI Data Centers: Environmental Disaster or Groundbreaking Innovation?",
@@ -954,8 +989,8 @@
         "Cloud / SaaS"
       ],
       "curated": true,
-      "story_id": "0ad6edc0aea9",
-      "story_size": 11
+      "story_id": "43674dfa3047",
+      "story_size": 29
     },
     {
       "title": "CVE-2026-109618 and CVE-2026-109619: Critical PHP RCE Flaws Trigger Emergency Security Release",
@@ -974,8 +1009,8 @@
         "Windows / Microsoft"
       ],
       "curated": true,
-      "story_id": "0ad6edc0aea9",
-      "story_size": 11
+      "story_id": "43674dfa3047",
+      "story_size": 29
     },
     {
       "title": "Autonomous LLMjacking: \u2018Skynet\u2019 Agent Hijacks Exposed AI Models to Run Attacks",
@@ -1338,7 +1373,18 @@
         "Data Breaches / Leaks",
         "Exploit / PoC"
       ],
-      "curated": true
+      "curated": true,
+      "story_id": "9cf79dfbc754",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "UpGuard Blog",
+          "title": "Best Data Breach & Data Leak Detection Tools | UpGuard",
+          "link": "https://www.upguard.com/blog/best-data-leak-detection-software-solutions",
+          "published_ts": 1792637600
+        }
+      ]
     },
     {
       "title": "Security Posture Monitoring and Board Reporting Tools | UpGuard",
@@ -1654,17 +1700,8 @@
         "Product News"
       ],
       "curated": true,
-      "story_id": "a9d0843ed83a",
-      "story_size": 2,
-      "story_primary": true,
-      "story_others": [
-        {
-          "source": "Infosecurity Magazine \u2013 News",
-          "title": "Critical PHP Vulnerabilities Leaked Ahead of Scheduled Security Patches",
-          "link": "https://www.infosecurity-magazine.com/news/critical-php-vulnerabilities-leaked/",
-          "published_ts": 1792578000
-        }
-      ]
+      "story_id": "43674dfa3047",
+      "story_size": 29
     },
     {
       "title": "Critical PHP RCE: CVE-2026-109618 and CVE-2026-109619",
@@ -1682,71 +1719,8 @@
         "Product News"
       ],
       "curated": true,
-      "story_id": "0ad6edc0aea9",
-      "story_size": 11,
-      "story_primary": true,
-      "story_others": [
-        {
-          "source": "https://securitylabs.datadoghq.com/rss/feed.xml",
-          "title": "PHP2Shell - Critical vulnerabilities in PHP (CVE-2026-109618, CVE-2026-109619): detection, analysis, and remediation",
-          "link": "https://securitylabs.datadoghq.com/articles/php2shell-critical-vulnerabilities-in-php/",
-          "published_ts": 1792540800
-        },
-        {
-          "source": "The Hacker News",
-          "title": "PHP2Shell: Two Unpatched Critical PHP RCE Flaws (CVSS 9.2) Trigger Emergency Security Alert",
-          "link": "https://thehackernews.com/2026/10/php2shell-two-unpatched-critical-php.html",
-          "published_ts": 1792573517
-        },
-        {
-          "source": "SOC Prime Blog",
-          "title": "CVE-2026-109618 and CVE-2026-109619: Critical PHP RCE Flaws Trigger Emergency Security Release",
-          "link": "https://socprime.com/blog/cve-2026-109618-cve-2026-109619-analysis/",
-          "published_ts": 1792576930
-        },
-        {
-          "source": "VirusTotal Blog",
-          "title": "Sizing the PHP exposure window for CVE-2026-109618 and CVE-2026-109619 with VirusTotal",
-          "link": "https://blog.virustotal.com/2026/10/sizing-php-exposure-window-for-cve-2026.html",
-          "published_ts": 1792577541
-        },
-        {
-          "source": "Detect.fyi",
-          "title": "PHP2Shell: Two Critical PHP Vulnerabilities (CVE-2026\u2013109618 and CVE-2026\u2013109619) \u2014 Are Your\u2026",
-          "link": "https://detect.fyi/php2shell-two-critical-php-vulnerabilities-cve-2026-109618-and-cve-2026-109619-are-your-3f0a0c08f6ec?source=rss----d5fd8f494f6a---4",
-          "published_ts": 1792586136
-        },
-        {
-          "source": "Google Cloud Blog",
-          "title": "Responding to core PHP vulnerabilities CVE-2026-109618 and CVE-2026-109619",
-          "link": "https://cloud.google.com/blog/products/identity-security/responding-to-core-php-vulnerabilities-cve-2026-109618-cve-2026-109619/",
-          "published_ts": 1792591200
-        },
-        {
-          "source": "/r/cybersecurity",
-          "title": "Critical PHP2Shell Vulnerabilities (CVSS 9.2): CVE-2026-109618 & CVE-2026-109619 \u2014 Patch & Hunt Immediately",
-          "link": "https://www.reddit.com/r/cybersecurity/comments/1xbr2rp/critical_php2shell_vulnerabilities_cvss_92/",
-          "published_ts": 1792598344
-        },
-        {
-          "source": "Unit 42 \u2013 Ransomware",
-          "title": "Threat Brief: Critical Vulnerabilities in PHP: CVE-2026-109618, CVE-2026-109619",
-          "link": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/",
-          "published_ts": 1792600234
-        },
-        {
-          "source": "SANS Internet Storm Center",
-          "title": "Critical PHP Vulnerability (CVE-2026-109618, CVE-2026-109619) &#x5b;infocon yellow&#x5d;, (Wed, Oct 21st)",
-          "link": "https://isc.sans.edu/diary/rss/33440",
-          "published_ts": 1792616563
-        },
-        {
-          "source": "Zscaler Research Blogs",
-          "title": "CVE-2026-109618 and CVE-2026-109619: PHP Vulnerable to Unauthenticated RCE Attacks",
-          "link": "https://www.zscaler.com/blogs/security-research/cve-2026-109618-and-cve-2026-109619-php-vulnerable-unauthenticated-rce",
-          "published_ts": 1792621314
-        }
-      ]
+      "story_id": "43674dfa3047",
+      "story_size": 29
     },
     {
       "title": "Help set Go's priorities for next year",
@@ -1793,8 +1767,8 @@
         "Vulnerabilities / CVEs"
       ],
       "curated": false,
-      "story_id": "0ad6edc0aea9",
-      "story_size": 11
+      "story_id": "43674dfa3047",
+      "story_size": 29
     },
     {
       "title": "LiteLLM supply chain compromise: What you need to know",
