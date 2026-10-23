@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-23T05:09:07.002787+00:00",
+  "generated_at": "2026-10-23T13:44:45.508359+00:00",
   "date": "2026-10-22",
-  "total_items": 173,
+  "total_items": 175,
   "next_chunk": "archive/news/daily/2026-10-21.json",
   "items": [
     {
@@ -268,6 +268,22 @@
       "curated": false
     },
     {
+      "title": "Ransomware Operator Claims - Week 42 2026",
+      "summary": "Welcome to last week's ROC Report, an exclusive summary of Ransomware Operator's global victims that were claimed during the period between 12th October and 18th October 2026, kindly assisted by our partners. DBD discovered and researched 290 Ransomware Victims over 48 Countries and Islands claimed by 41 Data-Leaking Ransomware Operators , including 1 Newly Discovered Ransomware Operator last week. For further analysis on these (and any historic) Ransomware Operator Claims, including the Victim Names and Industry Sectors attacked, please use our PRiSM application. Download PDF Data Source: Data Breaches Digest. Flag Icons created by Freepik and provided by Flaticon .",
+      "summary_html": "<div>Welcome to last week's ROC Report, an exclusive summary of Ransomware Operator's global victims that were claimed during the period between 12th October and 18th October 2026, kindly assisted by our partners.</div>\n<div><a href=\"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQjqhrs3JcpoNCYwTHbOZ0ebhGbVw3ulNpXpehtuvgbDzo_GickgP8RTt1gR3YL5AoVsv7ZhIsfHavSGJw8oO11C71DSBUBUVDzGYpL679rvw7RBUdZ2c_lgsSxtaRTOrSXDj2LUOAIzbKTOiVZfrr7DTq__p6kYIDrHbkOs1KkS44IYCgWKNKBhjkllM/s1600/RVS_42_2026.png\"></a></div><br/><div>DBD discovered and researched <b>290 Ransomware Victims</b> over <b>48 Countries and Islands</b> claimed by <b>41 Data-Leaking Ransomware Operators</b>, including <b>1 Newly Discovered Ransomware Operator</b> last week.<br/><br/>For further analysis on these (and any historic) Ransomware Operator Claims, including the Victim Names and Industry Sectors attacked, please use our <a href=\"https://www.prismrsa.com/\">PRiSM</a> application.</div><br/>\n<a href=\"https://drive.google.com/uc?export=download&amp;id=1EME2YIem2POj35fQrHVB-MeKZ7e61-_c\"><i><span><b>Download PDF</b></span></i></a><br/><br/>\n<span><i><br/><br/><span>Data Source: Data Breaches Digest. Flag Icons created by <a href=\"https://www.flaticon.com/authors/freepik\">Freepik</a> and provided by <a href=\"https://www.flaticon.com/\">Flaticon</a>.</span></i></span><br/>\n<br/>",
+      "link": "https://www.dbdigest.com/2026/10/ransomware-operator-claims-week-42-2026.html",
+      "source": "Data Breach Digest",
+      "feed_type": "news",
+      "type": "news-digests-aggregators",
+      "type_label": "News Digests & Aggregators",
+      "published": "2026-10-22T20:30:00+00:00",
+      "published_ts": 1792701000,
+      "smart_groups": [
+        "Ransomware"
+      ],
+      "curated": true
+    },
+    {
       "title": "GitLab critical patches include one for a bug that allows code execution by unauthenticated users",
       "summary": "GitLab on Wednesday published updated versions of its Community Edition (CE) and Enterprise Edition (EE) that address a dozen bugs and security issues, including some that allow various unauthenticated actions. The most serious of the security issues, labeled critical in severity, is CVE-2026-110264 , an integer overflow issue. \u201cGitLab has remediated an issue that, under certain conditions, could have allowed an unauthenticated user to execute arbitrary code on the GitLab server due to integer overflow when compiling a specially crafted regular expression,\u201d GitLab said in its bulletin . \u201cIn addition to our standard patch releases, we have backported this fix to GitLab CE/EE versions 18.11.13, 19.0.10, 19.1.9, and 19.2.9.\u201d Impacted versions of GitLab CE/EE include all versions from 7.0 before 18.11.13, 19.0 before 19.0.10, 19.1 before 19.1.9, 19.2 before 19.2.9, 19.3 before 19.3.6, 19.4 before 19.4.3, and 19.5 before 19.5.1. The patched releases are versions 19.5.1, 19.4.3, 19.3.6, 19.2.9, 19.1.9, 19.0.10 and 18.11.13. The patches also fix a high severity flaw tracked as CVE-2026-15723 , an improper authentication issue in OmniAuth-to-LDAP auto-linking email lookup that impacts GitLab CE/EE, which is an issue, GitLab said, because \u201cwhen OmniAuth SAML and LDAP auto-linking were both enabled, an authenticated user could have taken over an existing LDAP-backed account without any interaction from the targeted user, due to improper input sanitization in the LDAP email lookup path used during OmniAuth identity linking.\u201d This is the fourth critical security issue that GitLab has experienced within two months. Earlier in October, it patched a maximum severity regex flaw , and in September, it fixed CVE-2026-85706 , also rated perfect 10 in severity. Another September report also revealed a concerning issue: a long-lived token that puts CI/CD security at risk . Immediate action needed Analysts and consultants agreed that the current holes are serious and merit immediate action. \u201cWhat really stands out to me is the underlying source of the vulnerability,\u201d said Noah Kenney , principal consultant at Digital 520. \u201cThe issue originates in an integer overflow within the regular expression compiler, rather than functionality developed specifically by GitLab.\u201d He pointed out that this distinction is important because it highlights the risks associated with dependencies and shared software components. \u201cOrganizations can invest heavily in securing their own applications while remaining exposed to vulnerabilities introduced through underlying libraries and frameworks,\u201d he said. \u201cThe fact that this issue potentially affects releases dating back to GitLab 7.0 demonstrates how long these vulnerabilities can persist before being identified and remediated.\u201d Kenney added that CISOs should pay particular attention to one brief mention within the GitLab post. \u201cBuried in the bug fixes, not even in the CVE list, is a line about stripping the trusted flag from client-supplied MCP tools in Workhorse,\u201d he said. \u201cIn plain terms, GitLab found a path where an AI agent could be handed tools it should not have trusted and quietly closed it. This raises an important issue surrounding trust boundaries in AI-enabled systems.\u201d Frank Dickson , principal analyst at Dickson Research, noted that the holes are especially troubling because of the highly-integrated nature of GitLab systems. \u201cGitLab is not just a code repository. It holds the source code, the CI/CD pipelines, and very often the secrets those pipelines use to deploy to production,\u201d he said. \u201cOwning the GitLab server means owning the keys to the kingdom. An attacker does not need to break into production when the system that builds production will do it for them.\u201d Dickson also flagged the fact that these fixes may need a lot of time to deploy. \u201cPlan for downtime,\u201d he said. \u201cGitLab\u2019s release notes say this patch includes database migrations, and single-node instances will be down while they run. Someone will ask to wait for the weekend. Waiting is a risk acceptance. That decision belongs to an executive, not to the DevOps team.\u201d Additional risks In addition, he pointed out that the nature of these flaws is a strong heads-up that many other enterprise vendors might also suffer from similar issues. \u201cThe flaw sits in Ruby, not just in GitLab\u2019s own code. GitLab\u2019s release notes show the fix ships as a patch to Ruby\u2019s regular expression handling, and one of its detections is named for Onigmo, Ruby\u2019s regex engine,\u201d Dickson said. \u201cGitLab may not be the only Ruby application carrying this bug. CISOs should ask their other vendors.\u201d As well, Ty Coffee , principal at advisory firm UHY, noted that the LDAP bug raises the risk that a post-breach investigation could accidentally point the finger at an innocent employee. \u201cIf an attacker takes over an LDAP-backed account, everything they do is logged under a legitimate employee\u2019s name, and your audit trail then points at the wrong person,\u201d Coffee said. \u201cCISOs should also check for shadow and legacy GitLab servers such as team-run instances, old DR copies, acquired-company servers, [because] this affects older versions and that means forgotten boxes are in scope.\u201d",
       "summary_html": "<div>\n<div>\n<div>\n<div>\n<div></div>\n<p>GitLab on Wednesday published updated versions of its Community Edition (CE) and Enterprise Edition (EE) that address a dozen bugs and security issues, including some that allow various unauthenticated actions.\u00a0</p>\n<p>The most serious of the security issues, labeled critical in severity, is <a href=\"https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-1-released/#cve-2026-110264---integer-overflow-issue-in-regular-expression-compiler-impacts-gitlab-ceee\">CVE-2026-110264</a>, an integer overflow issue. \u201cGitLab has remediated an issue that, under certain conditions, could have allowed an unauthenticated user to execute arbitrary code on the GitLab server due to integer overflow when compiling a specially crafted regular expression,\u201d <a href=\"https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-1-released/\">GitLab said in its bulletin</a>. \u201cIn addition to our standard patch releases, we have backported this fix to GitLab CE/EE versions 18.11.13, 19.0.10, 19.1.9, and 19.2.9.\u201d</p>\n<p>Impacted versions of GitLab CE/EE include all versions from 7.0 before 18.11.13, 19.0 before 19.0.10, 19.1 before 19.1.9, 19.2 before 19.2.9, 19.3 before 19.3.6, 19.4 before 19.4.3, and 19.5 before 19.5.1.</p>\n<p>The patched releases are versions 19.5.1, 19.4.3, 19.3.6, 19.2.9, 19.1.9, 19.0.10 and 18.11.13.\u00a0</p>\n<p>The patches also fix a high severity flaw tracked as <a href=\"https://www.cve.org/CVERecord?id=CVE-2026-15723\">CVE-2026-15723</a>, an improper authentication issue in OmniAuth-to-LDAP auto-linking email lookup that impacts GitLab CE/EE, which is an issue, GitLab said, because \u201cwhen OmniAuth SAML and LDAP auto-linking were both enabled, an authenticated user could have taken over an existing LDAP-backed account without any interaction from the targeted user, due to improper input sanitization in the LDAP email lookup path used during OmniAuth identity linking.\u201d</p>\n<p>This is the fourth critical security issue that GitLab has experienced within two months. Earlier in October, it patched <a href=\"https://www.csoonline.com/article/4234306/gitlab-patches-a-max-severity-regex-flaw-alongside-five-high-severity-bugs.html\">a maximum severity regex flaw</a>, and in September, it fixed <a href=\"https://www.csoonline.com/article/4221934/a-maximum-severity-gitlab-flaw-could-turn-your-ci-cd-server-into-an-attackers-treasure-trove.html\">CVE-2026-85706</a>, also rated perfect 10 in severity. Another September report also revealed a concerning issue: <a href=\"https://www.csoonline.com/article/4226741/gitlab-issue-emails-only-security-is-obscurity-2.html\">a long-lived token that puts CI/CD security at risk</a>. \u00a0</p>\nImmediate action needed\n<p>Analysts and consultants agreed that the current holes are serious and merit immediate action.</p>\n<p>\u201cWhat really stands out to me is the underlying source of the vulnerability,\u201d said <a href=\"https://www.linkedin.com/in/noah-m-kenney-27499a166/\">Noah Kenney</a>, principal consultant at Digital 520. \u201cThe issue originates in an integer overflow within the regular expression compiler, rather than functionality developed specifically by GitLab.\u201d</p>\n<p>He pointed out that this distinction is important because it highlights the risks associated with dependencies and shared software components. \u201cOrganizations can invest heavily in securing their own applications while remaining exposed to vulnerabilities introduced through underlying libraries and frameworks,\u201d he said. \u201cThe fact that this issue potentially affects releases dating back to GitLab 7.0 demonstrates how long these vulnerabilities can persist before being identified and remediated.\u201d</p>\n<p>Kenney added that CISOs should pay particular attention to one brief mention within the GitLab post.</p>\n<p>\u201cBuried in the bug fixes, not even in the CVE list, is a line about stripping the trusted flag from client-supplied MCP tools in Workhorse,\u201d he said. \u201cIn plain terms, GitLab found a path where an AI agent could be handed tools it should not have trusted and quietly closed it. This raises an important issue surrounding trust boundaries in AI-enabled systems.\u201d</p>\n<p><a href=\"https://www.linkedin.com/in/frankdickson/\">Frank Dickson</a>, principal analyst at Dickson Research, noted that the holes are especially troubling because of the highly-integrated nature of GitLab systems.</p>\n<p>\u201cGitLab is not just a code repository. It holds the source code, the CI/CD pipelines, and very often the secrets those pipelines use to deploy to production,\u201d he said. \u201cOwning the GitLab server means owning the keys to the kingdom. An attacker does not need to break into production when the system that builds production will do it for them.\u201d</p>\n<p>Dickson also flagged the fact that these fixes may need a lot of time to deploy.</p>\n<p>\u201cPlan for downtime,\u201d he said. \u201cGitLab\u2019s release notes say this patch includes database migrations, and single-node instances will be down while they run. Someone will ask to wait for the weekend. Waiting is a risk acceptance. That decision belongs to an executive, not to the DevOps team.\u201d</p>\nAdditional risks\n<p>In addition, he pointed out that the nature of these flaws is a strong heads-up that many other enterprise vendors might also suffer from similar issues.\u00a0</p>\n<p>\u201cThe flaw sits in Ruby, not just in GitLab\u2019s own code. GitLab\u2019s release notes show the fix ships as a patch to Ruby\u2019s regular expression handling, and one of its detections is named for Onigmo, Ruby\u2019s regex engine,\u201d Dickson said. \u201cGitLab may not be the only Ruby application carrying this bug. CISOs should ask their other vendors.\u201d</p>\n<p>As well, <a href=\"https://uhy-us.com/professionals/ty-coffee\">Ty Coffee</a>, principal at advisory firm UHY, noted that the LDAP bug raises the risk that a post-breach investigation could accidentally point the finger at an innocent employee.\u00a0</p>\n<p>\u201cIf an attacker takes over an LDAP-backed account, everything they do is logged under a legitimate employee\u2019s name, and your audit trail then points at the wrong person,\u201d Coffee said. \u201cCISOs should also check for shadow and legacy GitLab servers such as team-run instances, old DR copies, acquired-company servers, [because] this affects older versions and that means forgotten boxes are in scope.\u201d</p>\n<p><em>This article originally appeared on <a href=\"https://www.infoworld.com/article/4239276/gitlab-critical-patches-include-one-for-a-bug-that-allows-code-execution-by-unauthenticated-users.html\">InfoWorld</a>.</em></p>\n</div></div></div></div>",
@@ -300,8 +316,8 @@
         "Data Breaches / Leaks"
       ],
       "curated": false,
-      "story_id": "1819fab114f7",
-      "story_size": 2
+      "story_id": "5a8d0413be6f",
+      "story_size": 7
     },
     {
       "title": "Here\u2019s what happened in crypto today",
@@ -1071,7 +1087,18 @@
       "published": "2026-10-22T15:48:40+00:00",
       "published_ts": 1792684120,
       "smart_groups": [],
-      "curated": false
+      "curated": false,
+      "story_id": "fbdc0d6f1f65",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "Security Affairs",
+          "title": "INTERPOL Operation Serengeti III Nets 1,462 Arrests and Recovers $105 Million in Cybercrime Crackdown",
+          "link": "https://securityaffairs.com/201500/cyber-crime/interpol-operation-serengeti-iii-nets-1462-arrests-and-recovers-105-million-in-cybercrime-crackdown.html",
+          "published_ts": 1792735680
+        }
+      ]
     },
     {
       "title": "What Is a Neocloud? The GPU Clouds Powering the AI Boom",
@@ -1210,6 +1237,20 @@
       "type_label": "Security News & Media",
       "published": "2026-10-22T14:31:34+00:00",
       "published_ts": 1792679494,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "As AI Risks Grow, Insurers Split on Covering the Damage",
+      "summary": "Insurers are split on AI risk: some build specialized agentic AI coverage, while major carriers quietly exclude it \u2014 leaving enterprises exposed without their knowledge.",
+      "summary_html": "Insurers are split on AI risk: some build specialized agentic AI coverage, while major carriers quietly exclude it \u2014 leaving enterprises exposed without their knowledge.",
+      "link": "https://www.darkreading.com/cyber-risk/cyber-insurance-covering-ai-damage",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-10-22T14:21:22+00:00",
+      "published_ts": 1792678882,
       "smart_groups": [],
       "curated": false
     },
@@ -2146,17 +2187,8 @@
         "Community Discussion"
       ],
       "curated": false,
-      "story_id": "1819fab114f7",
-      "story_size": 2,
-      "story_primary": true,
-      "story_others": [
-        {
-          "source": "BleepingComputer \u2013 Cybercrime",
-          "title": "Capcom confirms data breach affecting 11.7 million accounts",
-          "link": "https://www.bleepingcomputer.com/news/security/capcom-confirms-data-breach-affecting-117-million-accounts/",
-          "published_ts": 1792700565
-        }
-      ]
+      "story_id": "5a8d0413be6f",
+      "story_size": 7
     },
     {
       "title": "Critical GitLab Flaw (CVSS 10.0) Could Allow Unauthenticated RCE Across 12 Years of Releases",

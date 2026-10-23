@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-23T05:09:07.180753+00:00",
+  "generated_at": "2026-10-23T13:44:45.649923+00:00",
   "date": "2026-10-13",
-  "total_items": 69,
+  "total_items": 70,
   "next_chunk": "archive/blog/daily/2026-10-12.json",
   "items": [
     {
@@ -19,7 +19,37 @@
         "Windows / Microsoft",
         "Malware / Payloads"
       ],
-      "curated": true
+      "curated": true,
+      "story_id": "a3e286e3efda",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "https://dfir.ch/index.xml",
+          "title": "Field Notes: EtherRAT Distributed Through a Legitimate Intune Workflow",
+          "link": "http://localhost:1313/posts/field_notes_etherrat/",
+          "published_ts": 1791935900
+        }
+      ]
+    },
+    {
+      "title": "Field Notes: EtherRAT Distributed Through a Legitimate Intune Workflow",
+      "summary": "Introduction The investigation began with a Microsoft Defender for Endpoint alert for suspicious screen capture activity involving PowerShell. Examining the process ancestry revealed a larger execution chain involving FbtRYX8x.exe , a renamed Node.js runtime communicating with several public Ethereum RPC providers. The observed behavior was consistent with EtherRAT , a Node.js-based backdoor previously documented by Atos Threat Research Center , The DFIR Report , and Malwarebytes . Further hunting identified the same malware on four managed endpoints, all of which had received a malicious MSI through Microsoft Intune. The deployment itself was not the result of an identified compromise of Intune. Instead, the customer had imported what appeared to be a legitimate Advanced IP Scanner installer into its existing software distribution workflow, inadvertently deploying the malware to multiple systems.",
+      "summary_html": "Introduction\n<p>The investigation began with a <code>Microsoft Defender for Endpoint</code> alert for suspicious screen capture activity involving PowerShell. Examining the process ancestry revealed a larger execution chain involving <code>FbtRYX8x.exe</code>, a renamed <code>Node.js</code> runtime communicating with several public Ethereum RPC providers. The observed behavior was consistent with <code>EtherRAT</code>, a Node.js-based backdoor previously documented by <a href=\"https://atos.net/en/lp/cybershield/etherrat-distribution-spoofing-administrative-tools-via-github-facades\">Atos Threat Research Center</a>, <a href=\"https://thedfirreport.com/2026/05/11/flash-alert-etherrat-and-tuktuk-c2-end-in-the-gentleman-ransomware/\">The DFIR Report</a>, and <a href=\"https://www.malwarebytes.com/blog/threat-intel/2026/06/inside-a-malicious-infrastructure-delivering-etherrat-phishing-pages-and-malicious-software\">Malwarebytes</a>.</p>\n<p>Further hunting identified the same malware on four managed endpoints, all of which had received a malicious MSI through Microsoft Intune. The deployment itself was not the result of an identified compromise of Intune. Instead, the customer had imported what appeared to be a legitimate <code>Advanced IP Scanner</code> installer into its existing software distribution workflow, inadvertently deploying the malware to multiple systems.</p>",
+      "link": "http://localhost:1313/posts/field_notes_etherrat/",
+      "source": "https://dfir.ch/index.xml",
+      "feed_type": "blog",
+      "type": "dfir-forensics",
+      "type_label": "DFIR & Forensics",
+      "published": "2026-10-13T23:58:20+00:00",
+      "published_ts": 1791935900,
+      "smart_groups": [
+        "Windows / Microsoft",
+        "Malware / Payloads"
+      ],
+      "curated": true,
+      "story_id": "a3e286e3efda",
+      "story_size": 2
     },
     {
       "title": "Visual Studio Copilot and SSMS Remote Code Execution (CVE-2026-103572)",

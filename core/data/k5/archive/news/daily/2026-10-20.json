@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-23T05:09:07.091786+00:00",
+  "generated_at": "2026-10-23T13:44:45.521705+00:00",
   "date": "2026-10-20",
   "total_items": 209,
   "next_chunk": "archive/news/daily/2026-10-19.json",
@@ -593,7 +593,7 @@
       ],
       "curated": true,
       "story_id": "5a8d0413be6f",
-      "story_size": 3
+      "story_size": 7
     },
     {
       "title": "Bitcoin's Next Move: Here's What to Watch",
@@ -2746,7 +2746,7 @@
       ],
       "curated": true,
       "story_id": "e6e3cdabe6ca",
-      "story_size": 3
+      "story_size": 4
     },
     {
       "title": "Unauthenticated SQL injection in GLPI (\u2264 11.0.8)",
@@ -3231,6 +3231,61 @@
       "curated": false
     },
     {
+      "title": "Totolink X2000R boa formUpload() OS command injection vulnerability",
+      "summary": "TALOS-2026-2438 CVE-2026-10138 A OS command injection vulnerability exists in the boa formUpload() functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability. The versions below were either tested or verified to be vulnerable by Talos or confirmed to be vulnerable by the vendor. X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327) X2000R - https://www.totolink.net/home/menu/newstpl/menu\\_newstpl/products/id/242.html 9.1 - CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H CWE-78 - Improper Neutralization of Special Elements used in an OS Command (\u2018OS Command Injection\u2019) The Totolink X2000R is a popular budget gigabit home router primarly found in eastern markets. Supporting IPV6, WPA3, mesh capabilities among other features, the Totolink X2000R is a solid choice for the price point. The Totolink X2000R mainly relies on the standalone boa binary for all web administration and subsequent configuration. While normally a security risk in itself due to the age, it appears that the version running on the X2000R has been patched. Regardless, for the current set of vulnerabilities we only pay attention to the Totolink-specific issues, so we start from the point where authentication has already occurred via the `/boafrm/formLogin` webpage, and then we can successfully interact with another `/boafrm/form*` page, each of which have a corresponding callback. While today\u2019s vulnerability is within a seperate binary entirely, in order to get that binary to run we must examinne the `/boafrm/formUpload` functionality: ``` 0044c8a8 size_t formUpload(struct client* cli) 0044c8e4 char str[0xc8] 0044c8e4 memset(&str, c: 0, n: 0xc8) 0044c8f4 char var_2d0[0xc8] 0044c8f4 memset(str: &var_2d0, c: 0, n: 0xc8) 0044c904 int32_t out = 1 0044c908 char _deviceMac 0044c908 memset(str: &_deviceMac, c: 0, n: 0x99) 0044c910 char* uploadbuf = cli->uploadbuf 0044c914 int32_t read_offset = get_readstart_offset(uploadbuf) // [1] 0044c914 0044c924 if (read_offset != 0xffffffff) 0044c9e8 int32_t dmac_slot_1 = handleFirmwareFile(msgbuf: uploadbuf, max_size: cli->message_size_maybe, read_offset) // [2] 0044c9f4 int32_t dmac_slot = dmac_slot_1 0044c9f4 0044c9f0 if (dmac_slot_1 == 0) 0044ca08 sprintf(dst: &str, fmt: \"Upload successfully (size = %d bytes)! Firmware update in progress.\", 0044ca08 cli->message_size_maybe) 0044ca20 void* _AutoReset = sessionCheck(cli, varname: \"AutoReset\", &cgi_var_pref, nullptr, 1) 0044ca30 apmib_get(MIB_DO_Mcli, &out) 0044ca38 int32_t MeshEnabled = out 0044ca3c char* redirect-url 0044ca3c 0044ca3c if (MeshEnabled != 1) // [3] // [...] 0044ca3c else 0044ca54 printf(\"===========================Start mesh upgrade function: %s\\n\", &upload_filename) 0044ca60 get_filename_from_buf(buf: cli->uploadbuf, dst: &upload_filename) ``` To start, the program finds the offset of the file that we are uploading at \\[1\\] via parsing HTTP POST data, and then at \\[2\\] treats this uploaded file as a firmware file at \\[2\\] with the `handleFirmwareFile` function. If we wish to sidestep actually flashing anything, we can use and the following commented python code to generate a buffer that\u2019s considered \u201cvalid firmware\u201d but doesn\u2019t flash. ``` #################### buf = b\"\" buf += struct.pack(\" < 0x94: buf += b\"A\" ``` Continuing on, assuming that our device is currently in easy mesh mode \\[3\\], or we set that configuration ourselves via other HTTP requests, we can then continue on within the `formUpload()` function: ``` 0044ca94 void* _controller_upgrade = sessionCheck(cli, varname: \"controller_upgrade\", &cgi_var_pref, nullptr, &data_490000) 0044cab8 int32_t _deviceNum = atoi(str: sessionCheck(cli, varname: \"deviceNum\", &cgi_var_pref, nullptr, &data_490000)) // [4] 0044cacc printf(\"devicenum :%d\\n\", _deviceNum) 0044cadc char* format = \"enable%d\" 0044cae8 char* str2 = &ON 0044cae8 0044caf0 while (_deviceNum s>= MeshEnabled) 0044cc3c char varname[0x64] 0044cc3c snprintf(dst: &varname, 0x14, format, MeshEnabled) // [5] 0044cc3c 0044cc64 if (strcmp(str1: sessionCheck(cli, &varname, &cgi_var_pref, nullptr, &data_490000), str2) != 0) 0044cc68 MeshEnabled += 1 0044cc64 else 0044cc78 snprintf(dst: &varname, 0x14, format: \"devicemac%d\", MeshEnabled) // [6] 0044cc8c char* _devicemac%d = sessionCheck(cli, &varname, &cgi_var_pref, nullptr, &data_490000) 0044cc8c 0044cc9c if (sx.d(*_devicemac%d) == 0) 0044cca0 MeshEnabled += 1 0044cc9c else 0044ccb0 printf(\"device mac:%s\\n\", _devicemac%d) 0044ccb0 0044ccbc if (dmac_slot s< 3) 0044ccd4 strcpy(dest: &(&_deviceMac)[dmac_slot * 0x33], src: _devicemac%d) // [7] ``` The program goes back to reading our HTTP POST parameters, most importantly the `deviceNum` parameter at \\[4\\], which determines how many times we enter the loop further down. For each loop iteration, we look first for generated `enable%d` parameter, where `%d` is the loop iteration. Assuming this HTTP POST parameter is found and is non-zero, then we hit the line at \\[6\\] and try to look for a `devicemac%d` parameter as well. If this is found, then we copy the value to an array slot with strcpy at \\[7\\]. Continuing on to where these `dmac_slot` array values are used: ``` 0044cafc if (zx.d(_deviceMac) != 0) 0044cb0c int32_t $v0_6 = sx.d(*_AutoReset) 0044cb08 char dmac_slot_2 0044cb08 char dmac_slot_3 0044cb08 0044cb08 if (zx.d(dmac_slot_2) == 0) 0044cd54 char* __dmac 0044cd54 int32_t mclinum 0044cd54 0044cd54 if ($v0_6 == 0) 0044cd84 mclinum = 2 0044cd8c __dmac = &_deviceMac 0044cd54 else 0044cd60 mclinum = 3 0044cd64 __dmac = &_deviceMac 0044cd64 0044cd70 sprintf(dst: &var_2d0, fmt: \"%s %d %s &\", \"Mcli\", mclinum, __dmac) // [8] 0044cb08 else if (zx.d(dmac_slot_3) == 0) 0044cd08 char* _dmac 0044cd08 char* var_2e4_2 0044cd08 int32_t $a3_5 0044cd08 0044cd08 if ($v0_6 == 0) 0044cd40 $a3_5 = 2 0044cd44 var_2e4_2 = &dmac_slot_2 0044cd50 _dmac = &_deviceMac 0044cd08 else 0044cd14 $a3_5 = 3 0044cd18 var_2e4_2 = &dmac_slot_2 0044cd20 _dmac = &_deviceMac 0044cd20 0044cd2c sprintf(dst: &var_2d0, fmt: \"%s %d %s %s &\", \"Mcli\", $a3_5, _dmac, var_2e4_2) // [9] 0044cb14 else 0044cb1c char* dmac 0044cb1c char* var_2e4_1 0044cb1c char* var_2e0_1 0044cb1c int32_t $a3_2 0044cb1c 0044cb1c if ($v0_6 == 0) 0044ccec $a3_2 = 2 0044ccf0 var_2e0_1 = &dmac_slot_3 0044ccf8 var_2e4_1 = &dmac_slot_2 0044cd04 dmac = &_deviceMac 0044cb1c else 0044cb28 $a3_2 = 3 0044cb2c var_2e0_1 = &dmac_slot_3 0044cb34 var_2e4_1 = &dmac_slot_2 0044cb3c dmac = &_deviceMac 0044cb3c 0044cb48 sprintf(dst: &var_2d0, fmt: \"%s %d %s %s %s &\", \"Mcli\", $a3_2, dmac, var_2e4_1, var_2e0_1) // [10] 0044cb50 system(string: &var_2d0) // [11] ``` To summarize most of this code, depending on how many device macs there are, we generate a longer or shorter `Mcli` command string at \\[8\\], \\[9\\], or \\[10\\] and then run that command with a system call at \\[11\\]. Since there\u2019s no sanitization on the individual device mac input parameters, we\u2019re left with a command injection vulnerability and subsequent arbitrary commands that can be run by an attacker. 2026-06-16 - vulndev@cisco.com - Initial Vendor Notification 2026-06-23 - vulndiscovery@external.cisco.com - Follow-up sent 2026-06-25 - fae\\_hardware@zioncom.net - Vendor Acknowledged 2026-06-25 - vulndiscovery@external.cisco.com - Resent all notifications 2026-07-16 - vulndiscovery@external.cisco.com - Follow-up sent 2026-09-15 - vulndiscovery@external.cisco.com - Follow-up sent Lilith Wyatt of Cisco Talos",
+      "summary_html": "TALOS-2026-2438\n\nCVE-2026-10138\n\nA OS command injection vulnerability exists in the boa formUpload() functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability.\n\nThe versions below were either tested or verified to be vulnerable by Talos or confirmed to be vulnerable by the vendor.\n\nX2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327)\n\nX2000R - https://www.totolink.net/home/menu/newstpl/menu\\_newstpl/products/id/242.html\n\n9.1 - CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H\n\nCWE-78 - Improper Neutralization of Special Elements used in an OS Command (\u2018OS Command Injection\u2019)\n\nThe Totolink X2000R is a popular budget gigabit home router primarly found in eastern markets. Supporting IPV6, WPA3, mesh capabilities among other features, the Totolink X2000R is a solid choice for the price point.\n\nThe Totolink X2000R mainly relies on the standalone boa binary for all web administration and subsequent configuration. While normally a security risk in itself due to the age, it appears that the version running on the X2000R has been patched. Regardless, for the current set of vulnerabilities we only pay attention to the Totolink-specific issues, so we start from the point where authentication has already occurred via the `/boafrm/formLogin` webpage, and then we can successfully interact with another `/boafrm/form*` page, each of which have a corresponding callback. While today\u2019s vulnerability is within a seperate binary entirely, in order to get that binary to run we must examinne the `/boafrm/formUpload` functionality:\n\n```\n0044c8a8 size_t formUpload(struct client* cli) 0044c8e4 char str[0xc8] 0044c8e4 memset(&amp;str, c: 0, n: 0xc8) 0044c8f4 char var_2d0[0xc8] 0044c8f4 memset(str: &amp;var_2d0, c: 0, n: 0xc8) 0044c904 int32_t out = 1 0044c908 char _deviceMac 0044c908 memset(str: &amp;_deviceMac, c: 0, n: 0x99) 0044c910 char* uploadbuf = cli-&gt;uploadbuf 0044c914 int32_t read_offset = get_readstart_offset(uploadbuf) // [1] 0044c914 0044c924 if (read_offset != 0xffffffff) 0044c9e8 int32_t dmac_slot_1 = handleFirmwareFile(msgbuf: uploadbuf, max_size: cli-&gt;message_size_maybe, read_offset) // [2] 0044c9f4 int32_t dmac_slot = dmac_slot_1 0044c9f4 0044c9f0 if (dmac_slot_1 == 0) 0044ca08 sprintf(dst: &amp;str, fmt: \"Upload successfully (size = %d bytes)!<br/><br/>Firmware update in progress.\", 0044ca08 cli-&gt;message_size_maybe) 0044ca20 void* _AutoReset = sessionCheck(cli, varname: \"AutoReset\", &amp;cgi_var_pref, nullptr, 1) 0044ca30 apmib_get(MIB_DO_Mcli, &amp;out) 0044ca38 int32_t MeshEnabled = out 0044ca3c char* redirect-url 0044ca3c 0044ca3c if (MeshEnabled != 1) // [3] // [...] 0044ca3c else 0044ca54 printf(\"===========================Start mesh upgrade function: %s\\n\", &amp;upload_filename) 0044ca60 get_filename_from_buf(buf: cli-&gt;uploadbuf, dst: &amp;upload_filename)\n```\n\nTo start, the program finds the offset of the file that we are uploading at \\[1\\] via parsing HTTP POST data, and then at \\[2\\] treats this uploaded file as a firmware file at \\[2\\] with the `handleFirmwareFile` function. If we wish to sidestep actually flashing anything, we can use and the following commented python code to generate a buffer that\u2019s considered \u201cvalid firmware\u201d but doesn\u2019t flash.\n\n```\n#################### buf = b\"\" buf += struct.pack(\"<i><i><i>&lt; 0x94: buf += b\"A\"\n```\n\nContinuing on, assuming that our device is currently in easy mesh mode \\[3\\], or we set that configuration ourselves via other HTTP requests, we can then continue on within the `formUpload()` function:\n\n```\n0044ca94 void* _controller_upgrade = sessionCheck(cli, varname: \"controller_upgrade\", &amp;cgi_var_pref, nullptr, &amp;data_490000) 0044cab8 int32_t _deviceNum = atoi(str: sessionCheck(cli, varname: \"deviceNum\", &amp;cgi_var_pref, nullptr, &amp;data_490000)) // [4] 0044cacc printf(\"devicenum :%d\\n\", _deviceNum) 0044cadc char* format = \"enable%d\" 0044cae8 char* str2 = &amp;ON 0044cae8 0044caf0 while (_deviceNum s&gt;= MeshEnabled) 0044cc3c char varname[0x64] 0044cc3c snprintf(dst: &amp;varname, 0x14, format, MeshEnabled) // [5] 0044cc3c 0044cc64 if (strcmp(str1: sessionCheck(cli, &amp;varname, &amp;cgi_var_pref, nullptr, &amp;data_490000), str2) != 0) 0044cc68 MeshEnabled += 1 0044cc64 else 0044cc78 snprintf(dst: &amp;varname, 0x14, format: \"devicemac%d\", MeshEnabled) // [6] 0044cc8c char* _devicemac%d = sessionCheck(cli, &amp;varname, &amp;cgi_var_pref, nullptr, &amp;data_490000) 0044cc8c 0044cc9c if (sx.d(*_devicemac%d) == 0) 0044cca0 MeshEnabled += 1 0044cc9c else 0044ccb0 printf(\"device mac:%s\\n\", _devicemac%d) 0044ccb0 0044ccbc if (dmac_slot s&lt; 3) 0044ccd4 strcpy(dest: &amp;(&amp;_deviceMac)[dmac_slot * 0x33], src: _devicemac%d) // [7]\n```\n\nThe program goes back to reading our HTTP POST parameters, most importantly the `deviceNum` parameter at \\[4\\], which determines how many times we enter the loop further down. For each loop iteration, we look first for generated `enable%d` parameter, where `%d` is the loop iteration. Assuming this HTTP POST parameter is found and is non-zero, then we hit the line at \\[6\\] and try to look for a `devicemac%d` parameter as well. If this is found, then we copy the value to an array slot with strcpy at \\[7\\]. Continuing on to where these `dmac_slot` array values are used:\n\n```\n0044cafc if (zx.d(_deviceMac) != 0) 0044cb0c int32_t $v0_6 = sx.d(*_AutoReset) 0044cb08 char dmac_slot_2 0044cb08 char dmac_slot_3 0044cb08 0044cb08 if (zx.d(dmac_slot_2) == 0) 0044cd54 char* __dmac 0044cd54 int32_t mclinum 0044cd54 0044cd54 if ($v0_6 == 0) 0044cd84 mclinum = 2 0044cd8c __dmac = &amp;_deviceMac 0044cd54 else 0044cd60 mclinum = 3 0044cd64 __dmac = &amp;_deviceMac 0044cd64 0044cd70 sprintf(dst: &amp;var_2d0, fmt: \"%s %d %s &amp;\", \"Mcli\", mclinum, __dmac) // [8] 0044cb08 else if (zx.d(dmac_slot_3) == 0) 0044cd08 char* _dmac 0044cd08 char* var_2e4_2 0044cd08 int32_t $a3_5 0044cd08 0044cd08 if ($v0_6 == 0) 0044cd40 $a3_5 = 2 0044cd44 var_2e4_2 = &amp;dmac_slot_2 0044cd50 _dmac = &amp;_deviceMac 0044cd08 else 0044cd14 $a3_5 = 3 0044cd18 var_2e4_2 = &amp;dmac_slot_2 0044cd20 _dmac = &amp;_deviceMac 0044cd20 0044cd2c sprintf(dst: &amp;var_2d0, fmt: \"%s %d %s %s &amp;\", \"Mcli\", $a3_5, _dmac, var_2e4_2) // [9] 0044cb14 else 0044cb1c char* dmac 0044cb1c char* var_2e4_1 0044cb1c char* var_2e0_1 0044cb1c int32_t $a3_2 0044cb1c 0044cb1c if ($v0_6 == 0) 0044ccec $a3_2 = 2 0044ccf0 var_2e0_1 = &amp;dmac_slot_3 0044ccf8 var_2e4_1 = &amp;dmac_slot_2 0044cd04 dmac = &amp;_deviceMac 0044cb1c else 0044cb28 $a3_2 = 3 0044cb2c var_2e0_1 = &amp;dmac_slot_3 0044cb34 var_2e4_1 = &amp;dmac_slot_2 0044cb3c dmac = &amp;_deviceMac 0044cb3c 0044cb48 sprintf(dst: &amp;var_2d0, fmt: \"%s %d %s %s %s &amp;\", \"Mcli\", $a3_2, dmac, var_2e4_1, var_2e0_1) // [10] 0044cb50 system(string: &amp;var_2d0) // [11]\n```\n\nTo summarize most of this code, depending on how many device macs there are, we generate a longer or shorter `Mcli` command string at \\[8\\], \\[9\\], or \\[10\\] and then run that command with a system call at \\[11\\]. Since there\u2019s no sanitization on the individual device mac input parameters, we\u2019re left with a command injection vulnerability and subsequent arbitrary commands that can be run by an attacker.\n\n2026-06-16 - vulndev@cisco.com - Initial Vendor Notification\n\n2026-06-23 - vulndiscovery@external.cisco.com - Follow-up sent\n\n2026-06-25 - fae\\_hardware@zioncom.net - Vendor Acknowledged\n\n2026-06-25 - vulndiscovery@external.cisco.com - Resent all notifications\n\n2026-07-16 - vulndiscovery@external.cisco.com - Follow-up sent\n\n2026-09-15 - vulndiscovery@external.cisco.com - Follow-up sent\n\nLilith Wyatt of Cisco Talos</i></i></i>",
+      "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2438",
+      "source": "0dayfans",
+      "feed_type": "news",
+      "type": "exploits-pocs",
+      "type_label": "Exploits & PoCs",
+      "published": "2026-10-20T00:00:26+00:00",
+      "published_ts": 1792454426,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": false,
+      "story_id": "2440879db793",
+      "story_size": 23
+    },
+    {
+      "title": "Totolink X2000R boa Firmware Update Unsigned Firmware vulnerability",
+      "summary": "TALOS-2026-2440 CVE-2026-10141 A Unsigned Firmware vulnerability exists in the boa Firmware Update functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted firmware binary can lead to arbitrary firmware update. An attacker can make an authenticated HTTP request to trigger this vulnerability. The versions below were either tested or verified to be vulnerable by Talos or confirmed to be vulnerable by the vendor. X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327) X2000R - https://www.totolink.net/home/menu/newstpl/menu\\_newstpl/products/id/242.html 9.1 - CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H CWE-347 - Improper Verification of Cryptographic Signature The Totolink X2000R is a popular budget gigabit home router primarly found in eastern markets. Supporting IPV6, WPA3, mesh capabilities among other features, the Totolink X2000R is a solid choice for the price point. The Totolink X2000R mainly relies on the standalone boa binary for all web administration and subsequent configuration. While normally a security risk in itself due to the age, it appears that the version running on the X2000R has been patched. Regardless, for the current set of vulnerabilities we only pay attention to the Totolink-specific issues, so we start from the point where authentication has already occurred via the `/boafrm/formLogin` webpage, and then we can successfully interact with another `/boafrm/form*` page, each of which have a corresponding callback. For today\u2019s vulnerability, we can look at either the `/boafrm/formUpload` or `/boafrm/formUploadFile` page, since both end up dealing with how this device handles firmware files. Since `formUpload` is quicker, let us start there: ``` 0044c8a8 size_t formUpload(struct client* cli) 0044c8e4 char str[0xc8] 0044c8e4 memset(&str, c: 0, n: 0xc8) 0044c8f4 char var_2d0[0xc8] 0044c8f4 memset(str: &var_2d0, c: 0, n: 0xc8) 0044c904 int32_t out = 1 0044c908 char _deviceMac 0044c908 memset(str: &_deviceMac, c: 0, n: 0x99) 0044c910 char* uploadbuf = cli->uploadbuf 0044c914 int32_t read_offset = get_readstart_offset(uploadbuf) // [1] 0044c914 0044c924 if (read_offset != 0xffffffff) 0044c9e8 int32_t dmac_slot_1 = handleFirmwareFile(msgbuf: uploadbuf, max_size: cli->message_size, read_offset) // [2] 0044c9f4 int32_t dmac_slot = dmac_slot_1 0044c9f4 0044c9f0 if (dmac_slot_1 == 0) 0044ca08 sprintf(dst: &str, fmt: \"Upload successfully (size = %d bytes)! Firmware update in progress.\", 0044ca08 cli->message_size_maybe) 0044ca20 void* _AutoReset = sessionCheck(cli, varname: \"AutoReset\", &cgi_var_pref, nullptr, 1) 0044ca30 apmib_get(MIB_DO_Mcli, &out) 0044ca38 int32_t MeshEnabled = out 0044ca3c char* redirect-url 0044ca3c 0044ca3c if (MeshEnabled != 1) 0044cda4 if (sx.d(*_AutoReset) != 0) 0044cdb0 system(string: \"flash set UPGRADE_RESET 1\") 0044cdb0 0044cdd4 seems_like_set_on_need_to_reboot = 1 0044cdd0 strcpy(dest: &submit-url_0x64, src: \"/status.htm\") 0044cde4 data_48cd20 = 0xbe 0044cdec redirect-url = \"/countDownPage.htm\" ``` The above code section of the `formUpload` function constitutes the update process from start to finish for the totolink router when not configured for mesh mode. The code finds the offset of our uploaded file in our HTTP POST request form data at \\[1\\] and then passes this to the actual firmware image checking at \\[2\\]. But before looking at the actual firmware checking code, let us quickly examine the intended structure of a given firmware file such that the code is easier to understand: struct fw\\_partition \\_\\_packed { char magic\\[0x4\\]; \\_\\_padding char \\_4\\[4\\]; uint32\\_t mtd\\_seek\\_offset; uint32\\_t fw\\_size; uint8\\_t firmware\\_img\\[fw\\_size\\]\\[ }; ``` struct fw_file __packed { struct fw_partition[]; char version_signature[0x14]; }; ``` To summarize: a given firmware file that we upload can contain multiple partitions of firmware to flash, and then at the end of the array of partitions we find a version signature for our given router model, for this particular router we will see \u201cTOTOLINK-X2000R-Gh-V1\u201d. Continuing in the `handleFirmwareFile` functio at \\[2\\]: ``` 0046084c int32_t handleFirmwareFile(void* msgbuf, int32_t max_size, int32_t read_offset) // [...] 004608c4 00460d30 while (check_size(size_1: bytes_read, max_size) != 0) // [3] 004608d4 int32_t var_134_1 = 0 004608e0 struct fw_file* fwbuf = msgbuf + bytes_read 004608f0 uint32_t fw_size = fwbuf->fw_size 00460940 int32_t firmware_size = fw_size << 0x18 | (fw_size s>> 8 << 0x10 & 0xff0000) | zx.d((fw_size s>> 0x10 << 8).w) | fw_size u>> 0x18 00460950 int32_t bufsize = firmware_size + 0x10 00460950 00460978 if (memcmp(s1: msgbuf + bytes_read, s2: \"cr6c\", n: 4) != 0) 004609bc if (memcmp(s1: msgbuf + bytes_read, s2: \"w6cg\", n: 4) != 0) 00460a00 if (memcmp(s1: msgbuf + bytes_read, s2: \"r6cr\", n: 4) != 0) 00460a20 uint32_t $v0_24 = p2_get_fw_model_string() // \"TOTOLINK-X2000R-Gh-V1\" // [4] 00460a28 int32_t $v0_29 00460a28 00460a28 if ($v0_24 != 0) 00460a68 $v0_29 = strncmp_lol(msgbuf + bytes_read, get_fw_model_string(), len: strlen(str: get_fw_model_string())) 00460a68 00460a70 if ($v0_24 != 0 && $v0_29 != 0) 00460a7c fw_type = 4 00460a70 else if (is_valid != 1) 00460aa0 log(\"Invalid file format.\") 00460aa8 return 0xffffffff ``` To start, we continuously loop until we run out of bytes in the provided firmware image at \\[3\\]. Within this loop the webserver first checks the first four bytes for the \u201ccr6c\u201d, \u201cw6cg\u201d, or \u201cr6cr\u201d magic bytes which determines what type of partition image this is supposed to be. The only differences between the magic byte types are whether we flash to `/dev/mtdblock0`, which is the bios/kernel partition or `/dev/mtdblock1`, which is where the squashfs rootfs lives, and also if the CRC check occurs over two or four byte chunks of data. Assuming that we\u2019ve read some bytes that do not correspond to any of the three magic byte options, then the code checks to see if we\u2019ve reached the end of the firmware file by looking for the firmware model string at \\[4\\]. Continuing on in the function: ``` 00460acc if (fw_type == 1 || fw_type == 3) // cr6c, r6cr 00460af4 if (do_image_checsum_1(readoffset: msgbuf + bytes_read + 0x10, fwsize: firmware_size) == 0) // [5] 00460b04 log(\"Image checksum mismatched.\") 00460b0c return 0xffffffff 00460acc else if (do_image_checsum_2(roffset: msgbuf + bytes_read + 0x10, fwsize: firmware_size) == 0) // [6] 00460b48 // w6cg, max 0x800000 bytes 00460b48 log(\"Image checksum mismatched.\") 00460b50 return 0xffffffff 00460b50 00460b64 char* partition_name 00460b64 partition_name = fw_type != 3 ? \"/dev/mtdblock0\" : \"/dev/mtdblock1\" 00460b64 00460b94 uint32_t mtd_seek_offset_1 = fwbuf->mtd_seek_offset 00460be8 int32_t mtd_seek_offset = mtd_seek_offset_1 << 0x18 | (mtd_seek_offset_1 s>> 8 << 0x10 & 0xff0000) 00460be8 | zx.d((mtd_seek_offset_1 s>> 0x10 << 8).w) | mtd_seek_offset_1 u>> 0x18 00460be8 00460bf4 if (fw_type == 3) 00460c00 if (mtd_seek_offset != 0) 00460c08 mtd_seek_offset = 0 00460c08 00460c10 var_134_1 = 0x10 00460c1c bufsize -= 0x10 00460c1c 00460c48 strcpy(dest: &(&static_fw)[image_cnt], src: partition_name) 00460c74 (&static_fw)[image_cnt].mtd_seek_offset = mtd_seek_offset 00460c9c (&static_fw)[image_cnt].bufsize = bufsize 00460cd0 (&static_fw)[image_cnt].fw_buf_offset = bytes_read + var_134_1 00460d00 (&static_fw)[image_cnt].shm_addr = get_shm_addr() 00460d0c image_cnt += 1 00460d20 bytes_read = firmware_size + bytes_read + 0x10 00460d54 if (is_valid != 1) 00460d64 log(\"No valid image.\") 00460d6c return 0xffffffff 00460d6c 00460d90 if (p2_get_fw_model_string() != 0 && fw_type != 4) 00460da0 log(\"Invalid firmware.\") 00460da8 return 0xffffffff 00460da8 00460dc8 create_buf_with_contents(file: \"/var/fwd.conf\", buf: &static_fw, len: 0x90) 00460dd0 sync() 00460dd8 return 0 Further examination of the `handleFirmwareFile` shows that the only other real check for firmware validity is at the image checksum functions at [5] and [6], which either add every uint16_t in the firmware partition together or every uint32_t together and then checks for 0x0. Aside from that, there's really nothing else that the program checks for, and most importantly is missing any sort of signature check. Thus, given a firmware file that passes all the checks listed above, any arbitrary unsigned firmware image can be flashed to the device. ``` 2026-06-16 - vulndev@cisco.com - Initial Vendor Notification 2026-06-23 - vulndiscovery@external.cisco.com - Follow-up sent 2026-06-25 - fae\\_hardware@zioncom.net - Vendor Acknowledged 2026-06-25 - vulndiscovery@external.cisco.com - Resent all notifications 2026-07-16 - vulndiscovery@external.cisco.com - Follow-up sent 2026-09-15 - vulndiscovery@external.cisco.com - Follow-up sent Lilith Wyatt of Cisco Talos",
+      "summary_html": "TALOS-2026-2440\n\nCVE-2026-10141\n\nA Unsigned Firmware vulnerability exists in the boa Firmware Update functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted firmware binary can lead to arbitrary firmware update. An attacker can make an authenticated HTTP request to trigger this vulnerability.\n\nThe versions below were either tested or verified to be vulnerable by Talos or confirmed to be vulnerable by the vendor.\n\nX2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327)\n\nX2000R - https://www.totolink.net/home/menu/newstpl/menu\\_newstpl/products/id/242.html\n\n9.1 - CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H\n\nCWE-347 - Improper Verification of Cryptographic Signature\n\nThe Totolink X2000R is a popular budget gigabit home router primarly found in eastern markets. Supporting IPV6, WPA3, mesh capabilities among other features, the Totolink X2000R is a solid choice for the price point.\n\nThe Totolink X2000R mainly relies on the standalone boa binary for all web administration and subsequent configuration. While normally a security risk in itself due to the age, it appears that the version running on the X2000R has been patched. Regardless, for the current set of vulnerabilities we only pay attention to the Totolink-specific issues, so we start from the point where authentication has already occurred via the `/boafrm/formLogin` webpage, and then we can successfully interact with another `/boafrm/form*` page, each of which have a corresponding callback. For today\u2019s vulnerability, we can look at either the `/boafrm/formUpload` or `/boafrm/formUploadFile` page, since both end up dealing with how this device handles firmware files. Since `formUpload` is quicker, let us start there:\n\n```\n0044c8a8 size_t formUpload(struct client* cli) 0044c8e4 char str[0xc8] 0044c8e4 memset(&amp;str, c: 0, n: 0xc8) 0044c8f4 char var_2d0[0xc8] 0044c8f4 memset(str: &amp;var_2d0, c: 0, n: 0xc8) 0044c904 int32_t out = 1 0044c908 char _deviceMac 0044c908 memset(str: &amp;_deviceMac, c: 0, n: 0x99) 0044c910 char* uploadbuf = cli-&gt;uploadbuf 0044c914 int32_t read_offset = get_readstart_offset(uploadbuf) // [1] 0044c914 0044c924 if (read_offset != 0xffffffff) 0044c9e8 int32_t dmac_slot_1 = handleFirmwareFile(msgbuf: uploadbuf, max_size: cli-&gt;message_size, read_offset) // [2] 0044c9f4 int32_t dmac_slot = dmac_slot_1 0044c9f4 0044c9f0 if (dmac_slot_1 == 0) 0044ca08 sprintf(dst: &amp;str, fmt: \"Upload successfully (size = %d bytes)!<br/><br/>Firmware update in progress.\", 0044ca08 cli-&gt;message_size_maybe) 0044ca20 void* _AutoReset = sessionCheck(cli, varname: \"AutoReset\", &amp;cgi_var_pref, nullptr, 1) 0044ca30 apmib_get(MIB_DO_Mcli, &amp;out) 0044ca38 int32_t MeshEnabled = out 0044ca3c char* redirect-url 0044ca3c 0044ca3c if (MeshEnabled != 1) 0044cda4 if (sx.d(*_AutoReset) != 0) 0044cdb0 system(string: \"flash set UPGRADE_RESET 1\") 0044cdb0 0044cdd4 seems_like_set_on_need_to_reboot = 1 0044cdd0 strcpy(dest: &amp;submit-url_0x64, src: \"/status.htm\") 0044cde4 data_48cd20 = 0xbe 0044cdec redirect-url = \"/countDownPage.htm\"\n```\n\nThe above code section of the `formUpload` function constitutes the update process from start to finish for the totolink router when not configured for mesh mode. The code finds the offset of our uploaded file in our HTTP POST request form data at \\[1\\] and then passes this to the actual firmware image checking at \\[2\\]. But before looking at the actual firmware checking code, let us quickly examine the intended structure of a given firmware file such that the code is easier to understand:\nstruct fw\\_partition \\_\\_packed\n{\nchar magic\\[0x4\\];\n\\_\\_padding char \\_4\\[4\\];\nuint32\\_t mtd\\_seek\\_offset;\nuint32\\_t fw\\_size;\nuint8\\_t firmware\\_img\\[fw\\_size\\]\\[\n};\n\n```\nstruct fw_file __packed { struct fw_partition[]; char version_signature[0x14]; };\n```\n\nTo summarize: a given firmware file that we upload can contain multiple partitions of firmware to flash, and then at the end of the array of partitions we find a version signature for our given router model, for this particular router we will see \u201cTOTOLINK-X2000R-Gh-V1\u201d. Continuing in the `handleFirmwareFile` functio at \\[2\\]:\n\n```\n0046084c int32_t handleFirmwareFile(void* msgbuf, int32_t max_size, int32_t read_offset) // [...] 004608c4 00460d30 while (check_size(size_1: bytes_read, max_size) != 0) // [3] 004608d4 int32_t var_134_1 = 0 004608e0 struct fw_file* fwbuf = msgbuf + bytes_read 004608f0 uint32_t fw_size = fwbuf-&gt;fw_size 00460940 int32_t firmware_size = fw_size &lt;&lt; 0x18 | (fw_size s&gt;&gt; 8 &lt;&lt; 0x10 &amp; 0xff0000) | zx.d((fw_size s&gt;&gt; 0x10 &lt;&lt; 8).w) | fw_size u&gt;&gt; 0x18 00460950 int32_t bufsize = firmware_size + 0x10 00460950 00460978 if (memcmp(s1: msgbuf + bytes_read, s2: \"cr6c\", n: 4) != 0) 004609bc if (memcmp(s1: msgbuf + bytes_read, s2: \"w6cg\", n: 4) != 0) 00460a00 if (memcmp(s1: msgbuf + bytes_read, s2: \"r6cr\", n: 4) != 0) 00460a20 uint32_t $v0_24 = p2_get_fw_model_string() // \"TOTOLINK-X2000R-Gh-V1\" // [4] 00460a28 int32_t $v0_29 00460a28 00460a28 if ($v0_24 != 0) 00460a68 $v0_29 = strncmp_lol(msgbuf + bytes_read, get_fw_model_string(), len: strlen(str: get_fw_model_string())) 00460a68 00460a70 if ($v0_24 != 0 &amp;&amp; $v0_29 != 0) 00460a7c fw_type = 4 00460a70 else if (is_valid != 1) 00460aa0 log(\"Invalid file format.\") 00460aa8 return 0xffffffff\n```\n\nTo start, we continuously loop until we run out of bytes in the provided firmware image at \\[3\\]. Within this loop the webserver first checks the first four bytes for the \u201ccr6c\u201d, \u201cw6cg\u201d, or \u201cr6cr\u201d magic bytes which determines what type of partition image this is supposed to be. The only differences between the magic byte types are whether we flash to `/dev/mtdblock0`, which is the bios/kernel partition or `/dev/mtdblock1`, which is where the squashfs rootfs lives, and also if the CRC check occurs over two or four byte chunks of data. Assuming that we\u2019ve read some bytes that do not correspond to any of the three magic byte options, then the code checks to see if we\u2019ve reached the end of the firmware file by looking for the firmware model string at \\[4\\]. Continuing on in the function:\n\n```\n00460acc if (fw_type == 1 || fw_type == 3) // cr6c, r6cr 00460af4 if (do_image_checsum_1(readoffset: msgbuf + bytes_read + 0x10, fwsize: firmware_size) == 0) // [5] 00460b04 log(\"Image checksum mismatched.\") 00460b0c return 0xffffffff 00460acc else if (do_image_checsum_2(roffset: msgbuf + bytes_read + 0x10, fwsize: firmware_size) == 0) // [6] 00460b48 // w6cg, max 0x800000 bytes 00460b48 log(\"Image checksum mismatched.\") 00460b50 return 0xffffffff 00460b50 00460b64 char* partition_name 00460b64 partition_name = fw_type != 3 ? \"/dev/mtdblock0\" : \"/dev/mtdblock1\" 00460b64 00460b94 uint32_t mtd_seek_offset_1 = fwbuf-&gt;mtd_seek_offset 00460be8 int32_t mtd_seek_offset = mtd_seek_offset_1 &lt;&lt; 0x18 | (mtd_seek_offset_1 s&gt;&gt; 8 &lt;&lt; 0x10 &amp; 0xff0000) 00460be8 | zx.d((mtd_seek_offset_1 s&gt;&gt; 0x10 &lt;&lt; 8).w) | mtd_seek_offset_1 u&gt;&gt; 0x18 00460be8 00460bf4 if (fw_type == 3) 00460c00 if (mtd_seek_offset != 0) 00460c08 mtd_seek_offset = 0 00460c08 00460c10 var_134_1 = 0x10 00460c1c bufsize -= 0x10 00460c1c 00460c48 strcpy(dest: &amp;(&amp;static_fw)[image_cnt], src: partition_name) 00460c74 (&amp;static_fw)[image_cnt].mtd_seek_offset = mtd_seek_offset 00460c9c (&amp;static_fw)[image_cnt].bufsize = bufsize 00460cd0 (&amp;static_fw)[image_cnt].fw_buf_offset = bytes_read + var_134_1 00460d00 (&amp;static_fw)[image_cnt].shm_addr = get_shm_addr() 00460d0c image_cnt += 1 00460d20 bytes_read = firmware_size + bytes_read + 0x10 00460d54 if (is_valid != 1) 00460d64 log(\"No valid image.\") 00460d6c return 0xffffffff 00460d6c 00460d90 if (p2_get_fw_model_string() != 0 &amp;&amp; fw_type != 4) 00460da0 log(\"Invalid firmware.\") 00460da8 return 0xffffffff 00460da8 00460dc8 create_buf_with_contents(file: \"/var/fwd.conf\", buf: &amp;static_fw, len: 0x90) 00460dd0 sync() 00460dd8 return 0 Further examination of the `handleFirmwareFile` shows that the only other real check for firmware validity is at the image checksum functions at [5] and [6], which either add every uint16_t in the firmware partition together or every uint32_t together and then checks for 0x0. Aside from that, there's really nothing else that the program checks for, and most importantly is missing any sort of signature check. Thus, given a firmware file that passes all the checks listed above, any arbitrary unsigned firmware image can be flashed to the device.\n```\n\n2026-06-16 - vulndev@cisco.com - Initial Vendor Notification\n\n2026-06-23 - vulndiscovery@external.cisco.com - Follow-up sent\n\n2026-06-25 - fae\\_hardware@zioncom.net - Vendor Acknowledged\n\n2026-06-25 - vulndiscovery@external.cisco.com - Resent all notifications\n\n2026-07-16 - vulndiscovery@external.cisco.com - Follow-up sent\n\n2026-09-15 - vulndiscovery@external.cisco.com - Follow-up sent\n\nLilith Wyatt of Cisco Talos",
+      "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2440",
+      "source": "0dayfans",
+      "feed_type": "news",
+      "type": "exploits-pocs",
+      "type_label": "Exploits & PoCs",
+      "published": "2026-10-20T00:00:26+00:00",
+      "published_ts": 1792454426,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "IoT & Embedded Security"
+      ],
+      "curated": false,
+      "story_id": "2440879db793",
+      "story_size": 23
+    },
+    {
+      "title": "Totolink X2000R Mcli stack-based buffer overflow vulnerability",
+      "summary": "TALOS-2026-2439 CVE-2026-10139 A stack-based buffer overflow vulnerability exists in the Mcli functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability. The versions below were either tested or verified to be vulnerable by Talos or confirmed to be vulnerable by the vendor. X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327) X2000R - https://www.totolink.net/home/menu/newstpl/menu\\_newstpl/products/id/242.html 9.1 - CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H CWE-121 - Stack-based Buffer Overflow The Totolink X2000R is a popular budget gigabit home router primarly found in eastern markets. Supporting IPV6, WPA3, mesh capabilities among other features, the Totolink X2000R is a solid choice for the price point. The Totolink X2000R mainly relies on the standalone boa binary for all web administration and subsequent configuration. While normally a security risk in itself due to the age, it appears that the version running on the X2000R has been patched. Regardless, for the current set of vulnerabilities we only pay attention to the Totolink-specific issues, so we start from the point where authentication has already occurred via the `/boafrm/formLogin` webpage, and then we can successfully interact with another `/boafrm/form*` page, each of which have a corresponding callback. While today\u2019s vulnerability is within a seperate binary entirely, in order to get that binary to run we must examinne the `/boafrm/formUpload` functionality: ``` 0044c8a8 size_t formUpload(struct client* cli) 0044c8e4 char str[0xc8] 0044c8e4 memset(&str, c: 0, n: 0xc8) 0044c8f4 char var_2d0[0xc8] 0044c8f4 memset(str: &var_2d0, c: 0, n: 0xc8) 0044c904 int32_t out = 1 0044c908 char _deviceMac 0044c908 memset(str: &_deviceMac, c: 0, n: 0x99) 0044c910 char* uploadbuf = cli->uploadbuf 0044c914 int32_t read_offset = get_readstart_offset(uploadbuf) // [1] 0044c914 0044c924 if (read_offset != 0xffffffff) 0044c9e8 int32_t dmac_slot_1 = handleFirmwareFile(msgbuf: uploadbuf, max_size: cli->message_size_maybe, read_offset) // [2] 0044c9f4 int32_t dmac_slot = dmac_slot_1 0044c9f4 0044c9f0 if (dmac_slot_1 == 0) 0044ca08 sprintf(dst: &str, fmt: \"Upload successfully (size = %d bytes)! Firmware update in progress.\", 0044ca08 cli->message_size_maybe) 0044ca20 void* _AutoReset = sessionCheck(cli, varname: \"AutoReset\", &cgi_var_pref, nullptr, 1) 0044ca30 apmib_get(MIB_DO_Mcli, &out) 0044ca38 int32_t MeshEnabled = out 0044ca3c char* redirect-url 0044ca3c 0044ca3c if (MeshEnabled != 1) // [3] // [...] 0044ca3c else 0044ca54 printf(\"===========================Start mesh upgrade function: %s\\n\", &upload_filename) 0044ca60 get_filename_from_buf(buf: cli->uploadbuf, dst: &upload_filename) ``` To start, the program finds the offset of the file that we are uploading at \\[1\\] via parsing HTTP POST data, and then at \\[2\\] treats this uploaded file as a firmware file at \\[2\\] with the `handleFirmwareFile` function. If we wish to sidestep actually flashing anything, we can use and the following commented python code to generate a buffer that\u2019s considered \u201cvalid firmware\u201d but doesn\u2019t flash. ``` #################### buf = b\"\" buf += struct.pack(\" < 0x94: buf += b\"A\" ``` Continuing on, assuming that our device is currently in easy mesh mode \\[3\\], or we set that configuration ourselves via other HTTP requests, we can then continue on within the `formUpload()` function: ``` 0044ca94 void* _controller_upgrade = sessionCheck(cli, varname: \"controller_upgrade\", &cgi_var_pref, nullptr, &data_490000) 0044cab8 int32_t _deviceNum = atoi(str: sessionCheck(cli, varname: \"deviceNum\", &cgi_var_pref, nullptr, &data_490000)) // [4] 0044cacc printf(\"devicenum :%d\\n\", _deviceNum) 0044cadc char* format = \"enable%d\" 0044cae8 char* str2 = &ON 0044cae8 0044caf0 while (_deviceNum s>= MeshEnabled) 0044cc3c char varname[0x64] 0044cc3c snprintf(dst: &varname, 0x14, format, MeshEnabled) // [5] 0044cc3c 0044cc64 if (strcmp(str1: sessionCheck(cli, &varname, &cgi_var_pref, nullptr, &data_490000), str2) != 0) 0044cc68 MeshEnabled += 1 0044cc64 else 0044cc78 snprintf(dst: &varname, 0x14, format: \"devicemac%d\", MeshEnabled) // [6] 0044cc8c char* _devicemac%d = sessionCheck(cli, &varname, &cgi_var_pref, nullptr, &data_490000) 0044cc8c 0044cc9c if (sx.d(*_devicemac%d) == 0) 0044cca0 MeshEnabled += 1 0044cc9c else 0044ccb0 printf(\"device mac:%s\\n\", _devicemac%d) 0044ccb0 0044ccbc if (dmac_slot s< 3) 0044ccd4 strcpy(dest: &(&_deviceMac)[dmac_slot * 0x33], src: _devicemac%d) // [7] ``` The program goes back to reading our HTTP POST parameters, most importantly the `deviceNum` parameter at \\[4\\], which determines how many times we enter the loop further down. For each loop iteration, we look first for generated `enable%d` parameter, where `%d` is the loop iteration. Assuming this HTTP POST parameter is found and is non-zero, then we hit the line at \\[6\\] and try to look for a `devicemac%d` parameter as well. If this is found, then we copy the value to an array slot with strcpy at \\[7\\]. Continuing on to where these `dmac_slot` array values are used: ``` 0044cafc if (zx.d(_deviceMac) != 0) 0044cb0c int32_t $v0_6 = sx.d(*_AutoReset) 0044cb08 char dmac_slot_2 0044cb08 char dmac_slot_3 0044cb08 0044cb08 if (zx.d(dmac_slot_2) == 0) 0044cd54 char* __dmac 0044cd54 int32_t mclinum 0044cd54 0044cd54 if ($v0_6 == 0) 0044cd84 mclinum = 2 0044cd8c __dmac = &_deviceMac 0044cd54 else 0044cd60 mclinum = 3 0044cd64 __dmac = &_deviceMac 0044cd64 0044cd70 sprintf(dst: &var_2d0, fmt: \"%s %d %s &\", \"Mcli\", mclinum, __dmac) // [8] 0044cb08 else if (zx.d(dmac_slot_3) == 0) 0044cd08 char* _dmac 0044cd08 char* var_2e4_2 0044cd08 int32_t $a3_5 0044cd08 0044cd08 if ($v0_6 == 0) 0044cd40 $a3_5 = 2 0044cd44 var_2e4_2 = &dmac_slot_2 0044cd50 _dmac = &_deviceMac 0044cd08 else 0044cd14 $a3_5 = 3 0044cd18 var_2e4_2 = &dmac_slot_2 0044cd20 _dmac = &_deviceMac 0044cd20 0044cd2c sprintf(dst: &var_2d0, fmt: \"%s %d %s %s &\", \"Mcli\", $a3_5, _dmac, var_2e4_2) // [9] 0044cb14 else 0044cb1c char* dmac 0044cb1c char* var_2e4_1 0044cb1c char* var_2e0_1 0044cb1c int32_t $a3_2 0044cb1c 0044cb1c if ($v0_6 == 0) 0044ccec $a3_2 = 2 0044ccf0 var_2e0_1 = &dmac_slot_3 0044ccf8 var_2e4_1 = &dmac_slot_2 0044cd04 dmac = &_deviceMac 0044cb1c else 0044cb28 $a3_2 = 3 0044cb2c var_2e0_1 = &dmac_slot_3 0044cb34 var_2e4_1 = &dmac_slot_2 0044cb3c dmac = &_deviceMac 0044cb3c 0044cb48 sprintf(dst: &var_2d0, fmt: \"%s %d %s %s %s &\", \"Mcli\", $a3_2, dmac, var_2e4_1, var_2e0_1) // [10] 0044cb50 system(string: &var_2d0) // [11] ``` To summarize most of this code, depending on how many device macs there are, we generate a longer or shorter `Mcli` command string at \\[8\\], \\[9\\], or \\[10\\] and then run that command with a system call at \\[11\\]. Let us now look at how the `Mcli` binary behaves: ``` 004009f0 int32_t main(int32_t argc, char** argv, char** envp) 00400a00 if (argc s<= 0) 00400a0c puts(str: \"use: Mcli flag....\") 00400a14 return 1 00400a14 00400a2c int32_t _argc = atoi(str: argv[1]) 00400a40 printf(\"flag:%d\\n\", _argc) 00400a50 int16_t str 00400a50 memset(&str, c: 0, n: 0x60) 00400a5c char _argc_1 = _argc.b 00400a60 str = 0x6161 00400a6c char devmac0[0x12] 00400a6c 00400a6c if (_argc - 2 u< 3) 00400a74 char* arg2 = argv[2] 00400a74 00400a84 if (arg2 != 0 && sx.d(*arg2) != 0) 00400a8c strcpy(dest: &devmac0, src: arg2) // [12] 00400a9c printf(\"devicemac0:%s\\n\", &devmac0) 00400aa4 char* arg3 = argv[3] 00400aa4 00400ab4 if (arg3 != 0 && sx.d(*arg3) != 0) 00400abc char devmac1[0x12] 00400abc strcpy(dest: &devmac1, src: arg3) // [13] 00400acc printf(\"devicemac1:%s\\n\", &devmac1) 00400ad4 char* arg4 = argv[4] 00400ad4 00400ae4 if (arg4 != 0 && sx.d(*arg4) != 0) 00400aec char devmac2[0x12] 00400aec strcpy(dest: &devmac2, src: arg4) // [14] 00400b00 printf(\"devicemac2:%s\\n\", &devmac2) // [...] 00400b38 void* $v0_7 = malloc(size: 0x60) 00400b38 00400b44 if ($v0_7 == 0) 00400a24 return 0 00400a24 00400b54 memcpy(dest: $v0_7, src: &str, n: 0x60) 00400b60 sub_400dd0($v0_7, 0x60) 00400b68 free(ptr: $v0_7) 00400b74 return 0 ``` We don\u2019t need to particularly delve indepth as its quickly apparent that all of our input `devicemac%d` parameters are just immediatlely copied to the stack of this `Mcli` binary at \\[12\\], \\[13\\], or \\[14\\], via `strcpy`, resulting in stack-based buffer overflows that quickly lead to code execution. ``` Breakpoint 1, 0x0044cb50 in ?? () [o.o]> x/1s $sp+0x28 0x7f8b2a70: \"Mcli 2 slot1 slot2 \", 'A' , \"BBBB &\" [>_>]> set follow-fork-mode child [<_<]> catch exec Catchpoint 2 (exec) [x.x]> c Continuing. [Attaching after Thread 24991.24991 fork to child Thread 27452.27452] [New inferior 2 (process 27452)] [Detaching after fork from parent process 24991] ************************************************** [^.^] T-t-thanks for Stopping by! [^.^] ************************************************** [Inferior 1 (process 24991) detached] process 27452 is executing new program: /bin/busybox [Switching to Thread 27452.27452] Thread 2.1 \"sh\" hit Catchpoint 2 (exec'd /bin/busybox), 0x7765cfa0 in ?? () [^~^]> disable 1 [~.~]> c Continuing. [Attaching after Thread 27452.27452 fork to child Thread 27467.27467] [New inferior 3 (process 27467)] [Detaching after fork from parent process 27452] ************************************************** [^.^] T-t-thanks for Stopping by! [^.^] ************************************************** [Inferior 2 (process 27452) detached] process 27467 is executing new program: /bin/Mcli [Switching to Thread 27467.27467] Thread 3.1 \"Mcli\" hit Catchpoint 2 (exec'd /bin/Mcli), 0x77e84fa0 in ?? () [^.^]> c Continuing. Thread 3.1 \"Mcli\" received signal SIGSEGV, Segmentation fault. 0x41414141 in ?? () [^_^] SIGSEGV *********************************************************************************** *********************************************************************************** v0 : 0x00000000 | s3 : 0x7766f464 v1 : 0x00000000 | s4 : 0x00450000 a0 : 0x00000001 | s5 : 0x00470524 a1 : 0x00000001 | s6 : 0x7766f464 a2[L] : 0x77abe2d0 | s7 : 0x00000002 a3 : 0x00000001 | t8 : 0xffffffff t0 : 0x00000000 | t9[L] : 0x77a218bc t1 : 0x0006d8b5 | k0 : 0x00000000 t2 : 0x00000000 | k1 : 0x00000000 t3 : 0x00000000 | gp[L] : 0x77a3d020 t4 : 0x77e97014 | sp[S] : 0x7fa2db28 t5 : 0x00000005 | ra : 0x41414141 t6 : 0x004007cd | status : 0x0000f413 t7 : 0x00000001 | badvaddr : 0x41414140 s0 : 0x41414141 | pc : 0x41414141 s1 : 0x41414141 | fcsr : 0x00000000 s2 : 0x004704fc | restart : 0x00000000 *********************************************************************************** Invalid $pc @ 0x41414141 #0 0x41414141 in ?? () Backtrace stopped: previous frame identical to this frame (corrupt stack?) *********************************************************************************** ``` 2026-06-16 - vulndev@cisco.com - Initial Vendor Notification 2026-06-23 - vulndiscovery@external.cisco.com - Follow-up sent 2026-06-25 - fae\\_hardware@zioncom.net - Vendor Acknowledged 2026-06-25 - vulndiscovery@external.cisco.com - Resent all notifications 2026-07-16 - vulndiscovery@external.cisco.com - Follow-up sent 2026-09-15 - vulndiscovery@external.cisco.com - Follow-up sent Lilith Wyatt of Cisco Talos",
+      "summary_html": "TALOS-2026-2439\n\nCVE-2026-10139\n\nA stack-based buffer overflow vulnerability exists in the Mcli functionality of X2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327). A specially crafted HTTP request can lead to arbitrary code execution. An attacker can make an authenticated HTTP request to trigger this vulnerability.\n\nThe versions below were either tested or verified to be vulnerable by Talos or confirmed to be vulnerable by the vendor.\n\nX2000R (version(s): TOTOLINK-X2000R-Gh-V1.0.0-B20250421.1327)\n\nX2000R - https://www.totolink.net/home/menu/newstpl/menu\\_newstpl/products/id/242.html\n\n9.1 - CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H\n\nCWE-121 - Stack-based Buffer Overflow\n\nThe Totolink X2000R is a popular budget gigabit home router primarly found in eastern markets. Supporting IPV6, WPA3, mesh capabilities among other features, the Totolink X2000R is a solid choice for the price point.\n\nThe Totolink X2000R mainly relies on the standalone boa binary for all web administration and subsequent configuration. While normally a security risk in itself due to the age, it appears that the version running on the X2000R has been patched. Regardless, for the current set of vulnerabilities we only pay attention to the Totolink-specific issues, so we start from the point where authentication has already occurred via the `/boafrm/formLogin` webpage, and then we can successfully interact with another `/boafrm/form*` page, each of which have a corresponding callback. While today\u2019s vulnerability is within a seperate binary entirely, in order to get that binary to run we must examinne the `/boafrm/formUpload` functionality:\n\n```\n0044c8a8 size_t formUpload(struct client* cli) 0044c8e4 char str[0xc8] 0044c8e4 memset(&amp;str, c: 0, n: 0xc8) 0044c8f4 char var_2d0[0xc8] 0044c8f4 memset(str: &amp;var_2d0, c: 0, n: 0xc8) 0044c904 int32_t out = 1 0044c908 char _deviceMac 0044c908 memset(str: &amp;_deviceMac, c: 0, n: 0x99) 0044c910 char* uploadbuf = cli-&gt;uploadbuf 0044c914 int32_t read_offset = get_readstart_offset(uploadbuf) // [1] 0044c914 0044c924 if (read_offset != 0xffffffff) 0044c9e8 int32_t dmac_slot_1 = handleFirmwareFile(msgbuf: uploadbuf, max_size: cli-&gt;message_size_maybe, read_offset) // [2] 0044c9f4 int32_t dmac_slot = dmac_slot_1 0044c9f4 0044c9f0 if (dmac_slot_1 == 0) 0044ca08 sprintf(dst: &amp;str, fmt: \"Upload successfully (size = %d bytes)!<br/><br/>Firmware update in progress.\", 0044ca08 cli-&gt;message_size_maybe) 0044ca20 void* _AutoReset = sessionCheck(cli, varname: \"AutoReset\", &amp;cgi_var_pref, nullptr, 1) 0044ca30 apmib_get(MIB_DO_Mcli, &amp;out) 0044ca38 int32_t MeshEnabled = out 0044ca3c char* redirect-url 0044ca3c 0044ca3c if (MeshEnabled != 1) // [3] // [...] 0044ca3c else 0044ca54 printf(\"===========================Start mesh upgrade function: %s\\n\", &amp;upload_filename) 0044ca60 get_filename_from_buf(buf: cli-&gt;uploadbuf, dst: &amp;upload_filename)\n```\n\nTo start, the program finds the offset of the file that we are uploading at \\[1\\] via parsing HTTP POST data, and then at \\[2\\] treats this uploaded file as a firmware file at \\[2\\] with the `handleFirmwareFile` function. If we wish to sidestep actually flashing anything, we can use and the following commented python code to generate a buffer that\u2019s considered \u201cvalid firmware\u201d but doesn\u2019t flash.\n\n```\n#################### buf = b\"\" buf += struct.pack(\"<i><i><i>&lt; 0x94: buf += b\"A\"\n```\n\nContinuing on, assuming that our device is currently in easy mesh mode \\[3\\], or we set that configuration ourselves via other HTTP requests, we can then continue on within the `formUpload()` function:\n\n```\n0044ca94 void* _controller_upgrade = sessionCheck(cli, varname: \"controller_upgrade\", &amp;cgi_var_pref, nullptr, &amp;data_490000) 0044cab8 int32_t _deviceNum = atoi(str: sessionCheck(cli, varname: \"deviceNum\", &amp;cgi_var_pref, nullptr, &amp;data_490000)) // [4] 0044cacc printf(\"devicenum :%d\\n\", _deviceNum) 0044cadc char* format = \"enable%d\" 0044cae8 char* str2 = &amp;ON 0044cae8 0044caf0 while (_deviceNum s&gt;= MeshEnabled) 0044cc3c char varname[0x64] 0044cc3c snprintf(dst: &amp;varname, 0x14, format, MeshEnabled) // [5] 0044cc3c 0044cc64 if (strcmp(str1: sessionCheck(cli, &amp;varname, &amp;cgi_var_pref, nullptr, &amp;data_490000), str2) != 0) 0044cc68 MeshEnabled += 1 0044cc64 else 0044cc78 snprintf(dst: &amp;varname, 0x14, format: \"devicemac%d\", MeshEnabled) // [6] 0044cc8c char* _devicemac%d = sessionCheck(cli, &amp;varname, &amp;cgi_var_pref, nullptr, &amp;data_490000) 0044cc8c 0044cc9c if (sx.d(*_devicemac%d) == 0) 0044cca0 MeshEnabled += 1 0044cc9c else 0044ccb0 printf(\"device mac:%s\\n\", _devicemac%d) 0044ccb0 0044ccbc if (dmac_slot s&lt; 3) 0044ccd4 strcpy(dest: &amp;(&amp;_deviceMac)[dmac_slot * 0x33], src: _devicemac%d) // [7]\n```\n\nThe program goes back to reading our HTTP POST parameters, most importantly the `deviceNum` parameter at \\[4\\], which determines how many times we enter the loop further down. For each loop iteration, we look first for generated `enable%d` parameter, where `%d` is the loop iteration. Assuming this HTTP POST parameter is found and is non-zero, then we hit the line at \\[6\\] and try to look for a `devicemac%d` parameter as well. If this is found, then we copy the value to an array slot with strcpy at \\[7\\]. Continuing on to where these `dmac_slot` array values are used:\n\n```\n0044cafc if (zx.d(_deviceMac) != 0) 0044cb0c int32_t $v0_6 = sx.d(*_AutoReset) 0044cb08 char dmac_slot_2 0044cb08 char dmac_slot_3 0044cb08 0044cb08 if (zx.d(dmac_slot_2) == 0) 0044cd54 char* __dmac 0044cd54 int32_t mclinum 0044cd54 0044cd54 if ($v0_6 == 0) 0044cd84 mclinum = 2 0044cd8c __dmac = &amp;_deviceMac 0044cd54 else 0044cd60 mclinum = 3 0044cd64 __dmac = &amp;_deviceMac 0044cd64 0044cd70 sprintf(dst: &amp;var_2d0, fmt: \"%s %d %s &amp;\", \"Mcli\", mclinum, __dmac) // [8] 0044cb08 else if (zx.d(dmac_slot_3) == 0) 0044cd08 char* _dmac 0044cd08 char* var_2e4_2 0044cd08 int32_t $a3_5 0044cd08 0044cd08 if ($v0_6 == 0) 0044cd40 $a3_5 = 2 0044cd44 var_2e4_2 = &amp;dmac_slot_2 0044cd50 _dmac = &amp;_deviceMac 0044cd08 else 0044cd14 $a3_5 = 3 0044cd18 var_2e4_2 = &amp;dmac_slot_2 0044cd20 _dmac = &amp;_deviceMac 0044cd20 0044cd2c sprintf(dst: &amp;var_2d0, fmt: \"%s %d %s %s &amp;\", \"Mcli\", $a3_5, _dmac, var_2e4_2) // [9] 0044cb14 else 0044cb1c char* dmac 0044cb1c char* var_2e4_1 0044cb1c char* var_2e0_1 0044cb1c int32_t $a3_2 0044cb1c 0044cb1c if ($v0_6 == 0) 0044ccec $a3_2 = 2 0044ccf0 var_2e0_1 = &amp;dmac_slot_3 0044ccf8 var_2e4_1 = &amp;dmac_slot_2 0044cd04 dmac = &amp;_deviceMac 0044cb1c else 0044cb28 $a3_2 = 3 0044cb2c var_2e0_1 = &amp;dmac_slot_3 0044cb34 var_2e4_1 = &amp;dmac_slot_2 0044cb3c dmac = &amp;_deviceMac 0044cb3c 0044cb48 sprintf(dst: &amp;var_2d0, fmt: \"%s %d %s %s %s &amp;\", \"Mcli\", $a3_2, dmac, var_2e4_1, var_2e0_1) // [10] 0044cb50 system(string: &amp;var_2d0) // [11]\n```\n\nTo summarize most of this code, depending on how many device macs there are, we generate a longer or shorter `Mcli` command string at \\[8\\], \\[9\\], or \\[10\\] and then run that command with a system call at \\[11\\]. Let us now look at how the `Mcli` binary behaves:\n\n```\n004009f0 int32_t main(int32_t argc, char** argv, char** envp) 00400a00 if (argc s&lt;= 0) 00400a0c puts(str: \"use: Mcli flag....\") 00400a14 return 1 00400a14 00400a2c int32_t _argc = atoi(str: argv[1]) 00400a40 printf(\"flag:%d\\n\", _argc) 00400a50 int16_t str 00400a50 memset(&amp;str, c: 0, n: 0x60) 00400a5c char _argc_1 = _argc.b 00400a60 str = 0x6161 00400a6c char devmac0[0x12] 00400a6c 00400a6c if (_argc - 2 u&lt; 3) 00400a74 char* arg2 = argv[2] 00400a74 00400a84 if (arg2 != 0 &amp;&amp; sx.d(*arg2) != 0) 00400a8c strcpy(dest: &amp;devmac0, src: arg2) // [12] 00400a9c printf(\"devicemac0:%s\\n\", &amp;devmac0) 00400aa4 char* arg3 = argv[3] 00400aa4 00400ab4 if (arg3 != 0 &amp;&amp; sx.d(*arg3) != 0) 00400abc char devmac1[0x12] 00400abc strcpy(dest: &amp;devmac1, src: arg3) // [13] 00400acc printf(\"devicemac1:%s\\n\", &amp;devmac1) 00400ad4 char* arg4 = argv[4] 00400ad4 00400ae4 if (arg4 != 0 &amp;&amp; sx.d(*arg4) != 0) 00400aec char devmac2[0x12] 00400aec strcpy(dest: &amp;devmac2, src: arg4) // [14] 00400b00 printf(\"devicemac2:%s\\n\", &amp;devmac2) // [...] 00400b38 void* $v0_7 = malloc(size: 0x60) 00400b38 00400b44 if ($v0_7 == 0) 00400a24 return 0 00400a24 00400b54 memcpy(dest: $v0_7, src: &amp;str, n: 0x60) 00400b60 sub_400dd0($v0_7, 0x60) 00400b68 free(ptr: $v0_7) 00400b74 return 0\n```\n\nWe don\u2019t need to particularly delve indepth as its quickly apparent that all of our input `devicemac%d` parameters are just immediatlely copied to the stack of this `Mcli` binary at \\[12\\], \\[13\\], or \\[14\\], via `strcpy`, resulting in stack-based buffer overflows that quickly lead to code execution.\n\n```\nBreakpoint 1, 0x0044cb50 in ?? () [o.o]&gt; x/1s $sp+0x28 0x7f8b2a70: \"Mcli 2 slot1 slot2 \", 'A' , \"BBBB &amp;\" [&gt;_&gt;]&gt; set follow-fork-mode child [&lt;_&lt;]&gt; catch exec Catchpoint 2 (exec) [x.x]&gt; c Continuing. [Attaching after Thread 24991.24991 fork to child Thread 27452.27452] [New inferior 2 (process 27452)] [Detaching after fork from parent process 24991] ************************************************** [^.^] T-t-thanks for Stopping by! [^.^] ************************************************** [Inferior 1 (process 24991) detached] process 27452 is executing new program: /bin/busybox [Switching to Thread 27452.27452] Thread 2.1 \"sh\" hit Catchpoint 2 (exec'd /bin/busybox), 0x7765cfa0 in ?? () [^~^]&gt; disable 1 [~.~]&gt; c Continuing. [Attaching after Thread 27452.27452 fork to child Thread 27467.27467] [New inferior 3 (process 27467)] [Detaching after fork from parent process 27452] ************************************************** [^.^] T-t-thanks for Stopping by! [^.^] ************************************************** [Inferior 2 (process 27452) detached] process 27467 is executing new program: /bin/Mcli [Switching to Thread 27467.27467] Thread 3.1 \"Mcli\" hit Catchpoint 2 (exec'd /bin/Mcli), 0x77e84fa0 in ?? () [^.^]&gt; c Continuing. Thread 3.1 \"Mcli\" received signal SIGSEGV, Segmentation fault. 0x41414141 in ?? () [^_^] SIGSEGV *********************************************************************************** *********************************************************************************** v0 : 0x00000000 | s3 : 0x7766f464 v1 : 0x00000000 | s4 : 0x00450000 a0 : 0x00000001 | s5 : 0x00470524 a1 : 0x00000001 | s6 : 0x7766f464 a2[L] : 0x77abe2d0 | s7 : 0x00000002 a3 : 0x00000001 | t8 : 0xffffffff t0 : 0x00000000 | t9[L] : 0x77a218bc t1 : 0x0006d8b5 | k0 : 0x00000000 t2 : 0x00000000 | k1 : 0x00000000 t3 : 0x00000000 | gp[L] : 0x77a3d020 t4 : 0x77e97014 | sp[S] : 0x7fa2db28 t5 : 0x00000005 | ra : 0x41414141 t6 : 0x004007cd | status : 0x0000f413 t7 : 0x00000001 | badvaddr : 0x41414140 s0 : 0x41414141 | pc : 0x41414141 s1 : 0x41414141 | fcsr : 0x00000000 s2 : 0x004704fc | restart : 0x00000000 *********************************************************************************** Invalid $pc @ 0x41414141 #0 0x41414141 in ?? () Backtrace stopped: previous frame identical to this frame (corrupt stack?) ***********************************************************************************\n```\n\n2026-06-16 - vulndev@cisco.com - Initial Vendor Notification\n\n2026-06-23 - vulndiscovery@external.cisco.com - Follow-up sent\n\n2026-06-25 - fae\\_hardware@zioncom.net - Vendor Acknowledged\n\n2026-06-25 - vulndiscovery@external.cisco.com - Resent all notifications\n\n2026-07-16 - vulndiscovery@external.cisco.com - Follow-up sent\n\n2026-09-15 - vulndiscovery@external.cisco.com - Follow-up sent\n\nLilith Wyatt of Cisco Talos</i></i></i>",
+      "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2439",
+      "source": "0dayfans",
+      "feed_type": "news",
+      "type": "exploits-pocs",
+      "type_label": "Exploits & PoCs",
+      "published": "2026-10-20T00:00:26+00:00",
+      "published_ts": 1792454426,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": false,
+      "story_id": "2440879db793",
+      "story_size": 23
+    },
+    {
       "title": "Microsoft Windows Cloud Files Mini Filter Driver CldiStreamCompleteRequest use-after-free vulnerability",
       "summary": "",
       "summary_html": "",
@@ -3278,14 +3333,140 @@
       ],
       "curated": false,
       "story_id": "2440879db793",
-      "story_size": 2,
+      "story_size": 23,
       "story_primary": true,
       "story_others": [
+        {
+          "source": "Talos - Vulnerability Reports",
+          "title": "Totolink X2000R boa formMapDelDevice hostname stack-based buffer overflow vulnerability",
+          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2389",
+          "published_ts": 1792454400
+        },
+        {
+          "source": "Talos - Vulnerability Reports",
+          "title": "Totolink X2000R boa formMapDelDevice macstr stack-based buffer overflow vulnerability",
+          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2390",
+          "published_ts": 1792454400
+        },
         {
           "source": "Talos - Vulnerability Reports",
           "title": "Totolink X2000R boa formWsc targetAPSsid OS command injection vulnerability",
           "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2388",
           "published_ts": 1792454400
+        },
+        {
+          "source": "Talos - Vulnerability Reports",
+          "title": "Totolink X2000R boa formParentControl url stack-based buffer overflow vulnerability",
+          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2392",
+          "published_ts": 1792454400
+        },
+        {
+          "source": "Talos - Vulnerability Reports",
+          "title": "Totolink X2000R boa formParentControl deviceName stack-based buffer overflow vulnerability",
+          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2393",
+          "published_ts": 1792454400
+        },
+        {
+          "source": "Talos - Vulnerability Reports",
+          "title": "Totolink X2000R boa formMapDelDevice macstr OS command injection vulnerability",
+          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2391",
+          "published_ts": 1792454400
+        },
+        {
+          "source": "Talos - Vulnerability Reports",
+          "title": "Totolink X2000R boa formIpv6Setup pppoe Stack-Based Buffer Overflow Vulnerabilities",
+          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2394",
+          "published_ts": 1792454400
+        },
+        {
+          "source": "Talos - Vulnerability Reports",
+          "title": "Totolink X2000R boa formIpv6Setup Static Network Configuration Stack-Based Buffer Overflow Vulnerabilities",
+          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2395",
+          "published_ts": 1792454400
+        },
+        {
+          "source": "Talos - Vulnerability Reports",
+          "title": "Totolink X2000R boa formIpv6Setup dhcp_dns stack-based buffer overflow vulnerabilities",
+          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2396",
+          "published_ts": 1792454400
+        },
+        {
+          "source": "Talos - Vulnerability Reports",
+          "title": "Totolink X2000R boa formFilter stack-based buffer overflow vulnerabilities",
+          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2425",
+          "published_ts": 1792454400
+        },
+        {
+          "source": "Talos - Vulnerability Reports",
+          "title": "Totolink X2000R boa formWizard newPass OS command injection vulnerability",
+          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2428",
+          "published_ts": 1792454400
+        },
+        {
+          "source": "Talos - Vulnerability Reports",
+          "title": "Totolink X2000R boa formUploadFile stack-based buffer overflow vulnerability",
+          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2429",
+          "published_ts": 1792454400
+        },
+        {
+          "source": "Talos - Vulnerability Reports",
+          "title": "Totolink X2000R boa formTR069Config stack-based buffer overflow vulnerability",
+          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2431",
+          "published_ts": 1792454400
+        },
+        {
+          "source": "Talos - Vulnerability Reports",
+          "title": "Totolink X2000R batchupg stack-based buffer overflow vulnerability",
+          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2434",
+          "published_ts": 1792454400
+        },
+        {
+          "source": "Talos - Vulnerability Reports",
+          "title": "Totolink X2000R boa formIpQos mac stack-based buffer overflow vulnerability",
+          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2433",
+          "published_ts": 1792454400
+        },
+        {
+          "source": "Talos - Vulnerability Reports",
+          "title": "Totolink X2000R boa formPasswordSetup OS command injection vulnerability",
+          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2432",
+          "published_ts": 1792454400
+        },
+        {
+          "source": "Talos - Vulnerability Reports",
+          "title": "Totolink X2000R boa formUpload() heap-based buffer overflow vulnerability",
+          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2436",
+          "published_ts": 1792454400
+        },
+        {
+          "source": "Talos - Vulnerability Reports",
+          "title": "Totolink X2000R batchupg OS command injection vulnerability",
+          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2435",
+          "published_ts": 1792454400
+        },
+        {
+          "source": "Talos - Vulnerability Reports",
+          "title": "Totolink X2000R boa formUpload() stack-based buffer overflow vulnerability",
+          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2437",
+          "published_ts": 1792454400
+        },
+        {
+          "source": "0dayfans",
+          "title": "Totolink X2000R boa formUpload() OS command injection vulnerability",
+          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2438",
+          "published_ts": 1792454426
+        },
+        {
+          "source": "0dayfans",
+          "title": "Totolink X2000R boa Firmware Update Unsigned Firmware vulnerability",
+          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2440",
+          "published_ts": 1792454426
+        },
+        {
+          "source": "0dayfans",
+          "title": "Totolink X2000R Mcli stack-based buffer overflow vulnerability",
+          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2439",
+          "published_ts": 1792454426
         }
       ]
     },
@@ -3304,17 +3485,8 @@
         "Vulnerabilities / CVEs"
       ],
       "curated": false,
-      "story_id": "db2091a0f71d",
-      "story_size": 2,
-      "story_primary": true,
-      "story_others": [
-        {
-          "source": "Talos - Vulnerability Reports",
-          "title": "Totolink X2000R boa formMapDelDevice macstr stack-based buffer overflow vulnerability",
-          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2390",
-          "published_ts": 1792454400
-        }
-      ]
+      "story_id": "2440879db793",
+      "story_size": 23
     },
     {
       "title": "Totolink X2000R boa formMapDelDevice macstr stack-based buffer overflow vulnerability",
@@ -3331,8 +3503,8 @@
         "Vulnerabilities / CVEs"
       ],
       "curated": false,
-      "story_id": "db2091a0f71d",
-      "story_size": 2
+      "story_id": "2440879db793",
+      "story_size": 23
     },
     {
       "title": "Totolink X2000R boa formWsc targetAPSsid OS command injection vulnerability",
@@ -3350,7 +3522,7 @@
       ],
       "curated": false,
       "story_id": "2440879db793",
-      "story_size": 2
+      "story_size": 23
     },
     {
       "title": "Totolink X2000R boa formParentControl url stack-based buffer overflow vulnerability",
@@ -3367,17 +3539,8 @@
         "Vulnerabilities / CVEs"
       ],
       "curated": false,
-      "story_id": "7180c30af4a1",
-      "story_size": 2,
-      "story_primary": true,
-      "story_others": [
-        {
-          "source": "Talos - Vulnerability Reports",
-          "title": "Totolink X2000R boa formParentControl deviceName stack-based buffer overflow vulnerability",
-          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2393",
-          "published_ts": 1792454400
-        }
-      ]
+      "story_id": "2440879db793",
+      "story_size": 23
     },
     {
       "title": "Totolink X2000R boa formParentControl deviceName stack-based buffer overflow vulnerability",
@@ -3394,8 +3557,8 @@
         "Vulnerabilities / CVEs"
       ],
       "curated": false,
-      "story_id": "7180c30af4a1",
-      "story_size": 2
+      "story_id": "2440879db793",
+      "story_size": 23
     },
     {
       "title": "Totolink X2000R boa formMapDelDevice macstr OS command injection vulnerability",
@@ -3411,7 +3574,9 @@
       "smart_groups": [
         "Vulnerabilities / CVEs"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "2440879db793",
+      "story_size": 23
     },
     {
       "title": "Totolink X2000R boa formIpv6Setup pppoe Stack-Based Buffer Overflow Vulnerabilities",
@@ -3428,17 +3593,8 @@
         "Vulnerabilities / CVEs"
       ],
       "curated": false,
-      "story_id": "b954c7e47f29",
-      "story_size": 2,
-      "story_primary": true,
-      "story_others": [
-        {
-          "source": "Talos - Vulnerability Reports",
-          "title": "Totolink X2000R boa formIpv6Setup dhcp_dns stack-based buffer overflow vulnerabilities",
-          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2396",
-          "published_ts": 1792454400
-        }
-      ]
+      "story_id": "2440879db793",
+      "story_size": 23
     },
     {
       "title": "Totolink X2000R boa formIpv6Setup Static Network Configuration Stack-Based Buffer Overflow Vulnerabilities",
@@ -3454,7 +3610,9 @@
       "smart_groups": [
         "Vulnerabilities / CVEs"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "2440879db793",
+      "story_size": 23
     },
     {
       "title": "Totolink X2000R boa formIpv6Setup dhcp_dns stack-based buffer overflow vulnerabilities",
@@ -3471,8 +3629,8 @@
         "Vulnerabilities / CVEs"
       ],
       "curated": false,
-      "story_id": "b954c7e47f29",
-      "story_size": 2
+      "story_id": "2440879db793",
+      "story_size": 23
     },
     {
       "title": "Totolink X2000R boa formFilter stack-based buffer overflow vulnerabilities",
@@ -3488,7 +3646,9 @@
       "smart_groups": [
         "Vulnerabilities / CVEs"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "2440879db793",
+      "story_size": 23
     },
     {
       "title": "Totolink X2000R boa formWizard newPass OS command injection vulnerability",
@@ -3504,7 +3664,9 @@
       "smart_groups": [
         "Vulnerabilities / CVEs"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "2440879db793",
+      "story_size": 23
     },
     {
       "title": "Totolink X2000R boa formUploadFile stack-based buffer overflow vulnerability",
@@ -3521,29 +3683,8 @@
         "Vulnerabilities / CVEs"
       ],
       "curated": false,
-      "story_id": "977134116871",
-      "story_size": 4,
-      "story_primary": true,
-      "story_others": [
-        {
-          "source": "Talos - Vulnerability Reports",
-          "title": "Totolink X2000R boa formTR069Config stack-based buffer overflow vulnerability",
-          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2431",
-          "published_ts": 1792454400
-        },
-        {
-          "source": "Talos - Vulnerability Reports",
-          "title": "Totolink X2000R boa formUpload() heap-based buffer overflow vulnerability",
-          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2436",
-          "published_ts": 1792454400
-        },
-        {
-          "source": "Talos - Vulnerability Reports",
-          "title": "Totolink X2000R boa formUpload() stack-based buffer overflow vulnerability",
-          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2437",
-          "published_ts": 1792454400
-        }
-      ]
+      "story_id": "2440879db793",
+      "story_size": 23
     },
     {
       "title": "Totolink X2000R boa formTR069Config stack-based buffer overflow vulnerability",
@@ -3560,8 +3701,8 @@
         "Vulnerabilities / CVEs"
       ],
       "curated": false,
-      "story_id": "977134116871",
-      "story_size": 4
+      "story_id": "2440879db793",
+      "story_size": 23
     },
     {
       "title": "Totolink X2000R boa formUploadFile arbitrary file write vulnerability",
@@ -3594,17 +3735,8 @@
         "Vulnerabilities / CVEs"
       ],
       "curated": false,
-      "story_id": "acd21c2b6ba6",
-      "story_size": 2,
-      "story_primary": true,
-      "story_others": [
-        {
-          "source": "Talos - Vulnerability Reports",
-          "title": "Totolink X2000R Mcli stack-based buffer overflow vulnerability",
-          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2439",
-          "published_ts": 1792454400
-        }
-      ]
+      "story_id": "2440879db793",
+      "story_size": 23
     },
     {
       "title": "Totolink X2000R boa formIpQos mac stack-based buffer overflow vulnerability",
@@ -3620,7 +3752,9 @@
       "smart_groups": [
         "Vulnerabilities / CVEs"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "2440879db793",
+      "story_size": 23
     },
     {
       "title": "Totolink X2000R boa formPasswordSetup OS command injection vulnerability",
@@ -3637,17 +3771,8 @@
         "Vulnerabilities / CVEs"
       ],
       "curated": false,
-      "story_id": "99373164e69a",
-      "story_size": 2,
-      "story_primary": true,
-      "story_others": [
-        {
-          "source": "Talos - Vulnerability Reports",
-          "title": "Totolink X2000R boa formUpload() OS command injection vulnerability",
-          "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2438",
-          "published_ts": 1792454400
-        }
-      ]
+      "story_id": "2440879db793",
+      "story_size": 23
     },
     {
       "title": "Totolink X2000R boa formUpload() heap-based buffer overflow vulnerability",
@@ -3664,8 +3789,8 @@
         "Vulnerabilities / CVEs"
       ],
       "curated": false,
-      "story_id": "977134116871",
-      "story_size": 4
+      "story_id": "2440879db793",
+      "story_size": 23
     },
     {
       "title": "Totolink X2000R batchupg OS command injection vulnerability",
@@ -3681,7 +3806,9 @@
       "smart_groups": [
         "Vulnerabilities / CVEs"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "2440879db793",
+      "story_size": 23
     },
     {
       "title": "Totolink X2000R boa formUpload() stack-based buffer overflow vulnerability",
@@ -3698,61 +3825,8 @@
         "Vulnerabilities / CVEs"
       ],
       "curated": false,
-      "story_id": "977134116871",
-      "story_size": 4
-    },
-    {
-      "title": "Totolink X2000R boa formUpload() OS command injection vulnerability",
-      "summary": "",
-      "summary_html": "",
-      "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2438",
-      "source": "Talos - Vulnerability Reports",
-      "feed_type": "news",
-      "type": "vulnerabilities-cves-exploits",
-      "type_label": "Vulnerabilities, CVEs & Exploits",
-      "published": "2026-10-20T00:00:00+00:00",
-      "published_ts": 1792454400,
-      "smart_groups": [
-        "Vulnerabilities / CVEs"
-      ],
-      "curated": false,
-      "story_id": "99373164e69a",
-      "story_size": 2
-    },
-    {
-      "title": "Totolink X2000R boa Firmware Update Unsigned Firmware vulnerability",
-      "summary": "",
-      "summary_html": "",
-      "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2440",
-      "source": "Talos - Vulnerability Reports",
-      "feed_type": "news",
-      "type": "vulnerabilities-cves-exploits",
-      "type_label": "Vulnerabilities, CVEs & Exploits",
-      "published": "2026-10-20T00:00:00+00:00",
-      "published_ts": 1792454400,
-      "smart_groups": [
-        "Vulnerabilities / CVEs",
-        "IoT & Embedded Security"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Totolink X2000R Mcli stack-based buffer overflow vulnerability",
-      "summary": "",
-      "summary_html": "",
-      "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2439",
-      "source": "Talos - Vulnerability Reports",
-      "feed_type": "news",
-      "type": "vulnerabilities-cves-exploits",
-      "type_label": "Vulnerabilities, CVEs & Exploits",
-      "published": "2026-10-20T00:00:00+00:00",
-      "published_ts": 1792454400,
-      "smart_groups": [
-        "Vulnerabilities / CVEs"
-      ],
-      "curated": false,
-      "story_id": "acd21c2b6ba6",
-      "story_size": 2
+      "story_id": "2440879db793",
+      "story_size": 23
     }
   ]
 }
