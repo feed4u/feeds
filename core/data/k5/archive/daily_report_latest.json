@@ -1,211 +1,158 @@
 {
-  "generated_at": "2026-10-23T01:56:17.232891+00:00",
-  "analysis_date": "2026-10-22",
+  "generated_at": "2026-10-24T01:46:48.798769+00:00",
+  "analysis_date": "2026-10-23",
   "vertical": "k5",
   "model": "qwen38-27b-mtp2:latest",
   "llm_endpoint": "127.0.0.1:11434",
   "window_hours": 24,
-  "source_file": "archive/*/daily/2026-10-22.json",
-  "total_items_in_window_all": 256,
-  "total_items_in_window_curated": 113,
+  "source_file": "archive/*/daily/2026-10-23.json",
+  "total_items_in_window_all": 170,
+  "total_items_in_window_curated": 79,
   "sections_from": "topics",
-  "topics_file": "archive/news/topics/2026-10-22.json",
+  "topics_file": "archive/news/topics/2026-10-23.json",
   "chunks": 0,
   "llm_calls": 1,
-  "duration_seconds": 346.8,
-  "daily_report_markdown": "### Headline summary\n- Mass exploitation of the PHP2Shell vulnerabilities began days before patches were released, with unauthenticated remote code execution flaws now broadly exploited across the internet. ([SecurityWeek](https://www.securityweek.com/php2shell-exploitation-started-days-before-patches/), [Infosecurity Magazine](https://www.infosecurity-magazine.com/news/php2shell-exploitation-attempt/), [Broadcom](https://www.security.com/threat-intelligence/php2shell-critical-vulns-cve-2026-109618-109619), [sygnia.co](https://www.sygnia.co/threat-reports-and-advisories/php2shell-two-critical-php-vulnerabilities-expose-web-servers-to-remote-code-execution/))\n- A critical zero-day in Arista VeloCloud Orchestrator is being actively exploited, while a CVSS 10.0 GitLab flaw and an out-of-band Oracle Java alert highlight a surge in critical infrastructure risks. ([BleepingComputer](https://www.bleepingcomputer.com/news/security/arista-patches-new-velocloud-orchestrator-zero-day-exploited-in-attacks/), [The Hacker News](https://thehackernews.com/2026/10/arista-warns-of-critical-velocloud-sql.html), [/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1xcedw4/critical_gitlab_flaw_cvss_100_could_allow/), [SOC Prime Blog](https://socprime.com/blog/cve-2026-110264-analysis/))\n- Supply chain and trust issues escalated as the LiteLLM release pipeline was hacked to distribute malware and eMudhra withdrew from the certificate business after its private keys were found to be easily guessable. ([CSO Online](https://www.csoonline.com/article/4239033/litellm-release-pipeline-hacked-to-distribute-credential-stealing-malware.html), [BleepingComputer](https://www.bleepingcomputer.com/news/security/litellm-release-pipeline-hacked-to-distribute-info-stealer-malware/), [The Record](https://therecord.media/indian-tech-company-announces-withdrawal-certificate-business-incident), [The Hacker News](https://thehackernews.com/2026/10/emudhra-to-exit-global-ssltls-business.html))\n\n### PHP2Shell: Two Critical PHP Flaws Allow Unauthenticated Remote Code Execution\nPatch now: CVE-2026-109618 and CVE-2026-109619 let unauthenticated attackers run code on web servers running PHP, and details were public before fixes shipped. ([Broadcom](https://www.security.com/threat-intelligence/php2shell-critical-vulns-cve-2026-109618-109619), [sygnia.co](https://www.sygnia.co/threat-reports-and-advisories/php2shell-two-critical-php-vulnerabilities-expose-web-servers-to-remote-code-execution/))\n\n### PHP2Shell Exploitation Started Days Before Patches\nInitial attempts were observed on October 17, and mass activity began shortly after patches were released. ([SecurityWeek](https://www.securityweek.com/php2shell-exploitation-started-days-before-patches/), [Infosecurity Magazine](https://www.infosecurity-magazine.com/news/php2shell-exploitation-attempt/), [BleepingComputer](https://www.bleepingcomputer.com/news/security/amazon-says-php2shell-exploitation-began-4-days-before-patches/))\n\n### Hackers Exploited the PHP Vulnerabilities Days Before They Were Patched\nAmazon Web Services logged attempts to leverage the internet-melting PHP2Shell bugs four days ago. They’re now being “broadly exploited” across the internet. ([WIRED](https://www.wired.com/story/hackers-exploited-the-php-vulnerabilities-days-before-they-were-patched/), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/critical-php-vulnerabilities/))\n\n### Arista patches new VeloCloud Orchestrator zero-day exploited in attacks\nArista Networks released security updates to patch an actively exploited zero-day vulnerability affecting VeloCloud Orchestrator (VCO) On-Prem deployments. ([BleepingComputer](https://www.bleepingcomputer.com/news/security/arista-patches-new-velocloud-orchestrator-zero-day-exploited-in-attacks/), [The Hacker News](https://thehackernews.com/2026/10/arista-warns-of-critical-velocloud-sql.html))\n\n### Critical GitLab Flaw (CVSS 10.0) Could Allow Unauthenticated RCE Across 12 Years of Releases\nI know everyone's preoccupied with the PHP CVEs, but this is also BIG NEWS submitted by /u/OnePaint8721 link comments ([/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1xcedw4/critical_gitlab_flaw_cvss_100_could_allow/), [SOC Prime Blog](https://socprime.com/blog/cve-2026-110264-analysis/))\n\n### CVE-2026-91403: Critical Oracle Java SE and GraalVM Flaw Enables Remote Attacks\nOracle has issued an out-of-band Security Alert addressing CVE-2026-91403, a critical vulnerability affecting Oracle Java SE, Oracle GraalVM for JDK, and Oracle GraalVM Enterprise Edition. The security issue resides in the Java Secure Socket Extension (JSSE) component and carries a CVSS v3.1 score… ([SOC Prime Blog](https://socprime.com/blog/cve-2026-91403-analysis/), [/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1xcg7jv/oracle_java_cve202691403_score_91/))\n\n### LiteLLM release pipeline hacked to distribute credential-stealing malware\nHackers hijacked the software release pipeline of LiteLLM, a popular open-source AI gateway, to distribute credential-stealing malware, marking the project’s second supply chain compromise this year despite security measures introduced after an earlier attack. The compromised version, 1.107.0, was… ([CSO Online](https://www.csoonline.com/article/4239033/litellm-release-pipeline-hacked-to-distribute-credential-stealing-malware.html), [BleepingComputer](https://www.bleepingcomputer.com/news/security/litellm-release-pipeline-hacked-to-distribute-info-stealer-malware/))\n\n### eMudhra to Exit Global SSL/TLS Business After 8 Intermediate CA Keys Found Easily Guessable\neMudhra, an Indian certificate authority (CA), will withdraw from its global SSL/TLS certificate business, its board decided on Thursday. The decision came five days after a researcher reported recovering the private keys of eight of its intermediate CA certificates. ([The Hacker News](https://thehackernews.com/2026/10/emudhra-to-exit-global-ssltls-business.html))",
+  "duration_seconds": 125.5,
+  "daily_report_markdown": "### Headline summary\n- Active exploitation is targeting VeloCloud Orchestrator and Node.js, with critical RCE flaws being leveraged by attackers. ([SecurityWeek](https://www.securityweek.com/attackers-exploit-third-velocloud-orchestrator-zero-day-in-four-months/), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/hackers-exploiting-velocloud-orchestrator-flaw/), [The Hacker News](https://thehackernews.com/2026/10/researchers-demonstrate-node2shell-rce.html), [SOC Prime Blog](https://socprime.com/blog/cve-2026-111497-node-js-brotli-decoder-flaw-enables-remote-code-execution/))\n- Major data breaches at Capcom and Quest Diagnostics have exposed millions of records, while a supply chain attack compromised the LiteLLM package. ([SecurityWeek](https://www.securityweek.com/11-million-impacted-by-capcom-data-breach/), [Help Net Security](https://www.helpnetsecurity.com/2026/10/23/capcom-id-data-breach-11-million-records-exposed/), [HIPAA Journal](https://www.hipaajournal.com/quest-diagnostics-data-breach-2026/), [The Record](https://therecord.media/quest-diagnostics-network-intrusion))\n- Oracle has patched 1,295 vulnerabilities, including six with a maximum CVSS score, alongside critical fixes for Aruba Networking and Ruby. ([CSO Online](https://www.csoonline.com/article/4239850/oracle-patches-1295-security-vulnerabilities-in-october-including-six-scoring-10-0-2.html), [BleepingComputer](https://www.bleepingcomputer.com/news/security/hpe-patches-eight-max-severity-rce-and-auth-bypass-aos-flaws/), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/hpe-warns-aruba-networking-flaws/), [The Hacker News](https://thehackernews.com/2026/10/ruby-fixes-three-regex-engine-bugs.html))\n\n### VeloCloud Orchestrator SQL injection exploitation\nHackers are actively exploiting a critical SQL injection vulnerability in VeloCloud Orchestrator to gain superuser access, marking the third zero-day in the product within four months. ([SecurityWeek](https://www.securityweek.com/attackers-exploit-third-velocloud-orchestrator-zero-day-in-four-months/), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/hackers-exploiting-velocloud-orchestrator-flaw/))\n\n### Node.js Brotli decoder RCE vulnerability\nNode.js released security updates to fix a critical remote code execution flaw in its Brotli decoder, which researchers demonstrated could be exploited via crafted compressed data. ([The Hacker News](https://thehackernews.com/2026/10/researchers-demonstrate-node2shell-rce.html), [SOC Prime Blog](https://socprime.com/blog/cve-2026-111497-node-js-brotli-decoder-flaw-enables-remote-code-execution/), [Qualys Blog](https://blog.qualys.com/category/vulnerabilities-threat-research), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/new-node2shell-node-js-rce-exploit/))\n\n### PHP2Shell Vulnerabilities and New PHP RCE Flaw\nReports detail the exploitation and mitigation of PHP2Shell vulnerabilities, alongside the discovery of a new unpatched PHP RCE flaw following the initial patches. ([CSO Online](https://www.csoonline.com/article/4239359/php2shell-exposes-the-weakness-in-coordinated-vulnerability-disclosure-2.html), [salt.security](https://salt.security/blog/bridging-the-patch-gap-stopping-php2shell-and-zero-days-before-waf-signatures-exist), [/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1xd061e/which_government_agencies_have_actually_pulled/), [/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1xd3oew/regarding_php_security_exploits_that_were/))\n\n### Oracle patches 1295 security vulnerabilities in October, including six scoring 10.0\nOracle has patched 1295 security vulnerabilities with its October Critical Patch Update Advisory ; six of them scored the highest vulnerability rating of 10.0 on the CVSS version 3.1 scale. The company’s flagship Oracle E-Business Suite was home to one of the vulnerabiltiies, tracked as CVE-2026-10… ([CSO Online](https://www.csoonline.com/article/4239850/oracle-patches-1295-security-vulnerabilities-in-october-including-six-scoring-10-0-2.html))\n\n### Capcom data breach exposes 11.7 million records\nCapcom confirmed that unauthorized access to its CAPCOM ID service exposed personal information for 11.7 million customers, with some accounts having their passwords changed. ([SecurityWeek](https://www.securityweek.com/11-million-impacted-by-capcom-data-breach/), [Help Net Security](https://www.helpnetsecurity.com/2026/10/23/capcom-id-data-breach-11-million-records-exposed/), [Infosecurity Magazine](https://www.infosecurity-magazine.com/news/capcom-confirms-data-breach/), [Malwarebytes Labs (Vendor)](https://www.malwarebytes.com/blog/data-breaches/2026/10/resident-evil-maker-capcom-warns-of-phishing-after-11-7-million-records-exposed))\n\n### Quest Diagnostics confirms patient data breach\nQuest Diagnostics disclosed that a cyberattack on its lab service system resulted in the exposure of patient records, prompting notifications to affected individuals. ([HIPAA Journal](https://www.hipaajournal.com/quest-diagnostics-data-breach-2026/), [The Record](https://therecord.media/quest-diagnostics-network-intrusion), [/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1xdhipg/quest_diagnostics_reports_cyber_breach_affecting/), [BleepingComputer](https://www.bleepingcomputer.com/news/security/quest-diagnostics-confirms-data-breach-exposed-patient-records/))\n\n### LiteLLM supply chain compromise\nThe LiteLLM Python package was compromised in a supply chain attack that used malicious startup hooks to steal credentials, with attackers leveraging compromised GitHub tokens to push the malicious code. ([SecurityWeek](https://www.securityweek.com/litellm-compromised-in-fresh-supply-chain-attack/), [Microsoft Security Blog](https://www.microsoft.com/en-us/security/blog/2026/10/23/inside-the-litellm-1-107-0-supply-chain-compromise-credential-theft-through-python-startup-hooks/))\n\n### HPE patches Aruba Networking vulnerabilities\nHewlett Packard Enterprise released security updates to patch multiple critical vulnerabilities in Aruba Networking devices, including remote code execution and authentication bypass flaws. ([BleepingComputer](https://www.bleepingcomputer.com/news/security/hpe-patches-eight-max-severity-rce-and-auth-bypass-aos-flaws/), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/hpe-warns-aruba-networking-flaws/))",
   "headline": [
     {
-      "text": "Mass exploitation of the PHP2Shell vulnerabilities began days before patches were released, with unauthenticated remote code execution flaws now broadly exploited across the internet.",
+      "text": "Active exploitation is targeting VeloCloud Orchestrator and Node.js, with critical RCE flaws being leveraged by attackers.",
       "links": [
-        "https://www.securityweek.com/php2shell-exploitation-started-days-before-patches/",
-        "https://www.infosecurity-magazine.com/news/php2shell-exploitation-attempt/",
-        "https://www.security.com/threat-intelligence/php2shell-critical-vulns-cve-2026-109618-109619",
-        "https://www.sygnia.co/threat-reports-and-advisories/php2shell-two-critical-php-vulnerabilities-expose-web-servers-to-remote-code-execution/",
-        "https://www.wired.com/story/hackers-exploited-the-php-vulnerabilities-days-before-they-were-patched/",
-        "https://cybersecuritynews.com/critical-php-vulnerabilities/"
+        "https://www.securityweek.com/attackers-exploit-third-velocloud-orchestrator-zero-day-in-four-months/",
+        "https://cybersecuritynews.com/hackers-exploiting-velocloud-orchestrator-flaw/",
+        "https://thehackernews.com/2026/10/researchers-demonstrate-node2shell-rce.html",
+        "https://socprime.com/blog/cve-2026-111497-node-js-brotli-decoder-flaw-enables-remote-code-execution/"
       ]
     },
     {
-      "text": "A critical zero-day in Arista VeloCloud Orchestrator is being actively exploited, while a CVSS 10.0 GitLab flaw and an out-of-band Oracle Java alert highlight a surge in critical infrastructure risks.",
+      "text": "Major data breaches at Capcom and Quest Diagnostics have exposed millions of records, while a supply chain attack compromised the LiteLLM package.",
       "links": [
-        "https://www.bleepingcomputer.com/news/security/arista-patches-new-velocloud-orchestrator-zero-day-exploited-in-attacks/",
-        "https://thehackernews.com/2026/10/arista-warns-of-critical-velocloud-sql.html",
-        "https://www.reddit.com/r/cybersecurity/comments/1xcedw4/critical_gitlab_flaw_cvss_100_could_allow/",
-        "https://socprime.com/blog/cve-2026-110264-analysis/",
-        "https://socprime.com/blog/cve-2026-91403-analysis/",
-        "https://www.reddit.com/r/cybersecurity/comments/1xcg7jv/oracle_java_cve202691403_score_91/"
+        "https://www.securityweek.com/11-million-impacted-by-capcom-data-breach/",
+        "https://www.helpnetsecurity.com/2026/10/23/capcom-id-data-breach-11-million-records-exposed/",
+        "https://www.hipaajournal.com/quest-diagnostics-data-breach-2026/",
+        "https://therecord.media/quest-diagnostics-network-intrusion",
+        "https://www.securityweek.com/litellm-compromised-in-fresh-supply-chain-attack/",
+        "https://www.microsoft.com/en-us/security/blog/2026/10/23/inside-the-litellm-1-107-0-supply-chain-compromise-credential-theft-through-python-startup-hooks/"
       ]
     },
     {
-      "text": "Supply chain and trust issues escalated as the LiteLLM release pipeline was hacked to distribute malware and eMudhra withdrew from the certificate business after its private keys were found to be easily guessable.",
+      "text": "Oracle has patched 1,295 vulnerabilities, including six with a maximum CVSS score, alongside critical fixes for Aruba Networking and Ruby.",
       "links": [
-        "https://www.csoonline.com/article/4239033/litellm-release-pipeline-hacked-to-distribute-credential-stealing-malware.html",
-        "https://www.bleepingcomputer.com/news/security/litellm-release-pipeline-hacked-to-distribute-info-stealer-malware/",
-        "https://therecord.media/indian-tech-company-announces-withdrawal-certificate-business-incident",
-        "https://thehackernews.com/2026/10/emudhra-to-exit-global-ssltls-business.html"
+        "https://www.csoonline.com/article/4239850/oracle-patches-1295-security-vulnerabilities-in-october-including-six-scoring-10-0-2.html",
+        "https://www.bleepingcomputer.com/news/security/hpe-patches-eight-max-severity-rce-and-auth-bypass-aos-flaws/",
+        "https://cybersecuritynews.com/hpe-warns-aruba-networking-flaws/",
+        "https://thehackernews.com/2026/10/ruby-fixes-three-regex-engine-bugs.html"
       ]
     }
   ],
   "top_stories": [
     {
-      "title": "PHP2Shell: Two Critical PHP Flaws Allow Unauthenticated Remote Code Execution",
-      "summary": "Patch now: CVE-2026-109618 and CVE-2026-109619 let unauthenticated attackers run code on web servers running PHP, and details were public before fixes shipped.",
+      "title": "VeloCloud Orchestrator SQL injection exploitation",
+      "summary": "Hackers are actively exploiting a critical SQL injection vulnerability in VeloCloud Orchestrator to gain superuser access, marking the third zero-day in the product within four months.",
       "links": [
-        "https://www.security.com/threat-intelligence/php2shell-critical-vulns-cve-2026-109618-109619",
-        "https://www.sygnia.co/threat-reports-and-advisories/php2shell-two-critical-php-vulnerabilities-expose-web-servers-to-remote-code-execution/"
+        "https://www.securityweek.com/attackers-exploit-third-velocloud-orchestrator-zero-day-in-four-months/",
+        "https://cybersecuritynews.com/hackers-exploiting-velocloud-orchestrator-flaw/"
       ],
-      "topic_id": "4f96ade4781a"
+      "topic_id": "8629f18951c7"
     },
     {
-      "title": "PHP2Shell Exploitation Started Days Before Patches",
-      "summary": "Initial attempts were observed on October 17, and mass activity began shortly after patches were released.",
+      "title": "Node.js Brotli decoder RCE vulnerability",
+      "summary": "Node.js released security updates to fix a critical remote code execution flaw in its Brotli decoder, which researchers demonstrated could be exploited via crafted compressed data.",
       "links": [
-        "https://www.securityweek.com/php2shell-exploitation-started-days-before-patches/",
-        "https://www.infosecurity-magazine.com/news/php2shell-exploitation-attempt/",
-        "https://www.bleepingcomputer.com/news/security/amazon-says-php2shell-exploitation-began-4-days-before-patches/"
+        "https://thehackernews.com/2026/10/researchers-demonstrate-node2shell-rce.html",
+        "https://socprime.com/blog/cve-2026-111497-node-js-brotli-decoder-flaw-enables-remote-code-execution/",
+        "https://blog.qualys.com/category/vulnerabilities-threat-research",
+        "https://cybersecuritynews.com/new-node2shell-node-js-rce-exploit/"
       ],
-      "topic_id": "3b58fbc53dba"
+      "topic_id": "af14cf2c1366"
     },
     {
-      "title": "Hackers Exploited the PHP Vulnerabilities Days Before They Were Patched",
-      "summary": "Amazon Web Services logged attempts to leverage the internet-melting PHP2Shell bugs four days ago. They’re now being “broadly exploited” across the internet.",
+      "title": "PHP2Shell Vulnerabilities and New PHP RCE Flaw",
+      "summary": "Reports detail the exploitation and mitigation of PHP2Shell vulnerabilities, alongside the discovery of a new unpatched PHP RCE flaw following the initial patches.",
       "links": [
-        "https://www.wired.com/story/hackers-exploited-the-php-vulnerabilities-days-before-they-were-patched/",
-        "https://cybersecuritynews.com/critical-php-vulnerabilities/"
+        "https://www.csoonline.com/article/4239359/php2shell-exposes-the-weakness-in-coordinated-vulnerability-disclosure-2.html",
+        "https://salt.security/blog/bridging-the-patch-gap-stopping-php2shell-and-zero-days-before-waf-signatures-exist",
+        "https://www.reddit.com/r/cybersecurity/comments/1xd061e/which_government_agencies_have_actually_pulled/",
+        "https://www.reddit.com/r/cybersecurity/comments/1xd3oew/regarding_php_security_exploits_that_were/",
+        "https://therecord.media/php-php2shell-exploitation-attempts-pocs",
+        "https://www.reddit.com/r/cybersecurity/comments/1xd7hjw/php_vulnerability_exposes_100_lithuanian_websites/",
+        "https://thehackernews.com/2026/10/php2shell-exploit-attempts-hit-millions.html",
+        "https://securityaffairs.com/201538/hacking/php2shell-millions-of-attacks-no-confirmed-successful-exploits-yet.html",
+        "https://thehackernews.com/2026/10/urgent-php-warns-of-another-unpatched.html",
+        "https://www.reddit.com/r/cybersecurity/comments/1xdbr0s/what_does_ai_mean_for_the_future_of_cybersecurity/",
+        "https://hackread.com/426-android-ios-apps-linked-php2shell-backend-risks/",
+        "https://www.securityweek.com/mirai-botnet-operators-join-php2shell-attacks-as-aslr-bypass-exploits-emerge/",
+        "https://cybersecuritynews.com/critical-php2shell-exploit-code/",
+        "https://isc.sans.edu/diary/rss/33450",
+        "https://portswigger.net/blog/php2shell-x-burp-suite-detection-in-your-hands-within-a-day-of-disclosure",
+        "https://blog.nviso.eu/2026/10/23/php2shell-operational-guidance/",
+        "https://www.reddit.com/r/cybersecurity/comments/1xdg7av/amazon_threat_intelligence_identifies_php2shell/",
+        "https://www.zdnet.com/tech/php2shell-php-patch-mitigation-critical-exploit/",
+        "https://www.bleepingcomputer.com/news/security/php-shares-mitigation-for-new-and-unpatched-rce-vulnerability/",
+        "https://www.reddit.com/r/cybersecurity/comments/1xdi195/php_warns_of_another_unpatched_rce_risk_two_days/",
+        "https://securityaffairs.com/201595/security/php-warns-of-new-code-execution-flaw-days-after-php2shell-patches.html",
+        "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/",
+        "https://www.reddit.com/r/cybersecurity/comments/1xdnpkt/visual_explanation_php2shell_why_governments/",
+        "https://www.reddit.com/r/cybersecurity/comments/1xdnpoh/patch_me_up_before_i_shell_cve2026109618_php2shell/"
       ],
-      "topic_id": "854606358900"
+      "topic_id": "dd43e4a3a922"
     },
     {
-      "title": "Arista patches new VeloCloud Orchestrator zero-day exploited in attacks",
-      "summary": "Arista Networks released security updates to patch an actively exploited zero-day vulnerability affecting VeloCloud Orchestrator (VCO) On-Prem deployments.",
+      "title": "Oracle patches 1295 security vulnerabilities in October, including six scoring 10.0",
+      "summary": "Oracle has patched 1295 security vulnerabilities with its October Critical Patch Update Advisory ; six of them scored the highest vulnerability rating of 10.0 on the CVSS version 3.1 scale. The company’s flagship Oracle E-Business Suite was home to one of the vulnerabiltiies, tracked as CVE-2026-10…",
       "links": [
-        "https://www.bleepingcomputer.com/news/security/arista-patches-new-velocloud-orchestrator-zero-day-exploited-in-attacks/",
-        "https://thehackernews.com/2026/10/arista-warns-of-critical-velocloud-sql.html"
+        "https://www.csoonline.com/article/4239850/oracle-patches-1295-security-vulnerabilities-in-october-including-six-scoring-10-0-2.html"
       ],
-      "topic_id": "f161767d197e"
+      "topic_id": "d3dfa577a48c"
     },
     {
-      "title": "Critical GitLab Flaw (CVSS 10.0) Could Allow Unauthenticated RCE Across 12 Years of Releases",
-      "summary": "I know everyone's preoccupied with the PHP CVEs, but this is also BIG NEWS submitted by /u/OnePaint8721 link comments",
+      "title": "Capcom data breach exposes 11.7 million records",
+      "summary": "Capcom confirmed that unauthorized access to its CAPCOM ID service exposed personal information for 11.7 million customers, with some accounts having their passwords changed.",
       "links": [
-        "https://www.reddit.com/r/cybersecurity/comments/1xcedw4/critical_gitlab_flaw_cvss_100_could_allow/",
-        "https://socprime.com/blog/cve-2026-110264-analysis/"
+        "https://www.securityweek.com/11-million-impacted-by-capcom-data-breach/",
+        "https://www.helpnetsecurity.com/2026/10/23/capcom-id-data-breach-11-million-records-exposed/",
+        "https://www.infosecurity-magazine.com/news/capcom-confirms-data-breach/",
+        "https://www.malwarebytes.com/blog/data-breaches/2026/10/resident-evil-maker-capcom-warns-of-phishing-after-11-7-million-records-exposed",
+        "https://cybersecuritynews.com/capcom-confirmed-customer-records-exposed/"
       ],
-      "topic_id": "ac4805223e2c"
+      "topic_id": "baaf01c33734"
     },
     {
-      "title": "CVE-2026-91403: Critical Oracle Java SE and GraalVM Flaw Enables Remote Attacks",
-      "summary": "Oracle has issued an out-of-band Security Alert addressing CVE-2026-91403, a critical vulnerability affecting Oracle Java SE, Oracle GraalVM for JDK, and Oracle GraalVM Enterprise Edition. The security issue resides in the Java Secure Socket Extension (JSSE) component and carries a CVSS v3.1 score…",
+      "title": "Quest Diagnostics confirms patient data breach",
+      "summary": "Quest Diagnostics disclosed that a cyberattack on its lab service system resulted in the exposure of patient records, prompting notifications to affected individuals.",
       "links": [
-        "https://socprime.com/blog/cve-2026-91403-analysis/",
-        "https://www.reddit.com/r/cybersecurity/comments/1xcg7jv/oracle_java_cve202691403_score_91/"
+        "https://www.hipaajournal.com/quest-diagnostics-data-breach-2026/",
+        "https://therecord.media/quest-diagnostics-network-intrusion",
+        "https://www.reddit.com/r/cybersecurity/comments/1xdhipg/quest_diagnostics_reports_cyber_breach_affecting/",
+        "https://www.bleepingcomputer.com/news/security/quest-diagnostics-confirms-data-breach-exposed-patient-records/"
       ],
-      "topic_id": "4ae120e3d6c5"
+      "topic_id": "65fc24247128"
     },
     {
-      "title": "LiteLLM release pipeline hacked to distribute credential-stealing malware",
-      "summary": "Hackers hijacked the software release pipeline of LiteLLM, a popular open-source AI gateway, to distribute credential-stealing malware, marking the project’s second supply chain compromise this year despite security measures introduced after an earlier attack. The compromised version, 1.107.0, was…",
+      "title": "LiteLLM supply chain compromise",
+      "summary": "The LiteLLM Python package was compromised in a supply chain attack that used malicious startup hooks to steal credentials, with attackers leveraging compromised GitHub tokens to push the malicious code.",
       "links": [
-        "https://www.csoonline.com/article/4239033/litellm-release-pipeline-hacked-to-distribute-credential-stealing-malware.html",
-        "https://www.bleepingcomputer.com/news/security/litellm-release-pipeline-hacked-to-distribute-info-stealer-malware/"
+        "https://www.securityweek.com/litellm-compromised-in-fresh-supply-chain-attack/",
+        "https://www.microsoft.com/en-us/security/blog/2026/10/23/inside-the-litellm-1-107-0-supply-chain-compromise-credential-theft-through-python-startup-hooks/"
       ],
-      "topic_id": "61859b70f0a2"
+      "topic_id": "530ed178a3f9"
     },
     {
-      "title": "eMudhra to Exit Global SSL/TLS Business After 8 Intermediate CA Keys Found Easily Guessable",
-      "summary": "eMudhra, an Indian certificate authority (CA), will withdraw from its global SSL/TLS certificate business, its board decided on Thursday. The decision came five days after a researcher reported recovering the private keys of eight of its intermediate CA certificates.",
+      "title": "HPE patches Aruba Networking vulnerabilities",
+      "summary": "Hewlett Packard Enterprise released security updates to patch multiple critical vulnerabilities in Aruba Networking devices, including remote code execution and authentication bypass flaws.",
       "links": [
-        "https://thehackernews.com/2026/10/emudhra-to-exit-global-ssltls-business.html"
+        "https://www.bleepingcomputer.com/news/security/hpe-patches-eight-max-severity-rce-and-auth-bypass-aos-flaws/",
+        "https://cybersecuritynews.com/hpe-warns-aruba-networking-flaws/"
       ],
-      "topic_id": "f74ce17a74d9"
+      "topic_id": "76eba6dcd40a"
     }
   ],
   "highlights": [
     {
-      "title": "PHP2Shell: Two Critical PHP Flaws Allow Unauthenticated Remote Code Execution",
-      "link": "https://www.security.com/threat-intelligence/php2shell-critical-vulns-cve-2026-109618-109619",
-      "source": "Broadcom",
-      "published": "2026-10-22T09:11:20+00:00",
-      "smart_groups": [
-        "Vulnerabilities / CVEs"
-      ],
-      "curated": true
-    },
-    {
-      "title": "php2shell: Two Critical PHP Vulnerabilities Expose Web Servers to Remote Code Execution",
-      "link": "https://www.sygnia.co/threat-reports-and-advisories/php2shell-two-critical-php-vulnerabilities-expose-web-servers-to-remote-code-execution/",
-      "source": "sygnia.co",
-      "published": "2026-10-22T15:04:18+00:00",
-      "smart_groups": [
-        "Vulnerabilities / CVEs"
-      ],
-      "curated": true
-    },
-    {
-      "title": "PHP2Shell Exploitation Started Days Before Patches",
-      "link": "https://www.securityweek.com/php2shell-exploitation-started-days-before-patches/",
+      "title": "Attackers Exploit Third VeloCloud Orchestrator Zero-Day in Four Months",
+      "link": "https://www.securityweek.com/attackers-exploit-third-velocloud-orchestrator-zero-day-in-four-months/",
       "source": "SecurityWeek",
-      "published": "2026-10-22T09:48:58+00:00",
-      "smart_groups": [],
-      "curated": true
-    },
-    {
-      "title": "PHP2Shell Exploitation Attempt Detected by Amazon Four Days Before Vulnerability Disclosure",
-      "link": "https://www.infosecurity-magazine.com/news/php2shell-exploitation-attempt/",
-      "source": "Infosecurity Magazine",
-      "published": "2026-10-22T10:10:00+00:00",
-      "smart_groups": [
-        "Vulnerabilities / CVEs"
-      ],
-      "curated": true
-    },
-    {
-      "title": "Amazon says PHP2Shell exploitation began 4 days before patches",
-      "link": "https://www.bleepingcomputer.com/news/security/amazon-says-php2shell-exploitation-began-4-days-before-patches/",
-      "source": "BleepingComputer",
-      "published": "2026-10-22T13:09:12+00:00",
-      "smart_groups": [],
-      "curated": true
-    },
-    {
-      "title": "Hackers Exploited the PHP Vulnerabilities Days Before They Were Patched",
-      "link": "https://www.wired.com/story/hackers-exploited-the-php-vulnerabilities-days-before-they-were-patched/",
-      "source": "WIRED",
-      "published": "2026-10-22T02:24:17+00:00",
-      "smart_groups": [
-        "Vulnerabilities / CVEs"
-      ],
-      "curated": true
-    },
-    {
-      "title": "Hackers Were Targeting Critical PHP Vulnerabilities Days Before They Were Patched",
-      "link": "https://cybersecuritynews.com/critical-php-vulnerabilities/",
-      "source": "Cyber Security News (FeedBurner)",
-      "published": "2026-10-22T14:14:07+00:00",
-      "smart_groups": [
-        "Vulnerabilities / CVEs",
-        "Exploit / PoC",
-        "Cloud / SaaS"
-      ],
-      "curated": true
-    },
-    {
-      "title": "Arista patches new VeloCloud Orchestrator zero-day exploited in attacks",
-      "link": "https://www.bleepingcomputer.com/news/security/arista-patches-new-velocloud-orchestrator-zero-day-exploited-in-attacks/",
-      "source": "BleepingComputer",
-      "published": "2026-10-22T17:18:22+00:00",
-      "smart_groups": [
-        "Vulnerabilities / CVEs",
-        "Exploit / PoC"
-      ],
-      "curated": true
-    },
-    {
-      "title": "Arista Warns of Critical VeloCloud SQL Injection Zero-Day Exploited in Attacks",
-      "link": "https://thehackernews.com/2026/10/arista-warns-of-critical-velocloud-sql.html",
-      "source": "The Hacker News",
-      "published": "2026-10-22T19:05:17+00:00",
+      "published": "2026-10-23T09:58:34+00:00",
       "smart_groups": [
         "Vulnerabilities / CVEs",
         "Web / API Security"
@@ -213,13 +160,102 @@
       "curated": true
     },
     {
-      "title": "Critical GitLab Flaw (CVSS 10.0) Could Allow Unauthenticated RCE Across 12 Years of Releases",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1xcedw4/critical_gitlab_flaw_cvss_100_could_allow/",
-      "source": "/r/cybersecurity",
-      "published": "2026-10-22T09:59:47+00:00",
+      "title": "Hackers Actively Exploiting Critical VeloCloud Orchestrator Flaw to Gain Superuser Access",
+      "link": "https://cybersecuritynews.com/hackers-exploiting-velocloud-orchestrator-flaw/",
+      "source": "Cyber Security News (FeedBurner)",
+      "published": "2026-10-23T13:57:11+00:00",
       "smart_groups": [
         "Vulnerabilities / CVEs",
-        "Product News",
+        "Malware / Payloads",
+        "Web / API Security"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Researchers Demonstrate Node2Shell RCE Exploit on Node.js Build Using Crafted Brotli Data",
+      "link": "https://thehackernews.com/2026/10/researchers-demonstrate-node2shell-rce.html",
+      "source": "The Hacker News",
+      "published": "2026-10-23T08:40:43+00:00",
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Exploit / PoC",
+        "Linux / Unix"
+      ],
+      "curated": true
+    },
+    {
+      "title": "CVE-2026-111497: Node.js Brotli Decoder Flaw Enables Remote Code Execution",
+      "link": "https://socprime.com/blog/cve-2026-111497-node-js-brotli-decoder-flaw-enables-remote-code-execution/",
+      "source": "SOC Prime Blog",
+      "published": "2026-10-23T10:58:40+00:00",
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Exploit / PoC",
+        "Product News"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Node.js Patches Brotli Remote Code Execution Flaw: Find Vulnerable Runtimes Before Attackers Do",
+      "link": "https://blog.qualys.com/category/vulnerabilities-threat-research",
+      "source": "Qualys Blog",
+      "published": "2026-10-23T12:58:02+00:00",
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Linux / Unix",
+        "Cloud / SaaS"
+      ],
+      "curated": true
+    },
+    {
+      "title": "New Node2Shell Node.js RCE Exploit Let Attackers Execute Malicious Code Through Brotli-Compressed Data",
+      "link": "https://cybersecuritynews.com/new-node2shell-node-js-rce-exploit/",
+      "source": "Cyber Security News (FeedBurner)",
+      "published": "2026-10-23T14:11:40+00:00",
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Exploit / PoC",
+        "Linux / Unix"
+      ],
+      "curated": true
+    },
+    {
+      "title": "PHP2Shell exposes the weakness in coordinated vulnerability disclosure",
+      "link": "https://www.csoonline.com/article/4239359/php2shell-exposes-the-weakness-in-coordinated-vulnerability-disclosure-2.html",
+      "source": "CSO Online",
+      "published": "2026-10-23T00:43:37+00:00",
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Cloud / SaaS"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Bridging the Patch Gap: Stopping PHP2Shell and Zero-Days Before WAF Signatures Exist",
+      "link": "https://salt.security/blog/bridging-the-patch-gap-stopping-php2shell-and-zero-days-before-waf-signatures-exist",
+      "source": "salt.security",
+      "published": "2026-10-23T01:00:00+00:00",
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Which government agencies have actually pulled the plug?",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1xd061e/which_government_agencies_have_actually_pulled/",
+      "source": "/r/cybersecurity",
+      "published": "2026-10-23T01:00:32+00:00",
+      "smart_groups": [
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Regarding PHP security exploits that were discovered 2 days ago",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1xd3oew/regarding_php_security_exploits_that_were/",
+      "source": "/r/cybersecurity",
+      "published": "2026-10-23T03:55:24+00:00",
+      "smart_groups": [
         "Community Discussion"
       ],
       "curated": true
