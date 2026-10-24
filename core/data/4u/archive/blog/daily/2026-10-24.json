@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-10-24T12:54:40.480721+00:00",
+  "generated_at": "2026-10-24T19:01:42.691458+00:00",
   "date": "2026-10-24",
-  "total_items": 44,
+  "total_items": 45,
   "next_chunk": "archive/blog/daily/2026-10-23.json",
   "items": [
     {
@@ -225,6 +225,22 @@
       "published_ts": 1792836470,
       "smart_groups": [
         "Research & papers",
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Got a pretrained music transformer to jam with me live, no fine-tuning, just steering the sampling [P]",
+      "summary": "I wanted to see how far you can get making a pretrained symbolic music model \"listen\" to a live player without training it. Turns out pretty far. Setup: I play a MIDI keyboard, the Anticipatory Music Transformer (Thickstun et al., music-medium-800k) plays a second piano. While I play I track my key, the chord I'm holding and my tempo, and add biases to the logits before sampling. Out-of-key notes get pushed down, chord tones and tensions get pushed up, the keys right around my hands get pushed down so it doesn't step on me, and when I stop it gets pulled up to where a melody would be. There's also a small boost for continuing the intervals of my last phrase, which makes it sound like it's answering. It samples about a second ahead, and when I change chord I throw away what it had planned and resample. Runs on a Jetson Orin Nano. Video + code: https://github.com/RiccardoCataldi/duetto The offsets are all hand-tuned by ear, which feels a bit dumb. Has anyone tried something more principled for this, like a small learned conditioning head or guidance-style tricks on a symbolic model? submitted by /u/GGAllin43 [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>I wanted to see how far you can get making a pretrained symbolic music model \"listen\" to a live player without training it. Turns out pretty far.</p> <p>Setup: I play a MIDI keyboard, the Anticipatory Music Transformer (Thickstun et al., music-medium-800k) plays a second piano. While I play I track my key, the chord I'm holding and my tempo, and add biases to the logits before sampling. Out-of-key notes get pushed down, chord tones and tensions get pushed up, the keys right around my hands get pushed down so it doesn't step on me, and when I stop it gets pulled up to where a melody would be. There's also a small boost for continuing the intervals of my last phrase, which makes it sound like it's answering.</p> <p>It samples about a second ahead, and when I change chord I throw away what it had planned and resample. Runs on a Jetson Orin Nano.</p> <p>Video + code: <a href=\"https://github.com/RiccardoCataldi/duetto\">https://github.com/RiccardoCataldi/duetto</a></p> <p>The offsets are all hand-tuned by ear, which feels a bit dumb. Has anyone tried something more principled for this, like a small learned conditioning head or guidance-style tricks on a symbolic model?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/GGAllin43\"> /u/GGAllin43 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xe4pex/got_a_pretrained_music_transformer_to_jam_with_me/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xe4pex/got_a_pretrained_music_transformer_to_jam_with_me/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/MachineLearning/comments/1xe4pex/got_a_pretrained_music_transformer_to_jam_with_me/",
+      "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-10-24T09:58:29+00:00",
+      "published_ts": 1792835909,
+      "smart_groups": [
         "Infra & model ops"
       ],
       "curated": false
