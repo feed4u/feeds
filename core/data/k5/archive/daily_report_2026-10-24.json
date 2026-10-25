@@ -1,0 +1,222 @@
+{
+  "generated_at": "2026-10-25T01:57:04.285615+00:00",
+  "analysis_date": "2026-10-24",
+  "vertical": "k5",
+  "model": "qwen38-27b-mtp2:latest",
+  "llm_endpoint": "127.0.0.1:11434",
+  "window_hours": 24,
+  "source_file": "archive/*/daily/2026-10-24.json",
+  "total_items_in_window_all": 43,
+  "total_items_in_window_curated": 17,
+  "sections_from": "topics",
+  "topics_file": "archive/news/topics/2026-10-24.json",
+  "chunks": 0,
+  "llm_calls": 1,
+  "duration_seconds": 391.9,
+  "daily_report_markdown": "### Headline summary\n- CISA has added critical flaws in Collabora Online and Arista VeloCloud to its Known Exploited Vulnerabilities catalog, indicating active exploitation. ([Security Affairs](https://securityaffairs.com/201652/security/u-s-cisa-adds-collabora-online-flaw-to-its-known-exploited-vulnerabilities-catalog.html), [/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1xe3epq/cisa_flags_two_actively_exploited_critical_flaws/), [Security Affairs](https://securityaffairs.com/201609/hacking/u-s-cisa-adds-arista-velocloud-orchestrator-flaw-to-its-known-exploited-vulnerabilities-catalog.html))\n- A memory-corruption flaw in the Brotli decoder is enabling remote code execution in Node.js, Bun, and Python packages, with new variants emerging. ([The Hacker News](https://thehackernews.com/2026/10/brotli-decoder-flaw-behind-nodejs-rce.html), [/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1xe28vv/node2shell_evolves_to_http2shell/), [/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1xdunkf/python_packages_now_vulnerable_to_node2shell/))\n- A leaked LiteLLM master key allowed attackers to hijack a release pipeline and steal GitHub tokens, while a new UEFI bootkit exploits the Baton Drop flaw to bypass Secure Boot. ([The Hacker News](https://thehackernews.com/2026/10/leaked-litellm-master-key-let-attackers.html), [BleepingComputer](https://www.bleepingcomputer.com/news/security/blackx-uefi-bootkit-exploits-baton-drop-flaw-to-bypass-secure-boot/), [/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1xed936/blackx_uefi_bootkit_leverages_baton_drop_flaw_to/))\n\n### Brotli Decoder Flaw Behind Node.js RCE Also Affects Bun, Python and Other Widely Used Software\nA memory-corruption flaw in Google's Brotli decoder sits in many programs that unpack Brotli-compressed data, among them Bun, the Python Brotli and brotlicffi packages, and Envoy proxies set up to decompress Brotli. Tracked as CVE-2026-111497, the flaw allows crafted compressed data to overwrite pa… ([The Hacker News](https://thehackernews.com/2026/10/brotli-decoder-flaw-behind-nodejs-rce.html))\n\n### Palo Alto Confirms PHP RCE Vulnerabilities Impact PAN-OS and Multiple Network Products\nPalo Alto Networks has confirmed that two critical PHP remote code execution vulnerabilities affect PAN-OS and previously impacted two cloud services. Tracked as CVE-2026-109618 and CVE-2026-109619, the flaws have prompted planned firewall hotfixes and guidance to restrict access to management inte… ([Cyber Security News (FeedBurner)](https://cybersecuritynews.com/palo-alto-confirms-php-rce-vulnerabilities/))\n\n### MEGATHREAD October 2026 Cybersecurity Incidents: PHP2Shell, LiteLLM, eMudhra, GitLab, and more\nMEGATHREAD PHP2Shell (CVE-2026-109618/109619), LiteLLM, eMudhra, GitLab & Other October Security Incidents AKA Black October We've been getting hammered with posts and questions about the wave of vulnerabilities, compromises, and other security incidents over the past week. A lot are duplicative,… ([/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1xdx8k7/megathread_october_2026_cybersecurity_incidents/))\n\n### Leaked LiteLLM Master Key Let Attackers Steal GitHub Tokens and Hijack Release Pipeline\nLiteLLM on Friday revealed that an Agent Platform master key accidentally published to a public GitHub repository in late May 2026 ultimately allowed the threat actor to push a malicious version of the popular Python package. \"On May 27, 2026, a configuration file was committed to the public LiteLL… ([The Hacker News](https://thehackernews.com/2026/10/leaked-litellm-master-key-let-attackers.html))\n\n### BlackX UEFI bootkit exploits Baton Drop flaw to bypass Secure Boot\nA new UEFI bootkit named BlackX, deployed in an espionage campaign in early 2026, exploited the old Baton Drop vulnerability to bypass Secure Boot and load a malicious driver designed to interfere with security solutions from Kaspersky and Avast. ([BleepingComputer](https://www.bleepingcomputer.com/news/security/blackx-uefi-bootkit-exploits-baton-drop-flaw-to-bypass-secure-boot/), [/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1xed936/blackx_uefi_bootkit_leverages_baton_drop_flaw_to/))\n\n### CISA Flags Two Actively Exploited Critical Flaws in Collabora Online and Arista VeloCloud\nsubmitted by /u/DeepCedarShadow link comments ([/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1xe3epq/cisa_flags_two_actively_exploited_critical_flaws/))\n\n### Max-severity GitLab bug allows remote code execution over 12 years of releases\nsubmitted by /u/NISMO1968 link comments ([/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1xe38l4/maxseverity_gitlab_bug_allows_remote_code/))\n\n### How to Identify Compromised eMudhra Certificates With Qualys (CVE-2026-111943 and CVE-2026-111944)\nExecutive Summary A critical certificate authority incident disclosed on October 17, 2026, impacts eight eMudhra intermediate CA certificates. A flaw in the key generation process could allow attackers to recover private keys and issue fraudulent TLS or code-signing certificates. ([Qualys Blog](https://blog.qualys.com/category/vulnerabilities-threat-research))",
+  "headline": [
+    {
+      "text": "CISA has added critical flaws in Collabora Online and Arista VeloCloud to its Known Exploited Vulnerabilities catalog, indicating active exploitation.",
+      "links": [
+        "https://securityaffairs.com/201652/security/u-s-cisa-adds-collabora-online-flaw-to-its-known-exploited-vulnerabilities-catalog.html",
+        "https://www.reddit.com/r/cybersecurity/comments/1xe3epq/cisa_flags_two_actively_exploited_critical_flaws/",
+        "https://securityaffairs.com/201609/hacking/u-s-cisa-adds-arista-velocloud-orchestrator-flaw-to-its-known-exploited-vulnerabilities-catalog.html"
+      ]
+    },
+    {
+      "text": "A memory-corruption flaw in the Brotli decoder is enabling remote code execution in Node.js, Bun, and Python packages, with new variants emerging.",
+      "links": [
+        "https://thehackernews.com/2026/10/brotli-decoder-flaw-behind-nodejs-rce.html",
+        "https://www.reddit.com/r/cybersecurity/comments/1xe28vv/node2shell_evolves_to_http2shell/",
+        "https://www.reddit.com/r/cybersecurity/comments/1xdunkf/python_packages_now_vulnerable_to_node2shell/"
+      ]
+    },
+    {
+      "text": "A leaked LiteLLM master key allowed attackers to hijack a release pipeline and steal GitHub tokens, while a new UEFI bootkit exploits the Baton Drop flaw to bypass Secure Boot.",
+      "links": [
+        "https://thehackernews.com/2026/10/leaked-litellm-master-key-let-attackers.html",
+        "https://www.bleepingcomputer.com/news/security/blackx-uefi-bootkit-exploits-baton-drop-flaw-to-bypass-secure-boot/",
+        "https://www.reddit.com/r/cybersecurity/comments/1xed936/blackx_uefi_bootkit_leverages_baton_drop_flaw_to/"
+      ]
+    }
+  ],
+  "top_stories": [
+    {
+      "title": "Brotli Decoder Flaw Behind Node.js RCE Also Affects Bun, Python and Other Widely Used Software",
+      "summary": "A memory-corruption flaw in Google's Brotli decoder sits in many programs that unpack Brotli-compressed data, among them Bun, the Python Brotli and brotlicffi packages, and Envoy proxies set up to decompress Brotli. Tracked as CVE-2026-111497, the flaw allows crafted compressed data to overwrite pa…",
+      "links": [
+        "https://thehackernews.com/2026/10/brotli-decoder-flaw-behind-nodejs-rce.html"
+      ],
+      "topic_id": "a0a9e49aec28"
+    },
+    {
+      "title": "Palo Alto Confirms PHP RCE Vulnerabilities Impact PAN-OS and Multiple Network Products",
+      "summary": "Palo Alto Networks has confirmed that two critical PHP remote code execution vulnerabilities affect PAN-OS and previously impacted two cloud services. Tracked as CVE-2026-109618 and CVE-2026-109619, the flaws have prompted planned firewall hotfixes and guidance to restrict access to management inte…",
+      "links": [
+        "https://cybersecuritynews.com/palo-alto-confirms-php-rce-vulnerabilities/"
+      ],
+      "topic_id": "3da20c213fc3"
+    },
+    {
+      "title": "MEGATHREAD October 2026 Cybersecurity Incidents: PHP2Shell, LiteLLM, eMudhra, GitLab, and more",
+      "summary": "MEGATHREAD PHP2Shell (CVE-2026-109618/109619), LiteLLM, eMudhra, GitLab & Other October Security Incidents AKA Black October We've been getting hammered with posts and questions about the wave of vulnerabilities, compromises, and other security incidents over the past week. A lot are duplicative,…",
+      "links": [
+        "https://www.reddit.com/r/cybersecurity/comments/1xdx8k7/megathread_october_2026_cybersecurity_incidents/"
+      ],
+      "topic_id": "32dd0830d55f"
+    },
+    {
+      "title": "Leaked LiteLLM Master Key Let Attackers Steal GitHub Tokens and Hijack Release Pipeline",
+      "summary": "LiteLLM on Friday revealed that an Agent Platform master key accidentally published to a public GitHub repository in late May 2026 ultimately allowed the threat actor to push a malicious version of the popular Python package. \"On May 27, 2026, a configuration file was committed to the public LiteLL…",
+      "links": [
+        "https://thehackernews.com/2026/10/leaked-litellm-master-key-let-attackers.html"
+      ],
+      "topic_id": "3a1a036ef73a"
+    },
+    {
+      "title": "BlackX UEFI bootkit exploits Baton Drop flaw to bypass Secure Boot",
+      "summary": "A new UEFI bootkit named BlackX, deployed in an espionage campaign in early 2026, exploited the old Baton Drop vulnerability to bypass Secure Boot and load a malicious driver designed to interfere with security solutions from Kaspersky and Avast.",
+      "links": [
+        "https://www.bleepingcomputer.com/news/security/blackx-uefi-bootkit-exploits-baton-drop-flaw-to-bypass-secure-boot/",
+        "https://www.reddit.com/r/cybersecurity/comments/1xed936/blackx_uefi_bootkit_leverages_baton_drop_flaw_to/"
+      ],
+      "topic_id": "8ff742fd08e7"
+    },
+    {
+      "title": "CISA Flags Two Actively Exploited Critical Flaws in Collabora Online and Arista VeloCloud",
+      "summary": "submitted by /u/DeepCedarShadow link comments",
+      "links": [
+        "https://www.reddit.com/r/cybersecurity/comments/1xe3epq/cisa_flags_two_actively_exploited_critical_flaws/"
+      ],
+      "topic_id": "06e6d7437347"
+    },
+    {
+      "title": "Max-severity GitLab bug allows remote code execution over 12 years of releases",
+      "summary": "submitted by /u/NISMO1968 link comments",
+      "links": [
+        "https://www.reddit.com/r/cybersecurity/comments/1xe38l4/maxseverity_gitlab_bug_allows_remote_code/"
+      ],
+      "topic_id": "7d50893d9525"
+    },
+    {
+      "title": "How to Identify Compromised eMudhra Certificates With Qualys (CVE-2026-111943 and CVE-2026-111944)",
+      "summary": "Executive Summary A critical certificate authority incident disclosed on October 17, 2026, impacts eight eMudhra intermediate CA certificates. A flaw in the key generation process could allow attackers to recover private keys and issue fraudulent TLS or code-signing certificates.",
+      "links": [
+        "https://blog.qualys.com/category/vulnerabilities-threat-research"
+      ],
+      "topic_id": "45a39053f636"
+    }
+  ],
+  "highlights": [
+    {
+      "title": "Brotli Decoder Flaw Behind Node.js RCE Also Affects Bun, Python and Other Widely Used Software",
+      "link": "https://thehackernews.com/2026/10/brotli-decoder-flaw-behind-nodejs-rce.html",
+      "source": "The Hacker News",
+      "published": "2026-10-24T11:09:29+00:00",
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Palo Alto Confirms PHP RCE Vulnerabilities Impact PAN-OS and Multiple Network Products",
+      "link": "https://cybersecuritynews.com/palo-alto-confirms-php-rce-vulnerabilities/",
+      "source": "Cyber Security News (FeedBurner)",
+      "published": "2026-10-24T06:41:29+00:00",
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Ransomware",
+        "Exploit / PoC"
+      ],
+      "curated": true
+    },
+    {
+      "title": "[MEGATHREAD] October 2026 Cybersecurity Incidents: PHP2Shell, LiteLLM, eMudhra, GitLab, and more",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1xdx8k7/megathread_october_2026_cybersecurity_incidents/",
+      "source": "/r/cybersecurity",
+      "published": "2026-10-24T02:41:43+00:00",
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Community Discussion",
+        "Product News"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Leaked LiteLLM Master Key Let Attackers Steal GitHub Tokens and Hijack Release Pipeline",
+      "link": "https://thehackernews.com/2026/10/leaked-litellm-master-key-let-attackers.html",
+      "source": "The Hacker News",
+      "published": "2026-10-24T11:03:33+00:00",
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "BlackX UEFI bootkit exploits Baton Drop flaw to bypass Secure Boot",
+      "link": "https://www.bleepingcomputer.com/news/security/blackx-uefi-bootkit-exploits-baton-drop-flaw-to-bypass-secure-boot/",
+      "source": "BleepingComputer",
+      "published": "2026-10-24T14:17:32+00:00",
+      "smart_groups": [
+        "IoT & Embedded Security",
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "BlackX UEFI Bootkit Leverages “Baton Drop” Flaw to Bypass Secure Boot",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1xed936/blackx_uefi_bootkit_leverages_baton_drop_flaw_to/",
+      "source": "/r/cybersecurity",
+      "published": "2026-10-24T16:37:02+00:00",
+      "smart_groups": [
+        "IoT & Embedded Security",
+        "Community Discussion"
+      ],
+      "curated": false
+    },
+    {
+      "title": "CISA Flags Two Actively Exploited Critical Flaws in Collabora Online and Arista VeloCloud",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1xe3epq/cisa_flags_two_actively_exploited_critical_flaws/",
+      "source": "/r/cybersecurity",
+      "published": "2026-10-24T08:37:10+00:00",
+      "smart_groups": [
+        "Exploit / PoC",
+        "Community Discussion"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Max-severity GitLab bug allows remote code execution over 12 years of releases",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1xe38l4/maxseverity_gitlab_bug_allows_remote_code/",
+      "source": "/r/cybersecurity",
+      "published": "2026-10-24T08:26:08+00:00",
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Product News",
+        "Community Discussion"
+      ],
+      "curated": true
+    },
+    {
+      "title": "How to Identify Compromised eMudhra Certificates With Qualys (CVE-2026-111943 and CVE-2026-111944)",
+      "link": "https://blog.qualys.com/category/vulnerabilities-threat-research",
+      "source": "Qualys Blog",
+      "published": "2026-10-24T02:03:52+00:00",
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Community Discussion",
+        "Product News"
+      ],
+      "curated": true
+    },
+    {
+      "title": "U.S. CISA adds Collabora Online flaw to its Known Exploited Vulnerabilities catalog",
+      "link": "https://securityaffairs.com/201652/security/u-s-cisa-adds-collabora-online-flaw-to-its-known-exploited-vulnerabilities-catalog.html",
+      "source": "Security Affairs",
+      "published": "2026-10-24T16:53:59+00:00",
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Crypto / Web3"
+      ],
+      "curated": true
+    }
+  ]
+}
