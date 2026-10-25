@@ -80,7 +80,7 @@ has the vertical table and the steps for adding a new vertical.
 Run every command below from the repository root unless it says otherwise.
 
 ## Project Structure & Module Organization
-- `core/code/base/`: shared pipeline. Entry points are `build_category_metadata.py`, `merge_feeds.py`, `fetch_news.py`, `archive_news.py`, `build_topics.py`, `daily_briefing.py`, `convert_feeds_txt.py` and `remove_errored_feeds.py`. Packages: `news_fetcher/` (RSS ingestion, HTML sanitizing, smart groups) and `archiver/`. Also `path_utils.py` (path resolution), `llm_client.py` (OpenAI-compatible client) and `tests/`.
+- `core/code/base/`: shared pipeline. Entry points are `build_category_metadata.py`, `merge_feeds.py`, `fetch_news.py`, `archive_news.py`, `build_topics.py`, `daily_briefing.py`, `convert_feeds_txt.py` and `remove_errored_feeds.py`. `outcome_daily_links.py` is the offline outcome-check scorer for the daily briefing's link and date integrity (README, "Outcome check"). Packages: `news_fetcher/` (RSS ingestion, HTML sanitizing, smart groups) and `archiver/`. Also `path_utils.py` (path resolution), `llm_client.py` (OpenAI-compatible client) and `tests/`.
 - Smart groups are non-exclusive tags (e.g. "Ransomware", "Vulnerabilities"): one item can carry several, in its `smart_groups` list (`news_fetcher/classifiers.py`).
 - `core/code/<vertical>/`: per-vertical overrides, mostly `smart_groups.py`. `core/code/k5/` also has `create_trends.py` with `trends_analyzer/`, and `build_daily_report.py`, a k5 wrapper around `daily_briefing.py`.
 - `core/code/run_pipeline.sh`, `core/code/sync_web_data.sh`, `core/code/run_daily_briefings.sh`, `core/code/systemd/`: orchestration (see Deployment).

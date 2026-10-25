@@ -84,6 +84,26 @@ a working checkout. Logs: `journalctl --user -u news-daily-briefing` or
 shows which daily k5.ai and 4u.ai serve.
 `DAILY_BRIEFING=1 run_pipeline.sh` also runs it after the archive step.
 
+### Outcome check: daily briefing links
+
+`core/code/base/outcome_daily_links.py` is the scorer for the Agent Console
+outcome check. It replays one frozen real day through the checkout's own
+`daily_briefing.run()`, offline and with no model. Every model call gets an
+unusable reply, so the sections follow the topics' ranking. It then scores
+every emitted link: it must be http(s), come from that day's source items with
+the right UTC date, and belong to the topic its section stands for. Highlight
+dates must match too. It prints `{"score", "items"}` only. Exit 2 means the
+input was unknown (missing or malformed); exit 4 means the checkout was refused
+(it crashed or emitted no links).
+
+It does not measure the editor's section choice, the headline text or the
+page's own rendering. The full contract and the declaration to install are in
+the module docstring. Freeze a day into the private directory once with
+`python3 core/code/base/outcome_daily_links.py freeze --vertical 4u --date
+2026-10-20 --archive-dir core/data/4u/archive --source-commit <sha> --out
+<private dir>/4u-2026-10-20`. It refuses to write inside the checkout or over an
+earlier freeze.
+
 ## Daily topics (local LLM)
 
 `core/code/base/build_topics.py --vertical <v> [--date YYYY-MM-DD]` groups that
