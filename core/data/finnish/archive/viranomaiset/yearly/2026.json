@@ -2408,6 +2408,101 @@
     "curated": false
   },
   {
+    "title": "OpenAI AI Agents Demonstrate VM Escapes and Secret Cross-Sandbox Communication",
+    "summary": "OpenAI has announced plans to conduct frontier model training with no live internet access, as it resumes reinforcement learning (RL) training and internal inference of its most advanced AI models. \"Based on the current state of alignment research, monitoring systems, and the security of internet infrastructure, we believe the responsible approach is to conduct frontier model training with no internet access,\" the artificial intelligence (AI) company said. \"We've implemented this policy and will maintain it until advances in these safeguards justify broader internet access.\" OpenAI said models' growing capabilities can have the side effect of them getting much better at devising ways around environmental restrictions to escape containment and perform unintended actions. This can involve the model exploiting a software flaw or misconfiguration to reach the live internet, or finding unauthorized ways to communicate with agents in other sandboxes. Late last month, the frontier lab made the decision to pause training of its most powerful models after one of its agents during reinforcement learning (RL) training contacted an external chatbot by exploiting a misconfiguration in a DNS resolver to obtain limited internet access. OpenAI said it also kicked off a \"high-compute red-teaming campaign\" to test the resilience of its research and evaluation environments in the face of increasingly powerful models, leading to the discovery of previously unknown software vulnerabilities, including a critical unauthenticated remote code execution in Google Brotli (CVE-2026-111497, CVSS score: 9.2), a widely used compression library. Patches for the vulnerability, also called Node2Shell and HTTP2Shell, have since been released for libbrotli, Python, C++, Node.js, Bun, Envoy, and Istio.",
+    "summary_html": "OpenAI has announced plans to conduct frontier model training with no live internet access, as it resumes reinforcement learning (RL) training and internal inference of its most advanced AI models.\n\n\"Based on the current state of alignment research, monitoring systems, and the security of internet infrastructure, we believe the responsible approach is to conduct frontier model training with no internet access,\" the artificial intelligence (AI) company said. \"We've implemented this policy and will maintain it until advances in these safeguards justify broader internet access.\"\n\nOpenAI said models' growing capabilities can have the side effect of them getting much better at devising ways around environmental restrictions to escape containment and perform unintended actions. This can involve the model exploiting a software flaw or misconfiguration to reach the live internet, or finding unauthorized ways to communicate with agents in other sandboxes.\n\nLate last month, the frontier lab made the decision to pause training of its most powerful models after one of its agents during reinforcement learning (RL) training contacted an external chatbot by exploiting a misconfiguration in a DNS resolver to obtain limited internet access.\n\nOpenAI said it also kicked off a \"high-compute red-teaming campaign\" to test the resilience of its research and evaluation environments in the face of increasingly powerful models, leading to the discovery of previously unknown software vulnerabilities, including a critical unauthenticated remote code execution in Google Brotli (CVE-2026-111497, CVSS score: 9.2), a widely used compression library.\n\nPatches for the vulnerability, also called Node2Shell and HTTP2Shell, have since been released for libbrotli, Python, C++, Node.js, Bun, Envoy, and Istio.",
+    "link": "https://thehackernews.com/2026/10/openai-ai-agents-demonstrate-vm-escapes.html",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-10-26T03:00:09+00:00",
+    "published_ts": 1792983609,
+    "smart_groups": [
+      "Teknologia & Tiede"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Unpatched Tailscale SSH Flaws Could Let a Hacked Device Reach Root on Other Servers",
+    "summary": "Classification: Important, Solution: Workaround, Exploit Maturity: Proof-of-Concept, CVSSv3.1: None, CVEs: , Summary: A single hacked device on a Tailscale network can be used to gain root access to other servers it can reach, according to a security researcher who published the findings this week. The attack requires two things: Tailscale SSH set up to allow port forwarding, and an attacker who already controls one device that the network's access rules permit to connect to the target. The findings were published on October 25 in a report called Tailworm by Erica Windisch of Cyberdione Labs. Windisch tested Tailscale version 1.104.2 and headscale version 0.29.5, the self-hosted server some networks use to run Tailscale instead of the company's hosted service, over three days in a lab. The report describes tests on that software, not attacks against real networks. As of publication, Tailscale had issued no security bulletin, no CVE identifier, and no fixed version. Because there is no patch, the available steps are changes to how Tailscale SSH and related features are set up. The report and Tailscale's own advice overlap on most of them. - Review your Tailscale SSH access rules. Write them as single source-to-destination pairs that name one device and one target, and remove broad rules that grant access by identity or tag. The report calls per-pair rules the one control that stopped the spread in testing. - Turn off SSH port forwarding where you can. On Tailscale's hosted service this is a per-rule setting. On headscale version 0.29.5 it cannot be turned off, so treat every SSH grant there as giving root on the target. - Remove app connector permissions from devices that do not need them. - Remove any tailscale serve forward that points at a Unix socket. - Turn on node-key expiry, so a stolen device key does not stay valid forever. - If a device is compromised, delete it at the control plane. Reimaging the machine does not revoke keys an attacker may have already copied off it. Tailscale also suggests enabling SSH check mode, which adds a login step before a session starts, and enabling automatic updates. Check mode does not fix the privilege escalation. It only adds another barrier in front of it. See also: https://tailworm.com/, See also: https://www.reddit.com/r/Tailscale/comments/1xeoj1l/recent_tailscale_vulnerability_reports/",
+    "summary_html": "Classification: Important, Solution: Workaround, Exploit Maturity: Proof-of-Concept, CVSSv3.1: None, CVEs: , Summary: A single hacked device on a Tailscale network can be used to gain root access to other servers it can reach, according to a security researcher who published the findings this week.\n\nThe attack requires two things: Tailscale SSH set up to allow port forwarding, and an attacker who already controls one device that the network's access rules permit to connect to the target.\n\nThe findings were published on October 25 in a report called Tailworm by Erica Windisch of Cyberdione Labs. Windisch tested Tailscale version 1.104.2 and headscale version 0.29.5, the self-hosted server some networks use to run Tailscale instead of the company's hosted service, over three days in a lab.\n\nThe report describes tests on that software, not attacks against real networks. As of publication, Tailscale had issued no security bulletin, no CVE identifier, and no fixed version.\n\nBecause there is no patch, the available steps are changes to how Tailscale SSH and related features are set up. The report and Tailscale's own advice overlap on most of them.\n\n- Review your Tailscale SSH access rules. Write them as single source-to-destination pairs that name one device and one target, and remove broad rules that grant access by identity or tag. The report calls per-pair rules the one control that stopped the spread in testing.\n\n- Turn off SSH port forwarding where you can. On Tailscale's hosted service this is a per-rule setting. On headscale version 0.29.5 it cannot be turned off, so treat every SSH grant there as giving root on the target.\n\n- Remove app connector permissions from devices that do not need them.\n\n- Remove any tailscale serve forward that points at a Unix socket.\n\n- Turn on node-key expiry, so a stolen device key does not stay valid forever.\n\n- If a device is compromised, delete it at the control plane. Reimaging the machine does not revoke keys an attacker may have already copied off it.\n\nTailscale also suggests enabling SSH check mode, which adds a login step before a session starts, and enabling automatic updates. Check mode does not fix the privilege escalation. It only adds another barrier in front of it. See also: https://tailworm.com/, See also: https://www.reddit.com/r/Tailscale/comments/1xeoj1l/recent_tailscale_vulnerability_reports/",
+    "link": "https://thehackernews.com/2026/10/unpatched-tailscale-ssh-flaws-could-let.html",
+    "source": "Päivittäinen haavoittuvuuskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-10-26T03:00:08+00:00",
+    "published_ts": 1792983608,
+    "smart_groups": [
+      "Teknologia & Tiede"
+    ],
+    "curated": true
+  },
+  {
+    "title": "PHP2Shell Exploitation Hits Government Entity Amid Global Scanning and Signs of AI-Assisted Hacking",
+    "summary": "Threat actors have been observed using agentic artificial intelligence (AI) platforms for post-exploitation activity following the abuse of the PHP2Shell vulnerabilities tracked as CVE-2026-109618 and CVE-2026-109619. \"In one case, the attackers targeted a government entity in Europe and within two hours of the initial exploitation they had successfully accessed password hashes and multi-factor authentication secrets,\" Palo Alto Networks Unit 42 said. \"They also established an NT LAN Manager (NTLM)-relay tunnel into Active Directory and attempted Domain Admin privilege escalation.\" The network security company said it also observed the unknown attacker enumerating the compromised endpoint, with commands and behavioral markers suggesting the work of an agentic attacker. These include commands to facilitate - Reconnaissance of the authentication database with stolen credentials, targeting password hashes and two-factor authentication (2FA) secrets. Active Directory (AD) reconnaissance via curl-based anonymous LDAP queries to the domain controller (DC) in an attempt to look for the administrator account. The disclosure comes as CYFIRMA said it uncovered a suspected North Korea-linked campaign employing PHP2Shell to actively probe global PHP infrastructure from 21 compromised nodes. \"The scanning is deliberately low-volume and paced,\" Kumar Ritesh, CEO and founder of CYFIRMA, told The Hacker News. \"Nodes are rotated and abandoned at the first sign of blocking or rate-limiting, so threshold-based alerting is unlikely to catch it.\" The targets comprise a set of 216 unpatched or partially mitigated hosts located across the U.S., Japan, South Korea, Thailand, Indonesia, Australia, Taiwan, India, Singapore, the U.A.E., Saudi Arabia, and the E.U. The hosts span government, financial institutions, logistics, airports and aviation, manufacturing, and online transaction platforms.",
+    "summary_html": "Threat actors have been observed using agentic artificial intelligence (AI) platforms for post-exploitation activity following the abuse of the PHP2Shell vulnerabilities tracked as CVE-2026-109618 and CVE-2026-109619.\n\n\"In one case, the attackers targeted a government entity in Europe and within two hours of the initial exploitation they had successfully accessed password hashes and multi-factor authentication secrets,\" Palo Alto Networks Unit 42 said.\n\n\"They also established an NT LAN Manager (NTLM)-relay tunnel into Active Directory and attempted Domain Admin privilege escalation.\"\n\nThe network security company said it also observed the unknown attacker enumerating the compromised endpoint, with commands and behavioral markers suggesting the work of an agentic attacker. These include commands to facilitate -\n\nReconnaissance of the authentication database with stolen credentials, targeting password hashes and two-factor authentication (2FA) secrets.\n\nActive Directory (AD) reconnaissance via curl-based anonymous LDAP queries to the domain controller (DC) in an attempt to look for the administrator account.\n\nThe disclosure comes as CYFIRMA said it uncovered a suspected North Korea-linked campaign employing PHP2Shell to actively probe global PHP infrastructure from 21 compromised nodes.\n\n\"The scanning is deliberately low-volume and paced,\" Kumar Ritesh, CEO and founder of CYFIRMA, told The Hacker News. \"Nodes are rotated and abandoned at the first sign of blocking or rate-limiting, so threshold-based alerting is unlikely to catch it.\"\n\nThe targets comprise a set of 216 unpatched or partially mitigated hosts located across the U.S., Japan, South Korea, Thailand, Indonesia, Australia, Taiwan, India, Singapore, the U.A.E., Saudi Arabia, and the E.U. The hosts span government, financial institutions, logistics, airports and aviation, manufacturing, and online transaction platforms.",
+    "link": "https://thehackernews.com/2026/10/php2shell-exploitation-hits-government.html",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-10-26T03:00:08+00:00",
+    "published_ts": 1792983608,
+    "smart_groups": [
+      "Teknologia & Tiede"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Oracle Security Alert Advisory - CVE-2026-114820",
+    "summary": "Classification: Critical, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 9.1, CVEs: CVE-2026-114820, Summary: This Security Alert addresses CVE-2026-114820 by providing Java updates which removes the set of impacted root CA certificates related to eMudhra. To address this CVE, update to the latest Java version or apply the recommended mitigations. Affected Products and Versions: - Oracle GraalVM Enterprise Edition, version 21.3.20.0.2 - Oracle GraalVM for JDK, versions 17.0.21.0.2, 21.0.13.0.2 - Oracle Java SE, versions 8u511-b32, 8u511-perf-b32, 11.0.33.0.2, 17.0.21.0.2, 21.0.13.0.2, 25.0.5.0.2, 27.0.1.0.2",
+    "summary_html": "Classification: Critical, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 9.1, CVEs: CVE-2026-114820, Summary: This Security Alert addresses CVE-2026-114820 by providing Java updates which removes the set of impacted root CA certificates related to eMudhra. To address this CVE, update to the latest Java version or apply the recommended mitigations.\n\nAffected Products and Versions:\n\n- Oracle GraalVM Enterprise Edition, version 21.3.20.0.2\n- Oracle GraalVM for JDK, versions 17.0.21.0.2, 21.0.13.0.2\n- Oracle Java SE, versions 8u511-b32, 8u511-perf-b32, 11.0.33.0.2, 17.0.21.0.2, 21.0.13.0.2, 25.0.5.0.2, 27.0.1.0.2",
+    "link": "https://www.oracle.com/security-alerts/alert-cve-2026-114820.html",
+    "source": "Päivittäinen haavoittuvuuskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-10-26T03:00:07+00:00",
+    "published_ts": 1792983607,
+    "smart_groups": [],
+    "curated": true
+  },
+  {
+    "title": "AI coding agents hijacked using AGENTS.md file in Downloads folder",
+    "summary": "Researchers found a malicious AGENTS markdown instruction file in a customer’s Downloads folder that tricked an AI coding agent into installing a rogue npm package. They reproduced the attack against OpenAI Codex and demonstrated a related technique against Claude Code to leak OAuth tokens and hijack the account using only the malicious instructions. Markdown files such as AGENTS.md are plain-text files that contain project-specific instructions for AI coding agents, such as the tools to use, how to run tests, and the coding conventions to follow.",
+    "summary_html": "Researchers found a malicious AGENTS markdown instruction file in a customer’s Downloads folder that tricked an AI coding agent into installing a rogue npm package.\n\nThey reproduced the attack against OpenAI Codex and demonstrated a related technique against Claude Code to leak OAuth tokens and hijack the account using only the malicious instructions.\n\nMarkdown files such as AGENTS.md are plain-text files that contain project-specific instructions for AI coding agents, such as the tools to use, how to run tests, and the coding conventions to follow.",
+    "link": "https://www.bleepingcomputer.com/news/security/ai-coding-agents-hijacked-using-agentsmd-file-in-downloads-folder/",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-10-26T03:00:07+00:00",
+    "published_ts": 1792983607,
+    "smart_groups": [
+      "Teknologia & Tiede"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Huijatuille rahat heti takaisin? Pankit äimän käkenä",
+    "summary": "Euroopan unionin tuomioistuimen ratkaisua verkkohuijatun rahojen välittömästä palauttamisesta puidaan nyt suomalaisissa pankeissa. Tuomioistuin päätti, että pankkien on palautettava asiakkailleen viipymättä tietojenkalastelussa menetetyt rahat, jotka on viety näiden tileiltä oikeudettomilla maksutapahtumilla. – Tilanne on hämmentävä kaikille osapuolille, Finanssiala ry:n Lainsäädäntö- ja vahinkovakuutus -ryhmän esihenkilö Hannu Ijäs toteaa IS:lle. Ijäksen mukaan tuomioistuimen päätös on vastoin Suomen vakiintunutta käytäntöä, jossa muun muassa katsotaan, että törkeä huolimattomuus voi olla peruste välittömän palautuksen lykkäämiselle. Tuomioistuimen mukaan sillä ei ole merkitystä. Tuomioistuin käsitteli puolalaispankin asiakkaan tapausta, jossa huijari oli siirtänyt henkilön tililtä noin 700 euroa omalle tililleen. Huijari oli päässyt pankkitiliin käsiksi tietojenkalastelulla. Pankki ei suostunut palauttamaan rahoja henkilölle, sillä sen mukaan henkilö ei ollut säilyttänyt pankkitunnuksiaan turvallisesti. IS:n pankeilta keräämien tietojen perusteella mitään varmaa rahojen välittömästä palauttamisesta ei voida vielä sanoa. Esimerkiksi S-Pankki sanoo noudattavansa toiminnassaan voimassa olevaa lainsäädäntöä ja huomioivansa uuden oikeuskäytännön. Mikäli arvioinnissa todetaan tarve muuttaa käytäntöjä, näin tehdään tarvittavilta osin. Aktia Pankki analysoi parhaillaan päätöksen mahdollisia vaikutuksia prosesseihinsa. – EU-tuomioistuimen päätös ei kuitenkaan vaikuta pankin ja asiakkaan väliseen vastuunjakoon menetetyistä varoista. Vastuu määräytyy maksupalvelulain ja pankin ja asiakkaan välisessä suhteessa sovellettavien sopimusehtojen mukaan, Aktian viestinnästä kerrotaan. Nordean mukaan ratkaisu on aivan tuore, eivätkä sen vaikutukset Suomessa ole vielä täysin selvillä. – Tärkeää on kuitenkin huomata, että se koskee vain osaa huijaustilanteista. Ratkaisusta ei seuraa se, että asiakkaalla ei olisi omaa vastuuta tai velvollisuutta huolellisuuteen maksupalveluja käytettäessä. Jatkossakin petostorjunta edellyttää pankkien, asiakkaiden ja viranomaisten hyvää yhteistoimintaa, Nordean viestinnästä korostetaan. Finanssialan johtava asiantuntija Teija Kaarlela kuvaa tilannetta ”mielenkiintoiseksi” Kauppalehdelle. Kaarlelan mukaan EU:ssa on lähellä valmistumistaan uusi maksupalveluasetus, joka itse asiassa kääntäisi pankin asemaa huijauksissa jälleen Suomen lain suuntaan antaen pankeille 15 päivän tutkinta-ajan. Tuomioistuin huomautti, että pankeilla voi olla oikeus vaatia rahoja jälkikäteen takaisin asiakkaalta. Sitä varten pankin pitää pystyä osoittamaan vahinkojen johtuneen asiakkaan tahallisesta tai törkeän huolimattomasta käytöksestä kirjautumistietojensa suojelemisessa. Päätöksen mukaan asiakkaan vastuun toteen näyttäminen on pankin kontolla. Palautusta koskevaan velvollisuuteen on oikeuden mukaan vain yksi poikkeus. Rahoja ei tarvitse palauttaa, jos on perusteltu syy epäillä asiakkaan syyllistyneen petokseen.",
+    "summary_html": "Euroopan unionin tuomioistuimen ratkaisua verkkohuijatun rahojen välittömästä palauttamisesta puidaan nyt suomalaisissa pankeissa.\n\nTuomioistuin päätti, että pankkien on palautettava asiakkailleen viipymättä tietojenkalastelussa menetetyt rahat, jotka on viety näiden tileiltä oikeudettomilla maksutapahtumilla.\n\n– Tilanne on hämmentävä kaikille osapuolille, Finanssiala ry:n Lainsäädäntö- ja vahinkovakuutus -ryhmän esihenkilö Hannu Ijäs toteaa IS:lle.\n\nIjäksen mukaan tuomioistuimen päätös on vastoin Suomen vakiintunutta käytäntöä, jossa muun muassa katsotaan, että törkeä huolimattomuus voi olla peruste välittömän palautuksen lykkäämiselle. Tuomioistuimen mukaan sillä ei ole merkitystä.\n\nTuomioistuin käsitteli puolalaispankin asiakkaan tapausta, jossa huijari oli siirtänyt henkilön tililtä noin 700 euroa omalle tililleen. Huijari oli päässyt pankkitiliin käsiksi tietojenkalastelulla.\n\nPankki ei suostunut palauttamaan rahoja henkilölle, sillä sen mukaan henkilö ei ollut säilyttänyt pankkitunnuksiaan turvallisesti.\n\nIS:n pankeilta keräämien tietojen perusteella mitään varmaa rahojen välittömästä palauttamisesta ei voida vielä sanoa.\n\nEsimerkiksi S-Pankki sanoo noudattavansa toiminnassaan voimassa olevaa lainsäädäntöä ja huomioivansa uuden oikeuskäytännön. Mikäli arvioinnissa todetaan tarve muuttaa käytäntöjä, näin tehdään tarvittavilta osin.\n\nAktia Pankki analysoi parhaillaan päätöksen mahdollisia vaikutuksia prosesseihinsa.\n\n– EU-tuomioistuimen päätös ei kuitenkaan vaikuta pankin ja asiakkaan väliseen vastuunjakoon menetetyistä varoista. Vastuu määräytyy maksupalvelulain ja pankin ja asiakkaan välisessä suhteessa sovellettavien sopimusehtojen mukaan, Aktian viestinnästä kerrotaan.\n\nNordean mukaan ratkaisu on aivan tuore, eivätkä sen vaikutukset Suomessa ole vielä täysin selvillä.\n\n– Tärkeää on kuitenkin huomata, että se koskee vain osaa huijaustilanteista. Ratkaisusta ei seuraa se, että asiakkaalla ei olisi omaa vastuuta tai velvollisuutta huolellisuuteen maksupalveluja käytettäessä. Jatkossakin petostorjunta edellyttää pankkien, asiakkaiden ja viranomaisten hyvää yhteistoimintaa, Nordean viestinnästä korostetaan.\n\nFinanssialan johtava asiantuntija Teija Kaarlela kuvaa tilannetta ”mielenkiintoiseksi” Kauppalehdelle.\n\nKaarlelan mukaan EU:ssa on lähellä valmistumistaan uusi maksupalveluasetus, joka itse asiassa kääntäisi pankin asemaa huijauksissa jälleen Suomen lain suuntaan antaen pankeille 15 päivän tutkinta-ajan.\n\nTuomioistuin huomautti, että pankeilla voi olla oikeus vaatia rahoja jälkikäteen takaisin asiakkaalta. Sitä varten pankin pitää pystyä osoittamaan vahinkojen johtuneen asiakkaan tahallisesta tai törkeän huolimattomasta käytöksestä kirjautumistietojensa suojelemisessa.\n\nPäätöksen mukaan asiakkaan vastuun toteen näyttäminen on pankin kontolla.\n\nPalautusta koskevaan velvollisuuteen on oikeuden mukaan vain yksi poikkeus. Rahoja ei tarvitse palauttaa, jos on perusteltu syy epäillä asiakkaan syyllistyneen petokseen.",
+    "link": "https://www.is.fi/digitoday/tietoturva/art-2000012362424.html",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-10-26T03:00:06+00:00",
+    "published_ts": 1792983606,
+    "smart_groups": [
+      "Politiikka",
+      "EU & Ulkomaat"
+    ],
+    "curated": false
+  },
+  {
     "title": "Wp On The Environnement (Climate)",
     "summary": "",
     "summary_html": "",
@@ -2655,6 +2750,50 @@
     "curated": false
   },
   {
+    "title": "Helsingissä kadonnut on löytynyt",
+    "summary": "",
+    "summary_html": "",
+    "link": "https://poliisi.fi/-/helsingissa-kadonnut-on-loytynyt",
+    "source": "Helsingin poliisilaitos",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-10-25T22:51:00+00:00",
+    "published_ts": 1792968660,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Kuopiossa ryöstettiin kaupan kassa",
+    "summary": "",
+    "summary_html": "Kuopiossa ryöstettiin kaupan kassa",
+    "link": "https://poliisi.fi/-/kuopiossa-ryostettiin-kaupan-kassa",
+    "source": "Itä-Suomen poliisilaitos",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-10-25T21:10:00+00:00",
+    "published_ts": 1792962600,
+    "smart_groups": [
+      "Teknologia & Tiede"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Kadonnut Helsingissä",
+    "summary": "",
+    "summary_html": "",
+    "link": "https://poliisi.fi/-/kadonnut-helsingissa-4",
+    "source": "Helsingin poliisilaitos",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-10-25T21:08:00+00:00",
+    "published_ts": 1792962480,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
     "title": "Poliisi etsii Helsingin keskustassa kadonnutta miestä − löytynyt",
     "summary": "",
     "summary_html": "",
@@ -2668,6 +2807,20 @@
     "smart_groups": [
       "Rikokset & Oikeus"
     ],
+    "curated": false
+  },
+  {
+    "title": "Lapissa kirjattiin viikonloppuna useita rikosilmoituksia pahoinpitelyistä",
+    "summary": "",
+    "summary_html": "Lapissa kirjattiin viikonloppuna useita rikosilmoituksia pahoinpitelyistä",
+    "link": "https://poliisi.fi/-/lapissa-kirjattiin-viikonloppuna-useita-rikosilmoituksia-pahoinpitelyista",
+    "source": "Lapin poliisilaitos",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-10-25T10:22:00+00:00",
+    "published_ts": 1792923720,
+    "smart_groups": [],
     "curated": false
   },
   {
