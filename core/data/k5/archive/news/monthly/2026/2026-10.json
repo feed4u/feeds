@@ -1,5 +1,230 @@
 [
   {
+    "title": "What PHP2Shell Teaches Us About Defending Private Apps in the Age of Frontier AI",
+    "summary": "What PHP2Shell Teaches Us About Defending Private Apps in the Age of Frontier AIOn October 20, 2026, two critical memory flaws in PHP were disclosed. Tracked as CVE-2026-109618 and CVE-2026-109619 and dubbed PHP2Shell, these vulnerabilities carry a 9.2 CVSS score from PHP’s maintainers (and a flat 10.0 from researchers at watchTowr) because they let an unauthenticated attacker run shell commands directly on a vulnerable server. At the time of disclosure, 70% of the web’s server-side applications were open to remote takeover.Within hours of disclosure, government portals, ecommerce sites, and other organizations around the world took themselves offline to avoid getting hit.Like other recent vulnerabilities, PHP2Shell draws attention to the shortcomings of enterprise security in the changing threat landscape: our patching workflows were built for human timelines, while attackers are now operating at the speed of frontier AI.Zscaler ThreatLabz report showing the risk score and vulnerabilities identified for PHP2Shell Here is a look at why PHP2Shell moved so fast, why internal enterprise apps and databases are just as exposed as public websites, and how Zscaler Private Access (ZPA) with Autonomous Application Shield gives your team breathing room to patch without shutting down the business. When Frontier AI Finds Vulnerabilities Humans Wrote OffOne of the most striking facts about PHP2Shell is how long the underlying bugs sat in plain sight. The memory safety flaws affected PHP versions all the way back to PHP 5.4, which shipped in 2012. A PHP core developer actually ran across the out-of-memory error behind one of the bugs during a 2024 audit. At the time, the team couldn't agree on a fix, and nobody believed a working exploit was practically feasible, so the issue was set aside.Two years later, two separate teams using frontier AI models were able to reason through PHP’s complex memory management and prove the bug could be reliably exploited.While defenders found PHP2Shell first, the same AI capabilities have permanently compressed the window between disclosure and mass exploitation. All the grunt work that used to slow attackers down—reverse-engineering patches, mapping out target environments, and testing exploit variations—can now be automated in minutes.Look at the timeline that unfolded in October:Four days before public disclosure, Amazon Threat Intelligence spotted early PHP2Shell exploitation attempts in its honeypot telemetry on October 17.Before the official embargo even lifted, a software vendor pushed patched packages early. Attackers immediately diffed the code changes to see what was fixed and started circulating working proof-of-concept exploits.Within minutes of the official patch release on October 21, mass automated scanning was underway across the internet, forcing agencies like the US NSA, CERT-EU, and the UK’s NCSC to warn organizations to either update immediately or take their servers offline.We now live in an era where the time-to-exploit is effectively negative. Attackers can weaponize a flaw in minutes, whereas enterprise IT still has to deal with change freezes, dependency checks, regression testing, and maintenance windows. If your entire defense rests on winning a footrace to patch every server first, the odds are stacked against you.PHP2Shell Is an Internal Enterprise Problem, TooPHP2Shell is not only a problem for marketing websites running WordPress, Drupal, or Joomla. In practice, almost every large enterprise has a massive, often undocumented footprint of PHP running behind the scenes on its internal network. For over twenty years, PHP has been the default language for internal web interfaces, database utilities, and bundled infrastructure appliances. Even if your developers never write a line of PHP, it is likely sitting inside your environment right now:Network monitoring and infrastructure tools: Many of the platforms sitting at the heart of the enterprise NOC—including Zabbix, Nagios XI, LibreNMS, and Cacti—use PHP to power their web frontends. Because these systems monitor the entire environment, they are high-value targets often holding SNMP community strings, API tokens, and administrative credentials.Internal IT and business systems: Popular IP address management (IPAM) tools like phpIPAM, IT asset and service desk platforms like Snipe-IT and GLPI, internal wikis like MediaWiki, and self-hosted file sharing platforms like Nextcloud all run on PHP.Database utilities and internal CRUD apps: Legacy instances of phpMyAdmin or single-file utilities like Adminer frequently linger in dev/test subnets and staging environments, alongside custom internal admin portals built on PHP frameworks like Laravel and Symfony that sit directly in front of sensitive SQL databases.Embedded web consoles and virtual appliances: Dozens of virtual appliances, VoIP/PBX systems (like FreePBX), web control panels (cPanel, Plesk), and edge devices (such as pfSense and OPNsense in branch or lab environments) bundle PHP under the hood just to serve their browser-based administration consoles.Making matters worse, the official binary patches for PHP2Shell only cover active versions (PHP 8.2 through 8.5). Older versions like PHP 7.4, 8.0, and 8.1 are end-of-life. Countless legacy internal apps and \"black-box\" vendor appliances can't be updated without breaking dependencies or voiding vendor support.If an attacker gets a foothold on your network—whether through a phished credential, a third-party contractor's laptop, or an exposed VPN—their next move is to scan your internal IP space. An unpatched phpMyAdmin instance or an old appliance interface is all they need to trigger PHP2Shell and take over the underlying host.Zscaler’s Four-Step Security Framework: Hide, Segment, Shield, DeceivePatching PHP should be a top priority for your security team. Updating the underlying code is the only way to permanently close CVE-2026-109618 and CVE-2026-109619.But how do you protect the business during the days or weeks it takes to track down every PHP instance, test the updates, and roll them out across thousands of workloads? And how do you put in place a security architecture that protects you from whatever new CVE is disclosed next week, and the week after that? A Zero Trust architecture dramatically reduces exposure of your critical applications and lets you put immediate protective layers around vulnerable apps so your teams can patch methodically.With Zscaler, that protection happens in four steps:1. HIDE: Make Internal Apps Invisible with Zscaler Private Access (ZPA)Why did so many organizations have to shut down their web services during the PHP2Shell rollout? Because their servers were sitting on public IP addresses where automated scanners could find and exploit them. Many enterprises inadvertently do the exact same thing with internal tools—exposing database portals, staging environments, or admin consoles through split-tunnel VPNs, firewall port forwards, or public cloud IPs.Zscaler Private Access (ZPA) takes those applications off the public internet completely. Applications sit behind lightweight App Connectors that only establish outbound connections to the Zscaler cloud. There are no inbound open ports and no public IPs to scan. If an outside attacker or an AI botnet sweeps the internet looking for vulnerable PHP servers, your private applications simply do not exist to them. They can’t attack what they can’t see.2. SEGMENT: Shrink Internal Exposure with Autonomous User-to-App SegmentationTaking apps off the internet stops external scans, but you still have employees, contractors, and vendors who need to get work done. In a traditional network—or even in a ZPA setup that relies on broad wildcard application segments—anyone who authenticates can often reach way more applications than their job requires. If an attacker compromises one user's device, they can immediately start probing neighboring servers for PHP2Shell.Autonomous User-to-App Segmentation uses AI to analyze actual access patterns and lock down reachability to the bare minimum. Instead of putting users on the network, ZPA connects specific users only to the specific applications they need. A marketing contractor has zero path to reach an engineering database portal or an appliance management console. Even if an attacker compromises an account, they have nowhere to move laterally.3. SHIELD: Stop the Exploit Inline with Autonomous App ShieldFinally, what about the applications that must remain reachable to authorized users while they are still waiting on a patch? If a compromised employee account or a malicious insider has legitimate access to an unpatched PHP app, hiding and segmenting won't stop them from sending a malicious payload down an allowed connection.That is the exact gap Zscaler Autonomous App Shield was built to close. Built directly into the ZPA platform, Autonomous App Shield provides continuous, inline protection for private applications. It uses AI to find and block exploits at the app connector, providing virtual patching long before you can put in a real patch: It continuously maps your application risk. Rather than relying on a point-in-time vulnerability scan from last month, ZPA App Connectors continuously inspect private applications and their runtime characteristics. You get a real-time view of which internal apps are actually running vulnerable versions of PHP so you know exactly where you are exposed and can prioritize remediation accordingly.It applies protections only where they are needed. Competitors push the same signature to every customer, applying protections regardless of whether a vulnerable application actually exists in that environment. That creates false positives, blocking legitimate traffic on systems that don't even run PHP, and false negatives, where the right signature never gets applied because signature limits are exhausted by rules that didn't need to be there in the first place. Zscaler flips this entirely: because we scan first, we only apply a virtual patch to an application that is actually running the vulnerable software. No waste. No unnecessary rules. No risk of cascading policy conflicts.It tailors protection to each individual app. The Zscaler cloud evaluates how each specific application behaves and applies only the virtual patches and inline controls that app actually needs.It adapts automatically as threats and code change. Drawing on threat intelligence from across the Zscaler cloud, alongside our work with IBM and Red Hat’s Project Lightwell, Autonomous App Shield updates its inline defenses as new exploit variations appear in the wild. When your DevOps team ships a code change or applies a patch, the protection adjusts automatically without a manual policy review.With PHP2Shell, Zscaler’s ThreatLabz threat research team pushed mitigating controls through our automated CI/CD pipeline into production before the industry had even agreed on a proper remediation. Customers using ZPA App Protection were protected before most vendors had written a single signature.4. DECEIVE: Trap AI-Driven Recon with High-Fidelity DeceptionWhat makes frontier AI so dangerous in the hands of an attacker is its ability to perform multi-step reasoning. Unlike old-school scripts that blindly fire a single exploit and fail, an AI agent methodically explores its environment: enumerating accessible hosts, inspecting HTTP headers, testing credentials, probing unpatched endpoints like PHP portals, and chaining small findings together to plan its next move.Ironically, that relentless curiosity is also AI’s biggest weakness when you introduce Zscaler Deception.By placing realistic, high-fidelity decoys—such as fake PHP admin portals, decoy database interfaces, and planted lure credentials—directly along the paths an attacker would explore, you turn the AI’s multi-step reasoning against itself. An autonomous agent cannot tell the difference between a real internal phpMyAdmin or Zabbix instance and a Zscaler decoy. Because the AI is programmed to systematically investigate and test every promising lead it discovers, it is uniquely prone to interacting with decoys.And because legitimate users have zero business touching a decoy application, any interaction gives your security team an immediate, high-confidence alert with virtually zero false positives. While traditional detection tools struggle to separate stealthy AI reconnaissance from normal user traffic, a single probe against a decoy exposes the compromised user session right away and lets ZPA automatically quarantine the attacker.Getting Ahead of the Next AI-Discovered FlawPHP2Shell is a preview of what application security looks like from here on out. As frontier AI models get better at auditing decades-old codebases, we are going to see more foundational vulnerabilities surface—and we are going to see attackers weaponize them faster than human teams can push updates.Patching will always be necessary, but it shouldn't be your only line of defense. By hiding your private applications with ZPA, restricting internal reachability with Autonomous User-to-App Segmentation, and blocking exploit attempts inline with Autonomous App Shield, you take the panic out of the remediation window. Your applications stay online, your data stays protected, and your teams can patch on their own schedule—not the attacker’s.To see how Zscaler’s Lateral Threat Bundle can protect your private applications against AI-accelerated threats, reach out to your Zscaler account team.",
+    "summary_html": "What PHP2Shell Teaches Us About Defending Private Apps in the Age of Frontier AIOn October 20, 2026, two critical memory flaws in PHP were disclosed. Tracked as CVE-2026-109618 and CVE-2026-109619 and dubbed PHP2Shell, these vulnerabilities carry a 9.2 CVSS score from PHP’s maintainers (and a flat 10.0 from researchers at watchTowr) because they let an unauthenticated attacker run shell commands directly on a vulnerable server. At the time of disclosure, 70% of the web’s server-side applications were open to remote takeover.Within hours of disclosure, government portals, ecommerce sites, and other organizations around the world took themselves offline to avoid getting hit.Like other recent vulnerabilities, PHP2Shell draws attention to the shortcomings of enterprise security in the changing threat landscape: our patching workflows were built for human timelines, while attackers are now operating at the speed of frontier AI.Zscaler ThreatLabz report showing the risk score and vulnerabilities identified for PHP2Shell Here is a look at why PHP2Shell moved so fast, why internal enterprise apps and databases are just as exposed as public websites, and how Zscaler Private Access (ZPA) with Autonomous Application Shield gives your team breathing room to patch without shutting down the business.  When Frontier AI Finds Vulnerabilities Humans Wrote OffOne of the most striking facts about PHP2Shell is how long the underlying bugs sat in plain sight. The memory safety flaws affected PHP versions all the way back to PHP 5.4, which shipped in 2012. A PHP core developer actually ran across the out-of-memory error behind one of the bugs during a 2024 audit. At the time, the team couldn't agree on a fix, and nobody believed a working exploit was practically feasible, so the issue was set aside.Two years later, two separate teams using frontier AI models were able to reason through PHP’s complex memory management and prove the bug could be reliably exploited.While defenders found PHP2Shell first, the same AI capabilities have permanently compressed the window between disclosure and mass exploitation. All the grunt work that used to slow attackers down—reverse-engineering patches, mapping out target environments, and testing exploit variations—can now be automated in minutes.Look at the timeline that unfolded in October:Four days before public disclosure, Amazon Threat Intelligence spotted early PHP2Shell exploitation attempts in its honeypot telemetry on October 17.Before the official embargo even lifted, a software vendor pushed patched packages early. Attackers immediately diffed the code changes to see what was fixed and started circulating working proof-of-concept exploits.Within minutes of the official patch release on October 21, mass automated scanning was underway across the internet, forcing agencies like the US NSA, CERT-EU, and the UK’s NCSC to warn organizations to either update immediately or take their servers offline.We now live in an era where the time-to-exploit is effectively negative. Attackers can weaponize a flaw in minutes, whereas enterprise IT still has to deal with change freezes, dependency checks, regression testing, and maintenance windows. If your entire defense rests on winning a footrace to patch every server first, the odds are stacked against you.PHP2Shell Is an Internal Enterprise Problem, TooPHP2Shell is not only a problem for marketing websites running WordPress, Drupal, or Joomla. In practice, almost every large enterprise has a massive, often undocumented footprint of PHP running behind the scenes on its internal network. For over twenty years, PHP has been the default language for internal web interfaces, database utilities, and bundled infrastructure appliances. Even if your developers never write a line of PHP, it is likely sitting inside your environment right now:Network monitoring and infrastructure tools: Many of the platforms sitting at the heart of the enterprise NOC—including Zabbix, Nagios XI, LibreNMS, and Cacti—use PHP to power their web frontends. Because these systems monitor the entire environment, they are high-value targets often holding SNMP community strings, API tokens, and administrative credentials.Internal IT and business systems: Popular IP address management (IPAM) tools like phpIPAM, IT asset and service desk platforms like Snipe-IT and GLPI, internal wikis like MediaWiki, and self-hosted file sharing platforms like Nextcloud all run on PHP.Database utilities and internal CRUD apps: Legacy instances of phpMyAdmin or single-file utilities like Adminer frequently linger in dev/test subnets and staging environments, alongside custom internal admin portals built on PHP frameworks like Laravel and Symfony that sit directly in front of sensitive SQL databases.Embedded web consoles and virtual appliances: Dozens of virtual appliances, VoIP/PBX systems (like FreePBX), web control panels (cPanel, Plesk), and edge devices (such as pfSense and OPNsense in branch or lab environments) bundle PHP under the hood just to serve their browser-based administration consoles.Making matters worse, the official binary patches for PHP2Shell only cover active versions (PHP 8.2 through 8.5). Older versions like PHP 7.4, 8.0, and 8.1 are end-of-life. Countless legacy internal apps and \"black-box\" vendor appliances can't be updated without breaking dependencies or voiding vendor support.If an attacker gets a foothold on your network—whether through a phished credential, a third-party contractor's laptop, or an exposed VPN—their next move is to scan your internal IP space. An unpatched phpMyAdmin instance or an old appliance interface is all they need to trigger PHP2Shell and take over the underlying host.Zscaler’s Four-Step Security Framework: Hide, Segment, Shield, DeceivePatching PHP should be a top priority for your security team. Updating the underlying code is the only way to permanently close CVE-2026-109618 and CVE-2026-109619.But how do you protect the business during the days or weeks it takes to track down every PHP instance, test the updates, and roll them out across thousands of workloads? And how do you put in place a security architecture that protects you from whatever new CVE is disclosed next week, and the week after that? A Zero Trust architecture dramatically reduces exposure of your critical applications and lets you put immediate protective layers around vulnerable apps so your teams can patch methodically.With Zscaler, that protection happens in four steps:1. HIDE: Make Internal Apps Invisible with Zscaler Private Access (ZPA)Why did so many organizations have to shut down their web services during the PHP2Shell rollout? Because their servers were sitting on public IP addresses where automated scanners could find and exploit them. Many enterprises inadvertently do the exact same thing with internal tools—exposing database portals, staging environments, or admin consoles through split-tunnel VPNs, firewall port forwards, or public cloud IPs.Zscaler Private Access (ZPA) takes those applications off the public internet completely. Applications sit behind lightweight App Connectors that only establish outbound connections to the Zscaler cloud. There are no inbound open ports and no public IPs to scan. If an outside attacker or an AI botnet sweeps the internet looking for vulnerable PHP servers, your private applications simply do not exist to them. They can’t attack what they can’t see.2. SEGMENT: Shrink Internal Exposure with Autonomous User-to-App SegmentationTaking apps off the internet stops external scans, but you still have employees, contractors, and vendors who need to get work done. In a traditional network—or even in a ZPA setup that relies on broad wildcard application segments—anyone who authenticates can often reach way more applications than their job requires. If an attacker compromises one user's device, they can immediately start probing neighboring servers for PHP2Shell.Autonomous User-to-App Segmentation uses AI to analyze actual access patterns and lock down reachability to the bare minimum. Instead of putting users on the network, ZPA connects specific users only to the specific applications they need. A marketing contractor has zero path to reach an engineering database portal or an appliance management console. Even if an attacker compromises an account, they have nowhere to move laterally.3. SHIELD: Stop the Exploit Inline with Autonomous App ShieldFinally, what about the applications that must remain reachable to authorized users while they are still waiting on a patch? If a compromised employee account or a malicious insider has legitimate access to an unpatched PHP app, hiding and segmenting won't stop them from sending a malicious payload down an allowed connection.That is the exact gap Zscaler Autonomous App Shield was built to close. Built directly into the ZPA platform, Autonomous App Shield provides continuous, inline protection for private applications. It uses AI to find and block exploits at the app connector, providing virtual patching long before you can put in a real patch: It continuously maps your application risk. Rather than relying on a point-in-time vulnerability scan from last month, ZPA App Connectors continuously inspect private applications and their runtime characteristics. You get a real-time view of which internal apps are actually running vulnerable versions of PHP so you know exactly where you are exposed and can prioritize remediation accordingly.It applies protections only where they are needed. Competitors push the same signature to every customer, applying protections regardless of whether a vulnerable application actually exists in that environment. That creates false positives, blocking legitimate traffic on systems that don't even run PHP, and false negatives, where the right signature never gets applied because signature limits are exhausted by rules that didn't need to be there in the first place. Zscaler flips this entirely: because we scan first, we only apply a virtual patch to an application that is actually running the vulnerable software. No waste. No unnecessary rules. No risk of cascading policy conflicts.It tailors protection to each individual app. The Zscaler cloud evaluates how each specific application behaves and applies only the virtual patches and inline controls that app actually needs.It adapts automatically as threats and code change. Drawing on threat intelligence from across the Zscaler cloud, alongside our work with IBM and Red Hat’s Project Lightwell, Autonomous App Shield updates its inline defenses as new exploit variations appear in the wild. When your DevOps team ships a code change or applies a patch, the protection adjusts automatically without a manual policy review.With PHP2Shell, Zscaler’s ThreatLabz threat research team pushed mitigating controls through our automated CI/CD pipeline into production before the industry had even agreed on a proper remediation. Customers using ZPA App Protection were protected before most vendors had written a single signature.4. DECEIVE: Trap AI-Driven Recon with High-Fidelity DeceptionWhat makes frontier AI so dangerous in the hands of an attacker is its ability to perform multi-step reasoning. Unlike old-school scripts that blindly fire a single exploit and fail, an AI agent methodically explores its environment: enumerating accessible hosts, inspecting HTTP headers, testing credentials, probing unpatched endpoints like PHP portals, and chaining small findings together to plan its next move.Ironically, that relentless curiosity is also AI’s biggest weakness when you introduce Zscaler Deception.By placing realistic, high-fidelity decoys—such as fake PHP admin portals, decoy database interfaces, and planted lure credentials—directly along the paths an attacker would explore, you turn the AI’s multi-step reasoning against itself. An autonomous agent cannot tell the difference between a real internal phpMyAdmin or Zabbix instance and a Zscaler decoy. Because the AI is programmed to systematically investigate and test every promising lead it discovers, it is uniquely prone to interacting with decoys.And because legitimate users have zero business touching a decoy application, any interaction gives your security team an immediate, high-confidence alert with virtually zero false positives. While traditional detection tools struggle to separate stealthy AI reconnaissance from normal user traffic, a single probe against a decoy exposes the compromised user session right away and lets ZPA automatically quarantine the attacker.Getting Ahead of the Next AI-Discovered FlawPHP2Shell is a preview of what application security looks like from here on out. As frontier AI models get better at auditing decades-old codebases, we are going to see more foundational vulnerabilities surface—and we are going to see attackers weaponize them faster than human teams can push updates.Patching will always be necessary, but it shouldn't be your only line of defense. By hiding your private applications with ZPA, restricting internal reachability with Autonomous User-to-App Segmentation, and blocking exploit attempts inline with Autonomous App Shield, you take the panic out of the remediation window. Your applications stay online, your data stays protected, and your teams can patch on their own schedule—not the attacker’s.To see how Zscaler’s Lateral Threat Bundle can protect your private applications against AI-accelerated threats, reach out to your Zscaler account team.",
+    "link": "https://www.zscaler.com/blogs/product-insights/what-php2shell-teaches-us-about-defending-private-apps-age-frontier-ai",
+    "source": "Zscaler Research Blogs",
+    "feed_type": "news",
+    "type": "threat-intel-apt-campaigns",
+    "type_label": "Threat Intel & APT Campaigns",
+    "published": "2026-10-27T15:00:00+00:00",
+    "published_ts": 1793113200,
+    "smart_groups": [
+      "Vulnerabilities / CVEs",
+      "Exploit / PoC",
+      "Linux / Unix"
+    ],
+    "curated": true
+  },
+  {
+    "title": "The days of assuming another company’s breach is someone else’s problem are over",
+    "summary": "The median blast radius of data breaches has increased year-on-year at the same time cybercriminals have begun using AI to mine stolen datasets for damaging information that enables follow-on fraud and cyberattacks. In 2026, the median breach exposed 542 organizations beyond the initially breached victim, according to a study by exposed data intelligence platform Lab 1. This compares to the median blast radius of a breach affecting 482 organizations last year. Breach impact spreads across supply chains Lab 1’s 2026 Anatomy of a Breach Report offers content-level analysis of stolen datasets — covering 328 million exposed files across 2,089 breached datasets — dumped online following data breaches such as ransomware extortion attacks. Larger breaches leaking more files and data give criminals substantially more material to exploit for fraud, extortion, and follow-on attacks, according to Lab 1. The median data breach size rose to 29.8GB of data (up 122% from 13.44GB in 2025) and 32,734 files (up 45% from 22,647). Lab 1 said the dataset is drawn from “ransomware and data-breach incidents in the public domain, reconstructed from forensic acquisitions of compromised systems.” Many businesses sit at the center of highly interconnected supply chains and hold data for extensive networks of clients, partners, users, and suppliers. Data stolen from such companies, including contracts, correspondence, and the like, can have follow-on impact on companies throughout their supply chains, as cybercriminals comb through the troves for compromising details, credentials, and profile information for further targeting. In all, Lab 1 found 13,436 unique organizations were exposed through incidents occurring between 2025 and 2026. Security experts see Lab 1’s blast radius numbers credible if not conservative. “Lab 1’s numbers line up with what we’re seeing,” says Ricardo Amper, founder and CEO of identity verification vendor Incode Technologies. “A stolen dataset used to sit on a forum until someone had the time to dig through it, but AI removed that bottleneck.” Amper adds: “So every file now gets read, cross-referenced, and turned into a target list. The blast radius keeps widening as the follow-on fraud lands on the suppliers, customers, and partners named inside the files.” Content-level analysis of stolen datasets For its study, Lab 1 deployed AI agents to inspect breached datasets and analyze all exposed files, including unstructured material such as emails and PDFs. Of the 328 million breached files analyzed, approximately 145 million (44%) contain financial data, including banking details, tax identifiers, and invoicing information that can fuel fraud. A further 29 million files (9%) contain HR data, including payroll records, employment contracts, and identity documents that can be used to run more convincing business email compromise or similar social engineering scams. Even worse, private cryptographic keys appeared in approximately 15% of incidents. The rise of breach indexing-as-a-service Lab 1 Threat Intelligence has also identified seven threat actor groups that are conducting structured analysis of breached data. The most advanced groups are using AI to index breached datasets and are selling these capabilities to other criminals as a service, according to Lab 1. The first indexing-as-a-service offering for cyber criminals, designed to sort breached data into categories that can be monetized, emerged in March 2026. The platform supposedly classifies stolen documents, maps relationships, identifies damaging files, estimates legal and regulatory exposure, and calculates “optimal” ransom demands, among other functions. The illicit intel offered through the sketchy services included “share-buyback information for market manipulation, correspondence with sanctioned entities for use in ransomware negotiations, and security reports that could support follow-on attacks,” according to Lab 1. Threat actor group FulcrumSec claimed to have taken a 400,000-email archive before isolating 61 email files related to engagements with US-sanctioned entities for targeted regulatory and reputational leverage over the victim. The same group claimed to deploy AI agents to mine 700,717 breached files to source 11,500 patient records across named clinical trials. ‘Weaponizing’ breached datasets “Historically, the sheer amount of time required to sift through breached datasets and the expertise needed to spot compromising information has held back the weaponization of data breaches,” says Robin Brattel, co-founder and CEO of Lab 1. “AI and criminal indexing services are removing those barriers.” Brattel adds: “That means a breach is no longer only a problem for the named victim: exposed financial, HR, and identity data will be searched, connected, and used for fraud, cyberattacks, and extortion against many other organizations.” The real danger is when attackers turn that information into access and move from one system or organization to another, says Zero Networks CEO Benny Lakunishok. “AI is making stolen data exponentially more valuable to criminals,” Lakunishok says. “What once took weeks to analyze can now be mined in minutes, revealing credentials, business relationships, and new targets” Countermeasures CISOs should pay much more attention to where “soft” data sits across their supply chain. “Credentials and keys can be revoked or rotated; invoices, contracts, supplier relationships, and internal communications cannot,” Lab 1’s Brattel tells CSO. “Once exposed, that information can remain useful for years from the attacker point of view.” In practice, CISOs should take for granted that third parties hold sensitive information about their organization, so that a third-party breach can always effectively become your exposure and that criminals may exploit that information long after the original incident. “CISOs should know which suppliers hold their sensitive data and necessitate rapid notification when those suppliers are compromised,” Brattel advises.",
+    "summary_html": "<div>\n<div>\n<div>\n<div>\n<div></div>\n<p>The median blast radius of data breaches has increased year-on-year at the same time cybercriminals have begun using AI to mine stolen datasets for damaging information that enables follow-on fraud and cyberattacks.</p>\n<p>In 2026, the median breach exposed 542 organizations beyond the initially breached victim, according to a study by exposed data intelligence platform Lab 1. This compares to the median blast radius of a breach affecting 482 organizations last year.</p>\nBreach impact spreads across supply chains\n<p>Lab 1’s <a href=\"https://lab-1.com/anatomy\">2026 Anatomy of a Breach Report</a> offers content-level analysis of stolen datasets — covering 328 million exposed files across 2,089 breached datasets — dumped online following data breaches such as <a href=\"https://www.csoonline.com/article/563507/what-is-ransomware-how-it-works-and-how-to-remove-it.html\">ransomware</a> extortion attacks.</p>\n<p>Larger breaches leaking more files and data give criminals substantially more material to exploit for fraud, extortion, and follow-on attacks, according to Lab 1.</p>\n<p>The median data breach size rose to 29.8GB of data (up 122% from 13.44GB in 2025) and 32,734 files (up 45% from 22,647).</p>\n<p>Lab 1 said the dataset is drawn from “ransomware and data-breach incidents in the public domain, reconstructed from forensic acquisitions of compromised systems.”</p>\n<p>Many businesses sit at the center of highly interconnected supply chains and hold data for extensive networks of clients, partners, users, and suppliers. Data stolen from such companies, including contracts, correspondence, and the like, can have follow-on impact on companies throughout their supply chains, as cybercriminals comb through the troves for compromising details, credentials, and profile information for further targeting.</p>\n<p>In all, Lab 1 found 13,436 unique organizations were exposed through incidents occurring between 2025 and 2026.</p>\n<p>Security experts see Lab 1’s blast radius numbers credible if not conservative.</p>\n<p>“Lab 1’s numbers line up with what we’re seeing,” says Ricardo Amper, founder and CEO of identity verification vendor Incode Technologies. “A stolen dataset used to sit on a forum until someone had the time to dig through it, but AI removed that bottleneck.”</p>\n<p>Amper adds: “So every file now gets read, cross-referenced, and turned into a target list. The blast radius keeps widening as the follow-on fraud lands on the suppliers, customers, and partners named inside the files.”</p>\nContent-level analysis of stolen datasets\n<p>For its study, Lab 1 deployed AI agents to inspect breached datasets and analyze all exposed files, including unstructured material such as emails and PDFs.</p>\n<p>Of the 328 million breached files analyzed, approximately 145 million (44%) contain financial data, including banking details, tax identifiers, and invoicing information that can fuel fraud.</p>\n<p>A further 29 million files (9%) contain HR data, including payroll records, employment contracts, and identity documents that can be used to run more convincing <a href=\"https://www.csoonline.com/article/570999/business-email-compromise-bec-attacks-take-phishing-to-the-next-level.html\">business email compromise</a> or similar social engineering scams.</p>\n<p>Even worse, private cryptographic keys appeared in approximately 15% of incidents.</p>\nThe rise of breach indexing-as-a-service\n<p>Lab 1 Threat Intelligence has also identified seven threat actor groups that are conducting structured analysis of breached data. The most advanced groups are using AI to index breached datasets and are selling these capabilities to other criminals as a service, according to Lab 1.</p>\n<p>The first indexing-as-a-service offering for cyber criminals, designed to sort breached data into categories that can be monetized, emerged in March 2026.</p>\n<p>The platform supposedly classifies stolen documents, maps relationships, identifies damaging files, estimates legal and regulatory exposure, and calculates “optimal” ransom demands, among other functions.</p>\n<p>The illicit intel offered through the sketchy services included “share-buyback information for market manipulation, correspondence with sanctioned entities for use in ransomware negotiations, and security reports that could support follow-on attacks,” according to Lab 1.</p>\n<p>Threat actor group <a href=\"https://www.sysdig.com/blog/the-fulcrumsec-playbook-how-to-detect-and-stop-the-group-behind-the-novo-nordisk-breach\">FulcrumSec</a> claimed to have taken a 400,000-email archive before isolating 61 email files related to engagements with US-sanctioned entities for targeted regulatory and reputational leverage over the victim.</p>\n<p>The same group claimed to deploy AI agents to mine 700,717 breached files to source 11,500 patient records across named clinical trials.</p>\n‘Weaponizing’ breached datasets\n<p>“Historically, the sheer amount of time required to sift through breached datasets and the expertise needed to spot compromising information has held back the weaponization of data breaches,” says Robin Brattel, co-founder and CEO of Lab 1. “AI and criminal indexing services are removing those barriers.”</p>\n<p>Brattel adds: “That means a breach is no longer only a problem for the named victim: exposed financial, HR, and identity data will be searched, connected, and used for fraud, cyberattacks, and extortion against many other organizations.”</p>\n<p>The real danger is when attackers turn that information into access and move from one system or organization to another, says Zero Networks CEO Benny Lakunishok.</p>\n<p>“AI is making stolen data exponentially more valuable to criminals,” Lakunishok says. “What once took weeks to analyze can now be mined in minutes, revealing credentials, business relationships, and new targets”</p>\nCountermeasures\n<p>CISOs should pay much more attention to where “soft” data sits across their supply chain.</p>\n<p>“Credentials and keys can be revoked or rotated; invoices, contracts, supplier relationships, and internal communications cannot,” Lab 1’s Brattel tells CSO. “Once exposed, that information can remain useful for years from the attacker point of view.”</p>\n<p>In practice, CISOs should take for granted that third parties hold sensitive information about their organization, so that a third-party breach can always effectively become your exposure and that criminals may exploit that information long after the original incident.</p>\n<p>“CISOs should know which suppliers hold their sensitive data and necessitate rapid notification when those suppliers are compromised,” Brattel advises.</p>\n</div></div></div></div>",
+    "link": "https://www.csoonline.com/article/4240612/the-days-of-assuming-another-companys-breach-is-someone-elses-problem-are-over.html",
+    "source": "CSO Online",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-27T08:25:00+00:00",
+    "published_ts": 1793089500,
+    "smart_groups": [
+      "Ransomware",
+      "Data Breaches / Leaks",
+      "Phishing / Social Engineering"
+    ],
+    "curated": true
+  },
+  {
+    "title": "CISA confirms PHP2Shell vulnerabilities now exploited in attacks",
+    "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has added the PHP2Shell vulnerabilities to its catalog of actively exploited security flaws and ordered federal agencies to patch their systems by Thursday.",
+    "summary_html": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has added the PHP2Shell  vulnerabilities to its catalog of actively exploited security flaws and ordered federal agencies to patch their systems by Thursday. [...]",
+    "link": "https://www.bleepingcomputer.com/news/security/cisa-confirms-php2shell-vulnerabilities-now-exploited-in-attacks/",
+    "source": "BleepingComputer – Cybercrime",
+    "feed_type": "news",
+    "type": "cybercrime-underground",
+    "type_label": "Cybercrime & Underground",
+    "published": "2026-10-27T08:20:54+00:00",
+    "published_ts": 1793089254,
+    "smart_groups": [
+      "Vulnerabilities / CVEs",
+      "Exploit / PoC"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Binance files for Brazil crypto license ahead of Friday deadline",
+    "summary": "The exchange is delisting 22 crypto assets for Brazilian users and hopes talks with the central bank will allow it to restore some services.",
+    "summary_html": "<p></p><p>The exchange is delisting 22 crypto assets for Brazilian users and hopes talks with the central bank will allow it to restore some services.</p>",
+    "link": "https://cointelegraph.com/news/binance-brazil-crypto-license-oct-30-deadline?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-10-27T08:04:21+00:00",
+    "published_ts": 1793088261,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Japan has declared a national cyber emergency – what could this mean for enterprise security leaders?",
+    "summary": "null",
+    "summary_html": "null",
+    "link": "https://www.itpro.com/security/cyber-attacks/japan-has-declared-a-national-cyber-emergency-what-could-this-mean-for-enterprise-security-leaders",
+    "source": "IT Pro - Data Breaches",
+    "feed_type": "news",
+    "type": "leaks-breaches",
+    "type_label": "Leaks & Breaches",
+    "published": "2026-10-27T08:00:00+00:00",
+    "published_ts": 1793088000,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Bitcoin ETFs claw back $110M after $774M exit",
+    "summary": "US spot Bitcoin ETFs remained in the red for October, with about $202 million in net outflows for the month despite Monday’s rebound.",
+    "summary_html": "<p></p><p>US spot Bitcoin ETFs remained in the red for October, with about $202 million in net outflows for the month despite Monday’s rebound.</p>",
+    "link": "https://cointelegraph.com/markets/bitcoin-etf-rebound-110-million-btc-dip-below-80k?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-10-27T07:35:37+00:00",
+    "published_ts": 1793086537,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Maritime Coalition Launches Free Vulnerability Database for Ship and Port Systems",
+    "summary": "Blue Initiative indexes nearly 30,000 IT and OT vulnerabilities relevant to ships and ports, 37 of them in maritime-specific products.",
+    "summary_html": "<p>Blue Initiative indexes nearly 30,000 IT and OT vulnerabilities relevant to ships and ports, 37 of them in maritime-specific products.</p>\n<p>The post <a href=\"https://www.securityweek.com/maritime-coalition-launches-free-vulnerability-database-for-ship-and-port-systems/\">Maritime Coalition Launches Free Vulnerability Database for Ship and Port Systems</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+    "link": "https://www.securityweek.com/maritime-coalition-launches-free-vulnerability-database-for-ship-and-port-systems/",
+    "source": "SecurityWeek",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-27T07:14:27+00:00",
+    "published_ts": 1793085267,
+    "smart_groups": [
+      "Vulnerabilities / CVEs",
+      "Product News"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Attackers Hijack Dahua IP Cameras in Ukraine Using P2P Access and Auth Weaknesses",
+    "summary": "The Computer Emergency Response Team of Ukraine (CERT-UA) has issued an alert warning of unauthorized remote access to video surveillance systems manufactured by Dahua. \"Cases of compromising IP cameras and DVRs with access to the video stream, changing the device configuration and creating third-party accounts have been recorded,\" the State Special Communications Service of Ukraine (SSSCIP)",
+    "summary_html": "The Computer Emergency Response Team of Ukraine (CERT-UA) has issued an alert warning of unauthorized remote access to video surveillance systems manufactured by Dahua.\n\n\"Cases of compromising IP cameras and DVRs with access to the video stream, changing the device configuration and creating third-party accounts have been recorded,\" the State Special Communications Service of Ukraine (SSSCIP)",
+    "link": "https://thehackernews.com/2026/10/attackers-hijack-dahua-ip-cameras-in.html",
+    "source": "The Hacker News",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-27T06:34:47+00:00",
+    "published_ts": 1793082887,
+    "smart_groups": [
+      "Privacy & Compliance"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Several AI security market categories are headed for bigger platforms",
+    "summary": "In this interview with Help Net Security, Jonathan Care, Lead Analyst and Practice Lead AI at KuppingerCole Analysts, compares AI security startups to the early fraud market he helped define at Gartner. He explains which categories will survive as products and which will become features inside bigger platforms. Care talks about Q3 funding going to fewer, larger rounds, Israel’s share of cyber venture investment, and the five controls an organization needs before an agent touches … More →",
+    "summary_html": "<p>In this interview with Help Net Security, Jonathan Care, Lead Analyst and Practice Lead AI at KuppingerCole Analysts, compares AI security startups to the early fraud market he helped define at Gartner. He explains which categories will survive as products and which will become features inside bigger platforms. Care talks about Q3 funding going to fewer, larger rounds, Israel’s share of cyber venture investment, and the five controls an organization needs before an agent touches … <a href=\"https://www.helpnetsecurity.com/2026/10/27/jonathan-care-kuppingercole-analysts-ai-security-market/\">More <span>→</span></a></p>\n<p>The post <a href=\"https://www.helpnetsecurity.com/2026/10/27/jonathan-care-kuppingercole-analysts-ai-security-market/\">Several AI security market categories are headed for bigger platforms</a> appeared first on <a href=\"https://www.helpnetsecurity.com\">Help Net Security</a>.</p>",
+    "link": "https://www.helpnetsecurity.com/2026/10/27/jonathan-care-kuppingercole-analysts-ai-security-market/",
+    "source": "Help Net Security",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-27T06:30:01+00:00",
+    "published_ts": 1793082601,
+    "smart_groups": [
+      "AI/ML Security"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Microsoft Authenticator vulnerability let rogue Android apps steal work account access",
+    "summary": "If you use Microsoft Authenticator on Android, update it. Researchers at Enclave found a flaw that let any app on your phone quietly take over your work account. The app didn’t need permissions, and you didn’t need to tap anything. Here’s what happened Authenticator does more than show six-digit codes. On Android it also acts as a “broker.” When Teams, Outlook or another Microsoft app needs to sign you in, it asks Authenticator, and Authenticator … More →",
+    "summary_html": "<p>If you use Microsoft Authenticator on Android, update it. Researchers at Enclave found a flaw that let any app on your phone quietly take over your work account. The app didn’t need permissions, and you didn’t need to tap anything. Here’s what happened Authenticator does more than show six-digit codes. On Android it also acts as a “broker.” When Teams, Outlook or another Microsoft app needs to sign you in, it asks Authenticator, and Authenticator … <a href=\"https://www.helpnetsecurity.com/2026/10/27/microsoft-authenticator-vulnerability-patchedcve-2026-80097/\">More <span>→</span></a></p>\n<p>The post <a href=\"https://www.helpnetsecurity.com/2026/10/27/microsoft-authenticator-vulnerability-patchedcve-2026-80097/\">Microsoft Authenticator vulnerability let rogue Android apps steal work account access</a> appeared first on <a href=\"https://www.helpnetsecurity.com\">Help Net Security</a>.</p>",
+    "link": "https://www.helpnetsecurity.com/2026/10/27/microsoft-authenticator-vulnerability-patchedcve-2026-80097/",
+    "source": "Help Net Security",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-27T06:14:22+00:00",
+    "published_ts": 1793081662,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Here’s what happened in crypto today",
+    "summary": "Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.",
+    "summary_html": "<p></p><p>Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.</p>",
+    "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-10-27T06:08:28+00:00",
+    "published_ts": 1793081308,
+    "smart_groups": [
+      "Crypto / Web3"
+    ],
+    "curated": false
+  },
+  {
+    "title": "LLM agent security needs more than guardrails",
+    "summary": "Madhu Shashanka, Chief Scientist at Concentric AI, explains why securing LLM tools and agents depends more on your data than on the model. Controls on model behavior, such as guardrails and injection detection, lower the rate of bad outcomes but never reach zero. Controls on what goes in are different, because you own the documents, systems, and credentials an agent can reach. He covers prompt injection, data leakage through connectors, overprivileged agents, and shadow AI. … More →",
+    "summary_html": "<p>Madhu Shashanka, Chief Scientist at Concentric AI, explains why securing LLM tools and agents depends more on your data than on the model. Controls on model behavior, such as guardrails and injection detection, lower the rate of bad outcomes but never reach zero. Controls on what goes in are different, because you own the documents, systems, and credentials an agent can reach. He covers prompt injection, data leakage through connectors, overprivileged agents, and shadow AI. … <a href=\"https://www.helpnetsecurity.com/2026/10/27/llm-agent-security-video/\">More <span>→</span></a></p>\n<p>The post <a href=\"https://www.helpnetsecurity.com/2026/10/27/llm-agent-security-video/\">LLM agent security needs more than guardrails</a> appeared first on <a href=\"https://www.helpnetsecurity.com\">Help Net Security</a>.</p>",
+    "link": "https://www.helpnetsecurity.com/2026/10/27/llm-agent-security-video/",
+    "source": "Help Net Security",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-27T06:00:26+00:00",
+    "published_ts": 1793080826,
+    "smart_groups": [
+      "Data Breaches / Leaks",
+      "AI/ML Security"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Amutable Foundations is a Linux system with no SSH and no package manager",
+    "summary": "Amutable opened signups for the private preview of Amutable Foundations, a Linux system in which each machine sends a signed report of the software and configuration it runs, drawing on local hardware to make the report easier to verify. The company says its engineers write and maintain code in the kernel, in systemd and in image-building tools. If you run a Linux fleet, this changes what you check. Say a machine can’t show it matches … More →",
+    "summary_html": "<p>Amutable opened signups for the private preview of Amutable Foundations, a Linux system in which each machine sends a signed report of the software and configuration it runs, drawing on local hardware to make the report easier to verify. The company says its engineers write and maintain code in the kernel, in systemd and in image-building tools. If you run a Linux fleet, this changes what you check. Say a machine can’t show it matches … <a href=\"https://www.helpnetsecurity.com/2026/10/27/amutable-foundations-linux-system/\">More <span>→</span></a></p>\n<p>The post <a href=\"https://www.helpnetsecurity.com/2026/10/27/amutable-foundations-linux-system/\">Amutable Foundations is a Linux system with no SSH and no package manager</a> appeared first on <a href=\"https://www.helpnetsecurity.com\">Help Net Security</a>.</p>",
+    "link": "https://www.helpnetsecurity.com/2026/10/27/amutable-foundations-linux-system/",
+    "source": "Help Net Security",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-27T05:44:26+00:00",
+    "published_ts": 1793079866,
+    "smart_groups": [
+      "Linux / Unix"
+    ],
+    "curated": false
+  },
+  {
+    "title": "71% of vulnerability exploitation starts within a week of disclosure",
+    "summary": "Attackers are exploiting newly disclosed security flaws within days, leaving organizations little time to respond, according to Rapid7’s Q3 2026 Quarterly Threat Landscape Report. The company reported an average of three days between public disclosure and exploitation of high-severity vulnerabilities, with 71% of tracked exploitation occurring within the first week. Cumulative exploitation rate (Source: Rapid7) Exploitation puts pressure on fixed patching schedules Researchers tracked 43 newly exploited high- and critical-severity vulnerabilities during the quarter. Organizations … More →",
+    "summary_html": "<p>Attackers are exploiting newly disclosed security flaws within days, leaving organizations little time to respond, according to Rapid7’s Q3 2026 Quarterly Threat Landscape Report. The company reported an average of three days between public disclosure and exploitation of high-severity vulnerabilities, with 71% of tracked exploitation occurring within the first week. Cumulative exploitation rate (Source: Rapid7) Exploitation puts pressure on fixed patching schedules Researchers tracked 43 newly exploited high- and critical-severity vulnerabilities during the quarter. Organizations … <a href=\"https://www.helpnetsecurity.com/2026/10/27/rapid7-vulnerability-exploitation-trends-q3-2026-report/\">More <span>→</span></a></p>\n<p>The post <a href=\"https://www.helpnetsecurity.com/2026/10/27/rapid7-vulnerability-exploitation-trends-q3-2026-report/\">71% of vulnerability exploitation starts within a week of disclosure</a> appeared first on <a href=\"https://www.helpnetsecurity.com\">Help Net Security</a>.</p>",
+    "link": "https://www.helpnetsecurity.com/2026/10/27/rapid7-vulnerability-exploitation-trends-q3-2026-report/",
+    "source": "Help Net Security",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-27T05:30:33+00:00",
+    "published_ts": 1793079033,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": true
+  },
+  {
     "title": "Cybersecurity jobs available right now: October 27, 2026",
     "summary": "Cybersecurity Expert / Penetration Tester Barrion | Sweden | On-site – View job details As a Cybersecurity Expert / Penetration Tester, you will test web applications and APIs for authentication, authorisation, and business logic vulnerabilities. You’ll identify complex attack paths and validate findings.You’ll evaluate AI-driven security testing, investigate false positives and missed vulnerabilities, and develop scenarios that improve automated discovery. Cloud Network Solution Architect TAL | Australia | On-site – View job details As a … More →",
     "summary_html": "<p>Cybersecurity Expert / Penetration Tester Barrion | Sweden | On-site – View job details As a Cybersecurity Expert / Penetration Tester, you will test web applications and APIs for authentication, authorisation, and business logic vulnerabilities. You’ll identify complex attack paths and validate findings.You’ll evaluate AI-driven security testing, investigate false positives and missed vulnerabilities, and develop scenarios that improve automated discovery. Cloud Network Solution Architect TAL | Australia | On-site – View job details As a … <a href=\"https://www.helpnetsecurity.com/2026/10/27/cybersecurity-jobs-available-right-now-october-27-2026/\">More <span>→</span></a></p>\n<p>The post <a href=\"https://www.helpnetsecurity.com/2026/10/27/cybersecurity-jobs-available-right-now-october-27-2026/\">Cybersecurity jobs available right now: October 27, 2026</a> appeared first on <a href=\"https://www.helpnetsecurity.com\">Help Net Security</a>.</p>",
@@ -15,6 +240,22 @@
       "Red Team / Offensive"
     ],
     "curated": false
+  },
+  {
+    "title": "CISA Confirms Active Exploitation of Two PHP2Shell Flaws Enabling Remote Code Execution",
+    "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Monday confirmed active exploitation of the recently patched PHP2Shell flaws by adding them to its Known Exploited Vulnerabilities (KEV) catalog. The PHP vulnerabilities, both rated 9.2 on the CVSS scoring system, facilitate unauthenticated remote code execution on affected deployments - CVE-2026-109618 - An out-of-memory",
+    "summary_html": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Monday confirmed active exploitation of the recently patched PHP2Shell flaws by adding them to its Known Exploited Vulnerabilities (KEV) catalog.\n\nThe PHP vulnerabilities, both rated 9.2 on the CVSS scoring system, facilitate unauthenticated remote code execution on affected deployments -\n\n\n  CVE-2026-109618 - An out-of-memory",
+    "link": "https://thehackernews.com/2026/10/cisa-confirms-active-exploitation-of.html",
+    "source": "The Hacker News",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-27T04:37:59+00:00",
+    "published_ts": 1793075879,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": true
   },
   {
     "title": "GPT-6.1 Terra meets OpenAI’s Critical cyber threshold, and it’s cheaper than GPT-5.6 Terra",
@@ -1279,7 +1520,18 @@
     "smart_groups": [
       "Privacy & Compliance"
     ],
-    "curated": false
+    "curated": false,
+    "story_id": "701850cb92b9",
+    "story_size": 2,
+    "story_primary": true,
+    "story_others": [
+      {
+        "source": "Cyber Security News (FeedBurner)",
+        "title": "Researcher Gains Root Access to Samsung Smart TV, Uncovers Extensive User Tracking",
+        "link": "https://cybersecuritynews.com/researcher-root-samsung-smart-tv/",
+        "published_ts": 1793078717
+      }
+    ]
   },
   {
     "title": "Gheist Attackers Stumble in Attempt to Abuse GitHub Tokens",
@@ -1648,22 +1900,6 @@
     "curated": false,
     "story_id": "fb66dbbd3c03",
     "story_size": 2
-  },
-  {
-    "title": "Here’s what happened in crypto today",
-    "summary": "Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.",
-    "summary_html": "<p></p><p>Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.</p>",
-    "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-    "source": "Cointelegraph.com News",
-    "feed_type": "news",
-    "type": "crypto-blockchain-security",
-    "type_label": "Crypto & Blockchain Security",
-    "published": "2026-10-26T13:26:47+00:00",
-    "published_ts": 1793021207,
-    "smart_groups": [
-      "Crypto / Web3"
-    ],
-    "curated": false
   },
   {
     "title": "Strategy Pauses Bitcoin Buying, Spends $205M Buying Back STRC",
@@ -35385,9 +35621,7 @@
     "published": "2026-10-12T07:23:11+00:00",
     "published_ts": 1791789791,
     "smart_groups": [],
-    "curated": false,
-    "story_id": "59bf9d2f641c",
-    "story_size": 2
+    "curated": false
   },
   {
     "title": "A Vulnerability in Atlassian Data Center Products Could Allow for Arbitrary File Access",
@@ -36077,9 +36311,7 @@
       "Data Breaches / Leaks",
       "Vulnerabilities / CVEs"
     ],
-    "curated": true,
-    "story_id": "460f4ace233c",
-    "story_size": 3
+    "curated": true
   },
   {
     "title": "Child Sextortion Group 764 Leader Pleads Guilty",
@@ -37044,8 +37276,8 @@
       "Red Team / Offensive"
     ],
     "curated": true,
-    "story_id": "a2699a640a72",
-    "story_size": 3
+    "story_id": "bef374d68721",
+    "story_size": 2
   },
   {
     "title": "Top Cyber Crime Stories in India Today – October 10th: Latest Threats & Security Alerts",
@@ -37292,8 +37524,17 @@
       "Red Team / Offensive"
     ],
     "curated": false,
-    "story_id": "a2699a640a72",
-    "story_size": 3
+    "story_id": "bef374d68721",
+    "story_size": 2,
+    "story_primary": true,
+    "story_others": [
+      {
+        "source": "News4Hackers",
+        "title": "Cyberattacks on South Korean Banks Involving ARTEX AI and Claude AI",
+        "link": "https://www.news4hackers.com/cyberattacks-on-south-korean-banks-involving-artex-ai-and-claude-ai/",
+        "published_ts": 1791651991
+      }
+    ]
   },
   {
     "title": "AI Agent Security: Six Controls From Nine Real Incidents",
@@ -38100,9 +38341,7 @@
     "published": "2026-10-09T18:46:03+00:00",
     "published_ts": 1791571563,
     "smart_groups": [],
-    "curated": true,
-    "story_id": "03ccb542134e",
-    "story_size": 2
+    "curated": true
   },
   {
     "title": "Germany Arrests Suspected Qilin Ransomware Leader After Japan Detention",
@@ -38896,8 +39135,8 @@
       "Web / API Security"
     ],
     "curated": true,
-    "story_id": "290af517c244",
-    "story_size": 4
+    "story_id": "e94516f58d51",
+    "story_size": 2
   },
   {
     "title": "Free AI Security Scans for Open-Source Maintainers by Anthropic",
@@ -38952,9 +39191,7 @@
       "Phishing / Social Engineering",
       "Mobile & App Security"
     ],
-    "curated": true,
-    "story_id": "34a5b95f7f1b",
-    "story_size": 2
+    "curated": true
   },
   {
     "title": "MeitY Issues Advisory on AI-Generated and Misleading Protest Content",
@@ -38988,9 +39225,7 @@
       "Ransomware",
       "Exploit / PoC"
     ],
-    "curated": true,
-    "story_id": "d1aad8fcc11b",
-    "story_size": 7
+    "curated": true
   },
   {
     "title": "Wikimedia Says Rogue AI Agents Abused its Platforms",
@@ -39054,9 +39289,7 @@
       "Exploit / PoC",
       "Identity / Access"
     ],
-    "curated": true,
-    "story_id": "d1aad8fcc11b",
-    "story_size": 7
+    "curated": true
   },
   {
     "title": "US Shuts Down Chinese Cyber Espionage Tools: State-Sponsored Hacking Cracked",
@@ -39074,9 +39307,7 @@
       "Threat Actors / APT",
       "Malware / Payloads"
     ],
-    "curated": true,
-    "story_id": "88ecd409c6c3",
-    "story_size": 2
+    "curated": true
   },
   {
     "title": "AI Agents, Local Hardware, and Security Risks Reshape Tech",
