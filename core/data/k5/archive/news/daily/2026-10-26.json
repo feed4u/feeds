@@ -1,9 +1,27 @@
 {
-  "generated_at": "2026-10-27T08:57:01.515546+00:00",
+  "generated_at": "2026-10-27T14:47:52.241599+00:00",
   "date": "2026-10-26",
-  "total_items": 162,
+  "total_items": 163,
   "next_chunk": "archive/news/daily/2026-10-25.json",
   "items": [
+    {
+      "title": "ElectroNG is now open source!",
+      "summary": "**ElectroNG is now free and open source!** Today we are releasing both the desktop application and its core analysis engine under the Apache License 2.0, opening up years of Doyensec\u2019s work on Electron application security to the community. ### Why we are open-sourcing ElectroNG We launched ElectroNG in September 2022 as a commercial static application security testing (SAST) tool for Electron applications. It grew out of our experience auditing Electron apps and developing Electronegativity, with the goal of turning that research into a more capable scanner and an easier workflow for developers and security researchers. We are proud of what we built. However, despite our best efforts, we could not build a customer base large enough to sustain its development, and we stopped selling licenses in June 2025. Rather than letting the project fade away, we decided to release the source code and give ElectroNG a future shaped by the people who use it: developers securing their applications, researchers building new checks, and teams incorporating Electron security into their work. This is a significant milestone for Doyensec. From our Electron security research at Black Hat USA 2017 to the release of Electronegativity in 2019 and ElectroNG in 2022, we have invested years in understanding how Electron applications break and how to help secure them. We are excited to make the next stage of that work an open-source effort. The code is available in two repositories: - **ElectroNG**: the desktop application (user interface, project management, and reporting). - **ElectroNG-core**: the scanning engine, including all the security checks, the knowledge base, and the Electron vulnerability database. Both are free to use for any purpose, including commercial work. There are no license keys and no usage limits. ### What ElectroNG adds to Electronegativity Electronegativity started as a command-line tool to help developers and auditors identify insecure configurations and security anti-patterns in Electron applications. ElectroNG builds on that foundation with improved analysis and a desktop interface for investigating the results. The main differences are: AreaElectronegativityElectroNGWorkflowCommand-line scanning, programmatic use, and CI integrationA desktop application for managing projects, configuring scans, and investigating findingsDetectionAST and DOM analysis of Electron configurations and security anti-patternsImproved HTML, JavaScript, and TypeScript parsing, revised heuristics, and around 60 checksElectron versionsVersion detection, version overrides, and upgrade checksVersion-aware checks, plus a database of more than 650 known Electron vulnerabilitiesApplication inspectionFindings surfaced through command-line output and reportsAn inventory of Reviewing findingsSeverity and confidence filters, with CSV and SARIF outputIn-app triage to validate findings, mark false positives, adjust severity, and add notes, with PDF, HTML, XLSX, CSV, and SARIF reports ### Try out ElectroNG The easiest way to try ElectroNG is to download the latest build for macOS or Windows from the Releases page. Create a project, import the target, and start a scan; the default configuration works without any setup. The ElectroNG website hosts the quickstart guide, documentation, and FAQ. Automatic updates are disabled by default: ElectroNG does not check for or download updates unless you opt in from the application menu. If you prefer to build from source, or want to hack on the tool, the ElectroNG README explains how to build the core engine and run the desktop application locally. ElectroNG-core can also be used on its own as a library, although its API is primarily designed around the needs of the desktop app. ### The future and how to contribute We want to be clear about the project\u2019s starting point: > **ElectroNG\u2019s last substantial development work took place in 2024, followed by smaller bug fixes. Its detection capabilities need updating for modern Electron applications, and results on recent versions can be incomplete or noisy.** Opening the source gives us an opportunity to address that gap together. Our goal is to modernize the tool, improve its detection capabilities, and make ElectroNG a go-to security scanner for Electron applications again. Electronegativity is now archived, and we encourage its users and contributors to help move ElectroNG forward. There are several areas where contributions would make a meaningful difference: - **Update Electron coverage.** Bring checks in line with current APIs, security defaults, and application patterns. - **Improve detection.** Add checks for new vulnerability classes, reduce false positives, and improve how the scanner handles JavaScript and TypeScript code found in real applications. - **Modernize the codebase.** Help update dependencies, parsing, and the build process so the project is easier to run and maintain. - **Add regression tests.** Small examples of vulnerable and secure code can help demonstrate a missed issue, reproduce a false positive, and keep future changes from reintroducing bugs. - **Improve the experience.** Better CI/CD setup instructions, check documentation, reporting, and interface improvements all make the tool more useful. New checks and changes to the scanning logic belong in ElectroNG-core, while changes to the desktop interface belong in ElectroNG. We welcome issues, pull requests, and ideas in both repositories. **Thank you to everyone who contributed to Electronegativity, helped build ElectroNG, supported the commercial product, or shared research that made these tools better.** We are proud to put this work in the community\u2019s hands, and we look forward to seeing what we can build together.",
+      "summary_html": "**ElectroNG is now free and open source!** Today we are releasing both the desktop application and its core analysis engine under the Apache License 2.0, opening up years of Doyensec\u2019s work on Electron application security to the community.\n\n### Why we are open-sourcing ElectroNG\n\nWe launched ElectroNG in September 2022 as a commercial static application security testing (SAST) tool for Electron applications. It grew out of our experience auditing Electron apps and developing Electronegativity, with the goal of turning that research into a more capable scanner and an easier workflow for developers and security researchers.\n\nWe are proud of what we built. However, despite our best efforts, we could not build a customer base large enough to sustain its development, and we stopped selling licenses in June 2025. Rather than letting the project fade away, we decided to release the source code and give ElectroNG a future shaped by the people who use it: developers securing their applications, researchers building new checks, and teams incorporating Electron security into their work.\n\nThis is a significant milestone for Doyensec. From our Electron security research at Black Hat USA 2017 to the release of Electronegativity in 2019 and ElectroNG in 2022, we have invested years in understanding how Electron applications break and how to help secure them. We are excited to make the next stage of that work an open-source effort.\n\nThe code is available in two repositories:\n\n- **ElectroNG**: the desktop application (user interface, project management, and reporting).\n- **ElectroNG-core**: the scanning engine, including all the security checks, the knowledge base, and the Electron vulnerability database.\n\nBoth are free to use for any purpose, including commercial work. There are no license keys and no usage limits.\n\n### What ElectroNG adds to Electronegativity\n\nElectronegativity started as a command-line tool to help developers and auditors identify insecure configurations and security anti-patterns in Electron applications. ElectroNG builds on that foundation with improved analysis and a desktop interface for investigating the results.\n\nThe main differences are:\n\nAreaElectronegativityElectroNGWorkflowCommand-line scanning, programmatic use, and CI integrationA desktop application for managing projects, configuring scans, and investigating findingsDetectionAST and DOM analysis of Electron configurations and security anti-patternsImproved HTML, JavaScript, and TypeScript parsing, revised heuristics, and around 60 checksElectron versionsVersion detection, version overrides, and upgrade checksVersion-aware checks, plus a database of more than 650 known Electron vulnerabilitiesApplication inspectionFindings surfaced through command-line output and reportsAn inventory of Reviewing findingsSeverity and confidence filters, with CSV and SARIF outputIn-app triage to validate findings, mark false positives, adjust severity, and add notes, with PDF, HTML, XLSX, CSV, and SARIF reports\n\n### Try out ElectroNG\n\nThe easiest way to try ElectroNG is to download the latest build for macOS or Windows from the Releases page. Create a project, import the target, and start a scan; the default configuration works without any setup. The ElectroNG website hosts the quickstart guide, documentation, and FAQ.\n\nAutomatic updates are disabled by default: ElectroNG does not check for or download updates unless you opt in from the application menu.\n\nIf you prefer to build from source, or want to hack on the tool, the ElectroNG README explains how to build the core engine and run the desktop application locally. ElectroNG-core can also be used on its own as a library, although its API is primarily designed around the needs of the desktop app.\n\n### The future and how to contribute\n\nWe want to be clear about the project\u2019s starting point:\n\n&gt; **ElectroNG\u2019s last substantial development work took place in 2024, followed by smaller bug fixes. Its detection capabilities need updating for modern Electron applications, and results on recent versions can be incomplete or noisy.**\n\nOpening the source gives us an opportunity to address that gap together. Our goal is to modernize the tool, improve its detection capabilities, and make ElectroNG a go-to security scanner for Electron applications again.\n\nElectronegativity is now archived, and we encourage its users and contributors to help move ElectroNG forward.\n\nThere are several areas where contributions would make a meaningful difference:\n\n- **Update Electron coverage.** Bring checks in line with current APIs, security defaults, and application patterns.\n- **Improve detection.** Add checks for new vulnerability classes, reduce false positives, and improve how the scanner handles JavaScript and TypeScript code found in real applications.\n- **Modernize the codebase.** Help update dependencies, parsing, and the build process so the project is easier to run and maintain.\n- **Add regression tests.** Small examples of vulnerable and secure code can help demonstrate a missed issue, reproduce a false positive, and keep future changes from reintroducing bugs.\n- **Improve the experience.** Better CI/CD setup instructions, check documentation, reporting, and interface improvements all make the tool more useful.\n\nNew checks and changes to the scanning logic belong in ElectroNG-core, while changes to the desktop interface belong in ElectroNG. We welcome issues, pull requests, and ideas in both repositories.\n\n**Thank you to everyone who contributed to Electronegativity, helped build ElectroNG, supported the commercial product, or shared research that made these tools better.** We are proud to put this work in the community\u2019s hands, and we look forward to seeing what we can build together.",
+      "link": "https://blog.doyensec.com/2026/10/27/electrong-oss.html",
+      "source": "0dayfans",
+      "feed_type": "news",
+      "type": "exploits-pocs",
+      "type_label": "Exploits & PoCs",
+      "published": "2026-10-26T23:00:53+00:00",
+      "published_ts": 1793055653,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "DevSecOps",
+        "Product News"
+      ],
+      "curated": true
+    },
     {
       "title": "API Discovery",
       "summary": "Has anybody used a reliable API Discovery tool ? I am searching for one with minimum agent dependency. Also could it detect shadow APIs which are available in programs which are never called ? (No access to source) submitted by /u/Far-Technology7058 [link] [comments]",
@@ -34,7 +52,30 @@
       "smart_groups": [
         "Data Breaches / Leaks"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "627cc70bbf65",
+      "story_size": 4,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "Cyber Security News (FeedBurner)",
+          "title": "University of Copenhagen Data Breach Exposes 525,000 People\u2019s Personal Data, Including Phone Numbers",
+          "link": "https://cybersecuritynews.com/university-of-copenhagen-data-breach/",
+          "published_ts": 1793090450
+        },
+        {
+          "source": "Infosecurity Magazine \u2013 News",
+          "title": "Copenhagen University Breach Compromises Data on Half a Million People",
+          "link": "https://www.infosecurity-magazine.com/news/copenhagen-university-data-breach/",
+          "published_ts": 1793098800
+        },
+        {
+          "source": "Help Net Security",
+          "title": "Cyberattack on University of Copenhagen exposes data of 525,000 people",
+          "link": "https://www.helpnetsecurity.com/2026/10/27/university-of-copenhagen-cyberattack-data-breach/",
+          "published_ts": 1793101162
+        }
+      ]
     },
     {
       "title": "Canada\u2019s Draft Stablecoin Rules Cap Redemption Fees at 1% and Ban Yield",
@@ -386,7 +427,24 @@
       "published": "2026-10-26T19:26:20+00:00",
       "published_ts": 1793042780,
       "smart_groups": [],
-      "curated": true
+      "curated": true,
+      "story_id": "d84dc99ca60f",
+      "story_size": 3,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "Cyber Security News (FeedBurner)",
+          "title": "DreamHost Forces Email and FTP Password Resets Following Unexplained Security Incident",
+          "link": "https://cybersecuritynews.com/dreamhost-forces-email-and-ftp-password-resets/",
+          "published_ts": 1793089823
+        },
+        {
+          "source": "SecurityWeek",
+          "title": "Unexplained DreamHost Incident Prompts Email, FTP Password Resets",
+          "link": "https://www.securityweek.com/unexplained-dreamhost-incident-prompts-email-ftp-password-resets/",
+          "published_ts": 1793102526
+        }
+      ]
     },
     {
       "title": "Next step after Security+",
