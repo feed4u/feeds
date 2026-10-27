@@ -42,6 +42,9 @@ npm run preview
 `core/web/src/config/verticals.ts`). Dev server: put `VITE_VERTICAL=<v>` in
 `core/web/.env.local` and run `npm run dev` (run the sync script once first).
 
+The existing k5 Docker data image and its isolated offline verification are
+documented in [core/docker/README.md](core/docker/README.md).
+
 ## Adding a new vertical
 
 1. `core/source/<name>/` — OPML feed files (`news.xml`, `blog.xml`, …).

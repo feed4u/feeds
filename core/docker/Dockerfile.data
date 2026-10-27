@@ -15,14 +15,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-COPY scripts/requirements.txt /app/scripts/requirements.txt
-RUN pip install --no-cache-dir -r /app/scripts/requirements.txt
+COPY code/base/requirements.txt /app/code/base/requirements.txt
+RUN pip install --no-cache-dir -r /app/code/base/requirements.txt
 
-COPY scripts/ /app/scripts/
+COPY code/base/ /app/code/base/
+COPY code/k5/ /app/code/k5/
 COPY source/ /app/source/
 
 VOLUME ["/app/data"]
 ENV DAYS_BACK=30 MAX_WORKERS=10 REQUEST_TIMEOUT=25
 
-# Default command fetches news, archives, trends sequentially
-CMD ["python", "/app/scripts/fetch_news.py"]
+# Standalone runs fetch k5 news; Compose runs the four-stage data service.
+CMD ["python", "/app/code/base/fetch_news.py", "--base-dir", "/app", "--vertical", "k5"]
