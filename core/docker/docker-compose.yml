@@ -15,10 +15,10 @@ services:
       REQUEST_TIMEOUT: "${REQUEST_TIMEOUT:-25}"
     command: >
       /bin/sh -c "
-        python /app/scripts/build_category_metadata.py &&
-        python /app/scripts/fetch_news.py &&
-        python /app/scripts/build_news_archive.py &&
-        python /app/scripts/create_trends.py
+        python /app/code/base/build_category_metadata.py --base-dir /app --vertical k5 &&
+        python /app/code/base/fetch_news.py --base-dir /app --vertical k5 &&
+        python /app/code/base/archive_news.py --base-dir /app --vertical k5 &&
+        python /app/code/k5/create_trends.py --base-dir /app --vertical k5
       "
 
   frontend:
