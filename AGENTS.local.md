@@ -45,7 +45,7 @@ Run every command below from the repository root unless it says otherwise.
 
 ## Editing Feeds
 - Edit the section files in `core/source/<vertical>/`, then rebuild `feeds.xml` with `python3 core/code/base/merge_feeds.py --vertical <vertical>`. The pipeline also re-merges on every run, and the scheduled workflow commits `core/source/`.
-- `merge_feeds.py` merges `news blogs podcasts videos` by default, and `--sections` overrides that. For k5 and 4u, whose file is `blog.xml`, it prints `Section missing: …/blogs.xml`; the committed `feeds.xml` is built that same way.
+- `merge_feeds.py` merges `news blogs podcasts videos` by default, and `--sections` overrides that. `blog` and `blogs` are one section: `blogs.xml` is used if present, else `blog.xml`. When both exist, `blogs.xml` wins and an `[INFO]` line names the ignored file. Naming both in `--sections` loads the file once. Committed `feeds.xml` files predate this and still lack the `blog.xml` outlines until the next merge.
 - 4u's plain-text list: `python3 core/code/base/convert_feeds_txt.py --vertical 4u` writes `news.xml`, `blogs.xml`, `podcasts.xml` and `videos.xml` straight into `core/source/4u/`, so no copy step is needed. Then merge. `feeds.txt` and the committed 4u sections have drifted apart, so converting changes the live feed set. Diff before committing.
 - Keep taxonomy strings (category names in feed definitions) exact. `build_category_metadata.py` derives category slugs and labels from them.
 

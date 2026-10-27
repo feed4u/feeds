@@ -21,7 +21,12 @@ from copy import deepcopy
 from pathlib import Path
 from typing import Iterable, List
 
-from path_utils import DEFAULT_FEED_FILENAMES, add_path_cli_arguments, load_path_config
+from path_utils import (
+    add_path_cli_arguments,
+    canonical_section,
+    load_path_config,
+    resolve_section_file,
+)
 
 SECTION_ORDER = ["news", "blogs", "podcasts", "videos"]
 
@@ -93,12 +98,21 @@ def main() -> int:
     source_dir = path_config.source_dir
 
     outlines: List[ET.Element] = []
+    seen_sections = set()
     for slug in args.sections:
-        filename = DEFAULT_FEED_FILENAMES.get(slug, f"{slug}.xml")
-        section_file = source_dir / filename
+        canonical = canonical_section(slug)
+        if canonical in seen_sections:
+            continue
+        seen_sections.add(canonical)
+        section_file, ignored = resolve_section_file(source_dir, slug)
         if not section_file.exists():
             print(f"[WARN] Section missing: {section_file}", file=sys.stderr)
             continue
+        for other in ignored:
+            print(
+                f"[INFO] Using {section_file.name}; ignoring {other.name} (same section)",
+                file=sys.stderr,
+            )
         outlines.extend(load_section(section_file))
 
     if not outlines:

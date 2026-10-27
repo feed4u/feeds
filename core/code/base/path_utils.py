@@ -5,9 +5,11 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, Optional, Union
+from typing import Dict, List, Optional, Tuple, Union
 
 PathLike = Union[str, Path]
+
+BLOG_SECTION_ALIASES = ("blog", "blogs")
 
 DEFAULT_FEED_FILENAMES = {
     "news": "news.xml",
@@ -167,6 +169,31 @@ def add_path_cli_arguments(parser):
     return parser
 
 
+def canonical_section(slug: str) -> str:
+    """Map section aliases (``blog``) to their canonical slug (``blogs``)."""
+    return "blogs" if slug in BLOG_SECTION_ALIASES else slug
+
+
+def section_candidates(slug: str) -> List[str]:
+    """Filenames to try for a section slug, in priority order."""
+    if slug in BLOG_SECTION_ALIASES:
+        return ["blogs.xml", "blog.xml"]
+    return [DEFAULT_FEED_FILENAMES.get(slug, f"{slug}.xml")]
+
+
+def resolve_section_file(source_dir: Path, slug: str) -> Tuple[Path, List[Path]]:
+    """Return ``(chosen, ignored)`` for a section slug.
+
+    ``chosen`` is the first existing candidate, or the first candidate (which
+    does not exist) when none do. ``ignored`` lists further existing aliases.
+    """
+    candidates = [source_dir / name for name in section_candidates(slug)]
+    existing = [path for path in candidates if path.exists()]
+    if not existing:
+        return candidates[0], []
+    return existing[0], existing[1:]
+
+
 def discover_feed_files(source_dir: Path) -> Dict[str, Path]:
     """Discover available feed section files (news/blogs/podcasts/etc)."""
     feed_files: Dict[str, Path] = {}
@@ -198,7 +225,10 @@ def discover_feed_files(source_dir: Path) -> Dict[str, Path]:
 __all__ = [
     "PathConfig",
     "add_path_cli_arguments",
+    "canonical_section",
     "discover_feed_files",
+    "resolve_section_file",
+    "section_candidates",
     "detect_project_root",
     "DEFAULT_FEED_FILENAMES",
     "load_path_config",
