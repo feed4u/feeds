@@ -1,205 +1,197 @@
 {
-  "generated_at": "2026-10-27T01:48:23.868596+00:00",
-  "analysis_date": "2026-10-26",
+  "generated_at": "2026-10-28T01:47:20.219220+00:00",
+  "analysis_date": "2026-10-27",
   "vertical": "k5",
   "model": "qwen38-27b-mtp2:latest",
   "llm_endpoint": "127.0.0.1:11434",
   "window_hours": 24,
-  "source_file": "archive/*/daily/2026-10-26.json",
-  "total_items_in_window_all": 200,
-  "total_items_in_window_curated": 82,
+  "source_file": "archive/*/daily/2026-10-27.json",
+  "total_items_in_window_all": 245,
+  "total_items_in_window_curated": 98,
   "sections_from": "topics",
-  "topics_file": "archive/news/topics/2026-10-26.json",
+  "topics_file": "archive/news/topics/2026-10-27.json",
   "chunks": 0,
   "llm_calls": 1,
-  "duration_seconds": 84.2,
-  "daily_report_markdown": "### Headline summary\n- Critical remote code execution flaws in PHP and Brotli are being actively exploited in the wild, prompting emergency patches from major vendors. ([Cyber Security News (FeedBurner)](https://cybersecuritynews.com/php2shell-flaws-exploited/), [Qualys Blog](https://blog.qualys.com/category/vulnerabilities-threat-research), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/http2shell-vulnerability/), [SecurityWeek](https://www.securityweek.com/node2shell-brotli-flaw-triggers-patching-across-microsoft-node-js-python-packages/))\n- Supply chain and AI agent attacks are escalating, with malicious files tricking coding tools and stolen GitHub tokens used to harvest secrets. ([The Hacker News](https://thehackernews.com/2026/10/malicious-file-in-downloads-folder.html), [CSO Online](https://www.csoonline.com/article/4240222/malicious-downloads-can-trick-ai-coding-agents-into-compromising-themselves.html), [The Hacker News](https://thehackernews.com/2026/10/gheist-uses-stolen-github-tokens-to.html), [Infosecurity Magazine](https://www.infosecurity-magazine.com/news/gheist-attackers-abuse-stolen/))\n- A widespread malware campaign has infected 953 online stores, while a Bitcoin wallet flaw allowed attackers to redirect funds. ([SecurityWeek](https://www.securityweek.com/953-online-stores-infected-in-long-lasting-malware-campaign/), [The Hacker News](https://thehackernews.com/2026/10/hackers-infect-953-online-stores-with.html), [Decrypt](https://decrypt.co/381844/bitcoin-wallet-flaw-trick-users-paying-attackers))\n\n### Critical Brotli vulnerability triggers emergency patches across multiple platforms\nA critical heap overflow vulnerability in the Brotli decompressor, dubbed HTTP2Shell, affects Node.js, PHP, Microsoft .NET, and other products, prompting emergency patches and WAF updates from vendors including Microsoft, PHP, and Cloudflare. ([Cyber Security News (FeedBurner)](https://cybersecuritynews.com/http2shell-vulnerability/), [SecurityWeek](https://www.securityweek.com/node2shell-brotli-flaw-triggers-patching-across-microsoft-node-js-python-packages/), [Infosecurity Magazine](https://www.infosecurity-magazine.com/news/microsoft-patch-update-net-flaw/), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/cloudflare-release-brotli-vulnerability-waf-ruleset/))\n\n### PHP2Shell vulnerability exploited in the wild and targeted by North Korea\nThe PHP2Shell remote code execution flaw is being actively exploited in the wild, including by North Korean actors, with a hacker winning a Bitcoin challenge for a PoC and PHP releasing mitigation advice and updates. ([Cyber Security News (FeedBurner)](https://cybersecuritynews.com/php2shell-flaws-exploited/), [Qualys Blog](https://blog.qualys.com/category/vulnerabilities-threat-research), [Infosecurity Magazine](https://www.infosecurity-magazine.com/news/php-publishes-mitigation-advice/), [Security Affairs](https://securityaffairs.com/201748/hacking/php2shell-suspected-north-korean-campaign-targets-216-vulnerable-php-hosts.html))\n\n### 953 online stores infected in Magento malware campaign\nAn unknown threat actor has infected 953 online stores, predominantly running Magento, using scanner-evading JavaScript and loader code to deploy malware payloads. ([SecurityWeek](https://www.securityweek.com/953-online-stores-infected-in-long-lasting-malware-campaign/), [The Hacker News](https://thehackernews.com/2026/10/hackers-infect-953-online-stores-with.html), [Security Affairs](https://securityaffairs.com/201795/malware/magento-campaign-infects-953-online-stores-across-five-domains.html))\n\n### Gheist campaign steals secrets using stolen GitHub tokens\nAn automated supply chain attack known as Gheist is using stolen GitHub tokens to plant workflows that harvest secrets from private repositories and cloud environments. ([The Hacker News](https://thehackernews.com/2026/10/gheist-uses-stolen-github-tokens-to.html), [Infosecurity Magazine](https://www.infosecurity-magazine.com/news/gheist-attackers-abuse-stolen/), [Dark Reading](https://www.darkreading.com/cyberattacks-data-breaches/gheist-stolen-github-tokens-cloud-secrets))\n\n### Malicious files trick AI coding agents into installing malware\nResearchers demonstrated that plain text files placed in a developer's Downloads folder can trick AI coding agents like OpenAI Codex and Claude Code into changing settings or installing malware. ([The Hacker News](https://thehackernews.com/2026/10/malicious-file-in-downloads-folder.html), [CSO Online](https://www.csoonline.com/article/4240222/malicious-downloads-can-trick-ai-coding-agents-into-compromising-themselves.html), [Help Net Security](https://www.helpnetsecurity.com/2026/10/26/ai-coding-agents-malware-openai-codex/), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/codex-and-claude-code-hijack/))\n\n### LiteLLM supply chain attack via exposed master key\nThe popular AI tool LiteLLM disclosed that an unrevoked master key allowed hackers to target users in a supply chain attack. ([The Record](https://therecord.media/litellm-hackers-ai-malware), [/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1xg8u31/litellm_supply_chain_attack_started_with_an/))\n\n### Bitcoin Wallet Fixes Critical Flaw That Redirected Funds to Attackers\nA confirmed exploit let rogue servers replace Electrum’s pending transactions, tricking users into redirecting Bitcoin to attacker addresses. ([Decrypt](https://decrypt.co/381844/bitcoin-wallet-flaw-trick-users-paying-attackers))\n\n### Former pentester uses ARTEX AI to steal data\nSouth Korean police identified seven suspects, including a former pentester, who used the ARTEX AI tool to breach systems and steal 8.2 million data records. ([Decrypt](https://decrypt.co/381862/south-korea-arrests-seven-first-big-ai-hacking-case), [BleepingComputer](https://www.bleepingcomputer.com/news/security/former-pentester-used-artex-ai-to-steal-82-million-data-records/))",
+  "duration_seconds": 78.5,
+  "daily_report_markdown": "### Headline summary\n- CISA confirmed active exploitation of PHP2Shell flaws while Apple patched a CoreGraphics zero-day in its October updates. ([The Hacker News](https://thehackernews.com/2026/10/cisa-confirms-active-exploitation-of.html), [Security Affairs](https://securityaffairs.com/201840/security/u-s-cisa-adds-php-flaws-php2shell-to-its-known-exploited-vulnerabilities-catalog.html), [SANS Internet Storm Center](https://isc.sans.edu/diary/rss/33458), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/apple-fix-for-coregraphics-0-day-flaw/))\n- Emergency fixes were issued for critical vulnerabilities in the Brotli compression library and GoAhead TLS software. ([Cyber Security News (FeedBurner)](https://cybersecuritynews.com/brotli-vulnerability-affects-pan-os/), [/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1xgouqx/3_more_apparent_security_fixes_sitting_unreleased/), [The Hacker News](https://thehackernews.com/2026/10/goahead-tls-flaws-allow-revoked-client.html), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/goahead-tls-vulnerabilities/))\n- A cyberattack forced the University of New Mexico Health System to divert ambulances and close clinics. ([/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1xgdms8/cyberattack_forces_university_of_new_mexico/), [SecurityWeek](https://www.securityweek.com/cybersecurity-issue-forces-a-major-new-mexico-hospital-to-divert-patients-and-close-clinics/))\n\n### PHP2Shell vulnerability exploitation and analysis\nCISA confirmed active exploitation of PHP2Shell flaws, with reports detailing exploitation attempts, remediation trends, and the difficulty of mass-exploiting the vulnerability. Analysts discuss what the incident teaches about defending private applications in the age of frontier AI. ([The Hacker News](https://thehackernews.com/2026/10/cisa-confirms-active-exploitation-of.html), [Security Affairs](https://securityaffairs.com/201840/security/u-s-cisa-adds-php-flaws-php2shell-to-its-known-exploited-vulnerabilities-catalog.html), [The Record](https://therecord.media/php-vulnerabilities-cisa-kev), [wiz.io](https://www.wiz.io/blog/php2shell-exploitation-so-far))\n\n### Apple October 2026 security updates\nApple released iOS 27.2 and other updates in late October 2026, addressing 163 security fixes and patching a CoreGraphics zero-day vulnerability. The updates also address multiple vulnerabilities in Apple products that could allow for arbitrary code execution. ([SANS Internet Storm Center](https://isc.sans.edu/diary/rss/33458), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/apple-fix-for-coregraphics-0-day-flaw/), [BleepingComputer](https://www.bleepingcomputer.com/news/apple/apple-backports-coregraphics-zero-day-patches-to-older-iphones/), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/apple-ios-27-2-released/))\n\n### Brotli compression library vulnerabilities and patches\nMultiple reports detail vulnerabilities in the Brotli compression library, including a flaw allowing remote code execution and issues affecting Node.js. Microsoft and Palo Alto Networks have issued emergency fixes and workarounds for the Brotli flaw, while researchers note that additional security fixes remain unreleased. ([Cyber Security News (FeedBurner)](https://cybersecuritynews.com/brotli-vulnerability-affects-pan-os/), [/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1xgouqx/3_more_apparent_security_fixes_sitting_unreleased/), [CSO Online](https://www.csoonline.com/article/4241027/node2shell-puts-microsoft-and-node-js-on-brotli-patch-duty.html), [CIS](https://www.cisecurity.org/advisory/a-vulnerability-in-brotli-library-could-allow-for-remote-code-execution_2026-120))\n\n### Cyberattack Disrupts University of New Mexico Health\nA cyberattack forced the University of New Mexico Health System to divert ambulances, cancel appointments, and close clinics, with an extortion group claiming responsibility. ([/r/cybersecurity](https://www.reddit.com/r/cybersecurity/comments/1xgdms8/cyberattack_forces_university_of_new_mexico/), [SecurityWeek](https://www.securityweek.com/cybersecurity-issue-forces-a-major-new-mexico-hospital-to-divert-patients-and-close-clinics/), [Help Net Security](https://www.helpnetsecurity.com/2026/10/27/university-of-new-mexico-hospitals-cyberattack/), [The Record](https://therecord.media/university-of-new-mexico-hospital-diverts-cyber-incident))\n\n### GoAhead TLS vulnerabilities\nCritical flaws in GoAhead TLS software were identified, allowing revoked client certificates and enabling session decryption. These vulnerabilities could expose hundreds of millions of devices to attacks. ([The Hacker News](https://thehackernews.com/2026/10/goahead-tls-flaws-allow-revoked-client.html), [Cyber Security News (FeedBurner)](https://cybersecuritynews.com/goahead-tls-vulnerabilities/))\n\n### Microsoft Teams external chat exploitation\nAttackers are exploiting Microsoft Teams external chat features to breach organizations and access corporate PCs. Reports indicate these breaches can occur in under 15 minutes. ([Infosecurity Magazine](https://www.infosecurity-magazine.com/news/exploit-teams-chat-breach/), [HackRead](https://hackread.com/hackers-abuse-microsoft-teams-external-chats-pc/))\n\n### Tailscale security flaws and patches\nTailscale rushed to release patches after the uncoordinated disclosure of 'Tailworm' flaws. These vulnerabilities included SSH flaws that allowed for root privilege escalation. ([BleepingComputer](https://www.bleepingcomputer.com/news/security/tailscale-warns-of-serious-ssh-flaws-allowing-root-privilege-escalation/), [SecurityWeek](https://www.securityweek.com/tailscale-rushes-patches-after-uncoordinated-disclosure-of-tailworm-flaws/))\n\n### Keystone hardware wallet breach and device recall\nHackers stole the factory key used to verify Keystone hardware wallets, prompting the company to destroy or pull devices to prevent the creation of fake wallets. ([Cointelegraph.com News](https://cointelegraph.com/news/keystone-breach-deepens-hackers-stole-key-used-to-verify-wallets-as-genuine?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound), [The Hacker News](https://thehackernews.com/2026/10/keystone-to-destroy-18835-hardware.html), [Decrypt](https://decrypt.co/381983/bitcoin-wallet-keystone-devices-destroyed-stolen-key))",
   "headline": [
     {
-      "text": "Critical remote code execution flaws in PHP and Brotli are being actively exploited in the wild, prompting emergency patches from major vendors.",
+      "text": "CISA confirmed active exploitation of PHP2Shell flaws while Apple patched a CoreGraphics zero-day in its October updates.",
       "links": [
-        "https://cybersecuritynews.com/php2shell-flaws-exploited/",
-        "https://blog.qualys.com/category/vulnerabilities-threat-research",
-        "https://cybersecuritynews.com/http2shell-vulnerability/",
-        "https://www.securityweek.com/node2shell-brotli-flaw-triggers-patching-across-microsoft-node-js-python-packages/"
+        "https://thehackernews.com/2026/10/cisa-confirms-active-exploitation-of.html",
+        "https://securityaffairs.com/201840/security/u-s-cisa-adds-php-flaws-php2shell-to-its-known-exploited-vulnerabilities-catalog.html",
+        "https://isc.sans.edu/diary/rss/33458",
+        "https://cybersecuritynews.com/apple-fix-for-coregraphics-0-day-flaw/"
       ]
     },
     {
-      "text": "Supply chain and AI agent attacks are escalating, with malicious files tricking coding tools and stolen GitHub tokens used to harvest secrets.",
+      "text": "Emergency fixes were issued for critical vulnerabilities in the Brotli compression library and GoAhead TLS software.",
       "links": [
-        "https://thehackernews.com/2026/10/malicious-file-in-downloads-folder.html",
-        "https://www.csoonline.com/article/4240222/malicious-downloads-can-trick-ai-coding-agents-into-compromising-themselves.html",
-        "https://thehackernews.com/2026/10/gheist-uses-stolen-github-tokens-to.html",
-        "https://www.infosecurity-magazine.com/news/gheist-attackers-abuse-stolen/",
-        "https://therecord.media/litellm-hackers-ai-malware",
-        "https://www.reddit.com/r/cybersecurity/comments/1xg8u31/litellm_supply_chain_attack_started_with_an/"
+        "https://cybersecuritynews.com/brotli-vulnerability-affects-pan-os/",
+        "https://www.reddit.com/r/cybersecurity/comments/1xgouqx/3_more_apparent_security_fixes_sitting_unreleased/",
+        "https://thehackernews.com/2026/10/goahead-tls-flaws-allow-revoked-client.html",
+        "https://cybersecuritynews.com/goahead-tls-vulnerabilities/"
       ]
     },
     {
-      "text": "A widespread malware campaign has infected 953 online stores, while a Bitcoin wallet flaw allowed attackers to redirect funds.",
+      "text": "A cyberattack forced the University of New Mexico Health System to divert ambulances and close clinics.",
       "links": [
-        "https://www.securityweek.com/953-online-stores-infected-in-long-lasting-malware-campaign/",
-        "https://thehackernews.com/2026/10/hackers-infect-953-online-stores-with.html",
-        "https://decrypt.co/381844/bitcoin-wallet-flaw-trick-users-paying-attackers"
+        "https://www.reddit.com/r/cybersecurity/comments/1xgdms8/cyberattack_forces_university_of_new_mexico/",
+        "https://www.securityweek.com/cybersecurity-issue-forces-a-major-new-mexico-hospital-to-divert-patients-and-close-clinics/"
       ]
     }
   ],
   "top_stories": [
     {
-      "title": "Critical Brotli vulnerability triggers emergency patches across multiple platforms",
-      "summary": "A critical heap overflow vulnerability in the Brotli decompressor, dubbed HTTP2Shell, affects Node.js, PHP, Microsoft .NET, and other products, prompting emergency patches and WAF updates from vendors including Microsoft, PHP, and Cloudflare.",
+      "title": "PHP2Shell vulnerability exploitation and analysis",
+      "summary": "CISA confirmed active exploitation of PHP2Shell flaws, with reports detailing exploitation attempts, remediation trends, and the difficulty of mass-exploiting the vulnerability. Analysts discuss what the incident teaches about defending private applications in the age of frontier AI.",
       "links": [
-        "https://cybersecuritynews.com/http2shell-vulnerability/",
-        "https://www.securityweek.com/node2shell-brotli-flaw-triggers-patching-across-microsoft-node-js-python-packages/",
-        "https://www.infosecurity-magazine.com/news/microsoft-patch-update-net-flaw/",
-        "https://cybersecuritynews.com/cloudflare-release-brotli-vulnerability-waf-ruleset/",
-        "https://cybersecuritynews.com/microsoft-security-updates-for-brotli-and-net-tarballs-vulnerability/",
-        "https://www.reddit.com/r/cybersecurity/comments/1xfx6mx/node2shell_brotli_decoder_rce_in_nodejs/",
-        "https://www.bleepingcomputer.com/news/microsoft/microsoft-releases-emergency-net-patches-for-critical-brotli-flaw/",
-        "https://cybersecuritynews.com/php-http2shell-vulnerability/",
-        "https://www.bleepingcomputer.com/news/security/critical-http2shell-brotli-vulnerability-triggers-emergency-patches/",
-        "https://thehackernews.com/2026/10/php-issues-second-windows-security.html",
-        "https://www.reddit.com/r/cybersecurity/comments/1xg56p9/heap_overflow_in_edk2s_brotli_decompressor_the/"
+        "https://thehackernews.com/2026/10/cisa-confirms-active-exploitation-of.html",
+        "https://securityaffairs.com/201840/security/u-s-cisa-adds-php-flaws-php2shell-to-its-known-exploited-vulnerabilities-catalog.html",
+        "https://therecord.media/php-vulnerabilities-cisa-kev",
+        "https://www.wiz.io/blog/php2shell-exploitation-so-far",
+        "https://www.zscaler.com/blogs/product-insights/what-php2shell-teaches-us-about-defending-private-apps-age-frontier-ai",
+        "https://www.reddit.com/r/cybersecurity/comments/1xgywlp/cisa_confirms_php2shell_vulnerabilities_now/",
+        "https://hackread.com/cisa-confirm-php2shell-exploit-federal-agencies-patch/",
+        "https://www.praetorian.com/blog/php2shell/"
       ],
-      "topic_id": "3bd59f858e34"
+      "topic_id": "2cd9448e8bdc"
     },
     {
-      "title": "PHP2Shell vulnerability exploited in the wild and targeted by North Korea",
-      "summary": "The PHP2Shell remote code execution flaw is being actively exploited in the wild, including by North Korean actors, with a hacker winning a Bitcoin challenge for a PoC and PHP releasing mitigation advice and updates.",
+      "title": "Apple October 2026 security updates",
+      "summary": "Apple released iOS 27.2 and other updates in late October 2026, addressing 163 security fixes and patching a CoreGraphics zero-day vulnerability. The updates also address multiple vulnerabilities in Apple products that could allow for arbitrary code execution.",
       "links": [
-        "https://cybersecuritynews.com/php2shell-flaws-exploited/",
-        "https://blog.qualys.com/category/vulnerabilities-threat-research",
-        "https://www.infosecurity-magazine.com/news/php-publishes-mitigation-advice/",
-        "https://securityaffairs.com/201748/hacking/php2shell-suspected-north-korean-campaign-targets-216-vulnerable-php-hosts.html",
-        "https://www.securityweek.com/php2shell-exploitation-moves-from-probes-to-working-shells/",
-        "https://cointelegraph.com/news/php-flaw-ai-vulnerability-apocalypse-immunefi-ceo?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-        "https://www.reddit.com/r/cybersecurity/comments/1xfywmh/php2shell_security_flaws_now_sucessfully/",
-        "https://www.securityweek.com/industrial-vendors-check-products-for-php2shell-vulnerabilities/",
-        "https://socprime.com/blog/cve-2026-115560-new-unpatched-php-rce-risk-requires-immediate-mitigation/"
+        "https://isc.sans.edu/diary/rss/33458",
+        "https://cybersecuritynews.com/apple-fix-for-coregraphics-0-day-flaw/",
+        "https://www.bleepingcomputer.com/news/apple/apple-backports-coregraphics-zero-day-patches-to-older-iphones/",
+        "https://cybersecuritynews.com/apple-ios-27-2-released/",
+        "https://www.securityweek.com/ios-macos-27-2-patch-286-bugs-fix-for-exploited-flaw-backported-to-ios-18/",
+        "https://www.techrepublic.com/article/news-ios-27-2-security-flaws-patched/",
+        "https://thehackernews.com/2026/10/apple-backports-fix-for-exploited.html",
+        "https://www.cisecurity.org/advisory/multiple-vulnerabilities-in-apple-products-could-allow-for-arbitrary-code-execution_2026-121"
       ],
-      "topic_id": "5220dd2bbfa5"
+      "topic_id": "dd3302e7a2b3"
     },
     {
-      "title": "953 online stores infected in Magento malware campaign",
-      "summary": "An unknown threat actor has infected 953 online stores, predominantly running Magento, using scanner-evading JavaScript and loader code to deploy malware payloads.",
+      "title": "Brotli compression library vulnerabilities and patches",
+      "summary": "Multiple reports detail vulnerabilities in the Brotli compression library, including a flaw allowing remote code execution and issues affecting Node.js. Microsoft and Palo Alto Networks have issued emergency fixes and workarounds for the Brotli flaw, while researchers note that additional security fixes remain unreleased.",
       "links": [
-        "https://www.securityweek.com/953-online-stores-infected-in-long-lasting-malware-campaign/",
-        "https://thehackernews.com/2026/10/hackers-infect-953-online-stores-with.html",
-        "https://securityaffairs.com/201795/malware/magento-campaign-infects-953-online-stores-across-five-domains.html"
+        "https://cybersecuritynews.com/brotli-vulnerability-affects-pan-os/",
+        "https://www.reddit.com/r/cybersecurity/comments/1xgouqx/3_more_apparent_security_fixes_sitting_unreleased/",
+        "https://www.csoonline.com/article/4241027/node2shell-puts-microsoft-and-node-js-on-brotli-patch-duty.html",
+        "https://www.cisecurity.org/advisory/a-vulnerability-in-brotli-library-could-allow-for-remote-code-execution_2026-120",
+        "https://hackread.com/microsoft-issues-net-fixes-brotli-linux-privilege-escalation/",
+        "https://www.helpnetsecurity.com/2026/10/27/node2shell-broccoli2shell-vulnerability-cve-2026-111497/"
       ],
-      "topic_id": "0591ee5d8eff"
+      "topic_id": "33fb8862028b"
     },
     {
-      "title": "Gheist campaign steals secrets using stolen GitHub tokens",
-      "summary": "An automated supply chain attack known as Gheist is using stolen GitHub tokens to plant workflows that harvest secrets from private repositories and cloud environments.",
+      "title": "Cyberattack Disrupts University of New Mexico Health",
+      "summary": "A cyberattack forced the University of New Mexico Health System to divert ambulances, cancel appointments, and close clinics, with an extortion group claiming responsibility.",
       "links": [
-        "https://thehackernews.com/2026/10/gheist-uses-stolen-github-tokens-to.html",
-        "https://www.infosecurity-magazine.com/news/gheist-attackers-abuse-stolen/",
-        "https://www.darkreading.com/cyberattacks-data-breaches/gheist-stolen-github-tokens-cloud-secrets"
+        "https://www.reddit.com/r/cybersecurity/comments/1xgdms8/cyberattack_forces_university_of_new_mexico/",
+        "https://www.securityweek.com/cybersecurity-issue-forces-a-major-new-mexico-hospital-to-divert-patients-and-close-clinics/",
+        "https://www.helpnetsecurity.com/2026/10/27/university-of-new-mexico-hospitals-cyberattack/",
+        "https://therecord.media/university-of-new-mexico-hospital-diverts-cyber-incident",
+        "https://www.infosecurity-magazine.com/news/cyber-unmhealth-surgeries/"
       ],
-      "topic_id": "5d24692b9332"
+      "topic_id": "6f4ee8dbb578"
     },
     {
-      "title": "Malicious files trick AI coding agents into installing malware",
-      "summary": "Researchers demonstrated that plain text files placed in a developer's Downloads folder can trick AI coding agents like OpenAI Codex and Claude Code into changing settings or installing malware.",
+      "title": "GoAhead TLS vulnerabilities",
+      "summary": "Critical flaws in GoAhead TLS software were identified, allowing revoked client certificates and enabling session decryption. These vulnerabilities could expose hundreds of millions of devices to attacks.",
       "links": [
-        "https://thehackernews.com/2026/10/malicious-file-in-downloads-folder.html",
-        "https://www.csoonline.com/article/4240222/malicious-downloads-can-trick-ai-coding-agents-into-compromising-themselves.html",
-        "https://www.helpnetsecurity.com/2026/10/26/ai-coding-agents-malware-openai-codex/",
-        "https://cybersecuritynews.com/codex-and-claude-code-hijack/"
+        "https://thehackernews.com/2026/10/goahead-tls-flaws-allow-revoked-client.html",
+        "https://cybersecuritynews.com/goahead-tls-vulnerabilities/"
       ],
-      "topic_id": "20504a9c0b76"
+      "topic_id": "c1eb061d0e99"
     },
     {
-      "title": "LiteLLM supply chain attack via exposed master key",
-      "summary": "The popular AI tool LiteLLM disclosed that an unrevoked master key allowed hackers to target users in a supply chain attack.",
+      "title": "Microsoft Teams external chat exploitation",
+      "summary": "Attackers are exploiting Microsoft Teams external chat features to breach organizations and access corporate PCs. Reports indicate these breaches can occur in under 15 minutes.",
       "links": [
-        "https://therecord.media/litellm-hackers-ai-malware",
-        "https://www.reddit.com/r/cybersecurity/comments/1xg8u31/litellm_supply_chain_attack_started_with_an/"
+        "https://www.infosecurity-magazine.com/news/exploit-teams-chat-breach/",
+        "https://hackread.com/hackers-abuse-microsoft-teams-external-chats-pc/"
       ],
-      "topic_id": "366c98c6a6a6"
+      "topic_id": "f60d2ca9f8f1"
     },
     {
-      "title": "Bitcoin Wallet Fixes Critical Flaw That Redirected Funds to Attackers",
-      "summary": "A confirmed exploit let rogue servers replace Electrum’s pending transactions, tricking users into redirecting Bitcoin to attacker addresses.",
+      "title": "Tailscale security flaws and patches",
+      "summary": "Tailscale rushed to release patches after the uncoordinated disclosure of 'Tailworm' flaws. These vulnerabilities included SSH flaws that allowed for root privilege escalation.",
       "links": [
-        "https://decrypt.co/381844/bitcoin-wallet-flaw-trick-users-paying-attackers"
+        "https://www.bleepingcomputer.com/news/security/tailscale-warns-of-serious-ssh-flaws-allowing-root-privilege-escalation/",
+        "https://www.securityweek.com/tailscale-rushes-patches-after-uncoordinated-disclosure-of-tailworm-flaws/"
       ],
-      "topic_id": "90fd822f5434"
+      "topic_id": "e029d81ca1bc"
     },
     {
-      "title": "Former pentester uses ARTEX AI to steal data",
-      "summary": "South Korean police identified seven suspects, including a former pentester, who used the ARTEX AI tool to breach systems and steal 8.2 million data records.",
+      "title": "Keystone hardware wallet breach and device recall",
+      "summary": "Hackers stole the factory key used to verify Keystone hardware wallets, prompting the company to destroy or pull devices to prevent the creation of fake wallets.",
       "links": [
-        "https://decrypt.co/381862/south-korea-arrests-seven-first-big-ai-hacking-case",
-        "https://www.bleepingcomputer.com/news/security/former-pentester-used-artex-ai-to-steal-82-million-data-records/"
+        "https://cointelegraph.com/news/keystone-breach-deepens-hackers-stole-key-used-to-verify-wallets-as-genuine?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+        "https://thehackernews.com/2026/10/keystone-to-destroy-18835-hardware.html",
+        "https://decrypt.co/381983/bitcoin-wallet-keystone-devices-destroyed-stolen-key"
       ],
-      "topic_id": "40155f7e7b61"
+      "topic_id": "e4f66404a016"
     }
   ],
   "highlights": [
     {
-      "title": "HTTP2Shell Vulnerability Extends Beyond HTTP, Affecting .NET, FFmpeg, ClickHouse, and Apache Arrow",
-      "link": "https://cybersecuritynews.com/http2shell-vulnerability/",
-      "source": "Cyber Security News (FeedBurner)",
-      "published": "2026-10-26T06:35:41+00:00",
-      "smart_groups": [
-        "Vulnerabilities / CVEs",
-        "Malware / Payloads",
-        "Privacy & Compliance"
-      ],
-      "curated": true
-    },
-    {
-      "title": "Node2Shell: Brotli Flaw Triggers Patching Across Microsoft, Node.js, Python Packages",
-      "link": "https://www.securityweek.com/node2shell-brotli-flaw-triggers-patching-across-microsoft-node-js-python-packages/",
-      "source": "SecurityWeek",
-      "published": "2026-10-26T10:21:57+00:00",
-      "smart_groups": [
-        "Vulnerabilities / CVEs",
-        "Windows / Microsoft"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Microsoft Issues Emergency Patch Update for Critical .NET Buffer Overflow Flaw",
-      "link": "https://www.infosecurity-magazine.com/news/microsoft-patch-update-net-flaw/",
-      "source": "Infosecurity Magazine",
-      "published": "2026-10-26T12:45:00+00:00",
+      "title": "CISA Confirms Active Exploitation of Two PHP2Shell Flaws Enabling Remote Code Execution",
+      "link": "https://thehackernews.com/2026/10/cisa-confirms-active-exploitation-of.html",
+      "source": "The Hacker News",
+      "published": "2026-10-27T04:37:59+00:00",
       "smart_groups": [
         "Vulnerabilities / CVEs"
       ],
-      "curated": false
+      "curated": true
     },
     {
-      "title": "Cloudflare Release Emergency WAF Ruleset Update Following Brotli Vulnerability",
-      "link": "https://cybersecuritynews.com/cloudflare-release-brotli-vulnerability-waf-ruleset/",
-      "source": "Cyber Security News (FeedBurner)",
-      "published": "2026-10-26T13:18:59+00:00",
+      "title": "U.S. CISA adds PHP flaws PHP2Shell to its Known Exploited Vulnerabilities catalog",
+      "link": "https://securityaffairs.com/201840/security/u-s-cisa-adds-php-flaws-php2shell-to-its-known-exploited-vulnerabilities-catalog.html",
+      "source": "Security Affairs",
+      "published": "2026-10-27T10:39:41+00:00",
       "smart_groups": [
         "Vulnerabilities / CVEs",
-        "Cloud / SaaS",
-        "Web / API Security"
+        "Cloud / SaaS"
       ],
       "curated": true
     },
     {
-      "title": "Microsoft Releases Out-of-Band Security Updates for Brotli and .NET tarballs Vulnerability",
-      "link": "https://cybersecuritynews.com/microsoft-security-updates-for-brotli-and-net-tarballs-vulnerability/",
-      "source": "Cyber Security News (FeedBurner)",
-      "published": "2026-10-26T13:22:05+00:00",
+      "title": "CISA warns of PHP bug exploitation attempts, gives federal agencies days to patch",
+      "link": "https://therecord.media/php-vulnerabilities-cisa-kev",
+      "source": "The Record",
+      "published": "2026-10-27T13:16:00+00:00",
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "PHP2Shell: Exploitation Attempts and Remediation Trends",
+      "link": "https://www.wiz.io/blog/php2shell-exploitation-so-far",
+      "source": "wiz.io",
+      "published": "2026-10-27T13:21:45+00:00",
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "What PHP2Shell Teaches Us About Defending Private Apps in the Age of Frontier AI",
+      "link": "https://www.zscaler.com/blogs/product-insights/what-php2shell-teaches-us-about-defending-private-apps-age-frontier-ai",
+      "source": "Zscaler Research Blogs",
+      "published": "2026-10-27T15:00:00+00:00",
       "smart_groups": [
         "Vulnerabilities / CVEs",
-        "Product News",
+        "Exploit / PoC",
         "Linux / Unix"
       ],
       "curated": true
     },
     {
-      "title": "Node2Shell: Brotli Decoder RCE in Node.js (CVE-2026-111497)",
-      "link": "https://www.reddit.com/r/cybersecurity/comments/1xfx6mx/node2shell_brotli_decoder_rce_in_nodejs/",
+      "title": "CISA confirms PHP2Shell vulnerabilities now exploited in attacks",
+      "link": "https://www.reddit.com/r/cybersecurity/comments/1xgywlp/cisa_confirms_php2shell_vulnerabilities_now/",
       "source": "/r/cybersecurity",
-      "published": "2026-10-26T13:42:50+00:00",
+      "published": "2026-10-27T17:28:23+00:00",
       "smart_groups": [
         "Vulnerabilities / CVEs",
         "Community Discussion"
@@ -207,48 +199,46 @@
       "curated": true
     },
     {
-      "title": "Microsoft releases emergency .NET patches for critical Brotli flaw",
-      "link": "https://www.bleepingcomputer.com/news/microsoft/microsoft-releases-emergency-net-patches-for-critical-brotli-flaw/",
-      "source": "BleepingComputer",
-      "published": "2026-10-26T15:38:24+00:00",
+      "title": "CISA Confirms PHP2Shell Exploitation, Orders Federal Agencies to Patch",
+      "link": "https://hackread.com/cisa-confirm-php2shell-exploit-federal-agencies-patch/",
+      "source": "HackRead",
+      "published": "2026-10-27T18:26:21+00:00",
       "smart_groups": [
-        "Product News",
         "Vulnerabilities / CVEs"
       ],
       "curated": true
     },
     {
-      "title": "PHP Releases New Windows Build Security Updates to Fix Critical HTTP2Shell Vulnerability",
-      "link": "https://cybersecuritynews.com/php-http2shell-vulnerability/",
+      "title": "php2shell in Practice: Exploitable, Conditional, and Hard to Mass-Exploit",
+      "link": "https://www.praetorian.com/blog/php2shell/",
+      "source": "praetorian.com",
+      "published": "2026-10-27T19:31:40+00:00",
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Apple Patches for October 2026, (Mon, Oct 26th)",
+      "link": "https://isc.sans.edu/diary/rss/33458",
+      "source": "SANS Internet Storm Center",
+      "published": "2026-10-27T02:09:55+00:00",
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Apple Released Patches for Exploited CoreGraphics 0-day Vulnerability for Older iPhones",
+      "link": "https://cybersecuritynews.com/apple-fix-for-coregraphics-0-day-flaw/",
       "source": "Cyber Security News (FeedBurner)",
-      "published": "2026-10-26T15:53:07+00:00",
+      "published": "2026-10-27T09:44:36+00:00",
       "smart_groups": [
         "Vulnerabilities / CVEs",
-        "Product News",
-        "Malware / Payloads"
+        "Red Team / Offensive",
+        "Product News"
       ],
       "curated": true
-    },
-    {
-      "title": "Critical 'HTTP2Shell' Brotli vulnerability triggers emergency patches",
-      "link": "https://www.bleepingcomputer.com/news/security/critical-http2shell-brotli-vulnerability-triggers-emergency-patches/",
-      "source": "BleepingComputer",
-      "published": "2026-10-26T16:27:57+00:00",
-      "smart_groups": [
-        "Vulnerabilities / CVEs"
-      ],
-      "curated": false
-    },
-    {
-      "title": "PHP Issues Second Windows Security Update in Five Days to Fix Brotli Code Execution Flaw",
-      "link": "https://thehackernews.com/2026/10/php-issues-second-windows-security.html",
-      "source": "The Hacker News",
-      "published": "2026-10-26T17:45:57+00:00",
-      "smart_groups": [
-        "Windows / Microsoft",
-        "Vulnerabilities / CVEs"
-      ],
-      "curated": false
     }
   ]
 }
