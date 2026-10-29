@@ -2,10 +2,12 @@
 
 import json
 import os
+import re
 import subprocess
 import tempfile
 import unittest
 
+ANSI_ESCAPE = re.compile(r"\x1b\[[0-9;]*m")
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", ".."))
 
 
@@ -39,7 +41,8 @@ class WebSuiteTest(unittest.TestCase):
             ["make", "--no-print-directory", "-C", ROOT, "test-web"],
             capture_output=True, text=True, timeout=600,
         )
-        output = result.stdout + result.stderr
+        # Vitest colours its summary on CI runners; match the text, not the escapes.
+        output = ANSI_ESCAPE.sub("", result.stdout + result.stderr)
         self.assertEqual(result.returncode, 0, output)
         self.assertIn("vitest run", output)
         self.assertRegex(output, r"Test Files\s+\d+ passed")
