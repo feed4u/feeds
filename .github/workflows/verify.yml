@@ -24,7 +24,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          # Full history: test_data_image.py runs `git archive` on a pinned
+          # baseline commit, which a depth-1 clone does not contain.
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5

@@ -18,6 +18,11 @@ def read(name):
         return fh.read()
 
 
+def read_repo(relative):
+    with open(os.path.join(ROOT, relative), encoding="utf-8") as fh:
+        return fh.read()
+
+
 def glob_match(pattern, path):
     out = ""
     i = 0
@@ -75,6 +80,15 @@ class VerifyWorkflowTest(unittest.TestCase):
         self.assertIn("actions/setup-python@v5", self.text)
         self.assertIn("node-version-file: core/web/.nvmrc", self.text)
         self.assertTrue(os.path.exists(os.path.join(ROOT, "core/web/.nvmrc")))
+
+    def test_checkout_has_the_history_the_suite_reads(self):
+        # test_data_image.py runs `git archive BASELINE`; a depth-1 checkout lacks
+        # that commit and the hosted job fails (it passed on every full clone).
+        self.assertRegex(self.text, r"actions/checkout@v4\n\s+with:\n(?:\s+#.*\n)*\s+fetch-depth: 0\n")
+        self.assertNotRegex(self.text, r"fetch-depth: [1-9]")
+        data_image = read_repo("core/code/base/tests/test_data_image.py")
+        baseline = re.search(r'BASELINE = "([0-9a-f]{40})"', data_image)
+        self.assertIsNotNone(baseline, "BASELINE pin moved; revisit the checkout depth")
 
     def test_path_filter(self):
         for event in ("pull_request", "push"):
