@@ -1,0 +1,47 @@
+name: Verify
+
+# Offline checks for shared news code. Read-only: no secrets, no data push and
+# no ingestion or LLM steps. Generated data under core/data/ is ignored, so the
+# data-only commits of the scheduled workflow do not start it.
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    paths-ignore:
+      - "core/data/**"
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "core/data/**"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: core/web/.nvmrc
+
+      - name: Lint
+        run: make lint
+
+      - name: Test
+        run: make test
+
+      - name: Build web app
+        working-directory: core/web
+        run: npm run build

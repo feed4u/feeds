@@ -128,6 +128,7 @@ Run every command below from the repository root unless it says otherwise.
 
 ## Deployment
 - `.github/workflows/update_news_json.yml` runs every 8 hours (`23 */8 * * *`) for `k5 4u finnish`. `economics` and `storage` run only through manual dispatch. The workflow runs `run_pipeline.sh` per vertical and commits `core/data/` and `core/source/`. That push is the deploy: each vertical is its own git-integrated Cloudflare Pages project (`core/web/CLOUDFLARE_DEPLOY.md`).
+- `.github/workflows/verify.yml` runs `make lint`, `make test` and `npm run build` in `core/web` on pull requests and pushes to `main`. It is read-only, needs no secrets, and skips changes that touch only `core/data/`.
 - Daily LLM briefings and topics are not built in Actions, because the runner cannot reach the local lane. They are built on the host by `core/code/run_daily_briefings.sh` (systemd timer in `core/code/systemd/`), committed with `[skip ci]`, and published by the next data push.
 
 ## Coding Style & Naming Conventions
