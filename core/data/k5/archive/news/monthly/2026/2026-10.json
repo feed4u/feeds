@@ -1,5 +1,761 @@
 [
   {
+    "title": "Next steps?",
+    "summary": "I just completed my Google cybersecurity course and I was wondering what the best next steps would be for me. I’m trying to just expand my knowledge and hopefully land an internship in the near future and was wondering what yall would recommend me do in my shoes right now. What would yall do? submitted by /u/22bgw [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>I just completed my Google cybersecurity course and I was wondering what the best next steps would be for me. I’m trying to just expand my knowledge and hopefully land an internship in the near future and was wondering what yall would recommend me do in my shoes right now. What would yall do?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/22bgw\"> /u/22bgw </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1xiwd33/next_steps/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1xiwd33/next_steps/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1xiwd33/next_steps/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-10-29T21:11:24+00:00",
+    "published_ts": 1793308284,
+    "smart_groups": [
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Coinbase Swings to $719 Million Q3 Profit on Crypto Gains",
+    "summary": "Coinbase reported third-quarter net income of $719 million, driven largely by gains on its crypto holdings, as revenue held flat at $1.22 billion.",
+    "summary_html": "Coinbase reported third-quarter net income of $719 million, driven largely by gains on its crypto holdings, as revenue held flat at $1.22 billion.",
+    "link": "https://decrypt.co/382188/coinbase-beats-719-million-q3-profit-crypto-gains",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-10-29T20:46:43+00:00",
+    "published_ts": 1793306803,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "AI hacking is making password protection and identity governance more important",
+    "summary": "The panic of “Black October” is a reminder to take passwords seriously. But Americans have struggled for decades to shore up this essential—if frequently forgotten—first line of defense against attackers. submitted by /u/Severe-Internet9948 [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/cybersecurity/comments/1xivltb/ai_hacking_is_making_password_protection_and/\">  </a>  <!-- SC_OFF --><div>The panic of “Black October” is a reminder to take passwords seriously. But Americans have struggled for decades to shore up this essential—if frequently forgotten—first line of defense against attackers. </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Severe-Internet9948\"> /u/Severe-Internet9948 </a> <br/> <span><a href=\"https://siliconprairies.substack.com/p/the-worlds-biggest-hacking-target\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1xivltb/ai_hacking_is_making_password_protection_and/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1xivltb/ai_hacking_is_making_password_protection_and/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-10-29T20:42:00+00:00",
+    "published_ts": 1793306520,
+    "smart_groups": [
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "DefenderKiller: How Vulnerable Drivers Are Being Abused to Disable Endpoint Security",
+    "summary": "Table Of Contents Table of Contents DefenderKiller Exploits a Legacy Microsoft Driver Implications for Endpoint Security Indicators of Compromise and Technical Artifacts Stay Ahead of EDR Evasion Techniques With Flashpoint More subscribe to our newsletter The abuse of legitimate, vulnerable drivers remains a persistent method of evading endpoint security controls. As EDR killer techniques become publicly available, researchers and threat actors alike are examining how weaknesses in driver access controls can be exploited to terminate protected security processes. An older Microsoft Defender driver, dating back to 2011, can still be loaded on the latest version of Windows 11 and abused to terminate security software. The technique, publicly demonstrated through an open-source proof of concept (POC) called DefenderKiller, exploits weaknesses in how the driver restricts access to its process termination functionality. Flashpoint analysts have identified 13 publicly available samples incorporating the DefenderKiller technique, including obfuscated variants that indicate modifications to the original POC. DefenderKiller Exploits a Legacy Microsoft Driver On June 29, 2026, security researcher Jehad Abudagga, also known as redteamfortress , published research demonstrating how an older Microsoft driver could be abused to terminate security software. The researcher subsequently released the DefenderKiller POC on GitHub. The technique targets KSLDriver.sys, version 1.1.0013.0, a driver associated with Microsoft’s malware protection infrastructure. Although its digital signature dates to 2011, the driver remains accepted by Windows’ driver verification mechanisms and can load into the kernel on the latest version of Windows 11. KSLDriver includes access controls intended to restrict which processes can communicate with it. When loaded, the driver retrieves an AllowedProcessName value from its service registry configuration and applies restrictions limiting access to SYSTEM and administrator accounts. When a user-mode process attempts to communicate with the driver, its process image path is compared against the configured registry value. If the values match, the driver accepts input/output control (IOCTL) requests. DefenderKiller exploits this mechanism by configuring the driver’s service and authorized process path before starting the driver. Once authorized, the requesting process can invoke functionality that accepts a target process identifier (PID), obtains the corresponding kernel process object, and terminates the process using ZwTerminateProcess(). This allows a sufficiently privileged attacker to leverage the legitimate driver to terminate security processes. Source code of the user-mode application performing the registry bypass before starting the driver. (Source: Flashpoint) Following publication of the original POC, Flashpoint analysts identified 13 publicly available samples incorporating the DefenderKiller technique, including obfuscated versions. These findings indicate that the original code has been modified, although the available evidence does not establish whether the samples have been deployed in confirmed intrusions. Implications for Endpoint Security The findings illustrate how Bring Your Own Vulnerable Driver (BYOVD) techniques can exploit legitimate, digitally signed drivers to interfere with endpoint security. KSLDriver relies on process authorization checks that can be bypassed through manipulation of registry-controlled information, while remaining loadable on the latest version of Windows 11. Flashpoint analysts assess that advances in large language models may be contributing to growing interest in BYOVD research and EDR killer development by making user-mode and kernel-mode code development more accessible. Exploitation generally requires administrative privileges to create the services necessary to load these drivers, although attackers may obtain these privileges through local privilege escalation. Security teams should consider monitoring for unexpected kernel driver installations, changes to driver service configurations, and termination of security processes following driver loading. In particular, modifications to registry values such as AllowedProcessName and ImagePath may provide useful investigative context when correlated with suspicious service creation or driver activity. Indicators of Compromise and Technical Artifacts The following artifacts were identified during Flashpoint’s analysis and may support threat hunting and further investigation. Artifact Value DefenderKiller service DefenderKiller DefenderKiller service registry key HKLM\\SYSTEM\\CurrentControlSet\\Services\\DefenderKiller Microsoft driver KSLDriver.sys (1.1.0013.0) Microsoft driver SHA-256 d5764d24e78914ab2a9db6b24e323342d0b37998f43add1a9e49b00992b0d645 The presence of these artifacts should be evaluated in context, as legitimate software may use some of these components. Stay Ahead of EDR Evasion Techniques With Flashpoint The discovery of vulnerable drivers beyond those targeted by publicly available EDR killers highlights the need for continued research into the techniques used to disable endpoint defenses. The public release of DefenderKiller, along with the emergence of modified variants, highlights the need for continued visibility into defense evasion techniques and the vulnerable drivers that enable them. Flashpoint continuously monitors emerging threats and adversary techniques, combining primary source intelligence with technical research to help organizations understand how threats are evolving. Request a demo to learn how Flashpoint can help your team identify emerging threats and strengthen its defenses. See Flashpoint in Action Get a Demo Contact Sales",
+    "summary_html": "<div><div><div><div><div> Table Of Contents</div><div></div></div><div><div><div>Table of Contents</div><div><div><a href=\"https://flashpoint.io/feed/#defenderkiller-exploits-legacy-microsoft-driver\">DefenderKiller Exploits a Legacy Microsoft Driver</a></div><div><a href=\"https://flashpoint.io/feed/#implications-for-endpoint-security\">Implications for Endpoint Security</a></div><div><a href=\"https://flashpoint.io/feed/#iocs-and-technical-artifacts\">Indicators of Compromise and Technical Artifacts</a></div><div><a href=\"https://flashpoint.io/feed/#cta\">Stay Ahead of EDR Evasion Techniques With Flashpoint</a></div></div><span>More</span></div><div><div>subscribe to our newsletter</div><div></div></div></div></div><div><div>\n<p>The abuse of legitimate, vulnerable drivers remains a persistent method of evading endpoint security controls. As EDR killer techniques become publicly available, researchers and threat actors alike are examining how weaknesses in driver access controls can be exploited to terminate protected security processes.</p>\n<p>An older Microsoft Defender driver, dating back to 2011, can still be loaded on the latest version of Windows 11 and abused to terminate security software. The technique, publicly demonstrated through an open-source proof of concept (POC) called DefenderKiller, exploits weaknesses in how the driver restricts access to its process termination functionality.</p>\n<p>Flashpoint analysts have identified 13 publicly available samples incorporating the DefenderKiller technique, including obfuscated variants that indicate modifications to the original POC.</p>\nDefenderKiller Exploits a Legacy Microsoft Driver\n<p>On June 29, 2026, security researcher Jehad Abudagga, also known as <em>redteamfortress</em>, published research demonstrating how an older Microsoft driver could be abused to terminate security software. The researcher subsequently released the DefenderKiller POC on GitHub. The technique targets KSLDriver.sys, version 1.1.0013.0, a driver associated with Microsoft’s malware protection infrastructure. Although its digital signature dates to 2011, the driver remains accepted by Windows’ driver verification mechanisms and can load into the kernel on the latest version of Windows 11.</p>\n<p>KSLDriver includes access controls intended to restrict which processes can communicate with it. When loaded, the driver retrieves an AllowedProcessName value from its service registry configuration and applies restrictions limiting access to SYSTEM and administrator accounts. When a user-mode process attempts to communicate with the driver, its process image path is compared against the configured registry value. If the values match, the driver accepts input/output control (IOCTL) requests.</p>\n<p>DefenderKiller exploits this mechanism by configuring the driver’s service and authorized process path before starting the driver. Once authorized, the requesting process can invoke functionality that accepts a target process identifier (PID), obtains the corresponding kernel process object, and terminates the process using ZwTerminateProcess(). This allows a sufficiently privileged attacker to leverage the legitimate driver to terminate security processes.</p>\n<em>Source code of the user-mode application performing the registry bypass before starting the driver. (Source: Flashpoint)</em>\n<p>Following publication of the original POC, Flashpoint analysts identified 13 publicly available samples incorporating the DefenderKiller technique, including obfuscated versions. These findings indicate that the original code has been modified, although the available evidence does not establish whether the samples have been deployed in confirmed intrusions.</p>\nImplications for Endpoint Security\n<p>The findings illustrate how Bring Your Own Vulnerable Driver (BYOVD) techniques can exploit legitimate, digitally signed drivers to interfere with endpoint security. KSLDriver relies on process authorization checks that can be bypassed through manipulation of registry-controlled information, while remaining loadable on the latest version of Windows 11.</p>\n<p>Flashpoint analysts assess that advances in large language models may be contributing to growing interest in BYOVD research and EDR killer development by making user-mode and kernel-mode code development more accessible. Exploitation generally requires administrative privileges to create the services necessary to load these drivers, although attackers may obtain these privileges through local privilege escalation.</p>\n<p>Security teams should consider monitoring for unexpected kernel driver installations, changes to driver service configurations, and termination of security processes following driver loading. In particular, modifications to registry values such as AllowedProcessName and ImagePath may provide useful investigative context when correlated with suspicious service creation or driver activity.</p>\nIndicators of Compromise and Technical Artifacts\n<p>The following artifacts were identified during Flashpoint’s analysis and may support threat hunting and further investigation.</p>\n<strong>Artifact</strong><strong>Value</strong>DefenderKiller serviceDefenderKillerDefenderKiller service registry keyHKLM\\SYSTEM\\CurrentControlSet\\Services\\DefenderKillerMicrosoft driverKSLDriver.sys (1.1.0013.0)Microsoft driver SHA-256d5764d24e78914ab2a9db6b24e323342d0b37998f43add1a9e49b00992b0d645\n<p>The presence of these artifacts should be evaluated in context, as legitimate software may use some of these components.</p>\nStay Ahead of EDR Evasion Techniques With Flashpoint\n<p>The discovery of vulnerable drivers beyond those targeted by publicly available EDR killers highlights the need for continued research into the techniques used to disable endpoint defenses. The public release of DefenderKiller, along with the emergence of modified variants, highlights the need for continued visibility into defense evasion techniques and the vulnerable drivers that enable them.</p>\n<p>Flashpoint continuously monitors emerging threats and adversary techniques, combining primary source intelligence with technical research to help organizations understand how threats are evolving. <a href=\"https://flashpoint.io/demo/\">Request a demo</a> to learn how Flashpoint can help your team identify emerging threats and strengthen its defenses.</p>\n</div></div></div></div>\n<div>\n<div>\nSee Flashpoint in Action\n<div>\n<div><div><a href=\"https://flashpoint.io/demo\">Get a Demo</a></div></div>\n<div>\n<p><a href=\"https://flashpoint.io/contact-us\">Contact Sales</a></p>\n</div>\n</div>\n</div>\n</div>\n<p>The post <a href=\"https://flashpoint.io/blog/defenderkiller-how-vulnerable-drivers-are-being-abused-to-disable-endpoint-security/\">DefenderKiller: How Vulnerable Drivers Are Being Abused to Disable Endpoint Security</a> appeared first on <a href=\"https://flashpoint.io\">Flashpoint</a>.</p>",
+    "link": "https://flashpoint.io/blog/defenderkiller-how-vulnerable-drivers-are-being-abused-to-disable-endpoint-security/",
+    "source": "Flashpoint",
+    "feed_type": "news",
+    "type": "threat-intel-apt-campaigns",
+    "type_label": "Threat Intel & APT Campaigns",
+    "published": "2026-10-29T20:04:21+00:00",
+    "published_ts": 1793304261,
+    "smart_groups": [
+      "Vulnerabilities / CVEs",
+      "Exploit / PoC",
+      "Windows / Microsoft"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Limited reports of PHP bug exploitation emerge",
+    "summary": "One cyber firm listed a half-dozen exploitations of the PHP2Shell bugs, and another identified a well targeted, suspected Chinese campaign that breached U.S. \"government affiliated\" servers.",
+    "summary_html": "One cyber firm listed a half-dozen exploitations of the PHP2Shell bugs, and another identified a well targeted, suspected Chinese campaign that breached U.S. \"government affiliated\" servers.",
+    "link": "https://therecord.media/php2shell-successful-exploitation-reports-emerge",
+    "source": "The Record",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-29T20:01:25+00:00",
+    "published_ts": 1793304085,
+    "smart_groups": [],
+    "curated": true
+  },
+  {
+    "title": "Here’s what happened in crypto today",
+    "summary": "Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.",
+    "summary_html": "<p></p><p>Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.</p>",
+    "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-10-29T19:58:57+00:00",
+    "published_ts": 1793303937,
+    "smart_groups": [
+      "Crypto / Web3"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Public companies double share of blockchain revenue since 2022: Report",
+    "summary": "A new 1kx report finds that public companies are capturing a larger share of blockchain revenue, driven by institutional adoption and real-world applications.",
+    "summary_html": "<p></p><p>A new 1kx report finds that public companies are capturing a larger share of blockchain revenue, driven by institutional adoption and real-world applications.</p>",
+    "link": "https://cointelegraph.com/news/public-companies-double-share-of-blockchain-revenue-since-2022-report?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-10-29T19:53:14+00:00",
+    "published_ts": 1793303594,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Chrome Can Now Pull Details From Your Gmail to Fill Out Web Forms",
+    "summary": "Chrome's new autofill uses Google's Gemini AI to search your Gmail for order numbers, tracking details, and flight bookings and fill them into web forms. It is rolling out in the U.S.",
+    "summary_html": "Chrome's new autofill uses Google's Gemini AI to search your Gmail for order numbers, tracking details, and flight bookings and fill them into web forms. It is rolling out in the U.S.",
+    "link": "https://decrypt.co/382183/chrome-pull-details-from-your-gmail-web-forms",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-10-29T19:46:02+00:00",
+    "published_ts": 1793303162,
+    "smart_groups": [
+      "Privacy & Compliance"
+    ],
+    "curated": false
+  },
+  {
+    "title": "GM settles with 36 states for selling driver data, agrees to $220 million fine and reforms",
+    "summary": "General Motors agreed to pay $220 million to settle a lawsuit filed by a coalition of 36 state attorneys general who alleged the company unlawfully sold information about driver behavior to outside parties.",
+    "summary_html": "General Motors agreed to pay $220 million to settle a lawsuit filed by a coalition of 36 state attorneys general who alleged the company unlawfully sold information about driver behavior to outside parties.",
+    "link": "https://therecord.media/general-motors-lawsuit-privacy",
+    "source": "The Record",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-29T19:45:00+00:00",
+    "published_ts": 1793303100,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "New Cisco firewall zero-day being actively exploited",
+    "summary": "A high-severity flaw in the Remote Access SSL VPN service of Cisco Secure Firewall Adaptive Security Appliance (ASA) and Cisco Secure Firewall Threat Defense (FTD) is under active exploitation to crash vulnerable devices. The vulnerability, tracked as CVE-2026-76418 and rated 8.6 in severity, is due to logic errors when secondary authentication is configured on a tunnel group, Cisco said in its advisory . It could allow a remote, unauthenticated attacker to send a crafted request when connecting to the SSL remote access VPN that results in a device reload and thus denial of service. Vulnerable products “If the running configuration contains the webvpn keyword and SSL VPN is enabled on at least one interface, the configuration is vulnerable,” the advisory said. “If tunnel-group-list enable is configured, check all tunnel groups, including the default tunnel group, DefaultWEBVPNGroup , for secondary-authentication-server-group . If tunnel-group-list enable is absent or has been removed using the no tunnel-group-list enable command, check the default tunnel group, DefaultWEBVPNGroup , for secondary-authentication-server-group because disabling the group list does not remove exposure when that default group uses secondary authentication.” The company says there are no workarounds. Cisco has released fixes in Secure Firewall ASA versions 9.16.4.104, 9.18.4.96, 9.20.4.50, 9.22.3.200, 9.23.1.48, 9.24.1.27, and 9.24.10.1. Patched releases for Secure FTD are versions 7.0.11, 7.2.13, 7.4.9, 7.6.7, 7.7.14, 10.0.3, and 10.1.1. To assist customers in isolating vulnerable products, Cisco provides the Cisco Software Checker , which identifies software impacted by security advisories and returns the earliest release that fixes the flaws. Mitigation Cisco urges customers to update immediately but offers a temporary mitigation for the flaw: disable secondary authentication on any user-configured tunnel group list or on the default tunnel group, DefaultWEBVPNGroup . However, it warned, “While this mitigation has been deployed and was proven successful in a test environment, customers should determine the applicability and effectiveness in their own environment and under their own use conditions. Customers should be aware that any workaround or mitigation that is implemented may negatively impact the functionality, performance, and/or security posture of their network based on intrinsic customer deployment scenarios and limitations.”",
+    "summary_html": "<div>\n<div>\n<div>\n<div>\n<div></div>\n<p>A high-severity flaw in the Remote Access SSL VPN service of Cisco Secure Firewall Adaptive Security Appliance (ASA) and Cisco Secure Firewall Threat Defense (FTD) is under active exploitation to crash vulnerable devices.</p>\n<p>The vulnerability, tracked as <a href=\"https://nvd.nist.gov/vuln/detail/cve-2026-76418\">CVE-2026-76418</a> and rated 8.6 in severity, is due to logic errors when secondary authentication is configured on a tunnel group, Cisco said in <a href=\"https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-asaftd-tunnel-dos-s6mgkb75\">its advisory</a>. It could allow a remote, unauthenticated attacker to send a crafted request when connecting to the SSL remote access VPN that results in a device reload and thus denial of service.</p>\nVulnerable products\n<p>“If the running configuration contains the <code>webvpn</code> keyword and SSL VPN is enabled on at least one interface, the configuration is vulnerable,” the advisory said. “If <code>tunnel-group-list enable</code> is configured, check all tunnel groups, including the default tunnel group, <code>DefaultWEBVPNGroup</code>, for <code>secondary-authentication-server-group</code>. If <code>tunnel-group-list enable</code> is absent or has been removed using the <code>no tunnel-group-list enable</code> command, check the default tunnel group, <code>DefaultWEBVPNGroup</code>, for <code>secondary-authentication-server-group</code> because disabling the group list does not remove exposure when that default group uses secondary authentication.”</p>\n<p>The company says there are no workarounds.</p>\n<p>Cisco has released fixes in Secure Firewall ASA versions 9.16.4.104, 9.18.4.96, 9.20.4.50, 9.22.3.200, 9.23.1.48, 9.24.1.27, and 9.24.10.1.</p>\n<p>Patched releases for Secure FTD are versions 7.0.11, 7.2.13, 7.4.9, 7.6.7, 7.7.14, 10.0.3, and 10.1.1.</p>\n<p>To assist customers in isolating vulnerable products, Cisco provides the <a href=\"https://sec.cloudapps.cisco.com/security/center/softwarechecker.x\">Cisco Software Checker</a>, which identifies software impacted by security advisories and returns the earliest release that fixes the flaws.</p>\nMitigation\n<p>Cisco urges customers to update immediately but offers a temporary mitigation for the flaw: disable secondary authentication on any user-configured tunnel group list or on the default tunnel group, <code>DefaultWEBVPNGroup</code>.</p>\n<p>However, it warned, “While this mitigation has been deployed and was proven successful in a test environment, customers should determine the applicability and effectiveness in their own environment and under their own use conditions. Customers should be aware that any workaround or mitigation that is implemented may negatively impact the functionality, performance, and/or security posture of their network based on intrinsic customer deployment scenarios and limitations.”</p>\n</div></div></div></div>",
+    "link": "https://www.csoonline.com/article/4242420/new-cisco-firewall-zero-day-being-actively-exploited.html",
+    "source": "CSO Online",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-29T19:31:38+00:00",
+    "published_ts": 1793302298,
+    "smart_groups": [
+      "Vulnerabilities / CVEs",
+      "Exploit / PoC",
+      "Product News"
+    ],
+    "curated": true,
+    "story_id": "409f0b0486b7",
+    "story_size": 3
+  },
+  {
+    "title": "Fake crypto app on Apple App Store linked to $23K wallet theft",
+    "summary": "A fake cryptocurrency trading app called Padre Terminal, previously available on the Apple App Store for iOS devices, has been linked to the theft of approximately $23,000 from 27 Solana wallets.",
+    "summary_html": "A fake cryptocurrency trading app called Padre Terminal, previously available on the Apple App Store for iOS devices, has been linked to the theft of approximately $23,000 from 27 Solana wallets. [...]",
+    "link": "https://www.bleepingcomputer.com/news/security/fake-crypto-app-on-apple-app-store-linked-to-23k-wallet-theft/",
+    "source": "BleepingComputer – Cybercrime",
+    "feed_type": "news",
+    "type": "cybercrime-underground",
+    "type_label": "Cybercrime & Underground",
+    "published": "2026-10-29T19:23:41+00:00",
+    "published_ts": 1793301821,
+    "smart_groups": [
+      "Crypto / Web3"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Polymarket suspended trading amid reports of user funds being drained",
+    "summary": "The prediction markets platform halted trading on Thursday after it reported one of its third party providers had been compromised.",
+    "summary_html": "<p></p><p>The prediction markets platform halted trading on Thursday after it reported one of its third party providers had been compromised.</p>",
+    "link": "https://cointelegraph.com/news/polymarket-suspends-trading-user-funds-compromised?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-10-29T19:23:03+00:00",
+    "published_ts": 1793301783,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "ThreatsDay: Critical Firewall Flaws, Banking Trojans Rented, Weaponized PDF, Token Theft + 26 More Stories",
+    "summary": "Some attacks take real skill. Others just need someone to leave a door open. This week has both. Exposed passwords, old bugs still getting exploited, and trusted software doing things it shouldn't. There's a strange mix of clever tricks and careless mistakes. Hackers are borrowing trust from familiar apps, websites, and AI tools. Some are using AI to speed things up. Others are leaving their",
+    "summary_html": "Some attacks take real skill. Others just need someone to leave a door open. This week has both. Exposed passwords, old bugs still getting exploited, and trusted software doing things it shouldn't.\n\nThere's a strange mix of clever tricks and careless mistakes. Hackers are borrowing trust from familiar apps, websites, and AI tools. Some are using AI to speed things up. Others are leaving their",
+    "link": "https://thehackernews.com/2026/10/threatsday-critical-firewall-flaws.html",
+    "source": "The Hacker News",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-29T19:11:58+00:00",
+    "published_ts": 1793301118,
+    "smart_groups": [
+      "Exploit / PoC",
+      "Malware / Payloads"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Polymarket Pauses Trading as Prediction Market Investigates Security Incident",
+    "summary": "Polymarket restricted trading and paused relayer actions as users report funds leaving their accounts. A suspected attacker wallet holds about $2.65 million in POL, per Arkham data.",
+    "summary_html": "Polymarket restricted trading and paused relayer actions as users report funds leaving their accounts. A suspected attacker wallet holds about $2.65 million in POL, per Arkham data.",
+    "link": "https://decrypt.co/382185/polymarket-pauses-trading-prediction-market-security-incident",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-10-29T18:53:44+00:00",
+    "published_ts": 1793300024,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Hackers Publish Work Details of 41,000 Homeland Security Employees",
+    "summary": "A hacktivist group says it took names, titles, and phone numbers of 41,000-plus DHS staff from a login system.",
+    "summary_html": "A hacktivist group says it took names, titles, and phone numbers of 41,000-plus DHS staff from a login system.",
+    "link": "https://decrypt.co/382181/hackers-publish-work-details-homeland-security-employees",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-10-29T18:46:02+00:00",
+    "published_ts": 1793299562,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "484,142 Exposed Cloud Buckets Contain 18 Billion Files",
+    "summary": "42 publicly listable cloud buckets containing 18 billion files, including exposed credentials, database dumps and backups. The Ransomnews research team counted 484,142 publicly listable cloud storage buckets in October 2026, holding 18.05 billion files. They built the count from the search engines that index open cloud storage and published it as the Ransomnews Cloud Exposure Index, written by Mantas Sasnauskas. “No file was opened for this index. Every number below comes from bucket names, file extensions, file counts and last-modified timestamps. That is a deliberate limit. It keeps the research on the right side of the line, and it turns out to be enough to see where the sensitive material concentrates.” Ransomnews states . “We are calling it the Ransomnews Cloud Exposure Index, and we will rerun it quarterly so the numbers can be compared over time.” The researchers used bucket names, file types, file counts and last-modified dates to collect their data. They did not open any files, allowing them to identify where sensitive information might be stored without accessing the content. They plan to repeat the research every three months to track changes over time. Amazon S3 accounts for 72% of the exposed buckets, roughly in line with its share of the market. This does not mean S3 has weaker security than other providers. Azure Blob, however, appears 2.5 to 3.6 times more often than expected among buckets named for backups, data exports and payroll records. The researchers also found 321,058 files related to credentials and keys. Of the exposed .env files, 67% were last modified in 2026. Below is the split by provider, from a snapshot taken on October 7: Provider Open buckets Share Amazon S3 347,984 71.9% Azure Blob 68,532 14.2% Google Cloud Storage 53,131 11.0% DigitalOcean Spaces 11,069 2.3% Alibaba OSS 3,426 0.7% Total 484,142 100% A lot of these buckets are public on purpose, holding website assets, CDN mirrors, open datasets and podcast archives. So the index isn’t 484,142 breaches. It’s the pool where breaches hide, and the rest of the report narrows it down to the stores that should never have been listable. “Azure, by a wide margin relative to its size. Azure Blob holds 14.2% of open buckets, but 37% of the 1,459 buckets with “backup” in the name, 42% of the 399 named for exports, and 51% of the 505 carrying HR or payroll terms.” continues the report. “Buckets named for logs, customers and databases sit at 35% to 36%, all around two and a half times Azure’s baseline.” The skew only shows up for operational data. Buckets named “dev” sit at Azure’s baseline of 15 percent, and “test” and “staging” fall below it, at 9 and 7 percent. The authors suspect Azure storage accounts more often hold line-of-business data such as backups, exports and HR systems that enterprises run on Microsoft, while S3 and Google Cloud carry more application assets. They call it a hypothesis the counts suggest and don’t prove, and it’s the first thing they want to test next time. By sector, retail and e-commerce names lead with 5,666 buckets, mostly storefront assets. The more worrying number is that names tied to regulated sectors (finance, healthcare, education, government, legal and HR) appear on 10,891 unique open buckets. Those are the places where a stray file most likely holds personal, health or financial records, and where regulators expect to hear about it. Sector (by bucket name) Open buckets Files in them Retail and e-commerce 5,666 269.9M Finance and insurance 3,508 58.0M Healthcare 2,709 47.9M Media and entertainment 2,696 136.2M Education 2,393 60.6M Gaming 2,296 79.0M Travel and hospitality 1,714 118.7M Real estate 1,137 60.7M Government and public sector 1,000 36.2M Legal 978 11.3M Crypto 630 11.9M HR and payroll 505 8.4M Healthcare-related names appear in 2,709 buckets containing 47.9 million files. The researchers identified them using terms such as “hospital” (135 buckets), “patient” (135), “clinic” (277) and “dental” (331). HR and payroll is the smallest sector, with 505 buckets, 259 of which are hosted on Azure. These figures are based on names, not proof of ownership. The search matches parts of words, so “store” can refer to object storage as well as shops. A single bucket can also appear in two sectors. The exposed buckets also list about 4.7 million database and dump files, 15,130 mailbox archives, and tens of millions of spreadsheets and documents. Credential files are particularly concerning because they can turn a cloud misconfiguration into a real intrusion. File type What it is Files listed .pem Certificates and private keys 113,285 .env App secrets and API keys 80,495 .p12 Certificate bundles with keys 33,268 .keystore Java and Android keystores 27,229 .ppk PuTTY SSH private keys 24,302 .pfx Windows certificate bundles 23,352 .ovpn OpenVPN client configs 15,079 .jks Java keystores 2,421 .htpasswd Web server password files 695 .tfstate Terraform infrastructure state 475 .kdbx KeePass password vaults 457 Each of these exists to grant access. A .env file is where developers keep database passwords and API keys. A .tfstate file is Terraform’s record of a whole cloud setup, often with secrets in plain text, and a .kdbx vault is encrypted but now open to anyone who wants to guess passwords offline. Some .pem files are public certificates and some files are test fixtures, so the counts are a ceiling on live secrets and not a measure of them. It’s still a big ceiling. Database files make up most of the sensitive material by volume: File type What it usually holds Files listed .sqlite Embedded app databases 2,561,807 .bak Database and server backups 752,055 .sql Database dumps 687,446 .sqlite3 Embedded app databases 488,176 .dump Database dumps 176,603 .mdb / .accdb Microsoft Access databases 36,467 .dmp Memory and crash dumps 12,809 .pst / .ost / .mbox Mailbox archives 15,130 .eml Saved emails 4,549,665 .csv Data exports and records at least 69,580,112 .xlsx / .xls Spreadsheets 42,544,997 .docx Word documents 24,936,788 .pdf Documents, invoices, scans at least 106,191,393 .log Application and server logs at least 61,310,809 The exposed buckets contain thousands of virtual disk images, including VMware, Hyper-V and QEMU files. A single disk image can contain an entire server, including credentials. Some exposures involve active systems. Of 80,495 .env files, 67% were last modified in 2026. Certificates and SQLite databases include both recent and older files. Backups appear older, with 89% of the 752,055 .bak files last modified before 2025. Almost all PuTTY key files date from 2024. Recent leaks need urgent attention, while long-standing exposures point to poor security management. The problem is ongoing: at least 113.6 million files were added to publicly listable buckets in the seven days before September 9. Over the previous 30 days, these included more than 21,000 SQL dumps, nearly 21,000 backup files, 4,477 .pem files and 1,298 .env files. Public .env files can expose database passwords that ransomware affiliates and initial access brokers look for. Similar credentials appear in stolen-data logs, but in this case, attackers do not need to infect a device. They only need to search for exposed files. Cloud providers already offer settings to prevent public access. Organizations should enable S3 Block Public Access, disable anonymous access to Azure Blob storage, and enable public access prevention in Google Cloud. These controls should apply at account or organization level to prevent new storage buckets from becoming public. Organizations should also scan their storage for sensitive files such as .env , .sql , .bak , .pem , .ppk , .tfstate and .kdbx . Terraform state files and virtual disk images should be treated as secrets, stored privately, encrypted and monitored. Backups should never be publicly accessible, and recovery procedures must be tested. One exposed bucket may be a mistake, but many often indicate a wider process failure. Organizations need to fix the underlying security controls, not just individual buckets. The research has some limitations. The team queried search engines on October 25, while the bucket list was current to October 7 and the newest indexed file dated September 9. File-level data may therefore be about a month old. Counts are also capped at one million per query, so researchers split larger categories into date ranges and added the results. Some limits apply. The team queried the search engines on October 25. The bucket list was current to October 7 and the newest indexed file was dated September 9, so file-level figures lag by about a month. The index caps any single count at one million, so larger types were split into date windows and summed. A last-modified date shows when a file was written, not when it was exposed, and a listed file isn’t proof that its contents can be read. No bucket is named in the report. Exposures with a known owner in regulated sectors are going through responsible disclosure, with national CERTs copied where the owner is public sector or doesn’t respond. “Rotate any secret that has ever sat in a public bucket. Closing the bucket does not un-leak the key. Assume anything that was listable was copied.” conlcudes the report. Follow me on Twitter: @securityaffairs and Facebook and Mastodon Pierluigi Paganini ( SecurityAffairs – hacking, Cloud Buckets)",
+    "summary_html": "<div></div>\n42 publicly listable cloud buckets containing 18 billion files, including exposed credentials, database dumps and backups.\n<p>The Ransomnews research team counted 484,142 publicly listable cloud storage buckets in October 2026, holding 18.05 billion files. They built the count from the search engines that index open cloud storage and published it as the Ransomnews Cloud Exposure Index, written by Mantas Sasnauskas. </p>\n<p><em>“No file was opened for this index. Every number below comes from bucket names, file extensions, file counts and last-modified timestamps. That is a deliberate limit. It keeps the research on the right side of the line, and it turns out to be enough to see where the sensitive material concentrates.” <a href=\"https://ransomnews.com/cloud-exposure-index-2026/\">Ransomnews states</a>.  “We are calling it the Ransomnews Cloud Exposure Index, and we will rerun it quarterly so the numbers can be compared over time.”</em></p>\n<p>The researchers used bucket names, file types, file counts and last-modified dates to collect their data. They did not open any files, allowing them to identify where sensitive information might be stored without accessing the content. They plan to repeat the research every three months to track changes over time.</p>\n<p>Amazon S3 accounts for 72% of the exposed buckets, roughly in line with its share of the market. This does not mean S3 has weaker security than other providers. Azure Blob, however, appears 2.5 to 3.6 times more often than expected among buckets named for backups, data exports and payroll records. The researchers also found 321,058 files related to credentials and keys. Of the exposed <code>.env</code> files, 67% were last modified in 2026.</p>\n<div>\n<a href=\"https://i0.wp.com/securityaffairs.com/wp-content/uploads/2026/10/image-70.png?ssl=1\"></a>\n</div>\n<p>Below is the split by provider, from a snapshot taken on October 7:</p>\nProviderOpen bucketsShareAmazon S3347,98471.9%Azure Blob68,53214.2%Google Cloud Storage53,13111.0%DigitalOcean Spaces11,0692.3%Alibaba OSS3,4260.7%Total484,142100%\n<p>A lot of these buckets are public on purpose, holding website assets, CDN mirrors, open datasets and podcast archives. So the index isn’t 484,142 breaches. It’s the pool where breaches hide, and the rest of the report narrows it down to the stores that should never have been listable.</p>\n<p><em>“Azure, by a wide margin relative to its size. Azure Blob holds 14.2% of open buckets, but 37% of the 1,459 buckets with “backup” in the name, 42% of the 399 named for exports, and 51% of the 505 carrying HR or payroll terms.” continues the report. “Buckets named for logs, customers and databases sit at 35% to 36%, all around two and a half times Azure’s baseline.”</em></p>\n<div>\n<a href=\"https://i0.wp.com/securityaffairs.com/wp-content/uploads/2026/10/image-69.png?ssl=1\"></a>\n</div>\n<p>The skew only shows up for operational data. Buckets named “dev” sit at Azure’s baseline of 15 percent, and “test” and “staging” fall below it, at 9 and 7 percent. The authors suspect Azure storage accounts more often hold line-of-business data such as backups, exports and HR systems that enterprises run on Microsoft, while S3 and Google Cloud carry more application assets. They call it a hypothesis the counts suggest and don’t prove, and it’s the first thing they want to test next time.</p>\n<p>By sector, retail and e-commerce names lead with 5,666 buckets, mostly storefront assets. The more worrying number is that names tied to regulated sectors (finance, healthcare, education, government, legal and HR) appear on 10,891 unique open buckets. Those are the places where a stray file most likely holds personal, health or financial records, and where regulators expect to hear about it.</p>\nSector (by bucket name)Open bucketsFiles in themRetail and e-commerce5,666269.9MFinance and insurance3,50858.0MHealthcare2,70947.9MMedia and entertainment2,696136.2MEducation2,39360.6MGaming2,29679.0MTravel and hospitality1,714118.7MReal estate1,13760.7MGovernment and public sector1,00036.2MLegal97811.3MCrypto63011.9MHR and payroll5058.4M\n<p>Healthcare-related names appear in 2,709 buckets containing 47.9 million files. The researchers identified them using terms such as “hospital” (135 buckets), “patient” (135), “clinic” (277) and “dental” (331). HR and payroll is the smallest sector, with 505 buckets, 259 of which are hosted on Azure.</p>\n<p>These figures are based on names, not proof of ownership. The search matches parts of words, so “store” can refer to object storage as well as shops. A single bucket can also appear in two sectors.</p>\n<p>The exposed buckets also list about 4.7 million database and dump files, 15,130 mailbox archives, and tens of millions of spreadsheets and documents. Credential files are particularly concerning because they can turn a cloud misconfiguration into a real intrusion.</p>\nFile typeWhat it isFiles listed.pemCertificates and private keys113,285.envApp secrets and API keys80,495.p12Certificate bundles with keys33,268.keystoreJava and Android keystores27,229.ppkPuTTY SSH private keys24,302.pfxWindows certificate bundles23,352.ovpnOpenVPN client configs15,079.jksJava keystores2,421.htpasswdWeb server password files695.tfstateTerraform infrastructure state475.kdbxKeePass password vaults457\n<p>Each of these exists to grant access. A .env file is where developers keep database passwords and API keys. A .tfstate file is Terraform’s record of a whole cloud setup, often with secrets in plain text, and a .kdbx vault is encrypted but now open to anyone who wants to guess passwords offline. Some .pem files are public certificates and some files are test fixtures, so the counts are a ceiling on live secrets and not a measure of them. It’s still a big ceiling.</p>\n<p>Database files make up most of the sensitive material by volume:</p>\nFile typeWhat it usually holdsFiles listed.sqliteEmbedded app databases2,561,807.bakDatabase and server backups752,055.sqlDatabase dumps687,446.sqlite3Embedded app databases488,176.dumpDatabase dumps176,603.mdb / .accdbMicrosoft Access databases36,467.dmpMemory and crash dumps12,809.pst / .ost / .mboxMailbox archives15,130.emlSaved emails4,549,665.csvData exports and recordsat least 69,580,112.xlsx / .xlsSpreadsheets42,544,997.docxWord documents24,936,788.pdfDocuments, invoices, scansat least 106,191,393.logApplication and server logsat least 61,310,809\n<p>The exposed buckets contain thousands of virtual disk images, including VMware, Hyper-V and QEMU files. A single disk image can contain an entire server, including credentials.</p>\n<p>Some exposures involve active systems. Of 80,495 <code>.env</code> files, 67% were last modified in 2026. Certificates and SQLite databases include both recent and older files. Backups appear older, with 89% of the 752,055 <code>.bak</code> files last modified before 2025. Almost all PuTTY key files date from 2024.</p>\n<p>Recent leaks need urgent attention, while long-standing exposures point to poor security management. The problem is ongoing: at least 113.6 million files were added to publicly listable buckets in the seven days before September 9. Over the previous 30 days, these included more than 21,000 SQL dumps, nearly 21,000 backup files, 4,477 <code>.pem</code> files and 1,298 <code>.env</code> files.</p>\n<p>Public <code>.env</code> files can expose database passwords that ransomware affiliates and initial access brokers look for. Similar credentials appear in stolen-data logs, but in this case, attackers do not need to infect a device. They only need to search for exposed files.</p>\n<p>Cloud providers already offer settings to prevent public access. Organizations should enable S3 Block Public Access, disable anonymous access to Azure Blob storage, and enable public access prevention in Google Cloud. These controls should apply at account or organization level to prevent new storage buckets from becoming public.</p>\n<p>Organizations should also scan their storage for sensitive files such as <code>.env</code>, <code>.sql</code>, <code>.bak</code>, <code>.pem</code>, <code>.ppk</code>, <code>.tfstate</code> and <code>.kdbx</code>. Terraform state files and virtual disk images should be treated as secrets, stored privately, encrypted and monitored. Backups should never be publicly accessible, and recovery procedures must be tested.</p>\n<p>One exposed bucket may be a mistake, but many often indicate a wider process failure. Organizations need to fix the underlying security controls, not just individual buckets.</p>\n<p>The research has some limitations. The team queried search engines on October 25, while the bucket list was current to October 7 and the newest indexed file dated September 9. File-level data may therefore be about a month old. Counts are also capped at one million per query, so researchers split larger categories into date ranges and added the results.</p>\n<p>Some limits apply. The team queried the search engines on October 25. The bucket list was current to October 7 and the newest indexed file was dated September 9, so file-level figures lag by about a month. The index caps any single count at one million, so larger types were split into date windows and summed.</p>\n<p>A last-modified date shows when a file was written, not when it was exposed, and a listed file isn’t proof that its contents can be read. No bucket is named in the report. Exposures with a known owner in regulated sectors are going through responsible disclosure, with national CERTs copied where the owner is public sector or doesn’t respond. </p>\n<p><em>“Rotate any secret that has ever sat in a public bucket. Closing the bucket does not un-leak the key. Assume anything that was listable was copied.” conlcudes the report.</em></p>\n<p><strong>Follow me on Twitter: </strong><a href=\"https://twitter.com/securityaffairs\"><strong>@securityaffairs</strong></a><strong> and </strong><a href=\"https://www.facebook.com/sec.affairs\"><strong>Facebook</strong></a><strong> and </strong><a href=\"https://infosec.exchange/@securityaffairs\"><strong>Mastodon</strong></a><strong></strong></p>\n<p><a href=\"http://www.linkedin.com/pub/pierluigi-paganini/b/742/559\"><strong>Pierluigi Paganini</strong></a><strong></strong></p>\n<p><strong>(</strong><a href=\"http://securityaffairs.co/wordpress/\"><strong>SecurityAffairs</strong></a><strong> – hacking, Cloud Buckets)</strong></p>\n<p></p>",
+    "link": "https://securityaffairs.com/202055/security/484142-exposed-cloud-buckets-contain-18-billion-files.html",
+    "source": "Security Affairs",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-29T18:43:01+00:00",
+    "published_ts": 1793299381,
+    "smart_groups": [
+      "Ransomware",
+      "Cloud / SaaS"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Hackers exploit Cisco SD-WAN flaw to deploy custom KeyDrift malware",
+    "summary": "A newly identified advanced persistent threat (APT) group tracked as UAT-11473 was observed exploiting CVE-2026-20127, an authentication-bypass flaw in Cisco Catalyst SD-WAN Controllers, to deploy a custom malware framework called KeyDrift.",
+    "summary_html": "A newly identified advanced persistent threat (APT) group tracked as UAT-11473 was observed exploiting CVE-2026-20127, an authentication-bypass flaw in Cisco Catalyst SD-WAN Controllers, to deploy a custom malware framework called KeyDrift. [...]",
+    "link": "https://www.bleepingcomputer.com/news/security/hackers-exploit-cisco-sd-wan-flaw-to-deploy-custom-keydrift-malware/",
+    "source": "BleepingComputer – Cybercrime",
+    "feed_type": "news",
+    "type": "cybercrime-underground",
+    "type_label": "Cybercrime & Underground",
+    "published": "2026-10-29T18:38:26+00:00",
+    "published_ts": 1793299106,
+    "smart_groups": [
+      "Malware / Payloads",
+      "Vulnerabilities / CVEs",
+      "Threat Actors / APT"
+    ],
+    "curated": true,
+    "story_id": "aabd8e14b270",
+    "story_size": 3
+  },
+  {
+    "title": "Claude Model Builds Exploits Across Major Browsers &amp; OSes",
+    "summary": "An unreleased version of the AI model has found and chained multiple vulnerabilities in Chrome, Safari, Android, Windows, and Linux, Anthropic says.",
+    "summary_html": "An unreleased version of the AI model has found and chained multiple vulnerabilities in Chrome, Safari, Android, Windows, and Linux, Anthropic says.",
+    "link": "https://www.darkreading.com/application-security/claude-model-exploits-major-browsers-oses",
+    "source": "Dark Reading",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-29T18:15:59+00:00",
+    "published_ts": 1793297759,
+    "smart_groups": [
+      "AI/ML Security",
+      "Vulnerabilities / CVEs",
+      "Linux / Unix"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Threat Brief: Critical Vulnerabilities in PHP: CVE-2026-109618, CVE-2026-109619 (Updated October 29)",
+    "summary": "CVE-2026-109618 and CVE-2026-109619 are Critical vulnerabilities in PHP, a scripting language used globally for web servers and CMS systems.",
+    "summary_html": "CVE-2026-109618 and CVE-2026-109619 are Critical vulnerabilities in PHP, a scripting language used globally for web servers and CMS systems. The post Threat Brief: Critical Vulnerabilities in PHP: CVE-2026-109618, CVE-2026-109619 (Updated October 29) appeared first on Unit 42.",
+    "link": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/",
+    "source": "Unit 42 – Ransomware",
+    "feed_type": "news",
+    "type": "ransomware-extortion",
+    "type_label": "Ransomware & Extortion",
+    "published": "2026-10-29T18:00:34+00:00",
+    "published_ts": 1793296834,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": false
+  },
+  {
+    "title": "A quiet week in infosec <.<",
+    "summary": "Welcome to this week’s edition of the Threat Source newsletter. “The darkest period of my life, so far, arrived the summer I was pregnant with my eldest son. The future was growing in me with all of its terrifying unpredictability, and I found myself anxious, unable to work and woefully at sea.” — Lauren Groff I doubt Lauren had this maniacal infosec news cycle in mind when she wrote about the terrifyingly unpredictable future, but honestly, she’s got our current careers down cold. Let he who is not woefully at sea cast the first water balloon? I’ll work on it. Here we are with PHP taking up every available ounce of oxygen, Node.js adding its own spice to the sauce... and here’s me, staring my screen blankly, waiting for an original thought to leak out and onto this page. Not to worry, none have. There is simply nothing novel to say because the entire internet has it covered. In triplicate. With graphs and compelling statistics and AI-generated evil bad guy images galore. These vulnerabilities are serious, and the remediations matter. Teams need to know what they run, find the affected systems, and get them patched and determine ways to secure systems that can’t be patched. I’m simply not going to add another dramatic headline to the stack or pretend there’s a clever new angle hiding in the margins. The thing I keep looping on is that the work underneath the headlines is familiar and it’s the real story. To defend your environment, you need a team that knows that environment, has enough time and expertise to investigate the telemetry, that can tell an anomaly from the usual benign noise, and take action. Yes, the right tools help, and without them you can’t do it — but the people doing the work are still what make those tools useful. Give smart people enough room to do smart people stuff. This is the entire ballgame. Read it again: Give smart people enough room to do smart people stuff. Because a good response starts way before the headline. Know what you own, who owns it, what version is running, whether it can be reached from the internet, what identities can do what task on the device, etc. When a fix is available, make sure it actually reaches the system you meant to fix. If a system cannot be updated yet, give that exception an owner and a deadline. Reduce its exposure, add monitoring, and keep checking until the fix is in place. “We’ll get to it” is not a plan. So, there may be nothing new to say about PHP this week, but the work is still worth talking about: Know your environment, take care of your team members, and keep paying attention when the weird thing stops being weird and starts becoming evidence. When the next headline arrives, help your teammate do the same. “The only thing that makes life possible is permanent, intolerable uncertainty: not knowing what comes next.” — Ursula K. Le Guin The one big thing Cisco Talos has recently discovered \"NIK C2,\" a new command-and-control framework that integrates AI directly into its attack chain. This Go-based Windows implant allows adversaries to dump credentials, stream keystrokes, and deploy screen-locking ransomware. It also uses an integrated OpenAI model to analyze harvested data on the fly. By hijacking the victim's own API keys to fund these requests, NIK C2 collapses data collection and exploitation into a single, continuous session. Why do I care? By embedding a live AI pipeline directly into the C2 loop, NIK C2 turns a compromised host into an active operational asset rather than a passive foothold. Because it processes data and generates context-aware payloads locally, it erases the offline processing delays that historically gave defenders a critical detection window. Furthermore, by piggybacking on the victim's OpenAI account, threat actors completely mask their infrastructure, leaving no attributable trace and complicating incident response. So now what? Defenders must embrace continuous behavioral vigilance. Ensure endpoint solutions monitor for unusual local proxy routing, unexpected PowerShell executions, and unauthorized access to browser databases or crypto wallets. Update your defenses using the ClamAV signature and indicators of compromise (IOCs) provided in the full blog . Top security headlines of the week CISA gives agencies days to patch critical PHP bugs CISA added the two vulnerabilities in the PHP open-source scripting software to the Known Exploited Vulnerabilities (KEV) catalog Monday. ( Federal News Network ) Node2Shell: Brotli flaw triggers patching across Microsoft, Node.js, Python packages An out-of-bounds write in Google’s Brotli decoder affects Node.js, .NET, PowerShell, and Python packages, and can lead to code execution. ( SecurityWeek ) Gheist uses stolen GitHub tokens to steal private repository secrets via Actions logs Each workflow sits on a new branch named ci-sync- followed by six random characters. Deleting a branch, or the run it started, does not undo the exposure. ( The Hacker News ) Japan internet giant GMO says hackers posted stolen customer data GMO Internet is investigating a data leak after suspected unauthorized access to its Onamae cloud desktop service, which provides virtualized desktops to financial traders. ( TechCrunch ) Third Serengeti sweep tops 1,400 arrests as investigations mature Interpol's annual Operation Serengeti, now on its third iteration, led to 1,462 arrests across 20 African countries and the U.S., recovering $105 million in stolen funds. ( Dark Reading ) Can’t get enough Talos? Stealing AI secrets and breaking EDRs Phishing may have dropped from last quarter's highs, but ransomware engagements climbed as attackers shifted their focus toward disabling EDR systems and scraping AI credentials. The financial sector also returned as a top target. From federal SOCs to Talos: Ryan Fetterman on practical security research What does it mean to be \"blue collar\" for the blue team? Amy sat down with security researcher Ryan Fetterman to discuss his journey from federal agency work to his new role at Talos. The Guy Who Invented Pain (plus first reactions to PHP2Shell) David Bianco built the Pyramid of Pain, so we offered him some more. David joins the Beers with Talos crew for a conversation how AI changes about his famous model, how EvidenceForge creates simulated incidents for research and training, and why his red-team entrance exam didn’t go to plan. Compromised eMudhra intermediate certificates Cisco Talos is aware of eight compromised intermediate certificates belonging to the intermediate certificate authority. eMudhra has revoked the certificates and stopped issuing new certificates under its G3 root. Two critical RCEs in PHP core Two critical remote code execution vulnerabilities in PHP core could have implications across its wider ecosystem. This blog explains what we know so far, and details the Snort coverage available. Upcoming events where you can find Talos SAINTCON (Oct. 26 – 30) Provo, UT CYBERWARCON (Nov. 20) Arlington, VA AVAR 2026 (Dec. 2 – 4) Hyderabad, India Black Hat Europe (Dec. 7 – 10) London, U.K. Most prevalent malware files from Talos telemetry over the past week SHA256: 73a25ff8893260418c2271b863c567e40e842adbab3c57023cb72de590ea377d MD5: 0cf0271c3564881fce95f44c649bd745 Talos Rep: https://talosintelligence.com/talos_file_reputation?s=73a25ff8893260418c2271b863c567e40e842adbab3c57023cb72de590ea377d Example Filename: KMSAuto++.exe Detection Name: HackTool:WZTeam-tpd SHA256: 9f1f11a708d393e0a4109ae189bc64f1f3e312653dcf317a2bd406f18ffcc507 MD5: 2915b3f8b703eb744fc54c81f4a9c67f Talos Rep: https://talosintelligence.com/talos_file_reputation?s=9f1f11a708d393e0a4109ae189bc64f1f3e312653dcf317a2bd406f18ffcc507 Example Filename: sample.exe Detection Name: W32.9F1F11A708-100.SBX.TG** SHA256: 7fc50b69b56bfdfa9fc0a3e088ff13904587d6336a51e9edcc7919cba83d4e3f MD5: cca616647db9370c88998ae25da6997f Talos Rep: https://talosintelligence.com/talos_file_reputation?s=7fc50b69b56bfdfa9fc0a3e088ff13904587d6336a51e9edcc7919cba83d4e3f Example Filename: cca616647db9370c88998ae25da6997f.exe Detection Name: Win.Tool.Kmsauto::1201 SHA256: 58d6fec4ba24c32d38c9a0c7c39df3cb0e91f500b323e841121d703c7b718681 MD5: f1fe671bcefd4630e5ed8b87c9283534 Talos Rep: https://talosintelligence.com/talos_file_reputation?s=58d6fec4ba24c32d38c9a0c7c39df3cb0e91f500b323e841121d703c7b718681 Example Filename: KMSAuto Net.exe Detection Name: W32.58D6FEC4BA-95.SBX.TG SHA256: fed979f93bcaf4e73ebd25748093a92095d5109cbd01d55f97bdc50ce509ad2f MD5: 207d9d891ac756b2bfad88aba5682c65 Talos Rep: https://talosintelligence.com/talos_file_reputation?s=fed979f93bcaf4e73ebd25748093a92095d5109cbd01d55f97bdc50ce509ad2f Example Filename: sample.exe Detection Name: W32.FED979F93B-95.SBX.TG",
+    "summary_html": "<p>Welcome to this week’s edition of the Threat Source newsletter.</p><p><em>“The darkest period of my life, so far, arrived the summer I was pregnant with my eldest son. The future was growing in me with all of its terrifying unpredictability, and I found myself anxious, unable to work and woefully at sea.” — Lauren Groff  </em></p><p>I doubt Lauren had this maniacal infosec news cycle in mind when she wrote about the terrifyingly unpredictable future, but honestly, she’s got our current careers down cold. Let he who is not woefully at sea cast the first water balloon? I’ll work on it.  <br/>  <br/>Here we are with PHP taking up every available ounce of oxygen, Node.js adding its own spice to the sauce... and here’s me, staring my screen blankly, waiting for an original thought to leak out and onto this page. Not to worry, none have. There is simply nothing novel to say because the entire internet has it covered. In triplicate. With graphs and compelling statistics and AI-generated evil bad guy images galore.  </p><p>These vulnerabilities are serious, and the remediations matter. Teams need to know what they run, find the affected systems, and get them patched and determine ways to secure systems that can’t be patched. I’m simply not going to add another dramatic headline to the stack or pretend there’s a clever new angle hiding in the margins. The thing I keep looping on is that the work underneath the headlines is familiar and it’s the real story. To defend your environment, you need a team that knows that environment, has enough time and expertise to investigate the telemetry, that can tell an anomaly from the usual benign noise, and take action. Yes, the right tools help, and without them you can’t do it — but the people doing the work are still what make those tools useful.  </p><p>Give smart people enough room to do smart people stuff. This is the entire ballgame. Read it again: Give smart people enough room to do smart people stuff. Because a good response starts way before the headline. Know what you own, who owns it, what version is running, whether it can be reached from the internet, what identities can do what task on the device, etc. When a fix is available, make sure it actually reaches the system you meant to fix. If a system cannot be updated yet, give that exception an owner and a deadline. Reduce its exposure, add monitoring, and keep checking until the fix is in place. “We’ll get to it” is not a plan.   </p><p>So, there may be nothing new to say about PHP this week, but the work is still worth talking about: Know your environment, take care of your team members, and keep paying attention when the weird thing stops being weird and starts becoming evidence. When the next headline arrives, help your teammate do the same.  </p><p><em>“The only thing that makes life possible is permanent, intolerable uncertainty: not knowing what comes next.” — Ursula K. Le Guin </em></p>The one big thing  <p>Cisco Talos has <a href=\"https://blog.talosintelligence.com/nik-c2-new-ai-enabled-framework\">recently discovered \"NIK C2,\"</a> a new command-and-control framework that integrates AI directly into its attack chain. This Go-based Windows implant allows adversaries to dump credentials, stream keystrokes, and deploy screen-locking ransomware. It also uses an integrated OpenAI model to analyze harvested data on the fly. By hijacking the victim's own API keys to fund these requests, NIK C2 collapses data collection and exploitation into a single, continuous session. </p>Why do I care? <p>By embedding a live AI pipeline directly into the C2 loop, NIK C2 turns a compromised host into an active operational asset rather than a passive foothold. Because it processes data and generates context-aware payloads locally, it erases the offline processing delays that historically gave defenders a critical detection window. Furthermore, by piggybacking on the victim's OpenAI account, threat actors completely mask their infrastructure, leaving no attributable trace and complicating incident response. </p>So now what? <p>Defenders must embrace continuous behavioral vigilance. Ensure endpoint solutions monitor for unusual local proxy routing, unexpected PowerShell executions, and unauthorized access to browser databases or crypto wallets. Update your defenses using the ClamAV signature and indicators of compromise (IOCs) provided in the <a href=\"https://blog.talosintelligence.com/nik-c2-new-ai-enabled-framework\">full blog</a>. </p>Top security headlines of the week <p><strong>CISA gives agencies days to patch critical PHP bugs</strong> <br/>CISA added the two vulnerabilities in the PHP open-source scripting software to the Known Exploited Vulnerabilities (KEV) catalog Monday. (<a href=\"https://federalnewsnetwork.com/cybersecurity/2026/10/cisa-gives-agencies-days-to-patch-critical-php-bugs/\">Federal News Network</a>) </p><p><strong>Node2Shell: Brotli flaw triggers patching across Microsoft, Node.js, Python packages</strong><br/>An out-of-bounds write in Google’s Brotli decoder affects Node.js, .NET, PowerShell, and Python packages, and can lead to code execution. (<a href=\"https://www.securityweek.com/node2shell-brotli-flaw-triggers-patching-across-microsoft-node-js-python-packages/\">SecurityWeek</a>) </p><p><strong>Gheist uses stolen GitHub tokens to steal private repository secrets via Actions logs</strong> <br/>Each workflow sits on a new branch named ci-sync- followed by six random characters. Deleting a branch, or the run it started, does not undo the exposure. (<a href=\"https://thehackernews.com/2026/10/gheist-uses-stolen-github-tokens-to.html\">The Hacker News</a>) </p><p><strong>Japan internet giant GMO says hackers posted stolen customer data</strong> <br/>GMO Internet is investigating a data leak after suspected unauthorized access to its Onamae cloud desktop service, which provides virtualized desktops to financial traders. (<a href=\"https://techcrunch.com/2026/10/27/japan-internet-giant-gmo-says-hackers-posted-stolen-customer-data/?utm_source=tldrinfosec\">TechCrunch</a>) </p><p><strong>Third Serengeti sweep tops 1,400 arrests as investigations mature</strong> <br/>Interpol's annual Operation Serengeti, now on its third iteration, led to 1,462 arrests across 20 African countries and the U.S., recovering $105 million in stolen funds. (<a href=\"https://www.darkreading.com/cybersecurity-operations/third-serengeti-sweep-1400-arrests-investigations-mature\">Dark Reading</a>)</p>Can’t get enough Talos? <p><a href=\"https://blog.talosintelligence.com/ir-trends-q3-2026\"><strong>Stealing AI secrets and breaking EDRs</strong></a> <br/>Phishing may have dropped from last quarter's highs, but ransomware engagements climbed as attackers shifted their focus toward disabling EDR systems and scraping AI credentials. The financial sector also returned as a top target. </p><p><a href=\"https://blog.talosintelligence.com/from-federal-socs-to-talos-ryan-fetterman-on-practical-security-research/\"><strong>From federal SOCs to Talos: Ryan Fetterman on practical security research</strong></a> <br/>What does it mean to be \"blue collar\" for the blue team? Amy sat down with security researcher Ryan Fetterman to discuss his journey from federal agency work to his new role at Talos. </p><p><a href=\"https://beerswithtalos.talosintelligence.com/2033817/episodes/20009436-the-guy-who-invented-pain-plus-first-reactions-to-php2shell\"><strong>The Guy Who Invented Pain (plus first reactions to PHP2Shell)</strong></a> <br/>David Bianco built the Pyramid of Pain, so we offered him some more. David joins the Beers with Talos crew for a conversation how AI changes about his famous model, how EvidenceForge creates simulated incidents for research and training, and why his red-team entrance exam didn’t go to plan. </p><p><a href=\"https://blog.talosintelligence.com/compromised-intermediate-certificates/\"><strong>Compromised eMudhra intermediate certificates</strong></a> <br/>Cisco Talos is aware of eight compromised intermediate certificates belonging to the intermediate certificate authority. eMudhra has revoked the certificates and stopped issuing new certificates under its G3 root. </p><p><a href=\"https://blog.talosintelligence.com/two-critical-rces-in-php-core/\"><strong>Two critical RCEs in PHP core</strong></a> <br/>Two critical remote code execution vulnerabilities in PHP core could have implications across its wider ecosystem. This blog explains what we know so far, and details the Snort coverage available. </p>Upcoming events where you can find Talos <ul><li><a href=\"https://saintcon.org/\">SAINTCON</a> (Oct. 26 – 30) Provo, UT </li><li><a href=\"https://www.cyberwarcon.com/\">CYBERWARCON</a> (Nov. 20) Arlington, VA </li><li><a href=\"https://events.aavar.org/cybersecurity-conference/\">AVAR 2026</a> (Dec. 2 – 4) Hyderabad, India </li><li><a href=\"https://blackhat.com/europe/\">Black Hat Europe</a> (Dec. 7 – 10) London, U.K. </li></ul>Most prevalent malware files from Talos telemetry over the past week  <p><strong>SHA256: 73a25ff8893260418c2271b863c567e40e842adbab3c57023cb72de590ea377d</strong> <br/>MD5: 0cf0271c3564881fce95f44c649bd745 <br/>Talos Rep: <a href=\"https://talosintelligence.com/talos_file_reputation?s=73a25ff8893260418c2271b863c567e40e842adbab3c57023cb72de590ea377d\">https://talosintelligence.com/talos_file_reputation?s=73a25ff8893260418c2271b863c567e40e842adbab3c57023cb72de590ea377d</a> <br/>Example Filename: KMSAuto++.exe <br/>Detection Name: HackTool:WZTeam-tpd </p><p><strong>SHA256: 9f1f11a708d393e0a4109ae189bc64f1f3e312653dcf317a2bd406f18ffcc507</strong> <br/>MD5: 2915b3f8b703eb744fc54c81f4a9c67f <br/>Talos Rep: <a href=\"https://talosintelligence.com/talos_file_reputation?s=9f1f11a708d393e0a4109ae189bc64f1f3e312653dcf317a2bd406f18ffcc507\">https://talosintelligence.com/talos_file_reputation?s=9f1f11a708d393e0a4109ae189bc64f1f3e312653dcf317a2bd406f18ffcc507</a> <br/>Example Filename: sample.exe <br/>Detection Name: W32.9F1F11A708-100.SBX.TG** </p><p><strong>SHA256: 7fc50b69b56bfdfa9fc0a3e088ff13904587d6336a51e9edcc7919cba83d4e3f</strong> <br/>MD5: cca616647db9370c88998ae25da6997f <br/>Talos Rep: <a href=\"https://talosintelligence.com/talos_file_reputation?s=7fc50b69b56bfdfa9fc0a3e088ff13904587d6336a51e9edcc7919cba83d4e3f\">https://talosintelligence.com/talos_file_reputation?s=7fc50b69b56bfdfa9fc0a3e088ff13904587d6336a51e9edcc7919cba83d4e3f</a> <br/>Example Filename: cca616647db9370c88998ae25da6997f.exe <br/>Detection Name: Win.Tool.Kmsauto::1201 </p><p><strong>SHA256: 58d6fec4ba24c32d38c9a0c7c39df3cb0e91f500b323e841121d703c7b718681</strong> <br/>MD5: f1fe671bcefd4630e5ed8b87c9283534 <br/>Talos Rep: <a href=\"https://talosintelligence.com/talos_file_reputation?s=58d6fec4ba24c32d38c9a0c7c39df3cb0e91f500b323e841121d703c7b718681\">https://talosintelligence.com/talos_file_reputation?s=58d6fec4ba24c32d38c9a0c7c39df3cb0e91f500b323e841121d703c7b718681</a> <br/>Example Filename: KMSAuto Net.exe <br/>Detection Name: W32.58D6FEC4BA-95.SBX.TG </p><p><strong>SHA256: fed979f93bcaf4e73ebd25748093a92095d5109cbd01d55f97bdc50ce509ad2f</strong> <br/>MD5: 207d9d891ac756b2bfad88aba5682c65 <br/>Talos Rep: <a href=\"https://talosintelligence.com/talos_file_reputation?s=fed979f93bcaf4e73ebd25748093a92095d5109cbd01d55f97bdc50ce509ad2f\">https://talosintelligence.com/talos_file_reputation?s=fed979f93bcaf4e73ebd25748093a92095d5109cbd01d55f97bdc50ce509ad2f</a> <br/>Example Filename: sample.exe <br/>Detection Name: W32.FED979F93B-95.SBX.TG</p>",
+    "link": "https://blog.talosintelligence.com/a-quiet-week-in-infosec/",
+    "source": "Cisco Talos Blog",
+    "feed_type": "news",
+    "type": "threat-intel-apt-campaigns",
+    "type_label": "Threat Intel & APT Campaigns",
+    "published": "2026-10-29T18:00:00+00:00",
+    "published_ts": 1793296800,
+    "smart_groups": [
+      "Ransomware",
+      "Vulnerabilities / CVEs",
+      "Windows / Microsoft"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Crypto Spends $176 Million on Midterms, But Only 13% of Voters See It as a Priority",
+    "summary": "Only 13% of Americans say a candidate’s support for crypto growth is very important, according to a survey conducted by Ipsos for the DeFi Education Fund, even as the industry spends heavily on next week’s elections.",
+    "summary_html": "Only 13% of Americans say a candidate’s support for crypto growth is very important, according to a survey conducted by Ipsos for the DeFi Education Fund, even as the industry spends heavily on next week’s elections.",
+    "link": "https://decrypt.co/382179/crypto-spends-176-million-midterms-only-13-percent-voters-priority",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-10-29T17:46:02+00:00",
+    "published_ts": 1793295962,
+    "smart_groups": [
+      "Crypto / Web3"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Your headphones have hidden LE Audio features you’ll want to know about",
+    "summary": "Your JBL, Sony, or Bose Bluetooth headphones got a top-to-bottom wireless makeover — not just Auracast.",
+    "summary_html": "Your JBL, Sony, or Bose Bluetooth headphones got a top-to-bottom wireless makeover — not just Auracast.",
+    "link": "https://www.zdnet.com/tech/bluetooth-headphones-hidden-le-audio-features-jbl-sony-bose/",
+    "source": "ZDNet – Security",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-29T17:45:05+00:00",
+    "published_ts": 1793295905,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "$11 Billion in Bitcoin Options Expire Tomorrow—Here's What It Means",
+    "summary": "A third of Deribit's Bitcoin options settle Friday, a day after the Fed held rates with two officials voting to hike. Here's why that matters for Bitcoin's price.",
+    "summary_html": "A third of Deribit's Bitcoin options settle Friday, a day after the Fed held rates with two officials voting to hike. Here's why that matters for Bitcoin's price.",
+    "link": "https://decrypt.co/382171/11-billion-bitcoin-options-expire-tomorrow-what-means",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-10-29T17:15:11+00:00",
+    "published_ts": 1793294111,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "For production environments, when do paid SSL certificates actually make sense over Let's Encrypt?",
+    "summary": "With free certificates offering HTTPS encryption and automated renewals, I'm trying to understand where paid certificates still provide a meaningful advantage. Is it mainly about organization validation, extended validation, vendor support, warranty offerings, or specific enterprise requirements? For those managing certificates across business-critical infrastructure, have you found paid certificates worth the extra cost, or do free DV certificates cover most use cases? I'd be interested in the practical differences you've encountered. submitted by /u/vmccerts [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>With free certificates offering HTTPS encryption and automated renewals, I'm trying to understand where paid certificates still provide a meaningful advantage.</p> <p>Is it mainly about organization validation, extended validation, vendor support, warranty offerings, or specific enterprise requirements?</p> <p>For those managing certificates across business-critical infrastructure, have you found paid certificates worth the extra cost, or do free DV certificates cover most use cases? I'd be interested in the practical differences you've encountered.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/vmccerts\"> /u/vmccerts </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1xipyys/for_production_environments_when_do_paid_ssl/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1xipyys/for_production_environments_when_do_paid_ssl/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1xipyys/for_production_environments_when_do_paid_ssl/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-10-29T17:12:30+00:00",
+    "published_ts": 1793293950,
+    "smart_groups": [
+      "Network / OT / ICS",
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "HYPE teases all-time high as NYSE owner ICE eyes US Hyperliquid perps",
+    "summary": "Hyperliquid’s token pumped following news of ICE and Trade[XYZ] unveiling plans for US perpetual futures.",
+    "summary_html": "<p></p><p>Hyperliquid’s token pumped following news of ICE and Trade[XYZ] unveiling plans for US perpetual futures.</p>",
+    "link": "https://cointelegraph.com/markets/hype-price-all-time-high-ice-us-hyperliquid-perps?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-10-29T17:12:03+00:00",
+    "published_ts": 1793293923,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "KuCoin suspends services in Russia and Belarus",
+    "summary": "The exchange cited legal and regulatory compliance in its reason for cutting off services to users based in the two countries, currently the targets of international sanctions.",
+    "summary_html": "<p></p><p>The exchange cited legal and regulatory compliance in its reason for cutting off services to users based in the two countries, currently the targets of international sanctions.</p>",
+    "link": "https://cointelegraph.com/news/kucoin-services-russia-belarus-suspended?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-10-29T17:08:41+00:00",
+    "published_ts": 1793293721,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Linux Kernel TCP Flaw With 9.8 CVSS Score Affects Ubuntu, Red Hat and Other Distributions",
+    "summary": "submitted by /u/One_Paint8721 [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/cybersecurity/comments/1xipflj/linux_kernel_tcp_flaw_with_98_cvss_score_affects/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/One_Paint8721\"> /u/One_Paint8721 </a> <br/> <span><a href=\"https://thehackernews.com/2026/10/linux-kernel-tcp-flaw-with-98-cvss.html\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1xipflj/linux_kernel_tcp_flaw_with_98_cvss_score_affects/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1xipflj/linux_kernel_tcp_flaw_with_98_cvss_score_affects/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-10-29T16:53:10+00:00",
+    "published_ts": 1793292790,
+    "smart_groups": [
+      "Linux / Unix",
+      "Community Discussion"
+    ],
+    "curated": false,
+    "story_id": "649ecf4a57aa",
+    "story_size": 2
+  },
+  {
+    "title": "4M Bitcoin Bought Above $85K Could Cap Recovery: Glassnode",
+    "summary": "Bitcoin is trading close to the average price paid by U.S. spot ETF holders, a day after the Federal Reserve held rates steady.",
+    "summary_html": "Bitcoin is trading close to the average price paid by U.S. spot ETF holders, a day after the Federal Reserve held rates steady.",
+    "link": "https://decrypt.co/382161/4m-bitcoin-bought-above-85k-could-cap-recovery-glassnode",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-10-29T16:32:47+00:00",
+    "published_ts": 1793291567,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Firefox and Chrome patch 200+ security flaws combined – update both ASAP",
+    "summary": "The latest version of Firefox fixes 167 security vulnerabilities, most of which are of high severity, while the newest version of Chrome patches 52 flaws, four of which are critical.",
+    "summary_html": "The latest version of Firefox fixes 167 security vulnerabilities, most of which are of high severity, while the newest version of Chrome patches 52 flaws, four of which are critical.",
+    "link": "https://www.zdnet.com/tech/firefox-chrome-browsers-patch-200-security-flaws-update-asap/",
+    "source": "ZDNet – Security",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-29T16:30:28+00:00",
+    "published_ts": 1793291428,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": false
+  },
+  {
+    "title": "When Risk Becomes Personal: What Security Leaders Can Learn From a Cancer Diagnosis",
+    "summary": "Risk managers are trained to spot weak signals, plan for disruption and make hard decisions under uncertainty. But the discipline looks different when the risk is not a system or an enterprise, but you.",
+    "summary_html": "<p>Risk managers are trained to spot weak signals, plan for disruption and make hard decisions under uncertainty. But the discipline looks different when the risk is not a system or an enterprise, but you.</p>\n<p>The post <a href=\"https://www.securityweek.com/when-risk-becomes-personal-what-security-leaders-can-learn-from-a-cancer-diagnosis/\">When Risk Becomes Personal: What Security Leaders Can Learn From a Cancer Diagnosis</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+    "link": "https://www.securityweek.com/when-risk-becomes-personal-what-security-leaders-can-learn-from-a-cancer-diagnosis/",
+    "source": "SecurityWeek",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-29T16:30:00+00:00",
+    "published_ts": 1793291400,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Canada’s Emerging CPCSC Program Is Here: How Zscaler Helps Canadian Defence Suppliers Achieve Compliance",
+    "summary": "Canada’s new defence cyber certification is live. Here’s what it asks of suppliers, and how Zscaler helps them achieve compliance.On April 1, 2026, Canada’s Public Services and Procurement Canada (PSPC) launched Level 1 of the Canadian Program for Cyber Security Certification (CPCSC). For companies supporting Canada’s defence supply chain, cybersecurity has transitioned from being a best practice to a prerequisite for conducting business with Canada’s Department of National Defence (DND).The CPCSC is Canada’s counterpart to the U.S. Cybersecurity Maturity Model Certification (CMMC). It safeguards sensitive, unclassified \"specified information\" possessed by suppliers and is based on ITSP.10.171, the standard from the Canadian Centre for Cyber Security, which aligns with NIST SP 800-171. What CPCSC requiresThe program has three levels, phased in over the next two years:Level AssessmentTimingLevel 1Annual self-assessment against 13 foundational controls, using a Government of Canada online toolAvailable since April 1, 2026; in select contracts from summer 2026Level 2Third-party assessment by a body accredited by the Standards Council of Canada, every three years, plus annual affirmationSpring 2027; phased into contracts April 2027-March 2028Level 3Assessment by the Government of Canada, every three years, with enhanced requirements aligned to NIST SP 800-172Phased into the highest-risk contracts from 2027An important detail to keep in mind! The certification is verified upon contract award, not during the bidding process. This means a supplier could potentially win a bid but still be deemed ineligible. What Level 1 actually asks forThe Level 1 asks suppliers to self-attest to 13 foundational controls which are drawn from ITSP.10.171. This is the standard that also underpins Levels 2 and 3. These controls fall into six families:Access control: account management, access enforcement, use of external systems, and control of publicly accessible content.Identification and authentication: multifactor authentication, custom user identification and authentication, device identification and authentication.Media protection: sanitizing or destroying media before disposal or reuse.Physical protection: physical access authorizations and physical access control. System and communication protection: boundary protection. System and information integrity: flaw remediation and malicious code protection. These are the baseline requirements. CPCSC positions Level 1 as lower risk work requiring the controls to be self assessed, rather than verified independently by a third party. Because of this flexibility and ease of path to compliance, it also offers the clearest starting point for building toward higher levels. Why the easiest path to Level 1 isn’t enoughIn times of new requirements, most suppliers look for the quickest way to check the box. Many suppliers can do this with technology they already own in their inventory: a firewall at the perimeter, a VPN for remote access, antivirus software, and multifactor authentication on the landing page. For a self-assessment, this reads as compliant. While each of these controls is technically compliant and satisfied, bad actors are skilled at exploiting exactly the gaps that remain. Flat networks. A VPN connects remote engineers and subcontractors to the whole network, not just the systems they need. One stolen credential becomes a path for lateral movement to vulnerable information. Exposed edge devices. Internet-facing VPN concentrators and firewalls are among the most frequently exploited systems in Cyber Centre alerts.Unmanaged devices. Partners and contractors reach sensitive systems from laptops the supplier doesn’t control.Point-in-time evidence. Even where controls exist, pulling together proof for an assessor takes weeks. A self-assessment captures how controls were configured on one day; it says little about whether they were consistently enforced for the rest of the year. Why stronger controls now pay off at Levels 2 and 3These check boxes don’t just leave risks in place; they create rework. They are shortcuts. Level 2 is a third-party independent assessment against the broad ITSP. 10.171 requirement set. Auditors will look for controls that are enforced consistently and are defensible, such as least privilege, session controls, audit logs, and protection of data in transit.Level 3 includes enhanced requirements aligned to NIST 800-171 that protect against bad actors, including stronger isolation of systems that hold specified information and continuous monitoring. A perimeter and VPN design built to only pass Level 1, more often than not, has to be rebuilt to meet them. Controls built on zero trust principles take the opposite approach; access is granted per application based on identity, device posture, and context. Applications have no exposed attack surface, traffic is inspected inline, and every decision is logged centrally. Those same controls satisfy Level 1 today and really become the foundation that Level 2 and Level 3 assessments build on. The goal isn’t just to pass Level 1, but to meet it once, in a way you won’t have to undo. This approach saves both cost and time down the road. How Zscaler supports CPCSCNo product is “CPCSC certified.” Only the supplier is assessed. The platform must be capable of enforcing controls and providing the necessary evidence for the self-assessment and upcoming Level 2 evaluation. Zscaler’s Zero Trust Exchange directly covers 10 out of the 13 Level 1 controls and also backs up five additional controls. As organizations consider both Level 1 and higher levels of maturity, moving to a true zero trust technology foundation will provide adaptable controls that position organizations to demonstrate higher levels of compliance.Level 1 controlExamples of How Zscaler Contributes to CPCSC Level 1Access Enforcement Zscaler performs as a Zero Trust Policy Enforcement Point that connects users to specific applications, never to the network, based on identity and aggregated policy.Boundary Protection Applications sit behind the Zero Trust Exchange with no inbound listening ports, removing the exposed VPN from the attack surface.Malicious Code Protection Zscaler Internet Access (ZIA) inspects traffic inline, including encrypted traffic, with advanced threat protection and cloud sandboxing.Device Identification & Authentication Zscaler has over 40 device posture checks that it can verify before granting access to the supplier’s resources.Use of External Systems Posture policies and browser isolation let unmanaged devices reach approved apps without data landing on the device.Account Management, Identification, and MFA Integration with the supplier’s identity provider enforces authentication and MFA before any application is reachable.Publicly Accessible Content Inline data loss prevention stops specified information from being posted to public sites.Flaw Remediation Zscaler provides value for flaw remediation by blocking exploit delivery paths, restricting access based on device posture, and reducing network exposure.The remaining three Level 1 controls, e.g. media sanitization and two physical-security controls, stay with the supplier.One platform, Multiple Compliance Programs, Endless Supportability Since ITSP.10.171 mirrors NIST SP 800-171, DND suppliers can leverage the same Zero Trust Architecture to monitor, enforce, and log access to support their CPCSC program, along with other Canadian Public Sector requirements. This reduces investment and maintenance costs and enables suppliers to set up controls once and show evidence for multiple programs, instead of managing multiple technologies to secure multiple programs. Ready for Level 2, on Day OneLevel 1 leverages a self-assessment, but Level 2 will require more formal assessment. As assessors arrive in 2027, suppliers will need to show how controls are consistently enforced, not just configured. Centralized management, enforcement policy, and logging across every user, device, and application provide suppliers with a single platform with evidence built in. A robust Zero Trust Architecture will ease this transition. Getting startedIdentify which current or upcoming DND contracts involve specified information.Map how remote users, subcontractors, and partners reach systems that hold specified information today.Replace network-level access with Zero Trust Network Access for those users first.Align your platform configuration with the required CPCSC evidence, so that one set of controls serves more than one program.CPCSC requirements can appear in defence contracts this year. The suppliers who start now will treat Level 2 as a formality. To learn how Zscaler can help, contact our team or visit the Zscaler Compliance Center.ReferencesPSPC – Canadian Program for Cyber Security Certification: Level 1 (April 2026)Canadian Centre for Cyber SecurityPilotcore – CPCSC for Canadian Defence Suppliers",
+    "summary_html": "Canada’s new defence cyber certification is live. Here’s what it asks of suppliers, and how Zscaler helps them achieve compliance.On April 1, 2026, Canada’s Public Services and Procurement Canada (PSPC) launched Level 1 of the Canadian Program for Cyber Security Certification (CPCSC). For companies supporting  Canada’s defence supply chain, cybersecurity has transitioned from being a best practice to a prerequisite for conducting business with Canada’s Department of National Defence (DND).The CPCSC is Canada’s counterpart to the U.S. Cybersecurity Maturity Model Certification (CMMC). It safeguards sensitive, unclassified \"specified information\" possessed by suppliers and is based on ITSP.10.171, the standard from the Canadian Centre for Cyber Security, which aligns with NIST SP 800-171.  What CPCSC requiresThe program has three levels, phased in over the next two years:Level  AssessmentTimingLevel 1Annual self-assessment against 13 foundational controls, using a Government of Canada online toolAvailable since April 1, 2026; in select contracts from summer 2026Level 2Third-party assessment by a body accredited by the Standards Council of Canada, every three years, plus annual affirmationSpring 2027; phased into contracts April 2027-March 2028Level 3Assessment by the Government of Canada, every three years, with enhanced requirements aligned to NIST SP 800-172Phased into the highest-risk contracts from 2027An important detail to keep in mind! The certification is verified upon contract award, not during the bidding process. This means a supplier could potentially win a bid but still be deemed ineligible.  What Level 1 actually asks forThe Level 1 asks suppliers to self-attest to 13 foundational controls which are drawn from ITSP.10.171. This is the standard that also underpins Levels 2 and 3. These controls fall into six families:Access control: account management, access enforcement, use of external systems, and control of publicly accessible content.Identification and authentication: multifactor authentication, custom user identification and authentication, device identification and authentication.Media protection: sanitizing or destroying media before disposal or reuse.Physical protection: physical access authorizations and physical access control. System and communication protection: boundary protection.  System and information integrity: flaw remediation and malicious code protection.  These are the baseline requirements. CPCSC positions Level 1 as lower risk work requiring the controls to be self assessed, rather than verified independently by a third party. Because of this flexibility and ease of path to compliance, it also offers the clearest starting point for building toward higher levels. Why the easiest path to Level 1 isn’t enoughIn times of new requirements, most suppliers look for the quickest way to check the box. Many suppliers can do this with technology they already own in their inventory: a firewall at the perimeter, a VPN for remote access, antivirus software, and multifactor authentication on the landing page. For a self-assessment, this reads as compliant. While each of these controls is technically compliant and satisfied, bad actors are skilled at exploiting exactly the gaps that remain. Flat networks. A VPN connects remote engineers and subcontractors to the whole network, not just the systems they need. One stolen credential becomes a path for lateral movement to vulnerable information. Exposed edge devices. Internet-facing VPN concentrators and firewalls are among the most frequently exploited systems in Cyber Centre alerts.Unmanaged devices. Partners and contractors reach sensitive systems from laptops the supplier doesn’t control.Point-in-time evidence. Even where controls exist, pulling together proof for an assessor takes weeks. A self-assessment captures how controls were configured on one day; it says little about whether they were consistently enforced for the rest of the year. Why stronger controls now pay off at Levels 2 and 3These check boxes don’t just leave risks in place; they create rework. They are shortcuts. Level 2 is a third-party independent assessment against the broad ITSP. 10.171 requirement set. Auditors will look for controls that are enforced consistently and are defensible, such as least privilege, session controls, audit logs, and protection of data in transit.Level 3 includes enhanced requirements aligned to NIST 800-171 that protect against bad actors, including stronger isolation of systems that hold specified information and continuous monitoring. A perimeter and VPN design built to only pass Level 1, more often than not, has to be rebuilt to meet them. Controls built on zero trust principles take the opposite approach; access is granted per application based on identity, device posture, and context. Applications have no exposed attack surface, traffic is inspected inline, and every decision is logged centrally. Those same controls satisfy Level 1 today and really become the foundation that Level 2 and Level 3 assessments build on. The goal isn’t just to pass Level 1, but to meet it once, in a way you won’t have to undo. This approach saves both cost and time down the road. How Zscaler supports CPCSCNo product is “CPCSC certified.” Only the supplier is assessed. The platform must be capable of enforcing controls and providing the necessary evidence for the self-assessment and upcoming Level 2 evaluation. Zscaler’s Zero Trust Exchange directly covers 10 out of the 13 Level 1 controls and also backs up five additional controls.  As organizations consider both Level 1 and higher levels of maturity, moving to a true zero trust technology foundation will provide adaptable controls that position organizations to demonstrate higher levels of compliance.Level 1 controlExamples of How Zscaler Contributes to CPCSC Level 1Access Enforcement Zscaler performs as a Zero Trust Policy Enforcement Point that connects users to specific applications, never to the network, based on identity and aggregated policy.Boundary Protection Applications sit behind the Zero Trust Exchange with no inbound listening ports, removing the exposed VPN from the attack surface.Malicious Code Protection Zscaler Internet Access (ZIA) inspects traffic inline, including encrypted traffic, with advanced threat protection and cloud sandboxing.Device Identification &amp; Authentication Zscaler has over 40 device posture checks that it can verify before granting access to the supplier’s resources.Use of External Systems Posture policies and browser isolation let unmanaged devices reach approved apps without data landing on the device.Account Management, Identification, and MFA Integration with the supplier’s identity provider enforces authentication and MFA before any application is reachable.Publicly Accessible Content Inline data loss prevention stops specified information from being posted to public sites.Flaw Remediation Zscaler provides value for flaw remediation by blocking exploit delivery paths, restricting access based on device posture, and reducing network exposure.The remaining three Level 1 controls, e.g. media sanitization and two physical-security controls, stay with the supplier.One platform, Multiple Compliance Programs, Endless Supportability Since ITSP.10.171 mirrors NIST SP 800-171, DND suppliers can leverage the same Zero Trust Architecture to monitor, enforce, and log access to support their CPCSC program, along with other Canadian Public Sector requirements. This reduces investment and maintenance costs and enables suppliers to set up controls once and show evidence for multiple programs, instead of managing multiple technologies to secure multiple programs. Ready for Level 2, on Day OneLevel 1 leverages a self-assessment, but Level 2 will require more formal assessment.  As assessors arrive in 2027, suppliers will need to show how controls are consistently enforced, not just configured. Centralized management, enforcement policy, and logging across every user, device, and application provide suppliers with a single platform with evidence built in. A robust Zero Trust Architecture will ease this transition. Getting startedIdentify which current or upcoming DND contracts involve specified information.Map how remote users, subcontractors, and partners reach systems that hold specified information today.Replace network-level access with Zero Trust Network Access for those users first.Align your platform configuration with the required CPCSC evidence, so that one set of controls serves more than one program.CPCSC requirements can appear in defence contracts this year. The suppliers who start now will treat Level 2 as a formality. To learn how Zscaler can help, contact our team or visit the Zscaler Compliance Center.ReferencesPSPC – Canadian Program for Cyber Security Certification: Level 1 (April 2026)Canadian Centre for Cyber SecurityPilotcore – CPCSC for Canadian Defence Suppliers",
+    "link": "https://www.zscaler.com/blogs/product-insights/canada-s-emerging-cpcsc-program-here-how-zscaler-helps-canadian-defence",
+    "source": "Zscaler Research Blogs",
+    "feed_type": "news",
+    "type": "threat-intel-apt-campaigns",
+    "type_label": "Threat Intel & APT Campaigns",
+    "published": "2026-10-29T16:28:23+00:00",
+    "published_ts": 1793291303,
+    "smart_groups": [
+      "Identity / Access"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Nasdaq-listed Canton Strategic Holdings plans tokenized stock trading from Nov. 2",
+    "summary": "The tokenized shares would carry the same shareholder rights as traditional stock, with round-the-clock trading and immediate settlement under the SEC’s innovation exemption.",
+    "summary_html": "<p></p><p>The tokenized shares would carry the same shareholder rights as traditional stock, with round-the-clock trading and immediate settlement under the SEC’s innovation exemption.</p>",
+    "link": "https://cointelegraph.com/news/canton-strategic-holdings-tokenized-stock-trading-november-2026?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-10-29T16:27:39+00:00",
+    "published_ts": 1793291259,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "PHP2Shell and the Limits of Patching: A SecOps Playbook for Layered Response",
+    "summary": "Last week’s disclosure of two critical remote code execution (RCE) vulnerabilities in PHP (CVE-2026-109618 and CVE-2026-109619) created an immediate and widespread fire drill among security response teams. Carrying a CVSS v4.0 score of 9.2 and affecting every PHP version released in the last decade (back to PHP 5.4), these flaws let an unauthenticated attacker execute shell commands directly on a vulnerable server. With PHP powering approximately 70% of websites whose server-side language is known, the blast radius is enormous.In recent days, Zscaler ThreatLabz has monitored industry response, exploit attempts, and remediation trends in an effort to help customers swiftly reduce their exposure while protecting business operations. This post captures exploitation attempts observed in the wild and a summary of remediation status from around the security industry in the immediate aftermath of one of the most impactful vulnerability disclosures in years.Three observations stand out:Speed of exploitation. Attackers are working quickly, and they started before most security teams even knew about their exposure.Prioritization must be automatic. You can't patch everything right away – you need to know which assets to focus on first, and you shouldn't need to hunt for them.Compensating controls are essential. Not every critical exposure is patchable in a shortened timetable. Security teams need other options to mitigate risk quickly. Exploitation Attempts Observed by Zscaler ThreatLabzThe speed at which attackers mobilized against PHP2Shell was notable but not surprising, given the role of AI in adversarial activity today. Within hours of the October 21 disclosure, scanning and exploitation attempts surged, with some activity predating the public announcement entirely.The first 96 hours – by the numbersLooking at global telemetry captured across Zscaler Deception's internet-facing decoys worldwide, we found a rapid escalation of PHP2Shell exploit activity in real time:Total exploitation attempts3,038Unique attacker IPs248Organizations targeted137First detection4 hours before public disclosureDuring the first 48 hours of disclosure, ThreatLabz focused on the micro-level payload analysis—analyzing 187 specific events across 23 high-priority IPs that delivered weaponized PHP object injections, memory corruptions, and web shells. By the 96-hour mark, this activity surged to a macro-level 3,038 scanning and exploit attempts from 248 unique IPs.Key takeaway: Attackers moved before the formal publication of the disclosure. Organizations that rely solely on patch-on-release workflows were exposed before they could act. Remediation StatusPHP released fixed versions on October 21: PHP 8.5.12, 8.4.27, 8.3.36, and 8.2.35. But patching at the scale PHP demands is a fundamentally different challenge than patching a single application.Patching is happening, slowlyIndustry telemetry reveals a remediation picture that is encouraging but far from complete.Qualys analysis found that only 199,000 of approximately 156 million PHP installations were patched within the first 12 hours after disclosure, a fraction of 1%.OX Security produced a similar analysis, showing 99.3% of PHP instances unpatched after 24 hours. Even five days after disclosure, nearly 94% of instances remained unpatched.It should be noted that these statistics omit important qualifiers, including how many instances were on internet-exposed assets or crown-jewel assets.Due to extensive news coverage, it’s safe to assume the industry has full awareness of the risk associated with these vulnerabilities. The early statistics indicate another challenge we already understand: organizations cannot patch their way out of widespread exposure.The long tail of “unpatchable” PHPTo further complicate the remediation challenge, a significant number of PHP installations cannot be patched at all. About a third of PHP sites run PHP 7 or older, branches with no official PHP2Shell fix. Approximately 2.24 million internet-facing hosts advertise PHP, and 59% of those that report a version are running a PHP branch with no official security release.PHP 8.2 itself loses security support on December 31, 2026. Patching 8.2 buys time, not permanent protection. Key takeaway: The reality of enterprise PHP estates means millions of installations will remain vulnerable for weeks or months if remediation is dependent solely on patching. Security teams need layered risk reduction strategies that go beyond patching. Reduce Risk with Compensating ControlsSecurity teams must act on what they can control right now, layering practical compensating controls that meaningfully shrink the attack surface while patches roll out. Apply these measures in the following priority order.Remove PHP applications from the internetThe most effective risk reduction is the simplest: if a PHP application does not need to be directly reachable from the internet, take it off or put a WAF in front of it. Every PHP2Shell exploit path begins with an attacker sending a crafted HTTP request to a PHP worker. Eliminating that inbound path eliminates the risk entirely – no signature tuning, no configuration changes, no residual exposure.Prioritize EOL systems. Unsupported PHP versions (8.1 and older) cannot be patched and must be isolated or retired immediately.Audit supported installations. Move internal tools and admin panels behind zero trust access to eliminate unnecessary internet exposure.Protect public applications. Ensure public-facing sites are patched or protected with compensating controls such as WAF.Deactivate non-critical services with known exposureNot every PHP application running in your environment is critical to the business. PHP2Shell is a compelling reason to finally answer the question many organizations have deferred: \"Do we still need this running?\"Identify decommission candidates. Retire unused admin interfaces, staging instances, and legacy tools, which often run unsupported PHP and lack active monitoring.Suspend what you cannot retire. Temporarily disable non-critical services as you implement a permanent fix to eliminate attack vectors.Track remaining services. Assign owners, document patch status, and set target remediation dates for active services. Track progress in your exposure management solution with dedicated PHP remediation dashboards.Apply virtual patching for private applicationsMany high-risk PHP applications are private, internal systems rather than public websites. Admin consoles, ERP front-ends, and wikis are often difficult to patch quickly due to custom code, complex dependencies, and a lack of deployment automation.Virtual patching protects these applications at the network layer without modifying application code or the PHP runtime. An AI engine evaluates the application, dynamically generates targeted exploit signatures, and deploys them at an inline enforcement point (e.g., an application connector or gateway) to block malicious PHP2Shell requests before they reach the server.This approach has several advantages for PHP2Shell specifically:Application-aware precision. Context-aware rules minimize false positives and catch exploit variants missed by generic WAF rules.No-touch deployment. Applied at the gateway layer without code changes or restarts, making it ideal for legacy or unsupported PHP versions.Continuous, autonomous updates. The AI engine detects emerging payload variants and deploys updated signatures automatically without manual intervention.Scales across the application estate. Provides immediate baseline protection across large private estates, transforming emergency patching into a manageable process.Key takeaway: Compensating controls are not a substitute for patching, but they are essential for the reality of enterprise PHP estates. Remove what you can from the internet, retire what you do not need, lock down what remains, and deploy virtual patching to protect what you cannot patch yet. How Zscaler Agentic SecOps Can HelpPHP2Shell is a textbook case for why modern security operations need to go beyond \"find it and patch it.\" The Zscaler Agentic SecOps portfolio can help security teams respond to PHP2Shell – and to the next critical vulnerability that follows it – with the following capabilities:Zscaler Exposure ManagementExposure Management surfaces PHP risk across your environment and enables a complete find-prioritize-fix-verify workflow:Understand PHP risk. Combine native EASM discovery of impacted assets with third-party sources across your environment to understand PHP risk holistically.Prioritize high-risk exposures. Identify internet-facing and crown-jewel assets, group and assign tickets to the rightful owners for remediation.Prescribe the fix. Generate and share AI-powered fix instructions with ZAgent, then rescan targeted assets to confirm the fix is in place.Mitigate risk from EOL assets. Create compliance policies for end-of-life PHP versions, report on compliance with pre-built dashboards, and auto-assign critical violations for unpatchable assets.Zscaler DeceptionDeception detects exploitation attempts with high-fidelity decoys that mimic the applications attackers are actively targeting:Application-specific decoys. Deploy Threat Intel decoys for the applications being targeted with PHP2Shell exploits: WordPress Login, Drupal Admin Panel, Joomla Admin Panel, phpMyAdmin, and Nextcloud. These decoys will detect any PHP2Shell exploitation activity against them and provide a high fidelity alert. Automated IP blocking. By integrating decoy telemetry with downstream orchestrations, you can dynamically capture and block attacker IPs on your perimeter firewalls. This compensatory control requires very little operational effort and significantly reduces risk by neutralizing active, local threat actors instead of struggling to block generic, static IP lists.For Deception customers, when a major CVE is disclosed, Zscaler pushes updated vulnerable application datasets (CVE datasets) directly to your tenant, allowing you to deploy realistic, simulated targets in minutes. When an attacker attempts to exploit one of these decoys, our ThreatParse engine automatically reconstructs the attack log, maps it to the MITRE ATT&CK framework, and tags the alert with the specific CVE ID.Zscaler Managed Detection & Response (MDR)For organizations that need to augment their security teams, Zscaler MDR provides 24x7 expert monitoring, proactive threat hunting, and hands-on response so that exploitation and post-exploitation activity doesn't go unnoticed while patches roll out.Always-on monitoring. Zscaler MDR analysts monitor your environment 24x7x365, investigating suspicious activity in real time. For a vulnerability like PHP2Shell, this means continuous surveillance for signs of exploitation. AI agents work alongside human analysts to accelerate the path from alert to action.Proactive threat hunting. MDR doesn't wait for alerts. Our threat hunters proactively seek indicators of compromise and attacker tradecraft tied to active campaigns like PHP2Shell. When a hunt finds something, they check to ensure our analytics catch it and any new discoveries get engineered into detections, so all customers are protected.RCE detection. Detection rules tuned for suspicious remote code execution activity, including Linux web servers spawning suspicious commands and web servers creating inline PHP scripts or spawning reconnaissance commands.Active remediation. When a threat is confirmed, Zscaler MDR can implement containment and remediation actions to neutralize threats before they spread. This includes isolating compromised hosts, blocking malicious processes, and coordinating with your internal teams to restore safe operations. Versatile Risk Reduction is Now a NecessityThere is no one magic bullet to address the risks of PHP2Shell. Yes, patching is the only permanent fix, but the data tells us that no security team can patch its way to zero exposure on a timeline that matches real threats. Most organizations are still yet to patch all internet-exposed PHP assets. A third of the PHP estate runs on EOL versions that will never receive an official fix. Attackers started probing four days before disclosure and were already attempting to exploit millions of targets within hours of the announcement. The math does not work in the defender's favor.The more integrated your security program, the more options you’ll have available for rapid response. Start with this checklist:✓ Maintain a real-time inventory of all assets, including internet-exposure✓ Maintain business context such as criticality and business services associated with each asset✓ Understand which 50 assets must be patched out of thousands of potentially impacted✓ Deploy virtual patching to shield applications you cannot update✓ Layer Deception to catch and contain attackers who find a gap✓ Integrate alert monitoring with exposure management to catch suspicious activity that began prior to protectionsEach layer of defense compensates for the limitations of the others, and together they buy the time your teams need to systematically reduce critical exposure in hours, and long tail exposure in days rather than months.PHP2Shell is not the last disclosure of this kind. Frontier AI models will uncover high-impact vulnerabilities and exploit chains that require rapid response. Security teams that treat PHP2Shell as an isolated fire drill will find themselves repeating the same scramble. The organizations that use this moment to build the muscles for exposure visibility, compensating-control playbooks, virtual patching infrastructure, and detection and response readiness will be the ones who are prepared when the next AI-fueled disclosure arrives. And it will arrive.To learn more about how to protect your organization from PHP2Shell, watch the Zscaler Rapid Response Briefing for Securing PHP.Contributors: Keith Do, Carol Caley",
+    "summary_html": "Last week’s disclosure of two critical remote code execution (RCE) vulnerabilities in PHP (CVE-2026-109618 and CVE-2026-109619) created an immediate and widespread fire drill among security response teams. Carrying a CVSS v4.0 score of 9.2 and affecting every PHP version released in the last decade (back to PHP 5.4), these flaws let an unauthenticated attacker execute shell commands directly on a vulnerable server. With PHP powering approximately 70% of websites whose server-side language is known, the blast radius is enormous.In recent days, Zscaler ThreatLabz has monitored industry response, exploit attempts, and remediation trends in an effort to help customers swiftly reduce their exposure while protecting business operations. This post captures exploitation attempts observed in the wild and a summary of remediation status from around the security industry in the immediate aftermath of one of the most impactful vulnerability disclosures in years.Three observations stand out:Speed of exploitation. Attackers are working quickly, and they started before most security teams even knew about their exposure.Prioritization must be automatic. You can't patch everything right away – you need to know which assets to focus on first, and you shouldn't need to hunt for them.Compensating controls are essential. Not every critical exposure is patchable in a shortened timetable. Security teams need other options to mitigate risk quickly. Exploitation Attempts Observed by Zscaler ThreatLabzThe speed at which attackers mobilized against PHP2Shell was notable but not surprising, given the role of AI in adversarial activity today. Within hours of the October 21 disclosure, scanning and exploitation attempts surged, with some activity predating the public announcement entirely.The first 96 hours – by the numbersLooking at global telemetry captured across Zscaler Deception's internet-facing decoys worldwide, we found a rapid escalation of PHP2Shell exploit activity in real time:Total exploitation attempts3,038Unique attacker IPs248Organizations targeted137First detection4 hours before public disclosureDuring the first 48 hours of disclosure, ThreatLabz focused on the micro-level payload analysis—analyzing 187 specific events across 23 high-priority IPs that delivered weaponized PHP object injections, memory corruptions, and web shells. By the 96-hour mark, this activity surged to a macro-level 3,038 scanning and exploit attempts from 248 unique IPs.Key takeaway: Attackers moved before the formal publication of the disclosure. Organizations that rely solely on patch-on-release workflows were exposed before they could act. Remediation StatusPHP released fixed versions on October 21: PHP 8.5.12, 8.4.27, 8.3.36, and 8.2.35. But patching at the scale PHP demands is a fundamentally different challenge than patching a single application.Patching is happening, slowlyIndustry telemetry reveals a remediation picture that is encouraging but far from complete.Qualys analysis found that only 199,000 of approximately 156 million PHP installations were patched within the first 12 hours after disclosure, a fraction of 1%.OX Security produced a similar analysis, showing 99.3% of PHP instances unpatched after 24 hours. Even five days after disclosure, nearly 94% of instances remained unpatched.It should be noted that these statistics omit important qualifiers, including how many instances were on internet-exposed assets or crown-jewel assets.Due to extensive news coverage, it’s safe to assume the industry has full awareness of the risk associated with these vulnerabilities. The early statistics indicate another challenge we already understand: organizations cannot patch their way out of widespread exposure.The long tail of “unpatchable” PHPTo further complicate the remediation challenge, a significant number of PHP installations cannot be patched at all. About a third of PHP sites run PHP 7 or older, branches with no official PHP2Shell fix. Approximately 2.24 million internet-facing hosts advertise PHP, and 59% of those that report a version are running a PHP branch with no official security release.PHP 8.2 itself loses security support on December 31, 2026. Patching 8.2 buys time, not permanent protection. Key takeaway: The reality of enterprise PHP estates means millions of installations will remain vulnerable for weeks or months if remediation is dependent solely on patching. Security teams need layered risk reduction strategies that go beyond patching. Reduce Risk with Compensating ControlsSecurity teams must act on what they can control right now, layering practical compensating controls that meaningfully shrink the attack surface while patches roll out. Apply these measures in the following priority order.Remove PHP applications from the internetThe most effective risk reduction is the simplest: if a PHP application does not need to be directly reachable from the internet, take it off or put a WAF in front of it. Every PHP2Shell exploit path begins with an attacker sending a crafted HTTP request to a PHP worker. Eliminating that inbound path eliminates the risk entirely – no signature tuning, no configuration changes, no residual exposure.Prioritize EOL systems. Unsupported PHP versions (8.1 and older) cannot be patched and must be isolated or retired immediately.Audit supported installations. Move internal tools and admin panels behind zero trust access to eliminate unnecessary internet exposure.Protect public applications. Ensure public-facing sites are patched or protected with compensating controls such as WAF.Deactivate non-critical services with known exposureNot every PHP application running in your environment is critical to the business. PHP2Shell is a compelling reason to finally answer the question many organizations have deferred: \"Do we still need this running?\"Identify decommission candidates. Retire unused admin interfaces, staging instances, and legacy tools, which often run unsupported PHP and lack active monitoring.Suspend what you cannot retire. Temporarily disable non-critical services as you implement a permanent fix to eliminate attack vectors.Track remaining services. Assign owners, document patch status, and set target remediation dates for active services. Track progress in your exposure management solution with dedicated PHP remediation dashboards.Apply virtual patching for private applicationsMany high-risk PHP applications are private, internal systems rather than public websites. Admin consoles, ERP front-ends, and wikis are often difficult to patch quickly due to custom code, complex dependencies, and a lack of deployment automation.Virtual patching protects these applications at the network layer without modifying application code or the PHP runtime. An AI engine evaluates the application, dynamically generates targeted exploit signatures, and deploys them at an inline enforcement point (e.g., an application connector or gateway) to block malicious PHP2Shell requests before they reach the server.This approach has several advantages for PHP2Shell specifically:Application-aware precision. Context-aware rules minimize false positives and catch exploit variants missed by generic WAF rules.No-touch deployment. Applied at the gateway layer without code changes or restarts, making it ideal for legacy or unsupported PHP versions.Continuous, autonomous updates. The AI engine detects emerging payload variants and deploys updated signatures automatically without manual intervention.Scales across the application estate. Provides immediate baseline protection across large private estates, transforming emergency patching into a manageable process.Key takeaway: Compensating controls are not a substitute for patching, but they are essential for the reality of enterprise PHP estates. Remove what you can from the internet, retire what you do not need, lock down what remains, and deploy virtual patching to protect what you cannot patch yet. How Zscaler Agentic SecOps Can HelpPHP2Shell is a textbook case for why modern security operations need to go beyond \"find it and patch it.\" The Zscaler Agentic SecOps portfolio can help security teams respond to PHP2Shell – and to the next critical vulnerability that follows it – with the following capabilities:Zscaler Exposure ManagementExposure Management surfaces PHP risk across your environment and enables a complete find-prioritize-fix-verify workflow:Understand PHP risk. Combine native EASM discovery of impacted assets with third-party sources across your environment to understand PHP risk holistically.Prioritize high-risk exposures. Identify internet-facing and crown-jewel assets, group and assign tickets to the rightful owners for remediation.Prescribe the fix. Generate and share AI-powered fix instructions with ZAgent, then rescan targeted assets to confirm the fix is in place.Mitigate risk from EOL assets. Create compliance policies for end-of-life PHP versions, report on compliance with pre-built dashboards, and auto-assign critical violations for unpatchable assets.Zscaler DeceptionDeception detects exploitation attempts with high-fidelity decoys that mimic the applications attackers are actively targeting:Application-specific decoys. Deploy Threat Intel decoys for the applications being targeted with PHP2Shell exploits: WordPress Login, Drupal Admin Panel, Joomla Admin Panel, phpMyAdmin, and Nextcloud. These decoys will detect any PHP2Shell exploitation activity against them and provide a high fidelity alert. Automated IP blocking. By integrating decoy telemetry with downstream orchestrations, you can dynamically capture and block attacker IPs on your perimeter firewalls. This compensatory control requires very little operational effort and significantly reduces risk by neutralizing active, local threat actors instead of struggling to block generic, static IP lists.For Deception customers, when a major CVE is disclosed, Zscaler pushes updated vulnerable application datasets (CVE datasets) directly to your tenant, allowing you to deploy realistic, simulated targets in minutes. When an attacker attempts to exploit one of these decoys, our ThreatParse engine automatically reconstructs the attack log, maps it to the MITRE ATT&amp;CK framework, and tags the alert with the specific CVE ID.Zscaler Managed Detection &amp; Response (MDR)For organizations that need to augment their security teams, Zscaler MDR provides 24x7 expert monitoring, proactive threat hunting, and hands-on response so that exploitation and post-exploitation activity doesn't go unnoticed while patches roll out.Always-on monitoring. Zscaler MDR analysts monitor your environment 24x7x365, investigating suspicious activity in real time. For a vulnerability like PHP2Shell, this means continuous surveillance for signs of exploitation. AI agents work alongside human analysts to accelerate the path from alert to action.Proactive threat hunting. MDR doesn't wait for alerts. Our threat hunters proactively seek indicators of compromise and attacker tradecraft tied to active campaigns like PHP2Shell. When a hunt finds something, they check to ensure our analytics catch it and any new discoveries get engineered into detections, so all customers are protected.RCE detection. Detection rules tuned for suspicious remote code execution activity, including Linux web servers spawning suspicious commands and web servers creating inline PHP scripts or spawning reconnaissance commands.Active remediation. When a threat is confirmed, Zscaler MDR can implement containment and remediation actions to neutralize threats before they spread. This includes isolating compromised hosts, blocking malicious processes, and coordinating with your internal teams to restore safe operations. Versatile Risk Reduction is Now a NecessityThere is no one magic bullet to address the risks of PHP2Shell. Yes, patching is the only permanent fix, but the data tells us that no security team can patch its way to zero exposure on a timeline that matches real threats. Most organizations are still yet to patch all internet-exposed PHP assets. A third of the PHP estate runs on EOL versions that will never receive an official fix. Attackers started probing four days before disclosure and were already attempting to exploit millions of targets within hours of the announcement. The math does not work in the defender's favor.The more integrated your security program, the more options you’ll have available for rapid response. Start with this checklist:✓ Maintain a real-time inventory of all assets, including internet-exposure✓ Maintain business context such as criticality and business services associated with each asset✓ Understand which 50 assets must be patched out of thousands of potentially impacted✓ Deploy virtual patching to shield applications you cannot update✓ Layer Deception to catch and contain attackers who find a gap✓ Integrate alert monitoring with exposure management to catch suspicious activity that began prior to protectionsEach layer of defense compensates for the limitations of the others, and together they buy the time your teams need to systematically reduce critical exposure in hours, and long tail exposure in days rather than months.PHP2Shell is not the last disclosure of this kind. Frontier AI models will uncover high-impact vulnerabilities and exploit chains that require rapid response. Security teams that treat PHP2Shell as an isolated fire drill will find themselves repeating the same scramble. The organizations that use this moment to build the muscles for exposure visibility, compensating-control playbooks, virtual patching infrastructure, and detection and response readiness will be the ones who are prepared when the next AI-fueled disclosure arrives. And it will arrive.To learn more about how to protect your organization from PHP2Shell, watch the Zscaler Rapid Response Briefing for Securing PHP.Contributors: Keith Do, Carol Caley",
+    "link": "https://www.zscaler.com/blogs/cybersecurity-best-practices/php2shell-and-limits-patching-secops-playbook-layered-response",
+    "source": "Zscaler Research Blogs",
+    "feed_type": "news",
+    "type": "threat-intel-apt-campaigns",
+    "type_label": "Threat Intel & APT Campaigns",
+    "published": "2026-10-29T16:27:39+00:00",
+    "published_ts": 1793291259,
+    "smart_groups": [
+      "Vulnerabilities / CVEs",
+      "Exploit / PoC",
+      "Linux / Unix"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Chinese hackers used VMware ESX zero-day; PHP2Shell and Fragnesia chained to root firewalls",
+    "summary": "China-nexus threat actors have exploited a VMware ESX zero-day to hide their tracks and chained PHP2Shell flaws with the “Fragnesia” Linux kernel bug to root servers and firewalls, cybersecurity researchers claim. Cisco has also confirmed that attackers are crashing its firewalls with a newly disclosed vulnerability. VMware ESX zero-day helped Chinese spies cover their tracks Chinese APT group Warp Panda has leveraged an insufficient logging vulnerability (CVE-2026-41709) in Broadcom’s VMware ESX bare-metal hypervisor as a … More →",
+    "summary_html": "<p>China-nexus threat actors have exploited a VMware ESX zero-day to hide their tracks and chained PHP2Shell flaws with the “Fragnesia” Linux kernel bug to root servers and firewalls, cybersecurity researchers claim. Cisco has also confirmed that attackers are crashing its firewalls with a newly disclosed vulnerability. VMware ESX zero-day helped Chinese spies cover their tracks Chinese APT group Warp Panda has leveraged an insufficient logging vulnerability (CVE-2026-41709) in Broadcom’s VMware ESX bare-metal hypervisor as a … <a href=\"https://www.helpnetsecurity.com/2026/10/29/php2shell-fragnesia-vmware-esx-zero-day/\">More <span>→</span></a></p>\n<p>The post <a href=\"https://www.helpnetsecurity.com/2026/10/29/php2shell-fragnesia-vmware-esx-zero-day/\">Chinese hackers used VMware ESX zero-day; PHP2Shell and Fragnesia chained to root firewalls</a> appeared first on <a href=\"https://www.helpnetsecurity.com\">Help Net Security</a>.</p>",
+    "link": "https://www.helpnetsecurity.com/2026/10/29/php2shell-fragnesia-vmware-esx-zero-day/",
+    "source": "Help Net Security",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-29T16:25:10+00:00",
+    "published_ts": 1793291110,
+    "smart_groups": [
+      "Vulnerabilities / CVEs",
+      "Linux / Unix",
+      "Threat Actors / APT"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Pentagon Treats August Freezer Failures at Military Bases as Suspected Cyberattack",
+    "summary": "submitted by /u/Much-Television-9449 [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/cybersecurity/comments/1xiofry/pentagon_treats_august_freezer_failures_at/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/Much-Television-9449\"> /u/Much-Television-9449 </a> <br/> <span><a href=\"https://kylesinvestigation.com/2026/10/29/pentagon-treats-august-freezer-failures-at-military-bases-as-suspected-cyberattack/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1xiofry/pentagon_treats_august_freezer_failures_at/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1xiofry/pentagon_treats_august_freezer_failures_at/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-10-29T16:17:00+00:00",
+    "published_ts": 1793290620,
+    "smart_groups": [
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Federal bankruptcy courts contractor says no data stolen during cyber intrusion",
+    "summary": "\"No data was extracted,” a spokesperson for BAE Systems, a federal contractor, told Recorded Future News about its probe into a cyberattack against its systems for federal bankruptcy courts.",
+    "summary_html": "\"No data was extracted,” a spokesperson for BAE Systems, a federal contractor, told Recorded Future News about its probe into a cyberattack against its systems for federal bankruptcy courts.",
+    "link": "https://therecord.media/us-bankruptcy-courts-it-contractor-says-no-data-stolen-cyberattack",
+    "source": "The Record",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-29T16:13:00+00:00",
+    "published_ts": 1793290380,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Chrome extensions with 13.4 million installs caught hijacking searches",
+    "summary": "A massive search-hijacking campaign involving 319 Chrome extensions with a combined 13.4 million reported installations redirected users' searches through tracking servers to generate advertising revenue from Bing and Yahoo.",
+    "summary_html": "A massive search-hijacking campaign involving 319 Chrome extensions with a combined 13.4 million reported installations redirected users' searches through tracking servers to generate advertising revenue from Bing and Yahoo. [...]",
+    "link": "https://www.bleepingcomputer.com/news/security/chrome-extensions-with-134-million-installs-caught-hijacking-searches/",
+    "source": "BleepingComputer – Cybercrime",
+    "feed_type": "news",
+    "type": "cybercrime-underground",
+    "type_label": "Cybercrime & Underground",
+    "published": "2026-10-29T16:10:31+00:00",
+    "published_ts": 1793290231,
+    "smart_groups": [
+      "Privacy & Compliance"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Hackers Leak Personal Data of 40,000 DHS Employees",
+    "summary": "A hacker claimed they obtained the data from an Okta single sign-on system used by Homeland Security, but Okta says it has no evidence its systems were compromised. Who exactly is responsible? submitted by /u/timio-ttt [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/cybersecurity/comments/1xio8jn/hackers_leak_personal_data_of_40000_dhs_employees/\">  </a>  <!-- SC_OFF --><div><p>A hacker claimed they obtained the data from an Okta single sign-on system used by Homeland Security, but Okta says it has no evidence its systems were compromised. Who exactly is responsible?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/timio-ttt\"> /u/timio-ttt </a> <br/> <span><a href=\"https://reports.timio.news/report/hackers-leak-personal-data-of-40000-dhs-employees\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1xio8jn/hackers_leak_personal_data_of_40000_dhs_employees/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/cybersecurity/comments/1xio8jn/hackers_leak_personal_data_of_40000_dhs_employees/",
+    "source": "/r/cybersecurity",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-10-29T16:10:02+00:00",
+    "published_ts": 1793290202,
+    "smart_groups": [
+      "Cloud / SaaS",
+      "Identity / Access",
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "U.S. CISA adds Linux Kernel and Broadcom VMWare ESX  flaws to its Known Exploited Vulnerabilities catalog",
+    "summary": "U.S. Cybersecurity and Infrastructure Security Agency (CISA) adds Linux Kernel and Broadcom VMWare ESX flaws to its Known Exploited Vulnerabilities catalog. The U.S. Cybersecurity and Infrastructure Security Agency (CISA) added Linux Kernel and Broadcom VMWare ESX vulnerabilities to its Known Exploited Vulnerabilities (KEV) catalog : Below are the flaws added to the catalog: CVE-2026-41709 (CVSS score of 7.6) Broadcom VMWare ESX Insufficient Logging Vulnerability CVE-2026-46300 (CVSS score of 2.7) Linux Kernel Missing Initialization of a Variable Vulnerability In July, Broadcom released patches to address five vulnerabilities affecting VMware ESXi, vCenter, Workstation, and Fusion, including CVE-2026-41709. The vulnerability in VMware ESX is caused by insufficient logging. A malicious user with administrator privileges could perform certain operations on the affected system without those actions being recorded in the logs. This could allow an attacker to hide specific activities and make it harder for security teams to detect suspicious behavior, investigate incidents, and determine what happened. The flaw does not itself grant administrator privileges; the attacker must already have them. According to CrowdStrike’s 2026 Legal Threat Landscape Report , which said the China-linked threat actor Warp Panda (aka Armory Castle, UNC5221 , Clay Typhoon and VerdantBamboo) exploited CVE-2026-41709 as a zero-day in early 2026 to reduce the visibility of its activities in audit logs. Warp Panda targets internet-facing edge devices by exploiting zero-day vulnerabilities and deploying custom malware to maintain persistent, covert access. The group also attempts to evade detection by bypassing audit logging, stealing cloud session tokens and registering unauthorized multi-factor authentication (MFA) devices. The second flaw added to the catalog is CVE-2026-46300 , also known as Fragnesia , could let local attackers gain root access through page cache corruption. The flaw affects the XFRM ESP-in-TCP subsystem and could allow local attackers to gain full root access by corrupting the kernel page cache. Security experts warn that the issue is dangerous because attackers with low privileges can modify read-only files in memory and take complete control of vulnerable systems. The vulnerability was discovered by William Bowling of the V12 security team, while Wiz published a detailed technical analysis. “The vulnerability allows unprivileged local attackers to modify read-only file contents in the kernel page cache.” reads the report published by Wiz. “Attackers can then achieve root privileges through deterministic page-cache corruption.” Fragnesia shares similarities with earlier Linux privilege escalation flaws, such as Dirty Frag and Copy Fail . According to researchers, the bug can reliably provide root access on major Linux distributions without requiring race conditions or complicated timing attacks. According to Binding Operational Directive (BOD) 22-01: Reducing the Significant Risk of Known Exploited Vulnerabilities , FCEB agencies have to address the identified vulnerabilities by the due date to protect their networks against attacks exploiting the flaws in the catalog. Experts also recommend that private organizations review the Catalog and address the vulnerabilities in their infrastructure. CISA orders federal agencies to fix CVE-2026-41709 by November 11, 2026, while CVE-2026-46300, must be fixed by October 31, 2026. Follow me on Twitter: @securityaffairs and Facebook and Mastodon Pierluigi Paganini ( SecurityAffairs – hacking, CISA ) CVE-2026-41709",
+    "summary_html": "<div></div>\nU.S. Cybersecurity and Infrastructure Security Agency (CISA) adds Linux Kernel and Broadcom VMWare ESX flaws to its Known Exploited Vulnerabilities catalog.\n<p>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) <a href=\"https://www.cisa.gov/news-events/alerts/2026/10/28/cisa-adds-two-known-exploited-vulnerabilities-catalog\">added</a> Linux Kernel and Broadcom VMWare ESX vulnerabilities to its <a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) catalog</a>:</p>\n<p>Below are the flaws added to the catalog:</p>\n<ul>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-41709\">CVE-2026-41709</a> (CVSS score of 7.6) Broadcom VMWare ESX Insufficient Logging Vulnerability</li>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-46300\">CVE-2026-46300</a> (CVSS score of 2.7) Linux Kernel Missing Initialization of a Variable Vulnerability</li>\n</ul>\n<p>In July, Broadcom <a href=\"https://securityaffairs.com/196231/security/broadcom-patches-critical-vmware-esxi-vulnerability-enabling-host-code-execution.html\">released</a> patches to address five vulnerabilities affecting VMware ESXi, vCenter, Workstation, and Fusion, including CVE-2026-41709. The vulnerability in VMware ESX is caused by insufficient logging. A malicious user with administrator privileges could perform certain operations on the affected system without those actions being recorded in the logs.</p>\n<p>This could allow an attacker to hide specific activities and make it harder for security teams to detect suspicious behavior, investigate incidents, and determine what happened. The flaw does not itself grant administrator privileges; the attacker must already have them.</p>\n<p>According to <a href=\"https://www.crowdstrike.com/en-us/blog/crowdstrike-2026-legal-threat-landscape-report/?utm_source=chatgpt.com\">CrowdStrike’s 2026 Legal Threat Landscape Report</a>, which said the China-linked threat actor Warp Panda (aka Armory Castle, <a href=\"https://securityaffairs.com/tag/unc5221\">UNC5221</a>, Clay Typhoon and VerdantBamboo) exploited CVE-2026-41709 as a zero-day in early 2026 to reduce the visibility of its activities in audit logs.</p>\n<p>Warp Panda targets internet-facing edge devices by exploiting zero-day vulnerabilities and deploying custom malware to maintain persistent, covert access. The group also attempts to evade detection by bypassing audit logging, stealing cloud session tokens and registering unauthorized multi-factor authentication (MFA) devices.</p>\n<p>The second flaw added to the catalog is <a href=\"https://securityaffairs.com/192145/security/linux-kernel-bug-fragnesia-allows-local-root-access-attacks.html\">CVE-2026-46300</a>, also known as <a href=\"https://github.com/v12-security/pocs/blob/main/fragnesia%2FREADME.md\">Fragnesia</a>, could let local attackers gain root access through page cache corruption.</p>\n<p>The flaw affects the XFRM ESP-in-TCP subsystem and could allow local attackers to gain full root access by corrupting the kernel page cache.</p>\n<p>Security experts warn that the issue is dangerous because attackers with low privileges can modify read-only files in memory and take complete control of vulnerable systems. The vulnerability was discovered by William Bowling of the V12 security team, while Wiz published a detailed technical analysis.</p>\n<p><em>“The vulnerability allows unprivileged local attackers to modify read-only file contents in the kernel page cache.” reads the <a href=\"https://www.wiz.io/blog/fragnesia-linux-kernel-local-privilege-escalation-via-esp-in-tcp\">report</a> published by Wiz. “Attackers can then achieve root privileges through deterministic page-cache corruption.”</em></p>\n<p>Fragnesia shares similarities with earlier Linux privilege escalation flaws, such as <a href=\"https://securityaffairs.com/tag/dirty-frag\">Dirty Frag</a> and <a href=\"https://securityaffairs.com/tag/copy-fail\">Copy Fail</a>. According to researchers, the bug can reliably provide root access on major Linux distributions without requiring race conditions or complicated timing attacks.</p>\n<p>According to <a href=\"https://cyber.dhs.gov/bod/22-01/\">Binding Operational Directive (BOD) 22-01: Reducing the Significant Risk of Known Exploited Vulnerabilities</a>, FCEB agencies have to address the identified vulnerabilities by the due date to protect their networks against attacks exploiting the flaws in the catalog.</p>\n<p>Experts also recommend that private organizations review the <a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Catalog</a> and address the vulnerabilities in their infrastructure.</p>\n<p>CISA orders federal agencies to fix CVE-2026-41709 by November 11, 2026, while CVE-2026-46300, must be fixed by October 31, 2026.</p>\n<p><strong>Follow me on Twitter: </strong><a href=\"https://twitter.com/securityaffairs\"><strong>@securityaffairs</strong></a><strong> and </strong><a href=\"https://www.facebook.com/sec.affairs\"><strong>Facebook</strong></a><strong> and </strong><a href=\"https://infosec.exchange/@securityaffairs\"><strong>Mastodon</strong></a></p>\n<p><a href=\"http://www.linkedin.com/pub/pierluigi-paganini/b/742/559\"><strong>Pierluigi Paganini</strong></a></p>\n<p><strong>(</strong><a href=\"http://securityaffairs.co/wordpress/\"><strong>SecurityAffairs</strong></a><strong> – hacking, <a href=\"https://securityaffairs.com/tag/cisa\">CISA</a>)</strong></p>\n<p></p>\n<p></p>\n<p></p>\n<p></p>\n<p><a href=\"https://securityaffairs.com/196231/security/broadcom-patches-critical-vmware-esxi-vulnerability-enabling-host-code-execution.html\">CVE-2026-41709</a> </p>",
+    "link": "https://securityaffairs.com/202050/hacking/u-s-cisa-adds-linux-kernel-and-broadcom-vmware-esx-flaws-to-its-known-exploited-vulnerabilities-catalog.html",
+    "source": "Security Affairs",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-29T16:05:56+00:00",
+    "published_ts": 1793289956,
+    "smart_groups": [
+      "Vulnerabilities / CVEs",
+      "Linux / Unix",
+      "Malware / Payloads"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Hyperliquid's HYPE Jumps 13% as NYSE Owner ICE Moves to Bring Its Perpetual Futures to the US",
+    "summary": "Intercontinental Exchange signed a deal with Trade[XYZ] to launch regulated perpetual futures built on Hyperliquid in the United States, sending HYPE soaring.",
+    "summary_html": "Intercontinental Exchange signed a deal with Trade[XYZ] to launch regulated perpetual futures built on Hyperliquid in the United States, sending HYPE soaring.",
+    "link": "https://decrypt.co/382149/hyperliquid-hype-jumps-nyse-owner-ice-perpetual-futures-us",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-10-29T15:59:48+00:00",
+    "published_ts": 1793289588,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Linux Kernel TCP Flaw With 9.8 CVSS Score Affects Ubuntu, Red Hat and Other Distributions",
+    "summary": "A flaw in the Linux kernel's TCP code, tracked as CVE-2026-98432, affects Ubuntu, Red Hat Enterprise Linux (RHEL), and other Linux distributions. The kernel's own CVE team rates it 9.8 out of 10 on the CVSS scale. Anthropic said on October 27 that its AI model wrote an exploit that uses the flaw to let a remote attacker with no credentials run commands as root on Linux servers with a",
+    "summary_html": "A flaw in the Linux kernel's TCP code, tracked as CVE-2026-98432, affects Ubuntu, Red Hat Enterprise Linux (RHEL), and other Linux distributions. The kernel's own CVE team rates it 9.8 out of 10 on the CVSS scale.\n\nAnthropic said on October 27 that its AI model wrote an exploit that uses the flaw to let a remote attacker with no credentials run commands as root on Linux servers with a",
+    "link": "https://thehackernews.com/2026/10/linux-kernel-tcp-flaw-with-98-cvss.html",
+    "source": "The Hacker News",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-29T15:57:05+00:00",
+    "published_ts": 1793289425,
+    "smart_groups": [
+      "Linux / Unix",
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": true,
+    "story_id": "649ecf4a57aa",
+    "story_size": 2,
+    "story_primary": true,
+    "story_others": [
+      {
+        "source": "/r/cybersecurity",
+        "title": "Linux Kernel TCP Flaw With 9.8 CVSS Score Affects Ubuntu, Red Hat and Other Distributions",
+        "link": "https://www.reddit.com/r/cybersecurity/comments/1xipflj/linux_kernel_tcp_flaw_with_98_cvss_score_affects/",
+        "published_ts": 1793292790
+      }
+    ]
+  },
+  {
+    "title": "Kalshi raises $1B at $40B valuation as non-sports revenue run rate tops $1B",
+    "summary": "The funding round comes as Kalshi expands its partnerships with the NBA and S&P Dow Jones Indices while facing legal challenges over its sports contracts.",
+    "summary_html": "<p></p><p>The funding round comes as Kalshi expands its partnerships with the NBA and S&amp;P Dow Jones Indices while facing legal challenges over its sports contracts.</p>",
+    "link": "https://cointelegraph.com/news/kalshi-closes-1b-funding-round-at-40b-valuation-as-non-sports-revenue-run-rate-tops-1b?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-10-29T15:52:43+00:00",
+    "published_ts": 1793289163,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Threat Modeling With 4 Simple Questions on a White Board",
+    "summary": "A four-question exercise that CISOs can use to create a threat model that promises results, without a big spend.",
+    "summary_html": "A four-question exercise that CISOs can use to create a threat model that promises results, without a big spend.",
+    "link": "https://www.darkreading.com/cyber-risk/threat-modeling-4-simple-questions",
+    "source": "Dark Reading",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-29T15:44:04+00:00",
+    "published_ts": 1793288644,
+    "smart_groups": [
+      "Community Discussion"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Bitcoin price jumps to $81.5K as US GDP data beats expectations",
+    "summary": "BTC price action returned to a key weekly resistance level as US stock markets digested Alphabet’s Q3 earnings miss.",
+    "summary_html": "<p></p><p>BTC price action returned to a key weekly resistance level as US stock markets digested Alphabet’s Q3 earnings miss.</p>",
+    "link": "https://cointelegraph.com/markets/bitcoin-reaction-to-pce-data?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-10-29T15:39:54+00:00",
+    "published_ts": 1793288394,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Stop sharing your passwords with AI agents, Bank of America warns customers",
+    "summary": "The bank’s message follows a trend among financial institutions that are restricting third-party AI agent access.",
+    "summary_html": "The bank’s message follows a trend among financial institutions that are restricting third-party AI agent access.",
+    "link": "https://www.zdnet.com/innovation/bank-of-america-customers-no-sharing-passwords-ai-agents/",
+    "source": "ZDNet – Security",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-29T15:36:26+00:00",
+    "published_ts": 1793288186,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "EMBRACE Flaws in 5 AI Coding Tools Enable Code Execution and File Theft",
+    "summary": "EMBRACE affects AI coding tools Cursor, GitHub Copilot, Codex, VS Code and Claude Desktop, enabling code execution, file theft and browser address-bar spoofing.",
+    "summary_html": "EMBRACE affects AI coding tools Cursor, GitHub Copilot, Codex, VS Code and Claude Desktop, enabling code execution, file theft and browser address-bar spoofing.",
+    "link": "https://hackread.com/embrace-flaws-ai-coding-tools-code-execution-theft/",
+    "source": "HackRead",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-29T15:20:58+00:00",
+    "published_ts": 1793287258,
+    "smart_groups": [
+      "AI/ML Security"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Fake ChatGPT and Claude Apps Abuse Signed Executables to Deploy Crypto Miners",
+    "summary": "Threat actors are delivering malicious loaders and cryptocurrency miners under the guise of artificial intelligence (AI) desktop applications for Anthropic Claude and OpenAI ChatGPT as part of a campaign dubbed Yoba. The activity involves creating fake GitHub projects that claim to be desktop applications like GPT-5.6 Sol, GPT-6 Astra, and Claude Opus, only to deliver a malware family called",
+    "summary_html": "Threat actors are delivering malicious loaders and cryptocurrency miners under the guise of artificial intelligence (AI) desktop applications for Anthropic Claude and OpenAI ChatGPT as part of a campaign dubbed Yoba.\n\nThe activity involves creating fake GitHub projects that claim to be desktop applications like GPT-5.6 Sol, GPT-6 Astra, and Claude Opus, only to deliver a malware family called",
+    "link": "https://thehackernews.com/2026/10/fake-chatgpt-and-claude-apps-abuse.html",
+    "source": "The Hacker News",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-29T15:20:29+00:00",
+    "published_ts": 1793287229,
+    "smart_groups": [
+      "AI/ML Security",
+      "Malware / Payloads",
+      "Crypto / Web3"
+    ],
+    "curated": false
+  },
+  {
     "title": "Walmart Blocks Its Stock From OKX-ICE Tokenized Trading Venue",
     "summary": "Walmart, Eli Lilly, Cigna, Carniva,l and Arcos Dorados objected to trading of their shares on the planned OKX-ICE tokenized stock venue, bringing the total to 38.",
     "summary_html": "Walmart, Eli Lilly, Cigna, Carniva,l and Arcos Dorados objected to trading of their shares on the planned OKX-ICE tokenized stock venue, bringing the total to 38.",
@@ -358,22 +1114,6 @@
     "published_ts": 1793281964,
     "smart_groups": [
       "Community Discussion"
-    ],
-    "curated": false
-  },
-  {
-    "title": "Here’s what happened in crypto today",
-    "summary": "Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.",
-    "summary_html": "<p></p><p>Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.</p>",
-    "link": "https://cointelegraph.com/news/what-happened-in-crypto-today?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-    "source": "Cointelegraph.com News",
-    "feed_type": "news",
-    "type": "crypto-blockchain-security",
-    "type_label": "Crypto & Blockchain Security",
-    "published": "2026-10-29T13:51:06+00:00",
-    "published_ts": 1793281866,
-    "smart_groups": [
-      "Crypto / Web3"
     ],
     "curated": false
   },
@@ -1014,6 +1754,20 @@
     "curated": true
   },
   {
+    "title": "Your Ring Doorbell Could Miss Trick-or-Treaters — Check These Settings Before Halloween",
+    "summary": "Before trick-or-treaters arrive, check your Ring Doorbell motion zones to reduce unwanted alerts and make sure visitors are detected along your walkway.",
+    "summary_html": "<p>Before trick-or-treaters arrive, check your Ring Doorbell motion zones to reduce unwanted alerts and make sure visitors are detected along your walkway.</p>\n<p>The post <a href=\"https://www.techrepublic.com/article/news-ring-doorbell-motion-zones-halloween/\">Your Ring Doorbell Could Miss Trick-or-Treaters — Check These Settings Before Halloween</a> appeared first on <a href=\"https://www.techrepublic.com\">TechRepublic</a>.</p>",
+    "link": "https://www.techrepublic.com/article/news-ring-doorbell-motion-zones-halloween/",
+    "source": "TechRepublic – Security",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-29T11:31:13+00:00",
+    "published_ts": 1793273473,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
     "title": "Online Scam Volumes Double to Overtake Phishing",
     "summary": "Akamai research reveals that scam detections topped six million in Q2 2026",
     "summary_html": "Akamai research reveals that scam detections topped six million in Q2 2026",
@@ -1045,7 +1799,7 @@
     ],
     "curated": true,
     "story_id": "409f0b0486b7",
-    "story_size": 2,
+    "story_size": 3,
     "story_primary": true,
     "story_others": [
       {
@@ -1053,6 +1807,12 @@
         "title": "CVE-2026-76418: Cisco Secure Firewall Zero-Day Exploited in SSL VPN Attacks",
         "link": "https://socprime.com/blog/cve-2026-76418-cisco-secure-firewall-zero-day/",
         "published_ts": 1793278407
+      },
+      {
+        "source": "CSO Online",
+        "title": "New Cisco firewall zero-day being actively exploited",
+        "link": "https://www.csoonline.com/article/4242420/new-cisco-firewall-zero-day-being-actively-exploited.html",
+        "published_ts": 1793302298
       }
     ]
   },
@@ -1530,7 +2290,7 @@
     ],
     "curated": true,
     "story_id": "aabd8e14b270",
-    "story_size": 2,
+    "story_size": 3,
     "story_primary": true,
     "story_others": [
       {
@@ -1538,6 +2298,12 @@
         "title": "Hackers Exploit Critical Cisco SD-WAN 0-Day Flaw to Deploy KeyDrift Malware and Steal Encryption Keys",
         "link": "https://cybersecuritynews.com/critical-cisco-sd-wan-0-day-flaw/",
         "published_ts": 1793280655
+      },
+      {
+        "source": "BleepingComputer – Cybercrime",
+        "title": "Hackers exploit Cisco SD-WAN flaw to deploy custom KeyDrift malware",
+        "link": "https://www.bleepingcomputer.com/news/security/hackers-exploit-cisco-sd-wan-flaw-to-deploy-custom-keydrift-malware/",
+        "published_ts": 1793299106
       }
     ]
   },
@@ -1997,6 +2763,133 @@
       "Ransomware"
     ],
     "curated": true
+  },
+  {
+    "title": "Prediction Markets Emerge as a New Vertical for Traffer Teams",
+    "summary": "Executive Summary Since the spring of 2026, Insikt Group has observed multiple Russian-language traffer teams that have quickly adapted affiliate-fraud models to capitalize on growing public interest in prediction markets such as PolyMarket and Kalshi. The platforms offered by three such teams — AtlasCore, PolyFucked, and Magnetic Team — provide websites, administrative panels, cryptocurrency payment infrastructure, victim-management capabilities, technical support, and promotional guidance. This model lowers barriers to entry for affiliates and enables campaigns to scale rapidly as new trends attract potential victims. The services combine convincing prediction-market interfaces with established fraud mechanisms designed to manipulate victims and prevent them from recovering deposited funds. These mechanisms include controlled trading outcomes, fabricated market activity, artificial withdrawal restrictions and fees, and the collection of sensitive identity and payment information. Artificial intelligence (AI) further accelerates this opportunism by reducing the time, cost, and expertise required to adapt campaigns to emerging events. Insikt Group observed threat actors using AI to support multiple stages of their campaigns, including platform development, content creation, social engineering, and victim engagement. The rapid adoption of prediction markets by multiple traffer teams illustrates a broader threat from mature fraud ecosystems that can pivot toward emerging technologies, financial products, and cultural trends without having to develop entirely new criminal capabilities. Prediction markets are particularly well-suited to this model because legitimate platforms already combine cryptocurrency, speculative financial activity, rapidly changing news events, and social media discussion. Fraud actors can imitate these characteristics to establish credibility and manufacture urgency. As the fraudulent prediction markets gain visibility, additional traffer teams may experiment with the prediction market theme or reuse the underlying tooling for adjacent fraud schemes. Key Findings AtlasCore, PolyFucked, and Magnetic Team supply affiliates with simulated prediction-market websites, administrative panels, payment infrastructure, and promotional support. Advertised compensation includes 70% to 80% of net profits for AtlasCore affiliates, a minimum 60% revenue share for PolyFucked affiliates, and a base 70% share of victim deposits for Magnetic Team affiliates. AtlasCore’s Telegram posts recorded approximately $10.97 million in claimed deposits across its scam offerings between May 2 and September 18, 2026, with the deposits predominantly associated with prediction markets. PolyFucked separately advertises approximately $2.4 million in quarterly turnover. Both figures rely on threat actor reporting and remain unverified. Magnetic Team advertises more than 3,000 simulated traders across more than 5,000 markets to fabricate convincing trading activity. Its code exposes configurable withdrawal-blocking pretexts, forced-loss controls, and pools of up to 20,000 deposit wallets per blockchain. AtlasCore similarly exposes settings to force wins or losses and impose individualized withdrawal restrictions. All three traffer teams advertise or provide AI-assisted victim support. AtlasCore and PolyFucked also supply guidance for AI-generated promotional content, including synthetic influencers and branding, respectively. Magnetic Team’s source code contains indicators of likely AI-assisted development, suggesting AI use may extend to building and maintaining the underlying fraud platforms, although that assessment remains unconfirmed. Insikt Group identified over 100 unique domains and subdomains associated with AtlasCore, PolyFucked, and Magnetic Team, including administrative infrastructure and scam websites likely operated by the teams or their affiliates. Threat Analysis AtlasCore In August 2026, Insikt Group identified a post on a low-tier cybercriminal forum seeking affiliates to join the traffer team “AtlasCore”. The thread was first created on May 15, 2026, by the user “AtlasCore”. The affiliate program was also advertised on a top-tier cybercriminal forum by the user “AtlasCorp” on May 28, 2026. The program includes an offering for prediction markets, as well as more typical traffer scams such as cryptocurrency exchanges and casinos. Figure 1: Advertisement posted by AtlasCore on a cybercrime forum (Source: Recorded Future)",
+    "summary_html": "Executive Summary\n<p>Since the spring of 2026, Insikt Group has observed multiple Russian-language traffer teams that have quickly adapted affiliate-fraud models to capitalize on growing public interest in prediction markets such as PolyMarket and Kalshi. The platforms offered by three such teams — AtlasCore, PolyFucked, and Magnetic Team — provide websites, administrative panels, cryptocurrency payment infrastructure, victim-management capabilities, technical support, and promotional guidance. This model lowers barriers to entry for affiliates and enables campaigns to scale rapidly as new trends attract potential victims. The services combine convincing prediction-market interfaces with established fraud mechanisms designed to manipulate victims and prevent them from recovering deposited funds. These mechanisms include controlled trading outcomes, fabricated market activity, artificial withdrawal restrictions and fees, and the collection of sensitive identity and payment information.</p>\n<p>Artificial intelligence (AI) further accelerates this opportunism by reducing the time, cost, and expertise required to adapt campaigns to emerging events. Insikt Group observed threat actors using AI to support multiple stages of their campaigns, including platform development, content creation, social engineering, and victim engagement.</p>\n<p>The rapid adoption of prediction markets by multiple traffer teams illustrates a broader threat from mature fraud ecosystems that can pivot toward emerging technologies, financial products, and cultural trends without having to develop entirely new criminal capabilities. Prediction markets are particularly well-suited to this model because legitimate platforms already combine cryptocurrency, speculative financial activity, rapidly changing news events, and social media discussion. Fraud actors can imitate these characteristics to establish credibility and manufacture urgency. As the fraudulent prediction markets gain visibility, additional traffer teams may experiment with the prediction market theme or reuse the underlying tooling for adjacent fraud schemes.</p>\nKey Findings\n<ul>\n<li>AtlasCore, PolyFucked, and Magnetic Team supply affiliates with simulated prediction-market websites, administrative panels, payment infrastructure, and promotional support. Advertised compensation includes 70% to 80% of net profits for AtlasCore affiliates, a minimum 60% revenue share for PolyFucked affiliates, and a base 70% share of victim deposits for Magnetic Team affiliates.</li>\n<li>AtlasCore’s Telegram posts recorded approximately $10.97 million in claimed deposits across its scam offerings between May 2 and September 18, 2026, with the deposits predominantly associated with prediction markets. PolyFucked separately advertises approximately $2.4 million in quarterly turnover. Both figures rely on threat actor reporting and remain unverified.</li>\n<li>Magnetic Team advertises more than 3,000 simulated traders across more than 5,000 markets to fabricate convincing trading activity. Its code exposes configurable withdrawal-blocking pretexts, forced-loss controls, and pools of up to 20,000 deposit wallets per blockchain. AtlasCore similarly exposes settings to force wins or losses and impose individualized withdrawal restrictions.</li>\n<li>All three traffer teams advertise or provide AI-assisted victim support. AtlasCore and PolyFucked also supply guidance for AI-generated promotional content, including synthetic influencers and branding, respectively. Magnetic Team’s source code contains indicators of likely AI-assisted development, suggesting AI use may extend to building and maintaining the underlying fraud platforms, although that assessment remains unconfirmed.</li>\n<li>Insikt Group identified over 100 unique domains and subdomains associated with AtlasCore, PolyFucked, and Magnetic Team, including administrative infrastructure and scam websites likely operated by the teams or their affiliates.</li>\n</ul>\nThreat Analysis\nAtlasCore\n<p>In August 2026, Insikt Group identified a post on a low-tier cybercriminal forum seeking affiliates to join the traffer team “AtlasCore”. The thread was first created on May 15, 2026, by the user “AtlasCore”. The affiliate program was also advertised on a top-tier cybercriminal forum by the user “AtlasCorp” on May 28, 2026. The program includes an offering for prediction markets, as well as more typical traffer scams such as cryptocurrency exchanges and casinos.</p>\n<div>\n<div>\n<div>\n\n</div>\n</div>\n<div>\n<div><strong>Figure 1:</strong> Advertisement posted by AtlasCore on a cybercrime forum (Source: Recorded Future)</div>\n</div>\n</div>",
+    "link": "https://www.recordedfuture.com/research/prediction-markets-traffer-teams",
+    "source": "Recorded Future – Main Feed",
+    "feed_type": "news",
+    "type": "threat-intel-apt-campaigns",
+    "type_label": "Threat Intel & APT Campaigns",
+    "published": "2026-10-29T00:00:00+00:00",
+    "published_ts": 1793232000,
+    "smart_groups": [
+      "Ransomware",
+      "Phishing / Social Engineering",
+      "Crypto / Web3"
+    ],
+    "curated": true
+  },
+  {
+    "title": "vtk vtkPNGReader::ExecuteInformation invalid pointer dereference vulnerability",
+    "summary": "",
+    "summary_html": "",
+    "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2412",
+    "source": "Talos - Vulnerability Reports",
+    "feed_type": "news",
+    "type": "vulnerabilities-cves-exploits",
+    "type_label": "Vulnerabilities, CVEs & Exploits",
+    "published": "2026-10-29T00:00:00+00:00",
+    "published_ts": 1793232000,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": false,
+    "story_id": "cd257c732ac9",
+    "story_size": 2,
+    "story_primary": true,
+    "story_others": [
+      {
+        "source": "Talos - Vulnerability Reports",
+        "title": "vtk vtkPNGReader::vtkPNGReaderUpdate2 invalid pointer dereference vulnerability",
+        "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2413",
+        "published_ts": 1793232000
+      }
+    ]
+  },
+  {
+    "title": "vtk vtkPNGReader::vtkPNGReaderUpdate2 invalid pointer dereference vulnerability",
+    "summary": "",
+    "summary_html": "",
+    "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2413",
+    "source": "Talos - Vulnerability Reports",
+    "feed_type": "news",
+    "type": "vulnerabilities-cves-exploits",
+    "type_label": "Vulnerabilities, CVEs & Exploits",
+    "published": "2026-10-29T00:00:00+00:00",
+    "published_ts": 1793232000,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": false,
+    "story_id": "cd257c732ac9",
+    "story_size": 2
+  },
+  {
+    "title": "VTK vtkDEMReader ReadProfiles memory corruption vulnerability",
+    "summary": "",
+    "summary_html": "",
+    "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2421",
+    "source": "Talos - Vulnerability Reports",
+    "feed_type": "news",
+    "type": "vulnerabilities-cves-exploits",
+    "type_label": "Vulnerabilities, CVEs & Exploits",
+    "published": "2026-10-29T00:00:00+00:00",
+    "published_ts": 1793232000,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": false
+  },
+  {
+    "title": "VTK vtkChacoReader InputGraph2 out-of-bounds read vulnerability",
+    "summary": "",
+    "summary_html": "",
+    "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2423",
+    "source": "Talos - Vulnerability Reports",
+    "feed_type": "news",
+    "type": "vulnerabilities-cves-exploits",
+    "type_label": "Vulnerabilities, CVEs & Exploits",
+    "published": "2026-10-29T00:00:00+00:00",
+    "published_ts": 1793232000,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": false
+  },
+  {
+    "title": "VTK vtkBMPReader ExecuteDataWithInformation memory corruption vulnerability",
+    "summary": "",
+    "summary_html": "",
+    "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2422",
+    "source": "Talos - Vulnerability Reports",
+    "feed_type": "news",
+    "type": "vulnerabilities-cves-exploits",
+    "type_label": "Vulnerabilities, CVEs & Exploits",
+    "published": "2026-10-29T00:00:00+00:00",
+    "published_ts": 1793232000,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": false
+  },
+  {
+    "title": "VTK vtkWindBladeReader FindVariableOffsets heap-based buffer overflow vulnerability",
+    "summary": "",
+    "summary_html": "",
+    "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2424",
+    "source": "Talos - Vulnerability Reports",
+    "feed_type": "news",
+    "type": "vulnerabilities-cves-exploits",
+    "type_label": "Vulnerabilities, CVEs & Exploits",
+    "published": "2026-10-29T00:00:00+00:00",
+    "published_ts": 1793232000,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": false
   },
   {
     "title": "Next-gen privacy protocols: WireGuard vs OpenVPN vs Shadowsocks",
@@ -6132,7 +7025,18 @@
     "published": "2026-10-27T14:57:00+00:00",
     "published_ts": 1793113020,
     "smart_groups": [],
-    "curated": true
+    "curated": true,
+    "story_id": "319765385a55",
+    "story_size": 2,
+    "story_primary": true,
+    "story_others": [
+      {
+        "source": "Graham Cluley",
+        "title": "BYOD cyberattack diverts ambulances and cancels classes at University of New Mexico health center",
+        "link": "https://www.fortra.com/blog/byod-cyberattack-diverts-ambulances-and-cancels-classes-university-new-mexico-health-center",
+        "published_ts": 1793293284
+      }
+    ]
   },
   {
     "title": "Hackers Abuse Microsoft Teams External Chats to Access Corporate PCs",
@@ -12187,24 +13091,6 @@
     "curated": false
   },
   {
-    "title": "Threat Brief: Critical Vulnerabilities in PHP: CVE-2026-109618, CVE-2026-109619 (Updated October 23)",
-    "summary": "CVE-2026-109618 and CVE-2026-109619 are Critical vulnerabilities in PHP, a scripting language used globally for web servers and CMS systems.",
-    "summary_html": "CVE-2026-109618 and CVE-2026-109619 are Critical vulnerabilities in PHP, a scripting language used globally for web servers and CMS systems. The post Threat Brief: Critical Vulnerabilities in PHP: CVE-2026-109618, CVE-2026-109619 (Updated October 23) appeared first on Unit 42.",
-    "link": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/",
-    "source": "Unit 42 – Ransomware",
-    "feed_type": "news",
-    "type": "ransomware-extortion",
-    "type_label": "Ransomware & Extortion",
-    "published": "2026-10-23T19:00:34+00:00",
-    "published_ts": 1792782034,
-    "smart_groups": [
-      "Vulnerabilities / CVEs"
-    ],
-    "curated": false,
-    "story_id": "43674dfa3047",
-    "story_size": 32
-  },
-  {
     "title": "SEC Flags AI 'Super Intelligence' and Tokenization as Systemic Market Risks",
     "summary": "The regulator's Division of Examinations named \"super intelligence and other advanced technologies\" as a focus area alongside tokenization risks.",
     "summary_html": "The regulator's Division of Examinations named \"super intelligence and other advanced technologies\" as a focus area alongside tokenization risks.",
@@ -15932,7 +16818,7 @@
     ],
     "curated": true,
     "story_id": "43674dfa3047",
-    "story_size": 32
+    "story_size": 31
   },
   {
     "title": "SoFi Launches Tokenized Deposit That Earns 4.4% and Converts to a Stablecoin",
@@ -17036,7 +17922,7 @@
     ],
     "curated": true,
     "story_id": "43674dfa3047",
-    "story_size": 32
+    "story_size": 31
   },
   {
     "title": "Behind Japan’s Warnings of a Cyber Crisis",
@@ -17122,7 +18008,7 @@
     ],
     "curated": true,
     "story_id": "43674dfa3047",
-    "story_size": 32
+    "story_size": 31
   },
   {
     "title": "Google Chrome adds Gemini-powered scam detection, warns users of ClickFix attacks",
@@ -17216,7 +18102,7 @@
     ],
     "curated": true,
     "story_id": "43674dfa3047",
-    "story_size": 32
+    "story_size": 31
   },
   {
     "title": "PHP2Shell (CVE-2026-109618/109619): first exploit requests arrived 5.5 hours before PHP shipped the fix, and the \"scanners\" carry Mirai-style loaders",
@@ -17286,7 +18172,7 @@
     ],
     "curated": true,
     "story_id": "43674dfa3047",
-    "story_size": 32
+    "story_size": 31
   },
   {
     "title": "Looking for more opportunities other than CTFs",
@@ -18123,7 +19009,7 @@
     ],
     "curated": true,
     "story_id": "43674dfa3047",
-    "story_size": 32
+    "story_size": 31
   },
   {
     "title": "Musk’s SpaceX-Tesla Merger Would Create a Bitcoin Treasury Behemoth",
@@ -18202,7 +19088,7 @@
     ],
     "curated": false,
     "story_id": "43674dfa3047",
-    "story_size": 32
+    "story_size": 31
   },
   {
     "title": "Optiv Launches CyberBOT Cybersecurity Awareness Training Program",
@@ -18455,7 +19341,7 @@
     ],
     "curated": false,
     "story_id": "43674dfa3047",
-    "story_size": 32
+    "story_size": 31
   },
   {
     "title": "High-Severity Flaws Exploited in Three Days as Ransomware Dominates Q3: Rapid7",
@@ -18504,7 +19390,7 @@
     ],
     "curated": false,
     "story_id": "43674dfa3047",
-    "story_size": 32
+    "story_size": 31
   },
   {
     "title": "PHP: Critical remote code execution vulnerabilities, update now",
@@ -18523,7 +19409,7 @@
     ],
     "curated": true,
     "story_id": "43674dfa3047",
-    "story_size": 32
+    "story_size": 31
   },
   {
     "title": "LibreOffice et OpenOffice piégés par des tableurs",
@@ -18664,7 +19550,7 @@
     ],
     "curated": true,
     "story_id": "43674dfa3047",
-    "story_size": 32
+    "story_size": 31
   },
   {
     "title": "Feds Issues Advisory About SafePay Ransomware Group",
@@ -18787,7 +19673,7 @@
     ],
     "curated": true,
     "story_id": "43674dfa3047",
-    "story_size": 32
+    "story_size": 31
   },
   {
     "title": "HTB OR THM2",
@@ -18886,7 +19772,7 @@
     ],
     "curated": false,
     "story_id": "43674dfa3047",
-    "story_size": 32
+    "story_size": 31
   },
   {
     "title": "PHP2Shell - AI uncovers critical vulnerabilities in the backbone of the web",
@@ -19653,7 +20539,7 @@
     ],
     "curated": false,
     "story_id": "43674dfa3047",
-    "story_size": 32
+    "story_size": 31
   },
   {
     "title": "Zcash rallies 12% as developers finalize NU7 activation height",
@@ -19717,7 +20603,7 @@
     ],
     "curated": true,
     "story_id": "43674dfa3047",
-    "story_size": 32
+    "story_size": 31
   },
   {
     "title": "China-Based BRONZE SANDCASTLE Hackers Abuse Sandboxie to Load Backdoors",
@@ -19871,7 +20757,7 @@
     ],
     "curated": true,
     "story_id": "43674dfa3047",
-    "story_size": 32
+    "story_size": 31
   },
   {
     "title": "Children’s Data Stolen After Ransomware Attack Compromises ‘Password1’ Account",
@@ -20165,7 +21051,7 @@
     ],
     "curated": true,
     "story_id": "43674dfa3047",
-    "story_size": 32
+    "story_size": 31
   },
   {
     "title": "SleeperWidget: How Ad-Driven Installs Activate Hidden Browser Extension Behavior",
@@ -20805,7 +21691,7 @@
     ],
     "curated": true,
     "story_id": "43674dfa3047",
-    "story_size": 32
+    "story_size": 31
   },
   {
     "title": "Qubic restarts blockchain, opens recovery claims after $1.4M hack",
@@ -20871,7 +21757,7 @@
     ],
     "curated": true,
     "story_id": "43674dfa3047",
-    "story_size": 32
+    "story_size": 31
   },
   {
     "title": "OpenAI Buys Orchestra Bio to Put AI Agents in Charge of Drug Development Grunt Work",
@@ -23885,7 +24771,7 @@
     ],
     "curated": true,
     "story_id": "43674dfa3047",
-    "story_size": 32,
+    "story_size": 31,
     "story_primary": true,
     "story_others": [
       {
@@ -24067,12 +24953,6 @@
         "title": "php2shell: Two Critical PHP Vulnerabilities Expose Web Servers to Remote Code Execution",
         "link": "https://www.sygnia.co/threat-reports-and-advisories/php2shell-two-critical-php-vulnerabilities-expose-web-servers-to-remote-code-execution/",
         "published_ts": 1792681458
-      },
-      {
-        "source": "Unit 42 – Ransomware",
-        "title": "Threat Brief: Critical Vulnerabilities in PHP: CVE-2026-109618, CVE-2026-109619 (Updated October 23)",
-        "link": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/",
-        "published_ts": 1792782034
       }
     ]
   },
@@ -33127,8 +34007,8 @@
     "published_ts": 1792066758,
     "smart_groups": [],
     "curated": false,
-    "story_id": "f42a122e5dac",
-    "story_size": 6
+    "story_id": "d9ed76a64d3e",
+    "story_size": 3
   },
   {
     "title": "HEX token sellers erase $160M following reports of founder Richard Schueler arrest",
@@ -37931,8 +38811,17 @@
       "Malware / Payloads"
     ],
     "curated": false,
-    "story_id": "453f8bfec1c7",
-    "story_size": 3
+    "story_id": "1a0763123a1d",
+    "story_size": 2,
+    "story_primary": true,
+    "story_others": [
+      {
+        "source": "Malwarebytes Labs (Vendor)",
+        "title": "AI worms could spread across your smart devices, Anthropic warns",
+        "link": "https://www.malwarebytes.com/blog/ai/2026/10/ai-worms-could-spread-across-your-smart-devices-anthropic-warns",
+        "published_ts": 1791995806
+      }
+    ]
   },
   {
     "title": "Character.AI Files for Bankruptcy as Disney Bids $20 Million—And Users Get Grief Resources",
@@ -38009,8 +38898,8 @@
       "Community Discussion"
     ],
     "curated": false,
-    "story_id": "f42a122e5dac",
-    "story_size": 6
+    "story_id": "d9ed76a64d3e",
+    "story_size": 3
   },
   {
     "title": "Two arrested as DOJ takes down laptop farms responsible for $3 million in North Korean revenue",
@@ -38330,8 +39219,23 @@
       "Malware / Payloads"
     ],
     "curated": false,
-    "story_id": "f42a122e5dac",
-    "story_size": 6
+    "story_id": "d9ed76a64d3e",
+    "story_size": 3,
+    "story_primary": true,
+    "story_others": [
+      {
+        "source": "/r/cybersecurity",
+        "title": "Anthropic Warns Small AI Models Could Soon Form Self-Propagating IoT Botnets",
+        "link": "https://www.reddit.com/r/cybersecurity/comments/1x58sqp/anthropic_warns_small_ai_models_could_soon_form/",
+        "published_ts": 1791925655
+      },
+      {
+        "source": "HackRead",
+        "title": "Anthropic Warns Small AI Models Could Power Self-Spreading AI Worms",
+        "link": "https://hackread.com/anthropic-warns-small-ai-models-power-ai-worms/",
+        "published_ts": 1792066758
+      }
+    ]
   },
   {
     "title": "UK Housing Ombudsman Service investigates 'security incident'",
