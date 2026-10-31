@@ -1,5 +1,67 @@
 [
   {
+    "title": "Is neuro-evolution relevant? [D]",
+    "summary": "I've experimented using neuro-evolution to train AI to play a variety of different games and I'm just curious as to how or if this technique is actually really used anywhere in industry or if people are doing research on this. I'd assume it'd probably relate with reinforcement learning in some way but I'm not entirely sure about that submitted by /u/tapopalis [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>I've experimented using neuro-evolution to train AI to play a variety of different games and I'm just curious as to how or if this technique is actually really used anywhere in industry or if people are doing research on this. I'd assume it'd probably relate with reinforcement learning in some way but I'm not entirely sure about that</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/tapopalis\"> /u/tapopalis </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xkh5bw/is_neuroevolution_relevant_d/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xkh5bw/is_neuroevolution_relevant_d/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1xkh5bw/is_neuroevolution_relevant_d/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-31T18:09:53+00:00",
+    "published_ts": 1793470193,
+    "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Is it okay to share my experiments implementing research papers on my own LLM here? [P]",
+    "summary": "Hey everyone! I've built and trained a small LLM (~8M parameters) from scratch using PyTorch, mainly as an experimental lab where I can implement and test ideas from different research papers. I've been documenting the whole journey through casual blogs, including my mistakes, experiments, and things I've learned. So far: Building the Transformer Training it for 60,000 steps Next up is KV caching, followed by PagedAttention, Orca, and whatever else I find interesting. Just wanted to ask if sharing these experiments and blogs here would be welcome. Nothing promotional, just me experimenting, learning, and hopefully getting feedback from people who know more than I do. submitted by /u/the-random-guy-2002 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Hey everyone!</p> <p>I've built and trained a small LLM (~8M parameters) from scratch using PyTorch, mainly as an experimental lab where I can implement and test ideas from different research papers.</p> <p>I've been documenting the whole journey through casual blogs, including my mistakes, experiments, and things I've learned.</p> <p>So far:</p> <ul> <li><a href=\"https://medium.com/@sulavstha007/i-stopped-watching-tutorials-and-built-a-transformer-5abbcfbfcc44\">Building the Transformer</a></li> <li><a href=\"https://medium.com/@sulavstha007/60-000-training-steps-a-loss-plateau-and-a-simple-fix-cf9aba7fe0a9\">Training it for 60,000 steps</a></li> </ul> <p>Next up is KV caching, followed by PagedAttention, Orca, and whatever else I find interesting.</p> <p>Just wanted to ask if sharing these experiments and blogs here would be welcome. Nothing promotional, just me experimenting, learning, and hopefully getting feedback from people who know more than I do.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/the-random-guy-2002\"> /u/the-random-guy-2002 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xkgtly/is_it_okay_to_share_my_experiments_implementing/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xkgtly/is_it_okay_to_share_my_experiments_implementing/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1xkgtly/is_it_okay_to_share_my_experiments_implementing/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-31T17:57:22+00:00",
+    "published_ts": 1793469442,
+    "smart_groups": [
+      "Research & papers"
+    ],
+    "curated": false
+  },
+  {
+    "title": "I built a scikit-learn for RSI [P]",
+    "summary": "After reading a bunch of RSI papers, I keep coming back to familiar problems from RL and evolutionary search: Sampling: How do we find promising changes efficiently? Evaluation: How do we know a new variant actually improves the agent? Diversity: How do we avoid converging too early? That motivated us to build Gear , an open-source, meta-learning-inspired framework. A task agent produces execution traces; a meta-agent uses those traces and evaluation feedback to improve prompts, tools, workflows, and context management. Gear separates search decisions from execution and evaluation. Our goal is a scikit-learn for RSI , making approaches such as GEPA, RRSI, and Harness² easier to implement and compare. We currently have a working GEPA variant with shared failure diagnosis and staged evaluation. With GPT 5.6 Luna held at medium reasoning effort , we observed these task pass rates: Benchmark Base DSH Gear-optimized DSH AutomationBench Marketing 27.0% 40.0% AutomationBench Support 17.0% 25.0% Terminal-Bench 2.1 52.8% 62.9% At max effort on Marketing, Luna with the optimized harness reached 88.88% objective completion , versus 84.08% for Astra + Codex . Strict task pass rates were 53% versus 57% , so the advantage was in partial completion. Separately, with both models using the same optimized DSH at max effort , Luna’s estimated API cost averaged $0.0568 per task versus $1.1858 for Astra—95.21% lower , excluding optimization and infrastructure costs. We’d welcome feedback on candidate evaluation and diversity preservation under limited budgets. Code · Paper submitted by /u/Pale-Training-6944 [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/MachineLearning/comments/1xkeq7d/i_built_a_scikitlearn_for_rsi_p/\">  </a>  <!-- SC_OFF --><div><p>After reading a bunch of RSI papers, I keep coming back to familiar problems from RL and evolutionary search:</p> <ol> <li><strong>Sampling:</strong> How do we find promising changes efficiently?</li> <li><strong>Evaluation:</strong> How do we know a new variant actually improves the agent?</li> <li><strong>Diversity:</strong> How do we avoid converging too early?</li> </ol> <p>That motivated us to build <strong>Gear</strong>, an open-source, meta-learning-inspired framework. A task agent produces execution traces; a meta-agent uses those traces and evaluation feedback to improve prompts, tools, workflows, and context management.</p> <p>Gear separates search decisions from execution and evaluation. Our goal is a <strong>scikit-learn for RSI</strong>, making approaches such as GEPA, RRSI, and Harness² easier to implement and compare. We currently have a working GEPA variant with shared failure diagnosis and staged evaluation.</p> <p>With <strong>GPT 5.6 Luna held at medium reasoning effort</strong>, we observed these task pass rates:</p>   Benchmark Base DSH Gear-optimized DSH        AutomationBench Marketing 27.0% <strong>40.0%</strong>   AutomationBench Support 17.0% <strong>25.0%</strong>   Terminal-Bench 2.1 52.8% <strong>62.9%</strong>   <p>At max effort on Marketing, Luna with the optimized harness reached <strong>88.88% objective completion</strong>, versus <strong>84.08% for Astra + Codex</strong>. Strict task pass rates were <strong>53% versus 57%</strong>, so the advantage was in partial completion.</p> <p>Separately, with both models using the <strong>same optimized DSH at max effort</strong>, Luna’s estimated API cost averaged <strong>$0.0568 per task versus $1.1858 for Astra—95.21% lower</strong>, excluding optimization and infrastructure costs.</p> <p>We’d welcome feedback on candidate evaluation and diversity preservation under limited budgets.</p> <p><a href=\"https://github.com/rsi-gear/gear\">Code</a> · <a href=\"https://huggingface.co/spaces/WizardTY/GEAR\">Paper</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Pale-Training-6944\"> /u/Pale-Training-6944 </a> <br/> <span><a href=\"https://i.redd.it/trkro8qdytyh1.gif\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xkeq7d/i_built_a_scikitlearn_for_rsi_p/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1xkeq7d/i_built_a_scikitlearn_for_rsi_p/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-31T16:33:26+00:00",
+    "published_ts": 1793464406,
+    "smart_groups": [
+      "Data & analytics"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Hierarchical detection of neonatal brain pathologies using a two-stage deep learning framework from magnetic resonance imaging [R]",
+    "summary": "submitted by /u/rottoneuro [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/MachineLearning/comments/1xkcy83/hierarchical_detection_of_neonatal_brain/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/rottoneuro\"> /u/rottoneuro </a> <br/> <span><a href=\"https://www.frontiersin.org/journals/neuroimaging/articles/10.3389/fnimg.2026.1981436\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xkcy83/hierarchical_detection_of_neonatal_brain/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1xkcy83/hierarchical_detection_of_neonatal_brain/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-31T15:21:39+00:00",
+    "published_ts": 1793460099,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
     "title": "An AI Agent Injected Drugs into a Live Mouse's Brain",
     "summary": "",
     "summary_html": "<p>Article URL: <a href=\"https://www.wired.com/story/an-ai-agent-did-brain-surgery-on-live-mouse/\">https://www.wired.com/story/an-ai-agent-did-brain-surgery-on-live-mouse/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50316468\">https://news.ycombinator.com/item?id=50316468</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
