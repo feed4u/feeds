@@ -1,5 +1,25 @@
 [
   {
+    "title": "U.S. CISA adds Ivanti Connect Secure flaws to its Known Exploited Vulnerabilities catalog",
+    "summary": "U.S. Cybersecurity and Infrastructure Security Agency (CISA) adds Ivanti Connect Secure flaws to its Known Exploited Vulnerabilities catalog. The U.S. Cybersecurity and Infrastructure Security Agency (CISA) added the following Ivanti Connect Secure vulnerabilities to its Known Exploited Vulnerabilities (KEV) catalog : CVE-2026-111357 (CVSS score of 8.8) – A missing authentication check for a critical function that could allow an authenticated local attacker to gain higher privileges. CVE-2026-118527 (CVSS score of 4.3) – A predictable identifier vulnerability that could allow an authenticated remote attacker to upload files containing malicious content to a known location on the system. The vulnerabilities are part of an exploit chain that cybersecurity firm Volexity first documented in mid-October. “ Volexity has identified active in-the-wild exploitation of a vulnerability chain allowing unauthenticated remote code execution in Ivanti Connect Secure VPN devices. Ivanti has published an advisory providing upgrade instructions to customers.” states Volexity . “Systems exhibiting signs of compromise, such as attempts to move laterally originating from the ICS VPN device, should be forensically investigated to ensure no breach has occurred. “ The attacks combined these vulnerabilities with an authentication bypass vulnerability, tracked as CVE-2026-104935 (CVSS score of 8.6). In early October 2026, Volexity discovered that a threat actor tracked as UTA0576 was exploiting a zero-day vulnerability chain to compromise fully patched Ivanti Connect Secure VPN appliances. The attack combined authentication bypass, remote code execution, and privilege escalation flaws, allowing attackers to gain root access without logging in. The authentication bypass and RCE flaws are tracked as CVE-2026-104935. After gaining access, the attackers targeted Active Directory credentials and sensitive information, including LAPS passwords and BitLocker recovery keys. Volexity worked with Ivanti as soon as it suspected the vulnerabilities were being exploited. CISA added CVE-2026-104935 to the Known Exploited Vulnerabilities (KEV) catalog on October 13, 2026. Ivanti released security updates to address both CVE-2026-111357 and CVE-2026-118527: Version 25.1.1.2 and earlier: upgrade to 25.1.1.3. Version 22.8R2.5 and earlier: upgrade to 22.8R2.6. Ivanti said it disclosed CVE-2026-104935 first because a fix was already available and ready for testing. When researchers discovered the additional privilege escalation flaws, the company decided not to delay the release of the first patch, which addressed the main attack method. Ivanti also worked with Volexity to share information about the attackers’ techniques, including how they chained the vulnerabilities. Ivanti had already fixed part of the issue in its July 25.1.3.0 release and was preparing updates for other supported versions. Patches are now available for all the vulnerabilities used in the attacks. “At the time of discovery of exploitation, Ivanti had a fix developed for CVE-2026-104935 which was already in QA for supported versions, and we made the decision to not delay getting a fix to customers that resolved the primary exploitation path when the LPE was discovered. Because of this, our focus was initially centered on the disclosure of CVE-2026-104935 and providing protection for our customers as quickly as possible.” states Ivanti . “Additionally, Ivanti collaborated with Volexity on their blog post which provided information to arm defenders on known threat actor behavior, including chaining the local privilege escalation vulnerability. These additional CVE disclosures have now been added to this Security Advisory and a fix is available now.” According to Binding Operational Directive (BOD) 22-01: Reducing the Significant Risk of Known Exploited Vulnerabilities , FCEB agencies have to address the identified vulnerabilities by the due date to protect their networks against attacks exploiting the flaws in the catalog. Experts also recommend that private organizations review the Catalog and address the vulnerabilities in their infrastructure. CISA orders federal agencies to fix CVE-2026-111357 by November 2, 2026, and CVE-2026-118527 by November 13, 2026. Follow me on Twitter: @securityaffairs and Facebook and Mastodon Pierluigi Paganini ( SecurityAffairs – hacking, CISA )",
+    "summary_html": "<div></div>\nU.S. Cybersecurity and Infrastructure Security Agency (CISA) adds Ivanti Connect Secure flaws to its Known Exploited Vulnerabilities catalog.\n<p>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) <a href=\"https://www.cisa.gov/news-events/alerts/2026/10/30/cisa-adds-two-known-exploited-vulnerabilities-catalog\">added</a> the following Ivanti Connect Secure vulnerabilities to its <a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) catalog</a>:</p>\n<ul>\n<li><a href=\"https://nvd.nist.gov/vuln/detail/CVE-2026-111357\">CVE-2026-111357</a> (CVSS score of 8.8) – A missing authentication check for a critical function that could allow an authenticated local attacker to gain higher privileges.</li>\n<li><a href=\"https://nvd.nist.gov/vuln/detail/CVE-2026-118527\">CVE-2026-118527</a> (CVSS score of 4.3) – A predictable identifier vulnerability that could allow an authenticated remote attacker to upload files containing malicious content to a known location on the system.</li>\n</ul>\n<p>The vulnerabilities are part of an exploit chain that cybersecurity firm Volexity first documented in mid-October. </p>\n<p>“<em>Volexity has identified active in-the-wild exploitation of a vulnerability chain allowing unauthenticated remote code execution in Ivanti Connect Secure VPN devices. Ivanti has <a href=\"https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Connect-Secure-CVE-2026-104935\">published an advisory</a> providing upgrade instructions to customers.” <a href=\"https://www.volexity.com/blog/2026/10/13/a-series-of-unauthenticated-events-chained-exploitation-of-ivanti-connect-secure-zero-days/\">states Volexity</a>. “Systems exhibiting signs of compromise, such as attempts to move laterally originating from the ICS VPN device, should be forensically investigated to ensure no breach has occurred.</em>“</p>\n<p>The attacks combined these vulnerabilities with an authentication bypass vulnerability, tracked as <a href=\"https://securityaffairs.com/200887/security/u-s-cisa-adds-ivanti-connect-secure-flaw-to-its-known-exploited-vulnerabilities-catalog.html\">CVE-2026-104935</a> (CVSS score of 8.6). </p>\n<p>In early October 2026, Volexity <a href=\"https://securityaffairs.com/200895/hacking/volexity-uncovers-stealthy-ivanti-vpn-attack-using-three-zero-day-vulnerabilities.html\">discovered</a> that a threat actor tracked as UTA0576 was exploiting a zero-day vulnerability chain to compromise fully patched Ivanti Connect Secure VPN appliances. The attack combined authentication bypass, remote code execution, and privilege escalation flaws, allowing attackers to gain root access without logging in. The authentication bypass and RCE flaws are tracked as CVE-2026-104935.</p>\n<p>After gaining access, the attackers targeted Active Directory credentials and sensitive information, including LAPS passwords and BitLocker recovery keys. Volexity worked with Ivanti as soon as it suspected the vulnerabilities were being exploited.</p>\n<p>CISA added CVE-2026-104935 to the Known Exploited Vulnerabilities (KEV) catalog on October 13, 2026.</p>\n<p>Ivanti released security updates to address both CVE-2026-111357 and CVE-2026-118527:</p>\n<ul>\n<li>Version 25.1.1.2 and earlier: upgrade to 25.1.1.3.</li>\n<li>Version 22.8R2.5 and earlier: upgrade to 22.8R2.6.</li>\n</ul>\n<p>Ivanti said it disclosed CVE-2026-104935 first because a fix was already available and ready for testing. When researchers discovered the additional privilege escalation flaws, the company decided not to delay the release of the first patch, which addressed the main attack method. Ivanti also worked with Volexity to share information about the attackers’ techniques, including how they chained the vulnerabilities.</p>\n<p>Ivanti had already fixed part of the issue in its July 25.1.3.0 release and was preparing updates for other supported versions. Patches are now available for all the vulnerabilities used in the attacks.</p>\n<p><em>“At the time of discovery of exploitation, Ivanti had a fix developed for CVE-2026-104935 which was already in QA for supported versions, and we made the decision to not delay getting a fix to customers that resolved the primary exploitation path when the LPE was discovered. Because of this, our focus was initially centered on the disclosure of CVE-2026-104935 and providing protection for our customers as quickly as possible.” <a href=\"https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Connect-Secure-CVE-2026-104935?language=en_US\">states Ivanti</a>. “Additionally, Ivanti collaborated with Volexity on their <a href=\"https://www.volexity.com/blog/2026/10/13/a-series-of-unauthenticated-events-chained-exploitation-of-ivanti-connect-secure-zero-days/\">blog post</a> which provided information to arm defenders on known threat actor behavior, including chaining the local privilege escalation vulnerability. These additional CVE disclosures have now been added to this Security Advisory and a fix is available now.”</em></p>\n<p>According to <a href=\"https://cyber.dhs.gov/bod/22-01/\">Binding Operational Directive (BOD) 22-01: Reducing the Significant Risk of Known Exploited Vulnerabilities</a>, FCEB agencies have to address the identified vulnerabilities by the due date to protect their networks against attacks exploiting the flaws in the catalog.</p>\n<p>Experts also recommend that private organizations review the <a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Catalog</a> and address the vulnerabilities in their infrastructure.</p>\n<p>CISA orders federal agencies to fix CVE-2026-111357 by November 2, 2026, and CVE-2026-118527 by November 13, 2026.</p>\n<p><strong>Follow me on Twitter: </strong><a href=\"https://twitter.com/securityaffairs\"><strong>@securityaffairs</strong></a><strong> and </strong><a href=\"https://www.facebook.com/sec.affairs\"><strong>Facebook</strong></a><strong> and </strong><a href=\"https://infosec.exchange/@securityaffairs\"><strong>Mastodon</strong></a></p>\n<p><a href=\"http://www.linkedin.com/pub/pierluigi-paganini/b/742/559\"><strong>Pierluigi Paganini</strong></a></p>\n<p><strong>(</strong><a href=\"http://securityaffairs.co/wordpress/\"><strong>SecurityAffairs</strong></a><strong> – hacking, <a href=\"https://securityaffairs.com/tag/cisa\">CISA</a>)</strong></p>",
+    "link": "https://securityaffairs.com/202175/security/u-s-cisa-adds-ivanti-connect-secure-flaws-to-its-known-exploited-vulnerabilities-catalog.html",
+    "source": "Security Affairs",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-10-31T19:33:36+00:00",
+    "published_ts": 1793475216,
+    "smart_groups": [
+      "Vulnerabilities / CVEs",
+      "Windows / Microsoft",
+      "Network / OT / ICS"
+    ],
+    "curated": true,
+    "story_id": "57a05936dd71",
+    "story_size": 15
+  },
+  {
     "title": "How do you integrate threat intelligence in your SIEM?",
     "summary": "Hi, I have a question regarding threat intelligence and how it integrates with a SIEM solution. Do you feed threat intelligence data directly into the SIEM, or do you use detection rules that query external APIs? If you use API queries, when are these typically triggered? For example, is an API request made every time a new IP address appears in a firewall log, or does the process work differently? I'm currently running Elastic SIEM and would be interested in understanding how threat intelligence integration generally works. While I'm at it, I'd also like to ask if you could recommend any free threat intelligence feeds or services that I could use. Thanks in advance for your help! submitted by /u/ShirtResponsible4233 [link] [comments]",
     "summary_html": "<!-- SC_OFF --><div><p>Hi,</p> <p>I have a question regarding threat intelligence and how it integrates with a SIEM solution.</p> <p>Do you feed threat intelligence data directly into the SIEM, or do you use detection rules that query external APIs?</p> <p>If you use API queries, when are these typically triggered? For example, is an API request made every time a new IP address appears in a firewall log, or does the process work differently?</p> <p>I'm currently running Elastic SIEM and would be interested in understanding how threat intelligence integration generally works.</p> <p>While I'm at it, I'd also like to ask if you could recommend any free threat intelligence feeds or services that I could use.</p> <p>Thanks in advance for your help!</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/ShirtResponsible4233\"> /u/ShirtResponsible4233 </a> <br/> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1xkiumv/how_do_you_integrate_threat_intelligence_in_your/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/cybersecurity/comments/1xkiumv/how_do_you_integrate_threat_intelligence_in_your/\">[comments]</a></span>",
@@ -221,6 +241,23 @@
     "published_ts": 1793456872,
     "smart_groups": [
       "Crypto / Web3"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Cloud Exposure Index 2026: 484,142 open buckets mapped",
+    "summary": "484,142 publicly listable cloud buckets, 18 billion files, 80,495 .env files and two thirds of them written this year: we indexed open S3, Azure, GCS, Spaces and OSS storage without opening a single file submitted by /u/lexcor [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>484,142 publicly listable cloud buckets, 18 billion files, 80,495 .env files and two thirds of them written this year: we indexed open S3, Azure, GCS, Spaces and OSS storage without opening a single file</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/lexcor\"> /u/lexcor </a> <br/> <span><a href=\"https://ransomnews.com/cloud-exposure-index-2026/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/netsec/comments/1xkbgw0/cloud_exposure_index_2026_484142_open_buckets/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/netsec/comments/1xkbgw0/cloud_exposure_index_2026_484142_open_buckets/",
+    "source": "/r/netsec",
+    "feed_type": "news",
+    "type": "osint-communities-subreddits",
+    "type_label": "OSINT, Communities & Subreddits",
+    "published": "2026-10-31T14:20:54+00:00",
+    "published_ts": 1793456454,
+    "smart_groups": [
+      "Cloud / SaaS",
+      "Community Discussion"
     ],
     "curated": false
   },
@@ -1055,7 +1092,7 @@
     ],
     "curated": true,
     "story_id": "57a05936dd71",
-    "story_size": 14
+    "story_size": 15
   },
   {
     "title": "Worried About Crypto Hacks? Buy Bitcoin Proxies in Stock Market Instead, Say Wall Street Firms",
@@ -2232,7 +2269,7 @@
     ],
     "curated": true,
     "story_id": "57a05936dd71",
-    "story_size": 14
+    "story_size": 15
   },
   {
     "title": "Why Urgent Security Fixes Aren't Fixed. Observe, Prove, Act, Confirm Gets Them Moving",
@@ -3032,7 +3069,7 @@
     ],
     "curated": true,
     "story_id": "57a05936dd71",
-    "story_size": 14
+    "story_size": 15
   },
   {
     "title": "What topics should I learn for a career as a cybersecurity focused software engineer?",
@@ -4392,7 +4429,7 @@
     ],
     "curated": true,
     "story_id": "57a05936dd71",
-    "story_size": 14
+    "story_size": 15
   },
   {
     "title": "Hyperliquid's HYPE Jumps 13% as NYSE Owner ICE Moves to Bring Its Perpetual Futures to the US",
@@ -5501,7 +5538,7 @@
     ],
     "curated": true,
     "story_id": "57a05936dd71",
-    "story_size": 14
+    "story_size": 15
   },
   {
     "title": "Hitachi Energy CoreTec Product",
@@ -8977,7 +9014,7 @@
     ],
     "curated": true,
     "story_id": "57a05936dd71",
-    "story_size": 14
+    "story_size": 15
   },
   {
     "title": "Trusting Unsloth’s trust setting could mean executing malicious code",
@@ -9245,7 +9282,7 @@
     ],
     "curated": true,
     "story_id": "57a05936dd71",
-    "story_size": 14
+    "story_size": 15
   },
   {
     "title": "Fake US Court Notices Target 100,000+ Businesses With LodaRAT",
@@ -12053,7 +12090,7 @@
     ],
     "curated": true,
     "story_id": "57a05936dd71",
-    "story_size": 14
+    "story_size": 15
   },
   {
     "title": "Mitsubishi Electric and Mitsubishi Electric Iconics Digital Solutions GENESIS, GENESIS64, ICONICS Suite, Hyper Historian, AnalytiX, MobileHMI, IoTWorX, MC Works64, GENESIS32 and BizViz",
@@ -12318,7 +12355,7 @@
     ],
     "curated": true,
     "story_id": "57a05936dd71",
-    "story_size": 14
+    "story_size": 15
   },
   {
     "title": "New US China Investment Proposal Could Reshape AI, Biotech and Chip Funding",
@@ -14845,7 +14882,7 @@
     ],
     "curated": true,
     "story_id": "57a05936dd71",
-    "story_size": 14
+    "story_size": 15
   },
   {
     "title": "OpenAI, Anthropic disclosures spotlight growing AI containment challenge",
@@ -16646,7 +16683,7 @@
     ],
     "curated": true,
     "story_id": "57a05936dd71",
-    "story_size": 14
+    "story_size": 15
   },
   {
     "title": "Autonomous attack agent in 'Skynet mode' hijacks other models to carry out its evil deeds",
@@ -17020,7 +17057,7 @@
     ],
     "curated": true,
     "story_id": "57a05936dd71",
-    "story_size": 14
+    "story_size": 15
   },
   {
     "title": "Max-severity GitLab bug allows remote code execution over 12 years of releases",
@@ -18391,7 +18428,7 @@
     ],
     "curated": true,
     "story_id": "57a05936dd71",
-    "story_size": 14,
+    "story_size": 15,
     "story_primary": true,
     "story_others": [
       {
@@ -18471,6 +18508,12 @@
         "title": "U.S. CISA adds GitLab and Cisco flaws to its Known Exploited Vulnerabilities catalog",
         "link": "https://securityaffairs.com/202133/security/u-s-cisa-adds-gitlab-and-cisco-flaws-to-its-known-exploited-vulnerabilities-catalog.html",
         "published_ts": 1793391914
+      },
+      {
+        "source": "Security Affairs",
+        "title": "U.S. CISA adds Ivanti Connect Secure flaws to its Known Exploited Vulnerabilities catalog",
+        "link": "https://securityaffairs.com/202175/security/u-s-cisa-adds-ivanti-connect-secure-flaws-to-its-known-exploited-vulnerabilities-catalog.html",
+        "published_ts": 1793475216
       }
     ]
   },
@@ -18492,7 +18535,7 @@
     ],
     "curated": true,
     "story_id": "57a05936dd71",
-    "story_size": 14
+    "story_size": 15
   },
   {
     "title": "Ethereum Delays Glamsterdam Testnet Fork Over Gas Security Flaws",
@@ -26868,9 +26911,7 @@
     "smart_groups": [
       "Data Breaches / Leaks"
     ],
-    "curated": false,
-    "story_id": "acbe78010f69",
-    "story_size": 3
+    "curated": false
   },
   {
     "title": "Ex-OpenAI Engineer Held Over Secret Recorder, Saudi Ties",
@@ -27590,9 +27631,7 @@
     "smart_groups": [
       "Malware / Payloads"
     ],
-    "curated": true,
-    "story_id": "727b698d80bd",
-    "story_size": 2
+    "curated": true
   },
   {
     "title": "EU cyber law won’t force fixes for fridge controllers hit in French attack",
@@ -29449,9 +29488,7 @@
     "smart_groups": [
       "Windows / Microsoft"
     ],
-    "curated": false,
-    "story_id": "6a91af709a46",
-    "story_size": 4
+    "curated": false
   },
   {
     "title": "Your frontline workers have a workaround for that MFA prompt",
