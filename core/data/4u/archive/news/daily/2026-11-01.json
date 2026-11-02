@@ -1,9 +1,215 @@
 {
-  "generated_at": "2026-11-01T20:48:14.049708+00:00",
+  "generated_at": "2026-11-02T06:37:35.132723+00:00",
   "date": "2026-11-01",
-  "total_items": 86,
+  "total_items": 99,
   "next_chunk": "archive/news/daily/2026-10-31.json",
   "items": [
+    {
+      "title": "If in doubt, delete the uv.lock file",
+      "summary": "I've been getting the occasional confusing Python dependency error since switching over to Python 3.15 and the rule I'm having to remember is: If in doubt, delete the uv.lock file Most of my projects are libraries which don't include a uv.lock file, since it's rude for a library dependency to lock versions for anything else that uses it. Running uv run pytest etc tends to leave uv.lock files lying around, which are listed in .gitignore and so do not get committed to my repositories. But... sometimes that uv.lock pins a version of a dependency that doesn't yet have a Python 3.15 wheel. An example from earlier today: error: Failed to build `watchfiles==1.1.1` cause: Call to `maturin.build_wheel` failed error: the configured Python interpreter version (3.15) is newer than PyO3's maximum supported version (3.14) Deleting that file and running uv run pytest again usually fixes the problem. Tags: uv , til , python",
+      "summary_html": "<p>I've been getting the occasional confusing Python dependency error since switching over to Python 3.15 and the rule I'm having to remember is:</p>\n<p><strong>If in doubt, delete the uv.lock file</strong></p>\n<p>Most of my projects are libraries which don't include a <code>uv.lock</code> file, since it's rude for a library dependency to lock versions for anything else that uses it.</p>\n<p>Running <code>uv run pytest</code> etc tends to leave <code>uv.lock</code> files lying around, which are listed in <code>.gitignore</code> and so do not get committed to my repositories.</p>\n<p>But... sometimes that <code>uv.lock</code> pins a version of a dependency that doesn't yet have a Python 3.15 wheel. An example from earlier today:</p>\n<pre><code>error: Failed to build `watchfiles==1.1.1`\n  cause: Call to `maturin.build_wheel` failed\n\nerror: the configured Python interpreter version (3.15) is newer\nthan PyO3's maximum supported version (3.14)\n</code></pre>\n<p>Deleting that file and running <code>uv run pytest</code> again usually fixes the problem.</p>\n<p>Tags: <a href=\"https://simonwillison.net/tags/uv\">uv</a>, <a href=\"https://simonwillison.net/tags/til\">til</a>, <a href=\"https://simonwillison.net/tags/python\">python</a></p>",
+      "link": "https://simonwillison.net/2026/Nov/1/delete-uv-lock-first/",
+      "source": "Simon Willison's Weblog",
+      "feed_type": "news",
+      "type": "research-explainability",
+      "type_label": "Research Explainability",
+      "published": "2026-11-01T23:24:22+00:00",
+      "published_ts": 1793575462,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Trump Administration Refuses to Release Information on AI Testing Framework",
+      "summary": "The Trump administration declined to produce key documents related to its voluntary AI testing framework, despite an agreement struck in September with the nonprofit Protect Democracy Project after a Freedom of Information Act lawsuit. In a letter sent to the nonprofit on Friday by the White ...",
+      "summary_html": "<p>The Trump administration declined to produce key documents related to its voluntary AI testing framework, despite an <a href=\"https://protectdemocracy.org/wp-content/uploads/2026/09/2026.09.15_PDP_v_ONCD_JSR.pdf\">agreement</a> struck in September with the nonprofit Protect Democracy Project after a Freedom of Information Act lawsuit. In a <a href=\"https://protectdemocracy.org/wp-content/uploads/2026/10/Civil-Action-No.-26-3064__Production__10.30.2026_Redacted.pdf\">letter</a> sent to the nonprofit on Friday by the White ...</p>",
+      "link": "https://www.theinformation.com/briefings/trump-administration-refuses-release-information-ai-testing-framework",
+      "source": "The Information - The Information has a simple mission: deliver important, deeply reported stories about the technology business you won\u2019t find elsewhere. Many \u2026",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-01T23:09:23+00:00",
+      "published_ts": 1793574563,
+      "smart_groups": [
+        "Policy & government"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Apple, Uber and Elections Headline Week",
+      "summary": "Can Apple, Uber and Palantir turn this stock market around? It sure needs it. Worries about excessive AI spending tanked Google\u2019s stock last week and sent the Nasdaq Composite to its worst month since March 2025. While the major indexes are still in the green for the year, a few more days like Friday\u2019s could change that. Fortunately, we have a handful of earnings that might temper the gloom. Palantir Technologies, which reports Monday, has told investors to expect an 83% jump in the third quarter from the year-ago period. That\u2019s a slowdown from the second quarter\u2019s blistering 93% growth . But at least investors will get a reprieve from enormous capital expenditures. Palantir only spent $22 million in capex in the first half. As for Apple, it\u2019s already warned investors that supply constraints for advanced chip manufacturing would contribute to slower revenue growth, to a range of 9% to 11% in the September quarter from a year ago, slower than its 16% growth in the June quarter. Apple has also forecast iPhone revenue growth in the mid-teens versus 22% in the June quarter. An improvement on that outlook could buoy the mood. On the other hand, a sharper slowdown in growth from either companies could give investors another reason to sell tech stocks.",
+      "summary_html": "<p>Can Apple, Uber and Palantir turn this stock market around? It sure needs it. Worries about excessive AI spending tanked Google\u2019s stock last week and sent the Nasdaq Composite to its worst month since March 2025. While the major indexes are still in the green for the year, a few more days like Friday\u2019s could change that. Fortunately, we have a handful of earnings that might temper the gloom.\u00a0</p><p>Palantir Technologies, which reports Monday, has told investors to expect an 83% jump in the third quarter from the year-ago period. That\u2019s a slowdown from the <a href=\"https://www.theinformation.com/newsletters/the-briefing/palantirs-rocket-ship-growth?rc=zjctrx\">second quarter\u2019s blistering 93% growth</a>. But at least investors will get a reprieve from enormous capital expenditures. Palantir only spent $22 million in capex in the first half.\u00a0</p><p>As for Apple, it\u2019s already warned investors that supply constraints for advanced chip manufacturing would contribute to slower revenue growth, to a range of\u00a0 9% to 11% in the September quarter from a year ago, slower than its 16% growth in the June quarter. Apple has also forecast iPhone revenue growth in the mid-teens versus 22% in the June quarter. An improvement on that outlook could buoy the mood. On the other hand, a sharper slowdown in growth from either companies could give investors another reason to sell tech stocks.\u00a0</p>",
+      "link": "https://www.theinformation.com/articles/apple-uber-elections-headline-week",
+      "source": "The Information - The Information has a simple mission: deliver important, deeply reported stories about the technology business you won\u2019t find elsewhere. Many \u2026",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-01T23:00:47+00:00",
+      "published_ts": 1793574047,
+      "smart_groups": [
+        "Policy & government"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Aramco Acquires 49% HUMAIN Stake With $2.6B Cash, AI Assets",
+      "summary": "Saudi Arabia's Public Investment Fund (PIF) and Aramco announced on November 1, 2026, the closing of a transaction in which Aramco, through a wholly owned subsidiary, acquired a 49% stake in artificial intelligence company HUMAIN, with PIF retaining 51% ownership. Aramco acquired the stake by transferring key AI assets to HUMAIN and contributing approximately SAR 9.9 billion ($2.6 billion) in cash in 2026, according to the closing announcement published on Aramco's newsroom. The transaction\u2026",
+      "summary_html": "<p>Saudi Arabia's Public Investment Fund (PIF) and Aramco announced on November 1, 2026, the closing of a transaction in which Aramco, through a wholly owned subsidiary, acquired a 49% stake in artificial intelligence company HUMAIN, with PIF retaining 51% ownership. Aramco acquired the stake by transferring key AI assets to HUMAIN and contributing approximately SAR 9.9 billion ($2.6 billion) in cash in 2026, according to the closing announcement published on Aramco's newsroom. The transaction\u2026</p>",
+      "link": "https://www.unite.ai/aramco-acquires-49-humain-stake-with-2-6b-cash-ai-assets/",
+      "source": "Unite.AI - - AI News",
+      "feed_type": "news",
+      "type": "general-news",
+      "type_label": "General News",
+      "published": "2026-11-01T22:36:01+00:00",
+      "published_ts": 1793572561,
+      "smart_groups": [
+        "Business & funding"
+      ],
+      "curated": false
+    },
+    {
+      "title": "OpenAI wants everyone to call AI data centers 'compute campuses'",
+      "summary": "OpenAI has a new, more chic name for data centers. Bloomberg/Getty Images OpenAI wants to rebrand AI data centers using a new, more alliterative name. \"Compute campuses\" is their new-fangled term. An OpenAI spokesperson said it better represents the \"role\" of AI infrastructure. OpenAI doesn't want to call them \" data centers \" anymore. Instead, the ChatGPT maker plans to propose a new, more chic name for the behemoth factories that power your chatbot queries. That new name is \"compute campuses,\" an OpenAI spokesperson confirmed to Business Insider on Sunday. \"Compute campuses better describes the scale and role of the infrastructure we're building for AI,\" the spokesperson said. \"These are long-term investments in computing, energy infrastructure and skilled work.\" Though much has been said about the less-than-stellar reputations of AI data centers (a recent Pew Research poll found that 54% of Americans say AI data centers are bad for the environment), efforts to ameliorate that view have mostly failed. Data centers are now a major issue for voters in the midterms. While major data center builders like Meta, Amazon, and Microsoft have pledged millions of dollars to the communities and schools surrounding their centers, OpenAI is betting that a complete rebrand will also help turn around public opinion. \"We want the communities hosting that infrastructure to help shape it and share in the opportunities it creates,\" the OpenAI spokesperson said. Time will tell, however, if the \"compute campus\" lingo catches on. Axios earlier reported that OpenAI was also preparing for a blue wave in Tuesday's midterm elections, which could result in a more regulatory-minded government. Read the original article on Business Insider",
+      "summary_html": "OpenAI has a new, more chic name for data centers.<p>Bloomberg/Getty Images</p><ul><li>OpenAI wants to rebrand AI data centers using a new, more alliterative name.</li><li>\"Compute campuses\" is their new-fangled term.</li><li>An OpenAI spokesperson said it better represents the \"role\" of AI infrastructure.</li></ul><p>OpenAI doesn't want to call them \"<a href=\"https://www.businessinsider.com/category/data-centers\">data centers</a>\" anymore.</p><p>Instead, the ChatGPT maker plans to propose a new, more chic name for the behemoth factories that power your chatbot queries.</p><p>That new name is \"compute campuses,\" an OpenAI spokesperson confirmed to Business Insider on Sunday.</p><p>\"Compute campuses better describes the scale and role of the infrastructure we're building for AI,\" the spokesperson said. \"These are long-term investments in computing, energy infrastructure and skilled work.\"</p><p>Though much has been said about the less-than-stellar reputations of AI data centers (a recent Pew Research poll found that 54% of Americans say AI data centers are bad for the environment), efforts to ameliorate that view have mostly failed. Data centers are now a <a href=\"https://www.businessinsider.com/ai-data-centers-backlash-debate-poll-midterm-election-2026-10\">major issue for voters</a> in the midterms.</p><p>While major <a href=\"https://www.businessinsider.com/ai-data-center-near-me-location-tracker-2026-6\">data center builders</a> like Meta, Amazon, and Microsoft have pledged millions of dollars to the communities and schools surrounding their centers, OpenAI is betting that a complete rebrand will also help turn around public opinion.</p><p>\"We want the communities hosting that infrastructure to help shape it and share in the opportunities it creates,\" the OpenAI spokesperson said.</p><p>Time will tell, however, if the \"compute campus\" lingo catches on.</p><p>Axios<strong> </strong>earlier reported that OpenAI was also preparing for a blue wave in Tuesday's midterm elections, which could result in a more regulatory-minded government.</p><div>Read the original article on <a href=\"https://www.businessinsider.com/openai-ai-data-centers-rebrand-compute-campuses-midterms-2026-11\">Business Insider</a></div>",
+      "link": "https://www.businessinsider.com/openai-ai-data-centers-rebrand-compute-campuses-midterms-2026-11",
+      "source": "Business Insider - Content from Business Insider Excluding Premium",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-01T22:28:08+00:00",
+      "published_ts": 1793572088,
+      "smart_groups": [
+        "Energy & data centers"
+      ],
+      "curated": false,
+      "story_id": "33c086ca1438",
+      "story_size": 2
+    },
+    {
+      "title": "Saudi Aramco acquires a 49% stake in AI startup Humain, contributing ~$2.6B in cash in 2026 plus AI, compute, and digital assets; Saudi Arabia's PIF retains 51% (Dean Takahashi/GamesBeat)",
+      "summary": "Dean Takahashi / GamesBeat : Saudi Aramco acquires a 49% stake in AI startup Humain, contributing ~$2.6B in cash in 2026 plus AI, compute, and digital assets; Saudi Arabia's PIF retains 51% \u2014 Join the Leaders Making Gaming's Next Big Deals. GamesBeat NEXT brings 500+ executives, CEOs, founders, and investors to San Francisco \u2026",
+      "summary_html": "<a href=\"https://gamesbeat.com/saudi-arabias-aramco-buy-49-stake-in-ai-firm-humain-for-2-6b/\"></a>\n<p><a href=\"https://www.techmeme.com/261101/p17#a261101p17\"></a> Dean Takahashi / <a href=\"https://gamesbeat.com/\">GamesBeat</a>:<br/>\n<span><b><a href=\"https://gamesbeat.com/saudi-arabias-aramco-buy-49-stake-in-ai-firm-humain-for-2-6b/\">Saudi Aramco acquires a 49% stake in AI startup Humain, contributing ~$2.6B in cash in 2026 plus AI, compute, and digital assets; Saudi Arabia's PIF retains 51%</a></b></span>\u00a0 \u2014\u00a0 Join the Leaders Making Gaming's Next Big Deals.\u00a0 GamesBeat NEXT brings 500+ executives, CEOs, founders, and investors to San Francisco \u2026 </p>",
+      "link": "https://www.techmeme.com/261101/p17#a261101p17",
+      "source": "Techmeme - Tech Web, page A1",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-01T22:15:02+00:00",
+      "published_ts": 1793571302,
+      "smart_groups": [
+        "Business & funding"
+      ],
+      "curated": false
+    },
+    {
+      "title": "OpenAI might rebrand its data centers as \u2018AI compute campuses\u2019",
+      "summary": "Data centers are deeply unpopular. But what if we called them something else?",
+      "summary_html": "Data centers are deeply unpopular. But what if we called them something else?",
+      "link": "https://techcrunch.com/2026/11/01/openai-might-rebrand-its-data-centers-as-ai-compute-campuses/",
+      "source": "TechCrunch - Startup and Technology News",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-01T21:55:23+00:00",
+      "published_ts": 1793570123,
+      "smart_groups": [
+        "Energy & data centers"
+      ],
+      "curated": false,
+      "story_id": "33c086ca1438",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "Business Insider - Content from Business Insider Excluding Premium",
+          "title": "OpenAI wants everyone to call AI data centers 'compute campuses'",
+          "link": "https://www.businessinsider.com/openai-ai-data-centers-rebrand-compute-campuses-midterms-2026-11",
+          "published_ts": 1793572088
+        }
+      ]
+    },
+    {
+      "title": "The Information\u2019s WTF Summit in Pictures",
+      "summary": "At The Information\u2019s annual WTF Summit a few days ago, women leaders from Anthropic, Google, Goldman Sachs and dozens of other companies across technology and media gathered to discuss the forces remaking those industries. Conversation topics ranged from on the state of tech M&A to chip financing to the geopolitics between America and China. Across all of those talks, the VIPs had their eyes fixed on what lies ahead\u2014perhaps no one more so than Amanda Peterson Corio, Google\u2019s global head of data center energy. \u201cI live in 2031,\u201d she told attendees. Below, some scenes from one of our favorite events of the year.",
+      "summary_html": "<p>At The Information\u2019s annual WTF Summit a few days ago, women leaders from Anthropic, Google, Goldman Sachs and dozens of other companies across technology and media gathered to discuss the forces remaking those industries. Conversation topics ranged from on the state of tech M&amp;A to chip financing to the geopolitics between America and China. Across all of those talks, the VIPs had their eyes fixed on what lies ahead\u2014perhaps no one more so than Amanda Peterson Corio, Google\u2019s global head of data center energy. \u201cI live in 2031,\u201d she told attendees. Below, some scenes from one of our favorite events of the year.</p>",
+      "link": "https://www.theinformation.com/articles/informations-wtf-summit-pictures-2",
+      "source": "The Information - The Information has a simple mission: deliver important, deeply reported stories about the technology business you won\u2019t find elsewhere. Many \u2026",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-01T21:52:32+00:00",
+      "published_ts": 1793569952,
+      "smart_groups": [
+        "Chips & hardware",
+        "Policy & government"
+      ],
+      "curated": false
+    },
+    {
+      "title": "OpenAI plans a post-midterms policy and PR blitz, pushing mandatory \"speed limits\" for powerful AI and rebranding its data centers as \"AI compute campuses\" (Axios)",
+      "summary": "Axios : OpenAI plans a post-midterms policy and PR blitz, pushing mandatory \u201cspeed limits\u201d for powerful AI and rebranding its data centers as \u201cAI compute campuses\u201d \u2014 Right after Tuesday's midterms, OpenAI will unleash a policy and PR blitz to try to get in sync with the new Washington \u2026",
+      "summary_html": "<a href=\"https://www.axios.com/2026/11/01/scoop-openai-post-midterm-policy\"></a>\n<p><a href=\"https://www.techmeme.com/261101/p16#a261101p16\"></a> <a href=\"https://www.axios.com/\">Axios</a>:<br/>\n<span><b><a href=\"https://www.axios.com/2026/11/01/scoop-openai-post-midterm-policy\">OpenAI plans a post-midterms policy and PR blitz, pushing mandatory \u201cspeed limits\u201d for powerful AI and rebranding its data centers as \u201cAI compute campuses\u201d</a></b></span>\u00a0 \u2014\u00a0 Right after Tuesday's midterms, OpenAI will unleash a policy and PR blitz to try to get in sync with the new Washington \u2026 </p>",
+      "link": "https://www.techmeme.com/261101/p16#a261101p16",
+      "source": "Techmeme - Tech Web, page A1",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-01T21:30:01+00:00",
+      "published_ts": 1793568601,
+      "smart_groups": [
+        "Policy & government",
+        "Energy & data centers"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Anthropic updates Claude to stop it from recreating existing video games",
+      "summary": "Users can still lean on Claude to help with designing original or genre games.",
+      "summary_html": "Users can still lean on Claude to help with designing original or genre games.<p></p>",
+      "link": "https://www.engadget.com/2303469/anthropic-updates-claude-to-stop-it-from-recreating-existing-video-games/",
+      "source": "Engadget - Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-01T21:08:32+00:00",
+      "published_ts": 1793567312,
+      "smart_groups": [
+        "Model releases"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Elon Musk says he is taking over an old Spam factory and a gun range to expand his Colossus 2 AI complex",
+      "summary": "Elon Musk said his company and contractors are making \"good progress\" at the Colossus 2 site. Finn Gomez/Getty Images Elon Musk is expanding Colossus 2 in Tennessee. Musk said two additional facilities, Spam and Gun Range, will be operational before 2027. Last week, a judge rejected SpaceX's motion to dismiss a lawsuit filed by the NAACP over Colossus 2. Elon Musk isn't wasting any time building out his massive AI-computing facilities in Tennessee. Musk said on X that he's expanding Colossus 2 with two additional sites, dubbed Spam and Gun Range. He said the Spam location used to house Hormel-brand products, Spam perhaps among them , and that the Gun Range location was once owned by the local police department. \"I walked the whole Colossus 2 site around midnight and again this morning. Good progress by the SpaceX team and contractors,\" Musk said on X. \"Gun Range is tracking to be operational by end of November and Spam in December.\" Developing and running AI systems requires enormous amounts of compute power, which led Musk to build a supercomputer called Colossus in Memphis in 2024. xAI, acquired by SpaceX, later expanded the project with Colossus 2 to generate more power for its AI chatbot, Grok. Construction for that campus began last year in Memphis. Supercomputers and data centers are necessary to power AI systems, though they've often drawn ire from communities where the hulking facilities are built. Colossus and Colossus 2 are no different. Residents near Memphis have packed public hearings, staged protests, and created petitions opposing the campuses. In April, the NAACP filed a lawsuit against xAI and its subsidiary, MZX Tech, saying they were unlawfully operating unpermitted methane gas turbines to power Colossus 2. The complaint said xAI was operating the unpermitted gas turbines in Southaven, Mississippi, which is less than 20 minutes away. Last week, a US District Judge denied xAI and MZX Tech's motion to dismiss the lawsuit. Read the original article on Business Insider",
+      "summary_html": "Elon Musk said his company and contractors are making \"good progress\" at the Colossus 2 site.<p>Finn Gomez/Getty Images</p><ul><li>Elon Musk is expanding Colossus 2 in Tennessee.</li><li>Musk said two additional facilities, Spam and Gun Range, will be operational before 2027.</li><li>Last week, a judge rejected SpaceX's motion to dismiss a lawsuit filed by the NAACP over Colossus 2.</li></ul><p><a href=\"https://www.businessinsider.com/elon-musk-savings-ai-abundance-wealth-future-retirement-personal-finance-2026-10\">Elon Musk</a> isn't wasting any time building out his massive AI-computing facilities in Tennessee.</p><p>Musk said on X that he's expanding Colossus 2 with two additional sites, dubbed Spam and Gun Range. He said the Spam location used to house Hormel-brand products,\u00a0Spam perhaps among them<strong>,</strong>\u00a0and that the Gun Range location was once owned by the local police department.</p><p>\"I walked the whole Colossus 2 site around midnight and again this morning. Good progress by the SpaceX team and contractors,\" Musk said on X. \"Gun Range is tracking to be operational by end of November and Spam in December.\"</p><p>Developing and running AI systems requires enormous amounts of compute power, which led Musk to build a <a href=\"https://www.businessinsider.com/xai-memphis-supercomputer-gpus-2024-12\">supercomputer called Colossus</a> in Memphis in 2024. xAI, acquired by SpaceX, later expanded the project with Colossus 2 to generate more power for its AI chatbot, Grok. Construction for that campus began last year in Memphis.</p><p>Supercomputers and <a href=\"https://www.businessinsider.com/ai-data-centers-backlash-debate-poll-midterm-election-2026-10\">data centers</a> are necessary to power AI systems, though they've often drawn ire from communities where the hulking facilities are built. Colossus and Colossus 2 are no different. Residents near Memphis have packed public hearings, staged protests, and created petitions opposing the campuses.</p><p>In April, the NAACP filed a lawsuit against xAI and its subsidiary, MZX Tech, saying they were unlawfully operating unpermitted methane gas turbines to power Colossus 2. The complaint said xAI was operating the unpermitted gas turbines in Southaven, Mississippi, which is less than 20 minutes away. Last week, a US District Judge denied xAI and MZX Tech's motion to dismiss the lawsuit.</p><div>Read the original article on <a href=\"https://www.businessinsider.com/elon-musk-colossus-2-campus-spam-gun-range-2026-11\">Business Insider</a></div>",
+      "link": "https://www.businessinsider.com/elon-musk-colossus-2-campus-spam-gun-range-2026-11",
+      "source": "Business Insider - Content from Business Insider Excluding Premium",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-01T21:06:39+00:00",
+      "published_ts": 1793567199,
+      "smart_groups": [
+        "Business & funding",
+        "Consumer AI"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI can make tech CEOs\u2019 lives easier. What about everyone else?",
+      "summary": "On Equity, we discuss why tech CEO statements can seem so tone deaf.",
+      "summary_html": "On Equity, we discuss why tech CEO statements can seem so tone deaf.",
+      "link": "https://techcrunch.com/2026/11/01/ai-can-make-tech-ceos-lives-easier-what-about-everyone-else/",
+      "source": "TechCrunch - Startup and Technology News",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-01T20:57:58+00:00",
+      "published_ts": 1793566678,
+      "smart_groups": [
+        "Business & funding"
+      ],
+      "curated": false
+    },
     {
       "title": "Giving an AI agent a wallet without giving it your keys",
       "summary": "Agents are starting to pay for things. An agent buying API credits, renting a GPU for an hour or paying for a dataset is no longer a thought experiment, and x402 (HTTP 402 Payment Required with on-chain payment) makes it a normal web request. That leaves the question of how the agent holds money. The two bad options Give the agent a private key. It works until a prompt injection, a bug or a leaked environment file. Then the wallet is empty, and there is nothing between the key and the funds. Approve every payment by hand. Safe, and it removes the reason to use an agent. What people actually want is what they already do with a company card: a limit per purchase, a monthly budget, a list of places it works, and a phone call for anything unusual. Put the limits where the agent can't reach them The limits have to live somewhere the agent, and the machine it runs on, can't change. A smart contract is a good fit: the rules are checked by every node, and changing them needs the owner's key. Purser is an ERC-4337 smart account built for this. The owner grants each agent a session key with a policy: an allow-list of contracts and functions it may call a cap per payment and a budget per period, per token a validity window Inside the policy, the agent pays on its own. Over the limit, the payment becomes an approval request, and it runs only if the owner co-signs. One transaction revokes a key or freezes the whole account. If the agent's key leaks, the damage is bounded: the rest of the current budget, at allowed places, until you revoke it. The part that was harder than it looks ERC-4337 splits an operation into validation and execution, and validation is not allowed to read the clock (ERC-7562), because bundlers have to be able to simulate it reliably. A daily budget is all about the clock. So the checks are split: Validation: signature, validity window, allow-list and per-payment cap. A disallowed call fails here, before it costs anything. Execution: the rolling budget, in executeUserOp , where reading the block time is fine. Two smaller rules that matter: an owner approval raises the amount but never the scope, so an approved payment still has to be to an allowed place; and a revoke earlier in a bundle still stops a later operation in the same bundle. Testing money code Unit tests aren't enough for this. Purser has 41 unit tests through a real EntryPoint, fuzz tests that compare random payment and time sequences against a simple model of the budget, and invariant tests that throw thousands of random calls at the account and check three properties after each one: no spending over budget without approval, no funds moved by a revoked key, no policy change without the owner. Slither runs in CI. It's still early and not audited, which is why everything below runs on a local chain. Agents use it through MCP An MCP server exposes six tools: wallet_status , send_eth , send_token , call_contract , get_request and list_requests . Each payment returns one of three outcomes, written for the model: done with the budget left, waiting for the owner with a request id, or refused with a reason it can act on. Try it docker run --rm -it -p 127.0.0.1:8787:8787 ghcr.io/ahmad-codex/purser:demo Open http://localhost:8787 . The container starts a local chain, deploys everything, and plays the agent story while the console updates. Then connect your own agent: claude mcp add --transport http purser http://localhost:8787/mcp and ask it to pay the merchant 0.3 ETH. The roadmap starts with paying x402 endpoints within the budget, a gas budget per key and EIP-7702 support. It's MIT licensed, and there are good first issues open. If you let agents spend money today, I'd like to hear how you limit it.",
@@ -223,6 +429,22 @@
       "smart_groups": [
         "Business & funding",
         "Energy & data centers"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Top-cited scientists in clinical medicine by country: the Stanford\u2013Elsevier top 2% list in R",
+      "summary": "[",
+      "summary_html": "<!-- \n<div style=\"min-height: 30px;\">\n[social4i size=\"small\" align=\"align-left\"]\n</div>\n-->\n<div>\n[This article was first published on  <strong><a href=\"https://datascienceplus.com/top-cited-scientists-in-clinical-medicine-by-country-the-stanford-elsevier-top-2-list-in-r/\"> R Programming \u2013 DataScience+</a></strong>, and kindly contributed to <a href=\"https://www.r-bloggers.com/\">R-bloggers</a>].  (You can report issue about the content on this page <a href=\"https://www.r-bloggers.com/contact-us/\">here</a>)\nWant to share your content on R-bloggers?<a href=\"https://www.r-bloggers.com/add-your-blog/\"> click here</a> if you have a blog, or <a href=\"http://r-posts.com/\"> here</a> if you don't.\n</div>\n<p>Clinical medicine is by far the largest field in the 2026 Stanford\u2013Elsevier top 2% list: 76,155 of the 249,310 listed authors, 31%, have it as their main field, more than the next three of the 20 fields combined. I wanted to know where those scientists work, and whether the country ranking still looks the same once you ask how many people each country has.</p>\n<p>The data is John Ioannidis\u2019s <a href=\"https://elsevier.digitalcommonsdata.com/datasets/btchxktzyw/9\">science-wide author database</a>, built with Elsevier from Scopus (Ioannidis, J.P.A. (2026), \u201cAugust 2026 data-update for \u2018Updated science-wide author databases of standardized citation indicators\u2019\u201d, Mendeley Data, v9, doi:10.17632/btchxktzyw.9, licensed CC BY-NC 3.0). An author is listed if they rank in the top 100,000 by a composite citation score or in the top 2% of their main subfield. I use the single-year table, which scores citations received during 2025. Each row carries a main field from the Science-Metrix classification (<code>sm-field</code>) and the country of the author\u2019s most recent institution (<code>cntry</code>).</p>\n<p><strong>Find a top-cited scientist or institution:</strong> If you would rather skip the tutorial and find your own name or institution, topcitedscientists.com has the whole 2026 list: <a href=\"https://topcitedscientists.com/\">search for a scientist by name</a> or <a href=\"https://topcitedscientists.com/institutions/\">see institutions ranked</a> by their number of top-cited scientists.</p>\nHow do I count the Stanford\u2013Elsevier top 2% scientists by country in R?\n<p>Download the single-year author table from Mendeley Data, read its <code>Data</code> sheet with readxl, fill the blank countries from the <code>top_cntry_career</code> column, then filter on <code>sm-field</code> and <code>count()</code> the countries. This block runs on its own with readxl 1.5.0 and tidyverse 2.0.0 on R 4.6.1. The file is about 100 MB, so it raises the download timeout first:</p>\n<pre>library(tidyverse)\nlibrary(readxl)\n\nurl &lt;- \"https://data.mendeley.com/public-files/datasets/btchxktzyw/files/a517a94c-3fb0-4cee-b97f-f2d476df66f0/file_downloaded\"\nfile &lt;- \"Table_1_Authors_singleyr_2025_pubs_since_1788_wopp_extracted_202608.xlsx\"\n\noptions(timeout = 600)\nif (!file.exists(file)) {\n  download.file(url, file, mode = \"wb\")\n}\n\nauthors &lt;- read_excel(file, sheet = \"Data\") |&gt;\n  mutate(\n    filled = is.na(cntry),\n    cntry = coalesce(cntry, str_to_lower(top_cntry_career))\n  )\n\nclinical &lt;- authors |&gt;\n  filter(`sm-field` == \"Clinical Medicine\") |&gt;\n  count(cntry, sort = TRUE) |&gt;\n  mutate(share = n / sum(n))\n\nclinical\n## # A tibble: 147 \u00d7 3\n##    cntry     n  share\n##       \n##  1 usa   28458 0.374 \n##  2 gbr    6303 0.0828\n##  3 chn    3924 0.0515\n##  4 deu    3770 0.0495\n##  5 ita    3710 0.0487\n##  6 can    3140 0.0412\n##  7 aus    2943 0.0386\n##  8 fra    2120 0.0278\n##  9 jpn    2074 0.0272\n## 10 nld    1955 0.0257\n## # \u2139 137 more rows\n</pre>\n<p>Three details in that code matter. <code>download.file()</code> gives up after 60 seconds by default, which a slow connection hits long before 100 MB. The workbook\u2019s first sheet is a column key, so <code>read_excel(file)</code> without <code>sheet =</code> quietly returns its 53 rows of definitions instead of the data. And 169 authors have no <code>cntry</code>, 77 of them in clinical medicine, the most of any field; the dataset\u2019s <code>top_cntry_career</code> column (the country that appears most often on their papers) fills them, and the <code>filled</code> column keeps a record of which rows were changed. That moves the US from 28,424 to 28,458.</p>\n<p>The United States has 28,458 of the field\u2019s top-cited scientists, 37.4%. The United Kingdom follows with 6,303, then China (3,924), Germany (3,770) and Italy (3,710). Those five hold 61% of the field, and 146 countries have at least one listed author.</p>\n<p><strong>Related posts on DataScience+:</strong></p><ul><li><a href=\"https://datascienceplus.com/machine-learning-results-one-plot-to-rule-them-all/\">Machine Learning Results in R: one plot to rule them all! (Part 1 \u2013 Classification Models)</a></li><li><a href=\"https://datascienceplus.com/visualize-your-portfolios-performance-and-generate-a-nice-report-with-r/\">Visualize your Portfolio\u2019s Performance and Generate a Nice Report with R</a></li><li><a href=\"https://datascienceplus.com/creating-slopegraphs-with-r/\">Creating Slopegraphs with R</a></li></ul>Per resident, Switzerland and Denmark lead\n<p>A raw count mostly measures how big a country\u2019s research system is. Dividing by population asks a different question: how dense the country\u2019s pool of highly cited clinicians and medical researchers is. I take 2024 population from the World Bank\u2019s API (indicator <code>SP.POP.TOTL</code>, keyless JSON) and keep countries with at least a million residents:</p>\n<pre>wb &lt;- jsonlite::fromJSON(paste0(\n  \"https://api.worldbank.org/v2/country/all/indicator/\",\n  \"SP.POP.TOTL?date=2024&amp;format=json&amp;per_page=400\"\n))\n\npopulation &lt;- wb[[2]] |&gt;\n  as_tibble() |&gt;\n  transmute(\n    cntry = str_to_lower(countryiso3code),\n    country = country$value,\n    pop = value\n  ) |&gt;\n  filter(cntry != \"\")\n\nper_million &lt;- clinical |&gt;\n  inner_join(population, by = \"cntry\") |&gt;\n  filter(pop &gt;= 1e6) |&gt;\n  mutate(per_million = n / pop * 1e6) |&gt;\n  arrange(desc(per_million))\n\nper_million |&gt; select(country, n, per_million) |&gt; head(8)\n## # A tibble: 8 \u00d7 3\n##   country            n per_million\n##                    \n## 1 Switzerland     1345       149. \n## 2 Denmark          820       137. \n## 3 Netherlands     1955       109. \n## 4 Australia       2943       108. \n## 5 Sweden          1028        97.3\n## 6 United Kingdom  6303        91.0\n## 7 United States  28458        83.7\n## 8 Canada          3140        76.1\n</pre>\n<p>Switzerland has 149 top-cited clinical medicine scientists per million residents and Denmark 137, against 84 in the United States, which ranks 7th per resident behind the Netherlands, Australia, Sweden and the United Kingdom. China is 2.8 per million and India 0.9. The floor matters: without it, Monaco\u2019s three listed authors would rank it among the leaders. Taiwan (428 authors) drops out of this table because the World Bank does not publish its population.</p>\n<p></p>\nA country\u2019s count also reflects its field mix\n<p>China is second in the whole list, with 37,204 listed authors across all fields, yet only third in clinical medicine. The reason is what its top-cited scientists work on:</p>\n<pre>field_mix &lt;- authors |&gt;\n  summarise(\n    listed = n(),\n    clinical = mean(`sm-field` == \"Clinical Medicine\"),\n    .by = cntry\n  ) |&gt;\n  arrange(desc(listed))\n\nfield_mix |&gt; head(5)\n## # A tibble: 5 \u00d7 3\n##   cntry listed clinical\n##         \n## 1 usa    73722    0.386\n## 2 chn    37204    0.105\n## 3 gbr    18320    0.344\n## 4 deu    10942    0.345\n## 5 aus     8974    0.328\n</pre>\n<p>Clinical medicine is the main field of 39% of listed US authors and 34% of British ones, against 31% across the whole list and 11% in China, where the largest field is Enabling &amp; Strategic Technologies (8,807 authors). So a field-by-country ranking says as much about where a country\u2019s research effort goes as about how strong it is in that field.</p>\n<p>Two caveats travel with every number here. The list counts citations, not quality, and the dataset\u2019s authors warn against reading it as absolute evidence of excellence. And <code>cntry</code> is where an author works now, not their nationality or where they trained.</p>\n<p><em>This article was first published on <a href=\"https://datascienceplus.com/top-cited-scientists-in-clinical-medicine-by-country-the-stanford-elsevier-top-2-list-in-r/\">DataScience+</a>, a community of R and Python tutorial authors. Have a data-science technique worth sharing? <a href=\"https://datascienceplus.com/write-for-us/\">Write for us</a> \u2014 no pitch required.</em></p>\n<div>\n<div>To <strong>leave a comment</strong> for the author, please follow the link and comment on their blog: <strong><a href=\"https://datascienceplus.com/top-cited-scientists-in-clinical-medicine-by-country-the-stanford-elsevier-top-2-list-in-r/\"> R Programming \u2013 DataScience+</a></strong>.</div>\n\n<a href=\"https://www.r-bloggers.com/\">R-bloggers.com</a> offers <strong><a href=\"https://feedburner.google.com/fb/a/mailverify?uri=RBloggers\">daily e-mail updates</a></strong> about <a href=\"https://www.r-project.org/\">R</a> news and tutorials about <a href=\"https://www.r-bloggers.com/how-to-learn-r-2/\">learning R</a> and many other topics. <a href=\"https://www.r-users.com/\">Click here if you're looking to post or find an R/data-science job</a>.\n\nWant to share your content on R-bloggers?<a href=\"https://www.r-bloggers.com/add-your-blog/\"> click here</a> if you have a blog, or <a href=\"http://r-posts.com/\"> here</a> if you don't.\n</div><strong>Continue reading</strong>: <a href=\"https://www.r-bloggers.com/2026/11/top-cited-scientists-in-clinical-medicine-by-country-the-stanford-elsevier-top-2-list-in-r/\">Top-cited scientists in clinical medicine by country: the Stanford\u2013Elsevier top 2% list in R</a>",
+      "link": "https://www.r-bloggers.com/2026/11/top-cited-scientists-in-clinical-medicine-by-country-the-stanford-elsevier-top-2-list-in-r/",
+      "source": "R-bloggers - R news and tutorials contributed by hundreds of R bloggers",
+      "feed_type": "news",
+      "type": "data-science-mlops",
+      "type_label": "Data Science & MLOps",
+      "published": "2026-11-01T18:31:43+00:00",
+      "published_ts": 1793557903,
+      "smart_groups": [
+        "Health & science"
       ],
       "curated": false
     },

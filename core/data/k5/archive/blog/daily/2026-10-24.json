@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-01T20:45:37.952436+00:00",
+  "generated_at": "2026-11-02T06:35:24.661351+00:00",
   "date": "2026-10-24",
-  "total_items": 8,
+  "total_items": 9,
   "next_chunk": "archive/blog/daily/2026-10-23.json",
   "items": [
     {
@@ -39,6 +39,22 @@
         "Malware / Payloads"
       ],
       "curated": true
+    },
+    {
+      "title": "Abusing Linux fanotify for Anti-Forensics",
+      "summary": "Executive Summary A suspicious file does not have to be hidden to evade inspection. On Linux, a privileged userspace process can use the fanotify API to prevent another process from opening an otherwise accessible file. Its name, ownership, timestamps, and permission bits can remain entirely unremarkable. Nevertheless, an attempt to read its contents fails with EPERM ( Operation not permitted ), even when the requesting process runs as root. A tool that cannot open a file has not necessarily examined it, irrespective of whether the scan completes or reports no detections. At the same time, a malicious fanotify listener is not invisible. Active notification groups and their marks can be investigated through /proc/ /fdinfo , and filesystem-level acquisition offers an alternative to opening the affected pathname.",
+      "summary_html": "Executive Summary\n<p>A suspicious file does not have to be hidden to evade inspection. On Linux, a privileged userspace process can use the <code>fanotify</code> API to prevent another process from opening an otherwise accessible file. Its name, ownership, timestamps, and permission bits can remain entirely unremarkable. Nevertheless, an attempt to read its contents fails with <code>EPERM</code> (<code>Operation not permitted</code>), even when the requesting process runs as root.</p>\n<p>A tool that cannot open a file has not necessarily examined it, irrespective of whether the scan completes or reports no detections. At the same time, a malicious fanotify listener is not invisible. Active notification groups and their marks can be investigated through <code>/proc//fdinfo</code>, and filesystem-level acquisition offers an alternative to opening the affected pathname.</p>",
+      "link": "https://dfir.ch/posts/infoguard_labs_fanotify_rewritten/",
+      "source": "https://dfir.ch/index.xml",
+      "feed_type": "blog",
+      "type": "dfir-forensics",
+      "type_label": "DFIR & Forensics",
+      "published": "2026-10-24T17:58:20+00:00",
+      "published_ts": 1792864700,
+      "smart_groups": [
+        "Linux / Unix"
+      ],
+      "curated": false
     },
     {
       "title": "HTB: Checkpoint",

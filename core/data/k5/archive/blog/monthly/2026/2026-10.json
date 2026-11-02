@@ -7843,6 +7843,22 @@
     "curated": true
   },
   {
+    "title": "Abusing Linux fanotify for Anti-Forensics",
+    "summary": "Executive Summary A suspicious file does not have to be hidden to evade inspection. On Linux, a privileged userspace process can use the fanotify API to prevent another process from opening an otherwise accessible file. Its name, ownership, timestamps, and permission bits can remain entirely unremarkable. Nevertheless, an attempt to read its contents fails with EPERM ( Operation not permitted ), even when the requesting process runs as root. A tool that cannot open a file has not necessarily examined it, irrespective of whether the scan completes or reports no detections. At the same time, a malicious fanotify listener is not invisible. Active notification groups and their marks can be investigated through /proc/ /fdinfo , and filesystem-level acquisition offers an alternative to opening the affected pathname.",
+    "summary_html": "Executive Summary\n<p>A suspicious file does not have to be hidden to evade inspection. On Linux, a privileged userspace process can use the <code>fanotify</code> API to prevent another process from opening an otherwise accessible file. Its name, ownership, timestamps, and permission bits can remain entirely unremarkable. Nevertheless, an attempt to read its contents fails with <code>EPERM</code> (<code>Operation not permitted</code>), even when the requesting process runs as root.</p>\n<p>A tool that cannot open a file has not necessarily examined it, irrespective of whether the scan completes or reports no detections. At the same time, a malicious fanotify listener is not invisible. Active notification groups and their marks can be investigated through <code>/proc//fdinfo</code>, and filesystem-level acquisition offers an alternative to opening the affected pathname.</p>",
+    "link": "https://dfir.ch/posts/infoguard_labs_fanotify_rewritten/",
+    "source": "https://dfir.ch/index.xml",
+    "feed_type": "blog",
+    "type": "dfir-forensics",
+    "type_label": "DFIR & Forensics",
+    "published": "2026-10-24T17:58:20+00:00",
+    "published_ts": 1792864700,
+    "smart_groups": [
+      "Linux / Unix"
+    ],
+    "curated": false
+  },
+  {
     "title": "HTB: Checkpoint",
     "summary": "Checkpoint is an assume breach Active Directory box where the starting account has unusual rights over the AD Recycle Bin. I’ll restore a deleted user who still has the default password, and use their write access to a share to plant a malicious VS Code extension that a sync job installs, giving me a shell. BadSuccessor is patched on this domain controller, but I’ll show that the BetterSuccessor technique still works when I can write to the target account, which gets me its NTLM hash. That account can read a share of VMware backups, where I’ll use vmkatz to pull an administrator hash from a memory snapshot, which turns out to be reused by the domain Administrator.",
     "summary_html": "Checkpoint is an assume breach Active Directory box where the starting account has unusual rights over the AD Recycle Bin. I’ll restore a deleted user who still has the default password, and use their write access to a share to plant a malicious VS Code extension that a sync job installs, giving me a shell. BadSuccessor is patched on this domain controller, but I’ll show that the BetterSuccessor technique still works when I can write to the target account, which gets me its NTLM hash. That account can read a share of VMware backups, where I’ll use vmkatz to pull an administrator hash from a memory snapshot, which turns out to be reused by the domain Administrator.",
