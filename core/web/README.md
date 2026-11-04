@@ -1,73 +1,71 @@
-# Welcome to your Lovable project
+# core/web: shared news frontend
 
-## Project info
+The React SPA (Vite, TypeScript, Tailwind, shadcn-ui) shared by every vertical.
+Which vertical it renders is chosen by `VITE_VERTICAL`. Setup, the pipeline and
+the vertical table are in the [root README](../../README.md); this page only
+covers working inside `core/web`.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+Node 22 is pinned by `.nvmrc`.
 
-## How can I edit this code?
+## Choosing a vertical
 
-There are several ways of editing your application.
+Valid values (see [`.env.example`](.env.example)): `k5`, `4u`, `economics`,
+`storage`, `finnish`. Branding, nav, feature flags and the data path
+(`/data/<vertical>`) come from `src/config/verticals.ts`.
 
-**Use Lovable**
+- **Dev server:** copy `.env.example` to `.env.local` and edit `VITE_VERTICAL`.
+  `VITE_DATA_BASE_PATH` is an optional override.
+- **Build and preview:** `prebuild` reads the shell variable `VITE_VERTICAL`
+  (default `k5`), not `.env.local`. Set it on its own line first, e.g.
+  `export VITE_VERTICAL=finnish`. Do not put it in front of the command.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Commands
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+From `core/web`:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+npm ci                # install from the lockfile
+npm run dev           # dev server; reads .env.local. Sync data first (below)
+npm run lint          # ESLint
+npm run test          # Vitest
+export VITE_VERTICAL=finnish
+npm run build         # runs prebuild, then vite build
+npm run preview       # serve the built dist/
 ```
 
-**Edit a file directly in GitHub**
+`npm run build` runs `prebuild`, which **deletes `public/data`** and re-syncs
+that one vertical's data from `core/data/<vertical>` via
+`core/code/sync_web_data.sh`. `public/data` is gitignored. The dev server does
+not sync, so sync once before `npm run dev`. `sync_web_data.sh` reads only the
+shell variable `VERTICAL` and has no flag; see the root README.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+From the repository root, `make lint` and `make test` run the Python checks and
+then the web ones (ESLint, Vitest). `make` runs `npm ci` in `core/web` first
+when `node_modules` is missing or the lockfile changed.
 
-**Use GitHub Codespaces**
+## Offline checks and the live-digest check
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Offline, no network beyond `npm ci`: `make lint`, `make test` (Python unittest
+suite and Vitest) and `npm run build`.
 
-## What technologies are used for this project?
+The optional browser check of the live digest is separate. It needs network
+access to the live 4u digest and Playwright with Chromium. From the repository
+root:
 
-This project is built with:
+```sh
+npm --prefix core/web ci
+cd core/web && npx playwright install chromium
+cd ../..
+python3 -m unittest discover -s core/web/tests -v
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Add `-k test_web_suite` to run one check. Missing dependencies or unavailable
+live data make it fail; they are not skipped. Details are in the root README.
 
-## How can I deploy this project?
+## Release
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Nothing here publishes. The scheduled GitHub Actions workflow
+(`.github/workflows/update_news_json.yml`) runs the pipeline and commits
+`core/data/`. Each vertical is its own git-integrated Cloudflare Pages project
+that rebuilds from that push. Build settings and the project mapping are in
+[`CLOUDFLARE_DEPLOY.md`](CLOUDFLARE_DEPLOY.md).
