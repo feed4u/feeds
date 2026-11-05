@@ -7774,6 +7774,22 @@
     "curated": false
   },
   {
+    "title": "Wingmen",
+    "summary": "Agentic outreach with real intent data Discussion | Link",
+    "summary_html": "<p>\n            Agentic outreach with real intent data\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/wingmen?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1297689?app_id=339\">Link</a>\n</p>",
+    "link": "https://www.producthunt.com/products/wingmen",
+    "source": "Product Hunt — The best new products, every day",
+    "feed_type": "news",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-29T20:59:23+00:00",
+    "published_ts": 1793307563,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
     "title": "Microsoft’s new Copilot harness makes agents easy — until you want to switch",
     "summary": "Microsoft is opening up the GitHub Copilot agent harness to outside developers through Microsoft Foundry, bringing the same orchestration infrastructure used across its Copilot products into a managed service for building and deploying autonomous agents. Announced Wednesday , the Microsoft Copilot harness is now available in public preview through Foundry Agent Service. It comes with built-in sandboxing, reusable skills, MCP integrations, and support for subagents. Microsoft takes care of running the agent and managing its execution environment, leaving developers to choose a supported model and configure the instructions and tools for their applications. The same harness now supports Copilot Code, Copilot Studio, GitHub Copilot, the CLI, and VS Code. The company is also using GitHub’s agent infrastructure across more of its Copilot products. It’s a continuation of the Foundry strategy outlined at Build 2026 , which focuses on making AI agents easier for companies to run, manage, and control. The same harness now supports Copilot Code, Copilot Studio, GitHub Copilot, the CLI, and VS Code. Inside the managed Copilot harness Microsoft’s harness manages model and tool calls, tracks context, and keeps agents within configured policies. Skills can package instructions, scripts, and supporting resources, while MCP integrations require authentication and approval. Agents can also work with files, run code, and delegate tasks to subagents, with the main agent coordinating the results. Microsoft’s harness manages model and tool calls, tracks context, and keeps agents within configured policies. How developers deploy agents The company’s technical walkthrough shows how this works with a research agent. A Markdown-based skill lays out the steps for collecting evidence, analyzing data, and writing a report, while an azure.yaml file defines the model deployment, tools, instructions, and harness. Developers select microsoft_copilot_preview as the harness type, deploy the agent using azd deploy --all and invoke it through the Azure Developer CLI. They can keep agent configurations and supporting files in source control, making it easier to track changes alongside their application code. Runtime limits and lock-in The Copilot harness must be selected when creating a prompt agent, and that choice can’t be changed later, even in a new version. Microsoft also controls how much CPU and memory the agent gets and how long it can sit idle. Developers can decide what their agents do, but have less control over the environment they run in. Developers can decide what their agents do, but have less control over the environment they run in. Microsoft is positioning its broader harness strategy as multi-model, although there are limits. Developers can choose from compatible models deployed through Foundry, but bringing their own models isn’t supported with the managed Copilot harness. Teams that want more control can use Foundry’s hosted agents instead. Teams can build and run agents using their own frameworks and customize how they operate, while Microsoft handles the hosting. The company also announced general availability of long-running resilience for hosted agents on Wednesday, helping them recover from interruptions during tasks that take hours or even days to complete. Foundry agent pricing explained The Copilot harness in Foundry Agent Service for free until December 1, 2026, although model inference and some tools and connected services still come with separate charges. After that, Microsoft will charge $0.0994 per vCPU-hour for compute and $0.0118 per GiB-hour for memory. Those rates may vary depending on the region and customer agreement.",
     "summary_html": "<p><strong>Microsoft is opening up the GitHub Copilot agent harness to outside developers</strong> through Microsoft Foundry, bringing the same orchestration infrastructure used across its Copilot products into a managed service for building and deploying autonomous agents.</p>\n<p><a href=\"https://devblogs.microsoft.com/foundry/microsoft-copilot-harness-in-foundry/\">Announced Wednesday</a>, the Microsoft Copilot harness is now available in public preview through Foundry Agent Service. It comes with built-in sandboxing, reusable skills, MCP integrations, and support for subagents. Microsoft takes care of running the agent and managing its execution environment, leaving developers to choose a supported model and configure the instructions and tools for their applications.</p>\n<blockquote>\n<p>The same harness now supports Copilot Code, Copilot Studio, GitHub Copilot, the CLI, and VS Code.</p>\n</blockquote>\n<p>The company is also using GitHub’s agent infrastructure across more of its Copilot products. It’s a continuation of the <a href=\"https://thenewstack.io/microsoft-foundry-build-2026-ai-agents/\">Foundry strategy outlined at Build 2026</a>, which focuses on making AI agents easier for companies to run, manage, and control. The same harness now supports Copilot Code, Copilot Studio, GitHub Copilot, the CLI, and VS Code.</p>\nInside the managed Copilot harness\n<p>Microsoft’s harness manages model and tool calls, tracks context, and keeps agents within configured policies. Skills can package instructions, scripts, and supporting resources, while MCP integrations require authentication and approval. Agents can also work with files, run code, and delegate tasks to subagents, with the main agent coordinating the results.</p>\n<blockquote>\n<p>Microsoft’s harness manages model and tool calls, tracks context, and keeps agents within configured policies. </p>\n</blockquote>\nHow developers deploy agents\n<p>The company’s technical walkthrough shows how this works with a research agent. A Markdown-based skill lays out the steps for collecting evidence, analyzing data, and writing a report, while an<code> azure.yaml </code>file defines the model deployment, tools, instructions, and harness.</p>\n<p>Developers select <code>microsoft_copilot_preview</code> as the harness type, deploy the agent using <code>azd deploy --all</code> and invoke it through the Azure Developer CLI. They can keep agent configurations and supporting files in source control, making it easier to track changes alongside their application code.</p>\nRuntime limits and lock-in\n<p>The Copilot harness must be selected when creating a prompt agent, and that choice can’t be changed later, even in a new version. Microsoft also controls how much CPU and memory the agent gets and how long it can sit idle. Developers can decide what their agents do, but have less control over the environment they run in.</p>\n<blockquote>\n<p>Developers can decide what their agents do, but have less control over the environment they run in.</p>\n</blockquote>\n<p>Microsoft is positioning its broader harness strategy as multi-model, although there are limits.  Developers can choose from compatible models deployed through Foundry, but <a href=\"https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/ai-gateway\">bringing their own models</a> isn’t supported with the managed Copilot harness.</p>\n<p>Teams that want more control can use Foundry’s hosted agents instead. Teams can build and run agents using their own frameworks and customize how they operate, while Microsoft handles the hosting. The company also announced general availability of long-running resilience for hosted agents on Wednesday, helping them recover from interruptions during tasks that take hours or even days to complete.</p>\nFoundry agent pricing explained\n<p>The Copilot harness in Foundry Agent Service for free until December 1, 2026, although model inference and some tools and connected services still come with separate charges.</p>\n<p>After that, Microsoft will charge $0.0994 per vCPU-hour for compute and $0.0118 per GiB-hour for memory. Those rates may vary depending on the region and customer agreement.</p>\n<p>The post <a href=\"https://thenewstack.io/microsoft-copilot-harness-foundry/\">Microsoft’s new Copilot harness makes agents easy — until you want to switch</a> appeared first on <a href=\"https://thenewstack.io\">The New Stack</a>.</p>",
@@ -13072,6 +13088,23 @@
     "curated": false
   },
   {
+    "title": "Zerg Client",
+    "summary": "The coding agent harness that drives its own terminal panes Discussion | Link",
+    "summary_html": "<p>\n            The coding agent harness that drives its own terminal panes\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/zerg?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1296574?app_id=339\">Link</a>\n</p>",
+    "link": "https://www.producthunt.com/products/zerg",
+    "source": "Product Hunt — The best new products, every day",
+    "feed_type": "news",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-29T02:11:01+00:00",
+    "published_ts": 1793239861,
+    "smart_groups": [
+      "Agents & automation",
+      "Coding & dev tools"
+    ],
+    "curated": false
+  },
+  {
     "title": "Google is rolling out Gemini 4 Carbon to selected cybersecurity defenders through Fairwind at $2/1M input and $10/1M output tokens, rising to $4 and $20 later (Carl Franzen/VentureBeat)",
     "summary": "Carl Franzen / VentureBeat : Google is rolling out Gemini 4 Carbon to selected cybersecurity defenders through Fairwind at $2/1M input and $10/1M output tokens, rising to $4 and $20 later — Google announced its latest and most intelligent frontier AI model today: Gemini 4 Carbon promises improvements in cybersecurity …",
     "summary_html": "<a href=\"https://venturebeat.com/technology/google-unveils-gemini-4-carbon-retaking-the-worlds-no-1-spot-on-updated-harder-benchmarks-but-access-is-limited\"></a>\n<p><a href=\"https://www.techmeme.com/261028/p63#a261028p63\"></a> Carl Franzen / <a href=\"https://venturebeat.com/\">VentureBeat</a>:<br/>\n<span><b><a href=\"https://venturebeat.com/technology/google-unveils-gemini-4-carbon-retaking-the-worlds-no-1-spot-on-updated-harder-benchmarks-but-access-is-limited\">Google is rolling out Gemini 4 Carbon to selected cybersecurity defenders through Fairwind at $2/1M input and $10/1M output tokens, rising to $4 and $20 later</a></b></span>  —  Google announced its latest and most intelligent frontier AI model today: Gemini 4 Carbon promises improvements in cybersecurity … </p>",
@@ -14150,6 +14183,22 @@
     "smart_groups": [
       "Agents & automation",
       "Coding & dev tools"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Bridge",
+    "summary": "Video conferencing for the agentic era Discussion | Link",
+    "summary_html": "<p>\n            Video conferencing for the agentic era\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/meetonbridge?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1296394?app_id=339\">Link</a>\n</p>",
+    "link": "https://www.producthunt.com/products/meetonbridge",
+    "source": "Product Hunt — The best new products, every day",
+    "feed_type": "news",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-10-28T21:00:49+00:00",
+    "published_ts": 1793221249,
+    "smart_groups": [
+      "Agents & automation"
     ],
     "curated": false
   },
@@ -61871,22 +61920,6 @@
     "smart_groups": [
       "Business & funding",
       "Vision, audio & video"
-    ],
-    "curated": false
-  },
-  {
-    "title": "Data Engineering Log 3/3: Data Storage and Queries",
-    "summary": "I finished Data Storage and Queries , the third course in the DeepLearning.AI + AWS Data Engineering Professional Certificate, on October 3, 2026. The labs were hands-on on AWS, and I cleared the final exam. Course Data Storage and Queries, DeepLearning.AI and Amazon Web Services, on Coursera. Verify certificate: https://coursera.org/verify/6AY7BEQK4RBQ What I did Studied how data is physically stored. That covers storage on disk and in memory, then object, block and file storage, and the databases built on top of those. Followed the evolution of storage architectures. From data warehouses to data lakes to data lakehouses, comparing the advantages and drawbacks of each. Designed a simple data lake with AWS Glue , then built a data lakehouse with AWS Lake Formation and Apache Iceberg . Looked at how queries work behind the scenes. I wrote more advanced SQL, compared query performance on row-oriented versus column-oriented storage, and ran streaming queries with Apache Flink. What I took from it Storage and queries are connected. How data is laid out on disk, row or column, decides how fast a query can run on it, so the storage choice has to be made with the queries in mind. Series: Data Engineering Log, part 3 of 3, from the DeepLearning.AI + AWS Data Engineering Professional Certificate. More of my work is on GitHub .",
-    "summary_html": "<p>I finished <strong>Data Storage and Queries</strong>, the third course in the DeepLearning.AI + AWS Data Engineering Professional Certificate, on October 3, 2026. The labs were hands-on on AWS, and I cleared the final exam.</p>\n\n  \n  \n  Course\n\n<p>Data Storage and Queries, DeepLearning.AI and Amazon Web Services, on Coursera.</p>\n<p><strong>Verify certificate:</strong> <a href=\"https://coursera.org/verify/6AY7BEQK4RBQ\">https://coursera.org/verify/6AY7BEQK4RBQ</a></p>\n\n  \n  \n  What I did\n\n<ul>\n<li>\n<strong>Studied how data is physically stored.</strong> That covers storage on disk and in memory, then object, block and file storage, and the databases built on top of those.</li>\n<li>\n<strong>Followed the evolution of storage architectures.</strong> From data warehouses to data lakes to data lakehouses, comparing the advantages and drawbacks of each.</li>\n<li>\n<strong>Designed a simple data lake with AWS Glue</strong>, then <strong>built a data lakehouse with AWS Lake Formation and Apache Iceberg</strong>.</li>\n<li>\n<strong>Looked at how queries work behind the scenes.</strong> I wrote more advanced SQL, compared query performance on row-oriented versus column-oriented storage, and ran streaming queries with Apache Flink.</li>\n</ul>\n\n  \n  \n  What I took from it\n\n<p>Storage and queries are connected. How data is laid out on disk, row or column, decides how fast a query can run on it, so the storage choice has to be made with the queries in mind.</p>\n<p><strong>Series:</strong> Data Engineering Log, part 3 of 3, from the DeepLearning.AI + AWS Data Engineering Professional Certificate.</p>\n<p>More of my work is on <a href=\"https://github.com/bluntjudg\">GitHub</a>.</p>",
-    "link": "https://dev.to/ayush_pangaonkar/data-engineering-log-33-data-storage-and-queries-57lm",
-    "source": "DEV Community - The most recent home feed on DEV Community.",
-    "feed_type": "news",
-    "type": "general-news",
-    "type_label": "General News",
-    "published": "2026-10-23T05:00:00+00:00",
-    "published_ts": 1792731600,
-    "smart_groups": [
-      "Data & analytics"
     ],
     "curated": false
   }
