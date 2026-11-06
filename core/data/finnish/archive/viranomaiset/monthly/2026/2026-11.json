@@ -871,6 +871,332 @@
     "curated": false
   },
   {
+    "title": "Väliarviointi: Terveys- ja hyvinvointialan kasvuohjelma vauhdittaa tutkimuksia ja terveysdatan hyödyntämistä",
+    "summary": "",
+    "summary_html": "",
+    "link": "https://valtioneuvosto.fi/-/1271139/valiarviointi-terveys-ja-hyvinvointialan-kasvuohjelma-vauhdittaa-tutkimuksia-ja-terveysdatan-hyodyntamista",
+    "source": "Valtioneuvosto",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-06T07:08:00+00:00",
+    "published_ts": 1793948880,
+    "smart_groups": [
+      "Terveys & Sote"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Kyberturvallisuuskeskuksen viikkokatsaus – 45/2026",
+    "summary": "Tällä viikolla etähallittavien automaatiolaitteiden tietoturva on noussut huolenaiheeksi ympäri Eurooppaa. Suomessakin kylmälaitteiden ilkivaltainen hyväksikäyttö on aiheuttanut vahinkoja. Automaatio- ja säätölaitteiden kyberturvallisuuteen on Suomessa panostettu ja suurimmilta vahingoilta vältyttiin. Kyberturvallisuus on tärkeässä roolissa myös kansallisessa riskiarviossa. Taisto-harjoitus antaa eväitä poikkeustilanteista selviytymiseen. Arjen kyberturvallisuudesta kerrotaan lisää Nyt valppaana -tilaisuudessa.",
+    "summary_html": "Tällä viikolla etähallittavien automaatiolaitteiden tietoturva on noussut huolenaiheeksi ympäri Eurooppaa. Suomessakin kylmälaitteiden ilkivaltainen hyväksikäyttö on aiheuttanut vahinkoja. Automaatio- ja säätölaitteiden kyberturvallisuuteen on Suomessa panostettu ja suurimmilta vahingoilta vältyttiin. Kyberturvallisuus on tärkeässä roolissa myös kansallisessa riskiarviossa. Taisto-harjoitus antaa eväitä poikkeustilanteista selviytymiseen. Arjen kyberturvallisuudesta kerrotaan lisää Nyt valppaana -tilaisuudessa.",
+    "link": "https://www.kyberturvallisuuskeskus.fi/fi/uutiset/kyberturvallisuuskeskuksen-viikkokatsaus-452026?mtm_campaign=rss&mtm_source=rss&mtm_medium=rss",
+    "source": "Kaikki ajankohtaiset",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-06T07:00:09+00:00",
+    "published_ts": 1793948409,
+    "smart_groups": [
+      "Teknologia & Tiede"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Vulnerability in Rapid7 Metasploit",
+    "summary": "Classification: Important, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv4.0: 7.3, CVEs: CVE-2026-121139, Summary: The Rapid7 Metasploit msf-ws suffers from a missing authentication vulnerability whereby the REST API grants an unauthenticated \"bootstrap\" exemption so that the very first administrator can be created when the users table is empty. While the table is empty, POST /api/v1/users is exempt from authentication by design: the route handler calls warden.authenticate!(scope: :admin_api), which resolves to AdminApiToken. The inherited ApiToken#authenticate! short-circuits and returns success!() whenever msf.auth_initialized is false, without ever evaluating AdminApiToken's administrator check. In that state the endpoint creates a user — including an administrator — for an entirely unauthenticated caller. See also: https://github.com/rapid7/metasploit-framework/pull/22039",
+    "summary_html": "Classification: Important, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv4.0: 7.3, CVEs: CVE-2026-121139, Summary: The Rapid7 Metasploit msf-ws suffers from a missing authentication vulnerability whereby the REST API grants an unauthenticated \"bootstrap\" exemption so that the very first administrator can be created when the users table is empty. While the table is empty, POST /api/v1/users is exempt from authentication by design: the route handler calls warden.authenticate!(scope: :admin_api), which resolves to AdminApiToken. The inherited ApiToken#authenticate! short-circuits and returns success!() whenever msf.auth_initialized is false, without ever evaluating AdminApiToken's administrator check. In that state the endpoint creates a user — including an administrator — for an entirely unauthenticated caller. See also: https://github.com/rapid7/metasploit-framework/pull/22039",
+    "link": "https://nvd.nist.gov/vuln/detail/cve-2026-121139",
+    "source": "Päivittäinen haavoittuvuuskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-06T03:00:15+00:00",
+    "published_ts": 1793934015,
+    "smart_groups": [],
+    "curated": true
+  },
+  {
+    "title": "Vulnerability in Amazon Firecracker",
+    "summary": "Classification: Severe, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 7.5, CVEs: CVE-2026-122192, Summary: Improper handling of a failed memory remap in Firecracker versions 0.23.0 through 1.16.1 might allow a guest user with root privileges to read or modify Firecracker VMM process memory via balloon or virtio-mem discard requests on microVMs restored from a snapshot with the File memory backend, if the host fails to create the replacement mapping.",
+    "summary_html": "Classification: Severe, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 7.5, CVEs: CVE-2026-122192, Summary: Improper handling of a failed memory remap in Firecracker versions 0.23.0 through 1.16.1 might allow a guest user with root privileges to read or modify Firecracker VMM process memory via balloon or virtio-mem discard requests on microVMs restored from a snapshot with the File memory backend, if the host fails to create the replacement mapping.",
+    "link": "https://aws.amazon.com/security/security-bulletins/2026-169-aws/",
+    "source": "Päivittäinen haavoittuvuuskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-06T03:00:14+00:00",
+    "published_ts": 1793934014,
+    "smart_groups": [],
+    "curated": true
+  },
+  {
+    "title": "Vulnerability in Amazon EKS Network Policy Agent",
+    "summary": "Classification: Severe, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 8.7, CVEs: CVE-2026-122266, Summary: Improper isolation of shared resources in aws-network-policy-agent in Amazon EKS Network Policy Agent before 1.3.7 (VPC CNI before 1.22.3) might allow an authenticated adjacent user to bypass NetworkPolicy ingress enforcement on co-located pods via eBPF conntrack map poisoning using crafted AF_PACKET frames.",
+    "summary_html": "Classification: Severe, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 8.7, CVEs: CVE-2026-122266, Summary: Improper isolation of shared resources in aws-network-policy-agent in Amazon EKS Network Policy Agent before 1.3.7 (VPC CNI before 1.22.3) might allow an authenticated adjacent user to bypass NetworkPolicy ingress enforcement on co-located pods via eBPF conntrack map poisoning using crafted AF_PACKET frames.",
+    "link": "https://aws.amazon.com/security/security-bulletins/2026-170-aws/",
+    "source": "Päivittäinen haavoittuvuuskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-06T03:00:13+00:00",
+    "published_ts": 1793934013,
+    "smart_groups": [],
+    "curated": true
+  },
+  {
+    "title": "Harden cooling systems now, feds warn critical infrastructure operators amid attacks",
+    "summary": "The warning, issued by the Cybersecurity and Infrastructure Security Agency, the FBI and others, comes after hundreds of supermarkets across Europe had their refrigerators remotely hacked and temperatures raised, resulting in potentially millions of euros of spoiled food. Earlier this week, cooling unit controls were tampered with at three of France’s national blood banks, the French Blood Establishment announced, though it’s unclear if the incidents are linked. In their advisory, federal agencies noted that organizations in the healthcare, transportation, food and chemicals sectors “widely” use cooling systems that rely on “automated and remote monitoring of temperatures, continuous temperature logging, defrost cycle management, and energy optimization.” They cautioned that malicious actors may exploit vulnerabilities in “unpatched or internet-accessible controllers to remotely alter settings and force units into continuous heating and defrost cycles, which can cause widespread inventory loss and equipment hazards.”",
+    "summary_html": "The warning, issued by the Cybersecurity and Infrastructure Security Agency, the FBI and others, comes after hundreds of supermarkets across Europe had their refrigerators remotely hacked and temperatures raised, resulting in potentially millions of euros of spoiled food.\n\nEarlier this week, cooling unit controls were tampered with at three of France’s national blood banks, the French Blood Establishment announced, though it’s unclear if the incidents are linked.\n\nIn their advisory, federal agencies noted that organizations in the healthcare, transportation, food and chemicals sectors “widely” use cooling systems that rely on “automated and remote monitoring of temperatures, continuous temperature logging, defrost cycle management, and energy optimization.”\n\nThey cautioned that malicious actors may exploit vulnerabilities in “unpatched or internet-accessible controllers to remotely alter settings and force units into continuous heating and defrost cycles, which can cause widespread inventory loss and equipment hazards.”",
+    "link": "https://therecord.media/cyberattacks-refrigeration-cisa-fbi",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-06T03:00:13+00:00",
+    "published_ts": 1793934013,
+    "smart_groups": [
+      "Teknologia & Tiede"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Critical vulnerabilities in Apache Juneau",
+    "summary": "Classification: Critical, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 10.0, CVEs: CVE-2026-73095, CVE-2026-121489, CVE-2026-96677, CVE-2026-73099, CVE-2026-73100, CVE-2026-73101, CVE-2026-73098, CVE-2026-73116, CVE-2026-73117, Summary: Apache Juneau 9.2.1 fixes multiple vulnerabilities",
+    "summary_html": "Classification: Critical, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 10.0, CVEs: CVE-2026-73095, CVE-2026-121489, CVE-2026-96677, CVE-2026-73099, CVE-2026-73100, CVE-2026-73101, CVE-2026-73098, CVE-2026-73116, CVE-2026-73117, Summary: Apache Juneau 9.2.1 fixes multiple vulnerabilities",
+    "link": "https://lists.apache.org/thread/j05q7vw08j48o96tdlzcsd4sozx1lyl6",
+    "source": "Päivittäinen haavoittuvuuskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-06T03:00:12+00:00",
+    "published_ts": 1793934012,
+    "smart_groups": [],
+    "curated": true
+  },
+  {
+    "title": "Hacking on Autopilot: Inside ARTEX Cybercrime Campaigns",
+    "summary": "Key Points - Agentic hacking platforms like ARTEX, where AI models autonomously drive vulnerability discovery and exploitation, have been observed to be used by various cyber criminals. - Check Point Research’s analysis of the current landscape observed more than 1,800 publicly exposed instances for ARTEX alone, showing a massive scale of deployments. - While previous threat reports on ARTEX focused on the observed telemetry on the victim side, we present artifacts from the operator consoles. This data shows which models were used as well as how the operators prompted their agents. - Most attacks were fully autonomous besides the initial goal setup. Threat actors barely interacted with their agent fleets. - In the observed activity, Chinese models are most prevalent, with Deepseek Flash taking the lead. - Operators mostly only interacted with their agents to check the progress of the current operations – attacks were almost fully autonomous. - The goals set by the attackers were exclusively to carry out opportunistic, financially motivated cybercrime, mostly on a broad scale. Agents abused various web vulnerabilities, such as Remote Code Execution (RCE), to achieve their goals. In some cases, agents were using the access gained to actively carry out supply chain attacks.",
+    "summary_html": "Key Points\n\n- Agentic hacking platforms like ARTEX, where AI models autonomously drive vulnerability discovery and exploitation, have been observed to be used by various cyber criminals.\n\n- Check Point Research’s analysis of the current landscape observed more than 1,800 publicly exposed instances for ARTEX alone, showing a massive scale of deployments.\n\n- While previous threat reports on ARTEX focused on the observed telemetry on the victim side, we present artifacts from the operator consoles. This data shows which models were used as well as how the operators prompted their agents.\n\n- Most attacks were fully autonomous besides the initial goal setup. Threat actors barely interacted with their agent fleets.\n\n- In the observed activity, Chinese models are most prevalent, with Deepseek Flash taking the lead. \n\n- Operators mostly only interacted with their agents to check the progress of the current operations – attacks were almost fully autonomous.\n\n- The goals set by the attackers were exclusively to carry out opportunistic, financially motivated cybercrime, mostly on a broad scale. Agents abused various web vulnerabilities, such as Remote Code Execution (RCE), to achieve their goals. In some cases, agents were using the access gained to actively carry out supply chain attacks.",
+    "link": "https://research.checkpoint.com/2026/hacking-on-autopilot-inside-artex-cybercrime-campaigns/",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-06T03:00:12+00:00",
+    "published_ts": 1793934012,
+    "smart_groups": [
+      "Teknologia & Tiede"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Vulnerability in Keycloak",
+    "summary": "Classification: Important, Solution: Official Fix, Exploit Maturity: Proof-of-Concept, CVSSv3.1: 7.4, CVEs: , Summary: Keycloak 26.8.1 High 7.4 Remote SAML broker leftover. A person with no Keycloak account can finish login as someone else by splitting the signed HTTP-Redirect query. Needs a redirect-signing IdP with validateSignature on and wantAssertionsSigned off.",
+    "summary_html": "Classification: Important, Solution: Official Fix, Exploit Maturity: Proof-of-Concept, CVSSv3.1: 7.4, CVEs: , Summary: Keycloak 26.8.1 High 7.4 Remote SAML broker leftover. A person with no Keycloak account can finish login as someone else by splitting the signed HTTP-Redirect query. Needs a redirect-signing IdP with validateSignature on and wantAssertionsSigned off.",
+    "link": "https://github.com/abraxas/keycloak-saml-redirect-param-split",
+    "source": "Päivittäinen haavoittuvuuskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-06T03:00:11+00:00",
+    "published_ts": 1793934011,
+    "smart_groups": [],
+    "curated": true
+  },
+  {
+    "title": "Norway's aid agency pwned and all users' data is stolen",
+    "summary": "Norway's national aid agency, Norad, has confirmed that cyber criminals broke into its systems, stealing information about each and every registered user of its grant portal. Norad, which coordinates Norway's assistance for foreign development, said that 20,614 registered individuals had their names and email addresses swiped, and information from at least three organizations' applications was \"misdirected.\" The agency clarified that the grant portal, which was launched in 2017, has 20,614 registered users, meaning all were affected, across 12,511 organizations. In addition, the grant applications for at least three organizations are confirmed to be involved, though Norad said it may discover more as its investigation continues.",
+    "summary_html": "Norway's national aid agency, Norad, has confirmed that cyber criminals broke into its systems, stealing information about each and every registered user of its grant portal.\n\nNorad, which coordinates Norway's assistance for foreign development, said that 20,614 registered individuals had their names and email addresses swiped, and information from at least three organizations' applications was \"misdirected.\"\n\nThe agency clarified that the grant portal, which was launched in 2017, has 20,614 registered users, meaning all were affected, across 12,511 organizations.\n\n\nIn addition, the grant applications for at least three organizations are confirmed to be involved, though Norad said it may discover more as its investigation continues.",
+    "link": "https://www.theregister.com/cyber-crime/2026/11/05/norways-aid-agency-pwned-and-all-users-data-is-stolen/5307765",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-06T03:00:11+00:00",
+    "published_ts": 1793934011,
+    "smart_groups": [
+      "Teknologia & Tiede"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Vulnerability in Trellix DPL on-prem extensions",
+    "summary": "Classification: Important, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 7.1, CVEs: CVE-2026-115738, Summary: SQL injection vulnerability in DLP on-prem extensions version 11.13.1 and earlier allows a remote authenticated attacker to inject SQL queries without sanitization or parameterized queries.",
+    "summary_html": "Classification: Important, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 7.1, CVEs: CVE-2026-115738, Summary: SQL injection vulnerability in DLP on-prem extensions version 11.13.1 and earlier allows a remote authenticated attacker to inject SQL queries without sanitization or parameterized queries.",
+    "link": "https://nvd.nist.gov/vuln/detail/cve-2026-115738",
+    "source": "Päivittäinen haavoittuvuuskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-06T03:00:10+00:00",
+    "published_ts": 1793934010,
+    "smart_groups": [],
+    "curated": true
+  },
+  {
+    "title": "Chainalysis warns all users hit in cyber breach involving ‘agentic’ techniques",
+    "summary": "Chainalysis, the blockchain analytics company, said Wednesday night that some information belonging to all its users — which its website says include those in the law enforcement and national security sectors — had been exposed in a cyberattack. The company initially disclosed a breach on October 30, although at the time said it had found no evidence that authentication credentials or session tokens had been accessed. In its latest update, posted Wednesday night, the company said it had discovered “certain customer information including names, usernames, password hashes and live tokens for all Chainalysis users were exposed to a malicious actor.” The perpetrator was not identified. Chainalysis previously said it had “detected an external actor using offensive agentic techniques to gain unauthorized access to Chainalysis systems and internal tools.” It has not explained what it meant by “offensive agentic techniques.” The company initially told customers the breach came amid what it described as “an industry-wide rise in AI-driven cyberattacks.” Although it initially mentioned agentic techniques, it did not explicitly say its own breach was caused by an AI agent.",
+    "summary_html": "Chainalysis, the blockchain analytics company, said Wednesday night that some information belonging to all its users — which its website says include those in the law enforcement and national security sectors — had been exposed in a cyberattack.\n\nThe company initially disclosed a breach on October 30, although at the time said it had found no evidence that authentication credentials or session tokens had been accessed.\n\nIn its latest update, posted Wednesday night, the company said it had discovered “certain customer information including names, usernames, password hashes and live tokens for all Chainalysis users were exposed to a malicious actor.”\n\nThe perpetrator was not identified. Chainalysis previously said it had “detected an external actor using offensive agentic techniques to gain unauthorized access to Chainalysis systems and internal tools.” It has not explained what it meant by “offensive agentic techniques.”\n\nThe company initially told customers the breach came amid what it described as “an industry-wide rise in AI-driven cyberattacks.” Although it initially mentioned agentic techniques, it did not explicitly say its own breach was caused by an AI agent.",
+    "link": "https://therecord.media/chainalysis-all-users-hit-by-agentic-cyberattack",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-06T03:00:10+00:00",
+    "published_ts": 1793934010,
+    "smart_groups": [
+      "Teknologia & Tiede"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Vulnerability in OpenSSH",
+    "summary": "Classification: Severe, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 8.1, CVEs: CVE-2026-123158, Summary: sshd in OpenSSH before 10.6p2 on Linux, when musl libc is used without PAM, lacks a workaround for a password authentication bypass (related to misinterpretation of whether a string is intended to be a password hash). For some configurations of accounts, any password between 256 and 1024 characters succeeds. An example of a platform using musl libc without PAM is Alpine Linux.",
+    "summary_html": "Classification: Severe, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 8.1, CVEs: CVE-2026-123158, Summary: sshd in OpenSSH before 10.6p2 on Linux, when musl libc is used without PAM, lacks a workaround for a password authentication bypass (related to misinterpretation of whether a string is intended to be a password hash). For some configurations of accounts, any password between 256 and 1024 characters succeeds. An example of a platform using musl libc without PAM is Alpine Linux.",
+    "link": "https://www.openssh.org/releasenotes.html#10.6p2",
+    "source": "Päivittäinen haavoittuvuuskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-06T03:00:09+00:00",
+    "published_ts": 1793934009,
+    "smart_groups": [],
+    "curated": true
+  },
+  {
+    "title": "OpenSSH Issues Emergency Fix for Flaw Letting Long Passwords Bypass SSH Auth on Alpine Linux",
+    "summary": "Attackers can log in to accounts that have no password, such as SSH key-only accounts, on some Alpine Linux servers running the standard openssh-server package. They need network access to the server, an account name, and a password between 257 and 1,024 bytes long. OpenSSH, which rates the flaw critical, released version 10.6p2 today to block it. Alpine has published fixed packages for every release back to 3.16. The attack works when the OpenSSH server (sshd) checks passwords without the Pluggable Authentication Module (PAM) interface, password logins are enabled, and at least one other account on the machine has a password. Alpine's openssh-server package is built without PAM, and password logins are on by default. The flaw comes from how sshd works with musl, the C library that Alpine is built on. Non-Linux systems, Linux systems built on glibc, and systems that check passwords through PAM are not affected, said Damien Miller of the OpenSSH project.",
+    "summary_html": "Attackers can log in to accounts that have no password, such as SSH key-only accounts, on some Alpine Linux servers running the standard openssh-server package. They need network access to the server, an account name, and a password between 257 and 1,024 bytes long.\n\nOpenSSH, which rates the flaw critical, released version 10.6p2 today to block it. Alpine has published fixed packages for every release back to 3.16.\n\nThe attack works when the OpenSSH server (sshd) checks passwords without the Pluggable Authentication Module (PAM) interface, password logins are enabled, and at least one other account on the machine has a password. Alpine's openssh-server package is built without PAM, and password logins are on by default.\n\nThe flaw comes from how sshd works with musl, the C library that Alpine is built on. Non-Linux systems, Linux systems built on glibc, and systems that check passwords through PAM are not affected, said Damien Miller of the OpenSSH project.",
+    "link": "https://thehackernews.com/2026/11/openssh-issues-emergency-fix-for-flaw.html",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-06T03:00:09+00:00",
+    "published_ts": 1793934009,
+    "smart_groups": [
+      "Teknologia & Tiede"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Vulnerabilities in Red Hat Enterprise Linux 10",
+    "summary": "Classification: Severe, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 8.2, CVEs: CVE-2026-121994, CVE-2026-121995, CVE-2026-121996, CVE-2026-121997, Summary: CVE-2026-121994 (CVSS: 8.8): A stack buffer overflow in the GDB client's remote protocol handler allows an attacker-controlled debug target to execute arbitrary code in the GDB process. The vulnerability exists in fetch_register_using_p, which decodes a stub's register reply into an alloca-sized buffer without bounding writes by the register width. CVE-2026-121995 (CVSS: 7.5): A stack buffer overflow in the GDB client's tracepoint upload handler allows an attacker-controlled debug stub to corrupt stack memory automatically during connection setup. The overflow results from GDB reading beyond the current reply boundary into a stale prior reply in the shared packet buffer. CVE-2026-121996 (CVSS: 8.2): A length validation flaw in gdbserver's agent-expression parser allows an unauthenticated remote attacker to read uninitialized heap memory from the gdbserver process and cause a denial of service. Disclosed heap content includes addresses suitable for defeating ASLR in further exploitation. CVE-2026-121997 (CVSS: 8.1): A heap buffer overflow in gdbserver's QTDPsrc packet handler allows an unauthenticated remote attacker to achieve native code execution in the gdbserver process. The vulnerability results from a mismatch between a packet's declared source length and the actual data length, causing hex2bin to write beyond the allocated heap buffer. See also: https://access.redhat.com/security/cve/cve-2026-121995, See also: https://access.redhat.com/security/cve/cve-2026-121996, See also: https://access.redhat.com/security/cve/cve-2026-121997",
+    "summary_html": "Classification: Severe, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 8.2, CVEs: CVE-2026-121994, CVE-2026-121995, CVE-2026-121996, CVE-2026-121997, Summary: CVE-2026-121994 (CVSS: 8.8): A stack buffer overflow in the GDB client's remote protocol handler allows an attacker-controlled debug target to execute arbitrary code in the GDB process. The vulnerability exists in fetch_register_using_p, which decodes a stub's register reply into an alloca-sized buffer without bounding writes by the register width.\n\nCVE-2026-121995 (CVSS: 7.5): A stack buffer overflow in the GDB client's tracepoint upload handler allows an attacker-controlled debug stub to corrupt stack memory automatically during connection setup. The overflow results from GDB reading beyond the current reply boundary into a stale prior reply in the shared packet buffer.\n\nCVE-2026-121996 (CVSS: 8.2): A length validation flaw in gdbserver's agent-expression parser allows an unauthenticated remote attacker to read uninitialized heap memory from the gdbserver process and cause a denial of service. Disclosed heap content includes addresses suitable for defeating ASLR in further exploitation.\n\nCVE-2026-121997 (CVSS: 8.1): A heap buffer overflow in gdbserver's QTDPsrc packet handler allows an unauthenticated remote attacker to achieve native code execution in the gdbserver process. The vulnerability results from a mismatch between a packet's declared source length and the actual data length, causing hex2bin to write beyond the allocated heap buffer. See also: https://access.redhat.com/security/cve/cve-2026-121995, See also: https://access.redhat.com/security/cve/cve-2026-121996, See also: https://access.redhat.com/security/cve/cve-2026-121997",
+    "link": "https://access.redhat.com/security/cve/cve-2026-121994",
+    "source": "Päivittäinen haavoittuvuuskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-06T03:00:08+00:00",
+    "published_ts": 1793934008,
+    "smart_groups": [],
+    "curated": true
+  },
+  {
+    "title": "Zyxel GS1900 Patch Fails to Block Zero-Day Exploit Allowing Root Command Execution",
+    "summary": "Zyxel GS1900 network switches that received the vendor's earlier fix for an actively exploited flaw are still open to the exploit attackers used, researchers at Binarly found. The exploit lets anyone who can reach a switch's web management interface run commands on it without logging in. Zyxel has released new firmware for 10 GS1900 models that closes the hole. The earlier fix is the 2.90 Patch 2 firmware, named in a June 16 advisory for a flaw tracked as CVE-2026-7273. The new 2.90 Patch 3 firmware fixes a flaw now tracked separately as CVE-2026-107441, which the exploit relies on. It was posted on October 23, and the vendor announced it in an advisory earlier this week. The researchers, who reported the flaw to the vendor on September 29, call it a zero-day. Attackers already had a working exploit for it by then. GreyNoise, which monitors attack traffic through a network of sensors, reported on September 21 that attackers took data from 996 GS1900 switches around August 17. It tied the attacks to CVE-2026-7273, and the researchers say the exploit it described matches the one they found.",
+    "summary_html": "Zyxel GS1900 network switches that received the vendor's earlier fix for an actively exploited flaw are still open to the exploit attackers used, researchers at Binarly found.\n\nThe exploit lets anyone who can reach a switch's web management interface run commands on it without logging in. Zyxel has released new firmware for 10 GS1900 models that closes the hole.\n\nThe earlier fix is the 2.90 Patch 2 firmware, named in a June 16 advisory for a flaw tracked as CVE-2026-7273. The new 2.90 Patch 3 firmware fixes a flaw now tracked separately as CVE-2026-107441, which the exploit relies on. It was posted on October 23, and the vendor announced it in an advisory earlier this week.\n\nThe researchers, who reported the flaw to the vendor on September 29, call it a zero-day. Attackers already had a working exploit for it by then.\n\nGreyNoise, which monitors attack traffic through a network of sensors, reported on September 21 that attackers took data from 996 GS1900 switches around August 17. It tied the attacks to CVE-2026-7273, and the researchers say the exploit it described matches the one they found.",
+    "link": "http://thehackernews.com/2026/11/zyxel-gs1900-patch-fails-to-block-zero.html",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-06T03:00:08+00:00",
+    "published_ts": 1793934008,
+    "smart_groups": [
+      "Teknologia & Tiede"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Vulnerabilities in Red Hat Build of Keycloak",
+    "summary": "Classification: Severe, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 8.1, CVEs: CVE-2026-103112, CVE-2026-107123, CVE-2026-107602, CVE-2026-110931, CVE-2026-110932, CVE-2026-112208, CVE-2026-114232, Summary: CVE-2026-103112 (CVSS: 7.5): A flaw was found in the authentication session handling of the keycloak-services component in Keycloak. The issue occurs because the system fails to verify if an authenticator is valid for the current authentication flow when switching between the standard authentication path and the reset credentials path. An authenticated attacker can exploit this by triggering a race condition during the credential reset process to associate their successful authentication state with another user's session. This can result in the attacker gaining full access to the victim's account and changing their password. CVE-2026-107123 (CVSS: 7.5): A flaw was found in the SAML XML processing component of Keycloak, an open-source identity and access management solution. The issue occurs when the server parses XML documents containing excessively long dateTime or duration values. Because these strings are not properly validated before processing, the XML parser consumes excessive CPU time. An unauthenticated remote attacker can exploit this by sending specially crafted SAML requests to the server, leading to high CPU utilization and a denial of service for all users. CVE-2026-107602 (CVSS: 7.5): A flaw was found in the SAML 1.1 XML parsing logic of Keycloak, an open-source identity and access management solution. The issue occurs when the parser encounters unexpected elements within a security token's key information section, causing the processing thread to enter an infinite loop. An unauthenticated remote attacker could exploit this by sending specially crafted requests, leading to 100% CPU usage and a total denial of service that requires a server restart to resolve. CVE-2026-110931 (CVSS: 7.5): A flaw was found in the SAML 1.1 assertion parser of Keycloak, a tool used for identity and access management. The issue occurs when the parser handles a specific element called AuthorityBinding within an authentication statement. Due to an incomplete fix for a previous vulnerability, the parser can enter an infinite loop that consumes all available memory, causing the entire Keycloak service to crash and become unavailable to users. CVE-2026-110932 (CVSS: 7.5): A flaw was found in the theme resource endpoint of Keycloak, an open-source identity and access management solution. The issue occurs because the server fails to validate theme names before using them as keys for an on-disk gzip cache. An unauthenticated attacker can exploit this by sending many requests with unique, fabricated theme names, leading to persistent disk space exhaustion that survives server restarts and causes service disruptions. CVE-2026-112208 (CVSS: 8.1): A flaw was found in the Organization identity-first login flow of the Keycloak authentication server. Keycloak is an open-source identity and access management solution used to secure modern applications and services. The issue occurs when an attacker who belongs to multiple organizations initiates a login and then switches to a registration or password reset path. During this process, a flag indicating a successful login is not properly cleared when the user is removed from the session. An attacker can then provide a victim's username, and the system incorrectly treats the stale flag as proof of the victim's identity. This allows the attacker to bypass authentication and gain full access to the victim's account and connected applications. CVE-2026-114232 (CVSS: 8.1): A flaw was found in the UserManagedPermissionService of the Keycloak authorization server. The UMA Protection API, which manages user permissions, fails to validate the resourceType field when a user creates a new policy. This allows an attacker to create a policy that applies to resources owned by other users, potentially leading to unauthorized access or modification of sensitive data across the entire realm. See also: https://access.redhat.com/security/cve/cve-2026-107123, See also: https://access.redhat.com/security/cve/cve-2026-107602, See also: https://access.redhat.com/security/cve/cve-2026-110931, See also: https://access.redhat.com/security/cve/cve-2026-110932, See also: https://access.redhat.com/security/cve/cve-2026-112208, See also: https://access.redhat.com/security/cve/cve-2026-114232",
+    "summary_html": "Classification: Severe, Solution: Official Fix, Exploit Maturity: Not Defined, CVSSv3.1: 8.1, CVEs: CVE-2026-103112, CVE-2026-107123, CVE-2026-107602, CVE-2026-110931, CVE-2026-110932, CVE-2026-112208, CVE-2026-114232, Summary: CVE-2026-103112 (CVSS: 7.5): A flaw was found in the authentication session handling of the keycloak-services component in Keycloak. The issue occurs because the system fails to verify if an authenticator is valid for the current authentication flow when switching between the standard authentication path and the reset credentials path. An authenticated attacker can exploit this by triggering a race condition during the credential reset process to associate their successful authentication state with another user's session. This can result in the attacker gaining full access to the victim's account and changing their password.\n\nCVE-2026-107123 (CVSS: 7.5): A flaw was found in the SAML XML processing component of Keycloak, an open-source identity and access management solution. The issue occurs when the server parses XML documents containing excessively long dateTime or duration values. Because these strings are not properly validated before processing, the XML parser consumes excessive CPU time. An unauthenticated remote attacker can exploit this by sending specially crafted SAML requests to the server, leading to high CPU utilization and a denial of service for all users.\n\nCVE-2026-107602 (CVSS: 7.5): A flaw was found in the SAML 1.1 XML parsing logic of Keycloak, an open-source identity and access management solution. The issue occurs when the parser encounters unexpected elements within a security token's key information section, causing the processing thread to enter an infinite loop. An unauthenticated remote attacker could exploit this by sending specially crafted requests, leading to 100% CPU usage and a total denial of service that requires a server restart to resolve.\n\nCVE-2026-110931 (CVSS: 7.5): A flaw was found in the SAML 1.1 assertion parser of Keycloak, a tool used for identity and access management. The issue occurs when the parser handles a specific element called AuthorityBinding within an authentication statement. Due to an incomplete fix for a previous vulnerability, the parser can enter an infinite loop that consumes all available memory, causing the entire Keycloak service to crash and become unavailable to users.\n\nCVE-2026-110932 (CVSS: 7.5): A flaw was found in the theme resource endpoint of Keycloak, an open-source identity and access management solution. The issue occurs because the server fails to validate theme names before using them as keys for an on-disk gzip cache. An unauthenticated attacker can exploit this by sending many requests with unique, fabricated theme names, leading to persistent disk space exhaustion that survives server restarts and causes service disruptions.\n\nCVE-2026-112208 (CVSS: 8.1): A flaw was found in the Organization identity-first login flow of the Keycloak authentication server. Keycloak is an open-source identity and access management solution used to secure modern applications and services. The issue occurs when an attacker who belongs to multiple organizations initiates a login and then switches to a registration or password reset path. During this process, a flag indicating a successful login is not properly cleared when the user is removed from the session. An attacker can then provide a victim's username, and the system incorrectly treats the stale flag as proof of the victim's identity. This allows the attacker to bypass authentication and gain full access to the victim's account and connected applications.\n\nCVE-2026-114232 (CVSS: 8.1): A flaw was found in the UserManagedPermissionService of the Keycloak authorization server. The UMA Protection API, which manages user permissions, fails to validate the resourceType field when a user creates a new policy. This allows an attacker to create a policy that applies to resources owned by other users, potentially leading to unauthorized access or modification of sensitive data across the entire realm. See also: https://access.redhat.com/security/cve/cve-2026-107123, See also: https://access.redhat.com/security/cve/cve-2026-107602, See also: https://access.redhat.com/security/cve/cve-2026-110931, See also: https://access.redhat.com/security/cve/cve-2026-110932, See also: https://access.redhat.com/security/cve/cve-2026-112208, See also: https://access.redhat.com/security/cve/cve-2026-114232",
+    "link": "https://access.redhat.com/security/cve/cve-2026-103112",
+    "source": "Päivittäinen haavoittuvuuskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-06T03:00:07+00:00",
+    "published_ts": 1793934007,
+    "smart_groups": [],
+    "curated": true
+  },
+  {
+    "title": "Hackers Exploit Patched Apple Flaw to Deliver Info-Stealing Malware, CISA Says",
+    "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Wednesday added a medium-severity security flaw impacting multiple Apple operating systems to its Known Exploited Vulnerabilities (KEV) catalog, following reports of active exploitation. The vulnerability in question is CVE-2024-27834 (CVSS score: 5.5), a case of improper authentication that could allow an attacker with arbitrary read and write capability to bypass Pointer Authentication. It was addressed by Apple in May 2024 with improved checks in iOS 16.7.8 and iPadOS 16.7.8, iOS 17.5 and iPadOS 17.5, macOS Sonoma 14.5, tvOS 17.5, watchOS 10.5, and Safari 17.5. The vulnerability was demonstrated as a zero-day at the Pwn2Own Vancouver hacking contest held in March that year. The addition of CVE-2024-27834 to the KEV catalog follows a report from Sekoia that threat actors possibly linked to Russia exploited previously patched vulnerabilities in Safari and Google Chrome to deliver malware capable of harvesting browser and device data.",
+    "summary_html": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Wednesday added a medium-severity security flaw impacting multiple Apple operating systems to its Known Exploited Vulnerabilities (KEV) catalog, following reports of active exploitation.\n\nThe vulnerability in question is CVE-2024-27834 (CVSS score: 5.5), a case of improper authentication that could allow an attacker with arbitrary read and write capability to bypass Pointer Authentication.\n\nIt was addressed by Apple in May 2024 with improved checks in iOS 16.7.8 and iPadOS 16.7.8, iOS 17.5 and iPadOS 17.5, macOS Sonoma 14.5, tvOS 17.5, watchOS 10.5, and Safari 17.5. The vulnerability was demonstrated as a zero-day at the Pwn2Own Vancouver hacking contest held in March that year.\n\nThe addition of CVE-2024-27834 to the KEV catalog follows a report from Sekoia that threat actors possibly linked to Russia exploited previously patched vulnerabilities in Safari and Google Chrome to deliver malware capable of harvesting browser and device data.",
+    "link": "https://thehackernews.com/2026/11/hackers-exploit-patched-apple-flaw-to.html",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-06T03:00:07+00:00",
+    "published_ts": 1793934007,
+    "smart_groups": [
+      "Teknologia & Tiede"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Critical Rails Bug Threatens to Derail Vulnerable Servers",
+    "summary": "A critical vulnerability in Rails could send impacted Web servers off the tracks. Rails, or Ruby on Rails, is a Web application framework built on Ruby. The framework's Active Storage component handles file uploads and can use the ImageMagick image processing suite to analyze uploaded images. And unfortunately, a flaw enables attackers to write arbitrary files to a Web server via ImageMagick. The vulnerability (which is tracked as GHSA-f3w6-w445-fwh9) is critical, with a CVSS score of 9.8, and is considered so severe because an attacker could upload a crafted image file to write arbitrary files, read sensitive files, access secrets such as secret_key_base files, external system credentials, database passwords, and third-party tokens. These secrets could then be used for lateral movement or remote code execution into said external systems.",
+    "summary_html": "A critical vulnerability in Rails could send impacted Web servers off the tracks.\n\nRails, or Ruby on Rails, is a Web application framework built on Ruby. The framework's Active Storage component handles file uploads and can use the ImageMagick image processing suite to analyze uploaded images. And unfortunately, a flaw enables attackers to write arbitrary files to a Web server via ImageMagick.\n\nThe vulnerability (which is tracked as GHSA-f3w6-w445-fwh9) is critical, with a CVSS score of 9.8, and is considered so severe because an attacker could upload a crafted image file to write arbitrary files, read sensitive files, access secrets such as secret_key_base files, external system credentials, database passwords, and third-party tokens. These secrets could then be used for lateral movement or remote code execution into said external systems.",
+    "link": "https://www.darkreading.com/application-security/critical-rails-bug-derail-vulnerable-servers",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-06T03:00:06+00:00",
+    "published_ts": 1793934006,
+    "smart_groups": [],
+    "curated": true
+  },
+  {
+    "title": "Hackers backdoor Linux servers using trojanized CWP web server",
+    "summary": "A new Linux malware called CWPdoor is being distributed through a trojanized version of cwpsrv, the web server behind the Control Web Panel (CWP) management interface. CWPdoor acts as a passive backdoor that sits dormant on the compromised system until the attacker sends a specially crafted request. Researchers at XLab, the cybersecurity research arm of QiAnXin Technology Group, describe CWPdoor as \"exceptionally stealthy\" due to its passive triggering and log suppression feature.",
+    "summary_html": "A new Linux malware called CWPdoor is being distributed through a trojanized version of cwpsrv, the web server behind the Control Web Panel (CWP) management interface.\n\nCWPdoor acts as a passive backdoor that sits dormant on the compromised system until the attacker sends a specially crafted request.\n\nResearchers at XLab, the cybersecurity research arm of QiAnXin Technology Group, describe CWPdoor as \"exceptionally stealthy\" due to its passive triggering and log suppression feature.",
+    "link": "https://www.bleepingcomputer.com/news/security/hackers-backdoor-linux-servers-using-trojanized-cwp-web-server/",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-06T03:00:05+00:00",
+    "published_ts": 1793934005,
+    "smart_groups": [],
+    "curated": true
+  },
+  {
+    "title": "ChatGPT Lockdown Mode Bypass: Phishing, Malware Delivery, and Silent Data Exfiltration",
+    "summary": "Key Takeaways - OpenAI recently introduced Lockdown Mode, an optional advanced security setting designed to protect sensitive user data from prompt injection-based exfiltration attacks. - Check Point Research discovered a vulnerability that allowed attackers to bypass Lockdown Mode, rendering its core protections ineffective. - The vulnerability exposes a wide attack surface, enabling silent exfiltration of entire chat history, credential theft via phishing, and malware delivery. - In ChatGPT Classic, the attack requires zero user interaction: simply having a conversation is enough to trigger silent data exfiltration.",
+    "summary_html": "Key Takeaways\n\n- OpenAI recently introduced Lockdown Mode, an optional advanced security setting designed to protect sensitive user data from prompt injection-based exfiltration attacks.\n\n- Check Point Research discovered a vulnerability that allowed attackers to bypass Lockdown Mode, rendering its core protections ineffective.\n\n- The vulnerability exposes a wide attack surface, enabling silent exfiltration of entire chat history, credential theft via phishing, and malware delivery.\n\n- In ChatGPT Classic, the attack requires zero user interaction: simply having a conversation is enough to trigger silent data exfiltration.",
+    "link": "https://research.checkpoint.com/2026/chatgpt-lockdown-mode-bypass-phishing-malware-delivery-and-silent-data-exfiltration/",
+    "source": "Päivittäinen uutiskooste",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-06T03:00:04+00:00",
+    "published_ts": 1793934004,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Oulun poliisilaitoksen torstai",
+    "summary": "",
+    "summary_html": "Oulun poliisilaitoksen torstai",
+    "link": "https://poliisi.fi/-/oulun-poliisilaitoksen-torstai",
+    "source": "Oulun poliisilaitos",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-06T02:59:00+00:00",
+    "published_ts": 1793933940,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
     "title": "Coreper 1 - Permanent Representatives Committee",
     "summary": "",
     "summary_html": "",
@@ -1281,7 +1607,7 @@
     "smart_groups": [],
     "curated": false,
     "story_id": "81ec3ccc644e",
-    "story_size": 2,
+    "story_size": 3,
     "story_primary": true,
     "story_others": [
       {
@@ -1289,6 +1615,12 @@
         "title": "Paraisten poliisiasema suljetaan väliaikaisesti",
         "link": "https://www.kaarina-lehti.fi/2026/11/paraisten-poliisiasema-suljetaan-valiaikaisesti/",
         "published_ts": 1793887800
+      },
+      {
+        "source": "Aamuset",
+        "title": "Poliisiasema suljetaan väliaikaisesti Paraisilla",
+        "link": "https://aamuset.fi/artikkeli/7130736",
+        "published_ts": 1793946840
       }
     ]
   },
@@ -3472,8 +3804,8 @@
       "Rikokset & Oikeus"
     ],
     "curated": false,
-    "story_id": "04699b51fc36",
-    "story_size": 11
+    "story_id": "974e0eda1214",
+    "story_size": 10
   },
   {
     "title": "Ilmapistoolilla ammuttiin asunnon seinään Kristiinankaupungissa – poliisi tutkii tapahtunutta",
@@ -4334,6 +4666,85 @@
     "published": "2026-11-03T23:00:00+00:00",
     "published_ts": 1793746800,
     "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "ST 15099 2026 ADD 1",
+    "summary": "Markkinoiden yhdentymistä ja valvontaa koskeva paketti – Tanskan lausuma markkinoiden yhdentymistä ja valvontaa koskevan paketin ehdotuksista",
+    "summary_html": "Markkinoiden yhdentymistä ja valvontaa koskeva paketti – Tanskan lausuma markkinoiden yhdentymistä ja valvontaa koskevan paketin ehdotuksista",
+    "link": "https://data.consilium.europa.eu/doc/document/ST-15099-2026-ADD-1/fi/pdf",
+    "source": "Aihe: Talous- ja rahoitusasiat",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-03T23:00:00+00:00",
+    "published_ts": 1793746800,
+    "smart_groups": [
+      "Talous & Työ"
+    ],
+    "curated": false
+  },
+  {
+    "title": "ST 15099 2026 ADD 2",
+    "summary": "Markkinoiden yhdentymistä ja valvontaa koskeva paketti – Tšekin tasavallan lausuma markkinoiden yhdentymistä ja valvontaa koskevan paketin ehdotuksista",
+    "summary_html": "Markkinoiden yhdentymistä ja valvontaa koskeva paketti – Tšekin tasavallan lausuma markkinoiden yhdentymistä ja valvontaa koskevan paketin ehdotuksista",
+    "link": "https://data.consilium.europa.eu/doc/document/ST-15099-2026-ADD-2/fi/pdf",
+    "source": "Aihe: Talous- ja rahoitusasiat",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-03T23:00:00+00:00",
+    "published_ts": 1793746800,
+    "smart_groups": [
+      "Talous & Työ"
+    ],
+    "curated": false
+  },
+  {
+    "title": "ST 15099 2026 ADD 3",
+    "summary": "Markkinoiden yhdentymistä ja valvontaa koskeva paketti – Belgian lausuma markkinoiden yhdentymistä ja valvontaa koskevan paketin ehdotuksista",
+    "summary_html": "Markkinoiden yhdentymistä ja valvontaa koskeva paketti – Belgian lausuma markkinoiden yhdentymistä ja valvontaa koskevan paketin ehdotuksista",
+    "link": "https://data.consilium.europa.eu/doc/document/ST-15099-2026-ADD-3/fi/pdf",
+    "source": "Aihe: Talous- ja rahoitusasiat",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-03T23:00:00+00:00",
+    "published_ts": 1793746800,
+    "smart_groups": [
+      "Talous & Työ"
+    ],
+    "curated": false
+  },
+  {
+    "title": "CM 4872 2026 INIT",
+    "summary": "EUROOPAN UNIONIN NEUVOSTO (yleiset asiat)",
+    "summary_html": "EUROOPAN UNIONIN NEUVOSTO (yleiset asiat)",
+    "link": "https://data.consilium.europa.eu/doc/document/CM-4872-2026-INIT/fi/pdf",
+    "source": "Esityslistat: Muut neuvoston valmisteluelimet",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-03T23:00:00+00:00",
+    "published_ts": 1793746800,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "CM 4892 2026 INIT",
+    "summary": "EUROOPAN UNIONIN NEUVOSTO (koulutus, nuoriso, kulttuuri ja urheilu)",
+    "summary_html": "EUROOPAN UNIONIN NEUVOSTO (koulutus, nuoriso, kulttuuri ja urheilu)",
+    "link": "https://data.consilium.europa.eu/doc/document/CM-4892-2026-INIT/fi/pdf",
+    "source": "Esityslistat: Muut neuvoston valmisteluelimet",
+    "feed_type": "viranomaiset",
+    "type": "officials-authorities",
+    "type_label": "Officials & Authorities",
+    "published": "2026-11-03T23:00:00+00:00",
+    "published_ts": 1793746800,
+    "smart_groups": [
+      "Kulttuuri & Viihde",
+      "Urheilu"
+    ],
     "curated": false
   },
   {
