@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-08T06:28:37.673772+00:00",
+  "generated_at": "2026-11-08T15:30:16.047804+00:00",
   "date": "2026-11-07",
-  "total_items": 50,
+  "total_items": 51,
   "next_chunk": "archive/blog/daily/2026-11-06.json",
   "items": [
     {
@@ -404,6 +404,23 @@
       "published_ts": 1794061356,
       "smart_groups": [
         "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Continual learning on 4 days of real news: an 8B model keeps day 1 at 90.7% vs 26.7% for LoRA, GSM8K unchanged (sealed test) [R]",
+      "summary": "I've been working on continual learning. Each night a model learns that day's news into its weights, then gets asked about it the next morning with nothing in the prompt. One day turns out to be easy. A plain LoRA trained on practice questions gets 93 to 96% the next morning. The hard part is the next night, and the one after that. So I ran Apertus-8B (Swiss AI) through four days of real news (2, 4, 5 and 6 Nov). After every night it was asked about every earlier day again. The pass bars were written down before any question existed. - Day 1 after four nights: 90.7%, vs 26.7% for a LoRA trained night after night on the same practice questions - GSM8K after four nights: 69.2% (model as released: 69.6%). The LoRA fell to 4.4% - Days 2 and 3 dipped to about 70% where the same stories came back in later news. That's what I'm working on now; a sealed rerun on fresh days is set for Wednesday Strict scorer, 295 questions written the next morning by a different model. The method isn't public yet, but every question and answer is: https://huggingface.co/datasets/fintanlabs/overnight-four-nights-2026-11 The benchmark: https://huggingface.co/spaces/fintanlabs/overnight Happy to answer questions about the setup. submitted by /u/Technical_Bench_188 [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/MachineLearning/comments/1xq748x/continual_learning_on_4_days_of_real_news_an_8b/\">  </a>  <!-- SC_OFF --><div><p>I've been working on continual learning. Each night a model learns that day's news into its weights, then gets asked about it the next morning with nothing in the prompt.<br/> One day turns out to be easy. A plain LoRA trained on practice questions gets 93 to 96% the next morning. The hard part is the next night, and the one after that.</p> <p>So I ran Apertus-8B (Swiss AI) through four days of real news (2, 4, 5 and 6 Nov). After every night it was asked about every earlier day again. The pass bars were written down before any question existed.</p> <p>- Day 1 after four nights: 90.7%, vs 26.7% for a LoRA trained night after night on the same practice questions</p> <p>- GSM8K after four nights: 69.2% (model as released: 69.6%). The LoRA fell to 4.4%</p> <p>- Days 2 and 3 dipped to about 70% where the same stories came back in later news. That's what I'm working on now; a sealed rerun on fresh days is set for Wednesday</p> <p>Strict scorer, 295 questions written the next morning by a different model. The method isn't public yet, but every question and answer is: <a href=\"https://huggingface.co/datasets/fintanlabs/overnight-four-nights-2026-11\">https://huggingface.co/datasets/fintanlabs/overnight-four-nights-2026-11</a></p> <p>The benchmark: <a href=\"https://huggingface.co/spaces/fintanlabs/overnight\">https://huggingface.co/spaces/fintanlabs/overnight</a></p> <p>Happy to answer questions about the setup.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Technical_Bench_188\"> /u/Technical_Bench_188 </a> <br/> <span><a href=\"https://i.redd.it/24hvufz5670i1.jpeg\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xq748x/continual_learning_on_4_days_of_real_news_an_8b/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/MachineLearning/comments/1xq748x/continual_learning_on_4_days_of_real_news_an_8b/",
+      "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-07T14:03:52+00:00",
+      "published_ts": 1794060232,
+      "smart_groups": [
+        "Research & papers",
+        "Infra & model ops"
       ],
       "curated": false
     },
