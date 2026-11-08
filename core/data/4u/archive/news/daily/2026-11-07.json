@@ -1,9 +1,73 @@
 {
-  "generated_at": "2026-11-07T20:29:40.192449+00:00",
+  "generated_at": "2026-11-08T06:28:37.556264+00:00",
   "date": "2026-11-07",
-  "total_items": 114,
+  "total_items": 119,
   "next_chunk": "archive/news/daily/2026-11-06.json",
   "items": [
+    {
+      "title": "datasette #3046: Don't serve link: rel=next HTTP headers to Firefox for HTML pages",
+      "summary": "datasette #3046: Don't serve link: rel=next HTTP headers to Firefox for HTML pages I was looking at the Firefox network panel today when I noticed that requests to a Datasette table page were triggering an HTTP prefetch to the next page of rows in that table. This was happening because Datasette pages serve an HTTP link header like this: link: ; rel=\"next\" This is bad. A tiny fraction of the visitors to one of those pages will click the \"next\" link, which means their browser is fetching unnecessary data and the Datasette server is having to render an entire page that then gets thrown away. I dug in and learned that Firefox has an issue that has been open for 24 years about this behavior... And one of the early comments on that issue links to my blog post from 2002 complaining about this feature. I hadn't just forgotten that I had written about it, I had forgotten the feature entirely! Tags: firefox , html , mozilla , datasette",
+      "summary_html": "<p><strong><a href=\"https://github.com/simonw/datasette/issues/3046\">datasette #3046: Don't serve link: rel=next HTTP headers to Firefox for HTML pages</a></strong></p>\nI was looking at the Firefox network panel today when I noticed that requests to a Datasette table page were triggering an <a href=\"https://developer.mozilla.org/en-US/docs/Glossary/Prefetch\">HTTP prefetch</a> to the next page of rows in that table.\n<p>This was happening because Datasette pages serve an HTTP <code>link</code> header like this:</p>\n<p><code>link: ; rel=\"next\"</code></p>\n<p>This is bad. A tiny fraction of the visitors to one of those pages will click the \"next\" link, which means their browser is fetching unnecessary data and the Datasette server is having to render an entire page that then gets thrown away.</p>\n<p>I dug in and learned that Firefox has <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=175418\">an issue</a> that has been open for 24 years about this behavior...</p>\n<p>And one of the early comments on that issue links to <a href=\"https://simonwillison.net/2002/Oct/17/mozillaPrefetching/\">my blog post from 2002</a> complaining about this feature. I hadn't just forgotten that I had written about it, I had forgotten the feature entirely!\n\n\n    <p>Tags: <a href=\"https://simonwillison.net/tags/firefox\">firefox</a>, <a href=\"https://simonwillison.net/tags/html\">html</a>, <a href=\"https://simonwillison.net/tags/mozilla\">mozilla</a>, <a href=\"https://simonwillison.net/tags/datasette\">datasette</a></p></p>",
+      "link": "https://simonwillison.net/2026/Nov/7/link-rel-next/",
+      "source": "Simon Willison's Weblog",
+      "feed_type": "news",
+      "type": "research-explainability",
+      "type_label": "Research Explainability",
+      "published": "2026-11-07T23:57:46+00:00",
+      "published_ts": 1794095866,
+      "smart_groups": [
+        "Data & analytics"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Claude Personal Finance vs. ChatGPT Finances: What sets them apart?",
+      "summary": "Both AI tools offer to delve deep into your bank accounts, but they differ in privacy settings.",
+      "summary_html": "Both AI tools offer to delve deep into your bank accounts, but they differ in privacy settings.<p></p>",
+      "link": "https://www.engadget.com/2310182/claude-vs-chatgpt-personal-finance-comparison/",
+      "source": "Engadget - Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-07T23:10:20+00:00",
+      "published_ts": 1794093020,
+      "smart_groups": [
+        "Consumer AI"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Megaspeed exec was recruited to spy on Nvidia CEO, according to US intelligence memo",
+      "summary": "A memo circulated earlier this year reportedly claimed that China\u2019s Ministry of State Security recruited a female technology executive to spy on Nvidia's CEO.",
+      "summary_html": "A memo circulated earlier this year reportedly claimed that China\u2019s Ministry of State Security recruited a female technology executive to spy on Nvidia's CEO.",
+      "link": "https://techcrunch.com/2026/11/07/chinese-exec-was-recruited-to-spy-on-nvidia-ceo-according-to-us-intelligence-memo/",
+      "source": "TechCrunch - Startup and Technology News",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-07T21:17:08+00:00",
+      "published_ts": 1794086228,
+      "smart_groups": [
+        "Policy & government"
+      ],
+      "curated": false
+    },
+    {
+      "title": "There is no end in sight for the GPU supply problem",
+      "summary": "GPU prices have soared as the supply of memory has tightened, and it doesn't look like this is going to change any time soon (though a few optimists disagree).",
+      "summary_html": "GPU prices have soared as the supply of memory has tightened, and it doesn't look like this is going to change any time soon (though a few optimists disagree).<p></p>",
+      "link": "https://www.engadget.com/2309554/gpu-supply-problem-no-end-in-sight/",
+      "source": "Engadget - Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-07T20:45:00+00:00",
+      "published_ts": 1794084300,
+      "smart_groups": [
+        "Chips & hardware"
+      ],
+      "curated": false
+    },
     {
       "title": "Perch\u00e9 git checkout non riesce ad annullare quello che ha cambiato un agente di coding AI?",
       "summary": "Quando un agente AI modifica i file del tuo progetto e rompe qualcosa, il riflesso \u00e8 git checkout -- . oppure git stash . Entrambi rispondono a una domanda diversa da quella che hai. Git pu\u00f2 riportarti all'ultimo commit. Quello che vuoi \u00e8 la cartella com'era subito prima del turno dell'agente, con il tuo lavoro non ancora committato e i file che git ignora, e senza i file creati dall'agente. L'app desktop di osFoundry risolve il problema con un piccolo store indirizzato per contenuto scritto in Rust, checkpoint_store.rs . Prima che una scrittura dell'agente arrivi a un file, i byte attuali del file vengono salvati in /.osfoundry/checkpoints/blobs/ , e /rewind li riscrive. Qui sotto c'\u00e8 lo stesso design in circa 90 righe di Python con la sola libreria standard, messo a confronto con quattro ricette git su un turno realistico e cronometrato su una copia di un vero albero di sorgenti TypeScript da 4,686 file. Un turno, cinque modi per annullarlo Il progetto di test \u00e8 un sito minuscolo in un repository git: index.html , styles.css (212 righe), app.js e un .env escluso da .gitignore . Dopo l'ultimo commit, l'utente ha cambiato il titolo della pagina in index.html e ha iniziato un notes.md non tracciato. \u00c8 questo lo stato a cui bisogna tornare. Poi arriva il turno dell'agente: riscrive styles.css riducendolo a 41 righe, modifica index.html per caricare un nuovo theme.css , riscrive app.js , fa puntare API_URL in .env a localhost e crea theme.css . Ogni metodo di annullamento \u00e8 stato eseguito su una copia pulita, e uno script ha confrontato ogni file byte per byte con lo stato precedente al turno. checkpoint restore matches the state before the turn: True differs: [] git checkout -- . matches the state before the turn: False differs: ['.env', 'index.html', 'theme.css'] git stash -u matches the state before the turn: False differs: ['.env', 'index.html', 'notes.md'] git checkout + git clean -fd matches the state before the turn: False differs: ['.env', 'index.html', 'notes.md'] git stash create before the turn matches the state before the turn: False differs: ['.env', 'theme.css'] Metodo Cosa va storto git checkout -- . La modifica al titolo dell'utente si perde insieme a quelle dell'agente, theme.css resta, .env mantiene il valore dell'agente git stash -u Le modifiche dell'agente, la modifica al titolo dell'utente e notes.md finiscono tutte insieme in un unico stash, e .env mantiene il valore dell'agente git checkout + git clean -fd theme.css viene rimosso, ma anche notes.md , la modifica al titolo sparisce e .env mantiene il valore dell'agente git stash create prima del turno Tutto ci\u00f2 che \u00e8 tracciato torna indietro, ma theme.css resta e .env non entra mai nello snapshot ripristino del checkpoint Corrisponde allo stato precedente al turno I risultati di git derivano da quello che git \u00e8. Ripristina l'ultimo commit, oppure uno snapshot dei file tracciati e in staging, ed entrambe le cose mescolano il tuo lavoro con quello dell'agente appena nessuno dei due \u00e8 committato. I file ignorati per git sono invisibili a meno che tu non aggiunga -a , e un checkout non cancella mai un file che non esisteva nello snapshot. L'ultima riga \u00e8 la configurazione git pi\u00f9 onesta, uno snapshot preso prima di ogni turno, e sbaglia comunque due file su cinque. Ha anche un effetto collaterale: git add -A mette in staging tutto il tuo lavoro nell'indice vero a ogni turno. Lo store Un checkpoint \u00e8 una lista per turno: per ogni file scritto dall'agente, c'\u00e8 o l'hash del suo contenuto precedente o una nota che dice che non esisteva. I byte finiscono in blobs/ una sola volta per ogni contenuto distinto. import hashlib , json , os , time from pathlib import Path MAX_BLOB = 8 * 1024 * 1024 class Check",
@@ -1880,6 +1944,20 @@
       "smart_groups": [
         "Coding & dev tools"
       ],
+      "curated": false
+    },
+    {
+      "title": "Using caretS3 with ahead::ctxthetaf for Time Series Forecasting",
+      "summary": "[",
+      "summary_html": "<!-- \n<div style=\"min-height: 30px;\">\n[social4i size=\"small\" align=\"align-left\"]\n</div>\n-->\n<div>\n[This article was first published on  <strong><a href=\"https://thierrymoudiki.github.io//blog/2026/11/07/r/ctxthetaf-caretS3\"> T. Moudiki's Webpage - R</a></strong>, and kindly contributed to <a href=\"https://www.r-bloggers.com/\">R-bloggers</a>].  (You can report issue about the content on this page <a href=\"https://www.r-bloggers.com/contact-us/\">here</a>)\nWant to share your content on R-bloggers?<a href=\"https://www.r-bloggers.com/add-your-blog/\"> click here</a> if you have a blog, or <a href=\"http://r-posts.com/\"> here</a> if you don't.\n</div>\n<p><a href=\"https://techtonique.r-universe.dev/ahead/doc/manual.html#ctxthetaf\"><code>ahead::ctxthetaf</code></a> has no more contextual information about the time series (<a href=\"https://techtonique.r-universe.dev/ahead/doc/manual.html#contextridge2f\">ahead::contextridge2f</a> still does), but it still works, and can still be used notably with <code>caretS3</code> (a <code>caret</code> derivative introduced in <a href=\"https://thierrymoudiki.github.io/blog/2026/10/25/r/caretS3-ahead\">https://thierrymoudiki.github.io/blog/2026/10/25/r/caretS3-ahead</a>) to forecast time series data. The following code demonstrates how to use <code>caretS3</code> models for time series forecasting with <code>ahead::ctxthetaf</code>.</p>\n<pre>list_models &lt;- caret::modelLookup()[caret::modelLookup()[,\"forReg\"]==TRUE, 1]\n\nn_models &lt;- length(list_models)\n\npb &lt;- utils::txtProgressBar(min = 0, max = n_models, style = 3)\n\nfor (i in seq_len(n_models))\n{\n  ts_model &lt;- try(ahead::ctxthetaf(y=fdeaths, \n                                   theta = 1,\n                                   h=25L, \n                                   fit_func = function (x, y) caretS3::caretS3(x, y, \n                                                                               method=list_models[i])), \n                  silent = TRUE)\n  if (class(ts_model) != \"try-error\")\n  {\n    plot(ts_model) \n  } \n  utils::setTxtProgressBar(pb, i)\n}\n\nclose(pb)\n</pre>\n<div>\n<div>To <strong>leave a comment</strong> for the author, please follow the link and comment on their blog: <strong><a href=\"https://thierrymoudiki.github.io//blog/2026/11/07/r/ctxthetaf-caretS3\"> T. Moudiki's Webpage - R</a></strong>.</div>\n\n<a href=\"https://www.r-bloggers.com/\">R-bloggers.com</a> offers <strong><a href=\"https://feedburner.google.com/fb/a/mailverify?uri=RBloggers\">daily e-mail updates</a></strong> about <a href=\"https://www.r-project.org/\">R</a> news and tutorials about <a href=\"https://www.r-bloggers.com/how-to-learn-r-2/\">learning R</a> and many other topics. <a href=\"https://www.r-users.com/\">Click here if you're looking to post or find an R/data-science job</a>.\n\nWant to share your content on R-bloggers?<a href=\"https://www.r-bloggers.com/add-your-blog/\"> click here</a> if you have a blog, or <a href=\"http://r-posts.com/\"> here</a> if you don't.\n</div><strong>Continue reading</strong>: <a href=\"https://www.r-bloggers.com/2026/11/using-carets3-with-aheadctxthetaf-for-time-series-forecasting/\">Using caretS3 with ahead::ctxthetaf for Time Series Forecasting</a>",
+      "link": "https://www.r-bloggers.com/2026/11/using-carets3-with-aheadctxthetaf-for-time-series-forecasting/",
+      "source": "R-bloggers - R news and tutorials contributed by hundreds of R bloggers",
+      "feed_type": "news",
+      "type": "data-science-mlops",
+      "type_label": "Data Science & MLOps",
+      "published": "2026-11-07T00:00:00+00:00",
+      "published_ts": 1794009600,
+      "smart_groups": [],
       "curated": false
     }
   ]
