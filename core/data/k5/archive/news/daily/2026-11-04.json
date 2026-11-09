@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-09T07:02:24.591373+00:00",
+  "generated_at": "2026-11-09T19:05:24.825164+00:00",
   "date": "2026-11-04",
-  "total_items": 190,
+  "total_items": 192,
   "next_chunk": "archive/news/daily/2026-11-03.json",
   "items": [
     {
@@ -139,6 +139,24 @@
       "published_ts": 1793828898,
       "smart_groups": [],
       "curated": false
+    },
+    {
+      "title": "Escaping AWS Firecracker from guest userspace: VMM memory corruption (CVE-2026-122192)",
+      "summary": "We just published our research on escaping Firecracker microVMs, coordinated with AWS. The interesting part is how a guest can end up accessing memory belonging to the Firecracker process running outside the VM. The vulnerability: When a microVM is restored from a snapshot using the File memory backend, a failed memory remapping operation can leave KVM referencing a stale host virtual address range. Firecracker may subsequently reuse that memory for its own data, while KVM still considers it guest memory. This allows a malicious guest to read or overwrite Firecracker VMM process memory, crossing the VM isolation boundary. Our research demonstrates an exploit chain from guest userspace to controlled code execution in the host. Affected configurations: Firecracker 0.23.0 - 1.16.1, when restoring snapshots with the File memory backend and a balloon or virtio-mem device. Fixed: Firecracker 1.16.2 and 1.17.0+. AWS advisory: https://aws.amazon.com/security/security-bulletins/2026-169-aws/ The write-up covers the vulnerability, the memory-management behavior behind it, and the exploitation process. We are from Coinspect, the team behind the research. Happy to answer technical questions here. submitted by /u/coinspect [link] [comments]",
+      "summary_html": "<!-- SC_OFF --><div><p>We just published our research on escaping Firecracker microVMs, coordinated with AWS.</p> <p>The interesting part is how a guest can end up accessing memory belonging to the Firecracker process running outside the VM.</p> <p><strong>The vulnerability:</strong> When a microVM is restored from a snapshot using the File memory backend, a failed memory remapping operation can leave KVM referencing a stale host virtual address range. Firecracker may subsequently reuse that memory for its own data, while KVM still considers it guest memory.</p> <p>This allows a malicious guest to read or overwrite Firecracker VMM process memory, crossing the VM isolation boundary.</p> <p>Our research demonstrates an exploit chain from guest userspace to controlled code execution in the host.</p> <p><strong>Affected configurations:</strong> Firecracker 0.23.0 - 1.16.1, when restoring snapshots with the File memory backend and a balloon or virtio-mem device. </p> <p><strong>Fixed:</strong> Firecracker 1.16.2 and 1.17.0+.</p> <p>AWS advisory: <a href=\"https://aws.amazon.com/security/security-bulletins/2026-169-aws/\">https://aws.amazon.com/security/security-bulletins/2026-169-aws/</a></p> <p>The write-up covers the vulnerability, the memory-management behavior behind it, and the exploitation process.</p> <p>We are from Coinspect, the team behind the research. Happy to answer technical questions here.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/coinspect\"> /u/coinspect </a> <br/> <span><a href=\"https://www.coinspect.com/blog/firecracker-escape/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/netsec/comments/1xo0yov/escaping_aws_firecracker_from_guest_userspace_vmm/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/netsec/comments/1xo0yov/escaping_aws_firecracker_from_guest_userspace_vmm/",
+      "source": "/r/netsec",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-11-04T21:47:44+00:00",
+      "published_ts": 1793828864,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Cloud / SaaS",
+        "Community Discussion"
+      ],
+      "curated": true
     },
     {
       "title": "Vercel rolls out new protection against stolen session cookie attacks",
@@ -450,7 +468,7 @@
       "smart_groups": [],
       "curated": false,
       "story_id": "462ec96575da",
-      "story_size": 2,
+      "story_size": 3,
       "story_primary": true,
       "story_others": [
         {
@@ -458,6 +476,12 @@
           "title": "Hackers pull off $133 million French bank heist via service provider",
           "link": "https://www.bleepingcomputer.com/news/security/hackers-pull-off-133-million-french-bank-heist-via-service-provider/",
           "published_ts": 1794065135
+        },
+        {
+          "source": "Help Net Security",
+          "title": "$133 million stolen from French bank via exploited service provider",
+          "link": "https://www.helpnetsecurity.com/2026/11/09/credit-mutuel-arkea-cyberattack-133-million/",
+          "published_ts": 1794218581
         }
       ]
     },
@@ -2753,6 +2777,23 @@
         "Vulnerabilities / CVEs"
       ],
       "curated": true
+    },
+    {
+      "title": "Finding 40+ Vulnerabilities in Healthcare Software Serving More Than 100 Million Patients",
+      "summary": "submitted by /u/idnsec [link] [comments]",
+      "summary_html": "submitted by   <a href=\"https://www.reddit.com/user/idnsec\"> /u/idnsec </a> <br/> <span><a href=\"https://idnsec.com/research/finding-40-vulnerabilities-in-healthcare-software-serving-more-than-100-million-patients/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/netsec/comments/1xng15c/finding_40_vulnerabilities_in_healthcare_software/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/netsec/comments/1xng15c/finding_40_vulnerabilities_in_healthcare_software/",
+      "source": "/r/netsec",
+      "feed_type": "news",
+      "type": "osint-communities-subreddits",
+      "type_label": "OSINT, Communities & Subreddits",
+      "published": "2026-11-04T05:28:24+00:00",
+      "published_ts": 1793770104,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Community Discussion"
+      ],
+      "curated": false
     },
     {
       "title": "Looking for advice: what do you think of this tool? Constructive criticism welcome",
