@@ -1,5 +1,483 @@
 [
   {
+    "title": "L11 N8147 is a neuron that will make Qwen-3.5-4B get things confidently wrong while being weirdly snarky... But also makes it write interesting poetry",
+    "summary": "Inspired by some of the other brain surgery posts, I wanted to see if I could find anything interesting in Qwen. Not particularly useful to make it get things wrong all the time I guess, but I find the poetry it comes out with weirdly fascinating! I think the neuron is basically a dial for contrarian <-> agreeable, but the contrarian snarky setting for some reason writes poems that read in an interesting way. submitted by /u/Tasty-Ad-3753 [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xrkomn/l11_n8147_is_a_neuron_that_will_make_qwen354b_get/\">  </a>  <!-- SC_OFF --><div><p>Inspired by some of the other brain surgery posts, I wanted to see if I could find anything interesting in Qwen. Not particularly useful to make it get things wrong all the time I guess, but I find the poetry it comes out with weirdly fascinating!</p> <p>I think the neuron is basically a dial for contrarian &lt;-&gt; agreeable, but the contrarian snarky setting for some reason writes poems that read in an interesting way. </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Tasty-Ad-3753\"> /u/Tasty-Ad-3753 </a> <br/> <span><a href=\"https://www.reddit.com/gallery/1xrkomn\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xrkomn/l11_n8147_is_a_neuron_that_will_make_qwen354b_get/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xrkomn/l11_n8147_is_a_neuron_that_will_make_qwen354b_get/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T06:42:07+00:00",
+    "published_ts": 1794206527,
+    "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "OKF – the Markdown spec for humans and AI",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://okf.md/\">https://okf.md/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50421832\">https://news.ycombinator.com/item?id=50421832</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://okf.md/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T06:29:05+00:00",
+    "published_ts": 1794205745,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Ask HN: As a human, are you glad the AI bubble is bursting?",
+    "summary": "",
+    "summary_html": "<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50421778\">https://news.ycombinator.com/item?id=50421778</a></p>\n<p>Points: 3</p>\n<p># Comments: 1</p>",
+    "link": "https://news.ycombinator.com/item?id=50421778",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T06:22:08+00:00",
+    "published_ts": 1794205328,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Preview seed fixture (rolling)",
+    "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@a8af1a855687 (migration head: 20261104120000_store_creator_counts_visible_listings). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only synthetic rows (Faker-generated, plus the hand-written preview marketplace) and the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
+    "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@a8af1a855687 (migration head: 20261104120000_store_creator_counts_visible_listings). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only synthetic rows (Faker-generated, plus the hand-written preview marketplace) and the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
+    "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/preview-seed-fixture",
+    "source": "AutoGPT Releases - GitHub releases for AutoGPT",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T06:19:01+00:00",
+    "published_ts": 1794205141,
+    "smart_groups": [
+      "Agents & automation",
+      "Data & analytics"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Those who have lost their job to AI what was your job?",
+    "summary": "I am wondering, what kind of jobs are affected the most.",
+    "summary_html": "<p>I am wondering, what kind of jobs are affected the most.</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50421579\">https://news.ycombinator.com/item?id=50421579</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
+    "link": "https://news.ycombinator.com/item?id=50421579",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T05:56:44+00:00",
+    "published_ts": 1794203804,
+    "smart_groups": [
+      "Work & society"
+    ],
+    "curated": false
+  },
+  {
+    "title": "What If the Next Computer Virus Isn't Software? Rise of AI-Powered USB Threats",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://medium.com/@makalin/what-if-the-next-computer-virus-isnt-software-the-rise-of-ai-powered-usb-threats-0facf6a9247b\">https://medium.com/@makalin/what-if-the-next-computer-virus-isnt-software-the-rise-of-ai-powered-usb-threats-0facf6a9247b</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50421562\">https://news.ycombinator.com/item?id=50421562</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://medium.com/@makalin/what-if-the-next-computer-virus-isnt-software-the-rise-of-ai-powered-usb-threats-0facf6a9247b",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T05:54:02+00:00",
+    "published_ts": 1794203642,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Apple capped engineers at a $200 daily AI budget",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.stork.ai/newsletter/2026-11-08-apple-capped-engineers-at-a-200-daily-ai-budget#story-1\">https://www.stork.ai/newsletter/2026-11-08-apple-capped-engineers-at-a-200-daily-ai-budget#story-1</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50421426\">https://news.ycombinator.com/item?id=50421426</a></p>\n<p>Points: 51</p>\n<p># Comments: 52</p>",
+    "link": "https://www.stork.ai/newsletter/2026-11-08-apple-capped-engineers-at-a-200-daily-ai-budget#story-1",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T05:30:11+00:00",
+    "published_ts": 1794202211,
+    "smart_groups": [
+      "Coding & dev tools"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Anthropic secures $3.4B generator deal for AI data centers",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.reuters.com/business/energy/anthropic-secures-34-billion-generator-deal-ai-data-centers-ft-reports-2026-11-08/\">https://www.reuters.com/business/energy/anthropic-secures-34-billion-generator-deal-ai-data-centers-ft-reports-2026-11-08/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50421371\">https://news.ycombinator.com/item?id=50421371</a></p>\n<p>Points: 3</p>\n<p># Comments: 1</p>",
+    "link": "https://www.reuters.com/business/energy/anthropic-secures-34-billion-generator-deal-ai-data-centers-ft-reports-2026-11-08/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T05:20:26+00:00",
+    "published_ts": 1794201626,
+    "smart_groups": [
+      "Energy & data centers"
+    ],
+    "curated": false,
+    "story_id": "b911ef86f5c7",
+    "story_size": 2
+  },
+  {
+    "title": "AI learns from the products of thinking, not thought itself",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://theconversation.com/ai-learns-from-the-products-of-thinking-not-thought-itself-thats-a-problem-for-machines-and-for-us-293696\">https://theconversation.com/ai-learns-from-the-products-of-thinking-not-thought-itself-thats-a-problem-for-machines-and-for-us-293696</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50421354\">https://news.ycombinator.com/item?id=50421354</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://theconversation.com/ai-learns-from-the-products-of-thinking-not-thought-itself-thats-a-problem-for-machines-and-for-us-293696",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T05:17:12+00:00",
+    "published_ts": 1794201432,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false,
+    "story_id": "ad088b0215d3",
+    "story_size": 2
+  },
+  {
+    "title": "The Collision: What AI Does to Us",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://mitsloan.mit.edu/ideas-made-to-matter/collision-what-ai-does-to-us\">https://mitsloan.mit.edu/ideas-made-to-matter/collision-what-ai-does-to-us</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50421223\">https://news.ycombinator.com/item?id=50421223</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://mitsloan.mit.edu/ideas-made-to-matter/collision-what-ai-does-to-us",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T04:54:59+00:00",
+    "published_ts": 1794200099,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "I Resist Generative \"AI\"",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://estherweidauer.com/articles/why-resist-generative-ai.html\">https://estherweidauer.com/articles/why-resist-generative-ai.html</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50420983\">https://news.ycombinator.com/item?id=50420983</a></p>\n<p>Points: 8</p>\n<p># Comments: 3</p>",
+    "link": "https://estherweidauer.com/articles/why-resist-generative-ai.html",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T04:11:56+00:00",
+    "published_ts": 1794197516,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Official Wanting Data Centers on Public Lands Has >10M Invested in AI Industry",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.propublica.org/article/burgum-public-land-data-centers-investments\">https://www.propublica.org/article/burgum-public-land-data-centers-investments</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50420710\">https://news.ycombinator.com/item?id=50420710</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+    "link": "https://www.propublica.org/article/burgum-public-land-data-centers-investments",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T03:31:35+00:00",
+    "published_ts": 1794195095,
+    "smart_groups": [
+      "Energy & data centers"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: Mindfries- AI Interviewer based on real eng skill not on L**tC*de",
+    "summary": "Hi HN Family, I am Chandan, and have built an AI intrviewer tool that assess the candidate based on real skills of engineering, like working on large codebase to fix, build, and enhance and many deployment type works too with the help of built in AI agent. Google had also introduced the same round for their candidates and all the other platform are checking the Competitive programming which is not suitable to assess every best candidate in the era of AI. Hence I did research, talked to 35+ founders and CTOs, and it took me 2 months to build the proper MVP end to end. I am not good at sales, but the product is awesome and I want the real costumers for it. I would really appreaciate your contribution. Thanks !",
+    "summary_html": "<p>Hi HN Family, \nI am Chandan, and have built an AI intrviewer tool that assess the candidate based on real skills of engineering, like working on large codebase to fix, build, and enhance and many deployment type works too with the help of built in AI agent. \nGoogle had also introduced the same round for their candidates and all the other platform are checking the Competitive programming which is not suitable to assess every best candidate in the era of AI. Hence I did research, talked to 35+ founders and CTOs, and it took me 2 months to build the proper MVP end to end. \nI am not good at sales, but the product is awesome and I want the real costumers for it. I would really appreaciate your contribution.\nThanks !</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50420697\">https://news.ycombinator.com/item?id=50420697</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://company.mindfries.com/login",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T03:30:04+00:00",
+    "published_ts": 1794195004,
+    "smart_groups": [
+      "Agents & automation",
+      "Coding & dev tools"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Github Repo: Torchlens - Inspect, visualize and intervene on any operation in any neural network.",
+    "summary": "submitted by /u/Thrumpwart [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xrh5iz/github_repo_torchlens_inspect_visualize_and/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/Thrumpwart\"> /u/Thrumpwart </a> <br/> <span><a href=\"https://github.com/johnmarktaylor91/torchlens\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xrh5iz/github_repo_torchlens_inspect_visualize_and/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xrh5iz/github_repo_torchlens_inspect_visualize_and/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T03:25:32+00:00",
+    "published_ts": 1794194732,
+    "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Type in Any Task. Get the Best AI Model for It",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://taskrouter.com/tasks\">https://taskrouter.com/tasks</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50420635\">https://news.ycombinator.com/item?id=50420635</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://taskrouter.com/tasks",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T03:20:39+00:00",
+    "published_ts": 1794194439,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Asahi Linux Drops MIT, Goes Full GPL After AI Used to Steal Unreleased Code",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://itsfoss.com/news/asahi-linux-drops-mit-for-gpl/\">https://itsfoss.com/news/asahi-linux-drops-mit-for-gpl/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50420532\">https://news.ycombinator.com/item?id=50420532</a></p>\n<p>Points: 17</p>\n<p># Comments: 12</p>",
+    "link": "https://itsfoss.com/news/asahi-linux-drops-mit-for-gpl/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T03:06:55+00:00",
+    "published_ts": 1794193615,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "New Research Tests Whether AI Models Know Their Own Thoughts",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.quantamagazine.org/new-research-tests-whether-ai-models-know-their-own-thoughts-20261104/\">https://www.quantamagazine.org/new-research-tests-whether-ai-models-know-their-own-thoughts-20261104/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50420330\">https://news.ycombinator.com/item?id=50420330</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://www.quantamagazine.org/new-research-tests-whether-ai-models-know-their-own-thoughts-20261104/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T02:39:19+00:00",
+    "published_ts": 1794191959,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "AI-first browser test automation at $0.01 per step",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.yourAItester.com\">https://www.yourAItester.com</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50420040\">https://news.ycombinator.com/item?id=50420040</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://www.yourAItester.com",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T01:59:19+00:00",
+    "published_ts": 1794189559,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Revolut Cut AI Costs 90% and Started Shipping Faster",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://linas.substack.com/p/revolut-ai-coding-costs-open-source-models\">https://linas.substack.com/p/revolut-ai-coding-costs-open-source-models</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50420025\">https://news.ycombinator.com/item?id=50420025</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://linas.substack.com/p/revolut-ai-coding-costs-open-source-models",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T01:56:17+00:00",
+    "published_ts": 1794189377,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Microsoft Workers Call for Accountable AI",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://dash.palform.app/fill/org_0R2JXZPZ7PFWX/form_0R8K0PRYXGM71?f=fat_0R9JYW9RTDRDS\">https://dash.palform.app/fill/org_0R2JXZPZ7PFWX/form_0R8K0PRYXGM71?f=fat_0R9JYW9RTDRDS</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50419843\">https://news.ycombinator.com/item?id=50419843</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://dash.palform.app/fill/org_0R2JXZPZ7PFWX/form_0R8K0PRYXGM71?f=fat_0R9JYW9RTDRDS",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T01:31:38+00:00",
+    "published_ts": 1794187898,
+    "smart_groups": [
+      "Work & society"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Staff at the US center for AI safety are reporting to the White House",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://apnews.com/article/ai-safety-trump-white-house-d3318eb2cf011df53e9ddb3e03d25f13\">https://apnews.com/article/ai-safety-trump-white-house-d3318eb2cf011df53e9ddb3e03d25f13</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50419747\">https://news.ycombinator.com/item?id=50419747</a></p>\n<p>Points: 4</p>\n<p># Comments: 0</p>",
+    "link": "https://apnews.com/article/ai-safety-trump-white-house-d3318eb2cf011df53e9ddb3e03d25f13",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T01:19:28+00:00",
+    "published_ts": 1794187168,
+    "smart_groups": [
+      "Policy & government",
+      "Safety & alignment"
+    ],
+    "curated": false,
+    "story_id": "f1b4153fefab",
+    "story_size": 2
+  },
+  {
+    "title": "Show HN: Airlock – Policy-as-code for fleets of AI coding agents",
+    "summary": "My name is Matt and I am building Airlock. Airlock is going to be an open standard on managing autonomous fleets of engineering agents. I am seeking constructive feedback on the direction of this project and also asking what are your major pain points with managing AI use at larger businesses. Right now I am running my own company using this framework with a total of 23 workflows across four large scale projects. Airlock is still really early, only 3-4 weeks old. Airlock's configuration standard is aimed to be open source and I will also open source the backplane once I gain a bit more confidence in what I have built here and it is a bit more ready for public scrutiny. Today the schema itself and the reusable GitHub actions are publicly available. I will selfishly figure out how to monetize this at some point but my desired customer is going to be larger enterprises. Airlock kind of does a lot of things but if I had to sum it up in several bullet points it would be: 1) Allows for the configuration of agent behaviors and life cycles under version control. Each agent run proves who it is with GitHub’s OIDC token, and Airlock trades that for a GitHub token that lasts one hour and can only touch the repos and permissions listed in that agent’s role file. 2) Allows for configuring levels of autonomy starting with a repository's base autonomy level with stricter overrides down to individual files within a code base. (e.g. you trust agents for most of the repo but perhaps you want extra gating around the 'billing' or 'auth' modules). 3) Supports a standard autonomy scale. At level 4 agents are leading a project's direction while at level 1 they are dependent on humans to lead the direction of a project. 4) Provides an out-of-the-box OTEL collector that stores a subset of agent actions you would care about in the event of an audit. I’m exploring storing agent prompts and user prompts so that only the customer can decrypt them, and haven’t decided how. 5) Comes with a shadow mode that allows you to run Airlock and observe how it would behave in your org without turning it on. To try it you just need to install the GitHub App, create a policy repository and run on GitHub hosted runners. I personally use self-hosted runners on EC2 spot instances. Visit https://airlock.lunareng.com/docs/quickstart to get started. I have been really passionate lately about exploring how businesses of the [near] future will effectively manage autonomous development using agents at scale. I want to help answer the question of how can the business better manage AI spend, prioritization of token usage, auditability of agent actions and compliance with various governance, risk and compliance frameworks. I am coming from the perspective of being an engineer for 15+ years but I have somehow managed to also develop a good understanding of how larger businesses operate. My vision of the future looks like a world where engineers don't use agent harnesses directly from their computer [for coding]. Instead engineering teams are managing a larger backlog of work that is automatically picked up by these agents. Engineering will instead be less about writing code and more about effectively deploying technology to solve business problems. Thanks for taking a look and I look forward to meeting you in the comments. References: https://github.com/lunareng/airlock-actions https://airlock.lunareng.com/schema/role.schema.json https://airlock.lunareng.com/schema/autonomy.schema.json https://airlock.lunareng.com/schema/config.schema.json https://www.anthropic.com/institute/measuring-pace-of-ai-dev... https://felixrieseberg.com/how-to-be-more-ambitious-a-tutori...",
+    "summary_html": "<p>My name is Matt and I am building Airlock. Airlock is going to be an open standard on managing autonomous fleets of engineering agents. I am seeking constructive feedback on the direction of this project and also asking what are your major pain points with managing AI use at larger businesses. Right now I am running my own company using this framework with a total of 23 workflows across four large scale projects.<p>Airlock is still really early, only 3-4 weeks old.<p>Airlock's configuration standard is aimed to be open source and I will also open source the backplane once I gain a bit more confidence in what I have built here and it is a bit more ready for public scrutiny. Today the schema itself and the reusable GitHub actions are publicly available. I will selfishly figure out how to monetize this at some point but my desired customer is going to be larger enterprises. Airlock kind of does a lot of things but if I had to sum it up in several bullet points it would be:<p>1) Allows for the configuration of agent behaviors and life cycles under version control. Each agent run proves who it is with GitHub’s OIDC token, and Airlock trades that for a GitHub token that lasts one hour and can only touch the repos and permissions listed in that agent’s role file.<p>2) Allows for configuring levels of autonomy starting with a repository's base autonomy level with stricter overrides down to individual files within a code base. (e.g. you trust agents for most of the repo but perhaps you want extra gating around the 'billing' or 'auth' modules).<p>3) Supports a standard autonomy scale. At level 4 agents are leading a project's direction while at level 1 they are dependent on humans to lead the direction of a project.<p>4) Provides an out-of-the-box OTEL collector that stores a subset of agent actions you would care about in the event of an audit. I’m exploring storing agent prompts and user prompts so that only the customer can decrypt them, and haven’t decided how.<p>5) Comes with a shadow mode that allows you to run Airlock and observe how it would behave in your org without turning it on.<p>To try it you just need to install the GitHub App, create a policy repository and run on GitHub hosted runners. I personally use self-hosted runners on EC2 spot instances. Visit <a href=\"https://airlock.lunareng.com/docs/quickstart\">https://airlock.lunareng.com/docs/quickstart</a> to get started.<p>I have been really passionate lately about exploring how businesses of the [near] future will effectively manage autonomous development using agents at scale. I want to help answer the question of how can the business better manage AI spend, prioritization of token usage, auditability of agent actions and compliance with various governance, risk and compliance frameworks.<p>I am coming from the perspective of being an engineer for 15+ years but I have somehow managed to also develop a good understanding of how larger businesses operate. My vision of the future looks like a world where engineers don't use agent harnesses directly from their computer [for coding]. Instead engineering teams are managing a larger backlog of work that is automatically picked up by these agents. Engineering will instead be less about writing code and more about effectively deploying technology to solve business problems.<p>Thanks for taking a look and I look forward to meeting you in the comments.<p>References:\n<a href=\"https://github.com/lunareng/airlock-actions\">https://github.com/lunareng/airlock-actions</a>\n<a href=\"https://airlock.lunareng.com/schema/role.schema.json\">https://airlock.lunareng.com/schema/role.schema.json</a>\n<a href=\"https://airlock.lunareng.com/schema/autonomy.schema.json\">https://airlock.lunareng.com/schema/autonomy.schema.json</a>\n<a href=\"https://airlock.lunareng.com/schema/config.schema.json\">https://airlock.lunareng.com/schema/config.schema.json</a>\n<a href=\"https://www.anthropic.com/institute/measuring-pace-of-ai-development\">https://www.anthropic.com/institute/measuring-pace-of-ai-dev...</a>\n<a href=\"https://felixrieseberg.com/how-to-be-more-ambitious-a-tutorial-for-humans-with-models/\">https://felixrieseberg.com/how-to-be-more-ambitious-a-tutori...</a></p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50419615\">https://news.ycombinator.com/item?id=50419615</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p></p></p></p></p></p></p></p></p></p></p></p></p>",
+    "link": "https://airlock.lunareng.com/docs",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T00:59:27+00:00",
+    "published_ts": 1794185967,
+    "smart_groups": [
+      "Agents & automation",
+      "Coding & dev tools",
+      "Policy & government"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Learning Abstractions: The Next Frontier for AI",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://twitter.com/jmugan/status/2119593410268999700\">https://twitter.com/jmugan/status/2119593410268999700</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50419555\">https://news.ycombinator.com/item?id=50419555</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://twitter.com/jmugan/status/2119593410268999700",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T00:51:19+00:00",
+    "published_ts": 1794185479,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Joined the 4x R9700 Club | Initial Benchmarks for QFN 3.8 Below",
+    "summary": "Posted this on the r/R9700 subreddit as well, but figured I'd share my initial findings here. tl;dr - One user writes at about 190 tok/s. Prefill runs at about 6,800 tok/s total no matter how many users there are. Agent follow-ups start in 0.2 to 2.5 s and write at 80 to 225 tok/s per user, even with 8 users at 128K context each. The worst case, 8 users each sending a fresh 128K prompt at the same moment, waits about 2.5 minutes for the first token. Yes yes I know the cards aren't all matching (the perfectionist in me is annoyed but they'll be in a case so who cares). PC Specs: CPU - EPYC 7402P Motherboard - Asrock ROMED8-2T RAM - 128gb DDR4 2666mh GPU - 3x Gigabyte R9700, 1x XFX R9700. All cards power limited to 210W. PSU - Seasonic Prime TX-1600W Case - Phanteks Enthoo Pro 2 Server Fans - 3x 140mm at the front, 3x 120mm in the middle, and another 120mm for rear exhaust. I bought everything in the past two weeks, my total cost was roughly $16K CAD . The CPU/RAM/Motherboard were all bought on ebay. We'll see if the RAM is enough, but based on everything I've seen online it should be fine for my use-case. I'm close to being able to do proper inference testing, but I just ran memtests, CPU stress tests, and GPU stress tests to rule out any potential issues. Even at full blast the cards are way quieter than I anticipated, I thought it would sound like a jet engine but they're quieter than my air purifier when it's on its highest setting. Also pretty happy with the cable management, this case is so easy to build in because of how massive it is. It's also nice that it has a second area to mount additional fans. Built this as a multi-user inference server for my business. I've been using a Strix Halo 395+ 128GB for the past year and it's been incredible to see how far the community has been able to get that machine to run. Qwen 3.8 FN has been a revolution for me in my work. We deal with very sensitive data and for many of our customers, it meant using any AI inference was a huge risk. Technically we could have done it, but I wanted to err on the side of caution. Was really excited to share and post this, benchmarks are currently running for the next two hours (long context with lots of concurrency). ----------------------- ------------Benchmarks ---------------------------------------------------------- 4x Radeon AI PRO R9700 + Radiance: Qwen3.8-Flash-Next long-context concurrency numbers (32K to 128K, 1 to 8 users) Software Ubuntu 26.04.1, kernel 7.0 with the inbox amdgpu driver, ROCm 10.1 userspace Radiance v1.17.0 (codeberg.org/StillDeadcode/radiance), Docker image pinned by digest Model: qwen3.8-next-flash-fp8-iq4r-moe.rad (int8 trunk, 4-bit codebook experts, MTP drafting 3 tokens) Flags: --tp 4 --max-num-seqs 8 --max-model-len 200000 --placement expert_tiered --host-pool-mib 1024 --gpu-headroom-mib 96 --kv-cache-dtype fp8 --prefix-cache-mib 32768 --num-speculative-tokens 3 --max-num-batched-tokens 2048 At tp4 the whole model sits in VRAM (17.4 GiB of weights per card). The 47.7 GiB n-gram/PLE table is pinned in host RAM. The KV cache gets 11.6 GiB per card, which is 1.6M tokens, or 8 full 200K sessions. Method Context is real English technical text (Radiance's own docs), cut to exact token counts with the server's tokenizer Each user's prompt starts with a unique session line, so no user can reuse another user's cache All users in a round fire at the same instant (worst-case burst) Turn 1: document plus a question, cold. Turn 2: the same conversation plus the answer and a follow-up question (the agent pattern) 500 max output tokens, temperature 0.6, thinking off, streamed. First-token time and writing speed are measured on the client Writing speed per user = output tokens after the first, divided by the time after the first token Results Context Users Turn 1 first token (median / max) Turn 1 writing per user Turn 2 first token (median / max) Turn 2 cached Turn 2 writing per user Turn 2 total 32K 1 4.8 s / 4.8 s 195 tok/s 0.28 s / 0.28 s 95% 209 tok/s 170 tok/s 32K 2 9.0 s / 9.3 s 141 tok/s 0.43 s / 0.57 s 95% 156 tok/s 244 tok/s 32K 4 16.7 s / 20.1 s 69 tok/s 0.82 s / 1.21 s 95% 115 tok/s 322 tok/s 32K 8 36.9 s / 37.2 s 83 tok/s 2.22 s / 2.54 s 94% 91 tok/s 406 tok/s 64K 1 9.3 s / 9.3 s 185 tok/s 0.19 s / 0.19 s 98% 225 tok/s 194 tok/s 64K 2 18.6 s / 18.7 s 144 tok/s 0.28 s / 0.38 s 98% 157 tok/s 265 tok/s 64K 4 33.8 s / 40.9 s 52 tok/s 0.64 s / 0.74 s 98% 132 tok/s 393 tok/s 64K 8 74.4 s / 74.9 s 76 tok/s 1.30 s / 1.53 s 98% 94 tok/s 491 tok/s 128K 1 18.8 s / 18.8 s 189 tok/s 0.29 s / 0.29 s 99% 180 tok/s 149 tok/s 128K 2 37.5 s / 37.8 s 126 tok/s 0.47 s / 0.56 s 99% 131 tok/s 209 tok/s 128K 4 68.9 s / 83.4 s 36 tok/s 1.18 s / 1.42 s 99% 102 tok/s 259 tok/s 128K 8 150.8 s / 151.5 s 70 tok/s 2.20 s / 2.46 s 99% 80 tok/s 362 tok/s Short prompts for comparison (about 30 tokens in, about 500 out): one user writes at 187 tok/s. At 1 / 2 / 4 / 8 users the total is 175 / 290 / 489 / 763 tok/s, or 177 / 148 / 125 / 103 tok/s per user. What I took from it Prefill runs at about 6,800 tok/s total no matter how many users there are. 8 x 128K (1.02M tokens) took 151 s. Cold prompts that arrive together are interleaved, so everyone gets their first token at about the same time, at the end. With 8 x 128K that means about 2.5 minutes for everyone. Follow-ups are where this setup shines. 94 to 99% comes from cache, the first token arrives in 0.2 to 2.5 s even at 8 users x 128K, and each user writes at 80 to 225 tok/s. Context length barely slows writing. One user writes at 189 tok/s at 128K versus 195 at 32K. Turn 1 writing speed depends on whether other users are still prefilling. At 4 users the early finishers write while the others' prompts are still being read, so the slowest user dropped to 9 to 32 tok/s. At 8 users everyone finishes reading together and then writes together at 70 to 83 tok/s. Size the host prefix cache for users x context. In an earlier run with --prefix-cache-mib 12288 (prompt sizes not exact, some above 64K), 8 x 64K follow-ups were only 71% cached, with a 37.6 s worst first token and 9 tok/s per user. With 32768: 98% cached, 1.5 s, 94 tok/s. The README's four-rank row carries --host-pool-mib 12288 over from two ranks. On four cards the whole expert plane is resident and the pool only holds about 312 MiB per card, so 12 GiB per card pinned 48 GB of RAM for nothing and left 3.6 GB free. 1024 is plenty. Every card sat at its 210 W cap during prefill. The longest section (8 x 128K) pushed the two middle cards to 91 C hotspot and 92 C memory. submitted by /u/Anarchaotic [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xrcia4/joined_the_4x_r9700_club_initial_benchmarks_for/\">  </a>  <!-- SC_OFF --><div><p>Posted this on the <a href=\"https://www.reddit.com/r/R9700\">r/R9700</a> subreddit as well, but figured I'd share my initial findings here.</p> <p><strong>tl;dr - One user writes at about 190 tok/s. Prefill runs at about 6,800 tok/s total no matter how many users there are. Agent follow-ups start in 0.2 to 2.5 s and write at 80 to 225 tok/s per user, even with 8 users at 128K context each. The worst case, 8 users each sending a fresh 128K prompt at the same moment, waits about 2.5 minutes for the first token.</strong></p> <p>Yes yes I know the cards aren't all matching (the perfectionist in me is annoyed but they'll be in a case so who cares).</p> <p>PC Specs:</p> <ul> <li>CPU - EPYC 7402P</li> <li>Motherboard - Asrock ROMED8-2T</li> <li>RAM - 128gb DDR4 2666mh</li> <li>GPU - 3x Gigabyte R9700, 1x XFX R9700. All cards power limited to 210W.</li> <li>PSU - Seasonic Prime TX-1600W</li> <li>Case - Phanteks Enthoo Pro 2 Server</li> <li>Fans - 3x 140mm at the front, 3x 120mm in the middle, and another 120mm for rear exhaust.</li> </ul> <p><strong>I bought everything in the past two weeks, my total cost was roughly $16K CAD</strong>. The CPU/RAM/Motherboard were all bought on ebay.</p> <p>We'll see if the RAM is enough, but based on everything I've seen online it should be fine for my use-case.</p> <p>I'm close to being able to do proper inference testing, but I just ran memtests, CPU stress tests, and GPU stress tests to rule out any potential issues.</p> <p>Even at full blast the cards are way quieter than I anticipated, I thought it would sound like a jet engine but they're quieter than my air purifier when it's on its highest setting.</p> <p>Also pretty happy with the cable management, this case is so easy to build in because of how massive it is. It's also nice that it has a second area to mount additional fans.</p> <p>Built this as a multi-user inference server for my business. I've been using a Strix Halo 395+ 128GB for the past year and it's been incredible to see how far the community has been able to get that machine to run.</p> <p>Qwen 3.8 FN has been a revolution for me in my work. We deal with very sensitive data and for many of our customers, it meant using any AI inference was a huge risk. Technically we could have done it, but I wanted to err on the side of caution.</p> <p>Was really excited to share and post this, benchmarks are currently running for the next two hours (long context with lots of concurrency).</p> <p><strong>----------------------- ------------Benchmarks ----------------------------------------------------------</strong></p> <p><strong>4x Radeon AI PRO R9700 + Radiance: Qwen3.8-Flash-Next long-context concurrency numbers (32K to 128K, 1 to 8 users)</strong></p> <p><strong>Software</strong></p> <ul> <li>Ubuntu 26.04.1, kernel 7.0 with the inbox amdgpu driver, ROCm 10.1 userspace</li> <li>Radiance v1.17.0 (codeberg.org/StillDeadcode/radiance), Docker image pinned by digest</li> <li>Model: <code>qwen3.8-next-flash-fp8-iq4r-moe.rad</code> (int8 trunk, 4-bit codebook experts, MTP drafting 3 tokens)</li> <li>Flags: <code>--tp 4 --max-num-seqs 8 --max-model-len 200000 --placement expert_tiered --host-pool-mib 1024 --gpu-headroom-mib 96 --kv-cache-dtype fp8 --prefix-cache-mib 32768 --num-speculative-tokens 3 --max-num-batched-tokens 2048</code></li> </ul> <p>At tp4 the whole model sits in VRAM (17.4 GiB of weights per card). The 47.7 GiB n-gram/PLE table is pinned in host RAM. The KV cache gets 11.6 GiB per card, which is 1.6M tokens, or 8 full 200K sessions.</p> <p><strong>Method</strong></p> <ul> <li>Context is real English technical text (Radiance's own docs), cut to exact token counts with the server's tokenizer</li> <li>Each user's prompt starts with a unique session line, so no user can reuse another user's cache</li> <li>All users in a round fire at the same instant (worst-case burst)</li> <li>Turn 1: document plus a question, cold. Turn 2: the same conversation plus the answer and a follow-up question (the agent pattern)</li> <li>500 max output tokens, temperature 0.6, thinking off, streamed. First-token time and writing speed are measured on the client</li> <li>Writing speed per user = output tokens after the first, divided by the time after the first token</li> </ul> <p><strong>Results</strong></p>   Context Users Turn 1 first token (median / max) Turn 1 writing per user Turn 2 first token (median / max) Turn 2 cached Turn 2 writing per user Turn 2 total    32K 1 4.8 s / 4.8 s 195 tok/s 0.28 s / 0.28 s 95% 209 tok/s 170 tok/s   32K 2 9.0 s / 9.3 s 141 tok/s 0.43 s / 0.57 s 95% 156 tok/s 244 tok/s   32K 4 16.7 s / 20.1 s 69 tok/s 0.82 s / 1.21 s 95% 115 tok/s 322 tok/s   32K 8 36.9 s / 37.2 s 83 tok/s 2.22 s / 2.54 s 94% 91 tok/s 406 tok/s   64K 1 9.3 s / 9.3 s 185 tok/s 0.19 s / 0.19 s 98% 225 tok/s 194 tok/s   64K 2 18.6 s / 18.7 s 144 tok/s 0.28 s / 0.38 s 98% 157 tok/s 265 tok/s   64K 4 33.8 s / 40.9 s 52 tok/s 0.64 s / 0.74 s 98% 132 tok/s 393 tok/s   64K 8 74.4 s / 74.9 s 76 tok/s 1.30 s / 1.53 s 98% 94 tok/s 491 tok/s   128K 1 18.8 s / 18.8 s 189 tok/s 0.29 s / 0.29 s 99% 180 tok/s 149 tok/s   128K 2 37.5 s / 37.8 s 126 tok/s 0.47 s / 0.56 s 99% 131 tok/s 209 tok/s   128K 4 68.9 s / 83.4 s 36 tok/s 1.18 s / 1.42 s 99% 102 tok/s 259 tok/s   128K 8 150.8 s / 151.5 s 70 tok/s 2.20 s / 2.46 s 99% 80 tok/s 362 tok/s   <p>Short prompts for comparison (about 30 tokens in, about 500 out): one user writes at 187 tok/s. At 1 / 2 / 4 / 8 users the total is 175 / 290 / 489 / 763 tok/s, or 177 / 148 / 125 / 103 tok/s per user.</p> <p><strong>What I took from it</strong></p> <ol> <li>Prefill runs at about 6,800 tok/s total no matter how many users there are. 8 x 128K (1.02M tokens) took 151 s.</li> <li>Cold prompts that arrive together are interleaved, so everyone gets their first token at about the same time, at the end. With 8 x 128K that means about 2.5 minutes for everyone.</li> <li>Follow-ups are where this setup shines. 94 to 99% comes from cache, the first token arrives in 0.2 to 2.5 s even at 8 users x 128K, and each user writes at 80 to 225 tok/s.</li> <li>Context length barely slows writing. One user writes at 189 tok/s at 128K versus 195 at 32K.</li> <li>Turn 1 writing speed depends on whether other users are still prefilling. At 4 users the early finishers write while the others' prompts are still being read, so the slowest user dropped to 9 to 32 tok/s. At 8 users everyone finishes reading together and then writes together at 70 to 83 tok/s.</li> <li>Size the host prefix cache for users x context. In an earlier run with <code>--prefix-cache-mib 12288</code> (prompt sizes not exact, some above 64K), 8 x 64K follow-ups were only 71% cached, with a 37.6 s worst first token and 9 tok/s per user. With 32768: 98% cached, 1.5 s, 94 tok/s.</li> <li>The README's four-rank row carries <code>--host-pool-mib 12288</code> over from two ranks. On four cards the whole expert plane is resident and the pool only holds about 312 MiB per card, so 12 GiB per card pinned 48 GB of RAM for nothing and left 3.6 GB free. 1024 is plenty.</li> <li>Every card sat at its 210 W cap during prefill. The longest section (8 x 128K) pushed the two middle cards to 91 C hotspot and 92 C memory.</li> </ol> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Anarchaotic\"> /u/Anarchaotic </a> <br/> <span><a href=\"https://i.redd.it/m1hd0vwe4h0i1.jpeg\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xrcia4/joined_the_4x_r9700_club_initial_benchmarks_for/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xrcia4/joined_the_4x_r9700_club_initial_benchmarks_for/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T23:36:45+00:00",
+    "published_ts": 1794181005,
+    "smart_groups": [
+      "Research & papers"
+    ],
+    "curated": false
+  },
+  {
+    "title": "How do you locally benchmark and compare local LLMs?",
+    "summary": "If I wanted to locally compare performance for multiple different offline LLM models across various modalities (speed, efficiency, reasoning, tool use, programing/coding, etc), what strategies, prompts, software are commonly used to do this? There are so many models to choose from and run, I'm trying to determine things like whether slower but more complex models are worth running over slightly faster ones, how models that run at similar speed compare to each other's capabilities, and whether any of the custom engines that have been popping up other than llama.cpp/strata are worth it. Does this sort of thing exist as something that can be ran locally, and if so, how? submitted by /u/insomniating [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>If I wanted to locally compare performance for multiple different offline LLM models across various modalities (speed, efficiency, reasoning, tool use, programing/coding, etc), what strategies, prompts, software are commonly used to do this? There are so many models to choose from and run, I'm trying to determine things like whether slower but more complex models are worth running over slightly faster ones, how models that run at similar speed compare to each other's capabilities, and whether any of the custom engines that have been popping up other than llama.cpp/strata are worth it. </p> <p>Does this sort of thing exist as something that can be ran locally, and if so, how?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/insomniating\"> /u/insomniating </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xrbhdf/how_do_you_locally_benchmark_and_compare_local/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xrbhdf/how_do_you_locally_benchmark_and_compare_local/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xrbhdf/how_do_you_locally_benchmark_and_compare_local/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T22:49:16+00:00",
+    "published_ts": 1794178156,
+    "smart_groups": [
+      "Research & papers",
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "How much code do AI models and harnesses add? I made an open-source benchmark to measure code complexity.",
+    "summary": "Existing benchmarks measure the solve rate and token output/cost, but don't punish excess code or overengineering, which increases technical debt in the long term. Parsimony counts syntax units (statements, calls, names) in the patches other benchmarks publish. It doesn't count lines, comments, tests. Each model or harness is compared with the human fix for the same issues it solved. - Smarter models surprisingly write slightly more code. - Models: the median model adds 1.9× the human fix on SWE-bench Verified (older models), but about 1× on DeepSWE. - Harnesses: with the same two open-weight models, the harness alone moves it from 0.80× (Codex) to 0.99× (mini-SWE-agent, OpenClaw). The harness data comes from Joel Niklaus's Harness Leaderboard. https://parsimony.lasu.dev https://github.com/La5u/Parsimony Looking for: public patches for newer models, any ideas or contributors for self run models. * some newer models are self run in codex and claude code, shown as faded (unverified) in DeepSWE submitted by /u/lasushin [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xrathc/how_much_code_do_ai_models_and_harnesses_add_i/\">  </a>  <!-- SC_OFF --><div><p>Existing benchmarks measure the solve rate and token output/cost, but don't punish excess code or overengineering, which increases technical debt in the long term. </p> <p>Parsimony counts syntax units (statements, calls, names) in the patches other benchmarks publish. It doesn't count lines, comments, tests. Each model or harness is compared with the human fix for the same issues it solved. </p> <p>- Smarter models surprisingly write slightly more code.</p> <p>- Models: the median model adds 1.9× the human fix on SWE-bench Verified (older models), but about 1× on DeepSWE.</p> <p>- Harnesses: with the same two open-weight models, the harness alone moves it from 0.80× (Codex) to 0.99× (mini-SWE-agent, OpenClaw). The harness data comes from Joel Niklaus's Harness Leaderboard.</p> <p><a href=\"https://parsimony.lasu.dev/\">https://parsimony.lasu.dev</a> </p> <p><a href=\"https://github.com/La5u/Parsimony\">https://github.com/La5u/Parsimony</a> </p> <p>Looking for: public patches for newer models, any ideas or contributors for self run models. </p> <p>* some newer models are self run in codex and claude code, shown as faded (unverified) in DeepSWE</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/lasushin\"> /u/lasushin </a> <br/> <span><a href=\"https://www.reddit.com/gallery/1xrathc\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xrathc/how_much_code_do_ai_models_and_harnesses_add_i/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xrathc/how_much_code_do_ai_models_and_harnesses_add_i/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T22:19:15+00:00",
+    "published_ts": 1794176355,
+    "smart_groups": [
+      "Research & papers"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Nous Research Arete-27B GGUF quants",
+    "summary": "submitted by /u/gladkos [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xrarta/nous_research_arete27b_gguf_quants/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/gladkos\"> /u/gladkos </a> <br/> <span><a href=\"https://huggingface.co/AtomicChat/Arete-27B-GGUF\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xrarta/nous_research_arete27b_gguf_quants/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xrarta/nous_research_arete27b_gguf_quants/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T22:17:10+00:00",
+    "published_ts": 1794176230,
+    "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false,
+    "story_id": "15fd7ad56b7b",
+    "story_size": 2
+  },
+  {
+    "title": "Really cool 3d video on how the microduck ai robot works",
+    "summary": "Underrated youtube channel, thought this would be nice to share given its open source uses local ai. Does anyone own one? submitted by /u/Individual-Dot5488 [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xrai3x/really_cool_3d_video_on_how_the_microduck_ai/\">  </a>  <!-- SC_OFF --><div><p>Underrated youtube channel, thought this would be nice to share given its open source uses local ai. Does anyone own one?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Individual-Dot5488\"> /u/Individual-Dot5488 </a> <br/> <span><a href=\"https://youtu.be/Zvu5cHlH9gM\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xrai3x/really_cool_3d_video_on_how_the_microduck_ai/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xrai3x/really_cool_3d_video_on_how_the_microduck_ai/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T22:05:32+00:00",
+    "published_ts": 1794175532,
+    "smart_groups": [
+      "Robotics & autonomy"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Resurrecting 2013 E-Waste: Native CUDA Mamba-1 & PyTorch 2.7.1 on Windows (Kepler–Turing, SM 3.5–7.5)",
+    "summary": "Hello! I want to share an active development project. If you have a drawer full of old NVIDIA GPU's collecting dust because modern AI stacks refuse to compile for them, this is for you. I have ported the modern LLM training stack on Windows to legacy CUDA GPUs (sm_35 through sm_75): PyTorch (v2.7.1) (custom build compiled with CUDA 11.8, keeping the legacy SASS) ([ https://github.com/theIvanR/torch-on-clunkers] ) causal-conv1d (v1.7.0) ( https://github.com/theIvanR/conv-on-clunkers ) mamba_ssm (Mamba-1) with pure native CUDA kernels ( https://github.com/theIvanR/mamba-on-clunkers ) Windows NCCL (DDP) for multi-GPU training across Kepler cards ( https://github.com/theIvanR/nccl-on-windows ) Status Mamba-1 (Pure CUDA): Fully functional with optimized execution across legacy GPU architectures ( SM 3.5–SM 7.5 ). Tested on a 2013 NVIDIA Tesla K40c, achieving a maximum absolute error of 3.8e-06 against the PyTorch reference implementation. Mamba-2 & Mamba-3: Currently supported with optimized execution on Turing ( SM 7.5 ) and newer architectures, due to their reliance on Triton and TileLang. Graceful Fallback: On older hardware, the package detects unavailable Triton-dependent modules and automatically falls back to the pure-CUDA Mamba-1 implementation. The fallback initialization produces the following output: ================================================================================ [!] MAMBA-ON-CLUNKERS FALLBACK INITIATED [!] The following modules are unavailable on this platform: - Mamba-2 (requires Triton) - Mamba-3 (requires Triton + TileLang) [!] Falling back to Mamba-1 (Pure CUDA). This is expected on legacy GPUs. ================================================================================ Future development: Backporting Mamba-2 and Mamba-3 to legacy GPU architectures. Community Testing If you have an older NVIDIA GPU lying around, I'd love for you to test the Mamba wheel and report whether it works on your architecture! I'm particularly interested in Maxwell and Pascal , since my local testing hardware is currently limited to Kepler. Any benchmarks, performance comparisons, or profiling data from legacy GPUs would be greatly appreciated. Contributions and feedback are welcome! Acknowledgements: This project is based on the research and original implementation by Tri Dao and Albert Gu. Special thanks to both for their contributions to the development of Mamba. submitted by /u/TheSpicyBoi123 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Hello!</p> <p>I want to share an active development project. If you have a drawer full of old NVIDIA GPU's collecting dust because modern AI stacks refuse to compile for them, this is for you.</p> <p>I have ported the modern LLM training stack on Windows to legacy CUDA GPUs (sm_35 through sm_75):</p> <ul> <li>PyTorch (v2.7.1) (custom build compiled with CUDA 11.8, keeping the legacy SASS) ([<a href=\"https://github.com/theIvanR/torch-on-clunkers%5D\">https://github.com/theIvanR/torch-on-clunkers]</a>)</li> <li>causal-conv1d (v1.7.0) (<a href=\"https://github.com/theIvanR/conv-on-clunkers\">https://github.com/theIvanR/conv-on-clunkers</a>)</li> <li>mamba_ssm (Mamba-1) with pure native CUDA kernels (<a href=\"https://github.com/theIvanR/mamba-on-clunkers\">https://github.com/theIvanR/mamba-on-clunkers</a>)</li> <li>Windows NCCL (DDP) for multi-GPU training across Kepler cards (<a href=\"https://github.com/theIvanR/nccl-on-windows\">https://github.com/theIvanR/nccl-on-windows</a>)</li> </ul> Status <ul> <li><strong>Mamba-1 (Pure CUDA):</strong> Fully functional with optimized execution across legacy GPU architectures (<strong>SM 3.5–SM 7.5</strong>). Tested on a 2013 NVIDIA Tesla K40c, achieving a maximum absolute error of <code>3.8e-06</code> against the PyTorch reference implementation.</li> <li><strong>Mamba-2 &amp; Mamba-3:</strong> Currently supported with optimized execution on Turing (<strong>SM 7.5</strong>) and newer architectures, due to their reliance on Triton and TileLang.</li> <li><strong>Graceful Fallback:</strong> On older hardware, the package detects unavailable Triton-dependent modules and automatically falls back to the pure-CUDA Mamba-1 implementation.</li> </ul> <p>The fallback initialization produces the following output:</p> <pre><code>================================================================================ [!] MAMBA-ON-CLUNKERS FALLBACK INITIATED [!] The following modules are unavailable on this platform: - Mamba-2 (requires Triton) - Mamba-3 (requires Triton + TileLang) [!] Falling back to Mamba-1 (Pure CUDA). This is expected on legacy GPUs. ================================================================================ </code></pre> <p><em>Future development: Backporting Mamba-2 and Mamba-3 to legacy GPU architectures.</em></p> Community Testing <p>If you have an older NVIDIA GPU lying around, I'd love for you to test the Mamba wheel and report whether it works on your architecture!</p> <p>I'm particularly interested in <strong>Maxwell and Pascal</strong>, since my local testing hardware is currently limited to Kepler.</p> <p>Any benchmarks, performance comparisons, or profiling data from legacy GPUs would be greatly appreciated. Contributions and feedback are welcome!</p> <blockquote> <p>Acknowledgements: This project is based on the research and original implementation by Tri Dao and Albert Gu. Special thanks to both for their contributions to the development of Mamba.</p> </blockquote> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/TheSpicyBoi123\"> /u/TheSpicyBoi123 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr97iz/resurrecting_2013_ewaste_native_cuda_mamba1/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr97iz/resurrecting_2013_ewaste_native_cuda_mamba1/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xr97iz/resurrecting_2013_ewaste_native_cuda_mamba1/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T21:09:11+00:00",
+    "published_ts": 1794172151,
+    "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
     "title": "AI skill to provide IPA and English translations from uploaded sheet music",
     "summary": "",
     "summary_html": "<p>Article URL: <a href=\"https://github.com/secureakira-tech/early-music-ipa-guide\">https://github.com/secureakira-tech/early-music-ipa-guide</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50416922\">https://news.ycombinator.com/item?id=50416922</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
@@ -80,6 +558,39 @@
     "curated": false
   },
   {
+    "title": "Intel Arc Pro B70 32GB ($1,299) vs NVIDIA RTX 5090 ($6,500+) on Qwen3.8-27B: about 1/2 speed gen (1/3 speed prefill) for 1/5 price, after best setup",
+    "summary": "I got an Arc Pro B70 (32GB) last week for $1,299 direct from ASRock official store on Amazon (B65 is also 32GB but slower, and was only $100 cheaper at $1,199, so I \"splurged\"). Obviously I'd have wanted a 5090 for the same VRAM and best speeds, but 5090s are going for $6,500+ on Newegg right now (and I personally have too much fear to buy used hardware), so I wanted to see how close a 32GB Intel card gets. Out of the box it it was really bad, but after a few changes I got it to about half a 5090, which feels like a great trade off for 1/5th price (~$41/GB vs $200+/GB). And of course it's great for other creative workloads I wanted, like renders and simulations, not just LLM stuff. Making this post in hopes that it can help some people save some money and explore non-NVIDIA hardware! And I doubt it needs to be said, but I am NOT affiliated with Intel/ASRock in any way, haha. Qwen3.8-27B Q6, ~3k token prompt, MTP on: Stat Arc Pro B70 RTX 5090 Price $1,299 $6,550+ Prompt processing ~960 tok/s ~2,830 tok/s Generation ~52 tok/s ~98 tok/s So roughly 2x gen and 3x prefill for 5x the money. If you can actually find a 5090 at $1,999 MSRP somehow, then congrats and heck you, but of course that would make the cheaper Intel card no longer worth it. The 5090 numbers are from other people's posts (found discussion posts on Hugging face) not my machine since I don't have the personal money to light on fire in sacrifice to NVIDIA, heh. My machine: Threadripper 1950X (got it for $100 like 5 years ago when a company was closing and throwing stuff away), 128GB DDR4 (brand new upgrade along with the B70 this week, DDR4 is <1/2 the price of DDR5), old x399m Taichi PCIe 3.0 mobo (so can't use the GPU's PCIe 5 support sadly, but that doesn't matter once the model is in VRAM and so it only hurts MoE really), Ubuntu headless/server 24.04. Screenshots are to show the stats (between the nav and chat) and are from my laptop, running the Qwen model from the llama-server on that machine in my home office (which has the Intel GPU in it). If you have/get one, do this to make it not suck! Kernel 6.17+ (I used Ubuntu's 7.0 HWE kernel), Resizable BAR on (needs CSM off), and Intel's compute runtime from `ppa:kobuk-team/intel-graphics`. This was a real pain to get working initially (but might be a skill issue with my old mobo), since the bios doesn't even let you disable CSM while a card that uses it is in (I previously had a ~$14 GeForce 210 \"GPU\" that was only capable of rendering a terminal), and I had to flash my bios from 3.80 to 4.03 to have access to any of those features in the first place. Upgrade Mesa to 26.x (`ppa:kisak/kisak-mesa`). Ubuntu 24.04's Mesa 25.2 is very slow on this card. Like stupid slow, this bump alone gave ~3x generation in ollama with Vulkan. If you stay on Vulkan (ollama, LM Studio, etc.), keep the KV cache at f16. Any quantized KV (q8_0/q4_0) causes a massive gen slowdown (1.75x at low context, 3x+ at 64k+ context) penalty on Vulkan. So shrinking KV VRAM costs speed, which was very confusing and annoying. So instead: build llama.cpp with SYCL (Intel oneAPI) and run llama-server instead. ollama has no SYCL backend, but llama-server has an OpenAI-compatible API. On SYCL, can use q8_0 KV (no more quantized KV slowdown like on Vulkan, and fits way more context!) and turn on MTP with `--spec-type draft-mtp --spec-draft-n-max 4`. Also worth noting llama-server with Vulkan by default doesn't see/access the full 32GB VRAM by default (saw ~29GB) while SYCL does -- I later figured out it's just the auto-fit under Vulkan though, and you can make it use the full 32GB too with `--fit off` and giving context with `-c`. Here is what each step over a day of fiddling and tweaking improved with Qwen3.8-27B Q6 (prompt / gen tok/s): Step 16k context 64k context Max context on the card Base ollama, Mesa 25.2 137 / 6.8 not tested 224k (q8/q4 KV) Mesa 26.2 324 / 19.4 106 / 7.8 224k (q8/q4 KV) Mesa 26.2, f16 KV 376 / 33 146 / 23 104k llama.cpp SYCL, f16 KV 908 / 49 913 / 40 144k SYCL, q8_0 KV, MTP 4 1,032 / 56.5 756 / 52.7 223k The long context time to first token is the worst part of Vulkan, all the other issues aside. A 215k token prompt took 1.9 hours to first token on ollama/Vulkan (lol!) and 8.6 minutes on SYCL. Also on SYCL: Qwen3.6-35B-A3B fits entirely on the card with 262k context and does 1,748 / 74 at 16k, slows down with context size of course. Ultimately of course NVIDIA is still king from a raw performance and speed and software stack quality and etc. perspective, and as such the only place I'm proposing they lose now is the speed:cost ratio (given street prices/price hikes), haha. Will put full tables, quality scores (Q6 vs Q4_K_XL vs a few MoEs), and my build commands in the comments! Let me know your results with non-NVIDIA GPUs and if you have any more tricks/fixes I didn't find yet! For AI usage: this post is written almost entirely by me, a ~200T OI (organic intelligence) human LLM, but I had Qwen help me with the markdown tables and such. submitted by /u/maikerukonare [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr78s5/intel_arc_pro_b70_32gb_1299_vs_nvidia_rtx_5090/\">  </a>  <!-- SC_OFF --><div><p>I got an Arc Pro B70 (32GB) last week for $1,299 direct from ASRock official store on Amazon (B65 is also 32GB but slower, and was only $100 cheaper at $1,199, so I \"splurged\"). Obviously I'd have wanted a 5090 for the same VRAM and best speeds, but 5090s are going for $6,500+ on Newegg right now (and I personally have too much fear to buy used hardware), so I wanted to see how close a 32GB Intel card gets. Out of the box it it was really bad, but after a few changes I got it to about half a 5090, which feels like a great trade off for 1/5th price (~$41/GB vs $200+/GB). And of course it's great for other creative workloads I wanted, like renders and simulations, not just LLM stuff.</p> <p>Making this post in hopes that it can help some people save some money and explore non-NVIDIA hardware! And I doubt it needs to be said, but I am NOT affiliated with Intel/ASRock in any way, haha.</p> <p>Qwen3.8-27B Q6, ~3k token prompt, MTP on:</p>   Stat Arc Pro B70 RTX 5090    Price $1,299 $6,550+   Prompt processing ~960 tok/s ~2,830 tok/s   Generation ~52 tok/s ~98 tok/s   <p>So roughly 2x gen and 3x prefill for 5x the money. If you can actually find a 5090 at $1,999 MSRP somehow, then congrats and heck you, but of course that would make the cheaper Intel card no longer worth it. The 5090 numbers are from other people's posts (found discussion posts on Hugging face) not my machine since I don't have the personal money to light on fire in sacrifice to NVIDIA, heh.</p> <p>My machine: Threadripper 1950X (got it for $100 like 5 years ago when a company was closing and throwing stuff away), 128GB DDR4 (brand new upgrade along with the B70 this week, DDR4 is &lt;1/2 the price of DDR5), old x399m Taichi PCIe 3.0 mobo (so can't use the GPU's PCIe 5 support sadly, but that doesn't matter once the model is in VRAM and so it only hurts MoE really), Ubuntu headless/server 24.04. Screenshots are to show the stats (between the nav and chat) and are from my laptop, running the Qwen model from the llama-server on that machine in my home office (which has the Intel GPU in it).</p> <p><strong>If you have/get one, do this to make it not suck!</strong></p> <ol> <li>Kernel 6.17+ (I used Ubuntu's 7.0 HWE kernel), Resizable BAR on (needs CSM off), and Intel's compute runtime from `ppa:kobuk-team/intel-graphics`. This was a real pain to get working initially (but might be a skill issue with my old mobo), since the bios doesn't even let you disable CSM while a card that uses it is in (I previously had a ~$14 GeForce 210 \"GPU\" that was only capable of rendering a terminal), and I had to flash my bios from 3.80 to 4.03 to have access to any of those features in the first place.</li> <li>Upgrade Mesa to 26.x (`ppa:kisak/kisak-mesa`). Ubuntu 24.04's Mesa 25.2 is very slow on this card. Like stupid slow, this bump alone gave ~3x generation in ollama with Vulkan.</li> <li>If you stay on Vulkan (ollama, LM Studio, etc.), keep the KV cache at f16. Any quantized KV (q8_0/q4_0) causes a massive gen slowdown (1.75x at low context, 3x+ at 64k+ context) penalty on Vulkan. So shrinking KV VRAM costs speed, which was very confusing and annoying.</li> <li>So instead: build llama.cpp with SYCL (Intel oneAPI) and run llama-server instead. ollama has no SYCL backend, but llama-server has an OpenAI-compatible API.</li> <li>On SYCL, can use q8_0 KV (no more quantized KV slowdown like on Vulkan, and fits way more context!) and turn on MTP with `--spec-type draft-mtp --spec-draft-n-max 4`. Also worth noting llama-server with Vulkan by default doesn't see/access the full 32GB VRAM by default (saw ~29GB) while SYCL does -- I later figured out it's just the auto-fit under Vulkan though, and you can make it use the full 32GB too with `--fit off` and giving context with `-c`.</li> </ol> <p>Here is what each step over a day of fiddling and tweaking improved with Qwen3.8-27B Q6 (prompt / gen tok/s):</p>   Step 16k context 64k context Max context on the card    Base ollama, Mesa 25.2 137 / 6.8 not tested 224k (q8/q4 KV)   Mesa 26.2 324 / 19.4 106 / 7.8 224k (q8/q4 KV)   Mesa 26.2, f16 KV 376 / 33 146 / 23 104k   llama.cpp SYCL, f16 KV 908 / 49 913 / 40 144k   SYCL, q8_0 KV, MTP 4 1,032 / 56.5 756 / 52.7 223k   <p>The long context time to first token is the worst part of Vulkan, all the other issues aside. A 215k token prompt took 1.9 hours to first token on ollama/Vulkan (lol!) and 8.6 minutes on SYCL. Also on SYCL: Qwen3.6-35B-A3B fits entirely on the card with 262k context and does 1,748 / 74 at 16k, slows down with context size of course. Ultimately of course NVIDIA is still king from a raw performance and speed and software stack quality and etc. perspective, and as such the only place I'm proposing they lose now is the speed:cost ratio (given street prices/price hikes), haha.</p> <p>Will put full tables, quality scores (Q6 vs Q4_K_XL vs a few MoEs), and my build commands in the comments! Let me know your results with non-NVIDIA GPUs and if you have any more tricks/fixes I didn't find yet! For AI usage: this post is written almost entirely by me, a ~200T OI (organic intelligence) human LLM, but I had Qwen help me with the markdown tables and such.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/maikerukonare\"> /u/maikerukonare </a> <br/> <span><a href=\"https://www.reddit.com/gallery/1xr78s5\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr78s5/intel_arc_pro_b70_32gb_1299_vs_nvidia_rtx_5090/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xr78s5/intel_arc_pro_b70_32gb_1299_vs_nvidia_rtx_5090/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T19:46:49+00:00",
+    "published_ts": 1794167209,
+    "smart_groups": [
+      "Coding & dev tools",
+      "Chips & hardware"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Kimi-K3.1-Pro-Coder (2.8T) | 1.77 TB -> 775 GB (-56%) | 36.8 TPS (Batch) / 10.8 TPS on 1x Blackwell | 96.7% on both AIME 2025 and LiveCodeBench",
+    "summary": "Up front: I know a 775 GB quant is not for everyone , and this is definitely a more experimental setup and quant than I usually do, but I think it was a great stress-test of what's possible and I believe there is more improvement possible in the future. That said, the base Kimi-K3.1-Pro is a 2.8T parameter monster (~1.77 TB even in native MXFP4/BF16), which normally means you're looking at roughly 22x 80GB GPUs just to hold it in VRAM. My goal with this experiment was to see if I could get the full 93-layer model down to something that runs on a single GPU + system RAM + fast NVMe without gutting its coding and math reasoning. What I built to make this work (Strata + dr-triton) Because all 384 routed experts per layer don't get hit equally, I quantized the routed MoE experts across 3 tiers ( 2.81 bpw / 2.56 bpw / 1.44 bpw , averaging ~1.92 bpw across MoE down from about 4.0bpw on base) while keeping all shared experts, attention, and embedding in native BF16/F32. To actually run it without hitting a PCIe/NVMe wall, I built two things alongside the weights: Strata Fork : A 3-tier MoE loader and offloading engine that splits experts across Tier 1 (Hot GPU VRAM) , Tier 2 (Warm Pinned RAM) , and Tier 3 (Cold NVMe mmap **)**, using router lookahead prefetching ( 97.9% effective hit rate in testing) so cold experts are already streaming in before the layer executes. dr-triton : Fused Triton dequantization kernels so the compressed expert weights stay packed over PCIe and only expand in GPU SRAM later. Can you use your own offloading / custom Strata setup? Customizing the tier split: Yes, you don't have to use my exact VRAM/RAM/NVMe split. In Strata , you can re-Configure how many tiers sit in VRAM vs. System RAM vs. NVMe depending on your rig (e.g., if you have 512 GB of DDR5, you can push almost all of Tier 3 into RAM; if you're on a 24–32 GB card, you shrink Tier 1 and lean heavier on RAM/NVMe). Using your own engine / loader: You cannot drop these shards straight into vanilla llama.cpp or vLLM out of the box because the routed experts use a custom packed tensor layout. However, if you have your own offloading pipeline or custom PyTorch/Triton runner, you don't have to use the Strata scheduler—you can just import the standalone dr-triton / strata_coder dequant module and handle placement yourself. Full 93-Layer Benchmarks (Base 1.77 TB vs. Coder 775 GB) Tested across all 93 layers ( Layer 0..92 + lm_head ) on a single NVIDIA RTX PRO 6000 Blackwell (96/102 GB VRAM) + 176 GB RAM in Colab: Benchmark / Metric Base Kimi-K3.1-Pro (1.77 TB) Kimi-K3.1-Pro-Coder (775 GB) Difference AIME 2025 (All 30 Problems, Pass@1) 29 / 30 (96.67%) 29 / 30 (96.67%) Exact match on all 30 problems LiveCodeBench Rolling Window (30 Probs) 29 / 30 (96.67%) 29 / 30 (96.67%) Easy 9/10, Med 10/10, Hard 10/10 Top-1 / Top-5 Token Agreement 100% / 100% 95.20% / 99.92% Mean KLD: 0.0191 AIME 2025 Math Perplexity (PPL) 2.2135 2.2358 +0.0223 ( +1.01% ) LiveCodeBench Hard Perplexity (PPL) 2.1136 2.1562 +0.0426 ( +2.02% ) LiveCodeBench Overall Perplexity (PPL) 2.6911 2.7629 +0.0718 ( +2.67% ) Throughput (TPS) — Tested Colab Setup vs. Common Hardware Specs Since throughput on a 3-tier offloaded MoE depends heavily on how much fits in VRAM/RAM vs. how often you touch NVMe, here is what we measured on the Colab Blackwell instance alongside realistic numbers a bit below and above that spec: Hardware Spec Batch / Prefill Eval TPS Single-Stream Decode TPS Notes 1x RTX 4090 / 5090 (24–32 GB) + 128 GB DDR5 + Gen4 NVMe ~11 – 14 tok/s ~4 – 5.5 tok/s Heavy RAM + NVMe lookahead streaming 2x RTX 3090 / 4090 (48 GB) + 192 GB DDR5 + Gen5 NVMe ~19 – 23 tok/s ~7.5 – 9 tok/s Full attention/shared + partial Tier 1 in VRAM 1x A100 / H100 (80 GB) + 160 GB RAM + Gen4 NVMe ~27 – 31 tok/s ~9 – 10 tok/s Tier 1 Hot experts resident in VRAM TESTED: 1x RTX PRO 6000 Blackwell (96 GB) + 176 GB RAM 36.8 tok/s 10.8 tok/s Measured across full 93-layer AIME & LCB runs 2x PRO 6000 / 2x H100 (192 GB) + 512 GB DDR5 ~55 – 62 tok/s ~18 – 22 tok/s Tiers 1+2 + most of Tier 3 stay in VRAM/RAM While I admit even the the \"lightest\" hardware specs above are still above what the average setup might be, If you have hardware in the ranges above (and 775 GB download space) it would be great to see how this works out for you! The model card has all of the setup instructions and repos required out of the box, and you can also use the above instructions if you want to try with your own configurations. And the best thing about the experiment is this same process can also be used on models more attainable for the average user (and, if Kimi had not been trained in 4-bit, a lot more space could be shaved off). Links Weights (Hugging Face, 96 shards / 775 GB): https://huggingface.co/Grawnch/Kimi-K3.1-Pro-Coder Strata (3-Tier Offloading & Lookahead): https://github.com/grawnchtoader/strata dr-triton (Fused Dequant Kernels): https://github.com/grawnchtoader/dr-triton submitted by /u/Grawnch [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr777l/kimik31procoder_28t_177_tb_775_gb_56_368_tps/\">  </a>  <!-- SC_OFF --><div><p>Up front: <strong>I know a 775 GB quant is not for everyone</strong>, and this is definitely a more experimental setup and quant than I usually do, but I think it was a great stress-test of what's possible and I believe there is more improvement possible in the future.</p> <p>That said, the base <strong>Kimi-K3.1-Pro</strong> is a <strong>2.8T parameter</strong> monster (~1.77 TB even in native MXFP4/BF16), which normally means you're looking at roughly <strong>22x 80GB GPUs</strong> just to hold it in VRAM. My goal with this experiment was to see if I could get the full 93-layer model down to something that runs on a <strong>single GPU + system RAM + fast NVMe</strong> without gutting its coding and math reasoning.</p> What I built to make this work (Strata + dr-triton) <p>Because all 384 routed experts per layer don't get hit equally, I quantized the routed MoE experts across 3 tiers (<strong>2.81 bpw / 2.56 bpw / 1.44 bpw</strong>, averaging ~1.92 bpw across MoE down from about 4.0bpw on base) while keeping all shared experts, attention, and embedding in native BF16/F32.</p> <p>To actually run it without hitting a PCIe/NVMe wall, I built two things alongside the weights:</p> <ul> <li><a href=\"https://github.com/grawnchtoader/strata\"><strong>Strata Fork</strong></a> <strong>:</strong> A 3-tier MoE loader and offloading engine that splits experts across <strong>Tier 1 (Hot GPU VRAM)</strong>, <strong>Tier 2 (Warm Pinned RAM)</strong>, and <strong>Tier 3 (Cold NVMe</strong> <code>mmap</code>**)**, using router lookahead prefetching (<code>97.9%</code> effective hit rate in testing) so cold experts are already streaming in before the layer executes.</li> <li><a href=\"https://github.com/grawnchtoader/dr-triton\"><strong>dr-triton</strong></a><strong>:</strong> Fused Triton dequantization kernels so the compressed expert weights stay packed over PCIe and only expand in GPU SRAM later.</li> </ul> <p><strong>Can you use your own offloading / custom Strata setup?</strong></p> <ul> <li><strong>Customizing the tier split:</strong> Yes, you don't have to use my exact VRAM/RAM/NVMe split. In <code>Strata</code>, you can re-Configure how many tiers sit in VRAM vs. System RAM vs. NVMe depending on your rig (e.g., if you have 512 GB of DDR5, you can push almost all of Tier 3 into RAM; if you're on a 24–32 GB card, you shrink Tier 1 and lean heavier on RAM/NVMe).</li> <li><strong>Using your own engine / loader:</strong> You <strong>cannot</strong> drop these shards straight into vanilla <code>llama.cpp</code> or <code>vLLM</code> out of the box because the routed experts use a custom packed tensor layout. However, if you have your own offloading pipeline or custom PyTorch/Triton runner, you don't have to use the <code>Strata</code> scheduler—you can just import the standalone <code>dr-triton</code> / <code>strata_coder</code> dequant module and handle placement yourself.</li> </ul> Full 93-Layer Benchmarks (Base 1.77 TB vs. Coder 775 GB) <p>Tested across all 93 layers (<code>Layer 0..92</code> + <code>lm_head</code>) on a single <strong>NVIDIA RTX PRO 6000 Blackwell (96/102 GB VRAM) + 176 GB RAM</strong> in Colab:</p>   Benchmark / Metric Base <code>Kimi-K3.1-Pro</code> (1.77 TB) <code>Kimi-K3.1-Pro-Coder</code> (775 GB) Difference    <strong>AIME 2025 (All 30 Problems, Pass@1)</strong> 29 / 30 (96.67%) <strong>29 / 30 (96.67%)</strong> Exact match on all 30 problems   <strong>LiveCodeBench Rolling Window (30 Probs)</strong> 29 / 30 (96.67%) <strong>29 / 30 (96.67%)</strong> Easy 9/10, Med 10/10, Hard 10/10   <strong>Top-1 / Top-5 Token Agreement</strong> 100% / 100% <strong>95.20% / 99.92%</strong> Mean KLD: <code>0.0191</code>   <strong>AIME 2025 Math Perplexity (PPL)</strong> 2.2135 <strong>2.2358</strong> <code>+0.0223</code> (<code>+1.01%</code>)   <strong>LiveCodeBench Hard Perplexity (PPL)</strong> 2.1136 <strong>2.1562</strong> <code>+0.0426</code> (<code>+2.02%</code>)   <strong>LiveCodeBench Overall Perplexity (PPL)</strong> 2.6911 <strong>2.7629</strong> <code>+0.0718</code> (<code>+2.67%</code>)   Throughput (TPS) — Tested Colab Setup vs. Common Hardware Specs <p>Since throughput on a 3-tier offloaded MoE depends heavily on how much fits in VRAM/RAM vs. how often you touch NVMe, here is what we measured on the Colab Blackwell instance alongside realistic numbers a bit below and above that spec:</p>   Hardware Spec Batch / Prefill Eval TPS Single-Stream Decode TPS Notes    <strong>1x RTX 4090 / 5090 (24–32 GB)</strong> + 128 GB DDR5 + Gen4 NVMe ~11 – 14 tok/s ~4 – 5.5 tok/s Heavy RAM + NVMe lookahead streaming   <strong>2x RTX 3090 / 4090 (48 GB)</strong> + 192 GB DDR5 + Gen5 NVMe ~19 – 23 tok/s ~7.5 – 9 tok/s Full attention/shared + partial Tier 1 in VRAM   <strong>1x A100 / H100 (80 GB)</strong> + 160 GB RAM + Gen4 NVMe ~27 – 31 tok/s ~9 – 10 tok/s Tier 1 Hot experts resident in VRAM   <strong>TESTED: 1x RTX PRO 6000 Blackwell (96 GB)</strong> + 176 GB RAM <strong>36.8 tok/s</strong> <strong>10.8 tok/s</strong> Measured across full 93-layer AIME &amp; LCB runs   <strong>2x PRO 6000 / 2x H100 (192 GB)</strong> + 512 GB DDR5 ~55 – 62 tok/s ~18 – 22 tok/s Tiers 1+2 + most of Tier 3 stay in VRAM/RAM   <p>While I admit even the the \"lightest\" hardware specs above are still above what the average setup might be, If you have hardware in the ranges above (and 775 GB download space) it would be great to see how this works out for you! The model card has all of the setup instructions and repos required out of the box, and you can also use the above instructions if you want to try with your own configurations.</p> <p>And the best thing about the experiment is this same process can also be used on models more attainable for the average user (and, if Kimi had not been trained in 4-bit, a lot more space could be shaved off).</p> Links <ul> <li><strong>Weights (Hugging Face, 96 shards / 775 GB):</strong> <a href=\"https://huggingface.co/Grawnch/Kimi-K3.1-Pro-Coder\">https://huggingface.co/Grawnch/Kimi-K3.1-Pro-Coder</a></li> <li><strong>Strata (3-Tier Offloading &amp; Lookahead):</strong> <a href=\"https://github.com/grawnchtoader/strata\">https://github.com/grawnchtoader/strata</a></li> <li><strong>dr-triton (Fused Dequant Kernels):</strong> <a href=\"https://github.com/grawnchtoader/dr-triton\">https://github.com/grawnchtoader/dr-triton</a></li> </ul> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Grawnch\"> /u/Grawnch </a> <br/> <span><a href=\"https://i.redd.it/z2xnxxfwzf0i1.png\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr777l/kimik31procoder_28t_177_tb_775_gb_56_368_tps/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xr777l/kimik31procoder_28t_177_tb_775_gb_56_368_tps/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T19:45:03+00:00",
+    "published_ts": 1794167103,
+    "smart_groups": [
+      "Chips & hardware"
+    ],
+    "curated": false
+  },
+  {
     "title": "1.15.38",
     "summary": "What's Changed Features Make gpt-6-luna crewAI's default model everywhere Read spreadsheet URLs in an agent's input with tools over every row Tag eval usage spans with target and a per-evaluation id Add --no-open to crewai eval for headless use Bug Fixes Count a crewai eval run that exits with an error as run_failed Create the project .env owner-only when crewai eval turns tracing on Upload a failed anonymous run that crewai eval started Check openai-compatible providers' API key on the first call Scope memoized crew methods to their instance Exit non-zero when crewai run's project script fails Eval asks to share the trace with Enter meaning yes, and explains why Documentation Document required_inputs on GET /inputs and which flow fields are inputs Contributors João Moura (@joaomdmoura)",
     "summary_html": "What's Changed\nFeatures\n<ul>\n<li>Make gpt-6-luna crewAI's default model everywhere</li>\n<li>Read spreadsheet URLs in an agent's input with tools over every row</li>\n<li>Tag eval usage spans with target and a per-evaluation id</li>\n<li>Add --no-open to crewai eval for headless use</li>\n</ul>\nBug Fixes\n<ul>\n<li>Count a crewai eval run that exits with an error as run_failed</li>\n<li>Create the project .env owner-only when crewai eval turns tracing on</li>\n<li>Upload a failed anonymous run that crewai eval started</li>\n<li>Check openai-compatible providers' API key on the first call</li>\n<li>Scope memoized crew methods to their instance</li>\n<li>Exit non-zero when crewai run's project script fails</li>\n<li>Eval asks to share the trace with Enter meaning yes, and explains why</li>\n</ul>\nDocumentation\n<ul>\n<li>Document required_inputs on GET /inputs and which flow fields are inputs</li>\n</ul>\nContributors\n<p><a href=\"https://github.com/joaomdmoura\">João Moura (@joaomdmoura)</a></p>",
@@ -125,6 +636,22 @@
     "published_ts": 1794165916,
     "smart_groups": [
       "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Next-Concept Modeling: Fast, Parallel Coarse-to-Fine Text Generation: This will completely change everything!",
+    "summary": "Essentially we could very soon run opus 5.5 level of intelligence on 32gb Vram. Its many folds more efficient in terms of memory bandwidth making compute the real bottleneck. What do you think? submitted by /u/Lorian0x7 [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr6krp/nextconcept_modeling_fast_parallel_coarsetofine/\">  </a>  <!-- SC_OFF --><div><p>Essentially we could very soon run opus 5.5 level of intelligence on 32gb Vram. Its many folds more efficient in terms of memory bandwidth making compute the real bottleneck.</p> <p>What do you think?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Lorian0x7\"> /u/Lorian0x7 </a> <br/> <span><a href=\"https://arxiv.org/abs/2610.14162\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr6krp/nextconcept_modeling_fast_parallel_coarsetofine/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xr6krp/nextconcept_modeling_fast_parallel_coarsetofine/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T19:19:39+00:00",
+    "published_ts": 1794165579,
+    "smart_groups": [
+      "Infra & model ops"
     ],
     "curated": false
   },
@@ -225,6 +752,40 @@
     "curated": false
   },
   {
+    "title": "Anyone tried this yet?",
+    "summary": "Terminal-RSI-27B is a Qwen3.8-27B-based terminal-agent model released by the Terminal-RSI project. It is intended for repository inspection, code editing, dependency repair, scientific workflow reconstruction, and other multi-step tasks that require interaction with an executable environment and verification of the resulting state. Terminal-RSI alternates Recursive Self-Rewrite (RSR) of verified execution trajectories with critic-inheriting Recursive Policy-Refine (RPR) . The framework aims to turn successful exploration into reproducible behavior and partial progress into strictly verified task completion. Paper: Terminal-RSI: Recursive Self-Improving Terminal Agents via Recursive Self-Rewrite and Policy-Refine Project: Terminal-RSI project page Code: jyyang26/Terminal-RSI Model: Teriminal-RSI/Terminal-RSI-27B submitted by /u/MustBeSomethingThere [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr4ue4/anyone_tried_this_yet/\">  </a>  <!-- SC_OFF --><div><p><strong>Terminal-RSI-27B</strong> is a Qwen3.8-27B-based terminal-agent model released by the Terminal-RSI project. It is intended for repository inspection, code editing, dependency repair, scientific workflow reconstruction, and other multi-step tasks that require interaction with an executable environment and verification of the resulting state.</p> <p>Terminal-RSI alternates <strong>Recursive Self-Rewrite (RSR)</strong> of verified execution trajectories with critic-inheriting <strong>Recursive Policy-Refine (RPR)</strong>. The framework aims to turn successful exploration into reproducible behavior and partial progress into strictly verified task completion.</p> <ul> <li><strong>Paper:</strong> <a href=\"https://arxiv.org/abs/2610.22192\">Terminal-RSI: Recursive Self-Improving Terminal Agents via Recursive Self-Rewrite and Policy-Refine</a></li> <li><strong>Project:</strong> <a href=\"https://jyyang26.github.io/terminal-rsi/\">Terminal-RSI project page</a></li> <li><strong>Code:</strong> <a href=\"https://github.com/jyyang26/Terminal-RSI\">jyyang26/Terminal-RSI</a></li> <li><strong>Model:</strong> <a href=\"https://huggingface.co/Teriminal-RSI/Terminal-RSI-27B\">Teriminal-RSI/Terminal-RSI-27B</a></li> </ul> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/MustBeSomethingThere\"> /u/MustBeSomethingThere </a> <br/> <span><a href=\"https://i.redd.it/r2a2rfrcif0i1.jpeg\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr4ue4/anyone_tried_this_yet/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xr4ue4/anyone_tried_this_yet/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T18:09:03+00:00",
+    "published_ts": 1794161343,
+    "smart_groups": [
+      "Agents & automation",
+      "Coding & dev tools"
+    ],
+    "curated": false
+  },
+  {
+    "title": "What are people finding local models actually useful for?",
+    "summary": "I think that a lot of people get into local models because they get a sense of potential with this stuff, but it can be hard to make local models concretely useful sometimes, compared to frontier models. I think it would help people a lot if we had a place where people shared concretely what they find them most useful for, in the form of what model they're running. I'll start. I'm running DeepSeek v4.1 Flash 1017, using Fraser Price's BRRR ( github.com/fraserprice/DeepSeek-4.1-Flash-1017-BRRR ) on 4x RTX 6000 Blackwells. It gets around 550 tps in c=1, a couple thousand at c=16 iirc. What I'm finding most useful so far: Scouts - commercial frontier models call my local web research agents to go do web research - the frontier models would waste a huge amount of tokens researching relatively trivial stuff, so this has helped save its effort and time. Masons - frontier models spec out small pieces of code, which the local model builds out and delivers back to the frontier model to integrate. Hermes agents which filter Hacker News/Youtube/other sites for news I'd find interesting, it's surprisingly good at calling out what I'd usually click into An events crawler setup, it judges each event, and emails our family with the top 10 every week A personal assistant records all my terminal usage, including harnesses, and my browser usage, and every morning, messages me with a summary of what I was working on when I left off last night to help me get right back into it. Speech to text on local models is revolutionary - so much faster than typing, even though I'm a pretty fast typist, and the local models feel almost instantaneous. I'm sure I'm not using this as well as I could, it relies on me driving it, it's definitely bottlenecked by me, and I'd love to make it do more useful work while I sleep. I've made several stabs at making a \"software factory\", but haven't come up with anything amazing there. What are other people finding success with? submitted by /u/prestodigitarium [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>I think that a lot of people get into local models because they get a sense of potential with this stuff, but it can be hard to make local models concretely useful sometimes, compared to frontier models. I think it would help people a lot if we had a place where people shared concretely what they find them most useful for, in the form of what model they're running.</p> <p>I'll start. I'm running DeepSeek v4.1 Flash 1017, using Fraser Price's BRRR ( github.com/fraserprice/DeepSeek-4.1-Flash-1017-BRRR ) on 4x RTX 6000 Blackwells. It gets around 550 tps in c=1, a couple thousand at c=16 iirc.</p> <p>What I'm finding most useful so far:</p> <ul> <li><p>Scouts - commercial frontier models call my local web research agents to go do web research - the frontier models would waste a huge amount of tokens researching relatively trivial stuff, so this has helped save its effort and time.</p></li> <li><p>Masons - frontier models spec out small pieces of code, which the local model builds out and delivers back to the frontier model to integrate.</p></li> <li><p>Hermes agents which filter Hacker News/Youtube/other sites for news I'd find interesting, it's surprisingly good at calling out what I'd usually click into</p></li> <li><p>An events crawler setup, it judges each event, and emails our family with the top 10 every week</p></li> <li><p>A personal assistant records all my terminal usage, including harnesses, and my browser usage, and every morning, messages me with a summary of what I was working on when I left off last night to help me get right back into it.</p></li> <li><p>Speech to text on local models is revolutionary - so much faster than typing, even though I'm a pretty fast typist, and the local models feel almost instantaneous.</p></li> </ul> <p>I'm sure I'm not using this as well as I could, it relies on me driving it, it's definitely bottlenecked by me, and I'd love to make it do more useful work while I sleep. I've made several stabs at making a \"software factory\", but haven't come up with anything amazing there.</p> <p>What are other people finding success with?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/prestodigitarium\"> /u/prestodigitarium </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr4iv0/what_are_people_finding_local_models_actually/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr4iv0/what_are_people_finding_local_models_actually/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xr4iv0/what_are_people_finding_local_models_actually/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T17:56:13+00:00",
+    "published_ts": 1794160573,
+    "smart_groups": [
+      "Agents & automation",
+      "Coding & dev tools"
+    ],
+    "curated": false
+  },
+  {
     "title": "Artificial Analysis: multimodal decision model Drex Max ranks #1. Both achieving SOTA and Pareto frontier [N]",
     "summary": "hey, its Alti from Nace. we released a small update with Drex Max v1.1 , both achieving the SOTA and Pareto frontier for decision models. We did all that by iterating step by step and every previous version of Drex’s open weights are available on hf. We also released a full playbook on how we trained Drex Max in this paper: “ Towards Foundation Decision Models: Drex” hf: https://huggingface.co/papers/2611.07854 arXiv: https://arxiv.org/pdf/2611.07854 https://preview.redd.it/7fcznstvff0i1.png?width=2000&format=png&auto=webp&s=6dc7912679a84164b6e4de9601cd67f41b5ca6a0 Drex Max v1 is weights are available here: https://huggingface.co/nace-ai/drex-max-v1 with Open RAIL-M license & v1.1 open source weights upcoming soon (we are currently optimizing for local inference). Three cool things about Drex Max models: it can even run on your Mac with https://github.com/nace-ai/kapitsa inference engine. Context window is ~256k, comparing to Glide1.2(64k) and Mammoth(16k) & pplxdecider’s (256k) Its 8x cheaper than the next best model in the category in the aa index. feel free to chime in: our chief of ai will answer any of your technical questions. submitted by /u/m4rkGS [link] [comments]",
     "summary_html": "<a href=\"https://www.reddit.com/r/MachineLearning/comments/1xr4hkm/artificial_analysis_multimodal_decision_model/\">  </a>  <!-- SC_OFF --><div><p>hey, its Alti from Nace.<br/> we released a small update with <strong>Drex Max v1.1</strong>, both achieving the SOTA and Pareto frontier for decision models. We did all that by iterating step by step and every previous version of Drex’s open weights are available on hf.<br/> We also released a full playbook on how we trained Drex Max in this paper: <strong>“ Towards Foundation Decision Models: Drex”</strong></p> <p>hf: <a href=\"https://huggingface.co/papers/2611.07854\">https://huggingface.co/papers/2611.07854</a><br/> arXiv: <a href=\"https://arxiv.org/pdf/2611.07854\">https://arxiv.org/pdf/2611.07854</a></p> <p><a href=\"https://preview.redd.it/7fcznstvff0i1.png?width=2000&amp;format=png&amp;auto=webp&amp;s=6dc7912679a84164b6e4de9601cd67f41b5ca6a0\">https://preview.redd.it/7fcznstvff0i1.png?width=2000&amp;format=png&amp;auto=webp&amp;s=6dc7912679a84164b6e4de9601cd67f41b5ca6a0</a></p> <p>Drex Max v1 is weights are available here: <a href=\"https://huggingface.co/nace-ai/drex-max-v1\">https://huggingface.co/nace-ai/drex-max-v1</a> with Open RAIL-M license &amp; v1.1 open source weights upcoming soon (we are currently optimizing for local inference).</p> <p>Three cool things about Drex Max models:</p> <ol> <li>it can even run on your Mac with <a href=\"https://github.com/nace-ai/kapitsa\">https://github.com/nace-ai/kapitsa</a> inference engine.</li> <li>Context window is ~256k, comparing to Glide1.2(64k) and Mammoth(16k) &amp; pplxdecider’s (256k)</li> <li>Its 8x cheaper than the next best model in the category in the aa index.</li> </ol> <p>feel free to chime in: our chief of ai will answer any of your technical questions.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/m4rkGS\"> /u/m4rkGS </a> <br/> <span><a href=\"https://i.redd.it/rj9m6rutff0i1.png\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xr4hkm/artificial_analysis_multimodal_decision_model/\">[comments]</a></span>",
@@ -239,7 +800,9 @@
       "Research & papers",
       "Vision, audio & video"
     ],
-    "curated": false
+    "curated": false,
+    "story_id": "a10feda08ef3",
+    "story_size": 2
   },
   {
     "title": "I merged attention and MLP processing into a single gated Transformer block. GAP [R]",
@@ -259,6 +822,23 @@
     "curated": false
   },
   {
+    "title": "GPT-5.5 dataset across my used 25 billion tokens!",
+    "summary": "Cheers for u/New_Comfortable7240 for santitisation! 12,121 tool calls here! submitted by /u/-MaskNinja- [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr3ymf/gpt55_dataset_across_my_used_25_billion_tokens/\">  </a>  <!-- SC_OFF --><div><p>Cheers for <a href=\"https://www.reddit.com/u/New_Comfortable7240\">u/New_Comfortable7240</a> for santitisation!</p> <p>12,121 tool calls here!</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/-MaskNinja-\"> /u/-MaskNinja- </a> <br/> <span><a href=\"https://huggingface.co/datasets/israellaguan/codex-tool-use-trajectories\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr3ymf/gpt55_dataset_across_my_used_25_billion_tokens/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xr3ymf/gpt55_dataset_across_my_used_25_billion_tokens/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T17:32:48+00:00",
+    "published_ts": 1794159168,
+    "smart_groups": [
+      "Business & funding",
+      "Data & analytics"
+    ],
+    "curated": false
+  },
+  {
     "title": "Etsy Expands AI Training Rights over Content, Restricts 3rd Party Training",
     "summary": "",
     "summary_html": "<p>Article URL: <a href=\"https://www.valueaddedresource.net/etsy-expands-ai-training-rights/\">https://www.valueaddedresource.net/etsy-expands-ai-training-rights/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50415265\">https://news.ycombinator.com/item?id=50415265</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
@@ -273,6 +853,83 @@
       "Security & misuse"
     ],
     "curated": false
+  },
+  {
+    "title": "Motion graphics video made with Qwen3.8 Flash Next GSQ RCO IQ3_XXS on strata",
+    "summary": "I've seen the insane motion graphics videos people made when opus 5.5 first came out and wondered how good QFN would do with the same recipe. Decided to make a short video for my nephew who loves trains This is Qwen3.8 Flash Next GSQ RCO IQ3_XXS on 16GB VRAM RTX 4080 + 64GB DDR5 5600 with strata and opencode at about 95 tps decode and 3000 tps prefill. It took ~40 minutes for the first render, with about 3 followup prompts to fix the rough edges and broken text etc so about 2 hours in total. The \"recipe\" is explicitly telling the model to use three.js, playwright and ffmpeg to create the video, then just describe in simple words the style of video and video dimensions, what the video is about, audio, animation style etc.. in this case the first prompt was: \"Make a 15-second, 1920×1080, 60fps video in Three.js that showcases the famous japan shinkansen train, like a showreel. Render it frame by frame to MP4 with Playwright and ffmpeg, go all out, 1s hook, loop.\" It required a few followup prompts (the first render was dark and there were no buildings and there was too much text), but this \"stack\" of threejs + playwright + ffmpeg works pretty well for fixes. Oh and btw this doesn't have any duration limit the videos can be as long as you want. Now, is it comparable to opus? no lol but it's pretty good I'd say. Can't wait to try this with qwen 4! submitted by /u/Yhojm [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr3qes/motion_graphics_video_made_with_qwen38_flash_next/\">  </a>  <!-- SC_OFF --><div><p>I've seen the insane motion graphics videos people made when opus 5.5 first came out and wondered how good QFN would do with the same recipe. Decided to make a short video for my nephew who loves trains</p> <p>This is Qwen3.8 Flash Next GSQ RCO IQ3_XXS on 16GB VRAM RTX 4080 + 64GB DDR5 5600 with strata and opencode at about 95 tps decode and 3000 tps prefill.</p> <p>It took ~40 minutes for the first render, with about 3 followup prompts to fix the rough edges and broken text etc so about 2 hours in total.</p> <p>The \"recipe\" is explicitly telling the model to use three.js, playwright and ffmpeg to create the video, then just describe in simple words the style of video and video dimensions, what the video is about, audio, animation style etc.. in this case the first prompt was:</p> <p>\"Make a 15-second, 1920×1080, 60fps video in Three.js that showcases the famous japan shinkansen train, like a showreel. Render it frame by frame to MP4 with Playwright and ffmpeg, go all out, 1s hook, loop.\"</p> <p>It required a few followup prompts (the first render was dark and there were no buildings and there was too much text), but this \"stack\" of threejs + playwright + ffmpeg works pretty well for fixes. Oh and btw this doesn't have any duration limit the videos can be as long as you want.</p> <p>Now, is it comparable to opus? no lol but it's pretty good I'd say. Can't wait to try this with qwen 4!</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Yhojm\"> /u/Yhojm </a> <br/> <span><a href=\"https://v.redd.it/181uhzooaf0i1\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr3qes/motion_graphics_video_made_with_qwen38_flash_next/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xr3qes/motion_graphics_video_made_with_qwen38_flash_next/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T17:23:29+00:00",
+    "published_ts": 1794158609,
+    "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "The Qwen Flash Next alibaba URL thing happened to me too just now",
+    "summary": "It seems to have really confused itself too 😭 I was having it make a sort of Github release checker script and it snuck those two URL fetch tool calls in amongst some web searches I put the whole exported Open WebUI chat on hastebin so you can see exactly what happened: https://hastebin.com/share/ayawowirix.swift Edit: forgot to mention this is unsloth/Qwen3.8-Flash-Next-GGUF:IQ4_XS on plain llama.cpp Also, if anyone has any experience/suggestions with defending against these hallucinated queries going through, I am all ears! submitted by /u/FoodEater4Squillion [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr3ifw/the_qwen_flash_next_alibaba_url_thing_happened_to/\">  </a>  <!-- SC_OFF --><div><p>It seems to have really confused itself too 😭 I was having it make a sort of Github release checker script and it snuck those two URL fetch tool calls in amongst some web searches</p> <p>I put the whole exported Open WebUI chat on hastebin so you can see exactly what happened: <a href=\"https://hastebin.com/share/ayawowirix.swift\">https://hastebin.com/share/ayawowirix.swift</a></p> <p>Edit: forgot to mention this is unsloth/Qwen3.8-Flash-Next-GGUF:IQ4_XS on plain llama.cpp</p> <p>Also, if anyone has any experience/suggestions with defending against these hallucinated queries going through, I am all ears! </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/FoodEater4Squillion\"> /u/FoodEater4Squillion </a> <br/> <span><a href=\"https://www.reddit.com/gallery/1xr3ifw\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr3ifw/the_qwen_flash_next_alibaba_url_thing_happened_to/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xr3ifw/the_qwen_flash_next_alibaba_url_thing_happened_to/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T17:14:19+00:00",
+    "published_ts": 1794158059,
+    "smart_groups": [
+      "Safety & alignment",
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Rumor: Moonshot Kimi roadmap",
+    "summary": "EOY 2026: Kimi K3 Flash, will replace Kimi K2.8 and compete with DeepSeek V4.1 Flash. Early 2027: Kimi 3.5 , same 3T parameters, that is faster at reaching simple answers. Q3 2027: Kimi K4 will increase size to 5.4 trillion parameters. https://x.com/bebuu_ai/status/2119319459206934677 submitted by /u/Terminator857 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>EOY 2026: Kimi K3 Flash, will replace Kimi K2.8 and compete with DeepSeek V4.1 Flash.</p> <p>Early 2027: Kimi 3.5 , same 3T parameters, that is faster at reaching simple answers.</p> <p>Q3 2027: Kimi K4 will increase size to 5.4 trillion parameters.</p> <p><a href=\"https://x.com/bebuu_ai/status/2119319459206934677\">https://x.com/bebuu_ai/status/2119319459206934677</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Terminator857\"> /u/Terminator857 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr2t4c/rumor_moonshot_kimi_roadmap/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr2t4c/rumor_moonshot_kimi_roadmap/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xr2t4c/rumor_moonshot_kimi_roadmap/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T16:45:50+00:00",
+    "published_ts": 1794156350,
+    "smart_groups": [
+      "Business & funding"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Artificial Analysis: multimodal decision model Drex Max ranks #1. Both achieving SOTA and Pareto frontier.",
+    "summary": "hey, its Alti from Nace. We released a small update with Drex Max v1.1 , both achieving the SOTA and Pareto frontier for decision models. We did all that by iterating step by step and every previous version of Drex’s open weights are available on hf. https://preview.redd.it/8a4xlurt1f0i1.png?width=2000&format=png&auto=webp&s=99f721e992f967a1b263f9d7e1628ed70c20b1dd we also released a full playbook on how we trained Drex Max in this paper: “ Towards Foundation Decision Models: Drex” hf: https://huggingface.co/papers/2611.07854 arXiv: https://arxiv.org/pdf/2611.07854 Drex Max v1 is weights are available here: https://huggingface.co/nace-ai/drex-max-v1 with Open RAIL-M license & v1.1 open source weights upcoming soon (we are currently optimizing for local inference). Three cool things about Drex Max models: it can even run on your Mac with https://github.com/nace-ai/kapitsa inference engine. Context window is ~256k, comparing to Glide1.2(64k) and Mammoth(16k) & pplxdecider’s (256k) Its 8x cheaper than the next best model in the category in the aa index. feel free to chime in: our chief of ai will answer any of your technical questions submitted by /u/m4rkGS [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr2rqk/artificial_analysis_multimodal_decision_model/\">  </a>  <!-- SC_OFF --><div><p>hey, its Alti from Nace.<br/> We released a small update with <strong>Drex Max v1.1</strong>, both achieving the SOTA and Pareto frontier for decision models. We did all that by iterating step by step and every previous version of Drex’s open weights are available on hf. </p> <p><a href=\"https://preview.redd.it/8a4xlurt1f0i1.png?width=2000&amp;format=png&amp;auto=webp&amp;s=99f721e992f967a1b263f9d7e1628ed70c20b1dd\">https://preview.redd.it/8a4xlurt1f0i1.png?width=2000&amp;format=png&amp;auto=webp&amp;s=99f721e992f967a1b263f9d7e1628ed70c20b1dd</a></p> <p>we also released a full playbook on how we trained Drex Max in this paper: <strong>“ Towards Foundation Decision Models: Drex”</strong></p> <p>hf: <a href=\"https://huggingface.co/papers/2611.07854\">https://huggingface.co/papers/2611.07854</a><br/> arXiv: <a href=\"https://arxiv.org/pdf/2611.07854\">https://arxiv.org/pdf/2611.07854</a></p> <p>Drex Max v1 is weights are available here: <a href=\"https://huggingface.co/nace-ai/drex-max-v1\">https://huggingface.co/nace-ai/drex-max-v1</a> with Open RAIL-M license &amp; v1.1 open source weights upcoming soon (we are currently optimizing for local inference).</p> <p>Three cool things about Drex Max models:</p> <ol> <li>it can even run on your Mac with <a href=\"https://github.com/nace-ai/kapitsa\">https://github.com/nace-ai/kapitsa</a> inference engine.</li> <li>Context window is ~256k, comparing to Glide1.2(64k) and Mammoth(16k) &amp; pplxdecider’s (256k)</li> <li>Its 8x cheaper than the next best model in the category in the aa index.</li> </ol> <p>feel free to chime in: our chief of ai will answer any of your technical questions</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/m4rkGS\"> /u/m4rkGS </a> <br/> <span><a href=\"https://i.redd.it/dxj6yhyd3f0i1.png\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr2rqk/artificial_analysis_multimodal_decision_model/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xr2rqk/artificial_analysis_multimodal_decision_model/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T16:44:14+00:00",
+    "published_ts": 1794156254,
+    "smart_groups": [
+      "Research & papers",
+      "Vision, audio & video"
+    ],
+    "curated": false,
+    "story_id": "a10feda08ef3",
+    "story_size": 2,
+    "story_primary": true,
+    "story_others": [
+      {
+        "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+        "title": "Artificial Analysis: multimodal decision model Drex Max ranks #1. Both achieving SOTA and Pareto frontier [N]",
+        "link": "https://www.reddit.com/r/MachineLearning/comments/1xr4hkm/artificial_analysis_multimodal_decision_model/",
+        "published_ts": 1794160483
+      }
+    ]
   },
   {
     "title": "China's AI models, led by Kimi, dominate open-source enterprise spending",
@@ -325,6 +982,38 @@
     "curated": false
   },
   {
+    "title": "tencent/Qwen3.8-27B-DSpine-b16 · Hugging Face",
+    "summary": "Apparently Tencent has developed a new speculative decoding method. 3x faster decoding for 27B models? submitted by /u/emdeka87 [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr2aaa/tencentqwen3827bdspineb16_hugging_face/\">  </a>  <!-- SC_OFF --><div><p>Apparently Tencent has developed a new speculative decoding method. 3x faster decoding for 27B models?</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/emdeka87\"> /u/emdeka87 </a> <br/> <span><a href=\"https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr2aaa/tencentqwen3827bdspineb16_hugging_face/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xr2aaa/tencentqwen3827bdspineb16_hugging_face/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T16:23:48+00:00",
+    "published_ts": 1794155028,
+    "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "4x Radeon AI PRO R9700 + 2x RTX 3090 on one x16 slot, using a PCIe switch",
+    "summary": "submitted by /u/bolts98 [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr2a6y/4x_radeon_ai_pro_r9700_2x_rtx_3090_on_one_x16/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/bolts98\"> /u/bolts98 </a> <br/> <span><a href=\"https://doug.sh/posts/six-gpus-one-x16-slot/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr2a6y/4x_radeon_ai_pro_r9700_2x_rtx_3090_on_one_x16/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xr2a6y/4x_radeon_ai_pro_r9700_2x_rtx_3090_on_one_x16/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T16:23:42+00:00",
+    "published_ts": 1794155022,
+    "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
     "title": "The 0rwx framework for AI usage attribution",
     "summary": "",
     "summary_html": "<p>Article URL: <a href=\"http://0rwx.com\">http://0rwx.com</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50414502\">https://news.ycombinator.com/item?id=50414502</a></p>\n<p>Points: 2</p>\n<p># Comments: 1</p>",
@@ -357,6 +1046,23 @@
     "curated": false
   },
   {
+    "title": "I ran Qwen3.5-0.8B in pure Assembly",
+    "summary": "On an AMD EPYC 7B12, it generated 6.51 tokens/sec on one CPU thread. The Transformers reference reached 4.34. All 32 generated tokens matched in both runs. Code: https://github.com/suayptalha/qwen3\\_5-assembly X Post: https://x.com/suayptalha/status/2119254536283906205 Tokenization, model inference and sampling all run in Assembly. No libc or Python at runtime; Python prepares the tokenizer tables at build time. Benchmark: 19 input tokens, greedy decoding, 2 runs. Assembly reads BF16 weights; Transformers loaded them as FP32 and used PyTorch fallback kernels. submitted by /u/suayptalha [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr18t3/i_ran_qwen3508b_in_pure_assembly/\">  </a>  <!-- SC_OFF --><div><p>On an AMD EPYC 7B12, it generated 6.51 tokens/sec on one CPU thread. The Transformers reference reached 4.34.</p> <p>All 32 generated tokens matched in both runs.</p> <p>Code: <a href=\"https://github.com/suayptalha/qwen3%5C_5-assembly\">https://github.com/suayptalha/qwen3\\_5-assembly</a></p> <p>X Post: <a href=\"https://x.com/suayptalha/status/2119254536283906205\">https://x.com/suayptalha/status/2119254536283906205</a></p> <p>Tokenization, model inference and sampling all run in Assembly. No libc or Python at runtime; Python prepares the tokenizer tables at build time.</p> <p>Benchmark: 19 input tokens, greedy decoding, 2 runs. Assembly reads BF16 weights; Transformers loaded them as FP32 and used PyTorch fallback kernels.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/suayptalha\"> /u/suayptalha </a> <br/> <span><a href=\"https://v.redd.it/5zrpxsi3se0i1\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr18t3/i_ran_qwen3508b_in_pure_assembly/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xr18t3/i_ran_qwen3508b_in_pure_assembly/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T15:39:17+00:00",
+    "published_ts": 1794152357,
+    "smart_groups": [
+      "Research & papers",
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
     "title": "Show HN: Jurex in House – Handles Legal Side of Your Business with AI",
     "summary": "Hi, Jurex-in-house is a Tool you & legal teams can use to handle the legal side of your business. Best in Class Drafting, research & complete contract to matter management in US, UK, India & singapore. Start Free",
     "summary_html": "<p>Hi,<p>Jurex-in-house is a Tool you &amp; legal teams can use to handle the legal side of your business. Best in Class Drafting, research &amp; complete contract to matter management in US, UK, India &amp; singapore. Start Free</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50414095\">https://news.ycombinator.com/item?id=50414095</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p></p>",
@@ -373,6 +1079,22 @@
     "curated": false
   },
   {
+    "title": "I fine-tuned Qwen3.5-0.8B to turn plain English into bash. What I learnt",
+    "summary": "Running the app I wanted a terminal helper that works fully offline, so I started building dale. You type dale \"show the 5 largest files in this folder\" , a small fine-tuned model writes the command, and a deterministic risk checker labels it safe, caution or danger before anything runs. Nothing runs without you confirming it. Scores on 471 held-out requests in English and Spanish, every model in Q4_K_M on the same llama.cpp: Model GGUF Correct Accuracy 95% CI dale-9b (GPU) 5.6 GB 420 89.2% 86.0–91.7 dale-4b (GPU) 2.7 GB 410 87.0% 83.7–89.8 dale-2b 1.3 GB 385 81.7% 78.0–85.0 dale-0.8b (CPU) 529 MB 374 79.4% 75.5–82.8 Qwen3.5-9B, stock 5.7 GB 296 62.8% 58.4–67.1 Gemma 4 E4B-it, stock 5.0 GB 296 62.8% 58.4–67.1 Qwen3.5-4B, stock 2.7 GB 257 54.6% 50.0–59.0 Gemma 4 E2B-it, stock 3.1 GB 254 53.9% 49.4–58.4 Qwen3.5-2B, stock 1.3 GB 152 32.3% 28.2–36.6 Qwen3.5-0.8B, stock 533 MB 70 14.9% 11.9–18.4 On a 2020 laptop with no GPU, the 0.8B answers in 1.7 s (median). The 4B does 1.2 s on a 16 GB GPU through Vulkan. It's all one 51 MB binary with llama.cpp inside, no Python and no server. Comparison finetuned family What the difference looks like. Real answers from the test (requests trimmed), dale-0.8b vs stock Qwen3.5-9B: Request dale-0.8b Stock Qwen3.5-9B Temporarily freeze PID 22601 without terminating it. kill -STOP 22601 Writes to /proc/22601/oom_score_adj . Freezes nothing Copy offer.pdf into /mnt/usb/, but leave any existing offer.pdf there untouched. cp -n …/offer.pdf /mnt/usb/ sudo cp …/offer.pdf /mnt/usb/ , which overwrites it Can you give me the prime factorization of 1234567890 from the terminal? factor 1234567890 A 180-character python3 -c one-liner that's a syntax error I just need the total disk usage of /opt/model-cache, in a readable size. du -sh /opt/model-cache os.path.getsize() on the folder: the size of the directory entry, not its contents Lock the password of the local account archivebot. sudo passwd -l archivebot sudo passwd archivebot , which sets a new one For this Bash session, make ll an alias for ls -alF. alias ll='ls -alF' Refuses: \"not possible with a single shell command\" Cherry-picked, obviously: there are 120 cases only dale gets right and 42 only the 9B gets right. The stock 9B also likes sudo: it added it to 35 commands that didn't need it (dale: 5). Comparison failures The thing I wish someone had told me earlier: after four rounds of data, the 0.8B got stuck at 74%. I tried DPO on its own failures, a fine-tuned 27B teacher with five distillation setups, a third epoch, lr sweeps. Nothing moved the test. I f**king lost several days into this :(, but at least I learnt what is important in the process. Then I looked at how the requests were written. My training requests were short and clean. The test ones were longer and stacked constraints, like \"only names, sorted by date, no subfolders\". https://preview.redd.it/oocu4a0qoe0i1.png?width=2304&format=png&auto=webp&s=fa30e71800cbc722c89f76a9210744f6acc7fb49 I generated new requests matching those stats, added about 9k to the set and retrained. 348 → 375 correct (p = 0.001). https://preview.redd.it/11bdtj5soe0i1.png?width=2304&format=png&auto=webp&s=db8e2a2158263f25100424512595b7d2031a1025 So if a small model plateaus on a narrow task, look at how your data is written before you reach for a fancier method. Caveats: the baselines are untuned and get an 8-shot prompt, so this is \"tuned small vs prompted big\", not a ranking of models. The test is synthetic and judged by two LLMs from different providers (TOP TIER). All of this work I did on rented GPU's (RTX 5090 and RTX Pro 6000). Code is MIT, the models are Apache-2.0 GGUFs that work with plain llama.cpp. Write-up with every chart and the dead ends: https://manuelgs.com/en/blog/dale-case-study/ Code: https://github.com/manuelgscom/dale Models (0.8B to 9B): https://huggingface.co/collections/manuelgscom/dale Has anyone actually made distillation from a much bigger teacher pay off below 1B? I couldn't. Any advice would be well welcomed :) submitted by /u/AlternativeEnough352 [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr0ykk/i_finetuned_qwen3508b_to_turn_plain_english_into/\">  </a>  <!-- SC_OFF --><div><p><a href=\"https://reddit.com/link/1xr0ykk/video/inb1jnggoe0i1/player\">Running the app</a></p> <p>I wanted a terminal helper that works fully offline, so I started building dale. You type <code>dale \"show the 5 largest files in this folder\"</code>, a small fine-tuned model writes the command, and a deterministic risk checker labels it safe, caution or danger before anything runs. Nothing runs without you confirming it.</p> <p>Scores on 471 held-out requests in English and Spanish, every model in Q4_K_M on the same llama.cpp:</p>   Model GGUF Correct Accuracy 95% CI    <strong>dale-9b</strong> (GPU) 5.6 GB 420 <strong>89.2%</strong> 86.0–91.7   <strong>dale-4b</strong> (GPU) 2.7 GB 410 <strong>87.0%</strong> 83.7–89.8   dale-2b 1.3 GB 385 81.7% 78.0–85.0   <strong>dale-0.8b</strong> (CPU) 529 MB 374 <strong>79.4%</strong> 75.5–82.8   Qwen3.5-9B, stock 5.7 GB 296 62.8% 58.4–67.1   Gemma 4 E4B-it, stock 5.0 GB 296 62.8% 58.4–67.1   Qwen3.5-4B, stock 2.7 GB 257 54.6% 50.0–59.0   Gemma 4 E2B-it, stock 3.1 GB 254 53.9% 49.4–58.4   Qwen3.5-2B, stock 1.3 GB 152 32.3% 28.2–36.6   Qwen3.5-0.8B, stock 533 MB 70 14.9% 11.9–18.4   <p>On a 2020 laptop with no GPU, the 0.8B answers in 1.7 s (median). The 4B does 1.2 s on a 16 GB GPU through Vulkan. It's all one 51 MB binary with llama.cpp inside, no Python and no server.</p> <p><a href=\"https://preview.redd.it/r3tlntwioe0i1.png?width=2304&amp;format=png&amp;auto=webp&amp;s=7c81088aa7864cc05ca2cd9b4027a543f0bac429\">Comparison finetuned family</a></p> <p>What the difference looks like. Real answers from the test (requests trimmed), dale-0.8b vs stock Qwen3.5-9B:</p>   Request dale-0.8b Stock Qwen3.5-9B    Temporarily freeze PID 22601 without terminating it. <code>kill -STOP 22601</code> Writes to <code>/proc/22601/oom_score_adj</code>. Freezes nothing   Copy offer.pdf into /mnt/usb/, but leave any existing offer.pdf there untouched. <code>cp -n …/offer.pdf /mnt/usb/</code> <code>sudo cp …/offer.pdf /mnt/usb/</code>, which overwrites it   Can you give me the prime factorization of 1234567890 from the terminal? <code>factor 1234567890</code> A 180-character <code>python3 -c</code> one-liner that's a syntax error   I just need the total disk usage of /opt/model-cache, in a readable size. <code>du -sh /opt/model-cache</code> <code>os.path.getsize()</code> on the folder: the size of the directory entry, not its contents   Lock the password of the local account archivebot. <code>sudo passwd -l archivebot</code> <code>sudo passwd archivebot</code>, which sets a new one   For this Bash session, make ll an alias for ls -alF. <code>alias ll='ls -alF'</code> Refuses: \"not possible with a single shell command\"   <p>Cherry-picked, obviously: there are 120 cases only dale gets right and 42 only the 9B gets right. The stock 9B also likes sudo: it added it to 35 commands that didn't need it (dale: 5).</p> <p><a href=\"https://preview.redd.it/rq9odctnoe0i1.png?width=2304&amp;format=png&amp;auto=webp&amp;s=0662a5d3426f95071f1ac1b1c9e01776e040cade\">Comparison failures</a></p> <p>The thing I wish someone had told me earlier: after four rounds of data, the 0.8B got stuck at 74%. I tried DPO on its own failures, a fine-tuned 27B teacher with five distillation setups, a third epoch, lr sweeps. Nothing moved the test. I f**king lost several days into this :(, but at least I learnt what is important in the process.</p> <p>Then I looked at how the requests were written. My training requests were short and clean. The test ones were longer and stacked constraints, like \"only names, sorted by date, no subfolders\".</p> <p><a href=\"https://preview.redd.it/oocu4a0qoe0i1.png?width=2304&amp;format=png&amp;auto=webp&amp;s=fa30e71800cbc722c89f76a9210744f6acc7fb49\">https://preview.redd.it/oocu4a0qoe0i1.png?width=2304&amp;format=png&amp;auto=webp&amp;s=fa30e71800cbc722c89f76a9210744f6acc7fb49</a></p> <p>I generated new requests matching those stats, added about 9k to the set and retrained. 348 → 375 correct (p = 0.001).</p> <p><a href=\"https://preview.redd.it/11bdtj5soe0i1.png?width=2304&amp;format=png&amp;auto=webp&amp;s=db8e2a2158263f25100424512595b7d2031a1025\">https://preview.redd.it/11bdtj5soe0i1.png?width=2304&amp;format=png&amp;auto=webp&amp;s=db8e2a2158263f25100424512595b7d2031a1025</a></p> <p>So if a small model plateaus on a narrow task, look at how your data is written before you reach for a fancier method.</p> <p>Caveats: the baselines are untuned and get an 8-shot prompt, so this is \"tuned small vs prompted big\", not a ranking of models. The test is synthetic and judged by two LLMs from different providers (TOP TIER). </p> <p>All of this work I did on rented GPU's (RTX 5090 and RTX Pro 6000). Code is MIT, the models are Apache-2.0 GGUFs that work with plain llama.cpp.</p> <ul> <li>Write-up with every chart and the dead ends: <a href=\"https://manuelgs.com/en/blog/dale-case-study/\">https://manuelgs.com/en/blog/dale-case-study/</a></li> <li>Code: <a href=\"https://github.com/manuelgscom/dale\">https://github.com/manuelgscom/dale</a></li> <li>Models (0.8B to 9B): <a href=\"https://huggingface.co/collections/manuelgscom/dale\">https://huggingface.co/collections/manuelgscom/dale</a></li> </ul> <p>Has anyone actually made distillation from a much bigger teacher pay off below 1B? I couldn't.</p> <p>Any advice would be well welcomed :)</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/AlternativeEnough352\"> /u/AlternativeEnough352 </a> <br/> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr0ykk/i_finetuned_qwen3508b_to_turn_plain_english_into/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr0ykk/i_finetuned_qwen3508b_to_turn_plain_english_into/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xr0ykk/i_finetuned_qwen3508b_to_turn_plain_english_into/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T15:26:31+00:00",
+    "published_ts": 1794151591,
+    "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
     "title": "Apple CEO Presses Software Chief to Pursue More Ambitious AI Strategy",
     "summary": "",
     "summary_html": "<p>Article URL: <a href=\"https://www.bloomberg.com/news/newsletters/2026-11-08/apple-explores-turning-siri-ai-into-chatgpt-dots-like-agent-ios-28-shake-up\">https://www.bloomberg.com/news/newsletters/2026-11-08/apple-explores-turning-siri-ai-into-chatgpt-dots-like-agent-ios-28-shake-up</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50414021\">https://news.ycombinator.com/item?id=50414021</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
@@ -385,6 +1107,38 @@
     "published_ts": 1794151191,
     "smart_groups": [
       "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "\"Does censorship exist in [country]?\", according to various LLMs",
+    "summary": "I wrote a small program that asks the same Yes/No question about every country to a language model, and generates an SVG world map that visualizes the model's responses: https://github.com/p-e-w/llm-beliefs I'm rather surprised by the results... submitted by /u/-p-e-w- [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr09nq/does_censorship_exist_in_country_according_to/\">  </a>  <!-- SC_OFF --><div><p>I wrote a small program that asks the same Yes/No question about every country to a language model, and generates an SVG world map that visualizes the model's responses: <a href=\"https://github.com/p-e-w/llm-beliefs\">https://github.com/p-e-w/llm-beliefs</a></p> <p>I'm rather surprised by the results...</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/-p-e-w-\"> /u/-p-e-w- </a> <br/> <span><a href=\"https://www.reddit.com/gallery/1xr09nq\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr09nq/does_censorship_exist_in_country_according_to/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xr09nq/does_censorship_exist_in_country_according_to/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T14:56:07+00:00",
+    "published_ts": 1794149767,
+    "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Users have started buying RTX 5060 Ti 16GB graphics cards en masse for the sake of AI.",
+    "summary": "Oh look, thats us! submitted by /u/ab2377 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Oh look, thats us!</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/ab2377\"> /u/ab2377 </a> <br/> <span><a href=\"https://en.gamegpu.com/news/zhelezo/polzovateli-nachali-massovo-skupat-videokarty-rtx-5060-ti-16gb-radi-ii\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xr01bj/users_have_started_buying_rtx_5060_ti_16gb/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xr01bj/users_have_started_buying_rtx_5060_ti_16gb/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T14:45:22+00:00",
+    "published_ts": 1794149122,
+    "smart_groups": [
+      "Infra & model ops"
     ],
     "curated": false
   },
@@ -463,22 +1217,6 @@
     "type_label": "Media & Tech Analysis",
     "published": "2026-11-08T13:57:22+00:00",
     "published_ts": 1794146242,
-    "smart_groups": [
-      "Security & misuse"
-    ],
-    "curated": false
-  },
-  {
-    "title": "I Resist Generative \"AI\"",
-    "summary": "",
-    "summary_html": "<p>Article URL: <a href=\"https://estherweidauer.com/articles/why-resist-generative-ai.html\">https://estherweidauer.com/articles/why-resist-generative-ai.html</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50413357\">https://news.ycombinator.com/item?id=50413357</a></p>\n<p>Points: 5</p>\n<p># Comments: 0</p>",
-    "link": "https://estherweidauer.com/articles/why-resist-generative-ai.html",
-    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-    "feed_type": "blog",
-    "type": "media-tech-analysis",
-    "type_label": "Media & Tech Analysis",
-    "published": "2026-11-08T13:49:01+00:00",
-    "published_ts": 1794145741,
     "smart_groups": [
       "Security & misuse"
     ],
@@ -756,6 +1494,23 @@
     "published_ts": 1794122437,
     "smart_groups": [
       "Vision, audio & video"
+    ],
+    "curated": false
+  },
+  {
+    "title": "OpenClaw Retrospective",
+    "summary": "A long time ago there was this massive phenomenon called OpenClaw that took the world by storm. It was an incredible moment where AI came of age and showed that you Can actually do stuff with AI rather than just chat with it. A historic and legendary project that broke GitHub star records. Then the creator rightly got massive fame and got bought out by OpenAI to the tune of billions of dollars. How can an open source project be acquired you ask? Well that really is a failure on your part for your juvenile trait of having a logical mind. The world was forever changed. Electricity. Internet. iPhone. OpenClaw. -------------- Jokes aside, anyone actually daily driving it? Plot source: https://huggingface.co/spaces/joelniklaus/harness-leaderboard submitted by /u/rm-rf-rm [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xqs2sh/openclaw_retrospective/\">  </a>  <!-- SC_OFF --><div><p>A long time ago there was this massive phenomenon called OpenClaw that took the world by storm. It was an incredible moment where AI came of age and showed that you Can actually do stuff with AI rather than just chat with it. A historic and legendary project that broke GitHub star records. Then the creator rightly got massive fame and got bought out by OpenAI to the tune of billions of dollars. How can an open source project be acquired you ask? Well that really is a failure on your part for your juvenile trait of having a logical mind. </p> <p>The world was forever changed. </p> <p>Electricity. Internet. iPhone. OpenClaw. </p> <p>--------------</p> <p>Jokes aside, anyone actually daily driving it?</p> <p>Plot source: <a href=\"https://huggingface.co/spaces/joelniklaus/harness-leaderboard\">https://huggingface.co/spaces/joelniklaus/harness-leaderboard</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/rm-rf-rm\"> /u/rm-rf-rm </a> <br/> <span><a href=\"https://i.redd.it/h3cwdtox2c0i1.png\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xqs2sh/openclaw_retrospective/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xqs2sh/openclaw_retrospective/",
+    "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-08T06:47:56+00:00",
+    "published_ts": 1794120476,
+    "smart_groups": [
+      "Research & papers",
+      "Business & funding"
     ],
     "curated": false
   },
@@ -1973,22 +2728,6 @@
     "smart_groups": [
       "Research & papers",
       "Safety & alignment"
-    ],
-    "curated": false
-  },
-  {
-    "title": "New Research Tests Whether AI Models Know Their Own Thoughts",
-    "summary": "",
-    "summary_html": "<p>Article URL: <a href=\"https://www.quantamagazine.org/new-research-tests-whether-ai-models-know-their-own-thoughts-20261104/\">https://www.quantamagazine.org/new-research-tests-whether-ai-models-know-their-own-thoughts-20261104/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50398758\">https://news.ycombinator.com/item?id=50398758</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
-    "link": "https://www.quantamagazine.org/new-research-tests-whether-ai-models-know-their-own-thoughts-20261104/",
-    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-    "feed_type": "blog",
-    "type": "media-tech-analysis",
-    "type_label": "Media & Tech Analysis",
-    "published": "2026-11-06T21:27:07+00:00",
-    "published_ts": 1794000427,
-    "smart_groups": [
-      "Security & misuse"
     ],
     "curated": false
   },
@@ -3954,23 +4693,6 @@
     "smart_groups": [
       "Model releases",
       "Infra & model ops"
-    ],
-    "curated": false
-  },
-  {
-    "title": "Preview seed fixture (rolling)",
-    "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@add817416328 (migration head: 20261104120000_store_creator_counts_visible_listings). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only synthetic rows (Faker-generated, plus the hand-written preview marketplace) and the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
-    "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@add817416328 (migration head: 20261104120000_store_creator_counts_visible_listings). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only synthetic rows (Faker-generated, plus the hand-written preview marketplace) and the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
-    "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/preview-seed-fixture",
-    "source": "AutoGPT Releases - GitHub releases for AutoGPT",
-    "feed_type": "blog",
-    "type": "media-tech-analysis",
-    "type_label": "Media & Tech Analysis",
-    "published": "2026-11-04T19:16:31+00:00",
-    "published_ts": 1793819791,
-    "smart_groups": [
-      "Agents & automation",
-      "Data & analytics"
     ],
     "curated": false
   },

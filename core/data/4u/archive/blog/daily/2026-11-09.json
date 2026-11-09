@@ -1,0 +1,387 @@
+{
+  "generated_at": "2026-11-09T07:04:53.415922+00:00",
+  "date": "2026-11-09",
+  "total_items": 23,
+  "next_chunk": "archive/blog/daily/2026-11-08.json",
+  "items": [
+    {
+      "title": "L11 N8147 is a neuron that will make Qwen-3.5-4B get things confidently wrong while being weirdly snarky... But also makes it write interesting poetry",
+      "summary": "Inspired by some of the other brain surgery posts, I wanted to see if I could find anything interesting in Qwen. Not particularly useful to make it get things wrong all the time I guess, but I find the poetry it comes out with weirdly fascinating! I think the neuron is basically a dial for contrarian <-> agreeable, but the contrarian snarky setting for some reason writes poems that read in an interesting way. submitted by /u/Tasty-Ad-3753 [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xrkomn/l11_n8147_is_a_neuron_that_will_make_qwen354b_get/\">  </a>  <!-- SC_OFF --><div><p>Inspired by some of the other brain surgery posts, I wanted to see if I could find anything interesting in Qwen. Not particularly useful to make it get things wrong all the time I guess, but I find the poetry it comes out with weirdly fascinating!</p> <p>I think the neuron is basically a dial for contrarian &lt;-&gt; agreeable, but the contrarian snarky setting for some reason writes poems that read in an interesting way. </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Tasty-Ad-3753\"> /u/Tasty-Ad-3753 </a> <br/> <span><a href=\"https://www.reddit.com/gallery/1xrkomn\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xrkomn/l11_n8147_is_a_neuron_that_will_make_qwen354b_get/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xrkomn/l11_n8147_is_a_neuron_that_will_make_qwen354b_get/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T06:42:07+00:00",
+      "published_ts": 1794206527,
+      "smart_groups": [
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
+      "title": "OKF \u2013 the Markdown spec for humans and AI",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://okf.md/\">https://okf.md/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50421832\">https://news.ycombinator.com/item?id=50421832</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://okf.md/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T06:29:05+00:00",
+      "published_ts": 1794205745,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Ask HN: As a human, are you glad the AI bubble is bursting?",
+      "summary": "",
+      "summary_html": "<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50421778\">https://news.ycombinator.com/item?id=50421778</a></p>\n<p>Points: 3</p>\n<p># Comments: 1</p>",
+      "link": "https://news.ycombinator.com/item?id=50421778",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T06:22:08+00:00",
+      "published_ts": 1794205328,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Preview seed fixture (rolling)",
+      "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@a8af1a855687 (migration head: 20261104120000_store_creator_counts_visible_listings). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database \u2014 it runs entirely against a throwaway Postgres container and contains only synthetic rows (Faker-generated, plus the hand-written preview marketplace) and the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
+      "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@a8af1a855687 (migration head: 20261104120000_store_creator_counts_visible_listings). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database \u2014 it runs entirely against a throwaway Postgres container and contains only synthetic rows (Faker-generated, plus the hand-written preview marketplace) and the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
+      "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/preview-seed-fixture",
+      "source": "AutoGPT Releases - GitHub releases for AutoGPT",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T06:19:01+00:00",
+      "published_ts": 1794205141,
+      "smart_groups": [
+        "Agents & automation",
+        "Data & analytics"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Those who have lost their job to AI what was your job?",
+      "summary": "I am wondering, what kind of jobs are affected the most.",
+      "summary_html": "<p>I am wondering, what kind of jobs are affected the most.</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50421579\">https://news.ycombinator.com/item?id=50421579</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
+      "link": "https://news.ycombinator.com/item?id=50421579",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T05:56:44+00:00",
+      "published_ts": 1794203804,
+      "smart_groups": [
+        "Work & society"
+      ],
+      "curated": false
+    },
+    {
+      "title": "What If the Next Computer Virus Isn't Software? Rise of AI-Powered USB Threats",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://medium.com/@makalin/what-if-the-next-computer-virus-isnt-software-the-rise-of-ai-powered-usb-threats-0facf6a9247b\">https://medium.com/@makalin/what-if-the-next-computer-virus-isnt-software-the-rise-of-ai-powered-usb-threats-0facf6a9247b</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50421562\">https://news.ycombinator.com/item?id=50421562</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://medium.com/@makalin/what-if-the-next-computer-virus-isnt-software-the-rise-of-ai-powered-usb-threats-0facf6a9247b",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T05:54:02+00:00",
+      "published_ts": 1794203642,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Apple capped engineers at a $200 daily AI budget",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.stork.ai/newsletter/2026-11-08-apple-capped-engineers-at-a-200-daily-ai-budget#story-1\">https://www.stork.ai/newsletter/2026-11-08-apple-capped-engineers-at-a-200-daily-ai-budget#story-1</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50421426\">https://news.ycombinator.com/item?id=50421426</a></p>\n<p>Points: 51</p>\n<p># Comments: 52</p>",
+      "link": "https://www.stork.ai/newsletter/2026-11-08-apple-capped-engineers-at-a-200-daily-ai-budget#story-1",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T05:30:11+00:00",
+      "published_ts": 1794202211,
+      "smart_groups": [
+        "Coding & dev tools"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Anthropic secures $3.4B generator deal for AI data centers",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.reuters.com/business/energy/anthropic-secures-34-billion-generator-deal-ai-data-centers-ft-reports-2026-11-08/\">https://www.reuters.com/business/energy/anthropic-secures-34-billion-generator-deal-ai-data-centers-ft-reports-2026-11-08/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50421371\">https://news.ycombinator.com/item?id=50421371</a></p>\n<p>Points: 3</p>\n<p># Comments: 1</p>",
+      "link": "https://www.reuters.com/business/energy/anthropic-secures-34-billion-generator-deal-ai-data-centers-ft-reports-2026-11-08/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T05:20:26+00:00",
+      "published_ts": 1794201626,
+      "smart_groups": [
+        "Energy & data centers"
+      ],
+      "curated": false,
+      "story_id": "b911ef86f5c7",
+      "story_size": 2
+    },
+    {
+      "title": "AI learns from the products of thinking, not thought itself",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://theconversation.com/ai-learns-from-the-products-of-thinking-not-thought-itself-thats-a-problem-for-machines-and-for-us-293696\">https://theconversation.com/ai-learns-from-the-products-of-thinking-not-thought-itself-thats-a-problem-for-machines-and-for-us-293696</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50421354\">https://news.ycombinator.com/item?id=50421354</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://theconversation.com/ai-learns-from-the-products-of-thinking-not-thought-itself-thats-a-problem-for-machines-and-for-us-293696",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T05:17:12+00:00",
+      "published_ts": 1794201432,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false,
+      "story_id": "ad088b0215d3",
+      "story_size": 2
+    },
+    {
+      "title": "The Collision: What AI Does to Us",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://mitsloan.mit.edu/ideas-made-to-matter/collision-what-ai-does-to-us\">https://mitsloan.mit.edu/ideas-made-to-matter/collision-what-ai-does-to-us</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50421223\">https://news.ycombinator.com/item?id=50421223</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://mitsloan.mit.edu/ideas-made-to-matter/collision-what-ai-does-to-us",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T04:54:59+00:00",
+      "published_ts": 1794200099,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "I Resist Generative \"AI\"",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://estherweidauer.com/articles/why-resist-generative-ai.html\">https://estherweidauer.com/articles/why-resist-generative-ai.html</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50420983\">https://news.ycombinator.com/item?id=50420983</a></p>\n<p>Points: 8</p>\n<p># Comments: 3</p>",
+      "link": "https://estherweidauer.com/articles/why-resist-generative-ai.html",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T04:11:56+00:00",
+      "published_ts": 1794197516,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Official Wanting Data Centers on Public Lands Has >10M Invested in AI Industry",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.propublica.org/article/burgum-public-land-data-centers-investments\">https://www.propublica.org/article/burgum-public-land-data-centers-investments</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50420710\">https://news.ycombinator.com/item?id=50420710</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+      "link": "https://www.propublica.org/article/burgum-public-land-data-centers-investments",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T03:31:35+00:00",
+      "published_ts": 1794195095,
+      "smart_groups": [
+        "Energy & data centers"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: Mindfries- AI Interviewer based on real eng skill not on L**tC*de",
+      "summary": "Hi HN Family, I am Chandan, and have built an AI intrviewer tool that assess the candidate based on real skills of engineering, like working on large codebase to fix, build, and enhance and many deployment type works too with the help of built in AI agent. Google had also introduced the same round for their candidates and all the other platform are checking the Competitive programming which is not suitable to assess every best candidate in the era of AI. Hence I did research, talked to 35+ founders and CTOs, and it took me 2 months to build the proper MVP end to end. I am not good at sales, but the product is awesome and I want the real costumers for it. I would really appreaciate your contribution. Thanks !",
+      "summary_html": "<p>Hi HN Family, \nI am Chandan, and have built an AI intrviewer tool that assess the candidate based on real skills of engineering, like working on large codebase to fix, build, and enhance and many deployment type works too with the help of built in AI agent. \nGoogle had also introduced the same round for their candidates and all the other platform are checking the Competitive programming which is not suitable to assess every best candidate in the era of AI. Hence I did research, talked to 35+ founders and CTOs, and it took me 2 months to build the proper MVP end to end. \nI am not good at sales, but the product is awesome and I want the real costumers for it. I would really appreaciate your contribution.\nThanks !</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50420697\">https://news.ycombinator.com/item?id=50420697</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://company.mindfries.com/login",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T03:30:04+00:00",
+      "published_ts": 1794195004,
+      "smart_groups": [
+        "Agents & automation",
+        "Coding & dev tools"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Github Repo: Torchlens - Inspect, visualize and intervene on any operation in any neural network.",
+      "summary": "submitted by /u/Thrumpwart [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xrh5iz/github_repo_torchlens_inspect_visualize_and/\">  </a>    submitted by   <a href=\"https://www.reddit.com/user/Thrumpwart\"> /u/Thrumpwart </a> <br/> <span><a href=\"https://github.com/johnmarktaylor91/torchlens\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/LocalLLaMA/comments/1xrh5iz/github_repo_torchlens_inspect_visualize_and/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/LocalLLaMA/comments/1xrh5iz/github_repo_torchlens_inspect_visualize_and/",
+      "source": "Reddit /r/LocalLLaMA - Community-run local LLM tips and releases",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T03:25:32+00:00",
+      "published_ts": 1794194732,
+      "smart_groups": [
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Type in Any Task. Get the Best AI Model for It",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://taskrouter.com/tasks\">https://taskrouter.com/tasks</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50420635\">https://news.ycombinator.com/item?id=50420635</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://taskrouter.com/tasks",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T03:20:39+00:00",
+      "published_ts": 1794194439,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Asahi Linux Drops MIT, Goes Full GPL After AI Used to Steal Unreleased Code",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://itsfoss.com/news/asahi-linux-drops-mit-for-gpl/\">https://itsfoss.com/news/asahi-linux-drops-mit-for-gpl/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50420532\">https://news.ycombinator.com/item?id=50420532</a></p>\n<p>Points: 17</p>\n<p># Comments: 12</p>",
+      "link": "https://itsfoss.com/news/asahi-linux-drops-mit-for-gpl/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T03:06:55+00:00",
+      "published_ts": 1794193615,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "New Research Tests Whether AI Models Know Their Own Thoughts",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.quantamagazine.org/new-research-tests-whether-ai-models-know-their-own-thoughts-20261104/\">https://www.quantamagazine.org/new-research-tests-whether-ai-models-know-their-own-thoughts-20261104/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50420330\">https://news.ycombinator.com/item?id=50420330</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://www.quantamagazine.org/new-research-tests-whether-ai-models-know-their-own-thoughts-20261104/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T02:39:19+00:00",
+      "published_ts": 1794191959,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI-first browser test automation at $0.01 per step",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.yourAItester.com\">https://www.yourAItester.com</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50420040\">https://news.ycombinator.com/item?id=50420040</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://www.yourAItester.com",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T01:59:19+00:00",
+      "published_ts": 1794189559,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Revolut Cut AI Costs 90% and Started Shipping Faster",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://linas.substack.com/p/revolut-ai-coding-costs-open-source-models\">https://linas.substack.com/p/revolut-ai-coding-costs-open-source-models</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50420025\">https://news.ycombinator.com/item?id=50420025</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://linas.substack.com/p/revolut-ai-coding-costs-open-source-models",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T01:56:17+00:00",
+      "published_ts": 1794189377,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Microsoft Workers Call for Accountable AI",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://dash.palform.app/fill/org_0R2JXZPZ7PFWX/form_0R8K0PRYXGM71?f=fat_0R9JYW9RTDRDS\">https://dash.palform.app/fill/org_0R2JXZPZ7PFWX/form_0R8K0PRYXGM71?f=fat_0R9JYW9RTDRDS</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50419843\">https://news.ycombinator.com/item?id=50419843</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://dash.palform.app/fill/org_0R2JXZPZ7PFWX/form_0R8K0PRYXGM71?f=fat_0R9JYW9RTDRDS",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T01:31:38+00:00",
+      "published_ts": 1794187898,
+      "smart_groups": [
+        "Work & society"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Staff at the US center for AI safety are reporting to the White House",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://apnews.com/article/ai-safety-trump-white-house-d3318eb2cf011df53e9ddb3e03d25f13\">https://apnews.com/article/ai-safety-trump-white-house-d3318eb2cf011df53e9ddb3e03d25f13</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50419747\">https://news.ycombinator.com/item?id=50419747</a></p>\n<p>Points: 4</p>\n<p># Comments: 0</p>",
+      "link": "https://apnews.com/article/ai-safety-trump-white-house-d3318eb2cf011df53e9ddb3e03d25f13",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T01:19:28+00:00",
+      "published_ts": 1794187168,
+      "smart_groups": [
+        "Policy & government",
+        "Safety & alignment"
+      ],
+      "curated": false,
+      "story_id": "f1b4153fefab",
+      "story_size": 2
+    },
+    {
+      "title": "Show HN: Airlock \u2013 Policy-as-code for fleets of AI coding agents",
+      "summary": "My name is Matt and I am building Airlock. Airlock is going to be an open standard on managing autonomous fleets of engineering agents. I am seeking constructive feedback on the direction of this project and also asking what are your major pain points with managing AI use at larger businesses. Right now I am running my own company using this framework with a total of 23 workflows across four large scale projects. Airlock is still really early, only 3-4 weeks old. Airlock's configuration standard is aimed to be open source and I will also open source the backplane once I gain a bit more confidence in what I have built here and it is a bit more ready for public scrutiny. Today the schema itself and the reusable GitHub actions are publicly available. I will selfishly figure out how to monetize this at some point but my desired customer is going to be larger enterprises. Airlock kind of does a lot of things but if I had to sum it up in several bullet points it would be: 1) Allows for the configuration of agent behaviors and life cycles under version control. Each agent run proves who it is with GitHub\u2019s OIDC token, and Airlock trades that for a GitHub token that lasts one hour and can only touch the repos and permissions listed in that agent\u2019s role file. 2) Allows for configuring levels of autonomy starting with a repository's base autonomy level with stricter overrides down to individual files within a code base. (e.g. you trust agents for most of the repo but perhaps you want extra gating around the 'billing' or 'auth' modules). 3) Supports a standard autonomy scale. At level 4 agents are leading a project's direction while at level 1 they are dependent on humans to lead the direction of a project. 4) Provides an out-of-the-box OTEL collector that stores a subset of agent actions you would care about in the event of an audit. I\u2019m exploring storing agent prompts and user prompts so that only the customer can decrypt them, and haven\u2019t decided how. 5) Comes with a shadow mode that allows you to run Airlock and observe how it would behave in your org without turning it on. To try it you just need to install the GitHub App, create a policy repository and run on GitHub hosted runners. I personally use self-hosted runners on EC2 spot instances. Visit https://airlock.lunareng.com/docs/quickstart to get started. I have been really passionate lately about exploring how businesses of the [near] future will effectively manage autonomous development using agents at scale. I want to help answer the question of how can the business better manage AI spend, prioritization of token usage, auditability of agent actions and compliance with various governance, risk and compliance frameworks. I am coming from the perspective of being an engineer for 15+ years but I have somehow managed to also develop a good understanding of how larger businesses operate. My vision of the future looks like a world where engineers don't use agent harnesses directly from their computer [for coding]. Instead engineering teams are managing a larger backlog of work that is automatically picked up by these agents. Engineering will instead be less about writing code and more about effectively deploying technology to solve business problems. Thanks for taking a look and I look forward to meeting you in the comments. References: https://github.com/lunareng/airlock-actions https://airlock.lunareng.com/schema/role.schema.json https://airlock.lunareng.com/schema/autonomy.schema.json https://airlock.lunareng.com/schema/config.schema.json https://www.anthropic.com/institute/measuring-pace-of-ai-dev... https://felixrieseberg.com/how-to-be-more-ambitious-a-tutori...",
+      "summary_html": "<p>My name is Matt and I am building Airlock. Airlock is going to be an open standard on managing autonomous fleets of engineering agents. I am seeking constructive feedback on the direction of this project and also asking what are your major pain points with managing AI use at larger businesses. Right now I am running my own company using this framework with a total of 23 workflows across four large scale projects.<p>Airlock is still really early, only 3-4 weeks old.<p>Airlock's configuration standard is aimed to be open source and I will also open source the backplane once I gain a bit more confidence in what I have built here and it is a bit more ready for public scrutiny. Today the schema itself and the reusable GitHub actions are publicly available. I will selfishly figure out how to monetize this at some point but my desired customer is going to be larger enterprises. Airlock kind of does a lot of things but if I had to sum it up in several bullet points it would be:<p>1) Allows for the configuration of agent behaviors and life cycles under version control. Each agent run proves who it is with GitHub\u2019s OIDC token, and Airlock trades that for a GitHub token that lasts one hour and can only touch the repos and permissions listed in that agent\u2019s role file.<p>2) Allows for configuring levels of autonomy starting with a repository's base autonomy level with stricter overrides down to individual files within a code base. (e.g. you trust agents for most of the repo but perhaps you want extra gating around the 'billing' or 'auth' modules).<p>3) Supports a standard autonomy scale. At level 4 agents are leading a project's direction while at level 1 they are dependent on humans to lead the direction of a project.<p>4) Provides an out-of-the-box OTEL collector that stores a subset of agent actions you would care about in the event of an audit. I\u2019m exploring storing agent prompts and user prompts so that only the customer can decrypt them, and haven\u2019t decided how.<p>5) Comes with a shadow mode that allows you to run Airlock and observe how it would behave in your org without turning it on.<p>To try it you just need to install the GitHub App, create a policy repository and run on GitHub hosted runners. I personally use self-hosted runners on EC2 spot instances. Visit <a href=\"https://airlock.lunareng.com/docs/quickstart\">https://airlock.lunareng.com/docs/quickstart</a> to get started.<p>I have been really passionate lately about exploring how businesses of the [near] future will effectively manage autonomous development using agents at scale. I want to help answer the question of how can the business better manage AI spend, prioritization of token usage, auditability of agent actions and compliance with various governance, risk and compliance frameworks.<p>I am coming from the perspective of being an engineer for 15+ years but I have somehow managed to also develop a good understanding of how larger businesses operate. My vision of the future looks like a world where engineers don't use agent harnesses directly from their computer [for coding]. Instead engineering teams are managing a larger backlog of work that is automatically picked up by these agents. Engineering will instead be less about writing code and more about effectively deploying technology to solve business problems.<p>Thanks for taking a look and I look forward to meeting you in the comments.<p>References:\n<a href=\"https://github.com/lunareng/airlock-actions\">https://github.com/lunareng/airlock-actions</a>\n<a href=\"https://airlock.lunareng.com/schema/role.schema.json\">https://airlock.lunareng.com/schema/role.schema.json</a>\n<a href=\"https://airlock.lunareng.com/schema/autonomy.schema.json\">https://airlock.lunareng.com/schema/autonomy.schema.json</a>\n<a href=\"https://airlock.lunareng.com/schema/config.schema.json\">https://airlock.lunareng.com/schema/config.schema.json</a>\n<a href=\"https://www.anthropic.com/institute/measuring-pace-of-ai-development\">https://www.anthropic.com/institute/measuring-pace-of-ai-dev...</a>\n<a href=\"https://felixrieseberg.com/how-to-be-more-ambitious-a-tutorial-for-humans-with-models/\">https://felixrieseberg.com/how-to-be-more-ambitious-a-tutori...</a></p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50419615\">https://news.ycombinator.com/item?id=50419615</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p></p></p></p></p></p></p></p></p></p></p></p></p>",
+      "link": "https://airlock.lunareng.com/docs",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T00:59:27+00:00",
+      "published_ts": 1794185967,
+      "smart_groups": [
+        "Agents & automation",
+        "Coding & dev tools",
+        "Policy & government"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Learning Abstractions: The Next Frontier for AI",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://twitter.com/jmugan/status/2119593410268999700\">https://twitter.com/jmugan/status/2119593410268999700</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50419555\">https://news.ycombinator.com/item?id=50419555</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://twitter.com/jmugan/status/2119593410268999700",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-09T00:51:19+00:00",
+      "published_ts": 1794185479,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    }
+  ]
+}
