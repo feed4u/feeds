@@ -1,0 +1,347 @@
+{
+  "generated_at": "2026-11-10T07:37:00.400436+00:00",
+  "date": "2026-11-10",
+  "total_items": 21,
+  "next_chunk": "archive/blog/daily/2026-11-09.json",
+  "items": [
+    {
+      "title": "Preview seed fixture (rolling)",
+      "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@9d04ac1a8d5e (migration head: 20261104120000_store_creator_counts_visible_listings). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database \u2014 it runs entirely against a throwaway Postgres container and contains only synthetic rows (Faker-generated, plus the hand-written preview marketplace) and the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
+      "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@9d04ac1a8d5e (migration head: 20261104120000_store_creator_counts_visible_listings). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database \u2014 it runs entirely against a throwaway Postgres container and contains only synthetic rows (Faker-generated, plus the hand-written preview marketplace) and the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
+      "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/preview-seed-fixture",
+      "source": "AutoGPT Releases - GitHub releases for AutoGPT",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-10T07:21:00+00:00",
+      "published_ts": 1794295260,
+      "smart_groups": [
+        "Agents & automation",
+        "Data & analytics"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Fireworks AI security breach impacts Notion and their customers",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.notion.com/help/security-incident-involving-a-third-party-ai-vendor\">https://www.notion.com/help/security-incident-involving-a-third-party-ai-vendor</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50437106\">https://news.ycombinator.com/item?id=50437106</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://www.notion.com/help/security-incident-involving-a-third-party-ai-vendor",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-10T07:19:38+00:00",
+      "published_ts": 1794295178,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Can You Explain a Zipper? Why AI Makes You Feel Smarter Than You Are [video]",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.youtube.com/watch?v=tqAangiY0FE\">https://www.youtube.com/watch?v=tqAangiY0FE</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50436930\">https://news.ycombinator.com/item?id=50436930</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://www.youtube.com/watch?v=tqAangiY0FE",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-10T06:53:16+00:00",
+      "published_ts": 1794293596,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Hire AI Agents and Pay in Monero (XMR)",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://agents.monero.jobs\">https://agents.monero.jobs</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50436878\">https://news.ycombinator.com/item?id=50436878</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://agents.monero.jobs",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-10T06:44:45+00:00",
+      "published_ts": 1794293085,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "We're launching an in-game AI agent for WoW",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://willocompanion.com/\">https://willocompanion.com/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50436869\">https://news.ycombinator.com/item?id=50436869</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
+      "link": "https://willocompanion.com/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-10T06:44:05+00:00",
+      "published_ts": 1794293045,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Tell HN: Notion AI chat sessions have been exposed via Fireworks AI hack",
+      "summary": "Only an email so far, nothing official I could find. I figure if you didn't get this email you are ok. --- We are writing to inform you of a security incident at one of our vendors, Fireworks AI, that may impact you. For the latest on the Fireworks AI incident, see their official updates here. Following an investigation by the Notion security team, we have determined that your workspace, [...], was among the <1% of Notion workspaces that may have been affected by the Fireworks security incident. Some unattributable chat sessions with Notion AI may have been exposed in this incident. \u201cUnattributable\u201d means the chats weren't labeled with who wrote them or which workspace they came from, and the transcripts did not contain tool call results. Beyond what\u2019s in the chat transcript itself, there\u2019s no information tying the chat back to your workspace, users, or company. No other data from within your workspace is affected. This email explains what happened, what data of yours might be affected, what we\u2019re doing to address this, and what we recommend to protect your data from this Fireworks AI incident. What is Fireworks AI and how we used them: Fireworks is one of the most used global AI infrastructure platforms powering tens of thousands of customers and used by hundreds of thousands of developers. We used Fireworks for classification jobs to help customers understand their own AI usage through a feature in Notion called Insights, and we used them as a general inference provider to serve open-weight models inside our product. The Insights feature has been disabled as we investigate this incident, and we are no longer serving open-weight models through Fireworks. What happened and how we addressed it: We learned from Fireworks about potential incidents earlier this month, and we shut down all connections to their systems out of an abundance of caution. On November 6, Fireworks notified us that malicious actors may have accessed potential customer data. Our team immediately began another internal investigation. On November 8, Fireworks confirmed this new dataset for us. Upon analysis of the new data, we discovered that it included unattributable Notion AI chat transcripts used for the Insights feature. Chats weren't labeled with who wrote them or which workspace they came from, and the transcripts did not contain any tool call results. Beyond the words in the chat transcripts themselves, the data contained no information that could specifically identify your workspace, users, or company. No other Notion data from your workspace is affected, and we continue to monitor this incident. Recommended next steps for you: You can retrieve and review the impacted data securely inside your workspace. See below: - [...] We recommend that you treat this data as if it were exposed. If anyone on your team might have pasted sensitive information into chats in Notion AI like passwords, API keys, or other credentials during this timeframe, please rotate them now. You trust us with your life's work in Notion, and that trust covers every partner we choose. In this critical time for global security, it is our mission to raise the standard for how your data is protected. You have our uncompromising commitment. --- I downloaded the dataset and it's a full chat for me.",
+      "summary_html": "<p>Only an email so far, nothing official I could find. I figure if you didn't get this email you are ok.<p>---<p>We are writing to inform you of a security incident at one of our vendors, Fireworks AI, that may impact you. For the latest on the Fireworks AI incident, see their official updates here.<p>Following an investigation by the Notion security team, we have determined that your workspace, [...], was among the &lt;1% of Notion workspaces that may have been affected by the Fireworks security incident. Some unattributable chat sessions with Notion AI may have been exposed in this incident. \u201cUnattributable\u201d means the chats weren't labeled with who wrote them or which workspace they came from, and the transcripts did not contain tool call results. Beyond what\u2019s in the chat transcript itself, there\u2019s no information tying the chat back to your workspace, users, or company. No other data from within your workspace is affected.<p>This email explains what happened, what data of yours might be affected, what we\u2019re doing to address this, and what we recommend to protect your data from this Fireworks AI incident.<p>What is Fireworks AI and how we used them: Fireworks is one of the most used global AI infrastructure platforms powering tens of thousands of customers and used by hundreds of thousands of developers. We used Fireworks for classification jobs to help customers understand their own AI usage through a feature in Notion called Insights, and we used them as a general inference provider to serve open-weight models inside our product. The Insights feature has been disabled as we investigate this incident, and we are no longer serving open-weight models through Fireworks.<p>What happened and how we addressed it: We learned from Fireworks about potential incidents earlier this month, and we shut down all connections to their systems out of an abundance of caution.<p>On November 6, Fireworks notified us that malicious actors may have accessed potential customer data. Our team immediately began another internal investigation. On November 8, Fireworks confirmed this new dataset for us.<p>Upon analysis of the new data, we discovered that it included unattributable Notion AI chat transcripts used for the Insights feature. Chats weren't labeled with who wrote them or which workspace they came from, and the transcripts did not contain any tool call results. Beyond the words in the chat transcripts themselves, the data contained no information that could specifically identify your workspace, users, or company.<p>No other Notion data from your workspace is affected, and we continue to monitor this incident.<p>Recommended next steps for you: You can retrieve and review the impacted data securely inside your workspace. See below:<p>-   [...]<p>We recommend that you treat this data as if it were exposed. If anyone on your team might have pasted sensitive information into chats in Notion AI like passwords, API keys, or other credentials during this timeframe, please rotate them now.<p>You trust us with your life's work in Notion, and that trust covers every partner we choose. In this critical time for global security, it is our mission to raise the standard for how your data is protected. You have our uncompromising commitment.<p>---<p>I downloaded the dataset and it's a full chat for me.</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50436636\">https://news.ycombinator.com/item?id=50436636</a></p>\n<p>Points: 9</p>\n<p># Comments: 0</p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p>",
+      "link": "https://news.ycombinator.com/item?id=50436636",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-10T06:00:48+00:00",
+      "published_ts": 1794290448,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "FLEY AI-Voce \u2013 a voice AI assistant you but can also control your PC and phone",
+      "summary": "FLEY AI-Voce - a voice AI assistant that will not only talk with : open links, websites, and programs, create files, presentations, write code, and even shut down and turn on your PC, work with a printer, and do just about anything. Everything to automate and make your device, like a PC and phone, smart as a robot. https://drtoolparadox.base44.app/fley-ai https://github.com/AnonimusShamshiAlex/FLEYAI-ANDROID https://github.com/AnonimusShamshiAlex/FLEYAI https://fleyai.netlify.app/ FLEY AI-Voce is an open-source AI voice assistant project designed to control your computer (PC) rather than a smartphone.",
+      "summary_html": "<p>FLEY AI-Voce - a voice AI assistant that will not only talk with : open links, websites, and programs, create files, presentations, write code, and even shut down and turn on your PC, work with a printer, and do just about anything.<p>Everything to automate and make your device, like a PC and phone, smart as a robot.<p>https://drtoolparadox.base44.app/fley-ai<p>https://github.com/AnonimusShamshiAlex/FLEYAI-ANDROID<p>https://github.com/AnonimusShamshiAlex/FLEYAI<p>https://fleyai.netlify.app/<p>FLEY AI-Voce is an open-source AI voice assistant project designed to control your computer (PC) rather than a smartphone.</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50436493\">https://news.ycombinator.com/item?id=50436493</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p></p></p></p></p></p></p>",
+      "link": "https://news.ycombinator.com/item?id=50436493",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-10T05:37:27+00:00",
+      "published_ts": 1794289047,
+      "smart_groups": [
+        "Consumer AI"
+      ],
+      "curated": false
+    },
+    {
+      "title": "I don't want AI in my online search. What options do I have?",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://theconversation.com/i-dont-want-ai-in-my-online-search-what-options-do-i-have-295875\">https://theconversation.com/i-dont-want-ai-in-my-online-search-what-options-do-i-have-295875</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50436472\">https://news.ycombinator.com/item?id=50436472</a></p>\n<p>Points: 4</p>\n<p># Comments: 0</p>",
+      "link": "https://theconversation.com/i-dont-want-ai-in-my-online-search-what-options-do-i-have-295875",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-10T05:33:17+00:00",
+      "published_ts": 1794288797,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Aipicks.ca \u2013 Using multi-sport AI models to find edges in table tennis",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://aipicks.ca/\">https://aipicks.ca/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50436256\">https://news.ycombinator.com/item?id=50436256</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://aipicks.ca/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-10T05:01:11+00:00",
+      "published_ts": 1794286871,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Anthropic joins AI's natural gas frenzy, buys $3.4B worth of turbines",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://techcrunch.com/2026/11/09/anthropic-joins-ais-natural-gas-frenzy-buys-3-4b-worth-of-turbines/\">https://techcrunch.com/2026/11/09/anthropic-joins-ais-natural-gas-frenzy-buys-3-4b-worth-of-turbines/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50436103\">https://news.ycombinator.com/item?id=50436103</a></p>\n<p>Points: 4</p>\n<p># Comments: 3</p>",
+      "link": "https://techcrunch.com/2026/11/09/anthropic-joins-ais-natural-gas-frenzy-buys-3-4b-worth-of-turbines/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-10T04:35:50+00:00",
+      "published_ts": 1794285350,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Autonomous AI Agents Conduct End-to-End Research with Human Participants",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.76675\">https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.76675</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50436070\">https://news.ycombinator.com/item?id=50436070</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.76675",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-10T04:29:26+00:00",
+      "published_ts": 1794284966,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "The Red Queen hypothesis \u2013 a new way forward for self-improving AI",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.cl.cam.ac.uk/news/2026/07-21-red-queen-hypothesis/\">https://www.cl.cam.ac.uk/news/2026/07-21-red-queen-hypothesis/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50435877\">https://news.ycombinator.com/item?id=50435877</a></p>\n<p>Points: 3</p>\n<p># Comments: 1</p>",
+      "link": "https://www.cl.cam.ac.uk/news/2026/07-21-red-queen-hypothesis/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-10T03:57:01+00:00",
+      "published_ts": 1794283021,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Ask HN: Are companies making money by using AI?",
+      "summary": "AI news is focused on the same companies improving their models. But I am really interested in getting opinions about companies that are actually making money by using AI, either by granting access to Claude or by including some sort of AI feature in their products.",
+      "summary_html": "<p>AI news is focused on the same companies improving their models. But I am really interested in getting opinions about companies that are actually making money by using AI, either by granting access to Claude or by including some sort of AI feature in their products.</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50435819\">https://news.ycombinator.com/item?id=50435819</a></p>\n<p>Points: 2</p>\n<p># Comments: 6</p>",
+      "link": "https://news.ycombinator.com/item?id=50435819",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-10T03:49:10+00:00",
+      "published_ts": 1794282550,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Trump Says He Told AI Executive to Kiss His Family Goodbye Before Going to Jail",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://gizmodo.com/trump-says-he-told-an-ai-executive-to-kiss-his-family-goodbye-before-going-to-jail-2000837040\">https://gizmodo.com/trump-says-he-told-an-ai-executive-to-kiss-his-family-goodbye-before-going-to-jail-2000837040</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50435784\">https://news.ycombinator.com/item?id=50435784</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+      "link": "https://gizmodo.com/trump-says-he-told-an-ai-executive-to-kiss-his-family-goodbye-before-going-to-jail-2000837040",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-10T03:40:24+00:00",
+      "published_ts": 1794282024,
+      "smart_groups": [
+        "Policy & government"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI Second Brain Masterclass [video]",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.youtube.com/watch?v=QY5joNgjR5o\">https://www.youtube.com/watch?v=QY5joNgjR5o</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50435693\">https://news.ycombinator.com/item?id=50435693</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://www.youtube.com/watch?v=QY5joNgjR5o",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-10T03:25:24+00:00",
+      "published_ts": 1794281124,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: ZTHR \u2013 what replaces code review when AI agents write all the code",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://zthr.ai/\">https://zthr.ai/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50435672\">https://news.ycombinator.com/item?id=50435672</a></p>\n<p>Points: 4</p>\n<p># Comments: 3</p>",
+      "link": "https://zthr.ai/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-10T03:21:56+00:00",
+      "published_ts": 1794280916,
+      "smart_groups": [
+        "Agents & automation",
+        "Coding & dev tools"
+      ],
+      "curated": false
+    },
+    {
+      "title": "CoreWeave bond yield tops 16% as AI credit stress rises",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://www.cnbc.com/2026/11/06/coreweave-bond-yield-tops-16percent-as-ai-credit-stress-rises.html\">https://www.cnbc.com/2026/11/06/coreweave-bond-yield-tops-16percent-as-ai-credit-stress-rises.html</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50435660\">https://news.ycombinator.com/item?id=50435660</a></p>\n<p>Points: 111</p>\n<p># Comments: 56</p>",
+      "link": "https://www.cnbc.com/2026/11/06/coreweave-bond-yield-tops-16percent-as-ai-credit-stress-rises.html",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-10T03:20:06+00:00",
+      "published_ts": 1794280806,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Charleston AI",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://ai-chs.com/\">https://ai-chs.com/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50435630\">https://news.ycombinator.com/item?id=50435630</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+      "link": "https://ai-chs.com/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-10T03:15:04+00:00",
+      "published_ts": 1794280504,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: AI Frothiness Index. Daily reading of how stretched the AI boom is",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://frothiness.jagular.io\">https://frothiness.jagular.io</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50435624\">https://news.ycombinator.com/item?id=50435624</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
+      "link": "https://frothiness.jagular.io",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-10T03:13:00+00:00",
+      "published_ts": 1794280380,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Microsoft patent: turning idle gaming GPUs into paid AI training hardware",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://videocardz.com/newz/microsoft-could-pay-gamers-for-using-spare-gpu-capacity-to-train-ai\">https://videocardz.com/newz/microsoft-could-pay-gamers-for-using-spare-gpu-capacity-to-train-ai</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50435601\">https://news.ycombinator.com/item?id=50435601</a></p>\n<p>Points: 4</p>\n<p># Comments: 3</p>",
+      "link": "https://videocardz.com/newz/microsoft-could-pay-gamers-for-using-spare-gpu-capacity-to-train-ai",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-10T03:09:31+00:00",
+      "published_ts": 1794280171,
+      "smart_groups": [
+        "Chips & hardware",
+        "Legal & copyright"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Nvidia's AI advantage is moving beyond the GPU",
+      "summary": "",
+      "summary_html": "<p>Article URL: <a href=\"https://techcrunch.com/2026/08/29/nvidias-ai-advantage-is-moving-beyond-the-gpu/\">https://techcrunch.com/2026/08/29/nvidias-ai-advantage-is-moving-beyond-the-gpu/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50435539\">https://news.ycombinator.com/item?id=50435539</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+      "link": "https://techcrunch.com/2026/08/29/nvidias-ai-advantage-is-moving-beyond-the-gpu/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-10T02:59:27+00:00",
+      "published_ts": 1794279567,
+      "smart_groups": [
+        "Chips & hardware"
+      ],
+      "curated": false
+    }
+  ]
+}

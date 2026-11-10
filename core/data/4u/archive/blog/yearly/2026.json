@@ -1,5 +1,374 @@
 [
   {
+    "title": "Preview seed fixture (rolling)",
+    "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@9d04ac1a8d5e (migration head: 20261104120000_store_creator_counts_visible_listings). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only synthetic rows (Faker-generated, plus the hand-written preview marketplace) and the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
+    "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@9d04ac1a8d5e (migration head: 20261104120000_store_creator_counts_visible_listings). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only synthetic rows (Faker-generated, plus the hand-written preview marketplace) and the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
+    "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/preview-seed-fixture",
+    "source": "AutoGPT Releases - GitHub releases for AutoGPT",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T07:21:00+00:00",
+    "published_ts": 1794295260,
+    "smart_groups": [
+      "Agents & automation",
+      "Data & analytics"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Fireworks AI security breach impacts Notion and their customers",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.notion.com/help/security-incident-involving-a-third-party-ai-vendor\">https://www.notion.com/help/security-incident-involving-a-third-party-ai-vendor</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50437106\">https://news.ycombinator.com/item?id=50437106</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://www.notion.com/help/security-incident-involving-a-third-party-ai-vendor",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T07:19:38+00:00",
+    "published_ts": 1794295178,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Can You Explain a Zipper? Why AI Makes You Feel Smarter Than You Are [video]",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.youtube.com/watch?v=tqAangiY0FE\">https://www.youtube.com/watch?v=tqAangiY0FE</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50436930\">https://news.ycombinator.com/item?id=50436930</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://www.youtube.com/watch?v=tqAangiY0FE",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T06:53:16+00:00",
+    "published_ts": 1794293596,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Hire AI Agents and Pay in Monero (XMR)",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://agents.monero.jobs\">https://agents.monero.jobs</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50436878\">https://news.ycombinator.com/item?id=50436878</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://agents.monero.jobs",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T06:44:45+00:00",
+    "published_ts": 1794293085,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "We're launching an in-game AI agent for WoW",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://willocompanion.com/\">https://willocompanion.com/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50436869\">https://news.ycombinator.com/item?id=50436869</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
+    "link": "https://willocompanion.com/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T06:44:05+00:00",
+    "published_ts": 1794293045,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Tell HN: Notion AI chat sessions have been exposed via Fireworks AI hack",
+    "summary": "Only an email so far, nothing official I could find. I figure if you didn't get this email you are ok. --- We are writing to inform you of a security incident at one of our vendors, Fireworks AI, that may impact you. For the latest on the Fireworks AI incident, see their official updates here. Following an investigation by the Notion security team, we have determined that your workspace, [...], was among the <1% of Notion workspaces that may have been affected by the Fireworks security incident. Some unattributable chat sessions with Notion AI may have been exposed in this incident. “Unattributable” means the chats weren't labeled with who wrote them or which workspace they came from, and the transcripts did not contain tool call results. Beyond what’s in the chat transcript itself, there’s no information tying the chat back to your workspace, users, or company. No other data from within your workspace is affected. This email explains what happened, what data of yours might be affected, what we’re doing to address this, and what we recommend to protect your data from this Fireworks AI incident. What is Fireworks AI and how we used them: Fireworks is one of the most used global AI infrastructure platforms powering tens of thousands of customers and used by hundreds of thousands of developers. We used Fireworks for classification jobs to help customers understand their own AI usage through a feature in Notion called Insights, and we used them as a general inference provider to serve open-weight models inside our product. The Insights feature has been disabled as we investigate this incident, and we are no longer serving open-weight models through Fireworks. What happened and how we addressed it: We learned from Fireworks about potential incidents earlier this month, and we shut down all connections to their systems out of an abundance of caution. On November 6, Fireworks notified us that malicious actors may have accessed potential customer data. Our team immediately began another internal investigation. On November 8, Fireworks confirmed this new dataset for us. Upon analysis of the new data, we discovered that it included unattributable Notion AI chat transcripts used for the Insights feature. Chats weren't labeled with who wrote them or which workspace they came from, and the transcripts did not contain any tool call results. Beyond the words in the chat transcripts themselves, the data contained no information that could specifically identify your workspace, users, or company. No other Notion data from your workspace is affected, and we continue to monitor this incident. Recommended next steps for you: You can retrieve and review the impacted data securely inside your workspace. See below: - [...] We recommend that you treat this data as if it were exposed. If anyone on your team might have pasted sensitive information into chats in Notion AI like passwords, API keys, or other credentials during this timeframe, please rotate them now. You trust us with your life's work in Notion, and that trust covers every partner we choose. In this critical time for global security, it is our mission to raise the standard for how your data is protected. You have our uncompromising commitment. --- I downloaded the dataset and it's a full chat for me.",
+    "summary_html": "<p>Only an email so far, nothing official I could find. I figure if you didn't get this email you are ok.<p>---<p>We are writing to inform you of a security incident at one of our vendors, Fireworks AI, that may impact you. For the latest on the Fireworks AI incident, see their official updates here.<p>Following an investigation by the Notion security team, we have determined that your workspace, [...], was among the &lt;1% of Notion workspaces that may have been affected by the Fireworks security incident. Some unattributable chat sessions with Notion AI may have been exposed in this incident. “Unattributable” means the chats weren't labeled with who wrote them or which workspace they came from, and the transcripts did not contain tool call results. Beyond what’s in the chat transcript itself, there’s no information tying the chat back to your workspace, users, or company. No other data from within your workspace is affected.<p>This email explains what happened, what data of yours might be affected, what we’re doing to address this, and what we recommend to protect your data from this Fireworks AI incident.<p>What is Fireworks AI and how we used them: Fireworks is one of the most used global AI infrastructure platforms powering tens of thousands of customers and used by hundreds of thousands of developers. We used Fireworks for classification jobs to help customers understand their own AI usage through a feature in Notion called Insights, and we used them as a general inference provider to serve open-weight models inside our product. The Insights feature has been disabled as we investigate this incident, and we are no longer serving open-weight models through Fireworks.<p>What happened and how we addressed it: We learned from Fireworks about potential incidents earlier this month, and we shut down all connections to their systems out of an abundance of caution.<p>On November 6, Fireworks notified us that malicious actors may have accessed potential customer data. Our team immediately began another internal investigation. On November 8, Fireworks confirmed this new dataset for us.<p>Upon analysis of the new data, we discovered that it included unattributable Notion AI chat transcripts used for the Insights feature. Chats weren't labeled with who wrote them or which workspace they came from, and the transcripts did not contain any tool call results. Beyond the words in the chat transcripts themselves, the data contained no information that could specifically identify your workspace, users, or company.<p>No other Notion data from your workspace is affected, and we continue to monitor this incident.<p>Recommended next steps for you: You can retrieve and review the impacted data securely inside your workspace. See below:<p>-   [...]<p>We recommend that you treat this data as if it were exposed. If anyone on your team might have pasted sensitive information into chats in Notion AI like passwords, API keys, or other credentials during this timeframe, please rotate them now.<p>You trust us with your life's work in Notion, and that trust covers every partner we choose. In this critical time for global security, it is our mission to raise the standard for how your data is protected. You have our uncompromising commitment.<p>---<p>I downloaded the dataset and it's a full chat for me.</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50436636\">https://news.ycombinator.com/item?id=50436636</a></p>\n<p>Points: 9</p>\n<p># Comments: 0</p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p>",
+    "link": "https://news.ycombinator.com/item?id=50436636",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T06:00:48+00:00",
+    "published_ts": 1794290448,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "FLEY AI-Voce – a voice AI assistant you but can also control your PC and phone",
+    "summary": "FLEY AI-Voce - a voice AI assistant that will not only talk with : open links, websites, and programs, create files, presentations, write code, and even shut down and turn on your PC, work with a printer, and do just about anything. Everything to automate and make your device, like a PC and phone, smart as a robot. https://drtoolparadox.base44.app/fley-ai https://github.com/AnonimusShamshiAlex/FLEYAI-ANDROID https://github.com/AnonimusShamshiAlex/FLEYAI https://fleyai.netlify.app/ FLEY AI-Voce is an open-source AI voice assistant project designed to control your computer (PC) rather than a smartphone.",
+    "summary_html": "<p>FLEY AI-Voce - a voice AI assistant that will not only talk with : open links, websites, and programs, create files, presentations, write code, and even shut down and turn on your PC, work with a printer, and do just about anything.<p>Everything to automate and make your device, like a PC and phone, smart as a robot.<p>https://drtoolparadox.base44.app/fley-ai<p>https://github.com/AnonimusShamshiAlex/FLEYAI-ANDROID<p>https://github.com/AnonimusShamshiAlex/FLEYAI<p>https://fleyai.netlify.app/<p>FLEY AI-Voce is an open-source AI voice assistant project designed to control your computer (PC) rather than a smartphone.</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50436493\">https://news.ycombinator.com/item?id=50436493</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p></p></p></p></p></p></p>",
+    "link": "https://news.ycombinator.com/item?id=50436493",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T05:37:27+00:00",
+    "published_ts": 1794289047,
+    "smart_groups": [
+      "Consumer AI"
+    ],
+    "curated": false
+  },
+  {
+    "title": "I don't want AI in my online search. What options do I have?",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://theconversation.com/i-dont-want-ai-in-my-online-search-what-options-do-i-have-295875\">https://theconversation.com/i-dont-want-ai-in-my-online-search-what-options-do-i-have-295875</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50436472\">https://news.ycombinator.com/item?id=50436472</a></p>\n<p>Points: 4</p>\n<p># Comments: 0</p>",
+    "link": "https://theconversation.com/i-dont-want-ai-in-my-online-search-what-options-do-i-have-295875",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T05:33:17+00:00",
+    "published_ts": 1794288797,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Aipicks.ca – Using multi-sport AI models to find edges in table tennis",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://aipicks.ca/\">https://aipicks.ca/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50436256\">https://news.ycombinator.com/item?id=50436256</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://aipicks.ca/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T05:01:11+00:00",
+    "published_ts": 1794286871,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Anthropic joins AI's natural gas frenzy, buys $3.4B worth of turbines",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://techcrunch.com/2026/11/09/anthropic-joins-ais-natural-gas-frenzy-buys-3-4b-worth-of-turbines/\">https://techcrunch.com/2026/11/09/anthropic-joins-ais-natural-gas-frenzy-buys-3-4b-worth-of-turbines/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50436103\">https://news.ycombinator.com/item?id=50436103</a></p>\n<p>Points: 4</p>\n<p># Comments: 3</p>",
+    "link": "https://techcrunch.com/2026/11/09/anthropic-joins-ais-natural-gas-frenzy-buys-3-4b-worth-of-turbines/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T04:35:50+00:00",
+    "published_ts": 1794285350,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Autonomous AI Agents Conduct End-to-End Research with Human Participants",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.76675\">https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.76675</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50436070\">https://news.ycombinator.com/item?id=50436070</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://advanced.onlinelibrary.wiley.com/doi/10.1002/advs.76675",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T04:29:26+00:00",
+    "published_ts": 1794284966,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "The Red Queen hypothesis – a new way forward for self-improving AI",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.cl.cam.ac.uk/news/2026/07-21-red-queen-hypothesis/\">https://www.cl.cam.ac.uk/news/2026/07-21-red-queen-hypothesis/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50435877\">https://news.ycombinator.com/item?id=50435877</a></p>\n<p>Points: 3</p>\n<p># Comments: 1</p>",
+    "link": "https://www.cl.cam.ac.uk/news/2026/07-21-red-queen-hypothesis/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T03:57:01+00:00",
+    "published_ts": 1794283021,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Ask HN: Are companies making money by using AI?",
+    "summary": "AI news is focused on the same companies improving their models. But I am really interested in getting opinions about companies that are actually making money by using AI, either by granting access to Claude or by including some sort of AI feature in their products.",
+    "summary_html": "<p>AI news is focused on the same companies improving their models. But I am really interested in getting opinions about companies that are actually making money by using AI, either by granting access to Claude or by including some sort of AI feature in their products.</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50435819\">https://news.ycombinator.com/item?id=50435819</a></p>\n<p>Points: 2</p>\n<p># Comments: 6</p>",
+    "link": "https://news.ycombinator.com/item?id=50435819",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T03:49:10+00:00",
+    "published_ts": 1794282550,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Trump Says He Told AI Executive to Kiss His Family Goodbye Before Going to Jail",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://gizmodo.com/trump-says-he-told-an-ai-executive-to-kiss-his-family-goodbye-before-going-to-jail-2000837040\">https://gizmodo.com/trump-says-he-told-an-ai-executive-to-kiss-his-family-goodbye-before-going-to-jail-2000837040</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50435784\">https://news.ycombinator.com/item?id=50435784</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://gizmodo.com/trump-says-he-told-an-ai-executive-to-kiss-his-family-goodbye-before-going-to-jail-2000837040",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T03:40:24+00:00",
+    "published_ts": 1794282024,
+    "smart_groups": [
+      "Policy & government"
+    ],
+    "curated": false
+  },
+  {
+    "title": "AI Second Brain Masterclass [video]",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.youtube.com/watch?v=QY5joNgjR5o\">https://www.youtube.com/watch?v=QY5joNgjR5o</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50435693\">https://news.ycombinator.com/item?id=50435693</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://www.youtube.com/watch?v=QY5joNgjR5o",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T03:25:24+00:00",
+    "published_ts": 1794281124,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: ZTHR – what replaces code review when AI agents write all the code",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://zthr.ai/\">https://zthr.ai/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50435672\">https://news.ycombinator.com/item?id=50435672</a></p>\n<p>Points: 4</p>\n<p># Comments: 3</p>",
+    "link": "https://zthr.ai/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T03:21:56+00:00",
+    "published_ts": 1794280916,
+    "smart_groups": [
+      "Agents & automation",
+      "Coding & dev tools"
+    ],
+    "curated": false
+  },
+  {
+    "title": "CoreWeave bond yield tops 16% as AI credit stress rises",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.cnbc.com/2026/11/06/coreweave-bond-yield-tops-16percent-as-ai-credit-stress-rises.html\">https://www.cnbc.com/2026/11/06/coreweave-bond-yield-tops-16percent-as-ai-credit-stress-rises.html</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50435660\">https://news.ycombinator.com/item?id=50435660</a></p>\n<p>Points: 111</p>\n<p># Comments: 56</p>",
+    "link": "https://www.cnbc.com/2026/11/06/coreweave-bond-yield-tops-16percent-as-ai-credit-stress-rises.html",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T03:20:06+00:00",
+    "published_ts": 1794280806,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Charleston AI",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://ai-chs.com/\">https://ai-chs.com/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50435630\">https://news.ycombinator.com/item?id=50435630</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://ai-chs.com/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T03:15:04+00:00",
+    "published_ts": 1794280504,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: AI Frothiness Index. Daily reading of how stretched the AI boom is",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://frothiness.jagular.io\">https://frothiness.jagular.io</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50435624\">https://news.ycombinator.com/item?id=50435624</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
+    "link": "https://frothiness.jagular.io",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T03:13:00+00:00",
+    "published_ts": 1794280380,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Microsoft patent: turning idle gaming GPUs into paid AI training hardware",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://videocardz.com/newz/microsoft-could-pay-gamers-for-using-spare-gpu-capacity-to-train-ai\">https://videocardz.com/newz/microsoft-could-pay-gamers-for-using-spare-gpu-capacity-to-train-ai</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50435601\">https://news.ycombinator.com/item?id=50435601</a></p>\n<p>Points: 4</p>\n<p># Comments: 3</p>",
+    "link": "https://videocardz.com/newz/microsoft-could-pay-gamers-for-using-spare-gpu-capacity-to-train-ai",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T03:09:31+00:00",
+    "published_ts": 1794280171,
+    "smart_groups": [
+      "Chips & hardware",
+      "Legal & copyright"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Nvidia's AI advantage is moving beyond the GPU",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://techcrunch.com/2026/08/29/nvidias-ai-advantage-is-moving-beyond-the-gpu/\">https://techcrunch.com/2026/08/29/nvidias-ai-advantage-is-moving-beyond-the-gpu/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50435539\">https://news.ycombinator.com/item?id=50435539</a></p>\n<p>Points: 3</p>\n<p># Comments: 0</p>",
+    "link": "https://techcrunch.com/2026/08/29/nvidias-ai-advantage-is-moving-beyond-the-gpu/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T02:59:27+00:00",
+    "published_ts": 1794279567,
+    "smart_groups": [
+      "Chips & hardware"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Has Anyone Here Ever Built An Image Generator From Scratch? [N]",
+    "summary": "Just wondering if anyone on this forum has ever built an image diffusion generator from scratch, while also training it on a home rig? If so, what size of model did you end up with? Did you ever get coherent images? Screenshots? submitted by /u/TheRPGGamerMan [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Just wondering if anyone on this forum has ever built an image diffusion generator from scratch, while also training it on a home rig? If so, what size of model did you end up with? Did you ever get coherent images? Screenshots? </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/TheRPGGamerMan\"> /u/TheRPGGamerMan </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xs78e3/has_anyone_here_ever_built_an_image_generator/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xs78e3/has_anyone_here_ever_built_an_image_generator/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1xs78e3/has_anyone_here_ever_built_an_image_generator/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T23:23:56+00:00",
+    "published_ts": 1794266636,
+    "smart_groups": [
+      "Vision, audio & video"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Vercel Sandbox snapshot creation is now up to 10x faster",
+    "summary": "Vercel Sandbox now creates snapshots up to 10x faster. Median time to snapshot is under 0.4 seconds, down from 4.4 seconds. Snapshot restore speed has also improved by 50% from 500ms to 250ms at p50. Snapshots are now able to write and restore by re-using frames within the Vercel Hive Snapshot (VHS) format. VHS now indexes data in a more efficient way which means that more read and write operations can be done in parallel. Snapshots can now restore more of your Sandbox base image in parallel with user data, leading to overall faster operations. Persistent sandboxes, the default, snapshot automatically when a session stops and resume from the latest snapshot. This applies to all new snapshots, with nothing to configure. Existing snapshots keep the previous format. Learn more in the snapshots documentation .",
+    "summary_html": "<p><a href=\"https://vercel.com/docs/sandbox\">Vercel Sandbox</a> now creates snapshots up to 10x faster. Median time to snapshot is under 0.4 seconds, down from 4.4 seconds. Snapshot restore speed has also improved by 50% from 500ms to 250ms at p50.</p><p>Snapshots are now able to write and restore by re-using frames within the Vercel Hive Snapshot (VHS) format. VHS now indexes data in a more efficient way which means that more read and write operations can be done in parallel. Snapshots can now restore more of your Sandbox base image in parallel with user data, leading to overall faster operations.</p><p>Persistent sandboxes, the default, snapshot automatically when a session stops and resume from the latest snapshot. This applies to all new snapshots, with nothing to configure. Existing snapshots keep the previous format.</p><p>Learn more in the <a href=\"https://vercel.com/docs/sandbox/concepts/snapshots\">snapshots documentation</a>.</p>\n<p>\n<a href=\"https://vercel.com/changelog/vercel-sandbox-snapshot-creation-is-now-up-to-10x-faster\">Read more</a>\n</p>",
+    "link": "https://vercel.com/changelog/vercel-sandbox-snapshot-creation-is-now-up-to-10x-faster",
+    "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+    "feed_type": "blog",
+    "type": "company-engineering",
+    "type_label": "Company Engineering",
+    "published": "2026-11-09T21:00:00+00:00",
+    "published_ts": 1794258000,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
     "title": "B.C. businesses push back against 'AI slop' with pen-and-paper ads",
     "summary": "",
     "summary_html": "<p>Article URL: <a href=\"https://www.cbc.ca/news/canada/british-columbia/pen-paper-advertising-anti-artificial-intelligence-9.7409932\">https://www.cbc.ca/news/canada/british-columbia/pen-paper-advertising-anti-artificial-intelligence-9.7409932</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50429833\">https://news.ycombinator.com/item?id=50429833</a></p>\n<p>Points: 4</p>\n<p># Comments: 0</p>",
@@ -12,6 +381,23 @@
     "published_ts": 1794250329,
     "smart_groups": [
       "Research & papers"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Latent prediction beats reconstruction for tactile pretraining on dexterous manipulation tasks[R]",
+    "summary": "New paper from Robbyant, with inference code and checkpoints already public. LingBot-Touch is a self-supervised tactile encoder trained JEPA-style: it predicts latent representations of masked contact instead of reconstructing raw sensor signals. The paper tests it against same-size MAE and VAE reconstruction models on the same data. Tactile-to-video top-5 recall at 1K hours: 32.1% (JEPA) vs 5.6% (MAE) vs 4.4% (VAE). At 4K hours JEPA reaches 49.3% and MAE stays under 9%, while the VAE actually gets worse, down to 3.1%. Their explanation: most of a tactile clip is near-zero background, so reconstruction loss can shrink without learning anything about actual contact. Two design choices stood out. The masking ratio warms up from 40% to 80% over 300 steps, because starting at high masking hid every contacting taxel in sparse signals and caused gradient explosions. Three sensor types (magnetic, piezoresistive, visuotactile) feed one shared Transformer through canonical fingertip coordinates with 5D RoPE (time, finger, 3D position). On 26 real robot tasks with 4 policies, frozen encoder features scored highest in 89 of the 104 policy and task combinations. On a magnetic hand never seen in pretraining, LingBot-VLA went from 57.21 to 75.04. The Tiny model levels off around 4K hours while Small keeps improving, so a bigger version trained on more data looks like the natural next step. submitted by /u/Zealousideal-War7154 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>New paper from Robbyant, with inference code and checkpoints already public.</p> <p>LingBot-Touch is a self-supervised tactile encoder trained JEPA-style: it predicts latent representations of masked contact instead of reconstructing raw sensor signals. The paper tests it against same-size MAE and VAE reconstruction models on the same data. Tactile-to-video top-5 recall at 1K hours: 32.1% (JEPA) vs 5.6% (MAE) vs 4.4% (VAE). At 4K hours JEPA reaches 49.3% and MAE stays under 9%, while the VAE actually gets worse, down to 3.1%. Their explanation: most of a tactile clip is near-zero background, so reconstruction loss can shrink without learning anything about actual contact.</p> <p>Two design choices stood out. The masking ratio warms up from 40% to 80% over 300 steps, because starting at high masking hid every contacting taxel in sparse signals and caused gradient explosions. Three sensor types (magnetic, piezoresistive, visuotactile) feed one shared Transformer through canonical fingertip coordinates with 5D RoPE (time, finger, 3D position).</p> <p>On 26 real robot tasks with 4 policies, frozen encoder features scored highest in 89 of the 104 policy and task combinations. On a magnetic hand never seen in pretraining, LingBot-VLA went from 57.21 to 75.04.</p> <p>The Tiny model levels off around 4K hours while Small keeps improving, so a bigger version trained on more data looks like the natural next step.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Zealousideal-War7154\"> /u/Zealousideal-War7154 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xs05uo/latent_prediction_beats_reconstruction_for/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xs05uo/latent_prediction_beats_reconstruction_for/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1xs05uo/latent_prediction_beats_reconstruction_for/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-09T18:52:05+00:00",
+    "published_ts": 1794250325,
+    "smart_groups": [
+      "Robotics & autonomy",
+      "Infra & model ops"
     ],
     "curated": false
   },
@@ -424,23 +810,6 @@
     "curated": false
   },
   {
-    "title": "Preview seed fixture (rolling)",
-    "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@a8af1a855687 (migration head: 20261104120000_store_creator_counts_visible_listings). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only synthetic rows (Faker-generated, plus the hand-written preview marketplace) and the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
-    "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@a8af1a855687 (migration head: 20261104120000_store_creator_counts_visible_listings). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only synthetic rows (Faker-generated, plus the hand-written preview marketplace) and the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
-    "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/preview-seed-fixture",
-    "source": "AutoGPT Releases - GitHub releases for AutoGPT",
-    "feed_type": "blog",
-    "type": "media-tech-analysis",
-    "type_label": "Media & Tech Analysis",
-    "published": "2026-11-09T06:19:01+00:00",
-    "published_ts": 1794205141,
-    "smart_groups": [
-      "Agents & automation",
-      "Data & analytics"
-    ],
-    "curated": false
-  },
-  {
     "title": "Those who have lost their job to AI what was your job?",
     "summary": "I am wondering, what kind of jobs are affected the most.",
     "summary_html": "<p>I am wondering, what kind of jobs are affected the most.</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50421579\">https://news.ycombinator.com/item?id=50421579</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
@@ -830,6 +1199,69 @@
     "published_ts": 1794182400,
     "smart_groups": [
       "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "GLM 5.3 Flash is now available in Token Pass",
+    "summary": "Token Pass now includes GLM 5.3 Flash , alongside Kimi K3, GLM 5.3, and DeepSeek V4.1 Flash (with more models to come). GLM 5.3 Flash is Z.ai's native multimodal coding model with a 1M-token context window. Token Pass is a $30/month subscription on Pro teams that grants $80 in monthly credit and runs through AI Gateway . Use it with any coding agent such as fx , Pi , Cline , Command Code etc. or build your own with the AI SDK, with Zero Data Retention enabled by default. Add GLM 5.3 Flash from the Token Pass page in your team's AI Gateway dashboard, or read the Token Pass documentation for setup.",
+    "summary_html": "<div></div><p><a href=\"https://vercel.com/docs/ai-gateway/token-pass\">Token Pass</a> now includes <a href=\"https://vercel.com/ai-gateway/models/glm-5.3-flash\">GLM 5.3 Flash</a>, alongside Kimi K3, GLM 5.3, and DeepSeek V4.1 Flash (with more models to come). GLM 5.3 Flash is Z.ai's native multimodal coding model with a 1M-token context window.</p><p>Token Pass is a $30/month subscription on Pro teams that grants $80 in monthly credit and runs through <a href=\"https://vercel.com/ai-gateway\">AI Gateway</a>. Use it with any coding agent such as <a href=\"https://fx.sh/\">fx</a>, <a href=\"https://pi.dev/\">Pi</a>, <a href=\"https://cline.bot/\">Cline</a>, <a href=\"https://commandcode.ai/\">Command Code</a> etc. or build your own with the AI SDK, with Zero Data Retention enabled by default.</p><p>Add GLM 5.3 Flash from the <a href=\"https://vercel.com/d?to=%2F%5Bteam%5D%2F~%2Fai-gateway%2Ftoken-pass%3Fsource%3Dtoken_pass_glm_flash_changelog\">Token Pass page</a> in your team's AI Gateway dashboard, or read the <a href=\"https://vercel.com/docs/ai-gateway/token-pass\">Token Pass documentation</a> for setup.</p>\n<p>\n<a href=\"https://vercel.com/changelog/glm-5-3-flash-is-now-available-in-token-pass\">Read more</a>\n</p>",
+    "link": "https://vercel.com/changelog/glm-5-3-flash-is-now-available-in-token-pass",
+    "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+    "feed_type": "blog",
+    "type": "company-engineering",
+    "type_label": "Company Engineering",
+    "published": "2026-11-09T00:00:00+00:00",
+    "published_ts": 1794182400,
+    "smart_groups": [
+      "Model releases"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Workflow SDK now writes over WebSockets on Vercel",
+    "summary": "The Workflow SDK now sends event writes and stream writes to Vercel Workflows over a WebSocket by default, replacing one HTTP request per write, or per write group for streams. No code change is needed beyond upgrading to workflow@5.2.0 or later. Once you deploy the upgrade, new runs use it. In-flight runs finish on the deployment they started on. Existing streaming code works as is. A step that writes a burst of chunks, like AI tokens, sends them over the WebSocket once it opens: Streams keep pace with AI output In a benchmark replaying an AI agent's token stream, v5.2.0, which writes streams over a WebSocket by default, delivered the full response 4.2× faster than v4.8.12, with no chunk delayed over a second. Fewer HTTP requests for event writes Every step start and completion is an event write, now sent over the WebSocket, so workflows with many steps make fewer HTTP requests. The added efficiency also improves performance and reduces costs. The queue handler opens the connection for every delivery. Get started Read the Vercel World documentation to get started. If you're on 4.x, start with the upgrade guide , since v5 is a major release.",
+    "summary_html": "<p>The <a href=\"https://workflow-sdk.dev\">Workflow SDK</a> now sends event writes and stream writes to <a href=\"https://vercel.com/workflows\">Vercel Workflows</a> over a WebSocket by default, replacing one HTTP request per write, or per write group for streams. No code change is needed beyond upgrading to <code>workflow@5.2.0</code> or later.</p><p>Once you deploy the upgrade, new runs use it. In-flight runs finish on the deployment they started on.</p><div></div><p>Existing streaming code works as is. A step that writes a burst of chunks, like AI tokens, sends them over the WebSocket once it opens:</p><div></div>Streams keep pace with AI output<p>In a <a href=\"https://workflow-sdk.dev/docs/performance\">benchmark</a> replaying an AI agent's token stream, v5.2.0, which writes streams over a WebSocket by default, delivered the full response 4.2× faster than v4.8.12, with no chunk delayed over a second.</p>Fewer HTTP requests for event writes<p>Every step start and completion is an event write, now sent over the WebSocket, so workflows with many steps make fewer HTTP requests. The added efficiency also improves performance and reduces costs. The queue handler opens the connection for every delivery. </p>Get started<p>Read the <a href=\"https://workflow-sdk.dev/worlds/vercel\">Vercel World documentation</a> to get started. If you're on 4.x, start with the <a href=\"https://workflow-sdk.dev/docs/whats-new\">upgrade guide</a>, since v5 is a major release.</p>\n<p>\n<a href=\"https://vercel.com/changelog/workflow-writes-now-use-websockets-on-vercel\">Read more</a>\n</p>",
+    "link": "https://vercel.com/changelog/workflow-writes-now-use-websockets-on-vercel",
+    "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+    "feed_type": "blog",
+    "type": "company-engineering",
+    "type_label": "Company Engineering",
+    "published": "2026-11-09T00:00:00+00:00",
+    "published_ts": 1794182400,
+    "smart_groups": [
+      "Agents & automation",
+      "Research & papers"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Build disk space on Vercel increased to 64 GB",
+    "summary": "Disk space for Vercel builds has increased from 32 GB to 64 GB on Basic and Standard machines, matching the capacity already available on Enhanced and Turbo. The additional space provides more room for the packages your project uses and the files generated during a build, reducing the risk of running out of disk space. The change applies automatically across all plans and build machine types at no additional charge, with no configuration changes required. Learn more in the build machine documentation .",
+    "summary_html": "<p>Disk space for <a href=\"https://vercel.com/docs/builds\">Vercel builds</a> has increased from 32 GB to 64 GB on Basic and Standard machines, matching the capacity already available on Enhanced and Turbo.</p><p>The additional space provides more room for the packages your project uses and the files generated during a build, reducing the risk of running out of disk space.</p><p>The change applies automatically across all plans and build machine types at no additional charge, with no configuration changes required.</p><p>Learn more in the <a href=\"https://vercel.com/docs/builds/managing-builds#build-machines\">build machine documentation</a>.</p>\n<p>\n<a href=\"https://vercel.com/changelog/build-disk-space-on-vercel-increased-to-64-gb\">Read more</a>\n</p>",
+    "link": "https://vercel.com/changelog/build-disk-space-on-vercel-increased-to-64-gb",
+    "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+    "feed_type": "blog",
+    "type": "company-engineering",
+    "type_label": "Company Engineering",
+    "published": "2026-11-09T00:00:00+00:00",
+    "published_ts": 1794182400,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Vercel Container Registry now supports 2 GB compressed image layers",
+    "summary": "Vercel Container Registry now supports compressed image layers of up to 2 GB each, up from 500 MB, the total image size limit stays 15 GB. The registry works with standard workflows like docker push , docker pull , and docker tag , and pushing an image creates the repository on the fly. Repositories can be made public for read-only pull access by any Vercel team, or shared with specific teams up to 100 from the dashboard or with vercel vcr permissions . The Vercel Managed Images that Vercel Sandbox runs on are served from ordinary public repositories, built with the same public-repository feature any team can use for its own images. Manage repositories, images, and tags with the vercel vcr CLI commands in Vercel CLI v58.3.0 or later, and log CI workflows in from GitHub Actions with the vercel/vcr-action/login action using GitHub OIDC, which removes the need for long-lived registry credentials. If background optimization of a pushed image fails, the image shows an error status in the dashboard, and pushing the same image again retries the conversion. See the documentation for the full setup.",
+    "summary_html": "<p><a href=\"https://vercel.com/docs/container-registry\">Vercel Container Registry</a> now supports compressed image layers of up to 2 GB each, up from 500 MB, the total image size limit stays 15 GB. </p><p>The registry works with standard workflows like <code>docker push</code>, <code>docker pull</code>, and <code>docker tag</code>, and pushing an image creates the repository on the fly.</p><div></div><p>Repositories can be <a href=\"https://vercel.com/changelog/vercel-container-registry-repositories-can-now-be-made-public\">made public</a> for read-only pull access by any Vercel team, or <a href=\"https://vercel.com/changelog/share-vercel-container-registry-repositories-across-teams\">shared with specific teams</a> up to 100 from the dashboard or with <code>vercel vcr permissions</code>. The Vercel Managed Images that Vercel Sandbox runs on are served from ordinary public repositories, built with the same public-repository feature any team can use for its own images.</p><p>Manage repositories, images, and tags with the <a href=\"https://vercel.com/changelog/manage-vercel-container-registry-with-vercel-cli\"><code>vercel vcr</code> CLI commands</a> in Vercel CLI v58.3.0 or later, and log CI workflows in from GitHub Actions with the <a href=\"https://vercel.com/changelog/vcr-login-github-action\"><code>vercel/vcr-action/login</code> action</a> using GitHub OIDC, which removes the need for long-lived registry credentials. If background optimization of a pushed image fails, the image shows an error status in the dashboard, and pushing the same image again retries the conversion.</p><p>See the <a href=\"https://vercel.com/docs/container-registry\">documentation</a> for the full setup.</p>\n<p>\n<a href=\"https://vercel.com/changelog/vercel-container-registry-now-supports-2-gb-compressed-image-layers\">Read more</a>\n</p>",
+    "link": "https://vercel.com/changelog/vercel-container-registry-now-supports-2-gb-compressed-image-layers",
+    "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+    "feed_type": "blog",
+    "type": "company-engineering",
+    "type_label": "Company Engineering",
+    "published": "2026-11-09T00:00:00+00:00",
+    "published_ts": 1794182400,
+    "smart_groups": [
+      "Data & analytics"
     ],
     "curated": false
   },
@@ -76594,22 +77026,6 @@
     "published_ts": 1788083879,
     "smart_groups": [
       "Agentic AI & Automations"
-    ],
-    "curated": false
-  },
-  {
-    "title": "Nvidia's AI advantage is moving beyond the GPU",
-    "summary": "Article URL: https://techcrunch.com/2026/08/29/nvidias-ai-advantage-is-moving-beyond-the-gpu/ Comments URL: https://news.ycombinator.com/item?id=49497235 Points: 12 # Comments: 6",
-    "summary_html": "<p>Article URL: <a href=\"https://techcrunch.com/2026/08/29/nvidias-ai-advantage-is-moving-beyond-the-gpu/\">https://techcrunch.com/2026/08/29/nvidias-ai-advantage-is-moving-beyond-the-gpu/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=49497235\">https://news.ycombinator.com/item?id=49497235</a></p>\n<p>Points: 12</p>\n<p># Comments: 6</p>",
-    "link": "https://techcrunch.com/2026/08/29/nvidias-ai-advantage-is-moving-beyond-the-gpu/",
-    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-    "feed_type": "blog",
-    "type": "media-tech-analysis",
-    "type_label": "Media & Tech Analysis",
-    "published": "2026-08-30T09:57:06+00:00",
-    "published_ts": 1788083826,
-    "smart_groups": [
-      "AI Hardware & Chips"
     ],
     "curated": false
   },
