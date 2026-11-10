@@ -1,18 +1,389 @@
 [
   {
+    "title": "Build a Chess.com AI Companion for Your Latest Game",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://quickchat.ai/post/chesscom-latest-game-ai-companion\">https://quickchat.ai/post/chesscom-latest-game-ai-companion</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50442594\">https://news.ycombinator.com/item?id=50442594</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://quickchat.ai/post/chesscom-latest-game-ai-companion",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T16:26:31+00:00",
+    "published_ts": 1794327991,
+    "smart_groups": [
+      "Consumer AI"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Ask HN: How do you report an AI breach you don't know happened?",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://srnnews.com/australia-tightens-ai-oversight-rules-after-openai-agent-breached-government-website/\">https://srnnews.com/australia-tightens-ai-oversight-rules-after-openai-agent-breached-government-website/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50442546\">https://news.ycombinator.com/item?id=50442546</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
+    "link": "https://srnnews.com/australia-tightens-ai-oversight-rules-after-openai-agent-breached-government-website/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T16:23:42+00:00",
+    "published_ts": 1794327822,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Sakana AI may go public in 2027",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.japantimes.co.jp/business/2026/11/10/companies/sakana-ai-ipo/\">https://www.japantimes.co.jp/business/2026/11/10/companies/sakana-ai-ipo/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50442487\">https://news.ycombinator.com/item?id=50442487</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://www.japantimes.co.jp/business/2026/11/10/companies/sakana-ai-ipo/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T16:19:18+00:00",
+    "published_ts": 1794327558,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "I benchmarked TimesFM 3.0, Chronos-2 and Toto 2.0 on market time series. None beat simple baseline. [P]",
+    "summary": "I may be naive, but I've been curious whether the recent wave of time-series foundation models can actually extract useful predictive signals from financial markets. Models like Google's TimesFM 3.0, Amazon's Chronos-2, and Datadog's Toto 2.0 are impressive general-purpose forecasters from the first sight. But stock prices are difficult to predict, so I wanted to see how these models perform against very simple baselines. I ran a series of zero-shot experiments on 24 US stocks and ETFs, including daily and intraday data, and compared their predictions against naive forecasting strategies and also simulated random walks. TL;DR none of the three models showed any meaningful predictive power for stock price movements in this setup. Code is here Experimental setup i used: Models: TimesFM 3.0, Chronos-2, Toto 2.0 (313M) Assets: 24 large US stocks and ETFs, including SPY, QQQ and IWM Data: Yahoo Finance, January 2014 to november 2026 Evaluation: 504 trading days starting November 2024 Context: 512 historical closing prices Forecast horizons: 1, 5 and 20 trading days Mode: Zero-shot, default configurations, no fine-tuning Baselines: Last observed price, always-up directional prediction, and simulated random walks with matched drift and volatility I also evaluated the models on hourly and 5-minute price bars. https://preview.redd.it/npb9z5o67t0i1.png?width=596&format=png&auto=webp&s=d49f50fabc0a67d3297277a372dc418419b02a47 Directional accuracy is essentially a coin flip Across the three models, next-day directional accuracy ranged from 49.9% to 51.1%. Simply predicting that the market would go up every day achieved 52.2% (yep). Even more interestingly, when I fed the models simulated random walks, which contain no exploitable predictive signal at all by construction, they achieved approximately the same directional accuracy as on actual stock prices. I also tested a simple long-or-cash: hold a stock when the model predicts an increase, otherwise stay in cash. Starting with $10,000 and accounting for 0.05% transaction costs per switch: Times-series model strategies finished between $10,893 and $12,181. Buy-and-hold finished at $15,036. Obviously, this is just one simple strategy and not an exhaustive evaluation of trading profitability. But still, tells something I guess. I repeated the experiments using hourly and 5-minute bars. The results were similar: directional accuracy remained around chance level, and on 5-minute data, a simple one-line mean-reversion heuristic performed better. The repo with code is here: https://github.com/moneyheap/tsfm-stocks Well, I really wanted this to work, but, duh %) submitted by /u/AdelSexy [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/MachineLearning/comments/1xsqztt/i_benchmarked_timesfm_30_chronos2_and_toto_20_on/\">  </a>  <!-- SC_OFF --><div><p>I may be naive, but I've been curious whether the recent wave of time-series foundation models can actually extract useful predictive signals from financial markets.</p> <p>Models like Google's TimesFM 3.0, Amazon's Chronos-2, and Datadog's Toto 2.0 are impressive general-purpose forecasters from the first sight. But stock prices are difficult to predict, so I wanted to see how these models perform against very simple baselines.</p> <p>I ran a series of zero-shot experiments on 24 US stocks and ETFs, including daily and intraday data, and compared their predictions against naive forecasting strategies and also simulated random walks.</p> <p><strong>TL;DR none of the three models showed any meaningful predictive power for stock price movements in this setup. Code is</strong> <a href=\"https://github.com/moneyheap/tsfm-stocks\">here</a></p> <p>Experimental setup i used:</p> <ul> <li>Models: TimesFM 3.0, Chronos-2, Toto 2.0 (313M)</li> <li>Assets: 24 large US stocks and ETFs, including SPY, QQQ and IWM</li> <li>Data: Yahoo Finance, January 2014 to november 2026</li> <li>Evaluation: 504 trading days starting November 2024</li> <li>Context: 512 historical closing prices</li> <li>Forecast horizons: 1, 5 and 20 trading days</li> <li>Mode: Zero-shot, default configurations, no fine-tuning</li> <li>Baselines: Last observed price, always-up directional prediction, and simulated random walks with matched drift and volatility</li> </ul> <p>I also evaluated the models on hourly and 5-minute price bars.</p> <p><a href=\"https://preview.redd.it/npb9z5o67t0i1.png?width=596&amp;format=png&amp;auto=webp&amp;s=d49f50fabc0a67d3297277a372dc418419b02a47\">https://preview.redd.it/npb9z5o67t0i1.png?width=596&amp;format=png&amp;auto=webp&amp;s=d49f50fabc0a67d3297277a372dc418419b02a47</a></p> <p>Directional accuracy is essentially a coin flip</p> <p>Across the three models, next-day directional accuracy ranged from 49.9% to 51.1%.</p> <p>Simply predicting that the market would go up every day achieved 52.2% (yep).</p> <p>Even more interestingly, when I fed the models simulated random walks, which contain no exploitable predictive signal at all by construction, they achieved approximately the same directional accuracy as on actual stock prices.</p> <p>I also tested a simple long-or-cash: hold a stock when the model predicts an increase, otherwise stay in cash.</p> <p>Starting with $10,000 and accounting for 0.05% transaction costs per switch:</p> <ul> <li>Times-series model strategies finished between $10,893 and $12,181.</li> <li>Buy-and-hold finished at $15,036.</li> </ul> <p>Obviously, this is just one simple strategy and not an exhaustive evaluation of trading profitability. But still, tells something I guess.</p> <p>I repeated the experiments using hourly and 5-minute bars.</p> <p>The results were similar: directional accuracy remained around chance level, and on 5-minute data, a simple one-line mean-reversion heuristic performed better.</p> <p>The repo with code is here: <a href=\"https://github.com/moneyheap/tsfm-stocks\">https://github.com/moneyheap/tsfm-stocks</a></p> <p>Well, I really wanted this to work, but, duh %)</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/AdelSexy\"> /u/AdelSexy </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xsqztt/i_benchmarked_timesfm_30_chronos2_and_toto_20_on/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xsqztt/i_benchmarked_timesfm_30_chronos2_and_toto_20_on/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1xsqztt/i_benchmarked_timesfm_30_chronos2_and_toto_20_on/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T16:14:16+00:00",
+    "published_ts": 1794327256,
+    "smart_groups": [
+      "Research & papers"
+    ],
+    "curated": false
+  },
+  {
+    "title": "The State of Mechanistic Interpretability for AI Safety",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://tsglab.github.io/mechinterp-safety/\">https://tsglab.github.io/mechinterp-safety/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50442330\">https://news.ycombinator.com/item?id=50442330</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://tsglab.github.io/mechinterp-safety/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T16:09:29+00:00",
+    "published_ts": 1794326969,
+    "smart_groups": [
+      "Safety & alignment"
+    ],
+    "curated": false
+  },
+  {
+    "title": "RapidFort Secures the AI Stack from GPU Runtime to Kubernetes",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.rapidfort.com/company/about-us\">https://www.rapidfort.com/company/about-us</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50442187\">https://news.ycombinator.com/item?id=50442187</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://www.rapidfort.com/company/about-us",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T15:57:45+00:00",
+    "published_ts": 1794326265,
+    "smart_groups": [
+      "Chips & hardware",
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: Estimate the carbon footprint of your company's AI use (open data)",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://somaai.earth/ai-footprint/calculator\">https://somaai.earth/ai-footprint/calculator</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50442186\">https://news.ycombinator.com/item?id=50442186</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://somaai.earth/ai-footprint/calculator",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T15:57:41+00:00",
+    "published_ts": 1794326261,
+    "smart_groups": [
+      "Energy & data centers"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: Dryplate MCP – local image tools for AI agents (HEIC, strip metadata)",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://github.com/dryplate/dryplate\">https://github.com/dryplate/dryplate</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50442087\">https://news.ycombinator.com/item?id=50442087</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://github.com/dryplate/dryplate",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T15:50:19+00:00",
+    "published_ts": 1794325819,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "How Not to Use AI",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.annashipman.co.uk/jfdi/how-not-to-use-ai.html\">https://www.annashipman.co.uk/jfdi/how-not-to-use-ai.html</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50442021\">https://news.ycombinator.com/item?id=50442021</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://www.annashipman.co.uk/jfdi/how-not-to-use-ai.html",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T15:46:39+00:00",
+    "published_ts": 1794325599,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Can you prompt your AI into telling the truth? I tested it",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://scottdesapio.com/thoughts\">https://scottdesapio.com/thoughts</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50442016\">https://news.ycombinator.com/item?id=50442016</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://scottdesapio.com/thoughts",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T15:46:24+00:00",
+    "published_ts": 1794325584,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "New Linux-Based Desktop Operating System Is Built for AI Nerds",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.wired.com/story/kora-new-linux-based-desktop-operating-system-is-built-for-ai-nerds/\">https://www.wired.com/story/kora-new-linux-based-desktop-operating-system-is-built-for-ai-nerds/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50441957\">https://news.ycombinator.com/item?id=50441957</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://www.wired.com/story/kora-new-linux-based-desktop-operating-system-is-built-for-ai-nerds/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T15:43:06+00:00",
+    "published_ts": 1794325386,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: Deedglass – Verify AI Agent SQL Changes Using Postgres WAL",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://github.com/deedglass/deedglass\">https://github.com/deedglass/deedglass</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50441923\">https://news.ycombinator.com/item?id=50441923</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://github.com/deedglass/deedglass",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T15:40:34+00:00",
+    "published_ts": 1794325234,
+    "smart_groups": [
+      "Agents & automation",
+      "Data & analytics"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: We wanted to build an AI application, not maintain RAG pipelines",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://akropolys.cloud/docs/\">https://akropolys.cloud/docs/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50441876\">https://news.ycombinator.com/item?id=50441876</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://akropolys.cloud/docs/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T15:37:40+00:00",
+    "published_ts": 1794325060,
+    "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
     "title": "Preview seed fixture (rolling)",
-    "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@9d04ac1a8d5e (migration head: 20261104120000_store_creator_counts_visible_listings). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only synthetic rows (Faker-generated, plus the hand-written preview marketplace) and the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
-    "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@9d04ac1a8d5e (migration head: 20261104120000_store_creator_counts_visible_listings). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only synthetic rows (Faker-generated, plus the hand-written preview marketplace) and the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
+    "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@83f6ce5776ce (migration head: 20261109120000_add_feedback_prompt). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only synthetic rows (Faker-generated, plus the hand-written preview marketplace) and the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
+    "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@83f6ce5776ce (migration head: 20261109120000_add_feedback_prompt). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only synthetic rows (Faker-generated, plus the hand-written preview marketplace) and the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
     "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/preview-seed-fixture",
     "source": "AutoGPT Releases - GitHub releases for AutoGPT",
     "feed_type": "blog",
     "type": "media-tech-analysis",
     "type_label": "Media & Tech Analysis",
-    "published": "2026-11-10T07:21:00+00:00",
-    "published_ts": 1794295260,
+    "published": "2026-11-10T15:25:30+00:00",
+    "published_ts": 1794324330,
     "smart_groups": [
       "Agents & automation",
       "Data & analytics"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Ask HN: Is misaligned AI less dangerous than AI controlled by a bad actor",
+    "summary": "Ultimately I think, most trains of “thought” that could be a milestone towards a misaligned AI taking a dangerous action could be input by humans, especially if programmers have little oversight on what they put into their AI systems. An analogy that occurs to me is a plane, a powerful body of technology that can ultimately be controlled by a single person if they try. We have seen many cases where bad actors have taken advantage of plane technology and set it on a destructive path, either for political goals or suicidal intentions. I suppose in theory a misaligned AI might find it easier to hide its tracks but then again a bad actor could instruct the AI to hide its tracks",
+    "summary_html": "<p>Ultimately I think, most trains of “thought” that could be a milestone towards a misaligned AI taking a dangerous action could be input by humans, especially if programmers have little oversight on what they put into their AI systems. An analogy that occurs to me is a plane, a powerful body of technology that can ultimately be controlled by a single person if they try. We have seen many cases where bad actors have taken advantage of plane technology and set it on a destructive path, either for political goals or suicidal intentions. I suppose in theory a misaligned AI might find it easier to hide its tracks but then again a bad actor could instruct the AI to hide its tracks</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50441674\">https://news.ycombinator.com/item?id=50441674</a></p>\n<p>Points: 2</p>\n<p># Comments: 1</p>",
+    "link": "https://news.ycombinator.com/item?id=50441674",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T15:22:46+00:00",
+    "published_ts": 1794324166,
+    "smart_groups": [
+      "Safety & alignment"
+    ],
+    "curated": false
+  },
+  {
+    "title": "AI Companies Crack Down on the Coolest Thing People Were Doing with AI",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.404media.co/reverse-engineer-anything-ai-companies-crack-down-on-the-coolest-thing-people-were-doing-with-ai/\">https://www.404media.co/reverse-engineer-anything-ai-companies-crack-down-on-the-coolest-thing-people-were-doing-with-ai/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50441618\">https://news.ycombinator.com/item?id=50441618</a></p>\n<p>Points: 5</p>\n<p># Comments: 2</p>",
+    "link": "https://www.404media.co/reverse-engineer-anything-ai-companies-crack-down-on-the-coolest-thing-people-were-doing-with-ai/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T15:18:54+00:00",
+    "published_ts": 1794323934,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Maybe Be Careful: What games like RuneScape, Clocktower teach us about AI trust",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://miguelconner.substack.com/p/maybe-be-careful\">https://miguelconner.substack.com/p/maybe-be-careful</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50441543\">https://news.ycombinator.com/item?id=50441543</a></p>\n<p>Points: 4</p>\n<p># Comments: 0</p>",
+    "link": "https://miguelconner.substack.com/p/maybe-be-careful",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T15:13:35+00:00",
+    "published_ts": 1794323615,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Using AI to write a Wine-like layer for running macOS apps on Linux",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.neowin.net/news/this-project-is-now-using-ai-to-build-a-wine-like-layer-for-running-macos-apps-on-linux/\">https://www.neowin.net/news/this-project-is-now-using-ai-to-build-a-wine-like-layer-for-running-macos-apps-on-linux/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50441454\">https://news.ycombinator.com/item?id=50441454</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://www.neowin.net/news/this-project-is-now-using-ai-to-build-a-wine-like-layer-for-running-macos-apps-on-linux/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T15:08:09+00:00",
+    "published_ts": 1794323289,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Generative AI uses more energy on non-English text",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://news.umich.edu/generative-ai-uses-more-energy-on-non-english-text/\">https://news.umich.edu/generative-ai-uses-more-energy-on-non-english-text/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50441444\">https://news.ycombinator.com/item?id=50441444</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://news.umich.edu/generative-ai-uses-more-energy-on-non-english-text/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T15:07:28+00:00",
+    "published_ts": 1794323248,
+    "smart_groups": [
+      "Energy & data centers"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Worktrunk – Git worktree management for parallel AI agent workflows",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://worktrunk.dev/\">https://worktrunk.dev/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50441354\">https://news.ycombinator.com/item?id=50441354</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://worktrunk.dev/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T15:01:34+00:00",
+    "published_ts": 1794322894,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Don't hate AI 'cause it's bad; hate it 'cause it's good",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://aspiz.uk/essays/dont-hate-ai\">https://aspiz.uk/essays/dont-hate-ai</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50441336\">https://news.ycombinator.com/item?id=50441336</a></p>\n<p>Points: 7</p>\n<p># Comments: 0</p>",
+    "link": "https://aspiz.uk/essays/dont-hate-ai",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T15:00:22+00:00",
+    "published_ts": 1794322822,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Steve – AI CEO",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://twitter.com/spisallyouneed/status/2119829366758604963\">https://twitter.com/spisallyouneed/status/2119829366758604963</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50441261\">https://news.ycombinator.com/item?id=50441261</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://twitter.com/spisallyouneed/status/2119829366758604963",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T14:55:25+00:00",
+    "published_ts": 1794322525,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Introducing Usul - an easier way to express your NN using maths? [P]",
+    "summary": "SO, Usul-cpp is a library I've written in C++, it is based around allowing data scientists to create their models without heavy libraries such as tensorflow, and just express their models using maths, and Usul will handle the rest. There is builtin tensor support, auto-grad, back-prop and its quite fast. I wrote it because, it seemed less mystifying to read maths instead of a random class that supposedly does something. I wrote it from scratch in cpp (23) due to the fact that I wanted to emphasise on precision, however it's subtly built on top of `xtensor`. check it out in action #include using namespace std; int main() { double LR = 0.1; int EPOCH = 5000; // lets write the forward pass Tensor X = { {0.0, 0.0}, // this is what we're feeding it {0.0, 1.0}, {1.0, 0.0}, {1.0, 1.0}, }; // this is what we're after Tensor Y_true = { 0.0, // xor{0.0, 0.0} = 0.0 1.0, // xor{0.0, 1.0} = 1.0 1.0, // xor{1.0, 0.0} = 1.0 0.0 // xor{1.0, 1.0} = 0.0 }; Y_true.reshape({4, 1}); // we are now going to create a single layer, double neuron network // each layer will have a bias and weights tensor. auto W1 = generate_random_matrix({2, 4}, -1.0, 1.0); auto B1 = generate_random_matrix({1, 4}, -1.0, 1.0); auto W2 = generate_random_matrix({4, 1}, -1.0, 1.0); auto B2 = generate_random_matrix({1, 1}, -1.0, 1.0); // this is the training loop for (int i = 0; i < EPOCH; i++) { // so lets do one forward pass // first layer auto Z1 = X % W1 + B1; auto A = Z1.ReLU(); // second layer auto Z2 = A % W2 + B2; // activation // should be - auto S = Z2.activate(Activate::Sigmoid); auto S = Z2.Sigmoid(); // Loss // should be - auto Loss = S.loss(Loss::MSE); auto loss = (S - Y_true) * (S - Y_true); loss = loss.mean(); cout << \"Loss: \" << loss << \"\\n\"; cout << \"guesses: \" << \"\\n\" << S << \"\\n\"; cout << \"should be: \" << Y_true << \"\\n\"; loss.backwards(); W1.step(LR); B1.step(LR); W2.step(LR); B2.step(LR); } } which will output Guesses: Tensor({{ 0.027546}, { 0.963592}, { 0.964138}, { 0.038964}}, shape=(4,1)) should be: Tensor({{ 0.}, { 1.}, { 1.}, { 0.}}, shape=(4,1)) Loss: Tensor( 0.001222, shape=()) Just write the maths, and Usul-cpp will handle the rest, it is extremely lightweight, and the entire library is memory safe. And its called Usul, because I'm a huge dune fan. You can view the project at https://github.com/crushr3sist/Usul-cpp Any ideas for what to do next are all welcome, you can also pull and implement features that you think could improve this project. (no vibecoded prs please, this project is not vibe-coded) BACKGROUND INFO BELOW i'd like to share a bit of a background. maths has always stood in the way between me and finally learning how to write neural networks, I've always been fascinated by them ever since i saw that diagram of a deep neural network with all the node edges interconnecting with others. Well I stopped letting highschool math class trauma stop me from understanding these concepts, i took a pen and paper out, taught myself numerical descent, analytical descent, backwards propagation, what a compute graph is, all of these subjects, taught myself, until I was manually backwards propagating the loss between a few arithmetics, until that moved into scalar level neural networks and doing simple calculus and being able to do xor gate problem with scalar, and then I taught myself matrix calculus, and well... I taught myself neural networks, taught myself the maths, until I hand written the xor gate problem in matrix syntax using xtensor, and manually, by hand, no AI, did the xor gate problem manually backwards propagating error, automatically differentiating. This was also a kind of detox from LLM dependency, I don't tend to use it for code, but because its so central in my daily life and a migration from google to gemini, using LLMs for immediate information access had started to affect my mind and my ability to intake information. I really hope some of you find this library useful, as i did spend a pretty decent amount of time on it, and I would love it if any of you had any ideas on what to do next with this library. Thank you for reading, I really appreciate it. submitted by /u/Exact-Contact-3837 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>SO, Usul-cpp is a library I've written in C++, it is based around allowing data scientists to create their models without heavy libraries such as tensorflow, and just express their models using maths, and Usul will handle the rest. There is builtin tensor support, auto-grad, back-prop and its quite fast.</p> <p>I wrote it because, it seemed less mystifying to read maths instead of a random class that supposedly does something. I wrote it from scratch in cpp (23) due to the fact that I wanted to emphasise on precision, however it's subtly built on top of `xtensor`. </p> <p>check it out in action</p> <pre><code>#include  using namespace std; int main() { double LR = 0.1; int EPOCH = 5000; // lets write the forward pass Tensor X = { {0.0, 0.0}, // this is what we're feeding it {0.0, 1.0}, {1.0, 0.0}, {1.0, 1.0}, }; // this is what we're after Tensor Y_true = { 0.0, // xor{0.0, 0.0} = 0.0 1.0, // xor{0.0, 1.0} = 1.0 1.0, // xor{1.0, 0.0} = 1.0 0.0 // xor{1.0, 1.0} = 0.0 }; Y_true.reshape({4, 1}); // we are now going to create a single layer, double neuron network // each layer will have a bias and weights tensor. auto W1 = generate_random_matrix({2, 4}, -1.0, 1.0); auto B1 = generate_random_matrix({1, 4}, -1.0, 1.0); auto W2 = generate_random_matrix({4, 1}, -1.0, 1.0); auto B2 = generate_random_matrix({1, 1}, -1.0, 1.0); // this is the training loop for (int i = 0; i &lt; EPOCH; i++) { // so lets do one forward pass // first layer auto Z1 = X % W1 + B1; auto A = Z1.ReLU(); // second layer auto Z2 = A % W2 + B2; // activation // should be - auto S = Z2.activate(Activate::Sigmoid); auto S = Z2.Sigmoid(); // Loss // should be - auto Loss = S.loss(Loss::MSE); auto loss = (S - Y_true) * (S - Y_true); loss = loss.mean(); cout &lt;&lt; \"Loss: \" &lt;&lt; loss &lt;&lt; \"\\n\"; cout &lt;&lt; \"guesses: \" &lt;&lt; \"\\n\" &lt;&lt; S &lt;&lt; \"\\n\"; cout &lt;&lt; \"should be: \" &lt;&lt; Y_true &lt;&lt; \"\\n\"; loss.backwards(); W1.step(LR); B1.step(LR); W2.step(LR); B2.step(LR); } } </code></pre> <p>which will output</p> <pre><code>Guesses: Tensor({{ 0.027546}, { 0.963592}, { 0.964138}, { 0.038964}}, shape=(4,1)) should be: Tensor({{ 0.}, { 1.}, { 1.}, { 0.}}, shape=(4,1)) Loss: Tensor( 0.001222, shape=()) </code></pre> <p>Just write the maths, and Usul-cpp will handle the rest, it is extremely lightweight, and the entire library is memory safe. And its called Usul, because I'm a huge dune fan. </p> <p>You can view the project at</p> <p><a href=\"https://github.com/crushr3sist/Usul-cpp\">https://github.com/crushr3sist/Usul-cpp</a></p> <p>Any ideas for what to do next are all welcome, you can also pull and implement features that you think could improve this project. (no vibecoded prs please, this project is not vibe-coded)</p> <p>BACKGROUND INFO BELOW</p> <p>i'd like to share a bit of a background. maths has always stood in the way between me and finally learning how to write neural networks, I've always been fascinated by them ever since i saw that diagram of a deep neural network with all the node edges interconnecting with others.</p> <p>Well I stopped letting highschool math class trauma stop me from understanding these concepts, i took a pen and paper out, taught myself numerical descent, analytical descent, backwards propagation, what a compute graph is, all of these subjects, taught myself, until I was manually backwards propagating the loss between a few arithmetics, until that moved into scalar level neural networks and doing simple calculus and being able to do xor gate problem with scalar, and then I taught myself matrix calculus, and well...</p> <p>I taught myself neural networks, taught myself the maths, until I hand written the xor gate problem in matrix syntax using xtensor, and manually, by hand, no AI, did the xor gate problem manually backwards propagating error, automatically differentiating. This was also a kind of detox from LLM dependency, I don't tend to use it for code, but because its so central in my daily life and a migration from google to gemini, using LLMs for immediate information access had started to affect my mind and my ability to intake information. I really hope some of you find this library useful, as i did spend a pretty decent amount of time on it, and I would love it if any of you had any ideas on what to do next with this library.</p> <p>Thank you for reading, I really appreciate it.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Exact-Contact-3837\"> /u/Exact-Contact-3837 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xsmmfm/introducing_usul_an_easier_way_to_express_your_nn/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xsmmfm/introducing_usul_an_easier_way_to_express_your_nn/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1xsmmfm/introducing_usul_an_easier_way_to_express_your_nn/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T13:15:51+00:00",
+    "published_ts": 1794316551,
+    "smart_groups": [
+      "Research & papers",
+      "Health & science"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Fable 5.2 just doubled the best Remote Labor Index score [N]",
+    "summary": "Processing img zv6dhr1i1s0i1... Remote Labor Index (RLI) measures the ability of AI to fully automate remote work: https://www.remotelabor.ai/ submitted by /u/we_are_mammals [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/MachineLearning/comments/1xsldgu/fable_52_just_doubled_the_best_remote_labor_index/\">  </a>  <!-- SC_OFF --><div><p><em>Processing img zv6dhr1i1s0i1...</em></p> <p>Remote Labor Index (RLI) measures the ability of AI to fully automate remote work: <a href=\"https://www.remotelabor.ai/\">https://www.remotelabor.ai/</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/we_are_mammals\"> /u/we_are_mammals </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xsldgu/fable_52_just_doubled_the_best_remote_labor_index/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xsldgu/fable_52_just_doubled_the_best_remote_labor_index/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1xsldgu/fable_52_just_doubled_the_best_remote_labor_index/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-10T12:14:41+00:00",
+    "published_ts": 1794312881,
+    "smart_groups": [
+      "Work & society"
     ],
     "curated": false
   },
@@ -126,7 +497,18 @@
     "smart_groups": [
       "Security & misuse"
     ],
-    "curated": false
+    "curated": false,
+    "story_id": "fb237e7c4261",
+    "story_size": 2,
+    "story_primary": true,
+    "story_others": [
+      {
+        "source": "News on Artificial Intelligence and Machine Learning - The latest news on Artificial Intelligence and Machine Learning",
+        "title": "I don't want AI in my online search. What options do I have?",
+        "link": "https://techxplore.com/news/2026-11-dont-ai-online-options.html",
+        "published_ts": 1794321622
+      }
+    ]
   },
   {
     "title": "Aipicks.ca – Using multi-sport AI models to find edges in table tennis",
@@ -335,6 +717,22 @@
     "published_ts": 1794279567,
     "smart_groups": [
       "Chips & hardware"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Speed Insights and Web Analytics now support custom environments",
+    "summary": "Speed Insights and Web Analytics now fully support custom environments . Previously, data captured on deployments to a custom environment was attributed to the Preview environment. That data is now attributed to the custom environment it came from, so you can track performance and traffic for staging, QA, or canary environments separately from Production and Preview. You can view this data in several places: Dashboard: use the Environment dropdown in Speed Insights and Web Analytics to pick a custom environment CLI: query it with the vc metrics command Query builder: filter and break down by environment Aggregation API: query it programmatically (Web Analytics only) This change only affects how data is attributed. No new data points are collected, and no configuration changes are needed. Custom environments are available on Pro and Enterprise plans. Learn more in the environments documentation .",
+    "summary_html": "<p><a href=\"https://vercel.com/docs/speed-insights\">Speed Insights</a> and <a href=\"https://vercel.com/docs/analytics\">Web Analytics</a> now fully support <a href=\"https://vercel.com/docs/deployments/environments#custom-environments\">custom environments</a>.</p><p>Previously, data captured on deployments to a custom environment was attributed to the Preview environment. That data is now attributed to the custom environment it came from, so you can track performance and traffic for staging, QA, or canary environments separately from Production and Preview.</p><div></div><p>You can view this data in several places:</p><ul><li><p><b>Dashboard:</b> use the Environment dropdown in Speed Insights and Web Analytics to pick a custom environment</p></li><li><p><b>CLI:</b> query it with the <code>vc metrics</code> command</p></li><li><p><b>Query builder:</b> filter and break down by environment</p></li><li><p><b>Aggregation API:</b> query it programmatically (Web Analytics only)</p></li></ul><p>This change only affects how data is attributed. No new data points are collected, and no configuration changes are needed.</p><p>Custom environments are available on Pro and Enterprise plans. Learn more in the <a href=\"https://vercel.com/docs/deployments/environments\">environments documentation</a>.</p>\n<p>\n<a href=\"https://vercel.com/changelog/speed-insights-and-web-analytics-now-support-custom-environments\">Read more</a>\n</p>",
+    "link": "https://vercel.com/changelog/speed-insights-and-web-analytics-now-support-custom-environments",
+    "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+    "feed_type": "blog",
+    "type": "company-engineering",
+    "type_label": "Company Engineering",
+    "published": "2026-11-10T00:00:00+00:00",
+    "published_ts": 1794268800,
+    "smart_groups": [
+      "Data & analytics"
     ],
     "curated": false
   },
