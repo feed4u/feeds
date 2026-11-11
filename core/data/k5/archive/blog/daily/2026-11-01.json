@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-10T16:34:51.198938+00:00",
+  "generated_at": "2026-11-11T06:54:08.576256+00:00",
   "date": "2026-11-01",
-  "total_items": 8,
+  "total_items": 9,
   "next_chunk": "archive/blog/daily/2026-10-31.json",
   "items": [
     {
@@ -82,7 +82,37 @@
         "Windows / Microsoft",
         "Identity / Access"
       ],
-      "curated": true
+      "curated": true,
+      "story_id": "08cd6bcd38ee",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "https://dfir.ch/index.xml",
+          "title": "Modern Authentication, Legacy Problems",
+          "link": "http://localhost:1313/posts/field_note_mha/",
+          "published_ts": 1793516300
+        }
+      ]
+    },
+    {
+      "title": "Modern Authentication, Legacy Problems",
+      "summary": "Introduction During a recent incident response investigation, we encountered an interesting authentication issue in an on-premises Microsoft Exchange environment. The organization had implemented Hybrid Modern Authentication (HMA), allowing Microsoft Outlook to authenticate against Microsoft Entra ID using OAuth tokens. Multi-factor authentication was enforced through the organization\u2019s Microsoft 365 configuration. However, while investigating the Exchange logs, we found thousands of successfully authenticated EWS requests from another client using NTLM . How could NTLM authentication still succeed when the organization had implemented Hybrid Modern Authentication and required MFA? The answer was an externally accessible legacy authentication path that operated independently of Microsoft Entra ID.",
+      "summary_html": "Introduction\n<p>During a recent incident response investigation, we encountered an interesting authentication issue in an on-premises Microsoft Exchange environment. The organization had implemented <code>Hybrid Modern Authentication</code> (HMA), allowing Microsoft Outlook to authenticate against Microsoft Entra ID using OAuth tokens. Multi-factor authentication was enforced through the organization\u2019s Microsoft 365 configuration. However, while investigating the Exchange logs, we found thousands of successfully authenticated <code>EWS</code> requests from another client using <code>NTLM</code>.</p>\n<p>How could <code>NTLM</code> authentication still succeed when the organization had implemented <code>Hybrid Modern Authentication</code> and required MFA? The answer was an externally accessible legacy authentication path that operated independently of Microsoft Entra ID.</p>",
+      "link": "http://localhost:1313/posts/field_note_mha/",
+      "source": "https://dfir.ch/index.xml",
+      "feed_type": "blog",
+      "type": "dfir-forensics",
+      "type_label": "DFIR & Forensics",
+      "published": "2026-11-01T06:58:20+00:00",
+      "published_ts": 1793516300,
+      "smart_groups": [
+        "Windows / Microsoft",
+        "Identity / Access"
+      ],
+      "curated": true,
+      "story_id": "08cd6bcd38ee",
+      "story_size": 2
     },
     {
       "title": "FBI Confirms North Korean Hackers Responsible for $6 Billion+ Binance Attack",
