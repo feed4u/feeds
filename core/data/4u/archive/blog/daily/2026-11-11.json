@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-12T17:02:24.678940+00:00",
+  "generated_at": "2026-11-13T07:06:37.468766+00:00",
   "date": "2026-11-11",
-  "total_items": 79,
+  "total_items": 80,
   "next_chunk": "archive/blog/daily/2026-11-10.json",
   "items": [
     {
@@ -85,7 +85,7 @@
       ],
       "curated": false,
       "story_id": "8250334af197",
-      "story_size": 81
+      "story_size": 96
     },
     {
       "title": "How should authors handle a suspected auto-generated review at ICLR? Flag to the AC or just rebut? [D]",
@@ -267,7 +267,7 @@
       ],
       "curated": false,
       "story_id": "6daee8ae6031",
-      "story_size": 4
+      "story_size": 8
     },
     {
       "title": "Apple II Agent: An AI Coding Environment for the Apple II",
@@ -383,6 +383,22 @@
       "published_ts": 1794430217,
       "smart_groups": [
         "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "mlxVS: cuVS-style GPU nearest-neighbor search (NN-Descent, CAGRA) on Apple Silicon with MLX [P]",
+      "summary": "I've released mlxVS, an open-source (Apache-2.0) library that runs the main GPU nearest-neighbor algorithms from NVIDIA's cuVS on Apple Silicon, built on MLX. It covers exact k-NN, k-means, NN-Descent k-NN graphs and CAGRA (graph pruning plus GPU graph search), with cuVS's parameter names, from Python (NumPy in) or C++. Results (SIFT1M, 985k x 128, L2, MacBook Pro M3 Pro: 18-core GPU, 12-core CPU) | Index | Build | Search setting | Recall@10 | Queries/s | |---|---:|---|---:|---:| | mlxVS CAGRA, degree 32 (from a 64-NN graph) | 10.4 s | itopk 64 | 0.976 | 69,500 | | | | itopk 128 | 0.993 | 37,800 | | mlxVS CAGRA, degree 64 (from a 128-NN graph) | 19.6 s | itopk 64 | 0.994 | 43,600 | | mlxVS unpruned NN-Descent graph, degree 32 | 8.8 s | itopk 128 | 0.939 | 42,400 | | hnswlib, M=16, efC=200, 12 threads | 88.1 s | ef 64 | 0.964 | 32,200 | | | | ef 128 | 0.990 | 17,600 | 10,000 queries in one batch, recall@10 against exact neighbors (computed on the GPU with brute_force_knn ), best of 3 runs, on AC power. Chart: https://github.com/mikepapadim/mlxvs#benchmarks How it works NN-Descent: a port of the Metal NN-Descent in JVector's GPU module. Each round is a pure function of the graph (sample, join, merge), because MLX custom kernels can't update their inputs in place. The local joins score 64-member neighborhoods with FP16 SIMD-group matrix multiplies (FP32 accumulation), and the returned distances are recomputed in FP32. all_neighbors splits the data into overlapping k-means clusters and builds one cluster at a time on the GPU, so the rows can be a memory-mapped file larger than RAM. CAGRA pruning ( cagra_optimize ): rank-based. If Y is at rank j in X's list, the edge X -> Y has a detour through Z when Z is at rank i < j in X's list and Y is at rank r < j in Z's list: both hops rank above the direct edge. The edges with the fewest detours are kept (ties by rank), then the second half of each list is filled with reverse edges. One threadgroup per node; it matches a CPU reference entry for entry. On SIFT1M, at degree 32 and itopk 128, pruning raises recall@10 from 0.939 to 0.993 at about the same speed. Search ( graph_search ): CAGRA's single-CTA design, one threadgroup per query. The sorted internal list, the candidates, the query and a hashed visited set all live in threadgroup memory. Each round expands the best unexpanded nodes; candidate distances are scored one SIMD group per candidate, then bitonic-sorted and merged into the list by merge-path ranks. A practical detail: Metal's shader validation counts threadgroup memory twice, so the kernel sizes its visited set to stay under 16 KB of the 32 KB limit and still passes validation in CI. Limitations The throughput numbers are for batched queries; single-query latency isn't tuned. I've benchmarked one dataset so far (SIFT1M). Embedding datasets (ada-002, 1536-d) are next. The index is static (no inserts or deletes) and has no filtered search. Datasets must be float32 or convertible to it. hnswlib is a CPU baseline. cuVS itself can't run on a Mac, so there's no apples-to-apples comparison against the CUDA original; I'd welcome numbers from anyone who has run cuVS CAGRA on SIFT1M on a comparable-power GPU. Code python import mlxvs graph = mlxvs.cagra_build(vectors, graph_degree=32, metric=\"cosine\") ids, dist = mlxvs.graph_search(vectors, graph, queries, k=10, metric=\"cosine\", itopk_size=64) pip install mlxvs , macOS 14+ on Apple Silicon. Benchmarks are reproducible with bench/bench_search.py (it also runs the hnswlib baseline). GitHub: https://github.com/mikepapadim/mlxvs Happy to answer questions about the Metal kernels or the cuVS port. submitted by /u/mikebmx1 [link] [comments]",
+      "summary_html": "<a href=\"https://www.reddit.com/r/MachineLearning/comments/1xtt5tx/mlxvs_cuvsstyle_gpu_nearestneighbor_search/\">  </a>  <!-- SC_OFF --><div><p>I've released mlxVS, an open-source (Apache-2.0) library that runs the main GPU nearest-neighbor algorithms from NVIDIA's cuVS on Apple Silicon, built on MLX. It covers exact k-NN, k-means, NN-Descent k-NN graphs and CAGRA (graph pruning plus GPU graph search), with cuVS's parameter names, from Python (NumPy in) or C++.</p> <p><strong>Results (SIFT1M, 985k x 128, L2, MacBook Pro M3 Pro: 18-core GPU, 12-core CPU)</strong> | Index | Build | Search setting | Recall@10 | Queries/s | |---|---:|---|---:|---:| | mlxVS CAGRA, degree 32 (from a 64-NN graph) | 10.4 s | itopk 64 | 0.976 | 69,500 | | | | itopk 128 | 0.993 | 37,800 | | mlxVS CAGRA, degree 64 (from a 128-NN graph) | 19.6 s | itopk 64 | 0.994 | 43,600 | | mlxVS unpruned NN-Descent graph, degree 32 | 8.8 s | itopk 128 | 0.939 | 42,400 | | hnswlib, M=16, efC=200, 12 threads | 88.1 s | ef 64 | 0.964 | 32,200 | | | | ef 128 | 0.990 | 17,600 |</p> <p>10,000 queries in one batch, recall@10 against exact neighbors (computed on the GPU with <code>brute_force_knn</code>), best of 3 runs, on AC power. Chart: <a href=\"https://github.com/mikepapadim/mlxvs#benchmarks\">https://github.com/mikepapadim/mlxvs#benchmarks</a></p> <p><strong>How it works</strong></p> <ul> <li><strong>NN-Descent:</strong> a port of the Metal NN-Descent in JVector's GPU module. Each round is a pure function of the graph (sample, join, merge), because MLX custom kernels can't update their inputs in place. The local joins score 64-member neighborhoods with FP16 SIMD-group matrix multiplies (FP32 accumulation), and the returned distances are recomputed in FP32. <code>all_neighbors</code> splits the data into overlapping k-means clusters and builds one cluster at a time on the GPU, so the rows can be a memory-mapped file larger than RAM.</li> <li><strong>CAGRA pruning (<code>cagra_optimize</code>):</strong> rank-based. If Y is at rank j in X's list, the edge X -&gt; Y has a detour through Z when Z is at rank i &lt; j in X's list and Y is at rank r &lt; j in Z's list: both hops rank above the direct edge. The edges with the fewest detours are kept (ties by rank), then the second half of each list is filled with reverse edges. One threadgroup per node; it matches a CPU reference entry for entry. On SIFT1M, at degree 32 and itopk 128, pruning raises recall@10 from 0.939 to 0.993 at about the same speed.</li> <li><strong>Search (<code>graph_search</code>):</strong> CAGRA's single-CTA design, one threadgroup per query. The sorted internal list, the candidates, the query and a hashed visited set all live in threadgroup memory. Each round expands the best unexpanded nodes; candidate distances are scored one SIMD group per candidate, then bitonic-sorted and merged into the list by merge-path ranks. A practical detail: Metal's shader validation counts threadgroup memory twice, so the kernel sizes its visited set to stay under 16 KB of the 32 KB limit and still passes validation in CI.</li> </ul> <p><strong>Limitations</strong></p> <ul> <li>The throughput numbers are for batched queries; single-query latency isn't tuned.</li> <li>I've benchmarked one dataset so far (SIFT1M). Embedding datasets (ada-002, 1536-d) are next.</li> <li>The index is static (no inserts or deletes) and has no filtered search. Datasets must be float32 or convertible to it.</li> <li>hnswlib is a CPU baseline. cuVS itself can't run on a Mac, so there's no apples-to-apples comparison against the CUDA original; I'd welcome numbers from anyone who has run cuVS CAGRA on SIFT1M on a comparable-power GPU.</li> </ul> <p><strong>Code</strong></p> <p><code>python import mlxvs graph = mlxvs.cagra_build(vectors, graph_degree=32, metric=\"cosine\") ids, dist = mlxvs.graph_search(vectors, graph, queries, k=10, metric=\"cosine\", itopk_size=64) </code></p> <p><code>pip install mlxvs</code>, macOS 14+ on Apple Silicon. Benchmarks are reproducible with <code>bench/bench_search.py</code> (it also runs the hnswlib baseline).</p> <p>GitHub: <a href=\"https://github.com/mikepapadim/mlxvs\">https://github.com/mikepapadim/mlxvs</a></p> <p>Happy to answer questions about the Metal kernels or the cuVS port.</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/mikebmx1\"> /u/mikebmx1 </a> <br/> <span><a href=\"https://github.com/mikepapadim/mlxvs\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xtt5tx/mlxvs_cuvsstyle_gpu_nearestneighbor_search/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/MachineLearning/comments/1xtt5tx/mlxvs_cuvsstyle_gpu_nearestneighbor_search/",
+      "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-11T20:46:12+00:00",
+      "published_ts": 1794429972,
+      "smart_groups": [
+        "Chips & hardware"
       ],
       "curated": false
     },
