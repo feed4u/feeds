@@ -1,5 +1,377 @@
 [
   {
+    "title": "Scaling to 1T MoE on TorchTitan [P]",
+    "summary": "Hi everyone! Over the last few months we've been in the trenches with the TorchTitan and PyTorch maintainers, trying to find out how far GH200 (the GPUs inside the JUPITER supercomputer) can be pushed. Short answer: far enough to train a ~1T-parameter MoE at ~1,300 tokens/s per GPU on 384 GPUs. That's 14X where we started, and our starting point was, let's say, humbling. Along the way we collected a handful of lessons. If you've ever trained a big model, or just stared at a CUDA out of memory , some of this will feel familiar. Here's the tour. If you want the full thing with all the plots, it's on the Domyn blog , and there's a condensed version on the PyTorch blog if you're short on coffee. Hope you like it! The setup: FSDP + EP, and why I'm not a PP fan A 1T MoE doesn't fit on one GPU (shocking, I know), so the first question is how to shard it. This choice ends up dictating basically every optimization that follows, so it pays to think about it. The usual suspects are: Pipeline Parallelism (each GPU gets a chunk of layers), FSDP (each GPU holds a slice of every weight and gathers the rest just in time), and Expert Parallelism (each GPU owns a subset of experts and tokens travel to them). We skipped PP. To hide its bubbles you need lots of microbatches, and lots of microbatches means long steps. Long steps mean that when something breaks at scale, and something always breaks at scale, you wait forever to find out. I'd rather iterate fast. So: 384-way FSDP plus 4-way EP, with EP kept strictly inside a node. The token all-to-all for the experts is comunication that is difficult to hide so it needs to happen fast. On the other hand, comms. on FSDP are already hidden: while it computes layer i, it is already gathering i+1. Why does that matter so much? On JUPITER, InfiniBand gives you ~25 GB/s per GPU. That's 6X slower than NVLink and 36X slower than the Grace-Hopper link. Our baseline step took 84 seconds, and 68 of them were spent waiting on the network. The GPUs were mostly getting paid to sit around. The rest of this post is basically us trying to put them back to work. Lesson 1: If your GPU is idle, make it work for its memory FSDP moves weights, and the weights gathered per layer don't care how many tokens you feed through them. More tokens per sequence means more compute per byte on the wire, which is exactly what we wanted. The problem is that longer sequences need more memory, so we went shopping for it: Full activation checkpointing. Recomputing every layer in the backward sounds wasteful, until you remember the GPU was idle anyway. Free compute is free. This alone gave us 4X. Offloading checkpoint activations to Grace over the 900 GB/s C2C link, and prefetching them back one layer before recompute. Grace was right there, so we used it. Muon instead of Adam. One optimizer state per parameter instead of two, and that's what finally got us to 64k-token sequences. Lession 2: If you don’t shard it, you don’t have to gather it Quick refresher: Muon orthogonalizes each update with a few Newton-Schulz iterations, and Newton-Schulz needs the whole matrix. FSDP, meanwhile, has carefully cut every matrix into 384 slices and scattered them across the job. The naive fix is to gather each matrix on one rank, run Newton-Schulz, and scatter the result back, which means more communication, and more communication is the one thing we absolutely did not need. The trick is to shard smarter. With FlexShard (already in TorchTitan), you choose which rank owns which parameters, so we sharded the experts by whole expert. Every GPU owns complete expert matrices and can orthogonalize them locally with zero communication. The dense matrices (attention projections and friends) still need gathering, but they’re in transit while each rank is busy with its own experts, so that traffic hides behind compute. There was one catch. We offload the optimizer to Grace, which meant Newton-Schulz was running on the CPU too. Grace is a lovely CPU, but asking it to grind through matmuls is like asking a librarian to move furniture: technically possible, deeply inefficient. The optimizer step took 42 seconds. So we contributed a fix to TorchTitan that runs Newton-Schulz on the GPU even when the parameters live on the host. The optimizer step dropped to ~2 s, and throughput went up 35%. Lesson 3: You're only as fast as your slowest rank 384 GPUs in lockstep is a bit like a group hike: everyone waits for whoever's at the back. We had two stragglers: Attention cost. A rank that gets a single 60k-token document does far more attention work than one that gets a hundred short ones, even though both see the same number of tokens. We pre-pack rows, bucket them by attention cost, and build each step from rows of similar cost. The worst rank went from 7.9X the average to 1.15X, for +13% throughput. The router. Group-limited routing (two experts picked from each node's group) makes expert load perfectly even, for +7%. The catch is that you're telling the router where it's allowed to send tokens, and early runs suggest that can hurt training. Jury's still out on this one boys. Lesson 4: Accumulate in fp32, ship in bf16 Gradients come out of the backward in bf16. Summing hundreds of them in bf16, though, is a great way to slowly lose precision, so the standard FSDP mixed-precision setup does the reduction in fp32. That’s the right call. The problem is how it gets there. NCCL’s reduce-scatter runs as a ring. Each rank receives a partial sum from its neighbor, adds its own contribution, and passes the result along. The thing travelling around the ring is a running sum, so for the accumulation to happen in fp32, the data on the wire has to be fp32 too. FSDP therefore upcasts the bf16 gradients to fp32 before the collective, and every byte of gradient crosses InfiniBand at twice the size it needs to be. On a cluster where InfiniBand is already the bottleneck, that hurts. But only the summation needs fp32, not the transfer. So we swapped the reduce-scatter for an all-to-all on the expert gradients. Each rank sends every other rank the raw bf16 slice that rank owns, no partial sums involved. The owner receives all the slices, upcasts them, and sums them locally in fp32. Same math, same precision where it matters, half the bytes on the wire. The result matches the fp32 reduce-scatter up to summation order. Lesson 5: When in doubt, send fewer bytes Eventually longer sequences stopped helping (more on why in a second), so we went after communication volume directly: FP8 expert all-gather with blockwise scales. Master weights stay in full precision, only the transfer gets squeezed: +18%. Node-local resharding of dense weights after forward, so the backward re-gather runs over NVLink instead of fighting gradients for InfiniBand. And none of it moved the loss in our comparison runs, which was a relief. Lesson 6: Your OOM might be lying to you This is my favorite one. After a software upgrade, every single rank started hitting allocator retries at ~70% HBM utilization, with 25–30 GiB sitting free and cached. That's not a memory shortage, that's a memory hostage situation . The culprit: the PyTorch caching allocator keeps a separate pool per CUDA stream, and FSDP allocates buffers on its side streams. Our shiny FP8 and bf16 collectives allocated their temporaries there too, so ~21 GiB ended up parked on side streams where the compute stream couldn't touch it. The fix was to move those allocations onto the compute stream (via FSDP2's private unshard_async_op flag, which is now on its way to becoming a public API) and release gradients a bit earlier. Retries went from 384 ranks to zero, peak reserved memory dropped by 13.5 GiB, and throughput jumped 21%, while sending exactly the same bytes. Wrapping up The headline: a shared, publicly funded, Hopper-generation machine, with plain user-level access and no root, can host frontier-scale training. You just have to respect its two real limits, inter-node bandwidth and host memory, and design everything around them. Every fix we found went upstream to PyTorch and TorchTitan, so hopefully the next person hits fewer of these walls than we did. The model and training recipes will be released openly. Still on our to-do list: the long-term quality cost of group-limited routing, FP8 expert GEMMs. We'll report back. Huge thanks to JSC and to the PyTorch and TorchTitan maintainers for the reviews, the patience, and the fast merges! submitted by /u/f14-bertolotti [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Hi everyone!</p> <p>Over the last few months we've been in the trenches with the TorchTitan and PyTorch maintainers, trying to find out how far GH200 (the GPUs inside the JUPITER supercomputer) can be pushed. Short answer: far enough to train a ~1T-parameter MoE at ~1,300 tokens/s per GPU on 384 GPUs. That's 14X where we started, and our starting point was, let's say, humbling.</p> <p>Along the way we collected a handful of lessons. If you've ever trained a big model, or just stared at a <code>CUDA out of memory</code>, some of this will feel familiar.</p> <p>Here's the tour. If you want the full thing with all the plots, it's on the <a href=\"https://www.domyn.com/blog/training-1t-moe-eu-public-infrastructure-pytorch\">Domyn blog</a>, and there's a <a href=\"https://pytorch.org/blog/training-a-1t-parameter-moe-on-eu-public-infrastructure-with-pytorch-and-torchtitan/\">condensed version on the PyTorch blog</a> if you're short on coffee.</p> <p>Hope you like it!</p> The setup: FSDP + EP, and why I'm not a PP fan <p>A 1T MoE doesn't fit on one GPU (shocking, I know), so the first question is how to shard it. This choice ends up dictating basically every optimization that follows, so it pays to think about it. The usual suspects are:</p> <ul> <li>Pipeline Parallelism (each GPU gets a chunk of layers),</li> <li>FSDP (each GPU holds a slice of every weight and gathers the rest just in time),</li> <li>and Expert Parallelism (each GPU owns a subset of experts and tokens travel to them).</li> </ul> <p>We skipped PP. To hide its bubbles you need lots of microbatches, and lots of microbatches means long steps. Long steps mean that when something breaks at scale, and something always breaks at scale, you wait forever to find out. I'd rather iterate fast.</p> <p>So: 384-way FSDP plus 4-way EP, with EP kept strictly <em>inside</em> a node. The token all-to-all for the experts is comunication that is difficult to hide so it needs to happen fast. On the other hand, comms. on FSDP are already hidden: while it computes layer i, it is already gathering i+1.</p> <p>Why does that matter so much? On JUPITER, InfiniBand gives you ~25 GB/s per GPU. That's 6X slower than NVLink and 36X slower than the Grace-Hopper link. Our baseline step took 84 seconds, and 68 of them were spent waiting on the network. The GPUs were mostly getting paid to sit around. The rest of this post is basically us trying to put them back to work.</p> Lesson 1: If your GPU is idle, make it work for its memory <p>FSDP moves weights, and the weights gathered per layer don't care how many tokens you feed through them. More tokens per sequence means more compute per byte on the wire, which is exactly what we wanted. The problem is that longer sequences need more memory, so we went shopping for it:</p> <ul> <li><strong>Full activation checkpointing.</strong> Recomputing every layer in the backward sounds wasteful, until you remember the GPU was idle anyway. Free compute is free. This alone gave us 4X.</li> <li><strong>Offloading checkpoint activations to Grace</strong> over the 900 GB/s C2C link, and prefetching them back one layer before recompute. Grace was right there, so we used it.</li> <li><strong>Muon instead of Adam.</strong> One optimizer state per parameter instead of two, and that's what finally got us to 64k-token sequences.</li> </ul> Lession 2: If you don’t shard it, you don’t have to gather it <p>Quick refresher: Muon orthogonalizes each update with a few Newton-Schulz iterations, and Newton-Schulz needs the whole matrix. FSDP, meanwhile, has carefully cut every matrix into 384 slices and scattered them across the job. The naive fix is to gather each matrix on one rank, run Newton-Schulz, and scatter the result back, which means more communication, and more communication is the one thing we absolutely did not need.</p> <p>The trick is to shard smarter. With FlexShard (already in TorchTitan), you choose which rank owns which parameters, so we sharded the experts by whole expert. Every GPU owns complete expert matrices and can orthogonalize them locally with zero communication. The dense matrices (attention projections and friends) still need gathering, but they’re in transit while each rank is busy with its own experts, so that traffic hides behind compute.</p> <p>There was one catch. We offload the optimizer to Grace, which meant Newton-Schulz was running on the CPU too. Grace is a lovely CPU, but asking it to grind through matmuls is like asking a librarian to move furniture: technically possible, deeply inefficient. The optimizer step took 42 seconds. So we contributed a fix to TorchTitan that runs Newton-Schulz on the GPU even when the parameters live on the host. The optimizer step dropped to ~2 s, and throughput went up 35%.</p> Lesson 3: You're only as fast as your slowest rank <p>384 GPUs in lockstep is a bit like a group hike: everyone waits for whoever's at the back. We had two stragglers:</p> <ul> <li><strong>Attention cost.</strong> A rank that gets a single 60k-token document does far more attention work than one that gets a hundred short ones, even though both see the same number of tokens. We pre-pack rows, bucket them by attention cost, and build each step from rows of similar cost. The worst rank went from 7.9X the average to 1.15X, for +13% throughput.</li> <li><strong>The router.</strong> Group-limited routing (two experts picked from each node's group) makes expert load perfectly even, for +7%. The catch is that you're telling the router where it's allowed to send tokens, and early runs suggest that can hurt training. Jury's still out on this one boys.</li> </ul> Lesson 4: Accumulate in fp32, ship in bf16 <p>Gradients come out of the backward in bf16. Summing hundreds of them in bf16, though, is a great way to slowly lose precision, so the standard FSDP mixed-precision setup does the reduction in fp32. That’s the right call. The problem is how it gets there.</p> <p>NCCL’s reduce-scatter runs as a ring. Each rank receives a partial sum from its neighbor, adds its own contribution, and passes the result along. The thing travelling around the ring is a running sum, so for the accumulation to happen in fp32, the data on the wire has to be fp32 too. FSDP therefore upcasts the bf16 gradients to fp32 before the collective, and every byte of gradient crosses InfiniBand at twice the size it needs to be. On a cluster where InfiniBand is already the bottleneck, that hurts.</p> <p>But only the summation needs fp32, not the transfer. So we swapped the reduce-scatter for an all-to-all on the expert gradients. Each rank sends every other rank the raw bf16 slice that rank owns, no partial sums involved. The owner receives all the slices, upcasts them, and sums them locally in fp32. Same math, same precision where it matters, half the bytes on the wire.</p> <p>The result matches the fp32 reduce-scatter up to summation order.</p> Lesson 5: When in doubt, send fewer bytes <p>Eventually longer sequences stopped helping (more on why in a second), so we went after communication volume directly:</p> <ul> <li><strong>FP8 expert all-gather</strong> with blockwise scales. Master weights stay in full precision, only the transfer gets squeezed: +18%.</li> <li><strong>Node-local resharding of dense weights</strong> after forward, so the backward re-gather runs over NVLink instead of fighting gradients for InfiniBand.</li> </ul> <p>And none of it moved the loss in our comparison runs, which was a relief.</p> Lesson 6: Your OOM might be lying to you <p>This is my favorite one. After a software upgrade, <em>every single rank</em> started hitting allocator retries at ~70% HBM utilization, with 25–30 GiB sitting free and cached. That's not a memory shortage, that's a memory <em>hostage situation</em>.</p> <p>The culprit: the PyTorch caching allocator keeps a separate pool per CUDA stream, and FSDP allocates buffers on its side streams. Our shiny FP8 and bf16 collectives allocated their temporaries there too, so ~21 GiB ended up parked on side streams where the compute stream couldn't touch it.</p> <p>The fix was to move those allocations onto the compute stream (via FSDP2's private <code>unshard_async_op</code> flag, which is now on its way to becoming a public API) and release gradients a bit earlier. Retries went from 384 ranks to zero, peak reserved memory dropped by 13.5 GiB, and throughput jumped 21%, while sending exactly the same bytes.</p> Wrapping up <p>The headline: a shared, publicly funded, Hopper-generation machine, with plain user-level access and no root, can host frontier-scale training. You just have to respect its two real limits, inter-node bandwidth and host memory, and design everything around them.</p> <p>Every fix we found went upstream to PyTorch and TorchTitan, so hopefully the next person hits fewer of these walls than we did. The model and training recipes will be released openly.</p> <p>Still on our to-do list: the long-term quality cost of group-limited routing, FP8 expert GEMMs. We'll report back.</p> <p>Huge thanks to JSC and to the PyTorch and TorchTitan maintainers for the reviews, the patience, and the fast merges!</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/f14-bertolotti\"> /u/f14-bertolotti </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xvce5h/scaling_to_1t_moe_on_torchtitan_p/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xvce5h/scaling_to_1t_moe_on_torchtitan_p/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1xvce5h/scaling_to_1t_moe_on_torchtitan_p/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T16:28:36+00:00",
+    "published_ts": 1794587316,
+    "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Zero Data Retention Was in the Contract. Why Did Notion AI Chats Remain Stored?",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://inclinq.medium.com/zero-data-retention-was-in-the-contract-why-did-notion-ai-chats-remain-stored-d20a84723787\">https://inclinq.medium.com/zero-data-retention-was-in-the-contract-why-did-notion-ai-chats-remain-stored-d20a84723787</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50485832\">https://news.ycombinator.com/item?id=50485832</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://inclinq.medium.com/zero-data-retention-was-in-the-contract-why-did-notion-ai-chats-remain-stored-d20a84723787",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T16:26:35+00:00",
+    "published_ts": 1794587195,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false,
+    "story_id": "ea8bfcebc246",
+    "story_size": 2
+  },
+  {
+    "title": "Microsoft Workers Call for Accountable AI",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://dash.palform.app/fill/org_0R2JXZPZ7PFWX/form_0R8K0PRYXGM71?f=fat_0R9JYW9RTDRDS&amp;ref=verticalslice.news#ak=DC9F12AFE28CDCC52A0C424742D6C4F300E4FACE\">https://dash.palform.app/fill/org_0R2JXZPZ7PFWX/form_0R8K0PRYXGM71?f=fat_0R9JYW9RTDRDS&amp;ref=verticalslice.news#ak=DC9F12AFE28CDCC52A0C424742D6C4F300E4FACE</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50485826\">https://news.ycombinator.com/item?id=50485826</a></p>\n<p>Points: 3</p>\n<p># Comments: 1</p>",
+    "link": "https://dash.palform.app/fill/org_0R2JXZPZ7PFWX/form_0R8K0PRYXGM71?f=fat_0R9JYW9RTDRDS&ref=verticalslice.news#ak=DC9F12AFE28CDCC52A0C424742D6C4F300E4FACE",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T16:26:07+00:00",
+    "published_ts": 1794587167,
+    "smart_groups": [
+      "Work & society"
+    ],
+    "curated": false
+  },
+  {
+    "title": "AI Slop makes the World stop",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://luemmelsec.github.io/AI-Slop-Makes-The-World-Stop/\">https://luemmelsec.github.io/AI-Slop-Makes-The-World-Stop/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50485784\">https://news.ycombinator.com/item?id=50485784</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://luemmelsec.github.io/AI-Slop-Makes-The-World-Stop/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T16:23:28+00:00",
+    "published_ts": 1794587008,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "My Barcelona Talk on AI",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://marginalrevolution.com/marginalrevolution/2026/11/my-barcelona-talk-on-ai.html\">https://marginalrevolution.com/marginalrevolution/2026/11/my-barcelona-talk-on-ai.html</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50485781\">https://news.ycombinator.com/item?id=50485781</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://marginalrevolution.com/marginalrevolution/2026/11/my-barcelona-talk-on-ai.html",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T16:23:13+00:00",
+    "published_ts": 1794586993,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "We review 4x more AI code without reading every line",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://thenewstack.io/scale-ai-code-reviews/\">https://thenewstack.io/scale-ai-code-reviews/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50485745\">https://news.ycombinator.com/item?id=50485745</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://thenewstack.io/scale-ai-code-reviews/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T16:20:40+00:00",
+    "published_ts": 1794586840,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Transcript Testing: Helping Humans Verify AI Code",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://andrew.nerdnetworks.org/blog/2026/11/13/transcript-testing/\">https://andrew.nerdnetworks.org/blog/2026/11/13/transcript-testing/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50485731\">https://news.ycombinator.com/item?id=50485731</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://andrew.nerdnetworks.org/blog/2026/11/13/transcript-testing/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T16:20:05+00:00",
+    "published_ts": 1794586805,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: Dodaiso – Open-source personal AI agent (like Jarvis, dots,duet)",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://github.com/Dodaios/Dodaios\">https://github.com/Dodaios/Dodaios</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50485592\">https://news.ycombinator.com/item?id=50485592</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://github.com/Dodaios/Dodaios",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T16:09:17+00:00",
+    "published_ts": 1794586157,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Amazon's plan to own the product data and fight AI shopping agents",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.reuters.com/business/media-telecom/amazons-plan-own-worlds-product-data-fight-ai-shopping-agents-2026-11-13/\">https://www.reuters.com/business/media-telecom/amazons-plan-own-worlds-product-data-fight-ai-shopping-agents-2026-11-13/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50485419\">https://news.ycombinator.com/item?id=50485419</a></p>\n<p>Points: 2</p>\n<p># Comments: 1</p>",
+    "link": "https://www.reuters.com/business/media-telecom/amazons-plan-own-worlds-product-data-fight-ai-shopping-agents-2026-11-13/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T15:58:05+00:00",
+    "published_ts": 1794585485,
+    "smart_groups": [
+      "Agents & automation",
+      "Consumer AI"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: Viral Video AI – Short videos from text, photos and video references",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://viralvideoai.ai/\">https://viralvideoai.ai/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50485331\">https://news.ycombinator.com/item?id=50485331</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://viralvideoai.ai/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T15:53:21+00:00",
+    "published_ts": 1794585201,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Ask HN: Has AI coding changed who builds your internal tools?",
+    "summary": "In a large company, a dedicated team might build an internal tool that dozens of other teams use. If your team needs a feature for its own workflow, you have to explain the use case, agree on how it fits into the shared tool, and wait for it to get prioritised. With AI coding tools, it might now be faster for the team that needs the feature to build and maintain its own tool or completely scratch the tool and rebuild it if need. I’m curious how that plays out once the tool has been in use for a while. So is paradigm shifting where we remove centralisation of building internal tools and let teams decide?",
+    "summary_html": "<p>In a large company, a dedicated team might build an internal tool that dozens of other teams use. If your team needs a feature for its own workflow, you have to explain the use case, agree on how it fits into the shared tool, and wait for it to get prioritised.\nWith AI coding tools, it might now be faster for the team that needs the feature to build and maintain its own tool or completely scratch the tool and rebuild it if need. I’m curious how that plays out once the tool has been in use for a while.\nSo is paradigm shifting where we remove centralisation of building internal tools and let teams decide?</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50485228\">https://news.ycombinator.com/item?id=50485228</a></p>\n<p>Points: 2</p>\n<p># Comments: 1</p>",
+    "link": "https://news.ycombinator.com/item?id=50485228",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T15:47:10+00:00",
+    "published_ts": 1794584830,
+    "smart_groups": [
+      "Coding & dev tools"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Weebit Nano In-Memory Compute ReRAM Silicon Kit for AI Inference [video]",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.youtube.com/watch?v=Epqh1L0nOjA\">https://www.youtube.com/watch?v=Epqh1L0nOjA</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50484976\">https://news.ycombinator.com/item?id=50484976</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
+    "link": "https://www.youtube.com/watch?v=Epqh1L0nOjA",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T15:30:05+00:00",
+    "published_ts": 1794583805,
+    "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Why is Google cutting off Search from AI-free schools? Here are some theories",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://text.npr.org/nx-s1-6029408\">https://text.npr.org/nx-s1-6029408</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50484960\">https://news.ycombinator.com/item?id=50484960</a></p>\n<p>Points: 22</p>\n<p># Comments: 14</p>",
+    "link": "https://text.npr.org/nx-s1-6029408",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T15:29:10+00:00",
+    "published_ts": 1794583750,
+    "smart_groups": [
+      "Work & society"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: Leetsys – Practice system design interviews with an AI interviewer",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.leetsys.dev\">https://www.leetsys.dev</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50484902\">https://news.ycombinator.com/item?id=50484902</a></p>\n<p>Points: 4</p>\n<p># Comments: 0</p>",
+    "link": "https://www.leetsys.dev",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T15:24:40+00:00",
+    "published_ts": 1794583480,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: Langfuse AI Gateway, open source rust gateway to trace every LLM call",
+    "summary": "Hi HN, this is Max, Marc and Clemens, co-founders of Langfuse, the open source tool for agent & observability & evals ( https://github.com/langfuse/langfuse ). It’s been a minute since our last Show HN in August 2023 ( https://news.ycombinator.com/item?id=37310070 ) - we’ve been busy building out and serving our tracing & eval pieces over the past years and have been very lucky to build a successful company and open source project around it. Today, we are happy to show the beta of Langfuse AI Gateway: https://github.com/langfuse/langfuse/tree/main/ai-gateway . You may ask, why an AI Gateway as our second product: it’s been one our community’s strongest asks + integration pattern that we’ve seen. We want to offer a scalable, reliable and secure way to solve for the gateway use case in the same way that we’ve done with tracing/evals over the past years. And we’ve recently grown our team with some excellent folks - expect to see more bigger bets from us. Our observability SDKs currently see the code you instrument. Much of a company's model traffic runs through code that is not or cannot be easily instrumented: coding agents like Pi, Claude Code and Codex, internal tools, scripts etc. Third party gateways are already popular ways to emit traces to Langfuse and we’re happy to now ship one natively. You change your base URL and your API key. Langfuse AI Gateway forwards the native request with a provider key that does not need to be distributed across the team. Right now, it doesn't translate between APIs, responses are relayed unchanged. This was a conscious decision to ensure stability for gateway users, as translation between e.g. OpenAI responses and Anthropic messages are imperfect and might lead to subtle failures in your agents. If you pass a traceparent header, the call lands inside your existing Langfuse traces. You can try by docker composing langfuse up and then on to http://localhost:3000 -- git clone https://github.com/langfuse/langfuse.git cd langfuse docker compose up -- On Cloud, each call becomes a Langfuse generation with tokens, cost, latency and time to first token. Prompts and outputs are recorded if you opt in. If you self-hosted you can also track nothing, not even metadata. Some details: - Written in Rust. Stateless, with no database; it talks only to the Langfuse platform and the providers. - 22MB Docker image. Under 3ms median overhead with tracing on, 1,000+ concurrent streams on 2 vCPUs. - MIT licensed. Self-host it with Docker Compose or Helm or use our Cloud version. - Your provider keys and contracts. We don't resell tokens. What’s next? - Budget caps per key, user, team - Custom model aliases and fallbacks - Guardrails - PII redaction - SCIM user provisioning We’ll be around & looking forward to all questions & comments",
+    "summary_html": "<p>Hi HN, this is Max, Marc and Clemens, co-founders of Langfuse, the open source tool for agent &amp; observability &amp; evals (<a href=\"https://github.com/langfuse/langfuse\">https://github.com/langfuse/langfuse</a>).<p>It’s been a minute since our last Show HN in August 2023 (<a href=\"https://news.ycombinator.com/item?id=37310070\">https://news.ycombinator.com/item?id=37310070</a>) - we’ve been busy building out and serving our tracing &amp; eval pieces over the past years and have been very lucky to build a successful company and open source project around it. Today, we are happy to show the beta of Langfuse AI Gateway: <a href=\"https://github.com/langfuse/langfuse/tree/main/ai-gateway\">https://github.com/langfuse/langfuse/tree/main/ai-gateway</a>. You may ask, why an AI Gateway as our second product: it’s been one our community’s strongest asks + integration pattern that we’ve seen. We want to offer a scalable, reliable and secure way to solve for the gateway use case in the same way that we’ve done with tracing/evals over the past years. And we’ve recently grown our team with some excellent folks - expect to see more bigger bets from us.<p>Our observability SDKs currently see the code you instrument. Much of a company's model traffic runs through code that is not or cannot be easily instrumented: coding agents like Pi, Claude Code and Codex, internal tools, scripts etc. Third party gateways are already popular ways to emit traces to Langfuse and we’re happy to now ship one natively.<p>You change your base URL and your API key. Langfuse AI Gateway forwards the native request with a provider key that does not need to be distributed across the team. Right now, it doesn't translate between APIs, responses are relayed unchanged. This was a conscious decision to ensure stability for gateway users, as translation between e.g. OpenAI responses and Anthropic messages are imperfect and might lead to subtle failures in your agents.<p>If you pass a traceparent header, the call lands inside your existing Langfuse traces.<p>You can try by docker composing langfuse up and then on to http://localhost:3000<p>--<p>git clone <a href=\"https://github.com/langfuse/langfuse.git\">https://github.com/langfuse/langfuse.git</a><p>cd langfuse<p>docker compose up<p>--<p>On Cloud, each call becomes a Langfuse generation with tokens, cost, latency and time to first token. Prompts and outputs are recorded if you opt in. If you self-hosted you can also track nothing, not even metadata.<p>Some details:<p>- Written in Rust. Stateless, with no database; it talks only to the Langfuse platform and the providers.<p>- 22MB Docker image. Under 3ms median overhead with tracing on, 1,000+ concurrent streams on 2 vCPUs.<p>- MIT licensed. Self-host it with Docker Compose or Helm or use our Cloud version.<p>- Your provider keys and contracts. We don't resell tokens.<p>What’s next? \n- Budget caps per key, user, team<p>- Custom model aliases and fallbacks<p>- Guardrails<p>- PII redaction<p>- SCIM user provisioning<p>We’ll be around &amp; looking forward to all questions &amp; comments</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50484682\">https://news.ycombinator.com/item?id=50484682</a></p>\n<p>Points: 6</p>\n<p># Comments: 0</p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p></p>",
+    "link": "https://github.com/langfuse/langfuse/tree/main/ai-gateway",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T15:10:20+00:00",
+    "published_ts": 1794582620,
+    "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Jonathan Blow – If AI Solved Coding, Why Is My Software Still the Same? [video]",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.youtube.com/watch?v=IRK8h67ol7Q\">https://www.youtube.com/watch?v=IRK8h67ol7Q</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50484658\">https://news.ycombinator.com/item?id=50484658</a></p>\n<p>Points: 44</p>\n<p># Comments: 18</p>",
+    "link": "https://www.youtube.com/watch?v=IRK8h67ol7Q",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T15:08:44+00:00",
+    "published_ts": 1794582524,
+    "smart_groups": [
+      "Coding & dev tools"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Nil-3B Open Source Sovereign AI",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://huggingface.co/nioncorp/nil-3b-gguf\">https://huggingface.co/nioncorp/nil-3b-gguf</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50484516\">https://news.ycombinator.com/item?id=50484516</a></p>\n<p>Points: 1</p>\n<p># Comments: 1</p>",
+    "link": "https://huggingface.co/nioncorp/nil-3b-gguf",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T14:59:20+00:00",
+    "published_ts": 1794581960,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Ask HN: Can anyone name anything new that AI has done?",
+    "summary": "We're 2 years into this. Still looking for something that an AI did all by itself that is actually new. Everything I've seen so far still involves a human sussing out the new thing or the model is just aggregating data that is already there from disconnected sources that never got tied together.",
+    "summary_html": "<p>We're 2 years into this. Still looking for something that an AI did all by itself that is actually new. Everything I've seen so far still involves a human sussing out the new thing or the model is just aggregating data that is already there from disconnected sources that never got tied together.</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50484426\">https://news.ycombinator.com/item?id=50484426</a></p>\n<p>Points: 22</p>\n<p># Comments: 39</p>",
+    "link": "https://news.ycombinator.com/item?id=50484426",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T14:53:56+00:00",
+    "published_ts": 1794581636,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "From action to static description–How AI changed Jørn Lier Horst's writing style",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://jilltxt.net/from-action-to-static-descriptions-how-using-ai-to-write-with-changed-jorn-lier-horsts-style/\">https://jilltxt.net/from-action-to-static-descriptions-how-using-ai-to-write-with-changed-jorn-lier-horsts-style/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50484412\">https://news.ycombinator.com/item?id=50484412</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://jilltxt.net/from-action-to-static-descriptions-how-using-ai-to-write-with-changed-jorn-lier-horsts-style/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T14:53:15+00:00",
+    "published_ts": 1794581595,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Let an AI agent query your prodution database safely with read-only SQL over MCP",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://railyard.run/blog/ai-agent-read-only-sql/\">https://railyard.run/blog/ai-agent-read-only-sql/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50484141\">https://news.ycombinator.com/item?id=50484141</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://railyard.run/blog/ai-agent-read-only-sql/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T14:36:34+00:00",
+    "published_ts": 1794580594,
+    "smart_groups": [
+      "Agents & automation",
+      "Data & analytics"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Amodei Says AI Will Cure Cancer in a Decade. Doctors Are Skeptical",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.businessinsider.com/dario-amodei-anthropic-cancer-cure-ipo-roadshow-backlash-doctors-2026-11\">https://www.businessinsider.com/dario-amodei-anthropic-cancer-cure-ipo-roadshow-backlash-doctors-2026-11</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50484110\">https://news.ycombinator.com/item?id=50484110</a></p>\n<p>Points: 27</p>\n<p># Comments: 63</p>",
+    "link": "https://www.businessinsider.com/dario-amodei-anthropic-cancer-cure-ipo-roadshow-backlash-doctors-2026-11",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T14:34:13+00:00",
+    "published_ts": 1794580453,
+    "smart_groups": [
+      "Health & science"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Paid surveys for Machine Learning Scientists for SnorkelAI: Absolutely not worth it [R]",
+    "summary": "I am here writing about my experience with this. I was contacted to fill out a paid survey for SnorkelAI because I have a PhD and have published at A* conferences in the field, so this might be relevant for other researchers in the community. After not finding a lot of information, I decided to give it a try. I performed the personal verification and waited for the survey to arrive. First bad thing: the level of pushiness is terrible. I went to bed, and when I woke up, I had 1 email and 2 follow-up emails asking me to complete some part of the verification where the uploaded document did not have the correct format... ok. Then I did the survey. Their website is an absolute mess. The survey appeared under two different views of the page, and after I completed it, it was only shown as \"pending\" in one view... Under the other, it was shown as if I hadn't submitted it yet... So I received a bunch of emails (very pushy again) asking me to complete the survey, which I answered. Regularly, whenever I've sent an email, I've waited 48-96h to get an answer, but if I didn't answer quickly, I was receiving follow-ups every 2-12 hours. Then I was notified by email that the survey was accepted, great. A few days later, they sent me the forms to fill out to get paid: a crazy amount of paperwork for getting paid for a survey, and absolutely not worth it. It required more paperwork than the one I needed for getting a public contract in my country, including a document that requires going in person to a tax office, waiting up to 4 weeks, and probably paying for the document. So my recommendation to other people getting contacted by them: run away, it's a waste of time, and they are unprofessional. submitted by /u/Apathiq [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>I am here writing about my experience with this. I was contacted to fill out a paid survey for SnorkelAI because I have a PhD and have published at A* conferences in the field, so this might be relevant for other researchers in the community.</p> <p>After not finding a lot of information, I decided to give it a try. I performed the personal verification and waited for the survey to arrive.</p> <p>First bad thing: the level of pushiness is terrible. I went to bed, and when I woke up, I had 1 email and 2 follow-up emails asking me to complete some part of the verification where the uploaded document did not have the correct format... ok.</p> <p>Then I did the survey. Their website is an absolute mess. The survey appeared under two different views of the page, and after I completed it, it was only shown as \"pending\" in one view... Under the other, it was shown as if I hadn't submitted it yet... So I received a bunch of emails (very pushy again) asking me to complete the survey, which I answered. Regularly, whenever I've sent an email, I've waited 48-96h to get an answer, but if I didn't answer quickly, I was receiving follow-ups every 2-12 hours.</p> <p>Then I was notified by email that the survey was accepted, great. A few days later, they sent me the forms to fill out to get paid: a crazy amount of paperwork for getting paid for a survey, and absolutely not worth it. It required more paperwork than the one I needed for getting a public contract in my country, including a document that requires going in person to a tax office, waiting up to 4 weeks, and probably paying for the document.</p> <p>So my recommendation to other people getting contacted by them: run away, it's a waste of time, and they are unprofessional. </p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Apathiq\"> /u/Apathiq </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xv4rjy/paid_surveys_for_machine_learning_scientists_for/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xv4rjy/paid_surveys_for_machine_learning_scientists_for/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1xv4rjy/paid_surveys_for_machine_learning_scientists_for/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T10:50:10+00:00",
+    "published_ts": 1794567010,
+    "smart_groups": [
+      "Health & science"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Open weights: ParaTrace v8 (RAID-tuned), 5th on the RAID leaderboard (TPR at 1% FPR) [R]",
+    "summary": "Open weights: ParaTrace v8 (RAID-tuned), 5th on the RAID leaderboard (TPR at 1% FPR) - Ettin-1B encoder (ModernBERT architecture), 512-token windows - Fine-tuned on RAID's training split, then a hard-example round - RAID hidden test set: TPR 99.20% at 1% FPR, 99.76% at 5% FPR (99.43% at 1% without attacks) - Weakest slices: Cohere generations (96.5%), Reddit (97.9%), paraphrase attack (98.0%) - detector.py reproduces our leaderboard submission to within 1e-6 Caveat, documented in the model card: it is tuned for RAID. On ordinary writing it misses much AI text and flags some human text, so it is for research, not for judging people. Model (CC BY-NC-SA 4.0): https://huggingface.co/empirischtech/paratrace-v8-raid Leaderboard: https://raid-bench.xyz/leaderboard?domain=all&decoding=all&repetition=all&attack=all&metric=TPR%40FPR%3D1%25 #NLP #AIDetection #HuggingFace submitted by /u/AltruisticCouple3491 [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Open weights: ParaTrace v8 (RAID-tuned), <strong>5th</strong> on the RAID leaderboard (TPR at 1% FPR) </p> <p>- Ettin-1B encoder (ModernBERT architecture), 512-token windows<br/> - Fine-tuned on RAID's training split, then a hard-example round<br/> - RAID hidden test set: TPR 99.20% at 1% FPR, 99.76% at 5% FPR (99.43% at 1% without attacks)<br/> - Weakest slices: Cohere generations (96.5%), Reddit (97.9%), paraphrase attack (98.0%)<br/> - <a href=\"http://detector.py\">detector.py</a> reproduces our leaderboard submission to within 1e-6 </p> <p>Caveat, documented in the model card: it is tuned for RAID. On ordinary writing it misses much AI text and flags some human text, so it is for research, not for judging people. </p> <p>Model (CC BY-NC-SA 4.0): <a href=\"https://huggingface.co/empirischtech/paratrace-v8-raid\">https://huggingface.co/empirischtech/paratrace-v8-raid</a><br/> Leaderboard: <a href=\"https://raid-bench.xyz/leaderboard?domain=all&amp;decoding=all&amp;repetition=all&amp;attack=all&amp;metric=TPR%40FPR%3D1%25\">https://raid-bench.xyz/leaderboard?domain=all&amp;decoding=all&amp;repetition=all&amp;attack=all&amp;metric=TPR%40FPR%3D1%25</a> </p> <p>#NLP #AIDetection #HuggingFace</p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/AltruisticCouple3491\"> /u/AltruisticCouple3491 </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xv4ldx/open_weights_paratrace_v8_raidtuned_5th_on_the/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xv4ldx/open_weights_paratrace_v8_raidtuned_5th_on_the/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1xv4ldx/open_weights_paratrace_v8_raidtuned_5th_on_the/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-13T10:39:43+00:00",
+    "published_ts": 1794566383,
+    "smart_groups": [
+      "Research & papers"
+    ],
+    "curated": false
+  },
+  {
     "title": "Introducing: Qualiaphobic AI – By Erik Hoel",
     "summary": "",
     "summary_html": "<p>Article URL: <a href=\"https://www.theintrinsicperspective.com/p/introducing-qualiaphobic-ai\">https://www.theintrinsicperspective.com/p/introducing-qualiaphobic-ai</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50479244\">https://news.ycombinator.com/item?id=50479244</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
@@ -31,7 +403,7 @@
     ],
     "curated": false,
     "story_id": "6daee8ae6031",
-    "story_size": 8
+    "story_size": 10
   },
   {
     "title": "Preview seed fixture (rolling)",
@@ -808,7 +1180,7 @@
     ],
     "curated": false,
     "story_id": "8250334af197",
-    "story_size": 96
+    "story_size": 100
   },
   {
     "title": "Edge0/Edge0-145B-q3k · Hugging Face",
@@ -839,6 +1211,23 @@
     "published_ts": 1794489173,
     "smart_groups": [
       "Policy & government"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Workflow SDK 5: built for production",
+    "summary": "When we first launched Workflow SDK, the goal was simple: write regular async JavaScript, and let the SDK keep it running through crashes, deployments, and long waits. Last year, we shipped just that , with the world-class developer experience Vercel is known for. Then we watched what our customers built with it. More than 4 billion steps and 700 million runs later, two clear patterns have emerged. The first is automation : Traditional workflows that move data, process orders, coordinate background jobs, manage subscriptions, and run ETL and data pipelines. The second is agents and harnesses : Agents are expensive and long running, so they naturally require durability too. As those workloads matured, Workflow matured with them. Our priorities have always been security, reliability, and performance. Here’s how Workflow SDK 5 delivers on all three. More secure workflows The Workflow event log stores step arguments and return values so a run can recover after a crash or deployment. That data can include sensitive customer information, model context, credentials, and tool-call results. Persisting it requires strong protection. Workflow SDK encrypts every payload end to end , before it leaves your code. Workflow and step inputs and outputs, hook payloads, and stream data are encrypted with AES-256-GCM, using a unique key for each run. With encryption enabled, any Workflow SDK backend, including Vercel, only sees and stores ciphertext. Plaintext is decrypted in your deployment or in authorized observability tools. Encryption with zero configuration on Vercel On Vercel, encryption needs no setup and no code changes. Each run’s key is derived from a key scoped to the deployment that created it, so a run can only decrypt its own data. Your workflow code doesn’t change: Because Vercel manages the keys by default, observability keeps working. Names, timings, and statuses are always visible, and when you need to see a payload, you can decrypt it in the dashboard or the CLI. Decryption happens in your browser or terminal, follows the same permissions as the project’s environment variables, and every request is recorded in your team’s audit log. Encryption on self-hosted Worlds Encryption is implemented in the SDK, so it can also protect payloads on self-hosted Worlds before they reach storage, queues, or streams. A custom World enables encryption by implementing getEncryptionKeyForRun() with your key management . Return the same 32-byte key for each run on every call so the SDK can encrypt new payloads and decrypt them during replay: More security work in v5 Cross-run writes are sealed too. When code resumes another run’s hook, starts a run in another deployment, or writes into a stream forwarded from another run, the payload is encrypted to the target run’s public key. The writer can encrypt for that run without reading its existing payloads. You can also limit how long sensitive data is stored. With payload retention set to experimental_retention: 0 , inputs, outputs, and stream contents are deleted as soon as a run completes or fails. The run’s metadata stays visible in observability. A redesigned trace viewer The redesigned trace viewer makes runs easier to navigate, with span search, zoom, a minimap, and local inspection during development. Run attributes are new in v5. They let you attach searchable context to a run, such as an order ID, and then find runs by it. Attributes are plaintext, so they should not contain secrets. Workflows in every region In Workflow SDK 4, every run lived in iad1 . Even when a project was deployed to several regions, each run’s event log, queue, and streams were only stored in one region, so a step running anywhere else made cross-region requests to record its progress. For v5, we deployed Workflow infrastructure to every Vercel Function region . Each run has its own home region: its state, queue dispatch, and streams are served from the region where it started, without cross-region round trips on the hot path. By default, a run starts in the region of the function that starts it. Deploy to several regions, and each run stays close to the user who triggered it, with no configuration: To place a run somewhere else, pass a region to start() . That lets a workflow run next to the database it reads and writes, or keep a customer’s data in the region where it has to stay: The region option decides where a run’s data lives. Your steps run where your app is deployed, so deploy to that region too if you want them to execute there. Existing v4 runs stay in iad1 . Infrastructure reliability Regional isolation also improves reliability. A disruption in one region does not have to stop new runs in healthy regions. For projects with Vercel Function failover configured, steps can execute in a fallback region while continuing to use the run’s original home region for state. That state remains pinned to its home region; it does not migrate during failover. With the help of anonymized telemetry and close collaboration with many customers, we found and fixed dozens of rare bugs and race conditions in the Workflow runtime. Workflow SDK also recovers on its own from more kinds of intermittent network errors. As a result, with Workflow SDK 5, we’ve seen almost no runs fail or stall because of a platform or runtime bug. Agent-ready performance In Workflow SDK 4, every step invocation involved a queue hop to start the step and another to continue the workflow. That is acceptable for slow background automations, but adds latency to the AI workloads developers are building today. Agent loops and harnesses can contain thousands of sequential events, high-throughput token streams, tool chains, and dynamic subagents. At that scale, the networking and CPU work around every step became a limit. In Workflow SDK 5, we rewrote large parts of the engine to minimize extra queue hops, unnecessary networking, and CPU work. Across the measured workloads, we saw 1.6× to 25× improvements in measured latency and overhead, while preserving the same developer experience and introducing no major breaking changes. The benchmarks below compare v5.2.0 with v4.8.12 on Vercel. Pick a measurement to see how v5 compares with v4, then play or scrub through the explainer to see exactly what each benchmark measures. Workflow SDK 5 includes hundreds of performance improvements to achieve this. Here are some of the major changes behind these numbers: Fewer queue hops In v4, each step handed execution back through the queue. In v5, an invocation can execute several steps inline, including parallel steps, before yielding for a wait, a hook, or an approaching timeout. The runtime also avoids unnecessary persistence round trips and folds step creation into execution. Fewer queue and network requests mean less CPU work and lower runtime overhead. In a five-step benchmark, p75 step-to-step overhead fell from 618 ms to 109 ms . Incremental replay Over a 1,020-step benchmark, v4’s p75 overhead grew with the event log : replaying the full event history took time proportional to its size. In the final sampled range, overhead reached 1,748 ms. On v5.2.0, it was 70 ms . The median time to finish all 1,020 steps fell from 21.0 minutes to 3.0 minutes. WebSocket streaming Durability should not make a streamed response fall behind its producer. On the Vercel World, v5.2.0 writes streams over WebSockets by default . In a benchmark replaying a 52.4-second agent response, median delivery dropped from 226.1 seconds to 53.5 seconds . Payload compression reduces the data stored and transferred. AI token streams average around 80% smaller after compression. These measurements describe one workload, in one region, against the Vercel World. They are a useful view of runtime overhead, rather than a prediction for every application. Benchmark results and methodology Measured October 8, 2026, on Vercel production in iad1 , against the managed Vercel World . Each version uses a separate deployment of the same app. Steps take 1 KB of JSON in and out. Selected results · v4.8.12 compared with v5.2.0 Measurement v4.8.12 v5.2.0 Change First step, p75 418 ms 172 ms 2.4× faster Between steps, p75 618 ms 109 ms 5.7× faster Late-run overhead, p75 1,748 ms 70 ms 25× lower 1,020 steps, median 21.0 min 3.0 min 7× faster Resume, p75 699 ms 425 ms 1.6× faster Stream delivery, median 226.1 s 53.5 s 4.2× faster Chunk trip time, p75 172 ms 102 ms 1.7× faster Runs with a chunk delayed >1 s 6 / 10 0 / 10 100% fewer The full results, including tails, are in the performance documentation . Worlds: the shared durability primitive Workflow SDK’s durable functions sit on a World : the interface for storing progress, dispatching work, and delivering streams. That same foundation also now supports fx and durable-harness , which adds durability to existing agent harnesses. Improvements to the shared storage, queue, and streaming infrastructure can benefit any consumer of a World. Optimizations inside the Workflow replay runtime apply to Workflow SDK; they do not automatically apply to every harness. Choose the integration around how you want to build: Workflow SDK : write durable application logic with use workflow and use step . WorkflowAgent : use @ai-sdk/workflow for an AI SDK agent loop inside a workflow. fx : embed and extend a native coding agent with libfx. durable-harness : keep an existing supported harness and add durability beneath it. Supports Pi and OpenCode , with experimental integrations for Claude Code and Codex in Vercel Sandbox. eve : build agents with durable sessions powered natively by Workflow SDK and Worlds. We’ll soon be adding more offerings to our catalog of SDKs and frameworks backed by Worlds for durability. Build with Workflow SDK 5 Besides the improvements above, Workflow SDK 5 also adds: In-flight cancellation with AbortController Searchable run attributes More framework integrations And more The v5 upgrade docs cover what changed. To start building a new workflow, install the SDK: Workflow SDK also has a Python SDK , now in beta, with the same durable workflows, steps, sleeps, and hooks.",
+    "summary_html": "<p>When we first launched Workflow SDK, the goal was simple: write regular async JavaScript, and let the SDK keep it running through crashes, deployments, and long waits.</p><div></div><p>Last year, <a href=\"https://vercel.com/blog/introducing-workflow\">we shipped just that</a>, with the world-class developer experience Vercel is known for. Then we watched what our customers built with it.</p><p>More than 4 billion steps and 700 million runs later, two clear patterns have emerged. </p><ul><li><p><b>The first is automation</b>: Traditional workflows that move data, process orders, coordinate background jobs, manage subscriptions, and run ETL and data pipelines. </p></li><li><p><b>The second is agents and harnesses</b>: Agents are expensive and long running, so they naturally require durability too.</p></li></ul><p>As those workloads matured, Workflow matured with them. Our priorities have always been security, reliability, and performance. </p><p>Here’s how Workflow SDK 5 delivers on all three.</p>More secure workflows<p>The Workflow <a href=\"https://workflow-sdk.dev/docs/how-it-works/event-sourcing\">event log</a> stores step arguments and return values so a run can recover after a crash or deployment. That data can include sensitive customer information, model context, credentials, and tool-call results. Persisting it requires strong protection.</p><p>Workflow SDK <a href=\"https://workflow-sdk.dev/docs/how-it-works/encryption\">encrypts every payload end to end</a>, before it leaves your code. Workflow and step inputs and outputs, hook payloads, and stream data are encrypted with AES-256-GCM, using a unique key for each run. With encryption enabled, any Workflow SDK backend, including Vercel, only sees and stores ciphertext. Plaintext is decrypted in your deployment or in authorized observability tools.</p><div></div>Encryption with zero configuration on Vercel<p>On Vercel, encryption needs no setup and no code changes. Each run’s key is derived from a key scoped to the deployment that created it, so a run can only decrypt its own data. Your workflow code doesn’t change:</p><div></div><p>Because Vercel manages the keys by default, observability keeps working. Names, timings, and statuses are always visible, and when you need to see a payload, you can decrypt it in the dashboard or the CLI. Decryption happens in your browser or terminal, follows the same permissions as the project’s environment variables, and every request is recorded in your team’s audit log.</p><div></div>Encryption on self-hosted Worlds<p>Encryption is implemented in the SDK, so it can also protect payloads on <a href=\"https://workflow-sdk.dev/docs/deploying\">self-hosted Worlds</a> before they reach storage, queues, or streams.</p><p>A <a href=\"https://workflow-sdk.dev/docs/how-it-works/encryption#custom-world-implementations\">custom World enables encryption</a> by implementing <code>getEncryptionKeyForRun()</code> with your <a href=\"https://workflow-sdk.dev/docs/how-it-works/encryption#key-management\">key management</a>. Return the same 32-byte key for each run on every call so the SDK can encrypt new payloads and decrypt them during replay:</p><div></div>More security work in v5<p>Cross-run writes are sealed too. When code resumes another run’s hook, starts a run in another deployment, or writes into a stream forwarded from another run, the payload is encrypted to the target run’s public key. The writer can encrypt for that run without reading its existing payloads.</p><p>You can also limit how long sensitive data is stored. With <a href=\"https://workflow-sdk.dev/docs/observability/retention\">payload retention</a> set to <code>experimental_retention: 0</code>, inputs, outputs, and stream contents are deleted as soon as a run completes or fails. The run’s metadata stays visible in observability.</p>A redesigned trace viewer<p>The <a href=\"https://workflow-sdk.dev/docs/observability\">redesigned trace viewer</a> makes runs easier to navigate, with span search, zoom, a minimap, and local inspection during development.</p><div></div><p><a href=\"https://workflow-sdk.dev/docs/observability/attributes\">Run attributes</a> are new in v5. They let you attach searchable context to a run, such as an order ID, and then find runs by it. Attributes are plaintext, so they should not contain secrets.</p>Workflows in every region<p>In Workflow SDK 4, every run lived in <code>iad1</code>. Even when a project was deployed to several regions, each run’s event log, queue, and streams were only stored in one region, so a step running anywhere else made cross-region requests to record its progress.</p><p>For v5, we <a href=\"https://vercel.com/changelog/configure-where-run-state-lives-in-vercel-workflows\">deployed Workflow infrastructure to every Vercel Function region</a>. Each run has its own home region: its state, queue dispatch, and streams are served from the region where it started, without cross-region round trips on the hot path.</p><p>By default, a run starts in the region of the function that starts it. Deploy to several regions, and each run stays close to the user who triggered it, with no configuration:</p><div></div><p>To place a run somewhere else, <a href=\"https://workflow-sdk.dev/worlds/vercel#explicit-region-selection\">pass a region to <code>start()</code></a>. That lets a workflow run next to the database it reads and writes, or keep a customer’s data in the region where it has to stay:</p><div></div><p>The <code>region</code> option decides where a run’s data lives. Your steps run where your app is deployed, so deploy to that region too if you want them to execute there. Existing v4 runs stay in <code>iad1</code>.</p>Infrastructure reliability<p>Regional isolation also improves reliability. A disruption in one region does not have to stop new runs in healthy regions. For projects with <a href=\"https://vercel.com/docs/functions/configuring-functions/region#automatic-failover\">Vercel Function failover</a> configured, steps can execute in a fallback region while continuing to use the run’s original home region for state. That state remains pinned to its home region; it does not migrate during failover.</p><p>With the help of anonymized telemetry and close collaboration with many customers, we found and fixed dozens of rare bugs and race conditions in the Workflow runtime. Workflow SDK also recovers on its own from more kinds of intermittent network errors.</p><p>As a result, with Workflow SDK 5, we’ve seen almost no runs fail or stall because of a platform or runtime bug.</p>Agent-ready performance<p>In Workflow SDK 4, every step invocation involved a queue hop to start the step and another to continue the workflow. That is acceptable for slow background automations, but adds latency to the AI workloads developers are building today.</p><p>Agent loops and harnesses can contain thousands of sequential events, high-throughput token streams, tool chains, and dynamic subagents. At that scale, the networking and CPU work around every step became a limit.</p><p>In Workflow SDK 5, we rewrote large parts of the engine to minimize extra queue hops, unnecessary networking, and CPU work. Across the measured workloads, we saw 1.6× to 25× improvements in measured latency and overhead, while preserving the same developer experience and introducing no major breaking changes.</p><p>The benchmarks below compare <b>v5.2.0 with v4.8.12</b> on Vercel. Pick a measurement to see how v5 compares with v4, then play or scrub through the explainer to see exactly what each benchmark measures.</p><div></div><p>Workflow SDK 5 includes hundreds of performance improvements to achieve this. Here are some of the major changes behind these numbers:</p><p><b>Fewer queue hops</b></p><p>In v4, each step handed execution back through the queue. In v5, an invocation can execute several steps inline, including parallel steps, before yielding for a wait, a hook, or an approaching timeout.</p><p>The runtime also avoids unnecessary persistence round trips and folds step creation into execution. Fewer queue and network requests mean less CPU work and lower runtime overhead. In a five-step benchmark, p75 step-to-step overhead fell from <b>618 ms to 109 ms</b>.</p><p><b>Incremental replay</b></p><p>Over a 1,020-step benchmark, v4’s p75 overhead grew with the <a href=\"https://workflow-sdk.dev/docs/how-it-works/event-sourcing\">event log</a>: replaying the full event history took time proportional to its size. In the final sampled range, overhead reached 1,748 ms. On v5.2.0, it was <b>70 ms</b>. The median time to finish all 1,020 steps fell from 21.0 minutes to 3.0 minutes.</p><div></div><p><b>WebSocket streaming</b></p><p>Durability should not make a streamed response fall behind its producer. On the Vercel World, v5.2.0 <a href=\"https://vercel.com/changelog/workflow-writes-now-use-websockets-on-vercel\">writes streams over WebSockets by default</a>. In a benchmark replaying a 52.4-second agent response, median delivery dropped from <b>226.1 seconds to 53.5 seconds</b>.</p><div></div><p><a href=\"https://workflow-sdk.dev/docs/how-it-works/encryption#compression\">Payload compression</a> reduces the data stored and transferred. AI token streams average around 80% smaller after compression.</p><p>These measurements describe one workload, in one region, against the Vercel World. They are a useful view of runtime overhead, rather than a prediction for every application.</p>Benchmark results and methodology<p>Measured October 8, 2026, on Vercel production in <code>iad1</code>, against the <a href=\"https://workflow-sdk.dev/worlds/vercel\">managed Vercel World</a>. Each version uses a separate deployment of the same app. Steps take 1 KB of JSON in and out.</p><p>Selected results · v4.8.12 compared with v5.2.0</p><p>Measurement</p><p>v4.8.12</p><p>v5.2.0</p><p>Change</p><p>First step, p75</p><p>418 ms</p><p>172 ms</p><p>2.4× faster</p><p>Between steps, p75</p><p>618 ms</p><p>109 ms</p><p>5.7× faster</p><p>Late-run overhead, p75</p><p>1,748 ms</p><p>70 ms</p><p>25× lower</p><p>1,020 steps, median</p><p>21.0 min</p><p>3.0 min</p><p>7× faster</p><p>Resume, p75</p><p>699 ms</p><p>425 ms</p><p>1.6× faster</p><p>Stream delivery, median</p><p>226.1 s</p><p>53.5 s</p><p>4.2× faster</p><p>Chunk trip time, p75</p><p>172 ms</p><p>102 ms</p><p>1.7× faster</p><p>Runs with a chunk delayed &gt;1 s</p><p>6 / 10</p><p>0 / 10</p><p>100% fewer</p><p>The full results, including tails, are in the <a href=\"https://workflow-sdk.dev/docs/performance#all-results\">performance documentation</a>.</p>Worlds: the shared durability primitive<p>Workflow SDK’s durable functions sit on a <a href=\"https://workflow-sdk.dev/docs/deploying\">World</a>: the interface for storing progress, dispatching work, and delivering streams. That same foundation also now supports <a href=\"https://fx.sh\">fx</a> and <a href=\"https://vercel.com/docs/agent-harnesses\">durable-harness</a>, which adds durability to existing agent harnesses.</p><p>Improvements to the shared storage, queue, and streaming infrastructure can benefit any consumer of a World. Optimizations inside the Workflow replay runtime apply to Workflow SDK; they do not automatically apply to every harness.</p><p>Choose the integration around how you want to build:</p><ul><li><p><a href=\"https://workflow-sdk.dev\"><b>Workflow SDK</b></a>: write durable application logic with <code>use workflow</code> and <code>use step</code>.</p></li><li><p><a href=\"https://ai-sdk.dev/docs/agents/workflow-agent\"><b>WorkflowAgent</b></a>: use <code>@ai-sdk/workflow</code> for an AI SDK agent loop inside a workflow.</p></li><li><p><a href=\"https://fx.sh\"><b>fx</b></a>: embed and extend a native coding agent with libfx.</p></li><li><p><a href=\"https://vercel.com/docs/agent-harnesses\"><b>durable-harness</b></a>: keep an existing supported harness and add durability beneath it.</p><ul><li><p>Supports <a href=\"https://vercel.com/docs/agent-harnesses/pi\">Pi</a> and <a href=\"https://vercel.com/docs/agent-harnesses/opencode\">OpenCode</a>, with experimental integrations for <a href=\"https://vercel.com/docs/agent-harnesses/claude-code\">Claude Code</a> and <a href=\"https://vercel.com/docs/agent-harnesses/codex\">Codex</a> in Vercel Sandbox.</p></li></ul></li><li><p><a href=\"https://vercel.com/docs/agent-harnesses/eve\"><b>eve</b></a>: build agents with durable sessions powered natively by Workflow SDK and Worlds.</p></li></ul><p>We’ll soon be adding more offerings to our catalog of SDKs and frameworks backed by Worlds for durability.</p>Build with Workflow SDK 5<p>Besides the improvements above, Workflow SDK 5 also adds:</p><ul><li><p><a href=\"https://workflow-sdk.dev/docs/foundations/cancellation#abortsignal\">In-flight cancellation with <code>AbortController</code></a></p></li><li><p><a href=\"https://workflow-sdk.dev/docs/observability/attributes\">Searchable run attributes</a></p></li><li><p><a href=\"https://workflow-sdk.dev/docs/whats-new#also-new-in-50\">More framework integrations</a></p></li><li><p><a href=\"https://workflow-sdk.dev/docs/whats-new\">And more</a></p></li></ul><p>The <a href=\"https://workflow-sdk.dev/docs/whats-new\">v5 upgrade docs</a> cover what changed. To start building a new workflow, install the SDK:</p><div></div><p>Workflow SDK also has a <a href=\"https://workflow-sdk.dev/docs/getting-started/python\">Python SDK</a>, now in beta, with the same durable workflows, steps, sleeps, and hooks.</p>\n<p>\n<a href=\"https://vercel.com/blog/workflow-sdk-5\">Read more</a>\n</p>",
+    "link": "https://vercel.com/blog/workflow-sdk-5",
+    "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+    "feed_type": "blog",
+    "type": "company-engineering",
+    "type_label": "Company Engineering",
+    "published": "2026-11-12T13:00:00+00:00",
+    "published_ts": 1794488400,
+    "smart_groups": [
+      "Agents & automation",
+      "Coding & dev tools"
     ],
     "curated": false
   },
@@ -1235,7 +1624,7 @@
     ],
     "curated": false,
     "story_id": "6daee8ae6031",
-    "story_size": 8
+    "story_size": 10
   },
   {
     "title": "Can commercial stage-gates keep enterprise AI pilots out of procurement stalls?",
@@ -1417,6 +1806,22 @@
     "curated": false
   },
   {
+    "title": "Agents can now upgrade compute with Vercel CLI",
+    "summary": "Agents can now use Vercel CLI to set your project's Function CPU , build machine , and on-demand concurrent builds without an interactive terminal. All settings supported by vercel project update now apply without a confirmation prompt. type: embedded-entry-inline id: 3SKuzpJy8rbjskLPJTZFgG To get started, run a command with your project name: type: embedded-entry-inline id: 3bZ7eo2Wuv9ZUjVSGFD4CV These settings require a Pro or Enterprise plan and affect usage-based charges . Update to the latest Vercel CLI and read the Vercel CLI project docs .",
+    "summary_html": "<p>Agents can now use <a href=\"https://vercel.com/cli\">Vercel CLI</a> to set your project's <a href=\"https://vercel.com/docs/functions/configuring-functions/memory\">Function CPU</a>, <a href=\"https://vercel.com/docs/builds/managing-builds#build-machines\">build machine</a>, and <a href=\"https://vercel.com/docs/builds/managing-builds#on-demand-concurrent-builds\">on-demand concurrent builds</a> without an interactive terminal. All settings supported by <code>vercel project update</code> now apply without a confirmation prompt.</p><p><span>type: embedded-entry-inline id: 3SKuzpJy8rbjskLPJTZFgG</span><b></b></p><p>To get started, run a command with your project name:</p><p><span>type: embedded-entry-inline id: 3bZ7eo2Wuv9ZUjVSGFD4CV</span></p><p>These settings require a Pro or Enterprise plan and affect <a href=\"https://vercel.com/docs/pricing\">usage-based charges</a>.</p><p>Update to the latest Vercel CLI and read the <a href=\"https://vercel.com/docs/cli/project\">Vercel CLI project docs</a>.</p>\n<p>\n<a href=\"https://vercel.com/changelog/agents-can-now-upgrade-compute-with-vercel-cli\">Read more</a>\n</p>",
+    "link": "https://vercel.com/changelog/agents-can-now-upgrade-compute-with-vercel-cli",
+    "source": "Vercel Blog - Frontend and AI infrastructure updates from Vercel",
+    "feed_type": "blog",
+    "type": "company-engineering",
+    "type_label": "Company Engineering",
+    "published": "2026-11-12T00:00:00+00:00",
+    "published_ts": 1794441600,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
     "title": "Show HN: I built a AI acne coach that helps find root cause of your acne",
     "summary": "I’ve had acne for 10 years and I'm so exhausted of dont know what happened. So, I'm building AcneAlly to learn you overtime to figure out what's causing your acne, and to give personalized support. Instead of tracking your skin or logging daily habits, you can just talk or interact with it like a companion. You can share about your acne, share your concerns, or ask anything you want. Based on what you share, it uses Al to reasoning to make guesses about what could be causing your acne. As you share more, it update it understanding abt you, its guesses abt the cause and it suggestions. This is an early version, and there's still a lot to improve. I'd love to hear your feedback! Thanks for checking it out!",
     "summary_html": "<p>I’ve had acne for 10 years and I'm so exhausted of dont know what happened. \nSo, I'm building AcneAlly to learn you overtime to figure out what's causing your acne, and to give personalized support. \nInstead of  tracking your skin or logging daily habits, you can just talk or interact with it like a companion. You can share about your acne, share your concerns, or ask anything you want. Based on what you share, it uses Al to reasoning to make guesses about what could be causing your acne. As you share more, it update it understanding abt you, its guesses abt the cause and it suggestions.\nThis is an early version, and there's still a lot to improve.\nI'd love to hear your feedback!\nThanks for checking it out!</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50460717\">https://news.ycombinator.com/item?id=50460717</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
@@ -1497,7 +1902,7 @@
     ],
     "curated": false,
     "story_id": "8250334af197",
-    "story_size": 96
+    "story_size": 100
   },
   {
     "title": "How should authors handle a suspected auto-generated review at ICLR? Flag to the AC or just rebut? [D]",
@@ -1679,7 +2084,7 @@
     ],
     "curated": false,
     "story_id": "6daee8ae6031",
-    "story_size": 8
+    "story_size": 10
   },
   {
     "title": "Apple II Agent: An AI Coding Environment for the Apple II",
@@ -5108,22 +5513,6 @@
     "published_ts": 1794149122,
     "smart_groups": [
       "Infra & model ops"
-    ],
-    "curated": false
-  },
-  {
-    "title": "We review 4x more AI code without reading every line",
-    "summary": "",
-    "summary_html": "<p>Article URL: <a href=\"https://thenewstack.io/scale-ai-code-reviews/\">https://thenewstack.io/scale-ai-code-reviews/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50413647\">https://news.ycombinator.com/item?id=50413647</a></p>\n<p>Points: 3</p>\n<p># Comments: 2</p>",
-    "link": "https://thenewstack.io/scale-ai-code-reviews/",
-    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-    "feed_type": "blog",
-    "type": "media-tech-analysis",
-    "type_label": "Media & Tech Analysis",
-    "published": "2026-11-08T14:27:00+00:00",
-    "published_ts": 1794148020,
-    "smart_groups": [
-      "Security & misuse"
     ],
     "curated": false
   },
