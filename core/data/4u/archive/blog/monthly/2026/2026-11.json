@@ -1,5 +1,394 @@
 [
   {
+    "title": "Kotlin 2026: Layoffs, AI, Google – Is the Golden Age Over? Jake Wharton Explains",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.youtube.com/watch?v=9WjPdgOK-68\">https://www.youtube.com/watch?v=9WjPdgOK-68</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50507726\">https://news.ycombinator.com/item?id=50507726</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://www.youtube.com/watch?v=9WjPdgOK-68",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T15:38:23+00:00",
+    "published_ts": 1794757103,
+    "smart_groups": [
+      "Work & society"
+    ],
+    "curated": false
+  },
+  {
+    "title": "FlashVMM – jail your AI agent in a MicroVM that boots in 18 ms",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://flashvmm.com/\">https://flashvmm.com/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50507449\">https://news.ycombinator.com/item?id=50507449</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://flashvmm.com/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T15:09:19+00:00",
+    "published_ts": 1794755359,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: A local-first AI agent for the desktop, no Electron, any LLM endpoint",
+    "summary": "Hey folks. Most all the apps I see for agent harnesses are typescript based, and involve either electron or some form of IPC to function as a desktop app. In the age of LLM's, I thought it would be cool to build out a prototype of what a modern desktop application would like for this, without using any web code, since I can have agents pretty aggressively work on the cross-platform compatibility on my behalf. After about a week, I ended up with a harness that feels pretty good! Feel free to try it from the releases or you can install directly via: ``` cargo install byob ````",
+    "summary_html": "<p>Hey folks. Most all the apps I see for agent harnesses are typescript based, and involve either electron or some form of IPC to function as a desktop app.<p>In the age of LLM's, I thought it would be cool to build out a prototype of what a modern desktop application would like for this, without using any web code, since I can have agents pretty aggressively work on the cross-platform compatibility on my behalf. After about a week, I ended up with a harness that feels pretty good!<p>Feel free to try it from the releases or you can install directly via:<p>```   \ncargo install byob   \n````</p>\n\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50507341\">https://news.ycombinator.com/item?id=50507341</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p></p></p></p>",
+    "link": "https://github.com/Scronkfinkle/byob",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T14:52:06+00:00",
+    "published_ts": 1794754326,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Top scorer on South Korean tax exam confesses to cheating with AI",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.reuters.com/world/asia-pacific/top-scorer-south-korean-tax-exam-confesses-cheating-with-ai-2026-11-15/\">https://www.reuters.com/world/asia-pacific/top-scorer-south-korean-tax-exam-confesses-cheating-with-ai-2026-11-15/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50507331\">https://news.ycombinator.com/item?id=50507331</a></p>\n<p>Points: 3</p>\n<p># Comments: 1</p>",
+    "link": "https://www.reuters.com/world/asia-pacific/top-scorer-south-korean-tax-exam-confesses-cheating-with-ai-2026-11-15/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T14:51:10+00:00",
+    "published_ts": 1794754270,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false,
+    "story_id": "4fb7efd0fc5b",
+    "story_size": 4
+  },
+  {
+    "title": "Codex + Astra fails at Kaggle Titanic [P]",
+    "summary": "I expected Codex + Astra to do better on Kaggle Titanic. With a one-hour limit, the best result from two runs was 72.96% accuracy . I then explicitly suggested XGBoost and let it spend roughly 90–100 minutes optimizing the solution. The best result reached 77.27% . For a task as familiar as Titanic, that felt disappointing. Giving the agent a strong model, access to tools, and more time had not produced the result I expected. So we tried changing the workflow guiding the agent. We used Gear to evolve a DSH harness , with Astra at max reasoning effort. Starting from a harness that already incorporated earlier evolution, Gear examined execution feedback, proposed changes, and evaluated the resulting agents. The first evolution round produced a harness that reached 79.90% accuracy, best of two runs. Candidate runs in that round averaged approximately 13 minutes of agent execution . Setup Accuracy — best of 2 Time Codex + Astra 72.96% 60-minute limit Codex + explicit XGBoost guidance 77.27% 90–100 minutes Gear-evolved DSH + Astra 79.90% ~13 minutes per candidate run The Gear result was measured locally on the 418 Titanic test rows. Its runtime is the first-round candidate average, excluding the time spent generating harness changes. The resulting harness combined the previously evolved data-analysis workflow with the refinements from this round. It guided the agent through four connected parts of the task: Understand the data and plan the work. Inspect missing values, class balance, related groups, and potential leakage. Establish the prediction target, evaluation metric, resource budget, and required deliverables. Run focused experiments. Build a working baseline early, then use data exploration and error analysis to guide feature engineering, model comparisons, and tuning. Keep the search bounded and use the evidence to decide what to try next—or when to stop. Select models using comparable evidence. Reuse fixed validation folds and seeds, fit preprocessing within each training fold, and preserve configurations and out-of-fold predictions. Rank complete experiments under the same protocol. Carry the solution through to delivery. Refit the selected pipeline on all training data, generate the submission, and check its schema and row order. Preserve runnable code and experiment records so the result can be inspected and reproduced. An agent working on a software bug needs a process for inspecting code, reproducing failures, editing files, and running tests. An agent working on a prediction task needs a process for understanding data, designing experiments, comparing models, and producing a valid submission. Both can use the same underlying model. The surrounding workflow needs to fit the work. That is the problem we are building Gear to address. Gear makes the workflow itself something we can evaluate and evolve. In this experiment, its GEPA loop used execution feedback to propose and test changes to the harness. The retained improvement became an inspectable revision to the agent’s instructions. The output includes a reusable way of working. Subsequent runs can use the improved harness, and future evolution can build on what has already been learned. For us, Titanic made the motivation concrete: improving an agent means working on the process around the model—how it gathers evidence, runs experiments, makes decisions, checks its work, and knows when it has finished. Explore Gear on GitHub → submitted by /u/Pale-Training-6944 [link] [comments]",
+    "summary_html": "<a href=\"https://www.reddit.com/r/MachineLearning/comments/1xwxcwm/codex_astra_fails_at_kaggle_titanic_p/\">  </a>  <!-- SC_OFF --><div><p>I expected Codex + Astra to do better on Kaggle Titanic.</p> <p>With a one-hour limit, the best result from two runs was <strong>72.96% accuracy</strong>. I then explicitly suggested XGBoost and let it spend roughly <strong>90–100 minutes</strong> optimizing the solution. The best result reached <strong>77.27%</strong>.</p> <p>For a task as familiar as Titanic, that felt disappointing. Giving the agent a strong model, access to tools, and more time had not produced the result I expected.</p> <p>So we tried changing the workflow guiding the agent.</p> <p>We used <strong>Gear to evolve a DSH harness</strong>, with Astra at max reasoning effort. Starting from a harness that already incorporated earlier evolution, Gear examined execution feedback, proposed changes, and evaluated the resulting agents.</p> <p><strong>The first evolution round produced a harness that reached 79.90% accuracy, best of two runs.</strong> Candidate runs in that round averaged approximately <strong>13 minutes of agent execution</strong>.</p>   Setup Accuracy — best of 2 Time    Codex + Astra 72.96% 60-minute limit   Codex + explicit XGBoost guidance 77.27% 90–100 minutes   Gear-evolved DSH + Astra <strong>79.90%</strong> <strong>~13 minutes per candidate run</strong>   <p>The Gear result was measured locally on the 418 Titanic test rows. Its runtime is the first-round candidate average, excluding the time spent generating harness changes.</p> <p>The resulting harness combined the previously evolved data-analysis workflow with the refinements from this round. It guided the agent through four connected parts of the task:</p> <ol> <li><strong>Understand the data and plan the work.</strong> Inspect missing values, class balance, related groups, and potential leakage. Establish the prediction target, evaluation metric, resource budget, and required deliverables.</li> <li><strong>Run focused experiments.</strong> Build a working baseline early, then use data exploration and error analysis to guide feature engineering, model comparisons, and tuning. Keep the search bounded and use the evidence to decide what to try next—or when to stop.</li> <li><strong>Select models using comparable evidence.</strong> Reuse fixed validation folds and seeds, fit preprocessing within each training fold, and preserve configurations and out-of-fold predictions. Rank complete experiments under the same protocol.</li> <li><strong>Carry the solution through to delivery.</strong> Refit the selected pipeline on all training data, generate the submission, and check its schema and row order. Preserve runnable code and experiment records so the result can be inspected and reproduced.</li> </ol> <p>An agent working on a software bug needs a process for inspecting code, reproducing failures, editing files, and running tests. An agent working on a prediction task needs a process for understanding data, designing experiments, comparing models, and producing a valid submission.</p> <p>Both can use the same underlying model. The surrounding workflow needs to fit the work.</p> <p>That is the problem we are building <strong>Gear</strong> to address. Gear makes the workflow itself something we can evaluate and evolve. In this experiment, its GEPA loop used execution feedback to propose and test changes to the harness. The retained improvement became an inspectable revision to the agent’s instructions.</p> <p>The output includes a reusable way of working. Subsequent runs can use the improved harness, and future evolution can build on what has already been learned.</p> <p>For us, Titanic made the motivation concrete: improving an agent means working on the process around the model—how it gathers evidence, runs experiments, makes decisions, checks its work, and knows when it has finished.</p> <p><a href=\"https://github.com/rsi-gear/gear\">Explore Gear on GitHub →</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Pale-Training-6944\"> /u/Pale-Training-6944 </a> <br/> <span><a href=\"https://i.redd.it/q6pn4byohs1i1.png\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xwxcwm/codex_astra_fails_at_kaggle_titanic_p/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1xwxcwm/codex_astra_fails_at_kaggle_titanic_p/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T14:50:30+00:00",
+    "published_ts": 1794754230,
+    "smart_groups": [
+      "Coding & dev tools"
+    ],
+    "curated": false
+  },
+  {
+    "title": "All AI-generated code should be Open Source",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://jakub.jankiewicz.org/blog/ai-code-open-source/\">https://jakub.jankiewicz.org/blog/ai-code-open-source/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50507303\">https://news.ycombinator.com/item?id=50507303</a></p>\n<p>Points: 94</p>\n<p># Comments: 64</p>",
+    "link": "https://jakub.jankiewicz.org/blog/ai-code-open-source/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T14:46:58+00:00",
+    "published_ts": 1794754018,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Amazon Threat Intelligence observes threat actor campaigns with ARTEX AI agents",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://aws.amazon.com/blogs/security/amazon-threat-intelligence-observes-threat-actors-running-cybercrime-campaigns-with-artex-ai-agents/\">https://aws.amazon.com/blogs/security/amazon-threat-intelligence-observes-threat-actors-running-cybercrime-campaigns-with-artex-ai-agents/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50507199\">https://news.ycombinator.com/item?id=50507199</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://aws.amazon.com/blogs/security/amazon-threat-intelligence-observes-threat-actors-running-cybercrime-campaigns-with-artex-ai-agents/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T14:31:07+00:00",
+    "published_ts": 1794753067,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "OpsJarvis: A self-hosted AI ops desk where humans approve every write",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://caelaralabs.com\">https://caelaralabs.com</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50507138\">https://news.ycombinator.com/item?id=50507138</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://caelaralabs.com",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T14:22:03+00:00",
+    "published_ts": 1794752523,
+    "smart_groups": [
+      "Infra & model ops"
+    ],
+    "curated": false
+  },
+  {
+    "title": "LeCun: If you're interested in human-level AI, don't work on LLMs",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.reddit.com/r/TheMachineLearning/comments/1xwp0kp/dont_work_on_llms_ylecun_at_corl/\">https://www.reddit.com/r/TheMachineLearning/comments/1xwp0kp/dont_work_on_llms_ylecun_at_corl/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50507084\">https://news.ycombinator.com/item?id=50507084</a></p>\n<p>Points: 6</p>\n<p># Comments: 2</p>",
+    "link": "https://www.reddit.com/r/TheMachineLearning/comments/1xwp0kp/dont_work_on_llms_ylecun_at_corl/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T14:14:23+00:00",
+    "published_ts": 1794752063,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: db-branch – database branches in seconds for AI agents and CI, via ZFS",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://github.com/db-branch/db-branch\">https://github.com/db-branch/db-branch</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50506940\">https://news.ycombinator.com/item?id=50506940</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://github.com/db-branch/db-branch",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T13:50:51+00:00",
+    "published_ts": 1794750651,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Beware the New AI-Fueled Ransomware Boom",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.wired.com/story/beware-the-new-ai-fueled-ransomware-boom/\">https://www.wired.com/story/beware-the-new-ai-fueled-ransomware-boom/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50506934\">https://news.ycombinator.com/item?id=50506934</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://www.wired.com/story/beware-the-new-ai-fueled-ransomware-boom/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T13:49:46+00:00",
+    "published_ts": 1794750586,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Let your AI agent call you, over MCP",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://agline.in/mcp\">https://agline.in/mcp</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50506919\">https://news.ycombinator.com/item?id=50506919</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://agline.in/mcp",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T13:47:29+00:00",
+    "published_ts": 1794750449,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Europa, the EU's open AI model, is aiming for nearly 1T parameters",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://maccus.fr/en/eu-open-ai-model-europa/\">https://maccus.fr/en/eu-open-ai-model-europa/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50506796\">https://news.ycombinator.com/item?id=50506796</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://maccus.fr/en/eu-open-ai-model-europa/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T13:29:48+00:00",
+    "published_ts": 1794749388,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Stop building new AI agent orchestrators – there are 636",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://github.com/erson/awesome-agent-orchestrators/\">https://github.com/erson/awesome-agent-orchestrators/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50506724\">https://news.ycombinator.com/item?id=50506724</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://github.com/erson/awesome-agent-orchestrators/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T13:16:16+00:00",
+    "published_ts": 1794748576,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "AI Adoption Failures: Why Your Successful AI Pilot Is No Reason to Scale",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://age-of-product.com/ai-adoption-failures/\">https://age-of-product.com/ai-adoption-failures/</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50506625\">https://news.ycombinator.com/item?id=50506625</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://age-of-product.com/ai-adoption-failures/",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T12:59:22+00:00",
+    "published_ts": 1794747562,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Five Layers of the AI Cake [pdf]",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://futurumgroup.com/wp-content/uploads/2026/05/Five-Layers-of-the-AI-Cake.pdf\">https://futurumgroup.com/wp-content/uploads/2026/05/Five-Layers-of-the-AI-Cake.pdf</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50506586\">https://news.ycombinator.com/item?id=50506586</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://futurumgroup.com/wp-content/uploads/2026/05/Five-Layers-of-the-AI-Cake.pdf",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T12:51:33+00:00",
+    "published_ts": 1794747093,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "The Backdoor Route That Keeps Beijing in the AI Race",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://www.wsj.com/tech/jensen-huang-backdoor-ai-data-centers-a5e4499d\">https://www.wsj.com/tech/jensen-huang-backdoor-ai-data-centers-a5e4499d</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50506584\">https://news.ycombinator.com/item?id=50506584</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://www.wsj.com/tech/jensen-huang-backdoor-ai-data-centers-a5e4499d",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T12:50:53+00:00",
+    "published_ts": 1794747053,
+    "smart_groups": [
+      "Policy & government",
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Skills for Real Scientists – Steer Away AI Slop",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://github.com/HiteSit/real-scientist-skills\">https://github.com/HiteSit/real-scientist-skills</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50506529\">https://news.ycombinator.com/item?id=50506529</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://github.com/HiteSit/real-scientist-skills",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T12:42:08+00:00",
+    "published_ts": 1794746528,
+    "smart_groups": [
+      "Health & science"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Sandlock: Confining AI Agent Code with Unprivileged Linux Primitives",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://arxiv.org/abs/2605.26298\">https://arxiv.org/abs/2605.26298</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50506416\">https://news.ycombinator.com/item?id=50506416</a></p>\n<p>Points: 2</p>\n<p># Comments: 0</p>",
+    "link": "https://arxiv.org/abs/2605.26298",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T12:23:24+00:00",
+    "published_ts": 1794745404,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Misaligned AI behaviors that indicate loss-of-control risk",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://guidelight.ai/blog/categories-of-misaligned-ai-behaviors\">https://guidelight.ai/blog/categories-of-misaligned-ai-behaviors</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50506342\">https://news.ycombinator.com/item?id=50506342</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://guidelight.ai/blog/categories-of-misaligned-ai-behaviors",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T12:09:05+00:00",
+    "published_ts": 1794744545,
+    "smart_groups": [
+      "Safety & alignment"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Show HN: Aurora GeoXAI – Sovereign geospatial AI built out of frustration",
+    "summary": "",
+    "summary_html": "<p>Article URL: <a href=\"https://github.com/felipetjmg1-bit/aurora-geointelligence-xai\">https://github.com/felipetjmg1-bit/aurora-geointelligence-xai</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50506332\">https://news.ycombinator.com/item?id=50506332</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
+    "link": "https://github.com/felipetjmg1-bit/aurora-geointelligence-xai",
+    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T12:07:53+00:00",
+    "published_ts": 1794744473,
+    "smart_groups": [
+      "Security & misuse"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Hackathon project for MariaDB's Wikipedia Through Time challenge: matching sentences across seven Wikipedia editions at any past date [P]",
+    "summary": "Built at Junction, a hackathon in Espoo, this weekend. Parallax takes an article and lines up its Finnish, Swedish, German, English, Russian, Estonian and Ukrainian editions statement by statement. For any past date it shows where the editions tell something differently. We store every revision. 875,572 so far. Each revision is split into sentences. A sentence that appears in revision A and disappears in revision B becomes one row in a system-versioned table. Its system-time period is the time the edition said it. Edits undone within 24 hours or by a revert are filtered out so vandalism doesn't cut a sentence's life short. Each distinct sentence is embedded once with bge-m3 (1024 dimensions), however many revisions it shows up in. That's 90,070 vectors, embedded on an A100 at about 4,555 sentences a second. One SQL statement does the time travel and the matching: both sides of a self-join read FOR SYSTEM_TIME AS OF the chosen date and VEC_DISTANCE_COSINE ranks the five closest sentences in each other edition. Inside one article exact search is faster than the HNSW index (4 ms median), so the comparison uses that. Across the whole database the index takes over with recall@10 of 0.997 against exact search at ef_search 1000. Retrieval alone isn't good enough. On 28 pairs we checked by hand the right sentence was top-1 only 57% of the time but in the top 5 for 89%. So Gemini 3.8 Flash judges each candidate pair as same, partial, contradicts or different, pulls out the numbers and terms that differ and translates the statement into English. Verdicts are cached with model and prompt version. The same pipeline checks a chatbot answer. It's split into statements and each one is looked up in the editions. If Gemini is slow, vector similarity decides on its own and the result says so. We asked Gemini how the Winter War started and got 17 statements back. 11 are in at least one edition, 5 in none and the Hanko lease is disputed because the Estonian article removed it in 2009. The weak spot is the judge. 28 hand-checked pairs is a small set to judge a judge by, especially across seven languages. If you've evaluated an LLM judge on cross-lingual sentence pairs, how did you build the gold set? Demo (Winter War preloaded): https://135.181.63.238.sslip.io/t/Q134949 Code and the full query: https://github.com/timkicker/attention-is-all-we-have/tree/main/parallax submitted by /u/Loxbey [link] [comments]",
+    "summary_html": "<!-- SC_OFF --><div><p>Built at Junction, a hackathon in Espoo, this weekend. Parallax takes an article and lines up its Finnish, Swedish, German, English, Russian, Estonian and Ukrainian editions statement by statement. For any past date it shows where the editions tell something differently.</p> <ol> <li>We store every revision. 875,572 so far.</li> <li>Each revision is split into sentences. A sentence that appears in revision A and disappears in revision B becomes one row in a system-versioned table. Its system-time period is the time the edition said it. Edits undone within 24 hours or by a revert are filtered out so vandalism doesn't cut a sentence's life short.</li> <li>Each distinct sentence is embedded once with bge-m3 (1024 dimensions), however many revisions it shows up in. That's 90,070 vectors, embedded on an A100 at about 4,555 sentences a second.</li> <li>One SQL statement does the time travel and the matching: both sides of a self-join read <code>FOR SYSTEM_TIME AS OF</code> the chosen date and <code>VEC_DISTANCE_COSINE</code> ranks the five closest sentences in each other edition. Inside one article exact search is faster than the HNSW index (4 ms median), so the comparison uses that. Across the whole database the index takes over with recall@10 of 0.997 against exact search at ef_search 1000.</li> <li>Retrieval alone isn't good enough. On 28 pairs we checked by hand the right sentence was top-1 only 57% of the time but in the top 5 for 89%. So Gemini 3.8 Flash judges each candidate pair as same, partial, contradicts or different, pulls out the numbers and terms that differ and translates the statement into English. Verdicts are cached with model and prompt version.</li> </ol> <p>The same pipeline checks a chatbot answer. It's split into statements and each one is looked up in the editions. If Gemini is slow, vector similarity decides on its own and the result says so. We asked Gemini how the Winter War started and got 17 statements back. 11 are in at least one edition, 5 in none and the Hanko lease is disputed because the Estonian article removed it in 2009.</p> <p>The weak spot is the judge. 28 hand-checked pairs is a small set to judge a judge by, especially across seven languages. If you've evaluated an LLM judge on cross-lingual sentence pairs, how did you build the gold set?</p> <p>Demo (Winter War preloaded): <a href=\"https://135.181.63.238.sslip.io/t/Q134949\">https://135.181.63.238.sslip.io/t/Q134949</a> Code and the full query: <a href=\"https://github.com/timkicker/attention-is-all-we-have/tree/main/parallax\">https://github.com/timkicker/attention-is-all-we-have/tree/main/parallax</a></p> </div><!-- SC_ON -->   submitted by   <a href=\"https://www.reddit.com/user/Loxbey\"> /u/Loxbey </a> <br/> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xwttxo/hackathon_project_for_mariadbs_wikipedia_through/\">[link]</a></span> <span><a href=\"https://www.reddit.com/r/MachineLearning/comments/1xwttxo/hackathon_project_for_mariadbs_wikipedia_through/\">[comments]</a></span>",
+    "link": "https://www.reddit.com/r/MachineLearning/comments/1xwttxo/hackathon_project_for_mariadbs_wikipedia_through/",
+    "source": "Reddit /r/MachineLearning - Community discussions on ML research",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T12:03:27+00:00",
+    "published_ts": 1794744207,
+    "smart_groups": [
+      "Consumer AI",
+      "Legal & copyright"
+    ],
+    "curated": false
+  },
+  {
+    "title": "autogpt-platform-beta-v0.11.3",
+    "summary": "🚀 Release autogpt-platform-beta-v0.11.3 Date: November 15, 2026 🔒 Security This release fixes several privately reported security issues. We'll publish the advisories once the fixes are live in production. 🔥 What's New? New Features #15384 - Add native mobile server foundations (by @ntindle ) #16683 - Support native and browser Sign in with Apple (by @ntindle ) #16677 - Let Otto answer with visual cards (by @0ubbe ) #16768 - Close and erase an account without the confirmation email (erase-account --no-email) (by @kcze ) #16767 - One-off to delete bucket folders of deleted accounts (by @kcze ) #16688 - Reset an expert to how it arrived (by @Bentlybro ) #16792 - Add Gemini 4 Hydrogen support (by @ntindle ) #16741 - Add Gemini 4 Carbon support (by @ntindle ) #16791 - Show every expert's chats in the sidebar with real counts and per-expert paging (by @ntindle ) #13050 - Add remote Local PC execution targets (by @ntindle ) #16793 - Open account deletion to every user (SECRT-3488) (by @kcze ) Enhancements #16711 - Show a stone expert in the thinker's colour while thinking (by @0ubbe ) #16387 - Label Otto's Team card stats as the team's totals (by @Pwuts ) #16727 - Stream workspace downloads, profile continuously, make cache metrics admin-only (by @Pwuts ) Bug Fixes #14226 - Isolate billing state across account switches (by @ntindle ) #15440 - Self-host auth DB connection budget, visible token failures, build memory (by @ntindle ) #16720 - Marketplace creator pages and workflow outlines follow what the marketplace lists (by @Pwuts ) #16709 - Let a NO_TIER account with a card-less trial buy a plan (by @0ubbe ) #16708 - Name connected accounts by email when they have no title (by @0ubbe ) #15842 - Leave the embeddings out of memory recall's FalkorDB reads (by @ntindle ) #16537 - Stop offering expert workflows whose library agent was deleted (by @Pwuts ) #16536 - run_agent says a subscription is required instead of \"Failed to process request\" (by @Pwuts ) #16724 - Keep a library entry's settings when it is reused or restored (by @Pwuts ) #16722 - Validate the generic webhook's stored secret token as text (by @Pwuts ) #16436 - Judge the graph content find_library_agent returns like other reads (by @Pwuts ) #15843 - Walk each of memory recall's BFS origins once (by @ntindle ) #16719 - Read at most 1 MiB of a text attachment in Read Discord Messages (by @Pwuts ) #16469 - Charge ClaudeCodeBlock for the platform's E2B sandbox by walltime (by @Pwuts ) #16760 - Verify webhook secrets on preset triggers and check signature timestamps (by @ntindle ) #16761 - Bill usage-priced blocks run from AutoPilot like workflow runs (by @ntindle ) #16775 - Refuse edits whose result would pass the file size limit (by @ntindle ) #16769 - Account erasure removes AutoPilot transcripts from before April 2026 (by @kcze ) #16763 - Delete the PostHog person after the account's rows, and let a rerun repeat it (by @kcze ) #16766 - Free a crashed account erasure's lease within minutes, log CLI runs and page on stalled erasures (by @kcze ) #16764 - Ban records match every spelling of an address, and Keep refuses a banned account (by @kcze ) #16765 - Catch keys and Checkouts made in the seconds after an account closes (by @kcze ) #16539 - Say when a site refuses the browser or web_fetch, and name a fallback (by @Pwuts ) #16611 - No notification consumer is cut short at shutdown or orphaned at start-up (by @Pwuts ) #16531 - Re-read the wallet balance after a run finishes or a chat turn ends (by @Pwuts ) #16723 - Apply the team-change session rules to expert credential grants (by @Pwuts ) #14905 - Give each bash_exec sandbox its own PID and IPC namespace (by @ntindle ) #15059 - Rate-limit v1 API key validation before Scrypt (by @ntindle ) #16445 - Sign up through OAuth only with a provider-verified email (by @Pwuts ) #16800 - Stop skipping runs of agent schedules stored with a one-second grace (by @Pwuts ) Documentation #16787 - Microsoft sign-in is set up on both Entra apps and in Vercel (by @ntindle ) #16716 - Remove the multi-expert teams plan and citations of files the repo lacks (by @Pwuts ) #16794 - List what an account erasure leaves in Stripe, cost records and handed-over agents (by @kcze ) #16757 - Changelog v0.11.1 to v0.11.2 (by @itsababseh ) Dependencies & Maintenance #16600 - Bump pnpm/action-setup from 4.3.0 to 6.1.0 (by @dependabot [bot]) #16751 - Bump @ai-sdk/react from 4.0.158 to 4.0.166 in /autogpt_platform/frontend (by @dependabot [bot]) #16608 - Bump actions/cache from 5.1.0 to 6.1.0 in /.github/actions/generate-prisma-client (by @dependabot [bot]) #16749 - Bump ruff from 0.17.3 to 0.17.4 in /autogpt_platform/autogpt_libs in the development-dependencies group (by @dependabot [bot]) #16750 - Bump pytest-asyncio from 1.4.1 to 1.4.1.post1 in /autogpt_platform/autogpt_libs (by @dependabot [bot]) #16754 - Bump the production-dependencies group across 1 directory with 8 updates (by @dependabot [bot]) #16795 - Bump opentelemetry-api from 1.45.1 to 1.45.2 in /autogpt_platform/autogpt_libs in the security-updates group (by @dependabot [bot]) #15889 - Bump the production-dependencies group across 1 directory with 2 updates (by @dependabot [bot]) #16574 - Deploy production only for platform releases (by @ntindle ) Development Experience #14338 - Add the /process-vulnerability-report skill (by @Pwuts ) 🎉 Thanks to Our Contributors! A huge shoutout to everyone who contributed to this release: @itsababseh @Bentlybro @ntindle @Pwuts @0ubbe @kcze @dependabot [bot] 📥 How to Get This Update To update to this version, run: git pull origin autogpt-platform-beta-v0.11.3 Or download it directly from the Releases page . For a complete list of changes, see the Full Changelog . 📝 Feedback and Issues If you encounter any issues or have suggestions, please join our Discord and let us know!",
+    "summary_html": "🚀 Release <code>autogpt-platform-beta-v0.11.3</code>\n<p><strong>Date:</strong> November 15, 2026</p>\n\n🔒 Security\n<p>This release fixes several privately reported security issues. We'll publish the advisories once the fixes are live in production.</p>\n\n🔥 What's New?\nNew Features\n<ul>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/15384\">#15384</a></strong> - Add native mobile server foundations (by <a href=\"https://github.com/ntindle\">@ntindle</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16683\">#16683</a></strong> - Support native and browser Sign in with Apple (by <a href=\"https://github.com/ntindle\">@ntindle</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16677\">#16677</a></strong> - Let Otto answer with visual cards (by <a href=\"https://github.com/0ubbe\">@0ubbe</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16768\">#16768</a></strong> - Close and erase an account without the confirmation email (erase-account --no-email) (by <a href=\"https://github.com/kcze\">@kcze</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16767\">#16767</a></strong> - One-off to delete bucket folders of deleted accounts (by <a href=\"https://github.com/kcze\">@kcze</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16688\">#16688</a></strong> - Reset an expert to how it arrived (by <a href=\"https://github.com/Bentlybro\">@Bentlybro</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16792\">#16792</a></strong> - Add Gemini 4 Hydrogen support (by <a href=\"https://github.com/ntindle\">@ntindle</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16741\">#16741</a></strong> - Add Gemini 4 Carbon support (by <a href=\"https://github.com/ntindle\">@ntindle</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16791\">#16791</a></strong> - Show every expert's chats in the sidebar with real counts and per-expert paging (by <a href=\"https://github.com/ntindle\">@ntindle</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/13050\">#13050</a></strong> - Add remote Local PC execution targets (by <a href=\"https://github.com/ntindle\">@ntindle</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16793\">#16793</a></strong> - Open account deletion to every user (SECRT-3488) (by <a href=\"https://github.com/kcze\">@kcze</a>)</li>\n</ul>\nEnhancements\n<ul>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16711\">#16711</a></strong> - Show a stone expert in the thinker's colour while thinking (by <a href=\"https://github.com/0ubbe\">@0ubbe</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16387\">#16387</a></strong> - Label Otto's Team card stats as the team's totals (by <a href=\"https://github.com/Pwuts\">@Pwuts</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16727\">#16727</a></strong> - Stream workspace downloads, profile continuously, make cache metrics admin-only (by <a href=\"https://github.com/Pwuts\">@Pwuts</a>)</li>\n</ul>\nBug Fixes\n<ul>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/14226\">#14226</a></strong> - Isolate billing state across account switches (by <a href=\"https://github.com/ntindle\">@ntindle</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/15440\">#15440</a></strong> - Self-host auth DB connection budget, visible token failures, build memory (by <a href=\"https://github.com/ntindle\">@ntindle</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16720\">#16720</a></strong> - Marketplace creator pages and workflow outlines follow what the marketplace lists (by <a href=\"https://github.com/Pwuts\">@Pwuts</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16709\">#16709</a></strong> - Let a NO_TIER account with a card-less trial buy a plan (by <a href=\"https://github.com/0ubbe\">@0ubbe</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16708\">#16708</a></strong> - Name connected accounts by email when they have no title (by <a href=\"https://github.com/0ubbe\">@0ubbe</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/15842\">#15842</a></strong> - Leave the embeddings out of memory recall's FalkorDB reads (by <a href=\"https://github.com/ntindle\">@ntindle</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16537\">#16537</a></strong> - Stop offering expert workflows whose library agent was deleted (by <a href=\"https://github.com/Pwuts\">@Pwuts</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16536\">#16536</a></strong> - run_agent says a subscription is required instead of \"Failed to process request\" (by <a href=\"https://github.com/Pwuts\">@Pwuts</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16724\">#16724</a></strong> - Keep a library entry's settings when it is reused or restored (by <a href=\"https://github.com/Pwuts\">@Pwuts</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16722\">#16722</a></strong> - Validate the generic webhook's stored secret token as text (by <a href=\"https://github.com/Pwuts\">@Pwuts</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16436\">#16436</a></strong> - Judge the graph content find_library_agent returns like other reads (by <a href=\"https://github.com/Pwuts\">@Pwuts</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/15843\">#15843</a></strong> - Walk each of memory recall's BFS origins once (by <a href=\"https://github.com/ntindle\">@ntindle</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16719\">#16719</a></strong> - Read at most 1 MiB of a text attachment in Read Discord Messages (by <a href=\"https://github.com/Pwuts\">@Pwuts</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16469\">#16469</a></strong> - Charge ClaudeCodeBlock for the platform's E2B sandbox by walltime (by <a href=\"https://github.com/Pwuts\">@Pwuts</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16760\">#16760</a></strong> - Verify webhook secrets on preset triggers and check signature timestamps (by <a href=\"https://github.com/ntindle\">@ntindle</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16761\">#16761</a></strong> - Bill usage-priced blocks run from AutoPilot like workflow runs (by <a href=\"https://github.com/ntindle\">@ntindle</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16775\">#16775</a></strong> - Refuse edits whose result would pass the file size limit (by <a href=\"https://github.com/ntindle\">@ntindle</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16769\">#16769</a></strong> - Account erasure removes AutoPilot transcripts from before April 2026 (by <a href=\"https://github.com/kcze\">@kcze</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16763\">#16763</a></strong> - Delete the PostHog person after the account's rows, and let a rerun repeat it (by <a href=\"https://github.com/kcze\">@kcze</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16766\">#16766</a></strong> - Free a crashed account erasure's lease within minutes, log CLI runs and page on stalled erasures (by <a href=\"https://github.com/kcze\">@kcze</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16764\">#16764</a></strong> - Ban records match every spelling of an address, and Keep refuses a banned account (by <a href=\"https://github.com/kcze\">@kcze</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16765\">#16765</a></strong> - Catch keys and Checkouts made in the seconds after an account closes (by <a href=\"https://github.com/kcze\">@kcze</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16539\">#16539</a></strong> - Say when a site refuses the browser or web_fetch, and name a fallback (by <a href=\"https://github.com/Pwuts\">@Pwuts</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16611\">#16611</a></strong> - No notification consumer is cut short at shutdown or orphaned at start-up (by <a href=\"https://github.com/Pwuts\">@Pwuts</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16531\">#16531</a></strong> - Re-read the wallet balance after a run finishes or a chat turn ends (by <a href=\"https://github.com/Pwuts\">@Pwuts</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16723\">#16723</a></strong> - Apply the team-change session rules to expert credential grants (by <a href=\"https://github.com/Pwuts\">@Pwuts</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/14905\">#14905</a></strong> - Give each bash_exec sandbox its own PID and IPC namespace (by <a href=\"https://github.com/ntindle\">@ntindle</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/15059\">#15059</a></strong> - Rate-limit v1 API key validation before Scrypt (by <a href=\"https://github.com/ntindle\">@ntindle</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16445\">#16445</a></strong> - Sign up through OAuth only with a provider-verified email (by <a href=\"https://github.com/Pwuts\">@Pwuts</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16800\">#16800</a></strong> - Stop skipping runs of agent schedules stored with a one-second grace (by <a href=\"https://github.com/Pwuts\">@Pwuts</a>)</li>\n</ul>\nDocumentation\n<ul>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16787\">#16787</a></strong> - Microsoft sign-in is set up on both Entra apps and in Vercel (by <a href=\"https://github.com/ntindle\">@ntindle</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16716\">#16716</a></strong> - Remove the multi-expert teams plan and citations of files the repo lacks (by <a href=\"https://github.com/Pwuts\">@Pwuts</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16794\">#16794</a></strong> - List what an account erasure leaves in Stripe, cost records and handed-over agents (by <a href=\"https://github.com/kcze\">@kcze</a>)</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16757\">#16757</a></strong> - Changelog v0.11.1 to v0.11.2 (by <a href=\"https://github.com/itsababseh\">@itsababseh</a>)</li>\n</ul>\nDependencies &amp; Maintenance\n<ul>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16600\">#16600</a></strong> - Bump pnpm/action-setup from 4.3.0 to 6.1.0 (by <a href=\"https://github.com/dependabot\">@dependabot</a>[bot])</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16751\">#16751</a></strong> - Bump @ai-sdk/react from 4.0.158 to 4.0.166 in /autogpt_platform/frontend (by <a href=\"https://github.com/dependabot\">@dependabot</a>[bot])</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16608\">#16608</a></strong> - Bump actions/cache from 5.1.0 to 6.1.0 in /.github/actions/generate-prisma-client (by <a href=\"https://github.com/dependabot\">@dependabot</a>[bot])</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16749\">#16749</a></strong> - Bump ruff from 0.17.3 to 0.17.4 in /autogpt_platform/autogpt_libs in the development-dependencies group (by <a href=\"https://github.com/dependabot\">@dependabot</a>[bot])</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16750\">#16750</a></strong> - Bump pytest-asyncio from 1.4.1 to 1.4.1.post1 in /autogpt_platform/autogpt_libs (by <a href=\"https://github.com/dependabot\">@dependabot</a>[bot])</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16754\">#16754</a></strong> - Bump the production-dependencies group across 1 directory with 8 updates (by <a href=\"https://github.com/dependabot\">@dependabot</a>[bot])</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16795\">#16795</a></strong> - Bump opentelemetry-api from 1.45.1 to 1.45.2 in /autogpt_platform/autogpt_libs in the security-updates group (by <a href=\"https://github.com/dependabot\">@dependabot</a>[bot])</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/15889\">#15889</a></strong> - Bump the production-dependencies group across 1 directory with 2 updates (by <a href=\"https://github.com/dependabot\">@dependabot</a>[bot])</li>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/16574\">#16574</a></strong> - Deploy production only for platform releases (by <a href=\"https://github.com/ntindle\">@ntindle</a>)</li>\n</ul>\nDevelopment Experience\n<ul>\n<li><strong><a href=\"https://github.com/Significant-Gravitas/AutoGPT/pull/14338\">#14338</a></strong> - Add the /process-vulnerability-report skill (by <a href=\"https://github.com/Pwuts\">@Pwuts</a>)</li>\n</ul>\n\n🎉 Thanks to Our Contributors!\n<p>A huge shoutout to everyone who contributed to this release:</p>\n<ul>\n<li><a href=\"https://github.com/itsababseh\">@itsababseh</a></li>\n<li><a href=\"https://github.com/Bentlybro\">@Bentlybro</a></li>\n<li><a href=\"https://github.com/ntindle\">@ntindle</a></li>\n<li><a href=\"https://github.com/Pwuts\">@Pwuts</a></li>\n<li><a href=\"https://github.com/0ubbe\">@0ubbe</a></li>\n<li><a href=\"https://github.com/kcze\">@kcze</a></li>\n<li><a href=\"https://github.com/dependabot\">@dependabot</a>[bot]</li>\n</ul>\n\n📥 How to Get This Update\n<p>To update to this version, run:</p>\n<div><pre>git pull origin autogpt-platform-beta-v0.11.3</pre></div>\n<p>Or download it directly from the<br/>\n<a href=\"https://github.com/Significant-Gravitas/AutoGPT/releases\">Releases page</a>.</p>\n<p>For a complete list of changes, see the <a href=\"https://github.com/Significant-Gravitas/AutoGPT/compare/autogpt-platform-beta-v0.11.2...autogpt-platform-beta-v0.11.3\">Full Changelog</a>.</p>\n\n📝 <strong>Feedback and Issues</strong>\n<p>If you encounter any issues or have suggestions, please <a href=\"https://discord.gg/autogpt\">join our Discord</a> and let us know!</p>",
+    "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/autogpt-platform-beta-v0.11.3",
+    "source": "AutoGPT Releases - GitHub releases for AutoGPT",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T08:59:39+00:00",
+    "published_ts": 1794733179,
+    "smart_groups": [
+      "Agents & automation"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Preview seed fixture (rolling)",
+    "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@657153887ea2 (migration head: 20261112120000_account_deletion_confirmation_skipped). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only synthetic rows (Faker-generated, plus the hand-written preview marketplace) and the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
+    "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@657153887ea2 (migration head: 20261112120000_account_deletion_confirmation_skipped). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only synthetic rows (Faker-generated, plus the hand-written preview marketplace) and the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
+    "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/preview-seed-fixture",
+    "source": "AutoGPT Releases - GitHub releases for AutoGPT",
+    "feed_type": "blog",
+    "type": "media-tech-analysis",
+    "type_label": "Media & Tech Analysis",
+    "published": "2026-11-15T08:39:20+00:00",
+    "published_ts": 1794731960,
+    "smart_groups": [
+      "Agents & automation",
+      "Data & analytics"
+    ],
+    "curated": false
+  },
+  {
     "title": "Show HN: ShadowDiff – Shadow testing and SQL diffing for AI-migrated back ends",
     "summary": "",
     "summary_html": "<p>Article URL: <a href=\"https://github.com/vishalrajofficial/ShadowDiff\">https://github.com/vishalrajofficial/ShadowDiff</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50504643\">https://news.ycombinator.com/item?id=50504643</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
@@ -161,23 +550,6 @@
     "curated": false
   },
   {
-    "title": "How Jensen Huang Built the Backdoor Route That Keeps Beijing in the AI Race",
-    "summary": "",
-    "summary_html": "<p>Article URL: <a href=\"https://www.wsj.com/tech/jensen-huang-backdoor-ai-data-centers-a5e4499d\">https://www.wsj.com/tech/jensen-huang-backdoor-ai-data-centers-a5e4499d</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50504083\">https://news.ycombinator.com/item?id=50504083</a></p>\n<p>Points: 6</p>\n<p># Comments: 1</p>",
-    "link": "https://www.wsj.com/tech/jensen-huang-backdoor-ai-data-centers-a5e4499d",
-    "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-    "feed_type": "blog",
-    "type": "media-tech-analysis",
-    "type_label": "Media & Tech Analysis",
-    "published": "2026-11-15T04:42:37+00:00",
-    "published_ts": 1794717757,
-    "smart_groups": [
-      "Policy & government",
-      "Security & misuse"
-    ],
-    "curated": false
-  },
-  {
     "title": "Smart AI Keyboard: Translate",
     "summary": "",
     "summary_html": "<p>Article URL: <a href=\"https://play.google.com/store/apps/details?id=smart.ai.keyboard&amp;hl=en_US\">https://play.google.com/store/apps/details?id=smart.ai.keyboard&amp;hl=en_US</a></p>\n<p>Comments URL: <a href=\"https://news.ycombinator.com/item?id=50504021\">https://news.ycombinator.com/item?id=50504021</a></p>\n<p>Points: 1</p>\n<p># Comments: 0</p>",
@@ -304,7 +676,9 @@
     "smart_groups": [
       "Security & misuse"
     ],
-    "curated": false
+    "curated": false,
+    "story_id": "4fb7efd0fc5b",
+    "story_size": 4
   },
   {
     "title": "The First AI Music Awards",
@@ -1061,23 +1435,6 @@
     "published_ts": 1794637157,
     "smart_groups": [
       "Policy & government"
-    ],
-    "curated": false
-  },
-  {
-    "title": "Preview seed fixture (rolling)",
-    "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@6ba94560676d (migration head: 20261112120000_account_deletion_confirmation_skipped). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only synthetic rows (Faker-generated, plus the hand-written preview marketplace) and the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.",
-    "summary_html": "<p>Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@6ba94560676d (migration head: 20261112120000_account_deletion_confirmation_skipped). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d  --no-owner' WITHOUT --exit-on-error (the dump's own CREATE SCHEMA collides benignly with the preamble's). SECURITY INVARIANT: this bake holds no cloud credentials and has no read path to any real database — it runs entirely against a throwaway Postgres container and contains only synthetic rows (Faker-generated, plus the hand-written preview marketplace) and the already-public marketplace agent exports checked into autogpt_platform/backend/agents/. This asset is regenerated on every eligible dev push and weekly; treat it as disposable.</p>",
-    "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/preview-seed-fixture",
-    "source": "AutoGPT Releases - GitHub releases for AutoGPT",
-    "feed_type": "blog",
-    "type": "media-tech-analysis",
-    "type_label": "Media & Tech Analysis",
-    "published": "2026-11-14T05:47:25+00:00",
-    "published_ts": 1794635245,
-    "smart_groups": [
-      "Agents & automation",
-      "Data & analytics"
     ],
     "curated": false
   },
@@ -2697,7 +3054,7 @@
     ],
     "curated": false,
     "story_id": "416f1e04d49b",
-    "story_size": 103
+    "story_size": 105
   },
   {
     "title": "Edge0/Edge0-145B-q3k · Hugging Face",
@@ -3450,7 +3807,7 @@
     ],
     "curated": false,
     "story_id": "416f1e04d49b",
-    "story_size": 103
+    "story_size": 105
   },
   {
     "title": "How should authors handle a suspected auto-generated review at ICLR? Flag to the AC or just rebut? [D]",
