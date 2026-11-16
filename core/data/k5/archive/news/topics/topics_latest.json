@@ -1,139 +1,89 @@
 {
   "schema_version": 1,
   "vertical": "k5",
-  "date": "2026-11-14",
-  "generated_at": "2026-11-15T01:32:00.753266+00:00",
+  "date": "2026-11-15",
+  "generated_at": "2026-11-16T01:32:34.213286+00:00",
   "mode": "llm",
   "model": "qwen38-27b-mtp2:latest",
   "llm_endpoint": "127.0.0.1:11434",
-  "input_fingerprint": "360804a6e31ae997",
+  "input_fingerprint": "7fdbac5cb689d809",
   "stats": {
     "items": 52,
-    "topics": 48,
-    "multi_story_topics": 4,
-    "singletons": 44,
-    "largest_topic": 2,
-    "llm_named_topics": 4,
-    "rule_candidates": 52,
-    "rule_multi_story_candidates": 0,
-    "topics_merging_candidates": 4,
+    "topics": 44,
+    "multi_story_topics": 7,
+    "singletons": 37,
+    "largest_topic": 3,
+    "llm_named_topics": 6,
+    "rule_candidates": 50,
+    "rule_multi_story_candidates": 2,
+    "topics_merging_candidates": 5,
     "candidates_split": 0,
     "llm_merges_across_batches": 0,
     "stories_sent_to_llm": 52,
     "batches": 1,
     "batches_failed": 0,
     "llm_calls": 1,
-    "prompt_tokens": 2770,
-    "completion_tokens": 332,
-    "duration_seconds": 97.3
+    "prompt_tokens": 2812,
+    "completion_tokens": 505,
+    "duration_seconds": 130.6
   },
   "topics": [
     {
-      "id": "80fa9afe0205",
+      "id": "dbad5ee485f8",
       "rank": 1,
-      "title": "Check Point gateways exploited via PHP2Shell",
-      "summary": "Check Point researchers documented attacks beginning in late October where hackers exploited the PHP2Shell vulnerability to deploy a VMware ESXi wiper and turn gateways against customers.",
+      "title": "AI penetration testing tools weaponized for cyberattacks",
+      "summary": "The FBI warned that the ARTEX AI hacking tool is powering global cyberattacks, while researchers noted that the open-source Cairn framework was weaponized for autonomous attacks.",
       "origin": "llm",
       "size": 2,
       "source_count": 2,
       "sources": [
         "/r/cybersecurity",
-        "CSO Online"
+        "BleepingComputer"
       ],
-      "first_ts": 1794620355,
-      "latest_ts": 1794678632,
+      "first_ts": 1794737179,
+      "latest_ts": 1794767393,
       "score": 6,
       "stories": [
         {
-          "title": "The firewall becomes the foothold: Attackers turn Check Point gateways against customers",
-          "summary": "A firewall is intended to be a boundary attackers can’t cross. But firewalls face the web, making them just as vulnerable to attack as other systems, as evidenced by the emergency hotfixes released by Check Point Software for several of its products. The patches address a high-severity privilege es…",
-          "link": "https://www.csoonline.com/article/4248693/the-firewall-becomes-the-foothold-attackers-turn-check-point-gateways-against-customers.html",
-          "source": "CSO Online",
-          "feed_type": "news",
-          "type": "security-news-media",
-          "type_label": "Security News & Media",
-          "published": "2026-11-14T01:39:15+00:00",
-          "published_ts": 1794620355,
-          "smart_groups": [
-            "Vulnerabilities / CVEs",
-            "Malware / Payloads",
-            "Identity / Access"
-          ],
-          "curated": true
-        },
-        {
-          "title": "Check Point gateways hacked via PHP2Shell to deploy VMware ESXi wiper",
-          "summary": "Check Point researchers documented attacks beginning October 30 in which hackers exploited PHP2Shell vulnerabilities CVE-2026-109618 and CVE-2026-109619 through vulnerable Mobile Access gateways. They then used another vulnerability, CVE-2026-123039, to obtain root privileges, install backdoors and…",
-          "link": "https://www.reddit.com/r/cybersecurity/comments/1xw8lfa/check_point_gateways_hacked_via_php2shell_to/",
+          "title": "How Cairn, an Open-Source AI penetration testing tool, Was Weaponized for Autonomous Cyberattacks",
+          "summary": "As explained in https://unit42.paloaltonetworks.com/cairn-framework-ai-autonomous-attacks/ article Chinese hackers used autonomous AI agents to breach 10 major organizations, including US defense programs and chipmakers - by tricking the AI into thinking it was a legitimate security test. Cairn wea…",
+          "link": "https://www.reddit.com/r/cybersecurity/comments/1xwrwfs/how_cairn_an_opensource_ai_penetration_testing/",
           "source": "/r/cybersecurity",
           "feed_type": "news",
           "type": "osint-communities-subreddits",
           "type_label": "OSINT, Communities & Subreddits",
-          "published": "2026-11-14T17:50:32+00:00",
-          "published_ts": 1794678632,
+          "published": "2026-11-15T10:06:19+00:00",
+          "published_ts": 1794737179,
           "smart_groups": [
-            "Malware / Payloads",
-            "Vulnerabilities / CVEs",
+            "Exploit / PoC",
+            "Red Team / Offensive",
             "Community Discussion"
-          ],
-          "curated": true
-        }
-      ]
-    },
-    {
-      "id": "e99e38729f83",
-      "rank": 2,
-      "title": "Cursor breach linked to malicious Claude Code extension",
-      "summary": "Cursor confirmed a security breach that allowed attackers to distribute a malicious Claude Code extension, tracing the incident to an access key exposed by Fireworks AI.",
-      "origin": "llm",
-      "size": 2,
-      "source_count": 2,
-      "sources": [
-        "BleepingComputer",
-        "Cyber Security News (FeedBurner)"
-      ],
-      "first_ts": 1794647371,
-      "latest_ts": 1794677245,
-      "score": 6,
-      "stories": [
-        {
-          "title": "Cursor Reveals How a Leaked Fireworks AI Key Led to a Backdoored Claude Code Extension",
-          "summary": "Cursor has traced its October security breach to an access key exposed by Fireworks AI. The attacker used that key to steal historical coding agent records, find more credentials, and eventually place backdoored Claude Code extensions in Cursor’s marketplace cache. Its November 13 update connects t…",
-          "link": "https://cybersecuritynews.com/cursor-data-breach/",
-          "source": "Cyber Security News (FeedBurner)",
-          "feed_type": "blog",
-          "type": "security-researcher-blogs",
-          "type_label": "Security Researcher Blogs",
-          "published": "2026-11-14T09:09:31+00:00",
-          "published_ts": 1794647371,
-          "smart_groups": [
-            "Malware / Payloads",
-            "AI/ML Security"
           ],
           "curated": true
         },
         {
-          "title": "Cursor confirms security breach led to malicious Claude Code extension",
-          "summary": "Cursor confirmed it suffered a security breach that let hackers distribute a malicious Claude Code extension through its marketplace after stealing credentials from AI infrastructure provider Fireworks AI.",
-          "link": "https://www.bleepingcomputer.com/news/security/cursor-confirms-security-breach-led-to-malicious-claude-code-extension/",
+          "title": "FBI warns ARTEX AI hacking tool is powering global cyberattacks",
+          "summary": "The FBI is warning that hackers are using an AI-powered penetration testing framework called ARTEX to automate cyberattacks against organizations worldwide, including a recent ConnectWise supply-chain breach that compromised Microsoft 365 customer environments.",
+          "link": "https://www.bleepingcomputer.com/news/security/fbi-warns-artex-ai-hacking-tool-is-powering-global-cyberattacks/",
           "source": "BleepingComputer – Cybercrime",
           "feed_type": "news",
           "type": "cybercrime-underground",
           "type_label": "Cybercrime & Underground",
-          "published": "2026-11-14T17:27:25+00:00",
-          "published_ts": 1794677245,
+          "published": "2026-11-15T18:29:53+00:00",
+          "published_ts": 1794767393,
           "smart_groups": [
-            "AI/ML Security"
+            "Windows / Microsoft",
+            "Red Team / Offensive"
           ],
           "curated": false
         }
       ]
     },
     {
-      "id": "36c370bc0d32",
-      "rank": 3,
-      "title": "CISA adds Check Point and UnrealIRCd flaws to KEV",
-      "summary": "The U.S. Cybersecurity and Infrastructure Security Agency added a Check Point vulnerability and an UnrealIRCd command injection flaw to its Known Exploited Vulnerabilities catalog.",
+      "id": "e092eca36668",
+      "rank": 2,
+      "title": "Meta fined €805 million in Italy over Facebook gallery access",
+      "summary": "Italy fined Meta €805 million for Facebook's Android feature that accessed users' photo galleries without explicit consent.",
       "origin": "llm",
       "size": 2,
       "source_count": 2,
@@ -141,246 +91,83 @@
         "Security Affairs",
         "The Hacker News"
       ],
-      "first_ts": 1794647280,
-      "latest_ts": 1794659915,
+      "first_ts": 1794742051,
+      "latest_ts": 1794766316,
       "score": 6,
       "stories": [
         {
-          "title": "U.S. CISA adds Check Point and UnrealIRCd flaws to its Known Exploited Vulnerabilities catalog",
-          "summary": "U.S. Cybersecurity and Infrastructure Security Agency (CISA) adds Check Point and UnrealIRCd flaws to its Known Exploited Vulnerabilities catalog. The U.S. Cybersecurity and Infrastructure Security Agency (CISA) added Check Point and UnrealIRCd vulnerabilities to its Known Exploited Vulnerabilities…",
-          "link": "https://securityaffairs.com/203040/hacking/u-s-cisa-adds-check-point-and-unrealircd-flaws-to-its-known-exploited-vulnerabilities-catalog.html",
-          "source": "Security Affairs",
-          "feed_type": "news",
-          "type": "security-news-media",
-          "type_label": "Security News & Media",
-          "published": "2026-11-14T09:08:00+00:00",
-          "published_ts": 1794647280,
-          "smart_groups": [
-            "Vulnerabilities / CVEs",
-            "Linux / Unix",
-            "Malware / Payloads"
-          ],
-          "curated": true
-        },
-        {
-          "title": "Attackers Exploit UnrealIRCd Flaw That Enables Server-Level Command Injection",
-          "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Friday added a high-severity security flaw impacting UnrealIRCd, an open-source Internet Relay Chat (IRC) server, to its Known Exploited Vulnerabilities (KEV) catalog, following reports of active exploitation. The vulnerability, tr…",
-          "link": "https://thehackernews.com/2026/11/attackers-exploit-unrealircd-flaw-that.html",
+          "title": "Italy Fines Meta €805 Million Over Facebook's Android Gallery Access Without Explicit Consent",
+          "summary": "Meta was fined €805 million in Italy yesterday over a Facebook for Android feature that suggests photos and videos from users' phone galleries for them to post. The Garante, Italy's data protection authority, found that the feature was enabled by default and that the app accessed Italian users' pho…",
+          "link": "https://thehackernews.com/2026/11/italy-fines-meta-805-million-over.html",
           "source": "The Hacker News",
           "feed_type": "news",
           "type": "security-news-media",
           "type_label": "Security News & Media",
-          "published": "2026-11-14T12:38:35+00:00",
-          "published_ts": 1794659915,
+          "published": "2026-11-15T11:27:31+00:00",
+          "published_ts": 1794742051,
           "smart_groups": [
-            "Vulnerabilities / CVEs"
+            "Privacy & Compliance"
           ],
-          "curated": true
+          "curated": false
+        },
+        {
+          "title": "Meta Fined €805 Million in Italy Over Facebook’s Default Photo Gallery Access",
+          "summary": "Italy fines Meta €805 million over Facebook’s access to Android users’ photo galleries without specific consent, affecting around 20 million people. Italy’s data protection authority, the Garante, has fined Meta Platforms Ireland Limited €805 million. The reason is that the Facebook app for Android…",
+          "link": "https://securityaffairs.com/203174/laws-and-regulations/meta-fined-e805-million-in-italy-over-facebooks-default-photo-gallery-access.html",
+          "source": "Security Affairs",
+          "feed_type": "news",
+          "type": "security-news-media",
+          "type_label": "Security News & Media",
+          "published": "2026-11-15T18:11:56+00:00",
+          "published_ts": 1794766316,
+          "smart_groups": [
+            "Privacy & Compliance"
+          ],
+          "curated": false
         }
       ]
     },
     {
-      "id": "1e0b30e0ffde",
-      "rank": 4,
-      "title": "Microsoft 365 outage attributed to network upgrade",
-      "summary": "Microsoft confirmed the global service disruption was caused by a network capacity upgrade issue rather than a cyberattack, while the FBI warned of phishing campaigns exploiting the incident.",
+      "id": "ac849e769382",
+      "rank": 3,
+      "title": "Microsoft 365 outage and phishing attacks",
+      "summary": "An unprecedented global Microsoft outage impacted organizations, and hackers exploited the disruption to launch phishing attacks threatening to delete emails within 24 hours.",
       "origin": "llm",
       "size": 2,
       "source_count": 2,
       "sources": [
-        "Cointelegraph.com News",
-        "Cyber Security News (FeedBurner)"
+        "/r/cybersecurity",
+        "Lohrmann on Cybersecurity"
       ],
-      "first_ts": 1794652446,
-      "latest_ts": 1794653852,
+      "first_ts": 1794736860,
+      "latest_ts": 1794754423,
       "score": 6,
       "stories": [
         {
-          "title": "Microsoft confirms global outage resolved, rules out cyberattack",
-          "summary": "Microsoft attributed the outage to a network capacity upgrade issue, confirming that the disruption was unrelated to cyberattacks or AI agents.",
-          "link": "https://cointelegraph.com/news/microsoft-365-outage-resolved-cyberattack-ruled-out?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-          "source": "Cointelegraph.com News",
+          "title": "5 Immediate Lessons From the Global Microsoft Outage",
+          "summary": "Organizations were severely impacted this past week with an unprecedented outage affecting Microsoft Outlook, Teams and Copilot. But while we're still learning details, there are ways to prepare for such events.",
+          "link": "https://www.govtech.com/blogs/lohrmann-on-cybersecurity/5-immediate-lessons-from-the-global-microsoft-outage",
+          "source": "Lohrmann on Cybersecurity",
           "feed_type": "news",
-          "type": "crypto-blockchain-security",
-          "type_label": "Crypto & Blockchain Security",
-          "published": "2026-11-14T10:34:06+00:00",
-          "published_ts": 1794652446,
+          "type": "security-news-media",
+          "type_label": "Security News & Media",
+          "published": "2026-11-15T10:01:00+00:00",
+          "published_ts": 1794736860,
           "smart_groups": [],
           "curated": false
         },
         {
-          "title": "Microsoft Warns of Active Password Stealing Attack Exploiting the Microsoft 365 Service Disruption",
-          "summary": "Microsoft has warned of an active phishing campaign using the November 12 Microsoft 365 service disruption to lure users into opening fake email recovery links. The messages copy Microsoft service health notices and cite the real Exchange Online incident EX1550543, making the requests appear linked…",
-          "link": "https://cybersecuritynews.com/active-password-stealing-attack-microsoft-365/",
-          "source": "Cyber Security News (FeedBurner)",
-          "feed_type": "blog",
-          "type": "security-researcher-blogs",
-          "type_label": "Security Researcher Blogs",
-          "published": "2026-11-14T10:57:32+00:00",
-          "published_ts": 1794653852,
-          "smart_groups": [
-            "Windows / Microsoft",
-            "Malware / Payloads",
-            "Phishing / Social Engineering"
-          ],
-          "curated": true
-        }
-      ]
-    },
-    {
-      "id": "d4214ac07d71",
-      "rank": 5,
-      "title": "GitHub - Ymsniper/vault-share: Self-hosted, invite-only encrypted file sharing in Flask. Each file gets its own AES-256…",
-      "summary": "Can I have some reviews/audits please. submitted by /u/Trick-Resolve-6085 [link] [comments]",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "/r/cybersecurity"
-      ],
-      "first_ts": 1794689158,
-      "latest_ts": 1794689158,
-      "score": 3,
-      "stories": [
-        {
-          "title": "GitHub - Ymsniper/vault-share: Self-hosted, invite-only encrypted file sharing in Flask. Each file gets its own AES-256-GCM key, sealed with HPKE for every reader. Signed uploads, duress passwords that open separate cover vaults, and a master key that can require a USB flash drive.",
-          "summary": "Can I have some reviews/audits please. submitted by /u/Trick-Resolve-6085 [link] [comments]",
-          "link": "https://www.reddit.com/r/cybersecurity/comments/1xwcugb/github_ymsnipervaultshare_selfhosted_inviteonly/",
+          "title": "Microsoft Warns of Phishing Attack Exploiting 365 Outage as Hackers Threaten to Delete Emails Within 24 Hours",
+          "summary": "submitted by /u/beingmodest [link] [comments]",
+          "link": "https://www.reddit.com/r/cybersecurity/comments/1xwxfrv/microsoft_warns_of_phishing_attack_exploiting_365/",
           "source": "/r/cybersecurity",
           "feed_type": "news",
           "type": "osint-communities-subreddits",
           "type_label": "OSINT, Communities & Subreddits",
-          "published": "2026-11-14T20:45:58+00:00",
-          "published_ts": 1794689158,
+          "published": "2026-11-15T14:53:43+00:00",
+          "published_ts": 1794754423,
           "smart_groups": [
-            "Community Discussion"
-          ],
-          "curated": false
-        }
-      ]
-    },
-    {
-      "id": "fb60ec751827",
-      "rank": 6,
-      "title": "Title: Anyone in cybersecurity navigated F-1 → H-1B → PERM? Looking for advice",
-      "summary": "Hi everyone! I’m a recent cybersecurity graduate currently on F-1 OPT and eligible for the STEM OPT extension.",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "/r/cybersecurity"
-      ],
-      "first_ts": 1794688989,
-      "latest_ts": 1794688989,
-      "score": 3,
-      "stories": [
-        {
-          "title": "Title: Anyone in cybersecurity navigated F-1 → H-1B → PERM? Looking for advice",
-          "summary": "Hi everyone! I’m a recent cybersecurity graduate currently on F-1 OPT and eligible for the STEM OPT extension. I’ve been applying to a lot of jobs and getting interviews, but I’m trying to think beyond landing my first role and understand how to plan for the longer term. My biggest concern is findi…",
-          "link": "https://www.reddit.com/r/cybersecurity/comments/1xwcs1q/title_anyone_in_cybersecurity_navigated_f1_h1b/",
-          "source": "/r/cybersecurity",
-          "feed_type": "news",
-          "type": "osint-communities-subreddits",
-          "type_label": "OSINT, Communities & Subreddits",
-          "published": "2026-11-14T20:43:09+00:00",
-          "published_ts": 1794688989,
-          "smart_groups": [
-            "Community Discussion"
-          ],
-          "curated": false
-        }
-      ]
-    },
-    {
-      "id": "e32e8335da96",
-      "rank": 7,
-      "title": "Will people with existing experience as a security engineer get even more valuable given no one is hiring entry level e…",
-      "summary": "I mean it's logical that mid level and senior level engineers all start from entry level Companies need to hire entry level in order for mid level to even exist No one is hiring entry level which will mean as more people retire or hop out of the field, less engineers will exist naturally submitted…",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "/r/cybersecurity"
-      ],
-      "first_ts": 1794688200,
-      "latest_ts": 1794688200,
-      "score": 3,
-      "stories": [
-        {
-          "title": "Will people with existing experience as a security engineer get even more valuable given no one is hiring entry level engineers right now?",
-          "summary": "I mean it's logical that mid level and senior level engineers all start from entry level Companies need to hire entry level in order for mid level to even exist No one is hiring entry level which will mean as more people retire or hop out of the field, less engineers will exist naturally submitted…",
-          "link": "https://www.reddit.com/r/cybersecurity/comments/1xwch7u/will_people_with_existing_experience_as_a/",
-          "source": "/r/cybersecurity",
-          "feed_type": "news",
-          "type": "osint-communities-subreddits",
-          "type_label": "OSINT, Communities & Subreddits",
-          "published": "2026-11-14T20:30:00+00:00",
-          "published_ts": 1794688200,
-          "smart_groups": [
-            "Community Discussion"
-          ],
-          "curated": false
-        }
-      ]
-    },
-    {
-      "id": "cd9be9e5e440",
-      "rank": 8,
-      "title": "Discord servers are growing (only with bots)",
-      "summary": "I guess everyone here knows Discord is making public servers easy to discover through Google. A great news for the admins.",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "/r/cybersecurity"
-      ],
-      "first_ts": 1794686162,
-      "latest_ts": 1794686162,
-      "score": 3,
-      "stories": [
-        {
-          "title": "Discord servers are growing (only with bots)",
-          "summary": "I guess everyone here knows Discord is making public servers easy to discover through Google. A great news for the admins. But I see a lot of Discord servers and it seems like we are just collecting more accounts for the communities rather than real users . I’m in a couple of servers with 40k+ memb…",
-          "link": "https://www.reddit.com/r/cybersecurity/comments/1xwbodj/discord_servers_are_growing_only_with_bots/",
-          "source": "/r/cybersecurity",
-          "feed_type": "news",
-          "type": "osint-communities-subreddits",
-          "type_label": "OSINT, Communities & Subreddits",
-          "published": "2026-11-14T19:56:02+00:00",
-          "published_ts": 1794686162,
-          "smart_groups": [
-            "Community Discussion"
-          ],
-          "curated": false
-        }
-      ]
-    },
-    {
-      "id": "deffc9b03dad",
-      "rank": 9,
-      "title": "Cybersecurity project",
-      "summary": "guys can u check this out , any review , comment or a star will be helpfull and thank u for ur time (my first project) 🚀 SENTINEL v0.2.0 IS HERE! I'm excited to announce the release of Sentinel v0.2.0 !",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "/r/cybersecurity"
-      ],
-      "first_ts": 1794682208,
-      "latest_ts": 1794682208,
-      "score": 3,
-      "stories": [
-        {
-          "title": "Cybersecurity project",
-          "summary": "guys can u check this out , any review , comment or a star will be helpfull and thank u for ur time (my first project) 🚀 SENTINEL v0.2.0 IS HERE! I'm excited to announce the release of Sentinel v0.2.0 ! Sentinel is an open-source, defensive web reconnaissance tool designed to provide evidence-first…",
-          "link": "https://www.reddit.com/r/cybersecurity/comments/1xwa30m/cybersecurity_project/",
-          "source": "/r/cybersecurity",
-          "feed_type": "news",
-          "type": "osint-communities-subreddits",
-          "type_label": "OSINT, Communities & Subreddits",
-          "published": "2026-11-14T18:50:08+00:00",
-          "published_ts": 1794682208,
-          "smart_groups": [
+            "Phishing / Social Engineering",
             "Community Discussion"
           ],
           "curated": true
@@ -388,493 +175,190 @@
       ]
     },
     {
-      "id": "2bd65f4f0cce",
-      "rank": 10,
-      "title": "The Week Jensen Huang Fell: How a Spy Scandal Toppled Nvidia’s CEO",
-      "summary": "In a matter of days, the executive synonymous with the AI boom resigned after 33 years amid reports of affairs and suspected Chinese intelligence ties—sending Nvidia’s stock reeling and leaving the chipmaker leaderless.",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
+      "id": "b9f1a3e7dd21",
+      "rank": 4,
+      "title": "Maileva data breach affects 22 million people in France",
+      "summary": "A cyberattack on La Poste subsidiary Maileva exposed the names and postal addresses of 22 million people in France, with reports of payment reminders being sent to victims.",
+      "origin": "llm",
+      "size": 2,
+      "source_count": 2,
       "sources": [
-        "Decrypt"
+        "Security Affairs",
+        "ZATAZ"
       ],
-      "first_ts": 1794679262,
-      "latest_ts": 1794679262,
-      "score": 3,
+      "first_ts": 1794739396,
+      "latest_ts": 1794743269,
+      "score": 6,
       "stories": [
         {
-          "title": "The Week Jensen Huang Fell: How a Spy Scandal Toppled Nvidia’s CEO",
-          "summary": "In a matter of days, the executive synonymous with the AI boom resigned after 33 years amid reports of affairs and suspected Chinese intelligence ties—sending Nvidia’s stock reeling and leaving the chipmaker leaderless.",
-          "link": "https://decrypt.co/383280/the-week-jensen-huang-fell-how-spy-scandal-toppled-nvidia-ceo",
-          "source": "Decrypt",
-          "feed_type": "news",
-          "type": "crypto-blockchain-security",
-          "type_label": "Crypto & Blockchain Security",
-          "published": "2026-11-14T18:01:02+00:00",
-          "published_ts": 1794679262,
-          "smart_groups": [],
-          "curated": false
-        }
-      ]
-    },
-    {
-      "id": "956f7f3430ff",
-      "rank": 11,
-      "title": "Balancing AI and Documentation for Learning Security",
-      "summary": "My situation I'm learning security fundamentals and protocols mostly through blogs and documentation. Some protocols and CTF challenges take me a long time this way.",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "/r/cybersecurity"
-      ],
-      "first_ts": 1794676681,
-      "latest_ts": 1794676681,
-      "score": 3,
-      "stories": [
-        {
-          "title": "## Balancing AI and Documentation for Learning Security",
-          "summary": "My situation I'm learning security fundamentals and protocols mostly through blogs and documentation. Some protocols and CTF challenges take me a long time this way. The problem When I use AI, I learn faster, but I forget things quickly. When I struggle through a challenge for a few weeks using doc…",
-          "link": "https://www.reddit.com/r/cybersecurity/comments/1xw7sdn/balancing_ai_and_documentation_for_learning/",
-          "source": "/r/cybersecurity",
-          "feed_type": "news",
-          "type": "osint-communities-subreddits",
-          "type_label": "OSINT, Communities & Subreddits",
-          "published": "2026-11-14T17:18:01+00:00",
-          "published_ts": 1794676681,
-          "smart_groups": [
-            "Community Discussion"
-          ],
-          "curated": false
-        }
-      ]
-    },
-    {
-      "id": "10621b32b80d",
-      "rank": 12,
-      "title": "Upcoming Speaking Engagements",
-      "summary": "This is a current list of where and when I am scheduled to speak: I’m speaking at the Catalyst Summit in Brampton, Ontario, Canada, on Wednesday, November 18, 2026. I’m speaking at QT Qonference 2026 in Toronto, Ontario, Canada, on Thursday, November 19, 2026.",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "Schneier on Security"
-      ],
-      "first_ts": 1794675759,
-      "latest_ts": 1794675759,
-      "score": 3,
-      "stories": [
-        {
-          "title": "Upcoming Speaking Engagements",
-          "summary": "This is a current list of where and when I am scheduled to speak: I’m speaking at the Catalyst Summit in Brampton, Ontario, Canada, on Wednesday, November 18, 2026. I’m speaking at QT Qonference 2026 in Toronto, Ontario, Canada, on Thursday, November 19, 2026. The list is maintained on this page .",
-          "link": "https://www.schneier.com/blog/archives/2026/11/upcoming-speaking-engagements-62.html",
-          "source": "Schneier on Security",
-          "feed_type": "blog",
-          "type": "security-researcher-blogs",
-          "type_label": "Security Researcher Blogs",
-          "published": "2026-11-14T17:02:39+00:00",
-          "published_ts": 1794675759,
-          "smart_groups": [],
-          "curated": false
-        }
-      ]
-    },
-    {
-      "id": "10f1e096d4b9",
-      "rank": 13,
-      "title": "OpenAI, Anthropic, Google and Other AI Giants Face Lawsuit Demanding Development Freeze",
-      "summary": "Four nonprofit advocacy groups want a California court to stop major AI developers from building stronger models, alleging their technology could cause catastrophic harm worldwide.",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "Decrypt"
-      ],
-      "first_ts": 1794675662,
-      "latest_ts": 1794675662,
-      "score": 3,
-      "stories": [
-        {
-          "title": "OpenAI, Anthropic, Google and Other AI Giants Face Lawsuit Demanding Development Freeze",
-          "summary": "Four nonprofit advocacy groups want a California court to stop major AI developers from building stronger models, alleging their technology could cause catastrophic harm worldwide.",
-          "link": "https://decrypt.co/383270/openai-anthropic-google-ai-giants-lawsuit-development-freeze",
-          "source": "Decrypt",
-          "feed_type": "news",
-          "type": "crypto-blockchain-security",
-          "type_label": "Crypto & Blockchain Security",
-          "published": "2026-11-14T17:01:02+00:00",
-          "published_ts": 1794675662,
-          "smart_groups": [],
-          "curated": false
-        }
-      ]
-    },
-    {
-      "id": "d3fe9357b621",
-      "rank": 14,
-      "title": "Extortion Group Claims Theft of Nearly One Billion Expedia Traveler Records",
-      "summary": "Russian extortion group n0n claims to have stolen nearly one billion Expedia traveler records through a compromised third-party provider. A newly formed Russian cyber extortion group called n0n claims it has hit Expedia, the world’s second-largest online travel agency, and taken data on nearly one…",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "Security Affairs"
-      ],
-      "first_ts": 1794674786,
-      "latest_ts": 1794674786,
-      "score": 3,
-      "stories": [
-        {
-          "title": "Extortion Group Claims Theft of Nearly One Billion Expedia Traveler Records",
-          "summary": "Russian extortion group n0n claims to have stolen nearly one billion Expedia traveler records through a compromised third-party provider. A newly formed Russian cyber extortion group called n0n claims it has hit Expedia, the world’s second-largest online travel agency, and taken data on nearly one…",
-          "link": "https://securityaffairs.com/203062/cyber-crime/extortion-group-claims-theft-of-nearly-one-billion-expedia-traveler-records.html",
+          "title": "Data Breach at La Poste Subsidiary Maileva Affects 22 Million People in France",
+          "summary": "A cyberattack on La Poste subsidiary Maileva exposed the names and postal addresses of 22 million people, including patients and tenants. Maileva, a subsidiary of the La Poste group, was hit in mid-September in one of the biggest cyberattacks France has seen. La Poste confirmed it to AFP.. The stol…",
+          "link": "https://securityaffairs.com/203126/data-breach/data-breach-at-la-poste-subsidiary-maileva-affects-22-million-people-in-france.html",
           "source": "Security Affairs - Data Breach",
           "feed_type": "news",
           "type": "leaks-breaches",
           "type_label": "Leaks & Breaches",
-          "published": "2026-11-14T16:46:26+00:00",
-          "published_ts": 1794674786,
+          "published": "2026-11-15T10:43:16+00:00",
+          "published_ts": 1794739396,
           "smart_groups": [
-            "Ransomware",
-            "Cloud / SaaS",
-            "Phishing / Social Engineering"
-          ],
-          "curated": true
-        }
-      ]
-    },
-    {
-      "id": "9aa29a9320be",
-      "rank": 15,
-      "title": "What Is Canton Network? The Privacy Blockchain Built for Wall Street",
-      "summary": "Canton Network is a privacy-enabled blockchain built for banks and tokenized assets. Here's how it works and what Canton Coin (CC) does.",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "Decrypt"
-      ],
-      "first_ts": 1794672062,
-      "latest_ts": 1794672062,
-      "score": 3,
-      "stories": [
-        {
-          "title": "What Is Canton Network? The Privacy Blockchain Built for Wall Street",
-          "summary": "Canton Network is a privacy-enabled blockchain built for banks and tokenized assets. Here's how it works and what Canton Coin (CC) does.",
-          "link": "https://decrypt.co/resources/what-is-canton-network-the-privacy-blockchain-built-for-wall-street",
-          "source": "Decrypt",
-          "feed_type": "news",
-          "type": "crypto-blockchain-security",
-          "type_label": "Crypto & Blockchain Security",
-          "published": "2026-11-14T16:01:02+00:00",
-          "published_ts": 1794672062,
-          "smart_groups": [],
-          "curated": false
-        }
-      ]
-    },
-    {
-      "id": "e253199b5be0",
-      "rank": 16,
-      "title": "US disrupts North Korean campaign behind $400 million crypto theft",
-      "summary": "The U.S. government has disrupted a North Korean social engineering campaign called 'FaceStealer', responsible for stealing more than $400 million in cryptocurrency.",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "BleepingComputer"
-      ],
-      "first_ts": 1794669349,
-      "latest_ts": 1794669349,
-      "score": 3,
-      "stories": [
-        {
-          "title": "US disrupts North Korean campaign behind $400 million crypto theft",
-          "summary": "The U.S. government has disrupted a North Korean social engineering campaign called 'FaceStealer', responsible for stealing more than $400 million in cryptocurrency.",
-          "link": "https://www.bleepingcomputer.com/news/security/us-disrupts-north-korean-campaign-behind-400-million-crypto-theft/",
-          "source": "BleepingComputer – Cybercrime",
-          "feed_type": "news",
-          "type": "cybercrime-underground",
-          "type_label": "Cybercrime & Underground",
-          "published": "2026-11-14T15:15:49+00:00",
-          "published_ts": 1794669349,
-          "smart_groups": [
-            "Phishing / Social Engineering",
-            "Crypto / Web3"
+            "Data Breaches / Leaks",
+            "Mobile & App Security",
+            "Privacy & Compliance"
           ],
           "curated": false
-        }
-      ]
-    },
-    {
-      "id": "afc5c87d4952",
-      "rank": 17,
-      "title": "Data-Leaking Ransomware Report - October 2026",
-      "summary": "Welcome to last month's DLR Report, an exclusive presentation of Data-Leaking Ransomware Operator's Global and US Victims that were claimed between 1st October and 31st October 2026. DBD discovered and researched 1085 Global Ransomware Victims over 81 Countries and Islands , including 477 US Ransom…",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "Data Breach Digest"
-      ],
-      "first_ts": 1794669300,
-      "latest_ts": 1794669300,
-      "score": 3,
-      "stories": [
+        },
         {
-          "title": "Data-Leaking Ransomware Report - October 2026",
-          "summary": "Welcome to last month's DLR Report, an exclusive presentation of Data-Leaking Ransomware Operator's Global and US Victims that were claimed between 1st October and 31st October 2026. DBD discovered and researched 1085 Global Ransomware Victims over 81 Countries and Islands , including 477 US Ransom…",
-          "link": "https://www.dbdigest.com/2026/11/data-leaking-ransomware-report-october-2026.html",
-          "source": "Data Breach Digest",
-          "feed_type": "news",
-          "type": "news-digests-aggregators",
-          "type_label": "News Digests & Aggregators",
-          "published": "2026-11-14T15:15:00+00:00",
-          "published_ts": 1794669300,
-          "smart_groups": [
-            "Ransomware"
-          ],
-          "curated": true
-        }
-      ]
-    },
-    {
-      "id": "52608117bd85",
-      "rank": 18,
-      "title": "HTB: Nimbus",
-      "summary": "Nimbus is a Linux box hosting a job scheduler website backed by an emulated AWS environment. I’ll abuse a server-side request forgery in the job submission form, bypassing a string block list with a decimal IP address to reach the instance metadata service and steal AWS credentials.",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "0xdf.gitlab.io"
-      ],
-      "first_ts": 1794667500,
-      "latest_ts": 1794667500,
-      "score": 3,
-      "stories": [
-        {
-          "title": "HTB: Nimbus",
-          "summary": "Nimbus is a Linux box hosting a job scheduler website backed by an emulated AWS environment. I’ll abuse a server-side request forgery in the job submission form, bypassing a string block list with a decimal IP address to reach the instance metadata service and steal AWS credentials. Those credentia…",
-          "link": "https://0xdf.gitlab.io/2026/11/14/htb-nimbus.html",
-          "source": "https://0xdf.gitlab.io/feed.xml",
-          "feed_type": "blog",
-          "type": "security-researcher-blogs",
-          "type_label": "Security Researcher Blogs",
-          "published": "2026-11-14T14:45:00+00:00",
-          "published_ts": 1794667500,
-          "smart_groups": [
-            "Linux / Unix",
-            "Cloud / SaaS"
-          ],
-          "curated": false
-        }
-      ]
-    },
-    {
-      "id": "f1f2852fcc60",
-      "rank": 19,
-      "title": "CISSP Advice",
-      "summary": "Hello, I'm planning on getting my CISSP next year, I have 1 year of SOC experience and 3 years in DFIR. I'm 25 so im definitely lacking some of the experience.",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "/r/cybersecurity"
-      ],
-      "first_ts": 1794666882,
-      "latest_ts": 1794666882,
-      "score": 3,
-      "stories": [
-        {
-          "title": "CISSP Advice",
-          "summary": "Hello, I'm planning on getting my CISSP next year, I have 1 year of SOC experience and 3 years in DFIR. I'm 25 so im definitely lacking some of the experience. I was wondering if anyone has advice on resources / online classes or videos to help study and make all the content digestible. I have take…",
-          "link": "https://www.reddit.com/r/cybersecurity/comments/1xw3v8y/cissp_advice/",
-          "source": "/r/cybersecurity",
-          "feed_type": "news",
-          "type": "osint-communities-subreddits",
-          "type_label": "OSINT, Communities & Subreddits",
-          "published": "2026-11-14T14:34:42+00:00",
-          "published_ts": 1794666882,
-          "smart_groups": [
-            "Community Discussion"
-          ],
-          "curated": true
-        }
-      ]
-    },
-    {
-      "id": "3baeba662fbe",
-      "rank": 20,
-      "title": "OpenAI Launches ChatGPT Wallet to Let AI Agents Shop—Without Crypto",
-      "summary": "OpenAI’s new wallet lets AI agents buy products using ordinary cards, challenging crypto payment tools from Coinbase and Circle as companies compete to control everyday online shopping by autonomous software.",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "Decrypt"
-      ],
-      "first_ts": 1794664862,
-      "latest_ts": 1794664862,
-      "score": 3,
-      "stories": [
-        {
-          "title": "OpenAI Launches ChatGPT Wallet to Let AI Agents Shop—Without Crypto",
-          "summary": "OpenAI’s new wallet lets AI agents buy products using ordinary cards, challenging crypto payment tools from Coinbase and Circle as companies compete to control everyday online shopping by autonomous software.",
-          "link": "https://decrypt.co/383278/openai-chatgpt-wallet-ai-agents-shop-without-crypto",
-          "source": "Decrypt",
-          "feed_type": "news",
-          "type": "crypto-blockchain-security",
-          "type_label": "Crypto & Blockchain Security",
-          "published": "2026-11-14T14:01:02+00:00",
-          "published_ts": 1794664862,
-          "smart_groups": [
-            "AI/ML Security",
-            "Product News"
-          ],
-          "curated": false
-        }
-      ]
-    },
-    {
-      "id": "3772cdf174b0",
-      "rank": 21,
-      "title": "Is AI Making Us Worse at Cybersecurity?",
-      "summary": "Overreliance on AI could erode the creativity, clear communication, and critical thinking security teams need when there’s no playbook.",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "SecurityWeek"
-      ],
-      "first_ts": 1794664800,
-      "latest_ts": 1794664800,
-      "score": 3,
-      "stories": [
-        {
-          "title": "Is AI Making Us Worse at Cybersecurity?",
-          "summary": "Overreliance on AI could erode the creativity, clear communication, and critical thinking security teams need when there’s no playbook.",
-          "link": "https://www.securityweek.com/is-ai-making-us-worse-at-cybersecurity/",
-          "source": "SecurityWeek",
-          "feed_type": "news",
-          "type": "security-news-media",
-          "type_label": "Security News & Media",
-          "published": "2026-11-14T14:00:00+00:00",
-          "published_ts": 1794664800,
-          "smart_groups": [],
-          "curated": false
-        }
-      ]
-    },
-    {
-      "id": "881ada954eb7",
-      "rank": 22,
-      "title": "Bitrise Takes Its Mobile Build Service Offline After a Breach, Tells Customers to Rotate Every Secret",
-      "summary": "Bitrise, which thousands of companies use to build and ship mobile apps, has been offline since 13 November after an intruder got into an internal system. It tells customers to rotate every secret, token and certificate stored there.",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "Privacy Affairs"
-      ],
-      "first_ts": 1794662820,
-      "latest_ts": 1794662820,
-      "score": 3,
-      "stories": [
-        {
-          "title": "Bitrise Takes Its Mobile Build Service Offline After a Breach, Tells Customers to Rotate Every Secret",
-          "summary": "Bitrise, which thousands of companies use to build and ship mobile apps, has been offline since 13 November after an intruder got into an internal system. It tells customers to rotate every secret, token and certificate stored there. The company, founded in Budapest in 2014, says on its status page…",
-          "link": "https://www.privacyaffairs.com/bitrise-security-incident/",
-          "source": "Privacy Affairs – Dark Web",
+          "title": "Cyberattaque Maileva, 22 millions de personnes touchées",
+          "summary": "Cyberattaque Maileva, 22 millions de personnes touchées par le vol de données. Des relances de paiement ont été exposées.",
+          "link": "https://www.zataz.com/cyberattaque-maileva-22-millions-de-personnes-touchees/",
+          "source": "ZATAZ – Cybercrime",
           "feed_type": "news",
           "type": "leaks-breaches",
           "type_label": "Leaks & Breaches",
-          "published": "2026-11-14T13:27:00+00:00",
-          "published_ts": 1794662820,
-          "smart_groups": [
-            "Mobile & App Security"
-          ],
-          "curated": true
-        }
-      ]
-    },
-    {
-      "id": "248c13d80c6f",
-      "rank": 23,
-      "title": "The Security Jobs Growing Around Enterprise AI Agents",
-      "summary": "Two years ago, most company AI use happened in a chat window. Today, AI assistants read shared mailboxes,…",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "HackRead"
-      ],
-      "first_ts": 1794661441,
-      "latest_ts": 1794661441,
-      "score": 3,
-      "stories": [
-        {
-          "title": "The Security Jobs Growing Around Enterprise AI Agents",
-          "summary": "Two years ago, most company AI use happened in a chat window. Today, AI assistants read shared mailboxes,…",
-          "link": "https://hackread.com/security-jobs-growing-around-enterprise-ai-agents/",
-          "source": "HackRead",
-          "feed_type": "news",
-          "type": "security-news-media",
-          "type_label": "Security News & Media",
-          "published": "2026-11-14T13:04:01+00:00",
-          "published_ts": 1794661441,
+          "published": "2026-11-15T11:47:49+00:00",
+          "published_ts": 1794743269,
           "smart_groups": [],
           "curated": false
         }
       ]
     },
     {
-      "id": "82ab3d6d0794",
-      "rank": 24,
-      "title": "Beware the New AI-Fueled Ransomware Boom",
-      "summary": "Fully automated ransomware hasn’t arrived—yet. But seemingly unsophisticated attackers are using AI tools to wreak havoc.",
-      "origin": "rules",
-      "size": 1,
+      "id": "06561f6437b5",
+      "rank": 5,
+      "title": "Pirate forum claims data breaches of French companies",
+      "summary": "A hacker known as Chimera claimed data breaches involving multiple French entities, including the French Tennis Federation, eyewear retailer Opsysweb, and precious metals company Techfive.",
+      "origin": "llm",
+      "size": 3,
       "source_count": 1,
       "sources": [
-        "WIRED"
+        "ZATAZ"
       ],
-      "first_ts": 1794661200,
-      "latest_ts": 1794661200,
-      "score": 3,
+      "first_ts": 1794745191,
+      "latest_ts": 1794754441,
+      "score": 5,
       "stories": [
         {
-          "title": "Beware the New AI-Fueled Ransomware Boom",
-          "summary": "Fully automated ransomware hasn’t arrived—yet. But seemingly unsophisticated attackers are using AI tools to wreak havoc.",
-          "link": "https://www.wired.com/story/beware-the-new-ai-fueled-ransomware-boom/",
-          "source": "WIRED – Security",
+          "title": "Opsysweb, une fuite présumée de 4,3 millions de commandes",
+          "summary": "Sur un forum pirate, un internaute revendique une fuite de 4,3 millions de commandes de verres attribuées à Opsysweb.",
+          "link": "https://www.zataz.com/opsysweb-une-fuite-presumee-de-43-millions-de-commandes/",
+          "source": "ZATAZ – Cybercrime",
+          "feed_type": "news",
+          "type": "leaks-breaches",
+          "type_label": "Leaks & Breaches",
+          "published": "2026-11-15T12:19:51+00:00",
+          "published_ts": 1794745191,
+          "smart_groups": [],
+          "curated": false
+        },
+        {
+          "title": "Le pirate qui « audite » la France",
+          "summary": "La FFTT confirme un vol de données. ZATAZ retrace les annonces de Chimera et les fichiers attribués à 33 autres fédération sportives.",
+          "link": "https://www.zataz.com/le-pirate-qui-audite-la-france/",
+          "source": "ZATAZ – Cybercrime",
+          "feed_type": "news",
+          "type": "leaks-breaches",
+          "type_label": "Leaks & Breaches",
+          "published": "2026-11-15T12:37:12+00:00",
+          "published_ts": 1794746232,
+          "smart_groups": [],
+          "curated": false
+        },
+        {
+          "title": "Techfive cité dans une annonce de vente de données",
+          "summary": "Un pirate informatique annonce la vente de 400 entreprises retrouvées chez chez un professionnel de l'encaissement et du paiement.",
+          "link": "https://www.zataz.com/techfive-cite-dans-une-annonce-de-vente-de-donnees/",
+          "source": "ZATAZ – Cybercrime",
+          "feed_type": "news",
+          "type": "leaks-breaches",
+          "type_label": "Leaks & Breaches",
+          "published": "2026-11-15T14:54:01+00:00",
+          "published_ts": 1794754441,
+          "smart_groups": [],
+          "curated": false
+        }
+      ]
+    },
+    {
+      "id": "00f33efd3785",
+      "rank": 6,
+      "title": "SECURITY AFFAIRS MALWARE NEWSLETTER ROUND 123",
+      "summary": "Security Affairs Malware newsletter includes a collection of the best articles and research on malware in the international landscape Malware Newsletter Exchange for breakfast: Turla’s Cereal tricks are not for kids Inside an AhsayCBS Intrusion: Hidden Webshells, a CryptoMiner, and a C2 Implant Not…",
+      "origin": "rules",
+      "size": 2,
+      "source_count": 1,
+      "sources": [
+        "Security Affairs"
+      ],
+      "first_ts": 1794757744,
+      "latest_ts": 1794758771,
+      "score": 4,
+      "stories": [
+        {
+          "title": "SECURITY AFFAIRS MALWARE NEWSLETTER ROUND 123",
+          "summary": "Security Affairs Malware newsletter includes a collection of the best articles and research on malware in the international landscape Malware Newsletter Exchange for breakfast: Turla’s Cereal tricks are not for kids Inside an AhsayCBS Intrusion: Hidden Webshells, a CryptoMiner, and a C2 Implant Not…",
+          "link": "https://securityaffairs.com/203156/malware/security-affairs-malware-newsletter-round-123.html",
+          "source": "Security Affairs - Data Breach",
+          "feed_type": "news",
+          "type": "leaks-breaches",
+          "type_label": "Leaks & Breaches",
+          "published": "2026-11-15T15:49:04+00:00",
+          "published_ts": 1794757744,
+          "smart_groups": [
+            "Malware / Payloads",
+            "Threat Actors / APT",
+            "Privacy & Compliance"
+          ],
+          "curated": true
+        },
+        {
+          "title": "SECURITY AFFAIRS AI-CYBERSECURITY NEWSLETTER ROUND 8",
+          "summary": "Security Affairs AI-CYBERSECURITY newsletter includes a collection of the best articles and research on AI in the international landscape Artificial intelligence is rapidly changing cybersecurity, reshaping both the techniques used by attackers and the tools available to defenders. AI agents can au…",
+          "link": "https://securityaffairs.com/203165/ai/security-affairs-ai-cybersecurity-newsletter-round-8.html",
+          "source": "Security Affairs",
           "feed_type": "news",
           "type": "security-news-media",
           "type_label": "Security News & Media",
-          "published": "2026-11-14T13:00:00+00:00",
-          "published_ts": 1794661200,
+          "published": "2026-11-15T16:06:11+00:00",
+          "published_ts": 1794758771,
           "smart_groups": [
-            "Ransomware"
+            "Vulnerabilities / CVEs",
+            "Cloud / SaaS",
+            "AI/ML Security"
           ],
           "curated": true
         }
       ]
     },
     {
-      "id": "043a2bf5f6f7",
-      "rank": 25,
-      "title": "Here’s what happened in crypto today",
-      "summary": "Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.",
-      "origin": "rules",
-      "size": 1,
+      "id": "6c8264e7349c",
+      "rank": 7,
+      "title": "Bitcoin falls to four-month low amid crypto selloff",
+      "summary": "Bitcoin dropped to a four-month low near $62,000 as the global cryptocurrency market capitalization fell 4% to $2.26 trillion over 24 hours.",
+      "origin": "llm",
+      "size": 2,
       "source_count": 1,
       "sources": [
         "Cointelegraph.com News"
       ],
-      "first_ts": 1794655692,
-      "latest_ts": 1794655692,
-      "score": 3,
+      "first_ts": 1794738197,
+      "latest_ts": 1794741528,
+      "score": 4,
       "stories": [
+        {
+          "title": "Bitcoin falls to four-month low near $62K as crypto selloff deepens",
+          "summary": "The global cryptocurrency market capitalization fell 4% to $2.26 trillion over 24 hours, while Ether and Solana posted double-digit weekly losses.",
+          "link": "https://cointelegraph.com/markets/bitcoin-four-month-low-62k-crypto-market-selloff?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+          "source": "Cointelegraph.com News",
+          "feed_type": "news",
+          "type": "crypto-blockchain-security",
+          "type_label": "Crypto & Blockchain Security",
+          "published": "2026-11-15T10:23:17+00:00",
+          "published_ts": 1794738197,
+          "smart_groups": [
+            "Crypto / Web3"
+          ],
+          "curated": false
+        },
         {
           "title": "Here’s what happened in crypto today",
           "summary": "Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, Web3 and crypto regulation.",
@@ -883,8 +367,8 @@
           "feed_type": "news",
           "type": "crypto-blockchain-security",
           "type_label": "Crypto & Blockchain Security",
-          "published": "2026-11-14T11:28:12+00:00",
-          "published_ts": 1794655692,
+          "published": "2026-11-15T11:18:48+00:00",
+          "published_ts": 1794741528,
           "smart_groups": [
             "Crypto / Web3"
           ],
@@ -893,255 +377,310 @@
       ]
     },
     {
-      "id": "43ef62407d9b",
-      "rank": 26,
-      "title": "FBI Reveals How Hackers Use ARTEX AI Agents to Gain Privileged Access in Under Three Hours",
-      "summary": "The FBI has warned that hackers are using ARTEX AI agents to automate network attacks, with some intrusions reaching privileged access in under three hours. Its November 13, 2026, FLASH alert describes how attackers combine stolen credentials, exposed applications, and cloud permissions to shorten…",
+      "id": "324cd73051e2",
+      "rank": 8,
+      "title": "Final year project",
+      "summary": "Im thinking about doing a detection and prevention system for data exfiltration over DNS but I also read about DNS over HTTPS and rn I feel like im confused about which one to pick or which one is better or stronger at the same time I want something achievable Besides this I dont feel like this is…",
       "origin": "rules",
       "size": 1,
       "source_count": 1,
       "sources": [
-        "Cyber Security News (FeedBurner)"
+        "/r/cybersecurity"
       ],
-      "first_ts": 1794655277,
-      "latest_ts": 1794655277,
+      "first_ts": 1794773969,
+      "latest_ts": 1794773969,
       "score": 3,
       "stories": [
         {
-          "title": "FBI Reveals How Hackers Use ARTEX AI Agents to Gain Privileged Access in Under Three Hours",
-          "summary": "The FBI has warned that hackers are using ARTEX AI agents to automate network attacks, with some intrusions reaching privileged access in under three hours. Its November 13, 2026, FLASH alert describes how attackers combine stolen credentials, exposed applications, and cloud permissions to shorten…",
-          "link": "https://cybersecuritynews.com/fbi-reveals-hackers-artex-ai-usage/",
-          "source": "Cyber Security News (FeedBurner)",
-          "feed_type": "blog",
-          "type": "security-researcher-blogs",
-          "type_label": "Security Researcher Blogs",
-          "published": "2026-11-14T11:21:17+00:00",
-          "published_ts": 1794655277,
+          "title": "Final year project",
+          "summary": "Im thinking about doing a detection and prevention system for data exfiltration over DNS but I also read about DNS over HTTPS and rn I feel like im confused about which one to pick or which one is better or stronger at the same time I want something achievable Besides this I dont feel like this is…",
+          "link": "https://www.reddit.com/r/cybersecurity/comments/1xx5mv2/final_year_project/",
+          "source": "/r/cybersecurity",
+          "feed_type": "news",
+          "type": "osint-communities-subreddits",
+          "type_label": "OSINT, Communities & Subreddits",
+          "published": "2026-11-15T20:19:29+00:00",
+          "published_ts": 1794773969,
           "smart_groups": [
-            "Vulnerabilities / CVEs",
-            "Windows / Microsoft",
-            "Cloud / SaaS"
+            "Community Discussion"
           ],
-          "curated": true
+          "curated": false
         }
       ]
     },
     {
-      "id": "f694138aff43",
-      "rank": 27,
-      "title": "Apple Reveals How Secure Exclaves Shield Camera and Microphone Data",
-      "summary": "The tech giant has detailed the architecture designed to isolate ambient sensor data from the main OS on HomeView and new iPhones.",
+      "id": "7804a2d85202",
+      "rank": 9,
+      "title": "Stripe va masquer ses clés API secrètes le 20 novembre",
+      "summary": "Stripe masquera ses anciennes clés API secrètes le 20 novembre 2026. ZATAZ analyse les risques et les conséquences.",
       "origin": "rules",
       "size": 1,
       "source_count": 1,
       "sources": [
-        "SecurityWeek"
+        "ZATAZ"
       ],
-      "first_ts": 1794654000,
-      "latest_ts": 1794654000,
+      "first_ts": 1794771874,
+      "latest_ts": 1794771874,
       "score": 3,
       "stories": [
         {
-          "title": "Apple Reveals How Secure Exclaves Shield Camera and Microphone Data",
-          "summary": "The tech giant has detailed the architecture designed to isolate ambient sensor data from the main OS on HomeView and new iPhones.",
-          "link": "https://www.securityweek.com/apple-reveals-how-secure-exclaves-shield-camera-and-microphone-data/",
-          "source": "SecurityWeek",
+          "title": "Stripe va masquer ses clés API secrètes le 20 novembre",
+          "summary": "Stripe masquera ses anciennes clés API secrètes le 20 novembre 2026. ZATAZ analyse les risques et les conséquences.",
+          "link": "https://www.zataz.com/stripe-va-masquer-ses-cles-api-secretes-le-20-novembre/",
+          "source": "ZATAZ – Cybercrime",
           "feed_type": "news",
-          "type": "security-news-media",
-          "type_label": "Security News & Media",
-          "published": "2026-11-14T11:00:00+00:00",
-          "published_ts": 1794654000,
+          "type": "leaks-breaches",
+          "type_label": "Leaks & Breaches",
+          "published": "2026-11-15T19:44:34+00:00",
+          "published_ts": 1794771874,
           "smart_groups": [],
           "curated": false
         }
       ]
     },
     {
-      "id": "5bdfae82eac0",
-      "rank": 28,
-      "title": "CTO at NCSC Summary: week ending November 15th",
-      "summary": "submitted by /u/digicat [link] [comments]",
+      "id": "989c0561410e",
+      "rank": 10,
+      "title": "YARA-X 1.23.0 Release, (Sun, Nov 15th)",
+      "summary": "YARA-X's 1.23.0 release brings 4 improvements and 16 bugfixes. Didier Stevens Senior handler blog.DidierStevens.com (c) SANS Internet Storm Center.",
       "origin": "rules",
       "size": 1,
       "source_count": 1,
       "sources": [
-        "/r/cybersecurity"
+        "SANS Internet Storm Center"
       ],
-      "first_ts": 1794647633,
-      "latest_ts": 1794647633,
+      "first_ts": 1794766647,
+      "latest_ts": 1794766647,
       "score": 3,
       "stories": [
         {
-          "title": "CTO at NCSC Summary: week ending November 15th",
-          "summary": "submitted by /u/digicat [link] [comments]",
-          "link": "https://www.reddit.com/r/cybersecurity/comments/1xvy1x5/cto_at_ncsc_summary_week_ending_november_15th/",
-          "source": "/r/cybersecurity",
+          "title": "YARA-X 1.23.0 Release, (Sun, Nov 15th)",
+          "summary": "YARA-X's 1.23.0 release brings 4 improvements and 16 bugfixes. Didier Stevens Senior handler blog.DidierStevens.com (c) SANS Internet Storm Center. https://isc.sans.edu Creative Commons Attribution-Noncommercial 3.0 United States License.",
+          "link": "https://isc.sans.edu/diary/rss/33496",
+          "source": "SANS Internet Storm Center",
           "feed_type": "news",
-          "type": "osint-communities-subreddits",
-          "type_label": "OSINT, Communities & Subreddits",
-          "published": "2026-11-14T09:13:53+00:00",
-          "published_ts": 1794647633,
-          "smart_groups": [
-            "Community Discussion"
-          ],
-          "curated": false
-        }
-      ]
-    },
-    {
-      "id": "a4d2124c5eff",
-      "rank": 29,
-      "title": "Companies treat cybersecurity like garbage until they get punched in the teeth with an attack",
-      "summary": "Another day, another massive company coming out with the classic 'we detected unauthorized access through a vulnerability that has already been patched' and 'no passwords were compromised' (textbook PR damage control). For anyone working in the field, this isn't surprising at all.",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "/r/cybersecurity"
-      ],
-      "first_ts": 1794647084,
-      "latest_ts": 1794647084,
-      "score": 3,
-      "stories": [
-        {
-          "title": "Companies treat cybersecurity like garbage until they get punched in the teeth with an attack",
-          "summary": "Another day, another massive company coming out with the classic 'we detected unauthorized access through a vulnerability that has already been patched' and 'no passwords were compromised' (textbook PR damage control). For anyone working in the field, this isn't surprising at all. It's always the e…",
-          "link": "https://www.reddit.com/r/cybersecurity/comments/1xvxx03/companies_treat_cybersecurity_like_garbage_until/",
-          "source": "/r/cybersecurity",
-          "feed_type": "news",
-          "type": "osint-communities-subreddits",
-          "type_label": "OSINT, Communities & Subreddits",
-          "published": "2026-11-14T09:04:44+00:00",
-          "published_ts": 1794647084,
-          "smart_groups": [
-            "Vulnerabilities / CVEs",
-            "Community Discussion"
-          ],
-          "curated": true
-        }
-      ]
-    },
-    {
-      "id": "9cdb1de4d486",
-      "rank": 30,
-      "title": "No Signs of Hacking in FAA Ground Stop as FBI Reportedly Probes Software Update",
-      "summary": "Officials say there is no evidence of a cyberattack behind the nationwide FAA outage, which may have been caused by a software update.",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "SecurityWeek"
-      ],
-      "first_ts": 1794645622,
-      "latest_ts": 1794645622,
-      "score": 3,
-      "stories": [
-        {
-          "title": "No Signs of Hacking in FAA Ground Stop as FBI Reportedly Probes Software Update",
-          "summary": "Officials say there is no evidence of a cyberattack behind the nationwide FAA outage, which may have been caused by a software update.",
-          "link": "https://www.securityweek.com/no-signs-of-hacking-in-faa-ground-stop-as-fbi-reportedly-probes-software-update/",
-          "source": "SecurityWeek",
-          "feed_type": "news",
-          "type": "security-news-media",
-          "type_label": "Security News & Media",
-          "published": "2026-11-14T08:40:22+00:00",
-          "published_ts": 1794645622,
+          "type": "government-cert-advisories",
+          "type_label": "Government, CERT & Advisories",
+          "published": "2026-11-15T18:17:27+00:00",
+          "published_ts": 1794766647,
           "smart_groups": [],
           "curated": false
         }
       ]
     },
     {
-      "id": "c09dca8e5d67",
-      "rank": 31,
-      "title": "Spreadsheets and other models of morality",
-      "summary": "This will be my last article on philosophy. I always tell prospective subscribers to expect the unexpected; I also feel that the series presented interesting problems and covered them in entertaining ways.",
+      "id": "1bf06d6ee98d",
+      "rank": 11,
+      "title": "Memory Palaces, the Major System, and PAO",
+      "summary": "In my review of Moonwalking with Einstein , I promised to follow up on building and maintaining a memory palace, learning the Major System, and building out a full PAO dictionary, along with what stuck after trying each one. All three build on ideas Foer returns to throughout the book.",
       "origin": "rules",
       "size": 1,
       "source_count": 1,
       "sources": [
-        "lcamtuf.substack.com"
+        "feeds.feedburner.com"
       ],
-      "first_ts": 1794645384,
-      "latest_ts": 1794645384,
+      "first_ts": 1794763933,
+      "latest_ts": 1794763933,
       "score": 3,
       "stories": [
         {
-          "title": "Spreadsheets and other models of morality",
-          "summary": "This will be my last article on philosophy. I always tell prospective subscribers to expect the unexpected; I also feel that the series presented interesting problems and covered them in entertaining ways. That said, looking at email and web traffic statistics, I concede defeat. To end the series w…",
-          "link": "https://blog.coredump.cx/p/spreadsheets-and-other-models-of",
-          "source": "https://lcamtuf.substack.com/feed",
+          "title": "Memory Palaces, the Major System, and PAO",
+          "summary": "In my review of Moonwalking with Einstein , I promised to follow up on building and maintaining a memory palace, learning the Major System, and building out a full PAO dictionary, along with what stuck after trying each one. All three build on ideas Foer returns to throughout the book. We remember…",
+          "link": "http://blog.lockboxx.org/2026/11/memory-palaces-major-system-and-pao.html",
+          "source": "http://feeds.feedburner.com/blogspot/ofozM",
           "feed_type": "blog",
           "type": "security-researcher-blogs",
           "type_label": "Security Researcher Blogs",
-          "published": "2026-11-14T08:36:24+00:00",
-          "published_ts": 1794645384,
-          "smart_groups": [
-            "Community Discussion"
-          ],
-          "curated": true
+          "published": "2026-11-15T17:32:13+00:00",
+          "published_ts": 1794763933,
+          "smart_groups": [],
+          "curated": false
         }
       ]
     },
     {
-      "id": "eb24a807b887",
-      "rank": 32,
-      "title": "Opinions for pen-source tool for CVSS and inventory of installed packages on Linux",
-      "summary": "What tools do you use for managing CVEs? This year has brough a boom of AI discovering a lot of vulnerabilities and we struggle to keep up with it.",
+      "id": "beaad1b980bb",
+      "rank": 12,
+      "title": "FortiClient, FortiShield74.sys kernel driver oob",
+      "summary": "hi, this is my new research repo, support pls submitted by /u/nanaynunay [link] [comments]",
       "origin": "rules",
       "size": 1,
       "source_count": 1,
       "sources": [
         "/r/cybersecurity"
       ],
-      "first_ts": 1794645051,
-      "latest_ts": 1794645051,
+      "first_ts": 1794760168,
+      "latest_ts": 1794760168,
       "score": 3,
       "stories": [
         {
-          "title": "Opinions for pen-source tool for CVSS and inventory of installed packages on Linux",
-          "summary": "What tools do you use for managing CVEs? This year has brough a boom of AI discovering a lot of vulnerabilities and we struggle to keep up with it. It is not always convenient to do system wide upgrades weekly and most importantly to know what needs patching. I came up with software that is lightwe…",
-          "link": "https://www.reddit.com/r/cybersecurity/comments/1xvxdpd/opinions_for_pensource_tool_for_cvss_and/",
+          "title": "FortiClient, FortiShield_74.sys kernel driver oob",
+          "summary": "hi, this is my new research repo, support pls submitted by /u/nanaynunay [link] [comments]",
+          "link": "https://www.reddit.com/r/cybersecurity/comments/1xwzs0l/forticlient_fortishield_74sys_kernel_driver_oob/",
           "source": "/r/cybersecurity",
           "feed_type": "news",
           "type": "osint-communities-subreddits",
           "type_label": "OSINT, Communities & Subreddits",
-          "published": "2026-11-14T08:30:51+00:00",
-          "published_ts": 1794645051,
+          "published": "2026-11-15T16:29:28+00:00",
+          "published_ts": 1794760168,
           "smart_groups": [
-            "Linux / Unix",
-            "Vulnerabilities / CVEs",
             "Community Discussion"
+          ],
+          "curated": false
+        }
+      ]
+    },
+    {
+      "id": "3368737bc3df",
+      "rank": 13,
+      "title": "How Wall Street Is Racing to Claim the Onchain Dollar",
+      "summary": "From Goldman and Citi’s $270 million “Project Faro” to SoFi, Anchorage, Mastercard, Visa and Circle, traditional finance is racing to claim the onchain dollar once dominated by Tether and Circle.",
+      "origin": "rules",
+      "size": 1,
+      "source_count": 1,
+      "sources": [
+        "Decrypt"
+      ],
+      "first_ts": 1794758462,
+      "latest_ts": 1794758462,
+      "score": 3,
+      "stories": [
+        {
+          "title": "How Wall Street Is Racing to Claim the Onchain Dollar",
+          "summary": "From Goldman and Citi’s $270 million “Project Faro” to SoFi, Anchorage, Mastercard, Visa and Circle, traditional finance is racing to claim the onchain dollar once dominated by Tether and Circle.",
+          "link": "https://decrypt.co/383284/how-wall-street-racing-onchain-dollar-stablecoins",
+          "source": "Decrypt",
+          "feed_type": "news",
+          "type": "crypto-blockchain-security",
+          "type_label": "Crypto & Blockchain Security",
+          "published": "2026-11-15T16:01:02+00:00",
+          "published_ts": 1794758462,
+          "smart_groups": [],
+          "curated": false
+        }
+      ]
+    },
+    {
+      "id": "f43330ee36ee",
+      "rank": 14,
+      "title": "​\"Case Study: Multi-platform automated session hijacking wave across multiple emails (Infostealer confirmation & mitiga…",
+      "summary": "Title: Detailed Case Study: Multi-platform automated session hijacking wave across multiple emails. Looking for expert confirmation on Infostealer behavior.",
+      "origin": "rules",
+      "size": 1,
+      "source_count": 1,
+      "sources": [
+        "/r/cybersecurity"
+      ],
+      "first_ts": 1794757442,
+      "latest_ts": 1794757442,
+      "score": 3,
+      "stories": [
+        {
+          "title": "​\"Case Study: Multi-platform automated session hijacking wave across multiple emails (Infostealer confirmation & mitigation)\"",
+          "summary": "Title: Detailed Case Study: Multi-platform automated session hijacking wave across multiple emails. Looking for expert confirmation on Infostealer behavior. ​Body: Hi r/cybersecurity community, ​I'm writing to share a recent security incident I experienced and would appreciate your technical confir…",
+          "link": "https://www.reddit.com/r/cybersecurity/comments/1xwyn9b/case_study_multiplatform_automated_session/",
+          "source": "/r/cybersecurity",
+          "feed_type": "news",
+          "type": "osint-communities-subreddits",
+          "type_label": "OSINT, Communities & Subreddits",
+          "published": "2026-11-15T15:44:02+00:00",
+          "published_ts": 1794757442,
+          "smart_groups": [
+            "Malware / Payloads",
+            "Identity / Access",
+            "AI/ML Security"
           ],
           "curated": true
         }
       ]
     },
     {
-      "id": "facdec665650",
-      "rank": 33,
-      "title": "Airtasker Data Breach: Support Tickets Downloaded, Some With IDs and Card Numbers",
-      "summary": "Airtasker says someone broke into the system it uses for customer support and downloaded customer data. For some users, that includes ID documents, card numbers or passwords they once sent to support.",
+      "id": "e1c3de1d10b9",
+      "rank": 15,
+      "title": "Need Guidance for CTF Round of Application security Engineer",
+      "summary": "Hi guys, Kindly share the guidance for CTF Round for Application security Engineer no idea about the round right now submitted by /u/Zealousideal-Fail-98 [link] [comments]",
+      "origin": "rules",
+      "size": 1,
+      "source_count": 1,
+      "sources": [
+        "/r/cybersecurity"
+      ],
+      "first_ts": 1794757268,
+      "latest_ts": 1794757268,
+      "score": 3,
+      "stories": [
+        {
+          "title": "Need Guidance for CTF Round of Application security Engineer",
+          "summary": "Hi guys, Kindly share the guidance for CTF Round for Application security Engineer no idea about the round right now submitted by /u/Zealousideal-Fail-98 [link] [comments]",
+          "link": "https://www.reddit.com/r/cybersecurity/comments/1xwykoh/need_guidance_for_ctf_round_of_application/",
+          "source": "/r/cybersecurity",
+          "feed_type": "news",
+          "type": "osint-communities-subreddits",
+          "type_label": "OSINT, Communities & Subreddits",
+          "published": "2026-11-15T15:41:08+00:00",
+          "published_ts": 1794757268,
+          "smart_groups": [
+            "Community Discussion"
+          ],
+          "curated": false
+        }
+      ]
+    },
+    {
+      "id": "492b2256fbf7",
+      "rank": 16,
+      "title": "Dutch News Sites Served iPhone-Hacking Code Through Their Ads: Who Was at Risk",
+      "summary": "For several days in early November, reading an article on VI.nl, GeenStijl or more than a dozen other Dutch websites could be enough to expose an outdated iPhone to a hacking attempt. The code didn’t come from the sites themselves.",
       "origin": "rules",
       "size": 1,
       "source_count": 1,
       "sources": [
         "Privacy Affairs"
       ],
-      "first_ts": 1794645005,
-      "latest_ts": 1794645005,
+      "first_ts": 1794756827,
+      "latest_ts": 1794756827,
       "score": 3,
       "stories": [
         {
-          "title": "Airtasker Data Breach: Support Tickets Downloaded, Some With IDs and Card Numbers",
-          "summary": "Airtasker says someone broke into the system it uses for customer support and downloaded customer data. For some users, that includes ID documents, card numbers or passwords they once sent to support. The Australian odd-jobs marketplace found the access on 10 November and shut it the same day, acco…",
-          "link": "https://www.privacyaffairs.com/airtasker-data-breach/",
+          "title": "Dutch News Sites Served iPhone-Hacking Code Through Their Ads: Who Was at Risk",
+          "summary": "For several days in early November, reading an article on VI.nl, GeenStijl or more than a dozen other Dutch websites could be enough to expose an outdated iPhone to a hacking attempt. The code didn’t come from the sites themselves. Someone broke into the system that places their ads and slipped Jav…",
+          "link": "https://www.privacyaffairs.com/dutch-sites-iphone-malware-ads/",
           "source": "Privacy Affairs – Dark Web",
           "feed_type": "news",
           "type": "leaks-breaches",
           "type_label": "Leaks & Breaches",
-          "published": "2026-11-14T08:30:05+00:00",
-          "published_ts": 1794645005,
+          "published": "2026-11-15T15:33:47+00:00",
+          "published_ts": 1794756827,
+          "smart_groups": [],
+          "curated": false
+        }
+      ]
+    },
+    {
+      "id": "bbb8a6727085",
+      "rank": 17,
+      "title": "TSMC employee data breach linked to cloud provider",
+      "summary": "Taiwan Semiconductor Manufacturing Company (TSMC) confirmed that personal employee data has been leaked online after a threat actor put 6.9GB of information allegedly stolen from the company up for auction.",
+      "origin": "rules",
+      "size": 1,
+      "source_count": 1,
+      "sources": [
+        "BleepingComputer"
+      ],
+      "first_ts": 1794756228,
+      "latest_ts": 1794756228,
+      "score": 3,
+      "stories": [
+        {
+          "title": "TSMC employee data breach linked to cloud provider",
+          "summary": "Taiwan Semiconductor Manufacturing Company (TSMC) confirmed that personal employee data has been leaked online after a threat actor put 6.9GB of information allegedly stolen from the company up for auction.",
+          "link": "https://www.bleepingcomputer.com/news/security/tsmc-employee-data-breach-linked-to-cloud-provider/",
+          "source": "BleepingComputer – Cybercrime",
+          "feed_type": "news",
+          "type": "cybercrime-underground",
+          "type_label": "Cybercrime & Underground",
+          "published": "2026-11-15T15:23:48+00:00",
+          "published_ts": 1794756228,
           "smart_groups": [
             "Data Breaches / Leaks"
           ],
@@ -1150,223 +689,66 @@
       ]
     },
     {
-      "id": "efc138c587ee",
-      "rank": 34,
-      "title": "MegaETH parent cuts 20% of staff amid restructuring, AI push",
-      "summary": "MegaETH co-founder Shuyao Kong said the restructuring affected employees who helped build the project’s blockchain, wallet and ecosystem.",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "Cointelegraph.com News"
-      ],
-      "first_ts": 1794643950,
-      "latest_ts": 1794643950,
-      "score": 3,
-      "stories": [
-        {
-          "title": "MegaETH parent cuts 20% of staff amid restructuring, AI push",
-          "summary": "MegaETH co-founder Shuyao Kong said the restructuring affected employees who helped build the project’s blockchain, wallet and ecosystem.",
-          "link": "https://cointelegraph.com/news/megaeth-parent-cuts-20-percent-staff-ai-push?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-          "source": "Cointelegraph.com News",
-          "feed_type": "news",
-          "type": "crypto-blockchain-security",
-          "type_label": "Crypto & Blockchain Security",
-          "published": "2026-11-14T08:12:30+00:00",
-          "published_ts": 1794643950,
-          "smart_groups": [],
-          "curated": false
-        }
-      ]
-    },
-    {
-      "id": "ba10794c385a",
-      "rank": 35,
-      "title": "2026 Microsoft 365 Outage: What’s your take on Microsoft’s \"overwhelmed secure connection\" explanation?",
-      "summary": "submitted by /u/Anastasia_IT [link] [comments]",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "/r/cybersecurity"
-      ],
-      "first_ts": 1794642904,
-      "latest_ts": 1794642904,
-      "score": 3,
-      "stories": [
-        {
-          "title": "2026 Microsoft 365 Outage: What’s your take on Microsoft’s \"overwhelmed secure connection\" explanation?",
-          "summary": "submitted by /u/Anastasia_IT [link] [comments]",
-          "link": "https://www.reddit.com/r/cybersecurity/comments/1xvwsaz/2026_microsoft_365_outage_whats_your_take_on/",
-          "source": "/r/cybersecurity",
-          "feed_type": "news",
-          "type": "osint-communities-subreddits",
-          "type_label": "OSINT, Communities & Subreddits",
-          "published": "2026-11-14T07:55:04+00:00",
-          "published_ts": 1794642904,
-          "smart_groups": [
-            "Windows / Microsoft",
-            "Community Discussion"
-          ],
-          "curated": false
-        }
-      ]
-    },
-    {
-      "id": "f699c33e79e8",
-      "rank": 36,
-      "title": "I work in AppSec and I work with applications that use AI in basically (almost) everything now. Am I an AI Security Eng…",
-      "summary": "For example, let's say a service that holds tons of sensitive data and designing an auth model then enabling AI tools to retrieve data obviously through an MCP server and working with devs to create/researching/meeting security requirements while doing this This is clearly AI Security. I'm just con…",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "/r/cybersecurity"
-      ],
-      "first_ts": 1794640889,
-      "latest_ts": 1794640889,
-      "score": 3,
-      "stories": [
-        {
-          "title": "I work in AppSec and I work with applications that use AI in basically (almost) everything now. Am I an AI Security Engineer?",
-          "summary": "For example, let's say a service that holds tons of sensitive data and designing an auth model then enabling AI tools to retrieve data obviously through an MCP server and working with devs to create/researching/meeting security requirements while doing this This is clearly AI Security. I'm just con…",
-          "link": "https://www.reddit.com/r/cybersecurity/comments/1xvw8x6/i_work_in_appsec_and_i_work_with_applications/",
-          "source": "/r/cybersecurity",
-          "feed_type": "news",
-          "type": "osint-communities-subreddits",
-          "type_label": "OSINT, Communities & Subreddits",
-          "published": "2026-11-14T07:21:29+00:00",
-          "published_ts": 1794640889,
-          "smart_groups": [
-            "AI/ML Security",
-            "Community Discussion"
-          ],
-          "curated": false
-        }
-      ]
-    },
-    {
-      "id": "0ebaf72e5187",
-      "rank": 37,
-      "title": "Bitcoin ETFs shed $2.35B in two weeks as BlackRock’s losing streak hits 11 sessions",
-      "summary": "US spot Bitcoin ETFs recorded $185.4 million in net outflows Friday, with BlackRock’s IBIT accounting for $143.5 million and Fidelity’s FBTC shedding $41.9 million.",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "Cointelegraph.com News"
-      ],
-      "first_ts": 1794637993,
-      "latest_ts": 1794637993,
-      "score": 3,
-      "stories": [
-        {
-          "title": "Bitcoin ETFs shed $2.35B in two weeks as BlackRock’s losing streak hits 11 sessions",
-          "summary": "US spot Bitcoin ETFs recorded $185.4 million in net outflows Friday, with BlackRock’s IBIT accounting for $143.5 million and Fidelity’s FBTC shedding $41.9 million.",
-          "link": "https://cointelegraph.com/markets/bitcoin-etf-outflows-2-35-billion-blackrock-11-session-streak?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
-          "source": "Cointelegraph.com News",
-          "feed_type": "news",
-          "type": "crypto-blockchain-security",
-          "type_label": "Crypto & Blockchain Security",
-          "published": "2026-11-14T06:33:13+00:00",
-          "published_ts": 1794637993,
-          "smart_groups": [],
-          "curated": false
-        }
-      ]
-    },
-    {
-      "id": "26e19b365abe",
-      "rank": 38,
-      "title": "compromised links on .gov website",
-      "summary": "Doing some research for an assignment and stumbled upon something weird. Not sure if I should mention the exact site but many if not most of its links lead to something sketchy, or Firefox warns me not to continue.",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "/r/cybersecurity"
-      ],
-      "first_ts": 1794637869,
-      "latest_ts": 1794637869,
-      "score": 3,
-      "stories": [
-        {
-          "title": "compromised links on .gov website",
-          "summary": "Doing some research for an assignment and stumbled upon something weird. Not sure if I should mention the exact site but many if not most of its links lead to something sketchy, or Firefox warns me not to continue. The contents of the site pertain to bioethics in genome research, the specific page…",
-          "link": "https://www.reddit.com/r/cybersecurity/comments/1xvvegv/compromised_links_on_gov_website/",
-          "source": "/r/cybersecurity",
-          "feed_type": "news",
-          "type": "osint-communities-subreddits",
-          "type_label": "OSINT, Communities & Subreddits",
-          "published": "2026-11-14T06:31:09+00:00",
-          "published_ts": 1794637869,
-          "smart_groups": [
-            "Community Discussion"
-          ],
-          "curated": true
-        }
-      ]
-    },
-    {
-      "id": "b2fbfbb16859",
-      "rank": 39,
-      "title": "CISA Warns of Check Point 0-Day Vulnerability Exploited to Gain Root Access",
-      "summary": "CISA has warned that attackers are exploiting a Check Point security flaw that lets a local user gain root access on affected appliances. The agency added CVE-2026-123039 to its Known Exploited Vulnerabilities catalog on November 13, 2026, confirming that the vulnerability is being used in real att…",
+      "id": "2a9a3dc7a3bc",
+      "rank": 18,
+      "title": "Researchers Find Six 0-Days Allowing Unauthorized Takeover of Supermarket Refrigeration Systems",
+      "summary": "Six pre-authentication remote code execution flaws were found in the Danfoss AK-SM800A supermarket fridge controller, allowing remote takeover in about an hour, according to Midnight Blue researcher Carlo Meijer. The flaws are stack-based buffer overflows.",
       "origin": "rules",
       "size": 1,
       "source_count": 1,
       "sources": [
         "Cyber Security News (FeedBurner)"
       ],
-      "first_ts": 1794628053,
-      "latest_ts": 1794628053,
+      "first_ts": 1794756202,
+      "latest_ts": 1794756202,
       "score": 3,
       "stories": [
         {
-          "title": "CISA Warns of Check Point 0-Day Vulnerability Exploited to Gain Root Access",
-          "summary": "CISA has warned that attackers are exploiting a Check Point security flaw that lets a local user gain root access on affected appliances. The agency added CVE-2026-123039 to its Known Exploited Vulnerabilities catalog on November 13, 2026, confirming that the vulnerability is being used in real att…",
-          "link": "https://cybersecuritynews.com/check-point-0-day-vulnerability/",
+          "title": "Researchers Find Six 0-Days Allowing Unauthorized Takeover of Supermarket Refrigeration Systems",
+          "summary": "Six pre-authentication remote code execution flaws were found in the Danfoss AK-SM800A supermarket fridge controller, allowing remote takeover in about an hour, according to Midnight Blue researcher Carlo Meijer. The flaws are stack-based buffer overflows. They affect every firmware version up to a…",
+          "link": "https://cybersecuritynews.com/supermarket-refrigeration-systems-0-day/",
           "source": "Cyber Security News (FeedBurner)",
           "feed_type": "blog",
           "type": "security-researcher-blogs",
           "type_label": "Security Researcher Blogs",
-          "published": "2026-11-14T03:47:33+00:00",
-          "published_ts": 1794628053,
+          "published": "2026-11-15T15:23:22+00:00",
+          "published_ts": 1794756202,
           "smart_groups": [
             "Vulnerabilities / CVEs",
-            "Product News"
+            "Malware / Payloads",
+            "IoT & Embedded Security"
           ],
           "curated": true
         }
       ]
     },
     {
-      "id": "9783bdf53e6a",
-      "rank": 40,
-      "title": "Anonymous website",
-      "summary": "How can I publish a website in a way that makes it impossible (or at least extremely difficult) to trace who created it, where it came from, or how it was deployed? What services, hosting providers, tools, or methods do you use to maintain anonymity when publishing websites?",
+      "id": "bcf7347859bd",
+      "rank": 19,
+      "title": "Adaptive red teaming for tool-using LLM agents: how should we measure it?",
+      "summary": "Looking for input from people working on agent evaluation. The approach I find most useful: Adaptive, not static: the attack strategy changes based on how the agent responds.",
       "origin": "rules",
       "size": 1,
       "source_count": 1,
       "sources": [
         "/r/cybersecurity"
       ],
-      "first_ts": 1794627135,
-      "latest_ts": 1794627135,
+      "first_ts": 1794756045,
+      "latest_ts": 1794756045,
       "score": 3,
       "stories": [
         {
-          "title": "Anonymous website",
-          "summary": "How can I publish a website in a way that makes it impossible (or at least extremely difficult) to trace who created it, where it came from, or how it was deployed? What services, hosting providers, tools, or methods do you use to maintain anonymity when publishing websites? I’d appreciate hearing…",
-          "link": "https://www.reddit.com/r/cybersecurity/comments/1xvs5ul/anonymous_website/",
+          "title": "Adaptive red teaming for tool-using LLM agents: how should we measure it?",
+          "summary": "Looking for input from people working on agent evaluation. The approach I find most useful: Adaptive, not static: the attack strategy changes based on how the agent responds. Trace-level scoring: judge tool calls and policy checks, not just the final text. Confirmation step: a signal only counts as…",
+          "link": "https://www.reddit.com/r/cybersecurity/comments/1xwy37g/adaptive_red_teaming_for_toolusing_llm_agents_how/",
           "source": "/r/cybersecurity",
           "feed_type": "news",
           "type": "osint-communities-subreddits",
           "type_label": "OSINT, Communities & Subreddits",
-          "published": "2026-11-14T03:32:15+00:00",
-          "published_ts": 1794627135,
+          "published": "2026-11-15T15:20:45+00:00",
+          "published_ts": 1794756045,
           "smart_groups": [
-            "Privacy & Compliance",
+            "Red Team / Offensive",
             "Community Discussion"
           ],
           "curated": false
@@ -1374,138 +756,668 @@
       ]
     },
     {
-      "id": "bbc2cb948659",
-      "rank": 41,
-      "title": "Attackers Use Autonomous AI to Target Semiconductor, Defense and Civil Society Sectors",
-      "summary": "submitted by /u/TilapiaTango [link] [comments]",
+      "id": "dbc32ca8847e",
+      "rank": 20,
+      "title": "Security Affairs newsletter Round 604 by Pierluigi Paganini – INTERNATIONAL EDITION",
+      "summary": "A new round of the weekly Security Affairs newsletter has arrived! Every week, the best security articles from Security Affairs are free in your email box.",
       "origin": "rules",
       "size": 1,
       "source_count": 1,
       "sources": [
-        "/r/cybersecurity"
+        "Security Affairs"
       ],
-      "first_ts": 1794621698,
-      "latest_ts": 1794621698,
+      "first_ts": 1794754808,
+      "latest_ts": 1794754808,
       "score": 3,
       "stories": [
         {
-          "title": "Attackers Use Autonomous AI to Target Semiconductor, Defense and Civil Society Sectors",
-          "summary": "submitted by /u/TilapiaTango [link] [comments]",
-          "link": "https://www.reddit.com/r/cybersecurity/comments/1xvqdxa/attackers_use_autonomous_ai_to_target/",
-          "source": "/r/cybersecurity",
-          "feed_type": "news",
-          "type": "osint-communities-subreddits",
-          "type_label": "OSINT, Communities & Subreddits",
-          "published": "2026-11-14T02:01:38+00:00",
-          "published_ts": 1794621698,
-          "smart_groups": [
-            "Community Discussion"
-          ],
-          "curated": false
-        }
-      ]
-    },
-    {
-      "id": "21f8826ba46f",
-      "rank": 42,
-      "title": "‘We need more reviewers’: Finding Linux bugs is easy now – fixing them is another story",
-      "summary": "Some Linux maintainers are quitting under the crushing strain of AI bug reports, while others see signs for hope.",
-      "origin": "rules",
-      "size": 1,
-      "source_count": 1,
-      "sources": [
-        "ZDNet"
-      ],
-      "first_ts": 1794619206,
-      "latest_ts": 1794619206,
-      "score": 3,
-      "stories": [
-        {
-          "title": "‘We need more reviewers’: Finding Linux bugs is easy now – fixing them is another story",
-          "summary": "Some Linux maintainers are quitting under the crushing strain of AI bug reports, while others see signs for hope.",
-          "link": "https://www.zdnet.com/innovation/ai-bug-reports-linux-windows/",
-          "source": "ZDNet – Security",
+          "title": "Security Affairs newsletter Round 604 by Pierluigi Paganini – INTERNATIONAL EDITION",
+          "summary": "A new round of the weekly Security Affairs newsletter has arrived! Every week, the best security articles from Security Affairs are free in your email box. Enjoy a new round of the weekly SecurityAffairs newsletter, including international press. Extortion Group Claims Theft of Nearly One Billion E…",
+          "link": "https://securityaffairs.com/203140/breaking-news/security-affairs-newsletter-round-604-by-pierluigi-paganini-international-edition.html",
+          "source": "Security Affairs",
           "feed_type": "news",
           "type": "security-news-media",
           "type_label": "Security News & Media",
-          "published": "2026-11-14T01:20:06+00:00",
-          "published_ts": 1794619206,
+          "published": "2026-11-15T15:00:08+00:00",
+          "published_ts": 1794754808,
           "smart_groups": [
-            "Linux / Unix"
+            "Ransomware",
+            "Vulnerabilities / CVEs",
+            "Exploit / PoC"
+          ],
+          "curated": true
+        }
+      ]
+    },
+    {
+      "id": "e81cc58be3f9",
+      "rank": 21,
+      "title": "Aréas Assurances visé par une vente de données",
+      "summary": "Un pirate informatique affirme détenir les données de plus de 21 000 assurés d’Aréas Assurances, dont leurs numéros de Sécurité sociale.",
+      "origin": "rules",
+      "size": 1,
+      "source_count": 1,
+      "sources": [
+        "ZATAZ"
+      ],
+      "first_ts": 1794754703,
+      "latest_ts": 1794754703,
+      "score": 3,
+      "stories": [
+        {
+          "title": "Aréas Assurances visé par une vente de données",
+          "summary": "Un pirate informatique affirme détenir les données de plus de 21 000 assurés d’Aréas Assurances, dont leurs numéros de Sécurité sociale.",
+          "link": "https://www.zataz.com/areas-assurances-vise-par-une-vente-de-donnees/",
+          "source": "ZATAZ – Cybercrime",
+          "feed_type": "news",
+          "type": "leaks-breaches",
+          "type_label": "Leaks & Breaches",
+          "published": "2026-11-15T14:58:23+00:00",
+          "published_ts": 1794754703,
+          "smart_groups": [],
+          "curated": false
+        }
+      ]
+    },
+    {
+      "id": "6e0300bc4001",
+      "rank": 22,
+      "title": "Entre Bièvre et Rhône visée par une revendication cyber",
+      "summary": "Entre Bièvre et Rhône, en Isère, fait l’objet d’une revendication cyber portant sur des données d’usagers.",
+      "origin": "rules",
+      "size": 1,
+      "source_count": 1,
+      "sources": [
+        "ZATAZ"
+      ],
+      "first_ts": 1794753947,
+      "latest_ts": 1794753947,
+      "score": 3,
+      "stories": [
+        {
+          "title": "Entre Bièvre et Rhône visée par une revendication cyber",
+          "summary": "Entre Bièvre et Rhône, en Isère, fait l’objet d’une revendication cyber portant sur des données d’usagers.",
+          "link": "https://www.zataz.com/entre-bievre-et-rhone-visee-par-une-revendication-cyber/",
+          "source": "ZATAZ – Cybercrime",
+          "feed_type": "news",
+          "type": "leaks-breaches",
+          "type_label": "Leaks & Breaches",
+          "published": "2026-11-15T14:45:47+00:00",
+          "published_ts": 1794753947,
+          "smart_groups": [],
+          "curated": false
+        }
+      ]
+    },
+    {
+      "id": "2bed2cca4d10",
+      "rank": 23,
+      "title": "Enterprise blockchain is going to come back from the dead",
+      "summary": "With scalability, privacy tools and onchain liquidity improving, businesses may finally have the infrastructure to make enterprise blockchain work.",
+      "origin": "rules",
+      "size": 1,
+      "source_count": 1,
+      "sources": [
+        "Cointelegraph.com News"
+      ],
+      "first_ts": 1794753000,
+      "latest_ts": 1794753000,
+      "score": 3,
+      "stories": [
+        {
+          "title": "Enterprise blockchain is going to come back from the dead",
+          "summary": "With scalability, privacy tools and onchain liquidity improving, businesses may finally have the infrastructure to make enterprise blockchain work.",
+          "link": "https://cointelegraph.com/opinion/enterprise-blockchain-come-back-from-dead?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+          "source": "Cointelegraph.com News",
+          "feed_type": "news",
+          "type": "crypto-blockchain-security",
+          "type_label": "Crypto & Blockchain Security",
+          "published": "2026-11-15T14:30:00+00:00",
+          "published_ts": 1794753000,
+          "smart_groups": [],
+          "curated": false
+        }
+      ]
+    },
+    {
+      "id": "c4ed6f53f63a",
+      "rank": 24,
+      "title": "Question about game admin privilege and anticheat driver",
+      "summary": "Hey all! Hope this isn't off-topic or unrelated to cybersecurity.",
+      "origin": "rules",
+      "size": 1,
+      "source_count": 1,
+      "sources": [
+        "/r/cybersecurity"
+      ],
+      "first_ts": 1794751607,
+      "latest_ts": 1794751607,
+      "score": 3,
+      "stories": [
+        {
+          "title": "Question about game admin privilege and anticheat driver",
+          "summary": "Hey all! Hope this isn't off-topic or unrelated to cybersecurity. In that case, I have no problem deleting the post. After having to reinstall my OS because of a supply chain attack, I wanted to reinstall Marvel Rivals on my pc. Upon installation though, the laucher asks for admin permission to boo…",
+          "link": "https://www.reddit.com/r/cybersecurity/comments/1xwwchq/question_about_game_admin_privilege_and_anticheat/",
+          "source": "/r/cybersecurity",
+          "feed_type": "news",
+          "type": "osint-communities-subreddits",
+          "type_label": "OSINT, Communities & Subreddits",
+          "published": "2026-11-15T14:06:47+00:00",
+          "published_ts": 1794751607,
+          "smart_groups": [
+            "Community Discussion"
+          ],
+          "curated": true
+        }
+      ]
+    },
+    {
+      "id": "bddcae0d0eff",
+      "rank": 25,
+      "title": "Bitcoin ETFs Lose $2.1 Billion in November as Outflow Streak Hits Seven Days",
+      "summary": "Spot Bitcoin ETFs shed $185.4 million on Friday, their seventh straight day of outflows, pushing November losses to about $2.1 billion as Bitcoin fell toward $64,000.",
+      "origin": "rules",
+      "size": 1,
+      "source_count": 1,
+      "sources": [
+        "Decrypt"
+      ],
+      "first_ts": 1794751262,
+      "latest_ts": 1794751262,
+      "score": 3,
+      "stories": [
+        {
+          "title": "Bitcoin ETFs Lose $2.1 Billion in November as Outflow Streak Hits Seven Days",
+          "summary": "Spot Bitcoin ETFs shed $185.4 million on Friday, their seventh straight day of outflows, pushing November losses to about $2.1 billion as Bitcoin fell toward $64,000.",
+          "link": "https://decrypt.co/383282/bitcoin-etfs-lose-2-1-billion-november-outflow-streak-seven-days",
+          "source": "Decrypt",
+          "feed_type": "news",
+          "type": "crypto-blockchain-security",
+          "type_label": "Crypto & Blockchain Security",
+          "published": "2026-11-15T14:01:02+00:00",
+          "published_ts": 1794751262,
+          "smart_groups": [],
+          "curated": false
+        }
+      ]
+    },
+    {
+      "id": "9d2866033be7",
+      "rank": 26,
+      "title": "Why would anyone want a smart fridge? | Dave Schilling",
+      "summary": "After a hack in France, internet-enabled appliances are looking even less appealing – especially before the holidays We are deep into the holiday season now, past Halloween and a mere two weeks away from American Thanksgiving. I’ve already given up taking care of my body, surrendering fully to glut…",
+      "origin": "rules",
+      "size": 1,
+      "source_count": 1,
+      "sources": [
+        "The Guardian Cybercrime"
+      ],
+      "first_ts": 1794751217,
+      "latest_ts": 1794751217,
+      "score": 3,
+      "stories": [
+        {
+          "title": "Why would anyone want a smart fridge?  | Dave Schilling",
+          "summary": "After a hack in France, internet-enabled appliances are looking even less appealing – especially before the holidays We are deep into the holiday season now, past Halloween and a mere two weeks away from American Thanksgiving. I’ve already given up taking care of my body, surrendering fully to glut…",
+          "link": "https://www.theguardian.com/commentisfree/2026/nov/15/smart-fridge-internet-appliance",
+          "source": "The Guardian Cybercrime",
+          "feed_type": "news",
+          "type": "cybercrime-underground",
+          "type_label": "Cybercrime & Underground",
+          "published": "2026-11-15T14:00:17+00:00",
+          "published_ts": 1794751217,
+          "smart_groups": [],
+          "curated": false
+        }
+      ]
+    },
+    {
+      "id": "c8b26857299e",
+      "rank": 27,
+      "title": "Pentagon Renames CDAO ‘Super Intelligence Office’",
+      "summary": "The move follows President Trump’s order to replace “artificial intelligence” with “super intelligence” in executive branch communications.",
+      "origin": "rules",
+      "size": 1,
+      "source_count": 1,
+      "sources": [
+        "SecurityWeek"
+      ],
+      "first_ts": 1794747093,
+      "latest_ts": 1794747093,
+      "score": 3,
+      "stories": [
+        {
+          "title": "Pentagon Renames CDAO ‘Super Intelligence Office’",
+          "summary": "The move follows President Trump’s order to replace “artificial intelligence” with “super intelligence” in executive branch communications.",
+          "link": "https://www.securityweek.com/pentagon-renames-cdao-super-intelligence-office/",
+          "source": "SecurityWeek",
+          "feed_type": "news",
+          "type": "security-news-media",
+          "type_label": "Security News & Media",
+          "published": "2026-11-15T12:51:33+00:00",
+          "published_ts": 1794747093,
+          "smart_groups": [],
+          "curated": false
+        }
+      ]
+    },
+    {
+      "id": "e91750681148",
+      "rank": 28,
+      "title": "Métaux précieux et données clients mises en vente",
+      "summary": "Un vendeur affirme détenir quatre bases clients et 30 000 documents d’une entreprise française de métaux précieux.",
+      "origin": "rules",
+      "size": 1,
+      "source_count": 1,
+      "sources": [
+        "ZATAZ"
+      ],
+      "first_ts": 1794746552,
+      "latest_ts": 1794746552,
+      "score": 3,
+      "stories": [
+        {
+          "title": "Métaux précieux et données clients mises en vente",
+          "summary": "Un vendeur affirme détenir quatre bases clients et 30 000 documents d’une entreprise française de métaux précieux.",
+          "link": "https://www.zataz.com/metaux-precieux-et-donnees-clients-mises-en-vente/",
+          "source": "ZATAZ – Cybercrime",
+          "feed_type": "news",
+          "type": "leaks-breaches",
+          "type_label": "Leaks & Breaches",
+          "published": "2026-11-15T12:42:32+00:00",
+          "published_ts": 1794746552,
+          "smart_groups": [],
+          "curated": false
+        }
+      ]
+    },
+    {
+      "id": "30b233d3e72a",
+      "rank": 29,
+      "title": "Is red teaming really serving its purpose, or has it become just another compliance checkbox?",
+      "summary": "Considering the number of attacks happening today, I honestly feel purple teaming deserves much more attention. Companies are conducting red team exercises, but how many are actually using them to improve their security posture?",
+      "origin": "rules",
+      "size": 1,
+      "source_count": 1,
+      "sources": [
+        "/r/cybersecurity"
+      ],
+      "first_ts": 1794744537,
+      "latest_ts": 1794744537,
+      "score": 3,
+      "stories": [
+        {
+          "title": "Is red teaming really serving its purpose, or has it become just another compliance checkbox?",
+          "summary": "Considering the number of attacks happening today, I honestly feel purple teaming deserves much more attention. Companies are conducting red team exercises, but how many are actually using them to improve their security posture? In many cases, it feels like the focus is more on completing the asses…",
+          "link": "https://www.reddit.com/r/cybersecurity/comments/1xwtxk6/is_red_teaming_really_serving_its_purpose_or_has/",
+          "source": "/r/cybersecurity",
+          "feed_type": "news",
+          "type": "osint-communities-subreddits",
+          "type_label": "OSINT, Communities & Subreddits",
+          "published": "2026-11-15T12:08:57+00:00",
+          "published_ts": 1794744537,
+          "smart_groups": [
+            "Red Team / Offensive",
+            "Community Discussion"
           ],
           "curated": false
         }
       ]
     },
     {
-      "id": "5a26ef385a04",
-      "rank": 43,
-      "title": "Uber Confirms Data Breach – Hackers Stole Users’ Personal Information",
-      "summary": "Uber has confirmed a data breach involving the personal information of thousands of U.S. drivers after hackers accessed records held by Fireworks AI, a third-party technology provider.",
+      "id": "41821075ac0a",
+      "rank": 30,
+      "title": "RBI, I4C, and FACE Collaborate to Strengthen Banking Sector Cybersecurity",
+      "summary": "A cybersecurity awareness session was conducted by the Indian Cyber Crime Coordination Centre (I4C) in partnership with the Reserve Bank of India (RBI) and FinTech SRO (FACE), targeting key banks and fintech entities. Event Overview The event attracted over 400 attendees, including representatives…",
       "origin": "rules",
       "size": 1,
       "source_count": 1,
       "sources": [
-        "Cyber Security News (FeedBurner)"
+        "News4Hackers"
       ],
-      "first_ts": 1794619197,
-      "latest_ts": 1794619197,
+      "first_ts": 1794744188,
+      "latest_ts": 1794744188,
       "score": 3,
       "stories": [
         {
-          "title": "Uber Confirms Data Breach – Hackers Stole Users’ Personal Information",
-          "summary": "Uber has confirmed a data breach involving the personal information of thousands of U.S. drivers after hackers accessed records held by Fireworks AI, a third-party technology provider. The exposed information includes driver’s license details. Uber is notifying affected people, but it has not discl…",
-          "link": "https://cybersecuritynews.com/uber-confirms-data-breach/",
-          "source": "Cyber Security News (FeedBurner)",
+          "title": "RBI, I4C, and FACE Collaborate to Strengthen Banking Sector Cybersecurity",
+          "summary": "A cybersecurity awareness session was conducted by the Indian Cyber Crime Coordination Centre (I4C) in partnership with the Reserve Bank of India (RBI) and FinTech SRO (FACE), targeting key banks and fintech entities. Event Overview The event attracted over 400 attendees, including representatives…",
+          "link": "https://www.news4hackers.com/rbi-i4c-and-face-collaborate-to-strengthen-banking-sector-cybersecurity/",
+          "source": "News4Hackers",
+          "feed_type": "news",
+          "type": "security-news-media",
+          "type_label": "Security News & Media",
+          "published": "2026-11-15T12:03:08+00:00",
+          "published_ts": 1794744188,
+          "smart_groups": [
+            "Vulnerabilities / CVEs",
+            "Community Discussion"
+          ],
+          "curated": true
+        }
+      ]
+    },
+    {
+      "id": "22c598c8347b",
+      "rank": 31,
+      "title": "Race Against the (Mac)hine: Local Privilege Escalation in Microsoft Defender for macOS",
+      "summary": "Patching a vulnerability in cross-platform software can be tricky. At BlueHat Asia in September, I presented on two LPEs I found in Microsoft Defender that arose from differences in operating system-level security and filesystem APIs that broke critical security assumptions (CVE-2026-50657, CVE-202…",
+      "origin": "rules",
+      "size": 1,
+      "source_count": 1,
+      "sources": [
+        "spaceraccoon.dev"
+      ],
+      "first_ts": 1794744000,
+      "latest_ts": 1794744000,
+      "score": 3,
+      "stories": [
+        {
+          "title": "Race Against the (Mac)hine: Local Privilege Escalation in Microsoft Defender for macOS",
+          "summary": "Patching a vulnerability in cross-platform software can be tricky. At BlueHat Asia in September, I presented on two LPEs I found in Microsoft Defender that arose from differences in operating system-level security and filesystem APIs that broke critical security assumptions (CVE-2026-50657, CVE-202…",
+          "link": "https://spaceraccoon.dev/race-against-the-machine-defender-macos-lpe/",
+          "source": "https://spaceraccoon.dev/feed.xml",
           "feed_type": "blog",
           "type": "security-researcher-blogs",
           "type_label": "Security Researcher Blogs",
-          "published": "2026-11-14T01:19:57+00:00",
-          "published_ts": 1794619197,
+          "published": "2026-11-15T12:00:00+00:00",
+          "published_ts": 1794744000,
           "smart_groups": [
-            "Data Breaches / Leaks"
+            "Vulnerabilities / CVEs"
+          ],
+          "curated": true
+        }
+      ]
+    },
+    {
+      "id": "f33760a197ae",
+      "rank": 32,
+      "title": "Tracking Pixels on US Hospital and Telehealth Sites in 2026: Meta Left, the Ad Trackers Didn’t",
+      "summary": "Meta’s pixel has nearly disappeared from the websites of America’s top hospitals. Advertising trackers have not.",
+      "origin": "rules",
+      "size": 1,
+      "source_count": 1,
+      "sources": [
+        "Privacy Affairs"
+      ],
+      "first_ts": 1794742050,
+      "latest_ts": 1794742050,
+      "score": 3,
+      "stories": [
+        {
+          "title": "Tracking Pixels on US Hospital and Telehealth Sites in 2026: Meta Left, the Ad Trackers Didn’t",
+          "summary": "Meta’s pixel has nearly disappeared from the websites of America’s top hospitals. Advertising trackers have not. In 2022, The Markup found that a third of Newsweek’s top 100 hospitals sent a patient’s click on “Schedule appointment” to Facebook. On November 15, 2026, we sent a browser to the same h…",
+          "link": "https://www.privacyaffairs.com/health-tracking-pixels-2026/",
+          "source": "Privacy Affairs – Dark Web",
+          "feed_type": "news",
+          "type": "leaks-breaches",
+          "type_label": "Leaks & Breaches",
+          "published": "2026-11-15T11:27:30+00:00",
+          "published_ts": 1794742050,
+          "smart_groups": [
+            "Privacy & Compliance"
           ],
           "curated": false
         }
       ]
     },
     {
-      "id": "74eba089c575",
-      "rank": 44,
-      "title": "The Microsoft 365 Outage Is A Wake-Up Call to Prioritize Business Continuity",
-      "summary": "Yesterday’s Microsoft 365 and Exchange Online outage impacted 430+ million users across 74 countries for 18+ hours, making it likely the biggest one to hit enterprises since the Crowdstrike outage of 2024. Like other recent disruptions to hyperscalers and major SaaS providers, it serves as a wake-u…",
+      "id": "b79d761c77f7",
+      "rank": 33,
+      "title": "Week 46 – 2026",
+      "summary": "If your organisation is interested in sponsoring an upcoming post then reach out via the contact form! No sponsor this week",
       "origin": "rules",
       "size": 1,
       "source_count": 1,
       "sources": [
-        "Zscaler Research Blogs"
+        "This Week In 4n6"
       ],
-      "first_ts": 1794615039,
-      "latest_ts": 1794615039,
+      "first_ts": 1794741984,
+      "latest_ts": 1794741984,
       "score": 3,
       "stories": [
         {
-          "title": "The Microsoft 365 Outage Is A Wake-Up Call to Prioritize Business Continuity",
-          "summary": "Yesterday’s Microsoft 365 and Exchange Online outage impacted 430+ million users across 74 countries for 18+ hours, making it likely the biggest one to hit enterprises since the Crowdstrike outage of 2024. Like other recent disruptions to hyperscalers and major SaaS providers, it serves as a wake-u…",
-          "link": "https://www.zscaler.com/blogs/cybersecurity-best-practices/microsoft-365-outage-wake-call-prioritize-business-continuity",
-          "source": "Zscaler Research Blogs",
+          "title": "Week 46 – 2026",
+          "summary": "If your organisation is interested in sponsoring an upcoming post then reach out via the contact form! No sponsor this week",
+          "link": "https://thisweekin4n6.com/2026/11/15/week-46-2026/",
+          "source": "This Week In 4n6",
+          "feed_type": "blog",
+          "type": "dfir-forensics",
+          "type_label": "DFIR & Forensics",
+          "published": "2026-11-15T11:26:24+00:00",
+          "published_ts": 1794741984,
+          "smart_groups": [],
+          "curated": false
+        }
+      ]
+    },
+    {
+      "id": "25986eba8efb",
+      "rank": 34,
+      "title": "Cyberattack Hits Belapur Nationalised Bank; Data of 4,280 Customers Stolen",
+      "summary": "Cyberattack Hits Belapur Nationalised Bank; Data of 4,280 Customers Stolen FIR, CBD Police A hack on a nationalized bank’s data center in CBD Belapur allegedly resulted in the theft of sensitive data associated with about 4,280 clients. Some of the affected material was then shared on the dark web.…",
+      "origin": "rules",
+      "size": 1,
+      "source_count": 1,
+      "sources": [
+        "News4Hackers"
+      ],
+      "first_ts": 1794738572,
+      "latest_ts": 1794738572,
+      "score": 3,
+      "stories": [
+        {
+          "title": "Cyberattack Hits Belapur Nationalised Bank; Data of 4,280 Customers Stolen",
+          "summary": "Cyberattack Hits Belapur Nationalised Bank; Data of 4,280 Customers Stolen FIR, CBD Police A hack on a nationalized bank’s data center in CBD Belapur allegedly resulted in the theft of sensitive data associated with about 4,280 clients. Some of the affected material was then shared on the dark web.…",
+          "link": "https://www.news4hackers.com/cyberattack-hits-belapur-nationalised-bank-data-of-4280-customers-stolen/",
+          "source": "News4Hackers",
           "feed_type": "news",
-          "type": "threat-intel-apt-campaigns",
-          "type_label": "Threat Intel & APT Campaigns",
-          "published": "2026-11-14T00:10:39+00:00",
-          "published_ts": 1794615039,
+          "type": "security-news-media",
+          "type_label": "Security News & Media",
+          "published": "2026-11-15T10:29:32+00:00",
+          "published_ts": 1794738572,
+          "smart_groups": [],
+          "curated": false
+        }
+      ]
+    },
+    {
+      "id": "038415747a0c",
+      "rank": 35,
+      "title": "Fake Copyright Claims Sent Through LearnWorlds’ Mail System Target YouTube Channels",
+      "summary": "A phishing email aimed at YouTube channels is going out from LearnWorlds’ own mail domain, so it passes the checks that normally catch fakes. LearnWorlds is a white-label platform that course creators use to run online schools.",
+      "origin": "rules",
+      "size": 1,
+      "source_count": 1,
+      "sources": [
+        "Privacy Affairs"
+      ],
+      "first_ts": 1794735483,
+      "latest_ts": 1794735483,
+      "score": 3,
+      "stories": [
+        {
+          "title": "Fake Copyright Claims Sent Through LearnWorlds’ Mail System Target YouTube Channels",
+          "summary": "A phishing email aimed at YouTube channels is going out from LearnWorlds’ own mail domain, so it passes the checks that normally catch fakes. LearnWorlds is a white-label platform that course creators use to run online schools. The email claims a channel used LearnWorlds material without permission…",
+          "link": "https://www.privacyaffairs.com/learnworlds-youtube-phishing/",
+          "source": "Privacy Affairs – Dark Web",
+          "feed_type": "news",
+          "type": "leaks-breaches",
+          "type_label": "Leaks & Breaches",
+          "published": "2026-11-15T09:38:03+00:00",
+          "published_ts": 1794735483,
           "smart_groups": [
-            "Windows / Microsoft",
-            "Cloud / SaaS",
-            "Network / OT / ICS"
+            "Malware / Payloads",
+            "Phishing / Social Engineering"
+          ],
+          "curated": false
+        }
+      ]
+    },
+    {
+      "id": "0ffb27279745",
+      "rank": 36,
+      "title": "Mysterious log-ins after a shady download",
+      "summary": "Hey everyone, I installed a “setup.exe” for an application which when pressed appeared to do nothing. I then downloaded the file from a separate source and found that what I was looking for, did not require a setup.exe.",
+      "origin": "rules",
+      "size": 1,
+      "source_count": 1,
+      "sources": [
+        "/r/cybersecurity"
+      ],
+      "first_ts": 1794735439,
+      "latest_ts": 1794735439,
+      "score": 3,
+      "stories": [
+        {
+          "title": "Mysterious log-ins after a shady download",
+          "summary": "Hey everyone, I installed a “setup.exe” for an application which when pressed appeared to do nothing. I then downloaded the file from a separate source and found that what I was looking for, did not require a setup.exe. A couple hours removed from that I’ve gotten the windows command flash a couple…",
+          "link": "https://www.reddit.com/r/cybersecurity/comments/1xwrg0x/mysterious_logins_after_a_shady_download/",
+          "source": "/r/cybersecurity",
+          "feed_type": "news",
+          "type": "osint-communities-subreddits",
+          "type_label": "OSINT, Communities & Subreddits",
+          "published": "2026-11-15T09:37:19+00:00",
+          "published_ts": 1794735439,
+          "smart_groups": [
+            "Community Discussion"
           ],
           "curated": true
+        }
+      ]
+    },
+    {
+      "id": "8e707f9e30b1",
+      "rank": 37,
+      "title": "Week in review: Secret stealer hits GitHub repos, Claude Code turned into remote-controlled implant",
+      "summary": "Here’s an overview of some of last week’s most interesting news, articles, interviews and videos: What a security leader should tell the CEO about leaked credentials In this Help Net Security interview, Eric Fourrier, CEO of GitGuardian, talks about leaked credentials and personal liability for sec…",
+      "origin": "rules",
+      "size": 1,
+      "source_count": 1,
+      "sources": [
+        "Help Net Security"
+      ],
+      "first_ts": 1794733237,
+      "latest_ts": 1794733237,
+      "score": 3,
+      "stories": [
+        {
+          "title": "Week in review: Secret stealer hits GitHub repos, Claude Code turned into remote-controlled implant",
+          "summary": "Here’s an overview of some of last week’s most interesting news, articles, interviews and videos: What a security leader should tell the CEO about leaked credentials In this Help Net Security interview, Eric Fourrier, CEO of GitGuardian, talks about leaked credentials and personal liability for sec…",
+          "link": "https://www.helpnetsecurity.com/2026/11/15/week-in-review-secret-stealer-hits-github-repos-claude-code-turned-into-remote-controlled-implant/",
+          "source": "Help Net Security",
+          "feed_type": "news",
+          "type": "security-news-media",
+          "type_label": "Security News & Media",
+          "published": "2026-11-15T09:00:37+00:00",
+          "published_ts": 1794733237,
+          "smart_groups": [
+            "AI/ML Security"
+          ],
+          "curated": false
+        }
+      ]
+    },
+    {
+      "id": "960f41318ea9",
+      "rank": 38,
+      "title": "Cursor Says Stolen Fireworks AI Key Led to Trojanized Claude Code Extension Incident",
+      "summary": "The compromise of Anthropic's official Claude Code extension on Cursor's extension marketplace was the result of the theft of an access key that was exposed in the wake of a breach targeting Fireworks AI. \"An attacker obtained an access key we had issued to Fireworks,\" Cursor said in a Friday updat…",
+      "origin": "rules",
+      "size": 1,
+      "source_count": 1,
+      "sources": [
+        "The Hacker News"
+      ],
+      "first_ts": 1794730924,
+      "latest_ts": 1794730924,
+      "score": 3,
+      "stories": [
+        {
+          "title": "Cursor Says Stolen Fireworks AI Key Led to Trojanized Claude Code Extension Incident",
+          "summary": "The compromise of Anthropic's official Claude Code extension on Cursor's extension marketplace was the result of the theft of an access key that was exposed in the wake of a breach targeting Fireworks AI. \"An attacker obtained an access key we had issued to Fireworks,\" Cursor said in a Friday updat…",
+          "link": "https://thehackernews.com/2026/11/stolen-fireworks-ai-key-led-to-cursor.html",
+          "source": "The Hacker News",
+          "feed_type": "news",
+          "type": "security-news-media",
+          "type_label": "Security News & Media",
+          "published": "2026-11-15T08:22:04+00:00",
+          "published_ts": 1794730924,
+          "smart_groups": [
+            "Malware / Payloads",
+            "AI/ML Security"
+          ],
+          "curated": true
+        }
+      ]
+    },
+    {
+      "id": "bfd4ef0724ce",
+      "rank": 39,
+      "title": "Coinone warns of phishing, identity theft after customer data breach",
+      "summary": "The South Korean crypto exchange said potentially exposed information includes passwords, bank account numbers, national identification numbers and crypto wallet addresses.",
+      "origin": "rules",
+      "size": 1,
+      "source_count": 1,
+      "sources": [
+        "Cointelegraph.com News"
+      ],
+      "first_ts": 1794730078,
+      "latest_ts": 1794730078,
+      "score": 3,
+      "stories": [
+        {
+          "title": "Coinone warns of phishing, identity theft after customer data breach",
+          "summary": "The South Korean crypto exchange said potentially exposed information includes passwords, bank account numbers, national identification numbers and crypto wallet addresses.",
+          "link": "https://cointelegraph.com/news/coinone-data-breach-phishing-identity-theft-customer-information?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+          "source": "Cointelegraph.com News",
+          "feed_type": "news",
+          "type": "crypto-blockchain-security",
+          "type_label": "Crypto & Blockchain Security",
+          "published": "2026-11-15T08:07:58+00:00",
+          "published_ts": 1794730078,
+          "smart_groups": [
+            "Data Breaches / Leaks",
+            "Phishing / Social Engineering",
+            "Crypto / Web3"
+          ],
+          "curated": false
+        }
+      ]
+    },
+    {
+      "id": "0371d9c90720",
+      "rank": 40,
+      "title": "RWA protocol stUSDT winds down three years after $2.3B TVL peak",
+      "summary": "The stUSDT team did not disclose a reason for winding down the RWA protocol but assured holders that all underlying assets remain fully backed.",
+      "origin": "rules",
+      "size": 1,
+      "source_count": 1,
+      "sources": [
+        "Cointelegraph.com News"
+      ],
+      "first_ts": 1794724046,
+      "latest_ts": 1794724046,
+      "score": 3,
+      "stories": [
+        {
+          "title": "RWA protocol stUSDT winds down three years after $2.3B TVL peak",
+          "summary": "The stUSDT team did not disclose a reason for winding down the RWA protocol but assured holders that all underlying assets remain fully backed.",
+          "link": "https://cointelegraph.com/news/rwa-protocol-stusdt-winds-down-three-years-after-23b-tvl-peak?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+          "source": "Cointelegraph.com News",
+          "feed_type": "news",
+          "type": "crypto-blockchain-security",
+          "type_label": "Crypto & Blockchain Security",
+          "published": "2026-11-15T06:27:26+00:00",
+          "published_ts": 1794724046,
+          "smart_groups": [],
+          "curated": false
         }
       ]
     },
     {
       "id": "2ef191b44bcc",
-      "rank": 45,
+      "rank": 41,
       "title": "Microsoft Windows Cloud Files Mini Filter Driver CldiStreamCompleteRequest use-after-free vulnerability",
       "summary": "",
       "origin": "rules",
@@ -1514,8 +1426,8 @@
       "sources": [
         "Talos"
       ],
-      "first_ts": 1794614400,
-      "latest_ts": 1794614400,
+      "first_ts": 1794700800,
+      "latest_ts": 1794700800,
       "score": 3,
       "stories": [
         {
@@ -1526,8 +1438,8 @@
           "feed_type": "news",
           "type": "vulnerabilities-cves-exploits",
           "type_label": "Vulnerabilities, CVEs & Exploits",
-          "published": "2026-11-14T00:00:00+00:00",
-          "published_ts": 1794614400,
+          "published": "2026-11-15T00:00:00+00:00",
+          "published_ts": 1794700800,
           "smart_groups": [
             "Vulnerabilities / CVEs"
           ],
@@ -1537,7 +1449,7 @@
     },
     {
       "id": "2f3dfef07693",
-      "rank": 46,
+      "rank": 42,
       "title": "Microsoft Windows Cloud Files Mini Filter Driver CldiStreamPrepareRequestForMoreProcessing Type Confusion vulnerability",
       "summary": "",
       "origin": "rules",
@@ -1546,8 +1458,8 @@
       "sources": [
         "Talos"
       ],
-      "first_ts": 1794614400,
-      "latest_ts": 1794614400,
+      "first_ts": 1794700800,
+      "latest_ts": 1794700800,
       "score": 3,
       "stories": [
         {
@@ -1558,8 +1470,8 @@
           "feed_type": "news",
           "type": "vulnerabilities-cves-exploits",
           "type_label": "Vulnerabilities, CVEs & Exploits",
-          "published": "2026-11-14T00:00:00+00:00",
-          "published_ts": 1794614400,
+          "published": "2026-11-15T00:00:00+00:00",
+          "published_ts": 1794700800,
           "smart_groups": [
             "Vulnerabilities / CVEs"
           ],
@@ -1569,7 +1481,7 @@
     },
     {
       "id": "9f47051f5d48",
-      "rank": 47,
+      "rank": 43,
       "title": "mackron drlibs drwav drwavreadcuetometadataobj out-of-bounds write vulnerability",
       "summary": "",
       "origin": "rules",
@@ -1578,8 +1490,8 @@
       "sources": [
         "Talos"
       ],
-      "first_ts": 1794614400,
-      "latest_ts": 1794614400,
+      "first_ts": 1794700800,
+      "latest_ts": 1794700800,
       "score": 3,
       "stories": [
         {
@@ -1590,8 +1502,8 @@
           "feed_type": "news",
           "type": "vulnerabilities-cves-exploits",
           "type_label": "Vulnerabilities, CVEs & Exploits",
-          "published": "2026-11-14T00:00:00+00:00",
-          "published_ts": 1794614400,
+          "published": "2026-11-15T00:00:00+00:00",
+          "published_ts": 1794700800,
           "smart_groups": [
             "Vulnerabilities / CVEs"
           ],
@@ -1601,7 +1513,7 @@
     },
     {
       "id": "f57207edd096",
-      "rank": 48,
+      "rank": 44,
       "title": "mackron drlibs drmp3 drmp3initinternal out-of-bounds read vulnerability",
       "summary": "",
       "origin": "rules",
@@ -1610,8 +1522,8 @@
       "sources": [
         "Talos"
       ],
-      "first_ts": 1794614400,
-      "latest_ts": 1794614400,
+      "first_ts": 1794700800,
+      "latest_ts": 1794700800,
       "score": 3,
       "stories": [
         {
@@ -1622,8 +1534,8 @@
           "feed_type": "news",
           "type": "vulnerabilities-cves-exploits",
           "type_label": "Vulnerabilities, CVEs & Exploits",
-          "published": "2026-11-14T00:00:00+00:00",
-          "published_ts": 1794614400,
+          "published": "2026-11-15T00:00:00+00:00",
+          "published_ts": 1794700800,
           "smart_groups": [
             "Vulnerabilities / CVEs"
           ],
