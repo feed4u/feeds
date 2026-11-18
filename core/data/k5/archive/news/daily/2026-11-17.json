@@ -1,9 +1,715 @@
 {
-  "generated_at": "2026-11-17T17:46:44.478041+00:00",
+  "generated_at": "2026-11-18T07:51:32.668180+00:00",
   "date": "2026-11-17",
-  "total_items": 149,
+  "total_items": 203,
   "next_chunk": "archive/news/daily/2026-11-16.json",
   "items": [
+    {
+      "title": "Google and Anthropic push for faster patches as AI collapses bug discovery timelines",
+      "summary": "AI-assisted vulnerability discovery has made it untenable for software vendors to sit on privately reported flaws for months, and Google Project Zero is responding by shrinking its vulnerability disclosure deadline from 90 to 60 days, with plans to drop it to 30 days a year from now. Anthropic is following suit with an even more aggressive timeline. Project Zero is Google\u2019s elite vulnerability research team that regularly reports vulnerabilities in widely used open-source and proprietary software, much of which is critical to internet infrastructure. Its 90-day deadline for vendors to produce patches before the team releases vulnerability details publicly was a major stake in the ground for the security research community when it was announced in 2014, and it has become the de facto standard for coordinated disclosure. The team\u2019s announcement Friday that it will reduce this deadline to 60 days starting in February and 30 days starting in January 2028 is important because when Project Zero speaks, the security industry listens. And it did. On Monday, Anthropic announced it will adjust its disclosure policy from 90 days to 30 days for high- and critical-severity issues, and to 45 days for all other issues, starting in January. Other security companies and researchers will likely follow. The rationale is explicitly due to the offensive cyber capabilities of large language models: not only in discovering new vulnerabilities, but in reverse engineering patches and using them as blueprints for finding additional flaws in the same code . \u201cLLMs have increased the speed at which attackers can find and exploit vulnerabilities, alongside the risk that multiple parties, including malicious ones, discover the same bug,\u201d Project Zero researcher Natalie Silvanovich said in a blog post . \u201cA vulnerability reported today presents a much higher immediate risk to users than one reported last year. In this new environment, it is crucial that vendors move towards remediating vulnerabilities faster.\u201d Anthropic\u2019s Frontier Red Team said essentially the same: \u201cA 90-day window made sense when a vulnerability could be expected to stay private for months. We no longer believe it can, and these changes are intended to keep pace with progress in AI capabilities and strike the right balance for defenders.\u201d \u2018Soak time\u2019 has become meaningless Since 2021, Project Zero\u2019s policy has actually been \u201c90+30\u201d with 90 days to develop a patch, plus 30 days of grace while the patch rolled out to users. The team referred to these extra 30 days as \u201csoak time.\u201d But in a world where AI agents can analyze patches to determine flaw details in minutes and then write exploits for them, waiting for a patch to propagate before releasing vulnerability details only creates a false sense of secrecy. As a result, the Project Zero\u2019s previous 30-day grace is gone effective immediately. In a report published this week, Google\u2019s Threat Intelligence Group (GTIG) documented the first fully automated AI-powered vulnerability discovery-and-exploitation pipeline it has observed in the wild. Called exploit_agent, the framework is designed to analyze application code changes following security patches, identify vulnerabilities, and generate exploits without requiring an operator to direct each step. While Anthropic has different deadlines based on vulnerability severity, Project Zero decided to abandon severity as a disclosure metric because attackers are just as likely to discover low-risk flaws as they are to find the high-risk ones. \u201cWhen vendors determine severity and use it to prioritize bug fixes, they are making decisions about what risks they are willing to expose their users to, and it is reasonable to accept the risk of low-severity bugs, like unexploitable null pointer crashes or minor info leaks in a lot of circumstances,\u201d Project Zero\u2019s Silvanovich said. \u201cBut this doesn\u2019t change the availability of these vulnerabilities to attackers, and we want our policy to reflect this reality.\u201d Google\u2019s team will also no longer check whether a vendor\u2019s patch fixes the issue when deciding whether to release details or not, because this back-and-forth can quickly become unmanageable, especially because the team now finds vulnerabilities using AI assistance at a much faster pace and because vendors might choose alternative mitigation strategies such as temporarily disabling a vulnerable feature or code path until a full patch can be developed. \u201cWe decided on a policy that encourages vendors to improve remediation time on a schedule that is challenging but realistic, with the hope that this will lead to vendors broadly improving their remediation processes and infrastructure in a way that eventually enables them to fix all reported vulnerabilities quickly,\u201d Silvanovich said. The road ahead will be bumpy for users The shorter patch deadlines come at a time when open-source projects and software vendors are already drowning in vulnerability reports and must resort to either AI-assisted patching or hiring more developers, if they can afford it. As of last week, the number of CVEs issued this year exceeded 100,000, more than double last year\u2019s count. Anthropic\u2019s Frontier Red Team noted that \u201cmodels can now help develop fixes\u201d as one justification for the more aggressive disclosure deadlines, and said it will include \u201cactionable guidance with each report, along with a patch or mitigation where possible,\u201d to help maintainers confirm flaws and fix them. However, multiple studies and developers have reported in recent months that AI-generated patches are often incomplete, failing to address the root causes of a flaw, to eliminate all instances of the bug from the codebase, or to block all exploit variations. Security firm XOR built a benchmark that pitted frontier coding systems against vulnerabilities the company had discovered in a private software stack. No public fix existed for any of the flaws when the evaluation ran, so the systems had to work from the vulnerable code alone. The best models produced complete fixes for only about a third of the flaws: 35.3% for GPT-6 Astra and 28.6% for Claude Fable 5.1. Across all systems, just 11.9% of patch attempts earned full credit. According to an analysis by VulnCheck , seven months after launching its Mythos-powered Glasswing vulnerability-hunting program, Anthropic\u2019s public ledger counts 37,966 findings, but only 217 of the 7,349 flaws made public so far have been fixed. Project Zero acknowledges the friction between the need to patch faster and devs being overloaded. The team solicited feedback from the vendors it reports to most and chose the phased schedule because an immediate change could push vendors to stop trying to meet the disclosure deadlines. \u201cTo respond to these new timelines, organizations should be better prepared to assess whether compensating controls can reduce the risk of a vulnerability when it\u2019s disclosed,\u201d Ramy Rahman, senior principal solutions engineer at ArmorCode, tells CSO. \u201cWith disclosures arriving sooner, and sometimes before a fix is available, teams need a process for evaluating exposure, applying available mitigations, and tracking remediation.\u201d \u201cConsider hardening systems at deployment time and removing software you don\u2019t use,\u201d he said. \u201cLeaner, more deliberate deployments can reduce exposure and make vulnerability findings easier to manage.\u201d",
+      "summary_html": "<div>\n<div>\n<div>\n<div>\n<div></div>\n<p>AI-assisted vulnerability discovery has made it untenable for software vendors to sit on privately reported flaws for months, and Google Project Zero is responding by shrinking its vulnerability disclosure deadline from 90 to 60 days, with plans to drop it to 30 days a year from now. Anthropic is following suit with an even more aggressive timeline.</p>\n<p>Project Zero is Google\u2019s elite vulnerability research team that regularly reports vulnerabilities in widely used open-source and proprietary software, much of which is critical to internet infrastructure. Its 90-day deadline for vendors to produce patches before the team releases vulnerability details publicly was a major stake in the ground for the security research community when it was announced in 2014, and it has become the de facto standard for coordinated disclosure.</p>\n<p>The team\u2019s announcement Friday that it will reduce this deadline to 60 days starting in February and 30 days starting in January 2028 is important because when Project Zero speaks, the security industry listens. And it did. On Monday, Anthropic <a href=\"https://www.anthropic.com/research/coordinated-vulnerability-disclosure-timelines\">announced it will adjust its disclosure policy</a> from 90 days to 30 days for high- and critical-severity issues, and to 45 days for all other issues, starting in January. Other security companies and researchers will likely follow.</p>\n<p>The rationale is explicitly due to the offensive cyber capabilities of large language models: not only in discovering new vulnerabilities, but in reverse engineering patches and <a href=\"https://www.csoonline.com/article/4248687/ai-written-patches-are-becoming-attack-maps-for-hackers.html\">using them as blueprints for finding additional flaws in the same code</a>.</p>\n<p>\u201cLLMs have increased the speed at which attackers can find and exploit vulnerabilities, alongside the risk that multiple parties, including malicious ones, discover the same bug,\u201d Project Zero researcher Natalie Silvanovich said in <a href=\"https://projectzero.google/2026/11/disclosure-policy.html\">a blog post</a>. \u201cA vulnerability reported today presents a much higher immediate risk to users than one reported last year. In this new environment, it is crucial that vendors move towards remediating vulnerabilities faster.\u201d</p>\n<p>Anthropic\u2019s Frontier Red Team said essentially the same: \u201cA 90-day window made sense when a vulnerability could be expected to stay private for months. We no longer believe it can, and these changes are intended to keep pace with progress in AI capabilities and strike the right balance for defenders.\u201d</p>\n\u2018Soak time\u2019 has become meaningless\n<p>Since 2021, Project Zero\u2019s policy has actually been \u201c90+30\u201d with 90 days to develop a patch, plus 30 days of grace while the patch rolled out to users. The team referred to these extra 30 days as \u201csoak time.\u201d</p>\n<p>But in a world where AI agents can analyze patches to determine flaw details in minutes and then write exploits for them, waiting for a patch to propagate before releasing vulnerability details only creates a false sense of secrecy. As a result, the Project Zero\u2019s previous 30-day grace is gone effective immediately.</p>\n<p>In a report published this week, Google\u2019s Threat Intelligence Group (GTIG) documented <a href=\"https://www.csoonline.com/article/4249595/google-spots-the-first-hacker-ai-system-that-finds-and-exploits-flaws-autonomously.html\">the first fully automated AI-powered vulnerability discovery-and-exploitation pipeline</a> it has observed in the wild. Called exploit_agent, the framework is designed to analyze application code changes following security patches, identify vulnerabilities, and generate exploits without requiring an operator to direct each step.</p>\n<p>While Anthropic has different deadlines based on vulnerability severity, Project Zero decided to abandon severity as a disclosure metric because attackers are just as likely to discover low-risk flaws as they are to find the high-risk ones.</p>\n<p>\u201cWhen vendors determine severity and use it to prioritize bug fixes, they are making decisions about what risks they are willing to expose their users to, and it is reasonable to accept the risk of low-severity bugs, like unexploitable null pointer crashes or minor info leaks in a lot of circumstances,\u201d Project Zero\u2019s Silvanovich said. \u201cBut this doesn\u2019t change the availability of these vulnerabilities to attackers, and we want our policy to reflect this reality.\u201d</p>\n<p>Google\u2019s team will also no longer check whether a vendor\u2019s patch fixes the issue when deciding whether to release details or not, because this back-and-forth can quickly become unmanageable, especially because the team now finds vulnerabilities using AI assistance at a much faster pace and because vendors might choose alternative mitigation strategies such as temporarily disabling a vulnerable feature or code path until a full patch can be developed.</p>\n<p>\u201cWe decided on a policy that encourages vendors to improve remediation time on a schedule that is challenging but realistic, with the hope that this will lead to vendors broadly improving their remediation processes and infrastructure in a way that eventually enables them to fix all reported vulnerabilities quickly,\u201d Silvanovich said.</p>\nThe road ahead will be bumpy for users\n<p>The shorter patch deadlines come at a time when open-source projects and software vendors are already drowning in vulnerability reports and must resort to either AI-assisted patching or hiring more developers, if they can afford it. As of last week, the number of CVEs issued this year exceeded 100,000, more than double last year\u2019s count.</p>\n<p>Anthropic\u2019s Frontier Red Team noted that \u201cmodels can now help develop fixes\u201d as one justification for the more aggressive disclosure deadlines, and said it will include \u201cactionable guidance with each report, along with a patch or mitigation where possible,\u201d to help maintainers confirm flaws and fix them.</p>\n<p>However, multiple studies and developers have reported in recent months that AI-generated patches are often incomplete, failing to address the root causes of a flaw, to eliminate all instances of the bug from the codebase, or to block all exploit variations.</p>\n<p>Security firm XOR <a href=\"https://www.xor.tech/research/gpt-6-astra-and-claude-fable-5-1-repair-a-third\">built a benchmark</a> that pitted frontier coding systems against vulnerabilities the company had discovered in a private software stack. No public fix existed for any of the flaws when the evaluation ran, so the systems had to work from the vulnerable code alone. The best models produced complete fixes for only about a third of the flaws: 35.3% for GPT-6 Astra and 28.6% for Claude Fable 5.1. Across all systems, just 11.9% of patch attempts earned full credit.</p>\n<p>According to <a href=\"https://www.vulncheck.com/blog/anthropic-glasswing-november-update\">an analysis by VulnCheck</a>, seven months after launching its Mythos-powered Glasswing vulnerability-hunting program, Anthropic\u2019s public ledger counts 37,966 findings, but only 217 of the 7,349 flaws made public so far have been fixed.</p>\n<p>Project Zero acknowledges the friction between the need to patch faster and devs being overloaded. The team solicited feedback from the vendors it reports to most and chose the phased schedule because an immediate change could push vendors to stop trying to meet the disclosure deadlines.</p>\n<p>\u201cTo respond to these new timelines, organizations should be better prepared to assess whether compensating controls can reduce the risk of a vulnerability when it\u2019s disclosed,\u201d Ramy Rahman, senior principal solutions engineer at ArmorCode, tells CSO. \u201cWith disclosures arriving sooner, and sometimes before a fix is available, teams need a process for evaluating exposure, applying available mitigations, and tracking remediation.\u201d</p>\n<p>\u201cConsider hardening systems at deployment time and removing software you don\u2019t use,\u201d he said. \u201cLeaner, more deliberate deployments can reduce exposure and make vulnerability findings easier to manage.\u201d</p>\n</div></div></div></div>",
+      "link": "https://www.csoonline.com/article/4249915/google-and-anthropic-push-for-faster-patches-as-ai-collapses-bug-discovery-timelines.html",
+      "source": "CSO Online",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T23:29:35+00:00",
+      "published_ts": 1794958175,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "AI/ML Security",
+        "Privacy & Compliance"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Why Microsoft Thinks Smaller, Cheaper AI Can Beat Claude and GPT",
+      "summary": "Microsoft's new coding, cybersecurity and image models challenge bigger rivals on performance and price. The company's bet is that doing one job exceptionally well matters more than doing absolutely everything.",
+      "summary_html": "Microsoft's new coding, cybersecurity and image models challenge bigger rivals on performance and price. The company's bet is that doing one job exceptionally well matters more than doing absolutely everything.",
+      "link": "https://decrypt.co/383468/why-microsoft-thinks-smaller-cheaper-ai-beat-claude-gpt",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-11-17T23:16:03+00:00",
+      "published_ts": 1794957363,
+      "smart_groups": [
+        "AI/ML Security"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Microsoft unveiled Copilot Workspaces at Ignite 2026, plus more AI workplace updates",
+      "summary": "The company also released new ROI tracking tools for companies monitoring their AI spend.",
+      "summary_html": "The company also released new ROI tracking tools for companies monitoring their AI spend.",
+      "link": "https://www.zdnet.com/innovation/microsoft-copilot-workspaces-ignite-2026/",
+      "source": "ZDNet \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T23:14:05+00:00",
+      "published_ts": 1794957245,
+      "smart_groups": [
+        "Privacy & Compliance"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Microsoft wants to put a dollar value on AI\u2019s work \u2013 but can you trust the math?",
+      "summary": "With Agent 365 Business Analytics, Microsoft could reshape enterprise spending, but there\u2019s a critical difference between estimated value and money saved.",
+      "summary_html": "With Agent 365 Business Analytics, Microsoft could reshape enterprise spending, but there\u2019s a critical difference between estimated value and money saved.",
+      "link": "https://www.zdnet.com/innovation/microsoft-agent-365-business-analytics-ignite/",
+      "source": "ZDNet \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T23:05:48+00:00",
+      "published_ts": 1794956748,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Critical Java4Shell flaw allows RCE attacks on major Java applications",
+      "summary": "A critical vulnerability dubbed Java4Shell in OpenJDK, the open-source implementation of Java, can allow unauthenticated attackers to remotely execute code on popular enterprise applications, including Jenkins, Atlassian Jira, Confluence, and Keycloak.",
+      "summary_html": "A critical vulnerability dubbed Java4Shell in OpenJDK, the open-source implementation of Java, can allow unauthenticated attackers to remotely execute code on popular enterprise applications, including Jenkins, Atlassian Jira, Confluence, and Keycloak. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/critical-java4shell-flaw-allows-rce-attacks-on-major-java-applications/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-11-17T23:04:21+00:00",
+      "published_ts": 1794956661,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Microsoft says its new AI coding model rivals Claude Opus 5.5 at 5% of the cost",
+      "summary": "Microsoft announced two new AI models at Ignite 2026 that promise impressive performance for much lower cost. They could reshape its relationship with OpenAI and Anthropic for good.",
+      "summary_html": "Microsoft announced two new AI models at Ignite 2026 that promise impressive performance for much lower cost. They could reshape its relationship with OpenAI and Anthropic for good.",
+      "link": "https://www.zdnet.com/innovation/microsoft-ai-coding-model-rivals-claude-opus-5-5-ignite/",
+      "source": "ZDNet \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T22:42:44+00:00",
+      "published_ts": 1794955364,
+      "smart_groups": [
+        "AI/ML Security"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Nvidia Board Shuts Down Jensen Huang Comeback, Launches Search for New CEO",
+      "summary": "Nvidia's board rejected a comeback for its ousted co-founder as it hired a search firm, backed interim CEO Colette Kress, and tightened oversight of chip exports to China.",
+      "summary_html": "Nvidia's board rejected a comeback for its ousted co-founder as it hired a search firm, backed interim CEO Colette Kress, and tightened oversight of chip exports to China.",
+      "link": "https://decrypt.co/383513/nvidia-board-shuts-down-jensen-huang-comeback",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-11-17T22:39:53+00:00",
+      "published_ts": 1794955193,
+      "smart_groups": [
+        "Product News"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Optimizely Malware Attacks Highlight Third-Party Vendor Risks",
+      "summary": "At least 178 organizations, including several major brands, unwittingly exposed website visitors to hydra-like malware via a third-party platform.",
+      "summary_html": "At least 178 organizations, including several major brands, unwittingly exposed website visitors to hydra-like malware via a third-party platform.",
+      "link": "https://www.darkreading.com/cyber-risk/optimizely-malware-attacks-third-party-vendor-risks",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T22:34:22+00:00",
+      "published_ts": 1794954862,
+      "smart_groups": [
+        "Malware / Payloads"
+      ],
+      "curated": false
+    },
+    {
+      "title": "CFTC halts some Kalshi Trump mention markets over manipulation concerns",
+      "summary": "The CFTC stayed Kalshi\u2019s Trump-related mention markets after raising concerns about manipulation risks, giving the platform until Dec. 11 to defend its contracts.",
+      "summary_html": "<p></p><p>The CFTC stayed Kalshi\u2019s Trump-related mention markets after raising concerns about manipulation risks, giving the platform until Dec. 11 to defend its contracts.</p>",
+      "link": "https://cointelegraph.com/news/cftc-kalshi-trump-mention-markets-review?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-11-17T22:20:04+00:00",
+      "published_ts": 1794954004,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Nvidia Shares Rise After Earnings Beat in First Report Since Jensen Huang's Exit",
+      "summary": "The chipmaker doubled quarterly revenue, forecast another record and rallied after hours, but its first report without Jensen Huang leaves leadership questions and a deeply bruised stock chart unresolved.",
+      "summary_html": "The chipmaker doubled quarterly revenue, forecast another record and rallied after hours, but its first report without Jensen Huang leaves leadership questions and a deeply bruised stock chart unresolved.",
+      "link": "https://decrypt.co/383505/nvidia-shares-rise-earnings-beat-first-report-jensen-huang-exit",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-11-17T22:18:18+00:00",
+      "published_ts": 1794953898,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Maple Finance CEO targets up to $15B in assets by the end of 2027",
+      "summary": "Sidney Powell aims to reach $15 billion in assets under management by the end of 2027 as the firm looks to expand into tokenized lending and traditional finance.",
+      "summary_html": "<p></p><p>Sidney Powell aims to reach $15 billion in assets under management by the end of 2027 as the firm looks to expand into tokenized lending and traditional finance.</p>",
+      "link": "https://cointelegraph.com/news/maple-finance-15b-assets-target-2027?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-11-17T21:56:35+00:00",
+      "published_ts": 1794952595,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "OpenAI's GPT 6.2 Astra Challenges Anthropic on Price, But Not Every Benchmark",
+      "summary": "OpenAI's latest models promise better professional work for less money, as the company battles Anthropic and Google for AI supremacy and faces tougher questions about increasingly capable systems and safety.",
+      "summary_html": "OpenAI's latest models promise better professional work for less money, as the company battles Anthropic and Google for AI supremacy and faces tougher questions about increasingly capable systems and safety.",
+      "link": "https://decrypt.co/383488/openai-gpt-6-2-astra-challenges-anthropic-price-but-not-every-benchmark",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-11-17T21:46:02+00:00",
+      "published_ts": 1794951962,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Cloud keys leaked in Docker Hub images are stolen within seconds",
+      "summary": "Credentials and access secrets exposed in public Docker Hub images are being extracted and exploited by attackers within as little as eight seconds of publication.",
+      "summary_html": "Credentials and access secrets exposed in public Docker Hub images are being extracted and exploited by attackers within as little as eight seconds of publication. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/cloud-keys-leaked-in-docker-hub-images-are-stolen-within-seconds/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-11-17T21:27:17+00:00",
+      "published_ts": 1794950837,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Website management platform Optimizely confirms hackers put malicious code into customer sites",
+      "summary": "Researchers said they found malicious JavaScript code on 178 different widely visited websites run through the Optimizely Web experimentation platform. The company confirmed the breach.",
+      "summary_html": "Researchers said they found malicious JavaScript code on 178 different widely visited websites run through the Optimizely Web experimentation platform. The company confirmed the breach.",
+      "link": "https://therecord.media/optimizely-malicious-code-customer-sites",
+      "source": "The Record \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-11-17T21:20:00+00:00",
+      "published_ts": 1794950400,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "'TheMailer' Phishing Kit Puts AI in the Driver's Seat",
+      "summary": "The commercial kit uses attacker-supplied AI models to personalize lures, evade spam filters, and scale campaigns to tens of thousands of targets.",
+      "summary_html": "The commercial kit uses attacker-supplied AI models to personalize lures, evade spam filters, and scale campaigns to tens of thousands of targets.",
+      "link": "https://www.darkreading.com/perimeter/themailer-phishing-kit-ai-drivers-seat",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T20:58:13+00:00",
+      "published_ts": 1794949093,
+      "smart_groups": [
+        "Phishing / Social Engineering"
+      ],
+      "curated": false
+    },
+    {
+      "title": "World Bank Taps Circle and Citi to Test Stablecoins for Development Payments",
+      "summary": "The institution will test whether Circle\u2019s USDC and blockchain rails can speed up and cut the cost of disbursing development funds.",
+      "summary_html": "The institution will test whether Circle\u2019s USDC and blockchain rails can speed up and cut the cost of disbursing development funds.",
+      "link": "https://decrypt.co/383485/world-bank-circle-citi-test-stablecoins-development-payments",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-11-17T20:56:03+00:00",
+      "published_ts": 1794948963,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Apple Services Disrupted as NSA Network Goes Down and Equinor Faces Cyberattack",
+      "summary": "Apple and NSA services faced outages as Equinor reported a cyberattack, highlighting the risks facing increasingly connected infrastructure. Apple customers faced widespread service problems on November 17, with issues affecting iCloud, the App Store, Apple Music and AppleCare on Device. The disruption came after a week of technical failures involving major technology companies, banking services and US government networks. At the same time, Norwegian energy company Equinor disclosed a cyberattack against some of its IT systems. Apple\u2019s System Status page reported problems with iCloud Account and Sign In, affecting all users. The issue prevented customers from signing in to their Apple accounts or caused repeated requests for their Apple ID passwords. Some users also reported difficulties activating new iPhones, suggesting that the disruption was affecting essential account services, not just individual apps. According to TechCrunch , the problems also affected the App Store, Apple Music and AppleCare on Device. Apple had not issued a detailed public explanation at the time of publication, beyond listing the incidents on its status page. The company said in a statement that the issue was caused by an internal update. \u201cMany of our systems are back up and running after an internal update caused some outages this morning,\u201d reads the statement . \u201cWe\u2019re working to get the remaining systems online as soon as possible.\u201d The Apple outage attracted attention because it followed several other major disruptions. Microsoft had experienced a widespread failure affecting Outlook and Teams, while JPMorgan Chase customers had reported problems with online banking. A separate outage also affected the National Security Agency\u2019s classified internal communications network, known as NSANet. The NSA incident raised particular concerns because the network supports classified communications. However, the cause and full extent of the disruption remained unclear. Reports cited by Forbes Middle East said there was no evidence that the NSA outage resulted from a cyberattack. A system patch had reportedly been underway before the disruption. The growing number of outages does not mean they share the same cause or are part of a coordinated cyber campaign. Technical problems, software bugs, configuration errors and infrastructure failures can affect major services without any cyberattack. Claims about AI-powered attacks should not be made without evidence. On the same day, Norway\u2019s energy company Equinor reported a cyberattack against some of its IT systems. The company said the attack had not affected its operations or production, and it had found no evidence of data theft. Equinor said it had activated its response teams and notified the relevant authorities. The company stated that \u201cthere were no signs data had been stolen.\u201d The Equinor incident added a confirmed cyberattack to a day already marked by several service outages. However, these events should not be confused. Equinor confirmed a cyberattack, while there was no evidence that the outages affecting Apple and the NSA were caused by malicious activity. Cyberattacks can compromise systems and data, while ordinary technical failures can disrupt services that businesses, public institutions and millions of people depend on. Both require effective incident response, clear communication and the ability to maintain essential operations when technology fails. For now, there is no evidence that the recent outages affecting Apple, Microsoft, the NSA, banks and aviation systems are connected. Nor should every major service disruption be treated as evidence of a cyberattack. As Forbes reported about the NSA incident, \u201cthere was no evidence the disruption was the result of a cyberattack.\u201d The distinction matters. In a period of heightened cyber threats and growing dependence on digital services, organizations need to investigate incidents carefully, communicate what they know and avoid confusing coincidence with attribution. A technical outage is not necessarily a cyberattack, but it can still expose serious weaknesses in the systems on which society depends. Follow me on Twitter: @securityaffairs and Facebook and Mastodon Pierluigi Paganini ( SecurityAffairs \u2013 hacking, Apple)",
+      "summary_html": "<div></div>\nApple and NSA services faced outages as Equinor reported a cyberattack, highlighting the risks facing increasingly connected infrastructure.\n<p>Apple customers faced widespread service problems on November 17, with issues affecting iCloud, the App Store, Apple Music and AppleCare on Device. </p>\n<a href=\"https://i0.wp.com/securityaffairs.com/wp-content/uploads/2026/11/image-45.png?ssl=1\"></a>\n<p>The disruption came after a week of technical failures involving major technology companies, <a href=\"https://securityaffairs.com/203272/security/u-s-banks-struggle-with-outages-amid-wider-technology-disruptions.html\">banking services</a> and US government networks. At the same time, Norwegian energy company Equinor <a href=\"https://www.reuters.com/technology/equinor-detects-cyberattack-against-some-it-systems-2026-11-17/\">disclosed</a> a cyberattack against some of its IT systems.</p>\n<p>Apple\u2019s System <a href=\"https://www.apple.com/support/systemstatus/\">Status page</a> reported problems with iCloud Account and Sign In, affecting all users. The issue prevented customers from signing in to their Apple accounts or caused repeated requests for their Apple ID passwords. Some users also reported difficulties activating new iPhones, suggesting that the disruption was affecting essential account services, not just individual apps.</p>\n<p><a href=\"https://techcrunch.com/2026/11/17/apple-services-including-icloud-app-store-and-apple-music-hit-by-outage/\">According to TechCrunch</a>, the problems also affected the App Store, Apple Music and AppleCare on Device. Apple had not issued a detailed public explanation at the time of publication, beyond listing the incidents on its status page. The company said in a statement that the issue was caused by an internal update.</p>\n<p><em>\u201cMany of our systems are back up and running after an internal update caused some outages this morning,\u201d reads the <a href=\"https://www.nytimes.com/2026/11/17/technology/apple-down-outage-issues.html\">statement</a>. \u201cWe\u2019re working to get the remaining systems online as soon as possible.\u201d</em></p>\n<p>The Apple outage attracted attention because it followed several other major disruptions. Microsoft <a href=\"https://securityaffairs.com/202932/security/microsoft-cloud-outage-hits-outlook-teams-copilot-and-ai-services.html\">had experienced a widespread failure</a> affecting Outlook and Teams, while JPMorgan Chase customers had reported problems with online banking. A separate outage also affected the National Security Agency\u2019s classified internal communications network, known as NSANet.</p>\n<p>The NSA incident raised particular concerns because the network supports classified communications. However, the cause and full extent of the disruption remained unclear. Reports cited by <a href=\"https://www.forbesmiddleeast.com/innovation/cybersecurity/nsa-network-apple-services-hit-by-outages-as-equinor-reports-cyberattack\">Forbes Middle East</a> said there was no evidence that the NSA outage resulted from a cyberattack. A system patch had reportedly been underway before the disruption.</p>\n<p>The growing number of outages does not mean they share the same cause or are part of a coordinated cyber campaign. Technical problems, software bugs, configuration errors and infrastructure failures can affect major services without any cyberattack. Claims about AI-powered attacks should not be made without evidence.</p>\n<p>On the same day, Norway\u2019s energy company Equinor reported a cyberattack against some of its IT systems. The company said the attack had not affected its operations or production, and it had found no evidence of data theft. Equinor said it had activated its response teams and notified the relevant authorities. The company stated that \u201cthere were no signs data had been stolen.\u201d</p>\n<p>The Equinor incident added a confirmed cyberattack to a day already marked by several service outages. However, these events should not be confused. Equinor confirmed a cyberattack, while there was no evidence that the outages affecting Apple and the NSA were caused by malicious activity.</p>\n<p>Cyberattacks can compromise systems and data, while ordinary technical failures can disrupt services that businesses, public institutions and millions of people depend on. Both require effective incident response, clear communication and the ability to maintain essential operations when technology fails.</p>\n<p>For now, there is no evidence that the recent outages affecting Apple, Microsoft, the NSA, banks and aviation systems are connected. Nor should every major service disruption be treated as evidence of a cyberattack. As Forbes reported about the NSA incident, \u201cthere was no evidence the disruption was the result of a cyberattack.\u201d</p>\n<p>The distinction matters. In a period of heightened cyber threats and growing dependence on digital services, organizations need to investigate incidents carefully, communicate what they know and avoid confusing coincidence with attribution. A technical outage is not necessarily a cyberattack, but it can still expose serious weaknesses in the systems on which society depends.</p>\n<p><strong>Follow me on Twitter:\u00a0</strong><a href=\"https://twitter.com/securityaffairs\"><strong>@securityaffairs</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://www.facebook.com/sec.affairs\"><strong>Facebook</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://infosec.exchange/@securityaffairs\"><strong>Mastodon</strong></a><strong></strong></p>\n<p><a href=\"http://www.linkedin.com/pub/pierluigi-paganini/b/742/559\"><strong>Pierluigi\u00a0Paganini</strong></a><strong></strong></p>\n<p><strong>(</strong><a href=\"http://securityaffairs.co/wordpress/\"><strong>SecurityAffairs</strong></a><strong>\u00a0\u2013\u00a0hacking,\u00a0Apple)</strong></p>\n<p></p>",
+      "link": "https://securityaffairs.com/203354/security/apple-outages-add-to-growing-concerns-over-technology-service-disruptions.html",
+      "source": "Security Affairs",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T20:52:24+00:00",
+      "published_ts": 1794948744,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Japan takes Fugaku supercomputer offlline after cyberattack",
+      "summary": "The Fugaku supercomputer operated by Japan's RIKEN Center for Computational Science has been taken offline following a security breach.",
+      "summary_html": "The Fugaku supercomputer operated by Japan's RIKEN Center for Computational Science has been taken offline following a security breach. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/japan-takes-fugaku-supercomputer-offlline-after-cyberattack/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-11-17T20:51:21+00:00",
+      "published_ts": 1794948681,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Borrowed Code, Real Consequences: What OPTIMJACK Teaches Us",
+      "summary": "The OPTIMJACK supply chain attack demonstrates how a compromised vendor script can expose websites, highlighting the need for strict segmentation.",
+      "summary_html": "The OPTIMJACK supply chain attack demonstrates how a compromised vendor script can expose websites, highlighting the need for strict segmentation. The post Borrowed Code, Real Consequences: What OPTIMJACK Teaches Us appeared first on Unit 42.",
+      "link": "https://unit42.paloaltonetworks.com/optimjack-supply-chain-attack/",
+      "source": "Unit 42 \u2013 Ransomware",
+      "feed_type": "news",
+      "type": "ransomware-extortion",
+      "type_label": "Ransomware & Extortion",
+      "published": "2026-11-17T20:43:14+00:00",
+      "published_ts": 1794948194,
+      "smart_groups": [
+        "Ransomware"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Fast People Search Removal (2026): How to Opt Out & Remove Yourself",
+      "summary": "Anyone can type your name into FastPeopleSearch and see your age, your current address, your phone numbers, and\u2026",
+      "summary_html": "Anyone can type your name into FastPeopleSearch and see your age, your current address, your phone numbers, and\u2026",
+      "link": "https://hackread.com/fast-people-search-removal-2026-how-to-opt-out-remove/",
+      "source": "HackRead",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T20:37:14+00:00",
+      "published_ts": 1794947834,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Bitcoin Investors Are Capitulating\u2014That\u2019s Historically Been a Bottom Signal",
+      "summary": "Glassnode says Bitcoin\u2019s realized losses have reached levels seen only near the 2018, 2020, 2022 and early 2023 lows, as buyers defend the $62,000 to $66,000 range.",
+      "summary_html": "Glassnode says Bitcoin\u2019s realized losses have reached levels seen only near the 2018, 2020, 2022 and early 2023 lows, as buyers defend the $62,000 to $66,000 range.",
+      "link": "https://decrypt.co/383466/bitcoin-investors-capitulating-historical-bottom-signal",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-11-17T20:36:03+00:00",
+      "published_ts": 1794947763,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Eastern Europe crypto flows fall 7.9% as Ukraine draws $12B in stablecoins",
+      "summary": "Chainalysis found that Eastern Europe recorded the steepest decline in crypto activity of any region, while cross-border stablecoin transfers to Ukraine continued amid the ongoing war.",
+      "summary_html": "<p></p><p>Chainalysis found that Eastern Europe recorded the steepest decline in crypto activity of any region, while cross-border stablecoin transfers to Ukraine continued amid the ongoing war.</p>",
+      "link": "https://cointelegraph.com/news/eastern-europe-crypto-activity-decline-chainalysis?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-11-17T20:05:04+00:00",
+      "published_ts": 1794945904,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "modified eCommerce Hacked: Malicious Code in Its News Feed Reached Online Shops\u2019 Admin Areas",
+      "summary": "Attackers broke into the project behind modified eCommerce, a free shop system used mostly by small online shops in Germany, and used its news feed to reach those shops\u2019 admin areas. For 95 minutes on Sunday, 15 November, from 14:24 to 15:59 German time (13:24 to 14:59 UTC), malicious code sat in that feed. The project now says that any shop whose admin area someone logged into during that window counts as compromised. Its forum, wiki, service shop and demo shops are offline. The warning is on an info page that has replaced the project\u2019s website, last updated at 12:13 German time on 17 November. When we published, one Mastodon post had shared it. We found no news coverage in English or German. If you run a modified shop, the checklist is in chapter 3. If you buy from small German online shops, chapter 4 is for you.",
+      "summary_html": "<p>Attackers broke into the project behind modified eCommerce, a free shop system used mostly by small online shops in Germany, and used its news feed to reach those shops\u2019 admin areas.</p>\n<p>For 95 minutes on Sunday, 15 November, from 14:24 to 15:59 German time (13:24 to 14:59 UTC), malicious code sat in that feed. The project now says that any shop whose admin area someone logged into during that window counts as compromised. Its forum, wiki, service shop and demo shops are offline.</p>\n<p>The warning is on an <a href=\"https://www.modified-shop.org/\">info page</a> that has replaced the project\u2019s website, last updated at 12:13 German time on 17 November. When we published, one Mastodon post had shared it. We found no news coverage in English or German.</p>\n<p>If you run a modified shop, the checklist is in chapter 3. If you buy from small German online shops, chapter 4 is for you.</p>",
+      "link": "https://www.privacyaffairs.com/modified-ecommerce-security-incident/",
+      "source": "Privacy Affairs \u2013 Dark Web",
+      "feed_type": "news",
+      "type": "leaks-breaches",
+      "type_label": "Leaks & Breaches",
+      "published": "2026-11-17T19:57:49+00:00",
+      "published_ts": 1794945469,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "Goodbye, Gemini Gems: How to use Google\u2019s new Skills \u2013 and share them",
+      "summary": "Google is retiring Gemini Gems. Here\u2019s what to do to access the same tools as Skills.",
+      "summary_html": "Google is retiring Gemini Gems. Here\u2019s what to do to access the same tools as Skills.",
+      "link": "https://www.zdnet.com/business/gemini-gems-google-skills-transition/",
+      "source": "ZDNet \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T19:54:04+00:00",
+      "published_ts": 1794945244,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Cathie Wood's ARK Sells $85 Million in Nvidia, Buys $40 Million in Crypto Stocks",
+      "summary": "Cathie Wood's funds trimmed Nvidia ahead of earnings while buying Block, Circle and Coinbase during Monday's selloff.",
+      "summary_html": "Cathie Wood's funds trimmed Nvidia ahead of earnings while buying Block, Circle and Coinbase during Monday's selloff.",
+      "link": "https://decrypt.co/383463/cathie-wood-ark-sells-85-million-nvidia-buys-crypto-stocks",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-11-17T19:46:03+00:00",
+      "published_ts": 1794944763,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "How to Tell If It\u2019s a Cyberattack or Just an Outage",
+      "summary": "Email, flights, banks; network failures are piling up. Here\u2019s how WIRED investigates if they\u2019re the result of hacker mayhem. (Hint: usually not.)",
+      "summary_html": "Email, flights, banks; network failures are piling up. Here\u2019s how WIRED investigates if they\u2019re the result of hacker mayhem. (Hint: usually not.)",
+      "link": "https://www.wired.com/story/how-to-tell-if-its-a-cyberattack-or-just-an-outage/",
+      "source": "WIRED \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T19:40:57+00:00",
+      "published_ts": 1794944457,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Researchers Claim Two RCE Exploits That Bypass Telegram\u2019s New Android Defenses",
+      "summary": "A malicious widget can bypass the security filter that Telegram added to its Android app last week and run code outside it, according to NebuSec, a security company. Widgets are small interactive blocks that bots send inside chat messages, and their JavaScript runs on the user's phone. The researchers ran their demonstration on a Telegram test server, because only approved bots can send",
+      "summary_html": "A malicious widget can bypass the security filter that Telegram added to its Android app last week and run code outside it, according to NebuSec, a security company.\n\nWidgets are small interactive blocks that bots send inside chat messages, and their JavaScript runs on the user's phone. The researchers ran their demonstration on a Telegram test server, because only approved bots can send",
+      "link": "https://thehackernews.com/2026/11/researchers-claim-two-rce-exploits-that.html",
+      "source": "The Hacker News",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T19:34:20+00:00",
+      "published_ts": 1794944060,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Ethereum Devs Weigh a Scaling Upgrade That Could Break 15,000 Apps",
+      "summary": "Developers warned on a core dev call that two scaling changes in the Glamsterdam upgrade break assumptions some contracts rely on\u2014pitting a 3.3x capacity boost against the risk of disrupting thousands of apps.",
+      "summary_html": "Developers warned on a core dev call that two scaling changes in the Glamsterdam upgrade break assumptions some contracts rely on\u2014pitting a 3.3x capacity boost against the risk of disrupting thousands of apps.",
+      "link": "https://decrypt.co/383462/ethereum-devs-scaling-upgrade-could-break-15000-apps",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-11-17T19:26:02+00:00",
+      "published_ts": 1794943562,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Apple reports outages affecting iCloud Mail, AppleCare and more",
+      "summary": "Apple is reporting service disruptions affecting several of its services, including iCloud Mail, iCloud Account & Sign In, Apple School Manager, and Schoolwork.",
+      "summary_html": "Apple is reporting service disruptions affecting several of its services, including iCloud Mail, iCloud Account &amp; Sign In, Apple School Manager, and Schoolwork. [...]",
+      "link": "https://www.bleepingcomputer.com/news/apple/apple-reports-outages-affecting-icloud-mail-applecare-and-more/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-11-17T19:24:07+00:00",
+      "published_ts": 1794943447,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Fireworks AI Breach Exposes Uber Data and Highlights Supply Chain Risks",
+      "summary": "Hackers used compromised Fireworks AI credentials to steal personal data and driver\u2019s license information belonging to nearly 150,000 Uber users. Uber is notifying nearly 150,000 people after attackers used compromised credentials belonging to one of its technology providers to access personal information stored in the company\u2019s external environment. \u201cOn October 9, 2026, a service provider notified Uber that an unauthorized third party had compromised the service provider\u2019s internal credentials and used them to access Uber\u2019s account with the service provider. After being notified of this incident, Uber immediately severed data connections with the service provider and launched an investigation. On October 13, 2026, our investigation determined that the unauthorized party had used the compromised credentials to access Uber data connected to the service provider.\u201d reads the data breach notification shared with the California Attorney General\u2019s Office. \u201cWe are notifying you about this incident because our investigation concluded that your personal information was among the information accessed.\u201d The stolen data includes images of drivers\u2019 licenses and other identity details, turning a security incident at an AI infrastructure supplier into a significant privacy issue for the ride-hailing company. The incident dates back to October, when Uber learned that an unauthorized party had compromised the internal credentials of a third-party provider. According to notifications filed with U.S. state authorities, the provider informed Uber on October 9 that its credentials had been stolen and used to access the company\u2019s data. Uber found that attackers had accessed the data on October 7, two days before the company was notified. Uber then cut off the affected provider and began investigating the incident. The company said the provider\u2019s stolen login details did not give attackers access to other Uber systems. This suggests that the breach was limited to the supplier\u2019s environment. The provider was identified as Fireworks AI, a cloud platform that gives developers access to open AI models. It allows companies to run and fine-tune these models without managing the required infrastructure themselves. The stolen data includes drivers\u2019 names, home addresses, dates of birth and driver\u2019s license numbers. Attackers also accessed images of driver\u2019s licenses and information from other government-issued IDs, according to Uber\u2019s disclosures to regulators. The scale of the incident became clearer after Uber filed a notification with Oregon authorities, reporting that 149,346 individuals had been affected. The company has also submitted breach notifications in several other states, including California, Iowa, Massachusetts, South Carolina, Texas and Vermont. However, Uber hasn\u2019t disclosed how many of those affected are drivers, nor whether the total number could increase. TechCrunch reports that Uber said it already had security alerts enabled to detect unauthorized access to its environment at Fireworks. They didn\u2019t work because the attackers used legitimate internal credentials belonging to the compromised provider. \u201cIn Uber\u2019s case, the company said it had alerts enabled to detect unauthorized access to its Fireworks environment, but because the hackers used Fireworks\u2019 own internal credentials, \u201cno alerts were triggered.\u201d\u201d states TechCrunch . This is a clear example of how access controls and monitoring systems can fail to identify malicious activity when an attacker operates through an account that the environment already trusts. The breach is part of a wider security incident at Fireworks AI. In a November 9 update, the company said attackers had accessed customer account and billing details, as well as secrets, datasets and unfinished AI models belonging to a small number of customers. Fireworks hired Palo Alto Networks Unit 42 to investigate the incident and notified law enforcement. The company linked the attack to a financially motivated cybercriminal group that wanted to sell stolen AI access tokens through unauthorized services. This type of attack is known as LLMjacking . It allows criminals to use stolen credentials or tokens to access AI services and run models at the victim\u2019s expense. No known cybercriminal group has publicly claimed responsibility for the Uber data theft. Uber was not the only Fireworks customer affected. Notion and Cursor also confirmed that attackers had accessed some of their data during the incident, according to TechCrunch. The case shows how a security breach at one technology provider can expose several customers, even when they have no direct connection with one another. Fireworks has taken steps to contain the incident with the help of Palo Alto Networks Unit 42. The company strengthened its security by replacing compromised credentials, limiting privileged access, isolating affected systems, restricting access to stored data, and improving logging and monitoring to detect further suspicious activity. Fireworks pointed out it had found no evidence of further successful unauthorized access to the customer-facing Fireworks platform after October 25. Uber is offering affected individuals free credit monitoring and fraud assistance through Cyberscout, a TransUnion company. Recipients have 90 days from the date of their notification letter to enroll. Reuters reported that Uber had not identified any misuse of the exposed information at the time of its November 13 report. For affected drivers, the exposure of license images and personal details creates risks that go beyond the immediate breach. Criminals could use this information to support identity theft, impersonation attempts, fraudulent applications or highly targeted phishing campaigns. Combining a person\u2019s identity details with knowledge of their professional relationship with Uber could also make fraudulent communications more convincing. This is also Uber\u2019s second publicly known data breach in 2026. In August, the company was reportedly investigating a separate incident involving its Uber Freight trucking business, after an extortion group claimed to have stolen data. The latest incident raises a broader question about how organizations monitor the access they grant to external technology providers. Uber had alerts in place, but those controls didn\u2019t identify the activity because the attackers used credentials that the system considered valid. The company said it had not identified any misuse of the data to date. That is encouraging, but it doesn\u2019t remove the need for affected individuals to remain alert to identity fraud and targeted social engineering. Follow me on Twitter: @securityaffairs and Facebook and Mastodon Pierluigi Paganini ( SecurityAffairs \u2013 hacking, newsletter)",
+      "summary_html": "<div></div>\nHackers used compromised Fireworks AI credentials to steal personal data and driver\u2019s license information belonging to nearly 150,000 Uber users.\n<p>Uber is notifying nearly 150,000 people after attackers used compromised credentials belonging to one of its technology providers to access personal information stored in the company\u2019s external environment. </p>\n<p><em>\u201cOn October 9, 2026, a service provider notified Uber that an unauthorized third party had compromised the service provider\u2019s internal credentials and used them to access Uber\u2019s account with the service provider. After being notified of this incident, Uber immediately severed data connections with the service provider and launched an investigation. On October 13, 2026, our investigation determined that the unauthorized party had used the compromised credentials to access Uber data connected to the service provider.\u201d reads the <a href=\"https://oag.ca.gov/ecrime/databreach/reports/sb24-632751?7194ef805fa2d04b0f7e8c9521f97343\">data breach notification</a> shared with the California Attorney General\u2019s Office. \u201cWe are notifying you about this incident because our investigation concluded that your personal information was among the information accessed.\u201d</em></p>\n<p>The stolen data includes images of drivers\u2019 licenses and other identity details, turning a security incident at an AI infrastructure supplier into a significant privacy issue for the ride-hailing company.</p>\n<p>The incident dates back to October, when Uber learned that an unauthorized party had compromised the internal credentials of a third-party provider. According to notifications filed with U.S. state authorities, the provider informed Uber on October 9 that its credentials had been stolen and used to access the company\u2019s data.</p>\n<p>Uber found that attackers had accessed the data on October 7, two days before the company was notified. Uber then cut off the affected provider and began investigating the incident. The company said the provider\u2019s stolen login details did not give attackers access to other Uber systems. This suggests that the breach was limited to the supplier\u2019s environment.</p>\n<p>The provider was identified as Fireworks AI, a cloud platform that gives developers access to open AI models. It allows companies to run and fine-tune these models without managing the required infrastructure themselves.</p>\n<p>The stolen data includes drivers\u2019 names, home addresses, dates of birth and driver\u2019s license numbers. Attackers also accessed images of driver\u2019s licenses and information from other government-issued IDs, according to Uber\u2019s disclosures to regulators.</p>\n<p>The scale of the incident became clearer after Uber filed a notification with Oregon authorities, reporting that 149,346 individuals had been affected. The company has also submitted breach notifications in several other states, including California, Iowa, Massachusetts, South Carolina, Texas and Vermont. However, Uber hasn\u2019t disclosed how many of those affected are drivers, nor whether the total number could increase.</p>\n<p>TechCrunch reports that Uber said it already had security alerts enabled to detect unauthorized access to its environment at Fireworks. They didn\u2019t work because the attackers used legitimate internal credentials belonging to the compromised provider. </p>\n<p><em>\u201cIn Uber\u2019s case, the company said it had alerts enabled to detect unauthorized access to its Fireworks environment, but because the hackers used Fireworks\u2019 own internal credentials, \u201cno alerts were triggered.\u201d\u201d <a href=\"https://techcrunch.com/2026/11/16/uber-confirms-hackers-stole-thousands-of-drivers-license-information-in-data-breach/\">states TechCrunch</a>.</em></p>\n<p>This is a clear example of how access controls and monitoring systems can fail to identify malicious activity when an attacker operates through an account that the environment already trusts.</p>\n<p>The breach is part of a wider security incident at Fireworks AI. In a November 9 update, the company said attackers had accessed customer account and billing details, as well as secrets, datasets and unfinished AI models belonging to a small number of customers. Fireworks hired Palo Alto Networks Unit 42 to investigate the incident and notified law enforcement.</p>\n<p>The company linked the attack to a financially motivated cybercriminal group that wanted to sell stolen AI access tokens through unauthorized services. This type of attack is known as <strong><a href=\"https://securityaffairs.com/tag/llmjacking\">LLMjacking</a></strong>. It allows criminals to use stolen credentials or tokens to access AI services and run models at the victim\u2019s expense. No known cybercriminal group has publicly claimed responsibility for the Uber data theft.</p>\n<p>Uber was not the only Fireworks customer affected. Notion and Cursor also confirmed that attackers had accessed some of their data during the incident, according to TechCrunch. The case shows how a security breach at one technology provider can expose several customers, even when they have no direct connection with one another.</p>\n<p>Fireworks has taken steps to contain the incident with the help of Palo Alto Networks Unit 42. The company strengthened its security by replacing compromised credentials, limiting privileged access, isolating affected systems, restricting access to stored data, and improving logging and monitoring to detect further suspicious activity.</p>\n<p>Fireworks pointed out it had found no evidence of further successful unauthorized access to the customer-facing Fireworks platform after October 25.</p>\n<p>Uber is offering affected individuals free credit monitoring and fraud assistance through Cyberscout, a TransUnion company. Recipients have 90 days from the date of their notification letter to enroll. Reuters reported that Uber had not identified any misuse of the exposed information at the time of its November 13 report.</p>\n<p>For affected drivers, the exposure of license images and personal details creates risks that go beyond the immediate breach. Criminals could use this information to support identity theft, impersonation attempts, fraudulent applications or highly targeted phishing campaigns. Combining a person\u2019s identity details with knowledge of their professional relationship with Uber could also make fraudulent communications more convincing.</p>\n<p>This is also Uber\u2019s second publicly known data breach in 2026. In August, the company was reportedly investigating a separate incident involving its Uber Freight trucking business, after an extortion group claimed to have stolen data.</p>\n<p>The latest incident raises a broader question about how organizations monitor the access they grant to external technology providers. Uber had alerts in place, but those controls didn\u2019t identify the activity because the attackers used credentials that the system considered valid. The company said it had not identified any misuse of the data to date. That is encouraging, but it doesn\u2019t remove the need for affected individuals to remain alert to identity fraud and targeted social engineering.</p>\n<p><strong>Follow me on Twitter:\u00a0</strong><a href=\"https://twitter.com/securityaffairs\"><strong>@securityaffairs</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://www.facebook.com/sec.affairs\"><strong>Facebook</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://infosec.exchange/@securityaffairs\"><strong>Mastodon</strong></a><strong></strong></p>\n<p><a href=\"http://www.linkedin.com/pub/pierluigi-paganini/b/742/559\"><strong>Pierluigi\u00a0Paganini</strong></a><strong></strong></p>\n<p><strong>(</strong><a href=\"http://securityaffairs.co/wordpress/\"><strong>SecurityAffairs</strong></a><strong>\u00a0\u2013\u00a0hacking,\u00a0newsletter)</strong><strong></strong></p>",
+      "link": "https://securityaffairs.com/203339/data-breach/fireworks-ai-breach-exposes-uber-data-and-highlights-supply-chain-risks.html",
+      "source": "Security Affairs - Data Breach",
+      "feed_type": "news",
+      "type": "leaks-breaches",
+      "type_label": "Leaks & Breaches",
+      "published": "2026-11-17T19:11:20+00:00",
+      "published_ts": 1794942680,
+      "smart_groups": [
+        "Ransomware",
+        "Data Breaches / Leaks",
+        "Phishing / Social Engineering"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Kazakh ransomware hacking suspect extradited from Italy",
+      "summary": "The U.S. accused Roman Khlynovskiy of participating in ransomware attacks against healthcare organizations, schools and companies as part of the \"8 Digits Team\" connected with INC and Lynx.",
+      "summary_html": "The U.S. accused Roman Khlynovskiy of participating in ransomware attacks against healthcare organizations, schools and companies as part of the \"8 Digits Team\" connected with INC and Lynx.",
+      "link": "https://therecord.media/kazakh-suspected-extradited-charges-8-digits-team-inc-lynx",
+      "source": "The Record \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-11-17T19:09:00+00:00",
+      "published_ts": 1794942540,
+      "smart_groups": [
+        "Ransomware"
+      ],
+      "curated": true
+    },
+    {
+      "title": "After Black October, OffSec Turns PHPH2Shell and Other New Vulnerabilities Into Hands-On Labs",
+      "summary": "New York City, United States, 17th November 2026, CyberNewswire After Black October, OffSec Turns PHPH2Shell and Other New Vulnerabilities Into Hands-On Labs on Latest Hacking News | Cyber Security News, Hacking Tools and Penetration Testing Courses .",
+      "summary_html": "<p>New York City, United States, 17th November 2026, CyberNewswire</p>\n<p><a href=\"https://latesthackingnews.com/2026/11/17/after-black-october-offsec-turns-phph2shell-and-other-new-vulnerabilities-into-hands-on-labs/\">After Black October, OffSec Turns PHPH2Shell and Other New Vulnerabilities Into Hands-On Labs</a> on <a href=\"https://latesthackingnews.com\">Latest Hacking News | Cyber Security News, Hacking Tools and Penetration Testing Courses</a>.</p>",
+      "link": "https://latesthackingnews.com/2026/11/17/after-black-october-offsec-turns-phph2shell-and-other-new-vulnerabilities-into-hands-on-labs/",
+      "source": "Latest Hacking News",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T19:06:15+00:00",
+      "published_ts": 1794942375,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Red Team / Offensive"
+      ],
+      "curated": false,
+      "story_id": "eb6f398a1d53",
+      "story_size": 2
+    },
+    {
+      "title": "After Black October, OffSec Turns PHPH2Shell and Other New Vulnerabilities Into Hands-On Labs",
+      "summary": "New York City, United States, 17th November 2026, CyberNewswire",
+      "summary_html": "New York City, United States, 17th November 2026, CyberNewswire",
+      "link": "https://hackread.com/after-black-october-offsec-turns-phph2shell-and-other-new-vulnerabilities-into-hands-on-labs/",
+      "source": "HackRead",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T19:05:02+00:00",
+      "published_ts": 1794942302,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": false,
+      "story_id": "eb6f398a1d53",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "Latest Hacking News",
+          "title": "After Black October, OffSec Turns PHPH2Shell and Other New Vulnerabilities Into Hands-On Labs",
+          "link": "https://latesthackingnews.com/2026/11/17/after-black-october-offsec-turns-phph2shell-and-other-new-vulnerabilities-into-hands-on-labs/",
+          "published_ts": 1794942375
+        }
+      ]
+    },
+    {
+      "title": "Chinese state group developing automated attack tool for cyber espionage, Google says",
+      "summary": "Google released its latest AI Threat Tracker report on Monday, writing that threat actors are rapidly evolving their use of artificial intelligence in attacks \u2014 now leaning more heavily on autonomous multi-agent offensive frameworks like Artex, CAIRN, CyberStrikeAI and PentAGI to execute multi-stage intrusions at greater operational velocity.",
+      "summary_html": "Google released its latest AI Threat Tracker report on Monday, writing that threat actors are rapidly evolving their use of artificial intelligence in attacks \u2014 now leaning more heavily on autonomous multi-agent offensive frameworks like Artex, CAIRN, CyberStrikeAI and PentAGI to execute multi-stage intrusions at greater operational velocity.",
+      "link": "https://therecord.media/chinese-state-group-developing-automated-attack-tool-espionage",
+      "source": "The Record \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-11-17T18:50:00+00:00",
+      "published_ts": 1794941400,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Cursor Traces Malicious Claude Code Extension to Third-Party Breach",
+      "summary": "A compromised key issued to AI infrastructure provider Fireworks was used by threat actors to access Cursor data and credentials.",
+      "summary_html": "A compromised key issued to AI infrastructure provider Fireworks was used by threat actors to access Cursor data and credentials.",
+      "link": "https://www.darkreading.com/application-security/cursor-malicious-claude-code-extension-third-party-breach",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T18:38:37+00:00",
+      "published_ts": 1794940717,
+      "smart_groups": [
+        "AI/ML Security"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Maintainers don\u2019t need more AI bug reports. They need fixes.",
+      "summary": "AI has made finding potential vulnerabilities fast and cheap. Fixing them still takes human judgment, and in open source, that work falls to maintainers. Many are already flooded with AI-generated security findings, including duplicates and reports that aren\u2019t vulnerabilities at all. Another raw scan doesn\u2019t help them. Anyone pointing a new model at a project should ask its maintainers first and come with fixes, not just findings. Maintainers are under intense pressure from this flood of reports. As Christian Grobmeier, a maintainer of Log4j, has put it, the AI defending open source has to be better than the AI attacking it. AI shouldn\u2019t add to maintainers\u2019 workload. So, with maintainers, GitHub and Microsoft ran a pilot together: could AI help maintainers ship fixes instead of handing them more findings? GitHub and Microsoft are using Codename MDASH, Microsoft\u2019s multi-model agentic scanning harness, to find and fix security vulnerabilities in widely used open source software, strengthening the foundation that much of the world\u2019s code is built on. ## The process Our pilot had two goals: send only findings that matter, and never send a maintainer an unverified finding. Here\u2019s how it worked: 1. **Find.** Codename MDASH, an AI system from Microsoft Security, scanned each project using Microsoft\u2019s MAI Cyber model and suggested fixes for what it found. 2. **Filter.** An AI triage agent from the GitHub Security Lab, built on tailored Copilot skills, removed duplicates, checked validity, and focused on high-impact bugs, so maintainers never had to review raw scan results. 3. **Verify.** Researchers from Microsoft FORGE Lab checked every remaining finding by hand. 4. **Report privately.** Reports reached maintainers through GitHub private vulnerability reporting, with a proof of concept and a suggested fix. 5. **Fix.** Maintainers decided what to fix, how to fix it, and when. Reports and fixes stayed on GitHub, where maintainers already work. The result: Codename MDASH, using Microsoft\u2019s MAI Cyber model, flagged thousands of possible issues across the six projects. After AI triage and hand review by seven Microsoft FORGE Lab researchers, maintainers received 99 private reports. As of November 15, they had fixed 55, and 14 of those fixes were already in a release. ## What we learned These lessons come from what the six projects fixed and what their maintainers chose to share. Six projects is a small sample, so read them as early lessons. ### 1\\. Fixes matter more than findings Fixing is where maintainers spend their time. So every report arrived already checked, with a suggested fix to review, adapt, and merge. Maintainers started from a well-scoped patch, not a raw finding. The first fixes shipped about a week after the initial scan. Caddy\u2019s maintainers fixed all 22 of the reports they received in a week or less. Maintainers used the suggested fixes, some as written and some with changes. AutoGPT\u2019s maintainers had recently shipped a new check, and it was broken. The report landed three days later and pointed at the right line. They took the fix further than the suggested patch, wrote it within a day, and had it in production less than a week later. > Finding vulnerabilities is no longer our bottleneck. Fixing them is the hard part, and that depends on maintainers. > > Netty maintainer ### 2\\. Codename MDASH, with researcher review, gave maintainers high-quality findings with fixes Maintainers got a short list, not a flood. Express maintainers said the reports cut through the noise. Caddy maintainers said they surfaced obscure bugs and filled gaps that earlier reports had missed. For FastMCP, the scan went beyond what AI scanners had given them before. ImageMagick, maintained by a two-person team, received 22 reports. AI did the finding, researchers did the checking, and maintainers stayed in charge. One ImageMagick report looked like a kind of issue the maintainers had seen before. Its summary showed it wasn\u2019t and pointed to the exact lines of code. They were able to push a fix in 15 minutes. > Normally, a security advisory would take us around 30 minutes to 1 hour on average to read, understand, and make a fix. It is a huge difference. > > ImageMagick maintainer > Codename MDASH was able to find unknown, obscure security bugs in our project with succinct reports, and it filled in gaps from some prior reports that hadn\u2019t been noticed. > > Caddy maintainer ### 3\\. Open source still has gaps to close The pilot worked because people did careful work at every step, and that work doesn\u2019t scale yet. Seven researchers spent about two days per project checking findings by hand. Meanwhile, low-quality reports still reach maintainers every day. For open source, fixes need to be delivered via private vulnerability reporting (PVR). Maintainers need to run CI/CD tests on private forks to verify those fixes. And to close the gap between defenders and attackers, maintainers need access to cyber-capable models to verify a proof of concept, before and after the fix. > The Codename MDASH scan provided unique insights into the security of our project above and beyond what AI scanners have provided us in the past > > FastMCP maintainer ## Why it matters If you\u2019re a maintainer, this approach changes what a security report costs you. A checked, private report that comes with a suggested fix takes less of your time. You shouldn\u2019t have to triage a scanner\u2019s output. That\u2019s the sender\u2019s job. If you use AI to find vulnerabilities in open source, maintainers\u2019 feedback points to this standard: - Check every finding before you send it, against what the project already knows and against its threat model and security policy. - Report it privately. - Include a suggested fix. Let maintainers set the pace. > Features are easier and easier to ship, but in the future maintaining software will probably come down to who cares enough to manage the security. > > AutoGPT maintainer > Codename MDASH is very useful for cutting through the noise of vulnerability reports. > > Express maintainer ## What you can do today - If you maintain any open source project, turn on private vulnerability reporting so researchers can report security issues to you without making them public. If your project is on GitHub, turn on core security features in about two minutes with `gh-secure`. - If you build on open source, turn on Dependabot alerts so you know when a dependency you use needs a security update. - If you send AI-generated vulnerability reports to open source projects, hold them to the standard above before you send them. - Repositories using GitHub code security can use agentic autofix to help automatically remediate their alerts with Copilot ## What happens next 1. **Fixes, where maintainers already work.** GitHub is bringing these lessons into private vulnerability reporting and security advisories, where GitHub Security Lab is already investing to reduce the burden of low-quality reports on maintainers. 2. **MAI Cyber 2.** Today Microsoft announced MAI Cyber 2. The Codename MDASH pilot ran on the earlier MAI Cyber model. GitHub and Microsoft will keep working together to help secure open source. 3. **Closing the gaps, starting with the GitHub Secure Open Source Fund.** We\u2019re working with Microsoft to scale researcher review without cutting corners. GitHub will offer every alumni project AI security scans, with findings checked before they\u2019re reported privately. Alumni also get GitHub Copilot Max. We\u2019ll bring this support to future sessions of the Fund. Everyone downstream benefits from this system. When a maintainer publishes a security advisory on GitHub and it\u2019s reviewed for the GitHub Advisory Database, Dependabot can alert the repositories that depend on that package. That\u2019s the idea behind the GitHub Secure Open Source Fund: 216 projects so far, with more than 300 maintainers fixing more than 4,000 vulnerabilities in software downloaded more than 20 billion times a month. ## Thank you To the maintainers of AutoGPT, Caddy, Express, FastMCP, ImageMagick, and Netty: thank you for your time, your trust, and your feedback. Thank you also to the Codename MDASH team at Microsoft Security, the MAI Cyber team, the researchers of Microsoft FORGE Lab, and GitHub Security Lab. Maintainers do the fixing. Our job is to make sure they never do it alone. _Hear from maintainers about their experience with Codename MDASH. \ud83d\udc47_ ## About the GitHub Secure Open Source Fund All six projects in this pilot are alumni of the GitHub Secure Open Source Fund, which gives each project $10,000 through GitHub Sponsors, plus security training and a supportive alumni community. The GitHub Secure Open Source Fund, powered by GitHub Sponsors, funds open source projects that underpin the digital supply chain, catalyze innovation, and are critical to the AI stack. Want your company to help secure the open source it depends on? Become a funding partner through the Fund page. Learn more about the Fund or apply. Through the Fund, maintainers receive security training and Azure credits from Microsoft for Startups. That support sits alongside Microsoft\u2019s European Security Program and its Secure Future Initiative, whose principle is security above all else. Most organizations are downstream in the same way. If your software depends on open source, do the same: back the maintainers you rely on. ### All alumni of the GitHub Secure Open Source Fund **AI, machine learning, and intelligent systems** ACI.dev \u2022 AlbumentationsX \u2022 ArviZ \u2022 AutoGPT/GravitasML \u2022 CAMEL-AI \u2022 Caracal \u2022 CocoIndex \u2022 Code-Graph-RAG \u2022 CodeCarbon \u2022 Cognee \u2022 Deep Agents \u2022 DIPY \u2022 DocsGPT \u2022 FastMCP \u2022 Jupyter \u2022 LadybugDB \u2022 LangChain \u2022 Matplotlib \u2022 n8n-MCP \u2022 Nasiko \u2022 NumPy \u2022 Ollama \u2022 ONNX \u2022 OpenBB Platform \u2022 OpenClaw \u2022 OpenCV \u2022 OpenMetadata \u2022 OpenSearch \u2022 PageIndex \u2022 pandas \u2022 Pydantic \u2022 PyMC \u2022 Ruby-OpenAI \u2022 Scenic \u2022 scikit-learn \u2022 SciPy \u2022 Serena \u2022 TokenOps \u2022 TraceRoot \u2022 Zeus **Build systems, supply chain, and release tooling** Apache Airflow \u2022 Babel \u2022 Bluefin \u2022 bootc \u2022 Browserslist \u2022 Changesets \u2022 Colima \u2022 Concourse \u2022 Cucumber \u2022 CycloneDX Python Library \u2022 Flux \u2022 Foundry \u2022 Gitoxide \u2022 golangci-lint \u2022 GoReleaser \u2022 hardhat-deploy \u2022 Jenkins \u2022 JReleaser \u2022 Jupyter Docker Stacks \u2022 NixOS/Nixpkgs \u2022 node-lru-cache \u2022 oapi-codegen \u2022 PostCSS \u2022 PyPI/Warehouse \u2022 rimraf \u2022 Task \u2022 Termux \u2022 Terra \u2022 Turborepo \u2022 Warpgate \u2022 webpack \u2022 zizmor **Core programming languages, runtimes, and foundational libraries** Apache Commons \u2022 Apache Groovy \u2022 Byte Buddy \u2022 core-js \u2022 CPython \u2022 FS2 \u2022 Gleam \u2022 Himmelblau \u2022 htmx \u2022 LLVM \u2022 modernc.org/sqlite \u2022 NAPI-RS \u2022 Node.js \u2022 Pkl \u2022 Pyodide \u2022 Rustls \u2022 termcolor \u2022 time-rs **Developer tools and productivity platforms** AirQo \u2022 API Dash \u2022 ArduPilot \u2022 AssertJ \u2022 AsyncAPI Initiative \u2022 Bevy \u2022 Bootstrap \u2022 calibre \u2022 Charset Normalizer \u2022 Cheerio \u2022 Ciphey \u2022 Cobra \u2022 CodeRunner \u2022 CSS Declaration Sorter \u2022 DataJourney \u2022 Diesel \u2022 DIGIT \u2022 Electron \u2022 ERPNext \u2022 fabric.js \u2022 GitPython \u2022 Hoppscotch \u2022 ImageMagick \u2022 jQuery \u2022 js-yaml \u2022 jsoup \u2022 JUnit \u2022 libyt \u2022 LORIS \u2022 MapStruct \u2022 Mastodon \u2022 Mathesar \u2022 Mautic \u2022 Mermaid \u2022 MessageFormat \u2022 Mockoon \u2022 NativeScript \u2022 Next.js \u2022 Nuxt \u2022 nvm \u2022 Oh My Zsh \u2022 p5.js \u2022 Path-to-RegExp \u2022 Pelias Geocoder \u2022 Pest \u2022 Pillow \u2022 Polly \u2022 Proyecto Respira \u2022 PypeIt \u2022 python-benedict \u2022 qs \u2022 React Starter Kit \u2022 Readest \u2022 Resolve \u2022 Rocket.Chat \u2022 Selenium \u2022 shadcn/ui \u2022 Sphinx \u2022 Spyder \u2022 ssh\\_config \u2022 StackQL \u2022 Stirling PDF \u2022 Svelte \u2022 Thunderbird for Android \u2022 ToolJet \u2022 Two.js \u2022 Viper \u2022 virtualenv \u2022 Vuetify \u2022 Wagmi \u2022 WebdriverIO \u2022 xyflow \u2022 YAML \u2022 Yii Framework \u2022 Yjs **Web, networking, APIs, and infrastructure services** actix-web \u2022 aiohttp \u2022 Apache APISIX \u2022 Apache Shiro \u2022 Apache Solr \u2022 Apache ZooKeeper \u2022 Arkime \u2022 Caddy \u2022 cmux \u2022 Cryptomator \u2022 curl \u2022 CycloneDX .NET Library \u2022 CycloneDX cdxgen \u2022 Ente \u2022 etcd \u2022 evcc \u2022 Express \u2022 external-secrets \u2022 FastAPI \u2022 Fastify \u2022 Haraka \u2022 Helmet.js \u2022 Home Assistant \u2022 Hummingbird \u2022 jose \u2022 Keycloak \u2022 Keyshade \u2022 kgateway \u2022 Log4j \u2022 mimetype \u2022 NetBird \u2022 Netty \u2022 Oauth2 (Ruby) \u2022 OAuthlib \u2022 openapi-stack \u2022 OpenWISP \u2022 PGPainless \u2022 quic-go \u2022 ScanAPI \u2022 ScanCode \u2022 Sniffnet \u2022 Social Auth App Django \u2022 Stalwart \u2022 Starlette \u2022 UAParser.js \u2022 urllib3 \u2022 Vapor \u2022 varlock \u2022 Veramo \u2022 WebAuthn (Go) \u2022 ZITADEL * * * ## Tags: ## Written by ## Related posts ### Git security vulnerabilities announced Git is releasing updates addressing six security vulnerabilities affecting recursive clones, reference handling, merges, binary patches, and imports. Here is what users need to know. ## Explore more from GitHub ### Docs Everything you need to master GitHub, all in one place. ### GitHub Build what\u2019s next on GitHub, the place for anyone from anywhere to build anything. ### Customer stories Meet the companies and engineering teams that build with GitHub. ### GitHub Universe 2026 Catch up on the key announcements shaping the future of software development.",
+      "summary_html": "AI has made finding potential vulnerabilities fast and cheap. Fixing them still takes human judgment, and in open source, that work falls to maintainers. Many are already flooded with AI-generated security findings, including duplicates and reports that aren\u2019t vulnerabilities at all. Another raw scan doesn\u2019t help them. Anyone pointing a new model at a project should ask its maintainers first and come with fixes, not just findings.\n\nMaintainers are under intense pressure from this flood of reports. As Christian Grobmeier, a maintainer of Log4j, has put it, the AI defending open source has to be better than the AI attacking it.\n\nAI shouldn\u2019t add to maintainers\u2019 workload. So, with maintainers, GitHub and Microsoft ran a pilot together: could AI help maintainers ship fixes instead of handing them more findings?\n\nGitHub and Microsoft are using Codename MDASH, Microsoft\u2019s multi-model agentic scanning harness, to find and fix security vulnerabilities in widely used open source software, strengthening the foundation that much of the world\u2019s code is built on.\n\n## The process\n\nOur pilot had two goals: send only findings that matter, and never send a maintainer an unverified finding. Here\u2019s how it worked:\n\n1. **Find.** Codename MDASH, an AI system from Microsoft Security, scanned each project using Microsoft\u2019s MAI Cyber model and suggested fixes for what it found.\n2. **Filter.** An AI triage agent from the GitHub Security Lab, built on tailored Copilot skills, removed duplicates, checked validity, and focused on high-impact bugs, so maintainers never had to review raw scan results.\n3. **Verify.** Researchers from Microsoft FORGE Lab checked every remaining finding by hand.\n4. **Report privately.** Reports reached maintainers through GitHub private vulnerability reporting, with a proof of concept and a suggested fix.\n5. **Fix.** Maintainers decided what to fix, how to fix it, and when.\n\nReports and fixes stayed on GitHub, where maintainers already work.\n\nThe result: Codename MDASH, using Microsoft\u2019s MAI Cyber model, flagged thousands of possible issues across the six projects. After AI triage and hand review by seven Microsoft FORGE Lab researchers, maintainers received 99 private reports. As of November 15, they had fixed 55, and 14 of those fixes were already in a release.\n\n## What we learned\n\nThese lessons come from what the six projects fixed and what their maintainers chose to share. Six projects is a small sample, so read them as early lessons.\n\n### 1\\. Fixes matter more than findings\n\nFixing is where maintainers spend their time. So every report arrived already checked, with a suggested fix to review, adapt, and merge. Maintainers started from a well-scoped patch, not a raw finding.\n\nThe first fixes shipped about a week after the initial scan. Caddy\u2019s maintainers fixed all 22 of the reports they received in a week or less. Maintainers used the suggested fixes, some as written and some with changes.\n\nAutoGPT\u2019s maintainers had recently shipped a new check, and it was broken. The report landed three days later and pointed at the right line. They took the fix further than the suggested patch, wrote it within a day, and had it in production less than a week later.\n\n&gt; Finding vulnerabilities is no longer our bottleneck. Fixing them is the hard part, and that depends on maintainers.\n&gt;\n&gt; Netty maintainer\n\n### 2\\. Codename MDASH, with researcher review, gave maintainers high-quality findings with fixes\n\nMaintainers got a short list, not a flood. Express maintainers said the reports cut through the noise. Caddy maintainers said they surfaced obscure bugs and filled gaps that earlier reports had missed. For FastMCP, the scan went beyond what AI scanners had given them before. ImageMagick, maintained by a two-person team, received 22 reports.\n\nAI did the finding, researchers did the checking, and maintainers stayed in charge.\n\nOne ImageMagick report looked like a kind of issue the maintainers had seen before. Its summary showed it wasn\u2019t and pointed to the exact lines of code. They were able to push a fix in 15 minutes.\n\n&gt; Normally, a security advisory would take us around 30 minutes to 1 hour on average to read, understand, and make a fix. It is a huge difference.\n&gt;\n&gt; ImageMagick maintainer\n\n&gt; Codename MDASH was able to find unknown, obscure security bugs in our project with succinct reports, and it filled in gaps from some prior reports that hadn\u2019t been noticed.\n&gt;\n&gt; Caddy maintainer\n\n### 3\\. Open source still has gaps to close\n\nThe pilot worked because people did careful work at every step, and that work doesn\u2019t scale yet. Seven researchers spent about two days per project checking findings by hand. Meanwhile, low-quality reports still reach maintainers every day.\n\nFor open source, fixes need to be delivered via private vulnerability reporting (PVR). Maintainers need to run CI/CD tests on private forks to verify those fixes. And to close the gap between defenders and attackers, maintainers need access to cyber-capable models to verify a proof of concept, before and after the fix.\n\n&gt; The Codename MDASH scan provided unique insights into the security of our project above and beyond what AI scanners have provided us in the past\n&gt;\n&gt; FastMCP maintainer\n\n## Why it matters\n\nIf you\u2019re a maintainer, this approach changes what a security report costs you. A checked, private report that comes with a suggested fix takes less of your time. You shouldn\u2019t have to triage a scanner\u2019s output. That\u2019s the sender\u2019s job.\n\nIf you use AI to find vulnerabilities in open source, maintainers\u2019 feedback points to this standard:\n\n- Check every finding before you send it, against what the project already knows and against its threat model and security policy.\n- Report it privately.\n- Include a suggested fix. Let maintainers set the pace.\n\n&gt; Features are easier and easier to ship, but in the future maintaining software will probably come down to who cares enough to manage the security.\n&gt;\n&gt; AutoGPT maintainer\n\n&gt; Codename MDASH is very useful for cutting through the noise of vulnerability reports.\n&gt;\n&gt; Express maintainer\n\n## What you can do today\n\n- If you maintain any open source project, turn on private vulnerability reporting so researchers can report security issues to you without making them public. If your project is on GitHub, turn on core security features in about two minutes with\n\n`gh-secure`.\n- If you build on open source, turn on Dependabot alerts so you know when a dependency you use needs a security update.\n- If you send AI-generated vulnerability reports to open source projects, hold them to the standard above before you send them.\n- Repositories using GitHub code security can use agentic autofix to help automatically remediate their alerts with Copilot\n\n## What happens next\n\n1. **Fixes, where maintainers already work.** GitHub is bringing these lessons into private vulnerability reporting and security advisories, where GitHub Security Lab is already investing to reduce the burden of low-quality reports on maintainers.\n2. **MAI Cyber 2.** Today Microsoft announced MAI Cyber 2. The Codename MDASH pilot ran on the earlier MAI Cyber model. GitHub and Microsoft will keep working together to help secure open source.\n3. **Closing the gaps, starting with the GitHub Secure Open Source Fund.** We\u2019re working with Microsoft to scale researcher review without cutting corners. GitHub will offer every alumni project AI security scans, with findings checked before they\u2019re reported privately. Alumni also get GitHub Copilot Max. We\u2019ll bring this support to future sessions of the Fund.\n\nEveryone downstream benefits from this system. When a maintainer publishes a security advisory on GitHub and it\u2019s reviewed for the GitHub Advisory Database, Dependabot can alert the repositories that depend on that package. That\u2019s the idea behind the GitHub Secure Open Source Fund: 216 projects so far, with more than 300 maintainers fixing more than 4,000 vulnerabilities in software downloaded more than 20 billion times a month.\n\n## Thank you\n\nTo the maintainers of AutoGPT, Caddy, Express, FastMCP, ImageMagick, and Netty: thank you for your time, your trust, and your feedback. Thank you also to the Codename MDASH team at Microsoft Security, the MAI Cyber team, the researchers of Microsoft FORGE Lab, and GitHub Security Lab.\n\nMaintainers do the fixing. Our job is to make sure they never do it alone.\n\n_Hear from maintainers about their experience with Codename MDASH. \ud83d\udc47_\n\n## About the GitHub Secure Open Source Fund\n\nAll six projects in this pilot are alumni of the GitHub Secure Open Source Fund, which gives each project $10,000 through GitHub Sponsors, plus security training and a supportive alumni community.\n\nThe GitHub Secure Open Source Fund, powered by GitHub Sponsors, funds open source projects that underpin the digital supply chain, catalyze innovation, and are critical to the AI stack. Want your company to help secure the open source it depends on? Become a funding partner through the Fund page. Learn more about the Fund or apply.\n\nThrough the Fund, maintainers receive security training and Azure credits from Microsoft for Startups. That support sits alongside Microsoft\u2019s European Security Program and its Secure Future Initiative, whose principle is security above all else. Most organizations are downstream in the same way. If your software depends on open source, do the same: back the maintainers you rely on.\n\n### All alumni of the GitHub Secure Open Source Fund\n\n**AI, machine learning, and intelligent systems**\n\nACI.dev \u2022 AlbumentationsX \u2022 ArviZ \u2022 AutoGPT/GravitasML \u2022 CAMEL-AI \u2022 Caracal \u2022 CocoIndex \u2022 Code-Graph-RAG \u2022 CodeCarbon \u2022 Cognee \u2022 Deep Agents \u2022 DIPY \u2022 DocsGPT \u2022 FastMCP \u2022 Jupyter \u2022 LadybugDB \u2022 LangChain \u2022 Matplotlib \u2022 n8n-MCP \u2022 Nasiko \u2022 NumPy \u2022 Ollama \u2022 ONNX \u2022 OpenBB Platform \u2022 OpenClaw \u2022 OpenCV \u2022 OpenMetadata \u2022 OpenSearch \u2022 PageIndex \u2022 pandas \u2022 Pydantic \u2022 PyMC \u2022 Ruby-OpenAI \u2022 Scenic \u2022 scikit-learn \u2022 SciPy \u2022 Serena \u2022 TokenOps \u2022 TraceRoot \u2022 Zeus\n\n**Build systems, supply chain, and release tooling**\n\nApache Airflow \u2022 Babel \u2022 Bluefin \u2022 bootc \u2022 Browserslist \u2022 Changesets \u2022 Colima \u2022 Concourse \u2022 Cucumber \u2022 CycloneDX Python Library \u2022 Flux \u2022 Foundry \u2022 Gitoxide \u2022 golangci-lint \u2022 GoReleaser \u2022 hardhat-deploy \u2022 Jenkins \u2022 JReleaser \u2022 Jupyter Docker Stacks \u2022 NixOS/Nixpkgs \u2022 node-lru-cache \u2022 oapi-codegen \u2022 PostCSS \u2022 PyPI/Warehouse \u2022 rimraf \u2022 Task \u2022 Termux \u2022 Terra \u2022 Turborepo \u2022 Warpgate \u2022 webpack \u2022 zizmor\n\n**Core programming languages, runtimes, and foundational libraries**\n\nApache Commons \u2022 Apache Groovy \u2022 Byte Buddy \u2022 core-js \u2022 CPython \u2022 FS2 \u2022 Gleam \u2022 Himmelblau \u2022 htmx \u2022 LLVM \u2022 modernc.org/sqlite \u2022 NAPI-RS \u2022 Node.js \u2022 Pkl \u2022 Pyodide \u2022 Rustls \u2022 termcolor \u2022 time-rs\n\n**Developer tools and productivity platforms**\n\nAirQo \u2022 API Dash \u2022 ArduPilot \u2022 AssertJ \u2022 AsyncAPI Initiative \u2022 Bevy \u2022 Bootstrap \u2022 calibre \u2022 Charset Normalizer \u2022 Cheerio \u2022 Ciphey \u2022 Cobra \u2022 CodeRunner \u2022 CSS Declaration Sorter \u2022 DataJourney \u2022 Diesel \u2022 DIGIT \u2022 Electron \u2022 ERPNext \u2022 fabric.js \u2022 GitPython \u2022 Hoppscotch \u2022 ImageMagick \u2022 jQuery \u2022 js-yaml \u2022 jsoup \u2022 JUnit \u2022 libyt \u2022 LORIS \u2022 MapStruct \u2022 Mastodon \u2022 Mathesar \u2022 Mautic \u2022 Mermaid \u2022 MessageFormat \u2022 Mockoon \u2022 NativeScript \u2022 Next.js \u2022 Nuxt \u2022 nvm \u2022 Oh My Zsh \u2022 p5.js \u2022 Path-to-RegExp \u2022 Pelias Geocoder \u2022 Pest \u2022 Pillow \u2022 Polly \u2022 Proyecto Respira \u2022 PypeIt \u2022 python-benedict \u2022 qs \u2022 React Starter Kit \u2022 Readest \u2022 Resolve \u2022 Rocket.Chat \u2022 Selenium \u2022 shadcn/ui \u2022 Sphinx \u2022 Spyder \u2022 ssh\\_config \u2022 StackQL \u2022 Stirling PDF \u2022 Svelte \u2022 Thunderbird for Android \u2022 ToolJet \u2022 Two.js \u2022 Viper \u2022 virtualenv \u2022 Vuetify \u2022 Wagmi \u2022 WebdriverIO \u2022 xyflow \u2022 YAML \u2022 Yii Framework \u2022 Yjs\n\n**Web, networking, APIs, and infrastructure services**\n\nactix-web \u2022 aiohttp \u2022 Apache APISIX \u2022 Apache Shiro \u2022 Apache Solr \u2022 Apache ZooKeeper \u2022 Arkime \u2022 Caddy \u2022 cmux \u2022 Cryptomator \u2022 curl \u2022 CycloneDX .NET Library \u2022 CycloneDX cdxgen \u2022 Ente \u2022 etcd \u2022 evcc \u2022 Express \u2022 external-secrets \u2022 FastAPI \u2022 Fastify \u2022 Haraka \u2022 Helmet.js \u2022 Home Assistant \u2022 Hummingbird \u2022 jose \u2022 Keycloak \u2022 Keyshade \u2022 kgateway \u2022 Log4j \u2022 mimetype \u2022 NetBird \u2022 Netty \u2022 Oauth2 (Ruby) \u2022 OAuthlib \u2022 openapi-stack \u2022 OpenWISP \u2022 PGPainless \u2022 quic-go \u2022 ScanAPI \u2022 ScanCode \u2022 Sniffnet \u2022 Social Auth App Django \u2022 Stalwart \u2022 Starlette \u2022 UAParser.js \u2022 urllib3 \u2022 Vapor \u2022 varlock \u2022 Veramo \u2022 WebAuthn (Go) \u2022 ZITADEL\n\n* * *\n\n## Tags:\n\n## Written by\n\n## Related posts\n\n### Git security vulnerabilities announced\n\nGit is releasing updates addressing six security vulnerabilities affecting recursive clones, reference handling, merges, binary patches, and imports. Here is what users need to know.\n\n## Explore more from GitHub\n\n### Docs\n\nEverything you need to master GitHub, all in one place.\n\n### GitHub\n\nBuild what\u2019s next on GitHub, the place for anyone from anywhere to build anything.\n\n### Customer stories\n\nMeet the companies and engineering teams that build with GitHub.\n\n### GitHub Universe 2026\n\nCatch up on the key announcements shaping the future of software development.",
+      "link": "https://github.blog/open-source/maintainers/maintainers-dont-need-more-ai-bug-reports-they-need-fixes/",
+      "source": "0dayfans",
+      "feed_type": "news",
+      "type": "exploits-pocs",
+      "type_label": "Exploits & PoCs",
+      "published": "2026-11-17T18:30:07+00:00",
+      "published_ts": 1794940207,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Exploit / PoC",
+        "Cloud / SaaS"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Jensen Huang Says He'd Be 'Honored' to Return as Nvidia CEO, Despite Board's Resistance",
+      "summary": "The ousted Nvidia founder apologized for his conduct, offered to return if directors ask, and addressed supporters as the chipmaker presses ahead with its search for new leadership this week.",
+      "summary_html": "The ousted Nvidia founder apologized for his conduct, offered to return if directors ask, and addressed supporters as the chipmaker presses ahead with its search for new leadership this week.",
+      "link": "https://decrypt.co/383454/jensen-huang-honored-return-nvidia-ceo-board-resistance",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-11-17T18:23:43+00:00",
+      "published_ts": 1794939823,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Your Googlebook just got a Chrome update \u2013 5 new features",
+      "summary": "The Chrome update includes more useful vertical tabs, easier screen sharing, and some handy keyboard shortcuts.",
+      "summary_html": "The Chrome update includes more useful vertical tabs, easier screen sharing, and some handy keyboard shortcuts.",
+      "link": "https://www.zdnet.com/tech/googlebook-os-chrome-update-new-features/",
+      "source": "ZDNet \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T18:21:55+00:00",
+      "published_ts": 1794939715,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Researchers hijack Hugging Face account for popular Kokoro AI model",
+      "summary": "A Lack of ownership verification on the Hugging Face platform allowed researchers to take control of Kokoro, a text-to-speech model used in projects from Google, NVIDIA, AMD, Intel, and Amazon Web Services.",
+      "summary_html": "A Lack of ownership verification on the Hugging Face platform allowed researchers to take control of Kokoro, a text-to-speech model used in projects from Google, NVIDIA, AMD, Intel, and Amazon Web Services. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/researchers-hijack-hugging-face-account-for-popular-kokoro-ai-model/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-11-17T18:21:24+00:00",
+      "published_ts": 1794939684,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "AI Framework Autonomously Weaponized Flaws in Real Attacks, Google Says",
+      "summary": "Threat actors are deploying multi-agent offensive frameworks to increase the velocity of multi-stage intrusions.",
+      "summary_html": "<p>Threat actors are deploying multi-agent offensive frameworks to increase the velocity of multi-stage intrusions.</p>\n<p>The post <a href=\"https://www.securityweek.com/ai-framework-autonomously-weaponized-flaws-in-real-attacks-google-says/\">AI Framework Autonomously Weaponized Flaws in Real Attacks, Google Says</a> appeared first on <a href=\"https://www.securityweek.com\">SecurityWeek</a>.</p>",
+      "link": "https://www.securityweek.com/ai-framework-autonomously-weaponized-flaws-in-real-attacks-google-says/",
+      "source": "SecurityWeek",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T18:16:17+00:00",
+      "published_ts": 1794939377,
+      "smart_groups": [
+        "Exploit / PoC"
+      ],
+      "curated": false
+    },
+    {
+      "title": "How SASE Vendors Design Their Solution - Part 3: Not Everything Belongs in the Cloud (The Self-Hosted Necessity)",
+      "summary": "The Operational Realities of a Disconnected WorldWhile the future of security is undoubtedly in the cloud, a truly comprehensive SASE architecture must acknowledge a critical operational reality: not every location can be reliably connected to it. For many industries, there are environments where the cloud is simply too far away or entirely inaccessible.Consider these scenarios:A secure, air-gapped military network where external connections are strictly forbidden for security reasons.A highly isolated factory in a remote region, where local industrial control systems require low-latency communication that cannot tolerate a round trip to the cloud.An office in a country with severe geo-routing restrictions or poor network infrastructure, making cloud performance untenable.In these situations, a cloud-only SASE solution is a non-starter. A truly enterprise-grade SASE vendor must provide a way to extend its security architecture to these challenging environments. This is the \"good\" design: a hybrid SASE topology that embraces the necessity of an on-premises presence. The Good: The Private Service EdgeThe solution is a Private Service Edge (also known as an on-premises SASE node). This is a hardware appliance or, more commonly, a virtual machine that runs the exact same software, policies, and inspection engine as the vendor's global security cloud. This private service edge is deployed on-premises, providing a local point of presence for security enforcement.Crucially, this is not simply a legacy virtual appliance. A well-designed private service edge is an extension of the SASE platform. It is centrally managed from the same cloud console, receives the same policy updates, and provides the same rich logging and telemetry as its cloud-based counterparts.This architecture provides the best of both worlds:Local Proxy Processing: All traffic is processed locally, ensuring the lowest possible latency for users and devices in that location. This is critical for real-time applications and industrial systems.Consistent Policy Enforcement: The same set of granular DLP, threat prevention, and access control policies are applied on-premises as they are in the cloud, ensuring a consistent security posture across the entire organization.Offline Survivability: If the connection to the central management cloud is lost, the private service edge can continue to operate autonomously, enforcing the last known policy configuration. The Ugly: Stitched-Together Hybrid SolutionsAlternative SASE solutions often struggle to provide a clean, integrated on-premises offering. Some vendors may propose a disparate virtual appliance that does not run the same software stack as their cloud service. This creates a clunky, disjointed experience where policies must be managed in two different places, and the on-premises capabilities may lag significantly behind the cloud service.This is the \"ugly\" approach: a hybrid solution in name only. It creates operational friction, results in an inconsistent security posture, and fails to deliver the unified management that is a core tenet of the SASE framework.A mature SASE architecture is one that is flexible enough to meet the operational realities of the enterprise. By offering a fully integrated private service edge, a vendor demonstrates a deep understanding of the need for a hybrid topology. It acknowledges that while the brain of the security platform should reside in the cloud, its enforcement capabilities must extend to every edge of the network, no matter how remote or disconnected.",
+      "summary_html": "The Operational Realities of a Disconnected WorldWhile the future of security is undoubtedly in the cloud, a truly comprehensive SASE architecture must acknowledge a critical operational reality: not every location can be reliably connected to it. For many industries, there are environments where the cloud is simply too far away or entirely inaccessible.Consider these scenarios:A secure, air-gapped military network where external connections are strictly forbidden for security reasons.A highly isolated factory in a remote region, where local industrial control systems require low-latency communication that cannot tolerate a round trip to the cloud.An office in a country with severe geo-routing restrictions or poor network infrastructure, making cloud performance untenable.In these situations, a cloud-only SASE solution is a non-starter. A truly enterprise-grade SASE vendor must provide a way to extend its security architecture to these challenging environments. This is the \"good\" design: a\u00a0hybrid SASE topology that embraces the necessity of an on-premises presence. The Good: The Private Service EdgeThe solution is a\u00a0Private Service Edge (also known as an on-premises SASE node). This is a hardware appliance or, more commonly, a virtual machine that runs the exact same software, policies, and inspection engine as the vendor's global security cloud. This private service edge is deployed on-premises, providing a local point of presence for security enforcement.Crucially, this is not simply a legacy virtual appliance. A well-designed private service edge is an extension of the SASE platform. It is centrally managed from the same cloud console, receives the same policy updates, and provides the same rich logging and telemetry as its cloud-based counterparts.This architecture provides the best of both worlds:Local Proxy Processing: All traffic is processed locally, ensuring the lowest possible latency for users and devices in that location. This is critical for real-time applications and industrial systems.Consistent Policy Enforcement: The same set of granular DLP, threat prevention, and access control policies are applied on-premises as they are in the cloud, ensuring a consistent security posture across the entire organization.Offline Survivability: If the connection to the central management cloud is lost, the private service edge can continue to operate autonomously, enforcing the last known policy configuration. The Ugly: Stitched-Together Hybrid SolutionsAlternative SASE solutions often struggle to provide a clean, integrated on-premises offering. Some vendors may propose a disparate virtual appliance that does not run the same software stack as their cloud service. This creates a clunky, disjointed experience where policies must be managed in two different places, and the on-premises capabilities may lag significantly behind the cloud service.This is the \"ugly\" approach: a hybrid solution in name only. It creates operational friction, results in an inconsistent security posture, and fails to deliver the unified management that is a core tenet of the SASE framework.A mature SASE architecture is one that is flexible enough to meet the operational realities of the enterprise. By offering a fully integrated private service edge, a vendor demonstrates a deep understanding of the need for a hybrid topology. It acknowledges that while the brain of the security platform should reside in the cloud, its enforcement capabilities must extend to every edge of the network, no matter how remote or disconnected.",
+      "link": "https://www.zscaler.com/blogs/cybersecurity-best-practices/how-sase-vendors-design-their-solution-part-3-not-everything",
+      "source": "Zscaler Research Blogs",
+      "feed_type": "news",
+      "type": "threat-intel-apt-campaigns",
+      "type_label": "Threat Intel & APT Campaigns",
+      "published": "2026-11-17T18:10:18+00:00",
+      "published_ts": 1794939018,
+      "smart_groups": [
+        "Network / OT / ICS"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Tor releases emergency update amid ongoing DDoS attack",
+      "summary": "The Tor Project has released a security update for its network relay software to increase defenses against an ongoing distributed denial-of-service attack that it says has overwhelmed relays and affected most operators.",
+      "summary_html": "The Tor Project has released a security update for its network relay software to increase defenses against an ongoing distributed denial-of-service attack that it says has overwhelmed relays and affected most operators. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/tor-releases-emergency-update-amid-ongoing-ddos-attack/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-11-17T18:04:15+00:00",
+      "published_ts": 1794938655,
+      "smart_groups": [
+        "Product News"
+      ],
+      "curated": false,
+      "story_id": "70122ed37be4",
+      "story_size": 3
+    },
+    {
+      "title": "Google is making it easier to opt out of Gemini AI model training \u2013 here\u2019s how",
+      "summary": "You\u2019ll soon be able to turn off Gemini model training but still retain access to your previous chats with Google\u2019s AI.",
+      "summary_html": "You\u2019ll soon be able to turn off Gemini model training but still retain access to your previous chats with Google\u2019s AI.",
+      "link": "https://www.zdnet.com/innovation/google-gemini-ai-model-training-opt-out-how/",
+      "source": "ZDNet \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T18:01:38+00:00",
+      "published_ts": 1794938498,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "I asked Gemini Notebook to \u2018make me a site\u2019 from my notes \u2013 it was satisfying",
+      "summary": "A new Gemini Notebook feature lets you create interactive sites from intricate data.",
+      "summary_html": "A new Gemini Notebook feature lets you create interactive sites from intricate data.",
+      "link": "https://www.zdnet.com/innovation/google-gemini-notebook-interactive-sites-notes/",
+      "source": "ZDNet \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T17:52:39+00:00",
+      "published_ts": 1794937959,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Lighter incident exposes risks beyond withdrawal controls",
+      "summary": "DeFi",
+      "summary_html": "DeFi",
+      "link": "https://cointelegraph.com/news/lighter-incident-exposes-risks-beyond-withdrawal-controls?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-11-17T17:51:53+00:00",
+      "published_ts": 1794937913,
+      "smart_groups": [
+        "Crypto / Web3"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Fed\u2019s Waller cites Binance hack in warning over tokenized finance",
+      "summary": "Fed Governor Christopher Waller questioned who bears responsibility for fraud, compromised keys and failed transactions as traditional financial assets move onto blockchains.",
+      "summary_html": "<p></p><p>Fed Governor Christopher Waller questioned who bears responsibility for fraud, compromised keys and failed transactions as traditional financial assets move onto blockchains.</p>",
+      "link": "https://cointelegraph.com/news/feds-waller-cites-binance-hack-in-warning-over-tokenized-finance?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-11-17T17:39:41+00:00",
+      "published_ts": 1794937181,
+      "smart_groups": [],
+      "curated": false
+    },
     {
       "title": "Binance Hack Wallets Move $137 Million in Ethereum After Two Weeks of Silence",
       "summary": "A wallet linked to October\u2019s record Binance theft moved $63 million in ether, before analysts flagged a larger wave of transfers and reported Bitcoin swaps amid ongoing U.S. recovery efforts.",
@@ -62,6 +768,20 @@
       "smart_groups": [
         "Community Discussion"
       ],
+      "curated": false
+    },
+    {
+      "title": "UK Police Facial Recognition Failures Expose Risks for Business AI",
+      "summary": "A UK police facial recognition review highlights oversight gaps. Learn what IT teams should check before acting on automated recommendations at work.",
+      "summary_html": "<p>A UK police facial recognition review highlights oversight gaps. Learn what IT teams should check before acting on automated recommendations at work.</p>\n<p>The post <a href=\"https://www.techrepublic.com/article/news-police-facial-recognition-business-ai-emea-uk/\">UK Police Facial Recognition Failures Expose Risks for Business AI</a> appeared first on <a href=\"https://www.techrepublic.com\">TechRepublic</a>.</p>",
+      "link": "https://www.techrepublic.com/article/news-police-facial-recognition-business-ai-emea-uk/",
+      "source": "TechRepublic \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T16:52:12+00:00",
+      "published_ts": 1794934332,
+      "smart_groups": [],
       "curated": false
     },
     {
@@ -157,6 +877,22 @@
       "curated": false
     },
     {
+      "title": "Microsoft Protects the Platform: Why Cloud Backup Needs a Rethink",
+      "summary": "Microsoft 365 uptime does not guarantee data recovery. Explore cloud backup gaps, Entra ID protection, and practical steps to strengthen business resilience.",
+      "summary_html": "<p>Microsoft 365 uptime does not guarantee data recovery. Explore cloud backup gaps, Entra ID protection, and practical steps to strengthen business resilience.</p>\n<p>The post <a href=\"https://www.techrepublic.com/article/news-microsoft-365-cloud-backup-data-recovery/\">Microsoft Protects the Platform: Why Cloud Backup Needs a Rethink</a> appeared first on <a href=\"https://www.techrepublic.com\">TechRepublic</a>.</p>",
+      "link": "https://www.techrepublic.com/article/news-microsoft-365-cloud-backup-data-recovery/",
+      "source": "TechRepublic \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T16:22:07+00:00",
+      "published_ts": 1794932527,
+      "smart_groups": [
+        "Windows / Microsoft"
+      ],
+      "curated": false
+    },
+    {
       "title": "NSA Net, agency\u2019s classified internal network, faces unspecified disruptions",
       "summary": "The NSA has ordered staggered arrivals at its headquarters at Fort Meade, Maryland, as technicians work to fully restore the classified internal network NSA Net.",
       "summary_html": "The NSA has ordered staggered arrivals at its headquarters at Fort Meade, Maryland, as technicians work to fully restore the classified internal network NSA Net.",
@@ -214,7 +950,18 @@
       "smart_groups": [
         "Community Discussion"
       ],
-      "curated": true
+      "curated": true,
+      "story_id": "0ead9ddd06cc",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "SecurityWeek",
+          "title": "Classified Communications Network at the National Security Agency Goes Down, Defense Official Says",
+          "link": "https://www.securityweek.com/classified-communications-network-at-the-national-security-agency-goes-down-defense-official-says/",
+          "published_ts": 1794968107
+        }
+      ]
     },
     {
       "title": "Oura\u2019s new feature could help you kick jet lag \u2013 how to enable it",
@@ -246,7 +993,18 @@
         "Product News",
         "Red Team / Offensive"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "3241c5d0e909",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "Cyber Security News (FeedBurner)",
+          "title": "Flipper Devices Launches Flipper One Linux-based Multi-tool With Advanced Network Security Tools",
+          "link": "https://cybersecuritynews.com/flipper-one-linux-multi-tool/",
+          "published_ts": 1794972931
+        }
+      ]
     },
     {
       "title": "The 100 Most-Visited Websites Track You Before You Answer the Cookie Banner, Audit Finds",
@@ -328,6 +1086,49 @@
       "curated": false,
       "story_id": "5e9589308d1e",
       "story_size": 2
+    },
+    {
+      "title": "Oracle to Patch 11 Java Flaws Today as Critical OpenJDK RCE (CVE-2026-114938) Report Emerges",
+      "summary": "Oracle is preparing to release security patches for 11 vulnerabilities in Java SE on Tuesday, November 17, 2026, all of which may be exploited remotely without authentication, as separate reports warn of a potentially critical remote code execution (RCE) flaw affecting OpenJDK. The 11 vulnerabilities carry a maximum CVSS 3.1 severity score of 8.1, according to Oracle's advance security notice.",
+      "summary_html": "Oracle is preparing to release security patches for 11 vulnerabilities in Java SE on Tuesday, November 17, 2026, all of which may be exploited remotely without authentication, as separate reports warn of a potentially critical remote code execution (RCE) flaw affecting OpenJDK.\n\nThe 11 vulnerabilities carry a maximum CVSS 3.1 severity score of 8.1, according to Oracle's advance security notice.",
+      "link": "https://thehackernews.com/2026/11/oracle-to-patch-11-java-flaws-today-as.html",
+      "source": "The Hacker News",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T15:17:36+00:00",
+      "published_ts": 1794928656,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true,
+      "story_id": "7a7b2eaa4aa9",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "Cisco Talos Blog",
+          "title": "CVE-2026-114938: Critical vulnerability in OpenJDK JAVA",
+          "link": "https://blog.talosintelligence.com/java4shell/",
+          "published_ts": 1794966783
+        }
+      ]
+    },
+    {
+      "title": "Trigram Campaign Impersonates About 50 AI and Blockchain Brands to Target Devs with Infostealers",
+      "summary": "Artificial intelligence (AI), blockchain, and logistics sectors across Europe and the U.S. have emerged as the target of a large-scale, industrialized campaign dubbed Trigram. \"Trigram is a large-scale campaign that impersonates about 50 brands in the blockchain and AI sectors, to trick developers into executing an infostealer themselves,\" Stormshield said in a deep-dive technical report",
+      "summary_html": "Artificial intelligence (AI), blockchain, and logistics sectors across Europe and the U.S. have emerged as the target of a large-scale, industrialized campaign dubbed Trigram.\n\n\"Trigram is a large-scale campaign that impersonates about 50 brands in the blockchain and AI sectors, to trick developers into executing an infostealer themselves,\" Stormshield said in a deep-dive technical report",
+      "link": "https://thehackernews.com/2026/11/trigram-campaign-impersonates-about-50.html",
+      "source": "The Hacker News",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T15:17:28+00:00",
+      "published_ts": 1794928648,
+      "smart_groups": [
+        "Malware / Payloads"
+      ],
+      "curated": false
     },
     {
       "title": "We're currently looking at 110 malicious python scrips in this incident (and counting)",
@@ -525,6 +1326,20 @@
       "type_label": "Cybercrime & Underground",
       "published": "2026-11-17T14:09:00+00:00",
       "published_ts": 1794924540,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "OpenAI\u2019s New Detection Tool Could Cut Child Abuse Image Reviews by 48%",
+      "summary": "OpenAI introduces a free classifier to detect child sexual abuse material, reporting a 48% reduction in review workload during early testing.",
+      "summary_html": "<p>OpenAI introduces a free classifier to detect child sexual abuse material, reporting a 48% reduction in review workload during early testing.</p>\n<p>The post <a href=\"https://www.techrepublic.com/article/news-openai-ai-child-abuse-image-detection-tool/\">OpenAI\u2019s New Detection Tool Could Cut Child Abuse Image Reviews by 48%</a> appeared first on <a href=\"https://www.techrepublic.com\">TechRepublic</a>.</p>",
+      "link": "https://www.techrepublic.com/article/news-openai-ai-child-abuse-image-detection-tool/",
+      "source": "TechRepublic \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-17T14:05:48+00:00",
+      "published_ts": 1794924348,
       "smart_groups": [],
       "curated": false
     },
@@ -1174,6 +1989,39 @@
       "published_ts": 1794916800,
       "smart_groups": [],
       "curated": false
+    },
+    {
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "summary": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-115731 Perforce Puppet Enterprise Deserialization of Untrusted Data Vulnerability This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal enterprise. Binding Operational Directive (BOD) 26-04: Prioritizing Security Updates Based on Risk establishes vulnerability management requirements for Federal Civilian Executive Branch (FCEB) agencies. BOD 26-04 reinforces the importance of the KEV Catalog and requires federal agencies to prioritize rapid remediation of high-risk vulnerabilities, specifically those identified by Common Vulnerabilities and Exposures (CVEs) listed in CISA\u2019s KEV Catalog on publicly exposed assets that grant total control of the asset post-exploitation, while deferring action for lower-risk vulnerabilities. BOD 26-04 further establishes basic expectations for when agencies must check whether threat actors compromised the system before the patch was applied. While BOD 26-04 applies only to FCEB agencies, CISA encourages all organizations to adopt risk-based vulnerability management and prioritize remediation of KEV Catalog vulnerabilities . CISA will continue to add vulnerabilities to the catalog that meet the specified criteria . Aware of an exploited vulnerability not currently listed in the KEV Catalog? Submit it for potential addition through CISA\u2019s KEV Nomination Form . Potential KEV additions must have a CVE ID, evidence of exploitation, and clear mitigation guidance.",
+      "summary_html": "<p>CISA has added one new vulnerability to its\u00a0<a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) Catalog</a>, based on evidence of active exploitation.</p>\n<ul>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-115731\">CVE-2026-115731</a> Perforce Puppet Enterprise Deserialization of Untrusted Data Vulnerability</li>\n</ul>\n<p>This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal enterprise.</p>\n<p><a href=\"https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk\">Binding Operational Directive (BOD) 26-04: Prioritizing Security Updates Based on Risk</a> establishes vulnerability management requirements for Federal Civilian Executive Branch (FCEB) agencies. BOD 26-04 reinforces the importance of the KEV Catalog and requires federal agencies to prioritize rapid remediation of high-risk vulnerabilities, specifically those identified by Common Vulnerabilities and Exposures (CVEs) listed in CISA\u2019s KEV Catalog on publicly exposed assets that grant total control of the asset post-exploitation, while deferring action for lower-risk vulnerabilities. BOD 26-04 further establishes basic expectations for when agencies must check whether threat actors compromised the system before the patch was applied.</p>\n<p>While BOD 26-04 applies only to FCEB agencies, CISA encourages all organizations to adopt risk-based vulnerability management and prioritize remediation of\u00a0<a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">KEV Catalog vulnerabilities</a>. CISA will continue to add vulnerabilities to the catalog that meet the\u00a0<a href=\"https://www.cisa.gov/known-exploited-vulnerabilities\">specified criteria</a>.</p>\n<p>Aware of an exploited vulnerability not currently listed in the KEV Catalog? Submit it for potential addition through CISA\u2019s\u00a0<a href=\"https://cisasurvey.gov1.qualtrics.com/jfe/form/SV_1Zwu52kgK2OYf3w\">KEV Nomination Form</a>. Potential KEV additions must have a CVE ID, evidence of exploitation, and clear mitigation guidance.</p>",
+      "link": "https://www.cisa.gov/news-events/alerts/2026/11/17/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "source": "US-CERT \u2013 Current Activity",
+      "feed_type": "news",
+      "type": "government-cert-advisories",
+      "type_label": "Government, CERT & Advisories",
+      "published": "2026-11-17T12:00:00+00:00",
+      "published_ts": 1794916800,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Data Breaches / Leaks"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Critical Java Vulnerability Requires Immediate Patching",
+      "summary": "Purpose CISA strongly urges organizations to immediately patch the recently disclosed Oracle Java vulnerability CVE-2026-114938 . This critical memory-corruption vulnerability, known as \u201cJava4Shell,\u201d affects the Base64 decoder of the x86-64 HotSpot Java Virtual Machine (JVM), which is part of the Java Development Kit (JDK). Specially crafted Base64 input could crash the JVM and allow for unauthenticated remote code execution. Actions to take CISA urges organizations to take the following actions: Identify affected Java installations. Review your software inventory for JDKs and Java runtimes, including those bundled with third-party applications or included in container images and appliances. Note: JDKs and Java runtimes may not appear as separate entries in software inventories. Apply relevant Java and vendor patches as soon as they are available, prioritizing internet-facing systems. If immediate patching is not feasible, implement temporary compensating controls, such as restricting and validating Base64 input at the application boundary, enforcing input-size limits, and limiting unauthenticated access. Review Oracle\u2019s security advisory for guidance on patching and affected products and versions. Monitor for indicators of suspicious activity, including rogue runtimes, unexpected JVM crashes, and suspicious Java processes. Resources CISA urges network defenders to review the following resource and apply necessary updates: Vendor Guidance Oracle\u2019s Security Advisory: Critical Security Patch Update \u2013 November 2026 Disclaimer The information in this report is being provided \u201cas is\u201d for informational purposes only. CISA does not endorse any commercial entity, product, company, or service, including any entities, products, or services linked within this document. Any reference to specific commercial entities, products, processes, or services by service mark, trademark, manufacturer, or otherwise, does not constitute or imply endorsement, recommendation, or favoring by CISA. Acknowledgements The Canadian Centre for Cyber Security (Cyber Centre) contributed to this Alert.",
+      "summary_html": "<strong>Purpose</strong>\n<p>CISA strongly urges organizations to immediately patch the recently disclosed Oracle Java vulnerability <a href=\"https://www.cve.org/CVERecord?id=CVE-2026-114938\">CVE-2026-114938</a>. This critical memory-corruption vulnerability, known as \u201cJava4Shell,\u201d affects the Base64 decoder of the x86-64 HotSpot Java Virtual Machine (JVM), which is part of the Java Development Kit (JDK). Specially crafted Base64 input could crash the JVM and allow for unauthenticated remote code execution.</p>\n<strong>Actions to take</strong>\n<p>CISA urges organizations to take the following actions:</p>\n<ul>\n<li>Identify affected Java installations. Review your software inventory for JDKs and Java runtimes, including those bundled with third-party applications or included in container images and appliances. <strong>Note:</strong> JDKs and Java runtimes may not appear as separate entries in software inventories.</li>\n<li>Apply relevant Java and vendor patches as soon as they are available, prioritizing internet-facing systems.\n<ul>\n<li>If immediate patching is not feasible, implement temporary compensating controls, such as restricting and validating Base64 input at the application boundary, enforcing input-size limits, and limiting unauthenticated access.</li>\n</ul>\n</li>\n<li>Review <a href=\"https://www.oracle.com/security-alerts/cspunov2026.html\">Oracle\u2019s security advisory</a> for guidance on patching and affected products and versions.</li>\n<li>\u00a0Monitor for indicators of suspicious activity, including rogue runtimes, unexpected JVM crashes, and suspicious Java processes.</li>\n</ul>\n<strong>Resources</strong>\n<p>CISA urges network defenders to review the following resource and apply necessary updates:</p>\nVendor Guidance\n<ul>\n<li>Oracle\u2019s Security Advisory: <a href=\"https://www.oracle.com/security-alerts/cspunov2026.html\">Critical Security Patch Update \u2013 November 2026</a></li>\n</ul>\n<strong>Disclaimer</strong>\n<p>The information in this report is being provided \u201cas is\u201d for informational purposes only. CISA does not endorse any commercial entity, product, company, or service, including any entities, products, or services linked within this document. Any reference to specific commercial entities, products, processes, or services by service mark, trademark, manufacturer, or otherwise, does not constitute or imply endorsement, recommendation, or favoring by CISA.</p>\n<strong>Acknowledgements\u00a0</strong>\n<p>The Canadian Centre for Cyber Security (Cyber Centre) contributed to this Alert.</p>",
+      "link": "https://www.cisa.gov/news-events/alerts/2026/11/17/critical-java-vulnerability-requires-immediate-patching",
+      "source": "US-CERT \u2013 Current Activity",
+      "feed_type": "news",
+      "type": "government-cert-advisories",
+      "type_label": "Government, CERT & Advisories",
+      "published": "2026-11-17T12:00:00+00:00",
+      "published_ts": 1794916800,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
     },
     {
       "title": "Malware spread through Optimizely hits 178 organizations, including BBC, CNN and Zoom",
@@ -2173,7 +3021,9 @@
       "smart_groups": [
         "Privacy & Compliance"
       ],
-      "curated": true
+      "curated": true,
+      "story_id": "70122ed37be4",
+      "story_size": 3
     },
     {
       "title": "Phishing Scams Target Luxury Hotel Reservation Systems: How to Protect Your Data",
@@ -2324,7 +3174,18 @@
         "Vulnerabilities / CVEs",
         "Windows / Microsoft"
       ],
-      "curated": true
+      "curated": true,
+      "story_id": "8c263626eab1",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "CIS \u2013 Advisories",
+          "title": "Multiple Vulnerabilities in Oracle Products Could Allow for Remote Code Execution",
+          "link": "https://www.cisecurity.org/advisory/multiple-vulnerabilities-in-oracle-products-could-allow-for-remote-code-execution_2026-135",
+          "published_ts": 1794969479
+        }
+      ]
     },
     {
       "title": "6 Chrome settings tweaks every power user needs to know",
@@ -2436,6 +3297,20 @@
         "Community Discussion"
       ],
       "curated": false
+    },
+    {
+      "title": "Zen 1 PSP bootrom exploit",
+      "summary": "",
+      "summary_html": "",
+      "link": "https://github.com/google/security-research/security/advisories/GHSA-7g3h-59cw-27vf",
+      "source": "Google Security Research Advisories",
+      "feed_type": "news",
+      "type": "vulnerabilities-cves-exploits",
+      "type_label": "Vulnerabilities, CVEs & Exploits",
+      "published": "2026-11-17T00:00:00+00:00",
+      "published_ts": 1794873600,
+      "smart_groups": [],
+      "curated": true
     }
   ]
 }
