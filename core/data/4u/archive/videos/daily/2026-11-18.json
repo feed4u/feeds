@@ -1,9 +1,211 @@
 {
-  "generated_at": "2026-11-18T17:30:19.916437+00:00",
+  "generated_at": "2026-11-19T07:48:00.645335+00:00",
   "date": "2026-11-18",
-  "total_items": 44,
+  "total_items": 55,
   "next_chunk": "archive/videos/daily/2026-11-17.json",
   "items": [
+    {
+      "title": "Fully Connected 2026: East Coast Recap | CoreWeave",
+      "summary": "Fully Connected 2026 came to the East Coast. CoreWeave product and engineering leaders recapped the biggest launches from our flagship AI cloud conference in San Francisco, previewed what\u2019s next on the roadmap, and went deep on building and scaling full-stack AI infrastructure with the builders in the room. What\u2019s covered: New launches: the latest CoreWeave platform features and hardware acceleration tools Roadmap preview: what\u2019s coming next, so you can plan your AI workloads ahead of it Scaling AI infrastructure: practical strategies for full-stack infrastructure that holds up under massive compute demand Expert conversations: technical discussion with engineers and experts from CoreWeave and NVIDIA Who it\u2019s for: developers, systems engineers, cloud architects, technical founders, and AI/ML leaders scaling their infrastructure. Missed the main stage in San Francisco? Watch every Fully Connected 2026 session on demand: https://www.coreweave.com/fully-connected-2026/on-demand Timestamps: 0:00 Welcome and introductions 2:43 The problem: agent failures you can't see 6:42 The AI loop: run, observe, curate, improve, evaluate 8:36 CoreWeave Forge and the Fully Connected launches 12:21 Demo: Agent Lens, ARIA, and RL rollouts 18:49 ARIA and Mission Control 22:10 Partnership, open ecosystem, and getting started free 26:10 NVIDIA Vera CPU: built for the agentic era 32:53 Vera architecture: Olympus cores, memory, and fabric 36:53 Vera performance results and form factors",
+      "summary_html": "Fully Connected 2026 came to the East Coast. CoreWeave product and engineering leaders recapped the biggest launches from our flagship AI cloud conference in San Francisco, previewed what\u2019s next on the roadmap, and went deep on building and scaling full-stack AI infrastructure with the builders in the room.\nWhat\u2019s covered:\n\nNew launches: the latest CoreWeave platform features and hardware acceleration tools\nRoadmap preview: what\u2019s coming next, so you can plan your AI workloads ahead of it\nScaling AI infrastructure: practical strategies for full-stack infrastructure that holds up under massive compute demand\nExpert conversations: technical discussion with engineers and experts from CoreWeave and NVIDIA\nWho it\u2019s for: developers, systems engineers, cloud architects, technical founders, and AI/ML leaders scaling their infrastructure.\n\nMissed the main stage in San Francisco? Watch every Fully Connected 2026 session on demand:\nhttps://www.coreweave.com/fully-connected-2026/on-demand\n\nTimestamps:\n0:00 Welcome and introductions\n2:43 The problem: agent failures you can't see\n6:42 The AI loop: run, observe, curate, improve, evaluate\n8:36 CoreWeave Forge and the Fully Connected launches\n12:21 Demo: Agent Lens, ARIA, and RL rollouts\n18:49 ARIA and Mission Control\n22:10 Partnership, open ecosystem, and getting started free\n26:10 NVIDIA Vera CPU: built for the agentic era\n32:53 Vera architecture: Olympus cores, memory, and fabric\n36:53 Vera performance results and form factors",
+      "link": "https://www.youtube.com/watch?v=GXJHIqlEHyc",
+      "source": "Weights & Biases",
+      "feed_type": "videos",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-18T23:07:34+00:00",
+      "published_ts": 1795043254,
+      "smart_groups": [
+        "Agents & automation",
+        "Coding & dev tools"
+      ],
+      "curated": false
+    },
+    {
+      "title": "MiniMax H3 Image - Normal + GGUF Guide!",
+      "summary": "MiniMax just released H3-Image, a new open image model that can render insanely detailed images at up to 16+ megapixels. In this video, I'll show you how to run it locally in ComfyUI. We'll go through which model files to download, the right settings, and how to get the best quality out of it. Let's get started. ### MiniMax H3-Image in ComfyUI \u2013 Links & Requirements ### MODELS - Official ComfyUI files (int8, w4a8, text encoders, VAE, PE): https://huggingface.co/Comfy-Org/MiniMax-H3-Image/tree/main - GGUF models by Abiray (for low VRAM): https://huggingface.co/Abiray/MiniMax-H3-Image-GGUF - Abiray's GGUF workflow (drag into ComfyUI): https://huggingface.co/Abiray/MiniMax-H3-Image-GGUF/resolve/main/image_minimax_h3_image_t2i_gguf.json - GGUF fix script (place directly in ComfyUI/custom_nodes, then restart): https://huggingface.co/Abiray/MiniMax-H3-Image-GGUF/blob/main/minimax_h3_image_gguf_fix.py REQUIREMENTS - ComfyUI version 0.45.0 or newer (older versions don't know the \"minimax\" model type). - For GGUF: the ComfyUI-GGUF custom node by city96, updated to the latest version. - PyTorch / CUDA: no official minimum has been published. A current ComfyUI Portable build (e.g. PyTorch 2.13 with CUDA 13.0) works on RTX 40-series cards. - GTX 10-series (Pascal) cards: use the ComfyUI Portable build with CUDA 12.6 and GGUF models only. - NVIDIA driver: CUDA 13.x requires driver 580 or newer. HOW TO CHECK YOUR VERSIONS 1. PyTorch and CUDA (ComfyUI Portable): Open a command prompt in the ComfyUI_windows_portable folder and run: python_embeded\\python.exe -c \"import torch; print(torch.__version__, torch.version.cuda, torch.cuda.is_available())\" Example output: 2.13.0+cu130 13.0 True (PyTorch version, CUDA version PyTorch was built with, GPU detected) 2. Driver and max supported CUDA version: Run nvidia-smi and look at \"CUDA Version\" in the top right. 3. ComfyUI and PyTorch version are also shown at the top of the ComfyUI startup log (\"ComfyUI version:\" and \"pytorch version:\"). RECOMMENDED SETTINGS - Steps: 6, CFG: 1, Sampler: euler, Scheduler: simple, no negative prompt. - Resolution: the model works best between 4 and 20 megapixels (ideal ~16 MP, e.g. 4096x4096). Use at least 2048x2048 (4 MP). - VAE: minimax_h3_image_vae_fp16.safetensors (24-channel). Do not use SD, Flux or video VAEs. #### Join and Support me #### Buy me a Coffee: https://www.buymeacoffee.com/oliviotutorials Joint my Discord Group: https://discord.gg/XKAk7GUzAW Support me on Patreon: https://www.patreon.com/sarikas 00:00 Intro 00:21 Sampler IMages MiniMax H3 04:14 ComfyUI MiniMax H3 Image Guide 09:54 GGUF MiniMax H3 Image by Abiray 13:15 Comfy Org Cloud Render",
+      "summary_html": "MiniMax just released H3-Image, a new open image model that can render insanely detailed images at up to 16+ megapixels. \n\nIn this video, I'll show you how to run it locally in ComfyUI. We'll go through which model files to download, the right settings, and how to get the best quality out of it. Let's get started.\n\n### MiniMax H3-Image in ComfyUI \u2013 Links &amp; Requirements ###\n\nMODELS\n- Official ComfyUI files (int8, w4a8, text encoders, VAE, PE):\n  https://huggingface.co/Comfy-Org/MiniMax-H3-Image/tree/main\n- GGUF models by Abiray (for low VRAM):\n  https://huggingface.co/Abiray/MiniMax-H3-Image-GGUF\n- Abiray's GGUF workflow (drag into ComfyUI):\n  https://huggingface.co/Abiray/MiniMax-H3-Image-GGUF/resolve/main/image_minimax_h3_image_t2i_gguf.json\n- GGUF fix script (place directly in ComfyUI/custom_nodes, then restart):\n  https://huggingface.co/Abiray/MiniMax-H3-Image-GGUF/blob/main/minimax_h3_image_gguf_fix.py\n\nREQUIREMENTS\n- ComfyUI version 0.45.0 or newer (older versions don't know the \"minimax\" model type).\n- For GGUF: the ComfyUI-GGUF custom node by city96, updated to the latest version.\n- PyTorch / CUDA: no official minimum has been published. A current ComfyUI Portable build\n  (e.g. PyTorch 2.13 with CUDA 13.0) works on RTX 40-series cards.\n- GTX 10-series (Pascal) cards: use the ComfyUI Portable build with CUDA 12.6 and GGUF models only.\n- NVIDIA driver: CUDA 13.x requires driver 580 or newer.\n\nHOW TO CHECK YOUR VERSIONS\n1. PyTorch and CUDA (ComfyUI Portable):\n   Open a command prompt in the ComfyUI_windows_portable folder and run:\n   python_embeded\\python.exe -c \"import torch; print(torch.__version__, torch.version.cuda, torch.cuda.is_available())\"\n   Example output: 2.13.0+cu130 13.0 True\n   (PyTorch version, CUDA version PyTorch was built with, GPU detected)\n2. Driver and max supported CUDA version:\n   Run nvidia-smi and look at \"CUDA Version\" in the top right.\n3. ComfyUI and PyTorch version are also shown at the top of the ComfyUI startup log\n   (\"ComfyUI version:\" and \"pytorch version:\").\n\nRECOMMENDED SETTINGS\n- Steps: 6, CFG: 1, Sampler: euler, Scheduler: simple, no negative prompt.\n- Resolution: the model works best between 4 and 20 megapixels (ideal ~16 MP, e.g. 4096x4096).\n  Use at least 2048x2048 (4 MP).\n- VAE: minimax_h3_image_vae_fp16.safetensors (24-channel). Do not use SD, Flux or video VAEs.\n\n\n#### Join and Support me ####\nBuy me a Coffee: https://www.buymeacoffee.com/oliviotutorials\nJoint my Discord Group: https://discord.gg/XKAk7GUzAW\nSupport me on Patreon: https://www.patreon.com/sarikas\n\n00:00 Intro\n00:21 Sampler IMages MiniMax H3\n04:14 ComfyUI MiniMax H3 Image Guide\n09:54 GGUF MiniMax H3 Image by Abiray\n13:15 Comfy Org Cloud Render",
+      "link": "https://www.youtube.com/watch?v=kXZCGml0th0",
+      "source": "Olivio Sarikas",
+      "feed_type": "videos",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-18T22:13:54+00:00",
+      "published_ts": 1795040034,
+      "smart_groups": [
+        "Chips & hardware",
+        "Business & funding"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Insane AI Breakthroughs Nobody Is Talking About",
+      "summary": "12 AI breakthroughs you probably missed, from incredibly human AI voices to a walking robot powered by an old phone. These are some of the coolest AI tools, research projects, and tech demos I\u2019ve come across recently that didn\u2019t make it into my weekly AI news videos. We\u2019re looking at AI characters that react to your movements, interactive world models, new ways to edit videos, and voice AI that invents an entire life for itself. I test several of these tools, explore what you can actually try today, and point out where the demos still fall short. Plus, glasses that claim to understand silent speech, NVIDIA\u2019s AI character animation, and robots learning to move at human speed. Which of these would you want to try first? Let me know in the comments. Sharing the latest news and advancements in AI Discover More: \ud83d\udee0\ufe0f Explore AI Tools & News: https://futuretools.io/ \ud83d\udcf0 Weekly Newsletter: https://futuretools.io/newsletter Socials: \u274c Twiter/X: https://x.com/mreflow \ud83d\uddbc\ufe0f Instagram: https://instagram.com/mr.eflow \ud83e\uddf5 Threads: https://www.threads.net/@mr.eflow \ud83d\udfe6 LinkedIn: https://www.linkedin.com/in/matt-wolfe-30841712/ \ud83d\udc4d Facebook: https://www.facebook.com/mattrwolfe Resources From Today's Video: Simulon: https://simulon.com/ Simulon Launch Post: https://x.com/Simulon/status/2115519228564693170 Hy-Nomas: https://hy-nomas.hy.tencent.com/ Reshoot 4D: https://itsmetamike.github.io/reshoot-4d/ MoviEdit: https://multi-shot-edit.github.io/ Dessa: https://block.xyz/dessa Dessa Demo: https://x.com/RagavanThurair/status/2113671324400861645 Haru 4B: https://www.higurashi.ai/haru4b/ Fish Audio Live 3: https://fish.audio/live3/ Subvocal: https://subvocal.company/ Budget3D: https://budgetany.github.io/budget3d/ MotionBricks: https://nvlabs.github.io/motionbricks/ Flash ALOHA: https://johnyao93.github.io/flash-aloha/ PhoneBot: https://phonebot.dev Let\u2019s work together! - Brand, sponsorship & business inquiries: business@mattwolfe.com #AITools #ArtificialIntelligence #Robotics Time Stamps: 00:00 AI Breakthroughs You Probably Missed 00:51 Simulan: AI Characters in Your Room 04:27 Tencent\u2019s Hynomus World Model 08:13 Reshoot 4D: Change Your Video\u2019s Camera Angle 10:26 Movie Edit: AI Edits Across Multiple Shots 11:26 Desa: AI Voice That Sounds Human 14:58 Haru 4B: Downloadable Conversational AI 16:56 Fish Audio Live 3: AI Voice Agents 18:48 Subvocal: Glasses That Decode Silent Speech 20:54 Budget3D: Turn Images Into 3D Models 23:15 NVIDIA MotionBricks: AI Character Animation 24:59 Flash Aloha: Robots That Catch and Clean 26:29 PhoneBot: A Walking Robot With a Phone Brain",
+      "summary_html": "12 AI breakthroughs you probably missed, from incredibly human AI voices to a walking robot powered by an old phone.\n\nThese are some of the coolest AI tools, research projects, and tech demos I\u2019ve come across recently that didn\u2019t make it into my weekly AI news videos. We\u2019re looking at AI characters that react to your movements, interactive world models, new ways to edit videos, and voice AI that invents an entire life for itself.\n\nI test several of these tools, explore what you can actually try today, and point out where the demos still fall short. Plus, glasses that claim to understand silent speech, NVIDIA\u2019s AI character animation, and robots learning to move at human speed.\n\nWhich of these would you want to try first? Let me know in the comments.\n\n\nSharing the latest news and advancements in AI\n\nDiscover More:\n\ud83d\udee0\ufe0f Explore AI Tools &amp; News: https://futuretools.io/\n\ud83d\udcf0 Weekly Newsletter: https://futuretools.io/newsletter\n\nSocials:\n\u274c Twiter/X: https://x.com/mreflow\n\ud83d\uddbc\ufe0f Instagram: https://instagram.com/mr.eflow\n\ud83e\uddf5 Threads: https://www.threads.net/@mr.eflow\n\ud83d\udfe6 LinkedIn: https://www.linkedin.com/in/matt-wolfe-30841712/\n\ud83d\udc4d Facebook: https://www.facebook.com/mattrwolfe\n\nResources From Today's Video:\nSimulon: https://simulon.com/\nSimulon Launch Post: https://x.com/Simulon/status/2115519228564693170\nHy-Nomas: https://hy-nomas.hy.tencent.com/\nReshoot 4D: https://itsmetamike.github.io/reshoot-4d/\nMoviEdit: https://multi-shot-edit.github.io/\nDessa: https://block.xyz/dessa\nDessa Demo: https://x.com/RagavanThurair/status/2113671324400861645\nHaru 4B: https://www.higurashi.ai/haru4b/\nFish Audio Live 3: https://fish.audio/live3/\nSubvocal: https://subvocal.company/\nBudget3D: https://budgetany.github.io/budget3d/\nMotionBricks: https://nvlabs.github.io/motionbricks/\nFlash ALOHA: https://johnyao93.github.io/flash-aloha/\nPhoneBot: https://phonebot.dev\n\nLet\u2019s work together!\n- Brand, sponsorship &amp; business inquiries: business@mattwolfe.com\n\n#AITools #ArtificialIntelligence #Robotics\n\nTime Stamps:\n00:00 AI Breakthroughs You Probably Missed\n00:51 Simulan: AI Characters in Your Room\n04:27 Tencent\u2019s Hynomus World Model\n08:13 Reshoot 4D: Change Your Video\u2019s Camera Angle\n10:26 Movie Edit: AI Edits Across Multiple Shots\n11:26 Desa: AI Voice That Sounds Human\n14:58 Haru 4B: Downloadable Conversational AI\n16:56 Fish Audio Live 3: AI Voice Agents\n18:48 Subvocal: Glasses That Decode Silent Speech\n20:54 Budget3D: Turn Images Into 3D Models\n23:15 NVIDIA MotionBricks: AI Character Animation\n24:59 Flash Aloha: Robots That Catch and Clean\n26:29 PhoneBot: A Walking Robot With a Phone Brain",
+      "link": "https://www.youtube.com/watch?v=-oA6oLxWpJg",
+      "source": "Matt Wolfe",
+      "feed_type": "videos",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-18T22:08:16+00:00",
+      "published_ts": 1795039696,
+      "smart_groups": [
+        "Agents & automation",
+        "Robotics & autonomy"
+      ],
+      "curated": false
+    },
+    {
+      "title": "You wouldn't wear a scuba suit to a sprint: pick the right speech-to-text model",
+      "summary": "AssemblyAI-STT-3.7 is three speech-to-text models, each built for a different job: pre-recorded audio, live conversations, and voice agents. Which one fits your app \u2192 https://www.assemblyai.com/blog/introducing-assemblyai-stt-3-7?utm_medium=owned&utm_campaign=stt_3_7_launch&utm_content=right_model_short&utm_source=youtube #Shorts",
+      "summary_html": "AssemblyAI-STT-3.7 is three speech-to-text models, each built for a different job: pre-recorded audio, live conversations, and voice agents.\n\nWhich one fits your app \u2192 https://www.assemblyai.com/blog/introducing-assemblyai-stt-3-7?utm_medium=owned&amp;utm_campaign=stt_3_7_launch&amp;utm_content=right_model_short&amp;utm_source=youtube\n\n#Shorts",
+      "link": "https://www.youtube.com/shorts/opiL3SFz_RQ",
+      "source": "AssemblyAI",
+      "feed_type": "videos",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-18T22:02:14+00:00",
+      "published_ts": 1795039334,
+      "smart_groups": [
+        "Vision, audio & video"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Gemini 4 Neon Is Here, And It\u2019s a Beast!",
+      "summary": "Gemini 4 Neon is Google\u2019s new model for complex coding, knowledge work and science, and it sits between Gemini 4 Hydrogen and Gemini 4 Carbon. I had early access, so this video skips the benchmarks and shows real outputs: a 3D dragon written as code, an animated SVG peacock in one file, a walkable house from a 1959 floor plan, a swarm of agents building a voxel diorama, an on-call agent deployed on Google Cloud Run, three GPU experiments on a DGX Spark, and a neural network written with no training. Official Blog: https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/ Try Gemini 4 Neon in Google AI Studio: https://aistudio.google.com/prompts/new_chat?model=gemini-4-neon Google\u2019s developer guide (What\u2019s new in Gemini 4 Neon): https://aistudio.google.com/docs/whats-new-gemini-4-neon Keenan Crane\u2019s SDF dragon experiment: https://x.com/keenanisalive/status/2108708523236602056 Growing Neural Cellular Automata (Distill, 2020): https://distill.pub/2020/growing-ca/ Weight-space programming (MIT CSAIL research post): https://rikiyat.github.io/blog/weight-space-programming/ My video on weight-space programming: https://youtu.be/wXJDtImT_-0 Disclosure: I recently joined Google, and these are my own views, and these experiments are based on my early access. Timestamps: 0:00 Gemini 4 Neon 1:09 Antigravity and the four thinking levels 1:23 A 3D dragon written as one formula 2:40 An animated SVG peacock in one file 3:32 From a floor plan to a walkable house 4:23 A swarm of agents builds a voxel diorama 6:14 An on-call agent on Google Cloud Run 7:43 Breaking the app, then the rollback 9:03 Growing Neural Cellular Automata on a DGX Spark 9:48 Teaching a four-legged robot to run 10:27 Two galaxies colliding 11:09 A neural network written with no training 12:22 Picking the thinking level 12:48 Three rules for long tasks",
+      "summary_html": "Gemini 4 Neon is Google\u2019s new model for complex coding, knowledge work and science, and it sits between Gemini 4 Hydrogen and Gemini 4 Carbon. I had early access, so this video skips the benchmarks and shows real outputs: a 3D dragon written as code, an animated SVG peacock in one file, a walkable house from a 1959 floor plan, a swarm of agents building a voxel diorama, an on-call agent deployed on Google Cloud Run, three GPU experiments on a DGX Spark, and a neural network written with no training.\n\nOfficial Blog: https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/\nTry Gemini 4 Neon in Google AI Studio: https://aistudio.google.com/prompts/new_chat?model=gemini-4-neon\nGoogle\u2019s developer guide (What\u2019s new in Gemini 4 Neon): https://aistudio.google.com/docs/whats-new-gemini-4-neon\nKeenan Crane\u2019s SDF dragon experiment: https://x.com/keenanisalive/status/2108708523236602056\nGrowing Neural Cellular Automata (Distill, 2020): https://distill.pub/2020/growing-ca/\nWeight-space programming (MIT CSAIL research post): https://rikiyat.github.io/blog/weight-space-programming/\nMy video on weight-space programming: https://youtu.be/wXJDtImT_-0\n\nDisclosure: I recently joined Google, and these are my own views, and these experiments are based on my early access. \n\nTimestamps:\n0:00 Gemini 4 Neon\n1:09 Antigravity and the four thinking levels\n1:23 A 3D dragon written as one formula\n2:40 An animated SVG peacock in one file\n3:32 From a floor plan to a walkable house\n4:23 A swarm of agents builds a voxel diorama\n6:14 An on-call agent on Google Cloud Run\n7:43 Breaking the app, then the rollback\n9:03 Growing Neural Cellular Automata on a DGX Spark\n9:48 Teaching a four-legged robot to run\n10:27 Two galaxies colliding\n11:09 A neural network written with no training\n12:22 Picking the thinking level\n12:48 Three rules for long tasks",
+      "link": "https://www.youtube.com/watch?v=Q0ShBenKyqo",
+      "source": "Prompt Engineering",
+      "feed_type": "videos",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-18T21:46:40+00:00",
+      "published_ts": 1795038400,
+      "smart_groups": [
+        "Agents & automation",
+        "Coding & dev tools"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Is AI behind the global outages?",
+      "summary": "Here's what we've been told. Microsoft says it was a software bug. The FAA says its new AI tool wasn't the cause, and the NSA calls it routine maintenance. Senator Mark Warner thinks AI is finding so many security holes that rushed fixes could break things. Nothing so far proves AI broke anything. Still, one May Gallup poll found 39% of Americans think AI does more harm than good. Was AI involved, or is this about trust?",
+      "summary_html": "Here's what we've been told. Microsoft says it was a software bug. The FAA says its new AI tool wasn't the cause, and the NSA calls it routine maintenance. \n\nSenator Mark Warner thinks AI is finding so many security holes that rushed fixes could break things. Nothing so far proves AI broke anything. Still, one May Gallup poll found 39% of Americans think AI does more harm than good. Was AI involved, or is this about trust?",
+      "link": "https://www.youtube.com/shorts/Rrpq2aStB-I",
+      "source": "Ken Jee",
+      "feed_type": "videos",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-18T21:35:22+00:00",
+      "published_ts": 1795037722,
+      "smart_groups": [
+        "Policy & government"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI is getting better at figuring out how software works. Even when the code is hidden.",
+      "summary": "So what does that mean for security? Hugging Face and ServiceNow get into it on the NVIDIA AI Podcast.",
+      "summary_html": "So what does that mean for security? \n\nHugging Face and ServiceNow get into it on the NVIDIA AI Podcast.",
+      "link": "https://www.youtube.com/shorts/2Y3e3RYNjFk",
+      "source": "NVIDIA",
+      "feed_type": "videos",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-18T20:00:13+00:00",
+      "published_ts": 1795032013,
+      "smart_groups": [
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
+      "title": "The Reason No One Can Catch NVIDIA",
+      "summary": "Sharing the latest news and advancements in AI Discover More: \ud83d\udee0\ufe0f Explore AI Tools & News: https://futuretools.io/ \ud83d\udcf0 Weekly Newsletter: https://futuretools.io/newsletter Socials: \u274c Twiter/X: https://x.com/mreflow \ud83d\uddbc\ufe0f Instagram: https://instagram.com/mr.eflow \ud83e\uddf5 Threads: https://www.threads.net/@mr.eflow \ud83d\udfe6 LinkedIn: https://www.linkedin.com/in/matt-wolfe-30841712/ \ud83d\udc4d Facebook: https://www.facebook.com/mattrwolfe Let\u2019s work together! - Brand, sponsorship & business inquiries: business@mattwolfe.com #AINews #AITools #ArtificialIntelligence",
+      "summary_html": "Sharing the latest news and advancements in AI\n\nDiscover More:\n\ud83d\udee0\ufe0f Explore AI Tools &amp; News: https://futuretools.io/\n\ud83d\udcf0 Weekly Newsletter: https://futuretools.io/newsletter\n\nSocials:\n\u274c Twiter/X: https://x.com/mreflow\n\ud83d\uddbc\ufe0f Instagram: https://instagram.com/mr.eflow\n\ud83e\uddf5 Threads: https://www.threads.net/@mr.eflow\n\ud83d\udfe6 LinkedIn: https://www.linkedin.com/in/matt-wolfe-30841712/\n\ud83d\udc4d Facebook: https://www.facebook.com/mattrwolfe\n\nLet\u2019s work together!\n- Brand, sponsorship &amp; business inquiries: business@mattwolfe.com\n\n#AINews #AITools #ArtificialIntelligence",
+      "link": "https://www.youtube.com/shorts/hT0qW_DRFLw",
+      "source": "Matt Wolfe",
+      "feed_type": "videos",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-18T19:02:01+00:00",
+      "published_ts": 1795028521,
+      "smart_groups": [
+        "Consumer AI"
+      ],
+      "curated": false
+    },
+    {
+      "title": "NVIDIA SC26 Special Address",
+      "summary": "Scientific computing is entering the era of agentic AI. Bringing simulation, AI, and agents together gives researchers new ways to tackle complex problems and accelerate scientific discovery. Watch Ian Buck, VP of Hyperscale and HPC at NVIDIA, highlight the latest cutting-edge breakthroughs revolutionizing the scientific computing community. https://blogs.nvidia.com/blog/ian-buck-sc26/ https://blogs.nvidia.com/blog/sc26-wrapup",
+      "summary_html": "Scientific computing is entering the era of agentic AI.\n\nBringing simulation, AI, and agents together gives researchers new ways to tackle complex problems and accelerate scientific discovery.\n\nWatch Ian Buck, VP of Hyperscale and HPC at NVIDIA, highlight the latest cutting-edge breakthroughs revolutionizing the scientific computing community. \n\nhttps://blogs.nvidia.com/blog/ian-buck-sc26/ \nhttps://blogs.nvidia.com/blog/sc26-wrapup",
+      "link": "https://www.youtube.com/watch?v=uJG53ligJt4",
+      "source": "NVIDIA",
+      "feed_type": "videos",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-18T18:36:18+00:00",
+      "published_ts": 1795026978,
+      "smart_groups": [
+        "Agents & automation",
+        "Research & papers"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Bengaluru Tech Summit 2026 Day 2 | Front Page",
+      "summary": "Live from the Bengaluru Tech Summit 2026: the 29th edition of Asia's largest integrated technology summit, running November 17 to 19 at the Bangalore International Exhibition Centre under the theme \"AI & Beyond\". Guests: - Shri D.K. Shivakumar, Hon'ble Chief Minister, Government of Karnataka - Shri Priyank Kharge, Hon'ble Minister for Home, Information Technology and Biotechnology and e-Governance, Government of Karnataka - Dr. Kiran Mazumdar-Shaw, Executive Chairperson, Biocon Ltd.; Chairperson, Vision Group on Biotechnology, Government of Karnataka - Pratik Gandhi, Actor, Storyteller and Theatre Practitioner - Shri Puneet Chandok, President, Microsoft India and South Asia Ask your questions in live chat and we will try to answer them on air. Subscribe and turn on notifications so you never miss a live broadcast. #BengaluruTechSummit #BTS2026 #AIAndBeyond #Karnataka #DKShivakumar #PriyankKharg#FrontPage #AIMNetwork ------------------------------------------------------------------------------------------ \ud83d\udccc Note: The video thumbnail is for representational purposes and was created with the assistance of AI. \ud83d\udce9 For inquiries or questions, contact us at: info@aimmediahouse.com ------------------------------------------------------------------------------------------ \ud83d\udccc ABOUT FRONT PAGE Front Page is a daily live news briefing covering AI, enterprise tech, semiconductors, and India\u2019s role in the global technology economy. Built for people who make decisions, not just consume headlines. ------------------------------------------------------------------------------------------ \ud83d\udc4b ABOUT AIM NETWORK AIM Network is India's leading voice on the intersection of AI, Technology, and Business. We bring you sharp analysis, breaking news, and original perspectives on everything from Generative AI breakthroughs to geopolitical market shifts. \ud83d\udd14 Subscribe for daily insights: https://www.youtube.com/@aimmediahouse?sub_confirmation=1 \ud83d\udcfa WATCH OUR POPULAR SERIES: - Front Page (Daily Tech News): https://www.youtube.com/playlist?list=PL9Kc1zSa46OxR8h0ZgAfEENta0vaxfWrs - Tech Talks (Podcast): https://www.youtube.com/playlist?list=PL9Kc1zSa46OyXflFLWtmF5MN3jvdxDFE3 -Simulated Reality (Podcast) - https://www.youtube.com/playlist?list=PL9Kc1zSa46OwqKv91j8W6vZ-V5DucIU4Y \ud83d\udcf0 STAY UPDATED: Website: https://analyticsindiamag.com/ LinkedIn: https://in.linkedin.com/company/analytics-india-magazine Twitter/X: https://x.com/Analyticsindiam Instagram: https://www.instagram.com/aim.media.house/",
+      "summary_html": "Live from the Bengaluru Tech Summit 2026: the 29th edition of Asia's largest integrated technology summit, running November 17 to 19 at the Bangalore International Exhibition Centre under the theme \"AI &amp; Beyond\".\n\nGuests:\n- Shri D.K. Shivakumar, Hon'ble Chief Minister, Government of Karnataka\n- Shri Priyank Kharge, Hon'ble Minister for Home, Information Technology and Biotechnology and e-Governance, Government of Karnataka\n- Dr. Kiran Mazumdar-Shaw, Executive Chairperson, Biocon Ltd.; Chairperson, Vision Group on Biotechnology, Government of Karnataka\n- Pratik Gandhi, Actor, Storyteller and Theatre Practitioner\n- Shri Puneet Chandok, President, Microsoft India and South Asia\n\nAsk your questions in live chat and we will try to answer them on air.\n\nSubscribe and turn on notifications so you never miss a live broadcast.\n\n#BengaluruTechSummit #BTS2026 #AIAndBeyond #Karnataka #DKShivakumar #PriyankKharg#FrontPage #AIMNetwork\n------------------------------------------------------------------------------------------\n\ud83d\udccc Note: The video thumbnail is for representational purposes and was created with the assistance of AI.\n\ud83d\udce9 For inquiries or questions, contact us at: info@aimmediahouse.com\n------------------------------------------------------------------------------------------\n\ud83d\udccc ABOUT FRONT PAGE\n\nFront Page is a daily live news briefing covering AI, enterprise tech, semiconductors, and India\u2019s role in the global technology economy. Built for people who make decisions, not just consume headlines.\n------------------------------------------------------------------------------------------\n\ud83d\udc4b ABOUT AIM NETWORK\nAIM Network is India's leading voice on the intersection of AI, Technology, and Business. We bring you sharp analysis, breaking news, and original perspectives on everything from Generative AI breakthroughs to geopolitical market shifts.\n\n\ud83d\udd14 Subscribe for daily insights: https://www.youtube.com/@aimmediahouse?sub_confirmation=1\n\n\ud83d\udcfa WATCH OUR POPULAR SERIES:\n- Front Page (Daily Tech News): https://www.youtube.com/playlist?list=PL9Kc1zSa46OxR8h0ZgAfEENta0vaxfWrs\n- Tech Talks (Podcast): https://www.youtube.com/playlist?list=PL9Kc1zSa46OyXflFLWtmF5MN3jvdxDFE3\n-Simulated Reality (Podcast) - https://www.youtube.com/playlist?list=PL9Kc1zSa46OwqKv91j8W6vZ-V5DucIU4Y\n\n\ud83d\udcf0 STAY UPDATED:\nWebsite: https://analyticsindiamag.com/\nLinkedIn: https://in.linkedin.com/company/analytics-india-magazine\nTwitter/X: https://x.com/Analyticsindiam\nInstagram: https://www.instagram.com/aim.media.house/\n\n------------------------------------------------------------------------------------------",
+      "link": "https://www.youtube.com/watch?v=izopVN9Axus",
+      "source": "Analytics India Magazine",
+      "feed_type": "videos",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-18T18:17:55+00:00",
+      "published_ts": 1795025875,
+      "smart_groups": [
+        "Chips & hardware",
+        "Policy & government"
+      ],
+      "curated": false,
+      "story_id": "dcf50a49c0df",
+      "story_size": 6
+    },
+    {
+      "title": "Behind the scenes with Genie 4",
+      "summary": "Go behind the scenes of our recent Genie 4 film as we explore our most realistic and interactive world model yet. Instead of generating static video, Genie 4 simulates dynamic worlds in real time. Watch how our team used Genie 4 and Project Genie to turn text prompts into explorable environments in seconds, navigate scenes with keyboard controls, and direct action on the fly with live prompts. Using the built-in agent in Project Genie, the team also built custom apps mapped to keyboard hotkeys\u2014triggering character movement, dialogue, and events in real time\u2014and used prompts as repeatable seeds for everything from creative prototyping to robotics training environments. Genie 4 is now available in Project Genie, starting with eligible Google AI Ultra subscribers. Team: Google DeepMind, Special Guest Learn more about Genie 4: https://deepmind.google/genie ___ Subscribe to our channel https://www.youtube.com/@googledeepmind Find us on X https://twitter.com/GoogleDeepMind Follow us on Instagram https://instagram.com/googledeepmind Add us on Linkedin https://www.linkedin.com/company/deepmind/",
+      "summary_html": "Go behind the scenes of our recent Genie 4 film as we explore our most realistic and interactive world model yet. \n\nInstead of generating static video, Genie 4 simulates dynamic worlds in real time. Watch how our team used Genie 4 and Project Genie to turn text prompts into explorable environments in seconds, navigate scenes with keyboard controls, and direct action on the fly with live prompts. Using the built-in agent in Project Genie, the team also built custom apps mapped to keyboard hotkeys\u2014triggering character movement, dialogue, and events in real time\u2014and used prompts as repeatable seeds for everything from creative prototyping to robotics training environments.\n\nGenie 4 is now available in Project Genie, starting with eligible Google AI Ultra subscribers.\n\nTeam: Google DeepMind, Special Guest \n\nLearn more about Genie 4: https://deepmind.google/genie\n___\nSubscribe to our channel https://www.youtube.com/@googledeepmind\nFind us on X https://twitter.com/GoogleDeepMind\nFollow us on Instagram https://instagram.com/googledeepmind\nAdd us on Linkedin https://www.linkedin.com/company/deepmind/",
+      "link": "https://www.youtube.com/watch?v=pVc6KkjeCfU",
+      "source": "DeepMind",
+      "feed_type": "videos",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-18T18:12:24+00:00",
+      "published_ts": 1795025544,
+      "smart_groups": [
+        "Robotics & autonomy",
+        "Vision, audio & video"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Introducing the new Project Genie, powered by Genie 4",
+      "summary": "Step inside your imagination with Project Genie, now powered by Google DeepMind\u2019s most realistic and interactive world model yet, Genie 4. Project Genie brings our most advanced world and multimodal models together with Gemini so you can turn ideas into explorable, shareable worlds right in your browser: \u2022 Shape worlds in real time with Genie 4: Trigger dynamic events using natural language\u2014like shifting the weather, introducing new characters, or changing the action mid-session\u2014complete with simulated physics, natural lighting, and native scene-matched audio and character dialogue. \u2022 Build with the Project Genie agent: Describe the story or simulation you want to create, and the new agent generates starting visuals and custom background music, while Gemini observes in-session to suggest or trigger live events. \u2022 Explore & remix the community gallery: Jump into curated and community-built worlds, remix their environments, rules, and audio, or experiment with upgraded Genie 3 capabilities in the model picker (including up to 3-minute sessions and 360-degree panorama grounding). The new Project Genie experience is rolling out to eligible Google AI Ultra subscribers (18+), and Google AI Pro members can join the waitlist. Try Project Genie & join the waitlist: https://labs.google/projectgenie Learn more about Genie 4: https://deepmind.google/genie Read the announcement: https://blog.google/innovation-and-ai/models-and-research/google-deepmind/genie-4-now-available-project-genie/ ___ Subscribe to our channel https://www.youtube.com/@googledeepmind Find us on X https://twitter.com/GoogleDeepMind Follow us on Instagram https://instagram.com/googledeepmind Add us on Linkedin https://www.linkedin.com/company/deepmind/",
+      "summary_html": "Step inside your imagination with Project Genie, now powered by Google DeepMind\u2019s most realistic and interactive world model yet, Genie 4.\n\nProject Genie brings our most advanced world and multimodal models together with Gemini so you can turn ideas into explorable, shareable worlds right in your browser:\n\n\u2022 Shape worlds in real time with Genie 4: Trigger dynamic events using natural language\u2014like shifting the weather, introducing new characters, or changing the action mid-session\u2014complete with simulated physics, natural lighting, and native scene-matched audio and character dialogue.\n\n\u2022 Build with the Project Genie agent: Describe the story or simulation you want to create, and the new agent generates starting visuals and custom background music, while Gemini observes in-session to suggest or trigger live events.\n\n\u2022 Explore &amp; remix the community gallery: Jump into curated and community-built worlds, remix their environments, rules, and audio, or experiment with upgraded Genie 3 capabilities in the model picker (including up to 3-minute sessions and 360-degree panorama grounding).\n\nThe new Project Genie experience is rolling out to eligible Google AI Ultra subscribers (18+), and Google AI Pro members can join the waitlist. \n\nTry Project Genie &amp; join the waitlist: https://labs.google/projectgenie\nLearn more about Genie 4: https://deepmind.google/genie\nRead the announcement: https://blog.google/innovation-and-ai/models-and-research/google-deepmind/genie-4-now-available-project-genie/\n\n___\n\nSubscribe to our channel https://www.youtube.com/@googledeepmind\nFind us on X https://twitter.com/GoogleDeepMind\nFollow us on Instagram https://instagram.com/googledeepmind\nAdd us on Linkedin https://www.linkedin.com/company/deepmind/",
+      "link": "https://www.youtube.com/watch?v=EDp4IoAUsXY",
+      "source": "DeepMind",
+      "feed_type": "videos",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-18T18:12:21+00:00",
+      "published_ts": 1795025541,
+      "smart_groups": [
+        "Vision, audio & video",
+        "Consumer AI"
+      ],
+      "curated": false
+    },
     {
       "title": "Deep Learning, Transformers & Neural Networks: How Modern AI Learns",
       "summary": "Modern AI did not come from traditional programming. It came from a series of architectural breakthroughs, and three terms trace the whole path. Terms covered: - Neural Networks: layers of interconnected nodes that adjust millions of connections based on the errors they make, learning from examples rather than following instructions - Deep Learning: stacking many layers so each level learns more abstract representations. Early layers detect edges and tones, middle layers find shapes, later layers recognize complex concepts. - Transformer: the 2017 architecture that introduced attention, weighing the relevance of every part of an input against every other part at once. Every major language model today is built on it. From a single connected node, to the power of depth, to the attention mechanism that made language AI possible. \u2014 AI Fundamentals Glossary | H2O.ai University Full playlist: https://www.youtube.com/playlist?list=PLAWKlIKS-66E Free courses and certifications: https://h2o.ai/university #DeepLearning #NeuralNetworks #Transformers #AIGlossary #H2Oai",
@@ -338,7 +540,7 @@
       ],
       "curated": false,
       "story_id": "dcf50a49c0df",
-      "story_size": 5
+      "story_size": 6
     },
     {
       "title": "Chips Are Being Built Like Skyscrapers",
@@ -372,7 +574,7 @@
       ],
       "curated": false,
       "story_id": "5deb3005f6ba",
-      "story_size": 2
+      "story_size": 3
     },
     {
       "title": "Accenture And Google Cloud Plan AI Learning For Over 1,000 Schools And Colleges",
@@ -554,26 +756,7 @@
       ],
       "curated": false,
       "story_id": "dcf50a49c0df",
-      "story_size": 5
-    },
-    {
-      "title": "Bengaluru Tech Summit 2026 Day 2 | Front Page",
-      "summary": "Live from the Bengaluru Tech Summit 2026: the 29th edition of Asia's largest integrated technology summit, running November 17 to 19 at the Bangalore International Exhibition Centre under the theme \"AI & Beyond\". Guests: - Shri D.K. Shivakumar, Hon'ble Chief Minister, Government of Karnataka - Shri Priyank Kharge, Hon'ble Minister for Home, Information Technology and Biotechnology and e-Governance, Government of Karnataka - Dr. Kiran Mazumdar-Shaw, Executive Chairperson, Biocon Ltd.; Chairperson, Vision Group on Biotechnology, Government of Karnataka - Pratik Gandhi, Actor, Storyteller and Theatre Practitioner - Shri Puneet Chandok, President, Microsoft India and South Asia Ask your questions in live chat and we will try to answer them on air. Subscribe and turn on notifications so you never miss a live broadcast. #BengaluruTechSummit #BTS2026 #AIAndBeyond #Karnataka #DKShivakumar #PriyankKharg#FrontPage #AIMNetwork ------------------------------------------------------------------------------------------ \ud83d\udccc Note: The video thumbnail is for representational purposes and was created with the assistance of AI. \ud83d\udce9 For inquiries or questions, contact us at: info@aimmediahouse.com ------------------------------------------------------------------------------------------ \ud83d\udccc ABOUT FRONT PAGE Front Page is a daily live news briefing covering AI, enterprise tech, semiconductors, and India\u2019s role in the global technology economy. Built for people who make decisions, not just consume headlines. ------------------------------------------------------------------------------------------ \ud83d\udc4b ABOUT AIM NETWORK AIM Network is India's leading voice on the intersection of AI, Technology, and Business. We bring you sharp analysis, breaking news, and original perspectives on everything from Generative AI breakthroughs to geopolitical market shifts. \ud83d\udd14 Subscribe for daily insights: https://www.youtube.com/@aimmediahouse?sub_confirmation=1 \ud83d\udcfa WATCH OUR POPULAR SERIES: - Front Page (Daily Tech News): https://www.youtube.com/playlist?list=PL9Kc1zSa46OxR8h0ZgAfEENta0vaxfWrs - Tech Talks (Podcast): https://www.youtube.com/playlist?list=PL9Kc1zSa46OyXflFLWtmF5MN3jvdxDFE3 -Simulated Reality (Podcast) - https://www.youtube.com/playlist?list=PL9Kc1zSa46OwqKv91j8W6vZ-V5DucIU4Y \ud83d\udcf0 STAY UPDATED: Website: https://analyticsindiamag.com/ LinkedIn: https://in.linkedin.com/company/analytics-india-magazine Twitter/X: https://x.com/Analyticsindiam Instagram: https://www.instagram.com/aim.media.house/",
-      "summary_html": "Live from the Bengaluru Tech Summit 2026: the 29th edition of Asia's largest integrated technology summit, running November 17 to 19 at the Bangalore International Exhibition Centre under the theme \"AI &amp; Beyond\".\n\nGuests:\n- Shri D.K. Shivakumar, Hon'ble Chief Minister, Government of Karnataka\n- Shri Priyank Kharge, Hon'ble Minister for Home, Information Technology and Biotechnology and e-Governance, Government of Karnataka\n- Dr. Kiran Mazumdar-Shaw, Executive Chairperson, Biocon Ltd.; Chairperson, Vision Group on Biotechnology, Government of Karnataka\n- Pratik Gandhi, Actor, Storyteller and Theatre Practitioner\n- Shri Puneet Chandok, President, Microsoft India and South Asia\n\nAsk your questions in live chat and we will try to answer them on air.\n\nSubscribe and turn on notifications so you never miss a live broadcast.\n\n#BengaluruTechSummit #BTS2026 #AIAndBeyond #Karnataka #DKShivakumar #PriyankKharg#FrontPage #AIMNetwork\n------------------------------------------------------------------------------------------\n\ud83d\udccc Note: The video thumbnail is for representational purposes and was created with the assistance of AI.\n\ud83d\udce9 For inquiries or questions, contact us at: info@aimmediahouse.com\n------------------------------------------------------------------------------------------\n\ud83d\udccc ABOUT FRONT PAGE\n\nFront Page is a daily live news briefing covering AI, enterprise tech, semiconductors, and India\u2019s role in the global technology economy. Built for people who make decisions, not just consume headlines.\n------------------------------------------------------------------------------------------\n\ud83d\udc4b ABOUT AIM NETWORK\nAIM Network is India's leading voice on the intersection of AI, Technology, and Business. We bring you sharp analysis, breaking news, and original perspectives on everything from Generative AI breakthroughs to geopolitical market shifts.\n\n\ud83d\udd14 Subscribe for daily insights: https://www.youtube.com/@aimmediahouse?sub_confirmation=1\n\n\ud83d\udcfa WATCH OUR POPULAR SERIES:\n- Front Page (Daily Tech News): https://www.youtube.com/playlist?list=PL9Kc1zSa46OxR8h0ZgAfEENta0vaxfWrs\n- Tech Talks (Podcast): https://www.youtube.com/playlist?list=PL9Kc1zSa46OyXflFLWtmF5MN3jvdxDFE3\n-Simulated Reality (Podcast) - https://www.youtube.com/playlist?list=PL9Kc1zSa46OwqKv91j8W6vZ-V5DucIU4Y\n\n\ud83d\udcf0 STAY UPDATED:\nWebsite: https://analyticsindiamag.com/\nLinkedIn: https://in.linkedin.com/company/analytics-india-magazine\nTwitter/X: https://x.com/Analyticsindiam\nInstagram: https://www.instagram.com/aim.media.house/\n\n------------------------------------------------------------------------------------------",
-      "link": "https://www.youtube.com/watch?v=izopVN9Axus",
-      "source": "Analytics India Magazine",
-      "feed_type": "videos",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-18T02:33:02+00:00",
-      "published_ts": 1794969182,
-      "smart_groups": [
-        "Chips & hardware",
-        "Policy & government"
-      ],
-      "curated": false,
-      "story_id": "dcf50a49c0df",
-      "story_size": 5
+      "story_size": 6
     },
     {
       "title": "SK Hynix Plans Trinity Fab For May 2027 And Advances Up To 50% Of Supplier Costs #Shorts #FrontPage",
