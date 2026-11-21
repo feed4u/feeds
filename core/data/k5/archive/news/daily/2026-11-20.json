@@ -1,9 +1,479 @@
 {
-  "generated_at": "2026-11-20T17:07:47.720958+00:00",
+  "generated_at": "2026-11-21T07:32:53.503813+00:00",
   "date": "2026-11-20",
-  "total_items": 87,
+  "total_items": 120,
   "next_chunk": "archive/news/daily/2026-11-19.json",
   "items": [
+    {
+      "title": "Roll20 Data Breach: Attacker Got Password Hashes Through an Image-Upload Flaw",
+      "summary": "Roll20, the online tabletop where millions play D&D and other role-playing games, says an attacker reached a database of account information through a flaw in its image uploads. Affected players started getting the warning email on Friday, 20 November. The first posted about it on Bluesky around 17:50 UTC. At 18:37 UTC, Chief Technology Officer Mike Todd confirmed the incident in a post on Roll20\u2019s forum . The attack happened on the evening of 16 November. Fewer than 1% of Roll20\u2019s users were affected, Todd wrote, and every one of them got an email. If you didn\u2019t, Roll20 says your account wasn\u2019t involved. For those who did, the data includes names, email addresses and bcrypt hashes of their passwords. A smaller group with a saved payment card also had the card\u2019s last four digits exposed. When we published, the story was on Bluesky and Roll20\u2019s own forum. We found no news coverage.",
+      "summary_html": "<p>Roll20, the online tabletop where millions play D&amp;D and other role-playing games, says an attacker reached a database of account information through a flaw in its image uploads.</p>\n<p>Affected players started getting the warning email on Friday, 20 November. The first posted about it on Bluesky around 17:50 UTC. At 18:37 UTC, Chief Technology Officer Mike Todd confirmed the incident in a <a href=\"https://app.roll20.net/forum/post/12855519/security-update-november-2026\">post on Roll20\u2019s forum</a>.</p>\n<p>The attack happened on the evening of 16 November. Fewer than 1% of Roll20\u2019s users were affected, Todd wrote, and every one of them got an email. If you didn\u2019t, Roll20 says your account wasn\u2019t involved.</p>\n<p>For those who did, the data includes names, email addresses and bcrypt hashes of their passwords. A smaller group with a saved payment card also had the card\u2019s last four digits exposed.</p>\n<p>When we published, the story was on Bluesky and Roll20\u2019s own forum. We found no news coverage.</p>",
+      "link": "https://www.privacyaffairs.com/roll20-data-breach/",
+      "source": "Privacy Affairs \u2013 Dark Web",
+      "feed_type": "news",
+      "type": "leaks-breaches",
+      "type_label": "Leaks & Breaches",
+      "published": "2026-11-20T22:59:24+00:00",
+      "published_ts": 1795215564,
+      "smart_groups": [
+        "Data Breaches / Leaks"
+      ],
+      "curated": false
+    },
+    {
+      "title": "4 Best XRP Lending Platforms Compared by Security, LTV, and Speed",
+      "summary": "Compare four XRP lending platforms by security, LTV, interest rates, funding speed and collateral risks, including CoinRabbit, Arch, Nexo and Coinbase.",
+      "summary_html": "Compare four XRP lending platforms by security, LTV, interest rates, funding speed and collateral risks, including CoinRabbit, Arch, Nexo and Coinbase.",
+      "link": "https://hackread.com/xrp-lending-platforms-compared-security-ltv-speed/",
+      "source": "HackRead",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-20T22:26:16+00:00",
+      "published_ts": 1795213576,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "CVE-2026-23871: WhatsApp Bug Helped Scammers Make Messages Look Legitimate",
+      "summary": "WhatsApp patched three security flaws, including one exploited in a real scam campaign to make fraudulent messages appear more credible. WhatsApp\u2019s November security advisory fixes three flaws, including CVE-2026-23871, a vulnerability in Click to WhatsApp ads affecting WhatsApp and WhatsApp Business for Android versions earlier than 2.26.17.4. \u201cIncomplete validation of external ad-reply URLs in WhatsApp for Android and WhatsApp Business for Android before 2.26.17.4 could have caused a target\u2019s device to reveal its IP information to an attacker if an attacker sent media from an attacker-controlled URL when a crafted Click to WhatsApp ad-reply message was rendered and displayed in a message thread.\u201d reads the advisory. \u201cThis issue may have been abused in conjunction with specific spam messages.\u201d The issue was caused by incomplete checks on external ad-reply URLs. An attacker could use a server under their control to send media through a crafted ad-reply message. When the message appeared in a chat, it could cause the victim\u2019s device to reveal its IP address to the attacker. SecurityWeek reported that WhatsApp discovered the flaw while investigating a real scam campaign. The company\u2019s security team found that a scammer was exploiting the issue to make fraudulent messages appear more credible. \u201cOur team found this issue while disrupting a scam campaign, and we believe a scammer was using it to make their scam message seem more credible.\u201d a WhatsApp spokesperson told SecurityWeek. The second fix is more serious on paper, though WhatsApp has seen no sign it was ever used. CVE-2026-102769 is a SQL injection on WhatsApp for Android before 2.26.35.74, triggered when someone taps a specially crafted \u201corder details\u201d message sent from an unofficial client. \u201cA SQL injection vulnerability when the recipient tapped on a specially crafted \u201corder details\u201d message from an unofficial client in WhatsApp for Android prior to version 2.26.35.74 could have allowed deletion of locally-stored WhatsApp files and, only if the user is online at time of receipt, leaked one bit of information asked by the attacker about the user\u2019s chat database via an induced-crash delivery receipt timing sidechannel.\u201d continues the report. The company is not aware of attacks in the wild exploiting this flaw. The third, CVE-2026-44908, lives deeper in WhatsApp\u2019s infrastructure than in the app itself. It affects the remote-attestation verifier that confirms trust with Meta AI\u2019s confidential computing backend, across WhatsApp and WhatsApp Business on iOS, Android and Mac. Someone positioned inside Meta\u2019s own infrastructure could, in theory, have presented a certificate signed by the wrong key to bypass the hardware root of trust, but such a certificate would first need to appear on a public transparency ledger, and WhatsApp says that ledger shows every published certificate checks out clean. These issues come after two fixes released in May. One addressed a bug in Instagram Reels message handling that could make another person\u2019s device load media from an attacker-controlled URL. The other fixed a Windows attachment-spoofing trick. By adding a NUL byte to a filename, an attacker could make an executable file look like a normal document. Meta received reports of both flaws through its bug bounty program, and there is no evidence that attackers exploited them. Of the three new flaws, only one was used in a real-world scam. It also had the lowest technical impact. This shows that scammers don\u2019t always need to exploit serious vulnerabilities or gain access to a device. A convincing message can be enough to deceive a victim. Make sure you update WhatsApp on all your devices. The fixed versions vary across iOS, Android, Mac, Windows and WhatsApp Business. Follow me on Twitter: @securityaffairs and Facebook and Mastodon Pierluigi Paganini ( SecurityAffairs \u2013 hacking, CVE-2026-23871)",
+      "summary_html": "<div></div>\nWhatsApp patched three security flaws, including one exploited in a real scam campaign to make fraudulent messages appear more credible.\n<p>WhatsApp\u2019s <a href=\"https://www.whatsapp.com/security/advisories/2026/\">November security advisory</a> fixes three flaws, including CVE-2026-23871, a vulnerability in Click to WhatsApp ads affecting WhatsApp and WhatsApp Business for Android versions earlier than 2.26.17.4. </p>\n<p><em>\u201cIncomplete validation of external ad-reply URLs in WhatsApp for Android and WhatsApp Business for Android before 2.26.17.4 could have caused a target\u2019s device to reveal its IP information to an attacker if an attacker sent media from an attacker-controlled URL when a crafted Click to WhatsApp ad-reply message was rendered and displayed in a message thread.\u201d reads the advisory. \u201cThis issue may have been abused in conjunction with specific spam messages.\u201d </em></p>\n<p>The issue was caused by incomplete checks on external ad-reply URLs. An attacker could use a server under their control to send media through a crafted ad-reply message. When the message appeared in a chat, it could cause the victim\u2019s device to reveal its IP address to the attacker.</p>\n<p>SecurityWeek <a href=\"https://www.securityweek.com/whatsapp-fixes-flaw-uncovered-while-disrupting-scam-campaign/\">reported</a> that WhatsApp discovered the flaw while investigating a real scam campaign. The company\u2019s security team found that a scammer was exploiting the issue to make fraudulent messages appear more credible. </p>\n<p><em>\u201cOur team found this issue while disrupting a scam campaign, and we believe a scammer was using it to make their scam message seem more credible.\u201d a WhatsApp spokesperson told SecurityWeek.</em></p>\n<p>The second fix is more serious on paper, though WhatsApp has seen no sign it was ever used. CVE-2026-102769 is a SQL injection on WhatsApp for Android before 2.26.35.74, triggered when someone taps a specially crafted \u201corder details\u201d message sent from an unofficial client. </p>\n<p><em>\u201cA SQL injection vulnerability when the recipient tapped on a specially crafted \u201corder details\u201d message from an unofficial client in WhatsApp for Android prior to version 2.26.35.74 could have allowed deletion of locally-stored WhatsApp files and, only if the user is online at time of receipt, leaked one bit of information asked by the attacker about the user\u2019s chat database via an induced-crash delivery receipt timing sidechannel.\u201d continues the report.</em></p>\n<p>The company is not aware of attacks in the wild exploiting this flaw.</p>\n<p>The third, CVE-2026-44908, lives deeper in WhatsApp\u2019s infrastructure than in the app itself. It affects the remote-attestation verifier that confirms trust with Meta AI\u2019s confidential computing backend, across WhatsApp and WhatsApp Business on iOS, Android and Mac. Someone positioned inside Meta\u2019s own infrastructure could, in theory, have presented a certificate signed by the wrong key to bypass the hardware root of trust, but such a certificate would first need to appear on a public transparency ledger, and WhatsApp says that ledger shows every published certificate checks out clean.</p>\n<p>These issues come after two fixes released in May. One addressed a bug in Instagram Reels message handling that could make another person\u2019s device load media from an attacker-controlled URL. The other fixed a Windows attachment-spoofing trick. By adding a NUL byte to a filename, an attacker could make an executable file look like a normal document. Meta received reports of both flaws through its bug bounty program, and there is no evidence that attackers exploited them.</p>\n<p>Of the three new flaws, only one was used in a real-world scam. It also had the lowest technical impact. This shows that scammers don\u2019t always need to exploit serious vulnerabilities or gain access to a device. A convincing message can be enough to deceive a victim. Make sure you update WhatsApp on all your devices. The fixed versions vary across iOS, Android, Mac, Windows and WhatsApp Business.</p>\n<p><strong>Follow me on Twitter:\u00a0</strong><a href=\"https://twitter.com/securityaffairs\"><strong>@securityaffairs</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://www.facebook.com/sec.affairs\"><strong>Facebook</strong></a><strong>\u00a0and\u00a0</strong><a href=\"https://infosec.exchange/@securityaffairs\"><strong>Mastodon</strong></a><strong></strong></p>\n<p><a href=\"http://www.linkedin.com/pub/pierluigi-paganini/b/742/559\"><strong>Pierluigi\u00a0Paganini</strong></a><strong></strong></p>\n<p><strong>(</strong><a href=\"http://securityaffairs.co/wordpress/\"><strong>SecurityAffairs</strong></a><strong>\u00a0\u2013\u00a0hacking,\u00a0CVE-2026-23871)</strong></p>",
+      "link": "https://securityaffairs.com/203622/security/cve-2026-23871-whatsapp-bug-helped-scammers-make-messages-look-legitimate.html",
+      "source": "Security Affairs",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-20T22:21:12+00:00",
+      "published_ts": 1795213272,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Web / API Security"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Dialing for Data: Inside the Com\u2019s High-Profile Heists",
+      "summary": "Our analysis of Com affiliate vishing attacks, cloud data theft and extortion campaigns targeting healthcare and finance, with actionable defense guidance.",
+      "summary_html": "Our analysis of Com affiliate vishing attacks, cloud data theft and extortion campaigns targeting healthcare and finance, with actionable defense guidance. The post Dialing for Data: Inside the Com\u2019s High-Profile Heists appeared first on Unit 42.",
+      "link": "https://unit42.paloaltonetworks.com/com-affiliate-vishing-attacks/",
+      "source": "Unit 42 \u2013 Ransomware",
+      "feed_type": "news",
+      "type": "ransomware-extortion",
+      "type_label": "Ransomware & Extortion",
+      "published": "2026-11-20T22:00:25+00:00",
+      "published_ts": 1795212025,
+      "smart_groups": [
+        "Ransomware",
+        "Phishing / Social Engineering"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Claude Claims Historic Math Breakthrough One Day After Anthropic IPO",
+      "summary": "Levent Alp\u00f6ge claims Claude helped prove a 167-year-old math conjecture, but independent checks remain pending, and the release just after Anthropic\u2019s IPO has prompted questions about its unusual publication timing.",
+      "summary_html": "Levent Alp\u00f6ge claims Claude helped prove a 167-year-old math conjecture, but independent checks remain pending, and the release just after Anthropic\u2019s IPO has prompted questions about its unusual publication timing.",
+      "link": "https://decrypt.co/383747/claude-historic-math-breakthrough-anthropic-ipo",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-11-20T21:36:02+00:00",
+      "published_ts": 1795210562,
+      "smart_groups": [
+        "AI/ML Security"
+      ],
+      "curated": false
+    },
+    {
+      "title": "West Virginia Legislature hit with cyber incident affecting IT systems",
+      "summary": "A cybersecurity incident that began Thursday was still ongoing Friday in the West Virginia Legislature. A spokesperson said the disruption did not spread to other government entities.",
+      "summary_html": "A cybersecurity incident that began Thursday was still ongoing Friday in the West Virginia Legislature. A spokesperson said the disruption did not spread to other government entities.",
+      "link": "https://therecord.media/west-virginia-legislature-cyberattack",
+      "source": "The Record \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-11-20T21:34:36+00:00",
+      "published_ts": 1795210476,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "China's 'Armory Castle' Lays Siege to VMware vCenter Zero-Day",
+      "summary": "During the last wave of major VMware vCenter security updates, a China-nexus threat group likely already had its next zero-day up its sleeve.",
+      "summary_html": "During the last wave of major VMware vCenter security updates, a China-nexus threat group likely already had its next zero-day up its sleeve.",
+      "link": "https://www.darkreading.com/cyberattacks-data-breaches/china-armory-castle-vmware-vcenter-zero-day",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-20T21:03:27+00:00",
+      "published_ts": 1795208607,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "A Vulnerability in VMware Products Could Allow for Authentication Bypass",
+      "summary": "A vulnerability has been discovered in VMware vCenter, which could allow for authentication bypass. VMware vCenter Server is a centralized management platform used to administer VMware vSphere environments, including ESXi hosts and the virtual machines running on them. Successful exploitation of this vulnerability could allow an unauthenticated attacker with network access to vCenter to bypass authentication and gain unauthorized access to the system. Depending on the privileges associated with the account, an attacker could then install programs; view, change, or delete data; or create new accounts with full user rights. Accounts configured to have fewer user rights on the system could be less impacted than those that operate with administrative user rights.",
+      "summary_html": "<p>A vulnerability has been discovered in VMware vCenter, which could allow for authentication bypass. VMware vCenter Server is a centralized management platform used to administer VMware vSphere environments, including ESXi hosts and the virtual machines running on them. Successful exploitation of this vulnerability could allow an unauthenticated attacker with network access to vCenter to bypass authentication and gain unauthorized access to the system. Depending on the privileges associated with the account, an attacker could then install programs; view, change, or delete data; or create new accounts with full user rights. Accounts configured to have fewer user rights on the system could be less impacted than those that operate with administrative user rights.</p>",
+      "link": "https://www.cisecurity.org/advisory/a-vulnerability-in-vmware-products-could-allow-for-authentication-bypass_2026-140",
+      "source": "CIS \u2013 Advisories",
+      "feed_type": "news",
+      "type": "government-cert-advisories",
+      "type_label": "Government, CERT & Advisories",
+      "published": "2026-11-20T20:40:39+00:00",
+      "published_ts": 1795207239,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Multiple Vulnerabilities in Mitel MiCollab Could Allow for Arbitrary Code Execution",
+      "summary": "Multiple vulnerabilities have been discovered in Mitel MiCollab, the most severe of which could allow for arbitrary code execution. Mitel MiCollab is a unified communications and collaboration platform that combines voice, video, chat, conferencing, and mobility features for enterprise users. Successful exploitation of the most severe of these vulnerabilities could result in arbitrary code execution in the context of the system. Depending on the privileges associated with the account, an attacker could then install programs; view, change, or delete data; or create new accounts with full user rights. Accounts configured to have fewer user rights on the system could be less impacted than those that operate with administrative user rights. Exploitation of multiple of these vulnerabilities together may significantly amplify their impact.",
+      "summary_html": "<p>Multiple vulnerabilities have been discovered in Mitel MiCollab, the most severe of which could allow for arbitrary code execution. Mitel MiCollab is a unified communications and collaboration platform that combines voice, video, chat, conferencing, and mobility features for enterprise users. Successful exploitation of the most severe of these vulnerabilities could result in arbitrary code execution in the context of the system. Depending on the privileges associated with the account, an attacker could then install programs; view, change, or delete data; or create new accounts with full user rights. Accounts configured to have fewer user rights on the system could be less impacted than those that operate with administrative user rights. Exploitation of multiple of these vulnerabilities together may significantly amplify their impact.</p>",
+      "link": "https://www.cisecurity.org/advisory/multiple-vulnerabilities-in-mitel-micollab-could-allow-for-arbitrary-code-execution_2026-139",
+      "source": "CIS \u2013 Advisories",
+      "feed_type": "news",
+      "type": "government-cert-advisories",
+      "type_label": "Government, CERT & Advisories",
+      "published": "2026-11-20T20:39:44+00:00",
+      "published_ts": 1795207184,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Nvidia Shares Sink to 52-Week Low After Report SEC Is Probing Accounting",
+      "summary": "Nvidia shares fell about 13% to a 52-week low after reports that SEC enforcement staff are examining potential accounting issues, adding to pressure on the chipmaker after Jensen Huang\u2019s resignation.",
+      "summary_html": "Nvidia shares fell about 13% to a 52-week low after reports that SEC enforcement staff are examining potential accounting issues, adding to pressure on the chipmaker after Jensen Huang\u2019s resignation.",
+      "link": "https://decrypt.co/383744/nvidia-shares-sink-52-week-low-sec-probing-accounting",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-11-20T20:36:54+00:00",
+      "published_ts": 1795207014,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "US companies\u2019 use of Chinese open weight AI draws rebuke from House chairmen",
+      "summary": "An investigation led by the House Homeland Security Committee focused on the dangers of U.S. companies using lower-cost open weight AI models for certain projects.",
+      "summary_html": "An investigation led by the House Homeland Security Committee focused on the dangers of U.S. companies using lower-cost open weight AI models for certain projects.",
+      "link": "https://therecord.media/chinese-open-weight-AI-use-by-US-companies-house-investigation",
+      "source": "The Record",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-20T20:25:00+00:00",
+      "published_ts": 1795206300,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Apple\u2019s Plans Beyond Siri: An AI Agent That Can Browse, Click, and Code",
+      "summary": "Apple's new AI agent plans include app control, web browsing and coding. Here's what the job listing reveals and why permissions matter for IT teams.",
+      "summary_html": "<p>Apple's new AI agent plans include app control, web browsing and coding. Here's what the job listing reveals and why permissions matter for IT teams.</p>\n<p>The post <a href=\"https://www.techrepublic.com/article/news-apple-ai-agent-browse-click-code/\">Apple\u2019s Plans Beyond Siri: An AI Agent That Can Browse, Click, and Code</a> appeared first on <a href=\"https://www.techrepublic.com\">TechRepublic</a>.</p>",
+      "link": "https://www.techrepublic.com/article/news-apple-ai-agent-browse-click-code/",
+      "source": "TechRepublic \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-20T19:47:07+00:00",
+      "published_ts": 1795204027,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Wrapped Monero token crashes 99.8% amid suspected $13.5M exploit",
+      "summary": "Bitquery traced $13.5 million in suspicious sales of the wrapped Monero token, as its operator blamed a security breach and promised to reimburse affected traders.",
+      "summary_html": "<p></p><p>Bitquery traced $13.5 million in suspicious sales of the wrapped Monero token, as its operator blamed a security breach and promised to reimburse affected traders.</p>",
+      "link": "https://cointelegraph.com/news/wrapped-monero-token-crashes-998-amid-suspected-135m-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-11-20T19:37:27+00:00",
+      "published_ts": 1795203447,
+      "smart_groups": [],
+      "curated": true
+    },
+    {
+      "title": "SBF\u2019s 'The Altruists' Plot Twist: FTX\u2019s Anthropic Shares Would Be Worth $43 Billion",
+      "summary": "Anthropic\u2019s IPO made FTX\u2019s liquidated AI bet a $43 billion what-if, just as Netflix premiered its Sam Bankman-Fried drama.",
+      "summary_html": "Anthropic\u2019s IPO made FTX\u2019s liquidated AI bet a $43 billion what-if, just as Netflix premiered its Sam Bankman-Fried drama.",
+      "link": "https://decrypt.co/383739/sbf-altruists-ftx-anthropic-shares-worth-43-billion",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-11-20T19:36:03+00:00",
+      "published_ts": 1795203363,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Container Store restores systems after cyberattack",
+      "summary": "The firm\u2019s parent company, Neighborhood Intelligence, said in a statement that The Container Store has \u201crestored its website and systems following a cybersecurity incident this past weekend.\u201d",
+      "summary_html": "The firm\u2019s parent company, Neighborhood Intelligence, said in a statement that The Container Store has \u201crestored its website and systems following a cybersecurity incident this past weekend.\u201d",
+      "link": "https://therecord.media/container-store-restores-systems-cyberattack",
+      "source": "The Record \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-11-20T19:32:00+00:00",
+      "published_ts": 1795203120,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Too Lost - 724,323 breached accounts",
+      "summary": "In November 2026, an unauthorised party claimed to have obtained data from the music distributor for independent artists, Too Lost. The data contained 724k unique email addresses belonging to artists, their collaborators and fans. Some records also contained bcrypt password hashes, while a small subset included partial credit card data (last 4 digits and card type), identity verification information (in some cases, passport, driver's licence or national ID numbers), and payouts made to artists. Too Lost advised that its investigation remains ongoing, external forensic specialists have been engaged, and measures have been taken to secure affected systems and credentials. The company is also working with advisors to coordinate communications and support for affected individuals.",
+      "summary_html": "In November 2026, an unauthorised party claimed to have obtained data from the music distributor for independent artists, Too Lost. The data contained 724k unique email addresses belonging to artists, their collaborators and fans. Some records also contained bcrypt password hashes, while a small subset included partial credit card data (last 4 digits and card type), identity verification information (in some cases, passport, driver's licence or national ID numbers), and payouts made to artists. Too Lost advised that its investigation remains ongoing, external forensic specialists have been engaged, and measures have been taken to secure affected systems and credentials. The company is also working with advisors to coordinate communications and support for affected individuals.",
+      "link": "https://haveibeenpwned.com/Breach/TooLost",
+      "source": "Have I Been Pwned \u2013 Latest Breaches",
+      "feed_type": "news",
+      "type": "leaks-breaches",
+      "type_label": "Leaks & Breaches",
+      "published": "2026-11-20T19:17:16+00:00",
+      "published_ts": 1795202236,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Bell Canada says 'agentic' hacker stole enterprise customer data",
+      "summary": "Bell Canada has confirmed that an \"agentic\" threat actor breached its systems on November 17, 2026, and stole enterprise customer data, including information from a system used to order and provision telecommunications circuits.",
+      "summary_html": "Bell Canada has confirmed that an \"agentic\" threat actor breached its systems on November 17, 2026, and stole enterprise customer data, including information from a system used to order and provision telecommunications circuits. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/bell-canada-says-agentic-hacker-stole-enterprise-customer-data/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-11-20T18:51:43+00:00",
+      "published_ts": 1795200703,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Cathie Wood Bets $91M on Anthropic IPO While Paring Crypto Exposure",
+      "summary": "The firm bought 934,968 Anthropic shares across six ETFs on the Claude maker\u2019s Nasdaq debut while trimming a combined $4.1 million from its Ethereum and Solana staking ETFs.",
+      "summary_html": "The firm bought 934,968 Anthropic shares across six ETFs on the Claude maker\u2019s Nasdaq debut while trimming a combined $4.1 million from its Ethereum and Solana staking ETFs.",
+      "link": "https://decrypt.co/383737/cathie-wood-bets-91m-anthropic-ipo-paring-crypto-exposure",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-11-20T18:46:03+00:00",
+      "published_ts": 1795200363,
+      "smart_groups": [
+        "AI/ML Security"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Sky Protocol sees $2 billion in stablecoin withdrawals, disputes illicit fund claims",
+      "summary": "Sky says its USDS stablecoin held its $1 value despite more than $2 billion in withdrawals, as it disputes a report linking the protocol to illicit activity.",
+      "summary_html": "<p></p><p>Sky says its USDS stablecoin held its $1 value despite more than $2 billion in withdrawals, as it disputes a report linking the protocol to illicit activity.</p>",
+      "link": "https://cointelegraph.com/news/sky-protocol-sees-2b-in-stablecoin-withdrawals-disputes-illicit-fund-claims?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "source": "Cointelegraph.com News",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-11-20T18:37:10+00:00",
+      "published_ts": 1795199830,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "In Security, Words Matter as Much as Tools, Maybe More",
+      "summary": "From talking cloud security to using AI, cyber leaders are finding that clear, disciplined communication is now a front-line defense capability across the enterprise.",
+      "summary_html": "From talking cloud security to using AI, cyber leaders are finding that clear, disciplined communication is now a front-line defense capability across the enterprise.",
+      "link": "https://www.darkreading.com/cybersecurity-operations/security-words-matter",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-20T18:35:40+00:00",
+      "published_ts": 1795199740,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "1984 Hosting Hacked: Iceland\u2019s Privacy-First Web Host Shuts Down Every Service",
+      "summary": "1984 Hosting, the Icelandic web host that sells itself on privacy and free speech, has switched off everything it runs after a cyberattack. The company announced the shutdown on Friday, 20 November, around 11:00 UTC, in a joint statement with CERT-IS , Iceland\u2019s national cybersecurity incident team. It calls the attack well planned and technically sophisticated. Email and DNS are meant to come back first, under close monitoring. Web hosting, VPS servers and the rest stay off until security checks are finished, and 1984 can\u2019t yet say when that will be. The statement doesn\u2019t say whether customer data was taken. One customer says it was. The operator of Wagyu, a Monero swap service, blames the breach for a $13.5 million theft of his wrapped Monero token earlier the same day. When we published, Icelandic media and crypto news sites had the story. English-language security outlets didn\u2019t yet.",
+      "summary_html": "<p>1984 Hosting, the Icelandic web host that sells itself on privacy and free speech, has switched off everything it runs after a cyberattack.</p>\n<p>The company announced the shutdown on Friday, 20 November, around 11:00 UTC, in a <a href=\"https://www.dv.is/frettir/2026/11/20/stodva-thjonustu-timabundid-eftir-alvarlega-tolvuaras-a-innvidi-1984-ehf\">joint statement with CERT-IS</a>, Iceland\u2019s national cybersecurity incident team. It calls the attack well planned and technically sophisticated. Email and DNS are meant to come back first, under close monitoring. Web hosting, VPS servers and the rest stay off until security checks are finished, and 1984 can\u2019t yet say when that will be.</p>\n<p>The statement doesn\u2019t say whether customer data was taken. One customer says it was. The operator of Wagyu, a Monero swap service, blames the breach for a $13.5 million theft of his wrapped Monero token earlier the same day.</p>\n<p>When we published, Icelandic media and crypto news sites had the story. English-language security outlets didn\u2019t yet.</p>",
+      "link": "https://www.privacyaffairs.com/1984-hosting-hacked/",
+      "source": "Privacy Affairs \u2013 Dark Web",
+      "feed_type": "news",
+      "type": "leaks-breaches",
+      "type_label": "Leaks & Breaches",
+      "published": "2026-11-20T18:27:33+00:00",
+      "published_ts": 1795199253,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Google Gives Gemini Control of Mac Apps, But Its New AI Agent Comes With Risks",
+      "summary": "Gemini's new Mac computer-use feature navigates apps, files, and websites in a separate window, but Google's own documentation warns about prompt injection.",
+      "summary_html": "Gemini's new Mac computer-use feature navigates apps, files, and websites in a separate window, but Google's own documentation warns about prompt injection.",
+      "link": "https://decrypt.co/383733/google-gives-gemini-control-mac-apps-ai-agent",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-11-20T18:16:02+00:00",
+      "published_ts": 1795198562,
+      "smart_groups": [
+        "AI/ML Security"
+      ],
+      "curated": false
+    },
+    {
+      "title": "UK operation wards off risk of cyber-attack on supermarket fridges and freezers",
+      "summary": "News of vulnerability comes after retailers in at least seven European countries hit by cyber-attacks A secret government cybersecurity operation recently warded off the risk of a cyber-attack on fridges and freezers in UK supermarkets, warehouses, restaurants, petrol stations and stadiums, it has emerged. An attack would have been similar to those that have caused many millions of euros of damage in continental Europe in recent months. But, while many retailers have now been protected, researchers warned that many more could still be vulnerable.",
+      "summary_html": "<p>News of vulnerability comes after retailers in at least seven European countries hit by cyber-attacks</p><p>A secret government cybersecurity operation recently warded off the risk of a cyber-attack on fridges and freezers in UK supermarkets, warehouses, restaurants, petrol stations and stadiums, it has emerged.</p><p>An attack would have been similar to those that have caused many <a href=\"https://www.theguardian.com/world/2026/nov/02/supermarket-freezers-across-europe-hit-by-second-suspected-cyber-attack\">millions of euros of damage in continental Europe</a> in recent months. But, while many retailers have now been protected, researchers warned that many more could still be vulnerable.</p> <a href=\"https://www.theguardian.com/technology/2026/nov/20/cybersecurity-operation-thwarts-attack-on-uk-supermarket-fridges-and-freezers\">Continue reading...</a>",
+      "link": "https://www.theguardian.com/technology/2026/nov/20/cybersecurity-operation-thwarts-attack-on-uk-supermarket-fridges-and-freezers",
+      "source": "The Guardian Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-11-20T18:06:52+00:00",
+      "published_ts": 1795198012,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Multiple Vulnerabilities in PHP Could Allow for Remote Code Execution",
+      "summary": "Multiple vulnerabilities have been discovered in PHP, the most severe of which could allow for remote code execution. PHP is a widely used, open-source server-side scripting language designed primarily for web development. Successful exploitation of the most severe of these vulnerabilities could allow for unauthenticated remote code execution in the context of the affected service account. Depending on the privileges associated with the service account, an attacker could then install programs; view, change, or delete data; or create new accounts with full user rights. Services whose accounts are configured to have fewer rights on the system could be less impacted than those that operate with administrative user rights.",
+      "summary_html": "<p>Multiple vulnerabilities have been discovered in PHP, the most severe of which could allow for remote code execution. PHP is a widely used, open-source server-side scripting language designed primarily for web development. Successful exploitation of the most severe of these vulnerabilities could allow for unauthenticated remote code execution in the context of the affected service account. Depending on the privileges associated with the service account, an attacker could then install programs; view, change, or delete data; or create new accounts with full user rights. Services whose accounts are configured to have fewer rights on the system could be less impacted than those that operate with administrative user rights.</p>",
+      "link": "https://www.cisecurity.org/advisory/multiple-vulnerabilities-in-php-could-allow-for-remote-code-execution_2026-137",
+      "source": "CIS \u2013 Advisories",
+      "feed_type": "news",
+      "type": "government-cert-advisories",
+      "type_label": "Government, CERT & Advisories",
+      "published": "2026-11-20T18:02:56+00:00",
+      "published_ts": 1795197776,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true,
+      "story_id": "c46686a06700",
+      "story_size": 4
+    },
+    {
+      "title": "WhatsApp Patches 3 Security Flaws, Including Android Bug Suspected of Use in Scams",
+      "summary": "Meta-owned WhatsApp has addressed security vulnerabilities, including one impacting its Android app that it suspects may have been exploited in connection with scam messages. The vulnerability, tracked as CVE-2026-23871, has been described as a case of incomplete validation of external ad-reply URLs in WhatsApp for Android and WhatsApp Business for Android before 2.26.17.4. The issue could",
+      "summary_html": "Meta-owned WhatsApp has addressed security vulnerabilities, including one impacting its Android app that it suspects may have been exploited in connection with scam messages.\n\nThe vulnerability, tracked as CVE-2026-23871, has been described as a case of incomplete validation of external ad-reply URLs in WhatsApp for Android and WhatsApp Business for Android before 2.26.17.4.\n\nThe issue could",
+      "link": "https://thehackernews.com/2026/11/whatsapp-patches-3-security-flaws.html",
+      "source": "The Hacker News",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-20T17:57:20+00:00",
+      "published_ts": 1795197440,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Wrapped Monero Token Collapses 99% After $13 Million Hack Blamed on Web Host",
+      "summary": "Wagyu\u2019s XMR1 token fell more than 99% after an attacker moved 5.2 million tokens out of its deployer account and sold a fraction of them for $13.5 million.",
+      "summary_html": "Wagyu\u2019s XMR1 token fell more than 99% after an attacker moved 5.2 million tokens out of its deployer account and sold a fraction of them for $13.5 million.",
+      "link": "https://decrypt.co/383732/wrapped-monero-token-collapses-99-after-13-million-hack-blamed-on-web-host",
+      "source": "Decrypt",
+      "feed_type": "news",
+      "type": "crypto-blockchain-security",
+      "type_label": "Crypto & Blockchain Security",
+      "published": "2026-11-20T17:41:45+00:00",
+      "published_ts": 1795196505,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Hackers use autonomous AI tool Cairn to find zero-day, take over server",
+      "summary": "Threat actors used the open-source AI penetration-testing framework Cairn to find a previously unknown vulnerability in a medical imaging application.",
+      "summary_html": "Threat actors used the open-source AI penetration-testing framework Cairn to find a previously unknown vulnerability in a medical imaging application. [...]",
+      "link": "https://www.bleepingcomputer.com/news/security/hackers-use-autonomous-ai-tool-cairn-to-find-zero-day-take-over-server/",
+      "source": "BleepingComputer \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-11-20T17:30:00+00:00",
+      "published_ts": 1795195800,
+      "smart_groups": [
+        "Vulnerabilities / CVEs"
+      ],
+      "curated": true
+    },
+    {
+      "title": "Amazon says Chinese hackers used Cairn AI tool to discover apparent zero-day during attack on university",
+      "summary": "A China-linked threat actor used the open source AI penetration testing tool Cairn to persistently attack two universities, and in one case, possibly discover a zero-day bug, researchers said.",
+      "summary_html": "A China-linked threat actor used the open source AI penetration testing tool Cairn to persistently attack two universities, and in one case, possibly discover a zero-day bug, researchers said.",
+      "link": "https://therecord.media/amazon-research-cairn-ai-university-attacks-possible-zero-day",
+      "source": "The Record \u2013 Cybercrime",
+      "feed_type": "news",
+      "type": "cybercrime-underground",
+      "type_label": "Cybercrime & Underground",
+      "published": "2026-11-20T17:30:00+00:00",
+      "published_ts": 1795195800,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Red Team / Offensive"
+      ],
+      "curated": true
+    },
+    {
+      "title": "What We Missed: Nvidia CEO Scandal Rocks AI Industry",
+      "summary": "In this video, Dark Reading editors discuss some of the news they didn't get a chance to cover, from Jensen Huang's resignation from Nvidia to Microsoft's recent cloud outage.",
+      "summary_html": "In this video, Dark Reading editors discuss some of the news they didn't get a chance to cover, from Jensen Huang's resignation from Nvidia to Microsoft's recent cloud outage.",
+      "link": "https://www.darkreading.com/cyber-risk/what-we-missed-nvidia-ceo-scandal-rocks-ai-industry",
+      "source": "Dark Reading",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-20T17:04:04+00:00",
+      "published_ts": 1795194244,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Signal to restrict screenshots over AI agent concerns \u2013 again",
+      "summary": "The messaging app similarly limited screenshots because of Microsoft Recall last year.",
+      "summary_html": "The messaging app similarly limited screenshots because of Microsoft Recall last year.",
+      "link": "https://www.zdnet.com/innovation/signal-restricts-screenshots-over-ai-agent-concerns/",
+      "source": "ZDNet \u2013 Security",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-20T17:03:37+00:00",
+      "published_ts": 1795194217,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Bazuka Android Malware Uses Fake Screen Overlays to Hide Credential Theft and Device Control",
+      "summary": "Cybersecurity researchers have disclosed details of a previously unknown Android malware framework called Bazuka that offers large language model (LLM) integration for victim management and control at scale. Dutch mobile security company ThreatFabric said it discovered the threat in late October 2026 during an investigation into an NFC-relay banking Trojan. \"Bazuka is a full malware framework,",
+      "summary_html": "Cybersecurity researchers have disclosed details of a previously unknown Android malware framework called Bazuka that offers large language model (LLM) integration for victim management and control at scale.\n\nDutch mobile security company ThreatFabric said it discovered the threat in late October 2026 during an investigation into an NFC-relay banking Trojan.\n\n\"Bazuka is a full malware framework,",
+      "link": "https://thehackernews.com/2026/11/bazuka-android-malware-uses-fake-screen.html",
+      "source": "The Hacker News",
+      "feed_type": "news",
+      "type": "security-news-media",
+      "type_label": "Security News & Media",
+      "published": "2026-11-20T16:58:16+00:00",
+      "published_ts": 1795193896,
+      "smart_groups": [
+        "Malware / Payloads",
+        "AI/ML Security"
+      ],
+      "curated": true
+    },
     {
       "title": "Bitcoin falls below $60K for first time since July amid broader market selloff",
       "summary": "Bitcoin fell nearly 6% as US stocks declined, with the Nasdaq dropping more than 2% and Anthropic shares losing almost 10%.",
@@ -641,6 +1111,25 @@
       "published_ts": 1795176000,
       "smart_groups": [],
       "curated": false
+    },
+    {
+      "title": "CISA Adds Four Known Exploited Vulnerabilities to Catalog",
+      "summary": "CISA has added four new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2025-42884 SAP NetWeaver Improper Neutralization of Special Elements in Data Query Logic Vulnerability CVE-2026-76466 Cisco Expressway Series Use of Hard-coded Credentials Vulnerability CVE-2026-123890 VMWare vCenter Authentication Bypass Using an Alternate Path or Channel Vulnerability CVE-2026-129448 Apache Roller Deserialization of Untrusted Data Vulnerability These types of vulnerabilities are a frequent attack vector for malicious cyber actors and pose significant risks to the federal enterprise. Binding Operational Directive (BOD) 26-04: Prioritizing Security Updates Based on Risk establishes vulnerability management requirements for Federal Civilian Executive Branch (FCEB) agencies. BOD 26-04 reinforces the importance of the KEV Catalog and requires federal agencies to prioritize rapid remediation of high-risk vulnerabilities, specifically those identified by Common Vulnerabilities and Exposures (CVEs) listed in CISA\u2019s KEV Catalog on publicly exposed assets that grant total control of the asset post-exploitation, while deferring action for lower-risk vulnerabilities. BOD 26-04 further establishes basic expectations for when agencies must check whether threat actors compromised the system before the patch was applied. While BOD 26-04 applies only to FCEB agencies, CISA encourages all organizations to adopt risk-based vulnerability management and prioritize remediation of KEV Catalog vulnerabilities . CISA will continue to add vulnerabilities to the catalog that meet the specified criteria . Aware of an exploited vulnerability not currently listed in the KEV Catalog? Submit it for potential addition through CISA\u2019s KEV Nomination Form . Potential KEV additions must have a CVE ID, evidence of exploitation, and clear mitigation guidance.",
+      "summary_html": "<div>\n<p>CISA has added four new vulnerabilities to its <a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) Catalog</a>, based on evidence of active exploitation.</p>\n<ul>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2025-42884\">CVE-2025-42884</a> SAP NetWeaver Improper Neutralization of Special Elements in Data Query Logic Vulnerability</li>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-76466\">CVE-2026-76466</a> Cisco Expressway Series Use of Hard-coded Credentials Vulnerability</li>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-123890\">CVE-2026-123890</a> VMWare vCenter Authentication Bypass Using an Alternate Path or Channel Vulnerability</li>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-129448\">CVE-2026-129448</a> Apache Roller Deserialization of Untrusted Data Vulnerability</li>\n</ul>\n<p>These types of vulnerabilities are a frequent attack vector for malicious cyber actors and pose significant risks to the federal enterprise.\u00a0</p>\n<p><a href=\"https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk\">Binding Operational Directive (BOD) 26-04: Prioritizing Security Updates Based on Risk</a> establishes vulnerability management requirements for Federal Civilian Executive Branch (FCEB) agencies. BOD 26-04 reinforces the importance of the KEV Catalog and requires federal agencies to prioritize rapid remediation of high-risk vulnerabilities, specifically those identified by Common Vulnerabilities and Exposures (CVEs) listed in CISA\u2019s KEV Catalog on publicly exposed assets that grant total control of the asset post-exploitation, while deferring action for lower-risk vulnerabilities. BOD 26-04 further establishes basic expectations for when agencies must check whether threat actors compromised the system before the patch was applied.\u00a0</p>\n</div>\n<div>\n<p>While BOD 26-04 applies only to FCEB agencies, CISA encourages all organizations to adopt risk-based vulnerability management and prioritize remediation of <a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">KEV Catalog vulnerabilities</a>. CISA will continue to add vulnerabilities to the catalog that meet the <a href=\"https://www.cisa.gov/known-exploited-vulnerabilities\">specified criteria</a>.\u00a0</p>\n</div>\n<div>\n<p>Aware of an exploited vulnerability not currently listed in the KEV Catalog? Submit it for potential addition through CISA\u2019s <a href=\"https://cisasurvey.gov1.qualtrics.com/jfe/form/SV_1Zwu52kgK2OYf3w\">KEV Nomination Form</a>. Potential KEV additions must have a CVE ID, evidence of exploitation, and clear mitigation guidance.\u00a0</p>\n</div>",
+      "link": "https://www.cisa.gov/news-events/alerts/2026/11/20/cisa-adds-four-known-exploited-vulnerabilities-catalog",
+      "source": "US-CERT \u2013 Current Activity",
+      "feed_type": "news",
+      "type": "government-cert-advisories",
+      "type_label": "Government, CERT & Advisories",
+      "published": "2026-11-20T12:00:00+00:00",
+      "published_ts": 1795176000,
+      "smart_groups": [
+        "Vulnerabilities / CVEs",
+        "Data Breaches / Leaks"
+      ],
+      "curated": true,
+      "story_id": "f49e9f798bfe",
+      "story_size": 4
     },
     {
       "title": "Mail Bombing Attacks Fuel IT Helpdesk Impersonation Scams",
@@ -1377,6 +1866,24 @@
         "Vulnerabilities / CVEs"
       ],
       "curated": false
+    },
+    {
+      "title": "AI Joins the Industrial Attack Workflow",
+      "summary": "The recent cyberattack on French refrigerators and our tracking of the malicious AI framework ARTEX show that threat actors are increasingly using AI to accelerate attacks, expand their reach, and improve their effectiveness. GreenJuliett, the group behind operational technology (OT) cyberattacks similar to those in France, has begun incorporating AI into its OT attack chain. Understanding the scale AI offers financially motivated and state-sponsored threat actors helps us see it as more than a tool: it\u2019s something that can fill an operator\u2019s role, even while humans remain in control. On October 11 and 12, 2026, someone changed the defrost settings on refrigeration controllers at more than 700 retail locations in France. This resulted in fires, damaged equipment, and food losses estimated in the tens of millions of euros, highlighting the physical impacts of attacks against operational technology (OT). On November 9, France attributed the attack to Shahid Kaveh, a unit of Iran's Islamic Revolutionary Guard Corps Cyber Electronic Command (IRGC-CEC). We track activity that likely belongs to an element of Shahid Kaveh as GreenJuliett. GreenJuliett (also known as CyberAv3ngers and Bauxite) builds infrastructure aimed at internet-facing PLCs. And while that work continued through at least October 30, despite repeated public reporting on the group, the target set began to widen. Between August and October, we observed GreenJuliett-linked infrastructure scanning, or attempting to exploit, Fortinet FortiGate firewalls, edge devices that protect OT networks, in Bahrain, Israel, Jordan, Kuwait, Saudi Arabia, and Qatar. Our network data suggests the group is also working to add internet-of-things (IoT) and CCTV devices to its list. While we have not independently tied GreenJuliett infrastructure to the refrigeration attacks, over the past three months, we have seen the group continue to target PLCs (programmable logic controllers), which are similar to the internet-exposed controllers the refrigerators in France used. We have also observed that AI is now part of how they work. From Accounts to Infrastructure In October 2024, OpenAI banned accounts it assessed as belonging to CyberAv3ngers. The operators had used ChatGPT to research default credentials for PLCs, compile lists of electricity companies and common PLCs in Jordan, and draft scripts against industrial protocols (such as Modbus TCP, a control protocol that allows PLCs to communicate quickly on local networks). However, in 2026, the picture is different. In October, we found a configuration for LiteLLM (an open-source gateway that puts multiple AI models behind a single interface, suggesting a team-sharing model for access), alongside self-hosted chat applications built for Persian-language users, on infrastructure we assessed as likely used by GreenJuliett-linked operators. We also observed servers in the group's anonymization network communicating with infrastructure that hosts Anthropic's Claude. While we have not confirmed specific instances of misuse in this research, both OpenAI and Anthropic have reported publicly on detecting and disrupting misuse by Iranian government operators. AI shortens the time it takes to identify vulnerable device types and write targeting scripts, and GreenJuliett has moved it from individual accounts into its operating environment. Figure 1: The GreenJuliett operation path, as observed from August to October 2026",
+      "summary_html": "<div>\n<div>\n<div>The recent cyberattack on French refrigerators and our tracking of the malicious AI framework ARTEX show that threat actors are increasingly using AI to accelerate attacks, expand their reach, and improve their effectiveness. GreenJuliett, the group behind operational technology (OT) cyberattacks similar to those in France, has begun incorporating AI into its OT attack chain. Understanding the scale AI offers financially motivated and state-sponsored threat actors helps us see it as more than a tool: it\u2019s something that can fill an operator\u2019s role, even while humans remain in control.</div>\n</div>\n</div>\n<p>On October 11 and 12, 2026, someone changed the defrost settings on refrigeration controllers at more than 700 retail locations in France. This resulted in fires, damaged equipment, and food losses estimated in the tens of millions of euros, highlighting the physical impacts of attacks against operational technology (OT). On November 9, France <a href=\"https://diplomatie.gouv.fr/fr/presse-et-ressources/decouvrir-et-informer/actualites/declaration-d-attribution-a-l-iran-de-cyberattaques-visant-la-france\"></a><a href=\"https://diplomatie.gouv.fr/fr/presse-et-ressources/decouvrir-et-informer/actualites/declaration-d-attribution-a-l-iran-de-cyberattaques-visant-la-france\">attributed the attack</a> to Shahid Kaveh, a unit of Iran's Islamic Revolutionary Guard Corps Cyber Electronic Command (IRGC-CEC). We track activity that likely belongs to an element of Shahid Kaveh as GreenJuliett.</p>\n<p>GreenJuliett (also known as CyberAv3ngers and Bauxite) builds infrastructure aimed at internet-facing PLCs. And while that work continued through at least October 30, despite repeated public reporting on the group, the target set began to widen. Between August and October, we observed GreenJuliett-linked infrastructure scanning, or attempting to exploit, Fortinet FortiGate firewalls, edge devices that protect OT networks, in Bahrain, Israel, Jordan, Kuwait, Saudi Arabia, and Qatar. Our network data suggests the group is also working to add internet-of-things (IoT) and CCTV devices to its list.</p>\n<p>While we have not independently tied GreenJuliett infrastructure to the refrigeration attacks, over the past three months, we have seen the group continue to target PLCs (programmable logic controllers), which are similar to the internet-exposed controllers the refrigerators in France used. We have also observed that AI is now part of how they work.</p>\n<strong>From Accounts to Infrastructure</strong>\n<p>In October 2024, OpenAI <a href=\"https://openai.com/index/disrupting-malicious-uses-of-ai-cyberav3ngers\"></a><a href=\"https://openai.com/index/disrupting-malicious-uses-of-ai-cyberav3ngers\">banned accounts</a> it assessed as belonging to CyberAv3ngers. The operators had used ChatGPT to research default credentials for PLCs, compile lists of electricity companies and common PLCs in Jordan, and draft scripts against industrial protocols (such as Modbus TCP, a control protocol that allows PLCs to communicate quickly on local networks).</p>\n<p>However, in 2026, the picture is different. In October, we found a configuration for LiteLLM (an open-source gateway that puts multiple AI models behind a single interface, suggesting a team-sharing model for access), alongside self-hosted chat applications built for Persian-language users, on infrastructure we assessed as likely used by GreenJuliett-linked operators. We also observed servers in the group's anonymization network communicating with infrastructure that hosts Anthropic's Claude.</p>\n<p>While we have not confirmed specific instances of misuse in this research, both OpenAI and <a href=\"https://anthropic.com/threat-intelligence-report-september-2026\"></a><a href=\"https://anthropic.com/threat-intelligence-report-september-2026\">Anthropic</a> have reported publicly on detecting and disrupting misuse by Iranian government operators. AI shortens the time it takes to identify vulnerable device types and write targeting scripts, and GreenJuliett has moved it from individual accounts into its operating environment.</p>\n<div>\n<div>\n<div>\n\n</div>\n</div>\n<div>\n<div><strong>Figure 1:</strong> The GreenJuliett operation path, as observed from August to October 2026</div>\n</div>\n</div>",
+      "link": "https://www.recordedfuture.com/blog/ai-industrial-attack-workflow",
+      "source": "Recorded Future \u2013 Main Feed",
+      "feed_type": "news",
+      "type": "threat-intel-apt-campaigns",
+      "type_label": "Threat Intel & APT Campaigns",
+      "published": "2026-11-20T00:00:00+00:00",
+      "published_ts": 1795132800,
+      "smart_groups": [
+        "Network / OT / ICS",
+        "AI/ML Security",
+        "Privacy & Compliance"
+      ],
+      "curated": true
     }
   ]
 }

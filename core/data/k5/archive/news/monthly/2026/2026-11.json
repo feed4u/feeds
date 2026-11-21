@@ -1,5 +1,605 @@
 [
   {
+    "title": "Hong Kong pushes to bring crypto custodians, advisers under licensing rules",
+    "summary": "Hong Kong’s securities regulator says the proposal would strengthen investor protections, with the bill set for its first reading in the Legislative Council on Dec. 2.",
+    "summary_html": "<p></p><p>Hong Kong’s securities regulator says the proposal would strengthen investor protections, with the bill set for its first reading in the Legislative Council on Dec. 2.</p>",
+    "link": "https://cointelegraph.com/news/hong-kong-crypto-custody-advisory-licensing-bill?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-11-21T05:40:35+00:00",
+    "published_ts": 1795239635,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "PHP2Shell aftershock: 18 more PHP flaws put enterprise web admins on alert",
+    "summary": "PHP continues to root out flaws in its architecture, this week releasing fixes for a slew of additional security issues in the wake of PHP2Shell. The patches address 18 vulnerabilities , including a critical request smuggling flaw that could allow unauthenticated attackers to remotely execute code on vulnerable servers. Other vulnerabilities affect PHP’s core engine, session handling, process manager, and Common Gateway Interface (CGI) protocol, which bridges web servers with external application programs. The updates were released for all supported PHP versions, with PHP 8.5.13, 8.4.28, 8.3.37, and 8.2.36 containing the fixes. The disclosure comes as enterprises continue to grapple with the full impact of PHP2Shell , a pair of 9.2-severity-rated vulnerabilities disclosed in October. The flaws prompted the outright shutdown of some government websites, and, by some estimates, have borne the brunt of millions of exploit attempts . “Enterprises should read this release as PHP2Shell’s aftershock: Smaller, but it shakes the same walls,” said Frank Dickson of Dickson Research. Flaws enabling RCE, DoS, memory corruption One of the most serious flaws disclosed this week, CVE-2026-129289 , is rated a critical 9.2 on the Common Vulnerabilities Scoring System (CVSS). The request smuggling vulnerability impacts PHP-FPM, a background service that executes code for high-volume websites and apps. If exploited, the flaw could allow unauthenticated actors to execute PHP code remotely on vulnerable servers that reuse connections to PHP-FPM under certain conditions. It impacts specific nginx, Apache, HAProxy, and LSAPI configurations that reuse backend connections to PHP-FPM. When paired with a code execution bug, it can “ carry an attacker from the web worker toward the whole server,” Dickson explained. Several of the other patches also address vulnerabilities that could allow remote code execution (RCE). Still others address issues including information disclosure, memory corruption, denial-of-service (DoS) interruptions, potentially unsafe handling of HTTPS and FTPS URLs, and cross-site scripting. While there may be heavy focus on the 9.2-rated CVE-2026-129289, the lesser flaws still matter, Dickson said. For instance, in one case, one capital letter turned off encryption; a URL written as HTTPS:// or FTPS:// with an uppercase S could send passwords, tokens, form data, and files in plaintext, even through a redirect, to anyone watching the network. Not quite PHP2Shell level, but still high priority An attacker who exploits a PHP code-execution flaw gains access to whatever the PHP worker can touch, “which is just about everything,” Dickson said. Successful exploitation executes code with the privileges of the PHP worker, which holds the database password, API keys, cloud credentials, and session data. For example, he described what he called an “ugly” attack path: The threat actor gets in through the web application. Reads the configuration file; Dumps the customer database; Plants a web shell to come back later. He pointed out that PHP warned that PHP2Shell puts every installation serving web requests at risk, with no login required. “This release returns to the same neighborhood: session upload progress, fatal error backtraces, and how PHP behaves when it runs out of memory,” he said. Fritz Jean-Louis , principal cybersecurity advisor at Infotech, agreed that this is a high-priority patching event, if not a PHP2Shell-level emergency. Although several of the critical vulnerabilities require specific configurations or uncommon deployment scenarios, “they still affect one of the most widely deployed web runtimes in the world,” he noted. RCE is the most concerning outcome, as it can give an attacker control over the application server. From there, they may be able to access sensitive business data, steal credentials or session tokens, deploy persistent backdoors, modify application behavior, or use the compromised system as a foothold for deeper intrusion. “Even vulnerabilities that appear less severe, such as information disclosure or memory corruption, can become highly impactful when chained together by a determined attacker,” Jean-Louis said. What enterprises should do now Dickson emphasized the a PHP version number alone will not tell security teams whether they are exposed. Checking the version number is the easy part, but Linux distributions often backport fixes without changing the version string, so the package changelog tells more than the version number does. The hard part is finding every copy: Web servers, containers, hosting control panels, and appliances can all quietly bundle PHP, Dickson said. Then check the settings that matter: Is session upload progress on? Do PHP 8.5 workers include arguments in error backtraces? Does php-cgi face the internet? Is the PHP-FPM status page reachable from outside? He advised security teams to start with internet-facing PHP 8.5 servers, anything with session upload progress enabled, and any setup where several applications share one session store. PHP 8.5 should be first because it is the only branch exposed to the new backtrace flaw, and fatal error backtraces are on by default there, he explained. “Then patch everything else on a normal fast cycle,” Dickson said. He pointed out that PHP 8.2 has just six weeks to live; it will receive no security fixes after December 31, 2026. That means this release may be one of the last it receives. Running 8.2 into January is a risk decision; PHP 8.1 and older, meanwhile, receive no fixes from the PHP project. Interestingly, PHP’s advisory for the new PHP 8.5 backtrace flaw says a change in 8.5.12, the PHP2Shell release, is what made the new attack path reachable. “Emergency fixes are built fast, and fast work sometimes creates a new vulnerability ,” Dickson noted. In light of this, his advice is to preserve the PHP inventory built for PHP2Shell, “and keep it current,” because no one ever said during an incident, “We knew about too many of our PHP servers.” Understanding everywhere PHP runs Jean-Louis agreed that security teams should immediately inventory all PHP deployments, including those embedded in vendor products and appliances. They should also prioritize internet-facing systems, verify PHP-FPM and session management configurations, and deploy the latest supported PHP versions “as quickly as operationally feasible.” Organizations should view this as a continuation of the lesson learned from PHP2Shell, he said: Runtime vulnerabilities deserve the same attention as application vulnerabilities. While PHP2Shell was more “immediately exploitable” and quickly attracted real-world attacks, this release reinforces the need for strong asset inventory, rapid patch deployment, and visibility into underlying software components. “The biggest question for CISOs is not whether they run PHP; it’s whether they know everywhere it runs,” Jean-Louis said.",
+    "summary_html": "<div>\n<div>\n<div>\n<div>\n<div></div>\n<p>PHP continues to root out flaws in its architecture, this week releasing fixes for a slew of additional security issues in the wake of PHP2Shell.</p>\n<p>The <a href=\"https://www.php.net/archive/2026.php#2026-11-18-1\">patches address 18 vulnerabilities</a>, including a critical request smuggling flaw that could allow unauthenticated attackers to remotely execute code on vulnerable servers. Other vulnerabilities affect PHP’s core engine, session handling, process manager, and Common Gateway Interface (CGI) protocol, which bridges web servers with external application programs.</p>\n<p>The updates were released for all supported PHP versions, with PHP 8.5.13, 8.4.28, 8.3.37, and 8.2.36 containing the fixes.</p>\n<p>The disclosure comes as enterprises continue to grapple with the full impact of <a href=\"https://www.csoonline.com/article/4241941/php2shell-will-persist-in-enterprise-environments-for-years.html?utm_source=chatgpt.com\">PHP2Shell</a>, a pair of 9.2-severity-rated vulnerabilities disclosed in October. The flaws prompted the outright shutdown of some government websites, and, by some estimates, have borne the brunt of <a href=\"https://www.infoworld.com/article/4239342/php2shell-exposes-the-weakness-in-coordinated-vulnerability-disclosure.html\">millions of exploit attempts</a>.</p>\n<p>“Enterprises should read this release as PHP2Shell’s aftershock: Smaller, but it shakes the same walls,” said <a href=\"https://dicksonresearch.com/\">Frank Dickson</a> of Dickson Research.</p>\nFlaws enabling RCE, DoS, memory corruption\n<p>One of the most serious flaws disclosed this week, <a href=\"https://nvd.nist.gov/vuln/detail/cve-2026-129289\">CVE-2026-129289</a>, is rated a critical 9.2 on the Common Vulnerabilities Scoring System (CVSS). The request smuggling vulnerability impacts PHP-FPM, a background service that executes code for high-volume websites and apps.</p>\n<p>If exploited, the flaw could allow unauthenticated actors to execute PHP code remotely on vulnerable servers that reuse connections to PHP-FPM under certain conditions. It impacts specific nginx, Apache, HAProxy, and LSAPI configurations that reuse backend connections to PHP-FPM.</p>\n<p>When paired with a code execution bug, it can “<a href=\"https://www.csoonline.com/article/4248553/how-ai-is-changing-the-nature-of-cyberattacks.html\">carry an attacker</a> from the web worker toward the whole server,” Dickson explained.</p>\n<p>Several of the other patches also address vulnerabilities that could allow remote code execution (RCE). Still others address issues including information disclosure, memory corruption, denial-of-service (DoS) interruptions, potentially unsafe handling of HTTPS and FTPS URLs, and cross-site scripting.</p>\n<p>While there may be heavy focus on the 9.2-rated CVE-2026-129289, the lesser flaws still matter, Dickson said. For instance, in one case, one capital letter turned off encryption; a URL written as HTTPS:// or FTPS:// with an uppercase S could send passwords, tokens, form data, and files in plaintext, even through a redirect, to anyone watching the network.</p>\nNot quite PHP2Shell level, but still high priority\n<p>An attacker who exploits a PHP code-execution flaw gains access to whatever the PHP worker can touch, “which is just about everything,” Dickson said. Successful exploitation executes code with the privileges of the PHP worker, which holds the database password, API keys, cloud credentials, and session data.</p>\n<p>For example, he described what he called an “ugly” attack path:</p>\n<ul>\n<li>The threat actor gets in through the web application.</li>\n<li>Reads the configuration file;</li>\n<li>Dumps the customer database;</li>\n<li>Plants a web shell to come back later.</li>\n</ul>\n<p>He pointed out that PHP warned that <a href=\"https://www.infoworld.com/article/4238778/two-critical-php-flaws-put-the-web-on-alert-as-emergency-patches-arrive-2.html?utm_source=chatgpt.com\">PHP2Shell</a> puts every installation serving web requests at risk, with no login required. “This release returns to the same neighborhood: session upload progress, fatal error backtraces, and how PHP behaves when it runs out of memory,” he said.</p>\n<p><a href=\"https://www.infotech.com/profiles/fritz-jean-louis\">Fritz Jean-Louis</a>, principal cybersecurity advisor at Infotech, agreed that this is a high-priority patching event, if not a PHP2Shell-level emergency. Although several of the critical vulnerabilities require specific configurations or uncommon deployment scenarios, “they still affect one of the most widely deployed web runtimes in the world,” he noted.</p>\n<p>RCE is the most concerning outcome, as it can give an attacker control over the application server. From there, they may be able to access sensitive business data, steal credentials or session tokens, deploy persistent backdoors, modify application behavior, or use the compromised system as a foothold for deeper intrusion.</p>\n<p>“Even vulnerabilities that appear less severe, such as information disclosure or memory corruption, can become highly impactful when chained together by a determined attacker,” Jean-Louis said.</p>\nWhat enterprises should do now\n<p>Dickson emphasized the a PHP version number alone will not tell security teams whether they are exposed. Checking the version number is the easy part, but Linux distributions often backport fixes without changing the version string, so the package changelog tells more than the version number does.</p>\n<p>The hard part is finding every copy: Web servers, containers, hosting control panels, and appliances can all quietly bundle PHP, Dickson said. Then check the settings that matter:</p>\n<ul>\n<li>Is session upload progress on?</li>\n<li>Do PHP 8.5 workers include arguments in error backtraces?</li>\n<li>Does <em>php-cgi</em> face the internet?</li>\n<li>Is the PHP-FPM status page reachable from outside?</li>\n</ul>\n<p>He advised security teams to start with internet-facing PHP 8.5 servers, anything with session upload progress enabled, and any setup where several applications share one session store. PHP 8.5 should be first because it is the only branch exposed to the new backtrace flaw, and fatal error backtraces are on by default there, he explained.</p>\n<p>“Then patch everything else on a normal fast cycle,” Dickson said.</p>\n<p>He pointed out that PHP 8.2 has just six weeks to live; it will receive no security fixes after December 31, 2026. That means this release may be one of the last it receives. Running 8.2 into January is a risk decision; PHP 8.1 and older, meanwhile, receive no fixes from the PHP project.</p>\n<p>Interestingly, PHP’s advisory for the new PHP 8.5 backtrace flaw says a change in 8.5.12, the PHP2Shell release, is what made the new attack path reachable. “Emergency fixes are built fast, and fast work sometimes creates a new <a href=\"https://www.csoonline.com/article/4250261/vulnerability-management-the-cybersecurity-industry-is-still-solving-the-wrong-problem.html\">vulnerability</a>,” Dickson noted.</p>\n<p>In light of this, his advice is to preserve the PHP inventory built for PHP2Shell, “and keep it current,” because no one ever said during an incident, “We knew about too many of our PHP servers.”</p>\nUnderstanding everywhere PHP runs\n<p>Jean-Louis agreed that security teams should immediately inventory all PHP deployments, including those embedded in vendor products and appliances. They should also prioritize internet-facing systems, verify PHP-FPM and session management configurations, and deploy the latest supported PHP versions “as quickly as operationally feasible.”</p>\n<p>Organizations should view this as a continuation of the lesson learned from PHP2Shell, he said: Runtime vulnerabilities deserve the same attention as application vulnerabilities. While PHP2Shell was more “immediately exploitable” and quickly attracted real-world attacks, this release reinforces the need for strong asset inventory, rapid patch deployment, and visibility into underlying software components.</p>\n<p>“The biggest question for CISOs is not whether they run PHP; it’s whether they know everywhere it runs,” Jean-Louis said.</p>\n</div></div></div></div>",
+    "link": "https://www.csoonline.com/article/4251713/php2shell-aftershock-18-more-php-flaws-put-enterprise-web-admins-on-alert.html",
+    "source": "CSO Online",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-11-21T00:39:17+00:00",
+    "published_ts": 1795221557,
+    "smart_groups": [
+      "Vulnerabilities / CVEs",
+      "Linux / Unix",
+      "Malware / Payloads"
+    ],
+    "curated": true
+  },
+  {
+    "title": "CTO of ‘RansomwareHelp’ Indicted for Wire Fraud",
+    "summary": "The chief technology officer and co-founder of ransomwarehelp.com , a six year old Florida business that claimed to use “advanced cryptographic tools” to restore data locked by ransomware, has been charged with wire fraud after an FBI sting operation found the company was simply paying the attackers for a decryption key and charging victims a markup for work that was never performed. A portion of the now-defunct website ransomwarehelp.com. The website RansomwareHelp urged victims “Do not pay the ransom!,” claiming its advanced cryptographic tools could restore 100 percent of data, servers, and systems to their original format, and that there was no need to give in to extortion demands. “Our cryptography experts use proprietary tools and algorithms to achieve 100% data recovery, all backed by a success rate of over 99%,” the website enthused, claiming the company had over 28 years of experience and a team of 80 experts in cryptography, cybersecurity, forensic analysis and reverse engineering. “We never promote, intermediate or pay ransom to threat actors on behalf of our clients.” But according to an indictment (PDF) returned this week in Rhode Island, the company’s co-founder — 52-year-old Juan Ricardo Palacio Escobar of Miami and Medellin, Colombia — routinely paid ransomware groups for a decryption key to unlock victim data, and then charged those victims well above what he’d secretly paid the threat actors [Palacio’s indictment was reported earlier this week by 404 Media , but for some reason that story did not name the defendant’s company]. The indictment says the FBI set up a sting operation in which the feds were posing both as a ransomware victim company and as a fictitious ransomware group. Pretending to be victims of a cyberattack, investigators contacted RansomwareHelp and supplied the company with a copy of a phony ransomware note, saying they did not wish to pay a ransom. RansomwareHelp replied by reiterating its policy against negotiating with or making ransom payments to threat actors. The government said Palacio soon after contacted the fake ransomware group run by the FBI and requested the lowest possible price for the decryptor. FBI investigators responded with a price of .2 bitcoin, or around $13,000 at the time. Less than 48 hours later, Palacio allegedly told agents acting as the victim company that the diagnostic assessment was successful and that the cost of decrypting the files would be $13,260. The following day, the government alleges, Palacio messaged the fictitious ransomware group operated by the feds and asked to reduce the ransom demand to $4,000 for the purchase of a decryption tool. The indictment states that the agreed upon price was around $6,000 in bitcoin, and that Palacio charged the FBI’s fake victim firm $16,010, including an initial $2,750 diagnostic fee and the full fee of $13,260. Paul Ihme is co-founder of the security firm Soteria . Ihme told KrebsOnSecurity that in 2024 he heard from a small accounting firm that had paid RansomwareHelp a diagnostic fee to help recover from a Lockbit ransomware infection that had locked all of their company and client data. Ihme said RansomwareHelp sent a proposal to the victim with a recovery price of $438,880, which it claimed included “professional configuration of forensic servers,” “expert engineering hours of programming to configure decryption algorithms,” and “eight (6-hour processing cycles) related to the decryption process.” A portion of the proposal that RansomwareHelp sent to a victim accounting firm in March 2024. Click to enlarge. The proposal stated that the recovery process involved reverse engineering the ransomware encryption using “510 preconfigured forensic servers of the maximum quantitative capacity located in different parts of the world.” “Our programmers will inject randomly the encryption codes extracted during the forensic and cryptographic analysis using brute force processes,” the proposal claimed. Ihme said RansomwareHelp insisted that they be allowed unrestricted remote access into the victim’s network to run their diagnostic checks and analyses, using an Anydesk remote desktop software installer. Ihme believes RansomwareHelp insisted on that remote access in part so that the company could delete all copies of the ransomware notes left by the attackers on the victim’s network. A typical ransomware note is a plain text file that introduces the ransomware group and lays out their demands, and it includes a way to contact them — often an email address or a live chat session on a darknet website. In most cases, the attackers will leave a copy of the ransom note on every system on the victim network that gets locked. But Ihme said a review of the company’s network at the time found only one copy of the ransom note, which was unearthed from a backup snapshot on one of the infected computers. When they connected to the Lockbit chat server with the provided user ID, they discovered that someone had already been negotiating with the Lockbit extortionists for several days. A screenshot of a 2024 conversation between Lockbit and RansomwareHelp, which was secretly negotiating with the extortion group. Click to enlarge. “The charitable view would be to say that they were using Anydesk so they could grab the stuff they needed without having to walk the client through downloading and uploading a bunch of stuff,” Ihme said. “A legitimate firm would say, ‘Hey, send us a copy of the ransom note,’ which will have a link or URL to go to and chat with the threat actors. What they were doing is using that access to delete ransomware notes off the systems. The only reason they would do that is to prevent the victim from jumping into that chat itself.” Indeed, RansomwareHelp pleaded with the Lockbit group throughout the chat not to reveal to the victim that they were negotiating. However, Lockbit quickly grew annoyed with the length of the negotiations, replying that the victims had waited too long and that the ransom demand would increase by $100,000 for every day they dithered further. The Lockbit representative starts raising the ransom demand after multiple negotiators begin interacting with the threat actors. Click to enlarge. In the end, the accounting firm took Ihme’s advice and went with a more established security firm that helped them negotiate a payment to Lockbit. “The victim told us, ‘If we don’t get this data back, our business is over’,” Ihme recalled. “They ended up paying half of what RansomwareHelp was going to charge them.” The chats show RansomwareHelp kept pestering Lockbit to negotiate a deal even after it was clear a new negotiator was engaging with the ransomware group on the victim’s behalf. “I tell you something, that person who is negotiating with you for the other chat is damaging the whole process,” RansomwareHelp wrote to Lockbit. “Please do not change the price. I am doing my best to achieve it.” Ihme said RansomwareHelp primarily targeted small to medium sized businesses that weren’t particularly tech-savvy, noting that many of the technical claims made on the company’s website and in their proposal are patently farcical. For example, the proposal sent to the accounting firm said it could break six types of encryption, and then proceeded to list a number of irrelevant password hashing algorithms like SHA-256. “If it were really true these guys could decrypt any ransomware out there, this guy would be a billionaire,” Ihme said. “They were going after people who don’t have any technical knowledge, are desperate, and don’t have anyone advising them about how any of this stuff works.” The case against Palacio marks the latest in a string of recent prosecutions by the U.S. Department of Justice (DoJ) targeting security firms alleged to have conspired with fraudsters to defraud clients. In early October, the government charged 54-year-old Edward Dubrovsky , an executive at the Canadian cybersecurity firm Cybersteward. The government has sealed the case against Dubrovsky, but he is currently facing cyber extortion and conspiracy charges. Around the same time as Dubrovsky’s arrest, the DoJ charged MonsterCloud CEO Zohar Pinhasi , 50, with wire fraud and conspiracy for allegedly charging customers to remediate ransomware attacks without paying the hackers. According to charging documents, Pinhasi secretly went behind his customers’ backs and paid hackers anyway, paying ransomware groups $8 million while charging customers $19 million. In July, Angelo Martino , a 41-year-old ransomware negotiator from Land O’Lakes, Florida, was sentenced to 70 months in prison for conspiring with the Blackcat/ALPHV ransomware group to extort multiple victims. According to the DoJ, Martino was paid by BlackCat attackers to provide confidential information about the negotiating position and strategy of his employer’s clients and enable the ransomware actors to maximize the ransoms paid by the victims.",
+    "summary_html": "<p>The chief technology officer and co-founder of <strong>ransomwarehelp.com</strong>, a six year old Florida business that claimed to use “advanced cryptographic tools” to restore data locked by ransomware, has been charged with wire fraud after an FBI sting operation found the company was simply paying the attackers for a decryption key and charging victims a markup for work that was never performed.</p>\n<div><p>A portion of the now-defunct website ransomwarehelp.com.</p></div>\n<p>The website RansomwareHelp urged victims “Do not pay the ransom!,” claiming its advanced cryptographic tools could restore 100 percent of data, servers, and systems to their original format, and that there was no need to give in to extortion demands.</p>\n<p>“Our cryptography experts use proprietary tools and algorithms to achieve 100% data recovery, all backed by a success rate of over 99%,” the website enthused, claiming the company had over 28 years of experience and a team of 80 experts in cryptography, cybersecurity, forensic analysis and reverse engineering. “We never promote, intermediate or pay ransom to threat actors on behalf of our clients.”</p>\n<p>But according to <a href=\"https://krebsonsecurity.com/wp-content/uploads/2026/11/palacio.pdf\">an indictment</a> (PDF) returned this week in Rhode Island, the company’s co-founder — 52-year-old <strong>Juan Ricardo Palacio Escobar</strong> of Miami and Medellin, Colombia — routinely paid ransomware groups for a decryption key to unlock victim data, and then charged those victims well above what he’d secretly paid the threat actors [Palacio’s indictment was reported earlier this week by <a href=\"https://www.404media.co/ransomware-fraud-attack-fbi-indictment/\">404 Media</a>, but for some reason that story did not name the defendant’s company].</p>\n<p>The indictment says the FBI set up a sting operation in which the feds were posing both as a ransomware victim company and as a fictitious ransomware group. Pretending to be victims of a cyberattack, investigators contacted RansomwareHelp and supplied the company with a copy of a phony ransomware note, saying they did not wish to pay a ransom. RansomwareHelp replied by reiterating its policy against negotiating with or making ransom payments to threat actors.</p>\n<p>The government said Palacio soon after contacted the fake ransomware group run by the FBI and requested the lowest possible price for the decryptor. FBI investigators responded with a price of .2 bitcoin, or around $13,000 at the time. Less than 48 hours later, Palacio allegedly told agents acting as the victim company that the diagnostic assessment was successful and that the cost of decrypting the files would be $13,260.</p>\n<p>The following day, the government alleges, Palacio messaged the fictitious ransomware group operated by the feds and asked to reduce the ransom demand to $4,000 for the purchase of a decryption tool. The indictment states that the agreed upon price was around $6,000 in bitcoin, and that Palacio charged the FBI’s fake victim firm $16,010, including an initial $2,750 diagnostic fee and the full fee of $13,260.</p>\n<p><strong>Paul Ihme </strong>is co-founder of the security firm <strong>Soteria</strong>. Ihme told KrebsOnSecurity that in 2024 he heard from a small accounting firm that had paid RansomwareHelp a diagnostic fee to help recover from a Lockbit ransomware infection that had locked all of their company and client data.</p>\n<p>Ihme said RansomwareHelp sent a proposal to the victim with a recovery price of $438,880, which it claimed included “professional configuration of forensic servers,” “expert engineering hours of programming to configure decryption algorithms,” and “eight (6-hour processing cycles) related to the decryption process.”</p>\n<div><a href=\"https://krebsonsecurity.com/wp-content/uploads/2026/11/ransomwarehelpproposal.png\"></a><p>A portion of the proposal that RansomwareHelp sent to a victim accounting firm in March 2024. Click to enlarge.</p></div>\n<p>The proposal stated that the recovery process involved reverse engineering the ransomware encryption using “510 preconfigured forensic servers of the maximum quantitative capacity located in different parts of the world.”</p>\n<p>“Our programmers will inject randomly the encryption codes extracted during the forensic and cryptographic analysis using brute force processes,” the proposal claimed.<span></span></p>\n<p>Ihme said RansomwareHelp insisted that they be allowed unrestricted remote access into the victim’s network to run their diagnostic checks and analyses, using an Anydesk remote desktop software installer. Ihme believes RansomwareHelp insisted on that remote access in part so that the company could delete all copies of the ransomware notes left by the attackers on the victim’s network.</p>\n<p>A typical ransomware note is a plain text file that introduces the ransomware group and lays out their demands, and it includes a way to contact them — often an email address or a live chat session on a darknet website. In most cases, the attackers will leave a copy of the ransom note on every system on the victim network that gets locked.</p>\n<p>But Ihme said a review of the company’s network at the time found only one copy of the ransom note, which was unearthed from a backup snapshot on one of the infected computers. When they connected to the Lockbit chat server with the provided user ID, they discovered that someone had already been negotiating with the Lockbit extortionists for several days.</p>\n<div><a href=\"https://krebsonsecurity.com/wp-content/uploads/2026/11/lockbit-ransomwarehelp1.png\"></a><p>A screenshot of a 2024 conversation between Lockbit and RansomwareHelp, which was secretly negotiating with the extortion group. Click to enlarge.</p></div>\n<p>“The charitable view would be to say that they were using Anydesk so they could grab the stuff they needed without having to walk the client through downloading and uploading a bunch of stuff,” Ihme said. “A legitimate firm would say, ‘Hey, send us a copy of the ransom note,’ which will have a link or URL to go to and chat with the threat actors. What they were doing is using that access to delete ransomware notes off the systems. The only reason they would do that is to prevent the victim from jumping into that chat itself.”</p>\n<p>Indeed, RansomwareHelp pleaded with the Lockbit group throughout the chat not to reveal to the victim that they were negotiating. However, Lockbit quickly grew annoyed with the length of the negotiations, replying that the victims had waited too long and that the ransom demand would increase by $100,000 for every day they dithered further.</p>\n<div><a href=\"https://krebsonsecurity.com/wp-content/uploads/2026/11/lockbit-ransomwarehelp2.png\"></a><p>The Lockbit representative starts raising the ransom demand after multiple negotiators begin interacting with the threat actors. Click to enlarge.</p></div>\n<p>In the end, the accounting firm took Ihme’s advice and went with a more established security firm that helped them negotiate a payment to Lockbit.</p>\n<p>“The victim told us, ‘If we don’t get this data back, our business is over’,” Ihme recalled. “They ended up paying half of what RansomwareHelp was going to charge them.”</p>\n<p>The chats show RansomwareHelp kept pestering Lockbit to negotiate a deal even after it was clear a new negotiator was engaging with the ransomware group on the victim’s behalf.</p>\n<p>“I tell you something, that person who is negotiating with you for the other chat is damaging the whole process,” RansomwareHelp wrote to Lockbit. “Please do not change the price. I am doing my best to achieve it.”</p>\n<p>Ihme said RansomwareHelp primarily targeted small to medium sized businesses that weren’t particularly tech-savvy, noting that many of the technical claims made on the company’s website and in their proposal are patently farcical. For example, the proposal sent to the accounting firm said it could break six types of encryption, and then proceeded to list a number of irrelevant password hashing algorithms like SHA-256.</p>\n<p>“If it were really true these guys could decrypt any ransomware out there, this guy would be a billionaire,” Ihme said. “They were going after people who don’t have any technical knowledge, are desperate, and don’t have anyone advising them about how any of this stuff works.”</p>\n<p>The case against Palacio marks the latest in a string of recent prosecutions by the <strong>U.S. Department of Justice</strong> (DoJ) targeting security firms alleged to have conspired with fraudsters to defraud clients. In early October, the government <a href=\"https://krebsonsecurity.com/2026/10/fbi-arrests-founder-of-ransomware-negotiation-firm/\">charged</a> 54-year-old <strong>Edward Dubrovsky</strong>, an executive at the Canadian cybersecurity firm Cybersteward. The government has sealed the case against Dubrovsky, but he is currently facing cyber extortion and conspiracy charges.</p>\n<p>Around the same time as Dubrovsky’s arrest, the DoJ <a href=\"https://www.justice.gov/opa/pr/known-cybersecurity-expert-and-owner-florida-ransomware-remediation-company-charged\">charged</a> <strong>MonsterCloud CEO Zohar Pinhasi</strong>, 50, with wire fraud and conspiracy for allegedly charging customers to remediate ransomware attacks without paying the hackers. According to charging documents, Pinhasi secretly went behind his customers’ backs and paid hackers anyway, paying ransomware groups $8 million while charging customers $19 million.</p>\n<p>In July, <strong>Angelo Martino</strong>, a 41-year-old ransomware negotiator from Land O’Lakes, Florida, was <a href=\"https://www.justice.gov/opa/pr/florida-ransomware-negotiator-who-extorted-and-attacked-multiple-us-victims-sentenced-prison\">sentenced to 70 months in prison</a> for conspiring with the Blackcat/ALPHV ransomware group to extort multiple victims. According to the DoJ, Martino was paid by BlackCat attackers to provide confidential information about the negotiating position and strategy of his employer’s clients and enable the ransomware actors to maximize the ransoms paid by the victims.</p>",
+    "link": "https://krebsonsecurity.com/2026/11/cto-of-ransomwarehelp-indicted-for-wire-fraud/",
+    "source": "Krebs on Security",
+    "feed_type": "news",
+    "type": "cybercrime-underground",
+    "type_label": "Cybercrime & Underground",
+    "published": "2026-11-21T00:36:39+00:00",
+    "published_ts": 1795221399,
+    "smart_groups": [
+      "Ransomware",
+      "Threat Actors / APT"
+    ],
+    "curated": true
+  },
+  {
+    "title": "F5 scrambles to fix more critical BIG-IP security flaws",
+    "summary": "F5 has released a batch of out of band patches for BIG-IP Access Policy Manager (APM) and BIG-IP iRule programmable scripting, five of which are rated 9.8 (Critical) in severity. BIG-IP Access Policy Manager (APM) is the vendor’s application access management and security product while BIG-IP iRules lets network administrators customize how BIG-IP handles application traffic. All five of the patches are stack-based buffer overflows that could let an unauthenticated threat actor terminate the Traffic Management Microkernel (TMM) and execute code remotely on vulnerable systems. F5 described them as follows: CVE-2026-121805 : When an iRule that processes client traffic using the PEM:subscriber command is configured on a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate and may lead to remote code execution (RCE); CVE-2026-120292 : When an HTTP profile and an iRule using the MR:message route command are configured on a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate and may lead to remote code execution (RCE); CVE-2026-120285 : When an HTTP profile and an iRule containing the PSC:ip_address command are configured on a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate and may lead to remote code execution (RCE); CVE-2026-116953 : When an iRule that processes client traffic using the GENERICMESSAGE:route command is configured on a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate and may lead to remote code execution (RCE); CVE-2026-123637 : When BIG-IP APM is provisioned and a per-request policy that includes the Client Information agent and Endpoint Security agents is applied to a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate and may lead to remote code execution (RCE). The company said there are no mitigations for the flaws and advised customers to install the hotfixes on vulnerable devices, and to upgrade vulnerable versions without a listed fix to a patched version. In the same batch of out of band patches, F5 also addressed CVE-2026-126822 , a high severity integer underflow vulnerability in BIG-IP APM SAML that could also crash TMM and lead to denial of service. This is the second critical issue in two months for APM; September’s zero-day bug was already being exploited when it was patched. F5 did not indicate that any of the current batch is as yet being exploited but given the growing trend of attacks on edge devices by criminals and nation-state threat actors, admins should update systems as soon as possible.",
+    "summary_html": "<div>\n<div>\n<div>\n<div>\n<div></div>\n<p>F5 has released a batch of out of band patches for <a href=\"https://www.networkworld.com/article/4143922/f5-brings-new-visibility-and-ai-controls-to-big-ip-nginx.html\">BIG-IP Access</a> Policy Manager (APM) and BIG-IP iRule programmable scripting, five of which are rated 9.8 (Critical) in severity. BIG-IP Access Policy Manager (APM) is the vendor’s application access management and security product while BIG-IP iRules lets network administrators customize how BIG-IP handles application traffic.</p>\n<p>All five of the patches are stack-based buffer overflows that could let an unauthenticated threat actor terminate the Traffic Management Microkernel (TMM) and execute code remotely on vulnerable systems.</p>\n<p>F5 described them as follows:</p>\n<ul>\n<li><a href=\"https://my.f5.com/manage/s/article/K000163946\">CVE-2026-121805</a>: When an iRule that processes client traffic using the <strong><em>PEM:subscriber</em></strong> command is configured on a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate and may lead to remote code execution (RCE);</li>\n<li><a href=\"https://my.f5.com/manage/s/article/K000163940\">CVE-2026-120292</a>: When an HTTP profile and an iRule using the <strong><em>MR:message route</em></strong> command are configured on a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate and may lead to remote code execution (RCE);</li>\n<li><a href=\"https://my.f5.com/manage/s/article/K000163939\">CVE-2026-120285</a>: When an HTTP profile and an iRule containing the <strong><em>PSC:ip_address</em></strong> command are configured on a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate and may lead to remote code execution (RCE);</li>\n<li><a href=\"https://my.f5.com/manage/s/article/K000163941\">CVE-2026-116953</a>: When an iRule that processes client traffic using the <strong><em>GENERICMESSAGE:route</em></strong> command is configured on a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate and may lead to remote code execution (RCE);</li>\n<li><a href=\"https://my.f5.com/manage/s/article/K000163937\">CVE-2026-123637</a>: When BIG-IP APM is provisioned and a per-request policy that includes the Client Information agent and Endpoint Security agents is applied to a virtual server, undisclosed requests can cause the Traffic Management Microkernel (TMM) to terminate and may lead to remote code execution (RCE).</li>\n</ul>\n<p>The company said there are no mitigations for the flaws and advised customers to install the hotfixes on vulnerable devices, and to upgrade vulnerable versions without a listed fix to a patched version.</p>\n<p>In the same batch of out of band patches, F5 also addressed <a href=\"https://my.f5.com/manage/s/article/K000163942\">CVE-2026-126822</a>, a high severity integer underflow vulnerability in BIG-IP APM SAML that could also crash TMM and lead to denial of service.</p>\n<p>This is the second <a href=\"https://www.networkworld.com/article/4225726/f5-fixes-actively-exploited-zero-day-flaw-in-big-ip-apm-2.html\">critical issue</a> in two months for APM; September’s zero-day bug was already being exploited when it was patched. F5 did not indicate that any of the current batch is as yet being exploited but given the <a href=\"https://www.csoonline.com/article/4074945/network-security-devices-endanger-orgs-with-90s-era-flaws.html\">growing trend of attacks on edge devices</a> by criminals and nation-state threat actors, admins should update systems as soon as possible.</p>\n<p><em>This article originally appeared on <a href=\"https://www.networkworld.com/article/4251676/f5-scrambles-to-fix-more-critical-big-ip-security-flaws.html\">NetworkWorld</a>.</em></p>\n</div></div></div></div>",
+    "link": "https://www.csoonline.com/article/4251711/f5-scrambles-to-fix-more-critical-big-ip-security-flaws-2.html",
+    "source": "CSO Online",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-11-21T00:16:44+00:00",
+    "published_ts": 1795220204,
+    "smart_groups": [
+      "Vulnerabilities / CVEs",
+      "Identity / Access"
+    ],
+    "curated": true
+  },
+  {
+    "title": "mackron dr_libs dr_mp3 drmp3_init_internal out-of-bounds read vulnerability",
+    "summary": "",
+    "summary_html": "",
+    "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2441",
+    "source": "Talos - Vulnerability Reports",
+    "feed_type": "news",
+    "type": "vulnerabilities-cves-exploits",
+    "type_label": "Vulnerabilities, CVEs & Exploits",
+    "published": "2026-11-21T00:00:00+00:00",
+    "published_ts": 1795219200,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": false
+  },
+  {
+    "title": "mackron dr_libs dr_wav drwav__read_cue_to_metadata_obj out-of-bounds write vulnerability",
+    "summary": "",
+    "summary_html": "",
+    "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2442",
+    "source": "Talos - Vulnerability Reports",
+    "feed_type": "news",
+    "type": "vulnerabilities-cves-exploits",
+    "type_label": "Vulnerabilities, CVEs & Exploits",
+    "published": "2026-11-21T00:00:00+00:00",
+    "published_ts": 1795219200,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Microsoft Windows Cloud Files Mini Filter Driver CldiStreamCompleteRequest use-after-free vulnerability",
+    "summary": "",
+    "summary_html": "",
+    "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2426",
+    "source": "Talos - Vulnerability Reports",
+    "feed_type": "news",
+    "type": "vulnerabilities-cves-exploits",
+    "type_label": "Vulnerabilities, CVEs & Exploits",
+    "published": "2026-11-21T00:00:00+00:00",
+    "published_ts": 1795219200,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Microsoft Windows Cloud Files Mini Filter Driver CldiStreamPrepareRequestForMoreProcessing Type Confusion vulnerability",
+    "summary": "",
+    "summary_html": "",
+    "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2445",
+    "source": "Talos - Vulnerability Reports",
+    "feed_type": "news",
+    "type": "vulnerabilities-cves-exploits",
+    "type_label": "Vulnerabilities, CVEs & Exploits",
+    "published": "2026-11-21T00:00:00+00:00",
+    "published_ts": 1795219200,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Roll20 Data Breach: Attacker Got Password Hashes Through an Image-Upload Flaw",
+    "summary": "Roll20, the online tabletop where millions play D&D and other role-playing games, says an attacker reached a database of account information through a flaw in its image uploads. Affected players started getting the warning email on Friday, 20 November. The first posted about it on Bluesky around 17:50 UTC. At 18:37 UTC, Chief Technology Officer Mike Todd confirmed the incident in a post on Roll20’s forum . The attack happened on the evening of 16 November. Fewer than 1% of Roll20’s users were affected, Todd wrote, and every one of them got an email. If you didn’t, Roll20 says your account wasn’t involved. For those who did, the data includes names, email addresses and bcrypt hashes of their passwords. A smaller group with a saved payment card also had the card’s last four digits exposed. When we published, the story was on Bluesky and Roll20’s own forum. We found no news coverage.",
+    "summary_html": "<p>Roll20, the online tabletop where millions play D&amp;D and other role-playing games, says an attacker reached a database of account information through a flaw in its image uploads.</p>\n<p>Affected players started getting the warning email on Friday, 20 November. The first posted about it on Bluesky around 17:50 UTC. At 18:37 UTC, Chief Technology Officer Mike Todd confirmed the incident in a <a href=\"https://app.roll20.net/forum/post/12855519/security-update-november-2026\">post on Roll20’s forum</a>.</p>\n<p>The attack happened on the evening of 16 November. Fewer than 1% of Roll20’s users were affected, Todd wrote, and every one of them got an email. If you didn’t, Roll20 says your account wasn’t involved.</p>\n<p>For those who did, the data includes names, email addresses and bcrypt hashes of their passwords. A smaller group with a saved payment card also had the card’s last four digits exposed.</p>\n<p>When we published, the story was on Bluesky and Roll20’s own forum. We found no news coverage.</p>",
+    "link": "https://www.privacyaffairs.com/roll20-data-breach/",
+    "source": "Privacy Affairs – Dark Web",
+    "feed_type": "news",
+    "type": "leaks-breaches",
+    "type_label": "Leaks & Breaches",
+    "published": "2026-11-20T22:59:24+00:00",
+    "published_ts": 1795215564,
+    "smart_groups": [
+      "Data Breaches / Leaks"
+    ],
+    "curated": false
+  },
+  {
+    "title": "4 Best XRP Lending Platforms Compared by Security, LTV, and Speed",
+    "summary": "Compare four XRP lending platforms by security, LTV, interest rates, funding speed and collateral risks, including CoinRabbit, Arch, Nexo and Coinbase.",
+    "summary_html": "Compare four XRP lending platforms by security, LTV, interest rates, funding speed and collateral risks, including CoinRabbit, Arch, Nexo and Coinbase.",
+    "link": "https://hackread.com/xrp-lending-platforms-compared-security-ltv-speed/",
+    "source": "HackRead",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-11-20T22:26:16+00:00",
+    "published_ts": 1795213576,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "CVE-2026-23871: WhatsApp Bug Helped Scammers Make Messages Look Legitimate",
+    "summary": "WhatsApp patched three security flaws, including one exploited in a real scam campaign to make fraudulent messages appear more credible. WhatsApp’s November security advisory fixes three flaws, including CVE-2026-23871, a vulnerability in Click to WhatsApp ads affecting WhatsApp and WhatsApp Business for Android versions earlier than 2.26.17.4. “Incomplete validation of external ad-reply URLs in WhatsApp for Android and WhatsApp Business for Android before 2.26.17.4 could have caused a target’s device to reveal its IP information to an attacker if an attacker sent media from an attacker-controlled URL when a crafted Click to WhatsApp ad-reply message was rendered and displayed in a message thread.” reads the advisory. “This issue may have been abused in conjunction with specific spam messages.” The issue was caused by incomplete checks on external ad-reply URLs. An attacker could use a server under their control to send media through a crafted ad-reply message. When the message appeared in a chat, it could cause the victim’s device to reveal its IP address to the attacker. SecurityWeek reported that WhatsApp discovered the flaw while investigating a real scam campaign. The company’s security team found that a scammer was exploiting the issue to make fraudulent messages appear more credible. “Our team found this issue while disrupting a scam campaign, and we believe a scammer was using it to make their scam message seem more credible.” a WhatsApp spokesperson told SecurityWeek. The second fix is more serious on paper, though WhatsApp has seen no sign it was ever used. CVE-2026-102769 is a SQL injection on WhatsApp for Android before 2.26.35.74, triggered when someone taps a specially crafted “order details” message sent from an unofficial client. “A SQL injection vulnerability when the recipient tapped on a specially crafted “order details” message from an unofficial client in WhatsApp for Android prior to version 2.26.35.74 could have allowed deletion of locally-stored WhatsApp files and, only if the user is online at time of receipt, leaked one bit of information asked by the attacker about the user’s chat database via an induced-crash delivery receipt timing sidechannel.” continues the report. The company is not aware of attacks in the wild exploiting this flaw. The third, CVE-2026-44908, lives deeper in WhatsApp’s infrastructure than in the app itself. It affects the remote-attestation verifier that confirms trust with Meta AI’s confidential computing backend, across WhatsApp and WhatsApp Business on iOS, Android and Mac. Someone positioned inside Meta’s own infrastructure could, in theory, have presented a certificate signed by the wrong key to bypass the hardware root of trust, but such a certificate would first need to appear on a public transparency ledger, and WhatsApp says that ledger shows every published certificate checks out clean. These issues come after two fixes released in May. One addressed a bug in Instagram Reels message handling that could make another person’s device load media from an attacker-controlled URL. The other fixed a Windows attachment-spoofing trick. By adding a NUL byte to a filename, an attacker could make an executable file look like a normal document. Meta received reports of both flaws through its bug bounty program, and there is no evidence that attackers exploited them. Of the three new flaws, only one was used in a real-world scam. It also had the lowest technical impact. This shows that scammers don’t always need to exploit serious vulnerabilities or gain access to a device. A convincing message can be enough to deceive a victim. Make sure you update WhatsApp on all your devices. The fixed versions vary across iOS, Android, Mac, Windows and WhatsApp Business. Follow me on Twitter: @securityaffairs and Facebook and Mastodon Pierluigi Paganini ( SecurityAffairs – hacking, CVE-2026-23871)",
+    "summary_html": "<div></div>\nWhatsApp patched three security flaws, including one exploited in a real scam campaign to make fraudulent messages appear more credible.\n<p>WhatsApp’s <a href=\"https://www.whatsapp.com/security/advisories/2026/\">November security advisory</a> fixes three flaws, including CVE-2026-23871, a vulnerability in Click to WhatsApp ads affecting WhatsApp and WhatsApp Business for Android versions earlier than 2.26.17.4. </p>\n<p><em>“Incomplete validation of external ad-reply URLs in WhatsApp for Android and WhatsApp Business for Android before 2.26.17.4 could have caused a target’s device to reveal its IP information to an attacker if an attacker sent media from an attacker-controlled URL when a crafted Click to WhatsApp ad-reply message was rendered and displayed in a message thread.” reads the advisory. “This issue may have been abused in conjunction with specific spam messages.” </em></p>\n<p>The issue was caused by incomplete checks on external ad-reply URLs. An attacker could use a server under their control to send media through a crafted ad-reply message. When the message appeared in a chat, it could cause the victim’s device to reveal its IP address to the attacker.</p>\n<p>SecurityWeek <a href=\"https://www.securityweek.com/whatsapp-fixes-flaw-uncovered-while-disrupting-scam-campaign/\">reported</a> that WhatsApp discovered the flaw while investigating a real scam campaign. The company’s security team found that a scammer was exploiting the issue to make fraudulent messages appear more credible. </p>\n<p><em>“Our team found this issue while disrupting a scam campaign, and we believe a scammer was using it to make their scam message seem more credible.” a WhatsApp spokesperson told SecurityWeek.</em></p>\n<p>The second fix is more serious on paper, though WhatsApp has seen no sign it was ever used. CVE-2026-102769 is a SQL injection on WhatsApp for Android before 2.26.35.74, triggered when someone taps a specially crafted “order details” message sent from an unofficial client. </p>\n<p><em>“A SQL injection vulnerability when the recipient tapped on a specially crafted “order details” message from an unofficial client in WhatsApp for Android prior to version 2.26.35.74 could have allowed deletion of locally-stored WhatsApp files and, only if the user is online at time of receipt, leaked one bit of information asked by the attacker about the user’s chat database via an induced-crash delivery receipt timing sidechannel.” continues the report.</em></p>\n<p>The company is not aware of attacks in the wild exploiting this flaw.</p>\n<p>The third, CVE-2026-44908, lives deeper in WhatsApp’s infrastructure than in the app itself. It affects the remote-attestation verifier that confirms trust with Meta AI’s confidential computing backend, across WhatsApp and WhatsApp Business on iOS, Android and Mac. Someone positioned inside Meta’s own infrastructure could, in theory, have presented a certificate signed by the wrong key to bypass the hardware root of trust, but such a certificate would first need to appear on a public transparency ledger, and WhatsApp says that ledger shows every published certificate checks out clean.</p>\n<p>These issues come after two fixes released in May. One addressed a bug in Instagram Reels message handling that could make another person’s device load media from an attacker-controlled URL. The other fixed a Windows attachment-spoofing trick. By adding a NUL byte to a filename, an attacker could make an executable file look like a normal document. Meta received reports of both flaws through its bug bounty program, and there is no evidence that attackers exploited them.</p>\n<p>Of the three new flaws, only one was used in a real-world scam. It also had the lowest technical impact. This shows that scammers don’t always need to exploit serious vulnerabilities or gain access to a device. A convincing message can be enough to deceive a victim. Make sure you update WhatsApp on all your devices. The fixed versions vary across iOS, Android, Mac, Windows and WhatsApp Business.</p>\n<p><strong>Follow me on Twitter: </strong><a href=\"https://twitter.com/securityaffairs\"><strong>@securityaffairs</strong></a><strong> and </strong><a href=\"https://www.facebook.com/sec.affairs\"><strong>Facebook</strong></a><strong> and </strong><a href=\"https://infosec.exchange/@securityaffairs\"><strong>Mastodon</strong></a><strong></strong></p>\n<p><a href=\"http://www.linkedin.com/pub/pierluigi-paganini/b/742/559\"><strong>Pierluigi Paganini</strong></a><strong></strong></p>\n<p><strong>(</strong><a href=\"http://securityaffairs.co/wordpress/\"><strong>SecurityAffairs</strong></a><strong> – hacking, CVE-2026-23871)</strong></p>",
+    "link": "https://securityaffairs.com/203622/security/cve-2026-23871-whatsapp-bug-helped-scammers-make-messages-look-legitimate.html",
+    "source": "Security Affairs",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-11-20T22:21:12+00:00",
+    "published_ts": 1795213272,
+    "smart_groups": [
+      "Vulnerabilities / CVEs",
+      "Web / API Security"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Dialing for Data: Inside the Com’s High-Profile Heists",
+    "summary": "Our analysis of Com affiliate vishing attacks, cloud data theft and extortion campaigns targeting healthcare and finance, with actionable defense guidance.",
+    "summary_html": "Our analysis of Com affiliate vishing attacks, cloud data theft and extortion campaigns targeting healthcare and finance, with actionable defense guidance. The post Dialing for Data: Inside the Com’s High-Profile Heists appeared first on Unit 42.",
+    "link": "https://unit42.paloaltonetworks.com/com-affiliate-vishing-attacks/",
+    "source": "Unit 42 – Ransomware",
+    "feed_type": "news",
+    "type": "ransomware-extortion",
+    "type_label": "Ransomware & Extortion",
+    "published": "2026-11-20T22:00:25+00:00",
+    "published_ts": 1795212025,
+    "smart_groups": [
+      "Ransomware",
+      "Phishing / Social Engineering"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Claude Claims Historic Math Breakthrough One Day After Anthropic IPO",
+    "summary": "Levent Alpöge claims Claude helped prove a 167-year-old math conjecture, but independent checks remain pending, and the release just after Anthropic’s IPO has prompted questions about its unusual publication timing.",
+    "summary_html": "Levent Alpöge claims Claude helped prove a 167-year-old math conjecture, but independent checks remain pending, and the release just after Anthropic’s IPO has prompted questions about its unusual publication timing.",
+    "link": "https://decrypt.co/383747/claude-historic-math-breakthrough-anthropic-ipo",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-11-20T21:36:02+00:00",
+    "published_ts": 1795210562,
+    "smart_groups": [
+      "AI/ML Security"
+    ],
+    "curated": false
+  },
+  {
+    "title": "West Virginia Legislature hit with cyber incident affecting IT systems",
+    "summary": "A cybersecurity incident that began Thursday was still ongoing Friday in the West Virginia Legislature. A spokesperson said the disruption did not spread to other government entities.",
+    "summary_html": "A cybersecurity incident that began Thursday was still ongoing Friday in the West Virginia Legislature. A spokesperson said the disruption did not spread to other government entities.",
+    "link": "https://therecord.media/west-virginia-legislature-cyberattack",
+    "source": "The Record – Cybercrime",
+    "feed_type": "news",
+    "type": "cybercrime-underground",
+    "type_label": "Cybercrime & Underground",
+    "published": "2026-11-20T21:34:36+00:00",
+    "published_ts": 1795210476,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "China's 'Armory Castle' Lays Siege to VMware vCenter Zero-Day",
+    "summary": "During the last wave of major VMware vCenter security updates, a China-nexus threat group likely already had its next zero-day up its sleeve.",
+    "summary_html": "During the last wave of major VMware vCenter security updates, a China-nexus threat group likely already had its next zero-day up its sleeve.",
+    "link": "https://www.darkreading.com/cyberattacks-data-breaches/china-armory-castle-vmware-vcenter-zero-day",
+    "source": "Dark Reading",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-11-20T21:03:27+00:00",
+    "published_ts": 1795208607,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": true
+  },
+  {
+    "title": "A Vulnerability in VMware Products Could Allow for Authentication Bypass",
+    "summary": "A vulnerability has been discovered in VMware vCenter, which could allow for authentication bypass. VMware vCenter Server is a centralized management platform used to administer VMware vSphere environments, including ESXi hosts and the virtual machines running on them. Successful exploitation of this vulnerability could allow an unauthenticated attacker with network access to vCenter to bypass authentication and gain unauthorized access to the system. Depending on the privileges associated with the account, an attacker could then install programs; view, change, or delete data; or create new accounts with full user rights. Accounts configured to have fewer user rights on the system could be less impacted than those that operate with administrative user rights.",
+    "summary_html": "<p>A vulnerability has been discovered in VMware vCenter, which could allow for authentication bypass. VMware vCenter Server is a centralized management platform used to administer VMware vSphere environments, including ESXi hosts and the virtual machines running on them. Successful exploitation of this vulnerability could allow an unauthenticated attacker with network access to vCenter to bypass authentication and gain unauthorized access to the system. Depending on the privileges associated with the account, an attacker could then install programs; view, change, or delete data; or create new accounts with full user rights. Accounts configured to have fewer user rights on the system could be less impacted than those that operate with administrative user rights.</p>",
+    "link": "https://www.cisecurity.org/advisory/a-vulnerability-in-vmware-products-could-allow-for-authentication-bypass_2026-140",
+    "source": "CIS – Advisories",
+    "feed_type": "news",
+    "type": "government-cert-advisories",
+    "type_label": "Government, CERT & Advisories",
+    "published": "2026-11-20T20:40:39+00:00",
+    "published_ts": 1795207239,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Multiple Vulnerabilities in Mitel MiCollab Could Allow for Arbitrary Code Execution",
+    "summary": "Multiple vulnerabilities have been discovered in Mitel MiCollab, the most severe of which could allow for arbitrary code execution. Mitel MiCollab is a unified communications and collaboration platform that combines voice, video, chat, conferencing, and mobility features for enterprise users. Successful exploitation of the most severe of these vulnerabilities could result in arbitrary code execution in the context of the system. Depending on the privileges associated with the account, an attacker could then install programs; view, change, or delete data; or create new accounts with full user rights. Accounts configured to have fewer user rights on the system could be less impacted than those that operate with administrative user rights. Exploitation of multiple of these vulnerabilities together may significantly amplify their impact.",
+    "summary_html": "<p>Multiple vulnerabilities have been discovered in Mitel MiCollab, the most severe of which could allow for arbitrary code execution. Mitel MiCollab is a unified communications and collaboration platform that combines voice, video, chat, conferencing, and mobility features for enterprise users. Successful exploitation of the most severe of these vulnerabilities could result in arbitrary code execution in the context of the system. Depending on the privileges associated with the account, an attacker could then install programs; view, change, or delete data; or create new accounts with full user rights. Accounts configured to have fewer user rights on the system could be less impacted than those that operate with administrative user rights. Exploitation of multiple of these vulnerabilities together may significantly amplify their impact.</p>",
+    "link": "https://www.cisecurity.org/advisory/multiple-vulnerabilities-in-mitel-micollab-could-allow-for-arbitrary-code-execution_2026-139",
+    "source": "CIS – Advisories",
+    "feed_type": "news",
+    "type": "government-cert-advisories",
+    "type_label": "Government, CERT & Advisories",
+    "published": "2026-11-20T20:39:44+00:00",
+    "published_ts": 1795207184,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Nvidia Shares Sink to 52-Week Low After Report SEC Is Probing Accounting",
+    "summary": "Nvidia shares fell about 13% to a 52-week low after reports that SEC enforcement staff are examining potential accounting issues, adding to pressure on the chipmaker after Jensen Huang’s resignation.",
+    "summary_html": "Nvidia shares fell about 13% to a 52-week low after reports that SEC enforcement staff are examining potential accounting issues, adding to pressure on the chipmaker after Jensen Huang’s resignation.",
+    "link": "https://decrypt.co/383744/nvidia-shares-sink-52-week-low-sec-probing-accounting",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-11-20T20:36:54+00:00",
+    "published_ts": 1795207014,
+    "smart_groups": [],
+    "curated": true
+  },
+  {
+    "title": "US companies’ use of Chinese open weight AI draws rebuke from House chairmen",
+    "summary": "An investigation led by the House Homeland Security Committee focused on the dangers of U.S. companies using lower-cost open weight AI models for certain projects.",
+    "summary_html": "An investigation led by the House Homeland Security Committee focused on the dangers of U.S. companies using lower-cost open weight AI models for certain projects.",
+    "link": "https://therecord.media/chinese-open-weight-AI-use-by-US-companies-house-investigation",
+    "source": "The Record",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-11-20T20:25:00+00:00",
+    "published_ts": 1795206300,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Apple’s Plans Beyond Siri: An AI Agent That Can Browse, Click, and Code",
+    "summary": "Apple's new AI agent plans include app control, web browsing and coding. Here's what the job listing reveals and why permissions matter for IT teams.",
+    "summary_html": "<p>Apple's new AI agent plans include app control, web browsing and coding. Here's what the job listing reveals and why permissions matter for IT teams.</p>\n<p>The post <a href=\"https://www.techrepublic.com/article/news-apple-ai-agent-browse-click-code/\">Apple’s Plans Beyond Siri: An AI Agent That Can Browse, Click, and Code</a> appeared first on <a href=\"https://www.techrepublic.com\">TechRepublic</a>.</p>",
+    "link": "https://www.techrepublic.com/article/news-apple-ai-agent-browse-click-code/",
+    "source": "TechRepublic – Security",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-11-20T19:47:07+00:00",
+    "published_ts": 1795204027,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Wrapped Monero token crashes 99.8% amid suspected $13.5M exploit",
+    "summary": "Bitquery traced $13.5 million in suspicious sales of the wrapped Monero token, as its operator blamed a security breach and promised to reimburse affected traders.",
+    "summary_html": "<p></p><p>Bitquery traced $13.5 million in suspicious sales of the wrapped Monero token, as its operator blamed a security breach and promised to reimburse affected traders.</p>",
+    "link": "https://cointelegraph.com/news/wrapped-monero-token-crashes-998-amid-suspected-135m-exploit?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-11-20T19:37:27+00:00",
+    "published_ts": 1795203447,
+    "smart_groups": [],
+    "curated": true
+  },
+  {
+    "title": "SBF’s 'The Altruists' Plot Twist: FTX’s Anthropic Shares Would Be Worth $43 Billion",
+    "summary": "Anthropic’s IPO made FTX’s liquidated AI bet a $43 billion what-if, just as Netflix premiered its Sam Bankman-Fried drama.",
+    "summary_html": "Anthropic’s IPO made FTX’s liquidated AI bet a $43 billion what-if, just as Netflix premiered its Sam Bankman-Fried drama.",
+    "link": "https://decrypt.co/383739/sbf-altruists-ftx-anthropic-shares-worth-43-billion",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-11-20T19:36:03+00:00",
+    "published_ts": 1795203363,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Container Store restores systems after cyberattack",
+    "summary": "The firm’s parent company, Neighborhood Intelligence, said in a statement that The Container Store has “restored its website and systems following a cybersecurity incident this past weekend.”",
+    "summary_html": "The firm’s parent company, Neighborhood Intelligence, said in a statement that The Container Store has “restored its website and systems following a cybersecurity incident this past weekend.”",
+    "link": "https://therecord.media/container-store-restores-systems-cyberattack",
+    "source": "The Record – Cybercrime",
+    "feed_type": "news",
+    "type": "cybercrime-underground",
+    "type_label": "Cybercrime & Underground",
+    "published": "2026-11-20T19:32:00+00:00",
+    "published_ts": 1795203120,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Too Lost - 724,323 breached accounts",
+    "summary": "In November 2026, an unauthorised party claimed to have obtained data from the music distributor for independent artists, Too Lost. The data contained 724k unique email addresses belonging to artists, their collaborators and fans. Some records also contained bcrypt password hashes, while a small subset included partial credit card data (last 4 digits and card type), identity verification information (in some cases, passport, driver's licence or national ID numbers), and payouts made to artists. Too Lost advised that its investigation remains ongoing, external forensic specialists have been engaged, and measures have been taken to secure affected systems and credentials. The company is also working with advisors to coordinate communications and support for affected individuals.",
+    "summary_html": "In November 2026, an unauthorised party claimed to have obtained data from the music distributor for independent artists, Too Lost. The data contained 724k unique email addresses belonging to artists, their collaborators and fans. Some records also contained bcrypt password hashes, while a small subset included partial credit card data (last 4 digits and card type), identity verification information (in some cases, passport, driver's licence or national ID numbers), and payouts made to artists. Too Lost advised that its investigation remains ongoing, external forensic specialists have been engaged, and measures have been taken to secure affected systems and credentials. The company is also working with advisors to coordinate communications and support for affected individuals.",
+    "link": "https://haveibeenpwned.com/Breach/TooLost",
+    "source": "Have I Been Pwned – Latest Breaches",
+    "feed_type": "news",
+    "type": "leaks-breaches",
+    "type_label": "Leaks & Breaches",
+    "published": "2026-11-20T19:17:16+00:00",
+    "published_ts": 1795202236,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Bell Canada says 'agentic' hacker stole enterprise customer data",
+    "summary": "Bell Canada has confirmed that an \"agentic\" threat actor breached its systems on November 17, 2026, and stole enterprise customer data, including information from a system used to order and provision telecommunications circuits.",
+    "summary_html": "Bell Canada has confirmed that an \"agentic\" threat actor breached its systems on November 17, 2026, and stole enterprise customer data, including information from a system used to order and provision telecommunications circuits. [...]",
+    "link": "https://www.bleepingcomputer.com/news/security/bell-canada-says-agentic-hacker-stole-enterprise-customer-data/",
+    "source": "BleepingComputer – Cybercrime",
+    "feed_type": "news",
+    "type": "cybercrime-underground",
+    "type_label": "Cybercrime & Underground",
+    "published": "2026-11-20T18:51:43+00:00",
+    "published_ts": 1795200703,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Cathie Wood Bets $91M on Anthropic IPO While Paring Crypto Exposure",
+    "summary": "The firm bought 934,968 Anthropic shares across six ETFs on the Claude maker’s Nasdaq debut while trimming a combined $4.1 million from its Ethereum and Solana staking ETFs.",
+    "summary_html": "The firm bought 934,968 Anthropic shares across six ETFs on the Claude maker’s Nasdaq debut while trimming a combined $4.1 million from its Ethereum and Solana staking ETFs.",
+    "link": "https://decrypt.co/383737/cathie-wood-bets-91m-anthropic-ipo-paring-crypto-exposure",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-11-20T18:46:03+00:00",
+    "published_ts": 1795200363,
+    "smart_groups": [
+      "AI/ML Security"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Sky Protocol sees $2 billion in stablecoin withdrawals, disputes illicit fund claims",
+    "summary": "Sky says its USDS stablecoin held its $1 value despite more than $2 billion in withdrawals, as it disputes a report linking the protocol to illicit activity.",
+    "summary_html": "<p></p><p>Sky says its USDS stablecoin held its $1 value despite more than $2 billion in withdrawals, as it disputes a report linking the protocol to illicit activity.</p>",
+    "link": "https://cointelegraph.com/news/sky-protocol-sees-2b-in-stablecoin-withdrawals-disputes-illicit-fund-claims?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "source": "Cointelegraph.com News",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-11-20T18:37:10+00:00",
+    "published_ts": 1795199830,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "In Security, Words Matter as Much as Tools, Maybe More",
+    "summary": "From talking cloud security to using AI, cyber leaders are finding that clear, disciplined communication is now a front-line defense capability across the enterprise.",
+    "summary_html": "From talking cloud security to using AI, cyber leaders are finding that clear, disciplined communication is now a front-line defense capability across the enterprise.",
+    "link": "https://www.darkreading.com/cybersecurity-operations/security-words-matter",
+    "source": "Dark Reading",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-11-20T18:35:40+00:00",
+    "published_ts": 1795199740,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "1984 Hosting Hacked: Iceland’s Privacy-First Web Host Shuts Down Every Service",
+    "summary": "1984 Hosting, the Icelandic web host that sells itself on privacy and free speech, has switched off everything it runs after a cyberattack. The company announced the shutdown on Friday, 20 November, around 11:00 UTC, in a joint statement with CERT-IS , Iceland’s national cybersecurity incident team. It calls the attack well planned and technically sophisticated. Email and DNS are meant to come back first, under close monitoring. Web hosting, VPS servers and the rest stay off until security checks are finished, and 1984 can’t yet say when that will be. The statement doesn’t say whether customer data was taken. One customer says it was. The operator of Wagyu, a Monero swap service, blames the breach for a $13.5 million theft of his wrapped Monero token earlier the same day. When we published, Icelandic media and crypto news sites had the story. English-language security outlets didn’t yet.",
+    "summary_html": "<p>1984 Hosting, the Icelandic web host that sells itself on privacy and free speech, has switched off everything it runs after a cyberattack.</p>\n<p>The company announced the shutdown on Friday, 20 November, around 11:00 UTC, in a <a href=\"https://www.dv.is/frettir/2026/11/20/stodva-thjonustu-timabundid-eftir-alvarlega-tolvuaras-a-innvidi-1984-ehf\">joint statement with CERT-IS</a>, Iceland’s national cybersecurity incident team. It calls the attack well planned and technically sophisticated. Email and DNS are meant to come back first, under close monitoring. Web hosting, VPS servers and the rest stay off until security checks are finished, and 1984 can’t yet say when that will be.</p>\n<p>The statement doesn’t say whether customer data was taken. One customer says it was. The operator of Wagyu, a Monero swap service, blames the breach for a $13.5 million theft of his wrapped Monero token earlier the same day.</p>\n<p>When we published, Icelandic media and crypto news sites had the story. English-language security outlets didn’t yet.</p>",
+    "link": "https://www.privacyaffairs.com/1984-hosting-hacked/",
+    "source": "Privacy Affairs – Dark Web",
+    "feed_type": "news",
+    "type": "leaks-breaches",
+    "type_label": "Leaks & Breaches",
+    "published": "2026-11-20T18:27:33+00:00",
+    "published_ts": 1795199253,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Google Gives Gemini Control of Mac Apps, But Its New AI Agent Comes With Risks",
+    "summary": "Gemini's new Mac computer-use feature navigates apps, files, and websites in a separate window, but Google's own documentation warns about prompt injection.",
+    "summary_html": "Gemini's new Mac computer-use feature navigates apps, files, and websites in a separate window, but Google's own documentation warns about prompt injection.",
+    "link": "https://decrypt.co/383733/google-gives-gemini-control-mac-apps-ai-agent",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-11-20T18:16:02+00:00",
+    "published_ts": 1795198562,
+    "smart_groups": [
+      "AI/ML Security"
+    ],
+    "curated": false
+  },
+  {
+    "title": "UK operation wards off risk of cyber-attack on supermarket fridges and freezers",
+    "summary": "News of vulnerability comes after retailers in at least seven European countries hit by cyber-attacks A secret government cybersecurity operation recently warded off the risk of a cyber-attack on fridges and freezers in UK supermarkets, warehouses, restaurants, petrol stations and stadiums, it has emerged. An attack would have been similar to those that have caused many millions of euros of damage in continental Europe in recent months. But, while many retailers have now been protected, researchers warned that many more could still be vulnerable.",
+    "summary_html": "<p>News of vulnerability comes after retailers in at least seven European countries hit by cyber-attacks</p><p>A secret government cybersecurity operation recently warded off the risk of a cyber-attack on fridges and freezers in UK supermarkets, warehouses, restaurants, petrol stations and stadiums, it has emerged.</p><p>An attack would have been similar to those that have caused many <a href=\"https://www.theguardian.com/world/2026/nov/02/supermarket-freezers-across-europe-hit-by-second-suspected-cyber-attack\">millions of euros of damage in continental Europe</a> in recent months. But, while many retailers have now been protected, researchers warned that many more could still be vulnerable.</p> <a href=\"https://www.theguardian.com/technology/2026/nov/20/cybersecurity-operation-thwarts-attack-on-uk-supermarket-fridges-and-freezers\">Continue reading...</a>",
+    "link": "https://www.theguardian.com/technology/2026/nov/20/cybersecurity-operation-thwarts-attack-on-uk-supermarket-fridges-and-freezers",
+    "source": "The Guardian Cybercrime",
+    "feed_type": "news",
+    "type": "cybercrime-underground",
+    "type_label": "Cybercrime & Underground",
+    "published": "2026-11-20T18:06:52+00:00",
+    "published_ts": 1795198012,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": false
+  },
+  {
+    "title": "Multiple Vulnerabilities in PHP Could Allow for Remote Code Execution",
+    "summary": "Multiple vulnerabilities have been discovered in PHP, the most severe of which could allow for remote code execution. PHP is a widely used, open-source server-side scripting language designed primarily for web development. Successful exploitation of the most severe of these vulnerabilities could allow for unauthenticated remote code execution in the context of the affected service account. Depending on the privileges associated with the service account, an attacker could then install programs; view, change, or delete data; or create new accounts with full user rights. Services whose accounts are configured to have fewer rights on the system could be less impacted than those that operate with administrative user rights.",
+    "summary_html": "<p>Multiple vulnerabilities have been discovered in PHP, the most severe of which could allow for remote code execution. PHP is a widely used, open-source server-side scripting language designed primarily for web development. Successful exploitation of the most severe of these vulnerabilities could allow for unauthenticated remote code execution in the context of the affected service account. Depending on the privileges associated with the service account, an attacker could then install programs; view, change, or delete data; or create new accounts with full user rights. Services whose accounts are configured to have fewer rights on the system could be less impacted than those that operate with administrative user rights.</p>",
+    "link": "https://www.cisecurity.org/advisory/multiple-vulnerabilities-in-php-could-allow-for-remote-code-execution_2026-137",
+    "source": "CIS – Advisories",
+    "feed_type": "news",
+    "type": "government-cert-advisories",
+    "type_label": "Government, CERT & Advisories",
+    "published": "2026-11-20T18:02:56+00:00",
+    "published_ts": 1795197776,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": true,
+    "story_id": "c46686a06700",
+    "story_size": 4
+  },
+  {
+    "title": "WhatsApp Patches 3 Security Flaws, Including Android Bug Suspected of Use in Scams",
+    "summary": "Meta-owned WhatsApp has addressed security vulnerabilities, including one impacting its Android app that it suspects may have been exploited in connection with scam messages. The vulnerability, tracked as CVE-2026-23871, has been described as a case of incomplete validation of external ad-reply URLs in WhatsApp for Android and WhatsApp Business for Android before 2.26.17.4. The issue could",
+    "summary_html": "Meta-owned WhatsApp has addressed security vulnerabilities, including one impacting its Android app that it suspects may have been exploited in connection with scam messages.\n\nThe vulnerability, tracked as CVE-2026-23871, has been described as a case of incomplete validation of external ad-reply URLs in WhatsApp for Android and WhatsApp Business for Android before 2.26.17.4.\n\nThe issue could",
+    "link": "https://thehackernews.com/2026/11/whatsapp-patches-3-security-flaws.html",
+    "source": "The Hacker News",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-11-20T17:57:20+00:00",
+    "published_ts": 1795197440,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Wrapped Monero Token Collapses 99% After $13 Million Hack Blamed on Web Host",
+    "summary": "Wagyu’s XMR1 token fell more than 99% after an attacker moved 5.2 million tokens out of its deployer account and sold a fraction of them for $13.5 million.",
+    "summary_html": "Wagyu’s XMR1 token fell more than 99% after an attacker moved 5.2 million tokens out of its deployer account and sold a fraction of them for $13.5 million.",
+    "link": "https://decrypt.co/383732/wrapped-monero-token-collapses-99-after-13-million-hack-blamed-on-web-host",
+    "source": "Decrypt",
+    "feed_type": "news",
+    "type": "crypto-blockchain-security",
+    "type_label": "Crypto & Blockchain Security",
+    "published": "2026-11-20T17:41:45+00:00",
+    "published_ts": 1795196505,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Hackers use autonomous AI tool Cairn to find zero-day, take over server",
+    "summary": "Threat actors used the open-source AI penetration-testing framework Cairn to find a previously unknown vulnerability in a medical imaging application.",
+    "summary_html": "Threat actors used the open-source AI penetration-testing framework Cairn to find a previously unknown vulnerability in a medical imaging application. [...]",
+    "link": "https://www.bleepingcomputer.com/news/security/hackers-use-autonomous-ai-tool-cairn-to-find-zero-day-take-over-server/",
+    "source": "BleepingComputer – Cybercrime",
+    "feed_type": "news",
+    "type": "cybercrime-underground",
+    "type_label": "Cybercrime & Underground",
+    "published": "2026-11-20T17:30:00+00:00",
+    "published_ts": 1795195800,
+    "smart_groups": [
+      "Vulnerabilities / CVEs"
+    ],
+    "curated": true
+  },
+  {
+    "title": "Amazon says Chinese hackers used Cairn AI tool to discover apparent zero-day during attack on university",
+    "summary": "A China-linked threat actor used the open source AI penetration testing tool Cairn to persistently attack two universities, and in one case, possibly discover a zero-day bug, researchers said.",
+    "summary_html": "A China-linked threat actor used the open source AI penetration testing tool Cairn to persistently attack two universities, and in one case, possibly discover a zero-day bug, researchers said.",
+    "link": "https://therecord.media/amazon-research-cairn-ai-university-attacks-possible-zero-day",
+    "source": "The Record – Cybercrime",
+    "feed_type": "news",
+    "type": "cybercrime-underground",
+    "type_label": "Cybercrime & Underground",
+    "published": "2026-11-20T17:30:00+00:00",
+    "published_ts": 1795195800,
+    "smart_groups": [
+      "Vulnerabilities / CVEs",
+      "Red Team / Offensive"
+    ],
+    "curated": true
+  },
+  {
+    "title": "What We Missed: Nvidia CEO Scandal Rocks AI Industry",
+    "summary": "In this video, Dark Reading editors discuss some of the news they didn't get a chance to cover, from Jensen Huang's resignation from Nvidia to Microsoft's recent cloud outage.",
+    "summary_html": "In this video, Dark Reading editors discuss some of the news they didn't get a chance to cover, from Jensen Huang's resignation from Nvidia to Microsoft's recent cloud outage.",
+    "link": "https://www.darkreading.com/cyber-risk/what-we-missed-nvidia-ceo-scandal-rocks-ai-industry",
+    "source": "Dark Reading",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-11-20T17:04:04+00:00",
+    "published_ts": 1795194244,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Signal to restrict screenshots over AI agent concerns – again",
+    "summary": "The messaging app similarly limited screenshots because of Microsoft Recall last year.",
+    "summary_html": "The messaging app similarly limited screenshots because of Microsoft Recall last year.",
+    "link": "https://www.zdnet.com/innovation/signal-restricts-screenshots-over-ai-agent-concerns/",
+    "source": "ZDNet – Security",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-11-20T17:03:37+00:00",
+    "published_ts": 1795194217,
+    "smart_groups": [],
+    "curated": false
+  },
+  {
+    "title": "Bazuka Android Malware Uses Fake Screen Overlays to Hide Credential Theft and Device Control",
+    "summary": "Cybersecurity researchers have disclosed details of a previously unknown Android malware framework called Bazuka that offers large language model (LLM) integration for victim management and control at scale. Dutch mobile security company ThreatFabric said it discovered the threat in late October 2026 during an investigation into an NFC-relay banking Trojan. \"Bazuka is a full malware framework,",
+    "summary_html": "Cybersecurity researchers have disclosed details of a previously unknown Android malware framework called Bazuka that offers large language model (LLM) integration for victim management and control at scale.\n\nDutch mobile security company ThreatFabric said it discovered the threat in late October 2026 during an investigation into an NFC-relay banking Trojan.\n\n\"Bazuka is a full malware framework,",
+    "link": "https://thehackernews.com/2026/11/bazuka-android-malware-uses-fake-screen.html",
+    "source": "The Hacker News",
+    "feed_type": "news",
+    "type": "security-news-media",
+    "type_label": "Security News & Media",
+    "published": "2026-11-20T16:58:16+00:00",
+    "published_ts": 1795193896,
+    "smart_groups": [
+      "Malware / Payloads",
+      "AI/ML Security"
+    ],
+    "curated": true
+  },
+  {
     "title": "Bitcoin falls below $60K for first time since July amid broader market selloff",
     "summary": "Bitcoin fell nearly 6% as US stocks declined, with the Nasdaq dropping more than 2% and Anthropic shares losing almost 10%.",
     "summary_html": "<p></p><p>Bitcoin fell nearly 6% as US stocks declined, with the Nasdaq dropping more than 2% and Anthropic shares losing almost 10%.</p>",
@@ -636,6 +1236,25 @@
     "published_ts": 1795176000,
     "smart_groups": [],
     "curated": false
+  },
+  {
+    "title": "CISA Adds Four Known Exploited Vulnerabilities to Catalog",
+    "summary": "CISA has added four new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2025-42884 SAP NetWeaver Improper Neutralization of Special Elements in Data Query Logic Vulnerability CVE-2026-76466 Cisco Expressway Series Use of Hard-coded Credentials Vulnerability CVE-2026-123890 VMWare vCenter Authentication Bypass Using an Alternate Path or Channel Vulnerability CVE-2026-129448 Apache Roller Deserialization of Untrusted Data Vulnerability These types of vulnerabilities are a frequent attack vector for malicious cyber actors and pose significant risks to the federal enterprise. Binding Operational Directive (BOD) 26-04: Prioritizing Security Updates Based on Risk establishes vulnerability management requirements for Federal Civilian Executive Branch (FCEB) agencies. BOD 26-04 reinforces the importance of the KEV Catalog and requires federal agencies to prioritize rapid remediation of high-risk vulnerabilities, specifically those identified by Common Vulnerabilities and Exposures (CVEs) listed in CISA’s KEV Catalog on publicly exposed assets that grant total control of the asset post-exploitation, while deferring action for lower-risk vulnerabilities. BOD 26-04 further establishes basic expectations for when agencies must check whether threat actors compromised the system before the patch was applied. While BOD 26-04 applies only to FCEB agencies, CISA encourages all organizations to adopt risk-based vulnerability management and prioritize remediation of KEV Catalog vulnerabilities . CISA will continue to add vulnerabilities to the catalog that meet the specified criteria . Aware of an exploited vulnerability not currently listed in the KEV Catalog? Submit it for potential addition through CISA’s KEV Nomination Form . Potential KEV additions must have a CVE ID, evidence of exploitation, and clear mitigation guidance.",
+    "summary_html": "<div>\n<p>CISA has added four new vulnerabilities to its <a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">Known Exploited Vulnerabilities (KEV) Catalog</a>, based on evidence of active exploitation.</p>\n<ul>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2025-42884\">CVE-2025-42884</a> SAP NetWeaver Improper Neutralization of Special Elements in Data Query Logic Vulnerability</li>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-76466\">CVE-2026-76466</a> Cisco Expressway Series Use of Hard-coded Credentials Vulnerability</li>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-123890\">CVE-2026-123890</a> VMWare vCenter Authentication Bypass Using an Alternate Path or Channel Vulnerability</li>\n<li><a href=\"https://www.cve.org/CVERecord?id=CVE-2026-129448\">CVE-2026-129448</a> Apache Roller Deserialization of Untrusted Data Vulnerability</li>\n</ul>\n<p>These types of vulnerabilities are a frequent attack vector for malicious cyber actors and pose significant risks to the federal enterprise. </p>\n<p><a href=\"https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk\">Binding Operational Directive (BOD) 26-04: Prioritizing Security Updates Based on Risk</a> establishes vulnerability management requirements for Federal Civilian Executive Branch (FCEB) agencies. BOD 26-04 reinforces the importance of the KEV Catalog and requires federal agencies to prioritize rapid remediation of high-risk vulnerabilities, specifically those identified by Common Vulnerabilities and Exposures (CVEs) listed in CISA’s KEV Catalog on publicly exposed assets that grant total control of the asset post-exploitation, while deferring action for lower-risk vulnerabilities. BOD 26-04 further establishes basic expectations for when agencies must check whether threat actors compromised the system before the patch was applied. </p>\n</div>\n<div>\n<p>While BOD 26-04 applies only to FCEB agencies, CISA encourages all organizations to adopt risk-based vulnerability management and prioritize remediation of <a href=\"https://www.cisa.gov/known-exploited-vulnerabilities-catalog\">KEV Catalog vulnerabilities</a>. CISA will continue to add vulnerabilities to the catalog that meet the <a href=\"https://www.cisa.gov/known-exploited-vulnerabilities\">specified criteria</a>. </p>\n</div>\n<div>\n<p>Aware of an exploited vulnerability not currently listed in the KEV Catalog? Submit it for potential addition through CISA’s <a href=\"https://cisasurvey.gov1.qualtrics.com/jfe/form/SV_1Zwu52kgK2OYf3w\">KEV Nomination Form</a>. Potential KEV additions must have a CVE ID, evidence of exploitation, and clear mitigation guidance. </p>\n</div>",
+    "link": "https://www.cisa.gov/news-events/alerts/2026/11/20/cisa-adds-four-known-exploited-vulnerabilities-catalog",
+    "source": "US-CERT – Current Activity",
+    "feed_type": "news",
+    "type": "government-cert-advisories",
+    "type_label": "Government, CERT & Advisories",
+    "published": "2026-11-20T12:00:00+00:00",
+    "published_ts": 1795176000,
+    "smart_groups": [
+      "Vulnerabilities / CVEs",
+      "Data Breaches / Leaks"
+    ],
+    "curated": true,
+    "story_id": "f49e9f798bfe",
+    "story_size": 4
   },
   {
     "title": "Mail Bombing Attacks Fuel IT Helpdesk Impersonation Scams",
@@ -1310,68 +1929,22 @@
     ]
   },
   {
-    "title": "mackron dr_libs dr_mp3 drmp3_init_internal out-of-bounds read vulnerability",
-    "summary": "",
-    "summary_html": "",
-    "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2441",
-    "source": "Talos - Vulnerability Reports",
+    "title": "AI Joins the Industrial Attack Workflow",
+    "summary": "The recent cyberattack on French refrigerators and our tracking of the malicious AI framework ARTEX show that threat actors are increasingly using AI to accelerate attacks, expand their reach, and improve their effectiveness. GreenJuliett, the group behind operational technology (OT) cyberattacks similar to those in France, has begun incorporating AI into its OT attack chain. Understanding the scale AI offers financially motivated and state-sponsored threat actors helps us see it as more than a tool: it’s something that can fill an operator’s role, even while humans remain in control. On October 11 and 12, 2026, someone changed the defrost settings on refrigeration controllers at more than 700 retail locations in France. This resulted in fires, damaged equipment, and food losses estimated in the tens of millions of euros, highlighting the physical impacts of attacks against operational technology (OT). On November 9, France attributed the attack to Shahid Kaveh, a unit of Iran's Islamic Revolutionary Guard Corps Cyber Electronic Command (IRGC-CEC). We track activity that likely belongs to an element of Shahid Kaveh as GreenJuliett. GreenJuliett (also known as CyberAv3ngers and Bauxite) builds infrastructure aimed at internet-facing PLCs. And while that work continued through at least October 30, despite repeated public reporting on the group, the target set began to widen. Between August and October, we observed GreenJuliett-linked infrastructure scanning, or attempting to exploit, Fortinet FortiGate firewalls, edge devices that protect OT networks, in Bahrain, Israel, Jordan, Kuwait, Saudi Arabia, and Qatar. Our network data suggests the group is also working to add internet-of-things (IoT) and CCTV devices to its list. While we have not independently tied GreenJuliett infrastructure to the refrigeration attacks, over the past three months, we have seen the group continue to target PLCs (programmable logic controllers), which are similar to the internet-exposed controllers the refrigerators in France used. We have also observed that AI is now part of how they work. From Accounts to Infrastructure In October 2024, OpenAI banned accounts it assessed as belonging to CyberAv3ngers. The operators had used ChatGPT to research default credentials for PLCs, compile lists of electricity companies and common PLCs in Jordan, and draft scripts against industrial protocols (such as Modbus TCP, a control protocol that allows PLCs to communicate quickly on local networks). However, in 2026, the picture is different. In October, we found a configuration for LiteLLM (an open-source gateway that puts multiple AI models behind a single interface, suggesting a team-sharing model for access), alongside self-hosted chat applications built for Persian-language users, on infrastructure we assessed as likely used by GreenJuliett-linked operators. We also observed servers in the group's anonymization network communicating with infrastructure that hosts Anthropic's Claude. While we have not confirmed specific instances of misuse in this research, both OpenAI and Anthropic have reported publicly on detecting and disrupting misuse by Iranian government operators. AI shortens the time it takes to identify vulnerable device types and write targeting scripts, and GreenJuliett has moved it from individual accounts into its operating environment. Figure 1: The GreenJuliett operation path, as observed from August to October 2026",
+    "summary_html": "<div>\n<div>\n<div>The recent cyberattack on French refrigerators and our tracking of the malicious AI framework ARTEX show that threat actors are increasingly using AI to accelerate attacks, expand their reach, and improve their effectiveness. GreenJuliett, the group behind operational technology (OT) cyberattacks similar to those in France, has begun incorporating AI into its OT attack chain. Understanding the scale AI offers financially motivated and state-sponsored threat actors helps us see it as more than a tool: it’s something that can fill an operator’s role, even while humans remain in control.</div>\n</div>\n</div>\n<p>On October 11 and 12, 2026, someone changed the defrost settings on refrigeration controllers at more than 700 retail locations in France. This resulted in fires, damaged equipment, and food losses estimated in the tens of millions of euros, highlighting the physical impacts of attacks against operational technology (OT). On November 9, France <a href=\"https://diplomatie.gouv.fr/fr/presse-et-ressources/decouvrir-et-informer/actualites/declaration-d-attribution-a-l-iran-de-cyberattaques-visant-la-france\"></a><a href=\"https://diplomatie.gouv.fr/fr/presse-et-ressources/decouvrir-et-informer/actualites/declaration-d-attribution-a-l-iran-de-cyberattaques-visant-la-france\">attributed the attack</a> to Shahid Kaveh, a unit of Iran's Islamic Revolutionary Guard Corps Cyber Electronic Command (IRGC-CEC). We track activity that likely belongs to an element of Shahid Kaveh as GreenJuliett.</p>\n<p>GreenJuliett (also known as CyberAv3ngers and Bauxite) builds infrastructure aimed at internet-facing PLCs. And while that work continued through at least October 30, despite repeated public reporting on the group, the target set began to widen. Between August and October, we observed GreenJuliett-linked infrastructure scanning, or attempting to exploit, Fortinet FortiGate firewalls, edge devices that protect OT networks, in Bahrain, Israel, Jordan, Kuwait, Saudi Arabia, and Qatar. Our network data suggests the group is also working to add internet-of-things (IoT) and CCTV devices to its list.</p>\n<p>While we have not independently tied GreenJuliett infrastructure to the refrigeration attacks, over the past three months, we have seen the group continue to target PLCs (programmable logic controllers), which are similar to the internet-exposed controllers the refrigerators in France used. We have also observed that AI is now part of how they work.</p>\n<strong>From Accounts to Infrastructure</strong>\n<p>In October 2024, OpenAI <a href=\"https://openai.com/index/disrupting-malicious-uses-of-ai-cyberav3ngers\"></a><a href=\"https://openai.com/index/disrupting-malicious-uses-of-ai-cyberav3ngers\">banned accounts</a> it assessed as belonging to CyberAv3ngers. The operators had used ChatGPT to research default credentials for PLCs, compile lists of electricity companies and common PLCs in Jordan, and draft scripts against industrial protocols (such as Modbus TCP, a control protocol that allows PLCs to communicate quickly on local networks).</p>\n<p>However, in 2026, the picture is different. In October, we found a configuration for LiteLLM (an open-source gateway that puts multiple AI models behind a single interface, suggesting a team-sharing model for access), alongside self-hosted chat applications built for Persian-language users, on infrastructure we assessed as likely used by GreenJuliett-linked operators. We also observed servers in the group's anonymization network communicating with infrastructure that hosts Anthropic's Claude.</p>\n<p>While we have not confirmed specific instances of misuse in this research, both OpenAI and <a href=\"https://anthropic.com/threat-intelligence-report-september-2026\"></a><a href=\"https://anthropic.com/threat-intelligence-report-september-2026\">Anthropic</a> have reported publicly on detecting and disrupting misuse by Iranian government operators. AI shortens the time it takes to identify vulnerable device types and write targeting scripts, and GreenJuliett has moved it from individual accounts into its operating environment.</p>\n<div>\n<div>\n<div>\n\n</div>\n</div>\n<div>\n<div><strong>Figure 1:</strong> The GreenJuliett operation path, as observed from August to October 2026</div>\n</div>\n</div>",
+    "link": "https://www.recordedfuture.com/blog/ai-industrial-attack-workflow",
+    "source": "Recorded Future – Main Feed",
     "feed_type": "news",
-    "type": "vulnerabilities-cves-exploits",
-    "type_label": "Vulnerabilities, CVEs & Exploits",
+    "type": "threat-intel-apt-campaigns",
+    "type_label": "Threat Intel & APT Campaigns",
     "published": "2026-11-20T00:00:00+00:00",
     "published_ts": 1795132800,
     "smart_groups": [
-      "Vulnerabilities / CVEs"
+      "Network / OT / ICS",
+      "AI/ML Security",
+      "Privacy & Compliance"
     ],
-    "curated": false
-  },
-  {
-    "title": "mackron dr_libs dr_wav drwav__read_cue_to_metadata_obj out-of-bounds write vulnerability",
-    "summary": "",
-    "summary_html": "",
-    "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2442",
-    "source": "Talos - Vulnerability Reports",
-    "feed_type": "news",
-    "type": "vulnerabilities-cves-exploits",
-    "type_label": "Vulnerabilities, CVEs & Exploits",
-    "published": "2026-11-20T00:00:00+00:00",
-    "published_ts": 1795132800,
-    "smart_groups": [
-      "Vulnerabilities / CVEs"
-    ],
-    "curated": false
-  },
-  {
-    "title": "Microsoft Windows Cloud Files Mini Filter Driver CldiStreamCompleteRequest use-after-free vulnerability",
-    "summary": "",
-    "summary_html": "",
-    "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2426",
-    "source": "Talos - Vulnerability Reports",
-    "feed_type": "news",
-    "type": "vulnerabilities-cves-exploits",
-    "type_label": "Vulnerabilities, CVEs & Exploits",
-    "published": "2026-11-20T00:00:00+00:00",
-    "published_ts": 1795132800,
-    "smart_groups": [
-      "Vulnerabilities / CVEs"
-    ],
-    "curated": false
-  },
-  {
-    "title": "Microsoft Windows Cloud Files Mini Filter Driver CldiStreamPrepareRequestForMoreProcessing Type Confusion vulnerability",
-    "summary": "",
-    "summary_html": "",
-    "link": "https://talosintelligence.com/vulnerability_reports/TALOS-2026-2445",
-    "source": "Talos - Vulnerability Reports",
-    "feed_type": "news",
-    "type": "vulnerabilities-cves-exploits",
-    "type_label": "Vulnerabilities, CVEs & Exploits",
-    "published": "2026-11-20T00:00:00+00:00",
-    "published_ts": 1795132800,
-    "smart_groups": [
-      "Vulnerabilities / CVEs"
-    ],
-    "curated": false
+    "curated": true
   },
   {
     "title": "Ledger CTO Charles Guillemet to leave after nine years at company",
@@ -2248,7 +2821,7 @@
     ],
     "curated": true,
     "story_id": "c46686a06700",
-    "story_size": 2
+    "story_size": 4
   },
   {
     "title": "Un SMS blaster aurait perturbé 10 000 mobiles",
@@ -2508,7 +3081,9 @@
     "smart_groups": [
       "Vulnerabilities / CVEs"
     ],
-    "curated": true
+    "curated": true,
+    "story_id": "c46686a06700",
+    "story_size": 4
   },
   {
     "title": "European Commission confirms cyberattack, says hackers used AI tool",
@@ -5813,7 +6388,7 @@
     ],
     "curated": true,
     "story_id": "f49e9f798bfe",
-    "story_size": 3
+    "story_size": 4
   },
   {
     "title": "Attackers hijack Microsoft’s agent-framework package to steal Azure and CI credentials",
@@ -6452,7 +7027,7 @@
     ],
     "curated": true,
     "story_id": "f49e9f798bfe",
-    "story_size": 3
+    "story_size": 4
   },
   {
     "title": "Codeberg.org Is Offline After Its Registrar Put the Domain on Hold, and a Forgejo Security Fix Is Stuck",
@@ -8964,7 +9539,7 @@
     ],
     "curated": true,
     "story_id": "f49e9f798bfe",
-    "story_size": 3,
+    "story_size": 4,
     "story_primary": true,
     "story_others": [
       {
@@ -8978,6 +9553,12 @@
         "title": "CISA Adds Four Known Exploited Vulnerabilities to Catalog",
         "link": "https://www.cisa.gov/news-events/alerts/2026/11/18/cisa-adds-four-known-exploited-vulnerabilities-catalog",
         "published_ts": 1795003200
+      },
+      {
+        "source": "US-CERT – Current Activity",
+        "title": "CISA Adds Four Known Exploited Vulnerabilities to Catalog",
+        "link": "https://www.cisa.gov/news-events/alerts/2026/11/20/cisa-adds-four-known-exploited-vulnerabilities-catalog",
+        "published_ts": 1795176000
       }
     ]
   },
@@ -14419,7 +15000,7 @@
     ],
     "curated": true,
     "story_id": "496fbffc6e4d",
-    "story_size": 12
+    "story_size": 11
   },
   {
     "title": "Companies treat cybersecurity like garbage until they get punched in the teeth with an attack",
@@ -16009,7 +16590,7 @@
     ],
     "curated": true,
     "story_id": "496fbffc6e4d",
-    "story_size": 12
+    "story_size": 11
   },
   {
     "title": "Nvidia Employees Push Board to Bring Back Jensen Huang: Report",
@@ -23101,7 +23682,7 @@
     ],
     "curated": true,
     "story_id": "496fbffc6e4d",
-    "story_size": 12
+    "story_size": 11
   },
   {
     "title": "Across Protocol warns users to avoid app amid reports of drained wallets",
@@ -25330,7 +25911,7 @@
     ],
     "curated": true,
     "story_id": "496fbffc6e4d",
-    "story_size": 12
+    "story_size": 11
   },
   {
     "title": "Coinbase, Kalshi join lawsuit backing CFTC over US stock perp futures",
@@ -26277,7 +26858,7 @@
     ],
     "curated": true,
     "story_id": "496fbffc6e4d",
-    "story_size": 12
+    "story_size": 11
   },
   {
     "title": "Iris Ohyama data breach may expose personal information of 7.7 million people",
@@ -28438,7 +29019,7 @@
     ],
     "curated": true,
     "story_id": "496fbffc6e4d",
-    "story_size": 12
+    "story_size": 11
   },
   {
     "title": "CISA and the FBI Warn Of Attacks against Industrial Refrigeration Controllers",
@@ -30507,7 +31088,7 @@
     ],
     "curated": true,
     "story_id": "496fbffc6e4d",
-    "story_size": 12
+    "story_size": 11
   },
   {
     "title": "Reproducing the GhostMap APK crash loop on Android 16/17, plus an offline check for the ZIP parser mismatch",
@@ -30604,9 +31185,7 @@
       "Linux / Unix",
       "Community Discussion"
     ],
-    "curated": true,
-    "story_id": "be81cf05f801",
-    "story_size": 2
+    "curated": true
   },
   {
     "title": "Agentic soc",
@@ -32193,7 +32772,7 @@
     ],
     "curated": true,
     "story_id": "496fbffc6e4d",
-    "story_size": 12
+    "story_size": 11
   },
   {
     "title": "Is anyone else worried that AI is expanding the attack surface faster than we can defend it?",
@@ -34855,9 +35434,7 @@
     "published": "2026-11-05T12:58:32+00:00",
     "published_ts": 1793883512,
     "smart_groups": [],
-    "curated": false,
-    "story_id": "c3fcaf6abe58",
-    "story_size": 3
+    "curated": false
   },
   {
     "title": "Trump’s memecoin ventures derailed CLARITY Act, Scaramucci says",
@@ -34998,9 +35575,7 @@
     "published": "2026-11-05T12:00:01+00:00",
     "published_ts": 1793880001,
     "smart_groups": [],
-    "curated": false,
-    "story_id": "9c2441032957",
-    "story_size": 3
+    "curated": false
   },
   {
     "title": "Ransomware Operator Claims - Week 44 2026",
@@ -35508,7 +36083,7 @@
     ],
     "curated": true,
     "story_id": "496fbffc6e4d",
-    "story_size": 12
+    "story_size": 11
   },
   {
     "title": "CERT-In Flags AI-Driven Attacks as Backdoored ARTEX Exposes 62 Consoles to Root Access",
@@ -35749,8 +36324,8 @@
       "Phishing / Social Engineering"
     ],
     "curated": false,
-    "story_id": "e212191c6279",
-    "story_size": 5
+    "story_id": "ba3f90389f93",
+    "story_size": 2
   },
   {
     "title": "‘Lawyer up’: Democrats target Trump, Big Tech after midterm sweep",
@@ -36417,9 +36992,7 @@
       "Vulnerabilities / CVEs",
       "Network / OT / ICS"
     ],
-    "curated": true,
-    "story_id": "c3fcaf6abe58",
-    "story_size": 3
+    "curated": true
   },
   {
     "title": "Zscaler CXO Monthly Roundup | October 2026",
