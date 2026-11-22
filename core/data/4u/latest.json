@@ -1,9 +1,832 @@
 {
-  "generated_at": "2026-11-21T21:51:19.723246+00:00",
+  "generated_at": "2026-11-22T07:15:34.439351+00:00",
   "time_window_hours": 24,
-  "total_items": 244,
-  "next_chunk": "archive/news/daily/2026-11-20.json",
+  "total_items": 232,
+  "next_chunk": "archive/news/daily/2026-11-21.json",
   "items": [
+    {
+      "title": "From FTP Deploys and Cron Scripts to a Real Pipeline",
+      "summary": "Quick answer: Replace FTP deploys with Git-based atomic releases: build in CI, upload to a new timestamped release directory, symlink shared storage and .env, run migrations, then switch a \"current\" symlink. Move crontab entries one by one into Laravel's scheduler with locks and logging. Keep the old path working until each piece is proven. In Part 4 we moved auth and sessions without logging anyone out. The next thing that tends to break legacy modernization is not the code. It is how the code reaches the server. If production is \"whatever someone last uploaded with FileZilla\", you cannot rea\u2026",
+      "link": "https://dev.to/muhammadalimughal/from-ftp-deploys-and-cron-scripts-to-a-real-pipeline-2dck",
+      "source": "DEV Community - The most recent home feed on DEV Community.",
+      "feed_type": "news",
+      "type": "general-news",
+      "type_label": "General News",
+      "published": "2026-11-22T07:12:19+00:00",
+      "published_ts": 1795331539,
+      "smart_groups": [
+        "Coding & dev tools",
+        "Work & society"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Break-Glass Accounts & SSO Audit Logs",
+      "summary": "Quick answer: A break-glass account is a tightly limited local login that still works when a tenant's SSO fails. Keep one or two per tenant, protect them with a hardware-key MFA factor, alert on every use, and expire their sessions fast. Log every SSO event with tenant, subject, result and reason, in UTC, hash-chained so tampering shows. Enforced SSO is the goal of most enterprise deals. Then one morning the customer's certificate rotates, or their Entra ID tenant has an outage, or an admin deletes the app assignment by mistake, and 400 people cannot reach your product. If enforced SSO means t\u2026",
+      "link": "https://dev.to/muhammadalimughal/break-glass-accounts-sso-audit-logs-2ph8",
+      "source": "DEV Community - The most recent home feed on DEV Community.",
+      "feed_type": "news",
+      "type": "general-news",
+      "type_label": "General News",
+      "published": "2026-11-22T07:11:56+00:00",
+      "published_ts": 1795331516,
+      "smart_groups": [
+        "Security & misuse",
+        "Consumer AI"
+      ],
+      "curated": false
+    },
+    {
+      "title": "A Resume That Stays Ready Before You Need It",
+      "summary": "Quick answer: Keep your resume ready by treating it like a small codebase. Log wins weekly in a private brag file, update one master resume monthly with numbers while they are fresh, re-run an ATS parse check each quarter, and keep LinkedIn in sync. Then a surprise job search starts with tailoring, not remembering. Every part of this series so far has been about recovery: the week after a layoff, explaining gaps, coming back after a break, framing short stints and changing track. This last part is about prevention. Almost everyone I have helped after a layoff said the same thing in the first c\u2026",
+      "link": "https://dev.to/muhammadalimughal/a-resume-that-stays-ready-before-you-need-it-od7",
+      "source": "DEV Community - The most recent home feed on DEV Community.",
+      "feed_type": "news",
+      "type": "general-news",
+      "type_label": "General News",
+      "published": "2026-11-22T07:11:26+00:00",
+      "published_ts": 1795331486,
+      "smart_groups": [
+        "Coding & dev tools",
+        "Policy & government"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Treating Translation Memories as Code: A Technical Workflow for Managing TMX/TBX Assets",
+      "summary": "Most engineering teams building multilingual products treat localization as a content problem handled by \"someone else.\" Then the day comes when you switch translation vendors, or bring localization in-house, and discover that years of translated strings, context, and terminology decisions live locked inside a third-party CAT tool with no clean export path. This is the same underlying issue described in this piece on translation memories and glossaries as corporate assets , but from a business/ownership angle. I want to cover the technical side: how to actually manage these assets as versioned\u2026",
+      "link": "https://dev.to/diogoheleno/treating-translation-memories-as-code-a-technical-workflow-for-managing-tmxtbx-assets-52ke",
+      "source": "DEV Community - The most recent home feed on DEV Community.",
+      "feed_type": "news",
+      "type": "general-news",
+      "type_label": "General News",
+      "published": "2026-11-22T07:06:04+00:00",
+      "published_ts": 1795331164,
+      "smart_groups": [
+        "Coding & dev tools",
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "High-Altitude Wind Load Dynamics in Vertical Robotics: Gust Compensation and Dew-Point Telemetry",
+      "summary": "Operating a robotic cleaner on an interior glass partition is a predictable mechanical task. Deploying the same device on the exterior facade of a 30-story building introduces violent aerodynamic variables. At high altitudes, wind shear, sudden pressure gusts, and rapid surface condensation can compromise vacuum adhesion within milliseconds. To prevent wind-induced detachment on exterior glazing, modern vertical platforms integrate real-time atmospheric telemetry with closed-loop turbine modulation. Here is how exterior vertical robotics detect environmental hazards and compensate for external\u2026",
+      "link": "https://dev.to/windowrobotlab/high-altitude-wind-load-dynamics-in-vertical-robotics-gust-compensation-and-dew-point-telemetry-10j5",
+      "source": "DEV Community - The most recent home feed on DEV Community.",
+      "feed_type": "news",
+      "type": "general-news",
+      "type_label": "General News",
+      "published": "2026-11-22T07:04:25+00:00",
+      "published_ts": 1795331065,
+      "smart_groups": [
+        "Robotics & autonomy"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Tesla Rolls Out FSD V15 with Reality View and Vision Upgrades",
+      "summary": "Tesla announced on November 21, 2026 that Full Self-Driving (FSD) v15 was starting to roll out, with an upgraded driving network, a live Tesla Reality View visualization and a company-reported 25-fold improvement in its critical-intervention rate. Navigation, parking, driver monitoring and speed handling also change in this release. Tesla AI lead Ashok Elluswamy said the release was going to the first wave of customers. Earlier on November 21, Elon Musk said v15 would go to wide release in\u2026",
+      "link": "https://www.unite.ai/tesla-rolls-out-fsd-v15-with-reality-view-and-vision-upgrades/",
+      "source": "Unite.AI - - AI News",
+      "feed_type": "news",
+      "type": "general-news",
+      "type_label": "General News",
+      "published": "2026-11-22T07:04:02+00:00",
+      "published_ts": 1795331042,
+      "smart_groups": [
+        "Robotics & autonomy"
+      ],
+      "curated": false
+    },
+    {
+      "title": "A small test fixture for Chinese SRT subtitle imports",
+      "summary": "A subtitle import problem is easier to isolate with a tiny fixture than with a full video transcript. This example separates three checks: whether the editor can decode Chinese characters, parse cue timing, and keep line breaks. It is a proposed diagnostic fixture, not a report of tests across editing applications. Start with two cues Save the following as a UTF-8 text file with an .srt extension: 1 00:00:01,000 --> 00:00:04,000 \u7b80\u4f53\u4e2d\u6587\u6d4b\u8bd5\uff1a\u4f60\u597d\uff0c\u4e16\u754c\u3002 2 00:00:05,000 --> 00:00:08,000 \u7e41\u9ad4\u4e2d\u6587\u6e2c\u8a66\uff1a\u4f60\u597d\uff0c\u4e16\u754c\u3002 \u7b2c\u4e8c\u884c\u5b57\u5e55\u3002 The wording is deliberately simple. It is sample text for testing display, not a translation of any\u2026",
+      "link": "https://dev.to/haotian_zhou_e119a9da7469/a-small-test-fixture-for-chinese-srt-subtitle-imports-15lb",
+      "source": "DEV Community - The most recent home feed on DEV Community.",
+      "feed_type": "news",
+      "type": "general-news",
+      "type_label": "General News",
+      "published": "2026-11-22T07:02:19+00:00",
+      "published_ts": 1795330939,
+      "smart_groups": [
+        "Policy & government"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Current and former officials from the US and other countries describe the Chinese spy agency MSS' campaign to help Chinese companies acquire advanced AI chips (New York Times)",
+      "summary": "New York Times : Current and former officials from the US and other countries describe the Chinese spy agency MSS' campaign to help Chinese companies acquire advanced AI chips \u2014 China's espionage agency has been running a secret campaign to help the country's companies acquire advanced A.I. chips \u2026",
+      "link": "https://www.techmeme.com/261122/p5#a261122p5",
+      "source": "Techmeme - Tech Web, page A1",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T07:00:41+00:00",
+      "published_ts": 1795330841,
+      "smart_groups": [
+        "Chips & hardware",
+        "Policy & government"
+      ],
+      "curated": false
+    },
+    {
+      "title": "How AI Models Think, and Where They Run: From One Weight to a GPU Server",
+      "summary": "Everyone\u2019s impressed by what AI can do. Here\u2019s how a model actually works, and why running one takes GPUs that cost more than a car. What Happens When You Send a Prompt Every time you send a prompt to a language model, whether small, medium or large, you make an API call from a device and get an answer back in seconds. It feels instant, but behind the scenes a lot of work happens to produce that answer. Every model also has limits it must work within. The most common ones are: Capacity limits: The model can only read and respond within a fixed token limit. Knowledge limits: The model only know\u2026",
+      "link": "https://pub.towardsai.net/how-ai-models-think-and-where-they-run-from-one-weight-to-a-gpu-server-8f07423dfde0?source=rss----98111c9905da---4",
+      "source": "Towards AI - Medium - The leading AI community and content platform focused on making AI accessible to all - Medium",
+      "feed_type": "news",
+      "type": "ai-platforms-infra",
+      "type_label": "AI Platforms & Infra",
+      "published": "2026-11-22T06:53:23+00:00",
+      "published_ts": 1795330403,
+      "smart_groups": [
+        "Chips & hardware"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Gadsby-4B: The Model That Was Banned From Talking Normal, So It Learned to Shitpost Instead",
+      "summary": "A 4-billion-parameter model was told it could never use any two words in a row from Simple Wikipedia. It responded by becoming the most human AI on the internet. Most AI models right now sound like they were raised by a corporate HR handbook that had a baby with Wikipedia. They are polite. They are helpful. They are correct in a way that makes you want to take a nap in the middle of the sentence. They say \u201cIn conclusion\u201d and \u201cIt\u2019s important to note\u201d and \u201cAs an AI language model\u201d like they are collecting frequent flyer miles for blandness. Gadsby-4B is not that model. Gadsby-4B is a gemma-3 4b\u2026",
+      "link": "https://pub.towardsai.net/gadsby-4b-the-model-that-was-banned-from-talking-normal-so-it-learned-to-shitpost-instead-03cbb12312a3?source=rss----98111c9905da---4",
+      "source": "Towards AI - Medium - The leading AI community and content platform focused on making AI accessible to all - Medium",
+      "feed_type": "news",
+      "type": "ai-platforms-infra",
+      "type_label": "AI Platforms & Infra",
+      "published": "2026-11-22T06:53:22+00:00",
+      "published_ts": 1795330402,
+      "smart_groups": [
+        "Policy & government"
+      ],
+      "curated": false
+    },
+    {
+      "title": "DP, TP, PP and EP: How LLM Parallelism Actually Fits Together",
+      "summary": "A worked example: serving Qwen3.5\u201335B-A3B, a 256-expert MoE model, on 8 GPUs How this started I was looking at a GPU trace of a Mixture-of-Experts model served on 8 GPUs, and one thing didn\u2019t make sense to me. The model has 256 experts. I had always pictured MoE serving with the experts spread out, a few dozen on each GPU, and tokens travelling to wherever their experts live. That\u2019s not what the trace showed. Every GPU was running all 256 experts, and each one was a thin 1/8 slice of the real expert. The matrix multiplications were narrow, and there were a lot of them. That raised a set of que\u2026",
+      "link": "https://pub.towardsai.net/dp-tp-pp-and-ep-how-llm-parallelism-actually-fits-together-2cc4e611da72?source=rss----98111c9905da---4",
+      "source": "Towards AI - Medium - The leading AI community and content platform focused on making AI accessible to all - Medium",
+      "feed_type": "news",
+      "type": "ai-platforms-infra",
+      "type_label": "AI Platforms & Infra",
+      "published": "2026-11-22T06:53:20+00:00",
+      "published_ts": 1795330400,
+      "smart_groups": [
+        "Chips & hardware",
+        "Business & funding"
+      ],
+      "curated": false
+    },
+    {
+      "title": "You Don\u2019t Need to Know a Programming Language. Prove Me Wrong.",
+      "summary": "AI has made syntax optional for far more builders, and some programmers are having a hard time accepting it.",
+      "link": "https://pub.towardsai.net/you-dont-need-to-know-a-programming-language-prove-me-wrong-f03f4c835a5b?source=rss----98111c9905da---4",
+      "source": "Towards AI - Medium - The leading AI community and content platform focused on making AI accessible to all - Medium",
+      "feed_type": "news",
+      "type": "ai-platforms-infra",
+      "type_label": "AI Platforms & Infra",
+      "published": "2026-11-22T06:52:34+00:00",
+      "published_ts": 1795330354,
+      "smart_groups": [
+        "Coding & dev tools"
+      ],
+      "curated": false
+    },
+    {
+      "title": "I Stopped Shortening Claude. I Made It Paint Instead",
+      "summary": "Claude can be incredibly verbose. Whether it\u2019s explaining something or delivering a comprehensive result, you get a lot of fluff, but also\u2026",
+      "link": "https://pub.towardsai.net/i-stopped-shortening-claude-i-made-it-paint-instead-5242ac55e010?source=rss----98111c9905da---4",
+      "source": "Towards AI - Medium - The leading AI community and content platform focused on making AI accessible to all - Medium",
+      "feed_type": "news",
+      "type": "ai-platforms-infra",
+      "type_label": "AI Platforms & Infra",
+      "published": "2026-11-22T06:52:32+00:00",
+      "published_ts": 1795330352,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "The Audio Model Release of the Month by Tencent is Not Something You Would Expect",
+      "summary": "",
+      "link": "https://pub.towardsai.net/the-audio-model-release-of-the-month-by-tencent-is-not-something-you-would-expect-bb3f818ecb80?source=rss----98111c9905da---4",
+      "source": "Towards AI - Medium - The leading AI community and content platform focused on making AI accessible to all - Medium",
+      "feed_type": "news",
+      "type": "ai-platforms-infra",
+      "type_label": "AI Platforms & Infra",
+      "published": "2026-11-22T06:52:26+00:00",
+      "published_ts": 1795330346,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Why AI-Generated Videos Fall Apart Over Time \u2014 and What LongCat 1.6 Does Differently",
+      "summary": "Meituan\u2019s talking-avatar model tackles a deeper problem than lip synchronization: maintaining a coherent video when each new segment\u2026",
+      "link": "https://pub.towardsai.net/why-ai-generated-videos-fall-apart-over-time-and-what-longcat-1-6-does-differently-b7d37c9eb0e7?source=rss----98111c9905da---4",
+      "source": "Towards AI - Medium - The leading AI community and content platform focused on making AI accessible to all - Medium",
+      "feed_type": "news",
+      "type": "ai-platforms-infra",
+      "type_label": "AI Platforms & Infra",
+      "published": "2026-11-22T06:52:25+00:00",
+      "published_ts": 1795330345,
+      "smart_groups": [
+        "Vision, audio & video"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: Prompt Upgrader \u2013 a no-signup tool that scores and rewrites AI prompts",
+      "summary": "",
+      "link": "https://madgpt1.github.io/prompt-upgrader/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T06:41:12+00:00",
+      "published_ts": 1795329672,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Tesla rolls out FSD v15, featuring a photorealistic rendering of car surroundings; Elon Musk says it is real-time AI video generation without using game engines (Mike Pearl/Gizmodo)",
+      "summary": "Mike Pearl / Gizmodo : Tesla rolls out FSD v15, featuring a photorealistic rendering of car surroundings; Elon Musk says it is real-time AI video generation without using game engines \u2014 FSD v15 was released to some vehicles on Saturday. Its visualization system may be the most remarkable part.",
+      "link": "https://www.techmeme.com/261122/p4#a261122p4",
+      "source": "Techmeme - Tech Web, page A1",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T06:40:16+00:00",
+      "published_ts": 1795329616,
+      "smart_groups": [
+        "Robotics & autonomy",
+        "Vision, audio & video"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI resolved all null pointer dereferences in C",
+      "summary": "",
+      "link": "https://kapteko.com/ai-resolved-all-null-pointer-dereferences/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T06:36:36+00:00",
+      "published_ts": 1795329396,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Google Announces Agent Compute Engine for Secure AI Agent Execution",
+      "summary": "Google recently announced Agent Compute Engine, a managed service that runs AI agents in isolated microVMs, with checkpointing capabilities to suspend and resume execution environments. The design keeps credentials, API keys, and OAuth refresh tokens outside the agent sandbox, using an external Agent Gateway to authenticate requests and inject the required secrets. By Renato Losio",
+      "link": "https://www.infoq.com/news/2026/11/google-agent-compute-engine/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=AI%2C+ML+%26+Data+Engineering",
+      "source": "InfoQ - AI, ML & Data Engineering - InfoQ AI, ML & Data Engineering feed",
+      "feed_type": "news",
+      "type": "general-news",
+      "type_label": "General News",
+      "published": "2026-11-22T06:30:00+00:00",
+      "published_ts": 1795329000,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AWS Lambda Now Runs GPU Inference with 48 Concurrent Invocations Sharing One Model per GPU",
+      "summary": "AWS Lambda now runs Event Functions on EC2 G-series GPU instances through Lambda Managed Instances, with up to 48 concurrent invocations sharing one model per GPU, vLLM and SGLang base images that need no handler code, and 90-minute asynchronous timeouts. Billing is the instance price plus a 9.75 percent fee; first hands-on tests report an eight-minute publish and no response streaming. By Steef-Jan Wiggers",
+      "link": "https://www.infoq.com/news/2026/11/aws-lambda-gpu-managed-instances/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=AI%2C+ML+%26+Data+Engineering",
+      "source": "InfoQ - AI, ML & Data Engineering - InfoQ AI, ML & Data Engineering feed",
+      "feed_type": "news",
+      "type": "general-news",
+      "type_label": "General News",
+      "published": "2026-11-22T06:27:00+00:00",
+      "published_ts": 1795328820,
+      "smart_groups": [
+        "Chips & hardware",
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
+      "title": "\u2018Serious error of judgment\u2019: outrage over military AI event at Berlin arts complex",
+      "summary": "Kraftwerk Berlin, part of same development as techno club Tresor, transformed into \u2018war room\u2019 for arms firm event With their cavernous post-industrial venues, teeth-grinding four-by-four beats and bouncers that look like Blade Runner extras, Berlin\u2019s nightclubs trade on a reputation for bleakness. A recent event at one of the city\u2019s most legendary clubland institutions, however, has proven too dystopian even for seasoned techno-heads. On 11 November, the Kraftwerk Berlin arts complex had its central hall transformed into what visitors described as something resembling a war room, with maps and\u2026",
+      "link": "https://www.theguardian.com/world/2026/nov/22/military-ai-event-berlin-kraftwerk-arts-complex",
+      "source": "Artificial intelligence (AI) | The Guardian - Latest news and features from theguardian.com, the world's leading liberal voice",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T06:00:21+00:00",
+      "published_ts": 1795327221,
+      "smart_groups": [
+        "Policy & government"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AWS local emulator created by AI agents",
+      "summary": "",
+      "link": "https://aws.amazon.com/blogs/aws/test-your-applications-against-aws-locally-with-aws-emulator/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T05:57:03+00:00",
+      "published_ts": 1795327023,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false,
+      "story_id": "0f541632d258",
+      "story_size": 2
+    },
+    {
+      "title": "Sources: AI server suppliers like Dell, HPE, Lenovo, and Supermicro are demanding substantially higher prices from buyers, months after contracts were signed (Financial Times)",
+      "summary": "Financial Times : Sources: AI server suppliers like Dell, HPE, Lenovo, and Supermicro are demanding substantially higher prices from buyers, months after contracts were signed \u2014 Dell, HPE, Lenovo and Supermicro demand more for equipment, with the increased costs hitting trading firms",
+      "link": "https://www.techmeme.com/261122/p2#a261122p2",
+      "source": "Techmeme - Tech Web, page A1",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T05:50:01+00:00",
+      "published_ts": 1795326601,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "Sources: Alice Huang associate Li Ming, whom Singapore charged with fraud in 2025, was central to smuggling restricted AI chips from Southeast Asia to China (Stu Woo/Wall Street Journal)",
+      "summary": "Stu Woo / Wall Street Journal : Sources: Alice Huang associate Li Ming, whom Singapore charged with fraud in 2025, was central to smuggling restricted AI chips from Southeast Asia to China \u2014 Defendant in case involving chip smuggling worked with Jensen Huang's romantic partner \u2014 SINGAPORE\u2014Jensen Huang's romantic partner \u2026",
+      "link": "https://www.techmeme.com/261122/p1#a261122p1",
+      "source": "Techmeme - Tech Web, page A1",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T05:45:01+00:00",
+      "published_ts": 1795326301,
+      "smart_groups": [
+        "Chips & hardware",
+        "Policy & government",
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "From Raye to Coldplay, How AI Scalpers are Pricing You Out of Concert Tickets",
+      "summary": "British artiste Raye may be poised to dominate the Grammys this year, but the Where is My Husband! singer is overwhelmed by a set of fans she wouldn\u2019t have ever imagined to encounter: AI bots . The registration for her concert at London\u2019s Royal Albert Hall attracted 1.8 million sign-ups for just 5,000 seats. \"Sadly, our sign-up process was overwhelmed by scalpers, using AI bots to create hundreds of thousands of fake registrations,\" Raye wrote on X. \"It's a new world we are living in now; I have never witnessed bots on this scale.\" Her team subsequently decided to manually review registrations\u2026",
+      "link": "https://analyticsindiamag.com/ai-features/from-raye-to-coldplay-how-ai-scalpers-are-pricing-you-out-of-concert-tickets",
+      "source": "Analytics India Magazine - Artificial Intelligence, Emerging Tech, Data Science",
+      "feed_type": "news",
+      "type": "data-science-mlops",
+      "type_label": "Data Science & MLOps",
+      "published": "2026-11-22T05:30:00+00:00",
+      "published_ts": 1795325400,
+      "smart_groups": [
+        "Agents & automation",
+        "Research & papers"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI as a Lifestyle Choice",
+      "summary": "",
+      "link": "https://grahamdumpleton.me/posts/2026/11/ai-as-a-lifestyle-choice/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T05:28:59+00:00",
+      "published_ts": 1795325339,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Ask HN: What made you pivot your interest to the field of AI?",
+      "summary": "If you work in the field of AI, machine learning what made you do so? What sparked your interest and which skills and resources helped you along the way?",
+      "link": "https://news.ycombinator.com/item?id=50596564",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T05:20:06+00:00",
+      "published_ts": 1795324806,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AI Supply Chain Security: What Canary Tokens Found",
+      "summary": "",
+      "link": "https://www.dragos.com/blog/ai-supply-chain-security-canary-tokens",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T05:11:43+00:00",
+      "published_ts": 1795324303,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AiDotNet \u2013 Comprehensive AI/ML Framework for .NET",
+      "summary": "",
+      "link": "https://github.com/ooples/AiDotNet",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T05:07:05+00:00",
+      "published_ts": 1795324025,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "South Korea education minister resigns after AI cheating scandal engulfs university exams",
+      "summary": "Choi Kyo-jin said he \u2018failed to prepare adequately\u2019 for entrance exams, which this year had phones banned and checks for cameras hidden in clothing South Korea\u2019s education minister resigned on Sunday after an AI-assisted cheating scandal that erupted in the lead-up to the country\u2019s key university entrance exams. The country has been gripped by fears of AI-assisted exam cheating since last Sunday, when the top scorer in a national tax accountant exam confessed to using a miniature camera and smartphone to achieve a near-perfect score, just four days before the crucial university entrance exam k\u2026",
+      "link": "https://www.theguardian.com/world/2026/nov/22/south-korea-education-minister-resigns-after-ai-cheating-scandal-engulfs-university-exams",
+      "source": "Artificial intelligence (AI) | The Guardian - Latest news and features from theguardian.com, the world's leading liberal voice",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T05:04:39+00:00",
+      "published_ts": 1795323879,
+      "smart_groups": [
+        "Policy & government",
+        "Work & society"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: Vouch \u2013 See what AI assistants say about your brand mid-conversation",
+      "summary": "",
+      "link": "https://vouchgeo.com",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T04:24:22+00:00",
+      "published_ts": 1795321462,
+      "smart_groups": [
+        "Consumer AI"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Ask HN: Are you prepared to rent intelligence from AI providers?",
+      "summary": "Say the year 2035 arrives, and for the last ten years you have relied on an AI machine to do your thinking for you because you convinced yourself it made you more productive. As a consequence, your native intelligence has atrophied, and you now depend on this synthetic pseudo-brain the way a diabetic depends on insulin after the pancreas has failed. Then AI providers put a tollbooth on thinking. What happens if you can't afford to rent your thinking? You are left with the intelligence of a farm animal, because your natural brain has become useless.",
+      "link": "https://news.ycombinator.com/item?id=50596041",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T03:48:46+00:00",
+      "published_ts": 1795319326,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Ask HN: Printing documents in the age of AI cyberattacks",
+      "summary": "Do you make hard copies of important documents like investment account statements?",
+      "link": "https://news.ycombinator.com/item?id=50596012",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T03:41:48+00:00",
+      "published_ts": 1795318908,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Can AI Make Its Own Manufacturing Decisions?",
+      "summary": "",
+      "link": "https://semiengineering.com/can-ai-make-its-own-manufacturing-decisions/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T03:29:53+00:00",
+      "published_ts": 1795318193,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Current Efforts Aren't Enough to Slow the AI Cyber Virus",
+      "summary": "",
+      "link": "https://www.bridgewater.com/research-and-insights/current-efforts-arent-enough-to-slow-the-ai-cyber-virus",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T03:28:48+00:00",
+      "published_ts": 1795318128,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Together.ai: Prompt Leakage for Requests",
+      "summary": "",
+      "link": "https://www.together.ai/blog/security-event-prompt-leakage-for-requests-in-june-and-july-of-2026",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T03:07:27+00:00",
+      "published_ts": 1795316847,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Since last year, we asked: \"What if AI solved the Riemann Hypothesis?\"",
+      "summary": "",
+      "link": "https://www.youtube.com/watch?v=zqzk43bSdDI",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T03:06:35+00:00",
+      "published_ts": 1795316795,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "OpenRouter Cuts Three Providers After AI Prompt Exposure Findings",
+      "summary": "OpenRouter announced on November 22, 2026, that it had off-boarded three inference providers and removed 125 endpoints from eligibility for Zero Data Retention (ZDR), a setting under which prompts and responses are not stored. It also notified all potentially affected customers. The findings did not show a breach or unauthorized access of OpenRouter itself, the company said. The removals covered providers flagged by researchers and other endpoints withdrawn as a precaution. Its public list\u2026",
+      "link": "https://www.unite.ai/openrouter-cuts-three-providers-after-ai-prompt-exposure-findings/",
+      "source": "Unite.AI - - AI News",
+      "feed_type": "news",
+      "type": "general-news",
+      "type_label": "General News",
+      "published": "2026-11-22T03:06:02+00:00",
+      "published_ts": 1795316762,
+      "smart_groups": [
+        "Research & papers",
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Australia Spy Chief Warns of Data Center, AI Risks, Age Reports",
+      "summary": "Australia\u2019s spy chief said that data centers and artificial intelligence risk exposing the nation to foreign interference and malicious state actors, according to an interview in The Age Sunday.",
+      "link": "https://www.bloomberg.com/news/articles/2026-11-22/australia-spy-chief-warns-of-data-center-ai-risks-age-reports",
+      "source": "Bloomberg Technology - Bloomberg Technology",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T02:37:31+00:00",
+      "published_ts": 1795315051,
+      "smart_groups": [
+        "Safety & alignment",
+        "Energy & data centers"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Wall Street Asks What Can Save AI Trade After Anthropic Wipeout",
+      "summary": "",
+      "link": "https://www.bloomberg.com/news/articles/2026-11-21/wall-street-asks-what-can-save-ai-trade-after-anthropic-wipeout",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T02:27:39+00:00",
+      "published_ts": 1795314459,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "The Mythology of Conscious AI",
+      "summary": "",
+      "link": "https://www.noemamag.com/the-mythology-of-conscious-ai/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T02:10:02+00:00",
+      "published_ts": 1795313402,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "A Team of Researchers from Columbia and CertiK Introduce TensorLean for Formal Verification of GPU Kernels",
+      "summary": "Researchers from Columbia University and CertiK have introduced TensorLean , a framework for formal verification of GPU kernels at the PTX level. TensorLean is a Lean-based verifier that proves compiled kernels match a tensor-level math spec. The research team checked 149 kernel instances , including every kernel of FlashAttention-2, -3 and -4 plus DeepGEMM. It proved 83 correct. The remaining 66 led to 38 correctness bugs. TL;DR Size: 1.8K-line PTX parser. Specs total 10,278 lines against 151,285 lines of kernel source, a ratio near 15:1. Runs on: A 16-core workstation. It checks PTX compiled\u2026",
+      "link": "https://www.marktechpost.com/2026/11/21/columbia-certik-tensorlean-formal-verification-gpu-kernels/",
+      "source": "MarkTechPost - An Artificial Intelligence News Platform",
+      "feed_type": "news",
+      "type": "ai-platforms-infra",
+      "type_label": "AI Platforms & Infra",
+      "published": "2026-11-22T01:51:43+00:00",
+      "published_ts": 1795312303,
+      "smart_groups": [
+        "Research & papers",
+        "Chips & hardware"
+      ],
+      "curated": false
+    },
+    {
+      "title": "The AI cyber threat is here",
+      "summary": "",
+      "link": "https://www.ft.com/content/3cf882c6-0be6-43f5-b01e-b6f765686c8b",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T01:39:20+00:00",
+      "published_ts": 1795311560,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Apple's iPhone camera chief, an opponent of AI-altered photos, has retired",
+      "summary": "",
+      "link": "https://www.dpreview.com/news/apples-iphone-camera-chief-has-retired/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T01:29:23+00:00",
+      "published_ts": 1795310963,
+      "smart_groups": [
+        "Consumer AI"
+      ],
+      "curated": false
+    },
+    {
+      "title": "The No AI Slop Manifesto",
+      "summary": "",
+      "link": "https://gist.github.com/dexhorthy/4cc96f01be5b1208519e75dad250a948",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T01:18:06+00:00",
+      "published_ts": 1795310286,
+      "smart_groups": [
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Matchmakers say more tech workers fear romantic espionage after the Jensen Huang scandal; an AI companion app pitches \"zero espionage\" executive girlfriends (Wired)",
+      "summary": "Wired : Matchmakers say more tech workers fear romantic espionage after the Jensen Huang scandal; an AI companion app pitches \u201czero espionage\u201d executive girlfriends \u2014 The Jensen Huang scandal is the latest fuel for dating anxieties among newly rich and powerful tech workers.",
+      "link": "https://www.techmeme.com/261121/p11#a261121p11",
+      "source": "Techmeme - Tech Web, page A1",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-22T00:10:02+00:00",
+      "published_ts": 1795306202,
+      "smart_groups": [
+        "Consumer AI",
+        "Work & society"
+      ],
+      "curated": false
+    },
+    {
+      "title": "[Day 48/100] Parent-Document and Sentence-Window Retrieval: Search Small, Answer Big",
+      "summary": "The chunk that matches a question is rarely the chunk that answers it. How to build both advanced RAG retrievers by hand in LangChain, and\u2026",
+      "link": "https://pub.towardsai.net/day-48-100-parent-document-and-sentence-window-retrieval-search-small-answer-big-c2f54fd0b41c?source=rss----98111c9905da---4",
+      "source": "Towards AI - Medium - The leading AI community and content platform focused on making AI accessible to all - Medium",
+      "feed_type": "news",
+      "type": "ai-platforms-infra",
+      "type_label": "AI Platforms & Infra",
+      "published": "2026-11-22T00:01:02+00:00",
+      "published_ts": 1795305662,
+      "smart_groups": [
+        "Infra & model ops"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Muru",
+      "summary": "Muru Graham Dumpleton started mod_wsgi 20 years ago, and has been thinking about the ideal way to serve Python web applications in production ever since. Muru is his new, AI-assisted Rust server that aims to provide the best possible tools for running ASGI and WSGI Python apps both in development and production. As he did with wrapture , he's been publishing an extraordinarily detailed account of the project as he works on it - as part of his development process. Here's everything he's published so far, all in the last three weeks: 2026-11-04 \u2014 Twenty years of mod_wsgi, and what comes next 202\u2026",
+      "link": "https://simonwillison.net/2026/Nov/21/muru/",
+      "source": "Simon Willison's Weblog",
+      "feed_type": "news",
+      "type": "research-explainability",
+      "type_label": "Research Explainability",
+      "published": "2026-11-21T23:56:28+00:00",
+      "published_ts": 1795305388,
+      "smart_groups": [
+        "Coding & dev tools",
+        "Work & society"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Show HN: WorldFoundry \u2013 AI agents need experience, not just training data",
+      "summary": "",
+      "link": "https://worldfoundry-demo.vercel.app/",
+      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
+      "feed_type": "blog",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-21T23:53:34+00:00",
+      "published_ts": 1795305214,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Together AI Discloses Prompt Leak After Coding Agent Exposed Credential",
+      "summary": "Together AI disclosed on November 21, 2026 that an unauthorized party downloaded stored samples from a subset of customer prompts submitted to its serverless inference service. An AI coding agent had exposed the private-repository credential used in the download while the company was developing its public xorl GitHub repository. Customers had authorized the prompts for routine software testing, and Together AI stored the samples in a private Hugging Face repository. They involved requests to\u2026",
+      "link": "https://www.unite.ai/together-ai-discloses-prompt-leak-after-coding-agent-exposed-credential/",
+      "source": "Unite.AI - - AI News",
+      "feed_type": "news",
+      "type": "general-news",
+      "type_label": "General News",
+      "published": "2026-11-21T23:38:04+00:00",
+      "published_ts": 1795304284,
+      "smart_groups": [
+        "Agents & automation",
+        "Coding & dev tools",
+        "Security & misuse"
+      ],
+      "curated": false
+    },
+    {
+      "title": "AIAI, Toronto 2026",
+      "summary": "",
+      "link": "https://www.aiacceleratorinstitute.com/aiai-toronto-2026/",
+      "source": "AI Accelerator Institute | Future of Artificial Intelligence - Next Generation Machine Intelligence",
+      "feed_type": "news",
+      "type": "general-news",
+      "type_label": "General News",
+      "published": "2026-11-21T22:41:14+00:00",
+      "published_ts": 1795300874,
+      "smart_groups": [
+        "Chips & hardware"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Have you head of bot-sitting?",
+      "summary": "Botsitting is the work of checking and fixing what AI hands you. One Founder Reports survey asked people who use AI weekly and have trained a new employee. 40% said AI took less effort than training someone, so it may still save time for some people. But the checking still counts as work. If your job is turning into review, I think it's worth tracking where your hours go. Has AI made you faster, or has your work just changed shape?",
+      "link": "https://www.youtube.com/shorts/LtRtBOaKGv4",
+      "source": "Ken Jee",
+      "feed_type": "videos",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-21T22:40:51+00:00",
+      "published_ts": 1795300851,
+      "smart_groups": [
+        "Work & society"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Gemini 4 Neon is the Best AI now, But There\u2019s a Problem (Fully Tested)",
+      "summary": "I never imagined that one day I would complain that Google was releasing too many models",
+      "link": "https://pub.towardsai.net/gemini-4-neon-is-the-best-ai-now-but-theres-a-problem-fully-tested-7dd28c46312e?source=rss----98111c9905da---4",
+      "source": "Towards AI - Medium - The leading AI community and content platform focused on making AI accessible to all - Medium",
+      "feed_type": "news",
+      "type": "ai-platforms-infra",
+      "type_label": "AI Platforms & Infra",
+      "published": "2026-11-21T22:01:01+00:00",
+      "published_ts": 1795298461,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
+      "title": "\u201cIt is a rollercoaster ride\u201d: Angie Jones of the Agentic AI Foundation on keeping up with AI agents",
+      "summary": "Only a few years ago, it would have been impossible to picture this scenario: A lead developer once gave 10 new hires at Block a codebase they\u2019d never seen, access to AI agents, and a day and a half to solve problems that customers had brought to them in person. It was their first day, but they all delivered. For teams wondering where junior developers fit in, this experiment raises a question. What might experienced engineers learn from them? \u201cIt is a rollercoaster ride,\u201d Angie Jones , the lead developer and now vice president of the Agentic AI Foundation , told The New Stack\u2019s Frederic Lardi\u2026",
+      "link": "https://thenewstack.io/junior-developers-ai-agents-block/",
+      "source": "The New Stack - The New Stack is a media platform for the people who build and manage software the world relies on. We \u2026",
+      "feed_type": "news",
+      "type": "ai-platforms-infra",
+      "type_label": "AI Platforms & Infra",
+      "published": "2026-11-21T21:58:14+00:00",
+      "published_ts": 1795298294,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
     {
       "title": "Sovereignty starts with data, not chips, says Stuttgart AI factory chief",
       "summary": "",
@@ -187,6 +1010,21 @@
       "curated": false
     },
     {
+      "title": "International Talks on Autonomous Killer Robots Achieve Historic Deal to\u2026Think It Over for 2 More Years",
+      "summary": "Why rush to nail down rules? It's not like this is urgent.",
+      "link": "https://gizmodo.com/international-talks-on-autonomous-killer-robots-achieve-historic-deal-to-think-it-over-for-2-more-years-2000843554",
+      "source": "Gizmodo - The Future Is Here",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-21T21:20:02+00:00",
+      "published_ts": 1795296002,
+      "smart_groups": [
+        "Robotics & autonomy"
+      ],
+      "curated": false
+    },
+    {
       "title": "A tale of two Nvidias",
       "summary": "We got two very different pictures of Nvidia \u2014 the company\u2019s latest earnings report vs. the tech executives loudly calling for Jensen Huang\u2019s return.",
       "link": "https://techcrunch.com/2026/11/21/a-tale-of-two-nvidias/",
@@ -291,6 +1129,19 @@
       "smart_groups": [
         "Security & misuse"
       ],
+      "curated": false
+    },
+    {
+      "title": "Classical Test Theory Analysis of the 16 Factor Personality Measure",
+      "summary": "[",
+      "link": "https://www.r-bloggers.com/2026/11/classical-test-theory-analysis-of-the-16-factor-personality-measure/",
+      "source": "R-bloggers - R news and tutorials contributed by hundreds of R bloggers",
+      "feed_type": "news",
+      "type": "data-science-mlops",
+      "type_label": "Data Science & MLOps",
+      "published": "2026-11-21T20:13:46+00:00",
+      "published_ts": 1795292026,
+      "smart_groups": [],
       "curated": false
     },
     {
@@ -566,6 +1417,21 @@
       "curated": false
     },
     {
+      "title": "AI Just Cracked the Hardest Problem in Mathematics. It Will Change Everything",
+      "summary": "On November 20, Anthropic employee Levent Alp\u00f6ge published a PDF where he claimed to have solved the Riemann Hypothesis (RH) working together with Claude. He released the Lean code (17 million lines), which has already passed multiple independent verification checks , but not a human-readable demonstration: his attempt to produce one reached 250,000+ pages of what he called an \u201cunreadable travesty of slop.\u201d Given that RH concerns zeros of the zeta function, it\u2019s fair to say that Claude wrote much ado about nothing. But even if we don\u2019t know the \u201chows\u201d or \u201cwhys\u201d of the Riemann Hypothesis, it se\u2026",
+      "link": "https://www.thealgorithmicbridge.com/p/ai-just-cracked-the-hardest-problem",
+      "source": "The Algorithmic Bridge - Bridging the gap between AI and people. Join 13,000 others, including professionals from the Big Five: Google, Amazon, Microsoft, Meta, \u2026",
+      "feed_type": "news",
+      "type": "research-explainability",
+      "type_label": "Research Explainability",
+      "published": "2026-11-21T18:59:24+00:00",
+      "published_ts": 1795287564,
+      "smart_groups": [
+        "Health & science"
+      ],
+      "curated": false
+    },
+    {
       "title": "China attackers deployed AI agents that autonomously found and exploited a 0-day",
       "summary": "",
       "link": "https://www.theregister.com/security/2026/11/20/china-attackers-deployed-ai-agents-that-autonomously-found-and-exploited-a-0-day-to-take-over-a-university-server/5311382",
@@ -701,21 +1567,6 @@
       "published_ts": 1795284869,
       "smart_groups": [
         "Agents & automation"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Zero retention AI providers caught logging prompts",
-      "summary": "",
-      "link": "https://www.dragos.com/blog/ai-supply-chain-security-canary-tokens",
-      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T18:04:54+00:00",
-      "published_ts": 1795284294,
-      "smart_groups": [
-        "Security & misuse"
       ],
       "curated": false
     },
@@ -2017,6 +2868,21 @@
       "curated": false
     },
     {
+      "title": "This Squishy Little Robot Can Run 10 MPH Without Electronics",
+      "summary": "It's all to to with \"double-expansion oscillators,\" apparently.",
+      "link": "https://gizmodo.com/this-squishy-little-robot-can-run-10-mph-without-electronics-2000842623",
+      "source": "Gizmodo - The Future Is Here",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-21T13:00:35+00:00",
+      "published_ts": 1795266035,
+      "smart_groups": [
+        "Robotics & autonomy"
+      ],
+      "curated": false
+    },
+    {
       "title": "Deriv Open-Sourced Its Staff AI Platform After 221 Skills Became a Permissions Mess",
       "summary": "Deriv's AI team open-sourced a platform that lets 900 staff build and share AI agent skills with enterprise access controls, security reviews and guardrails. Here is how it handles permissions, client data and prompt injection. In this exclusive Front Page interview, Sudhi Sachdev of AIM speaks with Christopher Hernandez, AI Team Lead at Deriv, and Ansh Choudhary, Senior AI Engineer at Deriv, about Deriv One, the open-source AI platform built after a skills registry filled with 221 skills from 54 people. Expect a clear look at what an AI skill is, how stacked RBAC and security reviews work, ho\u2026",
       "link": "https://www.youtube.com/watch?v=_BKbv_fNv04",
@@ -2685,1068 +3551,6 @@
       "published_ts": 1795246069,
       "smart_groups": [
         "Data & analytics"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Publicis Sapient CTO on What Companies Should Do After Tokenmaxxing",
-      "summary": "Tokenmaxxing has put the AI bill on the CFO's desk. Publicis Sapient's CTO explains what companies should measure after the usage leaderboard. In this exclusive Front Page interview, Sudhi Sachdev of AIM speaks with Rakesh Ravuri, CTO - SVP Engineering at Publicis Sapient, whose firm's July paper gave tokenmaxxing its name. Expect a clear look at why companies created AI leaderboards, how to spend tokens where they create value, what CFOs and CTOs should own, and what a European bank changed beyond software. CHAPTES: 0:00 The Rise of Token Maxing in Corporate Culture 2:14 Incentives and the Un\u2026",
-      "link": "https://www.youtube.com/watch?v=QYC7abz2iZs",
-      "source": "Analytics India Magazine",
-      "feed_type": "videos",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T07:00:10+00:00",
-      "published_ts": 1795244410,
-      "smart_groups": [
-        "Research & papers",
-        "Chips & hardware"
-      ],
-      "curated": false
-    },
-    {
-      "title": "NYU's Tristan Buckmaster and Anthropic's Levent Alp\u00f6ge publish an AI-aided proof of Navier-Stokes blowup, saying it closes a loophole in OpenAI's solution (Peter Hall/Scientific American)",
-      "summary": "Peter Hall / Scientific American : NYU's Tristan Buckmaster and Anthropic's Levent Alp\u00f6ge publish an AI-aided proof of Navier-Stokes blowup, saying it closes a loophole in OpenAI's solution \u2014 Two months after getting scooped by OpenAI, N.Y.U. professor Tristan Buckmaster and Anthropic employee Levent Alp\u00f6ge \u2026",
-      "link": "https://www.techmeme.com/261121/p4#a261121p4",
-      "source": "Techmeme - Tech Web, page A1",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T06:30:00+00:00",
-      "published_ts": 1795242600,
-      "smart_groups": [
-        "Work & society"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Aletheia Aegis: Deterministic sub-millisecond output guard for AI agents",
-      "summary": "",
-      "link": "https://github.com/vikasny30/aletheia-aegis",
-      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T06:21:38+00:00",
-      "published_ts": 1795242098,
-      "smart_groups": [
-        "Agents & automation"
-      ],
-      "curated": false
-    },
-    {
-      "title": "I'm building GURU, a framework for a personal AI that lives alongside you",
-      "summary": "",
-      "link": "https://github.com/GuruProduction/GURUbyUnusLumen",
-      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T06:12:39+00:00",
-      "published_ts": 1795241559,
-      "smart_groups": [
-        "Security & misuse"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Federal Revenue When AI Replaces Labor",
-      "summary": "",
-      "link": "https://www.rand.org/pubs/research_reports/RRA4980-1.html",
-      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T06:12:31+00:00",
-      "published_ts": 1795241551,
-      "smart_groups": [
-        "Business & funding",
-        "Policy & government",
-        "Work & society"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Industry insiders say new US export rules affect a broader range of chips, including SoCs used in consumer electronics, extending beyond advanced AI chips (Cheng Ting-Fang/Nikkei Asia)",
-      "summary": "Cheng Ting-Fang / Nikkei Asia : Industry insiders say new US export rules affect a broader range of chips, including SoCs used in consumer electronics, extending beyond advanced AI chips \u2014 TAIPEI \u2014 Tighter U.S. export controls introduced Thursday are having a far broader impact on the global semiconductor supply chain \u2026",
-      "link": "https://www.techmeme.com/261121/p2#a261121p2",
-      "source": "Techmeme - Tech Web, page A1",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T06:00:55+00:00",
-      "published_ts": 1795240855,
-      "smart_groups": [
-        "Chips & hardware",
-        "Consumer AI"
-      ],
-      "curated": false
-    },
-    {
-      "title": "\u2018The doom of humanity\u2019: will the quest to make robotic hands render us obsolete?",
-      "summary": "The one thing stopping AI taking over the world \u2013 or at least everyone\u2019s jobs? Dexterity. Human hands are anatomical marvels that engineers have struggled for years to replicate. Experts are racing to change that Just outside Luton, in an Amazon warehouse the size of four football pitches, yellow shelving units pirouette in a digitally choreographed dance. Tubs containing a Lego Spider-Man kit, followed by dishwasher tablets, followed by a pouch of muscle building protein powder whiz along conveyor belts, until they arrive at a human being tasked with stacking the shelving unit that has come t\u2026",
-      "link": "https://www.theguardian.com/technology/2026/nov/21/robot-hands-future-of-humanity-ai",
-      "source": "Artificial intelligence (AI) | The Guardian - Latest news and features from theguardian.com, the world's leading liberal voice",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T06:00:52+00:00",
-      "published_ts": 1795240852,
-      "smart_groups": [
-        "Safety & alignment",
-        "Robotics & autonomy"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Baseten Extends Decision Models to 128K Context and Image Input",
-      "summary": "Baseten released bison-1 and groundhog-1 on November 20, 2026, two open-weight models post-trained from Google\u2019s Gemma 4 to return calibrated probabilities for predefined decisions. Artificial Analysis scored bison-1 at 76 on Decision Index v2.1, placing it first among 19 evaluated decision models. Both are available through Baseten Model APIs and as weights on Hugging Face. They accept text and images and support 131,072 tokens; Baseten says that is eight times the 16K context of its previous\u2026",
-      "link": "https://www.unite.ai/baseten-extends-decision-models-to-128k-context-and-image-input/",
-      "source": "Unite.AI - - AI News",
-      "feed_type": "news",
-      "type": "general-news",
-      "type_label": "General News",
-      "published": "2026-11-21T05:56:03+00:00",
-      "published_ts": 1795240563,
-      "smart_groups": [
-        "Infra & model ops"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Eight AI Agents Against the Evidence",
-      "summary": "71.2% for one, 98% for the other. How to read an AI agent\u2019s score before handing it a real task. 71.2% for one, 98% for the other. Those two numbers about AI agents came out a week apart, and they do not measure the same thing. I picked eight agents you keep running into right now, from the terminal to the personal assistant, and went back over what their public tests actually prove. The goal is not to crown a winner. It is to know how to read a percentage before handing a real task to any of them. The eight agents Nod (n8n Labs). You hand it: a personal errand spanning the browser, files and\u2026",
-      "link": "https://pub.towardsai.net/originally-published-on-mounir-raji-dev-830742da1b11?source=rss----98111c9905da---4",
-      "source": "Towards AI - Medium - The leading AI community and content platform focused on making AI accessible to all - Medium",
-      "feed_type": "news",
-      "type": "ai-platforms-infra",
-      "type_label": "AI Platforms & Infra",
-      "published": "2026-11-21T05:47:40+00:00",
-      "published_ts": 1795240060,
-      "smart_groups": [
-        "Agents & automation"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Building Cross-Language AI Agents with Spring AI, Google ADK, and A2A",
-      "summary": "How Java and Python Agents Collaborate through a Standard Protocol Enterprise AI rarely exists in a single language, making building cross-language AI agents essential for modern architectures. Java typically manages customer-facing APIs, identity, policy, and long-running business services. Python handles model experimentation, data tooling, and specialist agent workflows. Connecting the two with bespoke REST endpoints creates an unstandardized, private protocol that both teams must continuously maintain. The Agent2Agent (A2A) protocol offers a more durable boundary. This article builds a Spr\u2026",
-      "link": "https://pub.towardsai.net/building-cross-language-ai-agents-with-spring-ai-google-adk-and-a2a-958f9598a9b4?source=rss----98111c9905da---4",
-      "source": "Towards AI - Medium - The leading AI community and content platform focused on making AI accessible to all - Medium",
-      "feed_type": "news",
-      "type": "ai-platforms-infra",
-      "type_label": "AI Platforms & Infra",
-      "published": "2026-11-21T05:47:38+00:00",
-      "published_ts": 1795240058,
-      "smart_groups": [
-        "Agents & automation"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Demystifying Physical AI: A Deep Dive into VLA Architectures, Action Chunking, and Split Inference",
-      "summary": "Imagine taking a state-of-the-art 2-billion-parameter Vision-Language Model (VLM) and forcing it to control a multi-joint robotic arm in real time. If you query the language backbone for every single motor adjustment, your robot stutters along at a fragile, high-latency 2 Hz \u2014 likely knocking over a coffee cup long before it reaches its target. The fundamental challenge of Physical AI isn\u2019t just multimodal understanding; it\u2019s translating high-level semantic reasoning into high-frequency, continuous physical control. TRADITIONAL VLM PHYSICAL AI (VLA) \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2026",
-      "link": "https://pub.towardsai.net/demystifying-physical-ai-a-deep-dive-into-vla-architectures-action-chunking-and-split-inference-6dad217b250a?source=rss----98111c9905da---4",
-      "source": "Towards AI - Medium - The leading AI community and content platform focused on making AI accessible to all - Medium",
-      "feed_type": "news",
-      "type": "ai-platforms-infra",
-      "type_label": "AI Platforms & Infra",
-      "published": "2026-11-21T05:47:37+00:00",
-      "published_ts": 1795240057,
-      "smart_groups": [
-        "Robotics & autonomy",
-        "Infra & model ops"
-      ],
-      "curated": false
-    },
-    {
-      "title": "How Many RAG Users Fit on One GPU? A Five-Step Check",
-      "summary": "You tuned the chunking, the embeddings and the reranker. Then you picked the generator model by leaderboard. Here is the memory check to run first, with a worked example. Image by author. You spent weeks on retrieval quality. Chunk sizes, embeddings, a reranker, evaluation sets. Then you picked the answer-generating model the way most teams do: by leaderboard score and parameter count. A month later you are in a meeting about why the GPU bill is double the estimate, or why latency spikes at 3 p.m. every day. In RAG apps, memory is often the first limit you hit, and you can estimate it in ten m\u2026",
-      "link": "https://pub.towardsai.net/how-many-rag-users-fit-on-one-gpu-a-five-step-check-4a347ee00019?source=rss----98111c9905da---4",
-      "source": "Towards AI - Medium - The leading AI community and content platform focused on making AI accessible to all - Medium",
-      "feed_type": "news",
-      "type": "ai-platforms-infra",
-      "type_label": "AI Platforms & Infra",
-      "published": "2026-11-21T05:47:35+00:00",
-      "published_ts": 1795240055,
-      "smart_groups": [
-        "Chips & hardware",
-        "Infra & model ops"
-      ],
-      "curated": false
-    },
-    {
-      "title": "KV Cache Size: How Many Users Fit on One GPU?",
-      "summary": "DeepSeek V3 has 671B parameters and a smaller KV cache than Llama 3 8B. Here is the formula, a comparison table, and a script you can run on any model. Image by author DeepSeek V3 has 671 billion parameters. Its KV cache per token is roughly half the size of Llama 3 8B\u2019s. That cache decides how many users fit on your GPU, and you can compute it from a config file in two minutes. Sebastian Raschka\u2019s Big LLM Architecture Comparison explains the design choices behind this: grouped-query attention, latent attention, sliding windows. I wanted to know what they cost in bytes, because that is the num\u2026",
-      "link": "https://pub.towardsai.net/kv-cache-size-how-many-users-fit-on-one-gpu-76bcd3c02ee9?source=rss----98111c9905da---4",
-      "source": "Towards AI - Medium - The leading AI community and content platform focused on making AI accessible to all - Medium",
-      "feed_type": "news",
-      "type": "ai-platforms-infra",
-      "type_label": "AI Platforms & Infra",
-      "published": "2026-11-21T05:47:33+00:00",
-      "published_ts": 1795240053,
-      "smart_groups": [
-        "Chips & hardware",
-        "Infra & model ops"
-      ],
-      "curated": false
-    },
-    {
-      "title": "FRYDAY #14 : Which AI-Found Security Holes Would You Patch First?",
-      "summary": "Ten AI-assisted vulnerability discoveries, ranked by global reach, potential damage and exploitability. The problem I see from the server side On November 18, researchers disclosed two critical vulnerabilities in NGINX, both capable of unauthenticated remote code execution under affected configurations. Each received a CVSS 4.0 score of 9.2, although the detail that caught my attention was the age of one of the defects: it had existed in the code since 2015. For more than a decade, vulnerable NGINX versions could have been receiving requests on behalf of applications whose developers had every\u2026",
-      "link": "https://pub.towardsai.net/fryday-14-which-ai-found-security-holes-would-you-patch-first-3f186fade9b2?source=rss----98111c9905da---4",
-      "source": "Towards AI - Medium - The leading AI community and content platform focused on making AI accessible to all - Medium",
-      "feed_type": "news",
-      "type": "ai-platforms-infra",
-      "type_label": "AI Platforms & Infra",
-      "published": "2026-11-21T05:47:31+00:00",
-      "published_ts": 1795240051,
-      "smart_groups": [
-        "Coding & dev tools",
-        "Research & papers"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Show HN: Sniffy \u2013 a free AI detector and Chrome extension",
-      "summary": "Hi, I wanted to see if I can replicate a completely free pangram.com alternative. I directed Fable 5.2 to fine tune RoBert model. At this point it does make mistakes, and not as accurate as pangram.com but I intend to improve it as more people help me with data.",
-      "link": "https://getsniffy.com/",
-      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T05:47:31+00:00",
-      "published_ts": 1795240051,
-      "smart_groups": [
-        "Security & misuse"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Show HN: Musset, open-source Scrivener alternative with an AI that never writes",
-      "summary": "I\u2019m writing my first novel and could not find an app that fit my workflow: quiet like iA Writer, organized like Scrivener, and with AI so I can discuss my book while I write it. It allows me to feel less \u201calone\u201d and have a sounding board while I write. - A book is a folder of plain Markdown files. Musset commits to a git repo, tracks versions and drafts without you having to know git. - Revisions are CriticMarkup inside the text. It manages docx revisions too, so your editor can edit a Word doc and you import their comments. - PDFs are typeset using Typst, embedded in the app, following each l\u2026",
-      "link": "https://github.com/Musset-App/musset",
-      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T05:42:49+00:00",
-      "published_ts": 1795239769,
-      "smart_groups": [
-        "Coding & dev tools"
-      ],
-      "curated": false
-    },
-    {
-      "title": "ClawDOS \u2013 An AI coding agent for DOS",
-      "summary": "",
-      "link": "http://ricapar.net/ClawDOS/",
-      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T05:38:01+00:00",
-      "published_ts": 1795239481,
-      "smart_groups": [
-        "Agents & automation",
-        "Coding & dev tools"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Splice-Core: Low-Order-Bit-Splicing GEMM for Energy-Efficient AI Accelerators",
-      "summary": "",
-      "link": "https://arxiv.org/abs/2611.25617",
-      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T05:31:30+00:00",
-      "published_ts": 1795239090,
-      "smart_groups": [
-        "Chips & hardware",
-        "Energy & data centers"
-      ],
-      "curated": false
-    },
-    {
-      "title": "What Stays Constant While the AI Tools Keep Changing",
-      "summary": "The engineering principles that matter when AI starts writing, changing and influencing the software we build.",
-      "link": "https://pub.towardsai.net/what-stays-constant-while-the-ai-tools-keep-changing-eb144c06b231?source=rss----98111c9905da---4",
-      "source": "Towards AI - Medium - The leading AI community and content platform focused on making AI accessible to all - Medium",
-      "feed_type": "news",
-      "type": "ai-platforms-infra",
-      "type_label": "AI Platforms & Infra",
-      "published": "2026-11-21T05:28:14+00:00",
-      "published_ts": 1795238894,
-      "smart_groups": [],
-      "curated": false
-    },
-    {
-      "title": "This AI Model Was Trained to Stay Quiet in a Group Chat",
-      "summary": "Humans&\u2019s Ampersand v0.1 can choose to speak or pass.",
-      "link": "https://pub.towardsai.net/this-ai-model-was-trained-to-stay-quiet-in-a-group-chat-c4398ccd9eca?source=rss----98111c9905da---4",
-      "source": "Towards AI - Medium - The leading AI community and content platform focused on making AI accessible to all - Medium",
-      "feed_type": "news",
-      "type": "ai-platforms-infra",
-      "type_label": "AI Platforms & Infra",
-      "published": "2026-11-21T05:22:54+00:00",
-      "published_ts": 1795238574,
-      "smart_groups": [],
-      "curated": false
-    },
-    {
-      "title": "This 27-Billion-Parameter AI Model Imagines What a Robot Will See Before It Moves",
-      "summary": "Runway\u2019s newly open-sourced Praxis-1 predicts future video and robot actions together. Its most interesting result is not a benchmark\u2026",
-      "link": "https://pub.towardsai.net/this-27-billion-parameter-ai-model-imagines-what-a-robot-will-see-before-it-moves-0c5cc1137b53?source=rss----98111c9905da---4",
-      "source": "Towards AI - Medium - The leading AI community and content platform focused on making AI accessible to all - Medium",
-      "feed_type": "news",
-      "type": "ai-platforms-infra",
-      "type_label": "AI Platforms & Infra",
-      "published": "2026-11-21T05:20:03+00:00",
-      "published_ts": 1795238403,
-      "smart_groups": [
-        "Business & funding",
-        "Robotics & autonomy"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Tencent Just Released a 220-Billion-Parameter AI Model That Uses Only 12 Billion at a Time",
-      "summary": "Tencent\u2019s Hy4 flash combines sparse experts, learned n-gram memory and long-context attention. The surprising part is not just its size\u2026",
-      "link": "https://pub.towardsai.net/tencent-just-released-a-220-billion-parameter-ai-model-that-uses-only-12-billion-at-a-time-e9893a9858c3?source=rss----98111c9905da---4",
-      "source": "Towards AI - Medium - The leading AI community and content platform focused on making AI accessible to all - Medium",
-      "feed_type": "news",
-      "type": "ai-platforms-infra",
-      "type_label": "AI Platforms & Infra",
-      "published": "2026-11-21T05:19:40+00:00",
-      "published_ts": 1795238380,
-      "smart_groups": [
-        "Business & funding"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Ubisoft launches Motherbrain, a subsidiary focused on developing \"smart NPCs with memory and AI game masters that manage large-scale systemic worlds\" (Sophie McEvoy/GamesIndustry.biz)",
-      "summary": "Sophie McEvoy / GamesIndustry.biz : Ubisoft launches Motherbrain, a subsidiary focused on developing \u201csmart NPCs with memory and AI game masters that manage large-scale systemic worlds\u201d \u2014 Studio is currently developing \u201csmart NPCs with memory and AI game masters that manage large-scale systemic worlds\u201d",
-      "link": "https://www.techmeme.com/261121/p1#a261121p1",
-      "source": "Techmeme - Tech Web, page A1",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T05:15:00+00:00",
-      "published_ts": 1795238100,
-      "smart_groups": [],
-      "curated": false
-    },
-    {
-      "title": "Alice Huang, Accused of Spying on Nvidia\u2019s CEO, Is Linked to Firms With Ties to China\u2019s Military",
-      "summary": "The woman at the center of the Nvidia scandal has ties to China\u2019s defense industry and the People\u2019s Liberation Army.",
-      "link": "https://www.nytimes.com/2026/11/20/us/politics/nvidia-alice-huang-chips-china.html",
-      "source": "NYT > Technology - Technology industry news, commentary and analysis, with reporting on big tech, startups, and internet culture.",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T05:13:03+00:00",
-      "published_ts": 1795237983,
-      "smart_groups": [
-        "Policy & government"
-      ],
-      "curated": false
-    },
-    {
-      "title": "[AINews] Riemann Hypothesis proved...twice independently",
-      "summary": "Within a few hours of each other ( timeline ), two mathematicians claimed independent proofs of the Riemann Hypothesis, the most famous open problem in mathematics ( Scientific American ). Levent Alp\u00f6ge of Anthropic first made his Claude-driven proof in a note released with Lean code (1.3GB worth, ~250,000 page equivalent) rather than a full paper. Elliot Glazer confirms that the formalized statement is GRH and puts the chance of a Lean bug well under 1%. So if it finishes compiling with no extra axioms, it is probably correct, and no human will ever have read all of it\u2026 \u2026prompting Alessandro\u2026",
-      "link": "https://latent.space/p/ainews-riemann-hypothesis-proved-twice-independently/",
-      "source": "Latent Space - Productized AI/ML, Software 3.0, and other notes from Latent Space",
-      "feed_type": "news",
-      "type": "research-explainability",
-      "type_label": "Research Explainability",
-      "published": "2026-11-21T05:02:13+00:00",
-      "published_ts": 1795237333,
-      "smart_groups": [
-        "Agents & automation",
-        "Coding & dev tools"
-      ],
-      "curated": false
-    },
-    {
-      "title": "\ud83d\udd34 LIVE: Narendra Modi Urges Industry To Build India's Tech Capabilities | Front Page",
-      "summary": "At FICCI's annual convention, Prime Minister Narendra Modi urged industry to develop technologies India still imports, pointing to gaps in pharmaceutical ingredients, specialised metals and industrial machinery. Also in this broadcast: Karnataka's global capability centres taking on more AI work, \u20b91,050 crore in deeptech commitments from 24 venture capital firms, GlobalFoundries' planned $10 million investment in Cyient Semiconductors, Anthropic's record $81.3 billion IPO debut, Google's Gemini 4 Neon in the coding contest, the GTA VI launch, and Google's Willow quantum coordination result. As\u2026",
-      "link": "https://www.youtube.com/watch?v=kWwTEiz7NOw",
-      "source": "Analytics India Magazine",
-      "feed_type": "videos",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T04:30:32+00:00",
-      "published_ts": 1795235432,
-      "smart_groups": [
-        "Coding & dev tools",
-        "Chips & hardware"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Show HN: Bootstrapping a compiler with AI run on to ARM64, WASM, SPIR-V",
-      "summary": "",
-      "link": "https://github.com/drakestapleton/omega-mv/blob/main/seed/README.md",
-      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T04:17:44+00:00",
-      "published_ts": 1795234664,
-      "smart_groups": [
-        "Security & misuse"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Baseten Releases Bison-1 and Groundhog-1, Topping Decision Model Index",
-      "summary": "Baseten has released bison-1 and groundhog-1, 2 open-weight decision models built on Google\u2019s Gemma 4 . Decision models do not write text. They return calibrated probabilities for yes/no, choice and score questions. The Baseten bison-1 decision model scores 76 on the Artificial Analysis Decision Index v2.1 . That ranks #1 of 19. Both models raise context from 16k to 128k tokens and accept images. For routing, triage and guardrail pipelines, that means full policies and histories in one call. TL;DR Size: bison-1 is 31B dense. groundhog-1 is a 26B MoE with about 4B active. Both take 128k tokens\u2026",
-      "link": "https://www.marktechpost.com/2026/11/20/baseten-bison-1-groundhog-1-gemma-4-decision-models/",
-      "source": "MarkTechPost - An Artificial Intelligence News Platform",
-      "feed_type": "news",
-      "type": "ai-platforms-infra",
-      "type_label": "AI Platforms & Infra",
-      "published": "2026-11-21T04:01:04+00:00",
-      "published_ts": 1795233664,
-      "smart_groups": [
-        "Coding & dev tools",
-        "Research & papers"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Legit use cases for uncensored AI models",
-      "summary": "",
-      "link": "https://uplinkswitch.ai",
-      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T03:44:14+00:00",
-      "published_ts": 1795232654,
-      "smart_groups": [
-        "Security & misuse"
-      ],
-      "curated": false
-    },
-    {
-      "title": "What else could you use this for?",
-      "summary": "Sharing the latest news and advancements in AI Discover More: \ud83d\udee0\ufe0f Explore AI Tools & News: https://futuretools.io/ \ud83d\udcf0 Weekly Newsletter: https://futuretools.io/newsletter Socials: \u274c Twiter/X: https://x.com/mreflow \ud83d\uddbc\ufe0f Instagram: https://instagram.com/mr.eflow \ud83e\uddf5 Threads: https://www.threads.net/@mr.eflow \ud83d\udfe6 LinkedIn: https://www.linkedin.com/in/matt-wolfe-30841712/ \ud83d\udc4d Facebook: https://www.facebook.com/mattrwolfe Let\u2019s work together! - Brand, sponsorship & business inquiries: business@mattwolfe.com #AINews #AITools #ArtificialIntelligence",
-      "link": "https://www.youtube.com/shorts/7_pMINxEEPU",
-      "source": "Matt Wolfe",
-      "feed_type": "videos",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T03:42:44+00:00",
-      "published_ts": 1795232564,
-      "smart_groups": [
-        "Consumer AI"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Preview seed fixture (rolling)",
-      "summary": "Rolling, fully SYNTHETIC preview-database seed fixture baked from dev@10ddacffc54f (migration head: 20261120120000_add_onboarding_wizard_writer). Preview environments restore fixture.dump.gz (custom-format, gzipped, platform schema only, including _prisma_migrations) BEFORE running a PR's own migrations, so schema changes run against populated tables. RESTORE: apply restore-preamble.sql to the target database first (it creates the platform schema and installs the vector + pg_trgm extensions into it, which pg_dump --schema=platform omits), then run 'gunzip -c fixture.dump.gz | pg_restore -d --n\u2026",
-      "link": "https://github.com/Significant-Gravitas/AutoGPT/releases/tag/preview-seed-fixture",
-      "source": "AutoGPT Releases - GitHub releases for AutoGPT",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T03:39:54+00:00",
-      "published_ts": 1795232394,
-      "smart_groups": [
-        "Agents & automation",
-        "Data & analytics"
-      ],
-      "curated": false
-    },
-    {
-      "title": "The Dangers of AI 'Handoverism'",
-      "summary": "",
-      "link": "https://www.ft.com/content/45194ea4-4fa7-4c38-a5b2-137eb7402d57",
-      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T02:50:11+00:00",
-      "published_ts": 1795229411,
-      "smart_groups": [
-        "Security & misuse"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Images of Canada's most wanted are AI-generated",
-      "summary": "",
-      "link": "https://www.cbc.ca/news/canada/bolo-program-canada-fugitives-police-ai-9.7428331",
-      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T02:44:51+00:00",
-      "published_ts": 1795229091,
-      "smart_groups": [
-        "Security & misuse"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Interview #108 Spencer Insolia, Founding Managing Director, US, Duvo",
-      "summary": "Spencer Insolia, Founding Managing Director (US) at Duvo, breaks down why so many enterprise AI agents stall in pilot: they are built on the process diagram from headquarters instead of how the work actually gets done. He explains why demos only show the happy path, how three people running the same process three different ways makes automation brittle, and why agent budgets overrun when agents burn tokens on exceptions nobody taught them. Spencer also dives into the money quietly leaking between big software systems, from freight invoices to trade deductions worth 2-5% of revenue, and why mea\u2026",
-      "link": "https://podcasters.spotify.com/pod/show/tonyphoang/episodes/Interview-108-Spencer-Insolia--Founding-Managing-Director--US--Duvo-e3sousp",
-      "source": "The Artificial Intelligence Podcast",
-      "feed_type": "podcasts",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T02:12:11+00:00",
-      "published_ts": 1795227131,
-      "smart_groups": [
-        "Agents & automation",
-        "Business & funding"
-      ],
-      "curated": false
-    },
-    {
-      "title": "AI R&D-relevant model capabilities are improving rapidly",
-      "summary": "",
-      "link": "https://metr.org/blog/2026-11-20-q4-2026-capability-update/",
-      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T01:23:46+00:00",
-      "published_ts": 1795224226,
-      "smart_groups": [
-        "Security & misuse"
-      ],
-      "curated": false
-    },
-    {
-      "title": "AWS Quick Adds Chat-Built Flows and Multi-Agent Orchestration",
-      "summary": "Amazon Web Services released a broad AWS Quick update on November 20, 2026, adding chat-built business workflows and orchestration that pools output from several specialized agents. A redesigned web app, new connectors, and expanded administrative controls support a push to make AI-assisted processes repeatable across teams. Conversational Flows Standardize Recurring Work Users can describe a process in chat and have Quick construct a flow that they can run, test, and refine in the same\u2026",
-      "link": "https://www.unite.ai/aws-quick-adds-chat-built-flows-and-multi-agent-orchestration/",
-      "source": "Unite.AI - - AI News",
-      "feed_type": "news",
-      "type": "general-news",
-      "type_label": "General News",
-      "published": "2026-11-21T01:20:01+00:00",
-      "published_ts": 1795224001,
-      "smart_groups": [
-        "Agents & automation"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Things I learned coding with AI for a year",
-      "summary": "",
-      "link": "https://twnstr.com/blogs/software-development-post-ai",
-      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T01:18:18+00:00",
-      "published_ts": 1795223898,
-      "smart_groups": [
-        "Coding & dev tools"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Detecting AI Agents in Next.js with Vouched KYA",
-      "summary": "",
-      "link": "https://www.vouched.id/learn/blog/detecting-ai-agents-in-next.js-with-vouched-kya",
-      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T01:10:10+00:00",
-      "published_ts": 1795223410,
-      "smart_groups": [
-        "Agents & automation"
-      ],
-      "curated": false
-    },
-    {
-      "title": "House China Cmte: China Trying to Get US Companies Addicted to Chinese AI Models",
-      "summary": "",
-      "link": "https://chinaselectcommittee.house.gov/media/reports/joint-investigation-report-china-is-trying-to-get-us-companies-addicted-to-chinese-ai-models",
-      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T01:03:45+00:00",
-      "published_ts": 1795223025,
-      "smart_groups": [
-        "Policy & government"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Oracle Says Funding for OpenAI Infrastructure Contract Is Secured",
-      "summary": "Oracle said in a November 20, 2026 statement that it had secured all funding required for its OpenAI infrastructure contract and described itself as the first hyperscaler fully funded for this investment cycle. The announcement followed what Oracle called its final capital raise earlier in November. The financing outlined at Oracle Investor Day, including vendor financing, is in place. Oracle called any further private discussions with vendors \u201cadditional options,\u201d said delivery of the OpenAI\u2026",
-      "link": "https://www.unite.ai/oracle-says-funding-for-openai-infrastructure-contract-is-secured/",
-      "source": "Unite.AI - - AI News",
-      "feed_type": "news",
-      "type": "general-news",
-      "type_label": "General News",
-      "published": "2026-11-21T00:47:04+00:00",
-      "published_ts": 1795222024,
-      "smart_groups": [
-        "Business & funding"
-      ],
-      "curated": false,
-      "story_id": "c034ee2f0fa8",
-      "story_size": 2,
-      "story_primary": true,
-      "story_others": [
-        {
-          "source": "Techmeme - Tech Web, page A1",
-          "title": "Oracle says it has secured funding for its infrastructure contract with OpenAI and \"any further private discussions with vendors are just additional options\" (@oracle)",
-          "link": "https://www.techmeme.com/261120/p43#a261120p43",
-          "published_ts": 1795220700
-        }
-      ]
-    },
-    {
-      "title": "A push for a treaty to not allow AI total control over nukes",
-      "summary": "",
-      "link": "https://theelders.org/news/humanity-threshold-declaration-artificial-intelligence-and-nuclear-weapons",
-      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T00:31:13+00:00",
-      "published_ts": 1795221073,
-      "smart_groups": [
-        "Security & misuse"
-      ],
-      "curated": false
-    },
-    {
-      "title": "If AI found better drugs for every disease, what would it cost to prove it?",
-      "summary": "",
-      "link": "https://cvigoe.github.io/website/ai-cures/",
-      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T00:29:57+00:00",
-      "published_ts": 1795220997,
-      "smart_groups": [
-        "Health & science"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Oracle says it has secured funding for its infrastructure contract with OpenAI and \"any further private discussions with vendors are just additional options\" (@oracle)",
-      "summary": "@oracle : Oracle says it has secured funding for its infrastructure contract with OpenAI and \u201cany further private discussions with vendors are just additional options\u201d \u2014 Oracle has secured all the funding we need to fulfill our contract with OpenAI. With our final capital raise earlier this month, we became the first hyperscaler fully funded for this investment cycle. The financing we outlined at Oracle Investor Day, including vendor financing, is in...",
-      "link": "https://www.techmeme.com/261120/p43#a261120p43",
-      "source": "Techmeme - Tech Web, page A1",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T00:25:00+00:00",
-      "published_ts": 1795220700,
-      "smart_groups": [
-        "Business & funding"
-      ],
-      "curated": false,
-      "story_id": "c034ee2f0fa8",
-      "story_size": 2
-    },
-    {
-      "title": "Three insights you may have missed from theCUBE\u2019s coverage of the Dell Technologies New York Symposium",
-      "summary": "",
-      "link": "https://siliconangle.com/2026/11/20/three-insights-missed-thecubes-coverage-dell-technologies-new-york-symposium-dellnewyorksymposium/",
-      "source": "AI \u2013 SiliconANGLE - Extracting the signal from the noise.",
-      "feed_type": "news",
-      "type": "general-news",
-      "type_label": "General News",
-      "published": "2026-11-21T00:21:22+00:00",
-      "published_ts": 1795220482,
-      "smart_groups": [],
-      "curated": false
-    },
-    {
-      "title": "Fridges, Hackers, AI and La Flemme",
-      "summary": "Using the 2026 Danfoss fridge hacks that defrosted supermarket and blood-bank refrigerators across Europe as a case study, this piece shows how AI can rebuild an authentication bypass on industrial controllers when given public firmware, known CVEs and some reverse-engineered details, a sign that specialized attack knowledge is getting cheaper to reproduce and that HVAC, medical storage, elevators and EV chargers face the same risk. Read All",
-      "link": "https://hackernoon.com/fridges-hackers-ai-and-la-flemme?source=rss",
-      "source": "Hacker Noon - ai - Humans with irrational brains writing about machines with rational brains.",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T00:19:19+00:00",
-      "published_ts": 1795220359,
-      "smart_groups": [
-        "Security & misuse"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Anthropic Researcher Claims to Solve Riemann Problem With Claude",
-      "summary": "On the heels of Anthropic PBC\u2019s record-breaking initial public offering, a researcher at the company said he believes he used its artificial intelligence software to solve a famous number theory problem that has plagued mathematicians for more than 150 years.",
-      "link": "https://www.bloomberg.com/news/articles/2026-11-21/anthropic-researcher-claims-to-solve-riemann-problem-with-claude",
-      "source": "Bloomberg Technology - Bloomberg Technology",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T00:17:14+00:00",
-      "published_ts": 1795220234,
-      "smart_groups": [
-        "Health & science"
-      ],
-      "curated": false,
-      "story_id": "a3e2801f97fb",
-      "story_size": 7
-    },
-    {
-      "title": "Wall Street Week | Gaming Blockbuster, Healthcare Costs, Cybersecurity Meets AI",
-      "summary": "This week, former New York Fed President Bill Dudley and Kathryn Judge of Columbia Law School discuss what the Treasury and Fed can do to tackle the nation\u2019s debt crisis. Plus, what Grand Theft Auto 6\u2019s release means for a video game industry that routinely faces layoffs, delays and slowing consumer spending. Later, surging healthcare costs affect businesses and their employees as Americans choose their insurance policies for the year ahead. And, how is AI changing the cybersecurity stakes for small businesses? (Source: Bloomberg)",
-      "link": "https://www.bloomberg.com/news/videos/2026-11-21/wall-street-week-gaming-blockbuster-cybersecurity-video",
-      "source": "Bloomberg Technology - Bloomberg Technology",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T00:13:38+00:00",
-      "published_ts": 1795220018,
-      "smart_groups": [
-        "Security & misuse",
-        "Health & science"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Is Ssense Pivoting to AI Slop?",
-      "summary": "",
-      "link": "https://www.thecut.com/article/is-ssense-pivoting-to-ai-slop.html",
-      "source": "Hacker News (AI tag) - Filtered Hacker News posts mentioning AI",
-      "feed_type": "blog",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-21T00:06:18+00:00",
-      "published_ts": 1795219578,
-      "smart_groups": [
-        "Security & misuse"
-      ],
-      "curated": false
-    },
-    {
-      "title": "A global atlas of digital dermatology to map innovation and disparities",
-      "summary": "",
-      "link": "https://www.nature.com/articles/s41467-026-78602-w",
-      "source": "Machine learning : nature.com subject feeds - Latest news and research from Nature.com on the topic of Machine learning",
-      "feed_type": "news",
-      "type": "official-labs-research",
-      "type_label": "Official Labs & Research",
-      "published": "2026-11-21T00:00:00+00:00",
-      "published_ts": 1795219200,
-      "smart_groups": [],
-      "curated": false
-    },
-    {
-      "title": "I compared Whisper with AssemblyAI for video editing",
-      "summary": "Lots of people run Whisper locally to transcribe their footage before editing with Claude Code. I set up two Claude Code sessions with the same prompt and changed only the transcription engine: Whisper large-v3 running locally with mlx-whisper, and AssemblyAI-STT-3.7 with Medical Mode. Each one transcribed the same clip, edited a captioned cut from its transcript, and reported how well its timestamps matched the audio. What came out of this test: AssemblyAI finished in 15 seconds and Whisper in 25. Whisper turned \"reverse with sugammadex\" into \"acidic acid, acidic acid with sugar medex\", words\u2026",
-      "link": "https://www.youtube.com/watch?v=3CDTs-0yd1I",
-      "source": "AssemblyAI",
-      "feed_type": "videos",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-20T23:50:31+00:00",
-      "published_ts": 1795218631,
-      "smart_groups": [
-        "Coding & dev tools",
-        "Work & society"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Nasdaq 100 fell 5.6% on Friday, taking its loss for the week to 10.4%, its worst run in more than six years, amid fears of a slowdown in the AI investment boom (George Steer/Financial Times)",
-      "summary": "George Steer / Financial Times : Nasdaq 100 fell 5.6% on Friday, taking its loss for the week to 10.4%, its worst run in more than six years, amid fears of a slowdown in the AI investment boom \u2014 Shares in Anthropic and Nvidia tumble as fears over the AI spending boom grip Wall Street \u2014 US tech stocks plunged \u2026",
-      "link": "https://www.techmeme.com/261120/p42#a261120p42",
-      "source": "Techmeme - Tech Web, page A1",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-20T23:50:00+00:00",
-      "published_ts": 1795218600,
-      "smart_groups": [
-        "Business & funding"
-      ],
-      "curated": false
-    },
-    {
-      "title": "The race to prove the Riemann Hypothesis just became a human-versus-AI showdown",
-      "summary": "The drama in the math community is reaching a fever pitch. tiero/Getty Images An Anthropic mathematician said he solved the most famous open problem in mathematics on Friday. Then, another mathematician said he also solved it \u2014 without using AI. The double whammy has roiled a math community already shaken by AI's effect on the field. The drama over AI in the math community is getting real. Hours after Levent Alp\u00f6ge , a mathematician at Anthropic, said he solved the most famous open problem in the field using AI on Friday, another mathematician came out of the woodwork to announce he'd also sol\u2026",
-      "link": "https://www.businessinsider.com/riemann-hypothesis-math-human-ai-dueling-solution-alpoge-masullo-2026-11",
-      "source": "Business Insider - Content from Business Insider Excluding Premium",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-20T23:33:11+00:00",
-      "published_ts": 1795217591,
-      "smart_groups": [
-        "Research & papers",
-        "Legal & copyright"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Tony Wang on CrowdStrike-Zscaler Deal, AI Trade",
-      "summary": "Tony Wang, Portfolio Manager of the Science and Technology Equity Strategy at T. Rowe Price, is asked whether the AI cycle has changed and whether recent declines create a buying opportunity. He also flags Wednesday\u2019s PCE inflation report as a potential catalyst for markets. He speaks with Romaine Bostick on \"The Close.\" (Source: Bloomberg)",
-      "link": "https://www.bloomberg.com/news/videos/2026-11-20/tony-wang-on-crowdstrike-zscaler-deal-ai-trade-video",
-      "source": "Bloomberg Technology - Bloomberg Technology",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-20T23:27:12+00:00",
-      "published_ts": 1795217232,
-      "smart_groups": [],
-      "curated": false
-    },
-    {
-      "title": "Anthropic Mathematician Says He Proved Riemann Hypothesis",
-      "summary": "Anthropic mathematician Levent Alp\u00f6ge claimed to have solved the most famous open problem in math with help from Anthropic\u2019s AI models, according to a document on his personal website that surfaced on Friday. Since 1859, mathematicians have attempted to prove the Riemann Hypothesis, which ...",
-      "link": "https://www.theinformation.com/briefings/anthropic-mathematician-says-proved-riemann-hypothesis",
-      "source": "The Information - The Information has a simple mission: deliver important, deeply reported stories about the technology business you won\u2019t find elsewhere. Many \u2026",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-20T23:24:16+00:00",
-      "published_ts": 1795217056,
-      "smart_groups": [
-        "Health & science"
-      ],
-      "curated": false,
-      "story_id": "a3e2801f97fb",
-      "story_size": 7
-    },
-    {
-      "title": "Cops Are Pushing Extremely Corny \u2018Grand Theft Auto 6\u2019 Slop",
-      "summary": "The blockbuster game makes no secret of its contempt for law enforcement. Real police departments using it to recruit new members and scold the public apparently didn\u2019t get the memo.",
-      "link": "https://www.wired.com/story/cops-are-being-extremely-corny-about-gta-vi/",
-      "source": "Artificial Intelligence Latest - Channel Description",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-20T23:24:02+00:00",
-      "published_ts": 1795217042,
-      "smart_groups": [],
-      "curated": false
-    },
-    {
-      "title": "Anysphere Weighs Moving Cursor Away From Chinese Open-Weight Models",
-      "summary": "Anysphere, the developer of the Cursor AI coding platform, told House investigators it plans to explore phasing out Chinese-developed open-weight AI models because of geopolitical risk, according to a joint congressional report released November 20, 2026. The disclosure is an exploratory plan, not a completed phase-out, and the committees described no final decision or timetable. The House Committee on Homeland Security and the House Select Committee on China published the findings after an\u2026",
-      "link": "https://www.unite.ai/anysphere-weighs-moving-cursor-away-from-chinese-open-weight-models/",
-      "source": "Unite.AI - - AI News",
-      "feed_type": "news",
-      "type": "general-news",
-      "type_label": "General News",
-      "published": "2026-11-20T23:24:02+00:00",
-      "published_ts": 1795217042,
-      "smart_groups": [
-        "Coding & dev tools",
-        "Policy & government"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Google Just Released Its Craziest AI Project Yet",
-      "summary": "Get the FREE Dots PDF https://learn.aiadvantage.com/free-ai-assistant-pdf Join The AI Advantage Club https://joinaiaclub.com/igor Google just released one of the wildest things I\u2019ve ever seen in AI. It\u2019s still early, but I can\u2019t stop thinking about where this could go. If this is what the beginning looks like, imagine what we\u2019ll be doing with it a year from now. This is one of those moments worth paying attention to. Explore Project Genie (eligible Google AI Ultra subscribers): https://labs.google/projectgenie Genie 4 announcement and demos: https://deepmind.google/blog/genie-4-a-new-generatio\u2026",
-      "link": "https://www.youtube.com/watch?v=aRQ5e9uy7Ug",
-      "source": "The AI Advantage",
-      "feed_type": "videos",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-20T23:21:10+00:00",
-      "published_ts": 1795216870,
-      "smart_groups": [
-        "Consumer AI"
-      ],
-      "curated": false
-    },
-    {
-      "title": "AWS Adds Managed Cluster Extensions to SageMaker HyperPod Slurm",
-      "summary": "Amazon Web Services launched managed cluster extensions for Amazon SageMaker HyperPod Slurm on November 20, 2026, bringing declarative configuration to software on running nodes through APIs or the SageMaker AI console. The first two extensions cover observability and user management, including directory integration. The launch addresses the part of a shared AI training cluster that changes after provisioning. HyperPod had already added API-driven Slurm configuration, AMI-based node setup\u2026",
-      "link": "https://www.unite.ai/aws-adds-managed-cluster-extensions-to-sagemaker-hyperpod-slurm/",
-      "source": "Unite.AI - - AI News",
-      "feed_type": "news",
-      "type": "general-news",
-      "type_label": "General News",
-      "published": "2026-11-20T23:17:02+00:00",
-      "published_ts": 1795216622,
-      "smart_groups": [
-        "Infra & model ops"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Cursor tells lawmakers it is considering phasing out Chinese open-weight AI models due to \"geopolitical risk\"; Cursor's Composer 2 was built on Kimi K2.5 (Kai Nicol-Schwarz/CNBC)",
-      "summary": "Kai Nicol-Schwarz / CNBC : Cursor tells lawmakers it is considering phasing out Chinese open-weight AI models due to \u201cgeopolitical risk\u201d; Cursor's Composer 2 was built on Kimi K2.5 \u2014 SpaceX's artificial-intelligence coding platform, Cursor, is considering moving away from using of Chinese AI models due to \u201cgeopolitical risk,\u201d CNBC has learned.",
-      "link": "https://www.techmeme.com/261120/p39#a261120p39",
-      "source": "Techmeme - Tech Web, page A1",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-20T23:00:01+00:00",
-      "published_ts": 1795215601,
-      "smart_groups": [
-        "Model releases",
-        "Coding & dev tools",
-        "Policy & government"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Hindlian Advisory CEO on AI & Anthropic Market Sell-off",
-      "summary": "Amanda Hindlian, Founder and CEO of Hindlian Advisory and Former Global Head of Capital Markets at the New York Stock Exchange, says Anthropic\u2019s IPO should be judged separately from a volatile week for markets. She notes that investors had been uncertain about the pricing and overall execution just two weeks earlier, but the offering priced well, drew a significantly oversubscribed book\u2014estimated at five to seven times\u2014and traded strongly on its first day. She speaks with Romaine Bostick on \"The Close.\" (Source: Bloomberg)",
-      "link": "https://www.bloomberg.com/news/videos/2026-11-20/hindlian-advisory-ceo-on-ai-anthropic-market-sell-off-video",
-      "source": "Bloomberg Technology - Bloomberg Technology",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-20T22:58:38+00:00",
-      "published_ts": 1795215518,
-      "smart_groups": [
-        "Business & funding"
-      ],
-      "curated": false
-    },
-    {
-      "title": "AWS Routes HyperPod Inference Across Regions From One Endpoint",
-      "summary": "AWS introduced Amazon SageMaker HyperPod Global Inference Gateway on November 20, 2026, giving customers one managed endpoint for inference requests across registered HyperPod clusters in a single AWS Region or multiple Regions. The service selects a cluster using capacity, queue, proximity and error signals, with automatic failover when a cluster becomes unavailable. The launch adds a second routing tier above the existing SageMaker HyperPod Inference Gateway. That cluster-level gateway\u2026",
-      "link": "https://www.unite.ai/aws-routes-hyperpod-inference-across-regions-from-one-endpoint/",
-      "source": "Unite.AI - - AI News",
-      "feed_type": "news",
-      "type": "general-news",
-      "type_label": "General News",
-      "published": "2026-11-20T22:52:04+00:00",
-      "published_ts": 1795215124,
-      "smart_groups": [
-        "Infra & model ops"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Potential Cognition AI Round Would Raise $2B-Plus at $75B Valuation",
-      "summary": "Bloomberg News reported on November 20, 2026, citing people familiar with the matter, that Cognition AI was discussing a new funding round at a $75 billion valuation and considering raising $2 billion or more, in an account carried by Reuters. The talks were ongoing and the details could change. The report described a potential financing rather than a completed investment. Cognition did not immediately respond to Reuters\u2019 request for comment. Valuation Gap to Completed 2026 Rounds Cognition\u2026",
-      "link": "https://www.unite.ai/potential-cognition-ai-round-would-raise-2b-plus-at-75b-valuation/",
-      "source": "Unite.AI - - AI News",
-      "feed_type": "news",
-      "type": "general-news",
-      "type_label": "General News",
-      "published": "2026-11-20T22:50:03+00:00",
-      "published_ts": 1795215003,
-      "smart_groups": [
-        "Business & funding"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Scribe CEO Jennifer Smith on AI Usage in the Workplace",
-      "summary": "Jennifer Smith, Co-Founder and CEO of Scribe and a former Consultant at McKinsey, discusses AI valuations to adoption, noting research that puts AI use for workplace tasks below 4%. She says the findings contrast with the widespread chatbot and AI use they observe in their own circle. She speaks with Romaine Bostick on \u201cThe Close.\u201d (Source: Bloomberg)",
-      "link": "https://www.bloomberg.com/news/videos/2026-11-20/scribe-ceo-jennifer-smith-on-ai-usage-in-the-workplace-video",
-      "source": "Bloomberg Technology - Bloomberg Technology",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-20T22:38:25+00:00",
-      "published_ts": 1795214305,
-      "smart_groups": [
-        "Work & society"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Is your boss selling your data?",
-      "summary": "Google paid about $10 million for Spirit Airlines' data after it went bankrupt: about 100 million emails and 500 million Teams messages. I think the reason is simple. AI companies have basically run out of public internet, and they want to see how real work happens. Now brokers are offering live companies six to seven figures for Slack DMs and emails, then reselling them to AI labs. If your old messages are worth millions, should you get a cut?",
-      "link": "https://www.youtube.com/shorts/DhFWQPMn_8k",
-      "source": "Ken Jee",
-      "feed_type": "videos",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-20T22:29:05+00:00",
-      "published_ts": 1795213745,
-      "smart_groups": [],
-      "curated": false
-    },
-    {
-      "title": "Trump threatens a 'tremendous tax' on tech companies building data centers outside the US",
-      "summary": "Trump threatened a \"tremendous tax\" on companies that build data centers outside the US. Mehmet Eser/Anadolu via Getty Images Trump threatened a \"tremendous tax\" on companies that build data centers outside the US. The warning comes as tech giants invest billions in overseas data center projects. Trump said local officials should \"take advantage of the data centers\" and ask for payment. Donald Trump gave a stark warning to companies looking to build data centers overseas. Trump said at Friday's White House press briefing that his administration would impose a \"tremendous tax\" on companies that\u2026",
-      "link": "https://www.businessinsider.com/trump-warning-building-overseas-data-centers-2026-11",
-      "source": "Business Insider - Content from Business Insider Excluding Premium",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-20T22:29:03+00:00",
-      "published_ts": 1795213743,
-      "smart_groups": [
-        "Policy & government",
-        "Energy & data centers"
-      ],
-      "curated": false,
-      "story_id": "3a0cb236fd32",
-      "story_size": 3
-    },
-    {
-      "title": "CrowdStrike Reportedly in Talks to Acquire AI Security Partner Zscaler",
-      "summary": "Bloomberg reported on November 20, 2026, that CrowdStrike was in ongoing talks to acquire Zscaler, citing people familiar with the matter, in a report carried by CNBC. Zscaler shares rose 18% in extended trading following the report, while CrowdStrike shares fell more than 8%. No acquisition agreement has been announced. CrowdStrike declined to comment on the report, and Zscaler did not immediately respond to a request for comment. CNBC put CrowdStrike\u2019s market capitalization at $235 billion\u2026",
-      "link": "https://www.unite.ai/crowdstrike-reportedly-in-talks-to-acquire-ai-security-partner-zscaler/",
-      "source": "Unite.AI - - AI News",
-      "feed_type": "news",
-      "type": "general-news",
-      "type_label": "General News",
-      "published": "2026-11-20T22:13:03+00:00",
-      "published_ts": 1795212783,
-      "smart_groups": [
-        "Business & funding"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Artificial Analysis says Inkling 2 Mini, with 5.4B active parameters, matches Qwen3.8 27B (xhigh) on its Intelligence Index with ~5x fewer active parameters (Artificial Analysis)",
-      "summary": "Artificial Analysis : Artificial Analysis says Inkling 2 Mini, with 5.4B active parameters, matches Qwen3.8 27B (xhigh) on its Intelligence Index with ~5x fewer active parameters \u2014 Thinking Machines has released Inkling 2 Mini at 20 on the Artificial Analysis Intelligence Index, an open weights looped transformer \u2026",
-      "link": "https://www.techmeme.com/261120/p37#a261120p37",
-      "source": "Techmeme - Tech Web, page A1",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-20T22:10:00+00:00",
-      "published_ts": 1795212600,
-      "smart_groups": [],
-      "curated": false
-    },
-    {
-      "title": "CrowdStrike in Talks to Buy Zscaler",
-      "summary": "CrowdStrike is in talks to buy the $32 billion cybersecurity firm Zscaler, Bloomberg reported Friday. The deal talks are the latest in a monthlong dealmaking frenzy in cybersecurity as AI-related threats drive companies to spend more on security tools; rival security giant Palo Alto Networks ...",
-      "link": "https://www.theinformation.com/briefings/crowdstrike-talks-buy-zscaler",
-      "source": "The Information - The Information has a simple mission: deliver important, deeply reported stories about the technology business you won\u2019t find elsewhere. Many \u2026",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-20T22:07:23+00:00",
-      "published_ts": 1795212443,
-      "smart_groups": [
-        "Business & funding",
-        "Security & misuse"
-      ],
-      "curated": false
-    },
-    {
-      "title": "Google rolls out new search homepage with AI chat history and no search button",
-      "summary": "Google's flagship search experience is evolving into an AI experience with stunning speed. Even time-tested elements of search are getting AI makeovers, and the latest to get this treatment is the search homepage on Google.com. A redesign that's been in testing for the last few weeks is now official, bringing easier access to AI chats and dropping the dedicated search button entirely. Google search VP Robby Stein confirmed on X that Google is deploying the new desktop search page after a successful test. The page will now have a few more buttons under the search bar, all connected to AI featur\u2026",
-      "link": "https://arstechnica.com/ai/2026/11/googles-latest-search-page-redesign-drops-the-search-button-adds-ai-sidebar/",
-      "source": "Ars Technica - All content - All Ars Technica stories",
-      "feed_type": "news",
-      "type": "media-tech-analysis",
-      "type_label": "Media & Tech Analysis",
-      "published": "2026-11-20T21:58:29+00:00",
-      "published_ts": 1795211909,
-      "smart_groups": [
-        "Vision, audio & video",
-        "Consumer AI"
       ],
       "curated": false
     }
