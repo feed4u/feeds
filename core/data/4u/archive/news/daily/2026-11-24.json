@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-25T01:01:03.592550+00:00",
+  "generated_at": "2026-11-25T18:50:57.488124+00:00",
   "date": "2026-11-24",
-  "total_items": 330,
+  "total_items": 340,
   "next_chunk": "archive/news/daily/2026-11-23.json",
   "items": [
     {
@@ -51,7 +51,7 @@
       "smart_groups": [],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "OpenAI says GPT-6 models can design new protein shapes and sequences using only reasoning and code, without calling specialized biology models to generate them (OpenAI)",
@@ -85,7 +85,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "Perplexity Guide Details Permission and Citation Tests for AI Search",
@@ -301,6 +301,20 @@
       "curated": false
     },
     {
+      "title": "Is the Glass Half Filled or Almost Empty?",
+      "summary": "[",
+      "summary_html": "<!-- \n<div style=\"min-height: 30px;\">\n[social4i size=\"small\" align=\"align-left\"]\n</div>\n-->\n<div>\n[This article was first published on  <strong><a href=\"https://ikashnitsky.phd/2026/half-empty/\"> Ilya Kashnitsky</a></strong>, and kindly contributed to <a href=\"https://www.r-bloggers.com/\">R-bloggers</a>].  (You can report issue about the content on this page <a href=\"https://www.r-bloggers.com/contact-us/\">here</a>)\nWant to share your content on R-bloggers?<a href=\"https://www.r-bloggers.com/add-your-blog/\"> click here</a> if you have a blog, or <a href=\"http://r-posts.com/\"> here</a> if you don't.\n</div>\n<p>Today I saw a <a href=\"https://lnkd.in/p/e7xdAvba\">fascinating dataviz (mis)interpretation case</a> that featured a plot from a recent <a href=\"https://substack.com/@ernietedeschi/note/c-392796478\">Stripe data analysis</a> that claims that agentic commerce is on the rise and is very \u201csticky\u201d.</p>\n<p>A very compelling story, supported by a nice upward facing line\u2026 At least that\u2019s the first impression. We are apparently seeing an emerging success story for AI-driven commerce.</p>\n<p></p>\n<p>Among customers who made one purchase, 56% made a second. Among those who reached nine purchases, 78% went on to make a tenth. The curve climbs steadily from 56% to 78%, subtly nudging the reader toward the impression that customer retention strengthens as people get hooked on agentic shopping.</p>\n<p>Except\u2026Those who ever saw markovian processes immediately spot the issue here. A very common example of such a process is is a sequence of <strong>birth parity progression probabilities</strong>, the metric demographers use to measure the proportion of women with a specific number children who go on to have the next one.</p>\n<p>Plotting conditional probabilities creates a classic selection illusion because the reader (being just a human) cannot immediately see how each successive step along the probability line is shrinking the pool of the remaining people who are subject to experiencing the next transition probability.</p>\n<p>How can we better represent the data? One way is to turn it into a survival curve showing explicitly the process of dropping out of the initial pool.</p>\n<p>Let\u2019s run the numbers in R:</p>\n<div>\n<pre>library(tidyverse)\nlibrary(gt)\n\ndf_survival &lt;- tibble(\n  order = 1:10,\n  p_continue = c(0.56, 0.63, 0.67, 0.70, 0.73, 0.74, 0.75, 0.77, 0.78, NA)\n) |&gt;\n  mutate(\n    survival = lag(cumprod(p_continue), default = 1),\n    drop_off = survival - lead(survival)\n  )\n\n\ndf_survival |&gt;\n  gt::gt() |&gt;\n  gt::fmt_percent(columns = c(p_continue, survival, drop_off), decimals = 1) |&gt;\n  gt::sub_missing(missing_text = \"\u2014\") |&gt;\n  gt::cols_label(\n    order = \"Order\",\n    p_continue = \"Conditional P(next)\",\n    survival = \"Cohort surviving\",\n    drop_off = \"Drop-off\"\n  )</pre>\n<div>\n<div>\n\n\nOrder\nConditional P(next)\nCohort surviving\nDrop-off\n\n\n\n1\n56.0%\n100.0%\n44.0%\n\n\n2\n63.0%\n56.0%\n20.7%\n\n\n3\n67.0%\n35.3%\n11.6%\n\n\n4\n70.0%\n23.6%\n7.1%\n\n\n5\n73.0%\n16.5%\n4.5%\n\n\n6\n74.0%\n12.1%\n3.1%\n\n\n7\n75.0%\n8.9%\n2.2%\n\n\n8\n77.0%\n6.7%\n1.5%\n\n\n9\n78.0%\n5.2%\n1.1%\n\n\n10\n\u2014\n4.0%\n\u2014\n\n\n\n</div>\n</div>\n</div>\n<p>Already here, in the table representation of the data, we can see the main point. Of those who tried agentic shopping, half never bothered again, and so on. When you represent the progression as a survival line, only 4% of the initial pool reached 10th order.</p>\n<p>Let\u2019s plot it:</p>\n<div>\n<pre>df_survival |&gt;\n  ggplot(aes(x = order, y = survival)) +\n  geom_step(linewidth = 1, color = \"#269292\") +\n  geom_point(size = 2.5, color = \"#269292\") +\n  geom_text(\n    aes(label = scales::percent(survival, accuracy = 0.1)),\n    vjust = -1.1,\n    hjust = -.1,\n    size = 5\n  ) +\n  scale_x_continuous(breaks = 1:10) +\n  scale_y_continuous(\n    labels = scales::percent_format(accuracy = 1),\n    limits = c(0, 1.08),\n    expand = c(0, 0)\n  ) +\n  labs(\n    title = \"Only 4% of initial buyers\\nreach a 10th agentic order\",\n    subtitle = \"Share of first-time buyers surviving to at least the n-th purchase\",\n    x = \"Order number (n)\",\n    y = \"Initial cohort surviving\",\n    caption = \"Data: Stripe analysis (Nov 2026) | Graphic: @ikashnitsky.phd\"\n  ) </pre>\n<div>\n<div>\n<div>\n\n</div>\n\nFigure\u00a01: Cohort survival across repeat agentic purchases (recalculated from Stripe data)\n\n</div>\n</div>\n</div>\n<p>So, is the glass half filled or almost empty? </p>\n<!-- -->\n<div>\n<div>To <strong>leave a comment</strong> for the author, please follow the link and comment on their blog: <strong><a href=\"https://ikashnitsky.phd/2026/half-empty/\"> Ilya Kashnitsky</a></strong>.</div>\n\n<a href=\"https://www.r-bloggers.com/\">R-bloggers.com</a> offers <strong><a href=\"https://feedburner.google.com/fb/a/mailverify?uri=RBloggers\">daily e-mail updates</a></strong> about <a href=\"https://www.r-project.org/\">R</a> news and tutorials about <a href=\"https://www.r-bloggers.com/how-to-learn-r-2/\">learning R</a> and many other topics. <a href=\"https://www.r-users.com/\">Click here if you're looking to post or find an R/data-science job</a>.\n\nWant to share your content on R-bloggers?<a href=\"https://www.r-bloggers.com/add-your-blog/\"> click here</a> if you have a blog, or <a href=\"http://r-posts.com/\"> here</a> if you don't.\n</div><strong>Continue reading</strong>: <a href=\"https://www.r-bloggers.com/2026/11/is-the-glass-half-filled-or-almost-empty/\">Is the Glass Half Filled or Almost Empty?</a>",
+      "link": "https://www.r-bloggers.com/2026/11/is-the-glass-half-filled-or-almost-empty/",
+      "source": "R-bloggers - R news and tutorials contributed by hundreds of R bloggers",
+      "feed_type": "news",
+      "type": "data-science-mlops",
+      "type_label": "Data Science & MLOps",
+      "published": "2026-11-24T23:00:00+00:00",
+      "published_ts": 1795561200,
+      "smart_groups": [],
+      "curated": false
+    },
+    {
       "title": "AI Stocks Retreat as Markets Rotate Beyond Tech",
       "summary": "The Close brings you the latest news and analysis leading up to the final minutes and seconds before and after the closing bell on Wall Street. Today's guests are Manulife John Hancock Investments Co-Chief Investment Strategist Emily Roland, JPMorgan Head of US High-Grade Credit Strategy Nathaniel Rosenbaum, The Conference Board Chief Economist, Leader of Economy, Strategy & Finance Center Dana Peterson, CUNY Graduate Center Research Professor, Economics Paul Krugman, Schwab Center for Financial Research Head of Macro Research & Strategy Kevin Gordon, Bernstein Research Senior Analyst Stacy Rasgon, Bank of America Business Banking President Sharon Miller, Kinship Ventures Co-Founder & General Partner Gwyneth Paltrow & Co-Founder & Managing Partner Moj Mahdara, & Butterball CEO Jay Jandrain. (Source: Bloomberg)",
       "summary_html": "The Close brings you the latest news and analysis leading up to the final minutes and seconds before and after the closing bell on Wall Street. Today's guests are Manulife John Hancock Investments Co-Chief Investment Strategist Emily Roland, JPMorgan Head of US High-Grade Credit Strategy Nathaniel Rosenbaum, The Conference Board Chief Economist, Leader of Economy, Strategy &amp; Finance Center Dana Peterson, CUNY Graduate Center Research Professor, Economics Paul Krugman, Schwab Center for Financial Research Head of Macro Research &amp; Strategy Kevin Gordon, Bernstein Research Senior Analyst Stacy Rasgon, Bank of America Business Banking President Sharon Miller, Kinship Ventures Co-Founder &amp; General Partner Gwyneth Paltrow &amp; Co-Founder &amp; Managing Partner Moj Mahdara, &amp; Butterball CEO Jay Jandrain. (Source: Bloomberg)",
@@ -445,7 +459,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "AI Servers Got Up to 45% More Expensive After the Contracts Were Signed.",
@@ -526,7 +540,9 @@
       "smart_groups": [
         "Policy & government"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "cd728ceea767",
+      "story_size": 79
     },
     {
       "title": "Jensen Huang Apologizes to Nvidia Employees, Says He Is in Therapy",
@@ -544,7 +560,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "Maple Raises $5.3M Seed to Build a Privacy-Focused Cloud AI Agent",
@@ -819,7 +835,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "A judge orders the ex-OpenAI staffer charged with bugging an exec conference room released on $1M bond, finding prosecutors lack evidence to keep him in custody (Bloomberg)",
@@ -867,7 +883,18 @@
       "smart_groups": [
         "Data & analytics"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "a9a8e6acbd75",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "Computerworld - The Voice of Business Technology.",
+          "title": "Anthropic lets you install Claude \u2018artifacts\u2019 as Mac apps",
+          "link": "https://www.computerworld.com/article/4253109/anthropic-lets-you-install-claude-artifacts-as-mac-apps.html",
+          "published_ts": 1795603800
+        }
+      ]
     },
     {
       "title": "Nvidia Employees Disgusted by Decision to Rehire Sex Pest CEO Jensen Huang",
@@ -926,6 +953,22 @@
       "published_ts": 1795552493,
       "smart_groups": [
         "Health & science"
+      ],
+      "curated": false
+    },
+    {
+      "title": "MemoryWorks",
+      "summary": "Company memory for people and AI agents Discussion | Link",
+      "summary_html": "<p>\n            Company memory for people and AI agents\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/memoryworks?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1329703?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/memoryworks",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-24T20:30:45+00:00",
+      "published_ts": 1795552245,
+      "smart_groups": [
+        "Agents & automation"
       ],
       "curated": false
     },
@@ -1124,7 +1167,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "Google DeepMind\u2019s 544-Prompt HFE Test Exposes LLM Consistency Gaps",
@@ -1190,7 +1233,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "Beyond NVIDIA: 4 AI Infrastructure Stocks to Buy Post Huang's Return",
@@ -1454,7 +1497,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "Anthropic shares fall below IPO price, a worrying sign for AI startups",
@@ -1620,6 +1663,22 @@
       "curated": false
     },
     {
+      "title": "Qube",
+      "summary": "An AI agent for anyone with the model of your choice Discussion | Link",
+      "summary_html": "<p>\n            An AI agent for anyone with the model of your choice\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/qube-6?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1329544?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/qube-6",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-24T17:55:06+00:00",
+      "published_ts": 1795542906,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
       "title": "Anorak Speeds Up Reference-Guided AI Video Without Retraining the Model",
       "summary": "Anorak\u2019s PCRG technique cuts repeated work in reference-guided video generation, delivering a 1.49\u00d7 to 1.57\u00d7 speedup in tests on MiniMax-H3.",
       "summary_html": "<p>Anorak\u2019s PCRG technique cuts repeated work in reference-guided video generation, delivering a 1.49\u00d7 to 1.57\u00d7 speedup in tests on MiniMax-H3.</p>",
@@ -1668,7 +1727,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "Epochal Launches Time Portal to Test Forecasting AI on Web History",
@@ -1737,7 +1796,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "New York Times Prohibits Photographers From Using Photoshop 2027",
@@ -2128,6 +2187,24 @@
       "curated": false
     },
     {
+      "title": "Too Big to Fire? Jensen Huang Is Back at Nvidia; Questions Loom Over AI Boom & U.S.-China Relations",
+      "summary": "Nvidia stock prices surged over 30% on Monday as the chip maker reinstated Jensen Huang as CEO. Huang had stepped down earlier in November amid reports he had multiple extramarital affairs, including with a woman accused of spying for China. Huang and Nvidia have been central to the AI boom, and the leadership turmoil had erased trillions in value from the U.S. stock market. President Donald Trump acknowledged he had encouraged the company\u2019s board to bring Huang back. \u201cThe fact that our markets are so over-indexed on the AI trade, that something like three-fourths of gains in the S&P 500 this past year have been AI-related, is unsustainable,\u201d says Aya Ibrahim, senior fellow for economic and national security at the AI Now Institute. \u201cThe relationship is beside the point. The issue here is we have one man, one firm that many people, including those in our government, now believe are indispensable both to our economic growth and stability and to national security.\u201d Watch the full interview here .",
+      "summary_html": "<p>Nvidia stock prices surged over 30% on Monday as the chip maker reinstated Jensen Huang as CEO. Huang had stepped down earlier in November amid reports he had multiple extramarital affairs, including with a woman accused of spying for China. Huang and Nvidia have been central to the AI boom, and the leadership turmoil had erased trillions in value from the U.S. stock market. President Donald Trump acknowledged he had encouraged the company\u2019s board to bring Huang back.</p>\n<p>\u201cThe fact that our markets are so over-indexed on the AI trade, that something like three-fourths of gains in the S&amp;P <a href=\"https://www.democracynow.org/2026/11/24/jensen_huang_returns_nvidia#fn500\">500</a> this past year have been AI-related, is unsustainable,\u201d says Aya Ibrahim, senior fellow for economic and national security at the AI Now Institute.</p>\n<p>\u201cThe relationship is beside the point. The issue here is we have one man, one firm that many people, including those in our government, now believe are indispensable both to our economic growth and stability and to national security.\u201d</p>\n<p>Watch the full interview <a href=\"https://www.democracynow.org/2026/11/24/jensen_huang_returns_nvidia\">here</a>.</p>\n<p>The post <a href=\"https://ainowinstitute.org/news/press/too-big-to-fire-jensen-huang-is-back-at-nvidia-questions-loom-over-ai-boom-u-s-china-relations\">Too Big to Fire? Jensen Huang Is Back at Nvidia; Questions Loom Over AI Boom &amp; U.S.-China Relations</a> appeared first on <a href=\"https://ainowinstitute.org\">AI Now Institute</a>.</p>",
+      "link": "https://ainowinstitute.org/news/press/too-big-to-fire-jensen-huang-is-back-at-nvidia-questions-loom-over-ai-boom-u-s-china-relations",
+      "source": "AI Now Institute - The AI Now Institute produces diagnosis and actionable policy research on artificial intelligence.",
+      "feed_type": "news",
+      "type": "general-news",
+      "type_label": "General News",
+      "published": "2026-11-24T16:48:31+00:00",
+      "published_ts": 1795538911,
+      "smart_groups": [
+        "Policy & government"
+      ],
+      "curated": false,
+      "story_id": "cd728ceea767",
+      "story_size": 79
+    },
+    {
       "title": "Tidal to ban and remove millions of AI-generated tracks as AI slop inundates music streaming",
       "summary": "The company said it will still accept songs that were made with AI assistance, but not fully generated.",
       "summary_html": "The company said it will still accept songs that were made with AI assistance, but not fully generated.",
@@ -2273,7 +2350,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "From Precision to Autonomous Agriculture: The Role of Edge AI and Robotics",
@@ -2321,7 +2398,18 @@
       "smart_groups": [
         "Work & society"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "ee2357a4074e",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "Artificial Intelligence | TechRepublic - News, Tips, and Advice for Technology Professionals",
+          "title": "Pinterest Gives Parents a Say in How Much AI Content Teens See",
+          "link": "https://www.techrepublic.com/article/news-pinterest-parental-controls-ai-content-teen-feeds/",
+          "published_ts": 1795606644
+        }
+      ]
     },
     {
       "title": "Google Launches Gemini 4 Neon: How This New AI Model Handles Complex Coding Tasks",
@@ -2431,14 +2519,28 @@
       "feed_type": "news",
       "type": "media-tech-analysis",
       "type_label": "Media & Tech Analysis",
-      "published": "2026-11-24T15:40:13+00:00",
-      "published_ts": 1795534813,
+      "published": "2026-11-24T15:40:14+00:00",
+      "published_ts": 1795534814,
       "smart_groups": [
         "Policy & government"
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
+    },
+    {
+      "title": "MyClaw 3.0",
+      "summary": "Build an always-on AI team with shared memory Discussion | Link",
+      "summary_html": "<p>\n            Build an always-on AI team with shared memory\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/myclaw-3-0?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1329374?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/myclaw-3-0",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-24T15:39:09+00:00",
+      "published_ts": 1795534749,
+      "smart_groups": [],
+      "curated": false
     },
     {
       "title": "Anthropic Falls Below IPO Price Amid Broader Tech Slump",
@@ -2487,6 +2589,22 @@
       "smart_groups": [
         "Business & funding",
         "Policy & government"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Canva MCP",
+      "summary": "Turn any AI agent into a creative powerhouse Discussion | Link",
+      "summary_html": "<p>\n            Turn any AI agent into a creative powerhouse\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/canva?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1329327?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/canva",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-24T15:05:09+00:00",
+      "published_ts": 1795532709,
+      "smart_groups": [
+        "Agents & automation"
       ],
       "curated": false
     },
@@ -2554,7 +2672,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "\u2018The sacred object in mathematics\u2019: the Riemann hypothesis, AI and a proof no human can read",
@@ -2873,7 +2991,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "Jensen Huang\u2019s Job May Be Even More Difficult Now",
@@ -3003,6 +3121,22 @@
       "smart_groups": [
         "Agents & automation",
         "Business & funding"
+      ],
+      "curated": false
+    },
+    {
+      "title": "From spectrum to structure: Identifying molecules with Mass Spec Skills for Google Antigravity",
+      "summary": "Mass Spec Skills empowers scientists using Google Antigravity to interpret tandem mass spectra.",
+      "summary_html": "Mass Spec Skills empowers scientists using Google Antigravity to interpret tandem mass spectra.",
+      "link": "https://deepmind.google/blog/interpreting-mass-spectra-with-google-antigravity/",
+      "source": "DeepMind Blog - Read the latest articles and stories from DeepMind and find out more about our latest breakthroughs in cutting-edge AI research.",
+      "feed_type": "news",
+      "type": "official-labs-research",
+      "type_label": "Official Labs & Research",
+      "published": "2026-11-24T13:07:53+00:00",
+      "published_ts": 1795525673,
+      "smart_groups": [
+        "Health & science"
       ],
       "curated": false
     },
@@ -3351,7 +3485,7 @@
       "smart_groups": [],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "OpenAI, Cisco Launch Open-Source Security Tool in Wake of Outages",
@@ -3407,6 +3541,22 @@
       "story_size": 6
     },
     {
+      "title": "Hai",
+      "summary": "Your AI assistant that actually makes the phone call Discussion | Link",
+      "summary_html": "<p>\n            Your AI assistant that actually makes the phone call\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/hai-4?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1329023?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/hai-4",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-24T11:19:56+00:00",
+      "published_ts": 1795519196,
+      "smart_groups": [
+        "Consumer AI"
+      ],
+      "curated": false
+    },
+    {
       "title": "Google wants to create an AI-generated TV channel starring you, complete with ads",
       "summary": "First noticed by Patentlyze, Google's AI-generated channel, imaginatively called \"My Channel,\" is described as an option in a TV app. The content it generates will be based on demographic data, device data, YouTube watch history, and any other information Google holds about the user, who will also be the protagonist... Read Entire Article",
       "summary_html": "<a href=\"https://www.techspot.com/news/114680-google-wants-create-ai-generated-tv-channel-starring.html\"></a><br/>First noticed by Patentlyze, Google's AI-generated channel, imaginatively called \"My Channel,\" is described as an option in a TV app. The content it generates will be based on demographic data, device data, YouTube watch history, and any other information Google holds about the user, who will also be the protagonist...<br/><br/><a href=\"https://www.techspot.com/news/114680-google-wants-create-ai-generated-tv-channel-starring.html\">Read Entire Article</a><br/><br/>",
@@ -3450,7 +3600,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "Searching for distant planets with Astra",
@@ -3502,7 +3652,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "Data centers are getting their own natural gas power plants",
@@ -3745,7 +3895,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "Amazon to acquire Decart\u2019s AI optimisation technology",
@@ -3788,6 +3938,22 @@
       "published_ts": 1795512663,
       "smart_groups": [
         "Robotics & autonomy"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Koed",
+      "summary": "Supercharged Agents! Discussion | Link",
+      "summary_html": "<p>\n            Supercharged Agents!\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/koed?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1328887?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/koed",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-24T09:30:45+00:00",
+      "published_ts": 1795512645,
+      "smart_groups": [
+        "Agents & automation"
       ],
       "curated": false
     },
@@ -4133,7 +4299,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "GalaxEye Awards Bellatrix Deal to Power Its Next 30 Satellites",
@@ -4285,7 +4451,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "OpenRouter removes Together AI, Phala, and Novita over data policy violations; Novita says a misconfiguration sent some MiniMax requests to MiniMax official API (Bill Toulas/BleepingComputer)",
@@ -4319,7 +4485,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "How Will AI Change Jobs in India? The Roles at Risk & Those on the Rise",
@@ -4549,7 +4715,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "Trump had 4 reasons to \u2018convince\u2019 Nvidia to rehire Jensen Huang. Here\u2019s why it matters globally",
@@ -4935,7 +5101,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "Filing: ex-OpenAI engineer Abdulrahman Alfozan recorded a meeting with foreign government reps and photographed a confidential term sheet with another company (Emmy Martin/New York Times)",
@@ -5016,6 +5182,22 @@
       "curated": false
     },
     {
+      "title": "Snag by Parallel",
+      "summary": "Find the best deals on products from your agents Discussion | Link",
+      "summary_html": "<p>\n            Find the best deals on products from your agents\n          </p>\n<p>\n<a href=\"https://www.producthunt.com/products/snag?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed\">Discussion</a>\n            |\n            <a href=\"https://www.producthunt.com/r/p/1328447?app_id=339\">Link</a>\n</p>",
+      "link": "https://www.producthunt.com/products/snag",
+      "source": "Product Hunt \u2014 The best new products, every day",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-24T01:50:08+00:00",
+      "published_ts": 1795485008,
+      "smart_groups": [
+        "Agents & automation"
+      ],
+      "curated": false
+    },
+    {
       "title": "US Blacklists Alibaba-Owned Company in Megaspeed Crackdown",
       "summary": "The Trump administration blacklisted a Singaporean subsidiary of Alibaba Group Holding Ltd., roping one of China\u2019s biggest tech companies into its crackdown on Megaspeed International, the firm at the center of a controversy that briefly cost Jensen Huang his job at Nvidia Corp.",
       "summary_html": "The Trump administration blacklisted a Singaporean subsidiary of Alibaba Group Holding Ltd., roping one of China\u2019s biggest tech companies into its crackdown on Megaspeed International, the firm at the center of a controversy that briefly cost Jensen Huang his job at Nvidia Corp.",
@@ -5067,7 +5249,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "Nvidia rejoices at Jensen Huang\u2019s second coming as White House takes victory lap",
@@ -5083,7 +5265,18 @@
       "smart_groups": [
         "Policy & government"
       ],
-      "curated": false
+      "curated": false,
+      "story_id": "9b0b258cccd7",
+      "story_size": 2,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "Business Insider - Content from Business Insider Excluding Premium",
+          "title": "Elon Musk takes a victory lap with Jensen Huang at Nvidia HQ",
+          "link": "https://www.businessinsider.com/elon-musk-photo-with-jensen-huang-nvidia-hq-2026-11",
+          "published_ts": 1795621125
+        }
+      ]
     },
     {
       "title": "Why Trump Put Jensen Huang Back in Charge at Nvidia",
@@ -5101,7 +5294,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "Anthropic\u2019s Claude Ship automates the final stage of the software development pipeline",
@@ -5263,7 +5456,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "Strange new materials can crawl, walk, and dig like living creatures",
@@ -5317,7 +5510,7 @@
       ],
       "curated": false,
       "story_id": "cd728ceea767",
-      "story_size": 71
+      "story_size": 79
     },
     {
       "title": "How iFood scales coding agents across 15,000 repositories",
