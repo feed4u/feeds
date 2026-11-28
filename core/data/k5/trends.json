@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-11-27T18:23:22.526836+00:00",
+  "generated_at": "2026-11-28T08:13:22.893188+00:00",
   "version": "2.1",
   "summary": {
-    "total_articles": 3058,
+    "total_articles": 3021,
     "time_range_days": 30,
     "critical_alerts": 4,
     "trending_threats": 10,
     "risk_score": 9.6,
     "risk_level": "critical",
-    "total_cves": 1670,
-    "exploited_cves": 1581
+    "total_cves": 1663,
+    "exploited_cves": 1577
   },
   "threat_intelligence": {
     "attack_patterns": [
@@ -17,9 +17,9 @@
         "name": "Ransomware",
         "key": "ransomware",
         "severity": "critical",
-        "count": 151,
+        "count": 150,
         "velocity": "rising",
-        "change_percent": 79.8,
+        "change_percent": 85.2,
         "risk_score": 10.0,
         "mitre_techniques": [
           "T1486"
@@ -43,9 +43,9 @@
         "name": "Supply Chain Attacks",
         "key": "supply_chain",
         "severity": "critical",
-        "count": 110,
+        "count": 107,
         "velocity": "surging",
-        "change_percent": 124.5,
+        "change_percent": 122.9,
         "risk_score": 10.0,
         "mitre_techniques": [
           "T1195"
@@ -56,9 +56,9 @@
         "name": "Remote Code Execution",
         "key": "remote_code_execution",
         "severity": "critical",
-        "count": 951,
+        "count": 940,
         "velocity": "surging",
-        "change_percent": 459.4,
+        "change_percent": 462.9,
         "risk_score": 10.0,
         "mitre_techniques": [
           "T1190"
@@ -69,9 +69,9 @@
         "name": "Data Breaches",
         "key": "data_breach",
         "severity": "high",
-        "count": 169,
+        "count": 171,
         "velocity": "surging",
-        "change_percent": 125.3,
+        "change_percent": 128.0,
         "risk_score": 8.5,
         "mitre_techniques": [
           "T1567"
@@ -82,9 +82,9 @@
         "name": "Credential Theft",
         "key": "credential_theft",
         "severity": "high",
-        "count": 555,
+        "count": 548,
         "velocity": "surging",
-        "change_percent": 222.7,
+        "change_percent": 216.8,
         "risk_score": 8.5,
         "mitre_techniques": [
           "T1110",
@@ -96,9 +96,9 @@
         "name": "Phishing Campaigns",
         "key": "phishing",
         "severity": "high",
-        "count": 691,
+        "count": 675,
         "velocity": "surging",
-        "change_percent": 448.4,
+        "change_percent": 444.4,
         "risk_score": 8.5,
         "mitre_techniques": [
           "T1566"
@@ -122,9 +122,9 @@
         "name": "Malware Campaigns",
         "key": "malware",
         "severity": "high",
-        "count": 1485,
+        "count": 1465,
         "velocity": "surging",
-        "change_percent": 575.0,
+        "change_percent": 565.9,
         "risk_score": 8.5,
         "mitre_techniques": [
           "T1204"
@@ -149,19 +149,27 @@
   "cve_analysis": {
     "top_cves": [
       {
+        "cve_id": "CVE-2026-99362",
+        "mentions": 6,
+        "severity": "critical",
+        "exploited": true,
+        "risk_score": 10.0,
+        "affected_vendors": []
+      },
+      {
         "cve_id": "CVE-2026-132165",
         "mentions": 31,
         "severity": "critical",
         "exploited": true,
         "risk_score": 10.0,
         "affected_vendors": [
-          "Amazon",
-          "Oracle"
+          "Oracle",
+          "Amazon"
         ]
       },
       {
         "cve_id": "CVE-2026-136716",
-        "mentions": 11,
+        "mentions": 12,
         "severity": "critical",
         "exploited": true,
         "risk_score": 10.0,
@@ -170,12 +178,24 @@
         ]
       },
       {
-        "cve_id": "CVE-2026-99362",
-        "mentions": 5,
+        "cve_id": "CVE-2026-120705",
+        "mentions": 4,
         "severity": "critical",
         "exploited": true,
         "risk_score": 10.0,
-        "affected_vendors": []
+        "affected_vendors": [
+          "Amazon"
+        ]
+      },
+      {
+        "cve_id": "CVE-2026-129243",
+        "mentions": 3,
+        "severity": "critical",
+        "exploited": true,
+        "risk_score": 10.0,
+        "affected_vendors": [
+          "Amazon"
+        ]
       },
       {
         "cve_id": "CVE-2026-103406",
@@ -190,26 +210,6 @@
       {
         "cve_id": "CVE-2026-129244",
         "mentions": 1,
-        "severity": "critical",
-        "exploited": true,
-        "risk_score": 10.0,
-        "affected_vendors": [
-          "Amazon"
-        ]
-      },
-      {
-        "cve_id": "CVE-2026-129243",
-        "mentions": 2,
-        "severity": "critical",
-        "exploited": true,
-        "risk_score": 10.0,
-        "affected_vendors": [
-          "Amazon"
-        ]
-      },
-      {
-        "cve_id": "CVE-2026-120705",
-        "mentions": 3,
         "severity": "critical",
         "exploited": true,
         "risk_score": 10.0,
@@ -351,27 +351,27 @@
     ],
     "by_severity": {
       "critical": {
-        "count": 1575,
+        "count": 1572,
         "exploited": 1524
       },
       "high": {
-        "count": 95,
-        "exploited": 57
+        "count": 91,
+        "exploited": 53
       }
     },
-    "total_unique": 1670,
-    "total_exploited": 1581
+    "total_unique": 1663,
+    "total_exploited": 1577
   },
   "threat_actors": {
     "most_active": [
       {
         "name": "Play",
-        "mentions": 234,
+        "mentions": 230,
         "risk_level": "high"
       },
       {
         "name": "RTM",
-        "mentions": 83,
+        "mentions": 86,
         "risk_level": "high"
       },
       {
@@ -395,11 +395,6 @@
         "risk_level": "medium"
       },
       {
-        "name": "Turla",
-        "mentions": 8,
-        "risk_level": "medium"
-      },
-      {
         "name": "Inception",
         "mentions": 7,
         "risk_level": "medium"
@@ -410,13 +405,13 @@
         "risk_level": "medium"
       },
       {
-        "name": "Patchwork",
-        "mentions": 5,
-        "risk_level": "low"
+        "name": "Turla",
+        "mentions": 6,
+        "risk_level": "medium"
       },
       {
-        "name": "Salt Typhoon",
-        "mentions": 4,
+        "name": "Patchwork",
+        "mentions": 5,
         "risk_level": "low"
       },
       {
@@ -435,8 +430,13 @@
         "risk_level": "low"
       },
       {
-        "name": "PLATINUM",
-        "mentions": 4,
+        "name": "Akira",
+        "mentions": 3,
+        "risk_level": "low"
+      },
+      {
+        "name": "Salt Typhoon",
+        "mentions": 3,
         "risk_level": "low"
       }
     ],
@@ -444,19 +444,11 @@
     "timeline": [
       {
         "date": "2026-11-10",
-        "count": 24,
+        "count": 13,
         "top_actors": [
           [
             "Play",
-            12
-          ],
-          [
-            "Turla",
-            3
-          ],
-          [
-            "PLATINUM",
-            3
+            7
           ],
           [
             "Rocke",
@@ -464,6 +456,14 @@
           ],
           [
             "Storm-1175",
+            1
+          ],
+          [
+            "Turla",
+            1
+          ],
+          [
+            "Secret Blizzard",
             1
           ]
         ]
@@ -746,7 +746,7 @@
       },
       {
         "date": "2026-11-23",
-        "count": 26,
+        "count": 27,
         "top_actors": [
           [
             "Play",
@@ -754,7 +754,7 @@
           ],
           [
             "RTM",
-            2
+            3
           ],
           [
             "Scattered Spider",
@@ -850,7 +850,7 @@
       },
       {
         "date": "2026-11-27",
-        "count": 20,
+        "count": 21,
         "top_actors": [
           [
             "Play",
@@ -858,7 +858,7 @@
           ],
           [
             "RTM",
-            7
+            8
           ],
           [
             "Akira",
@@ -869,72 +869,86 @@
             1
           ]
         ]
+      },
+      {
+        "date": "2026-11-28",
+        "count": 2,
+        "top_actors": [
+          [
+            "RTM",
+            1
+          ],
+          [
+            "Play",
+            1
+          ]
+        ]
       }
     ]
   },
   "attack_surface": {
-    "identity": {
-      "label": "Identity & Access",
-      "incidents": 686,
-      "severity_distribution": {
-        "high": 380,
-        "low": 296,
-        "medium": 10
-      },
-      "risk_multiplier": 1.4,
-      "risk_score": 96.04
-    },
     "cloud": {
       "label": "Cloud Infrastructure",
-      "incidents": 800,
+      "incidents": 786,
       "severity_distribution": {
-        "low": 401,
-        "high": 392,
+        "low": 400,
+        "high": 379,
         "medium": 7
       },
       "risk_multiplier": 1.2,
-      "risk_score": 96.0
+      "risk_score": 94.32
+    },
+    "identity": {
+      "label": "Identity & Access",
+      "incidents": 673,
+      "severity_distribution": {
+        "low": 291,
+        "high": 372,
+        "medium": 10
+      },
+      "risk_multiplier": 1.4,
+      "risk_score": 94.22
     },
     "network": {
       "label": "Network Infrastructure",
-      "incidents": 349,
+      "incidents": 347,
       "severity_distribution": {
-        "high": 209,
-        "low": 135,
+        "low": 136,
+        "high": 206,
         "medium": 5
       },
       "risk_multiplier": 1.3,
-      "risk_score": 45.37
+      "risk_score": 45.11
     },
     "application": {
       "label": "Application Layer",
-      "incidents": 431,
+      "incidents": 419,
       "severity_distribution": {
-        "high": 246,
-        "low": 177,
+        "high": 238,
+        "low": 173,
         "medium": 8
       },
       "risk_multiplier": 1.0,
-      "risk_score": 43.1
+      "risk_score": 41.9
     },
     "endpoint": {
       "label": "Endpoints & Devices",
-      "incidents": 343,
+      "incidents": 341,
       "severity_distribution": {
-        "high": 192,
-        "low": 147,
+        "low": 148,
+        "high": 189,
         "medium": 4
       },
       "risk_multiplier": 1.1,
-      "risk_score": 37.73
+      "risk_score": 37.51
     }
   },
   "comparisons": {
     "week_over_week": {
       "total_volume": {
-        "current": 912,
-        "previous": 1349,
-        "change_percent": -32.4,
+        "current": 897,
+        "previous": 1333,
+        "change_percent": -32.7,
         "change_label": "decrease"
       },
       "critical_threats": {
@@ -947,17 +961,17 @@
     "critical_actions": [
       "🚨 High exploitation rate: 95% of CVEs actively exploited",
       "⚠️ Elevated threat environment - risk score 9.6/10",
-      "Patch CVE-2026-132165 immediately - actively exploited (risk: 10.0/10) [Amazon, Oracle]",
-      "Patch CVE-2026-136716 immediately - actively exploited (risk: 10.0/10) [Amazon]",
-      "Patch CVE-2026-99362 immediately - actively exploited (risk: 10.0/10)"
+      "Patch CVE-2026-99362 immediately - actively exploited (risk: 10.0/10)",
+      "Patch CVE-2026-132165 immediately - actively exploited (risk: 10.0/10) [Oracle, Amazon]",
+      "Patch CVE-2026-136716 immediately - actively exploited (risk: 10.0/10) [Amazon]"
     ],
     "watch_list": [
-      "↗️ Track Ransomware - rising +80%",
+      "↗️ Track Ransomware - rising +85%",
       "⬆️ Monitor Zero-Day Exploits - surging +130% (risk: 10.0/10)",
-      "⬆️ Monitor Supply Chain Attacks - surging +124% (risk: 10.0/10)",
-      "⬆️ Monitor Remote Code Execution - surging +459% (risk: 10.0/10)",
-      "⬆️ Monitor Data Breaches - surging +125% (risk: 8.5/10)",
-      "⬆️ Monitor Credential Theft - surging +223% (risk: 8.5/10)"
+      "⬆️ Monitor Supply Chain Attacks - surging +123% (risk: 10.0/10)",
+      "⬆️ Monitor Remote Code Execution - surging +463% (risk: 10.0/10)",
+      "⬆️ Monitor Data Breaches - surging +128% (risk: 8.5/10)",
+      "⬆️ Monitor Credential Theft - surging +217% (risk: 8.5/10)"
     ],
     "trending_up": [
       "Ransomware",

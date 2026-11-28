@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-27T18:25:01.844061+00:00",
+  "generated_at": "2026-11-28T08:14:52.183508+00:00",
   "date": "2026-11-26",
-  "total_items": 450,
+  "total_items": 454,
   "next_chunk": "archive/news/daily/2026-11-25.json",
   "items": [
     {
@@ -50,6 +50,22 @@
       "smart_groups": [
         "Agents & automation",
         "Research & papers"
+      ],
+      "curated": false
+    },
+    {
+      "title": "Customising gratia plots with ggplot2 themes",
+      "summary": "[",
+      "summary_html": "<!-- \n<div style=\"min-height: 30px;\">\n[social4i size=\"small\" align=\"align-left\"]\n</div>\n-->\n<div>\n[This article was first published on  <strong><a href=\"https://fromthebottomoftheheap.net/2026/11/27/gratia-plot-themes/\"> From the bottom of the heap \u2014 R posts</a></strong>, and kindly contributed to <a href=\"https://www.r-bloggers.com/\">R-bloggers</a>].  (You can report issue about the content on this page <a href=\"https://www.r-bloggers.com/contact-us/\">here</a>)\nWant to share your content on R-bloggers?<a href=\"https://www.r-bloggers.com/add-your-blog/\"> click here</a> if you have a blog, or <a href=\"http://r-posts.com/\"> here</a> if you don't.\n</div>\n<div></div><p>With gratia 0.12.1, you can change the colour of a smooth or the opacity of its interval <em>after</em> calling <code>draw()</code> using the new theme system. These settings now live in ggplot2 themes, alongside familiar options for backgrounds and text. That makes it easier to use the same style across several figures or give an existing figure a different look.</p>\n<p>I\u2019ll use two curves from a plant experiment to show how to style a set of panels, reuse the style, and choose colours for grouped curves.</p>\n\nStart with a fitted model\n<p>The <code>CO2</code> data that come with R record carbon dioxide uptake by grass plants from Quebec and Mississippi. Half the plants from each origin were chilled, and uptake was measured at the same set of concentrations for each plant <span>(Potvin et al., 1990)</span>.</p>\n<p>For this post I\u2019ll reuse the model from gratia\u2019s <a href=\"https://gavinsimpson.github.io/gratia/articles/prediction-comparisons.html\">prediction comparisons article</a>. It fits a separate concentration smooth for each treatment and includes a plant random intercept for the repeated measurements.</p>\n<div>\n<pre>library(\"mgcv\")\nlibrary(\"gratia\")\nlibrary(\"ggplot2\")\nlibrary(\"dplyr\")\n\nplant &lt;- as_tibble(datasets::CO2) |&gt;\n  mutate(\n    Plant = factor(Plant, ordered = FALSE),\n    Treatment = factor(\n      Treatment,\n      levels = c(\"nonchilled\", \"chilled\"),\n      labels = c(\"Non-chilled plants\", \"Chilled plants\")\n    )\n  )\n\nm &lt;- gam(\n  uptake ~ Type * Treatment + s(conc, by = Treatment, k = 5) +\n    s(Plant, bs = \"re\"),\n  data = plant, family = Gamma(link = \"log\"), method = \"REML\"\n)</pre>\n</div>\n<p>To keep the plots simple, I\u2019ll focus only on the two estimated smooth functions, using <code>draw()</code>\u2019s <code>select</code> argument with <code>partial_match = TRUE</code> to pick out the two concentration smooths by their shared label, <code>s(conc)</code>. The curves show each smooth\u2019s contribution on the log scale. The <em>ggplot</em> object is saved so that it can be reused.</p>\n<div>\n<pre>p &lt;- draw(m, select = \"s(conc)\", partial_match = TRUE, ncol = 2)\np</pre>\n<div>\n<div>\n\n<p></p>\n\n</div>\n</div>\n</div>\n\n\nStyle the curve and its interval\n<p>The theme element <code>geom.gratia.smooth</code> controls the fitted line. <code>geom.gratia.interval</code> supplies the ribbon fill, while <code>gratia.alpha.interval</code> controls how transparent the fill is. I\u2019ll use the same blue for the line and ribbon, with a lower opacity for the ribbon.</p>\n<div>\n<pre>uptake_style &lt;- theme(\n  geom.gratia.smooth = element_geom(colour = \"#275D8C\", linewidth = 0.9),\n  geom.gratia.interval = element_geom(fill = \"#275D8C\"),\n  gratia.alpha.interval = 0.18\n)\n\np &amp; theme_bw() &amp; uptake_style</pre>\n<div>\n<div>\n\n<p></p>\n\n</div>\n</div>\n</div>\n<p><code>draw()</code> returns a patchwork, so <em>patchwork</em>\u2019s <code>&amp;</code> is used to send both themes to every panel. With a single ggplot, use <code>+</code>. When used with a combined figure, <code>+</code> would apply the theme to the last panel only.</p>\n<p>If you\u2019re updating an existing script, move <code>smooth_col</code> from the <code>draw()</code> call into <code>geom.gratia.smooth</code>, <code>ci_col</code> into <code>geom.gratia.interval</code>, and <code>ci_alpha</code> into <code>gratia.alpha.interval</code>. The old arguments are deprecated. While they still work, an explicitly supplied colour or opacity takes precedence over the corresponding theme setting, so remove it from the call when you migrate.</p>\n\n\nReuse the theme for new plots\n<p>Use <code>gratia_theme_set()</code> to style a series of new plots. Each call invisibly returns the gratia theme that was active immediately before the call, or <code>NULL</code> if no gratia theme was set. I save that value in <code>previous_style</code> so I can restore it after assembling the panels.</p>\n<p>I put <code>theme_bw()</code> first because it sets a complete theme. Adding <code>uptake_style</code> after it gives me the white background with the blue line and ribbon.</p>\n<div>\n<pre>previous_style &lt;- gratia_theme_set(theme_bw() + uptake_style)\npanels &lt;- assemble(m, select = \"s(conc)\", partial_match = TRUE)\ngratia_theme_set(previous_style)\n\npanels[[1]]</pre>\n<div>\n<div>\n\n<p></p>\n\n</div>\n</div>\n</div>\n<p><code>assemble()</code> attaches the combined theme to each panel as it creates it. Restoring <code>previous_style</code> sets the theme for future gratia plots. The saved panel still has its white background and blue styling. Use <code>gratia_theme_get()</code> to see which gratia theme is active.</p>\n\n\nUsing a shared palette for colour and fill scales\n<p>Often, we want to put the set of factor-by smooths in one panel using <code>grouped = \"factor-by\"</code>. Then, colour identifies the grouping variable, which here is the treatment. For mapped colours like these, we can use one of the many discrete palettes available for ggplot2, and which can also be set through the theme. <code>gratia_palette()</code> supplies a palette function. Give the same function to the colour and fill settings so each curve matches its own ribbon. In the code below, I switch to Paul Tol\u2019s <em>bright</em> colour palette instead of the default Okabe Ito palette.</p>\n<p>I also wrap the treatment labels in the legend with <code>draw_label_control()</code>. That comes in handy when the figure has to fit in a narrow column.</p>\n<div>\n<pre>tol &lt;- gratia_palette(\"tol_bright\")\nlegend_layout &lt;- draw_label_control(legend = list(wrap = 15))\n\ndraw(\n  m, select = \"s(conc)\", partial_match = TRUE,\n  grouped = \"factor-by\", label_control = legend_layout\n) &amp;\n  theme_bw() &amp;\n  theme(palette.colour.discrete = tol, palette.fill.discrete = tol)</pre>\n<div>\n<div>\n\n<p></p>\n\n</div>\n</div>\n</div>\n<p>Paul Tol\u2019s palettes have different capacities, so pick one with enough colours for your groups. That said, trying to distinguish groups by colour is going to be difficulty as the number of groups gets large.</p>\n<p>For the full list of component settings and mappings from older arguments, see the package\u2019s <a href=\"https://gavinsimpson.github.io/gratia/articles/custom-plotting.html\">Customising gratia plots article</a>.</p>\n\n\nFuture directions\n<p>This is the first outing for the theming system, and there are some features of ggplot2\u2019s themes that aren\u2019t part of the new gratia system, so clashes may occur. If you have comments on the new theme system or suggestions for additions to it, let me know in the comments below.</p>\n\n\nReferences\n<div>\n<div>\nPotvin, C., Lechowicz, M. J., and Tardif, S. (1990). The statistical analysis of ecophysiological response curves obtained from experiments involving repeated measures. <em>Ecology</em> 71, 1389\u20131400. doi:<a href=\"https://doi.org/10.2307/1938276\">10.2307/1938276</a>.\n</div>\n</div>\n\n<div>\n<div>To <strong>leave a comment</strong> for the author, please follow the link and comment on their blog: <strong><a href=\"https://fromthebottomoftheheap.net/2026/11/27/gratia-plot-themes/\"> From the bottom of the heap \u2014 R posts</a></strong>.</div>\n\n<a href=\"https://www.r-bloggers.com/\">R-bloggers.com</a> offers <strong><a href=\"https://feedburner.google.com/fb/a/mailverify?uri=RBloggers\">daily e-mail updates</a></strong> about <a href=\"https://www.r-project.org/\">R</a> news and tutorials about <a href=\"https://www.r-bloggers.com/how-to-learn-r-2/\">learning R</a> and many other topics. <a href=\"https://www.r-users.com/\">Click here if you're looking to post or find an R/data-science job</a>.\n\nWant to share your content on R-bloggers?<a href=\"https://www.r-bloggers.com/add-your-blog/\"> click here</a> if you have a blog, or <a href=\"http://r-posts.com/\"> here</a> if you don't.\n</div><strong>Continue reading</strong>: <a href=\"https://www.r-bloggers.com/2026/11/customising-gratia-plots-with-ggplot2-themes/\">Customising gratia plots with ggplot2 themes</a>",
+      "link": "https://www.r-bloggers.com/2026/11/customising-gratia-plots-with-ggplot2-themes/",
+      "source": "R-bloggers - R news and tutorials contributed by hundreds of R bloggers",
+      "feed_type": "news",
+      "type": "data-science-mlops",
+      "type_label": "Data Science & MLOps",
+      "published": "2026-11-26T23:00:00+00:00",
+      "published_ts": 1795734000,
+      "smart_groups": [
+        "Data & analytics"
       ],
       "curated": false
     },
@@ -233,8 +249,8 @@
         "Chips & hardware"
       ],
       "curated": false,
-      "story_id": "79c814180f50",
-      "story_size": 3
+      "story_id": "056afa3c08bb",
+      "story_size": 4
     },
     {
       "title": "ApexFlow Launches Nuvvo to Scale AI-Powered, Curated Mobile Supply",
@@ -589,8 +605,8 @@
         "Chips & hardware"
       ],
       "curated": false,
-      "story_id": "79c814180f50",
-      "story_size": 3
+      "story_id": "056afa3c08bb",
+      "story_size": 4
     },
     {
       "title": "Amazon and Meta Reportedly Discuss Restoring Muse Shopping Access",
@@ -686,6 +702,22 @@
       ]
     },
     {
+      "title": "X Rolls Out Parental Controls, Also Admits That It\u2019s \u2018Not Designed for or Promoted to Children\u2019",
+      "summary": "The Elon Musk-owned social platform has faced lawsuits and growing scrutiny over the use of Grok to create sexualized deepfakes of young users.",
+      "summary_html": "The Elon Musk-owned social platform has faced lawsuits and growing scrutiny over the use of Grok to create sexualized deepfakes of young users.",
+      "link": "https://gizmodo.com/x-rolls-out-parental-controls-also-admits-that-its-not-designed-for-or-promoted-to-children-2000845950",
+      "source": "Gizmodo - The Future Is Here",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-26T17:11:05+00:00",
+      "published_ts": 1795713065,
+      "smart_groups": [
+        "Work & society"
+      ],
+      "curated": false
+    },
+    {
       "title": "NVIDIA Halts AI Server Shipments to 4 Southeast Asian Countries: Report",
       "summary": "NVIDIA has instructed its manufacturing partners to stop shipping servers to Malaysia, Singapore, Thailand, and Indonesia, as reported by the Financial Times (FT). The move comes as the US tightens export controls to prevent Chinese companies from accessing advanced AI computing power. The FT report cited three sources familiar with the matter and said manufacturing partners Dell and Supermicro have told buyers in the four countries that NVIDIA will not allow their orders to ship. The companies package NVIDIA's chips into servers. It remains unclear whether the shipping halt is temporary. NVIDIA and its manufacturing partners are reportedly working to understand how to comply with Washington's new export restrictions . AIM has reached out to NVIDIA for a comment. The four Southeast Asian countries have emerged as preferred destinations for Chinese AI developers seeking access to NVIDIA's advanced chips. Washington restricts exports of these processors to China. Many Chinese companies have reportedly bypassed these restrictions by renting computing capacity from cloud providers . These providers purchase servers equipped with NVIDIA chips and lease access to customers. The US Commerce Department introduced new rules last week to curb this practice. Under the measures, cloud providers must obtain a licence within 90 days. They must also demonstrate that their end users do not include restricted entities. However, uncertainty around implementing the rules has created concerns among cloud providers. An executive at one such company told the FT , \"There's this new rule but no guidance on execution.\" The executive added that companies were struggling to understand the licensing process. The 90-day deadline has also created uncertainty across the region. The restrictions could affect Southeast Asia's growing data centre investments . Chinese technology companies have driven much of the demand for AI infrastructure. Malaysia and Indonesia have attracted billions of dollars in investments. The FT report also identified Singapore-based cloud company Aolani among those affected. The company had planned to provide advanced computing capacity to ByteDance, TikTok's Chinese parent company. It intended to do so through leasing agreements. The disruption has affected financing for the project, according to the FT report. Some bankers have stopped issuing approximately $500 million in previously agreed credit. ByteDance could also withdraw from the deal. The shipping halt could have financial implications for NVIDIA. The company recorded $104 billion in revenue through its Singapore subsidiary in 2025. This represented a 72% increase over the previous year. However, the figure also includes some revenue from Taiwan and China . NVIDIA has faced scrutiny over Chinese companies being able to use its chips. Despite Beijing's efforts to develop domestic alternatives, Chinese AI laboratories remain reliant on NVIDIA processors. These chips play a key role in training large AI models. NVIDIA's newly reinstated CEO Jensen Huang has previously argued that the US should continue selling chips to Chinese companies. He believes this would increase their dependence on American technology.",
       "summary_html": "<p>NVIDIA has instructed its manufacturing partners to stop shipping servers to Malaysia, Singapore, Thailand, and Indonesia, as reported by the <em>Financial Times</em> (FT). The move comes as the US tightens export controls to <a href=\"https://analyticsindiamag.com/ai-news/us-lawmakers-disclose-approvals-for-879000-nvidia-and-amd-chips-to-china\">prevent Chinese companies</a> from accessing advanced AI computing power.</p><p>The <em>FT</em> report cited three sources familiar with the matter and said manufacturing partners Dell and Supermicro have told buyers in the four countries that NVIDIA will not allow their orders to ship. The companies package NVIDIA's chips into servers.</p><p>It remains unclear whether the shipping halt is temporary. NVIDIA and its manufacturing partners are reportedly working to understand how to comply with Washington's new <a href=\"https://analyticsindiamag.com/deep-tech/us-export-rules-put-indias-chip-industry-at-crossroads\">export restrictions</a>.</p><p><strong>AIM</strong> has reached out to NVIDIA for a comment.</p><p>The four Southeast Asian countries have emerged as preferred destinations for Chinese AI developers seeking access to NVIDIA's advanced chips. Washington restricts exports of these processors to China.</p><p>Many Chinese companies have reportedly bypassed these restrictions by <a href=\"https://analyticsindiamag.com/ai-news/oracle-is-leasing-100k-ai-chips-to-chinese-giant-tencent-report\">renting computing capacity</a> from <a href=\"https://analyticsindiamag.com/ai-news/neysa-looks-beyond-gpu-capacity-to-build-an-enterprise-ai-partner-network\">cloud providers</a>. These providers purchase servers equipped with NVIDIA chips and lease access to customers.</p><p>The US Commerce Department introduced new rules last week to curb this practice. Under the measures, cloud providers must obtain a licence within 90 days. They must also demonstrate that their end users do not include restricted entities.</p><p>However, uncertainty around implementing the rules has created concerns among cloud providers. An executive at one such company told the <em>FT</em>, \"There's this new rule but no guidance on execution.\"</p><p>The executive added that companies were struggling to understand the licensing process. The 90-day deadline has also created uncertainty across the region.</p><p>The restrictions could affect Southeast Asia's <a href=\"https://analyticsindiamag.com/ai-features/what-indias-data-centre-policy-needs-to-get-right\">growing data centre investments</a>. Chinese technology companies have driven much of the demand for AI infrastructure. Malaysia and Indonesia have attracted billions of dollars in investments.</p><p>The <em>FT</em> report also identified Singapore-based cloud company Aolani among those affected. The company had planned to provide advanced computing capacity to ByteDance, TikTok's Chinese parent company. It intended to do so through leasing agreements.</p><p>The disruption has affected financing for the project, according to the FT report. Some bankers have stopped issuing approximately $500 million in previously agreed credit. ByteDance could also withdraw from the deal.</p><p>The shipping halt could have financial implications for NVIDIA. The company recorded $104 billion in revenue through its Singapore subsidiary in 2025. This represented a 72% increase over the previous year. However, the figure also includes some revenue from Taiwan <a href=\"https://analyticsindiamag.com/ai-news/jensen-huang-says-nvidias-china-chip-share-has-fallen-to-zero\">and China</a>.</p><p>NVIDIA has faced scrutiny over Chinese companies being able to use its chips. Despite Beijing's efforts to develop domestic alternatives, Chinese AI laboratories remain reliant on NVIDIA processors. These chips play a key role in training large AI models.</p><p>NVIDIA's <a href=\"https://analyticsindiamag.com/ai-features/trump-has-saved-jensens-job-but-can-he-save-nvidia\">newly reinstated</a> CEO Jensen Huang has <a href=\"https://analyticsindiamag.com/ai-news-updates/nvidia-gains-us-approval-to-export-h200-ai-chips-to-china\">previously argued</a> that the US should continue selling chips to Chinese companies. He believes this would increase their dependence on American technology.</p>",
@@ -701,23 +733,8 @@
         "Business & funding"
       ],
       "curated": false,
-      "story_id": "79c814180f50",
-      "story_size": 3,
-      "story_primary": true,
-      "story_others": [
-        {
-          "source": "Engadget - Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics",
-          "title": "NVIDIA reportedly halts AI chip shipments to Southeast Asia",
-          "link": "https://www.engadget.com/2329200/nvidia-reportedly-halts-chip-shipments-to-southeast-asia/",
-          "published_ts": 1795716558
-        },
-        {
-          "source": "TechCrunch - Startup and Technology News",
-          "title": "Nvidia hits pause on chip shipments to Southeast Asia",
-          "link": "https://techcrunch.com/2026/11/26/nvidia-hits-pause-on-chip-shipments-to-southeast-asia/",
-          "published_ts": 1795723434
-        }
-      ]
+      "story_id": "056afa3c08bb",
+      "story_size": 4
     },
     {
       "title": "Coforge Adds Cybersecurity Patches to AI Enterprise Suite in Wake of Vulnerabilities",
@@ -1097,6 +1114,45 @@
       "curated": false,
       "story_id": "7601f68fa236",
       "story_size": 3
+    },
+    {
+      "title": "Nvidia Reportedly Freezes AI Chip Shipments to Southeast Asian Countries",
+      "summary": "The suspension comes as the U.S. tries to crack down on loopholes allowing China to access Nvidia\u2019s most advanced AI chips.",
+      "summary_html": "The suspension comes as the U.S. tries to crack down on loopholes allowing China to access Nvidia\u2019s most advanced AI chips.",
+      "link": "https://gizmodo.com/nvidia-reportedly-freezes-ai-chip-shipments-to-southeast-asian-countries-2000845928",
+      "source": "Gizmodo - The Future Is Here",
+      "feed_type": "news",
+      "type": "media-tech-analysis",
+      "type_label": "Media & Tech Analysis",
+      "published": "2026-11-26T15:24:42+00:00",
+      "published_ts": 1795706682,
+      "smart_groups": [
+        "Chips & hardware"
+      ],
+      "curated": false,
+      "story_id": "056afa3c08bb",
+      "story_size": 4,
+      "story_primary": true,
+      "story_others": [
+        {
+          "source": "Analytics India Magazine - Artificial Intelligence, Emerging Tech, Data Science",
+          "title": "NVIDIA Halts AI Server Shipments to 4 Southeast Asian Countries: Report",
+          "link": "https://analyticsindiamag.com/ai-news/nvidia-halts-ai-server-shipments-to-4-southeast-asian-countries-report",
+          "published_ts": 1795713028
+        },
+        {
+          "source": "Engadget - Engadget is a web magazine with obsessive daily coverage of everything new in gadgets and consumer electronics",
+          "title": "NVIDIA reportedly halts AI chip shipments to Southeast Asia",
+          "link": "https://www.engadget.com/2329200/nvidia-reportedly-halts-chip-shipments-to-southeast-asia/",
+          "published_ts": 1795716558
+        },
+        {
+          "source": "TechCrunch - Startup and Technology News",
+          "title": "Nvidia hits pause on chip shipments to Southeast Asia",
+          "link": "https://techcrunch.com/2026/11/26/nvidia-hits-pause-on-chip-shipments-to-southeast-asia/",
+          "published_ts": 1795723434
+        }
+      ]
     },
     {
       "title": "What to do if your Thanksgiving flight is delayed or canceled due to weather",
@@ -1596,6 +1652,23 @@
       "published_ts": 1795694641,
       "smart_groups": [
         "Policy & government"
+      ],
+      "curated": false
+    },
+    {
+      "title": "The Sequence Opinion - Issue #980: A Barrel of Compute, Please",
+      "summary": "TLDR: Suppose you want to buy 100,000 hours of compute. You have money, and someone has GPUs, yet the salesperson still needs to know which chips, how much memory, which region, and whether the job can be interrupted. The objection to calling compute a commodity is that one GPU-hour is not interchangeable with another. This essay notes that crude oil has the same problem until quality and delivery are specified, and argues that substantial parts of compute can become commodities if buyers and sellers agree on what is being sold, measure whether it was delivered, and decide who bears the risk when prices change. It traces those requirements through rice futures at Dojima, Chicago grain grades, oil delivery at Cushing, electricity markets that distinguish energy from capacity, and cash-settled freight contracts. It then examines what is already taking shape: GPU rental benchmarks from Silicon Data and Ornn, AWS reservations of future capacity, a November 17 announcement by Architect and Luxor of a bespoke put option for Hyperbolic, linked to B200 rental prices and covering approximately $5 million in notional future rental-revenue exposure, and a NYMEX filing that extended review of proposed compute futures through January 8, 2027. The harder problem is that software can change how much useful work the same equipment performs, and that a narrowly specified contract may attract too little trading, while a broad one may track a customer\u2019s actual bills poorly. The author\u2019s expectation is a family of compute markets organized around recognizable specifications and reference prices. A cash-settled hedge still cannot provision a cluster, and commoditization would not guarantee cheap compute or eliminate profits. Suppose you run an AI company and would like to buy 100,000 hours of compute. You have money. Someone has GPUs. This should be manageable. The salesperson has questions. Which GPUs? How much memory? Which region? Do the machines need to communicate with one another very quickly? Can your job be interrupted? You had hoped to buy an industrial input. You appear to have commissioned a consulting engagement. This is the objection to calling compute a commodity: one GPU-hour is not necessarily interchangeable with another. But try buying crude oil without specifying its quality or delivery location. Commodity traders also have questions. They have simply had longer to put the questions into standardized forms. I think substantial parts of compute can become commodities. Getting there requires agreeing on what is being sold, measuring whether it was delivered, and deciding who bears the risk when prices change. Finance has considerable experience with these problems. Some of that experience is even encouraging.",
+      "summary_html": "<div><a href=\"https://substackcdn.com/image/fetch/$s_!9pHw!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc946c99a-0ed4-4594-aac2-2156de26c033_1456x816.jpeg\"><div><div><div></div></div></div></a></div><p><strong>TLDR:</strong> Suppose you want to buy 100,000 hours of compute. You have money, and someone has GPUs, yet the salesperson still needs to know which chips, how much memory, which region, and whether the job can be interrupted. The objection to calling compute a commodity is that one GPU-hour is not interchangeable with another. This essay notes that crude oil has the same problem until quality and delivery are specified, and argues that substantial parts of compute can become commodities if buyers and sellers agree on what is being sold, measure whether it was delivered, and decide who bears the risk when prices change. It traces those requirements through rice futures at Dojima, Chicago grain grades, oil delivery at Cushing, electricity markets that distinguish energy from capacity, and cash-settled freight contracts.</p><p>It then examines what is already taking shape: GPU rental benchmarks from Silicon Data and Ornn, AWS reservations of future capacity, a November 17 announcement by Architect and Luxor of a bespoke put option for Hyperbolic, linked to B200 rental prices and covering approximately $5 million in notional future rental-revenue exposure, and a NYMEX filing that extended review of proposed compute futures through January 8, 2027. The harder problem is that software can change how much useful work the same equipment performs, and that a narrowly specified contract may attract too little trading, while a broad one may track a customer\u2019s actual bills poorly. The author\u2019s expectation is a family of compute markets organized around recognizable specifications and reference prices. A cash-settled hedge still cannot provision a cluster, and commoditization would not guarantee cheap compute or eliminate profits.</p><p>Suppose you run an AI company and would like to buy 100,000 hours of compute. You have money. Someone has GPUs. This should be manageable.</p><p>The salesperson has questions. Which GPUs? How much memory? Which region? Do the machines need to communicate with one another very quickly? Can your job be interrupted? You had hoped to buy an industrial input. You appear to have commissioned a consulting engagement.</p><p>This is the objection to calling compute a commodity: one GPU-hour is not necessarily interchangeable with another. But try buying crude oil without specifying its quality or delivery location. Commodity traders also have questions. They have simply had longer to put the questions into standardized forms.</p><p>I think substantial parts of compute can become commodities. Getting there requires agreeing on what is being sold, measuring whether it was delivered, and deciding who bears the risk when prices change. Finance has considerable experience with these problems. Some of that experience is even encouraging.</p>\n<p>\n<a href=\"https://thesequence.substack.com/p/the-sequence-opinion-issue-980-a\">\n              Read more\n          </a>\n</p>",
+      "link": "https://thesequence.substack.com/p/the-sequence-opinion-issue-980-a",
+      "source": "TheSequence - The best source to stay up-to-date with the developments in the machine learning, artificial intelligence, and data science world. Trusted \u2026",
+      "feed_type": "news",
+      "type": "curated-ai-newsletters",
+      "type_label": "Curated AI Newsletters",
+      "published": "2026-11-26T12:03:26+00:00",
+      "published_ts": 1795694606,
+      "smart_groups": [
+        "Research & papers",
+        "Chips & hardware"
       ],
       "curated": false
     },
